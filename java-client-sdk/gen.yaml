@@ -1,0 +1,20 @@
+configVersion: 1.0.0
+management:
+  docChecksum: ff2c1441c7d689e0339b5b03ba509741
+  docVersion: 0.0.1
+  speakeasyVersion: 1.33.1
+  generationVersion: 2.29.0
+generation:
+  sdkClassName: SDK
+  singleTagPerOp: false
+java:
+  version: 1.0.0
+  artifactID: openapi
+  companyEmail: info@mycompany.com
+  companyName: My Company
+  companyURL: www.mycompany.com
+  githubURL: github.com/owner/repo
+  groupID: org.openapis
+  maxMethodParams: 0
+  ossrhURL: https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/
+  projectName: openapi

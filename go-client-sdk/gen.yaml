@@ -1,0 +1,13 @@
+configVersion: 1.0.0
+management:
+  docChecksum: ff2c1441c7d689e0339b5b03ba509741
+  docVersion: 0.0.1
+  speakeasyVersion: 1.33.1
+  generationVersion: 2.29.0
+generation:
+  sdkClassName: SDK
+  singleTagPerOp: false
+go:
+  version: 1.0.0
+  maxMethodParams: 0
+  packageName: openapi
