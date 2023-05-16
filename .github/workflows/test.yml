@@ -24,7 +24,8 @@ jobs:
       - uses: actions/setup-go@v3
         with:
           go-version: ">=1.14.0"
-      - run: |-
+      - name: Test Go
+        run: |-
           go install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@latest
           go test -json -v ./... 2>&1 | tee /tmp/gotest.log | gotestfmt -hide all
         working-directory: ./go-client-sdk
@@ -46,7 +47,8 @@ jobs:
           distribution: "corretto"
           java-version: "11"
           cache: "gradle"
-      - run: |-
+      - name: Test Java
+        run: |-
           ./gradlew test -p ./lib
         working-directory: ./java-client-sdk
   test-php:
@@ -66,7 +68,8 @@ jobs:
         with:
           php-version: "8.1"
           tools: composer
-      - run: |-
+      - name: Test PHP
+        run: |-
           composer install
           ./vendor/bin/phpunit tests
         working-directory: ./php-client-sdk
@@ -86,9 +89,11 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: "3.9"
-      - run: |-
-          pip install -e .
+      - name: Test Python
+        run: |-
+          python -m venv venv
           . ./venv/bin/activate
+          pip install -e .
           python -m pytest ./tests -vv
         working-directory: ./python-client-sdk
   test-ruby:
@@ -104,10 +109,11 @@ jobs:
           - 35456:8080
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-ruby@v1
+      - uses: ruby/setup-ruby@v1
         with:
-          ruby-version: "3.0.0"
-      - run: |-
+          ruby-version: "3.0"
+      - name: Test Ruby
+        run: |-
           bundle install
           rake test
         working-directory: ./ruby-client-sdk
@@ -128,7 +134,8 @@ jobs:
         with:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
-      - run: |-
+      - name: Test Typescript
+        run: |-
           npm install
           npm run test
         working-directory: ./typescript-client-sdk
