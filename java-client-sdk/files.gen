@@ -40,6 +40,14 @@ lib/src/main/java/org/openapis/openapi/utils/SpeakeasyMetadata.java
 lib/src/main/java/org/openapis/openapi/utils/Types.java
 lib/src/main/java/org/openapis/openapi/utils/Utils.java
 settings.gradle
+lib/src/test/java/org/openapis/openapi/AuthTests.java
+lib/src/test/java/org/openapis/openapi/FlatteningTests.java
+lib/src/test/java/org/openapis/openapi/GlobalsTests.java
+lib/src/test/java/org/openapis/openapi/Helpers.java
+lib/src/test/java/org/openapis/openapi/ParameterTests.java
+lib/src/test/java/org/openapis/openapi/RequestBodiesTests.java
+lib/src/test/java/org/openapis/openapi/ResponseBodiesTests.java
+lib/src/test/java/org/openapis/openapi/ServerTests.java
 lib/src/main/java/org/openapis/openapi/models/operations/ApiKeyAuthSecurity.java
 lib/src/main/java/org/openapis/openapi/models/operations/ApiKeyAuthToken.java
 lib/src/main/java/org/openapis/openapi/models/operations/ApiKeyAuthResponse.java

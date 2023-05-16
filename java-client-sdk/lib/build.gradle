@@ -11,6 +11,7 @@ plugins {
     id 'java-library'
     id 'maven-publish'
     id 'signing'
+    id "com.adarshr.test-logger" version "3.2.0"
 }
 
 compileJava.options.encoding = "UTF-8"
@@ -41,7 +42,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'org.openapis'
             artifactId = 'openapi'
-            version = '1.0.0'
+            version = '1.0.1'
 
             from components.java
 
@@ -91,6 +92,9 @@ javadoc {
 }
 
 dependencies {
+    // Use JUnit Jupiter for testing.
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.2'
+
     implementation 'com.fasterxml.jackson.core:jackson-annotations:2.14.1'
     implementation 'com.fasterxml.jackson.core:jackson-core:2.14.1'
     implementation 'com.fasterxml.jackson.core:jackson-databind:2.14.1'
@@ -99,6 +103,15 @@ dependencies {
     implementation 'org.apache.httpcomponents:httpcore:4.4.15'
     implementation 'org.apache.httpcomponents:httpclient:4.5.13'
     implementation 'org.apache.httpcomponents:httpmime:4.5.13'
+}
+
+tasks.named('test') {
+    // Use JUnit Platform for unit tests.
+    useJUnitPlatform()
+}
+
+testlogger  {
+    showStandardStreams true
 }
 
 jar {

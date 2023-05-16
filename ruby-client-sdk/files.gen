@@ -147,3 +147,12 @@ docs/responsebodies/README.md
 docs/servers/README.md
 docs/unions/README.md
 USAGE.md
+test/auth_test.rb
+test/flattening_test.rb
+test/globals_test.rb
+test/helper_test.rb
+test/parameter_test.rb
+test/requestbodies_test.rb
+test/responsebodies_test.rb
+test/servers_test.rb
+test/testdata/testUpload.json

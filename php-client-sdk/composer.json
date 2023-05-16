@@ -3,7 +3,8 @@
   "type": "library",
   "autoload": {
     "psr-4": {
-      "OpenAPI\\OpenAPI\\": "src/"
+      "OpenAPI\\OpenAPI\\": "src/",
+      "OpenAPI\\OpenAPI\\Tests\\": "tests/"
     }
   },
   "license": "MIT",
