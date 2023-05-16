@@ -23,7 +23,7 @@ jobs:
     with:
       speakeasy_version: latest
       openapi_docs: |
-        - location: ./test.yaml
+        - ./test.yaml
       languages: |-
         - go
         - java
