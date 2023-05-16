@@ -1,0 +1,80 @@
+name: Tests
+
+on:
+  workflow_run:
+    workflows: ["Generate"]
+    types:
+      - completed
+  workflow_dispatch:
+
+jobs:
+  test-go:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-go@v3
+        with:
+          go-version: ">=1.14.0"
+      - run: |-
+          go install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@latest
+          go test -json -v ./... 2>&1 | tee /tmp/gotest.log | gotestfmt -hide all
+        working-directory: ./go-client-sdk
+  test-java:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-java@v3
+        with:
+          distribution: "corretto"
+          java-version: "11"
+          cache: "gradle"
+      - run: |-
+          ./gradlew test -p ./lib
+        working-directory: ./java-client-sdk
+  test-php:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.1"
+          tools: composer
+      - run: |-
+          composer install
+          ./vendor/bin/phpunit tests
+        working-directory: ./php-client-sdk
+  test-python:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+      - run: |-
+          pip install -e .
+          . ./venv/bin/activate
+          python -m pytest ./tests -vv
+        working-directory: ./python-client-sdk
+  test-ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-ruby@v1
+        with:
+          ruby-version: "3.0"
+      - run: |-
+          bundle install
+          rake test
+        working-directory: ./ruby-client-sdk
+  test-typescript:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "16.x"
+          registry-url: "https://registry.npmjs.org"
+      - run: |-
+          npm install
+          npm run test
+        working-directory: ./typescript-client-sdk
