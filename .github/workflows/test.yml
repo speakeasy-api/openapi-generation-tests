@@ -10,6 +10,15 @@ on:
 jobs:
   test-go:
     runs-on: ubuntu-latest
+    services:
+      httpbin:
+        image: kennethreitz/httpbin
+        ports:
+          - 35123:80
+      speakeasy-auth-test-service:
+        image: ghcr.io/speakeasy-api/auth-test-service:latest
+        ports:
+          - 35456:8080
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-go@v3
@@ -21,6 +30,15 @@ jobs:
         working-directory: ./go-client-sdk
   test-java:
     runs-on: ubuntu-latest
+    services:
+      httpbin:
+        image: kennethreitz/httpbin
+        ports:
+          - 35123:80
+      speakeasy-auth-test-service:
+        image: ghcr.io/speakeasy-api/auth-test-service:latest
+        ports:
+          - 35456:8080
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-java@v3
@@ -33,6 +51,15 @@ jobs:
         working-directory: ./java-client-sdk
   test-php:
     runs-on: ubuntu-latest
+    services:
+      httpbin:
+        image: kennethreitz/httpbin
+        ports:
+          - 35123:80
+      speakeasy-auth-test-service:
+        image: ghcr.io/speakeasy-api/auth-test-service:latest
+        ports:
+          - 35456:8080
     steps:
       - uses: actions/checkout@v3
       - uses: shivammathur/setup-php@v2
@@ -45,6 +72,15 @@ jobs:
         working-directory: ./php-client-sdk
   test-python:
     runs-on: ubuntu-latest
+    services:
+      httpbin:
+        image: kennethreitz/httpbin
+        ports:
+          - 35123:80
+      speakeasy-auth-test-service:
+        image: ghcr.io/speakeasy-api/auth-test-service:latest
+        ports:
+          - 35456:8080
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -57,17 +93,35 @@ jobs:
         working-directory: ./python-client-sdk
   test-ruby:
     runs-on: ubuntu-latest
+    services:
+      httpbin:
+        image: kennethreitz/httpbin
+        ports:
+          - 35123:80
+      speakeasy-auth-test-service:
+        image: ghcr.io/speakeasy-api/auth-test-service:latest
+        ports:
+          - 35456:8080
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-ruby@v1
         with:
-          ruby-version: "3.0"
+          ruby-version: "3.0.0"
       - run: |-
           bundle install
           rake test
         working-directory: ./ruby-client-sdk
   test-typescript:
     runs-on: ubuntu-latest
+    services:
+      httpbin:
+        image: kennethreitz/httpbin
+        ports:
+          - 35123:80
+      speakeasy-auth-test-service:
+        image: ghcr.io/speakeasy-api/auth-test-service:latest
+        ports:
+          - 35456:8080
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
