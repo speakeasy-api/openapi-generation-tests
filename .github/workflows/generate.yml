@@ -14,12 +14,9 @@ on:
       - "test.yaml"
       - "components.yaml"
 
-env:
-  SPEAKEASY_OUTPUT_TESTS: true
-
 jobs:
   generate:
-    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14 # Import the sdk generation workflow which will handle the generation of the SDKs and publishing to the package managers in 'direct' mode.
+    uses: speakeasy-api/sdk-generation-action/.github/workflows/sdk-generation.yaml@v14
     with:
       speakeasy_version: latest
       openapi_docs: |
@@ -32,6 +29,7 @@ jobs:
         - ruby
         - typescript
       force: ${{ github.event.inputs.force }}
+      output_tests: true
     secrets:
       speakeasy_api_key: ${{ secrets.SPEAKEASY_API_KEY }}
       github_access_token: ${{ secrets.GITHUB_TOKEN }}
