@@ -13,9 +13,9 @@ type DeepObjectQueryParamsObjectObjArrParam struct {
 }
 
 type DeepObjectQueryParamsObjectRequest struct {
-	ObjArrParam *DeepObjectQueryParamsObjectObjArrParam `queryParam:"style=deepObject,explode=true,name=objArrParam"`
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
-	ObjParam shared.SimpleObject `queryParam:"style=deepObject,explode=true,name=objParam"`
+	ObjParam    shared.SimpleObject                     `queryParam:"style=deepObject,explode=true,name=objParam"`
+	ObjArrParam *DeepObjectQueryParamsObjectObjArrParam `queryParam:"style=deepObject,explode=true,name=objArrParam"`
 }
 
 type DeepObjectQueryParamsObjectResArgs struct {

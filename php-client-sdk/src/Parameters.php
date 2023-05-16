@@ -44,13 +44,19 @@ class Parameters
     /**
      * deepObjectQueryParamsMap
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapRequest $request
+     * @param array<string, string> $mapParam
+     * @param ?array<string, array<string>> $mapArrParam
      * @return \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapResponse
      */
 	public function deepObjectQueryParamsMap(
-        \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapRequest $request,
+        array $mapParam,
+        ?array $mapArrParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapRequest();
+        $request->mapParam = $mapParam;
+        $request->mapArrParam = $mapArrParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/deepObject/map');
         
@@ -79,13 +85,19 @@ class Parameters
     /**
      * deepObjectQueryParamsObject
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
+     * @param ?\OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam $objArrParam
      * @return \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectResponse
      */
 	public function deepObjectQueryParamsObject(
-        \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam,
+        ?\OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam $objArrParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectRequest();
+        $request->objParam = $objParam;
+        $request->objArrParam = $objArrParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/deepObject/obj');
         
@@ -114,13 +126,19 @@ class Parameters
     /**
      * formQueryParamsArray
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayRequest $request
+     * @param ?array<string> $arrParam
+     * @param ?array<int> $arrParamExploded
      * @return \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayResponse
      */
 	public function formQueryParamsArray(
-        \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayRequest $request,
+        ?array $arrParam = null,
+        ?array $arrParamExploded = null,
     ): \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayRequest();
+        $request->arrParam = $arrParam;
+        $request->arrParamExploded = $arrParamExploded;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/form/array');
         
@@ -149,13 +167,19 @@ class Parameters
     /**
      * formQueryParamsMap
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapRequest $request
+     * @param ?array<string, string> $mapParam
+     * @param ?array<string, int> $mapParamExploded
      * @return \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapResponse
      */
 	public function formQueryParamsMap(
-        \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapRequest $request,
+        ?array $mapParam = null,
+        ?array $mapParamExploded = null,
     ): \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapRequest();
+        $request->mapParam = $mapParam;
+        $request->mapParamExploded = $mapParamExploded;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/form/map');
         
@@ -184,13 +208,19 @@ class Parameters
     /**
      * formQueryParamsObject
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsObjectRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded
+     * @param ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
      * @return \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsObjectResponse
      */
 	public function formQueryParamsObject(
-        \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsObjectRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded,
+        ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsObjectResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsObjectRequest();
+        $request->objParamExploded = $objParamExploded;
+        $request->objParam = $objParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/form/obj');
         
@@ -219,13 +249,25 @@ class Parameters
     /**
      * formQueryParamsPrimitive
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveRequest $request
+     * @param bool $boolParam
+     * @param int $intParam
+     * @param float $numParam
+     * @param string $strParam
      * @return \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveResponse
      */
 	public function formQueryParamsPrimitive(
-        \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveRequest $request,
+        bool $boolParam,
+        int $intParam,
+        float $numParam,
+        string $strParam,
     ): \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveRequest();
+        $request->boolParam = $boolParam;
+        $request->intParam = $intParam;
+        $request->numParam = $numParam;
+        $request->strParam = $strParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/form/primitive');
         
@@ -254,13 +296,19 @@ class Parameters
     /**
      * formQueryParamsRefParamObject
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectRequest $request
+     * @param ?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj $refObjParam
+     * @param ?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded $refObjParamExploded
      * @return \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectResponse
      */
 	public function formQueryParamsRefParamObject(
-        \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectRequest $request,
+        ?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj $refObjParam = null,
+        ?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded $refObjParamExploded = null,
     ): \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectRequest();
+        $request->refObjParam = $refObjParam;
+        $request->refObjParamExploded = $refObjParamExploded;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/form/refParamObject');
         
@@ -289,13 +337,16 @@ class Parameters
     /**
      * headerParamsArray
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayRequest $request
+     * @param array<string> $xHeaderArray
      * @return \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayResponse
      */
 	public function headerParamsArray(
-        \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayRequest $request,
+        array $xHeaderArray,
     ): \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayRequest();
+        $request->xHeaderArray = $xHeaderArray;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/headers/array');
         
@@ -324,13 +375,19 @@ class Parameters
     /**
      * headerParamsMap
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapRequest $request
+     * @param array<string, string> $xHeaderMap
+     * @param array<string, string> $xHeaderMapExplode
      * @return \OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapResponse
      */
 	public function headerParamsMap(
-        \OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapRequest $request,
+        array $xHeaderMap,
+        array $xHeaderMapExplode,
     ): \OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapRequest();
+        $request->xHeaderMap = $xHeaderMap;
+        $request->xHeaderMapExplode = $xHeaderMapExplode;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/headers/map');
         
@@ -359,13 +416,19 @@ class Parameters
     /**
      * headerParamsObject
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\HeaderParamsObjectRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $xHeaderObj
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $xHeaderObjExplode
      * @return \OpenAPI\OpenAPI\Models\Operations\HeaderParamsObjectResponse
      */
 	public function headerParamsObject(
-        \OpenAPI\OpenAPI\Models\Operations\HeaderParamsObjectRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $xHeaderObj,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $xHeaderObjExplode,
     ): \OpenAPI\OpenAPI\Models\Operations\HeaderParamsObjectResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\HeaderParamsObjectRequest();
+        $request->xHeaderObj = $xHeaderObj;
+        $request->xHeaderObjExplode = $xHeaderObjExplode;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/headers/obj');
         
@@ -394,13 +457,25 @@ class Parameters
     /**
      * headerParamsPrimitive
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveRequest $request
+     * @param bool $xHeaderBoolean
+     * @param int $xHeaderInteger
+     * @param float $xHeaderNumber
+     * @param string $xHeaderString
      * @return \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveResponse
      */
 	public function headerParamsPrimitive(
-        \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveRequest $request,
+        bool $xHeaderBoolean,
+        int $xHeaderInteger,
+        float $xHeaderNumber,
+        string $xHeaderString,
     ): \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveRequest();
+        $request->xHeaderBoolean = $xHeaderBoolean;
+        $request->xHeaderInteger = $xHeaderInteger;
+        $request->xHeaderNumber = $xHeaderNumber;
+        $request->xHeaderString = $xHeaderString;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/headers/primitive');
         
@@ -429,13 +504,19 @@ class Parameters
     /**
      * jsonQueryParamsObject
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\DeepObject $deepObjParam
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObjParam
      * @return \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectResponse
      */
 	public function jsonQueryParamsObject(
-        \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\DeepObject $deepObjParam,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObjParam,
     ): \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectRequest();
+        $request->deepObjParam = $deepObjParam;
+        $request->simpleObjParam = $simpleObjParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/json/obj');
         
@@ -464,13 +545,22 @@ class Parameters
     /**
      * mixedQueryParams
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\MixedQueryParamsRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $deepObjectParam
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $formParam
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonParam
      * @return \OpenAPI\OpenAPI\Models\Operations\MixedQueryParamsResponse
      */
 	public function mixedQueryParams(
-        \OpenAPI\OpenAPI\Models\Operations\MixedQueryParamsRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $deepObjectParam,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $formParam,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonParam,
     ): \OpenAPI\OpenAPI\Models\Operations\MixedQueryParamsResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\MixedQueryParamsRequest();
+        $request->deepObjectParam = $deepObjectParam;
+        $request->formParam = $formParam;
+        $request->jsonParam = $jsonParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/mixed');
         
@@ -499,13 +589,16 @@ class Parameters
     /**
      * pathParameterJson
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\PathParameterJsonRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonObj
      * @return \OpenAPI\OpenAPI\Models\Operations\PathParameterJsonResponse
      */
 	public function pathParameterJson(
-        \OpenAPI\OpenAPI\Models\Operations\PathParameterJsonRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $jsonObj,
     ): \OpenAPI\OpenAPI\Models\Operations\PathParameterJsonResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\PathParameterJsonRequest();
+        $request->jsonObj = $jsonObj;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/pathParams/json/{jsonObj}', \OpenAPI\OpenAPI\Models\Operations\PathParameterJsonRequest::class, $request, $this->_globals);
         
@@ -533,13 +626,25 @@ class Parameters
     /**
      * pipeDelimitedQueryParamsArray
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayRequest $request
+     * @param ?array<string> $arrParam
+     * @param ?array<int> $arrParamExploded
+     * @param ?array<string, string> $mapParam
+     * @param ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
      * @return \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayResponse
      */
 	public function pipeDelimitedQueryParamsArray(
-        \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayRequest $request,
+        ?array $arrParam = null,
+        ?array $arrParamExploded = null,
+        ?array $mapParam = null,
+        ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\PipeDelimitedQueryParamsArrayRequest();
+        $request->arrParam = $arrParam;
+        $request->arrParamExploded = $arrParamExploded;
+        $request->mapParam = $mapParam;
+        $request->objParam = $objParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/pipe/array');
         
@@ -568,13 +673,16 @@ class Parameters
     /**
      * simplePathParameterArrays
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysRequest $request
+     * @param array<string> $arrParam
      * @return \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysResponse
      */
 	public function simplePathParameterArrays(
-        \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysRequest $request,
+        array $arrParam,
     ): \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysRequest();
+        $request->arrParam = $arrParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/pathParams/arr/{arrParam}', \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysRequest::class, $request, $this->_globals);
         
@@ -602,13 +710,19 @@ class Parameters
     /**
      * simplePathParameterMaps
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsRequest $request
+     * @param array<string, string> $mapParam
+     * @param array<string, int> $mapParamExploded
      * @return \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsResponse
      */
 	public function simplePathParameterMaps(
-        \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsRequest $request,
+        array $mapParam,
+        array $mapParamExploded,
     ): \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsRequest();
+        $request->mapParam = $mapParam;
+        $request->mapParamExploded = $mapParamExploded;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}', \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsRequest::class, $request, $this->_globals);
         
@@ -636,13 +750,19 @@ class Parameters
     /**
      * simplePathParameterObjects
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded
      * @return \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsResponse
      */
 	public function simplePathParameterObjects(
-        \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded,
     ): \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsRequest();
+        $request->objParam = $objParam;
+        $request->objParamExploded = $objParamExploded;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}', \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterObjectsRequest::class, $request, $this->_globals);
         
@@ -670,13 +790,25 @@ class Parameters
     /**
      * simplePathParameterPrimitives
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesRequest $request
+     * @param bool $boolParam
+     * @param int $intParam
+     * @param float $numParam
+     * @param string $strParam
      * @return \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesResponse
      */
 	public function simplePathParameterPrimitives(
-        \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesRequest $request,
+        bool $boolParam,
+        int $intParam,
+        float $numParam,
+        string $strParam,
     ): \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesRequest();
+        $request->boolParam = $boolParam;
+        $request->intParam = $intParam;
+        $request->numParam = $numParam;
+        $request->strParam = $strParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}', \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesRequest::class, $request, $this->_globals);
         

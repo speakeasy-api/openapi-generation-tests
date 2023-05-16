@@ -68,9 +68,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Errors.StatusGet(ctx, operations.StatusGetRequest{
-        StatusCode: 692532,
-    })
+    res, err := s.Errors.StatusGet(ctx, 692532)
     if err != nil {
         log.Fatal(err)
     }
@@ -108,28 +106,25 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Errors.StatusPostRetries(ctx, operations.StatusPostRetriesRequest{
-        SimpleObject: &shared.SimpleObject{
-            Any: "provident",
-            Bigint: big.NewInt(725255),
-            BigintStr: types.MustBigIntFromString("659669"),
-            Bool: true,
-            BoolOpt: sdk.Bool(true),
-            Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Enum: shared.EnumEnumTwo,
-            Float32: 2.2222222,
-            Int: 999999,
-            Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumEnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumEnumSecond,
-            IntOptNull: sdk.Int64(999999),
-            Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
-            Str: "example",
-            StrOpt: sdk.String("optional example"),
-        },
-        StatusCode: 956084,
+    res, err := s.Errors.StatusPostRetries(ctx, 588465, &shared.SimpleObject{
+        Any: "nam",
+        Bigint: big.NewInt(659669),
+        BigintStr: types.MustBigIntFromString("501324"),
+        Bool: true,
+        BoolOpt: sdk.Bool(true),
+        Date: types.MustDateFromString("2020-01-01"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+        Enum: shared.EnumEnumTwo,
+        Float32: 2.2222222,
+        Int: 999999,
+        Int32: 1,
+        Int32Enum: shared.SimpleObjectInt32EnumEnumSixtyNine,
+        IntEnum: shared.SimpleObjectIntEnumEnumThird,
+        IntOptNull: sdk.Int64(999999),
+        Num: 1.1,
+        NumOptNull: sdk.Float64(1.1),
+        Str: "example",
+        StrOpt: sdk.String("optional example"),
     })
     if err != nil {
         log.Fatal(err)

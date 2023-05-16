@@ -12,17 +12,17 @@ export class FormQueryParamsObjectRequest extends SpeakeasyBase {
    * A simple object that uses all our supported primitive types and enums and has optional properties.
    */
   @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=false;name=objParam",
+    data: "queryParam, style=form;explode=true;name=objParamExploded",
   })
-  objParam?: shared.SimpleObject;
+  objParamExploded: shared.SimpleObject;
 
   /**
    * A simple object that uses all our supported primitive types and enums and has optional properties.
    */
   @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=objParamExploded",
+    data: "queryParam, style=form;explode=false;name=objParam",
   })
-  objParamExploded: shared.SimpleObject;
+  objParam?: shared.SimpleObject;
 }
 
 export class FormQueryParamsObjectResArgs extends SpeakeasyBase {

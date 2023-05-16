@@ -1373,16 +1373,15 @@ export class RequestBodies {
   }
 
   async requestBodyPostMultipleContentTypesSplitParamForm(
-    req: operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest,
+    requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded,
+    paramStr: string,
     config?: AxiosRequestConfig
   ): Promise<operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest(
-          req
-        );
-    }
-
+    const req =
+      new operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest({
+        requestBody: requestBody,
+        paramStr: paramStr,
+      });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") +
@@ -1445,16 +1444,15 @@ export class RequestBodies {
   }
 
   async requestBodyPostMultipleContentTypesSplitParamJson(
-    req: operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest,
+    requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON,
+    paramStr: string,
     config?: AxiosRequestConfig
   ): Promise<operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest(
-          req
-        );
-    }
-
+    const req =
+      new operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest({
+        requestBody: requestBody,
+        paramStr: paramStr,
+      });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") +
@@ -1517,16 +1515,17 @@ export class RequestBodies {
   }
 
   async requestBodyPostMultipleContentTypesSplitParamMultipart(
-    req: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest,
+    requestBody: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData,
+    paramStr: string,
     config?: AxiosRequestConfig
   ): Promise<operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req =
-        new operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest(
-          req
-        );
-    }
-
+    const req =
+      new operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest(
+        {
+          requestBody: requestBody,
+          paramStr: paramStr,
+        }
+      );
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") +

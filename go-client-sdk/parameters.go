@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -34,7 +35,12 @@ func newParameters(defaultClient, securityClient HTTPClient, serverURL, language
 	}
 }
 
-func (s *parameters) DeepObjectQueryParamsMap(ctx context.Context, request operations.DeepObjectQueryParamsMapRequest) (*operations.DeepObjectQueryParamsMapResponse, error) {
+func (s *parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[string]string, mapArrParam map[string][]string) (*operations.DeepObjectQueryParamsMapResponse, error) {
+	request := operations.DeepObjectQueryParamsMapRequest{
+		MapParam:    mapParam,
+		MapArrParam: mapArrParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/deepObject/map"
 
@@ -81,7 +87,12 @@ func (s *parameters) DeepObjectQueryParamsMap(ctx context.Context, request opera
 	return res, nil
 }
 
-func (s *parameters) DeepObjectQueryParamsObject(ctx context.Context, request operations.DeepObjectQueryParamsObjectRequest) (*operations.DeepObjectQueryParamsObjectResponse, error) {
+func (s *parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam shared.SimpleObject, objArrParam *operations.DeepObjectQueryParamsObjectObjArrParam) (*operations.DeepObjectQueryParamsObjectResponse, error) {
+	request := operations.DeepObjectQueryParamsObjectRequest{
+		ObjParam:    objParam,
+		ObjArrParam: objArrParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/deepObject/obj"
 
@@ -128,7 +139,12 @@ func (s *parameters) DeepObjectQueryParamsObject(ctx context.Context, request op
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsArray(ctx context.Context, request operations.FormQueryParamsArrayRequest) (*operations.FormQueryParamsArrayResponse, error) {
+func (s *parameters) FormQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64) (*operations.FormQueryParamsArrayResponse, error) {
+	request := operations.FormQueryParamsArrayRequest{
+		ArrParam:         arrParam,
+		ArrParamExploded: arrParamExploded,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/array"
 
@@ -175,7 +191,12 @@ func (s *parameters) FormQueryParamsArray(ctx context.Context, request operation
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsMap(ctx context.Context, request operations.FormQueryParamsMapRequest) (*operations.FormQueryParamsMapResponse, error) {
+func (s *parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.FormQueryParamsMapResponse, error) {
+	request := operations.FormQueryParamsMapRequest{
+		MapParam:         mapParam,
+		MapParamExploded: mapParamExploded,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/map"
 
@@ -222,7 +243,12 @@ func (s *parameters) FormQueryParamsMap(ctx context.Context, request operations.
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsObject(ctx context.Context, request operations.FormQueryParamsObjectRequest) (*operations.FormQueryParamsObjectResponse, error) {
+func (s *parameters) FormQueryParamsObject(ctx context.Context, objParamExploded shared.SimpleObject, objParam *shared.SimpleObject) (*operations.FormQueryParamsObjectResponse, error) {
+	request := operations.FormQueryParamsObjectRequest{
+		ObjParamExploded: objParamExploded,
+		ObjParam:         objParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/obj"
 
@@ -269,7 +295,14 @@ func (s *parameters) FormQueryParamsObject(ctx context.Context, request operatio
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsPrimitive(ctx context.Context, request operations.FormQueryParamsPrimitiveRequest) (*operations.FormQueryParamsPrimitiveResponse, error) {
+func (s *parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.FormQueryParamsPrimitiveResponse, error) {
+	request := operations.FormQueryParamsPrimitiveRequest{
+		BoolParam: boolParam,
+		IntParam:  intParam,
+		NumParam:  numParam,
+		StrParam:  strParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/primitive"
 
@@ -316,7 +349,12 @@ func (s *parameters) FormQueryParamsPrimitive(ctx context.Context, request opera
 	return res, nil
 }
 
-func (s *parameters) FormQueryParamsRefParamObject(ctx context.Context, request operations.FormQueryParamsRefParamObjectRequest) (*operations.FormQueryParamsRefParamObjectResponse, error) {
+func (s *parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjParam *shared.RefQueryParamObj, refObjParamExploded *shared.RefQueryParamObjExploded) (*operations.FormQueryParamsRefParamObjectResponse, error) {
+	request := operations.FormQueryParamsRefParamObjectRequest{
+		RefObjParam:         refObjParam,
+		RefObjParamExploded: refObjParamExploded,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/form/refParamObject"
 
@@ -363,7 +401,11 @@ func (s *parameters) FormQueryParamsRefParamObject(ctx context.Context, request 
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsArray(ctx context.Context, request operations.HeaderParamsArrayRequest) (*operations.HeaderParamsArrayResponse, error) {
+func (s *parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []string) (*operations.HeaderParamsArrayResponse, error) {
+	request := operations.HeaderParamsArrayRequest{
+		XHeaderArray: xHeaderArray,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/array"
 
@@ -408,7 +450,12 @@ func (s *parameters) HeaderParamsArray(ctx context.Context, request operations.H
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsMap(ctx context.Context, request operations.HeaderParamsMapRequest) (*operations.HeaderParamsMapResponse, error) {
+func (s *parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]string, xHeaderMapExplode map[string]string) (*operations.HeaderParamsMapResponse, error) {
+	request := operations.HeaderParamsMapRequest{
+		XHeaderMap:        xHeaderMap,
+		XHeaderMapExplode: xHeaderMapExplode,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/map"
 
@@ -453,7 +500,12 @@ func (s *parameters) HeaderParamsMap(ctx context.Context, request operations.Hea
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsObject(ctx context.Context, request operations.HeaderParamsObjectRequest) (*operations.HeaderParamsObjectResponse, error) {
+func (s *parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.SimpleObject, xHeaderObjExplode shared.SimpleObject) (*operations.HeaderParamsObjectResponse, error) {
+	request := operations.HeaderParamsObjectRequest{
+		XHeaderObj:        xHeaderObj,
+		XHeaderObjExplode: xHeaderObjExplode,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/obj"
 
@@ -498,7 +550,14 @@ func (s *parameters) HeaderParamsObject(ctx context.Context, request operations.
 	return res, nil
 }
 
-func (s *parameters) HeaderParamsPrimitive(ctx context.Context, request operations.HeaderParamsPrimitiveRequest) (*operations.HeaderParamsPrimitiveResponse, error) {
+func (s *parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean bool, xHeaderInteger int64, xHeaderNumber float64, xHeaderString string) (*operations.HeaderParamsPrimitiveResponse, error) {
+	request := operations.HeaderParamsPrimitiveRequest{
+		XHeaderBoolean: xHeaderBoolean,
+		XHeaderInteger: xHeaderInteger,
+		XHeaderNumber:  xHeaderNumber,
+		XHeaderString:  xHeaderString,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/headers/primitive"
 
@@ -543,7 +602,12 @@ func (s *parameters) HeaderParamsPrimitive(ctx context.Context, request operatio
 	return res, nil
 }
 
-func (s *parameters) JSONQueryParamsObject(ctx context.Context, request operations.JSONQueryParamsObjectRequest) (*operations.JSONQueryParamsObjectResponse, error) {
+func (s *parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam shared.DeepObject, simpleObjParam shared.SimpleObject) (*operations.JSONQueryParamsObjectResponse, error) {
+	request := operations.JSONQueryParamsObjectRequest{
+		DeepObjParam:   deepObjParam,
+		SimpleObjParam: simpleObjParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/json/obj"
 
@@ -590,7 +654,13 @@ func (s *parameters) JSONQueryParamsObject(ctx context.Context, request operatio
 	return res, nil
 }
 
-func (s *parameters) MixedQueryParams(ctx context.Context, request operations.MixedQueryParamsRequest) (*operations.MixedQueryParamsResponse, error) {
+func (s *parameters) MixedQueryParams(ctx context.Context, deepObjectParam shared.SimpleObject, formParam shared.SimpleObject, jsonParam shared.SimpleObject) (*operations.MixedQueryParamsResponse, error) {
+	request := operations.MixedQueryParamsRequest{
+		DeepObjectParam: deepObjectParam,
+		FormParam:       formParam,
+		JSONParam:       jsonParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/mixed"
 
@@ -637,7 +707,11 @@ func (s *parameters) MixedQueryParams(ctx context.Context, request operations.Mi
 	return res, nil
 }
 
-func (s *parameters) PathParameterJSON(ctx context.Context, request operations.PathParameterJSONRequest) (*operations.PathParameterJSONResponse, error) {
+func (s *parameters) PathParameterJSON(ctx context.Context, jsonObj shared.SimpleObject) (*operations.PathParameterJSONResponse, error) {
+	request := operations.PathParameterJSONRequest{
+		JSONObj: jsonObj,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/json/{jsonObj}", request, s.globals)
 	if err != nil {
@@ -683,7 +757,14 @@ func (s *parameters) PathParameterJSON(ctx context.Context, request operations.P
 	return res, nil
 }
 
-func (s *parameters) PipeDelimitedQueryParamsArray(ctx context.Context, request operations.PipeDelimitedQueryParamsArrayRequest) (*operations.PipeDelimitedQueryParamsArrayResponse, error) {
+func (s *parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam []string, arrParamExploded []int64, mapParam map[string]string, objParam *shared.SimpleObject) (*operations.PipeDelimitedQueryParamsArrayResponse, error) {
+	request := operations.PipeDelimitedQueryParamsArrayRequest{
+		ArrParam:         arrParam,
+		ArrParamExploded: arrParamExploded,
+		MapParam:         mapParam,
+		ObjParam:         objParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/queryParams/pipe/array"
 
@@ -730,7 +811,11 @@ func (s *parameters) PipeDelimitedQueryParamsArray(ctx context.Context, request 
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterArrays(ctx context.Context, request operations.SimplePathParameterArraysRequest) (*operations.SimplePathParameterArraysResponse, error) {
+func (s *parameters) SimplePathParameterArrays(ctx context.Context, arrParam []string) (*operations.SimplePathParameterArraysResponse, error) {
+	request := operations.SimplePathParameterArraysRequest{
+		ArrParam: arrParam,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/arr/{arrParam}", request, s.globals)
 	if err != nil {
@@ -776,7 +861,12 @@ func (s *parameters) SimplePathParameterArrays(ctx context.Context, request oper
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterMaps(ctx context.Context, request operations.SimplePathParameterMapsRequest) (*operations.SimplePathParameterMapsResponse, error) {
+func (s *parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[string]string, mapParamExploded map[string]int64) (*operations.SimplePathParameterMapsResponse, error) {
+	request := operations.SimplePathParameterMapsRequest{
+		MapParam:         mapParam,
+		MapParamExploded: mapParamExploded,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}", request, s.globals)
 	if err != nil {
@@ -822,7 +912,12 @@ func (s *parameters) SimplePathParameterMaps(ctx context.Context, request operat
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterObjects(ctx context.Context, request operations.SimplePathParameterObjectsRequest) (*operations.SimplePathParameterObjectsResponse, error) {
+func (s *parameters) SimplePathParameterObjects(ctx context.Context, objParam shared.SimpleObject, objParamExploded shared.SimpleObject) (*operations.SimplePathParameterObjectsResponse, error) {
+	request := operations.SimplePathParameterObjectsRequest{
+		ObjParam:         objParam,
+		ObjParamExploded: objParamExploded,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}", request, s.globals)
 	if err != nil {
@@ -868,7 +963,14 @@ func (s *parameters) SimplePathParameterObjects(ctx context.Context, request ope
 	return res, nil
 }
 
-func (s *parameters) SimplePathParameterPrimitives(ctx context.Context, request operations.SimplePathParameterPrimitivesRequest) (*operations.SimplePathParameterPrimitivesResponse, error) {
+func (s *parameters) SimplePathParameterPrimitives(ctx context.Context, boolParam bool, intParam int64, numParam float64, strParam string) (*operations.SimplePathParameterPrimitivesResponse, error) {
+	request := operations.SimplePathParameterPrimitivesRequest{
+		BoolParam: boolParam,
+		IntParam:  intParam,
+		NumParam:  numParam,
+		StrParam:  strParam,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}", request, s.globals)
 	if err != nil {

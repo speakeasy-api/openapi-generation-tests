@@ -49,11 +49,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.StatusGetRequest(
-    status_code=692532,
-)
 
-res = s.errors.status_get(req)
+res = s.errors.status_get(692532)
 
 if res.status_code == 200:
     # handle response
@@ -76,31 +73,27 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.StatusPostRetriesRequest(
-    simple_object=shared.SimpleObject(
-        any='provident',
-        bigint=725255,
-        bigint_str='id',
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        enum=shared.EnumEnum.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32EnumEnum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnumEnum.SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    status_code=956084,
-)
 
-res = s.errors.status_post_retries(req)
+res = s.errors.status_post_retries(588465, shared.SimpleObject(
+    any='nam',
+    bigint=659669,
+    bigint_str='blanditiis',
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    enum=shared.EnumEnum.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32EnumEnum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnumEnum.THIRD,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
+))
 
 if res.status_code == 200:
     # handle response

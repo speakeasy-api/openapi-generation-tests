@@ -71,9 +71,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::BasicAuthRequest, security: Operations::BasicAuthSecurity).returns(Utils::FieldAugmented) }
-    def basic_auth(request, security)
+    sig { params(security: Operations::BasicAuthSecurity, passwd: String, user: String).returns(Utils::FieldAugmented) }
+    def basic_auth(security, passwd, user)
 
+      request = Operations::BasicAuthRequest.new(
+        passwd: passwd,
+        user: user,
+      )
+      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::BasicAuthRequest,

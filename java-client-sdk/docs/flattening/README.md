@@ -41,16 +41,26 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamConflictRequest req = new ComponentBodyAndParamConflictRequest(                new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.FIFTY_FIVE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
-                                bigint = 141264L;
-                                bigintStr = "nemo";
-                                boolOpt = true;
-                                intOptNull = 999999L;
-                                numOptNull = 1.1;
-                                strOpt = "optional example";
-                            }};, "quasi");            
-
-            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(req);
+            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("debitis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.FIFTY_FIVE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
+                any = "odit";
+                bigint = 367562L;
+                bigintStr = "quasi";
+                bool = true;
+                boolOpt = true;
+                date = LocalDate.parse("2020-01-01");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                enum_ = EnumEnum.TWO;
+                float32 = 2.2222222;
+                int_ = 999999L;
+                int32 = 1;
+                int32Enum = SimpleObjectInt32EnumEnum.SIXTY_NINE;
+                intEnum = SimpleObjectIntEnumEnum.Third;
+                intOptNull = 999999L;
+                num = 1.1;
+                numOptNull = 1.1;
+                str = "example";
+                strOpt = "optional example";
+            }}, "deleniti");
 
             if (res.res != null) {
                 // handle response
@@ -91,16 +101,26 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictRequest req = new ComponentBodyAndParamNoConflictRequest("iure",                 new SimpleObject("doloribus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnumEnum.First, 1.1, "example") {{
-                                bigint = 806194L;
-                                bigintStr = "deleniti";
-                                boolOpt = true;
-                                intOptNull = 999999L;
-                                numOptNull = 1.1;
-                                strOpt = "optional example";
-                            }};);            
-
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict(req);
+            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("facilis", new SimpleObject("expedita", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.SIXTY_NINE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
+                any = "in";
+                bigint = 100226L;
+                bigintStr = "architecto";
+                bool = true;
+                boolOpt = true;
+                date = LocalDate.parse("2020-01-01");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                enum_ = EnumEnum.TWO;
+                float32 = 2.2222222;
+                int_ = 999999L;
+                int32 = 1;
+                int32Enum = SimpleObjectInt32EnumEnum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                intEnum = SimpleObjectIntEnumEnum.Second;
+                intOptNull = 999999L;
+                num = 1.1;
+                numOptNull = 1.1;
+                str = "example";
+                strOpt = "optional example";
+            }});
 
             if (res.res != null) {
                 // handle response
@@ -135,9 +155,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ConflictingParamsRequest req = new ConflictingParamsRequest("facilis", "in");            
-
-            ConflictingParamsResponse res = sdk.flattening.conflictingParams(req);
+            ConflictingParamsResponse res = sdk.flattening.conflictingParams("quibusdam", "sed");
 
             if (res.res != null) {
                 // handle response
@@ -173,9 +191,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamConflictRequest req = new InlineBodyAndParamConflictRequest(                new InlineBodyAndParamConflictRequestBody("architecto");, "architecto");            
-
-            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(req);
+            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("pariatur") {{
+                str = "saepe";
+            }}, "accusantium");
 
             if (res.res != null) {
                 // handle response
@@ -211,9 +229,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamNoConflictRequest req = new InlineBodyAndParamNoConflictRequest(                new InlineBodyAndParamNoConflictRequestBody("repudiandae");, "ullam");            
-
-            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(req);
+            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("praesentium") {{
+                bodyStr = "consequuntur";
+            }}, "natus");
 
             if (res.res != null) {
                 // handle response

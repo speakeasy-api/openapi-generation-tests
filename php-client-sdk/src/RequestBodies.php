@@ -891,13 +891,19 @@ class RequestBodies
     /**
      * requestBodyPostMultipleContentTypesSplitParamForm
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded $requestBody
+     * @param string $paramStr
      * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormResponse
      */
 	public function requestBodyPostMultipleContentTypesSplitParamForm(
-        \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequest $request,
+        \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded $requestBody,
+        string $paramStr,
     ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequest();
+        $request->requestBody = $requestBody;
+        $request->paramStr = $paramStr;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/multiple/contentTypes/split/param');
         
@@ -931,13 +937,19 @@ class RequestBodies
     /**
      * requestBodyPostMultipleContentTypesSplitParamJson
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationJSON $requestBody
+     * @param string $paramStr
      * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonResponse
      */
 	public function requestBodyPostMultipleContentTypesSplitParamJson(
-        \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequest $request,
+        \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationJSON $requestBody,
+        string $paramStr,
     ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequest();
+        $request->requestBody = $requestBody;
+        $request->paramStr = $paramStr;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/multiple/contentTypes/split/param');
         
@@ -971,13 +983,19 @@ class RequestBodies
     /**
      * requestBodyPostMultipleContentTypesSplitParamMultipart
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartFormData $requestBody
+     * @param string $paramStr
      * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartResponse
      */
 	public function requestBodyPostMultipleContentTypesSplitParamMultipart(
-        \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequest $request,
+        \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartFormData $requestBody,
+        string $paramStr,
     ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequest();
+        $request->requestBody = $requestBody;
+        $request->paramStr = $paramStr;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/multiple/contentTypes/split/param');
         

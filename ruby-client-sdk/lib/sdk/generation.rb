@@ -69,11 +69,15 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::DeprecatedNoCommentsGetRequest).returns(Utils::FieldAugmented) }
-    def deprecated_no_comments_get(request)
+    sig { params(deprecated_parameter: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def deprecated_no_comments_get(deprecated_parameter = nil)
       # deprecated_no_comments_get
       # 
       # @deprecated this null will be removed in a future release, please migrate away from it as soon as possible
+      request = Operations::DeprecatedNoCommentsGetRequest.new(
+        deprecated_parameter: deprecated_parameter,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/deprecatedNoComments"
       query_params = Utils.get_query_params(Operations::DeprecatedNoCommentsGetRequest, request, @globals)
@@ -93,11 +97,15 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::DeprecatedWithCommentsGetRequest).returns(Utils::FieldAugmented) }
-    def deprecated_with_comments_get(request)
+    sig { params(deprecated_parameter: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def deprecated_with_comments_get(deprecated_parameter = nil)
       # deprecated_with_comments_get - This is an endpoint setup to test deprecation with comments
       # 
       # @deprecated this null will be removed in a future release, please migrate away from it as soon as possible
+      request = Operations::DeprecatedWithCommentsGetRequest.new(
+        deprecated_parameter: deprecated_parameter,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/deprecatedWithComments"
       query_params = Utils.get_query_params(Operations::DeprecatedWithCommentsGetRequest, request, @globals)
@@ -165,9 +173,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::IgnoresPostRequest).returns(Utils::FieldAugmented) }
-    def ignores_post(request)
+    sig { params(request_body: T.nilable(Operations::IgnoresPostApplicationJSON), test_param: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def ignores_post(request_body = nil, test_param = nil)
 
+      request = Operations::IgnoresPostRequest.new(
+        request_body: request_body,
+        test_param: test_param,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/ignores"
       headers = {}
@@ -202,9 +215,13 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::NameOverrideGetRequest).returns(Utils::FieldAugmented) }
-    def name_override(request)
+    sig { params(test_query_param: String).returns(Utils::FieldAugmented) }
+    def name_override(test_query_param)
 
+      request = Operations::NameOverrideGetRequest.new(
+        test_query_param: test_query_param,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/nameOverride"
       query_params = Utils.get_query_params(Operations::NameOverrideGetRequest, request, @globals)

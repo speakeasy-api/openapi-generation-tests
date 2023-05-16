@@ -108,15 +108,18 @@ class Generation
     /**
      * deprecatedNoCommentsGet
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetRequest $request
+     * @param ?string $deprecatedParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetResponse
      * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
      */
 	public function deprecatedNoCommentsGet(
-        \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetRequest $request,
+        ?string $deprecatedParameter = null,
     ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetResponse
     {
         trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
+        
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetRequest();
+        $request->deprecatedParameter = $deprecatedParameter;
         
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedNoComments');
@@ -142,15 +145,18 @@ class Generation
     /**
      * This is an endpoint setup to test deprecation with comments
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest $request
+     * @param ?string $deprecatedParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse
      * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
      */
 	public function deprecatedWithCommentsGet(
-        \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest $request,
+        ?string $deprecatedParameter = null,
     ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse
     {
         trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
+        
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest();
+        $request->deprecatedParameter = $deprecatedParameter;
         
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedWithComments');
@@ -240,13 +246,19 @@ class Generation
     /**
      * ignoresPost
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest $request
+     * @param ?\OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON $requestBody
+     * @param ?string $testParam
      * @return \OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse
      */
 	public function ignoresPost(
-        \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest $request,
+        ?\OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON $requestBody = null,
+        ?string $testParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest();
+        $request->requestBody = $requestBody;
+        $request->testParam = $testParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/ignores');
         
@@ -277,13 +289,16 @@ class Generation
     /**
      * nameOverride
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest $request
+     * @param string $testQueryParam
      * @return \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse
      */
 	public function nameOverride(
-        \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest $request,
+        string $testQueryParam,
     ): \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest();
+        $request->testQueryParam = $testQueryParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/nameOverride');
         

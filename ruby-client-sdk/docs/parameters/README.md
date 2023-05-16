@@ -39,24 +39,20 @@ s = sdk::SDK.new
    
 req = Operations::Operations::DeepObjectQueryParamsMapRequest(
   query_params=Operations::DeepObjectQueryParamsMapRequest(
+    map_param={
+      "eius": "eos",
+      "voluptas": "ab",
+      "cupiditate": "consequatur",
+    },
     map_arr_param={
-      "eius": [
-        "voluptas",
-      ],
-      "ab": [
-        "consequatur",
-        "tempora",
-        "debitis",
-      ],
-      "ipsam": [
+      "debitis": [
+        "aspernatur",
         "sequi",
       ],
-    },
-    map_param={
-      "esse": "recusandae",
-      "aperiam": "distinctio",
-      "quod": "dignissimos",
-      "inventore": "nihil",
+      "quo": [
+        "recusandae",
+        "aperiam",
+      ],
     },
   ),
 )
@@ -81,17 +77,10 @@ s = sdk::SDK.new
    
 req = Operations::Operations::DeepObjectQueryParamsObjectRequest(
   query_params=Operations::DeepObjectQueryParamsObjectRequest(
-    obj_arr_param=Operations::DeepObjectQueryParamsObjectObjArrParam(
-      arr=[
-        "accusamus",
-        "aliquam",
-        "odio",
-      ],
-    ),
     obj_param=Shared::SimpleObject(
-      any="occaecati",
-      bigint=414567,
-      bigint_str="sapiente",
+      any="distinctio",
+      bigint=799796,
+      bigint_str="dignissimos",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -107,6 +96,13 @@ req = Operations::Operations::DeepObjectQueryParamsObjectRequest(
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
+    ),
+    obj_arr_param=Operations::DeepObjectQueryParamsObjectObjArrParam(
+      arr=[
+        "accusamus",
+        "aliquam",
+        "odio",
+      ],
     ),
   ),
 )
@@ -132,12 +128,14 @@ s = sdk::SDK.new
 req = Operations::Operations::FormQueryParamsArrayRequest(
   query_params=Operations::FormQueryParamsArrayRequest(
     arr_param=[
-      "accusantium",
-      "porro",
+      "commodi",
+      "sapiente",
+      "dolores",
     ],
     arr_param_exploded=[
-      556429,
-      510017,
+      475289,
+      35362,
+      783648,
     ],
   ),
 )
@@ -163,12 +161,11 @@ s = sdk::SDK.new
 req = Operations::Operations::FormQueryParamsMapRequest(
   query_params=Operations::FormQueryParamsMapRequest(
     map_param={
-      "deleniti": "fugit",
+      "quas": "praesentium",
+      "consequuntur": "deleniti",
     },
     map_param_exploded={
-      "mollitia": 277596,
-      "atque": 128860,
-      "minima": 392676,
+      "fuga": 649463,
     },
   ),
 )
@@ -193,6 +190,26 @@ s = sdk::SDK.new
    
 req = Operations::Operations::FormQueryParamsObjectRequest(
   query_params=Operations::FormQueryParamsObjectRequest(
+    obj_param_exploded=Shared::SimpleObject(
+      any="incidunt",
+      bigint=539224,
+      bigint_str="explicabo",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      enum=Shared::EnumEnum::TWO,
+      float32=2.2222222,
+      int=999999,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::SECOND,
+      int_opt_null=999999,
+      num=1.1,
+      num_opt_null=1.1,
+      str_="example",
+      str_opt="optional example",
+    ),
     obj_param=Shared::SimpleObject(
       any="fugit",
       bigint=956406,
@@ -207,26 +224,6 @@ req = Operations::Operations::FormQueryParamsObjectRequest(
       int32=1,
       int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
       int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
-      int_opt_null=999999,
-      num=1.1,
-      num_opt_null=1.1,
-      str_="example",
-      str_opt="optional example",
-    ),
-    obj_param_exploded=Shared::SimpleObject(
-      any="saepe",
-      bigint=578922,
-      bigint_str="atque",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      enum=Shared::EnumEnum::TWO,
-      float32=2.2222222,
-      int=999999,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -257,9 +254,9 @@ s = sdk::SDK.new
 req = Operations::Operations::FormQueryParamsPrimitiveRequest(
   query_params=Operations::FormQueryParamsPrimitiveRequest(
     bool_param=false,
-    int_param=910545,
-    num_param=8820.42,
-    str_param="veritatis",
+    int_param=903984,
+    num_param=5789.22,
+    str_param="atque",
   ),
 )
     
@@ -285,15 +282,15 @@ req = Operations::Operations::FormQueryParamsRefParamObjectRequest(
   query_params=Operations::FormQueryParamsRefParamObjectRequest(
     ref_obj_param=Shared::RefQueryParamObj(
       bool=false,
-      int=458604,
-      num=8003.79,
-      str_="nam",
+      int=92260,
+      num=4569.11,
+      str_="eveniet",
     ),
     ref_obj_param_exploded=Shared::RefQueryParamObjExploded(
       bool=false,
-      int=877131,
-      num=3990.25,
-      str_="quasi",
+      int=882042,
+      num=829.71,
+      str_="esse",
     ),
   ),
 )
@@ -319,10 +316,10 @@ s = sdk::SDK.new
 req = Operations::Operations::HeaderParamsArrayRequest(
   headers=Operations::HeaderParamsArrayRequest(
     x_header_array=[
-      "vel",
-      "harum",
-      "molestiae",
-      "rerum",
+      "nam",
+      "vero",
+      "aliquid",
+      "quasi",
     ],
   ),
 )
@@ -348,12 +345,13 @@ s = sdk::SDK.new
 req = Operations::Operations::HeaderParamsMapRequest(
   headers=Operations::HeaderParamsMapRequest(
     x_header_map={
-      "minima": "distinctio",
-      "eligendi": "sit",
-      "culpa": "tempore",
+      "vel": "harum",
+      "molestiae": "rerum",
+      "occaecati": "minima",
+      "distinctio": "eligendi",
     },
     x_header_map_explode={
-      "cumque": "consequuntur",
+      "culpa": "tempore",
     },
   ),
 )
@@ -379,9 +377,9 @@ s = sdk::SDK.new
 req = Operations::Operations::HeaderParamsObjectRequest(
   headers=Operations::HeaderParamsObjectRequest(
     x_header_obj=Shared::SimpleObject(
-      any="consequatur",
-      bigint=796392,
-      bigint_str="quaerat",
+      any="adipisci",
+      bigint=766964,
+      bigint_str="consequuntur",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -390,8 +388,8 @@ req = Operations::Operations::HeaderParamsObjectRequest(
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -399,9 +397,9 @@ req = Operations::Operations::HeaderParamsObjectRequest(
       str_opt="optional example",
     ),
     x_header_obj_explode=Shared::SimpleObject(
-      any="esse",
-      bigint=503427,
-      bigint_str="provident",
+      any="quaerat",
+      bigint=959167,
+      bigint_str="consectetur",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -410,8 +408,8 @@ req = Operations::Operations::HeaderParamsObjectRequest(
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -442,9 +440,9 @@ s = sdk::SDK.new
 req = Operations::Operations::HeaderParamsPrimitiveRequest(
   headers=Operations::HeaderParamsPrimitiveRequest(
     x_header_boolean=false,
-    x_header_integer=557811,
-    x_header_number=4572.23,
-    x_header_string="quasi",
+    x_header_integer=590984,
+    x_header_number=9537.22,
+    x_header_string="nulla",
   ),
 )
     
@@ -469,12 +467,12 @@ s = sdk::SDK.new
 req = Operations::Operations::JsonQueryParamsObjectRequest(
   query_params=Operations::JsonQueryParamsObjectRequest(
     deep_obj_param=Shared::DeepObject(
-      any="error",
+      any="esse",
       arr=[
         Shared::SimpleObject(
-          any="pariatur",
-          bigint=820767,
-          bigint_str="quia",
+          any="a",
+          bigint=621679,
+          bigint_str="sint",
           bool=true,
           bool_opt=true,
           date=Date.parse("2020-01-01"),
@@ -491,7 +489,11 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
           str_="example",
           str_opt="optional example",
         ),
-        Shared::SimpleObject(
+      ],
+      bool=false,
+      int=157632,
+      map={
+        "asperiores": Shared::SimpleObject(
           any="facere",
           bigint=85001,
           bigint_str="consequuntur",
@@ -511,10 +513,10 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
           str_="example",
           str_opt="optional example",
         ),
-        Shared::SimpleObject(
-          any="culpa",
-          bigint=398434,
-          bigint_str="tenetur",
+        "culpa": Shared::SimpleObject(
+          any="aliquid",
+          bigint=949298,
+          bigint_str="quae",
           bool=true,
           bool_opt=true,
           date=Date.parse("2020-01-01"),
@@ -523,22 +525,18 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
           float32=2.2222222,
           int=999999,
           int32=1,
-          int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
-          int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
+          int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
+          int_enum=Shared::SimpleObjectIntEnumEnum::SECOND,
           int_opt_null=999999,
           num=1.1,
           num_opt_null=1.1,
           str_="example",
           str_opt="optional example",
         ),
-      ],
-      bool=false,
-      int=424032,
-      map={
-        "eius": Shared::SimpleObject(
-          any="libero",
-          bigint=849039,
-          bigint_str="soluta",
+        "in": Shared::SimpleObject(
+          any="eius",
+          bigint=727697,
+          bigint_str="illum",
           bool=true,
           bool_opt=true,
           date=Date.parse("2020-01-01"),
@@ -547,7 +545,7 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
           float32=2.2222222,
           int=999999,
           int32=1,
-          int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
+          int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
           int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
           int_opt_null=999999,
           num=1.1,
@@ -555,10 +553,10 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
           str_="example",
           str_opt="optional example",
         ),
-        "sapiente": Shared::SimpleObject(
-          any="dicta",
-          bigint=355369,
-          bigint_str="reprehenderit",
+        "aliquam": Shared::SimpleObject(
+          any="sapiente",
+          bigint=119771,
+          bigint_str="ullam",
           bool=true,
           bool_opt=true,
           date=Date.parse("2020-01-01"),
@@ -576,11 +574,11 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
           str_opt="optional example",
         ),
       },
-      num=163.28,
+      num=3917.74,
       obj=Shared::SimpleObject(
-        any="voluptatum",
-        bigint=185232,
-        bigint_str="quibusdam",
+        any="aut",
+        bigint=531849,
+        bigint_str="qui",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
@@ -589,7 +587,7 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+        int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
         int_enum=Shared::SimpleObjectIntEnumEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
@@ -597,13 +595,13 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
         str_="example",
         str_opt="optional example",
       ),
-      str_="itaque",
-      type="dolorum",
+      str_="deleniti",
+      type="itaque",
     ),
     simple_obj_param=Shared::SimpleObject(
-      any="architecto",
-      bigint=609178,
-      bigint_str="tenetur",
+      any="dolorum",
+      bigint=99615,
+      bigint_str="omnis",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -612,8 +610,8 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -644,9 +642,9 @@ s = sdk::SDK.new
 req = Operations::Operations::MixedQueryParamsRequest(
   query_params=Operations::MixedQueryParamsRequest(
     deep_object_param=Shared::SimpleObject(
-      any="et",
-      bigint=454162,
-      bigint_str="ipsa",
+      any="at",
+      bigint=92027,
+      bigint_str="voluptate",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -664,9 +662,9 @@ req = Operations::Operations::MixedQueryParamsRequest(
       str_opt="optional example",
     ),
     form_param=Shared::SimpleObject(
-      any="consectetur",
-      bigint=237173,
-      bigint_str="iste",
+      any="veritatis",
+      bigint=232744,
+      bigint_str="adipisci",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -675,8 +673,8 @@ req = Operations::Operations::MixedQueryParamsRequest(
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -684,9 +682,9 @@ req = Operations::Operations::MixedQueryParamsRequest(
       str_opt="optional example",
     ),
     json_param=Shared::SimpleObject(
-      any="rem",
-      bigint=15606,
-      bigint_str="laudantium",
+      any="accusantium",
+      bigint=522371,
+      bigint_str="aut",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -727,9 +725,9 @@ s = sdk::SDK.new
 req = Operations::Operations::PathParameterJsonRequest(
   path_params=Operations::PathParameterJsonRequest(
     json_obj=Shared::SimpleObject(
-      any="ab",
-      bigint=544591,
-      bigint_str="non",
+      any="mollitia",
+      bigint=68074,
+      bigint_str="corrupti",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -770,21 +768,20 @@ s = sdk::SDK.new
 req = Operations::Operations::PipeDelimitedQueryParamsArrayRequest(
   query_params=Operations::PipeDelimitedQueryParamsArrayRequest(
     arr_param=[
-      "numquam",
-      "impedit",
-      "explicabo",
+      "occaecati",
     ],
     arr_param_exploded=[
-      12036,
-      491025,
+      771089,
+      131055,
     ],
     map_param={
-      "maiores": "natus",
+      "aut": "dignissimos",
+      "dicta": "maiores",
     },
     obj_param=Shared::SimpleObject(
-      any="velit",
-      bigint=974257,
-      bigint_str="voluptas",
+      any="natus",
+      bigint=244651,
+      bigint_str="voluptatibus",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -793,8 +790,8 @@ req = Operations::Operations::PipeDelimitedQueryParamsArrayRequest(
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -825,8 +822,7 @@ s = sdk::SDK.new
 req = Operations::Operations::SimplePathParameterArraysRequest(
   path_params=Operations::SimplePathParameterArraysRequest(
     arr_param=[
-      "quaerat",
-      "consequuntur",
+      "ea",
     ],
   ),
 )
@@ -852,16 +848,12 @@ s = sdk::SDK.new
 req = Operations::Operations::SimplePathParameterMapsRequest(
   path_params=Operations::SimplePathParameterMapsRequest(
     map_param={
+      "consequuntur": "repellendus",
       "officia": "maxime",
-      "dignissimos": "officia",
-      "asperiores": "nemo",
-      "quae": "quaerat",
     },
     map_param_exploded={
-      "quod": 288398,
-      "ab": 241418,
-      "fuga": 662505,
-      "suscipit": 246063,
+      "officia": 989410,
+      "nemo": 65304,
     },
   ),
 )
@@ -887,9 +879,9 @@ s = sdk::SDK.new
 req = Operations::Operations::SimplePathParameterObjectsRequest(
   path_params=Operations::SimplePathParameterObjectsRequest(
     obj_param=Shared::SimpleObject(
-      any="culpa",
-      bigint=665859,
-      bigint_str="recusandae",
+      any="quaerat",
+      bigint=783235,
+      bigint_str="quod",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -898,8 +890,8 @@ req = Operations::Operations::SimplePathParameterObjectsRequest(
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -907,9 +899,9 @@ req = Operations::Operations::SimplePathParameterObjectsRequest(
       str_opt="optional example",
     ),
     obj_param_exploded=Shared::SimpleObject(
-      any="vel",
-      bigint=497678,
-      bigint_str="quos",
+      any="adipisci",
+      bigint=683573,
+      bigint_str="id",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -950,9 +942,9 @@ s = sdk::SDK.new
 req = Operations::Operations::SimplePathParameterPrimitivesRequest(
   path_params=Operations::SimplePathParameterPrimitivesRequest(
     bool_param=false,
-    int_param=822560,
-    num_param=7065.75,
-    str_param="cum",
+    int_param=633931,
+    num_param=6658.59,
+    str_param="recusandae",
   ),
 )
     

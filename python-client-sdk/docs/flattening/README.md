@@ -29,31 +29,27 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.ComponentBodyAndParamConflictRequest(
-    simple_object=shared.SimpleObject(
-        any='amet',
-        bigint=643990,
-        bigint_str='nisi',
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        enum=shared.EnumEnum.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32EnumEnum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnumEnum.SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    str_='omnis',
-)
 
-res = s.flattening.component_body_and_param_conflict(req)
+res = s.flattening.component_body_and_param_conflict(shared.SimpleObject(
+    any='amet',
+    bigint=643990,
+    bigint_str='nisi',
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    enum=shared.EnumEnum.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32EnumEnum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnumEnum.SECOND,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
+), 'omnis')
 
 if res.res is not None:
     # handle response
@@ -76,31 +72,27 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.ComponentBodyAndParamNoConflictRequest(
-    param_str='molestiae',
-    simple_object=shared.SimpleObject(
-        any='perferendis',
-        bigint=470132,
-        bigint_str='magnam',
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        enum=shared.EnumEnum.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32EnumEnum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnumEnum.SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-)
 
-res = s.flattening.component_body_and_param_no_conflict(req)
+res = s.flattening.component_body_and_param_no_conflict('molestiae', shared.SimpleObject(
+    any='perferendis',
+    bigint=470132,
+    bigint_str='magnam',
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    enum=shared.EnumEnum.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32EnumEnum.ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=shared.SimpleObjectIntEnumEnum.SECOND,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
+))
 
 if res.res is not None:
     # handle response
@@ -122,12 +114,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.ConflictingParamsRequest(
-    str_path_parameter='labore',
-    str_query_parameter='labore',
-)
 
-res = s.flattening.conflicting_params(req)
+res = s.flattening.conflicting_params('labore', 'labore')
 
 if res.res is not None:
     # handle response
@@ -149,14 +137,10 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.InlineBodyAndParamConflictRequest(
-    request_body=operations.InlineBodyAndParamConflictRequestBody(
-        str_='suscipit',
-    ),
-    str_='natus',
-)
 
-res = s.flattening.inline_body_and_param_conflict(req)
+res = s.flattening.inline_body_and_param_conflict(operations.InlineBodyAndParamConflictRequestBody(
+    str_='suscipit',
+), 'natus')
 
 if res.res is not None:
     # handle response
@@ -178,14 +162,10 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.InlineBodyAndParamNoConflictRequest(
-    request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-        body_str='nobis',
-    ),
-    param_str='eum',
-)
 
-res = s.flattening.inline_body_and_param_no_conflict(req)
+res = s.flattening.inline_body_and_param_no_conflict(operations.InlineBodyAndParamNoConflictRequestBody(
+    body_str='nobis',
+), 'eum')
 
 if res.res is not None:
     # handle response

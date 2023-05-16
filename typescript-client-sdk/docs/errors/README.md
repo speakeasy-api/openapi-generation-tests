@@ -49,9 +49,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.errors.statusGet({
-  statusCode: 692532,
-}).then((res: StatusGetResponse) => {
+sdk.errors.statusGet(692532).then((res: StatusGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -76,28 +74,25 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.errors.statusPostRetries({
-  simpleObject: {
-    any: "provident",
-    bigint: 725255,
-    bigintStr: "id",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-    intEnum: SimpleObjectIntEnumEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  statusCode: 956084,
+sdk.errors.statusPostRetries(588465, {
+  any: "nam",
+  bigint: 659669,
+  bigintStr: "blanditiis",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  enum: EnumEnum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
+  intEnum: SimpleObjectIntEnumEnum.Third,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
 }).then((res: StatusPostRetriesResponse) => {
   if (res.statusCode == 200) {
     // handle response

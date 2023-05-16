@@ -21,9 +21,13 @@ module OpenApiSDK
       @globals = gbls
     end
 
-    sig { params(request: Operations::GlobalPathParameterGetRequest).returns(Utils::FieldAugmented) }
-    def global_path_parameter_get(request)
+    sig { params(global_path_param: T.nilable(Integer)).returns(Utils::FieldAugmented) }
+    def global_path_parameter_get(global_path_param = nil)
 
+      request = Operations::GlobalPathParameterGetRequest.new(
+        global_path_param: global_path_param,
+      )
+      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::GlobalPathParameterGetRequest,
@@ -51,9 +55,13 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::GlobalsQueryParameterGetRequest).returns(Utils::FieldAugmented) }
-    def globals_query_parameter_get(request)
+    sig { params(global_query_param: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def globals_query_parameter_get(global_query_param = nil)
 
+      request = Operations::GlobalsQueryParameterGetRequest.new(
+        global_query_param: global_query_param,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/globals/queryParameter"
       query_params = Utils.get_query_params(Operations::GlobalsQueryParameterGetRequest, request, @globals)

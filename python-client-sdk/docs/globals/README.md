@@ -25,9 +25,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.GlobalPathParameterGetRequest()
 
-res = s.globals.global_path_parameter_get(req)
+res = s.globals.global_path_parameter_get(58029)
 
 if res.res is not None:
     # handle response
@@ -49,9 +48,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.GlobalsQueryParameterGetRequest()
 
-res = s.globals.globals_query_parameter_get(req)
+res = s.globals.globals_query_parameter_get('ipsa')
 
 if res.res is not None:
     # handle response

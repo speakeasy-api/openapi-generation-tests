@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -34,7 +35,12 @@ func newFlattening(defaultClient, securityClient HTTPClient, serverURL, language
 	}
 }
 
-func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, request operations.ComponentBodyAndParamConflictRequest) (*operations.ComponentBodyAndParamConflictResponse, error) {
+func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, simpleObject shared.SimpleObject, str string) (*operations.ComponentBodyAndParamConflictResponse, error) {
+	request := operations.ComponentBodyAndParamConflictRequest{
+		SimpleObject: simpleObject,
+		Str:          str,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/flattening/componentBodyAndParamConflict"
 
@@ -91,7 +97,12 @@ func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, request 
 	return res, nil
 }
 
-func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, request operations.ComponentBodyAndParamNoConflictRequest) (*operations.ComponentBodyAndParamNoConflictResponse, error) {
+func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, paramStr string, simpleObject shared.SimpleObject) (*operations.ComponentBodyAndParamNoConflictResponse, error) {
+	request := operations.ComponentBodyAndParamNoConflictRequest{
+		ParamStr:     paramStr,
+		SimpleObject: simpleObject,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/flattening/componentBodyAndParamNoConflict"
 
@@ -148,7 +159,12 @@ func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, reques
 	return res, nil
 }
 
-func (s *flattening) ConflictingParams(ctx context.Context, request operations.ConflictingParamsRequest) (*operations.ConflictingParamsResponse, error) {
+func (s *flattening) ConflictingParams(ctx context.Context, strPathParameter string, strQueryParameter string) (*operations.ConflictingParamsResponse, error) {
+	request := operations.ConflictingParamsRequest{
+		StrPathParameter:  strPathParameter,
+		StrQueryParameter: strQueryParameter,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/flattening/conflictingParams/{str}", request, s.globals)
 	if err != nil {
@@ -198,7 +214,12 @@ func (s *flattening) ConflictingParams(ctx context.Context, request operations.C
 	return res, nil
 }
 
-func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, request operations.InlineBodyAndParamConflictRequest) (*operations.InlineBodyAndParamConflictResponse, error) {
+func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, requestBody operations.InlineBodyAndParamConflictRequestBody, str string) (*operations.InlineBodyAndParamConflictResponse, error) {
+	request := operations.InlineBodyAndParamConflictRequest{
+		RequestBody: requestBody,
+		Str:         str,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/flattening/inlineBodyAndParamConflict"
 
@@ -255,7 +276,12 @@ func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, request ope
 	return res, nil
 }
 
-func (s *flattening) InlineBodyAndParamNoConflict(ctx context.Context, request operations.InlineBodyAndParamNoConflictRequest) (*operations.InlineBodyAndParamNoConflictResponse, error) {
+func (s *flattening) InlineBodyAndParamNoConflict(ctx context.Context, requestBody operations.InlineBodyAndParamNoConflictRequestBody, paramStr string) (*operations.InlineBodyAndParamNoConflictResponse, error) {
+	request := operations.InlineBodyAndParamNoConflictRequest{
+		RequestBody: requestBody,
+		ParamStr:    paramStr,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/flattening/inlineBodyAndParamNoConflict"
 

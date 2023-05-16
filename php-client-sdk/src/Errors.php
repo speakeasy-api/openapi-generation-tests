@@ -82,13 +82,16 @@ class Errors
     /**
      * statusGet
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest $request
+     * @param int $statusCode
      * @return \OpenAPI\OpenAPI\Models\Operations\StatusGetResponse
      */
 	public function statusGet(
-        \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest $request,
+        int $statusCode,
     ): \OpenAPI\OpenAPI\Models\Operations\StatusGetResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest();
+        $request->statusCode = $statusCode;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest::class, $request, $this->_globals);
         
@@ -112,13 +115,19 @@ class Errors
     /**
      * statusPostRetries
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest $request
+     * @param int $statusCode
+     * @param ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject
      * @return \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesResponse
      */
 	public function statusPostRetries(
-        \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest $request,
+        int $statusCode,
+        ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject = null,
     ): \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest();
+        $request->statusCode = $statusCode;
+        $request->simpleObject = $simpleObject;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest::class, $request, $this->_globals);
         

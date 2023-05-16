@@ -100,7 +100,9 @@ public class Auth {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.BasicAuthResponse basicAuth(org.openapis.openapi.models.operations.BasicAuthRequest request, org.openapis.openapi.models.operations.BasicAuthSecurity security) throws Exception {
+    public org.openapis.openapi.models.operations.BasicAuthResponse basicAuth(org.openapis.openapi.models.operations.BasicAuthSecurity security, String passwd, String user) throws Exception {
+        org.openapis.openapi.models.operations.BasicAuthRequest request = new org.openapis.openapi.models.operations.BasicAuthRequest(passwd, user);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.BasicAuthRequest.class, baseUrl, "/basic-auth/{user}/{passwd}", request, this._globals);
         

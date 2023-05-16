@@ -25,7 +25,11 @@ class Globals:
         self._globals = gbls
         
     
-    def global_path_parameter_get(self, request: operations.GlobalPathParameterGetRequest) -> operations.GlobalPathParameterGetResponse:
+    def global_path_parameter_get(self, global_path_param: Optional[int] = None) -> operations.GlobalPathParameterGetResponse:
+        request = operations.GlobalPathParameterGetRequest(
+            global_path_param=global_path_param,
+        )
+        
         base_url = self._server_url
         
         url = utils.generate_url(operations.GlobalPathParameterGetRequest, base_url, '/anything/globals/pathParameter/{globalPathParam}', request, self._globals)
@@ -46,7 +50,11 @@ class Globals:
         return res
 
     
-    def globals_query_parameter_get(self, request: operations.GlobalsQueryParameterGetRequest) -> operations.GlobalsQueryParameterGetResponse:
+    def globals_query_parameter_get(self, global_query_param: Optional[str] = None) -> operations.GlobalsQueryParameterGetResponse:
+        request = operations.GlobalsQueryParameterGetRequest(
+            global_query_param=global_query_param,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/globals/queryParameter'

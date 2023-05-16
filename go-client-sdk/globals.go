@@ -34,7 +34,11 @@ func newGlobals(defaultClient, securityClient HTTPClient, serverURL, language, s
 	}
 }
 
-func (s *globals) GlobalPathParameterGet(ctx context.Context, request operations.GlobalPathParameterGetRequest) (*operations.GlobalPathParameterGetResponse, error) {
+func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *int64) (*operations.GlobalPathParameterGetResponse, error) {
+	request := operations.GlobalPathParameterGetRequest{
+		GlobalPathParam: globalPathParam,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/anything/globals/pathParameter/{globalPathParam}", request, s.globals)
 	if err != nil {
@@ -80,7 +84,11 @@ func (s *globals) GlobalPathParameterGet(ctx context.Context, request operations
 	return res, nil
 }
 
-func (s *globals) GlobalsQueryParameterGet(ctx context.Context, request operations.GlobalsQueryParameterGetRequest) (*operations.GlobalsQueryParameterGetResponse, error) {
+func (s *globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam *string) (*operations.GlobalsQueryParameterGetResponse, error) {
+	request := operations.GlobalsQueryParameterGetRequest{
+		GlobalQueryParam: globalQueryParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/globals/queryParameter"
 

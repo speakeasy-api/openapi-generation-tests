@@ -109,11 +109,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedNoCommentsGetRequest req = new DeprecatedNoCommentsGetRequest() {{
-                deprecatedParameter = "expedita";
-            }};            
-
-            DeprecatedNoCommentsGetResponse res = sdk.generation.deprecatedNoCommentsGet(req);
+            DeprecatedNoCommentsGetResponse res = sdk.generation.deprecatedNoCommentsGet("magni");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -152,11 +148,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedWithCommentsGetRequest req = new DeprecatedWithCommentsGetRequest() {{
-                deprecatedParameter = "nihil";
-            }};            
-
-            DeprecatedWithCommentsGetResponse res = sdk.generation.deprecatedWithCommentsGet(req);
+            DeprecatedWithCommentsGetResponse res = sdk.generation.deprecatedWithCommentsGet("sunt");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -264,15 +256,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            IgnoresPostRequest req = new IgnoresPostRequest() {{
-                requestBody = new IgnoresPostApplicationJSON() {{
-                    callbackUrl = "https://tempting-charlatan.org";
-                    testProp = "pariatur";
-                }};;
-                testParam = "accusantium";
-            }};            
-
-            IgnoresPostResponse res = sdk.generation.ignoresPost(req);
+            IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostApplicationJSON() {{
+                callbackUrl = "https://these-subroutine.net";
+                testProp = "ea";
+            }}, "excepturi");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -307,9 +294,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NameOverrideGetRequest req = new NameOverrideGetRequest("example");            
-
-            NameOverrideGetResponse res = sdk.generation.nameOverride(req);
+            NameOverrideGetResponse res = sdk.generation.nameOverride("example");
 
             if (res.overridenResponse != null) {
                 // handle response
@@ -358,24 +343,24 @@ public class Application {
 
             UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222, UsageExamplePostEnumParameterEnum.VALUE3, 1.1, 111111L, 1, "example") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Johan12@gmail.com";
-                    formatEmail = "Rosendo.Streich56@hotmail.com";
-                    formatUri = "http://illegal-antique.com";
-                    formatUuid = "fb576b0d-5f0d-430c-9fbb-2587053202c7";
-                    hostname = "educated-surprise.info";
-                    ipv4 = "241.237.155.180";
-                    ipv6 = "90c2:8909:b3fe:49a8:d9cb:f486:3332:3f9b";
-                    simpleObject = new SimpleObject("voluptate", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.SIXTY_NINE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
-                        bigint = 227414L;
-                        bigintStr = "dolorum";
+                    email = "Gwendolyn98@gmail.com";
+                    formatEmail = "Gardner_Kling@hotmail.com";
+                    formatUri = "http://tragic-framework.org";
+                    formatUuid = "0d30c5fb-b258-4705-b202-c73d5fe9b90c";
+                    hostname = "damp-laryngitis.name";
+                    ipv4 = "12.147.178.60";
+                    ipv6 = "fe49:a8d9:cbf4:8633:323f:9b77:f3a4:1006";
+                    simpleObject = new SimpleObject("odio", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.FIFTY_FIVE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
+                        bigint = 696344L;
+                        bigintStr = "voluptatibus";
                         boolOpt = true;
                         intOptNull = 999999L;
                         numOptNull = 1.1;
                         strOpt = "optional example";
                     }};;
-                    unknown = "numquam";
-                    uri = "http://awkward-azimuth.info";
-                    uuid = "74ebf692-80d1-4ba7-ba89-ebf737ae4203";
+                    unknown = "voluptas";
+                    uri = "https://definite-marines.com";
+                    uuid = "d1ba77a8-9ebf-4737-ae42-03ce5e6a95d8";
                 }};;
                 optEnumParameter = UsageExamplePostOptEnumParameterEnum.VALUE3;
             }};            

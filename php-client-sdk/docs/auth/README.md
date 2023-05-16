@@ -90,15 +90,13 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new BasicAuthRequest();
-    $request->passwd = 'quo';
-    $request->user = 'sequi';
+
 
     $requestSecurity = new BasicAuthSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
-    $response = $sdk->auth->basicAuth($request, $requestSecurity);
+    $response = $sdk->auth->basicAuth($requestSecurity, 'quo', 'sequi');
 
     if ($response->user !== null) {
         // handle response

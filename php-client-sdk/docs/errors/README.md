@@ -55,10 +55,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new StatusGetRequest();
-    $request->statusCode = 586513;
 
-    $response = $sdk->errors->statusGet($request);
+
+    $response = $sdk->errors->statusGet(586513);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -90,29 +89,27 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new StatusPostRetriesRequest();
-    $request->simpleObject = new SimpleObject();
-    $request->simpleObject->any = 'quos';
-    $request->simpleObject->bigint = 20107;
-    $request->simpleObject->bigintStr = 'magni';
-    $request->simpleObject->bool = true;
-    $request->simpleObject->boolOpt = true;
-    $request->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->simpleObject->enum = EnumEnum::TWO;
-    $request->simpleObject->float32 = 2.2222222;
-    $request->simpleObject->int = 999999;
-    $request->simpleObject->int32 = 1;
-    $request->simpleObject->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->simpleObject->intEnum = SimpleObjectIntEnumEnum::Second;
-    $request->simpleObject->intOptNull = 999999;
-    $request->simpleObject->num = 1.1;
-    $request->simpleObject->numOptNull = 1.1;
-    $request->simpleObject->str = 'example';
-    $request->simpleObject->strOpt = 'optional example';
-    $request->statusCode = 4695;
+    $simpleObject = new SimpleObject();
+    $simpleObject->any = 'quos';
+    $simpleObject->bigint = 20107;
+    $simpleObject->bigintStr = 'magni';
+    $simpleObject->bool = true;
+    $simpleObject->boolOpt = true;
+    $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $simpleObject->enum = EnumEnum::TWO;
+    $simpleObject->float32 = 2.2222222;
+    $simpleObject->int = 999999;
+    $simpleObject->int32 = 1;
+    $simpleObject->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
+    $simpleObject->intEnum = SimpleObjectIntEnumEnum::Second;
+    $simpleObject->intOptNull = 999999;
+    $simpleObject->num = 1.1;
+    $simpleObject->numOptNull = 1.1;
+    $simpleObject->str = 'example';
+    $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->errors->statusPostRetries($request);
+    $response = $sdk->errors->statusPostRetries(4695, $simpleObject);
 
     if ($response->statusCode === 200) {
         // handle response

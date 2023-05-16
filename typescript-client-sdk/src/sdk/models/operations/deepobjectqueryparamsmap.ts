@@ -8,14 +8,14 @@ import { Expose } from "class-transformer";
 
 export class DeepObjectQueryParamsMapRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
-    data: "queryParam, style=deepObject;explode=true;name=mapArrParam",
-  })
-  mapArrParam?: Record<string, string[]>;
-
-  @SpeakeasyMetadata({
     data: "queryParam, style=deepObject;explode=true;name=mapParam",
   })
   mapParam: Record<string, string>;
+
+  @SpeakeasyMetadata({
+    data: "queryParam, style=deepObject;explode=true;name=mapArrParam",
+  })
+  mapArrParam?: Record<string, string[]>;
 }
 
 /**

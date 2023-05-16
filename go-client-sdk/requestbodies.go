@@ -1202,7 +1202,12 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest) (*operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse, error) {
+func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse, error) {
+	request := operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest{
+		RequestBody: requestBody,
+		ParamStr:    paramStr,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split/param"
 
@@ -1259,7 +1264,12 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest) (*operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse, error) {
+func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse, error) {
+	request := operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest{
+		RequestBody: requestBody,
+		ParamStr:    paramStr,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split/param"
 
@@ -1316,7 +1326,12 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx co
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx context.Context, request operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest) (*operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse, error) {
+func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx context.Context, requestBody operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData, paramStr string) (*operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse, error) {
+	request := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest{
+		RequestBody: requestBody,
+		ParamStr:    paramStr,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/multiple/contentTypes/split/param"
 

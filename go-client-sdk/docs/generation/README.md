@@ -110,9 +110,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedNoCommentsGet(ctx, operations.DeprecatedNoCommentsGetRequest{
-        DeprecatedParameter: sdk.String("vero"),
-    })
+    res, err := s.Generation.DeprecatedNoCommentsGet(ctx, "vero")
     if err != nil {
         log.Fatal(err)
     }
@@ -151,9 +149,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, operations.DeprecatedWithCommentsGetRequest{
-        DeprecatedParameter: sdk.String("aspernatur"),
-    })
+    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, "aspernatur")
     if err != nil {
         log.Fatal(err)
     }
@@ -258,13 +254,10 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.IgnoresPost(ctx, operations.IgnoresPostRequest{
-        RequestBody: &operations.IgnoresPostApplicationJSON{
-            CallbackURL: sdk.String("http://foolhardy-bolero.name"),
-            TestProp: sdk.String("ullam"),
-        },
-        TestParam: sdk.String("provident"),
-    })
+    res, err := s.Generation.IgnoresPost(ctx, &operations.IgnoresPostApplicationJSON{
+        CallbackURL: sdk.String("http://foolhardy-bolero.name"),
+        TestProp: sdk.String("ullam"),
+    }, "provident")
     if err != nil {
         log.Fatal(err)
     }
@@ -299,9 +292,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.NameOverride(ctx, operations.NameOverrideGetRequest{
-        TestQueryParam: "example",
-    })
+    res, err := s.Generation.NameOverride(ctx, "example")
     if err != nil {
         log.Fatal(err)
     }

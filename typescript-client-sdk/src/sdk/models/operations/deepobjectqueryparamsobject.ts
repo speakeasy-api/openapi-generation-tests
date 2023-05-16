@@ -13,11 +13,6 @@ export class DeepObjectQueryParamsObjectObjArrParam extends SpeakeasyBase {
 }
 
 export class DeepObjectQueryParamsObjectRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=deepObject;explode=true;name=objArrParam",
-  })
-  objArrParam?: DeepObjectQueryParamsObjectObjArrParam;
-
   /**
    * A simple object that uses all our supported primitive types and enums and has optional properties.
    */
@@ -25,6 +20,11 @@ export class DeepObjectQueryParamsObjectRequest extends SpeakeasyBase {
     data: "queryParam, style=deepObject;explode=true;name=objParam",
   })
   objParam: shared.SimpleObject;
+
+  @SpeakeasyMetadata({
+    data: "queryParam, style=deepObject;explode=true;name=objArrParam",
+  })
+  objArrParam?: DeepObjectQueryParamsObjectObjArrParam;
 }
 
 export class DeepObjectQueryParamsObjectResArgs extends SpeakeasyBase {

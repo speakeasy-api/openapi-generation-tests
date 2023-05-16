@@ -102,12 +102,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            BasicAuthRequest req = new BasicAuthRequest("quo", "sequi");            
-
-            BasicAuthResponse res = sdk.auth.basicAuth(req, new BasicAuthSecurity("YOUR_PASSWORD", "YOUR_USERNAME") {{
+            BasicAuthResponse res = sdk.auth.basicAuth(new BasicAuthSecurity("YOUR_PASSWORD", "YOUR_USERNAME") {{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
-            }});
+            }}, "quo", "sequi");
 
             if (res.user != null) {
                 // handle response

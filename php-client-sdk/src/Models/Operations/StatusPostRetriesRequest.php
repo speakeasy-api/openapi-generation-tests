@@ -11,15 +11,15 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class StatusPostRetriesRequest
 {
-	#[SpeakeasyMetadata('request:mediaType=application/json')]
-    public ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject = null;
-    
 	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=statusCode')]
     public int $statusCode;
     
+	#[SpeakeasyMetadata('request:mediaType=application/json')]
+    public ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject = null;
+    
 	public function __construct()
 	{
-		$this->simpleObject = null;
 		$this->statusCode = 0;
+		$this->simpleObject = null;
 	}
 }

@@ -11,22 +11,22 @@ public class FormQueryParamsObjectRequest {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      */
-    @SpeakeasyMetadata("queryParam:style=form,explode=false,name=objParam")
-    public org.openapis.openapi.models.shared.SimpleObject objParam;
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=objParamExploded")
+    public org.openapis.openapi.models.shared.SimpleObject objParamExploded;
 
-    public FormQueryParamsObjectRequest withObjParam(org.openapis.openapi.models.shared.SimpleObject objParam) {
-        this.objParam = objParam;
+    public FormQueryParamsObjectRequest withObjParamExploded(org.openapis.openapi.models.shared.SimpleObject objParamExploded) {
+        this.objParamExploded = objParamExploded;
         return this;
     }
     
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      */
-    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=objParamExploded")
-    public org.openapis.openapi.models.shared.SimpleObject objParamExploded;
+    @SpeakeasyMetadata("queryParam:style=form,explode=false,name=objParam")
+    public org.openapis.openapi.models.shared.SimpleObject objParam;
 
-    public FormQueryParamsObjectRequest withObjParamExploded(org.openapis.openapi.models.shared.SimpleObject objParamExploded) {
-        this.objParamExploded = objParamExploded;
+    public FormQueryParamsObjectRequest withObjParam(org.openapis.openapi.models.shared.SimpleObject objParam) {
+        this.objParam = objParam;
         return this;
     }
     

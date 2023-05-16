@@ -7,8 +7,8 @@ import (
 )
 
 type DeepObjectQueryParamsMapRequest struct {
-	MapArrParam map[string][]string `queryParam:"style=deepObject,explode=true,name=mapArrParam"`
 	MapParam    map[string]string   `queryParam:"style=deepObject,explode=true,name=mapParam"`
+	MapArrParam map[string][]string `queryParam:"style=deepObject,explode=true,name=mapArrParam"`
 }
 
 // DeepObjectQueryParamsMapRes - OK

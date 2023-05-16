@@ -874,7 +874,9 @@ public class RequestBodies {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse requestBodyPostMultipleContentTypesSplitParamForm(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse requestBodyPostMultipleContentTypesSplitParamForm(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded requestBody, String paramStr) throws Exception {
+        org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest request = new org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest(requestBody, paramStr);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split/param");
         
@@ -916,7 +918,9 @@ public class RequestBodies {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse requestBodyPostMultipleContentTypesSplitParamJson(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse requestBodyPostMultipleContentTypesSplitParamJson(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON requestBody, String paramStr) throws Exception {
+        org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest request = new org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest(requestBody, paramStr);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split/param");
         
@@ -958,7 +962,9 @@ public class RequestBodies {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse requestBodyPostMultipleContentTypesSplitParamMultipart(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse requestBodyPostMultipleContentTypesSplitParamMultipart(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData requestBody, String paramStr) throws Exception {
+        org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest request = new org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest(requestBody, paramStr);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split/param");
         

@@ -67,8 +67,12 @@ class Generation:
         return res
 
     
-    def deprecated_no_comments_get(self, request: operations.DeprecatedNoCommentsGetRequest) -> operations.DeprecatedNoCommentsGetResponse:
+    def deprecated_no_comments_get(self, deprecated_parameter: Optional[str] = None) -> operations.DeprecatedNoCommentsGetResponse:
         r"""Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible"""
+        request = operations.DeprecatedNoCommentsGetRequest(
+            deprecated_parameter=deprecated_parameter,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/deprecatedNoComments'
@@ -86,11 +90,15 @@ class Generation:
         return res
 
     
-    def deprecated_with_comments_get(self, request: operations.DeprecatedWithCommentsGetRequest) -> operations.DeprecatedWithCommentsGetResponse:
+    def deprecated_with_comments_get(self, deprecated_parameter: Optional[str] = None) -> operations.DeprecatedWithCommentsGetResponse:
         r"""This is an endpoint setup to test deprecation with comments
         
         Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
         """
+        request = operations.DeprecatedWithCommentsGetRequest(
+            deprecated_parameter=deprecated_parameter,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/deprecatedWithComments'
@@ -150,7 +158,12 @@ class Generation:
         return res
 
     
-    def ignores_post(self, request: operations.IgnoresPostRequest) -> operations.IgnoresPostResponse:
+    def ignores_post(self, request_body: Optional[operations.IgnoresPostApplicationJSON] = None, test_param: Optional[str] = None) -> operations.IgnoresPostResponse:
+        request = operations.IgnoresPostRequest(
+            request_body=request_body,
+            test_param=test_param,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/ignores'
@@ -176,7 +189,11 @@ class Generation:
         return res
 
     
-    def name_override(self, request: operations.NameOverrideGetRequest) -> operations.NameOverrideGetResponse:
+    def name_override(self, test_query_param: str) -> operations.NameOverrideGetResponse:
+        request = operations.NameOverrideGetRequest(
+            test_query_param=test_query_param,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/nameOverride'

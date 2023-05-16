@@ -563,7 +563,12 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_param_form(self, request: operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest) -> operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse:
+    def request_body_post_multiple_content_types_split_param_form(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse:
+        request = operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest(
+            request_body=request_body,
+            param_str=param_str,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split/param'
@@ -591,7 +596,12 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_param_json(self, request: operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest) -> operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse:
+    def request_body_post_multiple_content_types_split_param_json(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamJSONResponse:
+        request = operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest(
+            request_body=request_body,
+            param_str=param_str,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split/param'
@@ -619,7 +629,12 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_multiple_content_types_split_param_multipart(self, request: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest) -> operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse:
+    def request_body_post_multiple_content_types_split_param_multipart(self, request_body: operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData, param_str: str) -> operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse:
+        request = operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest(
+            request_body=request_body,
+            param_str=param_str,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split/param'

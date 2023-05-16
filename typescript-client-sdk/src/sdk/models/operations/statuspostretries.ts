@@ -7,13 +7,13 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class StatusPostRetriesRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  simpleObject?: shared.SimpleObject;
-
   @SpeakeasyMetadata({
     data: "pathParam, style=simple;explode=false;name=statusCode",
   })
   statusCode: number;
+
+  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+  simpleObject?: shared.SimpleObject;
 }
 
 export class StatusPostRetriesResponse extends SpeakeasyBase {

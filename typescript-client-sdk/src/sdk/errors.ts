@@ -4,6 +4,7 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
@@ -77,13 +78,12 @@ export class Errors {
   }
 
   async statusGet(
-    req: operations.StatusGetRequest,
+    statusCode: number,
     config?: AxiosRequestConfig
   ): Promise<operations.StatusGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.StatusGetRequest(req);
-    }
-
+    const req = new operations.StatusGetRequest({
+      statusCode: statusCode,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -121,14 +121,15 @@ export class Errors {
   }
 
   async statusPostRetries(
-    req: operations.StatusPostRetriesRequest,
+    statusCode: number,
+    simpleObject?: shared.SimpleObject,
     retries?: utils.RetryConfig,
     config?: AxiosRequestConfig
   ): Promise<operations.StatusPostRetriesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.StatusPostRetriesRequest(req);
-    }
-
+    const req = new operations.StatusPostRetriesRequest({
+      statusCode: statusCode,
+      simpleObject: simpleObject,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,

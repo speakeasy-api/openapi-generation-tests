@@ -44,38 +44,30 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new DeepObjectQueryParamsMapRequest();
-    $request->mapArrParam = [
-        'nostrum' => [
-            'recusandae',
-            'omnis',
-            'facilis',
-            'perspiciatis',
-        ],
-        'voluptatem' => [
-            'consequuntur',
-            'blanditiis',
-            'error',
-            'eaque',
-        ],
-        'occaecati' => [
-            'adipisci',
-            'asperiores',
-            'earum',
-        ],
-        'modi' => [
-            'dolorum',
-            'deleniti',
-            'pariatur',
-        ],
-    ];
-    $request->mapParam = [
-        'nobis' => 'libero',
-        'delectus' => 'quaerat',
-        'quos' => 'aliquid',
-    ];
 
-    $response = $sdk->parameters->deepObjectQueryParamsMap($request);
+
+    $response = $sdk->parameters->deepObjectQueryParamsMap([
+    'recusandae' => 'omnis',
+    'facilis' => 'perspiciatis',
+    'voluptatem' => 'porro',
+    'consequuntur' => 'blanditiis',
+], [
+    'eaque' => [
+        'rerum',
+        'adipisci',
+        'asperiores',
+    ],
+    'earum' => [
+        'iste',
+        'dolorum',
+    ],
+    'deleniti' => [
+        'provident',
+        'nobis',
+        'libero',
+        'delectus',
+    ],
+]);
 
     if ($response->res !== null) {
         // handle response
@@ -98,42 +90,42 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectRequest;
-use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
 use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam;
 
 $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new DeepObjectQueryParamsObjectRequest();
-    $request->objArrParam = new DeepObjectQueryParamsObjectObjArrParam();
-    $request->objArrParam->arr = [
-        'dolorem',
-    ];
-    $request->objParam = new SimpleObject();
-    $request->objParam->any = 'dolor';
-    $request->objParam->bigint = 186193;
-    $request->objParam->bigintStr = 'ipsum';
-    $request->objParam->bool = true;
-    $request->objParam->boolOpt = true;
-    $request->objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->objParam->enum = EnumEnum::TWO;
-    $request->objParam->float32 = 2.2222222;
-    $request->objParam->int = 999999;
-    $request->objParam->int32 = 1;
-    $request->objParam->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->objParam->intEnum = SimpleObjectIntEnumEnum::Second;
-    $request->objParam->intOptNull = 999999;
-    $request->objParam->num = 1.1;
-    $request->objParam->numOptNull = 1.1;
-    $request->objParam->str = 'example';
-    $request->objParam->strOpt = 'optional example';
+    $objParam = new SimpleObject();
+    $objParam->any = 'quaerat';
+    $objParam->bigint = 554242;
+    $objParam->bigintStr = 'aliquid';
+    $objParam->bool = true;
+    $objParam->boolOpt = true;
+    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $objParam->enum = EnumEnum::TWO;
+    $objParam->float32 = 2.2222222;
+    $objParam->int = 999999;
+    $objParam->int32 = 1;
+    $objParam->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $objParam->intEnum = SimpleObjectIntEnumEnum::First;
+    $objParam->intOptNull = 999999;
+    $objParam->num = 1.1;
+    $objParam->numOptNull = 1.1;
+    $objParam->str = 'example';
+    $objParam->strOpt = 'optional example';
 
-    $response = $sdk->parameters->deepObjectQueryParamsObject($request);
+    $objArrParam = new DeepObjectQueryParamsObjectObjArrParam();
+    $objArrParam->arr = [
+        'qui',
+    ];
+
+    $response = $sdk->parameters->deepObjectQueryParamsObject($objParam, $objArrParam);
 
     if ($response->res !== null) {
         // handle response
@@ -161,17 +153,15 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new FormQueryParamsArrayRequest();
-    $request->arrParam = [
-        'voluptate',
-        'dignissimos',
-        'reiciendis',
-    ];
-    $request->arrParamExploded = [
-        680545,
-    ];
 
-    $response = $sdk->parameters->formQueryParamsArray($request);
+
+    $response = $sdk->parameters->formQueryParamsArray([
+    'hic',
+], [
+    739551,
+    452109,
+    490459,
+]);
 
     if ($response->res !== null) {
         // handle response
@@ -199,17 +189,17 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new FormQueryParamsMapRequest();
-    $request->mapParam = [
-        'veritatis' => 'ipsa',
-        'ipsa' => 'iure',
-    ];
-    $request->mapParamExploded = [
-        'quaerat' => 881005,
-        'quidem' => 976405,
-    ];
 
-    $response = $sdk->parameters->formQueryParamsMap($request);
+
+    $response = $sdk->parameters->formQueryParamsMap([
+    'amet' => 'dolorum',
+    'numquam' => 'veritatis',
+    'ipsa' => 'ipsa',
+    'iure' => 'odio',
+], [
+    'accusamus' => 696344,
+    'voluptatibus' => 377752,
+]);
 
     if ($response->res !== null) {
         // handle response
@@ -241,47 +231,47 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new FormQueryParamsObjectRequest();
-    $request->objParam = new SimpleObject();
-    $request->objParam->any = 'voluptas';
-    $request->objParam->bigint = 617658;
-    $request->objParam->bigintStr = 'eos';
-    $request->objParam->bool = true;
-    $request->objParam->boolOpt = true;
-    $request->objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->objParam->enum = EnumEnum::TWO;
-    $request->objParam->float32 = 2.2222222;
-    $request->objParam->int = 999999;
-    $request->objParam->int32 = 1;
-    $request->objParam->int32Enum = SimpleObjectInt32EnumEnum::SIXTY_NINE;
-    $request->objParam->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->objParam->intOptNull = 999999;
-    $request->objParam->num = 1.1;
-    $request->objParam->numOptNull = 1.1;
-    $request->objParam->str = 'example';
-    $request->objParam->strOpt = 'optional example';
-    $request->objParamExploded = new SimpleObject();
-    $request->objParamExploded->any = 'fugiat';
-    $request->objParamExploded->bigint = 67249;
-    $request->objParamExploded->bigintStr = 'soluta';
-    $request->objParamExploded->bool = true;
-    $request->objParamExploded->boolOpt = true;
-    $request->objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->objParamExploded->enum = EnumEnum::TWO;
-    $request->objParamExploded->float32 = 2.2222222;
-    $request->objParamExploded->int = 999999;
-    $request->objParamExploded->int32 = 1;
-    $request->objParamExploded->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->objParamExploded->intEnum = SimpleObjectIntEnumEnum::Second;
-    $request->objParamExploded->intOptNull = 999999;
-    $request->objParamExploded->num = 1.1;
-    $request->objParamExploded->numOptNull = 1.1;
-    $request->objParamExploded->str = 'example';
-    $request->objParamExploded->strOpt = 'optional example';
+    $objParamExploded = new SimpleObject();
+    $objParamExploded->any = 'natus';
+    $objParamExploded->bigint = 179603;
+    $objParamExploded->bigintStr = 'atque';
+    $objParamExploded->bool = true;
+    $objParamExploded->boolOpt = true;
+    $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $objParamExploded->enum = EnumEnum::TWO;
+    $objParamExploded->float32 = 2.2222222;
+    $objParamExploded->int = 999999;
+    $objParamExploded->int32 = 1;
+    $objParamExploded->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $objParamExploded->intEnum = SimpleObjectIntEnumEnum::Third;
+    $objParamExploded->intOptNull = 999999;
+    $objParamExploded->num = 1.1;
+    $objParamExploded->numOptNull = 1.1;
+    $objParamExploded->str = 'example';
+    $objParamExploded->strOpt = 'optional example';
 
-    $response = $sdk->parameters->formQueryParamsObject($request);
+    $objParam = new SimpleObject();
+    $objParam->any = 'ab';
+    $objParam->bigint = 743835;
+    $objParam->bigintStr = 'dolorum';
+    $objParam->bool = true;
+    $objParam->boolOpt = true;
+    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $objParam->enum = EnumEnum::TWO;
+    $objParam->float32 = 2.2222222;
+    $objParam->int = 999999;
+    $objParam->int32 = 1;
+    $objParam->int32Enum = SimpleObjectInt32EnumEnum::SIXTY_NINE;
+    $objParam->intEnum = SimpleObjectIntEnumEnum::Second;
+    $objParam->intOptNull = 999999;
+    $objParam->num = 1.1;
+    $objParam->numOptNull = 1.1;
+    $objParam->str = 'example';
+    $objParam->strOpt = 'optional example';
+
+    $response = $sdk->parameters->formQueryParamsObject($objParamExploded, $objParam);
 
     if ($response->res !== null) {
         // handle response
@@ -309,13 +299,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new FormQueryParamsPrimitiveRequest();
-    $request->boolParam = false;
-    $request->intParam = 453697;
-    $request->numParam = 6770.82;
-    $request->strParam = 'deleniti';
 
-    $response = $sdk->parameters->formQueryParamsPrimitive($request);
+
+    $response = $sdk->parameters->formQueryParamsPrimitive(false, 677082, 5365.79, 'omnis');
 
     if ($response->res !== null) {
         // handle response
@@ -345,19 +331,19 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new FormQueryParamsRefParamObjectRequest();
-    $request->refObjParam = new RefQueryParamObj();
-    $request->refObjParam->bool = false;
-    $request->refObjParam->int = 607045;
-    $request->refObjParam->num = 8966.72;
-    $request->refObjParam->str = 'distinctio';
-    $request->refObjParamExploded = new RefQueryParamObjExploded();
-    $request->refObjParamExploded->bool = false;
-    $request->refObjParamExploded->int = 990339;
-    $request->refObjParamExploded->num = 4694.97;
-    $request->refObjParamExploded->str = 'ipsum';
+    $refObjParam = new RefQueryParamObj();
+    $refObjParam->bool = false;
+    $refObjParam->int = 896672;
+    $refObjParam->num = 7146.97;
+    $refObjParam->str = 'asperiores';
 
-    $response = $sdk->parameters->formQueryParamsRefParamObject($request);
+    $refObjParamExploded = new RefQueryParamObjExploded();
+    $refObjParamExploded->bool = false;
+    $refObjParamExploded->int = 469497;
+    $refObjParamExploded->num = 2168.97;
+    $refObjParamExploded->str = 'voluptate';
+
+    $response = $sdk->parameters->formQueryParamsRefParamObject($refObjParam, $refObjParamExploded);
 
     if ($response->res !== null) {
         // handle response
@@ -385,13 +371,13 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new HeaderParamsArrayRequest();
-    $request->xHeaderArray = [
-        'id',
-        'saepe',
-    ];
 
-    $response = $sdk->parameters->headerParamsArray($request);
+
+    $response = $sdk->parameters->headerParamsArray([
+    'saepe',
+    'eius',
+    'aspernatur',
+]);
 
     if ($response->res !== null) {
         // handle response
@@ -419,19 +405,16 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new HeaderParamsMapRequest();
-    $request->xHeaderMap = [
-        'aspernatur' => 'perferendis',
-        'amet' => 'optio',
-    ];
-    $request->xHeaderMapExplode = [
-        'ad' => 'saepe',
-        'suscipit' => 'deserunt',
-        'provident' => 'minima',
-        'repellendus' => 'totam',
-    ];
 
-    $response = $sdk->parameters->headerParamsMap($request);
+
+    $response = $sdk->parameters->headerParamsMap([
+    'amet' => 'optio',
+], [
+    'ad' => 'saepe',
+    'suscipit' => 'deserunt',
+    'provident' => 'minima',
+    'repellendus' => 'totam',
+]);
 
     if ($response->res !== null) {
         // handle response
@@ -463,47 +446,47 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new HeaderParamsObjectRequest();
-    $request->xHeaderObj = new SimpleObject();
-    $request->xHeaderObj->any = 'similique';
-    $request->xHeaderObj->bigint = 55;
-    $request->xHeaderObj->bigintStr = 'at';
-    $request->xHeaderObj->bool = true;
-    $request->xHeaderObj->boolOpt = true;
-    $request->xHeaderObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->xHeaderObj->enum = EnumEnum::TWO;
-    $request->xHeaderObj->float32 = 2.2222222;
-    $request->xHeaderObj->int = 999999;
-    $request->xHeaderObj->int32 = 1;
-    $request->xHeaderObj->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->xHeaderObj->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->xHeaderObj->intOptNull = 999999;
-    $request->xHeaderObj->num = 1.1;
-    $request->xHeaderObj->numOptNull = 1.1;
-    $request->xHeaderObj->str = 'example';
-    $request->xHeaderObj->strOpt = 'optional example';
-    $request->xHeaderObjExplode = new SimpleObject();
-    $request->xHeaderObjExplode->any = 'vel';
-    $request->xHeaderObjExplode->bigint = 798047;
-    $request->xHeaderObjExplode->bigintStr = 'officiis';
-    $request->xHeaderObjExplode->bool = true;
-    $request->xHeaderObjExplode->boolOpt = true;
-    $request->xHeaderObjExplode->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->xHeaderObjExplode->enum = EnumEnum::TWO;
-    $request->xHeaderObjExplode->float32 = 2.2222222;
-    $request->xHeaderObjExplode->int = 999999;
-    $request->xHeaderObjExplode->int32 = 1;
-    $request->xHeaderObjExplode->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->xHeaderObjExplode->intEnum = SimpleObjectIntEnumEnum::Third;
-    $request->xHeaderObjExplode->intOptNull = 999999;
-    $request->xHeaderObjExplode->num = 1.1;
-    $request->xHeaderObjExplode->numOptNull = 1.1;
-    $request->xHeaderObjExplode->str = 'example';
-    $request->xHeaderObjExplode->strOpt = 'optional example';
+    $xHeaderObj = new SimpleObject();
+    $xHeaderObj->any = 'similique';
+    $xHeaderObj->bigint = 55;
+    $xHeaderObj->bigintStr = 'at';
+    $xHeaderObj->bool = true;
+    $xHeaderObj->boolOpt = true;
+    $xHeaderObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $xHeaderObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $xHeaderObj->enum = EnumEnum::TWO;
+    $xHeaderObj->float32 = 2.2222222;
+    $xHeaderObj->int = 999999;
+    $xHeaderObj->int32 = 1;
+    $xHeaderObj->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $xHeaderObj->intEnum = SimpleObjectIntEnumEnum::First;
+    $xHeaderObj->intOptNull = 999999;
+    $xHeaderObj->num = 1.1;
+    $xHeaderObj->numOptNull = 1.1;
+    $xHeaderObj->str = 'example';
+    $xHeaderObj->strOpt = 'optional example';
 
-    $response = $sdk->parameters->headerParamsObject($request);
+    $xHeaderObjExplode = new SimpleObject();
+    $xHeaderObjExplode->any = 'vel';
+    $xHeaderObjExplode->bigint = 798047;
+    $xHeaderObjExplode->bigintStr = 'officiis';
+    $xHeaderObjExplode->bool = true;
+    $xHeaderObjExplode->boolOpt = true;
+    $xHeaderObjExplode->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $xHeaderObjExplode->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $xHeaderObjExplode->enum = EnumEnum::TWO;
+    $xHeaderObjExplode->float32 = 2.2222222;
+    $xHeaderObjExplode->int = 999999;
+    $xHeaderObjExplode->int32 = 1;
+    $xHeaderObjExplode->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $xHeaderObjExplode->intEnum = SimpleObjectIntEnumEnum::Third;
+    $xHeaderObjExplode->intOptNull = 999999;
+    $xHeaderObjExplode->num = 1.1;
+    $xHeaderObjExplode->numOptNull = 1.1;
+    $xHeaderObjExplode->str = 'example';
+    $xHeaderObjExplode->strOpt = 'optional example';
+
+    $response = $sdk->parameters->headerParamsObject($xHeaderObj, $xHeaderObjExplode);
 
     if ($response->res !== null) {
         // handle response
@@ -531,13 +514,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new HeaderParamsPrimitiveRequest();
-    $request->xHeaderBoolean = false;
-    $request->xHeaderInteger = 952792;
-    $request->xHeaderNumber = 4561.3;
-    $request->xHeaderString = 'harum';
 
-    $response = $sdk->parameters->headerParamsPrimitive($request);
+
+    $response = $sdk->parameters->headerParamsPrimitive(false, 952792, 4561.3, 'harum');
 
     if ($response->res !== null) {
         // handle response
@@ -570,82 +549,82 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new JsonQueryParamsObjectRequest();
-    $request->deepObjParam = new DeepObject();
-    $request->deepObjParam->any = new SimpleObject();
-    $request->deepObjParam->any->any = 'ipsum';
-    $request->deepObjParam->any->bigint = 788740;
-    $request->deepObjParam->any->bigintStr = 'tenetur';
-    $request->deepObjParam->any->bool = true;
-    $request->deepObjParam->any->boolOpt = true;
-    $request->deepObjParam->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->deepObjParam->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->deepObjParam->any->enum = EnumEnum::TWO;
-    $request->deepObjParam->any->float32 = 2.2222222;
-    $request->deepObjParam->any->int = 999999;
-    $request->deepObjParam->any->int32 = 1;
-    $request->deepObjParam->any->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->deepObjParam->any->intEnum = SimpleObjectIntEnumEnum::Third;
-    $request->deepObjParam->any->intOptNull = 999999;
-    $request->deepObjParam->any->num = 1.1;
-    $request->deepObjParam->any->numOptNull = 1.1;
-    $request->deepObjParam->any->str = 'example';
-    $request->deepObjParam->any->strOpt = 'optional example';
-    $request->deepObjParam->arr = [
+    $deepObjParam = new DeepObject();
+    $deepObjParam->any = new SimpleObject();
+    $deepObjParam->any->any = 'ipsum';
+    $deepObjParam->any->bigint = 788740;
+    $deepObjParam->any->bigintStr = 'tenetur';
+    $deepObjParam->any->bool = true;
+    $deepObjParam->any->boolOpt = true;
+    $deepObjParam->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $deepObjParam->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $deepObjParam->any->enum = EnumEnum::TWO;
+    $deepObjParam->any->float32 = 2.2222222;
+    $deepObjParam->any->int = 999999;
+    $deepObjParam->any->int32 = 1;
+    $deepObjParam->any->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $deepObjParam->any->intEnum = SimpleObjectIntEnumEnum::Third;
+    $deepObjParam->any->intOptNull = 999999;
+    $deepObjParam->any->num = 1.1;
+    $deepObjParam->any->numOptNull = 1.1;
+    $deepObjParam->any->str = 'example';
+    $deepObjParam->any->strOpt = 'optional example';
+    $deepObjParam->arr = [
         new SimpleObject(),
         new SimpleObject(),
         new SimpleObject(),
         new SimpleObject(),
     ];
-    $request->deepObjParam->bool = false;
-    $request->deepObjParam->int = 253941;
-    $request->deepObjParam->map = [
+    $deepObjParam->bool = false;
+    $deepObjParam->int = 253941;
+    $deepObjParam->map = [
         'dolorem' => new SimpleObject(),
         'sapiente' => new SimpleObject(),
     ];
-    $request->deepObjParam->num = 5182.01;
-    $request->deepObjParam->obj = new SimpleObject();
-    $request->deepObjParam->obj->any = 'nihil';
-    $request->deepObjParam->obj->bigint = 25662;
-    $request->deepObjParam->obj->bigintStr = 'expedita';
-    $request->deepObjParam->obj->bool = true;
-    $request->deepObjParam->obj->boolOpt = true;
-    $request->deepObjParam->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->deepObjParam->obj->enum = EnumEnum::TWO;
-    $request->deepObjParam->obj->float32 = 2.2222222;
-    $request->deepObjParam->obj->int = 999999;
-    $request->deepObjParam->obj->int32 = 1;
-    $request->deepObjParam->obj->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->deepObjParam->obj->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->deepObjParam->obj->intOptNull = 999999;
-    $request->deepObjParam->obj->num = 1.1;
-    $request->deepObjParam->obj->numOptNull = 1.1;
-    $request->deepObjParam->obj->str = 'example';
-    $request->deepObjParam->obj->strOpt = 'optional example';
-    $request->deepObjParam->str = 'vel';
-    $request->deepObjParam->type = 'libero';
-    $request->simpleObjParam = new SimpleObject();
-    $request->simpleObjParam->any = 'voluptas';
-    $request->simpleObjParam->bigint = 646265;
-    $request->simpleObjParam->bigintStr = 'quam';
-    $request->simpleObjParam->bool = true;
-    $request->simpleObjParam->boolOpt = true;
-    $request->simpleObjParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->simpleObjParam->enum = EnumEnum::TWO;
-    $request->simpleObjParam->float32 = 2.2222222;
-    $request->simpleObjParam->int = 999999;
-    $request->simpleObjParam->int32 = 1;
-    $request->simpleObjParam->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->simpleObjParam->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->simpleObjParam->intOptNull = 999999;
-    $request->simpleObjParam->num = 1.1;
-    $request->simpleObjParam->numOptNull = 1.1;
-    $request->simpleObjParam->str = 'example';
-    $request->simpleObjParam->strOpt = 'optional example';
+    $deepObjParam->num = 5182.01;
+    $deepObjParam->obj = new SimpleObject();
+    $deepObjParam->obj->any = 'nihil';
+    $deepObjParam->obj->bigint = 25662;
+    $deepObjParam->obj->bigintStr = 'expedita';
+    $deepObjParam->obj->bool = true;
+    $deepObjParam->obj->boolOpt = true;
+    $deepObjParam->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $deepObjParam->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $deepObjParam->obj->enum = EnumEnum::TWO;
+    $deepObjParam->obj->float32 = 2.2222222;
+    $deepObjParam->obj->int = 999999;
+    $deepObjParam->obj->int32 = 1;
+    $deepObjParam->obj->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $deepObjParam->obj->intEnum = SimpleObjectIntEnumEnum::First;
+    $deepObjParam->obj->intOptNull = 999999;
+    $deepObjParam->obj->num = 1.1;
+    $deepObjParam->obj->numOptNull = 1.1;
+    $deepObjParam->obj->str = 'example';
+    $deepObjParam->obj->strOpt = 'optional example';
+    $deepObjParam->str = 'vel';
+    $deepObjParam->type = 'libero';
 
-    $response = $sdk->parameters->jsonQueryParamsObject($request);
+    $simpleObjParam = new SimpleObject();
+    $simpleObjParam->any = 'voluptas';
+    $simpleObjParam->bigint = 646265;
+    $simpleObjParam->bigintStr = 'quam';
+    $simpleObjParam->bool = true;
+    $simpleObjParam->boolOpt = true;
+    $simpleObjParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $simpleObjParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $simpleObjParam->enum = EnumEnum::TWO;
+    $simpleObjParam->float32 = 2.2222222;
+    $simpleObjParam->int = 999999;
+    $simpleObjParam->int32 = 1;
+    $simpleObjParam->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $simpleObjParam->intEnum = SimpleObjectIntEnumEnum::First;
+    $simpleObjParam->intOptNull = 999999;
+    $simpleObjParam->num = 1.1;
+    $simpleObjParam->numOptNull = 1.1;
+    $simpleObjParam->str = 'example';
+    $simpleObjParam->strOpt = 'optional example';
+
+    $response = $sdk->parameters->jsonQueryParamsObject($deepObjParam, $simpleObjParam);
 
     if ($response->res !== null) {
         // handle response
@@ -677,66 +656,67 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new MixedQueryParamsRequest();
-    $request->deepObjectParam = new SimpleObject();
-    $request->deepObjectParam->any = 'qui';
-    $request->deepObjectParam->bigint = 586784;
-    $request->deepObjectParam->bigintStr = 'maxime';
-    $request->deepObjectParam->bool = true;
-    $request->deepObjectParam->boolOpt = true;
-    $request->deepObjectParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->deepObjectParam->enum = EnumEnum::TWO;
-    $request->deepObjectParam->float32 = 2.2222222;
-    $request->deepObjectParam->int = 999999;
-    $request->deepObjectParam->int32 = 1;
-    $request->deepObjectParam->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->deepObjectParam->intEnum = SimpleObjectIntEnumEnum::Third;
-    $request->deepObjectParam->intOptNull = 999999;
-    $request->deepObjectParam->num = 1.1;
-    $request->deepObjectParam->numOptNull = 1.1;
-    $request->deepObjectParam->str = 'example';
-    $request->deepObjectParam->strOpt = 'optional example';
-    $request->formParam = new SimpleObject();
-    $request->formParam->any = 'dicta';
-    $request->formParam->bigint = 674848;
-    $request->formParam->bigintStr = 'totam';
-    $request->formParam->bool = true;
-    $request->formParam->boolOpt = true;
-    $request->formParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->formParam->enum = EnumEnum::TWO;
-    $request->formParam->float32 = 2.2222222;
-    $request->formParam->int = 999999;
-    $request->formParam->int32 = 1;
-    $request->formParam->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->formParam->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->formParam->intOptNull = 999999;
-    $request->formParam->num = 1.1;
-    $request->formParam->numOptNull = 1.1;
-    $request->formParam->str = 'example';
-    $request->formParam->strOpt = 'optional example';
-    $request->jsonParam = new SimpleObject();
-    $request->jsonParam->any = 'dolores';
-    $request->jsonParam->bigint = 716860;
-    $request->jsonParam->bigintStr = 'facilis';
-    $request->jsonParam->bool = true;
-    $request->jsonParam->boolOpt = true;
-    $request->jsonParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->jsonParam->enum = EnumEnum::TWO;
-    $request->jsonParam->float32 = 2.2222222;
-    $request->jsonParam->int = 999999;
-    $request->jsonParam->int32 = 1;
-    $request->jsonParam->int32Enum = SimpleObjectInt32EnumEnum::SIXTY_NINE;
-    $request->jsonParam->intEnum = SimpleObjectIntEnumEnum::Second;
-    $request->jsonParam->intOptNull = 999999;
-    $request->jsonParam->num = 1.1;
-    $request->jsonParam->numOptNull = 1.1;
-    $request->jsonParam->str = 'example';
-    $request->jsonParam->strOpt = 'optional example';
+    $deepObjectParam = new SimpleObject();
+    $deepObjectParam->any = 'qui';
+    $deepObjectParam->bigint = 586784;
+    $deepObjectParam->bigintStr = 'maxime';
+    $deepObjectParam->bool = true;
+    $deepObjectParam->boolOpt = true;
+    $deepObjectParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $deepObjectParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $deepObjectParam->enum = EnumEnum::TWO;
+    $deepObjectParam->float32 = 2.2222222;
+    $deepObjectParam->int = 999999;
+    $deepObjectParam->int32 = 1;
+    $deepObjectParam->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
+    $deepObjectParam->intEnum = SimpleObjectIntEnumEnum::Third;
+    $deepObjectParam->intOptNull = 999999;
+    $deepObjectParam->num = 1.1;
+    $deepObjectParam->numOptNull = 1.1;
+    $deepObjectParam->str = 'example';
+    $deepObjectParam->strOpt = 'optional example';
 
-    $response = $sdk->parameters->mixedQueryParams($request);
+    $formParam = new SimpleObject();
+    $formParam->any = 'dicta';
+    $formParam->bigint = 674848;
+    $formParam->bigintStr = 'totam';
+    $formParam->bool = true;
+    $formParam->boolOpt = true;
+    $formParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $formParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $formParam->enum = EnumEnum::TWO;
+    $formParam->float32 = 2.2222222;
+    $formParam->int = 999999;
+    $formParam->int32 = 1;
+    $formParam->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $formParam->intEnum = SimpleObjectIntEnumEnum::First;
+    $formParam->intOptNull = 999999;
+    $formParam->num = 1.1;
+    $formParam->numOptNull = 1.1;
+    $formParam->str = 'example';
+    $formParam->strOpt = 'optional example';
+
+    $jsonParam = new SimpleObject();
+    $jsonParam->any = 'dolores';
+    $jsonParam->bigint = 716860;
+    $jsonParam->bigintStr = 'facilis';
+    $jsonParam->bool = true;
+    $jsonParam->boolOpt = true;
+    $jsonParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $jsonParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $jsonParam->enum = EnumEnum::TWO;
+    $jsonParam->float32 = 2.2222222;
+    $jsonParam->int = 999999;
+    $jsonParam->int32 = 1;
+    $jsonParam->int32Enum = SimpleObjectInt32EnumEnum::SIXTY_NINE;
+    $jsonParam->intEnum = SimpleObjectIntEnumEnum::Second;
+    $jsonParam->intOptNull = 999999;
+    $jsonParam->num = 1.1;
+    $jsonParam->numOptNull = 1.1;
+    $jsonParam->str = 'example';
+    $jsonParam->strOpt = 'optional example';
+
+    $response = $sdk->parameters->mixedQueryParams($deepObjectParam, $formParam, $jsonParam);
 
     if ($response->res !== null) {
         // handle response
@@ -768,28 +748,27 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new PathParameterJsonRequest();
-    $request->jsonObj = new SimpleObject();
-    $request->jsonObj->any = 'molestias';
-    $request->jsonObj->bigint = 840429;
-    $request->jsonObj->bigintStr = 'qui';
-    $request->jsonObj->bool = true;
-    $request->jsonObj->boolOpt = true;
-    $request->jsonObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->jsonObj->enum = EnumEnum::TWO;
-    $request->jsonObj->float32 = 2.2222222;
-    $request->jsonObj->int = 999999;
-    $request->jsonObj->int32 = 1;
-    $request->jsonObj->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->jsonObj->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->jsonObj->intOptNull = 999999;
-    $request->jsonObj->num = 1.1;
-    $request->jsonObj->numOptNull = 1.1;
-    $request->jsonObj->str = 'example';
-    $request->jsonObj->strOpt = 'optional example';
+    $jsonObj = new SimpleObject();
+    $jsonObj->any = 'molestias';
+    $jsonObj->bigint = 840429;
+    $jsonObj->bigintStr = 'qui';
+    $jsonObj->bool = true;
+    $jsonObj->boolOpt = true;
+    $jsonObj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $jsonObj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $jsonObj->enum = EnumEnum::TWO;
+    $jsonObj->float32 = 2.2222222;
+    $jsonObj->int = 999999;
+    $jsonObj->int32 = 1;
+    $jsonObj->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $jsonObj->intEnum = SimpleObjectIntEnumEnum::First;
+    $jsonObj->intOptNull = 999999;
+    $jsonObj->num = 1.1;
+    $jsonObj->numOptNull = 1.1;
+    $jsonObj->str = 'example';
+    $jsonObj->strOpt = 'optional example';
 
-    $response = $sdk->parameters->pathParameterJson($request);
+    $response = $sdk->parameters->pathParameterJson($jsonObj);
 
     if ($response->res !== null) {
         // handle response
@@ -821,39 +800,36 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new PipeDelimitedQueryParamsArrayRequest();
-    $request->arrParam = [
-        'odio',
-    ];
-    $request->arrParamExploded = [
-        355613,
-    ];
-    $request->mapParam = [
-        'hic' => 'voluptatem',
-        'cumque' => 'soluta',
-        'nobis' => 'et',
-    ];
-    $request->objParam = new SimpleObject();
-    $request->objParam->any = 'saepe';
-    $request->objParam->bigint = 217450;
-    $request->objParam->bigintStr = 'veritatis';
-    $request->objParam->bool = true;
-    $request->objParam->boolOpt = true;
-    $request->objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->objParam->enum = EnumEnum::TWO;
-    $request->objParam->float32 = 2.2222222;
-    $request->objParam->int = 999999;
-    $request->objParam->int32 = 1;
-    $request->objParam->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->objParam->intEnum = SimpleObjectIntEnumEnum::Second;
-    $request->objParam->intOptNull = 999999;
-    $request->objParam->num = 1.1;
-    $request->objParam->numOptNull = 1.1;
-    $request->objParam->str = 'example';
-    $request->objParam->strOpt = 'optional example';
+    $objParam = new SimpleObject();
+    $objParam->any = 'magni';
+    $objParam->bigint = 488056;
+    $objParam->bigintStr = 'sunt';
+    $objParam->bool = true;
+    $objParam->boolOpt = true;
+    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $objParam->enum = EnumEnum::TWO;
+    $objParam->float32 = 2.2222222;
+    $objParam->int = 999999;
+    $objParam->int32 = 1;
+    $objParam->int32Enum = SimpleObjectInt32EnumEnum::SIXTY_NINE;
+    $objParam->intEnum = SimpleObjectIntEnumEnum::Third;
+    $objParam->intOptNull = 999999;
+    $objParam->num = 1.1;
+    $objParam->numOptNull = 1.1;
+    $objParam->str = 'example';
+    $objParam->strOpt = 'optional example';
 
-    $response = $sdk->parameters->pipeDelimitedQueryParamsArray($request);
+    $response = $sdk->parameters->pipeDelimitedQueryParamsArray([
+    'voluptatem',
+    'cumque',
+    'soluta',
+    'nobis',
+], [
+    903720,
+], [
+    'veritatis' => 'nobis',
+], $objParam);
 
     if ($response->res !== null) {
         // handle response
@@ -881,14 +857,13 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimplePathParameterArraysRequest();
-    $request->arrParam = [
-        'cupiditate',
-        'aperiam',
-        'delectus',
-    ];
 
-    $response = $sdk->parameters->simplePathParameterArrays($request);
+
+    $response = $sdk->parameters->simplePathParameterArrays([
+    'tempore',
+    'cupiditate',
+    'aperiam',
+]);
 
     if ($response->res !== null) {
         // handle response
@@ -916,15 +891,18 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimplePathParameterMapsRequest();
-    $request->mapParam = [
-        'dolore' => 'labore',
-    ];
-    $request->mapParamExploded = [
-        'dolorum' => 100294,
-    ];
 
-    $response = $sdk->parameters->simplePathParameterMaps($request);
+
+    $response = $sdk->parameters->simplePathParameterMaps([
+    'dolorem' => 'dolore',
+    'labore' => 'adipisci',
+    'dolorum' => 'architecto',
+    'quae' => 'aut',
+], [
+    'itaque' => 9240,
+    'est' => 833038,
+    'porro' => 984330,
+]);
 
     if ($response->res !== null) {
         // handle response
@@ -956,47 +934,47 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimplePathParameterObjectsRequest();
-    $request->objParam = new SimpleObject();
-    $request->objParam->any = 'quae';
-    $request->objParam->bigint = 16429;
-    $request->objParam->bigintStr = 'quas';
-    $request->objParam->bool = true;
-    $request->objParam->boolOpt = true;
-    $request->objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->objParam->enum = EnumEnum::TWO;
-    $request->objParam->float32 = 2.2222222;
-    $request->objParam->int = 999999;
-    $request->objParam->int32 = 1;
-    $request->objParam->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->objParam->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->objParam->intOptNull = 999999;
-    $request->objParam->num = 1.1;
-    $request->objParam->numOptNull = 1.1;
-    $request->objParam->str = 'example';
-    $request->objParam->strOpt = 'optional example';
-    $request->objParamExploded = new SimpleObject();
-    $request->objParamExploded->any = 'est';
-    $request->objParamExploded->bigint = 833038;
-    $request->objParamExploded->bigintStr = 'porro';
-    $request->objParamExploded->bool = true;
-    $request->objParamExploded->boolOpt = true;
-    $request->objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->objParamExploded->enum = EnumEnum::TWO;
-    $request->objParamExploded->float32 = 2.2222222;
-    $request->objParamExploded->int = 999999;
-    $request->objParamExploded->int32 = 1;
-    $request->objParamExploded->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->objParamExploded->intEnum = SimpleObjectIntEnumEnum::First;
-    $request->objParamExploded->intOptNull = 999999;
-    $request->objParamExploded->num = 1.1;
-    $request->objParamExploded->numOptNull = 1.1;
-    $request->objParamExploded->str = 'example';
-    $request->objParamExploded->strOpt = 'optional example';
+    $objParam = new SimpleObject();
+    $objParam->any = 'ut';
+    $objParam->bigint = 703495;
+    $objParam->bigintStr = 'cupiditate';
+    $objParam->bool = true;
+    $objParam->boolOpt = true;
+    $objParam->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $objParam->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $objParam->enum = EnumEnum::TWO;
+    $objParam->float32 = 2.2222222;
+    $objParam->int = 999999;
+    $objParam->int32 = 1;
+    $objParam->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $objParam->intEnum = SimpleObjectIntEnumEnum::First;
+    $objParam->intOptNull = 999999;
+    $objParam->num = 1.1;
+    $objParam->numOptNull = 1.1;
+    $objParam->str = 'example';
+    $objParam->strOpt = 'optional example';
 
-    $response = $sdk->parameters->simplePathParameterObjects($request);
+    $objParamExploded = new SimpleObject();
+    $objParamExploded->any = 'laudantium';
+    $objParamExploded->bigint = 485628;
+    $objParamExploded->bigintStr = 'occaecati';
+    $objParamExploded->bool = true;
+    $objParamExploded->boolOpt = true;
+    $objParamExploded->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $objParamExploded->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $objParamExploded->enum = EnumEnum::TWO;
+    $objParamExploded->float32 = 2.2222222;
+    $objParamExploded->int = 999999;
+    $objParamExploded->int32 = 1;
+    $objParamExploded->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
+    $objParamExploded->intEnum = SimpleObjectIntEnumEnum::Third;
+    $objParamExploded->intOptNull = 999999;
+    $objParamExploded->num = 1.1;
+    $objParamExploded->numOptNull = 1.1;
+    $objParamExploded->str = 'example';
+    $objParamExploded->strOpt = 'optional example';
+
+    $response = $sdk->parameters->simplePathParameterObjects($objParam, $objParamExploded);
 
     if ($response->res !== null) {
         // handle response
@@ -1024,13 +1002,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimplePathParameterPrimitivesRequest();
-    $request->boolParam = false;
-    $request->intParam = 703495;
-    $request->numParam = 5864.1;
-    $request->strParam = 'qui';
 
-    $response = $sdk->parameters->simplePathParameterPrimitives($request);
+
+    $response = $sdk->parameters->simplePathParameterPrimitives(false, 876506, 6064.76, 'quis');
 
     if ($response->res !== null) {
         // handle response

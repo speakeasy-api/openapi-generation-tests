@@ -37,13 +37,12 @@ export class Globals {
   }
 
   async globalPathParameterGet(
-    req: operations.GlobalPathParameterGetRequest,
+    globalPathParam?: number,
     config?: AxiosRequestConfig
   ): Promise<operations.GlobalPathParameterGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GlobalPathParameterGetRequest(req);
-    }
-
+    const req = new operations.GlobalPathParameterGetRequest({
+      globalPathParam: globalPathParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -88,13 +87,12 @@ export class Globals {
   }
 
   async globalsQueryParameterGet(
-    req: operations.GlobalsQueryParameterGetRequest,
+    globalQueryParam?: string,
     config?: AxiosRequestConfig
   ): Promise<operations.GlobalsQueryParameterGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.GlobalsQueryParameterGetRequest(req);
-    }
-
+    const req = new operations.GlobalsQueryParameterGetRequest({
+      globalQueryParam: globalQueryParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/globals/queryParameter";

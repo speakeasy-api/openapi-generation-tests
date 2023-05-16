@@ -27,9 +27,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new GlobalPathParameterGetRequest();
 
-    $response = $sdk->globals->globalPathParameterGet($request);
+
+    $response = $sdk->globals->globalPathParameterGet(874573);
 
     if ($response->res !== null) {
         // handle response
@@ -57,9 +57,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new GlobalsQueryParameterGetRequest();
 
-    $response = $sdk->globals->globalsQueryParameterGet($request);
+
+    $response = $sdk->globals->globalsQueryParameterGet('nostrum');
 
     if ($response->res !== null) {
         // handle response

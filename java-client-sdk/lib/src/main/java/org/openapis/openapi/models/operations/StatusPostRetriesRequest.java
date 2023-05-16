@@ -8,19 +8,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class StatusPostRetriesRequest {
-    @SpeakeasyMetadata("request:mediaType=application/json")
-    public org.openapis.openapi.models.shared.SimpleObject simpleObject;
-
-    public StatusPostRetriesRequest withSimpleObject(org.openapis.openapi.models.shared.SimpleObject simpleObject) {
-        this.simpleObject = simpleObject;
-        return this;
-    }
-    
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=statusCode")
     public Long statusCode;
 
     public StatusPostRetriesRequest withStatusCode(Long statusCode) {
         this.statusCode = statusCode;
+        return this;
+    }
+    
+    @SpeakeasyMetadata("request:mediaType=application/json")
+    public org.openapis.openapi.models.shared.SimpleObject simpleObject;
+
+    public StatusPostRetriesRequest withSimpleObject(org.openapis.openapi.models.shared.SimpleObject simpleObject) {
+        this.simpleObject = simpleObject;
         return this;
     }
     

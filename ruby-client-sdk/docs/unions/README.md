@@ -24,7 +24,26 @@ s = sdk::SDK.new
 
    
 req = Operations::::(
-  request="aliquid",
+  request=Shared::SimpleObject(
+    any="debitis",
+    bigint=399802,
+    bigint_str="porro",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    enum=Shared::EnumEnum::TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+    int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_="example",
+    str_opt="optional example",
+  ),
 )
     
 res = s.unions::mixed_type_one_of_post(req)
@@ -46,7 +65,7 @@ s = sdk::SDK.new
 
    
 req = Operations::::(
-  request="laborum",
+  request="cumque",
 )
     
 res = s.unions::primitive_type_one_of_post(req)
@@ -68,26 +87,96 @@ s = sdk::SDK.new
 
    
 req = Operations::::(
-  request=Shared::SimpleObjectWithType(
-    any="nostrum",
-    bigint=856756,
-    bigint_str="expedita",
-    bool=true,
-    bool_opt=true,
-    date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    enum=Shared::EnumEnum::TWO,
-    float32=2.2222222,
-    int=999999,
-    int32=1,
-    int32_enum=Shared::SimpleObjectWithTypeInt32EnumEnum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectWithTypeIntEnumEnum::SECOND,
-    int_opt_null=999999,
-    num=1.1,
-    num_opt_null=1.1,
-    str_="example",
-    str_opt="optional example",
-    type="suscipit",
+  request=Shared::DeepObjectWithType(
+    any=Shared::SimpleObject(
+      any="animi",
+      bigint=898760,
+      bigint_str="nulla",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      enum=Shared::EnumEnum::TWO,
+      float32=2.2222222,
+      int=999999,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
+      int_opt_null=999999,
+      num=1.1,
+      num_opt_null=1.1,
+      str_="example",
+      str_opt="optional example",
+    ),
+    arr=[
+      Shared::SimpleObject(
+        any="ducimus",
+        bigint=619183,
+        bigint_str="occaecati",
+        bool=true,
+        bool_opt=true,
+        date=Date.parse("2020-01-01"),
+        date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+        enum=Shared::EnumEnum::TWO,
+        float32=2.2222222,
+        int=999999,
+        int32=1,
+        int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+        int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
+        int_opt_null=999999,
+        num=1.1,
+        num_opt_null=1.1,
+        str_="example",
+        str_opt="optional example",
+      ),
+    ],
+    bool=false,
+    int=96562,
+    map={
+      "doloribus": Shared::SimpleObject(
+        any="nulla",
+        bigint=896582,
+        bigint_str="ipsa",
+        bool=true,
+        bool_opt=true,
+        date=Date.parse("2020-01-01"),
+        date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+        enum=Shared::EnumEnum::TWO,
+        float32=2.2222222,
+        int=999999,
+        int32=1,
+        int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
+        int_enum=Shared::SimpleObjectIntEnumEnum::SECOND,
+        int_opt_null=999999,
+        num=1.1,
+        num_opt_null=1.1,
+        str_="example",
+        str_opt="optional example",
+      ),
+    },
+    num=4731.9,
+    obj=Shared::SimpleObject(
+      any="dicta",
+      bigint=479754,
+      bigint_str="esse",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      enum=Shared::EnumEnum::TWO,
+      float32=2.2222222,
+      int=999999,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
+      int_opt_null=999999,
+      num=1.1,
+      num_opt_null=1.1,
+      str_="example",
+      str_opt="optional example",
+    ),
+    str_="reiciendis",
+    type="vel",
   ),
 )
     
@@ -110,9 +199,9 @@ s = sdk::SDK.new
 
    
 req = Operations::::(
-  request=Shared::TypedObject2(
-    type=Shared::TypedObject2TypeEnum::OBJ2,
-    value="perferendis",
+  request=Shared::TypedObject1(
+    type=Shared::TypedObject1TypeEnum::OBJ1,
+    value="fugiat",
   ),
 )
     
@@ -136,9 +225,9 @@ s = sdk::SDK.new
    
 req = Operations::::(
   request=Shared::SimpleObject(
-    any="voluptas",
-    bigint=614528,
-    bigint_str="id",
+    any="dicta",
+    bigint=483706,
+    bigint_str="tempora",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
@@ -147,7 +236,7 @@ req = Operations::::(
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
+    int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
     int_enum=Shared::SimpleObjectIntEnumEnum::SECOND,
     int_opt_null=999999,
     num=1.1,

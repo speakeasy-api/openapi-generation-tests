@@ -36,7 +36,9 @@ public class Flattening {
 		this._globals = globals;
 	}
 
-    public org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse componentBodyAndParamConflict(org.openapis.openapi.models.operations.ComponentBodyAndParamConflictRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.ComponentBodyAndParamConflictResponse componentBodyAndParamConflict(org.openapis.openapi.models.shared.SimpleObject simpleObject, String str) throws Exception {
+        org.openapis.openapi.models.operations.ComponentBodyAndParamConflictRequest request = new org.openapis.openapi.models.operations.ComponentBodyAndParamConflictRequest(simpleObject, str);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/flattening/componentBodyAndParamConflict");
         
@@ -78,7 +80,9 @@ public class Flattening {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse componentBodyAndParamNoConflict(org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictResponse componentBodyAndParamNoConflict(String paramStr, org.openapis.openapi.models.shared.SimpleObject simpleObject) throws Exception {
+        org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictRequest request = new org.openapis.openapi.models.operations.ComponentBodyAndParamNoConflictRequest(paramStr, simpleObject);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/flattening/componentBodyAndParamNoConflict");
         
@@ -120,7 +124,9 @@ public class Flattening {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.ConflictingParamsResponse conflictingParams(org.openapis.openapi.models.operations.ConflictingParamsRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.ConflictingParamsResponse conflictingParams(String strPathParameter, String strQueryParameter) throws Exception {
+        org.openapis.openapi.models.operations.ConflictingParamsRequest request = new org.openapis.openapi.models.operations.ConflictingParamsRequest(strPathParameter, strQueryParameter);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.ConflictingParamsRequest.class, baseUrl, "/anything/flattening/conflictingParams/{str}", request, this._globals);
         
@@ -157,7 +163,9 @@ public class Flattening {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse inlineBodyAndParamConflict(org.openapis.openapi.models.operations.InlineBodyAndParamConflictRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.InlineBodyAndParamConflictResponse inlineBodyAndParamConflict(org.openapis.openapi.models.operations.InlineBodyAndParamConflictRequestBody requestBody, String str) throws Exception {
+        org.openapis.openapi.models.operations.InlineBodyAndParamConflictRequest request = new org.openapis.openapi.models.operations.InlineBodyAndParamConflictRequest(requestBody, str);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/flattening/inlineBodyAndParamConflict");
         
@@ -199,7 +207,9 @@ public class Flattening {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse inlineBodyAndParamNoConflict(org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictResponse inlineBodyAndParamNoConflict(org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictRequestBody requestBody, String paramStr) throws Exception {
+        org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictRequest request = new org.openapis.openapi.models.operations.InlineBodyAndParamNoConflictRequest(requestBody, paramStr);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/flattening/inlineBodyAndParamNoConflict");
         

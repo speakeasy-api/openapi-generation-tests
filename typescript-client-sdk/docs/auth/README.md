@@ -72,12 +72,9 @@ const sdk = new SDK({
 });
 
 sdk.auth.basicAuth({
-  passwd: "quo",
-  user: "sequi",
-}, {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",
-}).then((res: BasicAuthResponse) => {
+}, "quo", "sequi").then((res: BasicAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

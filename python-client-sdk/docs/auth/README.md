@@ -71,15 +71,11 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.BasicAuthRequest(
-    passwd='quo',
-    user='sequi',
-)
 
-res = s.auth.basic_auth(req, operations.BasicAuthSecurity(
+res = s.auth.basic_auth(operations.BasicAuthSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
-))
+), 'quo', 'sequi')
 
 if res.user is not None:
     # handle response

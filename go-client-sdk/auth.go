@@ -122,7 +122,12 @@ func (s *auth) APIKeyAuthGlobal(ctx context.Context) (*operations.APIKeyAuthGlob
 	return res, nil
 }
 
-func (s *auth) BasicAuth(ctx context.Context, request operations.BasicAuthRequest, security operations.BasicAuthSecurity) (*operations.BasicAuthResponse, error) {
+func (s *auth) BasicAuth(ctx context.Context, security operations.BasicAuthSecurity, passwd string, user string) (*operations.BasicAuthResponse, error) {
+	request := operations.BasicAuthRequest{
+		Passwd: passwd,
+		User:   user,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/basic-auth/{user}/{passwd}", request, s.globals)
 	if err != nil {

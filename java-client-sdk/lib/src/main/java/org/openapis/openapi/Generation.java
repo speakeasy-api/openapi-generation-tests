@@ -99,13 +99,26 @@ public class Generation {
     }
 
     /**
-     * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails
      * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
      */
     @Deprecated
-    public org.openapis.openapi.models.operations.DeprecatedNoCommentsGetResponse deprecatedNoCommentsGet(org.openapis.openapi.models.operations.DeprecatedNoCommentsGetRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.DeprecatedNoCommentsGetResponse deprecatedNoCommentsGet() throws Exception {
+        return this.deprecatedNoCommentsGet(null);
+    }
+
+    /**
+     * @param deprecatedParameter
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     */
+    @Deprecated
+    public org.openapis.openapi.models.operations.DeprecatedNoCommentsGetResponse deprecatedNoCommentsGet(String deprecatedParameter) throws Exception {
+        org.openapis.openapi.models.operations.DeprecatedNoCommentsGetRequest request = new org.openapis.openapi.models.operations.DeprecatedNoCommentsGetRequest();
+        request.deprecatedParameter=deprecatedParameter;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedNoComments");
         
@@ -138,13 +151,27 @@ public class Generation {
 
     /**
      * This is an endpoint setup to test deprecation with comments
-     * @param request the request object containing all of the parameters for the API call
      * @return the response from the API call
      * @throws Exception if the API call fails
      * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
      */
     @Deprecated
-    public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet() throws Exception {
+        return this.deprecatedWithCommentsGet(null);
+    }
+
+    /**
+     * This is an endpoint setup to test deprecation with comments
+     * @param deprecatedParameter This is a string parameter
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     */
+    @Deprecated
+    public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(String deprecatedParameter) throws Exception {
+        org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest request = new org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest();
+        request.deprecatedParameter=deprecatedParameter;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedWithComments");
         
@@ -237,7 +264,23 @@ public class Generation {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost() throws Exception {
+        return this.ignoresPost(null, null);
+    }
+
+    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(String testParam) throws Exception {
+        return this.ignoresPost(null, testParam);
+    }
+
+    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostApplicationJSON requestBody) throws Exception {
+        return this.ignoresPost(requestBody, null);
+    }
+
+    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostApplicationJSON requestBody, String testParam) throws Exception {
+        org.openapis.openapi.models.operations.IgnoresPostRequest request = new org.openapis.openapi.models.operations.IgnoresPostRequest();
+        request.requestBody=requestBody;
+        request.testParam=testParam;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/ignores");
         
@@ -276,7 +319,9 @@ public class Generation {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.NameOverrideGetResponse nameOverride(org.openapis.openapi.models.operations.NameOverrideGetRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.NameOverrideGetResponse nameOverride(String testQueryParam) throws Exception {
+        org.openapis.openapi.models.operations.NameOverrideGetRequest request = new org.openapis.openapi.models.operations.NameOverrideGetRequest(testQueryParam);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/nameOverride");
         

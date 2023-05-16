@@ -124,13 +124,12 @@ export class Generation {
    * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
    */
   async deprecatedNoCommentsGet(
-    req: operations.DeprecatedNoCommentsGetRequest,
+    deprecatedParameter?: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DeprecatedNoCommentsGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeprecatedNoCommentsGetRequest(req);
-    }
-
+    const req = new operations.DeprecatedNoCommentsGetRequest({
+      deprecatedParameter: deprecatedParameter,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/deprecatedNoComments";
@@ -172,13 +171,12 @@ export class Generation {
    * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
    */
   async deprecatedWithCommentsGet(
-    req: operations.DeprecatedWithCommentsGetRequest,
+    deprecatedParameter?: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DeprecatedWithCommentsGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeprecatedWithCommentsGetRequest(req);
-    }
-
+    const req = new operations.DeprecatedWithCommentsGetRequest({
+      deprecatedParameter: deprecatedParameter,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/deprecatedWithComments";
@@ -301,13 +299,14 @@ export class Generation {
   }
 
   async ignoresPost(
-    req: operations.IgnoresPostRequest,
+    requestBody?: operations.IgnoresPostApplicationJSON,
+    testParam?: string,
     config?: AxiosRequestConfig
   ): Promise<operations.IgnoresPostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.IgnoresPostRequest(req);
-    }
-
+    const req = new operations.IgnoresPostRequest({
+      requestBody: requestBody,
+      testParam: testParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/anything/ignores";
 
@@ -366,13 +365,12 @@ export class Generation {
   }
 
   async nameOverride(
-    req: operations.NameOverrideGetRequest,
+    testQueryParam: string,
     config?: AxiosRequestConfig
   ): Promise<operations.NameOverrideGetResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.NameOverrideGetRequest(req);
-    }
-
+    const req = new operations.NameOverrideGetRequest({
+      testQueryParam: testQueryParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/anything/nameOverride";
 

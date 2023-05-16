@@ -31,28 +31,25 @@ const sdk = new SDK({
 });
 
 sdk.flattening.componentBodyAndParamConflict({
-  simpleObject: {
-    any: "amet",
-    bigint: 643990,
-    bigintStr: "nisi",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-    intEnum: SimpleObjectIntEnumEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  str: "omnis",
-}).then((res: ComponentBodyAndParamConflictResponse) => {
+  any: "amet",
+  bigint: 643990,
+  bigintStr: "nisi",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  enum: EnumEnum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
+  intEnum: SimpleObjectIntEnumEnum.Second,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
+}, "omnis").then((res: ComponentBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -77,28 +74,25 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.flattening.componentBodyAndParamNoConflict({
-  paramStr: "molestiae",
-  simpleObject: {
-    any: "perferendis",
-    bigint: 470132,
-    bigintStr: "magnam",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnumEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
+sdk.flattening.componentBodyAndParamNoConflict("molestiae", {
+  any: "perferendis",
+  bigint: 470132,
+  bigintStr: "magnam",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  enum: EnumEnum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnumEnum.Second,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
 }).then((res: ComponentBodyAndParamNoConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -122,10 +116,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.flattening.conflictingParams({
-  strPathParameter: "labore",
-  strQueryParameter: "labore",
-}).then((res: ConflictingParamsResponse) => {
+sdk.flattening.conflictingParams("labore", "labore").then((res: ConflictingParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -149,11 +140,8 @@ const sdk = new SDK({
 });
 
 sdk.flattening.inlineBodyAndParamConflict({
-  requestBody: {
-    str: "suscipit",
-  },
-  str: "natus",
-}).then((res: InlineBodyAndParamConflictResponse) => {
+  str: "suscipit",
+}, "natus").then((res: InlineBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -177,11 +165,8 @@ const sdk = new SDK({
 });
 
 sdk.flattening.inlineBodyAndParamNoConflict({
-  requestBody: {
-    bodyStr: "nobis",
-  },
-  paramStr: "eum",
-}).then((res: InlineBodyAndParamNoConflictResponse) => {
+  bodyStr: "nobis",
+}, "eum").then((res: InlineBodyAndParamNoConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

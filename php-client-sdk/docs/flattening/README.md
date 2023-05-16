@@ -34,29 +34,27 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new ComponentBodyAndParamConflictRequest();
-    $request->simpleObject = new SimpleObject();
-    $request->simpleObject->any = 'fugit';
-    $request->simpleObject->bigint = 677817;
-    $request->simpleObject->bigintStr = 'excepturi';
-    $request->simpleObject->bool = true;
-    $request->simpleObject->boolOpt = true;
-    $request->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->simpleObject->enum = EnumEnum::TWO;
-    $request->simpleObject->float32 = 2.2222222;
-    $request->simpleObject->int = 999999;
-    $request->simpleObject->int32 = 1;
-    $request->simpleObject->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->simpleObject->intEnum = SimpleObjectIntEnumEnum::Third;
-    $request->simpleObject->intOptNull = 999999;
-    $request->simpleObject->num = 1.1;
-    $request->simpleObject->numOptNull = 1.1;
-    $request->simpleObject->str = 'example';
-    $request->simpleObject->strOpt = 'optional example';
-    $request->str = 'tempore';
+    $simpleObject = new SimpleObject();
+    $simpleObject->any = 'fugit';
+    $simpleObject->bigint = 677817;
+    $simpleObject->bigintStr = 'excepturi';
+    $simpleObject->bool = true;
+    $simpleObject->boolOpt = true;
+    $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $simpleObject->enum = EnumEnum::TWO;
+    $simpleObject->float32 = 2.2222222;
+    $simpleObject->int = 999999;
+    $simpleObject->int32 = 1;
+    $simpleObject->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $simpleObject->intEnum = SimpleObjectIntEnumEnum::Third;
+    $simpleObject->intOptNull = 999999;
+    $simpleObject->num = 1.1;
+    $simpleObject->numOptNull = 1.1;
+    $simpleObject->str = 'example';
+    $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamConflict($request);
+    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'tempore');
 
     if ($response->res !== null) {
         // handle response
@@ -88,29 +86,27 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new ComponentBodyAndParamNoConflictRequest();
-    $request->paramStr = 'labore';
-    $request->simpleObject = new SimpleObject();
-    $request->simpleObject->any = 'delectus';
-    $request->simpleObject->bigint = 433288;
-    $request->simpleObject->bigintStr = 'non';
-    $request->simpleObject->bool = true;
-    $request->simpleObject->boolOpt = true;
-    $request->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->simpleObject->enum = EnumEnum::TWO;
-    $request->simpleObject->float32 = 2.2222222;
-    $request->simpleObject->int = 999999;
-    $request->simpleObject->int32 = 1;
-    $request->simpleObject->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->simpleObject->intEnum = SimpleObjectIntEnumEnum::Second;
-    $request->simpleObject->intOptNull = 999999;
-    $request->simpleObject->num = 1.1;
-    $request->simpleObject->numOptNull = 1.1;
-    $request->simpleObject->str = 'example';
-    $request->simpleObject->strOpt = 'optional example';
+    $simpleObject = new SimpleObject();
+    $simpleObject->any = 'labore';
+    $simpleObject->bigint = 962189;
+    $simpleObject->bigintStr = 'eum';
+    $simpleObject->bool = true;
+    $simpleObject->boolOpt = true;
+    $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $simpleObject->enum = EnumEnum::TWO;
+    $simpleObject->float32 = 2.2222222;
+    $simpleObject->int = 999999;
+    $simpleObject->int32 = 1;
+    $simpleObject->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
+    $simpleObject->intEnum = SimpleObjectIntEnumEnum::Third;
+    $simpleObject->intOptNull = 999999;
+    $simpleObject->num = 1.1;
+    $simpleObject->numOptNull = 1.1;
+    $simpleObject->str = 'example';
+    $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamNoConflict($request);
+    $response = $sdk->flattening->componentBodyAndParamNoConflict('sint', $simpleObject);
 
     if ($response->res !== null) {
         // handle response
@@ -138,11 +134,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new ConflictingParamsRequest();
-    $request->strPathParameter = 'aliquid';
-    $request->strQueryParameter = 'provident';
 
-    $response = $sdk->flattening->conflictingParams($request);
+
+    $response = $sdk->flattening->conflictingParams('aliquid', 'provident');
 
     if ($response->res !== null) {
         // handle response
@@ -171,12 +165,10 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new InlineBodyAndParamConflictRequest();
-    $request->requestBody = new InlineBodyAndParamConflictRequestBody();
-    $request->requestBody->str = 'necessitatibus';
-    $request->str = 'sint';
+    $requestBody = new InlineBodyAndParamConflictRequestBody();
+    $requestBody->str = 'necessitatibus';
 
-    $response = $sdk->flattening->inlineBodyAndParamConflict($request);
+    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'sint');
 
     if ($response->res !== null) {
         // handle response
@@ -205,12 +197,10 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new InlineBodyAndParamNoConflictRequest();
-    $request->requestBody = new InlineBodyAndParamNoConflictRequestBody();
-    $request->requestBody->bodyStr = 'officia';
-    $request->paramStr = 'dolor';
+    $requestBody = new InlineBodyAndParamNoConflictRequestBody();
+    $requestBody->bodyStr = 'officia';
 
-    $response = $sdk->flattening->inlineBodyAndParamNoConflict($request);
+    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'dolor');
 
     if ($response->res !== null) {
         // handle response

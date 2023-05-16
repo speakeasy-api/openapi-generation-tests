@@ -80,11 +80,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.DeprecatedNoCommentsGetRequest(
-    deprecated_parameter='vero',
-)
 
-res = s.generation.deprecated_no_comments_get(req)
+res = s.generation.deprecated_no_comments_get('vero')
 
 if res.status_code == 200:
     # handle response
@@ -110,11 +107,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.DeprecatedWithCommentsGetRequest(
-    deprecated_parameter='aspernatur',
-)
 
-res = s.generation.deprecated_with_comments_get(req)
+res = s.generation.deprecated_with_comments_get('aspernatur')
 
 if res.status_code == 200:
     # handle response
@@ -182,15 +176,11 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.IgnoresPostRequest(
-    request_body=operations.IgnoresPostApplicationJSON(
-        callback_url='http://foolhardy-bolero.name',
-        test_prop='ullam',
-    ),
-    test_param='provident',
-)
 
-res = s.generation.ignores_post(req)
+res = s.generation.ignores_post(operations.IgnoresPostApplicationJSON(
+    callback_url='http://foolhardy-bolero.name',
+    test_prop='ullam',
+), 'provident')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
@@ -212,11 +202,8 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = operations.NameOverrideGetRequest(
-    test_query_param='example',
-)
 
-res = s.generation.name_override(req)
+res = s.generation.name_override('example')
 
 if res.overriden_response is not None:
     # handle response

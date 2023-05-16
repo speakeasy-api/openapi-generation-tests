@@ -124,7 +124,11 @@ func (s *generation) CircularReferenceGet(ctx context.Context) (*operations.Circ
 // DeprecatedNoCommentsGet
 //
 // Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible.
-func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, request operations.DeprecatedNoCommentsGetRequest) (*operations.DeprecatedNoCommentsGetResponse, error) {
+func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedNoCommentsGetResponse, error) {
+	request := operations.DeprecatedNoCommentsGetRequest{
+		DeprecatedParameter: deprecatedParameter,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedNoComments"
 
@@ -165,7 +169,11 @@ func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, request operat
 // DeprecatedWithCommentsGet - This is an endpoint setup to test deprecation with comments
 //
 // Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible.
-func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, request operations.DeprecatedWithCommentsGetRequest) (*operations.DeprecatedWithCommentsGetResponse, error) {
+func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedWithCommentsGetResponse, error) {
+	request := operations.DeprecatedWithCommentsGetRequest{
+		DeprecatedParameter: deprecatedParameter,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedWithComments"
 
@@ -289,7 +297,12 @@ func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.Igno
 	return res, nil
 }
 
-func (s *generation) IgnoresPost(ctx context.Context, request operations.IgnoresPostRequest) (*operations.IgnoresPostResponse, error) {
+func (s *generation) IgnoresPost(ctx context.Context, requestBody *operations.IgnoresPostApplicationJSON, testParam *string) (*operations.IgnoresPostResponse, error) {
+	request := operations.IgnoresPostRequest{
+		RequestBody: requestBody,
+		TestParam:   testParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/ignores"
 
@@ -343,7 +356,11 @@ func (s *generation) IgnoresPost(ctx context.Context, request operations.Ignores
 	return res, nil
 }
 
-func (s *generation) NameOverride(ctx context.Context, request operations.NameOverrideGetRequest) (*operations.NameOverrideGetResponse, error) {
+func (s *generation) NameOverride(ctx context.Context, testQueryParam string) (*operations.NameOverrideGetResponse, error) {
+	request := operations.NameOverrideGetRequest{
+		TestQueryParam: testQueryParam,
+	}
+
 	baseURL := s.serverURL
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/nameOverride"
 

@@ -11,9 +11,6 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class DeepObjectQueryParamsObjectRequest
 {
-	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objArrParam')]
-    public ?DeepObjectQueryParamsObjectObjArrParam $objArrParam = null;
-    
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      * 
@@ -22,9 +19,12 @@ class DeepObjectQueryParamsObjectRequest
 	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objParam')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam;
     
+	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=objArrParam')]
+    public ?DeepObjectQueryParamsObjectObjArrParam $objArrParam = null;
+    
 	public function __construct()
 	{
-		$this->objArrParam = null;
 		$this->objParam = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+		$this->objArrParam = null;
 	}
 }

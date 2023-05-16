@@ -4,6 +4,7 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
@@ -37,13 +38,14 @@ export class Flattening {
   }
 
   async componentBodyAndParamConflict(
-    req: operations.ComponentBodyAndParamConflictRequest,
+    simpleObject: shared.SimpleObject,
+    str: string,
     config?: AxiosRequestConfig
   ): Promise<operations.ComponentBodyAndParamConflictResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ComponentBodyAndParamConflictRequest(req);
-    }
-
+    const req = new operations.ComponentBodyAndParamConflictRequest({
+      simpleObject: simpleObject,
+      str: str,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") +
@@ -106,13 +108,14 @@ export class Flattening {
   }
 
   async componentBodyAndParamNoConflict(
-    req: operations.ComponentBodyAndParamNoConflictRequest,
+    paramStr: string,
+    simpleObject: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.ComponentBodyAndParamNoConflictResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ComponentBodyAndParamNoConflictRequest(req);
-    }
-
+    const req = new operations.ComponentBodyAndParamNoConflictRequest({
+      paramStr: paramStr,
+      simpleObject: simpleObject,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") +
@@ -175,13 +178,14 @@ export class Flattening {
   }
 
   async conflictingParams(
-    req: operations.ConflictingParamsRequest,
+    strPathParameter: string,
+    strQueryParameter: string,
     config?: AxiosRequestConfig
   ): Promise<operations.ConflictingParamsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.ConflictingParamsRequest(req);
-    }
-
+    const req = new operations.ConflictingParamsRequest({
+      strPathParameter: strPathParameter,
+      strQueryParameter: strQueryParameter,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -228,13 +232,14 @@ export class Flattening {
   }
 
   async inlineBodyAndParamConflict(
-    req: operations.InlineBodyAndParamConflictRequest,
+    requestBody: operations.InlineBodyAndParamConflictRequestBody,
+    str: string,
     config?: AxiosRequestConfig
   ): Promise<operations.InlineBodyAndParamConflictResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.InlineBodyAndParamConflictRequest(req);
-    }
-
+    const req = new operations.InlineBodyAndParamConflictRequest({
+      requestBody: requestBody,
+      str: str,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") +
@@ -297,13 +302,14 @@ export class Flattening {
   }
 
   async inlineBodyAndParamNoConflict(
-    req: operations.InlineBodyAndParamNoConflictRequest,
+    requestBody: operations.InlineBodyAndParamNoConflictRequestBody,
+    paramStr: string,
     config?: AxiosRequestConfig
   ): Promise<operations.InlineBodyAndParamNoConflictResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.InlineBodyAndParamNoConflictRequest(req);
-    }
-
+    const req = new operations.InlineBodyAndParamNoConflictRequest({
+      requestBody: requestBody,
+      paramStr: paramStr,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") +

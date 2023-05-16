@@ -21,9 +21,14 @@ module OpenApiSDK
       @globals = gbls
     end
 
-    sig { params(request: Operations::ComponentBodyAndParamConflictRequest).returns(Utils::FieldAugmented) }
-    def component_body_and_param_conflict(request)
+    sig { params(simple_object: Shared::SimpleObject, str_: String).returns(Utils::FieldAugmented) }
+    def component_body_and_param_conflict(simple_object, str_)
 
+      request = Operations::ComponentBodyAndParamConflictRequest.new(
+        simple_object: simple_object,
+        str_: str_,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/componentBodyAndParamConflict"
       headers = {}
@@ -59,9 +64,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::ComponentBodyAndParamNoConflictRequest).returns(Utils::FieldAugmented) }
-    def component_body_and_param_no_conflict(request)
+    sig { params(param_str: String, simple_object: Shared::SimpleObject).returns(Utils::FieldAugmented) }
+    def component_body_and_param_no_conflict(param_str, simple_object)
 
+      request = Operations::ComponentBodyAndParamNoConflictRequest.new(
+        param_str: param_str,
+        simple_object: simple_object,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/componentBodyAndParamNoConflict"
       headers = {}
@@ -97,9 +107,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::ConflictingParamsRequest).returns(Utils::FieldAugmented) }
-    def conflicting_params(request)
+    sig { params(str_path_parameter: String, str_query_parameter: String).returns(Utils::FieldAugmented) }
+    def conflicting_params(str_path_parameter, str_query_parameter)
 
+      request = Operations::ConflictingParamsRequest.new(
+        str_path_parameter: str_path_parameter,
+        str_query_parameter: str_query_parameter,
+      )
+      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::ConflictingParamsRequest,
@@ -129,9 +144,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::InlineBodyAndParamConflictRequest).returns(Utils::FieldAugmented) }
-    def inline_body_and_param_conflict(request)
+    sig { params(request_body: Operations::InlineBodyAndParamConflictRequestBody, str_: String).returns(Utils::FieldAugmented) }
+    def inline_body_and_param_conflict(request_body, str_)
 
+      request = Operations::InlineBodyAndParamConflictRequest.new(
+        request_body: request_body,
+        str_: str_,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/inlineBodyAndParamConflict"
       headers = {}
@@ -167,9 +187,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::InlineBodyAndParamNoConflictRequest).returns(Utils::FieldAugmented) }
-    def inline_body_and_param_no_conflict(request)
+    sig { params(request_body: Operations::InlineBodyAndParamNoConflictRequestBody, param_str: String).returns(Utils::FieldAugmented) }
+    def inline_body_and_param_no_conflict(request_body, param_str)
 
+      request = Operations::InlineBodyAndParamNoConflictRequest.new(
+        request_body: request_body,
+        param_str: param_str,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/inlineBodyAndParamNoConflict"
       headers = {}

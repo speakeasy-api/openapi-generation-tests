@@ -740,9 +740,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest).returns(Utils::FieldAugmented) }
-    def request_body_post_multiple_content_types_split_param_form(request)
+    sig { params(request_body: Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded, param_str: String).returns(Utils::FieldAugmented) }
+    def request_body_post_multiple_content_types_split_param_form(request_body, param_str)
 
+      request = Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
+        request_body: request_body,
+        param_str: param_str,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}
@@ -778,9 +783,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest).returns(Utils::FieldAugmented) }
-    def request_body_post_multiple_content_types_split_param_json(request)
+    sig { params(request_body: Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON, param_str: String).returns(Utils::FieldAugmented) }
+    def request_body_post_multiple_content_types_split_param_json(request_body, param_str)
 
+      request = Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
+        request_body: request_body,
+        param_str: param_str,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}
@@ -816,9 +826,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest).returns(Utils::FieldAugmented) }
-    def request_body_post_multiple_content_types_split_param_multipart(request)
+    sig { params(request_body: Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData, param_str: String).returns(Utils::FieldAugmented) }
+    def request_body_post_multiple_content_types_split_param_multipart(request_body, param_str)
 
+      request = Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.new(
+        request_body: request_body,
+        param_str: param_str,
+      )
+      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}

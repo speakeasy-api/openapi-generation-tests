@@ -65,10 +65,11 @@ s = sdk::SDK.new
    
 req = Operations::Operations::StatusPostRetriesRequest(
   path_params=Operations::StatusPostRetriesRequest(
+    status_code=577229,
     simple_object=Shared::SimpleObject(
-      any="occaecati",
-      bigint=699098,
-      bigint_str="adipisci",
+      any="rerum",
+      bigint=237893,
+      bigint_str="asperiores",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -78,14 +79,13 @@ req = Operations::Operations::StatusPostRetriesRequest(
       int=999999,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnumEnum::THIRD,
+      int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
     ),
-    status_code=267262,
   ),
   simple_object=Shared::SimpleObject(
     any="iste",

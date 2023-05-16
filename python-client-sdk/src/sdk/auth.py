@@ -71,7 +71,12 @@ class Auth:
         return res
 
     
-    def basic_auth(self, request: operations.BasicAuthRequest, security: operations.BasicAuthSecurity) -> operations.BasicAuthResponse:
+    def basic_auth(self, security: operations.BasicAuthSecurity, passwd: str, user: str) -> operations.BasicAuthResponse:
+        request = operations.BasicAuthRequest(
+            passwd=passwd,
+            user=user,
+        )
+        
         base_url = self._server_url
         
         url = utils.generate_url(operations.BasicAuthRequest, base_url, '/basic-auth/{user}/{passwd}', request, self._globals)

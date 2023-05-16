@@ -70,7 +70,7 @@ module OpenApiSDK
 
       @security = nil
       @server_url = SERVERS[0]
-      @sdk_version = '1.0.1'
+      @sdk_version = '1.0.2'
       @gen_version = '2.29.0'
       init_sdks
     end

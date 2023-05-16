@@ -39,29 +39,26 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, operations.ComponentBodyAndParamConflictRequest{
-        SimpleObject: shared.SimpleObject{
-            Any: "amet",
-            Bigint: big.NewInt(643990),
-            BigintStr: types.MustBigIntFromString("394869"),
-            Bool: true,
-            BoolOpt: sdk.Bool(true),
-            Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Enum: shared.EnumEnumTwo,
-            Float32: 2.2222222,
-            Int: 999999,
-            Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumEnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumEnumSecond,
-            IntOptNull: sdk.Int64(999999),
-            Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
-            Str: "example",
-            StrOpt: sdk.String("optional example"),
-        },
-        Str: "omnis",
-    })
+    res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, shared.SimpleObject{
+        Any: "amet",
+        Bigint: big.NewInt(643990),
+        BigintStr: types.MustBigIntFromString("394869"),
+        Bool: true,
+        BoolOpt: sdk.Bool(true),
+        Date: types.MustDateFromString("2020-01-01"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+        Enum: shared.EnumEnumTwo,
+        Float32: 2.2222222,
+        Int: 999999,
+        Int32: 1,
+        Int32Enum: shared.SimpleObjectInt32EnumEnumSixtyNine,
+        IntEnum: shared.SimpleObjectIntEnumEnumSecond,
+        IntOptNull: sdk.Int64(999999),
+        Num: 1.1,
+        NumOptNull: sdk.Float64(1.1),
+        Str: "example",
+        StrOpt: sdk.String("optional example"),
+    }, "omnis")
     if err != nil {
         log.Fatal(err)
     }
@@ -99,28 +96,25 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Flattening.ComponentBodyAndParamNoConflict(ctx, operations.ComponentBodyAndParamNoConflictRequest{
-        ParamStr: "molestiae",
-        SimpleObject: shared.SimpleObject{
-            Any: "perferendis",
-            Bigint: big.NewInt(470132),
-            BigintStr: types.MustBigIntFromString("301575"),
-            Bool: true,
-            BoolOpt: sdk.Bool(true),
-            Date: types.MustDateFromString("2020-01-01"),
-            DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Enum: shared.EnumEnumTwo,
-            Float32: 2.2222222,
-            Int: 999999,
-            Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumEnumOneHundredAndEightyOne,
-            IntEnum: shared.SimpleObjectIntEnumEnumSecond,
-            IntOptNull: sdk.Int64(999999),
-            Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
-            Str: "example",
-            StrOpt: sdk.String("optional example"),
-        },
+    res, err := s.Flattening.ComponentBodyAndParamNoConflict(ctx, "molestiae", shared.SimpleObject{
+        Any: "perferendis",
+        Bigint: big.NewInt(470132),
+        BigintStr: types.MustBigIntFromString("301575"),
+        Bool: true,
+        BoolOpt: sdk.Bool(true),
+        Date: types.MustDateFromString("2020-01-01"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+        Enum: shared.EnumEnumTwo,
+        Float32: 2.2222222,
+        Int: 999999,
+        Int32: 1,
+        Int32Enum: shared.SimpleObjectInt32EnumEnumOneHundredAndEightyOne,
+        IntEnum: shared.SimpleObjectIntEnumEnumSecond,
+        IntOptNull: sdk.Int64(999999),
+        Num: 1.1,
+        NumOptNull: sdk.Float64(1.1),
+        Str: "example",
+        StrOpt: sdk.String("optional example"),
     })
     if err != nil {
         log.Fatal(err)
@@ -156,10 +150,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Flattening.ConflictingParams(ctx, operations.ConflictingParamsRequest{
-        StrPathParameter: "labore",
-        StrQueryParameter: "labore",
-    })
+    res, err := s.Flattening.ConflictingParams(ctx, "labore", "labore")
     if err != nil {
         log.Fatal(err)
     }
@@ -194,12 +185,9 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Flattening.InlineBodyAndParamConflict(ctx, operations.InlineBodyAndParamConflictRequest{
-        RequestBody: operations.InlineBodyAndParamConflictRequestBody{
-            Str: "suscipit",
-        },
-        Str: "natus",
-    })
+    res, err := s.Flattening.InlineBodyAndParamConflict(ctx, operations.InlineBodyAndParamConflictRequestBody{
+        Str: "suscipit",
+    }, "natus")
     if err != nil {
         log.Fatal(err)
     }
@@ -234,12 +222,9 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, operations.InlineBodyAndParamNoConflictRequest{
-        RequestBody: operations.InlineBodyAndParamNoConflictRequestBody{
-            BodyStr: "nobis",
-        },
-        ParamStr: "eum",
-    })
+    res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, operations.InlineBodyAndParamNoConflictRequestBody{
+        BodyStr: "nobis",
+    }, "eum")
     if err != nil {
         log.Fatal(err)
     }

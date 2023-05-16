@@ -92,10 +92,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new DeprecatedNoCommentsGetRequest();
-    $request->deprecatedParameter = 'debitis';
 
-    $response = $sdk->generation->deprecatedNoCommentsGet($request);
+
+    $response = $sdk->generation->deprecatedNoCommentsGet('debitis');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -127,10 +126,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new DeprecatedWithCommentsGetRequest();
-    $request->deprecatedParameter = 'a';
 
-    $response = $sdk->generation->deprecatedWithCommentsGet($request);
+
+    $response = $sdk->generation->deprecatedWithCommentsGet('a');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -213,13 +211,11 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new IgnoresPostRequest();
-    $request->requestBody = new IgnoresPostApplicationJSON();
-    $request->requestBody->callbackUrl = 'https://intrepid-ikebana.org';
-    $request->requestBody->testProp = 'maiores';
-    $request->testParam = 'rerum';
+    $requestBody = new IgnoresPostApplicationJSON();
+    $requestBody->callbackUrl = 'https://intrepid-ikebana.org';
+    $requestBody->testProp = 'maiores';
 
-    $response = $sdk->generation->ignoresPost($request);
+    $response = $sdk->generation->ignoresPost($requestBody, 'rerum');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -247,10 +243,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new NameOverrideGetRequest();
-    $request->testQueryParam = 'example';
 
-    $response = $sdk->generation->nameOverride($request);
+
+    $response = $sdk->generation->nameOverride('example');
 
     if ($response->overridenResponse !== null) {
         // handle response

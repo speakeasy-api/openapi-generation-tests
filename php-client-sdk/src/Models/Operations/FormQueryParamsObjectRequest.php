@@ -14,22 +14,22 @@ class FormQueryParamsObjectRequest
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
-     */
-	#[SpeakeasyMetadata('queryParam:style=form,explode=false,name=objParam')]
-    public ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam = null;
-    
-    /**
-     * A simple object that uses all our supported primitive types and enums and has optional properties.
-     * 
      * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=objParamExploded')]
     public \OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParamExploded;
     
+    /**
+     * A simple object that uses all our supported primitive types and enums and has optional properties.
+     * 
+     * @var ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=false,name=objParam')]
+    public ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $objParam = null;
+    
 	public function __construct()
 	{
-		$this->objParam = null;
 		$this->objParamExploded = new \OpenAPI\OpenAPI\Models\Shared\SimpleObject();
+		$this->objParam = null;
 	}
 }

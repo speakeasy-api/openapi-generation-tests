@@ -42,9 +42,13 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::StatusGetRequest).returns(Utils::FieldAugmented) }
-    def status_get(request)
+    sig { params(status_code: Integer).returns(Utils::FieldAugmented) }
+    def status_get(status_code)
 
+      request = Operations::StatusGetRequest.new(
+        status_code: status_code,
+      )
+      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::StatusGetRequest,
@@ -68,9 +72,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::StatusPostRetriesRequest).returns(Utils::FieldAugmented) }
-    def status_post_retries(request)
+    sig { params(status_code: Integer, simple_object: T.nilable(Shared::SimpleObject)).returns(Utils::FieldAugmented) }
+    def status_post_retries(status_code, simple_object = nil)
 
+      request = Operations::StatusPostRetriesRequest.new(
+        status_code: status_code,
+        simple_object: simple_object,
+      )
+      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::StatusPostRetriesRequest,

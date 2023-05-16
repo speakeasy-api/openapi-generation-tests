@@ -35,7 +35,14 @@ public class Globals {
 		this._globals = globals;
 	}
 
-    public org.openapis.openapi.models.operations.GlobalPathParameterGetResponse globalPathParameterGet(org.openapis.openapi.models.operations.GlobalPathParameterGetRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.GlobalPathParameterGetResponse globalPathParameterGet() throws Exception {
+        return this.globalPathParameterGet(null);
+    }
+
+    public org.openapis.openapi.models.operations.GlobalPathParameterGetResponse globalPathParameterGet(Long globalPathParam) throws Exception {
+        org.openapis.openapi.models.operations.GlobalPathParameterGetRequest request = new org.openapis.openapi.models.operations.GlobalPathParameterGetRequest();
+        request.globalPathParam=globalPathParam;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.GlobalPathParameterGetRequest.class, baseUrl, "/anything/globals/pathParameter/{globalPathParam}", request, this._globals);
         
@@ -66,7 +73,14 @@ public class Globals {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse globalsQueryParameterGet(org.openapis.openapi.models.operations.GlobalsQueryParameterGetRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse globalsQueryParameterGet() throws Exception {
+        return this.globalsQueryParameterGet(null);
+    }
+
+    public org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse globalsQueryParameterGet(String globalQueryParam) throws Exception {
+        org.openapis.openapi.models.operations.GlobalsQueryParameterGetRequest request = new org.openapis.openapi.models.operations.GlobalsQueryParameterGetRequest();
+        request.globalQueryParam=globalQueryParam;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/globals/queryParameter");
         

@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from sdk.models import operations
+from sdk.models import operations, shared
 from typing import Any, Optional
 
 class Flattening:
@@ -25,7 +25,12 @@ class Flattening:
         self._globals = gbls
         
     
-    def component_body_and_param_conflict(self, request: operations.ComponentBodyAndParamConflictRequest) -> operations.ComponentBodyAndParamConflictResponse:
+    def component_body_and_param_conflict(self, simple_object: shared.SimpleObject, str_: str) -> operations.ComponentBodyAndParamConflictResponse:
+        request = operations.ComponentBodyAndParamConflictRequest(
+            simple_object=simple_object,
+            str_=str_,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/flattening/componentBodyAndParamConflict'
@@ -53,7 +58,12 @@ class Flattening:
         return res
 
     
-    def component_body_and_param_no_conflict(self, request: operations.ComponentBodyAndParamNoConflictRequest) -> operations.ComponentBodyAndParamNoConflictResponse:
+    def component_body_and_param_no_conflict(self, param_str: str, simple_object: shared.SimpleObject) -> operations.ComponentBodyAndParamNoConflictResponse:
+        request = operations.ComponentBodyAndParamNoConflictRequest(
+            param_str=param_str,
+            simple_object=simple_object,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/flattening/componentBodyAndParamNoConflict'
@@ -81,7 +91,12 @@ class Flattening:
         return res
 
     
-    def conflicting_params(self, request: operations.ConflictingParamsRequest) -> operations.ConflictingParamsResponse:
+    def conflicting_params(self, str_path_parameter: str, str_query_parameter: str) -> operations.ConflictingParamsResponse:
+        request = operations.ConflictingParamsRequest(
+            str_path_parameter=str_path_parameter,
+            str_query_parameter=str_query_parameter,
+        )
+        
         base_url = self._server_url
         
         url = utils.generate_url(operations.ConflictingParamsRequest, base_url, '/anything/flattening/conflictingParams/{str}', request, self._globals)
@@ -103,7 +118,12 @@ class Flattening:
         return res
 
     
-    def inline_body_and_param_conflict(self, request: operations.InlineBodyAndParamConflictRequest) -> operations.InlineBodyAndParamConflictResponse:
+    def inline_body_and_param_conflict(self, request_body: operations.InlineBodyAndParamConflictRequestBody, str_: str) -> operations.InlineBodyAndParamConflictResponse:
+        request = operations.InlineBodyAndParamConflictRequest(
+            request_body=request_body,
+            str_=str_,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/flattening/inlineBodyAndParamConflict'
@@ -131,7 +151,12 @@ class Flattening:
         return res
 
     
-    def inline_body_and_param_no_conflict(self, request: operations.InlineBodyAndParamNoConflictRequest) -> operations.InlineBodyAndParamNoConflictResponse:
+    def inline_body_and_param_no_conflict(self, request_body: operations.InlineBodyAndParamNoConflictRequestBody, param_str: str) -> operations.InlineBodyAndParamNoConflictResponse:
+        request = operations.InlineBodyAndParamNoConflictRequest(
+            request_body=request_body,
+            param_str=param_str,
+        )
+        
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/flattening/inlineBodyAndParamNoConflict'

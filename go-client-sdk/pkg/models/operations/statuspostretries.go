@@ -8,8 +8,8 @@ import (
 )
 
 type StatusPostRetriesRequest struct {
-	SimpleObject *shared.SimpleObject `request:"mediaType=application/json"`
 	StatusCode   int64                `pathParam:"style=simple,explode=false,name=statusCode"`
+	SimpleObject *shared.SimpleObject `request:"mediaType=application/json"`
 }
 
 type StatusPostRetriesResponse struct {

@@ -12,14 +12,6 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class DeepObjectQueryParamsMapRequest
 {
     /**
-     * $mapArrParam
-     * 
-     * @var ?array<string, array<string>> $mapArrParam
-     */
-	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=mapArrParam')]
-    public ?array $mapArrParam = null;
-    
-    /**
      * $mapParam
      * 
      * @var array<string, string> $mapParam
@@ -27,9 +19,17 @@ class DeepObjectQueryParamsMapRequest
 	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=mapParam')]
     public array $mapParam;
     
+    /**
+     * $mapArrParam
+     * 
+     * @var ?array<string, array<string>> $mapArrParam
+     */
+	#[SpeakeasyMetadata('queryParam:style=deepObject,explode=true,name=mapArrParam')]
+    public ?array $mapArrParam = null;
+    
 	public function __construct()
 	{
-		$this->mapArrParam = null;
 		$this->mapParam = [];
+		$this->mapArrParam = null;
 	}
 }

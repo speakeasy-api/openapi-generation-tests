@@ -4,6 +4,7 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import * as shared from "./models/shared";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
@@ -37,13 +38,14 @@ export class ParametersT {
   }
 
   async deepObjectQueryParamsMap(
-    req: operations.DeepObjectQueryParamsMapRequest,
+    mapParam: Record<string, string>,
+    mapArrParam?: Record<string, string[]>,
     config?: AxiosRequestConfig
   ): Promise<operations.DeepObjectQueryParamsMapResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeepObjectQueryParamsMapRequest(req);
-    }
-
+    const req = new operations.DeepObjectQueryParamsMapRequest({
+      mapParam: mapParam,
+      mapArrParam: mapArrParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/deepObject/map";
@@ -86,13 +88,14 @@ export class ParametersT {
   }
 
   async deepObjectQueryParamsObject(
-    req: operations.DeepObjectQueryParamsObjectRequest,
+    objParam: shared.SimpleObject,
+    objArrParam?: operations.DeepObjectQueryParamsObjectObjArrParam,
     config?: AxiosRequestConfig
   ): Promise<operations.DeepObjectQueryParamsObjectResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.DeepObjectQueryParamsObjectRequest(req);
-    }
-
+    const req = new operations.DeepObjectQueryParamsObjectRequest({
+      objParam: objParam,
+      objArrParam: objArrParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/deepObject/obj";
@@ -135,13 +138,14 @@ export class ParametersT {
   }
 
   async formQueryParamsArray(
-    req: operations.FormQueryParamsArrayRequest,
+    arrParam?: string[],
+    arrParamExploded?: number[],
     config?: AxiosRequestConfig
   ): Promise<operations.FormQueryParamsArrayResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.FormQueryParamsArrayRequest(req);
-    }
-
+    const req = new operations.FormQueryParamsArrayRequest({
+      arrParam: arrParam,
+      arrParamExploded: arrParamExploded,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/form/array";
@@ -184,13 +188,14 @@ export class ParametersT {
   }
 
   async formQueryParamsMap(
-    req: operations.FormQueryParamsMapRequest,
+    mapParam?: Record<string, string>,
+    mapParamExploded?: Record<string, number>,
     config?: AxiosRequestConfig
   ): Promise<operations.FormQueryParamsMapResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.FormQueryParamsMapRequest(req);
-    }
-
+    const req = new operations.FormQueryParamsMapRequest({
+      mapParam: mapParam,
+      mapParamExploded: mapParamExploded,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/form/map";
@@ -233,13 +238,14 @@ export class ParametersT {
   }
 
   async formQueryParamsObject(
-    req: operations.FormQueryParamsObjectRequest,
+    objParamExploded: shared.SimpleObject,
+    objParam?: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.FormQueryParamsObjectResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.FormQueryParamsObjectRequest(req);
-    }
-
+    const req = new operations.FormQueryParamsObjectRequest({
+      objParamExploded: objParamExploded,
+      objParam: objParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/form/obj";
@@ -282,13 +288,18 @@ export class ParametersT {
   }
 
   async formQueryParamsPrimitive(
-    req: operations.FormQueryParamsPrimitiveRequest,
+    boolParam: boolean,
+    intParam: number,
+    numParam: number,
+    strParam: string,
     config?: AxiosRequestConfig
   ): Promise<operations.FormQueryParamsPrimitiveResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.FormQueryParamsPrimitiveRequest(req);
-    }
-
+    const req = new operations.FormQueryParamsPrimitiveRequest({
+      boolParam: boolParam,
+      intParam: intParam,
+      numParam: numParam,
+      strParam: strParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/form/primitive";
@@ -331,13 +342,14 @@ export class ParametersT {
   }
 
   async formQueryParamsRefParamObject(
-    req: operations.FormQueryParamsRefParamObjectRequest,
+    refObjParam?: shared.RefQueryParamObj,
+    refObjParamExploded?: shared.RefQueryParamObjExploded,
     config?: AxiosRequestConfig
   ): Promise<operations.FormQueryParamsRefParamObjectResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.FormQueryParamsRefParamObjectRequest(req);
-    }
-
+    const req = new operations.FormQueryParamsRefParamObjectRequest({
+      refObjParam: refObjParam,
+      refObjParamExploded: refObjParamExploded,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/form/refParamObject";
@@ -380,13 +392,12 @@ export class ParametersT {
   }
 
   async headerParamsArray(
-    req: operations.HeaderParamsArrayRequest,
+    xHeaderArray: string[],
     config?: AxiosRequestConfig
   ): Promise<operations.HeaderParamsArrayResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.HeaderParamsArrayRequest(req);
-    }
-
+    const req = new operations.HeaderParamsArrayRequest({
+      xHeaderArray: xHeaderArray,
+    });
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/array";
 
@@ -429,13 +440,14 @@ export class ParametersT {
   }
 
   async headerParamsMap(
-    req: operations.HeaderParamsMapRequest,
+    xHeaderMap: Record<string, string>,
+    xHeaderMapExplode: Record<string, string>,
     config?: AxiosRequestConfig
   ): Promise<operations.HeaderParamsMapResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.HeaderParamsMapRequest(req);
-    }
-
+    const req = new operations.HeaderParamsMapRequest({
+      xHeaderMap: xHeaderMap,
+      xHeaderMapExplode: xHeaderMapExplode,
+    });
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/map";
 
@@ -478,13 +490,14 @@ export class ParametersT {
   }
 
   async headerParamsObject(
-    req: operations.HeaderParamsObjectRequest,
+    xHeaderObj: shared.SimpleObject,
+    xHeaderObjExplode: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.HeaderParamsObjectResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.HeaderParamsObjectRequest(req);
-    }
-
+    const req = new operations.HeaderParamsObjectRequest({
+      xHeaderObj: xHeaderObj,
+      xHeaderObjExplode: xHeaderObjExplode,
+    });
     const baseURL: string = this._serverURL;
     const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/obj";
 
@@ -527,13 +540,18 @@ export class ParametersT {
   }
 
   async headerParamsPrimitive(
-    req: operations.HeaderParamsPrimitiveRequest,
+    xHeaderBoolean: boolean,
+    xHeaderInteger: number,
+    xHeaderNumber: number,
+    xHeaderString: string,
     config?: AxiosRequestConfig
   ): Promise<operations.HeaderParamsPrimitiveResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.HeaderParamsPrimitiveRequest(req);
-    }
-
+    const req = new operations.HeaderParamsPrimitiveRequest({
+      xHeaderBoolean: xHeaderBoolean,
+      xHeaderInteger: xHeaderInteger,
+      xHeaderNumber: xHeaderNumber,
+      xHeaderString: xHeaderString,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/headers/primitive";
@@ -577,13 +595,14 @@ export class ParametersT {
   }
 
   async jsonQueryParamsObject(
-    req: operations.JsonQueryParamsObjectRequest,
+    deepObjParam: shared.DeepObject,
+    simpleObjParam: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.JsonQueryParamsObjectResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.JsonQueryParamsObjectRequest(req);
-    }
-
+    const req = new operations.JsonQueryParamsObjectRequest({
+      deepObjParam: deepObjParam,
+      simpleObjParam: simpleObjParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/json/obj";
@@ -626,13 +645,16 @@ export class ParametersT {
   }
 
   async mixedQueryParams(
-    req: operations.MixedQueryParamsRequest,
+    deepObjectParam: shared.SimpleObject,
+    formParam: shared.SimpleObject,
+    jsonParam: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.MixedQueryParamsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.MixedQueryParamsRequest(req);
-    }
-
+    const req = new operations.MixedQueryParamsRequest({
+      deepObjectParam: deepObjectParam,
+      formParam: formParam,
+      jsonParam: jsonParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/mixed";
@@ -675,13 +697,12 @@ export class ParametersT {
   }
 
   async pathParameterJson(
-    req: operations.PathParameterJsonRequest,
+    jsonObj: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.PathParameterJsonResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PathParameterJsonRequest(req);
-    }
-
+    const req = new operations.PathParameterJsonRequest({
+      jsonObj: jsonObj,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -726,13 +747,18 @@ export class ParametersT {
   }
 
   async pipeDelimitedQueryParamsArray(
-    req: operations.PipeDelimitedQueryParamsArrayRequest,
+    arrParam?: string[],
+    arrParamExploded?: number[],
+    mapParam?: Record<string, string>,
+    objParam?: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.PipeDelimitedQueryParamsArrayResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.PipeDelimitedQueryParamsArrayRequest(req);
-    }
-
+    const req = new operations.PipeDelimitedQueryParamsArrayRequest({
+      arrParam: arrParam,
+      arrParamExploded: arrParamExploded,
+      mapParam: mapParam,
+      objParam: objParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string =
       baseURL.replace(/\/$/, "") + "/anything/queryParams/pipe/array";
@@ -775,13 +801,12 @@ export class ParametersT {
   }
 
   async simplePathParameterArrays(
-    req: operations.SimplePathParameterArraysRequest,
+    arrParam: string[],
     config?: AxiosRequestConfig
   ): Promise<operations.SimplePathParameterArraysResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.SimplePathParameterArraysRequest(req);
-    }
-
+    const req = new operations.SimplePathParameterArraysRequest({
+      arrParam: arrParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -826,13 +851,14 @@ export class ParametersT {
   }
 
   async simplePathParameterMaps(
-    req: operations.SimplePathParameterMapsRequest,
+    mapParam: Record<string, string>,
+    mapParamExploded: Record<string, number>,
     config?: AxiosRequestConfig
   ): Promise<operations.SimplePathParameterMapsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.SimplePathParameterMapsRequest(req);
-    }
-
+    const req = new operations.SimplePathParameterMapsRequest({
+      mapParam: mapParam,
+      mapParamExploded: mapParamExploded,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -877,13 +903,14 @@ export class ParametersT {
   }
 
   async simplePathParameterObjects(
-    req: operations.SimplePathParameterObjectsRequest,
+    objParam: shared.SimpleObject,
+    objParamExploded: shared.SimpleObject,
     config?: AxiosRequestConfig
   ): Promise<operations.SimplePathParameterObjectsResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.SimplePathParameterObjectsRequest(req);
-    }
-
+    const req = new operations.SimplePathParameterObjectsRequest({
+      objParam: objParam,
+      objParamExploded: objParamExploded,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,
@@ -928,13 +955,18 @@ export class ParametersT {
   }
 
   async simplePathParameterPrimitives(
-    req: operations.SimplePathParameterPrimitivesRequest,
+    boolParam: boolean,
+    intParam: number,
+    numParam: number,
+    strParam: string,
     config?: AxiosRequestConfig
   ): Promise<operations.SimplePathParameterPrimitivesResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.SimplePathParameterPrimitivesRequest(req);
-    }
-
+    const req = new operations.SimplePathParameterPrimitivesRequest({
+      boolParam: boolParam,
+      intParam: intParam,
+      numParam: numParam,
+      strParam: strParam,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,

@@ -82,9 +82,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.deprecatedNoCommentsGet({
-  deprecatedParameter: "vero",
-}).then((res: DeprecatedNoCommentsGetResponse) => {
+sdk.generation.deprecatedNoCommentsGet("vero").then((res: DeprecatedNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -111,9 +109,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.deprecatedWithCommentsGet({
-  deprecatedParameter: "aspernatur",
-}).then((res: DeprecatedWithCommentsGetResponse) => {
+sdk.generation.deprecatedWithCommentsGet("aspernatur").then((res: DeprecatedWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -187,12 +183,9 @@ const sdk = new SDK({
 });
 
 sdk.generation.ignoresPost({
-  requestBody: {
-    callbackUrl: "http://foolhardy-bolero.name",
-    testProp: "ullam",
-  },
-  testParam: "provident",
-}).then((res: IgnoresPostResponse) => {
+  callbackUrl: "http://foolhardy-bolero.name",
+  testProp: "ullam",
+}, "provident").then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -217,9 +210,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.nameOverride({
-  testQueryParam: "example",
-}).then((res: NameOverrideGetResponse) => {
+sdk.generation.nameOverride("example").then((res: NameOverrideGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

@@ -35,7 +35,14 @@ public class Parameters {
 		this._globals = globals;
 	}
 
-    public org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse deepObjectQueryParamsMap(org.openapis.openapi.models.operations.DeepObjectQueryParamsMapRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse deepObjectQueryParamsMap(java.util.Map<String, String> mapParam) throws Exception {
+        return this.deepObjectQueryParamsMap(mapParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse deepObjectQueryParamsMap(java.util.Map<String, String> mapParam, java.util.Map<String, String[]> mapArrParam) throws Exception {
+        org.openapis.openapi.models.operations.DeepObjectQueryParamsMapRequest request = new org.openapis.openapi.models.operations.DeepObjectQueryParamsMapRequest(mapParam);
+        request.mapArrParam=mapArrParam;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/deepObject/map");
         
@@ -72,7 +79,14 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse deepObjectQueryParamsObject(org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse deepObjectQueryParamsObject(org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        return this.deepObjectQueryParamsObject(objParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectResponse deepObjectQueryParamsObject(org.openapis.openapi.models.shared.SimpleObject objParam, org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectObjArrParam objArrParam) throws Exception {
+        org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest request = new org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest(objParam);
+        request.objArrParam=objArrParam;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/deepObject/obj");
         
@@ -109,7 +123,19 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.FormQueryParamsArrayResponse formQueryParamsArray(org.openapis.openapi.models.operations.FormQueryParamsArrayRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.FormQueryParamsArrayResponse formQueryParamsArray() throws Exception {
+        return this.formQueryParamsArray(null, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsArrayResponse formQueryParamsArray(String[] arrParam) throws Exception {
+        return this.formQueryParamsArray(arrParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsArrayResponse formQueryParamsArray(String[] arrParam, Long[] arrParamExploded) throws Exception {
+        org.openapis.openapi.models.operations.FormQueryParamsArrayRequest request = new org.openapis.openapi.models.operations.FormQueryParamsArrayRequest();
+        request.arrParam=arrParam;
+        request.arrParamExploded=arrParamExploded;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/array");
         
@@ -146,7 +172,19 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.FormQueryParamsMapResponse formQueryParamsMap(org.openapis.openapi.models.operations.FormQueryParamsMapRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.FormQueryParamsMapResponse formQueryParamsMap() throws Exception {
+        return this.formQueryParamsMap(null, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsMapResponse formQueryParamsMap(java.util.Map<String, String> mapParam) throws Exception {
+        return this.formQueryParamsMap(mapParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsMapResponse formQueryParamsMap(java.util.Map<String, String> mapParam, java.util.Map<String, Long> mapParamExploded) throws Exception {
+        org.openapis.openapi.models.operations.FormQueryParamsMapRequest request = new org.openapis.openapi.models.operations.FormQueryParamsMapRequest();
+        request.mapParam=mapParam;
+        request.mapParamExploded=mapParamExploded;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/map");
         
@@ -183,7 +221,14 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.FormQueryParamsObjectResponse formQueryParamsObject(org.openapis.openapi.models.operations.FormQueryParamsObjectRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.FormQueryParamsObjectResponse formQueryParamsObject(org.openapis.openapi.models.shared.SimpleObject objParamExploded) throws Exception {
+        return this.formQueryParamsObject(objParamExploded, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsObjectResponse formQueryParamsObject(org.openapis.openapi.models.shared.SimpleObject objParamExploded, org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        org.openapis.openapi.models.operations.FormQueryParamsObjectRequest request = new org.openapis.openapi.models.operations.FormQueryParamsObjectRequest(objParamExploded);
+        request.objParam=objParam;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/obj");
         
@@ -220,7 +265,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.FormQueryParamsPrimitiveResponse formQueryParamsPrimitive(org.openapis.openapi.models.operations.FormQueryParamsPrimitiveRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.FormQueryParamsPrimitiveResponse formQueryParamsPrimitive(Boolean boolParam, Long intParam, Double numParam, String strParam) throws Exception {
+        org.openapis.openapi.models.operations.FormQueryParamsPrimitiveRequest request = new org.openapis.openapi.models.operations.FormQueryParamsPrimitiveRequest(boolParam, intParam, numParam, strParam);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/primitive");
         
@@ -257,7 +304,23 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse formQueryParamsRefParamObject(org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse formQueryParamsRefParamObject() throws Exception {
+        return this.formQueryParamsRefParamObject(null, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse formQueryParamsRefParamObject(org.openapis.openapi.models.shared.RefQueryParamObjExploded refObjParamExploded) throws Exception {
+        return this.formQueryParamsRefParamObject(null, refObjParamExploded);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse formQueryParamsRefParamObject(org.openapis.openapi.models.shared.RefQueryParamObj refObjParam) throws Exception {
+        return this.formQueryParamsRefParamObject(refObjParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectResponse formQueryParamsRefParamObject(org.openapis.openapi.models.shared.RefQueryParamObj refObjParam, org.openapis.openapi.models.shared.RefQueryParamObjExploded refObjParamExploded) throws Exception {
+        org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectRequest request = new org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectRequest();
+        request.refObjParam=refObjParam;
+        request.refObjParamExploded=refObjParamExploded;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/refParamObject");
         
@@ -294,7 +357,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.HeaderParamsArrayResponse headerParamsArray(org.openapis.openapi.models.operations.HeaderParamsArrayRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.HeaderParamsArrayResponse headerParamsArray(String[] xHeaderArray) throws Exception {
+        org.openapis.openapi.models.operations.HeaderParamsArrayRequest request = new org.openapis.openapi.models.operations.HeaderParamsArrayRequest(xHeaderArray);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/array");
         
@@ -333,7 +398,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.HeaderParamsMapResponse headerParamsMap(org.openapis.openapi.models.operations.HeaderParamsMapRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.HeaderParamsMapResponse headerParamsMap(java.util.Map<String, String> xHeaderMap, java.util.Map<String, String> xHeaderMapExplode) throws Exception {
+        org.openapis.openapi.models.operations.HeaderParamsMapRequest request = new org.openapis.openapi.models.operations.HeaderParamsMapRequest(xHeaderMap, xHeaderMapExplode);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/map");
         
@@ -372,7 +439,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.HeaderParamsObjectResponse headerParamsObject(org.openapis.openapi.models.operations.HeaderParamsObjectRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.HeaderParamsObjectResponse headerParamsObject(org.openapis.openapi.models.shared.SimpleObject xHeaderObj, org.openapis.openapi.models.shared.SimpleObject xHeaderObjExplode) throws Exception {
+        org.openapis.openapi.models.operations.HeaderParamsObjectRequest request = new org.openapis.openapi.models.operations.HeaderParamsObjectRequest(xHeaderObj, xHeaderObjExplode);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/obj");
         
@@ -411,7 +480,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.HeaderParamsPrimitiveResponse headerParamsPrimitive(org.openapis.openapi.models.operations.HeaderParamsPrimitiveRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.HeaderParamsPrimitiveResponse headerParamsPrimitive(Boolean xHeaderBoolean, Long xHeaderInteger, Double xHeaderNumber, String xHeaderString) throws Exception {
+        org.openapis.openapi.models.operations.HeaderParamsPrimitiveRequest request = new org.openapis.openapi.models.operations.HeaderParamsPrimitiveRequest(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/primitive");
         
@@ -450,7 +521,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse jsonQueryParamsObject(org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse jsonQueryParamsObject(org.openapis.openapi.models.shared.DeepObject deepObjParam, org.openapis.openapi.models.shared.SimpleObject simpleObjParam) throws Exception {
+        org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest request = new org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest(deepObjParam, simpleObjParam);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/json/obj");
         
@@ -487,7 +560,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.MixedQueryParamsResponse mixedQueryParams(org.openapis.openapi.models.operations.MixedQueryParamsRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.MixedQueryParamsResponse mixedQueryParams(org.openapis.openapi.models.shared.SimpleObject deepObjectParam, org.openapis.openapi.models.shared.SimpleObject formParam, org.openapis.openapi.models.shared.SimpleObject jsonParam) throws Exception {
+        org.openapis.openapi.models.operations.MixedQueryParamsRequest request = new org.openapis.openapi.models.operations.MixedQueryParamsRequest(deepObjectParam, formParam, jsonParam);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/mixed");
         
@@ -524,7 +599,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.PathParameterJsonResponse pathParameterJson(org.openapis.openapi.models.operations.PathParameterJsonRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.PathParameterJsonResponse pathParameterJson(org.openapis.openapi.models.shared.SimpleObject jsonObj) throws Exception {
+        org.openapis.openapi.models.operations.PathParameterJsonRequest request = new org.openapis.openapi.models.operations.PathParameterJsonRequest(jsonObj);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.PathParameterJsonRequest.class, baseUrl, "/anything/pathParams/json/{jsonObj}", request, this._globals);
         
@@ -555,7 +632,57 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray() throws Exception {
+        return this.pipeDelimitedQueryParamsArray(null, null, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(null, null, null, objParam);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(java.util.Map<String, String> mapParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(null, null, mapParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(java.util.Map<String, String> mapParam, org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(null, null, mapParam, objParam);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(arrParam, null, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam, org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(arrParam, null, null, objParam);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam, java.util.Map<String, String> mapParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(arrParam, null, mapParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam, java.util.Map<String, String> mapParam, org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(arrParam, null, mapParam, objParam);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam, Long[] arrParamExploded) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam, Long[] arrParamExploded, org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, null, objParam);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam, Long[] arrParamExploded, java.util.Map<String, String> mapParam) throws Exception {
+        return this.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapParam, null);
+    }
+
+    public org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayResponse pipeDelimitedQueryParamsArray(String[] arrParam, Long[] arrParamExploded, java.util.Map<String, String> mapParam, org.openapis.openapi.models.shared.SimpleObject objParam) throws Exception {
+        org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayRequest request = new org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayRequest();
+        request.arrParam=arrParam;
+        request.arrParamExploded=arrParamExploded;
+        request.mapParam=mapParam;
+        request.objParam=objParam;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/pipe/array");
         
@@ -592,7 +719,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.SimplePathParameterArraysResponse simplePathParameterArrays(org.openapis.openapi.models.operations.SimplePathParameterArraysRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.SimplePathParameterArraysResponse simplePathParameterArrays(String[] arrParam) throws Exception {
+        org.openapis.openapi.models.operations.SimplePathParameterArraysRequest request = new org.openapis.openapi.models.operations.SimplePathParameterArraysRequest(arrParam);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterArraysRequest.class, baseUrl, "/anything/pathParams/arr/{arrParam}", request, this._globals);
         
@@ -623,7 +752,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.SimplePathParameterMapsResponse simplePathParameterMaps(org.openapis.openapi.models.operations.SimplePathParameterMapsRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.SimplePathParameterMapsResponse simplePathParameterMaps(java.util.Map<String, String> mapParam, java.util.Map<String, Long> mapParamExploded) throws Exception {
+        org.openapis.openapi.models.operations.SimplePathParameterMapsRequest request = new org.openapis.openapi.models.operations.SimplePathParameterMapsRequest(mapParam, mapParamExploded);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterMapsRequest.class, baseUrl, "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}", request, this._globals);
         
@@ -654,7 +785,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse simplePathParameterObjects(org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse simplePathParameterObjects(org.openapis.openapi.models.shared.SimpleObject objParam, org.openapis.openapi.models.shared.SimpleObject objParamExploded) throws Exception {
+        org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest request = new org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest(objParam, objParamExploded);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest.class, baseUrl, "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}", request, this._globals);
         
@@ -685,7 +818,9 @@ public class Parameters {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.SimplePathParameterPrimitivesResponse simplePathParameterPrimitives(org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.SimplePathParameterPrimitivesResponse simplePathParameterPrimitives(Boolean boolParam, Long intParam, Double numParam, String strParam) throws Exception {
+        org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest request = new org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest(boolParam, intParam, numParam, strParam);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest.class, baseUrl, "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}", request, this._globals);
         

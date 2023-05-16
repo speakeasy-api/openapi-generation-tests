@@ -7,6 +7,7 @@ import (
 	"fmt"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -82,7 +83,11 @@ func (s *errors) ConnectionErrorGet(ctx context.Context, opts ...operations.Opti
 	return res, nil
 }
 
-func (s *errors) StatusGet(ctx context.Context, request operations.StatusGetRequest) (*operations.StatusGetResponse, error) {
+func (s *errors) StatusGet(ctx context.Context, statusCode int64) (*operations.StatusGetResponse, error) {
+	request := operations.StatusGetRequest{
+		StatusCode: statusCode,
+	}
+
 	baseURL := s.serverURL
 	url, err := utils.GenerateURL(ctx, baseURL, "/status/{statusCode}", request, s.globals)
 	if err != nil {
@@ -125,7 +130,12 @@ func (s *errors) StatusGet(ctx context.Context, request operations.StatusGetRequ
 	return res, nil
 }
 
-func (s *errors) StatusPostRetries(ctx context.Context, request operations.StatusPostRetriesRequest, opts ...operations.Option) (*operations.StatusPostRetriesResponse, error) {
+func (s *errors) StatusPostRetries(ctx context.Context, statusCode int64, simpleObject *shared.SimpleObject, opts ...operations.Option) (*operations.StatusPostRetriesResponse, error) {
+	request := operations.StatusPostRetriesRequest{
+		StatusCode:   statusCode,
+		SimpleObject: simpleObject,
+	}
+
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionRetries,

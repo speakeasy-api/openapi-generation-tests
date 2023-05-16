@@ -2,7 +2,7 @@
 
 import requests as requests_http
 from . import utils
-from sdk.models import operations
+from sdk.models import operations, shared
 from typing import Any, Optional
 
 class Errors:
@@ -44,7 +44,11 @@ class Errors:
         return res
 
     
-    def status_get(self, request: operations.StatusGetRequest) -> operations.StatusGetResponse:
+    def status_get(self, status_code: int) -> operations.StatusGetResponse:
+        request = operations.StatusGetRequest(
+            status_code=status_code,
+        )
+        
         base_url = self._server_url
         
         url = utils.generate_url(operations.StatusGetRequest, base_url, '/status/{statusCode}', request, self._globals)
@@ -61,7 +65,12 @@ class Errors:
         return res
 
     
-    def status_post_retries(self, request: operations.StatusPostRetriesRequest, retries: Optional[utils.RetryConfig] = None) -> operations.StatusPostRetriesResponse:
+    def status_post_retries(self, status_code: int, simple_object: Optional[shared.SimpleObject] = None, retries: Optional[utils.RetryConfig] = None) -> operations.StatusPostRetriesResponse:
+        request = operations.StatusPostRetriesRequest(
+            status_code=status_code,
+            simple_object=simple_object,
+        )
+        
         base_url = self._server_url
         
         url = utils.generate_url(operations.StatusPostRetriesRequest, base_url, '/status/{statusCode}', request, self._globals)

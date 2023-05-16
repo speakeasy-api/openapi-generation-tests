@@ -130,14 +130,15 @@ export class Auth {
   }
 
   async basicAuth(
-    req: operations.BasicAuthRequest,
     security: operations.BasicAuthSecurity,
+    passwd: string,
+    user: string,
     config?: AxiosRequestConfig
   ): Promise<operations.BasicAuthResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.BasicAuthRequest(req);
-    }
-
+    const req = new operations.BasicAuthRequest({
+      passwd: passwd,
+      user: user,
+    });
     const baseURL: string = this._serverURL;
     const url: string = utils.generateURL(
       baseURL,

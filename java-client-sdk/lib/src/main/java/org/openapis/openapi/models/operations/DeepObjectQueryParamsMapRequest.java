@@ -8,19 +8,19 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 public class DeepObjectQueryParamsMapRequest {
-    @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=mapArrParam")
-    public java.util.Map<String, String[]> mapArrParam;
-
-    public DeepObjectQueryParamsMapRequest withMapArrParam(java.util.Map<String, String[]> mapArrParam) {
-        this.mapArrParam = mapArrParam;
-        return this;
-    }
-    
     @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=mapParam")
     public java.util.Map<String, String> mapParam;
 
     public DeepObjectQueryParamsMapRequest withMapParam(java.util.Map<String, String> mapParam) {
         this.mapParam = mapParam;
+        return this;
+    }
+    
+    @SpeakeasyMetadata("queryParam:style=deepObject,explode=true,name=mapArrParam")
+    public java.util.Map<String, String[]> mapArrParam;
+
+    public DeepObjectQueryParamsMapRequest withMapArrParam(java.util.Map<String, String[]> mapArrParam) {
+        this.mapArrParam = mapArrParam;
         return this;
     }
     

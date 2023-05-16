@@ -72,7 +72,9 @@ public class Errors {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.StatusGetResponse statusGet(org.openapis.openapi.models.operations.StatusGetRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.StatusGetResponse statusGet(Long statusCode) throws Exception {
+        org.openapis.openapi.models.operations.StatusGetRequest request = new org.openapis.openapi.models.operations.StatusGetRequest(statusCode);
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.StatusGetRequest.class, baseUrl, "/status/{statusCode}", request, this._globals);
         
@@ -97,7 +99,14 @@ public class Errors {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.StatusPostRetriesResponse statusPostRetries(org.openapis.openapi.models.operations.StatusPostRetriesRequest request) throws Exception {
+    public org.openapis.openapi.models.operations.StatusPostRetriesResponse statusPostRetries(Long statusCode) throws Exception {
+        return this.statusPostRetries(statusCode, null);
+    }
+
+    public org.openapis.openapi.models.operations.StatusPostRetriesResponse statusPostRetries(Long statusCode, org.openapis.openapi.models.shared.SimpleObject simpleObject) throws Exception {
+        org.openapis.openapi.models.operations.StatusPostRetriesRequest request = new org.openapis.openapi.models.operations.StatusPostRetriesRequest(statusCode);
+        request.simpleObject=simpleObject;
+        
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.StatusPostRetriesRequest.class, baseUrl, "/status/{statusCode}", request, this._globals);
         

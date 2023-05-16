@@ -67,9 +67,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusGetRequest req = new StatusGetRequest(551816L);            
-
-            StatusGetResponse res = sdk.errors.statusGet(req);
+            StatusGetResponse res = sdk.errors.statusGet(551816L);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -110,18 +108,26 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusPostRetriesRequest req = new StatusPostRetriesRequest(574325L) {{
-                simpleObject = new SimpleObject("accusantium", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.SIXTY_NINE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
-                    bigint = 652103L;
-                    bigintStr = "ad";
-                    boolOpt = true;
-                    intOptNull = 999999L;
-                    numOptNull = 1.1;
-                    strOpt = "optional example";
-                }};;
-            }};            
-
-            StatusPostRetriesResponse res = sdk.errors.statusPostRetries(req);
+            StatusPostRetriesResponse res = sdk.errors.statusPostRetries(574325L, new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.FIFTY_FIVE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
+                any = "accusantium";
+                bigint = 653201L;
+                bigintStr = "reiciendis";
+                bool = true;
+                boolOpt = true;
+                date = LocalDate.parse("2020-01-01");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                enum_ = EnumEnum.TWO;
+                float32 = 2.2222222;
+                int_ = 999999L;
+                int32 = 1;
+                int32Enum = SimpleObjectInt32EnumEnum.SIXTY_NINE;
+                intEnum = SimpleObjectIntEnumEnum.First;
+                intOptNull = 999999L;
+                num = 1.1;
+                numOptNull = 1.1;
+                str = "example";
+                strOpt = "optional example";
+            }});
 
             if (res.statusCode == 200) {
                 // handle response

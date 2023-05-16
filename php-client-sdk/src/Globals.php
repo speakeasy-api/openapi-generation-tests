@@ -44,13 +44,16 @@ class Globals
     /**
      * globalPathParameterGet
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest $request
+     * @param ?int $globalPathParam
      * @return \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse
      */
 	public function globalPathParameterGet(
-        \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest $request,
+        ?int $globalPathParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest();
+        $request->globalPathParam = $globalPathParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/pathParameter/{globalPathParam}', \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest::class, $request, $this->_globals);
         
@@ -78,13 +81,16 @@ class Globals
     /**
      * globalsQueryParameterGet
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest $request
+     * @param ?string $globalQueryParam
      * @return \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse
      */
 	public function globalsQueryParameterGet(
-        \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest $request,
+        ?string $globalQueryParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest();
+        $request->globalQueryParam = $globalQueryParam;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/queryParameter');
         

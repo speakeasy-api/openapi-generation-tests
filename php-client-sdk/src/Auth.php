@@ -115,15 +115,21 @@ class Auth
     /**
      * basicAuth
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\BasicAuthRequest $request
      * @param \OpenAPI\OpenAPI\Models\Operations\BasicAuthSecurity $security
+     * @param string $passwd
+     * @param string $user
      * @return \OpenAPI\OpenAPI\Models\Operations\BasicAuthResponse
      */
 	public function basicAuth(
-        \OpenAPI\OpenAPI\Models\Operations\BasicAuthRequest $request,
         \OpenAPI\OpenAPI\Models\Operations\BasicAuthSecurity $security,
+        string $passwd,
+        string $user,
     ): \OpenAPI\OpenAPI\Models\Operations\BasicAuthResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\BasicAuthRequest();
+        $request->passwd = $passwd;
+        $request->user = $user;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/basic-auth/{user}/{passwd}', \OpenAPI\OpenAPI\Models\Operations\BasicAuthRequest::class, $request, $this->_globals);
         

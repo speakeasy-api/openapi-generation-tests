@@ -9,9 +9,9 @@ import (
 
 type FormQueryParamsObjectRequest struct {
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
-	ObjParam *shared.SimpleObject `queryParam:"style=form,explode=false,name=objParam"`
-	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	ObjParamExploded shared.SimpleObject `queryParam:"style=form,explode=true,name=objParamExploded"`
+	// A simple object that uses all our supported primitive types and enums and has optional properties.
+	ObjParam *shared.SimpleObject `queryParam:"style=form,explode=false,name=objParam"`
 }
 
 type FormQueryParamsObjectResArgs struct {

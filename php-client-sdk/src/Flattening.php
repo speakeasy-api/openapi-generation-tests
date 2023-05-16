@@ -44,13 +44,19 @@ class Flattening
     /**
      * componentBodyAndParamConflict
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject
+     * @param string $str
      * @return \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictResponse
      */
 	public function componentBodyAndParamConflict(
-        \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRequest $request,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject,
+        string $str,
     ): \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRequest();
+        $request->simpleObject = $simpleObject;
+        $request->str = $str;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/componentBodyAndParamConflict');
         
@@ -84,13 +90,19 @@ class Flattening
     /**
      * componentBodyAndParamNoConflict
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRequest $request
+     * @param string $paramStr
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject
      * @return \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictResponse
      */
 	public function componentBodyAndParamNoConflict(
-        \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRequest $request,
+        string $paramStr,
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject,
     ): \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRequest();
+        $request->paramStr = $paramStr;
+        $request->simpleObject = $simpleObject;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/componentBodyAndParamNoConflict');
         
@@ -124,13 +136,19 @@ class Flattening
     /**
      * conflictingParams
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest $request
+     * @param string $strPathParameter
+     * @param string $strQueryParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsResponse
      */
 	public function conflictingParams(
-        \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest $request,
+        string $strPathParameter,
+        string $strQueryParameter,
     ): \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest();
+        $request->strPathParameter = $strPathParameter;
+        $request->strQueryParameter = $strQueryParameter;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/conflictingParams/{str}', \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest::class, $request, $this->_globals);
         
@@ -159,13 +177,19 @@ class Flattening
     /**
      * inlineBodyAndParamConflict
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody $requestBody
+     * @param string $str
      * @return \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictResponse
      */
 	public function inlineBodyAndParamConflict(
-        \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequest $request,
+        \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody $requestBody,
+        string $str,
     ): \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequest();
+        $request->requestBody = $requestBody;
+        $request->str = $str;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/inlineBodyAndParamConflict');
         
@@ -199,13 +223,19 @@ class Flattening
     /**
      * inlineBodyAndParamNoConflict
      * 
-     * @param \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequest $request
+     * @param \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequestBody $requestBody
+     * @param string $paramStr
      * @return \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictResponse
      */
 	public function inlineBodyAndParamNoConflict(
-        \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequest $request,
+        \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequestBody $requestBody,
+        string $paramStr,
     ): \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictResponse
     {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequest();
+        $request->requestBody = $requestBody;
+        $request->paramStr = $paramStr;
+        
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/flattening/inlineBodyAndParamNoConflict');
         
