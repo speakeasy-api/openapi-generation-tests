@@ -113,7 +113,7 @@ class SDK
 	private ?Models\Shared\Security $_security;
 	private string $_serverUrl;
 	private string $_language = 'php';
-	private string $_sdkVersion = '1.0.2';
+	private string $_sdkVersion = '1.0.3';
 	private string $_genVersion = '2.29.0';
 	/** @var array<string, array<string, array<string, mixed>>> */
 	private ?array $_globals;
