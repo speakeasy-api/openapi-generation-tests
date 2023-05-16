@@ -1,0 +1,3034 @@
+# TODO: add test for multipart with any (both simple and complex) type serialization/deserialization
+# TODO: add test for different byte serialization/deserialization
+# TODO: test any type in JSON serialization/deserialization
+# TODO: have tests for generation methods to ensure generated code is valid
+openapi: 3.1.0
+info:
+  title: Test
+  version: 0.0.1
+  summary: Test Summary
+  description: |-
+    Some test description.
+    About our test document.
+externalDocs:
+  url: https://speakeasyapi.dev/docs/home
+  description: Speakeasy Docs
+servers:
+  - url: http://localhost:35123
+    description: The default server.
+  - url: http://broken
+    description: A server url to a non-existent server.
+  - url: http://{hostname}:{port}
+    description: A server url with templated variables.
+    variables:
+      port:
+        default: "35123"
+        description: The port on which the server is running.
+      hostname:
+        default: localhost
+        description: The hostname of the server.
+x-speakeasy-globals:
+  parameters:
+    - name: globalQueryParam
+      in: query
+      required: true
+      schema:
+        type: string
+        example: "some example global query param"
+    - name: globalPathParam
+      in: path
+      required: true
+      schema:
+        type: integer
+        example: 100
+x-speakeasy-name-override:
+  - operationId: getGlobalNameOverride
+    methodNameOverride: globalNameOverridden
+tags:
+  - name: auth
+    description: Endpoints for testing authentication.
+  - name: authNew
+    description: Endpoints for testing authentication.
+  - name: servers
+    description: Endpoints for testing servers.
+  - name: parameters
+    description: Endpoints for testing parameters.
+  - name: requestBodies
+    description: Endpoints for testing request bodies.
+  - name: responseBodies
+    description: Endpoints for testing response bodies.
+  - name: retries
+    description: Endpoints for testing retries.
+  - name: generation
+    description: Endpoints for purely testing valid generation behavior.
+  - name: flattening
+    description: Endpoints for testing flattening through request body and parameter combinations.
+  - name: globals
+    description: Endpoints for testing global parameters.
+  - name: unions
+    description: Endpoints for testing union types.
+  - name: errors
+    description: Endpoints for testing error responses.
+security:
+  - apiKeyAuth: []
+  - apiKeyAuthNew: []
+  - {}
+paths:
+  /anything/selectGlobalServer:
+    get:
+      operationId: selectGlobalServer
+      tags:
+        - servers
+      responses:
+        "200":
+          description: OK
+          headers:
+            X-Optional-Header:
+              schema:
+                type: string
+  /anything/selectServerWithID:
+    get:
+      operationId: selectServerWithID
+      description: Select a server by ID.
+      tags:
+        - servers
+      servers:
+        - url: http://localhost:35123
+          description: The default server.
+          x-speakeasy-server-id: valid
+        - url: http://broken
+          description: A server url to a non-existent server.
+          x-speakeasy-server-id: broken
+      responses:
+        "200":
+          description: OK
+  /anything/serverWithTemplates:
+    get:
+      operationId: serverWithTemplates
+      tags:
+        - servers
+      servers:
+        - url: http://{hostname}:{port}
+          variables:
+            port:
+              default: "35123"
+              description: The port on which the server is running.
+            hostname:
+              default: localhost
+              description: The hostname of the server.
+      responses:
+        "200":
+          description: OK
+  /anything/serverWithTemplatesGlobal:
+    get:
+      operationId: serverWithTemplatesGlobal
+      tags:
+        - servers
+      responses:
+        "200":
+          description: OK
+  /basic-auth/{user}/{passwd}:
+    get:
+      operationId: basicAuth
+      tags:
+        - auth
+      security:
+        - basicAuth: []
+      parameters:
+        - name: user
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: passwd
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful authentication.
+          content:
+            application/json:
+              schema:
+                title: user
+                type: object
+                properties:
+                  authenticated:
+                    type: boolean
+                  user:
+                    type: string
+                required:
+                  - authenticated
+                  - user
+        "401":
+          description: Unsuccessful authentication.
+  /bearer:
+    get:
+      operationId: apiKeyAuthGlobal
+      tags:
+        - auth
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /bearer#operation:
+    get:
+      operationId: apiKeyAuth
+      tags:
+        - auth
+      security:
+        - apiKeyAuth: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /bearer#oauth2:
+    get:
+      operationId: oauth2Auth
+      tags:
+        - auth
+      security:
+        - oauth2: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /bearer#openIdConnect:
+    get:
+      operationId: openIdConnectAuth
+      tags:
+        - auth
+      security:
+        - openIdConnect: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /bearer#bearer:
+    get:
+      operationId: bearerAuth
+      tags:
+        - auth
+      security:
+        - bearerAuth: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /auth#basicAuth:
+    post:
+      operationId: basicAuthNew
+      tags:
+        - authNew
+      security:
+        - basicAuth: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#apiKeyAuthGlobal:
+    post:
+      operationId: apiKeyAuthGlobalNew
+      tags:
+        - authNew
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#oauth2Auth:
+    post:
+      operationId: oauth2AuthNew
+      tags:
+        - authNew
+      security:
+        - oauth2: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#openIdConnectAuth:
+    post:
+      operationId: openIdConnectAuthNew
+      tags:
+        - authNew
+      security:
+        - openIdConnect: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#multipleSimpleSchemeAuth:
+    post:
+      operationId: multipleSimpleSchemeAuth
+      tags:
+        - authNew
+      security:
+        - apiKeyAuthNew: []
+          oauth2: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#multipleMixedSchemeAuth:
+    post:
+      operationId: multipleMixedSchemeAuth
+      tags:
+        - authNew
+      security:
+        - apiKeyAuthNew: []
+          basicAuth: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#multipleSimpleOptionsAuth:
+    post:
+      operationId: multipleSimpleOptionsAuth
+      tags:
+        - authNew
+      security:
+        - apiKeyAuthNew: []
+        - oauth2: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#multipleMixedOptionsAuth:
+    post:
+      operationId: multipleMixedOptionsAuth
+      tags:
+        - authNew
+      security:
+        - apiKeyAuthNew: []
+        - basicAuth: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#multipleOptionsWithSimpleSchemesAuth:
+    post:
+      operationId: multipleOptionsWithSimpleSchemesAuth
+      tags:
+        - authNew
+      security:
+        - apiKeyAuthNew: []
+          oauth2: []
+        - apiKeyAuthNew: []
+          openIdConnect: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#multipleOptionsWithMixedSchemesAuth:
+    post:
+      operationId: multipleOptionsWithMixedSchemesAuth
+      tags:
+        - authNew
+      security:
+        - apiKeyAuthNew: []
+          oauth2: []
+        - basicAuth: []
+          apiKeyAuthNew: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}:
+    get:
+      operationId: simplePathParameterPrimitives
+      tags:
+        - parameters
+      parameters:
+        - $ref: "components.yaml#/components/parameters/strPathParam"
+        - $ref: "components.yaml#/components/parameters/boolPathParam"
+        - $ref: "components.yaml#/components/parameters/intPathParam"
+        - $ref: "components.yaml#/components/parameters/numPathParam"
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/pathParamsUrlResponse"
+  /anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}:
+    get:
+      operationId: simplePathParameterObjects
+      tags:
+        - parameters
+      parameters:
+        - name: objParam
+          in: path
+          required: true
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+        - name: objParamExploded
+          in: path
+          required: true
+          explode: true
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/pathParamsUrlResponse"
+  /anything/pathParams/arr/{arrParam}:
+    get:
+      operationId: simplePathParameterArrays
+      tags:
+        - parameters
+      parameters:
+        - name: arrParam
+          in: path
+          required: true
+          schema:
+            type: array
+            items:
+              type: string
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/pathParamsUrlResponse"
+  /anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}:
+    get:
+      operationId: simplePathParameterMaps
+      tags:
+        - parameters
+      parameters:
+        - name: mapParam
+          in: path
+          required: true
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+        - name: mapParamExploded
+          in: path
+          required: true
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/pathParamsUrlResponse"
+  /anything/pathParams/json/{jsonObj}:
+    get:
+      operationId: pathParameterJson
+      tags:
+        - parameters
+      parameters:
+        - name: jsonObj
+          in: path
+          required: true
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/simpleObject"
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                required:
+                  - url
+          description: OK
+  /anything/queryParams/form/primitive:
+    get:
+      operationId: formQueryParamsPrimitive
+      tags:
+        - parameters
+      parameters:
+        - name: strParam
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: boolParam
+          in: query
+          schema:
+            type: boolean
+          required: true
+        - name: intParam
+          in: query
+          schema:
+            type: integer
+          required: true
+        - name: numParam
+          in: query
+          schema:
+            type: number
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  args:
+                    type: object
+                    properties:
+                      strParam:
+                        type: string
+                      boolParam:
+                        type: string
+                      intParam:
+                        type: string
+                      numParam:
+                        type: string
+                    required:
+                      - strParam
+                      - boolParam
+                      - intParam
+                      - numParam
+                  url:
+                    type: string
+                required:
+                  - args
+                  - url
+  /anything/queryParams/form/obj:
+    get:
+      operationId: formQueryParamsObject
+      tags:
+        - parameters
+      parameters:
+        - name: objParamExploded
+          in: query
+          explode: true
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+        - name: objParam
+          in: query
+          explode: false
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    properties:
+                      str:
+                        type: string
+                      bool:
+                        type: string
+                      int:
+                        type: string
+                      int32:
+                        type: string
+                      num:
+                        type: string
+                      float32:
+                        type: string
+                      enum:
+                        type: string
+                      any:
+                        type: string
+                      date:
+                        type: string
+                      dateTime:
+                        type: string
+                      boolOpt:
+                        type: string
+                      strOpt:
+                        type: string
+                      intOptNull:
+                        type: string
+                      numOptNull:
+                        type: string
+                      objParam:
+                        type: string
+                      intEnum:
+                        type: string
+                      int32Enum:
+                        type: string
+                      bigint:
+                        type: string
+                      bigintStr:
+                        type: string
+                    required:
+                      - str
+                      - bool
+                      - int
+                      - int32
+                      - num
+                      - float32
+                      - enum
+                      - any
+                      - date
+                      - dateTime
+                      - objParam
+                      - intEnum
+                      - int32Enum
+                required:
+                  - url
+                  - args
+  /anything/queryParams/form/refParamObject:
+    get:
+      operationId: formQueryParamsRefParamObject
+      tags:
+        - parameters
+      parameters:
+        - $ref: "components.yaml#/components/parameters/refQueryParamObjExploded"
+        - $ref: "components.yaml#/components/parameters/refQueryParamObj"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    properties:
+                      str:
+                        type: string
+                      bool:
+                        type: string
+                      int:
+                        type: string
+                      num:
+                        type: string
+                      refObjParam:
+                        type: string
+                    required:
+                      - str
+                      - bool
+                      - int
+                      - num
+                      - refObjParam
+                required:
+                  - url
+                  - args
+
+  /anything/queryParams/form/array:
+    get:
+      operationId: formQueryParamsArray
+      tags:
+        - parameters
+      parameters:
+        - name: arrParam
+          in: query
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: arrParamExploded
+          in: query
+          explode: true
+          schema:
+            type: array
+            items:
+              type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    properties:
+                      arrParam:
+                        type: string
+                      arrParamExploded:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - arrParam
+                      - arrParamExploded
+                required:
+                  - url
+                  - args
+  /anything/queryParams/pipe/array:
+    get:
+      operationId: pipeDelimitedQueryParamsArray
+      tags:
+        - parameters
+      parameters:
+        - name: arrParam
+          style: pipeDelimited
+          in: query
+          explode: false
+          schema:
+            type: array
+            items:
+              type: string
+        - name: arrParamExploded
+          style: pipeDelimited
+          in: query
+          explode: true
+          schema:
+            type: array
+            items:
+              type: integer
+        - name: objParam
+          style: pipeDelimited
+          in: query
+          explode: false
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+        - name: mapParam
+          style: pipeDelimited
+          in: query
+          explode: false
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    properties:
+                      arrParam:
+                        type: string
+                      arrParamExploded:
+                        type: array
+                        items:
+                          type: string
+                    required:
+                      - arrParam
+                      - arrParamExploded
+                required:
+                  - url
+                  - args
+  /anything/queryParams/form/map:
+    get:
+      operationId: formQueryParamsMap
+      tags:
+        - parameters
+      parameters:
+        - name: mapParam
+          in: query
+          explode: false
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+        - name: mapParamExploded
+          in: query
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - url
+                  - args
+  /anything/queryParams/deepObject/obj:
+    get:
+      operationId: deepObjectQueryParamsObject
+      tags:
+        - parameters
+      parameters:
+        - name: objParam
+          in: query
+          style: deepObject
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+        - name: objArrParam
+          in: query
+          style: deepObject
+          schema:
+            type: object
+            properties:
+              arr:
+                type: array
+                items:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    properties:
+                      objArrParam[arr]:
+                        type: array
+                        items:
+                          type: string
+                      objParam[any]:
+                        type: string
+                      objParam[boolOpt]:
+                        type: string
+                      objParam[bool]:
+                        type: string
+                      objParam[dateTime]:
+                        type: string
+                      objParam[date]:
+                        type: string
+                      objParam[enum]:
+                        type: string
+                      objParam[float32]:
+                        type: string
+                      objParam[int32]:
+                        type: string
+                      objParam[int]:
+                        type: string
+                      objParam[num]:
+                        type: string
+                      objParam[strOpt]:
+                        type: string
+                      objParam[str]:
+                        type: string
+                      objParam[intEnum]:
+                        type: string
+                      objParam[int32Enum]:
+                        type: string
+                      objParam[bigint]:
+                        type: string
+                      objParam[bigintStr]:
+                        type: string
+                    required:
+                      - objArrParam[arr]
+                      - objParam[any]
+                      - objParam[boolOpt]
+                      - objParam[bool]
+                      - objParam[dateTime]
+                      - objParam[date]
+                      - objParam[enum]
+                      - objParam[float32]
+                      - objParam[int32]
+                      - objParam[int]
+                      - objParam[num]
+                      - objParam[strOpt]
+                      - objParam[str]
+                      - objParam[intEnum]
+                      - objParam[int32Enum]
+                required:
+                  - url
+                  - args
+  /anything/queryParams/deepObject/map:
+    get:
+      operationId: deepObjectQueryParamsMap
+      tags:
+        - parameters
+      parameters:
+        - name: mapParam
+          in: query
+          style: deepObject
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          required: true
+        - name: mapArrParam
+          in: query
+          style: deepObject
+          schema:
+            type: object
+            additionalProperties:
+              type: array
+              items:
+                type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    additionalProperties:
+                      anyOf:
+                        - type: string
+                        - type: array
+                          items:
+                            type: string
+                required:
+                  - url
+                  - args
+  /anything/queryParams/json/obj:
+    get:
+      operationId: jsonQueryParamsObject
+      tags:
+        - parameters
+      parameters:
+        - name: simpleObjParam
+          in: query
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+        - name: deepObjParam
+          in: query
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/deepObject"
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    properties:
+                      simpleObjParam:
+                        type: string
+                      deepObjParam:
+                        type: string
+                    required:
+                      - simpleObjParam
+                      - deepObjParam
+                required:
+                  - url
+                  - args
+  /anything/queryParams/mixed:
+    get:
+      operationId: mixedQueryParams
+      tags:
+        - parameters
+      parameters:
+        - name: jsonParam
+          in: query
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+        - name: formParam
+          in: query
+          style: form
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+        - name: deepObjectParam
+          in: query
+          style: deepObject
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - url
+                  - args
+  /anything/headers/primitive:
+    get:
+      operationId: headerParamsPrimitive
+      tags:
+        - parameters
+      parameters:
+        - name: X-Header-String
+          in: header
+          schema:
+            type: string
+          required: true
+        - name: X-Header-Boolean
+          in: header
+          schema:
+            type: boolean
+          required: true
+        - name: X-Header-Integer
+          in: header
+          schema:
+            type: integer
+          required: true
+        - name: X-Header-Number
+          in: header
+          schema:
+            type: number
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    properties:
+                      X-Header-String:
+                        type: string
+                      X-Header-Boolean:
+                        type: string
+                      X-Header-Integer:
+                        type: string
+                      X-Header-Number:
+                        type: string
+                    required:
+                      - X-Header-String
+                      - X-Header-Boolean
+                      - X-Header-Integer
+                      - X-Header-Number
+                required:
+                  - headers
+  /anything/headers/obj:
+    get:
+      operationId: headerParamsObject
+      tags:
+        - parameters
+      parameters:
+        - name: X-Header-Obj
+          in: header
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+        - name: X-Header-Obj-Explode
+          in: header
+          explode: true
+          schema:
+            $ref: "components.yaml#/components/schemas/simpleObject"
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    properties:
+                      X-Header-Obj:
+                        type: string
+                      X-Header-Obj-Explode:
+                        type: string
+                    required:
+                      - X-Header-Obj
+                      - X-Header-Obj-Explode
+                required:
+                  - headers
+  /anything/headers/map:
+    get:
+      operationId: headerParamsMap
+      tags:
+        - parameters
+      parameters:
+        - name: X-Header-Map
+          in: header
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          required: true
+        - name: X-Header-Map-Explode
+          in: header
+          explode: true
+          schema:
+            type: object
+            additionalProperties:
+              type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    properties:
+                      X-Header-Map:
+                        type: string
+                      X-Header-Map-Explode:
+                        type: string
+                    required:
+                      - X-Header-Map
+                      - X-Header-Map-Explode
+                required:
+                  - headers
+  /anything/headers/array:
+    get:
+      operationId: headerParamsArray
+      tags:
+        - parameters
+      parameters:
+        - name: X-Header-Array
+          in: header
+          schema:
+            type: array
+            items:
+              type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    properties:
+                      X-Header-Array:
+                        type: string
+                    required:
+                      - X-Header-Array
+                required:
+                  - headers
+  /anything/requestBodies/post/application/json/simple:
+    post:
+      operationId: requestBodyPostApplicationJsonSimple
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                required:
+                  - json
+  /requestbody#array:
+    post:
+      operationId: requestBodyPostApplicationJsonArray
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/arrValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: array
+                items:
+                  $ref: "components.yaml#/components/schemas/simpleObject"
+  /requestbody#arrayOfArrays:
+    post:
+      operationId: requestBodyPostApplicationJsonArrayOfArray
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/arrArrValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: array
+                items:
+                  type: array
+                  title: arr
+                  items:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+  /requestbody#map:
+    post:
+      operationId: requestBodyPostApplicationJsonMap
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/mapValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                additionalProperties:
+                  $ref: "components.yaml#/components/schemas/simpleObject"
+  /requestbody#mapOfMaps:
+    post:
+      operationId: requestBodyPostApplicationJsonMapOfMap
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/mapMapValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+  /requestbody#mapOfArrays:
+    post:
+      operationId: requestBodyPostApplicationJsonMapOfArray
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/mapArrValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                additionalProperties:
+                  type: array
+                  items:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+  /requestbody#arrayOfMaps:
+    post:
+      operationId: requestBodyPostApplicationJsonArrayOfMap
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/arrMapValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: array
+                items:
+                  title: map
+                  type: object
+                  additionalProperties:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+  /requestbody#mapOfPrimitives:
+    post:
+      operationId: requestBodyPostApplicationJsonMapOfPrimitive
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/mapPrimitiveValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                additionalProperties:
+                  type: string
+  /requestbody#arrayOfPrimitives:
+    post:
+      operationId: requestBodyPostApplicationJsonArrayOfPrimitive
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/arrPrimitiveValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: array
+                items:
+                  title: string
+                  type: string
+  /requestbody#arrayOfArraysOfPrimitives:
+    post:
+      operationId: requestBodyPostApplicationJsonArrayOfArrayOfPrimitive
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/arrArrPrimitiveValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: array
+                items:
+                  title: arr
+                  type: array
+                  items:
+                    title: string
+                    type: string
+  /requestbody#mapOfMapsOfPrimitives:
+    post:
+      operationId: requestBodyPostApplicationJsonMapOfMapOfPrimitive
+      tags:
+        - requestBodies
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/mapMapPrimitiveValue"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                additionalProperties:
+                  type: object
+                  additionalProperties:
+                    type: string
+  /anything/requestBodies/post/application/json/array/objResponse:
+    post:
+      operationId: requestBodyPostApplicationJsonArrayObj
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/arrObjValue"
+  /anything/requestBodies/post/application/json/map/objResponse:
+    post:
+      operationId: requestBodyPostApplicationJsonMapObj
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/mapObjValue"
+  /anything/requestBodies/post/application/json/deep:
+    post:
+      operationId: requestBodyPostApplicationJsonDeep
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/deepObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/deepObject"
+  /anything/requestBodies/post/application/json/multiple/json/filtered:
+    post:
+      operationId: requestBodyPostApplicationJsonMultipleJsonFiltered
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+          text/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+          application/test+json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+          text/json.test:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                required:
+                  - json
+  /anything/requestBodies/post/multiple/contentTypes/component/filtered:
+    post:
+      operationId: requestBodyPostMultipleContentTypesComponentFiltered
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+          multipart/form-data:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                required:
+                  - json
+  /anything/requestBodies/post/multiple/contentTypes/inline/filtered:
+    post:
+      operationId: requestBodyPostMultipleContentTypesInlineFiltered
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                str:
+                  type: string
+                num:
+                  type: number
+                bool:
+                  type: boolean
+              required:
+                - str
+                - num
+                - bool
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                str:
+                  type: string
+                num:
+                  type: number
+                bool:
+                  type: boolean
+              required:
+                - str
+                - num
+                - bool
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                str:
+                  type: string
+                num:
+                  type: number
+                bool:
+                  type: boolean
+              required:
+                - str
+                - num
+                - bool
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+  /anything/requestBodies/post/multiple/contentTypes/split:
+    post:
+      operationId: requestBodyPostMultipleContentTypesSplit
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                str:
+                  type: string
+                num:
+                  type: number
+                bool:
+                  type: boolean
+              required:
+                - str
+                - num
+                - bool
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                str2:
+                  type: string
+                num2:
+                  type: number
+                bool2:
+                  type: boolean
+              required:
+                - str2
+                - num2
+                - bool2
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                str3:
+                  type: string
+                num3:
+                  type: number
+                bool3:
+                  type: boolean
+              required:
+                - str3
+                - num3
+                - bool3
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+                  form:
+                    type: object
+  /anything/requestBodies/post/multiple/contentTypes/split/param:
+    post:
+      operationId: requestBodyPostMultipleContentTypesSplitParam
+      tags:
+        - requestBodies
+      parameters:
+        - name: paramStr
+          in: query
+          schema:
+            type: string
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                str:
+                  type: string
+                num:
+                  type: number
+                bool:
+                  type: boolean
+              required:
+                - str
+                - num
+                - bool
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                str2:
+                  type: string
+                num2:
+                  type: number
+                bool2:
+                  type: boolean
+              required:
+                - str2
+                - num2
+                - bool2
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              properties:
+                str3:
+                  type: string
+                num3:
+                  type: number
+                bool3:
+                  type: boolean
+              required:
+                - str3
+                - num3
+                - bool3
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+                  form:
+                    type: object
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+  /anything/requestBodies/put/multipart/simple:
+    put:
+      operationId: requestBodyPutMultipartSimple
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/simpleObjectFormResponse"
+  /anything/requestBodies/put/multipart/deep:
+    put:
+      operationId: requestBodyPutMultipartDeep
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              $ref: "components.yaml#/components/schemas/deepObject"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/deepObjectFormResponse"
+  /anything/requestBodies/put/multipart/file:
+    put:
+      operationId: requestBodyPutMultipartFile
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                file:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  files:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - files
+  /anything/requestBodies/post/form/simple:
+    post:
+      operationId: requestBodyPostFormSimple
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/simpleObjectFormResponse"
+  /anything/requestBodies/post/form/deep:
+    post:
+      operationId: requestBodyPostFormDeep
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: "components.yaml#/components/schemas/deepObject"
+        required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/deepObjectFormResponse"
+  /anything/requestBodies/post/form/map/primitive:
+    post:
+      operationId: requestBodyPostFormMapPrimitive
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/x-www-form-urlencoded:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  form:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - form
+  /anything/requestBodies/put/string:
+    put:
+      operationId: requestBodyPutString
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  data:
+                    type: string
+                required:
+                  - data
+  /anything/requestBodies/put/bytes:
+    put:
+      operationId: requestBodyPutBytes
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/octet-stream:
+            schema:
+              type: string
+              format: binary
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  data:
+                    type: string
+                required:
+                  - data
+  /anything/flattening/inlineBodyAndParamNoConflict:
+    post:
+      operationId: inlineBodyAndParamNoConflict
+      tags:
+        - flattening
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                bodyStr:
+                  type: string
+              required:
+                - bodyStr
+        required: true
+      parameters:
+        - name: paramStr
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      bodyStr:
+                        type: string
+                    required:
+                      - bodyStr
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - json
+                  - args
+  /anything/flattening/componentBodyAndParamNoConflict:
+    post:
+      operationId: componentBodyAndParamNoConflict
+      tags:
+        - flattening
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      parameters:
+        - name: paramStr
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - json
+                  - args
+  /anything/flattening/inlineBodyAndParamConflict:
+    post:
+      operationId: inlineBodyAndParamConflict
+      tags:
+        - flattening
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                str:
+                  type: string
+              required:
+                - str
+        required: true
+      parameters:
+        - name: str
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      str:
+                        type: string
+                    required:
+                      - str
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - json
+                  - args
+  /anything/flattening/componentBodyAndParamConflict:
+    post:
+      operationId: componentBodyAndParamConflict
+      tags:
+        - flattening
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      parameters:
+        - name: str
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - json
+                  - args
+  /anything/flattening/conflictingParams/{str}:
+    get:
+      operationId: conflictingParams
+      tags:
+        - flattening
+      parameters:
+        - name: str
+          in: path
+          schema:
+            type: string
+          required: true
+        - name: str
+          in: query
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                  args:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - url
+                  - args
+  /json:
+    get:
+      operationId: responseBodyJsonGet
+      # No tag as we want this simple request in the root sdk for testing operations get generated there
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
+  /html:
+    get:
+      operationId: responseBodyStringGet
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            text/html:
+              schema:
+                title: html
+                type: string
+  /xml:
+    get:
+      operationId: responseBodyXmlGet
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/xml:
+              schema:
+                title: xml
+                type: string
+  /bytes/100:
+    get:
+      operationId: responseBodyBytesGet
+      tags:
+        - responseBodies
+      responses:
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                title: bytes
+                type: string
+                format: binary
+  /anything/circularReference:
+    get:
+      operationId: circularReferenceGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/validCircularReferenceObject"
+  /anything/ignores:
+    post:
+      operationId: ignoresPost
+      tags:
+        - generation
+      parameters:
+        - name: testParam
+          in: query
+          schema:
+            type: string
+        - name: test_param
+          in: query
+          x-speakeasy-ignore: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                testProp:
+                  type: string
+                test_prop:
+                  x-speakeasy-ignore: true
+                  type: string
+                callbackUrl:
+                  type: string
+                  format: uri
+          application/xml:
+            x-speakeasy-ignore: true
+            schema:
+              type: object
+              properties:
+                testProp:
+                  type: string
+      callbacks:
+        cb:
+          "{$request.bodycomponents.yaml#/callbackUrl}":
+            x-speakeasy-ignore: true
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        testProp:
+                          type: string
+                required: true
+              responses:
+                "200":
+                  description: OK
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
+            application/xml:
+              x-speakeasy-ignore: true
+              schema:
+                $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
+            text/plain:
+              x-speakeasy-ignore: true
+              schema:
+                $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
+        "201":
+          x-speakeasy-ignore: true
+          description: Created
+    get:
+      x-speakeasy-ignore: true
+      operationId: ignoresGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+  /anything/ignoreAll:
+    x-speakeasy-ignore: true
+    get:
+      operationId: ignoreAllGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+  /anything/usageExample:
+    post:
+      operationId: usageExamplePost
+      summary: An operation used for testing usage examples
+      description: An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
+      externalDocs:
+        description: Usage example docs
+        url: https://docs.example.com
+      x-speakeasy-usage-example: true
+      tags:
+        - generation
+      security:
+        - basicAuth: []
+      parameters:
+        - name: strParameter
+          in: query
+          required: true
+          description: A string parameter
+          schema:
+            type: string
+            description: A string type
+            example: "example"
+        - name: intParameter
+          in: query
+          required: true
+          description: An integer parameter
+          schema:
+            type: integer
+            format: int32
+            description: An int32 type
+            example: 1
+        - name: int64Parameter
+          in: query
+          required: true
+          description: An int64 parameter
+          schema:
+            type: integer
+            format: int64
+            description: An int64 type
+            example: 111111
+        - name: floatParameter
+          in: query
+          required: true
+          description: A float parameter
+          schema:
+            type: number
+            description: A float type
+            example: 1.1
+        - name: doubleParameter
+          in: query
+          required: true
+          description: A double parameter
+          schema:
+            type: number
+            format: double
+            description: A double type
+            example: 2.2222222
+        - name: boolParameter
+          in: query
+          required: true
+          description: A boolean parameter
+          schema:
+            type: boolean
+            description: A boolean type
+            example: false
+        - name: dateParameter
+          in: query
+          required: true
+          description: A date parameter
+          schema:
+            type: string
+            format: date
+            description: A date type
+            example: "2020-01-01"
+        - name: dateTimeParameter
+          in: query
+          required: true
+          description: A date time parameter
+          schema:
+            type: string
+            format: date-time
+            description: A date time type
+            example: "2020-01-01T00:00:00Z"
+        - name: enumParameter
+          in: query
+          required: true
+          description: An enum parameter
+          schema:
+            type: string
+            description: An enum type
+            enum:
+              - "value1"
+              - "value2"
+              - "value3"
+            example: "value3"
+        - name: optEnumParameter
+          in: query
+          description: An enum parameter
+          schema:
+            type: string
+            description: An enum type
+            enum:
+              - "value1"
+              - "value2"
+              - "value3"
+            example: "value3"
+      requestBody:
+        description: A request body that contains fields with different formats for testing example generation
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                simpleObject:
+                  $ref: "components.yaml#/components/schemas/simpleObject"
+                formatEmail:
+                  type: string
+                  format: email
+                  description: A field formatted as an email that will have emails generated as examples
+                email:
+                  type: string
+                  description: A field called email that will have emails generated as examples
+                formatUuid:
+                  type: string
+                  format: uuid
+                  description: A field formatted as a uuid that will have uuids generated as examples
+                uuid:
+                  type: string
+                  description: A field called uuid that will have uuids generated as examples
+                formatUri:
+                  type: string
+                  format: uri
+                  description: A field formatted as a uri that will have uris generated as examples
+                uri:
+                  type: string
+                  description: A field called uri that will have uris generated as examples
+                hostname:
+                  type: string
+                  format: hostname
+                  description: A field formatted as a hostname that will have hostnames generated as examples
+                ipv4:
+                  type: string
+                  format: ipv4
+                  description: A field formatted as an ipv4 that will have ipv4s generated as examples
+                ipv6:
+                  type: string
+                  format: ipv6
+                  description: A field formatted as an ipv6 that will have ipv6s generated as examples
+                unknown:
+                  type: string
+                  format: unknown
+                  description: A field formatted as an unknown that will have random strings generated as examples
+      responses:
+        "200":
+          description: A successful response that contains the simpleObject sent in the request body
+          content:
+            application/json:
+              schema:
+                type: object
+                description: A response body that contains the simpleObject sent in the request body
+                properties:
+                  json:
+                    type: object
+                    properties:
+                      simpleObject:
+                        $ref: "components.yaml#/components/schemas/simpleObject"
+                      formatEmail:
+                        type: string
+                        format: email
+                        description: A field formatted as an email that will have emails generated as examples
+                      email:
+                        type: string
+                        description: A field called email that will have emails generated as examples
+                      formatUuid:
+                        type: string
+                        format: uuid
+                        description: A field formatted as a uuid that will have uuids generated as examples
+                      uuid:
+                        type: string
+                        description: A field called uuid that will have uuids generated as examples
+                      formatUri:
+                        type: string
+                        format: uri
+                        description: A field formatted as a uri that will have uris generated as examples
+                      uri:
+                        type: string
+                        description: A field called uri that will have uris generated as examples
+                      hostname:
+                        type: string
+                        format: hostname
+                        description: A field formatted as a hostname that will have hostnames generated as examples
+                      ipv4:
+                        type: string
+                        format: ipv4
+                        description: A field formatted as an ipv4 that will have ipv4s generated as examples
+                      ipv6:
+                        type: string
+                        format: ipv6
+                        description: A field formatted as an ipv6 that will have ipv6s generated as examples
+                      unknown:
+                        type: string
+                        format: unknown
+                        description: A field formatted as an unknown that will have random strings generated as examples
+                required:
+                  - json
+  /anything/anchorTypes:
+    get:
+      operationId: anchorTypesGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: A successful response that contains the simpleObject sent in the request body
+          content:
+            application/json:
+              schema:
+                type: object
+                $anchor: TypeFromAnchor
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+  /anything/nameOverride:
+    get:
+      operationId: nameOverrideGet
+      x-speakeasy-name-override: nameOverride
+      tags:
+        - generation
+      parameters:
+        - name: nameOverride
+          x-speakeasy-name-override: testQueryParam
+          in: query
+          required: true
+          schema:
+            type: string
+            description: A string type
+            example: "example"
+      responses:
+        "200":
+          description: A successful response that contains the simpleObject sent in the request body
+          content:
+            application/json:
+              schema:
+                type: object
+                x-speakeasy-name-override: overridenResponse
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+  /anything/globalNameOverride:
+    get:
+      operationId: getGlobalNameOverride
+      tags:
+        - generation
+      responses:
+        "200":
+          description: A successful response that contains the simpleObject sent in the request body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+  /anything/ignoredGeneration:
+    get:
+      operationId: ignoredGenerationGet
+      tags:
+        - generation
+      parameters:
+        - name: ignoredParameter
+          in: query
+          required: true
+          x-speakeasy-ignore: true
+          schema:
+            type: string
+            description: A string type
+            example: "example"
+      responses:
+        "200":
+          description: A successful response that contains the simpleObject sent in the request body
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/simpleObject"
+                  ignoredProperty:
+                    type: string
+                    x-speakeasy-ignore: true
+      callbacks:
+        notIgnoredCallback:
+          "/somecallback":
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        someProp:
+                          type: string
+              responses:
+                "200":
+                  description: OK
+        ignoredCallbackItem:
+          "/someignoredcallback":
+            x-speakeasy-ignore: true
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: string
+              responses:
+                "200":
+                  description: OK
+        singledIgnoredCallbackOperation:
+          "/someothercallback":
+            post:
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: object
+                      properties:
+                        someProp:
+                          type: string
+              responses:
+                "200":
+                  description: OK
+            put:
+              x-speakeasy-ignore: true
+              requestBody:
+                content:
+                  application/json:
+                    schema:
+                      type: string
+              responses:
+                "200":
+                  description: OK
+    put:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+          application/xml:
+            x-speakeasy-ignore: true
+            schema:
+              type: object
+              properties:
+                xml:
+                  type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    type: string
+            application/xml:
+              x-speakeasy-ignore: true
+              schema:
+                type: object
+                properties:
+                  xml:
+                    type: string
+        "201":
+          description: Created
+          x-speakeasy-ignore: true
+    post:
+      x-speakeasy-ignore: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: OK
+  /anything/deprecatedWithComments:
+    get:
+      operationId: deprecatedWithCommentsGet
+      tags:
+        - generation
+      deprecated: true
+      summary: This is an endpoint setup to test deprecation with comments
+      parameters:
+        - name: deprecatedParameter
+          in: query
+          schema:
+            type: string
+          deprecated: true
+          description: This is a string parameter
+      responses:
+        "200":
+          description: OK
+  /anything/deprecatedNoComments:
+    get:
+      operationId: deprecatedNoCommentsGet
+      tags:
+        - generation
+      deprecated: true
+      parameters:
+        - name: deprecatedParameter
+          in: query
+          schema:
+            type: string
+          deprecated: true
+      responses:
+        "200":
+          description: OK
+  /anything/ignoredPath:
+    x-speakeasy-ignore: true
+    get:
+      responses:
+        "200":
+          description: OK
+  /anything/globals/queryParameter:
+    get:
+      operationId: globalsQueryParameterGet
+      tags:
+        - globals
+      parameters:
+        - name: globalQueryParam
+          in: query
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  args:
+                    type: object
+                    properties:
+                      globalQueryParam:
+                        type: string
+                    required:
+                      - globalQueryParam
+                required:
+                  - args
+  /anything/globals/pathParameter/{globalPathParam}:
+    get:
+      operationId: globalPathParameterGet
+      tags:
+        - globals
+      parameters:
+        - name: globalPathParam
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                required:
+                  - url
+  /anything/stronglyTypedOneOf:
+    post:
+      operationId: stronglyTypedOneOfPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/stronglyTypedOneOfObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/stronglyTypedOneOfObject"
+                required:
+                  - json
+  /anything/weaklyTypedOneOf:
+    post:
+      operationId: weaklyTypedOneOfPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/weaklyTypedOneOfObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/weaklyTypedOneOfObject"
+                required:
+                  - json
+  /anything/typedObjectOneOf:
+    post:
+      operationId: typedObjectOneOfPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/typedObjectOneOf"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/typedObjectOneOf"
+                required:
+                  - json
+  /anything/primitiveTypeOneOf:
+    post:
+      operationId: primitiveTypeOneOfPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: string
+                - type: integer
+                - type: number
+                - type: boolean
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: string
+                      - type: integer
+                      - type: number
+                      - type: boolean
+                required:
+                  - json
+  /anything/mixedTypeOneOf:
+    post:
+      operationId: mixedTypeOneOfPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: string
+                - type: integer
+                - $ref: "components.yaml#/components/schemas/simpleObject"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: string
+                      - type: integer
+                      - $ref: "components.yaml#/components/schemas/simpleObject"
+                required:
+                  - json
+  /status/{statusCode}:
+    get:
+      operationId: statusGet
+      tags:
+        - errors
+      parameters:
+        - name: statusCode
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: OK
+        "300":
+          description: Multiple Choices
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+    post:
+      operationId: statusPostRetries
+      tags:
+        - errors
+      parameters:
+        - name: statusCode
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/simpleObject"
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10 # 10 ms
+          maxInterval: 200 # 200 ms
+          maxElapsedTime: 1000 # 1 seconds
+          exponent: 1.5
+        statusCodes:
+          - 204
+          - 5XX
+        retryConnectionErrors: true
+      responses:
+        "200":
+          description: OK
+        "204":
+          description: No Content
+        "300":
+          description: Multiple Choices
+        "400":
+          description: Bad Request
+        "500":
+          description: Internal Server Error
+  /anything/connectionError:
+    get:
+      operationId: connectionErrorGet
+      servers:
+        - url: http://somebrokenapi.broken
+      tags:
+        - errors
+      responses:
+        "200":
+          description: OK
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      x-speakeasy-example: YOUR_USERNAME;YOUR_PASSWORD
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: Authenticate using an API Key generated via our platform.
+      x-speakeasy-example: Token YOUR_API_KEY
+    bearerAuth:
+      type: http
+      scheme: bearer
+      x-speakeasy-example: YOUR_JWT
+    apiKeyAuthNew:
+      type: apiKey
+      in: header
+      name: x-api-key
+      x-speakeasy-example: Token <YOUR_API_KEY>
+    oauth2:
+      type: oauth2
+      flows:
+        implicit:
+          authorizationUrl: http://localhost:35123/oauth2/authorize
+          scopes: {}
+      x-speakeasy-example: Bearer YOUR_OAUTH2_TOKEN
+    openIdConnect:
+      type: openIdConnect
+      openIdConnectUrl: http://localhost:35123/.well-known/openid-configuration
+      x-speakeasy-example: Bearer YOUR_OPENID_TOKEN
