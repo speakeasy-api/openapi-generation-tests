@@ -28,6 +28,16 @@ src/sdk/index.ts
 src/sdk/types/index.ts
 src/sdk/types/rfcdate.ts
 tsconfig.json
+__tests__/auth.test.ts
+__tests__/errors.test.ts
+__tests__/flattening.test.ts
+__tests__/globals.test.ts
+__tests__/helpers.ts
+__tests__/parameter.test.ts
+__tests__/requestbodies.test.ts
+__tests__/responsebodies.test.ts
+__tests__/servers.test.ts
+__tests__/testdata/testUpload.json
 src/sdk/models/operations/apikeyauth.ts
 src/sdk/models/operations/apikeyauthglobal.ts
 src/sdk/models/operations/basicauth.ts

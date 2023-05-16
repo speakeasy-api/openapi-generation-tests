@@ -29,6 +29,15 @@ src/Utils/SecurityClient.php
 src/Utils/SecurityMetadata.php
 src/Utils/SpeakeasyMetadata.php
 src/Utils/Utils.php
+tests/AuthTest.php
+tests/FlatteningTest.php
+tests/GlobalsTest.php
+tests/Helpers/Helpers.php
+tests/ParameterTest.php
+tests/RequestBodiesTest.php
+tests/ResponseBodiesTest.php
+tests/ServersTest.php
+tests/testUpload.json
 src/Models/Operations/ApiKeyAuthSecurity.php
 src/Models/Operations/ApiKeyAuthToken.php
 src/Models/Operations/ApiKeyAuthResponse.php

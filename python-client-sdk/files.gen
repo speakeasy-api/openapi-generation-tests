@@ -17,6 +17,16 @@ src/sdk/models/__init__.py
 src/sdk/utils/__init__.py
 src/sdk/utils/retries.py
 src/sdk/utils/utils.py
+tests/__init__.py
+tests/helpers.py
+tests/testUpload.json
+tests/test_auth.py
+tests/test_flattening.py
+tests/test_globals.py
+tests/test_parameters.py
+tests/test_request_bodies.py
+tests/test_response_bodies.py
+tests/test_servers.py
 src/sdk/models/operations/apikeyauth.py
 src/sdk/models/operations/apikeyauthglobal.py
 src/sdk/models/operations/basicauth.py

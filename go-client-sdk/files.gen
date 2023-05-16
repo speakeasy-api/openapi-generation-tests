@@ -24,6 +24,16 @@ pkg/utils/requestbody.go
 pkg/utils/retries.go
 pkg/utils/security.go
 pkg/utils/utils.go
+tests/auth_test.go
+tests/flattening_test.go
+tests/globals_test.go
+tests/helpers_test.go
+tests/parameter_test.go
+tests/requestbodies_test.go
+tests/responsebodies_test.go
+tests/servers_test.go
+tests/testdata/testUpload.json
+tests/unions_test.go
 pkg/models/operations/apikeyauth.go
 pkg/models/operations/apikeyauthglobal.go
 pkg/models/operations/basicauth.go
