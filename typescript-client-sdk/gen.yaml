@@ -10,5 +10,5 @@ generation:
 typescript:
   version: 1.0.1
   author: Speakeasy
-  maxMethodParams: 0
+  maxMethodParams: 5
   packageName: openapi

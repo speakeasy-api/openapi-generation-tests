@@ -9,6 +9,6 @@ generation:
   singleTagPerOp: false
 php:
   version: 1.0.1
-  maxMethodParams: 0
+  maxMethodParams: 5
   namespace: OpenAPI\OpenAPI
   packageName: openapi/openapi
