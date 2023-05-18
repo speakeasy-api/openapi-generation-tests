@@ -8,6 +8,7 @@ parameters.go
 requestbodies.go
 responsebodies.go
 servers.go
+telemetry.go
 unions.go
 sdk.go
 go.mod
@@ -127,6 +128,8 @@ pkg/models/operations/selectglobalserver.go
 pkg/models/operations/selectserverwithid.go
 pkg/models/operations/serverwithtemplates.go
 pkg/models/operations/serverwithtemplatesglobal.go
+pkg/models/operations/telemetryspeakeasyuseragentget.go
+pkg/models/operations/telemetryuseragentget.go
 pkg/models/operations/mixedtypeoneofpost.go
 pkg/models/operations/primitivetypeoneofpost.go
 pkg/models/operations/stronglytypedoneofpost.go
@@ -165,6 +168,7 @@ docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md
 docs/servers/README.md
+docs/telemetry/README.md
 docs/unions/README.md
 USAGE.md
 pkg/models/operations/options.go

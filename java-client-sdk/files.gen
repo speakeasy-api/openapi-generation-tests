@@ -8,6 +8,7 @@ lib/src/main/java/org/openapis/openapi/Parameters.java
 lib/src/main/java/org/openapis/openapi/RequestBodies.java
 lib/src/main/java/org/openapis/openapi/ResponseBodies.java
 lib/src/main/java/org/openapis/openapi/Servers.java
+lib/src/main/java/org/openapis/openapi/Telemetry.java
 lib/src/main/java/org/openapis/openapi/Unions.java
 lib/src/main/java/org/openapis/openapi/SDK.java
 .gitattributes
@@ -288,6 +289,11 @@ lib/src/main/java/org/openapis/openapi/models/operations/SelectGlobalServerRespo
 lib/src/main/java/org/openapis/openapi/models/operations/SelectServerWithIDResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ServerWithTemplatesResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ServerWithTemplatesGlobalResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/TelemetrySpeakeasyUserAgentGetRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/TelemetrySpeakeasyUserAgentGetRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/TelemetrySpeakeasyUserAgentGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/TelemetryUserAgentGetRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/TelemetryUserAgentGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/MixedTypeOneOfPostRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/MixedTypeOneOfPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/PrimitiveTypeOneOfPostRes.java
@@ -344,5 +350,6 @@ docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md
 docs/servers/README.md
+docs/telemetry/README.md
 docs/unions/README.md
 USAGE.md

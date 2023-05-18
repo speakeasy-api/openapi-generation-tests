@@ -98,6 +98,8 @@ export * from "./simplepathparameterprimitives";
 export * from "./statusget";
 export * from "./statuspostretries";
 export * from "./stronglytypedoneofpost";
+export * from "./telemetryspeakeasyuseragentget";
+export * from "./telemetryuseragentget";
 export * from "./typedobjectoneofpost";
 export * from "./usageexamplepost";
 export * from "./weaklytypedoneofpost";

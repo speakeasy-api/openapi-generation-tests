@@ -16,7 +16,7 @@ module OpenApiSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :parameters, :request_bodies, :response_bodies, :servers, :unions
+    attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :parameters, :request_bodies, :response_bodies, :servers, :telemetry, :unions
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -71,7 +71,7 @@ module OpenApiSDK
       @security = nil
       @server_url = SERVERS[0]
       @language = 'ruby'
-      @sdk_version = '1.1.0'
+      @sdk_version = '1.1.1'
       @gen_version = '2.30.0'
       init_sdks
     end
@@ -183,6 +183,15 @@ module OpenApiSDK
         @gen_version,
         @_globals
       )
+      @telemetry = Telemetry.new(
+        self,
+        @client,
+        @server_url,
+        @language,
+        @sdk_version,
+        @gen_version,
+        @_globals
+      )
       @unions = Unions.new(
         self,
         @client,
@@ -203,7 +212,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :string)
       headers['content-type'] = req_content_type
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.put(url) do |req|
         req.headers = headers
@@ -238,7 +247,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/json"
       headers = {}
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers

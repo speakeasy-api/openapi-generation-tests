@@ -8,6 +8,7 @@ src/sdk/parameters.ts
 src/sdk/requestbodies.ts
 src/sdk/responsebodies.ts
 src/sdk/servers.ts
+src/sdk/telemetry.ts
 src/sdk/unions.ts
 src/sdk/sdk.ts
 .eslintrc.yml
@@ -131,6 +132,8 @@ src/sdk/models/operations/selectglobalserver.ts
 src/sdk/models/operations/selectserverwithid.ts
 src/sdk/models/operations/serverwithtemplates.ts
 src/sdk/models/operations/serverwithtemplatesglobal.ts
+src/sdk/models/operations/telemetryspeakeasyuseragentget.ts
+src/sdk/models/operations/telemetryuseragentget.ts
 src/sdk/models/operations/mixedtypeoneofpost.ts
 src/sdk/models/operations/primitivetypeoneofpost.ts
 src/sdk/models/operations/stronglytypedoneofpost.ts
@@ -169,5 +172,6 @@ docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md
 docs/servers/README.md
+docs/telemetry/README.md
 docs/unions/README.md
 USAGE.md

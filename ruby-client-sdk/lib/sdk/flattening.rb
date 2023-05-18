@@ -37,7 +37,7 @@ module OpenApiSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       query_params = Utils.get_query_params(Operations::ComponentBodyAndParamConflictRequest, request, @globals)
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.post(url) do |req|
         req.headers = headers
@@ -81,7 +81,7 @@ module OpenApiSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       query_params = Utils.get_query_params(Operations::ComponentBodyAndParamNoConflictRequest, request, @globals)
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.post(url) do |req|
         req.headers = headers
@@ -128,7 +128,7 @@ module OpenApiSDK
       )
       headers = {}
       query_params = Utils.get_query_params(Operations::ConflictingParamsRequest, request, @globals)
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -165,7 +165,7 @@ module OpenApiSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       query_params = Utils.get_query_params(Operations::InlineBodyAndParamConflictRequest, request, @globals)
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.post(url) do |req|
         req.headers = headers
@@ -209,7 +209,7 @@ module OpenApiSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       query_params = Utils.get_query_params(Operations::InlineBodyAndParamNoConflictRequest, request, @globals)
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.post(url) do |req|
         req.headers = headers

@@ -218,6 +218,11 @@ func main() {
 * [ServerWithTemplates](docs/servers/README.md#serverwithtemplates)
 * [ServerWithTemplatesGlobal](docs/servers/README.md#serverwithtemplatesglobal)
 
+### [Telemetry](docs/telemetry/README.md)
+
+* [TelemetrySpeakeasyUserAgentGet](docs/telemetry/README.md#telemetryspeakeasyuseragentget)
+* [TelemetryUserAgentGet](docs/telemetry/README.md#telemetryuseragentget)
+
 ### [Unions](docs/unions/README.md)
 
 * [MixedTypeOneOfPost](docs/unions/README.md#mixedtypeoneofpost)

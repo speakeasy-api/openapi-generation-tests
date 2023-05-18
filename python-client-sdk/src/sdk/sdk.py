@@ -12,6 +12,7 @@ from .parameters import Parameters
 from .requestbodies import RequestBodies
 from .responsebodies import ResponseBodies
 from .servers import Servers
+from .telemetry import Telemetry
 from .unions import Unions
 from sdk.models import operations, shared
 from typing import Any, Optional
@@ -52,6 +53,8 @@ class SDK:
     r"""Endpoints for testing response bodies."""
     servers: Servers
     r"""Endpoints for testing servers."""
+    telemetry: Telemetry
+    r"""Endpoints for testing telemetry."""
     unions: Unions
     r"""Endpoints for testing union types."""
 
@@ -59,7 +62,7 @@ class SDK:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.1.0"
+    _sdk_version: str = "1.1.1"
     _gen_version: str = "2.30.0"
     _globals: dict[str, dict[str, dict[str, Any]]]
 
@@ -214,6 +217,16 @@ class SDK:
             self._globals
         )
         
+        self.telemetry = Telemetry(
+            self._client,
+            self._security_client,
+            self._server_url,
+            self._language,
+            self._sdk_version,
+            self._gen_version,
+            self._globals
+        )
+        
         self.unions = Unions(
             self._client,
             self._security_client,
@@ -233,7 +246,7 @@ class SDK:
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'string')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -255,7 +268,7 @@ class SDK:
         
         url = base_url.removesuffix('/') + '/json'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

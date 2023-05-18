@@ -15,6 +15,7 @@ import { ParametersT } from "./parameters";
 import { RequestBodies } from "./requestbodies";
 import { ResponseBodies } from "./responsebodies";
 import { Servers } from "./servers";
+import { Telemetry } from "./telemetry";
 import { Unions } from "./unions";
 import axios from "axios";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -114,6 +115,10 @@ export class SDK {
    */
   public servers: Servers;
   /**
+   * Endpoints for testing telemetry.
+   */
+  public telemetry: Telemetry;
+  /**
    * Endpoints for testing union types.
    */
   public unions: Unions;
@@ -122,7 +127,7 @@ export class SDK {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.1.0";
+  private _sdkVersion = "1.1.1";
   private _genVersion = "2.30.0";
   private _globals: any;
 
@@ -254,6 +259,16 @@ export class SDK {
       this._globals
     );
 
+    this.telemetry = new Telemetry(
+      this._defaultClient,
+      this._securityClient,
+      this._serverURL,
+      this._language,
+      this._sdkVersion,
+      this._genVersion,
+      this._globals
+    );
+
     this.unions = new Unions(
       this._defaultClient,
       this._securityClient,
@@ -291,7 +306,7 @@ export class SDK {
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({
@@ -340,7 +355,7 @@ export class SDK {
 
     const headers = { ...config?.headers };
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({

@@ -44,7 +44,7 @@ public class Generation {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -76,7 +76,7 @@ public class Generation {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -128,7 +128,7 @@ public class Generation {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeprecatedNoCommentsGetRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -182,7 +182,7 @@ public class Generation {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -214,7 +214,7 @@ public class Generation {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -246,7 +246,7 @@ public class Generation {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -296,7 +296,7 @@ public class Generation {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "requestBody", "json");
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.IgnoresPostRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -336,7 +336,7 @@ public class Generation {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.NameOverrideGetRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -385,7 +385,7 @@ public class Generation {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "requestBody", "json");
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.UsageExamplePostRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {

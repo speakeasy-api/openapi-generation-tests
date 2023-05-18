@@ -48,7 +48,7 @@ public class Unions {
         }
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -85,7 +85,7 @@ public class Unions {
         }
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -122,7 +122,7 @@ public class Unions {
         }
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -159,7 +159,7 @@ public class Unions {
         }
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -196,7 +196,7 @@ public class Unions {
         }
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         

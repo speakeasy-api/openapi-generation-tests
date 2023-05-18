@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.1.0'
+implementation 'org.openapis.openapi:openapi:1.1.1'
 ```
 <!-- End SDK Installation -->
 
@@ -207,6 +207,11 @@ public class Application {
 * [selectServerWithID](docs/servers/README.md#selectserverwithid) - Select a server by ID.
 * [serverWithTemplates](docs/servers/README.md#serverwithtemplates)
 * [serverWithTemplatesGlobal](docs/servers/README.md#serverwithtemplatesglobal)
+
+### [telemetry](docs/telemetry/README.md)
+
+* [telemetrySpeakeasyUserAgentGet](docs/telemetry/README.md#telemetryspeakeasyuseragentget)
+* [telemetryUserAgentGet](docs/telemetry/README.md#telemetryuseragentget)
 
 ### [unions](docs/unions/README.md)
 

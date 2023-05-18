@@ -38,7 +38,7 @@ module OpenApiSDK
         @globals
       )
       headers = {}
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -70,7 +70,7 @@ module OpenApiSDK
       url = "#{base_url.delete_suffix('/')}/anything/globals/queryParameter"
       headers = {}
       query_params = Utils.get_query_params(Operations::GlobalsQueryParameterGetRequest, request, @globals)
-      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers

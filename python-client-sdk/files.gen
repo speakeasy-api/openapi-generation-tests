@@ -8,6 +8,7 @@ src/sdk/parameters.py
 src/sdk/requestbodies.py
 src/sdk/responsebodies.py
 src/sdk/servers.py
+src/sdk/telemetry.py
 src/sdk/unions.py
 src/sdk/sdk.py
 pylintrc
@@ -120,6 +121,8 @@ src/sdk/models/operations/selectglobalserver.py
 src/sdk/models/operations/selectserverwithid.py
 src/sdk/models/operations/serverwithtemplates.py
 src/sdk/models/operations/serverwithtemplatesglobal.py
+src/sdk/models/operations/telemetryspeakeasyuseragentget.py
+src/sdk/models/operations/telemetryuseragentget.py
 src/sdk/models/operations/mixedtypeoneofpost.py
 src/sdk/models/operations/primitivetypeoneofpost.py
 src/sdk/models/operations/stronglytypedoneofpost.py
@@ -158,5 +161,6 @@ docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md
 docs/servers/README.md
+docs/telemetry/README.md
 docs/unions/README.md
 USAGE.md

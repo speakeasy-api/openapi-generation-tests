@@ -71,6 +71,8 @@ type SDK struct {
 	ResponseBodies *responseBodies
 	// Servers - Endpoints for testing servers.
 	Servers *servers
+	// Telemetry - Endpoints for testing telemetry.
+	Telemetry *telemetry
 	// Unions - Endpoints for testing union types.
 	Unions *unions
 
@@ -145,7 +147,7 @@ func WithGlobalQueryParam(globalQueryParam string) SDKOption {
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		_language:   "go",
-		_sdkVersion: "1.1.0",
+		_sdkVersion: "1.1.1",
 		_genVersion: "2.30.0",
 
 		_globals: map[string]map[string]map[string]interface{}{
@@ -272,6 +274,16 @@ func New(opts ...SDKOption) *SDK {
 		sdk._globals,
 	)
 
+	sdk.Telemetry = newTelemetry(
+		sdk._defaultClient,
+		sdk._securityClient,
+		sdk._serverURL,
+		sdk._language,
+		sdk._sdkVersion,
+		sdk._genVersion,
+		sdk._globals,
+	)
+
 	sdk.Unions = newUnions(
 		sdk._defaultClient,
 		sdk._securityClient,
@@ -298,7 +310,7 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -344,7 +356,7 @@ func (s *SDK) ResponseBodyJSONGet(ctx context.Context) (*operations.ResponseBody
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
-	req.Header.Set("user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
 
 	client := s._securityClient
 

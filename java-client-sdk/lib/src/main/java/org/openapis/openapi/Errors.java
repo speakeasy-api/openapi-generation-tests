@@ -55,7 +55,7 @@ public class Errors {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -83,7 +83,7 @@ public class Errors {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -118,7 +118,7 @@ public class Errors {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "simpleObject", "json");
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         

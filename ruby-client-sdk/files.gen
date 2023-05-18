@@ -8,6 +8,7 @@ lib/sdk/parameters.rb
 lib/sdk/requestbodies.rb
 lib/sdk/responsebodies.rb
 lib/sdk/servers.rb
+lib/sdk/telemetry.rb
 lib/sdk/unions.rb
 lib/sdk/sdk.rb
 .rubocop.yml
@@ -109,6 +110,8 @@ lib/sdk/models/operations/selectglobalserver.rb
 lib/sdk/models/operations/selectserverwithid.rb
 lib/sdk/models/operations/serverwithtemplates.rb
 lib/sdk/models/operations/serverwithtemplatesglobal.rb
+lib/sdk/models/operations/telemetryspeakeasyuseragentget.rb
+lib/sdk/models/operations/telemetryuseragentget.rb
 lib/sdk/models/operations/mixedtypeoneofpost.rb
 lib/sdk/models/operations/primitivetypeoneofpost.rb
 lib/sdk/models/operations/stronglytypedoneofpost.rb
@@ -145,6 +148,7 @@ docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md
 docs/servers/README.md
+docs/telemetry/README.md
 docs/unions/README.md
 USAGE.md
 test/auth_test.rb

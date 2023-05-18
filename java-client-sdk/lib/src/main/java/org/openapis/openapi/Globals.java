@@ -50,7 +50,7 @@ public class Globals {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -89,7 +89,7 @@ public class Globals {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.GlobalsQueryParameterGetRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {

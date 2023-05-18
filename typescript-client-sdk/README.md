@@ -217,6 +217,11 @@ sdk.generation.usageExamplePost({
 * [serverWithTemplates](docs/servers/README.md#serverwithtemplates)
 * [serverWithTemplatesGlobal](docs/servers/README.md#serverwithtemplatesglobal)
 
+### [telemetry](docs/telemetry/README.md)
+
+* [telemetrySpeakeasyUserAgentGet](docs/telemetry/README.md#telemetryspeakeasyuseragentget)
+* [telemetryUserAgentGet](docs/telemetry/README.md#telemetryuseragentget)
+
 ### [unions](docs/unions/README.md)
 
 * [mixedTypeOneOfPost](docs/unions/README.md#mixedtypeoneofpost)

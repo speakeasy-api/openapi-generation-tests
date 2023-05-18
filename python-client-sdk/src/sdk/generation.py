@@ -30,7 +30,7 @@ class Generation:
         
         url = base_url.removesuffix('/') + '/anything/anchorTypes'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -52,7 +52,7 @@ class Generation:
         
         url = base_url.removesuffix('/') + '/anything/circularReference'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -80,7 +80,7 @@ class Generation:
         url = base_url.removesuffix('/') + '/anything/deprecatedNoComments'
         headers = {}
         query_params = utils.get_query_params(operations.DeprecatedNoCommentsGetRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -107,7 +107,7 @@ class Generation:
         url = base_url.removesuffix('/') + '/anything/deprecatedWithComments'
         headers = {}
         query_params = utils.get_query_params(operations.DeprecatedWithCommentsGetRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -125,7 +125,7 @@ class Generation:
         
         url = base_url.removesuffix('/') + '/anything/globalNameOverride'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -147,7 +147,7 @@ class Generation:
         
         url = base_url.removesuffix('/') + '/anything/ignoredGeneration'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -178,7 +178,7 @@ class Generation:
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.IgnoresPostRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -205,7 +205,7 @@ class Generation:
         url = base_url.removesuffix('/') + '/anything/nameOverride'
         headers = {}
         query_params = utils.get_query_params(operations.NameOverrideGetRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -235,7 +235,7 @@ class Generation:
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UsageExamplePostRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         

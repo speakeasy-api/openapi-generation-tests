@@ -30,7 +30,7 @@ class ResponseBodies:
         
         url = base_url.removesuffix('/') + '/bytes/100'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -51,7 +51,7 @@ class ResponseBodies:
         
         url = base_url.removesuffix('/') + '/html'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -72,7 +72,7 @@ class ResponseBodies:
         
         url = base_url.removesuffix('/') + '/xml'
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

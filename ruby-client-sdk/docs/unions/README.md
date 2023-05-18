@@ -25,9 +25,9 @@ s = sdk::SDK.new
    
 req = Operations::::(
   request=Shared::SimpleObject(
-    any="debitis",
-    bigint=399802,
-    bigint_str="porro",
+    any="aliquid",
+    bigint=780931,
+    bigint_str="suscipit",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
@@ -36,7 +36,7 @@ req = Operations::::(
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32EnumEnum::SIXTY_NINE,
+    int32_enum=Shared::SimpleObjectInt32EnumEnum::FIFTY_FIVE,
     int_enum=Shared::SimpleObjectIntEnumEnum::FIRST,
     int_opt_null=999999,
     num=1.1,
@@ -65,7 +65,7 @@ s = sdk::SDK.new
 
    
 req = Operations::::(
-  request="cumque",
+  request=false,
 )
     
 res = s.unions::primitive_type_one_of_post(req)

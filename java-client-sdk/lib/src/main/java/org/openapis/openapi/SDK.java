@@ -81,6 +81,10 @@ public class SDK {
      */
     public Servers servers;
     /**
+     * Endpoints for testing telemetry.
+     */
+    public Telemetry telemetry;
+    /**
      * Endpoints for testing union types.
      */
     public Unions unions;	
@@ -90,7 +94,7 @@ public class SDK {
 	private org.openapis.openapi.models.shared.Security _security;
 	private String _serverUrl;
 	private String _language = "java";
-	private String _sdkVersion = "1.1.0";
+	private String _sdkVersion = "1.1.1";
 	private String _genVersion = "2.30.0";
 	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
 	
@@ -330,6 +334,16 @@ public class SDK {
 			this._globals
 		);
 		
+		this.telemetry = new Telemetry(
+			this._defaultClient,
+			this._securityClient,
+			this._serverUrl,
+			this._language,
+			this._sdkVersion,
+			this._genVersion,
+			this._globals
+		);
+		
 		this.unions = new Unions(
 			this._defaultClient,
 			this._securityClient,
@@ -351,7 +365,7 @@ public class SDK {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "string");
         req.setBody(serializedRequestBody);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -383,7 +397,7 @@ public class SDK {
         req.setMethod("GET");
         req.setURL(url);
         
-        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         

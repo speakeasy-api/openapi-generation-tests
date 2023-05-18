@@ -72,7 +72,7 @@ export class Flattening {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({
@@ -145,7 +145,7 @@ export class Flattening {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({
@@ -205,7 +205,7 @@ export class Flattening {
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req, this._globals);
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({
@@ -277,7 +277,7 @@ export class Flattening {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({
@@ -350,7 +350,7 @@ export class Flattening {
     if (reqBody == null || Object.keys(reqBody).length === 0)
       throw new Error("request body is required");
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({

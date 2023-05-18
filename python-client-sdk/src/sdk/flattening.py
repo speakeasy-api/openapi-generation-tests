@@ -41,7 +41,7 @@ class Flattening:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.ComponentBodyAndParamConflictRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -74,7 +74,7 @@ class Flattening:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.ComponentBodyAndParamNoConflictRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -102,7 +102,7 @@ class Flattening:
         url = utils.generate_url(operations.ConflictingParamsRequest, base_url, '/anything/flattening/conflictingParams/{str}', request, self._globals)
         headers = {}
         query_params = utils.get_query_params(operations.ConflictingParamsRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -135,7 +135,7 @@ class Flattening:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.InlineBodyAndParamConflictRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -168,7 +168,7 @@ class Flattening:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.InlineBodyAndParamNoConflictRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

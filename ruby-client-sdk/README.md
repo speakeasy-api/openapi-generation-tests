@@ -238,6 +238,11 @@ if ! res.usage_example_post_200_application_json_object.nil?
 * [server_with_templates](docs/servers/README.md#server_with_templates)
 * [server_with_templates_global](docs/servers/README.md#server_with_templates_global)
 
+### [telemetry](docs/telemetry/README.md)
+
+* [telemetry_speakeasy_user_agent_get](docs/telemetry/README.md#telemetry_speakeasy_user_agent_get)
+* [telemetry_user_agent_get](docs/telemetry/README.md#telemetry_user_agent_get)
+
 ### [unions](docs/unions/README.md)
 
 * [mixed_type_one_of_post](docs/unions/README.md#mixed_type_one_of_post)

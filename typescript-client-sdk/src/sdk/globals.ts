@@ -55,7 +55,7 @@ export class Globals {
 
     const headers = { ...config?.headers };
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({
@@ -108,7 +108,7 @@ export class Globals {
     const headers = { ...config?.headers };
     const queryParams: string = utils.serializeQueryParams(req, this._globals);
     headers[
-      "user-agent"
+      "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
     const httpRes: AxiosResponse = await client.request({

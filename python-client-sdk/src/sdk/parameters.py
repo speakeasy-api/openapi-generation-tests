@@ -36,7 +36,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/deepObject/map'
         headers = {}
         query_params = utils.get_query_params(operations.DeepObjectQueryParamsMapRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -64,7 +64,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/deepObject/obj'
         headers = {}
         query_params = utils.get_query_params(operations.DeepObjectQueryParamsObjectRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -92,7 +92,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/form/array'
         headers = {}
         query_params = utils.get_query_params(operations.FormQueryParamsArrayRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -120,7 +120,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/form/map'
         headers = {}
         query_params = utils.get_query_params(operations.FormQueryParamsMapRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -148,7 +148,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/form/obj'
         headers = {}
         query_params = utils.get_query_params(operations.FormQueryParamsObjectRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -178,7 +178,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/form/primitive'
         headers = {}
         query_params = utils.get_query_params(operations.FormQueryParamsPrimitiveRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -206,7 +206,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/form/refParamObject'
         headers = {}
         query_params = utils.get_query_params(operations.FormQueryParamsRefParamObjectRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -232,7 +232,7 @@ class Parameters:
         
         url = base_url.removesuffix('/') + '/anything/headers/array'
         headers = utils.get_headers(request)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -259,7 +259,7 @@ class Parameters:
         
         url = base_url.removesuffix('/') + '/anything/headers/map'
         headers = utils.get_headers(request)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -286,7 +286,7 @@ class Parameters:
         
         url = base_url.removesuffix('/') + '/anything/headers/obj'
         headers = utils.get_headers(request)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -315,7 +315,7 @@ class Parameters:
         
         url = base_url.removesuffix('/') + '/anything/headers/primitive'
         headers = utils.get_headers(request)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -343,7 +343,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/json/obj'
         headers = {}
         query_params = utils.get_query_params(operations.JSONQueryParamsObjectRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -372,7 +372,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/mixed'
         headers = {}
         query_params = utils.get_query_params(operations.MixedQueryParamsRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -398,7 +398,7 @@ class Parameters:
         
         url = utils.generate_url(operations.PathParameterJSONRequest, base_url, '/anything/pathParams/json/{jsonObj}', request, self._globals)
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -428,7 +428,7 @@ class Parameters:
         url = base_url.removesuffix('/') + '/anything/queryParams/pipe/array'
         headers = {}
         query_params = utils.get_query_params(operations.PipeDelimitedQueryParamsArrayRequest, request, self._globals)
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -454,7 +454,7 @@ class Parameters:
         
         url = utils.generate_url(operations.SimplePathParameterArraysRequest, base_url, '/anything/pathParams/arr/{arrParam}', request, self._globals)
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -481,7 +481,7 @@ class Parameters:
         
         url = utils.generate_url(operations.SimplePathParameterMapsRequest, base_url, '/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}', request, self._globals)
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -508,7 +508,7 @@ class Parameters:
         
         url = utils.generate_url(operations.SimplePathParameterObjectsRequest, base_url, '/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}', request, self._globals)
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -537,7 +537,7 @@ class Parameters:
         
         url = utils.generate_url(operations.SimplePathParameterPrimitivesRequest, base_url, '/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}', request, self._globals)
         headers = {}
-        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

@@ -8,6 +8,7 @@ src/Parameters.php
 src/RequestBodies.php
 src/ResponseBodies.php
 src/Servers.php
+src/Telemetry.php
 src/Unions.php
 src/SDK.php
 src/SDKBuilder.php
@@ -278,6 +279,11 @@ src/Models/Operations/SelectGlobalServerResponse.php
 src/Models/Operations/SelectServerWithIDResponse.php
 src/Models/Operations/ServerWithTemplatesResponse.php
 src/Models/Operations/ServerWithTemplatesGlobalResponse.php
+src/Models/Operations/TelemetrySpeakeasyUserAgentGetRequest.php
+src/Models/Operations/TelemetrySpeakeasyUserAgentGetRes.php
+src/Models/Operations/TelemetrySpeakeasyUserAgentGetResponse.php
+src/Models/Operations/TelemetryUserAgentGetRes.php
+src/Models/Operations/TelemetryUserAgentGetResponse.php
 src/Models/Operations/MixedTypeOneOfPostRes.php
 src/Models/Operations/MixedTypeOneOfPostResponse.php
 src/Models/Operations/PrimitiveTypeOneOfPostRes.php
@@ -334,5 +340,6 @@ docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md
 docs/servers/README.md
+docs/telemetry/README.md
 docs/unions/README.md
 USAGE.md
