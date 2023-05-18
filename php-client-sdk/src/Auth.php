@@ -55,6 +55,7 @@ class Auth
         $url = Utils\Utils::generateUrl($baseUrl, '/bearer#operation');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
         $httpResponse = $client->request('GET', $url, $options);
@@ -90,6 +91,7 @@ class Auth
         $url = Utils\Utils::generateUrl($baseUrl, '/bearer');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -134,6 +136,7 @@ class Auth
         $url = Utils\Utils::generateUrl($baseUrl, '/basic-auth/{user}/{passwd}', \OpenAPI\OpenAPI\Models\Operations\BasicAuthRequest::class, $request, $this->_globals);
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
         $httpResponse = $client->request('GET', $url, $options);
@@ -171,6 +174,7 @@ class Auth
         $url = Utils\Utils::generateUrl($baseUrl, '/bearer#bearer');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
         $httpResponse = $client->request('GET', $url, $options);
@@ -208,6 +212,7 @@ class Auth
         $url = Utils\Utils::generateUrl($baseUrl, '/bearer#oauth2');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
         $httpResponse = $client->request('GET', $url, $options);
@@ -245,6 +250,7 @@ class Auth
         $url = Utils\Utils::generateUrl($baseUrl, '/bearer#openIdConnect');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
         $httpResponse = $client->request('GET', $url, $options);

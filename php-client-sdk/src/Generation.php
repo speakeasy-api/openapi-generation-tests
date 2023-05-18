@@ -53,6 +53,7 @@ class Generation
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/anchorTypes');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -85,6 +86,7 @@ class Generation
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/circularReference');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -126,6 +128,7 @@ class Generation
         
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetRequest::class, $request, $this->_globals));
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -163,6 +166,7 @@ class Generation
         
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest::class, $request, $this->_globals));
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -191,6 +195,7 @@ class Generation
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globalNameOverride');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -223,6 +228,7 @@ class Generation
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/ignoredGeneration');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -266,6 +272,7 @@ class Generation
         $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
         $options = array_merge_recursive($options, $body);
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest::class, $request, $this->_globals));
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('POST', $url, $options);
         
@@ -304,6 +311,7 @@ class Generation
         
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest::class, $request, $this->_globals));
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -347,6 +355,7 @@ class Generation
         $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
         $options = array_merge_recursive($options, $body);
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest::class, $request, $this->_globals));
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);

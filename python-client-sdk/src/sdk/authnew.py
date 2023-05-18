@@ -31,11 +31,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#apiKeyAuthGlobal'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -54,11 +54,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#basicAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -77,11 +77,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#multipleMixedOptionsAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -100,11 +100,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#multipleMixedSchemeAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -123,11 +123,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#multipleOptionsWithMixedSchemesAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -146,11 +146,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#multipleOptionsWithSimpleSchemesAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -169,11 +169,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#multipleSimpleOptionsAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -192,11 +192,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#multipleSimpleSchemeAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -215,11 +215,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#oauth2Auth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
@@ -238,11 +238,11 @@ class AuthNew:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/auth#openIdConnectAuth'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         

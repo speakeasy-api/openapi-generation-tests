@@ -33,11 +33,12 @@ class Globals:
         base_url = self._server_url
         
         url = utils.generate_url(operations.GlobalPathParameterGetRequest, base_url, '/anything/globals/pathParameter/{globalPathParam}', request, self._globals)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GlobalPathParameterGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -58,12 +59,13 @@ class Globals:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/globals/queryParameter'
-        
+        headers = {}
         query_params = utils.get_query_params(operations.GlobalsQueryParameterGetRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GlobalsQueryParameterGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

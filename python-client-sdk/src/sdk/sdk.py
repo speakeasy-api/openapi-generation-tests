@@ -59,8 +59,8 @@ class SDK:
     _security_client: requests_http.Session
     _server_url: str = SERVERS[0]
     _language: str = "python"
-    _sdk_version: str = "1.0.3"
-    _gen_version: str = "2.29.0"
+    _sdk_version: str = "1.1.0"
+    _gen_version: str = "2.30.0"
     _globals: dict[str, dict[str, dict[str, Any]]]
 
     def __init__(self,
@@ -229,11 +229,11 @@ class SDK:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/ignoredGeneration'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'string')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -254,11 +254,12 @@ class SDK:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/json'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ResponseBodyJSONGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

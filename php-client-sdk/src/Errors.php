@@ -63,6 +63,7 @@ class Errors
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/connectionError');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -96,6 +97,7 @@ class Errors
         $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest::class, $request, $this->_globals);
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         
@@ -134,6 +136,7 @@ class Errors
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "simpleObject", "json");
         $options = array_merge_recursive($options, $body);
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('POST', $url, $options);
         

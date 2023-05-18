@@ -27,6 +27,7 @@ tests/test_parameters.py
 tests/test_request_bodies.py
 tests/test_response_bodies.py
 tests/test_servers.py
+tests/test_telemetry.py
 src/sdk/models/operations/apikeyauth.py
 src/sdk/models/operations/apikeyauthglobal.py
 src/sdk/models/operations/basicauth.py

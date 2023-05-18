@@ -18,7 +18,7 @@ module OpenApiSDK
 
     attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :parameters, :request_bodies, :response_bodies, :servers, :unions
 
-    attr_accessor :security, :sdk_version, :gen_version
+    attr_accessor :security, :language, :sdk_version, :gen_version
 
     sig { params(security: Shared::Security,
                  global_path_param: Integer,
@@ -70,8 +70,9 @@ module OpenApiSDK
 
       @security = nil
       @server_url = SERVERS[0]
-      @sdk_version = '1.0.3'
-      @gen_version = '2.29.0'
+      @language = 'ruby'
+      @sdk_version = '1.1.0'
+      @gen_version = '2.30.0'
       init_sdks
     end
 
@@ -96,6 +97,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -104,6 +106,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -112,6 +115,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -120,6 +124,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -128,6 +133,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -136,6 +142,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -144,6 +151,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -152,6 +160,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -160,6 +169,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -168,6 +178,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -176,6 +187,7 @@ module OpenApiSDK
         self,
         @client,
         @server_url,
+        @language,
         @sdk_version,
         @gen_version,
         @_globals
@@ -191,6 +203,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :string)
       headers['content-type'] = req_content_type
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.put(url) do |req|
         req.headers = headers
@@ -224,8 +237,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/json"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 

@@ -31,11 +31,12 @@ class Errors:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/anything/connectionError'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.ConnectionErrorGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -52,11 +53,12 @@ class Errors:
         base_url = self._server_url
         
         url = utils.generate_url(operations.StatusGetRequest, base_url, '/status/{statusCode}', request, self._globals)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.StatusGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -74,11 +76,11 @@ class Errors:
         base_url = self._server_url
         
         url = utils.generate_url(operations.StatusPostRetriesRequest, base_url, '/status/{statusCode}', request, self._globals)
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "simple_object", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         

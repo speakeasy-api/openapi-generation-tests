@@ -11,11 +11,12 @@ module OpenApiSDK
   extend T::Sig
   class Generation
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, sdk_version: String, gen_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, sdk_version, gen_version, gbls)
+    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
+    def initialize(sdk, client, server_url, language, sdk_version, gen_version, gbls)
       @sdk = sdk
       @client = client
       @server_url = server_url
+      @language = language
       @sdk_version = sdk_version
       @gen_version = gen_version
       @globals = gbls
@@ -26,8 +27,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/anchorTypes"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 
@@ -50,8 +54,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/circularReference"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 
@@ -80,9 +87,12 @@ module OpenApiSDK
       
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/deprecatedNoComments"
+      headers = {}
       query_params = Utils.get_query_params(Operations::DeprecatedNoCommentsGetRequest, request, @globals)
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         req.params = query_params
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
@@ -108,9 +118,12 @@ module OpenApiSDK
       
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/deprecatedWithComments"
+      headers = {}
       query_params = Utils.get_query_params(Operations::DeprecatedWithCommentsGetRequest, request, @globals)
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         req.params = query_params
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
@@ -130,8 +143,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/globalNameOverride"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 
@@ -154,8 +170,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/ignoredGeneration"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 
@@ -187,6 +206,7 @@ module OpenApiSDK
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
       headers['content-type'] = req_content_type
       query_params = Utils.get_query_params(Operations::IgnoresPostRequest, request, @globals)
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.post(url) do |req|
         req.headers = headers
@@ -224,9 +244,12 @@ module OpenApiSDK
       
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/nameOverride"
+      headers = {}
       query_params = Utils.get_query_params(Operations::NameOverrideGetRequest, request, @globals)
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         req.params = query_params
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
@@ -256,6 +279,7 @@ module OpenApiSDK
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
       headers['content-type'] = req_content_type
       query_params = Utils.get_query_params(Operations::UsageExamplePostRequest, request, @globals)
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.post(url) do |req|
         req.headers = headers

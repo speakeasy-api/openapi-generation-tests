@@ -37,6 +37,7 @@ tests/ParameterTest.php
 tests/RequestBodiesTest.php
 tests/ResponseBodiesTest.php
 tests/ServersTest.php
+tests/TelemetryTest.php
 tests/testUpload.json
 src/Models/Operations/ApiKeyAuthSecurity.php
 src/Models/Operations/ApiKeyAuthToken.php

@@ -29,11 +29,12 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/anchorTypes'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.AnchorTypesGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -50,11 +51,12 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/circularReference'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.CircularReferenceGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -76,12 +78,13 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/deprecatedNoComments'
-        
+        headers = {}
         query_params = utils.get_query_params(operations.DeprecatedNoCommentsGetRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeprecatedNoCommentsGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -102,12 +105,13 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/deprecatedWithComments'
-        
+        headers = {}
         query_params = utils.get_query_params(operations.DeprecatedWithCommentsGetRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeprecatedWithCommentsGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -120,11 +124,12 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/globalNameOverride'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.GetGlobalNameOverrideResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -141,11 +146,12 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/ignoredGeneration'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.IgnoredGenerationGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -167,12 +173,12 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/ignores'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.IgnoresPostRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -197,12 +203,13 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/nameOverride'
-        
+        headers = {}
         query_params = utils.get_query_params(operations.NameOverrideGetRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url, params=query_params)
+        http_res = client.request('GET', url, params=query_params, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.NameOverrideGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -223,12 +230,12 @@ class Generation:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/usageExample'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UsageExamplePostRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         

@@ -29,11 +29,12 @@ class Auth:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/bearer#operation'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.APIKeyAuthResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -52,11 +53,12 @@ class Auth:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/bearer'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.APIKeyAuthGlobalResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -80,11 +82,12 @@ class Auth:
         base_url = self._server_url
         
         url = utils.generate_url(operations.BasicAuthRequest, base_url, '/basic-auth/{user}/{passwd}', request, self._globals)
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.BasicAuthResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -103,11 +106,12 @@ class Auth:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/bearer#bearer'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.BearerAuthResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -126,11 +130,12 @@ class Auth:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/bearer#oauth2'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.Oauth2AuthResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
@@ -149,11 +154,12 @@ class Auth:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/bearer#openIdConnect'
-        
+        headers = {}
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = utils.configure_security_client(self._client, security)
         
-        http_res = client.request('GET', url)
+        http_res = client.request('GET', url, headers=headers)
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.OpenIDConnectAuthResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)

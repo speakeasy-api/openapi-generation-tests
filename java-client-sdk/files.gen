@@ -48,6 +48,7 @@ lib/src/test/java/org/openapis/openapi/ParameterTests.java
 lib/src/test/java/org/openapis/openapi/RequestBodiesTests.java
 lib/src/test/java/org/openapis/openapi/ResponseBodiesTests.java
 lib/src/test/java/org/openapis/openapi/ServerTests.java
+lib/src/test/java/org/openapis/openapi/TelemetryTests.java
 lib/src/main/java/org/openapis/openapi/models/operations/ApiKeyAuthSecurity.java
 lib/src/main/java/org/openapis/openapi/models/operations/ApiKeyAuthToken.java
 lib/src/main/java/org/openapis/openapi/models/operations/ApiKeyAuthResponse.java

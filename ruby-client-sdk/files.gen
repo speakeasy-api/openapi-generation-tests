@@ -155,4 +155,5 @@ test/parameter_test.rb
 test/requestbodies_test.rb
 test/responsebodies_test.rb
 test/servers_test.rb
+test/telemetry_test.rb
 test/testdata/testUpload.json

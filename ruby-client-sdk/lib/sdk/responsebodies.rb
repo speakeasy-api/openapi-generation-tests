@@ -11,11 +11,12 @@ module OpenApiSDK
   extend T::Sig
   class ResponseBodies
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, sdk_version: String, gen_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, sdk_version, gen_version, gbls)
+    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
+    def initialize(sdk, client, server_url, language, sdk_version, gen_version, gbls)
       @sdk = sdk
       @client = client
       @server_url = server_url
+      @language = language
       @sdk_version = sdk_version
       @gen_version = gen_version
       @globals = gbls
@@ -26,8 +27,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/bytes/100"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 
@@ -47,8 +51,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/html"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 
@@ -68,8 +75,11 @@ module OpenApiSDK
 
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/xml"
+      headers = {}
+      headers['user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
+        req.headers = headers
         Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
       end
 

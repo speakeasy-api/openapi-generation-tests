@@ -125,6 +125,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -161,6 +162,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -202,6 +204,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -243,6 +246,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -284,6 +288,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -325,6 +330,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -358,6 +364,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -399,6 +406,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -435,6 +443,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -476,6 +485,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -517,6 +527,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -558,6 +569,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -599,6 +611,7 @@ public class RequestBodies {
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -635,6 +648,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -671,6 +685,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -707,6 +722,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -743,6 +759,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -779,6 +796,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -815,6 +833,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -851,6 +870,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -889,6 +909,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -933,6 +954,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -977,6 +999,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.class, request, this._globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -1019,6 +1042,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -1055,6 +1079,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -1091,6 +1116,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -1127,6 +1153,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -1163,6 +1190,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -1199,6 +1227,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -1235,6 +1264,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         
@@ -1271,6 +1301,7 @@ public class RequestBodies {
         }
         req.setBody(serializedRequestBody);
         
+        req.addHeader("user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
         

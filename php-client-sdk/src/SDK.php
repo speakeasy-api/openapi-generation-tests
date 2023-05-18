@@ -113,8 +113,8 @@ class SDK
 	private ?Models\Shared\Security $_security;
 	private string $_serverUrl;
 	private string $_language = 'php';
-	private string $_sdkVersion = '1.0.3';
-	private string $_genVersion = '2.29.0';
+	private string $_sdkVersion = '1.1.0';
+	private string $_genVersion = '2.30.0';
 	/** @var array<string, array<string, array<string, mixed>>> */
 	private ?array $_globals;
 
@@ -291,6 +291,7 @@ class SDK
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "string");
         $options = array_merge_recursive($options, $body);
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('PUT', $url, $options);
         
@@ -323,6 +324,7 @@ class SDK
         $url = Utils\Utils::generateUrl($baseUrl, '/json');
         
         $options = ['http_errors' => false];
+        $options['headers']['user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
         

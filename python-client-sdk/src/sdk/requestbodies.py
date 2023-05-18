@@ -31,11 +31,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#array'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -56,13 +56,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/application/json/array/objResponse'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -85,11 +85,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#arrayOfArrays'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -112,11 +112,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#arrayOfArraysOfPrimitives'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -139,11 +139,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#arrayOfMaps'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -166,11 +166,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#arrayOfPrimitives'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -191,11 +191,11 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/application/json/deep'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -218,11 +218,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#map'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -243,13 +243,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/application/json/map/objResponse'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -272,11 +272,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#mapOfArrays'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -299,11 +299,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#mapOfMaps'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -326,11 +326,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#mapOfMapsOfPrimitives'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -353,11 +353,11 @@ class RequestBodies:
             base_url = server_url
         
         url = base_url.removesuffix('/') + '/requestbody#mapOfPrimitives'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -378,13 +378,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/application/json/multiple/json/filtered'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -405,13 +405,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/application/json/simple'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -432,13 +432,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/form/deep'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -459,13 +459,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/form/map/primitive'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -486,13 +486,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/form/simple'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -513,13 +513,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/component/filtered'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -540,13 +540,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/inline/filtered'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -572,7 +572,6 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split/param'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -580,6 +579,7 @@ class RequestBodies:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -605,7 +605,6 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split/param'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -613,6 +612,7 @@ class RequestBodies:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.RequestBodyPostMultipleContentTypesSplitParamJSONRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -638,7 +638,6 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split/param'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -646,6 +645,7 @@ class RequestBodies:
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest, request, self._globals)
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -666,13 +666,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'form')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -693,13 +693,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -720,13 +720,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/post/multiple/contentTypes/split'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -747,13 +747,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/put/bytes'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'raw')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -774,13 +774,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/put/multipart/deep'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -801,13 +801,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/put/multipart/file'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -828,13 +828,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/put/multipart/simple'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'multipart')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
@@ -855,13 +855,13 @@ class RequestBodies:
         base_url = self._server_url
         
         url = base_url.removesuffix('/') + '/anything/requestBodies/put/string'
-        
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'string')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
+        headers['user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
         
