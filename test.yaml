@@ -69,6 +69,8 @@ tags:
     description: Endpoints for testing union types.
   - name: errors
     description: Endpoints for testing error responses.
+  - name: telemetry
+    description: Endpoints for testing telemetry.
 security:
   - apiKeyAuth: []
   - apiKeyAuthNew: []
@@ -3000,6 +3002,52 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/telemetry/user-agent:
+    get:
+      operationId: telemetryUserAgentGet
+      tags:
+        - telemetry
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - headers
+  /anything/telemetry/speakeasy-user-agent:
+    get:
+      operationId: telemetrySpeakeasyUserAgentGet
+      tags:
+        - telemetry
+      parameters:
+        - name: User-Agent
+          in: header
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  headers:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - headers
 components:
   securitySchemes:
     basicAuth:
