@@ -145,7 +145,7 @@ src/sdk/models/operations/index.ts
 src/sdk/models/shared/authservicerequestbody.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/simpleobject.ts
-src/sdk/models/shared/enumenum.ts
+src/sdk/models/shared/enum.ts
 src/sdk/models/shared/validcircularreferenceobject.ts
 src/sdk/models/shared/httpbinsimplejsonobject.ts
 src/sdk/models/shared/refqueryparamobjexploded.ts

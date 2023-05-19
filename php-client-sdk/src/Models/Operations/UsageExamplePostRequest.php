@@ -54,10 +54,10 @@ class UsageExamplePostRequest
     /**
      * An enum parameter
      * 
-     * @var \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameterEnum $enumParameter
+     * @var \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter $enumParameter
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=enumParameter')]
-    public UsageExamplePostEnumParameterEnum $enumParameter;
+    public UsageExamplePostEnumParameter $enumParameter;
     
     /**
      * A float parameter
@@ -86,10 +86,10 @@ class UsageExamplePostRequest
     /**
      * An enum parameter
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameterEnum $optEnumParameter
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameter $optEnumParameter
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=optEnumParameter')]
-    public ?UsageExamplePostOptEnumParameterEnum $optEnumParameter = null;
+    public ?UsageExamplePostOptEnumParameter $optEnumParameter = null;
     
     /**
      * A string parameter
@@ -106,7 +106,7 @@ class UsageExamplePostRequest
 		$this->dateParameter = new \DateTime();
 		$this->dateTimeParameter = new \DateTime();
 		$this->doubleParameter = 0;
-		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameterEnum::VALUE1;
+		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter::VALUE1;
 		$this->floatParameter = 0;
 		$this->int64Parameter = 0;
 		$this->intParameter = 0;

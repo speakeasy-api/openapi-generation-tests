@@ -28,6 +28,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/bearer#operation"
       headers = {}
+      headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -56,6 +57,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/bearer"
       headers = {}
+      headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -95,6 +97,7 @@ module OpenApiSDK
         @globals
       )
       headers = {}
+      headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -123,6 +126,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/bearer#bearer"
       headers = {}
+      headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -151,6 +155,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/bearer#oauth2"
       headers = {}
+      headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -179,6 +184,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/bearer#openIdConnect"
       headers = {}
+      headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|

@@ -140,7 +140,7 @@ pkg/models/operations/responsebodyjsonget.go
 pkg/models/shared/authservicerequestbody.go
 pkg/models/shared/security.go
 pkg/models/shared/simpleobject.go
-pkg/models/shared/enumenum.go
+pkg/models/shared/enum.go
 pkg/models/shared/validcircularreferenceobject.go
 pkg/models/shared/httpbinsimplejsonobject.go
 pkg/models/shared/refqueryparamobjexploded.go

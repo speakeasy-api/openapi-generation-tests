@@ -58,6 +58,7 @@ class Globals
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/globals/pathParameter/{globalPathParam}', \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest::class, $request, $this->_globals);
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
@@ -97,6 +98,7 @@ class Globals
         
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest::class, $request, $this->_globals));
+        $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);

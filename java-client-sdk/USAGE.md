@@ -5,17 +5,17 @@ package hello.world;
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.UsageExamplePostEnumParameterEnum;
-import org.openapis.openapi.models.operations.UsageExamplePostOptEnumParameterEnum;
+import org.openapis.openapi.models.operations.UsageExamplePostEnumParameter;
+import org.openapis.openapi.models.operations.UsageExamplePostOptEnumParameter;
 import org.openapis.openapi.models.operations.UsageExamplePostRequest;
 import org.openapis.openapi.models.operations.UsageExamplePostRequestBody;
 import org.openapis.openapi.models.operations.UsageExamplePostResponse;
 import org.openapis.openapi.models.operations.UsageExamplePostSecurity;
-import org.openapis.openapi.models.shared.EnumEnum;
+import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32EnumEnum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnumEnum;
+import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
+import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -25,7 +25,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222, UsageExamplePostEnumParameterEnum.VALUE3, 1.1, 111111L, 1, "example") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222, UsageExamplePostEnumParameter.VALUE3, 1.1, 111111L, 1, "example") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     email = "Larue_Rau85@yahoo.com";
                     formatEmail = "Roselyn_Kassulke@yahoo.com";
@@ -34,7 +34,7 @@ public class Application {
                     hostname = "soulful-poppy.com";
                     ipv4 = "184.163.148.36";
                     ipv6 = "8fc8:1674:2cb7:3920:5929:396f:ea75:96eb";
-                    simpleObject = new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.FIFTY_FIVE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
+                    simpleObject = new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1, "example") {{
                         bigint = 666767L;
                         bigintStr = "mollitia";
                         boolOpt = true;
@@ -46,7 +46,7 @@ public class Application {
                     uri = "http://doting-footage.com";
                     uuid = "c5955907-aff1-4a3a-afa9-467739251aa5";
                 }};;
-                optEnumParameter = UsageExamplePostOptEnumParameterEnum.VALUE3;
+                optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 
             UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME") {{

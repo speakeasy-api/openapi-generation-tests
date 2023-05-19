@@ -4,13 +4,13 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RFCDate } from "../../types";
-import { EnumEnum } from "./enumenum";
+import { Enum } from "./enum";
 import { Expose, Transform } from "class-transformer";
 
 /**
  * An int32 enum property.
  */
-export enum SimpleObjectWithTypeInt32EnumEnum {
+export enum SimpleObjectWithTypeInt32Enum {
   FiftyFive = 55,
   SixtyNine = 69,
   OneHundredAndEightyOne = 181,
@@ -19,7 +19,7 @@ export enum SimpleObjectWithTypeInt32EnumEnum {
 /**
  * An integer enum property.
  */
-export enum SimpleObjectWithTypeIntEnumEnum {
+export enum SimpleObjectWithTypeIntEnum {
   First = 1,
   Second = 2,
   Third = 3,
@@ -81,7 +81,7 @@ export class SimpleObjectWithType extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "enum" })
-  enum: EnumEnum;
+  enum: Enum;
 
   /**
    * A float32 property.
@@ -109,14 +109,14 @@ export class SimpleObjectWithType extends SpeakeasyBase {
    */
   @SpeakeasyMetadata()
   @Expose({ name: "int32Enum" })
-  int32Enum: SimpleObjectWithTypeInt32EnumEnum;
+  int32Enum: SimpleObjectWithTypeInt32Enum;
 
   /**
    * An integer enum property.
    */
   @SpeakeasyMetadata()
   @Expose({ name: "intEnum" })
-  intEnum: SimpleObjectWithTypeIntEnumEnum;
+  intEnum: SimpleObjectWithTypeIntEnum;
 
   /**
    * An optional integer property will be null for tests.

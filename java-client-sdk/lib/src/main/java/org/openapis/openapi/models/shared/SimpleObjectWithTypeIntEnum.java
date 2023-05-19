@@ -7,9 +7,9 @@ package org.openapis.openapi.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * SimpleObjectWithTypeIntEnumEnum - An integer enum property.
+ * SimpleObjectWithTypeIntEnum - An integer enum property.
  */
-public enum SimpleObjectWithTypeIntEnumEnum {
+public enum SimpleObjectWithTypeIntEnum {
     First(1L),
     Second(2L),
     Third(3L);
@@ -17,7 +17,7 @@ public enum SimpleObjectWithTypeIntEnumEnum {
     @JsonValue
     public final Long value;
 
-    private SimpleObjectWithTypeIntEnumEnum(Long value) {
+    private SimpleObjectWithTypeIntEnum(Long value) {
         this.value = value;
     }
 }

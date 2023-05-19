@@ -29,6 +29,7 @@ module OpenApiSDK
       base_url = server_url if !server_url.nil?
       url = "#{base_url.delete_suffix('/')}/anything/connectionError"
       headers = {}
+      headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -62,6 +63,7 @@ module OpenApiSDK
         @globals
       )
       headers = {}
+      headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -98,6 +100,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :simple_object, :json)
       headers['content-type'] = req_content_type
+      headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.post(url) do |req|

@@ -63,7 +63,7 @@ sdk.errors.statusGet(692532).then((res: StatusGetResponse) => {
 ```typescript
 import { SDK } from "openapi";
 import { StatusPostRetriesResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -82,12 +82,12 @@ sdk.errors.statusPostRetries(588465, {
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-  intEnum: SimpleObjectIntEnumEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,

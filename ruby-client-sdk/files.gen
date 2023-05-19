@@ -122,7 +122,7 @@ lib/sdk/models/operations/responsebodyjsonget.rb
 lib/sdk/models/shared/authservicerequestbody.rb
 lib/sdk/models/shared/security.rb
 lib/sdk/models/shared/simpleobject.rb
-lib/sdk/models/shared/enum_enum.rb
+lib/sdk/models/shared/enum.rb
 lib/sdk/models/shared/validcircularreferenceobject.rb
 lib/sdk/models/shared/httpbinsimplejsonobject.rb
 lib/sdk/models/shared/refqueryparamobjexploded.rb

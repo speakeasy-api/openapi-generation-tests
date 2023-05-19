@@ -9,7 +9,7 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class TypedObject2TypeEnum < T::Enum
+    class TypedObject2Type < T::Enum
       enums do
         OBJ2 = new('obj2')
       end
@@ -21,12 +21,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :type, Shared::TypedObject2TypeEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::TypedObject2TypeEnum, false) } }
+      field :type, Shared::TypedObject2Type, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::TypedObject2Type, false) } }
 
       field :value, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('value') } }
 
 
-      sig { params(type: Shared::TypedObject2TypeEnum, value: String).void }
+      sig { params(type: Shared::TypedObject2Type, value: String).void }
       def initialize(type: nil, value: nil)
         @type = type
         @value = value

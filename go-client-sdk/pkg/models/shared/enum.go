@@ -7,20 +7,20 @@ import (
 	"fmt"
 )
 
-// EnumEnum - An string based enum
-type EnumEnum string
+// Enum - An string based enum
+type Enum string
 
 const (
-	EnumEnumOne   EnumEnum = "one"
-	EnumEnumTwo   EnumEnum = "two"
-	EnumEnumThree EnumEnum = "three"
+	EnumOne   Enum = "one"
+	EnumTwo   Enum = "two"
+	EnumThree Enum = "three"
 )
 
-func (e EnumEnum) ToPointer() *EnumEnum {
+func (e Enum) ToPointer() *Enum {
 	return &e
 }
 
-func (e *EnumEnum) UnmarshalJSON(data []byte) error {
+func (e *Enum) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -31,9 +31,9 @@ func (e *EnumEnum) UnmarshalJSON(data []byte) error {
 	case "two":
 		fallthrough
 	case "three":
-		*e = EnumEnum(v)
+		*e = Enum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for EnumEnum: %v", v)
+		return fmt.Errorf("invalid value for Enum: %v", v)
 	}
 }

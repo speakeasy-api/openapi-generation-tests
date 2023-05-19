@@ -10,7 +10,7 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 
 /** An integer enum property. */
-enum SimpleObjectIntEnumEnum: int
+enum SimpleObjectWithTypeIntEnum: int
 {
     case First = 1;
     case Second = 2;

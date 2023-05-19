@@ -42,6 +42,7 @@ func (s *auth) APIKeyAuth(ctx context.Context, security operations.APIKeyAuthSec
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	client := utils.ConfigureSecurityClient(s.defaultClient, security)
@@ -87,6 +88,7 @@ func (s *auth) APIKeyAuthGlobal(ctx context.Context) (*operations.APIKeyAuthGlob
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	client := s.securityClient
@@ -140,6 +142,7 @@ func (s *auth) BasicAuth(ctx context.Context, security operations.BasicAuthSecur
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	client := utils.ConfigureSecurityClient(s.defaultClient, security)
@@ -185,6 +188,7 @@ func (s *auth) BearerAuth(ctx context.Context, security operations.BearerAuthSec
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	client := utils.ConfigureSecurityClient(s.defaultClient, security)
@@ -230,6 +234,7 @@ func (s *auth) Oauth2Auth(ctx context.Context, security operations.Oauth2AuthSec
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	client := utils.ConfigureSecurityClient(s.defaultClient, security)
@@ -275,6 +280,7 @@ func (s *auth) OpenIDConnectAuth(ctx context.Context, security operations.OpenID
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
 
 	client := utils.ConfigureSecurityClient(s.defaultClient, security)

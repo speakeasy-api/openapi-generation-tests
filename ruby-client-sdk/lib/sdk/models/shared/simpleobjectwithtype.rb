@@ -5,12 +5,12 @@
 
 require 'sorbet-runtime'
 require 'faraday'
-require_relative '../shared/enum_enum'
+require_relative '../shared/enum'
 
 module OpenApiSDK
   module Shared
-    # SimpleObjectWithTypeInt32EnumEnum - An int32 enum property.
-    class SimpleObjectWithTypeInt32EnumEnum < T::Enum
+    # SimpleObjectWithTypeInt32Enum - An int32 enum property.
+    class SimpleObjectWithTypeInt32Enum < T::Enum
       enums do
         FIFTY_FIVE = new(55)
         SIXTY_NINE = new(69)
@@ -19,8 +19,8 @@ module OpenApiSDK
     end
 
 
-    # SimpleObjectWithTypeIntEnumEnum - An integer enum property.
-    class SimpleObjectWithTypeIntEnumEnum < T::Enum
+    # SimpleObjectWithTypeIntEnum - An integer enum property.
+    class SimpleObjectWithTypeIntEnum < T::Enum
       enums do
         FIRST = new(1)
         SECOND = new(2)
@@ -43,7 +43,7 @@ module OpenApiSDK
       # A date-time property.
       field :date_time, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('dateTime'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # An string based enum
-      field :enum, Shared::EnumEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enum'), 'decoder': Utils.enum_from_string(Shared::EnumEnum, false) } }
+      field :enum, Shared::Enum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enum'), 'decoder': Utils.enum_from_string(Shared::Enum, false) } }
       # A float32 property.
       field :float32, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('float32') } }
       # An integer property.
@@ -51,9 +51,9 @@ module OpenApiSDK
       # An int32 property.
       field :int32, Integer, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32') } }
       # An int32 enum property.
-      field :int32_enum, Shared::SimpleObjectWithTypeInt32EnumEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32Enum'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectWithTypeInt32EnumEnum, false) } }
+      field :int32_enum, Shared::SimpleObjectWithTypeInt32Enum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int32Enum'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectWithTypeInt32Enum, false) } }
       # An integer enum property.
-      field :int_enum, Shared::SimpleObjectWithTypeIntEnumEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intEnum'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectWithTypeIntEnumEnum, false) } }
+      field :int_enum, Shared::SimpleObjectWithTypeIntEnum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intEnum'), 'decoder': Utils.enum_from_string(Shared::SimpleObjectWithTypeIntEnum, false) } }
       # A number property.
       field :num, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('num') } }
       # A string property.
@@ -74,7 +74,7 @@ module OpenApiSDK
       field :str_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('strOpt') } }
 
 
-      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::EnumEnum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::SimpleObjectWithTypeInt32EnumEnum, int_enum: Shared::SimpleObjectWithTypeIntEnumEnum, num: Float, str_: String, type: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
+      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::Enum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::SimpleObjectWithTypeInt32Enum, int_enum: Shared::SimpleObjectWithTypeIntEnum, num: Float, str_: String, type: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
       def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, str_: nil, type: nil, bigint: nil, bigint_str: nil, bool_opt: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
         @any = any
         @bool = bool

@@ -15,16 +15,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.openapis.openapi.models.shared.DeepObject;
-import org.openapis.openapi.models.shared.EnumEnum;
+import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32EnumEnum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnumEnum;
+import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
+import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Helpers {
     public static SimpleObject createSimpleObject() {
         return new SimpleObject("any", true, LocalDate.parse("2020-01-01"),
-                OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), EnumEnum.ONE, 1.1, Long.valueOf(1), 1,
-                SimpleObjectInt32EnumEnum.FIFTY_FIVE, SimpleObjectIntEnumEnum.Second, 1.1, "test") {
+                OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1, Long.valueOf(1), 1,
+                SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1, "test") {
             {
                 boolOpt = true;
                 intOptNull = null;

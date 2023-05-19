@@ -147,8 +147,8 @@ func WithGlobalQueryParam(globalQueryParam string) SDKOption {
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		_language:   "go",
-		_sdkVersion: "1.1.1",
-		_genVersion: "2.30.0",
+		_sdkVersion: "1.2.0",
+		_genVersion: "2.31.0",
 
 		_globals: map[string]map[string]map[string]interface{}{
 			"parameters": {},
@@ -310,6 +310,7 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
@@ -356,6 +357,7 @@ func (s *SDK) ResponseBodyJSONGet(ctx context.Context) (*operations.ResponseBody
 	if err != nil {
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
+	req.Header.Set("Accept", "application/json")
 	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
 
 	client := s._securityClient

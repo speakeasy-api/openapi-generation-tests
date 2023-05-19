@@ -10,20 +10,20 @@ import (
 	"time"
 )
 
-// SimpleObjectInt32EnumEnum - An int32 enum property.
-type SimpleObjectInt32EnumEnum int
+// SimpleObjectInt32Enum - An int32 enum property.
+type SimpleObjectInt32Enum int
 
 const (
-	SimpleObjectInt32EnumEnumFiftyFive              SimpleObjectInt32EnumEnum = 55
-	SimpleObjectInt32EnumEnumSixtyNine              SimpleObjectInt32EnumEnum = 69
-	SimpleObjectInt32EnumEnumOneHundredAndEightyOne SimpleObjectInt32EnumEnum = 181
+	SimpleObjectInt32EnumFiftyFive              SimpleObjectInt32Enum = 55
+	SimpleObjectInt32EnumSixtyNine              SimpleObjectInt32Enum = 69
+	SimpleObjectInt32EnumOneHundredAndEightyOne SimpleObjectInt32Enum = 181
 )
 
-func (e SimpleObjectInt32EnumEnum) ToPointer() *SimpleObjectInt32EnumEnum {
+func (e SimpleObjectInt32Enum) ToPointer() *SimpleObjectInt32Enum {
 	return &e
 }
 
-func (e *SimpleObjectInt32EnumEnum) UnmarshalJSON(data []byte) error {
+func (e *SimpleObjectInt32Enum) UnmarshalJSON(data []byte) error {
 	var v int
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -34,27 +34,27 @@ func (e *SimpleObjectInt32EnumEnum) UnmarshalJSON(data []byte) error {
 	case 69:
 		fallthrough
 	case 181:
-		*e = SimpleObjectInt32EnumEnum(v)
+		*e = SimpleObjectInt32Enum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectInt32EnumEnum: %v", v)
+		return fmt.Errorf("invalid value for SimpleObjectInt32Enum: %v", v)
 	}
 }
 
-// SimpleObjectIntEnumEnum - An integer enum property.
-type SimpleObjectIntEnumEnum int64
+// SimpleObjectIntEnum - An integer enum property.
+type SimpleObjectIntEnum int64
 
 const (
-	SimpleObjectIntEnumEnumFirst  SimpleObjectIntEnumEnum = 1
-	SimpleObjectIntEnumEnumSecond SimpleObjectIntEnumEnum = 2
-	SimpleObjectIntEnumEnumThird  SimpleObjectIntEnumEnum = 3
+	SimpleObjectIntEnumFirst  SimpleObjectIntEnum = 1
+	SimpleObjectIntEnumSecond SimpleObjectIntEnum = 2
+	SimpleObjectIntEnumThird  SimpleObjectIntEnum = 3
 )
 
-func (e SimpleObjectIntEnumEnum) ToPointer() *SimpleObjectIntEnumEnum {
+func (e SimpleObjectIntEnum) ToPointer() *SimpleObjectIntEnum {
 	return &e
 }
 
-func (e *SimpleObjectIntEnumEnum) UnmarshalJSON(data []byte) error {
+func (e *SimpleObjectIntEnum) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -65,10 +65,10 @@ func (e *SimpleObjectIntEnumEnum) UnmarshalJSON(data []byte) error {
 	case 2:
 		fallthrough
 	case 3:
-		*e = SimpleObjectIntEnumEnum(v)
+		*e = SimpleObjectIntEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectIntEnumEnum: %v", v)
+		return fmt.Errorf("invalid value for SimpleObjectIntEnum: %v", v)
 	}
 }
 
@@ -88,7 +88,7 @@ type SimpleObject struct {
 	// A date-time property.
 	DateTime time.Time `json:"dateTime" header:"name=dateTime" pathParam:"name=dateTime" queryParam:"name=dateTime" form:"name=dateTime" multipartForm:"name=dateTime"`
 	// An string based enum
-	Enum EnumEnum `json:"enum" header:"name=enum" pathParam:"name=enum" queryParam:"name=enum" form:"name=enum" multipartForm:"name=enum"`
+	Enum Enum `json:"enum" header:"name=enum" pathParam:"name=enum" queryParam:"name=enum" form:"name=enum" multipartForm:"name=enum"`
 	// A float32 property.
 	Float32 float64 `json:"float32" header:"name=float32" pathParam:"name=float32" queryParam:"name=float32" form:"name=float32" multipartForm:"name=float32"`
 	// An integer property.
@@ -96,9 +96,9 @@ type SimpleObject struct {
 	// An int32 property.
 	Int32 int `json:"int32" header:"name=int32" pathParam:"name=int32" queryParam:"name=int32" form:"name=int32" multipartForm:"name=int32"`
 	// An int32 enum property.
-	Int32Enum SimpleObjectInt32EnumEnum `json:"int32Enum" header:"name=int32Enum" pathParam:"name=int32Enum" queryParam:"name=int32Enum" form:"name=int32Enum" multipartForm:"name=int32Enum"`
+	Int32Enum SimpleObjectInt32Enum `json:"int32Enum" header:"name=int32Enum" pathParam:"name=int32Enum" queryParam:"name=int32Enum" form:"name=int32Enum" multipartForm:"name=int32Enum"`
 	// An integer enum property.
-	IntEnum SimpleObjectIntEnumEnum `json:"intEnum" header:"name=intEnum" pathParam:"name=intEnum" queryParam:"name=intEnum" form:"name=intEnum" multipartForm:"name=intEnum"`
+	IntEnum SimpleObjectIntEnum `json:"intEnum" header:"name=intEnum" pathParam:"name=intEnum" queryParam:"name=intEnum" form:"name=intEnum" multipartForm:"name=intEnum"`
 	// An optional integer property will be null for tests.
 	IntOptNull *int64 `json:"intOptNull,omitempty" header:"name=intOptNull" pathParam:"name=intOptNull" queryParam:"name=intOptNull" form:"name=intOptNull" multipartForm:"name=intOptNull"`
 	// A number property.

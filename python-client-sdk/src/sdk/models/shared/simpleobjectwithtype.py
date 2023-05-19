@@ -3,7 +3,7 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
-from ..shared import enum_enum as shared_enum_enum
+from ..shared import enum as shared_enum
 from dataclasses_json import Undefined, dataclass_json
 from datetime import date, datetime
 from enum import Enum
@@ -11,13 +11,13 @@ from marshmallow import fields
 from sdk import utils
 from typing import Any, Optional
 
-class SimpleObjectWithTypeInt32EnumEnum(int, Enum):
+class SimpleObjectWithTypeInt32Enum(int, Enum):
     r"""An int32 enum property."""
     FIFTY_FIVE = 55
     SIXTY_NINE = 69
     ONE_HUNDRED_AND_EIGHTY_ONE = 181
 
-class SimpleObjectWithTypeIntEnumEnum(int, Enum):
+class SimpleObjectWithTypeIntEnum(int, Enum):
     r"""An integer enum property."""
     FIRST = 1
     SECOND = 2
@@ -39,7 +39,7 @@ class SimpleObjectWithType:
     r"""A date property."""
     date_time: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('dateTime'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
     r"""A date-time property."""
-    enum: shared_enum_enum.EnumEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum') }})
+    enum: shared_enum.EnumT = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum') }})
     r"""An string based enum"""
     float32: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float32') }})
     r"""A float32 property."""
@@ -47,9 +47,9 @@ class SimpleObjectWithType:
     r"""An integer property."""
     int32: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32') }})
     r"""An int32 property."""
-    int32_enum: SimpleObjectWithTypeInt32EnumEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32Enum') }})
+    int32_enum: SimpleObjectWithTypeInt32Enum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int32Enum') }})
     r"""An int32 enum property."""
-    int_enum: SimpleObjectWithTypeIntEnumEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intEnum') }})
+    int_enum: SimpleObjectWithTypeIntEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('intEnum') }})
     r"""An integer enum property."""
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     r"""A number property."""

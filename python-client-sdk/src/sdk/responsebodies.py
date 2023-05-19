@@ -30,6 +30,7 @@ class ResponseBodies:
         
         url = base_url.removesuffix('/') + '/bytes/100'
         headers = {}
+        headers['Accept'] = 'application/octet-stream'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -51,6 +52,7 @@ class ResponseBodies:
         
         url = base_url.removesuffix('/') + '/html'
         headers = {}
+        headers['Accept'] = 'text/html'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -72,6 +74,7 @@ class ResponseBodies:
         
         url = base_url.removesuffix('/') + '/xml'
         headers = {}
+        headers['Accept'] = 'application/xml'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

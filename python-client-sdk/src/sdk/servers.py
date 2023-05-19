@@ -29,6 +29,7 @@ class Servers:
         
         url = base_url.removesuffix('/') + '/anything/selectGlobalServer'
         headers = {}
+        headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -53,6 +54,7 @@ class Servers:
         
         url = base_url.removesuffix('/') + '/anything/selectServerWithID'
         headers = {}
+        headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -73,6 +75,7 @@ class Servers:
         
         url = base_url.removesuffix('/') + '/anything/serverWithTemplates'
         headers = {}
+        headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -91,6 +94,7 @@ class Servers:
         
         url = base_url.removesuffix('/') + '/anything/serverWithTemplatesGlobal'
         headers = {}
+        headers['Accept'] = '*/*'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-enum TypedObject2TypeEnum: string
+enum TypedObject2Type: string
 {
     case OBJ2 = 'obj2';
 }

@@ -69,9 +69,9 @@ public class UsageExamplePostRequest {
      * An enum parameter
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=enumParameter")
-    public UsageExamplePostEnumParameterEnum enumParameter;
+    public UsageExamplePostEnumParameter enumParameter;
 
-    public UsageExamplePostRequest withEnumParameter(UsageExamplePostEnumParameterEnum enumParameter) {
+    public UsageExamplePostRequest withEnumParameter(UsageExamplePostEnumParameter enumParameter) {
         this.enumParameter = enumParameter;
         return this;
     }
@@ -113,9 +113,9 @@ public class UsageExamplePostRequest {
      * An enum parameter
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=optEnumParameter")
-    public UsageExamplePostOptEnumParameterEnum optEnumParameter;
+    public UsageExamplePostOptEnumParameter optEnumParameter;
 
-    public UsageExamplePostRequest withOptEnumParameter(UsageExamplePostOptEnumParameterEnum optEnumParameter) {
+    public UsageExamplePostRequest withOptEnumParameter(UsageExamplePostOptEnumParameter optEnumParameter) {
         this.optEnumParameter = optEnumParameter;
         return this;
     }
@@ -131,7 +131,7 @@ public class UsageExamplePostRequest {
         return this;
     }
     
-    public UsageExamplePostRequest(@JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameterEnum enumParameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
+    public UsageExamplePostRequest(@JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameter enumParameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
         this.boolParameter = boolParameter;
         this.dateParameter = dateParameter;
         this.dateTimeParameter = dateTimeParameter;

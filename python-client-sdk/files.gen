@@ -134,7 +134,7 @@ src/sdk/models/operations/__init__.py
 src/sdk/models/shared/authservicerequestbody.py
 src/sdk/models/shared/security.py
 src/sdk/models/shared/simpleobject.py
-src/sdk/models/shared/enum_enum.py
+src/sdk/models/shared/enum.py
 src/sdk/models/shared/validcircularreferenceobject.py
 src/sdk/models/shared/httpbinsimplejsonobject.py
 src/sdk/models/shared/refqueryparamobjexploded.py

@@ -71,8 +71,8 @@ module OpenApiSDK
       end
     end
 
-    # UsageExamplePostEnumParameterEnum - An enum type
-    class UsageExamplePostEnumParameterEnum < T::Enum
+    # UsageExamplePostEnumParameter - An enum type
+    class UsageExamplePostEnumParameter < T::Enum
       enums do
         VALUE1 = new('value1')
         VALUE2 = new('value2')
@@ -81,8 +81,8 @@ module OpenApiSDK
     end
 
 
-    # UsageExamplePostOptEnumParameterEnum - An enum type
-    class UsageExamplePostOptEnumParameterEnum < T::Enum
+    # UsageExamplePostOptEnumParameter - An enum type
+    class UsageExamplePostOptEnumParameter < T::Enum
       enums do
         VALUE1 = new('value1')
         VALUE2 = new('value2')
@@ -104,7 +104,7 @@ module OpenApiSDK
       # A double parameter
       field :double_parameter, Float, { 'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': true } }
       # An enum parameter
-      field :enum_parameter, Operations::UsageExamplePostEnumParameterEnum, { 'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': true } }
+      field :enum_parameter, Operations::UsageExamplePostEnumParameter, { 'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': true } }
       # A float parameter
       field :float_parameter, Float, { 'query_param': { 'field_name': 'floatParameter', 'style': 'form', 'explode': true } }
       # An int64 parameter
@@ -114,12 +114,12 @@ module OpenApiSDK
       # A string parameter
       field :str_parameter, String, { 'query_param': { 'field_name': 'strParameter', 'style': 'form', 'explode': true } }
       # An enum parameter
-      field :opt_enum_parameter, T.nilable(Operations::UsageExamplePostOptEnumParameterEnum), { 'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': true } }
+      field :opt_enum_parameter, T.nilable(Operations::UsageExamplePostOptEnumParameter), { 'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': true } }
       # A request body that contains fields with different formats for testing example generation
       field :request_body, T.nilable(Operations::UsageExamplePostRequestBody), { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(bool_parameter: T::Boolean, date_parameter: Date, date_time_parameter: DateTime, double_parameter: Float, enum_parameter: Operations::UsageExamplePostEnumParameterEnum, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, opt_enum_parameter: T.nilable(Operations::UsageExamplePostOptEnumParameterEnum), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
+      sig { params(bool_parameter: T::Boolean, date_parameter: Date, date_time_parameter: DateTime, double_parameter: Float, enum_parameter: Operations::UsageExamplePostEnumParameter, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, opt_enum_parameter: T.nilable(Operations::UsageExamplePostOptEnumParameter), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
       def initialize(bool_parameter: nil, date_parameter: nil, date_time_parameter: nil, double_parameter: nil, enum_parameter: nil, float_parameter: nil, int64_parameter: nil, int_parameter: nil, str_parameter: nil, opt_enum_parameter: nil, request_body: nil)
         @bool_parameter = bool_parameter
         @date_parameter = date_parameter

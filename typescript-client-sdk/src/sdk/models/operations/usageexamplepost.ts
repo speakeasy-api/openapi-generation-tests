@@ -106,7 +106,7 @@ export class UsageExamplePostRequestBody extends SpeakeasyBase {
 /**
  * An enum type
  */
-export enum UsageExamplePostEnumParameterEnum {
+export enum UsageExamplePostEnumParameter {
   Value1 = "value1",
   Value2 = "value2",
   Value3 = "value3",
@@ -115,7 +115,7 @@ export enum UsageExamplePostEnumParameterEnum {
 /**
  * An enum type
  */
-export enum UsageExamplePostOptEnumParameterEnum {
+export enum UsageExamplePostOptEnumParameter {
   Value1 = "value1",
   Value2 = "value2",
   Value3 = "value3",
@@ -166,7 +166,7 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=enumParameter",
   })
-  enumParameter: UsageExamplePostEnumParameterEnum;
+  enumParameter: UsageExamplePostEnumParameter;
 
   /**
    * A float parameter
@@ -198,7 +198,7 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
   @SpeakeasyMetadata({
     data: "queryParam, style=form;explode=true;name=optEnumParameter",
   })
-  optEnumParameter?: UsageExamplePostOptEnumParameterEnum;
+  optEnumParameter?: UsageExamplePostOptEnumParameter;
 
   /**
    * A string parameter

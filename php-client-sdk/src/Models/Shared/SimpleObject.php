@@ -114,16 +114,16 @@ class SimpleObject
     /**
      * An string based enum
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\EnumEnum $enum
+     * @var \OpenAPI\OpenAPI\Models\Shared\Enum $enum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('enum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\EnumEnum>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\Enum>')]
     #[SpeakeasyMetadata('header:name=enum')]
     #[SpeakeasyMetadata('pathParam:name=enum')]
     #[SpeakeasyMetadata('queryParam:name=enum')]
     #[SpeakeasyMetadata('form:name=enum')]
     #[SpeakeasyMetadata('multipartForm:name=enum')]
-    public EnumEnum $enum;
+    public Enum $enum;
     
     /**
      * A float32 property.
@@ -170,30 +170,30 @@ class SimpleObject
     /**
      * An int32 enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum $int32Enum
+     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum $int32Enum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('int32Enum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum>')]
     #[SpeakeasyMetadata('header:name=int32Enum')]
     #[SpeakeasyMetadata('pathParam:name=int32Enum')]
     #[SpeakeasyMetadata('queryParam:name=int32Enum')]
     #[SpeakeasyMetadata('form:name=int32Enum')]
     #[SpeakeasyMetadata('multipartForm:name=int32Enum')]
-    public SimpleObjectInt32EnumEnum $int32Enum;
+    public SimpleObjectInt32Enum $int32Enum;
     
     /**
      * An integer enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum $intEnum
+     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum $intEnum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('intEnum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum>')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum>')]
     #[SpeakeasyMetadata('header:name=intEnum')]
     #[SpeakeasyMetadata('pathParam:name=intEnum')]
     #[SpeakeasyMetadata('queryParam:name=intEnum')]
     #[SpeakeasyMetadata('form:name=intEnum')]
     #[SpeakeasyMetadata('multipartForm:name=intEnum')]
-    public SimpleObjectIntEnumEnum $intEnum;
+    public SimpleObjectIntEnum $intEnum;
     
     /**
      * An optional integer property will be null for tests.
@@ -277,12 +277,12 @@ class SimpleObject
 		$this->boolOpt = null;
 		$this->date = new \DateTime();
 		$this->dateTime = new \DateTime();
-		$this->enum = \OpenAPI\OpenAPI\Models\Shared\EnumEnum::ONE;
+		$this->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::ONE;
 		$this->float32 = 0;
 		$this->int = 0;
 		$this->int32 = 0;
-		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-		$this->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum::First;
+		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum::FIFTY_FIVE;
+		$this->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum::First;
 		$this->intOptNull = null;
 		$this->num = 0;
 		$this->numOptNull = null;

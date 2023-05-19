@@ -28,6 +28,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/selectGlobalServer"
       headers = {}
+      headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -53,6 +54,7 @@ module OpenApiSDK
       base_url = server_url if !server_url.nil?
       url = "#{base_url.delete_suffix('/')}/anything/selectServerWithID"
       headers = {}
+      headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -77,6 +79,7 @@ module OpenApiSDK
       base_url = server_url if !server_url.nil?
       url = "#{base_url.delete_suffix('/')}/anything/serverWithTemplates"
       headers = {}
+      headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|
@@ -100,6 +103,7 @@ module OpenApiSDK
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/serverWithTemplatesGlobal"
       headers = {}
+      headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
 
       r = @client.get(url) do |req|

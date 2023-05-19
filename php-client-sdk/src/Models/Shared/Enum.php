@@ -9,7 +9,10 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-enum TypedObject1TypeEnum: string
+/** An string based enum */
+enum Enum: string
 {
-    case OBJ1 = 'obj1';
+    case ONE = 'one';
+    case TWO = 'two';
+    case THREE = 'three';
 }

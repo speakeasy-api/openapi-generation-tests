@@ -3,7 +3,7 @@
 from __future__ import annotations
 from enum import Enum
 
-class EnumEnum(str, Enum):
+class EnumT(str, Enum):
     r"""An string based enum"""
     ONE = 'one'
     TWO = 'two'

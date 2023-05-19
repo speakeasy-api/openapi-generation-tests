@@ -7,31 +7,31 @@ import (
 	"fmt"
 )
 
-type TypedObject2TypeEnum string
+type TypedObject2Type string
 
 const (
-	TypedObject2TypeEnumObj2 TypedObject2TypeEnum = "obj2"
+	TypedObject2TypeObj2 TypedObject2Type = "obj2"
 )
 
-func (e TypedObject2TypeEnum) ToPointer() *TypedObject2TypeEnum {
+func (e TypedObject2Type) ToPointer() *TypedObject2Type {
 	return &e
 }
 
-func (e *TypedObject2TypeEnum) UnmarshalJSON(data []byte) error {
+func (e *TypedObject2Type) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
 	switch v {
 	case "obj2":
-		*e = TypedObject2TypeEnum(v)
+		*e = TypedObject2Type(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for TypedObject2TypeEnum: %v", v)
+		return fmt.Errorf("invalid value for TypedObject2Type: %v", v)
 	}
 }
 
 type TypedObject2 struct {
-	Type  TypedObject2TypeEnum `json:"type"`
-	Value string               `json:"value"`
+	Type  TypedObject2Type `json:"type"`
+	Value string           `json:"value"`
 }

@@ -10,11 +10,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest;
 use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequestBody;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
-use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameterEnum;
-use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameterEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
+use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter;
+use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostOptEnumParameter;
 use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity;
 
 $sdk = SDK::builder()
@@ -38,12 +38,12 @@ try {
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->requestBody->simpleObject->enum = EnumEnum::TWO;
+    $request->requestBody->simpleObject->enum = Enum::TWO;
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnumEnum::Second;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE;
+    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Second;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
@@ -56,11 +56,11 @@ try {
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
     $request->doubleParameter = 2.2222222;
-    $request->enumParameter = UsageExamplePostEnumParameterEnum::VALUE3;
+    $request->enumParameter = UsageExamplePostEnumParameter::VALUE3;
     $request->floatParameter = 1.1;
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
-    $request->optEnumParameter = UsageExamplePostOptEnumParameterEnum::VALUE3;
+    $request->optEnumParameter = UsageExamplePostOptEnumParameter::VALUE3;
     $request->strParameter = 'example';
 
     $requestSecurity = new UsageExamplePostSecurity();

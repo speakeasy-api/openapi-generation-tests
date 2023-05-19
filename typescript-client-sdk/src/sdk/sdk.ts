@@ -127,8 +127,8 @@ export class SDK {
   public _securityClient: AxiosInstance;
   public _serverURL: string;
   private _language = "typescript";
-  private _sdkVersion = "1.1.1";
-  private _genVersion = "2.30.0";
+  private _sdkVersion = "1.2.0";
+  private _genVersion = "2.31.0";
   private _globals: any;
 
   constructor(props?: SDKProps) {
@@ -305,6 +305,7 @@ export class SDK {
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...reqBodyHeaders, ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
@@ -354,6 +355,7 @@ export class SDK {
     const client: AxiosInstance = this._securityClient || this._defaultClient;
 
     const headers = { ...config?.headers };
+    headers["Accept"] = "application/json";
     headers[
       "x-speakeasy-user-agent"
     ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;

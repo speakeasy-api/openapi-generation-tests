@@ -42,20 +42,20 @@ type UsageExamplePostRequestBody struct {
 	UUID *string `json:"uuid,omitempty"`
 }
 
-// UsageExamplePostEnumParameterEnum - An enum type
-type UsageExamplePostEnumParameterEnum string
+// UsageExamplePostEnumParameter - An enum type
+type UsageExamplePostEnumParameter string
 
 const (
-	UsageExamplePostEnumParameterEnumValue1 UsageExamplePostEnumParameterEnum = "value1"
-	UsageExamplePostEnumParameterEnumValue2 UsageExamplePostEnumParameterEnum = "value2"
-	UsageExamplePostEnumParameterEnumValue3 UsageExamplePostEnumParameterEnum = "value3"
+	UsageExamplePostEnumParameterValue1 UsageExamplePostEnumParameter = "value1"
+	UsageExamplePostEnumParameterValue2 UsageExamplePostEnumParameter = "value2"
+	UsageExamplePostEnumParameterValue3 UsageExamplePostEnumParameter = "value3"
 )
 
-func (e UsageExamplePostEnumParameterEnum) ToPointer() *UsageExamplePostEnumParameterEnum {
+func (e UsageExamplePostEnumParameter) ToPointer() *UsageExamplePostEnumParameter {
 	return &e
 }
 
-func (e *UsageExamplePostEnumParameterEnum) UnmarshalJSON(data []byte) error {
+func (e *UsageExamplePostEnumParameter) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -66,27 +66,27 @@ func (e *UsageExamplePostEnumParameterEnum) UnmarshalJSON(data []byte) error {
 	case "value2":
 		fallthrough
 	case "value3":
-		*e = UsageExamplePostEnumParameterEnum(v)
+		*e = UsageExamplePostEnumParameter(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UsageExamplePostEnumParameterEnum: %v", v)
+		return fmt.Errorf("invalid value for UsageExamplePostEnumParameter: %v", v)
 	}
 }
 
-// UsageExamplePostOptEnumParameterEnum - An enum type
-type UsageExamplePostOptEnumParameterEnum string
+// UsageExamplePostOptEnumParameter - An enum type
+type UsageExamplePostOptEnumParameter string
 
 const (
-	UsageExamplePostOptEnumParameterEnumValue1 UsageExamplePostOptEnumParameterEnum = "value1"
-	UsageExamplePostOptEnumParameterEnumValue2 UsageExamplePostOptEnumParameterEnum = "value2"
-	UsageExamplePostOptEnumParameterEnumValue3 UsageExamplePostOptEnumParameterEnum = "value3"
+	UsageExamplePostOptEnumParameterValue1 UsageExamplePostOptEnumParameter = "value1"
+	UsageExamplePostOptEnumParameterValue2 UsageExamplePostOptEnumParameter = "value2"
+	UsageExamplePostOptEnumParameterValue3 UsageExamplePostOptEnumParameter = "value3"
 )
 
-func (e UsageExamplePostOptEnumParameterEnum) ToPointer() *UsageExamplePostOptEnumParameterEnum {
+func (e UsageExamplePostOptEnumParameter) ToPointer() *UsageExamplePostOptEnumParameter {
 	return &e
 }
 
-func (e *UsageExamplePostOptEnumParameterEnum) UnmarshalJSON(data []byte) error {
+func (e *UsageExamplePostOptEnumParameter) UnmarshalJSON(data []byte) error {
 	var v string
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -97,10 +97,10 @@ func (e *UsageExamplePostOptEnumParameterEnum) UnmarshalJSON(data []byte) error 
 	case "value2":
 		fallthrough
 	case "value3":
-		*e = UsageExamplePostOptEnumParameterEnum(v)
+		*e = UsageExamplePostOptEnumParameter(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for UsageExamplePostOptEnumParameterEnum: %v", v)
+		return fmt.Errorf("invalid value for UsageExamplePostOptEnumParameter: %v", v)
 	}
 }
 
@@ -116,7 +116,7 @@ type UsageExamplePostRequest struct {
 	// A double parameter
 	DoubleParameter float64 `queryParam:"style=form,explode=true,name=doubleParameter"`
 	// An enum parameter
-	EnumParameter UsageExamplePostEnumParameterEnum `queryParam:"style=form,explode=true,name=enumParameter"`
+	EnumParameter UsageExamplePostEnumParameter `queryParam:"style=form,explode=true,name=enumParameter"`
 	// A float parameter
 	FloatParameter float64 `queryParam:"style=form,explode=true,name=floatParameter"`
 	// An int64 parameter
@@ -124,7 +124,7 @@ type UsageExamplePostRequest struct {
 	// An integer parameter
 	IntParameter int `queryParam:"style=form,explode=true,name=intParameter"`
 	// An enum parameter
-	OptEnumParameter *UsageExamplePostOptEnumParameterEnum `queryParam:"style=form,explode=true,name=optEnumParameter"`
+	OptEnumParameter *UsageExamplePostOptEnumParameter `queryParam:"style=form,explode=true,name=optEnumParameter"`
 	// A string parameter
 	StrParameter string `queryParam:"style=form,explode=true,name=strParameter"`
 }

@@ -8,9 +8,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class TypedObject1 {
     @JsonProperty("type")
-    public TypedObject1TypeEnum type;
+    public TypedObject1Type type;
 
-    public TypedObject1 withType(TypedObject1TypeEnum type) {
+    public TypedObject1 withType(TypedObject1Type type) {
         this.type = type;
         return this;
     }
@@ -23,7 +23,7 @@ public class TypedObject1 {
         return this;
     }
     
-    public TypedObject1(@JsonProperty("type") TypedObject1TypeEnum type, @JsonProperty("value") String value) {
+    public TypedObject1(@JsonProperty("type") TypedObject1Type type, @JsonProperty("value") String value) {
         this.type = type;
         this.value = value;
   }

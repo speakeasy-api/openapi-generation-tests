@@ -94,8 +94,8 @@ public class SDK {
 	private org.openapis.openapi.models.shared.Security _security;
 	private String _serverUrl;
 	private String _language = "java";
-	private String _sdkVersion = "1.1.1";
-	private String _genVersion = "2.30.0";
+	private String _sdkVersion = "1.2.0";
+	private String _genVersion = "2.31.0";
 	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
 	
 	/**
@@ -364,7 +364,8 @@ public class SDK {
         req.setURL(url);
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "string");
         req.setBody(serializedRequestBody);
-        
+
+        req.addHeader("Accept", "application/json");
         req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;
@@ -396,7 +397,8 @@ public class SDK {
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
         req.setURL(url);
-        
+
+        req.addHeader("Accept", "application/json");
         req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
         
         HTTPClient client = this._securityClient;

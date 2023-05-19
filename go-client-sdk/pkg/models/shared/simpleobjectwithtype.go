@@ -10,20 +10,20 @@ import (
 	"time"
 )
 
-// SimpleObjectWithTypeInt32EnumEnum - An int32 enum property.
-type SimpleObjectWithTypeInt32EnumEnum int
+// SimpleObjectWithTypeInt32Enum - An int32 enum property.
+type SimpleObjectWithTypeInt32Enum int
 
 const (
-	SimpleObjectWithTypeInt32EnumEnumFiftyFive              SimpleObjectWithTypeInt32EnumEnum = 55
-	SimpleObjectWithTypeInt32EnumEnumSixtyNine              SimpleObjectWithTypeInt32EnumEnum = 69
-	SimpleObjectWithTypeInt32EnumEnumOneHundredAndEightyOne SimpleObjectWithTypeInt32EnumEnum = 181
+	SimpleObjectWithTypeInt32EnumFiftyFive              SimpleObjectWithTypeInt32Enum = 55
+	SimpleObjectWithTypeInt32EnumSixtyNine              SimpleObjectWithTypeInt32Enum = 69
+	SimpleObjectWithTypeInt32EnumOneHundredAndEightyOne SimpleObjectWithTypeInt32Enum = 181
 )
 
-func (e SimpleObjectWithTypeInt32EnumEnum) ToPointer() *SimpleObjectWithTypeInt32EnumEnum {
+func (e SimpleObjectWithTypeInt32Enum) ToPointer() *SimpleObjectWithTypeInt32Enum {
 	return &e
 }
 
-func (e *SimpleObjectWithTypeInt32EnumEnum) UnmarshalJSON(data []byte) error {
+func (e *SimpleObjectWithTypeInt32Enum) UnmarshalJSON(data []byte) error {
 	var v int
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -34,27 +34,27 @@ func (e *SimpleObjectWithTypeInt32EnumEnum) UnmarshalJSON(data []byte) error {
 	case 69:
 		fallthrough
 	case 181:
-		*e = SimpleObjectWithTypeInt32EnumEnum(v)
+		*e = SimpleObjectWithTypeInt32Enum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectWithTypeInt32EnumEnum: %v", v)
+		return fmt.Errorf("invalid value for SimpleObjectWithTypeInt32Enum: %v", v)
 	}
 }
 
-// SimpleObjectWithTypeIntEnumEnum - An integer enum property.
-type SimpleObjectWithTypeIntEnumEnum int64
+// SimpleObjectWithTypeIntEnum - An integer enum property.
+type SimpleObjectWithTypeIntEnum int64
 
 const (
-	SimpleObjectWithTypeIntEnumEnumFirst  SimpleObjectWithTypeIntEnumEnum = 1
-	SimpleObjectWithTypeIntEnumEnumSecond SimpleObjectWithTypeIntEnumEnum = 2
-	SimpleObjectWithTypeIntEnumEnumThird  SimpleObjectWithTypeIntEnumEnum = 3
+	SimpleObjectWithTypeIntEnumFirst  SimpleObjectWithTypeIntEnum = 1
+	SimpleObjectWithTypeIntEnumSecond SimpleObjectWithTypeIntEnum = 2
+	SimpleObjectWithTypeIntEnumThird  SimpleObjectWithTypeIntEnum = 3
 )
 
-func (e SimpleObjectWithTypeIntEnumEnum) ToPointer() *SimpleObjectWithTypeIntEnumEnum {
+func (e SimpleObjectWithTypeIntEnum) ToPointer() *SimpleObjectWithTypeIntEnum {
 	return &e
 }
 
-func (e *SimpleObjectWithTypeIntEnumEnum) UnmarshalJSON(data []byte) error {
+func (e *SimpleObjectWithTypeIntEnum) UnmarshalJSON(data []byte) error {
 	var v int64
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
@@ -65,10 +65,10 @@ func (e *SimpleObjectWithTypeIntEnumEnum) UnmarshalJSON(data []byte) error {
 	case 2:
 		fallthrough
 	case 3:
-		*e = SimpleObjectWithTypeIntEnumEnum(v)
+		*e = SimpleObjectWithTypeIntEnum(v)
 		return nil
 	default:
-		return fmt.Errorf("invalid value for SimpleObjectWithTypeIntEnumEnum: %v", v)
+		return fmt.Errorf("invalid value for SimpleObjectWithTypeIntEnum: %v", v)
 	}
 }
 
@@ -88,7 +88,7 @@ type SimpleObjectWithType struct {
 	// A date-time property.
 	DateTime time.Time `json:"dateTime"`
 	// An string based enum
-	Enum EnumEnum `json:"enum"`
+	Enum Enum `json:"enum"`
 	// A float32 property.
 	Float32 float64 `json:"float32"`
 	// An integer property.
@@ -96,9 +96,9 @@ type SimpleObjectWithType struct {
 	// An int32 property.
 	Int32 int `json:"int32"`
 	// An int32 enum property.
-	Int32Enum SimpleObjectWithTypeInt32EnumEnum `json:"int32Enum"`
+	Int32Enum SimpleObjectWithTypeInt32Enum `json:"int32Enum"`
 	// An integer enum property.
-	IntEnum SimpleObjectWithTypeIntEnumEnum `json:"intEnum"`
+	IntEnum SimpleObjectWithTypeIntEnum `json:"intEnum"`
 	// An optional integer property will be null for tests.
 	IntOptNull *int64 `json:"intOptNull,omitempty"`
 	// A number property.

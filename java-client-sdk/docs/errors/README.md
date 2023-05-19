@@ -91,11 +91,11 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.StatusPostRetriesRequest;
 import org.openapis.openapi.models.operations.StatusPostRetriesResponse;
-import org.openapis.openapi.models.shared.EnumEnum;
+import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32EnumEnum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnumEnum;
+import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
+import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Application {
     public static void main(String[] args) {
@@ -108,7 +108,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusPostRetriesResponse res = sdk.errors.statusPostRetries(574325L, new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), EnumEnum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32EnumEnum.FIFTY_FIVE, SimpleObjectIntEnumEnum.Third, 1.1, "example") {{
+            StatusPostRetriesResponse res = sdk.errors.statusPostRetries(574325L, new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1, "example") {{
                 any = "accusantium";
                 bigint = 653201L;
                 bigintStr = "reiciendis";
@@ -116,12 +116,12 @@ public class Application {
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                enum_ = EnumEnum.TWO;
+                enum_ = Enum.TWO;
                 float32 = 2.2222222;
                 int_ = 999999L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32EnumEnum.SIXTY_NINE;
-                intEnum = SimpleObjectIntEnumEnum.First;
+                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                intEnum = SimpleObjectIntEnum.First;
                 intOptNull = 999999L;
                 num = 1.1;
                 numOptNull = 1.1;

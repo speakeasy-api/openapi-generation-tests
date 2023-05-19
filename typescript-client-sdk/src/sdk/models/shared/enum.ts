@@ -5,7 +5,7 @@
 /**
  * An string based enum
  */
-export enum EnumEnum {
+export enum Enum {
   One = "one",
   Two = "two",
   Three = "three",

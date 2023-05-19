@@ -77,7 +77,7 @@ sdk.parameters.deepObjectQueryParamsMap({
 ```typescript
 import { SDK } from "openapi";
 import { DeepObjectQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -96,12 +96,12 @@ sdk.parameters.deepObjectQueryParamsObject({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-  intEnum: SimpleObjectIntEnumEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -186,7 +186,7 @@ sdk.parameters.formQueryParamsMap({
 ```typescript
 import { SDK } from "openapi";
 import { FormQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -205,12 +205,12 @@ sdk.parameters.formQueryParamsObject({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-  intEnum: SimpleObjectIntEnumEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -224,12 +224,12 @@ sdk.parameters.formQueryParamsObject({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnumEnum.First,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -363,7 +363,7 @@ sdk.parameters.headerParamsMap({
 ```typescript
 import { SDK } from "openapi";
 import { HeaderParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -382,12 +382,12 @@ sdk.parameters.headerParamsObject({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnumEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -401,12 +401,12 @@ sdk.parameters.headerParamsObject({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnumEnum.First,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -449,7 +449,7 @@ sdk.parameters.headerParamsPrimitive(false, 204865, 1448.47, "magni").then((res:
 ```typescript
 import { SDK } from "openapi";
 import { JsonQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -469,12 +469,12 @@ sdk.parameters.jsonQueryParamsObject({
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
+    enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnumEnum.First,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+    intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
@@ -490,12 +490,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnumEnum.First,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -510,12 +510,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -530,12 +530,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-      intEnum: SimpleObjectIntEnumEnum.First,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -550,12 +550,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-      intEnum: SimpleObjectIntEnumEnum.First,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -574,12 +574,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnumEnum.First,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -594,12 +594,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -614,12 +614,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -634,12 +634,12 @@ sdk.parameters.jsonQueryParamsObject({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnumEnum.Third,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -656,12 +656,12 @@ sdk.parameters.jsonQueryParamsObject({
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
+    enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-    intEnum: SimpleObjectIntEnumEnum.Second,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    intEnum: SimpleObjectIntEnum.Second,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
@@ -678,12 +678,12 @@ sdk.parameters.jsonQueryParamsObject({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnumEnum.First,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -703,7 +703,7 @@ sdk.parameters.jsonQueryParamsObject({
 ```typescript
 import { SDK } from "openapi";
 import { MixedQueryParamsResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -722,12 +722,12 @@ sdk.parameters.mixedQueryParams({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnumEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -741,12 +741,12 @@ sdk.parameters.mixedQueryParams({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnumEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -760,12 +760,12 @@ sdk.parameters.mixedQueryParams({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-  intEnum: SimpleObjectIntEnumEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -785,7 +785,7 @@ sdk.parameters.mixedQueryParams({
 ```typescript
 import { SDK } from "openapi";
 import { PathParameterJsonResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -804,12 +804,12 @@ sdk.parameters.pathParameterJson({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-  intEnum: SimpleObjectIntEnumEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -829,7 +829,7 @@ sdk.parameters.pathParameterJson({
 ```typescript
 import { SDK } from "openapi";
 import { PipeDelimitedQueryParamsArrayResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -860,12 +860,12 @@ sdk.parameters.pipeDelimitedQueryParamsArray([
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-  intEnum: SimpleObjectIntEnumEnum.First,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -940,7 +940,7 @@ sdk.parameters.simplePathParameterMaps({
 ```typescript
 import { SDK } from "openapi";
 import { SimplePathParameterObjectsResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -959,12 +959,12 @@ sdk.parameters.simplePathParameterObjects({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-  intEnum: SimpleObjectIntEnumEnum.First,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -978,12 +978,12 @@ sdk.parameters.simplePathParameterObjects({
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: EnumEnum.Two,
+  enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-  intEnum: SimpleObjectIntEnumEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,

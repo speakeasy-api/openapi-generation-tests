@@ -34,6 +34,7 @@ class Globals:
         
         url = utils.generate_url(operations.GlobalPathParameterGetRequest, base_url, '/anything/globals/pathParameter/{globalPathParam}', request, self._globals)
         headers = {}
+        headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client
@@ -61,6 +62,7 @@ class Globals:
         url = base_url.removesuffix('/') + '/anything/globals/queryParameter'
         headers = {}
         query_params = utils.get_query_params(operations.GlobalsQueryParameterGetRequest, request, self._globals)
+        headers['Accept'] = 'application/json'
         headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self._language} {self._sdk_version} {self._gen_version}'
         
         client = self._security_client

@@ -26,9 +26,9 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamConflictRequest;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -42,12 +42,12 @@ try {
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $simpleObject->enum = EnumEnum::TWO;
+    $simpleObject->enum = Enum::TWO;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $simpleObject->intEnum = SimpleObjectIntEnumEnum::Third;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $simpleObject->intEnum = SimpleObjectIntEnum::Third;
     $simpleObject->intOptNull = 999999;
     $simpleObject->num = 1.1;
     $simpleObject->numOptNull = 1.1;
@@ -78,9 +78,9 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\ComponentBodyAndParamNoConflictRequest;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -94,12 +94,12 @@ try {
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $simpleObject->enum = EnumEnum::TWO;
+    $simpleObject->enum = Enum::TWO;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $simpleObject->intEnum = SimpleObjectIntEnumEnum::Third;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $simpleObject->intEnum = SimpleObjectIntEnum::Third;
     $simpleObject->intOptNull = 999999;
     $simpleObject->num = 1.1;
     $simpleObject->numOptNull = 1.1;

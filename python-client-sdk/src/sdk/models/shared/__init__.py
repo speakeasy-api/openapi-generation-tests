@@ -4,7 +4,7 @@ from .arrobjvalue import *
 from .authservicerequestbody import *
 from .deepobject import *
 from .deepobjectwithtype import *
-from .enum_enum import *
+from .enum import *
 from .httpbinsimplejsonobject import *
 from .mapobjvalue import *
 from .refqueryparamobj import *
@@ -17,4 +17,4 @@ from .typedobject2 import *
 from .typedobject3 import *
 from .validcircularreferenceobject import *
 
-__all__ = ["ArrObjValue","AuthServiceRequestBody","AuthServiceRequestBodyBasicAuth","AuthServiceRequestBodyHeaderAuth","DeepObject","DeepObjectWithType","EnumEnum","HTTPBinSimpleJSONObject","HTTPBinSimpleJSONObjectSlideshow","HTTPBinSimpleJSONObjectSlideshowSlides","MapObjValue","RefQueryParamObj","RefQueryParamObjExploded","SchemeBasicAuth","Security","SimpleObject","SimpleObjectInt32EnumEnum","SimpleObjectIntEnumEnum","SimpleObjectWithType","SimpleObjectWithTypeInt32EnumEnum","SimpleObjectWithTypeIntEnumEnum","TypedObject1","TypedObject1TypeEnum","TypedObject2","TypedObject2TypeEnum","TypedObject3","TypedObject3TypeEnum","ValidCircularReferenceObject"]
+__all__ = ["ArrObjValue","AuthServiceRequestBody","AuthServiceRequestBodyBasicAuth","AuthServiceRequestBodyHeaderAuth","DeepObject","DeepObjectWithType","EnumT","HTTPBinSimpleJSONObject","HTTPBinSimpleJSONObjectSlideshow","HTTPBinSimpleJSONObjectSlideshowSlides","MapObjValue","RefQueryParamObj","RefQueryParamObjExploded","SchemeBasicAuth","Security","SimpleObject","SimpleObjectInt32Enum","SimpleObjectIntEnum","SimpleObjectWithType","SimpleObjectWithTypeInt32Enum","SimpleObjectWithTypeIntEnum","TypedObject1","TypedObject1Type","TypedObject2","TypedObject2Type","TypedObject3","TypedObject3Type","ValidCircularReferenceObject"]

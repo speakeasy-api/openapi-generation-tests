@@ -23,7 +23,7 @@ Endpoints for purely testing valid generation behavior.
 ```typescript
 import { SDK } from "openapi";
 import { AnchorTypesGetResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -123,7 +123,7 @@ sdk.generation.deprecatedWithCommentsGet("aspernatur").then((res: DeprecatedWith
 ```typescript
 import { SDK } from "openapi";
 import { GetGlobalNameOverrideResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -148,7 +148,7 @@ sdk.generation.globalNameOverridden().then((res: GetGlobalNameOverrideResponse) 
 ```typescript
 import { SDK } from "openapi";
 import { IgnoredGenerationGetResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -199,7 +199,7 @@ sdk.generation.ignoresPost({
 ```typescript
 import { SDK } from "openapi";
 import { NameOverrideGetResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -229,11 +229,11 @@ Usage example docs
 ```typescript
 import { SDK } from "openapi";
 import {
-  UsageExamplePostEnumParameterEnum,
-  UsageExamplePostOptEnumParameterEnum,
+  UsageExamplePostEnumParameter,
+  UsageExamplePostOptEnumParameter,
   UsageExamplePostResponse,
 } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -258,12 +258,12 @@ sdk.generation.usageExamplePost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-      intEnum: SimpleObjectIntEnumEnum.Third,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -278,11 +278,11 @@ sdk.generation.usageExamplePost({
   dateParameter: new RFCDate("2020-01-01"),
   dateTimeParameter: new Date("2020-01-01T00:00:00Z"),
   doubleParameter: 2.2222222,
-  enumParameter: UsageExamplePostEnumParameterEnum.Value3,
+  enumParameter: UsageExamplePostEnumParameter.Value3,
   floatParameter: 1.1,
   int64Parameter: 111111,
   intParameter: 1,
-  optEnumParameter: UsageExamplePostOptEnumParameterEnum.Value3,
+  optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
   strParameter: "example",
 }, {
   password: "YOUR_PASSWORD",

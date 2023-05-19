@@ -101,9 +101,9 @@ public class SimpleObjectWithType {
      * An string based enum
      */
     @JsonProperty("enum")
-    public EnumEnum enum_;
+    public Enum enum_;
 
-    public SimpleObjectWithType withEnum(EnumEnum enum_) {
+    public SimpleObjectWithType withEnum(Enum enum_) {
         this.enum_ = enum_;
         return this;
     }
@@ -145,9 +145,9 @@ public class SimpleObjectWithType {
      * An int32 enum property.
      */
     @JsonProperty("int32Enum")
-    public SimpleObjectWithTypeInt32EnumEnum int32Enum;
+    public SimpleObjectWithTypeInt32Enum int32Enum;
 
-    public SimpleObjectWithType withInt32Enum(SimpleObjectWithTypeInt32EnumEnum int32Enum) {
+    public SimpleObjectWithType withInt32Enum(SimpleObjectWithTypeInt32Enum int32Enum) {
         this.int32Enum = int32Enum;
         return this;
     }
@@ -156,9 +156,9 @@ public class SimpleObjectWithType {
      * An integer enum property.
      */
     @JsonProperty("intEnum")
-    public SimpleObjectWithTypeIntEnumEnum intEnum;
+    public SimpleObjectWithTypeIntEnum intEnum;
 
-    public SimpleObjectWithType withIntEnum(SimpleObjectWithTypeIntEnumEnum intEnum) {
+    public SimpleObjectWithType withIntEnum(SimpleObjectWithTypeIntEnum intEnum) {
         this.intEnum = intEnum;
         return this;
     }
@@ -229,7 +229,7 @@ public class SimpleObjectWithType {
         return this;
     }
     
-    public SimpleObjectWithType(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") EnumEnum enum_, @JsonProperty("float32") Double float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectWithTypeInt32EnumEnum int32Enum, @JsonProperty("intEnum") SimpleObjectWithTypeIntEnumEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str, @JsonProperty("type") String type) {
+    public SimpleObjectWithType(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") Enum enum_, @JsonProperty("float32") Double float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectWithTypeInt32Enum int32Enum, @JsonProperty("intEnum") SimpleObjectWithTypeIntEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str, @JsonProperty("type") String type) {
         this.any = any;
         this.bool = bool;
         this.date = date;

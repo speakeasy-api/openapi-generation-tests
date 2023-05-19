@@ -7,9 +7,9 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * UsageExamplePostOptEnumParameterEnum - An enum type
+ * UsageExamplePostOptEnumParameter - An enum type
  */
-public enum UsageExamplePostOptEnumParameterEnum {
+public enum UsageExamplePostOptEnumParameter {
     VALUE1("value1"),
     VALUE2("value2"),
     VALUE3("value3");
@@ -17,7 +17,7 @@ public enum UsageExamplePostOptEnumParameterEnum {
     @JsonValue
     public final String value;
 
-    private UsageExamplePostOptEnumParameterEnum(String value) {
+    private UsageExamplePostOptEnumParameter(String value) {
         this.value = value;
     }
 }

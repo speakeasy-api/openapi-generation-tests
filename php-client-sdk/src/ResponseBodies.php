@@ -53,6 +53,7 @@ class ResponseBodies
         $url = Utils\Utils::generateUrl($baseUrl, '/bytes/100');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/octet-stream';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
@@ -85,6 +86,7 @@ class ResponseBodies
         $url = Utils\Utils::generateUrl($baseUrl, '/html');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'text/html';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
@@ -117,6 +119,7 @@ class ResponseBodies
         $url = Utils\Utils::generateUrl($baseUrl, '/xml');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/xml';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);

@@ -29,11 +29,11 @@ func TestStronglyTypedOneOfPost_Basic(t *testing.T) {
 		Bool:       true,
 		Int:        1,
 		Int32:      1,
-		IntEnum:    shared.SimpleObjectWithTypeIntEnumEnumSecond,
-		Int32Enum:  shared.SimpleObjectWithTypeInt32EnumEnumFiftyFive,
+		IntEnum:    shared.SimpleObjectWithTypeIntEnumSecond,
+		Int32Enum:  shared.SimpleObjectWithTypeInt32EnumFiftyFive,
 		Num:        1.1,
 		Float32:    1.1,
-		Enum:       shared.EnumEnumOne,
+		Enum:       shared.EnumOne,
 		Any:        "any",
 		Date:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
 		DateTime:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
@@ -143,7 +143,7 @@ func TestTypedObjectOneOfPost_Obj1(t *testing.T) {
 	s := sdk.New()
 
 	obj := shared.TypedObject1{
-		Type: shared.TypedObject1TypeEnumObj1,
+		Type: shared.TypedObject1TypeObj1,
 	}
 
 	req := shared.CreateTypedObjectOneOfTypedObject1(obj)
@@ -162,7 +162,7 @@ func TestTypedObjectOneOfPost_Obj2(t *testing.T) {
 	s := sdk.New()
 
 	obj := shared.TypedObject2{
-		Type: shared.TypedObject2TypeEnumObj2,
+		Type: shared.TypedObject2TypeObj2,
 	}
 
 	req := shared.CreateTypedObjectOneOfTypedObject2(obj)
@@ -181,7 +181,7 @@ func TestTypedObjectOneOfPost_Obj3(t *testing.T) {
 	s := sdk.New()
 
 	obj := shared.TypedObject3{
-		Type: shared.TypedObject3TypeEnumObj3,
+		Type: shared.TypedObject3TypeObj3,
 	}
 
 	req := shared.CreateTypedObjectOneOfTypedObject3(obj)

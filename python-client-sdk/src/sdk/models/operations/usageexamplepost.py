@@ -48,13 +48,13 @@ class UsageExamplePostRequestBody:
     uuid: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uuid'), 'exclude': lambda f: f is None }})
     r"""A field called uuid that will have uuids generated as examples"""
     
-class UsageExamplePostEnumParameterEnum(str, Enum):
+class UsageExamplePostEnumParameter(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
     VALUE2 = 'value2'
     VALUE3 = 'value3'
 
-class UsageExamplePostOptEnumParameterEnum(str, Enum):
+class UsageExamplePostOptEnumParameter(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
     VALUE2 = 'value2'
@@ -72,7 +72,7 @@ class UsageExamplePostRequest:
     r"""A date time parameter"""
     double_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': True }})
     r"""A double parameter"""
-    enum_parameter: UsageExamplePostEnumParameterEnum = dataclasses.field(metadata={'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': True }})
+    enum_parameter: UsageExamplePostEnumParameter = dataclasses.field(metadata={'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': True }})
     r"""An enum parameter"""
     float_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'floatParameter', 'style': 'form', 'explode': True }})
     r"""A float parameter"""
@@ -82,7 +82,7 @@ class UsageExamplePostRequest:
     r"""An integer parameter"""
     str_parameter: str = dataclasses.field(metadata={'query_param': { 'field_name': 'strParameter', 'style': 'form', 'explode': True }})
     r"""A string parameter"""
-    opt_enum_parameter: Optional[UsageExamplePostOptEnumParameterEnum] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': True }})
+    opt_enum_parameter: Optional[UsageExamplePostOptEnumParameter] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': True }})
     r"""An enum parameter"""
     request_body: Optional[UsageExamplePostRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     r"""A request body that contains fields with different formats for testing example generation"""

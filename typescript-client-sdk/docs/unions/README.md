@@ -19,7 +19,7 @@ Endpoints for testing union types.
 ```typescript
 import { SDK } from "openapi";
 import { MixedTypeOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -68,11 +68,11 @@ sdk.unions.primitiveTypeOneOfPost(5483.61).then((res: PrimitiveTypeOneOfPostResp
 import { SDK } from "openapi";
 import { StronglyTypedOneOfPostResponse } from "openapi/dist/sdk/models/operations";
 import {
-  EnumEnum,
-  SimpleObjectInt32EnumEnum,
-  SimpleObjectIntEnumEnum,
-  SimpleObjectWithTypeInt32EnumEnum,
-  SimpleObjectWithTypeIntEnumEnum,
+  Enum,
+  SimpleObjectInt32Enum,
+  SimpleObjectIntEnum,
+  SimpleObjectWithTypeInt32Enum,
+  SimpleObjectWithTypeIntEnum,
 } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
@@ -93,12 +93,12 @@ sdk.unions.stronglyTypedOneOfPost({
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
+    enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnumEnum.First,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+    intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
@@ -114,12 +114,12 @@ sdk.unions.stronglyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -134,12 +134,12 @@ sdk.unions.stronglyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -154,12 +154,12 @@ sdk.unions.stronglyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-      intEnum: SimpleObjectIntEnumEnum.First,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -178,12 +178,12 @@ sdk.unions.stronglyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnumEnum.First,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -198,12 +198,12 @@ sdk.unions.stronglyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-      intEnum: SimpleObjectIntEnumEnum.Third,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -220,12 +220,12 @@ sdk.unions.stronglyTypedOneOfPost({
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
+    enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-    intEnum: SimpleObjectIntEnumEnum.First,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
@@ -248,7 +248,7 @@ sdk.unions.stronglyTypedOneOfPost({
 ```typescript
 import { SDK } from "openapi";
 import { TypedObjectOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import { TypedObject1TypeEnum, TypedObject2TypeEnum, TypedObject3TypeEnum } from "openapi/dist/sdk/models/shared";
+import { TypedObject1Type, TypedObject2Type, TypedObject3Type } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -259,7 +259,7 @@ const sdk = new SDK({
 });
 
 sdk.unions.typedObjectOneOfPost({
-  type: TypedObject2TypeEnum.Obj2,
+  type: TypedObject2Type.Obj2,
   value: "unde",
 }).then((res: TypedObjectOneOfPostResponse) => {
   if (res.statusCode == 200) {
@@ -275,7 +275,7 @@ sdk.unions.typedObjectOneOfPost({
 ```typescript
 import { SDK } from "openapi";
 import { WeaklyTypedOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import { EnumEnum, SimpleObjectInt32EnumEnum, SimpleObjectIntEnumEnum } from "openapi/dist/sdk/models/shared";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -297,12 +297,12 @@ sdk.unions.weaklyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -317,12 +317,12 @@ sdk.unions.weaklyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -337,12 +337,12 @@ sdk.unions.weaklyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -357,12 +357,12 @@ sdk.unions.weaklyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-      intEnum: SimpleObjectIntEnumEnum.Third,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -381,12 +381,12 @@ sdk.unions.weaklyTypedOneOfPost({
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: EnumEnum.Two,
+      enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32EnumEnum.SixtyNine,
-      intEnum: SimpleObjectIntEnumEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -403,12 +403,12 @@ sdk.unions.weaklyTypedOneOfPost({
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: EnumEnum.Two,
+    enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-    intEnum: SimpleObjectIntEnumEnum.First,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,

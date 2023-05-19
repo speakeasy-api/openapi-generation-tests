@@ -10,7 +10,7 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 
 /** An enum type */
-enum UsageExamplePostOptEnumParameterEnum: string
+enum UsageExamplePostOptEnumParameter: string
 {
     case VALUE1 = 'value1';
     case VALUE2 = 'value2';

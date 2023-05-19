@@ -4,13 +4,13 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RFCDate } from "../../types";
-import { EnumEnum } from "./enumenum";
+import { Enum } from "./enum";
 import { Expose, Transform } from "class-transformer";
 
 /**
  * An int32 enum property.
  */
-export enum SimpleObjectInt32EnumEnum {
+export enum SimpleObjectInt32Enum {
   FiftyFive = 55,
   SixtyNine = 69,
   OneHundredAndEightyOne = 181,
@@ -19,7 +19,7 @@ export enum SimpleObjectInt32EnumEnum {
 /**
  * An integer enum property.
  */
-export enum SimpleObjectIntEnumEnum {
+export enum SimpleObjectIntEnum {
   First = 1,
   Second = 2,
   Third = 3,
@@ -97,7 +97,7 @@ export class SimpleObject extends SpeakeasyBase {
     data: "header, name=enum, pathParam, name=enum, queryParam, name=enum, form, name=enum, multipart_form, name=enum",
   })
   @Expose({ name: "enum" })
-  enum: EnumEnum;
+  enum: Enum;
 
   /**
    * A float32 property.
@@ -133,7 +133,7 @@ export class SimpleObject extends SpeakeasyBase {
     data: "header, name=int32Enum, pathParam, name=int32Enum, queryParam, name=int32Enum, form, name=int32Enum, multipart_form, name=int32Enum",
   })
   @Expose({ name: "int32Enum" })
-  int32Enum: SimpleObjectInt32EnumEnum;
+  int32Enum: SimpleObjectInt32Enum;
 
   /**
    * An integer enum property.
@@ -142,7 +142,7 @@ export class SimpleObject extends SpeakeasyBase {
     data: "header, name=intEnum, pathParam, name=intEnum, queryParam, name=intEnum, form, name=intEnum, multipart_form, name=intEnum",
   })
   @Expose({ name: "intEnum" })
-  intEnum: SimpleObjectIntEnumEnum;
+  intEnum: SimpleObjectIntEnum;
 
   /**
    * An optional integer property will be null for tests.

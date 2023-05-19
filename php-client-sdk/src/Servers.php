@@ -70,6 +70,7 @@ class Servers
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/selectGlobalServer');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
@@ -107,6 +108,7 @@ class Servers
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/selectServerWithID');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
@@ -142,6 +144,7 @@ class Servers
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/serverWithTemplates');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
@@ -171,6 +174,7 @@ class Servers
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/serverWithTemplatesGlobal');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);

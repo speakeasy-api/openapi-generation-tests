@@ -6,13 +6,13 @@ package org.openapis.openapi.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonValue;
 
-public enum TypedObject3TypeEnum {
-    OBJ3("obj3");
+public enum TypedObject1Type {
+    OBJ1("obj1");
 
     @JsonValue
     public final String value;
 
-    private TypedObject3TypeEnum(String value) {
+    private TypedObject1Type(String value) {
         this.value = value;
     }
 }

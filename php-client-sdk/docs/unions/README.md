@@ -95,12 +95,12 @@ try {
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->enum = EnumEnum::TWO;
+    $request->enum = Enum::TWO;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectWithTypeInt32EnumEnum::FIFTY_FIVE;
-    $request->intEnum = SimpleObjectWithTypeIntEnumEnum::Second;
+    $request->int32Enum = SimpleObjectWithTypeInt32Enum::FIFTY_FIVE;
+    $request->intEnum = SimpleObjectWithTypeIntEnum::Second;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -136,7 +136,7 @@ $sdk = SDK::builder()
 
 try {
     $request = new TypedObject3();
-    $request->type = TypedObject3TypeEnum::OBJ3;
+    $request->type = TypedObject3Type::OBJ3;
     $request->value = 'vero';
 
     $response = $sdk->unions->typedObjectOneOfPost($request);
@@ -174,12 +174,12 @@ try {
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->enum = EnumEnum::TWO;
+    $request->enum = Enum::TWO;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->intEnum = SimpleObjectIntEnumEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE;
+    $request->intEnum = SimpleObjectIntEnum::Second;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;

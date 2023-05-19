@@ -6,7 +6,7 @@ from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from sdk import utils
 
-class TypedObject2TypeEnum(str, Enum):
+class TypedObject2Type(str, Enum):
     OBJ2 = 'obj2'
 
 
@@ -14,6 +14,6 @@ class TypedObject2TypeEnum(str, Enum):
 @dataclasses.dataclass
 class TypedObject2:
     
-    type: TypedObject2TypeEnum = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: TypedObject2Type = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     value: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('value') }})
     

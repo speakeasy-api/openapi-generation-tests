@@ -110,9 +110,9 @@ public class SimpleObject {
      */
     @JsonProperty("enum")
     @SpeakeasyMetadata("header:name=enum pathParam:name=enum queryParam:name=enum form:name=enum multipartForm:name=enum")
-    public EnumEnum enum_;
+    public Enum enum_;
 
-    public SimpleObject withEnum(EnumEnum enum_) {
+    public SimpleObject withEnum(Enum enum_) {
         this.enum_ = enum_;
         return this;
     }
@@ -158,9 +158,9 @@ public class SimpleObject {
      */
     @JsonProperty("int32Enum")
     @SpeakeasyMetadata("header:name=int32Enum pathParam:name=int32Enum queryParam:name=int32Enum form:name=int32Enum multipartForm:name=int32Enum")
-    public SimpleObjectInt32EnumEnum int32Enum;
+    public SimpleObjectInt32Enum int32Enum;
 
-    public SimpleObject withInt32Enum(SimpleObjectInt32EnumEnum int32Enum) {
+    public SimpleObject withInt32Enum(SimpleObjectInt32Enum int32Enum) {
         this.int32Enum = int32Enum;
         return this;
     }
@@ -170,9 +170,9 @@ public class SimpleObject {
      */
     @JsonProperty("intEnum")
     @SpeakeasyMetadata("header:name=intEnum pathParam:name=intEnum queryParam:name=intEnum form:name=intEnum multipartForm:name=intEnum")
-    public SimpleObjectIntEnumEnum intEnum;
+    public SimpleObjectIntEnum intEnum;
 
-    public SimpleObject withIntEnum(SimpleObjectIntEnumEnum intEnum) {
+    public SimpleObject withIntEnum(SimpleObjectIntEnum intEnum) {
         this.intEnum = intEnum;
         return this;
     }
@@ -240,7 +240,7 @@ public class SimpleObject {
         return this;
     }
     
-    public SimpleObject(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") EnumEnum enum_, @JsonProperty("float32") Double float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectInt32EnumEnum int32Enum, @JsonProperty("intEnum") SimpleObjectIntEnumEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str) {
+    public SimpleObject(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") Enum enum_, @JsonProperty("float32") Double float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectInt32Enum int32Enum, @JsonProperty("intEnum") SimpleObjectIntEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str) {
         this.any = any;
         this.bool = bool;
         this.date = date;

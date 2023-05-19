@@ -9,10 +9,7 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-/** An integer enum property. */
-enum SimpleObjectWithTypeIntEnumEnum: int
+enum TypedObject1Type: string
 {
-    case First = 1;
-    case Second = 2;
-    case Third = 3;
+    case OBJ1 = 'obj1';
 }

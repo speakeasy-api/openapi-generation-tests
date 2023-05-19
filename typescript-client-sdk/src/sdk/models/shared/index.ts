@@ -6,7 +6,7 @@ export * from "./arrobjvalue";
 export * from "./authservicerequestbody";
 export * from "./deepobject";
 export * from "./deepobjectwithtype";
-export * from "./enumenum";
+export * from "./enum";
 export * from "./httpbinsimplejsonobject";
 export * from "./mapobjvalue";
 export * from "./refqueryparamobj";

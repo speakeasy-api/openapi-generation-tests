@@ -79,11 +79,11 @@ class SimpleObjectWithType
     /**
      * An string based enum
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\EnumEnum $enum
+     * @var \OpenAPI\OpenAPI\Models\Shared\Enum $enum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('enum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\EnumEnum>')]
-    public EnumEnum $enum;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\Enum>')]
+    public Enum $enum;
     
     /**
      * A float32 property.
@@ -115,20 +115,20 @@ class SimpleObjectWithType
     /**
      * An int32 enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeInt32EnumEnum $int32Enum
+     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeInt32Enum $int32Enum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('int32Enum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeInt32EnumEnum>')]
-    public SimpleObjectWithTypeInt32EnumEnum $int32Enum;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeInt32Enum>')]
+    public SimpleObjectWithTypeInt32Enum $int32Enum;
     
     /**
      * An integer enum property.
      * 
-     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeIntEnumEnum $intEnum
+     * @var \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeIntEnum $intEnum
      */
 	#[\JMS\Serializer\Annotation\SerializedName('intEnum')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeIntEnumEnum>')]
-    public SimpleObjectWithTypeIntEnumEnum $intEnum;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeIntEnum>')]
+    public SimpleObjectWithTypeIntEnum $intEnum;
     
     /**
      * An optional integer property will be null for tests.
@@ -191,12 +191,12 @@ class SimpleObjectWithType
 		$this->boolOpt = null;
 		$this->date = new \DateTime();
 		$this->dateTime = new \DateTime();
-		$this->enum = \OpenAPI\OpenAPI\Models\Shared\EnumEnum::ONE;
+		$this->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::ONE;
 		$this->float32 = 0;
 		$this->int = 0;
 		$this->int32 = 0;
-		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeInt32EnumEnum::FIFTY_FIVE;
-		$this->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeIntEnumEnum::First;
+		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeInt32Enum::FIFTY_FIVE;
+		$this->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectWithTypeIntEnum::First;
 		$this->intOptNull = null;
 		$this->num = 0;
 		$this->numOptNull = null;

@@ -12,8 +12,8 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 class TypedObject2
 {
 	#[\JMS\Serializer\Annotation\SerializedName('type')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\TypedObject2TypeEnum>')]
-    public TypedObject2TypeEnum $type;
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\TypedObject2Type>')]
+    public TypedObject2Type $type;
     
 	#[\JMS\Serializer\Annotation\SerializedName('value')]
     #[\JMS\Serializer\Annotation\Type('string')]
@@ -21,7 +21,7 @@ class TypedObject2
     
 	public function __construct()
 	{
-		$this->type = \OpenAPI\OpenAPI\Models\Shared\TypedObject2TypeEnum::OBJ2;
+		$this->type = \OpenAPI\OpenAPI\Models\Shared\TypedObject2Type::OBJ2;
 		$this->value = "";
 	}
 }

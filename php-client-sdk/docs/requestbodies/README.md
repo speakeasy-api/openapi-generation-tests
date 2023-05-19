@@ -51,9 +51,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -86,9 +86,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -124,9 +124,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -217,9 +217,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -301,9 +301,9 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\DeepObject;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -330,12 +330,12 @@ try {
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->enum = EnumEnum::TWO;
+    $request->obj->enum = Enum::TWO;
     $request->obj->float32 = 2.2222222;
     $request->obj->int = 999999;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->obj->intEnum = SimpleObjectIntEnumEnum::Second;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE;
+    $request->obj->intEnum = SimpleObjectIntEnum::Second;
     $request->obj->intOptNull = 999999;
     $request->obj->num = 1.1;
     $request->obj->numOptNull = 1.1;
@@ -367,9 +367,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -405,9 +405,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -441,9 +441,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -481,9 +481,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -592,9 +592,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -608,12 +608,12 @@ try {
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->enum = EnumEnum::TWO;
+    $request->enum = Enum::TWO;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->intEnum = SimpleObjectIntEnumEnum::First;
+    $request->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $request->intEnum = SimpleObjectIntEnum::First;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -643,9 +643,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -659,12 +659,12 @@ try {
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->enum = EnumEnum::TWO;
+    $request->enum = Enum::TWO;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->intEnum = SimpleObjectIntEnumEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $request->intEnum = SimpleObjectIntEnum::Second;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -695,9 +695,9 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\DeepObject;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -712,12 +712,12 @@ try {
     $request->any->boolOpt = true;
     $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->any->enum = EnumEnum::TWO;
+    $request->any->enum = Enum::TWO;
     $request->any->float32 = 2.2222222;
     $request->any->int = 999999;
     $request->any->int32 = 1;
-    $request->any->int32Enum = SimpleObjectInt32EnumEnum::ONE_HUNDRED_AND_EIGHTY_ONE;
-    $request->any->intEnum = SimpleObjectIntEnumEnum::Second;
+    $request->any->int32Enum = SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE;
+    $request->any->intEnum = SimpleObjectIntEnum::Second;
     $request->any->intOptNull = 999999;
     $request->any->num = 1.1;
     $request->any->numOptNull = 1.1;
@@ -743,12 +743,12 @@ try {
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->enum = EnumEnum::TWO;
+    $request->obj->enum = Enum::TWO;
     $request->obj->float32 = 2.2222222;
     $request->obj->int = 999999;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->obj->intEnum = SimpleObjectIntEnumEnum::First;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $request->obj->intEnum = SimpleObjectIntEnum::First;
     $request->obj->intOptNull = 999999;
     $request->obj->num = 1.1;
     $request->obj->numOptNull = 1.1;
@@ -811,9 +811,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -827,12 +827,12 @@ try {
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->enum = EnumEnum::TWO;
+    $request->enum = Enum::TWO;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->intEnum = SimpleObjectIntEnumEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $request->intEnum = SimpleObjectIntEnum::Second;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -862,9 +862,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -878,12 +878,12 @@ try {
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->enum = EnumEnum::TWO;
+    $request->enum = Enum::TWO;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->intEnum = SimpleObjectIntEnumEnum::Third;
+    $request->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -1177,9 +1177,9 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\DeepObject;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -1206,12 +1206,12 @@ try {
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->enum = EnumEnum::TWO;
+    $request->obj->enum = Enum::TWO;
     $request->obj->float32 = 2.2222222;
     $request->obj->int = 999999;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32EnumEnum::SIXTY_NINE;
-    $request->obj->intEnum = SimpleObjectIntEnumEnum::First;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::SIXTY_NINE;
+    $request->obj->intEnum = SimpleObjectIntEnum::First;
     $request->obj->intOptNull = 999999;
     $request->obj->num = 1.1;
     $request->obj->numOptNull = 1.1;
@@ -1277,9 +1277,9 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
-use \OpenAPI\OpenAPI\Models\Shared\EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32EnumEnum;
-use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnumEnum;
+use \OpenAPI\OpenAPI\Models\Shared\Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
+use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
 $sdk = SDK::builder()
     ->build();
@@ -1293,12 +1293,12 @@ try {
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->enum = EnumEnum::TWO;
+    $request->enum = Enum::TWO;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32EnumEnum::FIFTY_FIVE;
-    $request->intEnum = SimpleObjectIntEnumEnum::Third;
+    $request->int32Enum = SimpleObjectInt32Enum::FIFTY_FIVE;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;

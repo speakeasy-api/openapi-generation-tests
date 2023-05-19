@@ -62,6 +62,7 @@ class Telemetry
         if (!array_key_exists('headers', $options)) {
             $options['headers'] = [];
         }
+        $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);
@@ -95,6 +96,7 @@ class Telemetry
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/telemetry/user-agent');
         
         $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
         
         $httpResponse = $this->_securityClient->request('GET', $url, $options);

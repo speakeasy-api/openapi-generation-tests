@@ -6,10 +6,10 @@ import * as fs from "fs";
 
 import {
   DeepObject,
-  EnumEnum,
+  Enum,
   SimpleObject,
-  SimpleObjectInt32EnumEnum,
-  SimpleObjectIntEnumEnum,
+  SimpleObjectInt32Enum,
+  SimpleObjectIntEnum,
 } from "../src/sdk/models/shared";
 
 import { RFCDate } from "../src/sdk/types";
@@ -20,11 +20,11 @@ export const createSimpleObject = (): SimpleObject => {
     bool: true,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32EnumEnum.FiftyFive,
-    intEnum: SimpleObjectIntEnumEnum.Second,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
     num: 1.1,
     float32: 1.1,
-    enum: EnumEnum.One,
+    enum: Enum.One,
     any: "any",
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00.001Z"),
