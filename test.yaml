@@ -2716,6 +2716,7 @@ paths:
       tags:
         - generation
       deprecated: true
+      x-speakeasy-deprecation-replacement: simplePathParameterObjects
       summary: This is an endpoint setup to test deprecation with comments
       parameters:
         - name: deprecatedParameter
@@ -2723,6 +2724,12 @@ paths:
           schema:
             type: string
           deprecated: true
+          x-speakeasy-deprecation-replacement: newParameter
+          description: This is a string parameter
+        - name: newParameter
+          in: query
+          schema:
+            type: string
           description: This is a string parameter
       responses:
         "200":
