@@ -110,13 +110,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(deprecated_parameter: T.nilable(String)).returns(Utils::FieldAugmented) }
-    def deprecated_with_comments_get(deprecated_parameter = nil)
+    sig { params(deprecated_parameter: T.nilable(String), new_parameter: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def deprecated_with_comments_get(deprecated_parameter = nil, new_parameter = nil)
       # deprecated_with_comments_get - This is an endpoint setup to test deprecation with comments
       # 
       # @deprecated this null will be removed in a future release, please migrate away from it as soon as possible
       request = Operations::DeprecatedWithCommentsGetRequest.new(
         deprecated_parameter: deprecated_parameter,
+        new_parameter: new_parameter,
       )
       
       base_url = @server_url

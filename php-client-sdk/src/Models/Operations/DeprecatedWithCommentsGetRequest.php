@@ -20,8 +20,17 @@ class DeprecatedWithCommentsGetRequest
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=deprecatedParameter')]
     public ?string $deprecatedParameter = null;
     
+    /**
+     * This is a string parameter
+     * 
+     * @var ?string $newParameter
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=newParameter')]
+    public ?string $newParameter = null;
+    
 	public function __construct()
 	{
 		$this->deprecatedParameter = null;
+		$this->newParameter = null;
 	}
 }

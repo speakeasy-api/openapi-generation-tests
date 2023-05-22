@@ -175,9 +175,10 @@ func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedPara
 // DeprecatedWithCommentsGet - This is an endpoint setup to test deprecation with comments
 //
 // Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible.
-func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedWithCommentsGetResponse, error) {
+func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedParameter *string, newParameter *string) (*operations.DeprecatedWithCommentsGetResponse, error) {
 	request := operations.DeprecatedWithCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,
+		NewParameter:        newParameter,
 	}
 
 	baseURL := s.serverURL

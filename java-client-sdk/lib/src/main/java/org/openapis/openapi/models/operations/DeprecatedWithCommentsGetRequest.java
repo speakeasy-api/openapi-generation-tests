@@ -21,5 +21,16 @@ public class DeprecatedWithCommentsGetRequest {
         return this;
     }
     
+    /**
+     * This is a string parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=newParameter")
+    public String newParameter;
+
+    public DeprecatedWithCommentsGetRequest withNewParameter(String newParameter) {
+        this.newParameter = newParameter;
+        return this;
+    }
+    
     public DeprecatedWithCommentsGetRequest(){}
 }

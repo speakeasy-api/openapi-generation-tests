@@ -109,7 +109,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.deprecatedWithCommentsGet("aspernatur").then((res: DeprecatedWithCommentsGetResponse) => {
+sdk.generation.deprecatedWithCommentsGet("aspernatur", "architecto").then((res: DeprecatedWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -183,9 +183,9 @@ const sdk = new SDK({
 });
 
 sdk.generation.ignoresPost({
-  callbackUrl: "http://foolhardy-bolero.name",
-  testProp: "ullam",
-}, "provident").then((res: IgnoresPostResponse) => {
+  callbackUrl: "http://brisk-mobile.info",
+  testProp: "provident",
+}, "quos").then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -243,17 +243,17 @@ const sdk = new SDK({
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Kiley_Bartoletti@yahoo.com",
-    formatEmail: "Emmie89@yahoo.com",
-    formatUri: "http://handy-borrowing.info",
-    formatUuid: "fe4c8b71-1e5b-47fd-aed0-28921cddc692",
-    hostname: "illegal-antique.com",
-    ipv4: "251.178.95.116",
-    ipv6: "6b0d:5f0d:30c5:fbb2:5870:5320:2c73:d5fe",
+    email: "Alexis_OHara32@yahoo.com",
+    formatEmail: "Dallas36@yahoo.com",
+    formatUri: "http://infinite-winery.org",
+    formatUuid: "4c8b711e-5b7f-4d2e-9028-921cddc69260",
+    hostname: "big-willingness.net",
+    ipv4: "95.116.107.184",
+    ipv6: "0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b",
     simpleObject: {
-      any: "omnis",
-      bigint: 704415,
-      bigintStr: "perspiciatis",
+      any: "perspiciatis",
+      bigint: 31838,
+      bigintStr: "porro",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -263,16 +263,16 @@ sdk.generation.usageExamplePost({
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Third,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "consequuntur",
-    uri: "https://petty-atom.name",
-    uuid: "b3fe49a8-d9cb-4f48-a333-23f9b77f3a41",
+    unknown: "error",
+    uri: "http://noxious-pronunciation.biz",
+    uuid: "fe49a8d9-cbf4-4863-b323-f9b77f3a4100",
   },
   boolParameter: false,
   dateParameter: new RFCDate("2020-01-01"),

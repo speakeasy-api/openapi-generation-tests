@@ -108,7 +108,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_with_comments_get('aspernatur')
+res = s.generation.deprecated_with_comments_get('aspernatur', 'architecto')
 
 if res.status_code == 200:
     # handle response
@@ -178,9 +178,9 @@ s = sdk.SDK(
 
 
 res = s.generation.ignores_post(operations.IgnoresPostApplicationJSON(
-    callback_url='http://foolhardy-bolero.name',
-    test_prop='ullam',
-), 'provident')
+    callback_url='http://brisk-mobile.info',
+    test_prop='provident',
+), 'quos')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
@@ -230,17 +230,17 @@ s = sdk.SDK(
 
 req = operations.UsageExamplePostRequest(
     request_body=operations.UsageExamplePostRequestBody(
-        email='Kiley_Bartoletti@yahoo.com',
-        format_email='Emmie89@yahoo.com',
-        format_uri='http://handy-borrowing.info',
-        format_uuid='fe4c8b71-1e5b-47fd-aed0-28921cddc692',
-        hostname='illegal-antique.com',
-        ipv4='251.178.95.116',
-        ipv6='6b0d:5f0d:30c5:fbb2:5870:5320:2c73:d5fe',
+        email='Alexis_OHara32@yahoo.com',
+        format_email='Dallas36@yahoo.com',
+        format_uri='http://infinite-winery.org',
+        format_uuid='4c8b711e-5b7f-4d2e-9028-921cddc69260',
+        hostname='big-willingness.net',
+        ipv4='95.116.107.184',
+        ipv6='0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b',
         simple_object=shared.SimpleObject(
-            any='omnis',
-            bigint=704415,
-            bigint_str='perspiciatis',
+            any='perspiciatis',
+            bigint=31838,
+            bigint_str='porro',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -250,16 +250,16 @@ req = operations.UsageExamplePostRequest(
             int=999999,
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
             str_='example',
             str_opt='optional example',
         ),
-        unknown='consequuntur',
-        uri='https://petty-atom.name',
-        uuid='b3fe49a8-d9cb-4f48-a333-23f9b77f3a41',
+        unknown='error',
+        uri='http://noxious-pronunciation.biz',
+        uuid='fe49a8d9-cbf4-4863-b323-f9b77f3a4100',
     ),
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),

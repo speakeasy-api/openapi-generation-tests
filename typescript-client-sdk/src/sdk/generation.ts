@@ -192,10 +192,12 @@ export class Generation {
    */
   async deprecatedWithCommentsGet(
     deprecatedParameter?: string,
+    newParameter?: string,
     config?: AxiosRequestConfig
   ): Promise<operations.DeprecatedWithCommentsGetResponse> {
     const req = new operations.DeprecatedWithCommentsGetRequest({
       deprecatedParameter: deprecatedParameter,
+      newParameter: newParameter,
     });
     const baseURL: string = this._serverURL;
     const url: string =

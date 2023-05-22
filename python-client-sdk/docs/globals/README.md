@@ -26,7 +26,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.global_path_parameter_get(58029)
+res = s.globals.global_path_parameter_get(434417)
 
 if res.res is not None:
     # handle response
@@ -49,7 +49,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.globals_query_parameter_get('ipsa')
+res = s.globals.globals_query_parameter_get('odio')
 
 if res.res is not None:
     # handle response

@@ -148,7 +148,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedWithCommentsGetResponse res = sdk.generation.deprecatedWithCommentsGet("sunt");
+            DeprecatedWithCommentsGetResponse res = sdk.generation.deprecatedWithCommentsGet("sunt", "quo");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -257,9 +257,9 @@ public class Application {
                 .build();
 
             IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostApplicationJSON() {{
-                callbackUrl = "https://these-subroutine.net";
-                testProp = "ea";
-            }}, "excepturi");
+                callbackUrl = "https://treasured-simple.info";
+                testProp = "excepturi";
+            }}, "odit");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -343,24 +343,24 @@ public class Application {
 
             UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222, UsageExamplePostEnumParameter.VALUE3, 1.1, 111111L, 1, "example") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Gwendolyn98@gmail.com";
-                    formatEmail = "Gardner_Kling@hotmail.com";
-                    formatUri = "http://tragic-framework.org";
-                    formatUuid = "0d30c5fb-b258-4705-b202-c73d5fe9b90c";
-                    hostname = "damp-laryngitis.name";
-                    ipv4 = "12.147.178.60";
-                    ipv6 = "fe49:a8d9:cbf4:8633:323f:9b77:f3a4:1006";
-                    simpleObject = new SimpleObject("odio", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1, "example") {{
-                        bigint = 696344L;
-                        bigintStr = "voluptatibus";
+                    email = "Alexanne_Bernhard37@yahoo.com";
+                    formatEmail = "Heidi86@yahoo.com";
+                    formatUri = "http://wise-airbag.org";
+                    formatUuid = "30c5fbb2-5870-4532-82c7-3d5fe9b90c28";
+                    hostname = "petty-atom.name";
+                    ipv4 = "178.60.254.239";
+                    ipv6 = "49a8:d9cb:f486:3332:3f9b:77f3:a410:0674";
+                    simpleObject = new SimpleObject("accusamus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1, "example") {{
+                        bigint = 377752L;
+                        bigintStr = "natus";
                         boolOpt = true;
                         intOptNull = 999999L;
                         numOptNull = 1.1;
                         strOpt = "optional example";
                     }};;
-                    unknown = "voluptas";
-                    uri = "https://definite-marines.com";
-                    uuid = "d1ba77a8-9ebf-4737-ae42-03ce5e6a95d8";
+                    unknown = "eos";
+                    uri = "https://alert-stir-fry.com";
+                    uuid = "ba77a89e-bf73-47ae-8203-ce5e6a95d8a0";
                 }};;
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            

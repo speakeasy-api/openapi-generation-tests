@@ -152,17 +152,20 @@ class Generation
      * This is an endpoint setup to test deprecation with comments
      * 
      * @param ?string $deprecatedParameter
+     * @param ?string $newParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse
      * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
      */
 	public function deprecatedWithCommentsGet(
         ?string $deprecatedParameter = null,
+        ?string $newParameter = null,
     ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse
     {
         trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
         
         $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest();
         $request->deprecatedParameter = $deprecatedParameter;
+        $request->newParameter = $newParameter;
         
         $baseUrl = $this->_serverUrl;
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedWithComments');

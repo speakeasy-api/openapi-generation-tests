@@ -149,7 +149,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, "aspernatur")
+    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, "aspernatur", "architecto")
     if err != nil {
         log.Fatal(err)
     }
@@ -255,9 +255,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, &operations.IgnoresPostApplicationJSON{
-        CallbackURL: sdk.String("http://foolhardy-bolero.name"),
-        TestProp: sdk.String("ullam"),
-    }, "provident")
+        CallbackURL: sdk.String("http://brisk-mobile.info"),
+        TestProp: sdk.String("provident"),
+    }, "quos")
     if err != nil {
         log.Fatal(err)
     }
@@ -334,17 +334,17 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Kiley_Bartoletti@yahoo.com"),
-            FormatEmail: sdk.String("Emmie89@yahoo.com"),
-            FormatURI: sdk.String("http://handy-borrowing.info"),
-            FormatUUID: sdk.String("fe4c8b71-1e5b-47fd-aed0-28921cddc692"),
-            Hostname: sdk.String("illegal-antique.com"),
-            Ipv4: sdk.String("251.178.95.116"),
-            Ipv6: sdk.String("6b0d:5f0d:30c5:fbb2:5870:5320:2c73:d5fe"),
+            Email: sdk.String("Alexis_OHara32@yahoo.com"),
+            FormatEmail: sdk.String("Dallas36@yahoo.com"),
+            FormatURI: sdk.String("http://infinite-winery.org"),
+            FormatUUID: sdk.String("4c8b711e-5b7f-4d2e-9028-921cddc69260"),
+            Hostname: sdk.String("big-willingness.net"),
+            Ipv4: sdk.String("95.116.107.184"),
+            Ipv6: sdk.String("0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b"),
             SimpleObject: &shared.SimpleObject{
-                Any: "omnis",
-                Bigint: big.NewInt(704415),
-                BigintStr: types.MustBigIntFromString("596656"),
+                Any: "perspiciatis",
+                Bigint: big.NewInt(31838),
+                BigintStr: types.MustBigIntFromString("783645"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
@@ -354,16 +354,16 @@ func main() {
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            Unknown: sdk.String("consequuntur"),
-            URI: sdk.String("https://petty-atom.name"),
-            UUID: sdk.String("b3fe49a8-d9cb-4f48-a333-23f9b77f3a41"),
+            Unknown: sdk.String("error"),
+            URI: sdk.String("http://noxious-pronunciation.biz"),
+            UUID: sdk.String("fe49a8d9-cbf4-4863-b323-f9b77f3a4100"),
         },
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),

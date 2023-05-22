@@ -16,11 +16,14 @@ module OpenApiSDK
       # 
       # @deprecated this true will be removed in a future release, please migrate away from it as soon as possible
       field :deprecated_parameter, T.nilable(String), { 'query_param': { 'field_name': 'deprecatedParameter', 'style': 'form', 'explode': true } }
+      # This is a string parameter
+      field :new_parameter, T.nilable(String), { 'query_param': { 'field_name': 'newParameter', 'style': 'form', 'explode': true } }
 
 
-      sig { params(deprecated_parameter: T.nilable(String)).void }
-      def initialize(deprecated_parameter: nil)
+      sig { params(deprecated_parameter: T.nilable(String), new_parameter: T.nilable(String)).void }
+      def initialize(deprecated_parameter: nil, new_parameter: nil)
         @deprecated_parameter = deprecated_parameter
+        @new_parameter = new_parameter
       end
     end
 

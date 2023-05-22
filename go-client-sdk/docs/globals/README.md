@@ -33,7 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Globals.GlobalPathParameterGet(ctx, 58029)
+    res, err := s.Globals.GlobalPathParameterGet(ctx, 434417)
     if err != nil {
         log.Fatal(err)
     }
@@ -68,7 +68,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Globals.GlobalsQueryParameterGet(ctx, "ipsa")
+    res, err := s.Globals.GlobalsQueryParameterGet(ctx, "odio")
     if err != nil {
         log.Fatal(err)
     }

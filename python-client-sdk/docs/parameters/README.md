@@ -44,18 +44,16 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_map({
-    "odio": 'quaerat',
     "accusamus": 'quidem',
+    "voluptatibus": 'voluptas',
 }, {
-    "voluptas": [
-        'eos',
-        'atque',
+    "eos": [
         'sit',
+        'fugiat',
+        'ab',
     ],
-    "fugiat": [
-        'soluta',
-    ],
-    "dolorum": [
+    "soluta": [
+        'iusto',
         'voluptate',
         'dolorum',
     ],

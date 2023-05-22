@@ -15,6 +15,14 @@ export class DeprecatedWithCommentsGetRequest extends SpeakeasyBase {
     data: "queryParam, style=form;explode=true;name=deprecatedParameter",
   })
   deprecatedParameter?: string;
+
+  /**
+   * This is a string parameter
+   */
+  @SpeakeasyMetadata({
+    data: "queryParam, style=form;explode=true;name=newParameter",
+  })
+  newParameter?: string;
 }
 
 export class DeprecatedWithCommentsGetResponse extends SpeakeasyBase {

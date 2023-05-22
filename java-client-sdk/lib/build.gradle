@@ -42,7 +42,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'org.openapis'
             artifactId = 'openapi'
-            version = '1.2.0'
+            version = '1.2.1'
 
             from components.java
 

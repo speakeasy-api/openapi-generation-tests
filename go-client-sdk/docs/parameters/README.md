@@ -51,18 +51,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Parameters.DeepObjectQueryParamsMap(ctx, map[string]string{
-        "odio": "quaerat",
         "accusamus": "quidem",
+        "voluptatibus": "voluptas",
     }, map[string][]string{
-        "voluptas": []string{
-            "eos",
-            "atque",
+        "eos": []string{
             "sit",
+            "fugiat",
+            "ab",
         },
-        "fugiat": []string{
-            "soluta",
-        },
-        "dolorum": []string{
+        "soluta": []string{
+            "iusto",
             "voluptate",
             "dolorum",
         },

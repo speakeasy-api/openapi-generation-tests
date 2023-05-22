@@ -43,18 +43,16 @@ const sdk = new SDK({
 });
 
 sdk.parameters.deepObjectQueryParamsMap({
-  "odio": "quaerat",
   "accusamus": "quidem",
+  "voluptatibus": "voluptas",
 }, {
-  "voluptas": [
-    "eos",
-    "atque",
+  "eos": [
     "sit",
+    "fugiat",
+    "ab",
   ],
-  "fugiat": [
-    "soluta",
-  ],
-  "dolorum": [
+  "soluta": [
+    "iusto",
     "voluptate",
     "dolorum",
   ],

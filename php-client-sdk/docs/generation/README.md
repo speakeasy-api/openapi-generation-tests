@@ -128,7 +128,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedWithCommentsGet('a');
+    $response = $sdk->generation->deprecatedWithCommentsGet('a', 'dolorum');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -212,10 +212,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'https://intrepid-ikebana.org';
-    $requestBody->testProp = 'maiores';
+    $requestBody->callbackUrl = 'http://irritating-standardisation.org';
+    $requestBody->testProp = 'rerum';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'rerum');
+    $response = $sdk->generation->ignoresPost($requestBody, 'dicta');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -288,7 +288,7 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Elfrieda.Runolfsson39@gmail.com';
+    $request->requestBody->email = 'Obie.Schulist@gmail.com';
     $request->requestBody->formatEmail = 'Shaniya.Friesen@hotmail.com';
     $request->requestBody->formatUri = 'https://white-printing.name';
     $request->requestBody->formatUuid = 'ba88f3a6-6997-4074-ba44-69b6e2141959';

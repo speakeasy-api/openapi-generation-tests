@@ -163,7 +163,7 @@ public class Generation {
      */
     @Deprecated
     public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet() throws Exception {
-        return this.deprecatedWithCommentsGet(null);
+        return this.deprecatedWithCommentsGet(null, null);
     }
 
     /**
@@ -175,8 +175,22 @@ public class Generation {
      */
     @Deprecated
     public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(String deprecatedParameter) throws Exception {
+        return this.deprecatedWithCommentsGet(deprecatedParameter, null);
+    }
+
+    /**
+     * This is an endpoint setup to test deprecation with comments
+     * @param deprecatedParameter This is a string parameter
+     * @param newParameter This is a string parameter
+     * @return the response from the API call
+     * @throws Exception if the API call fails
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     */
+    @Deprecated
+    public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(String deprecatedParameter, String newParameter) throws Exception {
         org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest request = new org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest();
         request.deprecatedParameter=deprecatedParameter;
+        request.newParameter=newParameter;
         
         String baseUrl = this._serverUrl;
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedWithComments");
