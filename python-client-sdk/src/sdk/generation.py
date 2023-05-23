@@ -99,7 +99,7 @@ class Generation:
     def deprecated_with_comments_get(self, deprecated_parameter: Optional[str] = None, new_parameter: Optional[str] = None) -> operations.DeprecatedWithCommentsGetResponse:
         r"""This is an endpoint setup to test deprecation with comments
         
-        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible
+        Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible. Use simple_path_parameter_objects instead
         """
         request = operations.DeprecatedWithCommentsGetRequest(
             deprecated_parameter=deprecated_parameter,

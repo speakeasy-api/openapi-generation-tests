@@ -3,8 +3,10 @@
 package sdk
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
@@ -64,7 +66,13 @@ func (s *parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -78,7 +86,7 @@ func (s *parameters) DeepObjectQueryParamsMap(ctx context.Context, mapParam map[
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.DeepObjectQueryParamsMapRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -118,7 +126,13 @@ func (s *parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam s
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -132,7 +146,7 @@ func (s *parameters) DeepObjectQueryParamsObject(ctx context.Context, objParam s
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.DeepObjectQueryParamsObjectRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -172,7 +186,13 @@ func (s *parameters) FormQueryParamsArray(ctx context.Context, arrParam []string
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -186,7 +206,7 @@ func (s *parameters) FormQueryParamsArray(ctx context.Context, arrParam []string
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.FormQueryParamsArrayRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -226,7 +246,13 @@ func (s *parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -240,7 +266,7 @@ func (s *parameters) FormQueryParamsMap(ctx context.Context, mapParam map[string
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.FormQueryParamsMapRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -280,7 +306,13 @@ func (s *parameters) FormQueryParamsObject(ctx context.Context, objParamExploded
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -294,7 +326,7 @@ func (s *parameters) FormQueryParamsObject(ctx context.Context, objParamExploded
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.FormQueryParamsObjectRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -336,7 +368,13 @@ func (s *parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam boo
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -350,7 +388,7 @@ func (s *parameters) FormQueryParamsPrimitive(ctx context.Context, boolParam boo
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.FormQueryParamsPrimitiveRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -390,7 +428,13 @@ func (s *parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjPa
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -404,7 +448,7 @@ func (s *parameters) FormQueryParamsRefParamObject(ctx context.Context, refObjPa
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.FormQueryParamsRefParamObjectRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -441,7 +485,13 @@ func (s *parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []strin
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -455,7 +505,7 @@ func (s *parameters) HeaderParamsArray(ctx context.Context, xHeaderArray []strin
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.HeaderParamsArrayRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -493,7 +543,13 @@ func (s *parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -507,7 +563,7 @@ func (s *parameters) HeaderParamsMap(ctx context.Context, xHeaderMap map[string]
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.HeaderParamsMapRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -545,7 +601,13 @@ func (s *parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.S
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -559,7 +621,7 @@ func (s *parameters) HeaderParamsObject(ctx context.Context, xHeaderObj shared.S
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.HeaderParamsObjectRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -599,7 +661,13 @@ func (s *parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean b
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -613,7 +681,7 @@ func (s *parameters) HeaderParamsPrimitive(ctx context.Context, xHeaderBoolean b
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.HeaderParamsPrimitiveRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -653,7 +721,13 @@ func (s *parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam sha
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -667,7 +741,7 @@ func (s *parameters) JSONQueryParamsObject(ctx context.Context, deepObjParam sha
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.JSONQueryParamsObjectRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -708,7 +782,13 @@ func (s *parameters) MixedQueryParams(ctx context.Context, deepObjectParam share
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -722,7 +802,7 @@ func (s *parameters) MixedQueryParams(ctx context.Context, deepObjectParam share
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.MixedQueryParamsRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -760,7 +840,13 @@ func (s *parameters) PathParameterJSON(ctx context.Context, jsonObj shared.Simpl
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -774,7 +860,7 @@ func (s *parameters) PathParameterJSON(ctx context.Context, jsonObj shared.Simpl
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.PathParameterJSONRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -816,7 +902,13 @@ func (s *parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -830,7 +922,7 @@ func (s *parameters) PipeDelimitedQueryParamsArray(ctx context.Context, arrParam
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.PipeDelimitedQueryParamsArrayRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -868,7 +960,13 @@ func (s *parameters) SimplePathParameterArrays(ctx context.Context, arrParam []s
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -882,7 +980,7 @@ func (s *parameters) SimplePathParameterArrays(ctx context.Context, arrParam []s
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.SimplePathParameterArraysRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -921,7 +1019,13 @@ func (s *parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[s
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -935,7 +1039,7 @@ func (s *parameters) SimplePathParameterMaps(ctx context.Context, mapParam map[s
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.SimplePathParameterMapsRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -974,7 +1078,13 @@ func (s *parameters) SimplePathParameterObjects(ctx context.Context, objParam sh
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -988,7 +1098,7 @@ func (s *parameters) SimplePathParameterObjects(ctx context.Context, objParam sh
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.SimplePathParameterObjectsRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -1029,7 +1139,13 @@ func (s *parameters) SimplePathParameterPrimitives(ctx context.Context, boolPara
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -1043,7 +1159,7 @@ func (s *parameters) SimplePathParameterPrimitives(ctx context.Context, boolPara
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.SimplePathParameterPrimitivesRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

@@ -3,8 +3,10 @@
 package sdk
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/utils"
@@ -61,7 +63,13 @@ func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *i
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -75,7 +83,7 @@ func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *i
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.GlobalPathParameterGetRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -114,7 +122,13 @@ func (s *globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -128,7 +142,7 @@ func (s *globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.GlobalsQueryParameterGetRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

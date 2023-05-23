@@ -9,7 +9,7 @@ Endpoints for purely testing valid generation behavior.
 * [anchor_types_get](#anchor_types_get)
 * [circular_reference_get](#circular_reference_get)
 * [~~deprecated_no_comments_get~~](#deprecated_no_comments_get) - :warning: **Deprecated**
-* [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated**
+* [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
 * [global_name_overridden](#global_name_overridden)
 * [ignored_generation_get](#ignored_generation_get)
 * [ignores_post](#ignores_post)
@@ -91,7 +91,7 @@ if res.status_code == 200:
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible. Use `simple_path_parameter_objects` instead.
 
 ### Example Usage
 

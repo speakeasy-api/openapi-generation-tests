@@ -4,6 +4,7 @@ package tests
 
 import (
 	"context"
+	"io"
 	"net/http"
 	"testing"
 
@@ -46,6 +47,10 @@ func TestResponseBodyJSONGet(t *testing.T) {
 			},
 		},
 	}, res.HTTPBinSimpleJSONObject)
+
+	data, err := io.ReadAll(res.RawResponse.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, "{\n  \"slideshow\": {\n    \"author\": \"Yours Truly\", \n    \"date\": \"date of publication\", \n    \"slides\": [\n      {\n        \"title\": \"Wake up to WonderWidgets!\", \n        \"type\": \"all\"\n      }, \n      {\n        \"items\": [\n          \"Why <em>WonderWidgets</em> are great\", \n          \"Who <em>buys</em> WonderWidgets\"\n        ], \n        \"title\": \"Overview\", \n        \"type\": \"all\"\n      }\n    ], \n    \"title\": \"Sample Slide Show\"\n  }\n}\n", string(data))
 }
 
 func TestResponseBodyStringGet(t *testing.T) {

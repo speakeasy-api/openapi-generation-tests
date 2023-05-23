@@ -188,7 +188,7 @@ export class Generation {
   /**
    * This is an endpoint setup to test deprecation with comments
    *
-   * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+   * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
    */
   async deprecatedWithCommentsGet(
     deprecatedParameter?: string,

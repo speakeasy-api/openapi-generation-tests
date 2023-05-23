@@ -63,3 +63,11 @@ Based on:
 - Speakeasy CLI 1.36.3 (2.31.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Go v1.2.1] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.2.1 - go-client-sdk
+
+## 2023-05-23 00:11:54
+### Changes
+Based on:
+- OpenAPI Doc 0.0.1 
+- Speakeasy CLI 1.37.5 (2.32.2) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.3.0] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.3.0 - go-client-sdk

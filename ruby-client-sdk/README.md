@@ -157,7 +157,7 @@ if ! res.usage_example_post_200_application_json_object.nil?
 * [anchor_types_get](docs/generation/README.md#anchor_types_get)
 * [circular_reference_get](docs/generation/README.md#circular_reference_get)
 * [~~deprecated_no_comments_get~~](docs/generation/README.md#deprecated_no_comments_get) - :warning: **Deprecated**
-* [~~deprecated_with_comments_get~~](docs/generation/README.md#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated**
+* [~~deprecated_with_comments_get~~](docs/generation/README.md#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
 * [global_name_overridden](docs/generation/README.md#global_name_overridden)
 * [ignored_generation_get](docs/generation/README.md#ignored_generation_get)
 * [ignores_post](docs/generation/README.md#ignores_post)

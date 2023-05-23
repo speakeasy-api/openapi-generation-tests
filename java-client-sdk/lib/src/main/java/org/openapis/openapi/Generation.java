@@ -159,7 +159,7 @@ public class Generation {
      * This is an endpoint setup to test deprecation with comments
      * @return the response from the API call
      * @throws Exception if the API call fails
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
      */
     @Deprecated
     public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet() throws Exception {
@@ -171,7 +171,7 @@ public class Generation {
      * @param deprecatedParameter This is a string parameter
      * @return the response from the API call
      * @throws Exception if the API call fails
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
      */
     @Deprecated
     public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(String deprecatedParameter) throws Exception {
@@ -184,7 +184,7 @@ public class Generation {
      * @param newParameter This is a string parameter
      * @return the response from the API call
      * @throws Exception if the API call fails
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
      */
     @Deprecated
     public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(String deprecatedParameter, String newParameter) throws Exception {

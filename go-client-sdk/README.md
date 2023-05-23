@@ -137,7 +137,7 @@ func main() {
 * [AnchorTypesGet](docs/generation/README.md#anchortypesget)
 * [CircularReferenceGet](docs/generation/README.md#circularreferenceget)
 * [~~DeprecatedNoCommentsGet~~](docs/generation/README.md#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~DeprecatedWithCommentsGet~~](docs/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated**
+* [~~DeprecatedWithCommentsGet~~](docs/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `SimplePathParameterObjects` instead.
 * [GlobalNameOverridden](docs/generation/README.md#globalnameoverridden)
 * [IgnoredGenerationGet](docs/generation/README.md#ignoredgenerationget)
 * [IgnoresPost](docs/generation/README.md#ignorespost)

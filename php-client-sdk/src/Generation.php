@@ -154,7 +154,7 @@ class Generation
      * @param ?string $deprecatedParameter
      * @param ?string $newParameter
      * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
      */
 	public function deprecatedWithCommentsGet(
         ?string $deprecatedParameter = null,

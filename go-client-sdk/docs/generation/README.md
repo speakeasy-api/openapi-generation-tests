@@ -9,7 +9,7 @@ Endpoints for purely testing valid generation behavior.
 * [AnchorTypesGet](#anchortypesget)
 * [CircularReferenceGet](#circularreferenceget)
 * [~~DeprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~DeprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated**
+* [~~DeprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `SimplePathParameterObjects` instead.
 * [GlobalNameOverridden](#globalnameoverridden)
 * [IgnoredGenerationGet](#ignoredgenerationget)
 * [IgnoresPost](#ignorespost)
@@ -125,7 +125,7 @@ func main() {
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible. Use `SimplePathParameterObjects` instead.
 
 ### Example Usage
 

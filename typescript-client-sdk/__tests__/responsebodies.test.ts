@@ -31,6 +31,9 @@ test("Response Body JSON Get", async () => {
     "Overview"
   );
   expect(res.httpBinSimpleJsonObject?.slideshow.slides[1].type).toBe("all");
+  expect(JSON.stringify(res.rawResponse?.data)).toBe(
+    '{"slideshow":{"author":"Yours Truly","date":"date of publication","slides":[{"title":"Wake up to WonderWidgets!","type":"all"},{"items":["Why <em>WonderWidgets</em> are great","Who <em>buys</em> WonderWidgets"],"title":"Overview","type":"all"}],"title":"Sample Slide Show"}}'
+  );
 });
 
 test("Response Body String Get", async () => {

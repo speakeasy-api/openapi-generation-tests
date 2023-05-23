@@ -28,6 +28,7 @@ module OpenApiSDK
       assert_equal('all', res.http_bin_simple_json_object.slideshow.slides[1].type)
       assert_equal(['Why <em>WonderWidgets</em> are great', 'Who <em>buys</em> WonderWidgets'],
                    res.http_bin_simple_json_object.slideshow.slides[1].items)
+      assert_equal("{\n  \"slideshow\": {\n    \"author\": \"Yours Truly\", \n    \"date\": \"date of publication\", \n    \"slides\": [\n      {\n        \"title\": \"Wake up to WonderWidgets!\", \n        \"type\": \"all\"\n      }, \n      {\n        \"items\": [\n          \"Why <em>WonderWidgets</em> are great\", \n          \"Who <em>buys</em> WonderWidgets\"\n        ], \n        \"title\": \"Overview\", \n        \"type\": \"all\"\n      }\n    ], \n    \"title\": \"Sample Slide Show\"\n  }\n}\n", res.raw_response.env.response_body)
     end
 
     def test_response_body_string_get

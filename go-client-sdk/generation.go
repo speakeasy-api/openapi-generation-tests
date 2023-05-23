@@ -3,8 +3,10 @@
 package sdk
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
@@ -55,7 +57,13 @@ func (s *generation) AnchorTypesGet(ctx context.Context) (*operations.AnchorType
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -69,7 +77,7 @@ func (s *generation) AnchorTypesGet(ctx context.Context) (*operations.AnchorType
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.TypeFromAnchor
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -100,7 +108,13 @@ func (s *generation) CircularReferenceGet(ctx context.Context) (*operations.Circ
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -114,7 +128,7 @@ func (s *generation) CircularReferenceGet(ctx context.Context) (*operations.Circ
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.ValidCircularReferenceObject
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -156,7 +170,13 @@ func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedPara
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -174,7 +194,7 @@ func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedPara
 
 // DeprecatedWithCommentsGet - This is an endpoint setup to test deprecation with comments
 //
-// Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible.
+// Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible. Use SimplePathParameterObjects instead.
 func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedParameter *string, newParameter *string) (*operations.DeprecatedWithCommentsGetResponse, error) {
 	request := operations.DeprecatedWithCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,
@@ -204,7 +224,13 @@ func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedPa
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -240,7 +266,13 @@ func (s *generation) GlobalNameOverridden(ctx context.Context) (*operations.GetG
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -254,7 +286,7 @@ func (s *generation) GlobalNameOverridden(ctx context.Context) (*operations.GetG
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.GetGlobalNameOverride200ApplicationJSON
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -285,7 +317,13 @@ func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.Igno
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -299,7 +337,7 @@ func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.Igno
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.IgnoredGenerationGet200ApplicationJSON
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -346,7 +384,13 @@ func (s *generation) IgnoresPost(ctx context.Context, requestBody *operations.Ig
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -360,7 +404,7 @@ func (s *generation) IgnoresPost(ctx context.Context, requestBody *operations.Ig
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *shared.HTTPBinSimpleJSONObject
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -399,7 +443,13 @@ func (s *generation) NameOverride(ctx context.Context, testQueryParam string) (*
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -413,7 +463,7 @@ func (s *generation) NameOverride(ctx context.Context, testQueryParam string) (*
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.OverridenResponse
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -458,7 +508,13 @@ func (s *generation) UsageExamplePost(ctx context.Context, request operations.Us
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -472,7 +528,7 @@ func (s *generation) UsageExamplePost(ctx context.Context, request operations.Us
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.UsageExamplePost200ApplicationJSON
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

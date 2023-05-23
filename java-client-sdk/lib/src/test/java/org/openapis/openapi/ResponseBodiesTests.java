@@ -8,6 +8,8 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.nio.charset.StandardCharsets;
+
 import org.junit.jupiter.api.Test;
 import org.openapis.openapi.models.operations.ResponseBodyBytesGetResponse;
 import org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse;
@@ -36,6 +38,9 @@ public class ResponseBodiesTests {
         assertEquals("all", res.httpBinSimpleJsonObject.slideshow.slides[1].type);
         assertEquals("Why <em>WonderWidgets</em> are great", res.httpBinSimpleJsonObject.slideshow.slides[1].items[0]);
         assertEquals("Who <em>buys</em> WonderWidgets", res.httpBinSimpleJsonObject.slideshow.slides[1].items[1]);
+        assertEquals(
+                "{\n  \"slideshow\": {\n    \"author\": \"Yours Truly\", \n    \"date\": \"date of publication\", \n    \"slides\": [\n      {\n        \"title\": \"Wake up to WonderWidgets!\", \n        \"type\": \"all\"\n      }, \n      {\n        \"items\": [\n          \"Why <em>WonderWidgets</em> are great\", \n          \"Who <em>buys</em> WonderWidgets\"\n        ], \n        \"title\": \"Overview\", \n        \"type\": \"all\"\n      }\n    ], \n    \"title\": \"Sample Slide Show\"\n  }\n}\n",
+                new String(res.rawResponse.body(), StandardCharsets.UTF_8));
     }
 
     @Test

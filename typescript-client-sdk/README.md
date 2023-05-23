@@ -136,7 +136,7 @@ sdk.generation.usageExamplePost({
 * [anchorTypesGet](docs/generation/README.md#anchortypesget)
 * [circularReferenceGet](docs/generation/README.md#circularreferenceget)
 * [~~deprecatedNoCommentsGet~~](docs/generation/README.md#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~deprecatedWithCommentsGet~~](docs/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated**
+* [~~deprecatedWithCommentsGet~~](docs/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
 * [globalNameOverridden](docs/generation/README.md#globalnameoverridden)
 * [ignoredGenerationGet](docs/generation/README.md#ignoredgenerationget)
 * [ignoresPost](docs/generation/README.md#ignorespost)

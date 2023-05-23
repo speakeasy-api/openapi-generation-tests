@@ -3,8 +3,10 @@
 package sdk
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
@@ -74,7 +76,13 @@ func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, simpleOb
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -88,7 +96,7 @@ func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, simpleOb
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.ComponentBodyAndParamConflictRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -138,7 +146,13 @@ func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, paramS
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -152,7 +166,7 @@ func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, paramS
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.ComponentBodyAndParamNoConflictRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -195,7 +209,13 @@ func (s *flattening) ConflictingParams(ctx context.Context, strPathParameter str
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -209,7 +229,7 @@ func (s *flattening) ConflictingParams(ctx context.Context, strPathParameter str
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.ConflictingParamsRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -259,7 +279,13 @@ func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, requestBody
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -273,7 +299,7 @@ func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, requestBody
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.InlineBodyAndParamConflictRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -323,7 +349,13 @@ func (s *flattening) InlineBodyAndParamNoConflict(ctx context.Context, requestBo
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -337,7 +369,7 @@ func (s *flattening) InlineBodyAndParamNoConflict(ctx context.Context, requestBo
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.InlineBodyAndParamNoConflictRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 

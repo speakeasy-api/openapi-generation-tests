@@ -42,6 +42,8 @@ final class ResponseBodiesTest extends TestCase
         $obj->slideshow->slides[] = $slide2;
 
         $this->assertEquals($obj, $response->httpBinSimpleJsonObject);
+        $response->rawResponse->getBody()->rewind();
+        $this->assertEquals("{\n  \"slideshow\": {\n    \"author\": \"Yours Truly\", \n    \"date\": \"date of publication\", \n    \"slides\": [\n      {\n        \"title\": \"Wake up to WonderWidgets!\", \n        \"type\": \"all\"\n      }, \n      {\n        \"items\": [\n          \"Why <em>WonderWidgets</em> are great\", \n          \"Who <em>buys</em> WonderWidgets\"\n        ], \n        \"title\": \"Overview\", \n        \"type\": \"all\"\n      }\n    ], \n    \"title\": \"Sample Slide Show\"\n  }\n}\n", $response->rawResponse->getBody()->getContents());
     }
 
     public function testResponseBodyStringGet(): void

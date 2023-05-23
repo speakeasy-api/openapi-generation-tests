@@ -30,6 +30,7 @@ def test_response_body_json_get():
         1].items[0] == 'Why <em>WonderWidgets</em> are great'
     assert res.http_bin_simple_json_object.slideshow.slides[
         1].items[1] == 'Who <em>buys</em> WonderWidgets'
+    assert res.raw_response.text == "{\n  \"slideshow\": {\n    \"author\": \"Yours Truly\", \n    \"date\": \"date of publication\", \n    \"slides\": [\n      {\n        \"title\": \"Wake up to WonderWidgets!\", \n        \"type\": \"all\"\n      }, \n      {\n        \"items\": [\n          \"Why <em>WonderWidgets</em> are great\", \n          \"Who <em>buys</em> WonderWidgets\"\n        ], \n        \"title\": \"Overview\", \n        \"type\": \"all\"\n      }\n    ], \n    \"title\": \"Sample Slide Show\"\n  }\n}\n"
 
 
 def test_response_body_string_get():

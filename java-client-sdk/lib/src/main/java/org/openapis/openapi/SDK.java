@@ -94,8 +94,8 @@ public class SDK {
 	private org.openapis.openapi.models.shared.Security _security;
 	private String _serverUrl;
 	private String _language = "java";
-	private String _sdkVersion = "1.2.1";
-	private String _genVersion = "2.31.0";
+	private String _sdkVersion = "1.3.0";
+	private String _genVersion = "2.32.2";
 	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
 	
 	/**

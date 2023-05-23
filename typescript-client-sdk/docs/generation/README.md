@@ -9,7 +9,7 @@ Endpoints for purely testing valid generation behavior.
 * [anchorTypesGet](#anchortypesget)
 * [circularReferenceGet](#circularreferenceget)
 * [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated**
+* [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
 * [globalNameOverridden](#globalnameoverridden)
 * [ignoredGenerationGet](#ignoredgenerationget)
 * [ignoresPost](#ignorespost)
@@ -93,7 +93,7 @@ sdk.generation.deprecatedNoCommentsGet("vero").then((res: DeprecatedNoCommentsGe
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible. Use `simplePathParameterObjects` instead.
 
 ### Example Usage
 

@@ -3,8 +3,10 @@
 package sdk
 
 import (
+	"bytes"
 	"context"
 	"fmt"
+	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/utils"
@@ -60,7 +62,13 @@ func (s *telemetry) TelemetrySpeakeasyUserAgentGet(ctx context.Context, userAgen
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -74,7 +82,7 @@ func (s *telemetry) TelemetrySpeakeasyUserAgentGet(ctx context.Context, userAgen
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.TelemetrySpeakeasyUserAgentGetRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
@@ -105,7 +113,13 @@ func (s *telemetry) TelemetryUserAgentGet(ctx context.Context) (*operations.Tele
 	if httpRes == nil {
 		return nil, fmt.Errorf("error sending request: no response")
 	}
-	defer httpRes.Body.Close()
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
 
 	contentType := httpRes.Header.Get("Content-Type")
 
@@ -119,7 +133,7 @@ func (s *telemetry) TelemetryUserAgentGet(ctx context.Context) (*operations.Tele
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
 			var out *operations.TelemetryUserAgentGetRes
-			if err := utils.UnmarshalJsonFromResponseBody(httpRes.Body, &out); err != nil {
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
