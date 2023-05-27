@@ -8,45 +8,41 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class SimplePathParameterObjectsRequest extends SpeakeasyBase {
-  /**
-   * A simple object that uses all our supported primitive types and enums and has optional properties.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=objParam",
-  })
-  objParam: shared.SimpleObject;
+    /**
+     * A simple object that uses all our supported primitive types and enums and has optional properties.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=objParam" })
+    objParam: shared.SimpleObject;
 
-  /**
-   * A simple object that uses all our supported primitive types and enums and has optional properties.
-   */
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=true;name=objParamExploded",
-  })
-  objParamExploded: shared.SimpleObject;
+    /**
+     * A simple object that uses all our supported primitive types and enums and has optional properties.
+     */
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=true;name=objParamExploded" })
+    objParamExploded: shared.SimpleObject;
 }
 
 /**
  * OK
  */
 export class SimplePathParameterObjectsRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class SimplePathParameterObjectsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: SimplePathParameterObjectsRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: SimplePathParameterObjectsRes;
 }

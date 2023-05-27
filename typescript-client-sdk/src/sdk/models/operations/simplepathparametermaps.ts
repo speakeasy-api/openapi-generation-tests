@@ -7,39 +7,35 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class SimplePathParameterMapsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=mapParam",
-  })
-  mapParam: Record<string, string>;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=mapParam" })
+    mapParam: Record<string, string>;
 
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=true;name=mapParamExploded",
-  })
-  mapParamExploded: Record<string, number>;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=true;name=mapParamExploded" })
+    mapParamExploded: Record<string, number>;
 }
 
 /**
  * OK
  */
 export class SimplePathParameterMapsRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class SimplePathParameterMapsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: SimplePathParameterMapsRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: SimplePathParameterMapsRes;
 }

@@ -4,49 +4,39 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-export const MultipleOptionsWithSimpleSchemesAuthServerList = [
-  "http://localhost:35456",
-] as const;
+export const MultipleOptionsWithSimpleSchemesAuthServerList = ["http://localhost:35456"] as const;
 
 export class MultipleOptionsWithSimpleSchemesAuthSecurityOption1 extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key",
-  })
-  apiKeyAuthNew: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key" })
+    apiKeyAuthNew: string;
 
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=oauth2;name=Authorization",
-  })
-  oauth2: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
+    oauth2: string;
 }
 
 export class MultipleOptionsWithSimpleSchemesAuthSecurityOption2 extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key",
-  })
-  apiKeyAuthNew: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key" })
+    apiKeyAuthNew: string;
 
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=openIdConnect;name=Authorization",
-  })
-  openIdConnect: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=openIdConnect;name=Authorization" })
+    openIdConnect: string;
 }
 
 export class MultipleOptionsWithSimpleSchemesAuthSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "security, option=true" })
-  option1?: MultipleOptionsWithSimpleSchemesAuthSecurityOption1;
+    @SpeakeasyMetadata({ data: "security, option=true" })
+    option1?: MultipleOptionsWithSimpleSchemesAuthSecurityOption1;
 
-  @SpeakeasyMetadata({ data: "security, option=true" })
-  option2?: MultipleOptionsWithSimpleSchemesAuthSecurityOption2;
+    @SpeakeasyMetadata({ data: "security, option=true" })
+    option2?: MultipleOptionsWithSimpleSchemesAuthSecurityOption2;
 }
 
 export class MultipleOptionsWithSimpleSchemesAuthResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

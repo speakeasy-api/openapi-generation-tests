@@ -7,38 +7,38 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class ApiKeyAuthSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=apiKey;subtype=header;name=Authorization",
-  })
-  apiKeyAuth: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=apiKey;subtype=header;name=Authorization",
+    })
+    apiKeyAuth: string;
 }
 
 /**
  * Successful authentication.
  */
 export class ApiKeyAuthToken extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "authenticated" })
-  authenticated: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "authenticated" })
+    authenticated: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "token" })
-  token: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "token" })
+    token: string;
 }
 
 export class ApiKeyAuthResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful authentication.
-   */
-  @SpeakeasyMetadata()
-  token?: ApiKeyAuthToken;
+    /**
+     * Successful authentication.
+     */
+    @SpeakeasyMetadata()
+    token?: ApiKeyAuthToken;
 }

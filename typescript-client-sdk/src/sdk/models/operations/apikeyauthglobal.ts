@@ -10,28 +10,28 @@ import { Expose } from "class-transformer";
  * Successful authentication.
  */
 export class ApiKeyAuthGlobalToken extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "authenticated" })
-  authenticated: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "authenticated" })
+    authenticated: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "token" })
-  token: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "token" })
+    token: string;
 }
 
 export class ApiKeyAuthGlobalResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful authentication.
-   */
-  @SpeakeasyMetadata()
-  token?: ApiKeyAuthGlobalToken;
+    /**
+     * Successful authentication.
+     */
+    @SpeakeasyMetadata()
+    token?: ApiKeyAuthGlobalToken;
 }

@@ -11,1113 +11,1081 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  * Endpoints for testing parameters.
  */
 export class ParametersT {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
-  _globals: any;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
+    _globals: any;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string,
-    globals: any
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-    this._globals = globals;
-  }
-
-  async deepObjectQueryParamsMap(
-    mapParam: Record<string, string>,
-    mapArrParam?: Record<string, string[]>,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeepObjectQueryParamsMapResponse> {
-    const req = new operations.DeepObjectQueryParamsMapRequest({
-      mapParam: mapParam,
-      mapArrParam: mapArrParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/deepObject/map";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string,
+        globals: any
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+        this._globals = globals;
     }
 
-    const res: operations.DeepObjectQueryParamsMapResponse =
-      new operations.DeepObjectQueryParamsMapResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.DeepObjectQueryParamsMapRes
-          );
+    async deepObjectQueryParamsMap(
+        mapParam: Record<string, string>,
+        mapArrParam?: Record<string, string[]>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeepObjectQueryParamsMapResponse> {
+        const req = new operations.DeepObjectQueryParamsMapRequest({
+            mapParam: mapParam,
+            mapArrParam: mapArrParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/deepObject/map";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async deepObjectQueryParamsObject(
-    objParam: shared.SimpleObject,
-    objArrParam?: operations.DeepObjectQueryParamsObjectObjArrParam,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeepObjectQueryParamsObjectResponse> {
-    const req = new operations.DeepObjectQueryParamsObjectRequest({
-      objParam: objParam,
-      objArrParam: objArrParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/deepObject/obj";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeepObjectQueryParamsObjectResponse =
-      new operations.DeepObjectQueryParamsObjectResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.DeepObjectQueryParamsObjectRes
-          );
+        const res: operations.DeepObjectQueryParamsMapResponse =
+            new operations.DeepObjectQueryParamsMapResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.DeepObjectQueryParamsMapRes
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async deepObjectQueryParamsObject(
+        objParam: shared.SimpleObject,
+        objArrParam?: operations.DeepObjectQueryParamsObjectObjArrParam,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeepObjectQueryParamsObjectResponse> {
+        const req = new operations.DeepObjectQueryParamsObjectRequest({
+            objParam: objParam,
+            objArrParam: objArrParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/deepObject/obj";
 
-  async formQueryParamsArray(
-    arrParam?: string[],
-    arrParamExploded?: number[],
-    config?: AxiosRequestConfig
-  ): Promise<operations.FormQueryParamsArrayResponse> {
-    const req = new operations.FormQueryParamsArrayRequest({
-      arrParam: arrParam,
-      arrParamExploded: arrParamExploded,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/form/array";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.FormQueryParamsArrayResponse =
-      new operations.FormQueryParamsArrayResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.FormQueryParamsArrayRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async formQueryParamsMap(
-    mapParam?: Record<string, string>,
-    mapParamExploded?: Record<string, number>,
-    config?: AxiosRequestConfig
-  ): Promise<operations.FormQueryParamsMapResponse> {
-    const req = new operations.FormQueryParamsMapRequest({
-      mapParam: mapParam,
-      mapParamExploded: mapParamExploded,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/form/map";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.FormQueryParamsMapResponse =
-      new operations.FormQueryParamsMapResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.FormQueryParamsMapRes
-          );
+        const res: operations.DeepObjectQueryParamsObjectResponse =
+            new operations.DeepObjectQueryParamsObjectResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.DeepObjectQueryParamsObjectRes
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async formQueryParamsArray(
+        arrParam?: string[],
+        arrParamExploded?: number[],
+        config?: AxiosRequestConfig
+    ): Promise<operations.FormQueryParamsArrayResponse> {
+        const req = new operations.FormQueryParamsArrayRequest({
+            arrParam: arrParam,
+            arrParamExploded: arrParamExploded,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/form/array";
 
-  async formQueryParamsObject(
-    objParamExploded: shared.SimpleObject,
-    objParam?: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.FormQueryParamsObjectResponse> {
-    const req = new operations.FormQueryParamsObjectRequest({
-      objParamExploded: objParamExploded,
-      objParam: objParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/form/obj";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.FormQueryParamsObjectResponse =
-      new operations.FormQueryParamsObjectResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.FormQueryParamsObjectRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async formQueryParamsPrimitive(
-    boolParam: boolean,
-    intParam: number,
-    numParam: number,
-    strParam: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.FormQueryParamsPrimitiveResponse> {
-    const req = new operations.FormQueryParamsPrimitiveRequest({
-      boolParam: boolParam,
-      intParam: intParam,
-      numParam: numParam,
-      strParam: strParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/form/primitive";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.FormQueryParamsPrimitiveResponse =
-      new operations.FormQueryParamsPrimitiveResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.FormQueryParamsPrimitiveRes
-          );
+        const res: operations.FormQueryParamsArrayResponse =
+            new operations.FormQueryParamsArrayResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.FormQueryParamsArrayRes
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async formQueryParamsMap(
+        mapParam?: Record<string, string>,
+        mapParamExploded?: Record<string, number>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.FormQueryParamsMapResponse> {
+        const req = new operations.FormQueryParamsMapRequest({
+            mapParam: mapParam,
+            mapParamExploded: mapParamExploded,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/form/map";
 
-  async formQueryParamsRefParamObject(
-    refObjParam?: shared.RefQueryParamObj,
-    refObjParamExploded?: shared.RefQueryParamObjExploded,
-    config?: AxiosRequestConfig
-  ): Promise<operations.FormQueryParamsRefParamObjectResponse> {
-    const req = new operations.FormQueryParamsRefParamObjectRequest({
-      refObjParam: refObjParam,
-      refObjParamExploded: refObjParamExploded,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/form/refParamObject";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.FormQueryParamsRefParamObjectResponse =
-      new operations.FormQueryParamsRefParamObjectResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.FormQueryParamsRefParamObjectRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async headerParamsArray(
-    xHeaderArray: string[],
-    config?: AxiosRequestConfig
-  ): Promise<operations.HeaderParamsArrayResponse> {
-    const req = new operations.HeaderParamsArrayRequest({
-      xHeaderArray: xHeaderArray,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/array";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.HeaderParamsArrayResponse =
-      new operations.HeaderParamsArrayResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.HeaderParamsArrayRes
-          );
+        const res: operations.FormQueryParamsMapResponse =
+            new operations.FormQueryParamsMapResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(httpRes?.data, operations.FormQueryParamsMapRes);
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async formQueryParamsObject(
+        objParamExploded: shared.SimpleObject,
+        objParam?: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.FormQueryParamsObjectResponse> {
+        const req = new operations.FormQueryParamsObjectRequest({
+            objParamExploded: objParamExploded,
+            objParam: objParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/form/obj";
 
-  async headerParamsMap(
-    xHeaderMap: Record<string, string>,
-    xHeaderMapExplode: Record<string, string>,
-    config?: AxiosRequestConfig
-  ): Promise<operations.HeaderParamsMapResponse> {
-    const req = new operations.HeaderParamsMapRequest({
-      xHeaderMap: xHeaderMap,
-      xHeaderMapExplode: xHeaderMapExplode,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/map";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.HeaderParamsMapResponse =
-      new operations.HeaderParamsMapResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.HeaderParamsMapRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async headerParamsObject(
-    xHeaderObj: shared.SimpleObject,
-    xHeaderObjExplode: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.HeaderParamsObjectResponse> {
-    const req = new operations.HeaderParamsObjectRequest({
-      xHeaderObj: xHeaderObj,
-      xHeaderObjExplode: xHeaderObjExplode,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/obj";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.HeaderParamsObjectResponse =
-      new operations.HeaderParamsObjectResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.HeaderParamsObjectRes
-          );
+        const res: operations.FormQueryParamsObjectResponse =
+            new operations.FormQueryParamsObjectResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.FormQueryParamsObjectRes
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async formQueryParamsPrimitive(
+        boolParam: boolean,
+        intParam: number,
+        numParam: number,
+        strParam: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.FormQueryParamsPrimitiveResponse> {
+        const req = new operations.FormQueryParamsPrimitiveRequest({
+            boolParam: boolParam,
+            intParam: intParam,
+            numParam: numParam,
+            strParam: strParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/form/primitive";
 
-  async headerParamsPrimitive(
-    xHeaderBoolean: boolean,
-    xHeaderInteger: number,
-    xHeaderNumber: number,
-    xHeaderString: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.HeaderParamsPrimitiveResponse> {
-    const req = new operations.HeaderParamsPrimitiveRequest({
-      xHeaderBoolean: xHeaderBoolean,
-      xHeaderInteger: xHeaderInteger,
-      xHeaderNumber: xHeaderNumber,
-      xHeaderString: xHeaderString,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/headers/primitive";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.HeaderParamsPrimitiveResponse =
-      new operations.HeaderParamsPrimitiveResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.HeaderParamsPrimitiveRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async jsonQueryParamsObject(
-    deepObjParam: shared.DeepObject,
-    simpleObjParam: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.JsonQueryParamsObjectResponse> {
-    const req = new operations.JsonQueryParamsObjectRequest({
-      deepObjParam: deepObjParam,
-      simpleObjParam: simpleObjParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/json/obj";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.JsonQueryParamsObjectResponse =
-      new operations.JsonQueryParamsObjectResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.JsonQueryParamsObjectRes
-          );
+        const res: operations.FormQueryParamsPrimitiveResponse =
+            new operations.FormQueryParamsPrimitiveResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.FormQueryParamsPrimitiveRes
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async formQueryParamsRefParamObject(
+        refObjParam?: shared.RefQueryParamObj,
+        refObjParamExploded?: shared.RefQueryParamObjExploded,
+        config?: AxiosRequestConfig
+    ): Promise<operations.FormQueryParamsRefParamObjectResponse> {
+        const req = new operations.FormQueryParamsRefParamObjectRequest({
+            refObjParam: refObjParam,
+            refObjParamExploded: refObjParamExploded,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/queryParams/form/refParamObject";
 
-  async mixedQueryParams(
-    deepObjectParam: shared.SimpleObject,
-    formParam: shared.SimpleObject,
-    jsonParam: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.MixedQueryParamsResponse> {
-    const req = new operations.MixedQueryParamsRequest({
-      deepObjectParam: deepObjectParam,
-      formParam: formParam,
-      jsonParam: jsonParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/mixed";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.MixedQueryParamsResponse =
-      new operations.MixedQueryParamsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.MixedQueryParamsRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async pathParameterJson(
-    jsonObj: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PathParameterJsonResponse> {
-    const req = new operations.PathParameterJsonRequest({
-      jsonObj: jsonObj,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/anything/pathParams/json/{jsonObj}",
-      req,
-      this._globals
-    );
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PathParameterJsonResponse =
-      new operations.PathParameterJsonResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.PathParameterJsonRes
-          );
+        const res: operations.FormQueryParamsRefParamObjectResponse =
+            new operations.FormQueryParamsRefParamObjectResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.FormQueryParamsRefParamObjectRes
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async headerParamsArray(
+        xHeaderArray: string[],
+        config?: AxiosRequestConfig
+    ): Promise<operations.HeaderParamsArrayResponse> {
+        const req = new operations.HeaderParamsArrayRequest({
+            xHeaderArray: xHeaderArray,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/array";
 
-  async pipeDelimitedQueryParamsArray(
-    arrParam?: string[],
-    arrParamExploded?: number[],
-    mapParam?: Record<string, string>,
-    objParam?: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.PipeDelimitedQueryParamsArrayResponse> {
-    const req = new operations.PipeDelimitedQueryParamsArrayRequest({
-      arrParam: arrParam,
-      arrParamExploded: arrParamExploded,
-      mapParam: mapParam,
-      objParam: objParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/queryParams/pipe/array";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.PipeDelimitedQueryParamsArrayResponse =
-      new operations.PipeDelimitedQueryParamsArrayResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.PipeDelimitedQueryParamsArrayRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async simplePathParameterArrays(
-    arrParam: string[],
-    config?: AxiosRequestConfig
-  ): Promise<operations.SimplePathParameterArraysResponse> {
-    const req = new operations.SimplePathParameterArraysRequest({
-      arrParam: arrParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/anything/pathParams/arr/{arrParam}",
-      req,
-      this._globals
-    );
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.SimplePathParameterArraysResponse =
-      new operations.SimplePathParameterArraysResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.SimplePathParameterArraysRes
-          );
+        const res: operations.HeaderParamsArrayResponse = new operations.HeaderParamsArrayResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(httpRes?.data, operations.HeaderParamsArrayRes);
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async headerParamsMap(
+        xHeaderMap: Record<string, string>,
+        xHeaderMapExplode: Record<string, string>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.HeaderParamsMapResponse> {
+        const req = new operations.HeaderParamsMapRequest({
+            xHeaderMap: xHeaderMap,
+            xHeaderMapExplode: xHeaderMapExplode,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/map";
 
-  async simplePathParameterMaps(
-    mapParam: Record<string, string>,
-    mapParamExploded: Record<string, number>,
-    config?: AxiosRequestConfig
-  ): Promise<operations.SimplePathParameterMapsResponse> {
-    const req = new operations.SimplePathParameterMapsRequest({
-      mapParam: mapParam,
-      mapParamExploded: mapParamExploded,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}",
-      req,
-      this._globals
-    );
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.SimplePathParameterMapsResponse =
-      new operations.SimplePathParameterMapsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.SimplePathParameterMapsRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async simplePathParameterObjects(
-    objParam: shared.SimpleObject,
-    objParamExploded: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.SimplePathParameterObjectsResponse> {
-    const req = new operations.SimplePathParameterObjectsRequest({
-      objParam: objParam,
-      objParamExploded: objParamExploded,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}",
-      req,
-      this._globals
-    );
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.SimplePathParameterObjectsResponse =
-      new operations.SimplePathParameterObjectsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.SimplePathParameterObjectsRes
-          );
+        const res: operations.HeaderParamsMapResponse = new operations.HeaderParamsMapResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(httpRes?.data, operations.HeaderParamsMapRes);
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async headerParamsObject(
+        xHeaderObj: shared.SimpleObject,
+        xHeaderObjExplode: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.HeaderParamsObjectResponse> {
+        const req = new operations.HeaderParamsObjectRequest({
+            xHeaderObj: xHeaderObj,
+            xHeaderObjExplode: xHeaderObjExplode,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/obj";
 
-  async simplePathParameterPrimitives(
-    boolParam: boolean,
-    intParam: number,
-    numParam: number,
-    strParam: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.SimplePathParameterPrimitivesResponse> {
-    const req = new operations.SimplePathParameterPrimitivesRequest({
-      boolParam: boolParam,
-      intParam: intParam,
-      numParam: numParam,
-      strParam: strParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}",
-      req,
-      this._globals
-    );
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.SimplePathParameterPrimitivesResponse =
-      new operations.SimplePathParameterPrimitivesResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.SimplePathParameterPrimitivesRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.HeaderParamsObjectResponse =
+            new operations.HeaderParamsObjectResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(httpRes?.data, operations.HeaderParamsObjectRes);
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    async headerParamsPrimitive(
+        xHeaderBoolean: boolean,
+        xHeaderInteger: number,
+        xHeaderNumber: number,
+        xHeaderString: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.HeaderParamsPrimitiveResponse> {
+        const req = new operations.HeaderParamsPrimitiveRequest({
+            xHeaderBoolean: xHeaderBoolean,
+            xHeaderInteger: xHeaderInteger,
+            xHeaderNumber: xHeaderNumber,
+            xHeaderString: xHeaderString,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/headers/primitive";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.HeaderParamsPrimitiveResponse =
+            new operations.HeaderParamsPrimitiveResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.HeaderParamsPrimitiveRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async jsonQueryParamsObject(
+        deepObjParam: shared.DeepObject,
+        simpleObjParam: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.JsonQueryParamsObjectResponse> {
+        const req = new operations.JsonQueryParamsObjectRequest({
+            deepObjParam: deepObjParam,
+            simpleObjParam: simpleObjParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/json/obj";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.JsonQueryParamsObjectResponse =
+            new operations.JsonQueryParamsObjectResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.JsonQueryParamsObjectRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async mixedQueryParams(
+        deepObjectParam: shared.SimpleObject,
+        formParam: shared.SimpleObject,
+        jsonParam: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.MixedQueryParamsResponse> {
+        const req = new operations.MixedQueryParamsRequest({
+            deepObjectParam: deepObjectParam,
+            formParam: formParam,
+            jsonParam: jsonParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/mixed";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.MixedQueryParamsResponse = new operations.MixedQueryParamsResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(httpRes?.data, operations.MixedQueryParamsRes);
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async pathParameterJson(
+        jsonObj: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PathParameterJsonResponse> {
+        const req = new operations.PathParameterJsonRequest({
+            jsonObj: jsonObj,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/pathParams/json/{jsonObj}",
+            req,
+            this._globals
+        );
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PathParameterJsonResponse = new operations.PathParameterJsonResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(httpRes?.data, operations.PathParameterJsonRes);
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async pipeDelimitedQueryParamsArray(
+        arrParam?: string[],
+        arrParamExploded?: number[],
+        mapParam?: Record<string, string>,
+        objParam?: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.PipeDelimitedQueryParamsArrayResponse> {
+        const req = new operations.PipeDelimitedQueryParamsArrayRequest({
+            arrParam: arrParam,
+            arrParamExploded: arrParamExploded,
+            mapParam: mapParam,
+            objParam: objParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/queryParams/pipe/array";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.PipeDelimitedQueryParamsArrayResponse =
+            new operations.PipeDelimitedQueryParamsArrayResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.PipeDelimitedQueryParamsArrayRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async simplePathParameterArrays(
+        arrParam: string[],
+        config?: AxiosRequestConfig
+    ): Promise<operations.SimplePathParameterArraysResponse> {
+        const req = new operations.SimplePathParameterArraysRequest({
+            arrParam: arrParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/pathParams/arr/{arrParam}",
+            req,
+            this._globals
+        );
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.SimplePathParameterArraysResponse =
+            new operations.SimplePathParameterArraysResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.SimplePathParameterArraysRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async simplePathParameterMaps(
+        mapParam: Record<string, string>,
+        mapParamExploded: Record<string, number>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.SimplePathParameterMapsResponse> {
+        const req = new operations.SimplePathParameterMapsRequest({
+            mapParam: mapParam,
+            mapParamExploded: mapParamExploded,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}",
+            req,
+            this._globals
+        );
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.SimplePathParameterMapsResponse =
+            new operations.SimplePathParameterMapsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.SimplePathParameterMapsRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async simplePathParameterObjects(
+        objParam: shared.SimpleObject,
+        objParamExploded: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.SimplePathParameterObjectsResponse> {
+        const req = new operations.SimplePathParameterObjectsRequest({
+            objParam: objParam,
+            objParamExploded: objParamExploded,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}",
+            req,
+            this._globals
+        );
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.SimplePathParameterObjectsResponse =
+            new operations.SimplePathParameterObjectsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.SimplePathParameterObjectsRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async simplePathParameterPrimitives(
+        boolParam: boolean,
+        intParam: number,
+        numParam: number,
+        strParam: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.SimplePathParameterPrimitivesResponse> {
+        const req = new operations.SimplePathParameterPrimitivesRequest({
+            boolParam: boolParam,
+            intParam: intParam,
+            numParam: numParam,
+            strParam: strParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}",
+            req,
+            this._globals
+        );
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.SimplePathParameterPrimitivesResponse =
+            new operations.SimplePathParameterPrimitivesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.SimplePathParameterPrimitivesRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

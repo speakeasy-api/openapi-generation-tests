@@ -6,22 +6,22 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 export const RequestBodyPostApplicationJsonArrayOfArrayServerList = [
-  "http://localhost:35456",
+    "http://localhost:35456",
 ] as const;
 
 export class RequestBodyPostApplicationJsonArrayOfArrayResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata({ elemType: shared.SimpleObject, elemDepth: 2 })
-  arrs?: shared.SimpleObject[][];
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata({ elemType: shared.SimpleObject, elemDepth: 2 })
+    arrs?: shared.SimpleObject[][];
 }

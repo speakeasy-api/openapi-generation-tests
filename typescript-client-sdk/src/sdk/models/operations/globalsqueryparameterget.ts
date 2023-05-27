@@ -7,41 +7,39 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class GlobalsQueryParameterGetRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=globalQueryParam",
-  })
-  globalQueryParam?: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=globalQueryParam" })
+    globalQueryParam?: string;
 }
 
 export class GlobalsQueryParameterGetResArgs extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "globalQueryParam" })
-  globalQueryParam: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "globalQueryParam" })
+    globalQueryParam: string;
 }
 
 /**
  * OK
  */
 export class GlobalsQueryParameterGetRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  @Type(() => GlobalsQueryParameterGetResArgs)
-  args: GlobalsQueryParameterGetResArgs;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    @Type(() => GlobalsQueryParameterGetResArgs)
+    args: GlobalsQueryParameterGetResArgs;
 }
 
 export class GlobalsQueryParameterGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: GlobalsQueryParameterGetRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: GlobalsQueryParameterGetRes;
 }

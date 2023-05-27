@@ -11,25 +11,25 @@ import { Expose, Type } from "class-transformer";
  * OK
  */
 export class RequestBodyPostApplicationJsonDeepRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "json" })
-  @Type(() => shared.DeepObject)
-  json?: shared.DeepObject;
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    @Type(() => shared.DeepObject)
+    json?: shared.DeepObject;
 }
 
 export class RequestBodyPostApplicationJsonDeepResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: RequestBodyPostApplicationJsonDeepRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: RequestBodyPostApplicationJsonDeepRes;
 }

@@ -6,22 +6,22 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 export const RequestBodyPostApplicationJsonArrayOfMapServerList = [
-  "http://localhost:35456",
+    "http://localhost:35456",
 ] as const;
 
 export class RequestBodyPostApplicationJsonArrayOfMapResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata({ elemType: shared.SimpleObject, elemDepth: 2 })
-  maps?: Record<string, shared.SimpleObject>[];
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata({ elemType: shared.SimpleObject, elemDepth: 2 })
+    maps?: Record<string, shared.SimpleObject>[];
 }

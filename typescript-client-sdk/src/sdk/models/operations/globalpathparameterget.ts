@@ -7,34 +7,32 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class GlobalPathParameterGetRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=globalPathParam",
-  })
-  globalPathParam?: number;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=globalPathParam" })
+    globalPathParam?: number;
 }
 
 /**
  * OK
  */
 export class GlobalPathParameterGetRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class GlobalPathParameterGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: GlobalPathParameterGetRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: GlobalPathParameterGetRes;
 }

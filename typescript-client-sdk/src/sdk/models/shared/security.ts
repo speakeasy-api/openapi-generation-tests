@@ -5,21 +5,19 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 export class SchemeBasicAuth extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "security, name=password" })
-  password: string;
+    @SpeakeasyMetadata({ data: "security, name=password" })
+    password: string;
 
-  @SpeakeasyMetadata({ data: "security, name=username" })
-  username: string;
+    @SpeakeasyMetadata({ data: "security, name=username" })
+    username: string;
 }
 
 export class Security extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=apiKey;subtype=header;name=Authorization",
-  })
-  apiKeyAuth?: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=apiKey;subtype=header;name=Authorization",
+    })
+    apiKeyAuth?: string;
 
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key",
-  })
-  apiKeyAuthNew?: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key" })
+    apiKeyAuthNew?: string;
 }

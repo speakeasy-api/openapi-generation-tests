@@ -7,54 +7,50 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class FormQueryParamsArrayRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=false;name=arrParam",
-  })
-  arrParam?: string[];
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=false;name=arrParam" })
+    arrParam?: string[];
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=arrParamExploded",
-  })
-  arrParamExploded?: number[];
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=arrParamExploded" })
+    arrParamExploded?: number[];
 }
 
 export class FormQueryParamsArrayResArgs extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "arrParam" })
-  arrParam: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "arrParam" })
+    arrParam: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "arrParamExploded" })
-  arrParamExploded: string[];
+    @SpeakeasyMetadata()
+    @Expose({ name: "arrParamExploded" })
+    arrParamExploded: string[];
 }
 
 /**
  * OK
  */
 export class FormQueryParamsArrayRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  @Type(() => FormQueryParamsArrayResArgs)
-  args: FormQueryParamsArrayResArgs;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    @Type(() => FormQueryParamsArrayResArgs)
+    args: FormQueryParamsArrayResArgs;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class FormQueryParamsArrayResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: FormQueryParamsArrayRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: FormQueryParamsArrayRes;
 }

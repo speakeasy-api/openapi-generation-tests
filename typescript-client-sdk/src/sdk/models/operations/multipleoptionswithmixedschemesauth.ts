@@ -5,47 +5,39 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
-export const MultipleOptionsWithMixedSchemesAuthServerList = [
-  "http://localhost:35456",
-] as const;
+export const MultipleOptionsWithMixedSchemesAuthServerList = ["http://localhost:35456"] as const;
 
 export class MultipleOptionsWithMixedSchemesAuthSecurityOption1 extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key",
-  })
-  apiKeyAuthNew: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key" })
+    apiKeyAuthNew: string;
 
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=oauth2;name=Authorization",
-  })
-  oauth2: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
+    oauth2: string;
 }
 
 export class MultipleOptionsWithMixedSchemesAuthSecurityOption2 extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key",
-  })
-  apiKeyAuthNew: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=apiKey;subtype=header;name=x-api-key" })
+    apiKeyAuthNew: string;
 
-  @SpeakeasyMetadata({ data: "security, scheme=true;type=http;subtype=basic" })
-  basicAuth: shared.SchemeBasicAuth;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=http;subtype=basic" })
+    basicAuth: shared.SchemeBasicAuth;
 }
 
 export class MultipleOptionsWithMixedSchemesAuthSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "security, option=true" })
-  option1?: MultipleOptionsWithMixedSchemesAuthSecurityOption1;
+    @SpeakeasyMetadata({ data: "security, option=true" })
+    option1?: MultipleOptionsWithMixedSchemesAuthSecurityOption1;
 
-  @SpeakeasyMetadata({ data: "security, option=true" })
-  option2?: MultipleOptionsWithMixedSchemesAuthSecurityOption2;
+    @SpeakeasyMetadata({ data: "security, option=true" })
+    option2?: MultipleOptionsWithMixedSchemesAuthSecurityOption2;
 }
 
 export class MultipleOptionsWithMixedSchemesAuthResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

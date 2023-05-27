@@ -7,58 +7,58 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class RequestBodyPostFormDeepResForm extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "arr" })
-  arr: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "arr" })
+    arr: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "bool" })
-  bool: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "bool" })
+    bool: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "int" })
-  int: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "int" })
+    int: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "map" })
-  map: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "map" })
+    map: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "num" })
-  num: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "num" })
+    num: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "obj" })
-  obj: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "obj" })
+    obj: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "str" })
-  str: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "str" })
+    str: string;
 }
 
 /**
  * OK
  */
 export class RequestBodyPostFormDeepRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "form" })
-  @Type(() => RequestBodyPostFormDeepResForm)
-  form: RequestBodyPostFormDeepResForm;
+    @SpeakeasyMetadata()
+    @Expose({ name: "form" })
+    @Type(() => RequestBodyPostFormDeepResForm)
+    form: RequestBodyPostFormDeepResForm;
 }
 
 export class RequestBodyPostFormDeepResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: RequestBodyPostFormDeepRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: RequestBodyPostFormDeepRes;
 }

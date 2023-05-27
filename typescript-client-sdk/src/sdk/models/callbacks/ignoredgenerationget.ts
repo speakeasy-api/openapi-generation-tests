@@ -7,35 +7,35 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class IgnoredGenerationGetSingledIgnoredCallbackOperationResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }
 
 export class IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "someProp" })
-  someProp?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "someProp" })
+    someProp?: string;
 }
 
 export class IgnoredGenerationGetNotIgnoredCallbackResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }
 
 export class IgnoredGenerationGetNotIgnoredCallbackRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "someProp" })
-  someProp?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "someProp" })
+    someProp?: string;
 }

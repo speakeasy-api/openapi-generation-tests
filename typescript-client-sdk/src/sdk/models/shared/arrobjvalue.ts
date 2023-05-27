@@ -10,12 +10,12 @@ import { Expose, Type } from "class-transformer";
  * OK
  */
 export class ArrObjValue extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: SimpleObject })
-  @Expose({ name: "json" })
-  @Type(() => SimpleObject)
-  json?: SimpleObject[];
+    @SpeakeasyMetadata({ elemType: SimpleObject })
+    @Expose({ name: "json" })
+    @Type(() => SimpleObject)
+    json?: SimpleObject[];
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "required" })
-  required?: any;
+    @SpeakeasyMetadata()
+    @Expose({ name: "required" })
+    required?: any;
 }

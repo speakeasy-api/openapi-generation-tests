@@ -7,86 +7,86 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class RequestBodyPutMultipartSimpleResForm extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "any" })
-  any: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "any" })
+    any: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "bool" })
-  bool: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "bool" })
+    bool: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "boolOpt" })
-  boolOpt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "boolOpt" })
+    boolOpt?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "date" })
-  date: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "date" })
+    date: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "dateTime" })
-  dateTime: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "dateTime" })
+    dateTime: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "enum" })
-  enum: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "enum" })
+    enum: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "float32" })
-  float32: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "float32" })
+    float32: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "int" })
-  int: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "int" })
+    int: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "int32" })
-  int32: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "int32" })
+    int32: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "intOptNull" })
-  intOptNull?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "intOptNull" })
+    intOptNull?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "num" })
-  num: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "num" })
+    num: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "numOptNull" })
-  numOptNull?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "numOptNull" })
+    numOptNull?: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "str" })
-  str: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "str" })
+    str: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "strOpt" })
-  strOpt?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "strOpt" })
+    strOpt?: string;
 }
 
 /**
  * OK
  */
 export class RequestBodyPutMultipartSimpleRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "form" })
-  @Type(() => RequestBodyPutMultipartSimpleResForm)
-  form: RequestBodyPutMultipartSimpleResForm;
+    @SpeakeasyMetadata()
+    @Expose({ name: "form" })
+    @Type(() => RequestBodyPutMultipartSimpleResForm)
+    form: RequestBodyPutMultipartSimpleResForm;
 }
 
 export class RequestBodyPutMultipartSimpleResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: RequestBodyPutMultipartSimpleRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: RequestBodyPutMultipartSimpleRes;
 }

@@ -5,15 +5,15 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 
 export class RefQueryParamObjExploded extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "queryParam, name=bool" })
-  bool: boolean;
+    @SpeakeasyMetadata({ data: "queryParam, name=bool" })
+    bool: boolean;
 
-  @SpeakeasyMetadata({ data: "queryParam, name=int" })
-  int: number;
+    @SpeakeasyMetadata({ data: "queryParam, name=int" })
+    int: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, name=num" })
-  num: number;
+    @SpeakeasyMetadata({ data: "queryParam, name=num" })
+    num: number;
 
-  @SpeakeasyMetadata({ data: "queryParam, name=str" })
-  str: string;
+    @SpeakeasyMetadata({ data: "queryParam, name=str" })
+    str: string;
 }

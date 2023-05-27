@@ -6,7 +6,7 @@
  * An string based enum
  */
 export enum Enum {
-  One = "one",
-  Two = "two",
-  Three = "three",
+    One = "one",
+    Two = "two",
+    Three = "three",
 }

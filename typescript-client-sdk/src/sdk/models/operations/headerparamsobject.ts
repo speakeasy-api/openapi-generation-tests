@@ -8,56 +8,52 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class HeaderParamsObjectRequest extends SpeakeasyBase {
-  /**
-   * A simple object that uses all our supported primitive types and enums and has optional properties.
-   */
-  @SpeakeasyMetadata({
-    data: "header, style=simple;explode=false;name=X-Header-Obj",
-  })
-  xHeaderObj: shared.SimpleObject;
+    /**
+     * A simple object that uses all our supported primitive types and enums and has optional properties.
+     */
+    @SpeakeasyMetadata({ data: "header, style=simple;explode=false;name=X-Header-Obj" })
+    xHeaderObj: shared.SimpleObject;
 
-  /**
-   * A simple object that uses all our supported primitive types and enums and has optional properties.
-   */
-  @SpeakeasyMetadata({
-    data: "header, style=simple;explode=true;name=X-Header-Obj-Explode",
-  })
-  xHeaderObjExplode: shared.SimpleObject;
+    /**
+     * A simple object that uses all our supported primitive types and enums and has optional properties.
+     */
+    @SpeakeasyMetadata({ data: "header, style=simple;explode=true;name=X-Header-Obj-Explode" })
+    xHeaderObjExplode: shared.SimpleObject;
 }
 
 export class HeaderParamsObjectResHeaders extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "X-Header-Obj" })
-  xHeaderObj: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "X-Header-Obj" })
+    xHeaderObj: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "X-Header-Obj-Explode" })
-  xHeaderObjExplode: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "X-Header-Obj-Explode" })
+    xHeaderObjExplode: string;
 }
 
 /**
  * OK
  */
 export class HeaderParamsObjectRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "headers" })
-  @Type(() => HeaderParamsObjectResHeaders)
-  headers: HeaderParamsObjectResHeaders;
+    @SpeakeasyMetadata()
+    @Expose({ name: "headers" })
+    @Type(() => HeaderParamsObjectResHeaders)
+    headers: HeaderParamsObjectResHeaders;
 }
 
 export class HeaderParamsObjectResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: HeaderParamsObjectRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: HeaderParamsObjectRes;
 }

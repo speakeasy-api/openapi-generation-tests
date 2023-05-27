@@ -7,34 +7,32 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class TelemetrySpeakeasyUserAgentGetRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "header, style=simple;explode=false;name=User-Agent",
-  })
-  userAgent: string;
+    @SpeakeasyMetadata({ data: "header, style=simple;explode=false;name=User-Agent" })
+    userAgent: string;
 }
 
 /**
  * OK
  */
 export class TelemetrySpeakeasyUserAgentGetRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "headers" })
-  headers: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "headers" })
+    headers: Record<string, string>;
 }
 
 export class TelemetrySpeakeasyUserAgentGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: TelemetrySpeakeasyUserAgentGetRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: TelemetrySpeakeasyUserAgentGetRes;
 }

@@ -6,8 +6,8 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
 export class ValidCircularReferenceObject extends SpeakeasyBase {
-  @SpeakeasyMetadata({ elemType: ValidCircularReferenceObject })
-  @Expose({ name: "circular" })
-  @Type(() => ValidCircularReferenceObject)
-  circular?: ValidCircularReferenceObject[];
+    @SpeakeasyMetadata({ elemType: ValidCircularReferenceObject })
+    @Expose({ name: "circular" })
+    @Type(() => ValidCircularReferenceObject)
+    circular?: ValidCircularReferenceObject[];
 }

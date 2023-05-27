@@ -5,23 +5,21 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import * as shared from "../shared";
 import { AxiosResponse } from "axios";
-export const RequestBodyPostApplicationJsonMapServerList = [
-  "http://localhost:35456",
-] as const;
+export const RequestBodyPostApplicationJsonMapServerList = ["http://localhost:35456"] as const;
 
 export class RequestBodyPostApplicationJsonMapResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata({ elemType: shared.SimpleObject })
-  res?: Record<string, shared.SimpleObject>;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata({ elemType: shared.SimpleObject })
+    res?: Record<string, shared.SimpleObject>;
 }

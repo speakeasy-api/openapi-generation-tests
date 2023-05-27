@@ -7,50 +7,46 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class HeaderParamsMapRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "header, style=simple;explode=false;name=X-Header-Map",
-  })
-  xHeaderMap: Record<string, string>;
+    @SpeakeasyMetadata({ data: "header, style=simple;explode=false;name=X-Header-Map" })
+    xHeaderMap: Record<string, string>;
 
-  @SpeakeasyMetadata({
-    data: "header, style=simple;explode=true;name=X-Header-Map-Explode",
-  })
-  xHeaderMapExplode: Record<string, string>;
+    @SpeakeasyMetadata({ data: "header, style=simple;explode=true;name=X-Header-Map-Explode" })
+    xHeaderMapExplode: Record<string, string>;
 }
 
 export class HeaderParamsMapResHeaders extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "X-Header-Map" })
-  xHeaderMap: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "X-Header-Map" })
+    xHeaderMap: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "X-Header-Map-Explode" })
-  xHeaderMapExplode: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "X-Header-Map-Explode" })
+    xHeaderMapExplode: string;
 }
 
 /**
  * OK
  */
 export class HeaderParamsMapRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "headers" })
-  @Type(() => HeaderParamsMapResHeaders)
-  headers: HeaderParamsMapResHeaders;
+    @SpeakeasyMetadata()
+    @Expose({ name: "headers" })
+    @Type(() => HeaderParamsMapResHeaders)
+    headers: HeaderParamsMapResHeaders;
 }
 
 export class HeaderParamsMapResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: HeaderParamsMapRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: HeaderParamsMapRes;
 }

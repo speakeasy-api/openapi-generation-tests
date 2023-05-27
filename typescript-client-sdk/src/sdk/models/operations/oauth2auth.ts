@@ -7,38 +7,36 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class Oauth2AuthSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=oauth2;name=Authorization",
-  })
-  oauth2: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=oauth2;name=Authorization" })
+    oauth2: string;
 }
 
 /**
  * Successful authentication.
  */
 export class Oauth2AuthToken extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "authenticated" })
-  authenticated: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "authenticated" })
+    authenticated: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "token" })
-  token: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "token" })
+    token: string;
 }
 
 export class Oauth2AuthResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful authentication.
-   */
-  @SpeakeasyMetadata()
-  token?: Oauth2AuthToken;
+    /**
+     * Successful authentication.
+     */
+    @SpeakeasyMetadata()
+    token?: Oauth2AuthToken;
 }

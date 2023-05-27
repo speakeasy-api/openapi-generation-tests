@@ -10,24 +10,24 @@ import { Expose } from "class-transformer";
  * OK
  */
 export class PutAnythingIgnoredGeneration200ApplicationJSON extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "json" })
-  json?: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    json?: string;
 }
 
 export class PutAnythingIgnoredGenerationResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  putAnythingIgnoredGeneration200ApplicationJSONObject?: PutAnythingIgnoredGeneration200ApplicationJSON;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    putAnythingIgnoredGeneration200ApplicationJSONObject?: PutAnythingIgnoredGeneration200ApplicationJSON;
 }

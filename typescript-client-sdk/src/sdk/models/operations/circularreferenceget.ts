@@ -7,18 +7,18 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class CircularReferenceGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  validCircularReferenceObject?: shared.ValidCircularReferenceObject;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    validCircularReferenceObject?: shared.ValidCircularReferenceObject;
 }

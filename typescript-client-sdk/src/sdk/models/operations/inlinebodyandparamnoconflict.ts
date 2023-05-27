@@ -7,54 +7,52 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class InlineBodyAndParamNoConflictRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "bodyStr" })
-  bodyStr: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "bodyStr" })
+    bodyStr: string;
 }
 
 export class InlineBodyAndParamNoConflictRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody: InlineBodyAndParamNoConflictRequestBody;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody: InlineBodyAndParamNoConflictRequestBody;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=paramStr",
-  })
-  paramStr: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=paramStr" })
+    paramStr: string;
 }
 
 export class InlineBodyAndParamNoConflictResJson extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "bodyStr" })
-  bodyStr: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "bodyStr" })
+    bodyStr: string;
 }
 
 /**
  * OK
  */
 export class InlineBodyAndParamNoConflictRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  args: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    args: Record<string, string>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "json" })
-  @Type(() => InlineBodyAndParamNoConflictResJson)
-  json: InlineBodyAndParamNoConflictResJson;
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    @Type(() => InlineBodyAndParamNoConflictResJson)
+    json: InlineBodyAndParamNoConflictResJson;
 }
 
 export class InlineBodyAndParamNoConflictResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: InlineBodyAndParamNoConflictRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: InlineBodyAndParamNoConflictRes;
 }

@@ -7,72 +7,64 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class FormQueryParamsPrimitiveRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=boolParam",
-  })
-  boolParam: boolean;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=boolParam" })
+    boolParam: boolean;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=intParam",
-  })
-  intParam: number;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=intParam" })
+    intParam: number;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=numParam",
-  })
-  numParam: number;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=numParam" })
+    numParam: number;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=strParam",
-  })
-  strParam: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=strParam" })
+    strParam: string;
 }
 
 export class FormQueryParamsPrimitiveResArgs extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "boolParam" })
-  boolParam: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "boolParam" })
+    boolParam: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "intParam" })
-  intParam: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "intParam" })
+    intParam: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "numParam" })
-  numParam: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "numParam" })
+    numParam: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "strParam" })
-  strParam: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "strParam" })
+    strParam: string;
 }
 
 /**
  * OK
  */
 export class FormQueryParamsPrimitiveRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  @Type(() => FormQueryParamsPrimitiveResArgs)
-  args: FormQueryParamsPrimitiveResArgs;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    @Type(() => FormQueryParamsPrimitiveResArgs)
+    args: FormQueryParamsPrimitiveResArgs;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class FormQueryParamsPrimitiveResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: FormQueryParamsPrimitiveRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: FormQueryParamsPrimitiveRes;
 }

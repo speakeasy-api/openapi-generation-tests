@@ -7,38 +7,36 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class OpenIdConnectAuthSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=openIdConnect;name=Authorization",
-  })
-  openIdConnect: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=openIdConnect;name=Authorization" })
+    openIdConnect: string;
 }
 
 /**
  * Successful authentication.
  */
 export class OpenIdConnectAuthToken extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "authenticated" })
-  authenticated: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "authenticated" })
+    authenticated: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "token" })
-  token: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "token" })
+    token: string;
 }
 
 export class OpenIdConnectAuthResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful authentication.
-   */
-  @SpeakeasyMetadata()
-  token?: OpenIdConnectAuthToken;
+    /**
+     * Successful authentication.
+     */
+    @SpeakeasyMetadata()
+    token?: OpenIdConnectAuthToken;
 }

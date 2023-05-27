@@ -10,24 +10,24 @@ import { Expose } from "class-transformer";
  * OK
  */
 export class TelemetryUserAgentGetRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "headers" })
-  headers: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "headers" })
+    headers: Record<string, string>;
 }
 
 export class TelemetryUserAgentGetResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: TelemetryUserAgentGetRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: TelemetryUserAgentGetRes;
 }

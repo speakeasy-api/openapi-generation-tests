@@ -7,34 +7,32 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class SimplePathParameterArraysRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=arrParam",
-  })
-  arrParam: string[];
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=arrParam" })
+    arrParam: string[];
 }
 
 /**
  * OK
  */
 export class SimplePathParameterArraysRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class SimplePathParameterArraysResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: SimplePathParameterArraysRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: SimplePathParameterArraysRes;
 }

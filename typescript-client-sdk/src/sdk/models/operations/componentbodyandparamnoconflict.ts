@@ -8,45 +8,43 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class ComponentBodyAndParamNoConflictRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=paramStr",
-  })
-  paramStr: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=paramStr" })
+    paramStr: string;
 
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  simpleObject: shared.SimpleObject;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    simpleObject: shared.SimpleObject;
 }
 
 /**
  * OK
  */
 export class ComponentBodyAndParamNoConflictRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  args: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    args: Record<string, string>;
 
-  /**
-   * A simple object that uses all our supported primitive types and enums and has optional properties.
-   */
-  @SpeakeasyMetadata()
-  @Expose({ name: "json" })
-  @Type(() => shared.SimpleObject)
-  json: shared.SimpleObject;
+    /**
+     * A simple object that uses all our supported primitive types and enums and has optional properties.
+     */
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    @Type(() => shared.SimpleObject)
+    json: shared.SimpleObject;
 }
 
 export class ComponentBodyAndParamNoConflictResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: ComponentBodyAndParamNoConflictRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: ComponentBodyAndParamNoConflictRes;
 }

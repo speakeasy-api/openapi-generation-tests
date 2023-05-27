@@ -7,49 +7,41 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class SimplePathParameterPrimitivesRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=boolParam",
-  })
-  boolParam: boolean;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=boolParam" })
+    boolParam: boolean;
 
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=intParam",
-  })
-  intParam: number;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=intParam" })
+    intParam: number;
 
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=numParam",
-  })
-  numParam: number;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=numParam" })
+    numParam: number;
 
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=strParam",
-  })
-  strParam: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=strParam" })
+    strParam: string;
 }
 
 /**
  * OK
  */
 export class SimplePathParameterPrimitivesRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class SimplePathParameterPrimitivesResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: SimplePathParameterPrimitivesRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: SimplePathParameterPrimitivesRes;
 }

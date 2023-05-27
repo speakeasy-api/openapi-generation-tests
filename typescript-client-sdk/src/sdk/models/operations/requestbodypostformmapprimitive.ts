@@ -10,24 +10,24 @@ import { Expose } from "class-transformer";
  * OK
  */
 export class RequestBodyPostFormMapPrimitiveRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "form" })
-  form: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "form" })
+    form: Record<string, string>;
 }
 
 export class RequestBodyPostFormMapPrimitiveResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: RequestBodyPostFormMapPrimitiveRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: RequestBodyPostFormMapPrimitiveRes;
 }

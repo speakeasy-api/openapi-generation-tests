@@ -8,67 +8,61 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class PipeDelimitedQueryParamsArrayRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=pipeDelimited;explode=false;name=arrParam",
-  })
-  arrParam?: string[];
+    @SpeakeasyMetadata({ data: "queryParam, style=pipeDelimited;explode=false;name=arrParam" })
+    arrParam?: string[];
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=pipeDelimited;explode=true;name=arrParamExploded",
-  })
-  arrParamExploded?: number[];
+    @SpeakeasyMetadata({
+        data: "queryParam, style=pipeDelimited;explode=true;name=arrParamExploded",
+    })
+    arrParamExploded?: number[];
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=pipeDelimited;explode=false;name=mapParam",
-  })
-  mapParam?: Record<string, string>;
+    @SpeakeasyMetadata({ data: "queryParam, style=pipeDelimited;explode=false;name=mapParam" })
+    mapParam?: Record<string, string>;
 
-  /**
-   * A simple object that uses all our supported primitive types and enums and has optional properties.
-   */
-  @SpeakeasyMetadata({
-    data: "queryParam, style=pipeDelimited;explode=false;name=objParam",
-  })
-  objParam?: shared.SimpleObject;
+    /**
+     * A simple object that uses all our supported primitive types and enums and has optional properties.
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=pipeDelimited;explode=false;name=objParam" })
+    objParam?: shared.SimpleObject;
 }
 
 export class PipeDelimitedQueryParamsArrayResArgs extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "arrParam" })
-  arrParam: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "arrParam" })
+    arrParam: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "arrParamExploded" })
-  arrParamExploded: string[];
+    @SpeakeasyMetadata()
+    @Expose({ name: "arrParamExploded" })
+    arrParamExploded: string[];
 }
 
 /**
  * OK
  */
 export class PipeDelimitedQueryParamsArrayRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  @Type(() => PipeDelimitedQueryParamsArrayResArgs)
-  args: PipeDelimitedQueryParamsArrayResArgs;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    @Type(() => PipeDelimitedQueryParamsArrayResArgs)
+    args: PipeDelimitedQueryParamsArrayResArgs;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class PipeDelimitedQueryParamsArrayResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: PipeDelimitedQueryParamsArrayRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: PipeDelimitedQueryParamsArrayRes;
 }

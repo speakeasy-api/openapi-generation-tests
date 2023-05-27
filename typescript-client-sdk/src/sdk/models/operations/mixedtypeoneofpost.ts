@@ -10,24 +10,24 @@ import { Expose } from "class-transformer";
  * OK
  */
 export class MixedTypeOneOfPostRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "json" })
-  json: any;
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    json: any;
 }
 
 export class MixedTypeOneOfPostResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: MixedTypeOneOfPostRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: MixedTypeOneOfPostRes;
 }

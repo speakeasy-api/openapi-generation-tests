@@ -7,43 +7,39 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class FormQueryParamsMapRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=false;name=mapParam",
-  })
-  mapParam?: Record<string, string>;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=false;name=mapParam" })
+    mapParam?: Record<string, string>;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=mapParamExploded",
-  })
-  mapParamExploded?: Record<string, number>;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=mapParamExploded" })
+    mapParamExploded?: Record<string, number>;
 }
 
 /**
  * OK
  */
 export class FormQueryParamsMapRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  args: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    args: Record<string, string>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class FormQueryParamsMapResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: FormQueryParamsMapRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: FormQueryParamsMapRes;
 }

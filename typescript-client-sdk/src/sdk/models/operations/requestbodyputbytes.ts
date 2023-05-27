@@ -10,24 +10,24 @@ import { Expose } from "class-transformer";
  * OK
  */
 export class RequestBodyPutBytesRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "data" })
-  data: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    data: string;
 }
 
 export class RequestBodyPutBytesResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: RequestBodyPutBytesRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: RequestBodyPutBytesRes;
 }

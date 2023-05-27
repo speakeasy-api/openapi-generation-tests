@@ -7,55 +7,47 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class BasicAuthSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=basic;name=password",
-  })
-  password: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=http;subtype=basic;name=password" })
+    password: string;
 
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=basic;name=username",
-  })
-  username: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=http;subtype=basic;name=username" })
+    username: string;
 }
 
 export class BasicAuthRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=passwd",
-  })
-  passwd: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=passwd" })
+    passwd: string;
 
-  @SpeakeasyMetadata({
-    data: "pathParam, style=simple;explode=false;name=user",
-  })
-  user: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=user" })
+    user: string;
 }
 
 /**
  * Successful authentication.
  */
 export class BasicAuthUser extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "authenticated" })
-  authenticated: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "authenticated" })
+    authenticated: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "user" })
-  user: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "user" })
+    user: string;
 }
 
 export class BasicAuthResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful authentication.
-   */
-  @SpeakeasyMetadata()
-  user?: BasicAuthUser;
+    /**
+     * Successful authentication.
+     */
+    @SpeakeasyMetadata()
+    user?: BasicAuthUser;
 }

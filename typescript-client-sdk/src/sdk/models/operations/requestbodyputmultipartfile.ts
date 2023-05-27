@@ -7,40 +7,40 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class RequestBodyPutMultipartFileRequestBodyFile extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "multipart_form, content=true" })
-  content: Uint8Array;
+    @SpeakeasyMetadata({ data: "multipart_form, content=true" })
+    content: Uint8Array;
 
-  @SpeakeasyMetadata({ data: "multipart_form, name=file" })
-  file: string;
+    @SpeakeasyMetadata({ data: "multipart_form, name=file" })
+    file: string;
 }
 
 export class RequestBodyPutMultipartFileRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "multipart_form, file=true" })
-  file?: RequestBodyPutMultipartFileRequestBodyFile;
+    @SpeakeasyMetadata({ data: "multipart_form, file=true" })
+    file?: RequestBodyPutMultipartFileRequestBodyFile;
 }
 
 /**
  * OK
  */
 export class RequestBodyPutMultipartFileRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "files" })
-  files: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "files" })
+    files: Record<string, string>;
 }
 
 export class RequestBodyPutMultipartFileResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: RequestBodyPutMultipartFileRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: RequestBodyPutMultipartFileRes;
 }

@@ -7,39 +7,39 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class ConflictingParamsRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=str" })
-  strPathParameter: string;
+    @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=str" })
+    strPathParameter: string;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=str" })
-  strQueryParameter: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=str" })
+    strQueryParameter: string;
 }
 
 /**
  * OK
  */
 export class ConflictingParamsRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  args: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    args: Record<string, string>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "url" })
-  url: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "url" })
+    url: string;
 }
 
 export class ConflictingParamsResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: ConflictingParamsRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: ConflictingParamsRes;
 }

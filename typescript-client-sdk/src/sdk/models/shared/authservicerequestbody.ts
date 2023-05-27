@@ -6,33 +6,33 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose, Type } from "class-transformer";
 
 export class AuthServiceRequestBodyBasicAuth extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "password" })
-  password: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "password" })
+    password: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "username" })
-  username: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "username" })
+    username: string;
 }
 
 export class AuthServiceRequestBodyHeaderAuth extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "expectedValue" })
-  expectedValue: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "expectedValue" })
+    expectedValue: string;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "headerName" })
-  headerName: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "headerName" })
+    headerName: string;
 }
 
 export class AuthServiceRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "basicAuth" })
-  @Type(() => AuthServiceRequestBodyBasicAuth)
-  basicAuth?: AuthServiceRequestBodyBasicAuth;
+    @SpeakeasyMetadata()
+    @Expose({ name: "basicAuth" })
+    @Type(() => AuthServiceRequestBodyBasicAuth)
+    basicAuth?: AuthServiceRequestBodyBasicAuth;
 
-  @SpeakeasyMetadata({ elemType: AuthServiceRequestBodyHeaderAuth })
-  @Expose({ name: "headerAuth" })
-  @Type(() => AuthServiceRequestBodyHeaderAuth)
-  headerAuth?: AuthServiceRequestBodyHeaderAuth[];
+    @SpeakeasyMetadata({ elemType: AuthServiceRequestBodyHeaderAuth })
+    @Expose({ name: "headerAuth" })
+    @Type(() => AuthServiceRequestBodyHeaderAuth)
+    headerAuth?: AuthServiceRequestBodyHeaderAuth[];
 }

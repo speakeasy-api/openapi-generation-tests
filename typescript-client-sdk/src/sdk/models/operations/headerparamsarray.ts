@@ -7,41 +7,39 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class HeaderParamsArrayRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "header, style=simple;explode=false;name=X-Header-Array",
-  })
-  xHeaderArray: string[];
+    @SpeakeasyMetadata({ data: "header, style=simple;explode=false;name=X-Header-Array" })
+    xHeaderArray: string[];
 }
 
 export class HeaderParamsArrayResHeaders extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "X-Header-Array" })
-  xHeaderArray: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "X-Header-Array" })
+    xHeaderArray: string;
 }
 
 /**
  * OK
  */
 export class HeaderParamsArrayRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "headers" })
-  @Type(() => HeaderParamsArrayResHeaders)
-  headers: HeaderParamsArrayResHeaders;
+    @SpeakeasyMetadata()
+    @Expose({ name: "headers" })
+    @Type(() => HeaderParamsArrayResHeaders)
+    headers: HeaderParamsArrayResHeaders;
 }
 
 export class HeaderParamsArrayResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: HeaderParamsArrayRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: HeaderParamsArrayRes;
 }

@@ -7,18 +7,18 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class RequestBodyPostApplicationJsonMapObjResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  mapObjValue?: shared.MapObjValue;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    mapObjValue?: shared.MapObjValue;
 }

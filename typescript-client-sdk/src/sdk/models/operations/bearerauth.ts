@@ -7,38 +7,38 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class BearerAuthSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
-  })
-  bearerAuth: string;
+    @SpeakeasyMetadata({
+        data: "security, scheme=true;type=http;subtype=bearer;name=Authorization",
+    })
+    bearerAuth: string;
 }
 
 /**
  * Successful authentication.
  */
 export class BearerAuthToken extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "authenticated" })
-  authenticated: boolean;
+    @SpeakeasyMetadata()
+    @Expose({ name: "authenticated" })
+    authenticated: boolean;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "token" })
-  token: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "token" })
+    token: string;
 }
 
 export class BearerAuthResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * Successful authentication.
-   */
-  @SpeakeasyMetadata()
-  token?: BearerAuthToken;
+    /**
+     * Successful authentication.
+     */
+    @SpeakeasyMetadata()
+    token?: BearerAuthToken;
 }

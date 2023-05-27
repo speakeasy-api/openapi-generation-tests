@@ -11,385 +11,361 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  * Endpoints for testing flattening through request body and parameter combinations.
  */
 export class Flattening {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
-  _globals: any;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
+    _globals: any;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string,
-    globals: any
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-    this._globals = globals;
-  }
-
-  async componentBodyAndParamConflict(
-    simpleObject: shared.SimpleObject,
-    str: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ComponentBodyAndParamConflictResponse> {
-    const req = new operations.ComponentBodyAndParamConflictRequest({
-      simpleObject: simpleObject,
-      str: str,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") +
-      "/anything/flattening/componentBodyAndParamConflict";
-
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "simpleObject",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string,
+        globals: any
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+        this._globals = globals;
     }
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+    async componentBodyAndParamConflict(
+        simpleObject: shared.SimpleObject,
+        str: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ComponentBodyAndParamConflictResponse> {
+        const req = new operations.ComponentBodyAndParamConflictRequest({
+            simpleObject: simpleObject,
+            str: str,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/flattening/componentBodyAndParamConflict";
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ComponentBodyAndParamConflictResponse =
-      new operations.ComponentBodyAndParamConflictResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.ComponentBodyAndParamConflictRes
-          );
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "simpleObject", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-        break;
-    }
 
-    return res;
-  }
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-  async componentBodyAndParamNoConflict(
-    paramStr: string,
-    simpleObject: shared.SimpleObject,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ComponentBodyAndParamNoConflictResponse> {
-    const req = new operations.ComponentBodyAndParamNoConflictRequest({
-      paramStr: paramStr,
-      simpleObject: simpleObject,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") +
-      "/anything/flattening/componentBodyAndParamNoConflict";
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "simpleObject",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ComponentBodyAndParamNoConflictResponse =
-      new operations.ComponentBodyAndParamNoConflictResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.ComponentBodyAndParamNoConflictRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async conflictingParams(
-    strPathParameter: string,
-    strQueryParameter: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.ConflictingParamsResponse> {
-    const req = new operations.ConflictingParamsRequest({
-      strPathParameter: strPathParameter,
-      strQueryParameter: strQueryParameter,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = utils.generateURL(
-      baseURL,
-      "/anything/flattening/conflictingParams/{str}",
-      req,
-      this._globals
-    );
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.ConflictingParamsResponse =
-      new operations.ConflictingParamsResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.ConflictingParamsRes
-          );
+        const res: operations.ComponentBodyAndParamConflictResponse =
+            new operations.ComponentBodyAndParamConflictResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.ComponentBodyAndParamConflictRes
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async componentBodyAndParamNoConflict(
+        paramStr: string,
+        simpleObject: shared.SimpleObject,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ComponentBodyAndParamNoConflictResponse> {
+        const req = new operations.ComponentBodyAndParamNoConflictRequest({
+            paramStr: paramStr,
+            simpleObject: simpleObject,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/flattening/componentBodyAndParamNoConflict";
 
-  async inlineBodyAndParamConflict(
-    requestBody: operations.InlineBodyAndParamConflictRequestBody,
-    str: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.InlineBodyAndParamConflictResponse> {
-    const req = new operations.InlineBodyAndParamConflictRequest({
-      requestBody: requestBody,
-      str: str,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") +
-      "/anything/flattening/inlineBodyAndParamConflict";
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.InlineBodyAndParamConflictResponse =
-      new operations.InlineBodyAndParamConflictResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.InlineBodyAndParamConflictRes
-          );
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "simpleObject", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
         }
-        break;
-    }
 
-    return res;
-  }
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-  async inlineBodyAndParamNoConflict(
-    requestBody: operations.InlineBodyAndParamNoConflictRequestBody,
-    paramStr: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.InlineBodyAndParamNoConflictResponse> {
-    const req = new operations.InlineBodyAndParamNoConflictRequest({
-      requestBody: requestBody,
-      paramStr: paramStr,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") +
-      "/anything/flattening/inlineBodyAndParamNoConflict";
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    if (reqBody == null || Object.keys(reqBody).length === 0)
-      throw new Error("request body is required");
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.InlineBodyAndParamNoConflictResponse =
-      new operations.InlineBodyAndParamNoConflictResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.res = utils.objectToClass(
-            httpRes?.data,
-            operations.InlineBodyAndParamNoConflictRes
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.ComponentBodyAndParamNoConflictResponse =
+            new operations.ComponentBodyAndParamNoConflictResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.ComponentBodyAndParamNoConflictRes
+                    );
+                }
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    async conflictingParams(
+        strPathParameter: string,
+        strQueryParameter: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ConflictingParamsResponse> {
+        const req = new operations.ConflictingParamsRequest({
+            strPathParameter: strPathParameter,
+            strQueryParameter: strQueryParameter,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/flattening/conflictingParams/{str}",
+            req,
+            this._globals
+        );
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ConflictingParamsResponse = new operations.ConflictingParamsResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(httpRes?.data, operations.ConflictingParamsRes);
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async inlineBodyAndParamConflict(
+        requestBody: operations.InlineBodyAndParamConflictRequestBody,
+        str: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.InlineBodyAndParamConflictResponse> {
+        const req = new operations.InlineBodyAndParamConflictRequest({
+            requestBody: requestBody,
+            str: str,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/flattening/inlineBodyAndParamConflict";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.InlineBodyAndParamConflictResponse =
+            new operations.InlineBodyAndParamConflictResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.InlineBodyAndParamConflictRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async inlineBodyAndParamNoConflict(
+        requestBody: operations.InlineBodyAndParamNoConflictRequestBody,
+        paramStr: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.InlineBodyAndParamNoConflictResponse> {
+        const req = new operations.InlineBodyAndParamNoConflictRequest({
+            requestBody: requestBody,
+            paramStr: paramStr,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/flattening/inlineBodyAndParamNoConflict";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.InlineBodyAndParamNoConflictResponse =
+            new operations.InlineBodyAndParamNoConflictResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        httpRes?.data,
+                        operations.InlineBodyAndParamNoConflictRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }

@@ -14,17 +14,17 @@ export const SelectServerWithIDServerValid = "valid";
 export const SelectServerWithIDServerBroken = "broken";
 
 export const SelectServerWithIDServerList = {
-  [SelectServerWithIDServerValid]: "http://localhost:35123",
-  [SelectServerWithIDServerBroken]: "http://broken",
+    [SelectServerWithIDServerValid]: "http://localhost:35123",
+    [SelectServerWithIDServerBroken]: "http://broken",
 };
 
 export class SelectServerWithIDResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

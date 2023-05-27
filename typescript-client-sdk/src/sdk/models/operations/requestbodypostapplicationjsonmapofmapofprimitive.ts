@@ -5,22 +5,22 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
 export const RequestBodyPostApplicationJsonMapOfMapOfPrimitiveServerList = [
-  "http://localhost:35456",
+    "http://localhost:35456",
 ] as const;
 
 export class RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: Record<string, Record<string, string>>;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: Record<string, Record<string, string>>;
 }

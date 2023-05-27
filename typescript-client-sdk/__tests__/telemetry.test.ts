@@ -3,8 +3,8 @@
  */
 
 import {
-  TelemetrySpeakeasyUserAgentGetResponse,
-  TelemetryUserAgentGetResponse,
+    TelemetrySpeakeasyUserAgentGetResponse,
+    TelemetryUserAgentGetResponse,
 } from "../src/sdk/models/operations";
 import { expect, test } from "@jest/globals";
 
@@ -12,34 +12,33 @@ import { SDK } from "../src/sdk";
 import { recordTest } from "./helpers";
 
 test("Test Telemetry User Agent Get", async () => {
-  recordTest("telemetry-user-agent-get");
+    recordTest("telemetry-user-agent-get");
 
-  const sdk = new SDK({});
+    const sdk = new SDK({});
 
-  const res: TelemetryUserAgentGetResponse =
-    await sdk.telemetry.telemetryUserAgentGet();
+    const res: TelemetryUserAgentGetResponse = await sdk.telemetry.telemetryUserAgentGet();
 
-  expect(res.statusCode).toBeDefined();
-  expect(res.statusCode).toBe(200);
-  expect(res.res?.headers["X-Speakeasy-User-Agent"]).toBe(
-    "speakeasy-sdk/typescript 1.3.0 2.32.2"
-  );
+    expect(res.statusCode).toBeDefined();
+    expect(res.statusCode).toBe(200);
+    expect(res.res?.headers["X-Speakeasy-User-Agent"]).toBe(
+        "speakeasy-sdk/typescript 1.3.1 2.32.7"
+    );
 });
 
 test("Test Telemetry Speakeasy User Agent Get", async () => {
-  recordTest("telemetry-speakeasy-user-agent-get");
+    recordTest("telemetry-speakeasy-user-agent-get");
 
-  const sdk = new SDK({});
+    const sdk = new SDK({});
 
-  const userAgent = "test user agent";
+    const userAgent = "test user agent";
 
-  const res: TelemetrySpeakeasyUserAgentGetResponse =
-    await sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent);
+    const res: TelemetrySpeakeasyUserAgentGetResponse =
+        await sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent);
 
-  expect(res.statusCode).toBeDefined();
-  expect(res.statusCode).toBe(200);
-  expect(res.res?.headers["User-Agent"]).toBe(userAgent);
-  expect(res.res?.headers["X-Speakeasy-User-Agent"]).toBe(
-    "speakeasy-sdk/typescript 1.3.0 2.32.2"
-  );
+    expect(res.statusCode).toBeDefined();
+    expect(res.statusCode).toBe(200);
+    expect(res.res?.headers["User-Agent"]).toBe(userAgent);
+    expect(res.res?.headers["X-Speakeasy-User-Agent"]).toBe(
+        "speakeasy-sdk/typescript 1.3.1 2.32.7"
+    );
 });

@@ -4,17 +4,15 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-export const ApiKeyAuthGlobalNewServerList = [
-  "http://localhost:35456",
-] as const;
+export const ApiKeyAuthGlobalNewServerList = ["http://localhost:35456"] as const;
 
 export class ApiKeyAuthGlobalNewResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

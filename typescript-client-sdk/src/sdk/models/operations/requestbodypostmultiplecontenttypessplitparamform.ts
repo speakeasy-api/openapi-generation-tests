@@ -7,58 +7,54 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "form, name=bool3" })
-  bool3: boolean;
+    @SpeakeasyMetadata({ data: "form, name=bool3" })
+    bool3: boolean;
 
-  @SpeakeasyMetadata({ data: "form, name=num3" })
-  num3: number;
+    @SpeakeasyMetadata({ data: "form, name=num3" })
+    num3: number;
 
-  @SpeakeasyMetadata({ data: "form, name=str3" })
-  str3: string;
+    @SpeakeasyMetadata({ data: "form, name=str3" })
+    str3: string;
 }
 
 export class RequestBodyPostMultipleContentTypesSplitParamFormRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "request, media_type=application/x-www-form-urlencoded",
-  })
-  requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded;
+    @SpeakeasyMetadata({ data: "request, media_type=application/x-www-form-urlencoded" })
+    requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded;
 
-  @SpeakeasyMetadata({
-    data: "queryParam, style=form;explode=true;name=paramStr",
-  })
-  paramStr: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=paramStr" })
+    paramStr: string;
 }
 
 /**
  * OK
  */
 export class RequestBodyPostMultipleContentTypesSplitParamFormRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  args?: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    args?: Record<string, string>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "form" })
-  form?: Record<string, any>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "form" })
+    form?: Record<string, any>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "json" })
-  json?: Record<string, any>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    json?: Record<string, any>;
 }
 
 export class RequestBodyPostMultipleContentTypesSplitParamFormResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: RequestBodyPostMultipleContentTypesSplitParamFormRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: RequestBodyPostMultipleContentTypesSplitParamFormRes;
 }

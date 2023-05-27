@@ -4,24 +4,20 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-export const OpenIdConnectAuthNewServerList = [
-  "http://localhost:35456",
-] as const;
+export const OpenIdConnectAuthNewServerList = ["http://localhost:35456"] as const;
 
 export class OpenIdConnectAuthNewSecurity extends SpeakeasyBase {
-  @SpeakeasyMetadata({
-    data: "security, scheme=true;type=openIdConnect;name=Authorization",
-  })
-  openIdConnect: string;
+    @SpeakeasyMetadata({ data: "security, scheme=true;type=openIdConnect;name=Authorization" })
+    openIdConnect: string;
 }
 
 export class OpenIdConnectAuthNewResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 }

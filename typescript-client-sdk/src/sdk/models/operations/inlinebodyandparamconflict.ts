@@ -7,52 +7,52 @@ import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
 export class InlineBodyAndParamConflictRequestBody extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "str" })
-  str: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "str" })
+    str: string;
 }
 
 export class InlineBodyAndParamConflictRequest extends SpeakeasyBase {
-  @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-  requestBody: InlineBodyAndParamConflictRequestBody;
+    @SpeakeasyMetadata({ data: "request, media_type=application/json" })
+    requestBody: InlineBodyAndParamConflictRequestBody;
 
-  @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=str" })
-  str: string;
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=str" })
+    str: string;
 }
 
 export class InlineBodyAndParamConflictResJson extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "str" })
-  str: string;
+    @SpeakeasyMetadata()
+    @Expose({ name: "str" })
+    str: string;
 }
 
 /**
  * OK
  */
 export class InlineBodyAndParamConflictRes extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  @Expose({ name: "args" })
-  args: Record<string, string>;
+    @SpeakeasyMetadata()
+    @Expose({ name: "args" })
+    args: Record<string, string>;
 
-  @SpeakeasyMetadata()
-  @Expose({ name: "json" })
-  @Type(() => InlineBodyAndParamConflictResJson)
-  json: InlineBodyAndParamConflictResJson;
+    @SpeakeasyMetadata()
+    @Expose({ name: "json" })
+    @Type(() => InlineBodyAndParamConflictResJson)
+    json: InlineBodyAndParamConflictResJson;
 }
 
 export class InlineBodyAndParamConflictResponse extends SpeakeasyBase {
-  @SpeakeasyMetadata()
-  contentType: string;
+    @SpeakeasyMetadata()
+    contentType: string;
 
-  @SpeakeasyMetadata()
-  statusCode: number;
+    @SpeakeasyMetadata()
+    statusCode: number;
 
-  @SpeakeasyMetadata()
-  rawResponse?: AxiosResponse;
+    @SpeakeasyMetadata()
+    rawResponse?: AxiosResponse;
 
-  /**
-   * OK
-   */
-  @SpeakeasyMetadata()
-  res?: InlineBodyAndParamConflictRes;
+    /**
+     * OK
+     */
+    @SpeakeasyMetadata()
+    res?: InlineBodyAndParamConflictRes;
 }

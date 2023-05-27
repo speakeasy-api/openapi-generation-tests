@@ -11,539 +11,515 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
  * Endpoints for purely testing valid generation behavior.
  */
 export class Generation {
-  _defaultClient: AxiosInstance;
-  _securityClient: AxiosInstance;
-  _serverURL: string;
-  _language: string;
-  _sdkVersion: string;
-  _genVersion: string;
-  _globals: any;
+    _defaultClient: AxiosInstance;
+    _securityClient: AxiosInstance;
+    _serverURL: string;
+    _language: string;
+    _sdkVersion: string;
+    _genVersion: string;
+    _globals: any;
 
-  constructor(
-    defaultClient: AxiosInstance,
-    securityClient: AxiosInstance,
-    serverURL: string,
-    language: string,
-    sdkVersion: string,
-    genVersion: string,
-    globals: any
-  ) {
-    this._defaultClient = defaultClient;
-    this._securityClient = securityClient;
-    this._serverURL = serverURL;
-    this._language = language;
-    this._sdkVersion = sdkVersion;
-    this._genVersion = genVersion;
-    this._globals = globals;
-  }
-
-  async anchorTypesGet(
-    config?: AxiosRequestConfig
-  ): Promise<operations.AnchorTypesGetResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/anything/anchorTypes";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
+    constructor(
+        defaultClient: AxiosInstance,
+        securityClient: AxiosInstance,
+        serverURL: string,
+        language: string,
+        sdkVersion: string,
+        genVersion: string,
+        globals: any
+    ) {
+        this._defaultClient = defaultClient;
+        this._securityClient = securityClient;
+        this._serverURL = serverURL;
+        this._language = language;
+        this._sdkVersion = sdkVersion;
+        this._genVersion = genVersion;
+        this._globals = globals;
     }
 
-    const res: operations.AnchorTypesGetResponse =
-      new operations.AnchorTypesGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.typeFromAnchor = utils.objectToClass(
-            httpRes?.data,
-            operations.TypeFromAnchor
-          );
+    async anchorTypesGet(config?: AxiosRequestConfig): Promise<operations.AnchorTypesGetResponse> {
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/anchorTypes";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async circularReferenceGet(
-    config?: AxiosRequestConfig
-  ): Promise<operations.CircularReferenceGetResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/circularReference";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.CircularReferenceGetResponse =
-      new operations.CircularReferenceGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.validCircularReferenceObject = utils.objectToClass(
-            httpRes?.data,
-            shared.ValidCircularReferenceObject
-          );
+        const res: operations.AnchorTypesGetResponse = new operations.AnchorTypesGetResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.typeFromAnchor = utils.objectToClass(
+                        httpRes?.data,
+                        operations.TypeFromAnchor
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    async circularReferenceGet(
+        config?: AxiosRequestConfig
+    ): Promise<operations.CircularReferenceGetResponse> {
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/circularReference";
 
-  /**
-   * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
-   */
-  async deprecatedNoCommentsGet(
-    deprecatedParameter?: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeprecatedNoCommentsGetResponse> {
-    const req = new operations.DeprecatedNoCommentsGetRequest({
-      deprecatedParameter: deprecatedParameter,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/deprecatedNoComments";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "*/*";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeprecatedNoCommentsGetResponse =
-      new operations.DeprecatedNoCommentsGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
-    }
-
-    return res;
-  }
-
-  /**
-   * This is an endpoint setup to test deprecation with comments
-   *
-   * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
-   */
-  async deprecatedWithCommentsGet(
-    deprecatedParameter?: string,
-    newParameter?: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.DeprecatedWithCommentsGetResponse> {
-    const req = new operations.DeprecatedWithCommentsGetRequest({
-      deprecatedParameter: deprecatedParameter,
-      newParameter: newParameter,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/deprecatedWithComments";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "*/*";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.DeprecatedWithCommentsGetResponse =
-      new operations.DeprecatedWithCommentsGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        break;
-    }
-
-    return res;
-  }
-
-  async globalNameOverridden(
-    config?: AxiosRequestConfig
-  ): Promise<operations.GetGlobalNameOverrideResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/globalNameOverride";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.GetGlobalNameOverrideResponse =
-      new operations.GetGlobalNameOverrideResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.getGlobalNameOverride200ApplicationJSONObject =
-            utils.objectToClass(
-              httpRes?.data,
-              operations.GetGlobalNameOverride200ApplicationJSON
-            );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async ignoredGenerationGet(
-    config?: AxiosRequestConfig
-  ): Promise<operations.IgnoredGenerationGetResponse> {
-    const baseURL: string = this._serverURL;
-    const url: string =
-      baseURL.replace(/\/$/, "") + "/anything/ignoredGeneration";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.IgnoredGenerationGetResponse =
-      new operations.IgnoredGenerationGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.ignoredGenerationGet200ApplicationJSONObject =
-            utils.objectToClass(
-              httpRes?.data,
-              operations.IgnoredGenerationGet200ApplicationJSON
-            );
+        const res: operations.CircularReferenceGetResponse =
+            new operations.CircularReferenceGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.validCircularReferenceObject = utils.objectToClass(
+                        httpRes?.data,
+                        shared.ValidCircularReferenceObject
+                    );
+                }
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     */
+    async deprecatedNoCommentsGet(
+        deprecatedParameter?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeprecatedNoCommentsGetResponse> {
+        const req = new operations.DeprecatedNoCommentsGetRequest({
+            deprecatedParameter: deprecatedParameter,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedNoComments";
 
-  async ignoresPost(
-    requestBody?: operations.IgnoresPostApplicationJSON,
-    testParam?: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.IgnoresPostResponse> {
-    const req = new operations.IgnoresPostRequest({
-      requestBody: requestBody,
-      testParam: testParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/anything/ignores";
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "*/*";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.IgnoresPostResponse =
-      new operations.IgnoresPostResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.httpBinSimpleJsonObject = utils.objectToClass(
-            httpRes?.data,
-            shared.HttpBinSimpleJsonObject
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
-    }
 
-    return res;
-  }
-
-  async nameOverride(
-    testQueryParam: string,
-    config?: AxiosRequestConfig
-  ): Promise<operations.NameOverrideGetResponse> {
-    const req = new operations.NameOverrideGetRequest({
-      testQueryParam: testQueryParam,
-    });
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/anything/nameOverride";
-
-    const client: AxiosInstance = this._securityClient || this._defaultClient;
-
-    const headers = { ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "get",
-      headers: headers,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.NameOverrideGetResponse =
-      new operations.NameOverrideGetResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.overridenResponse = utils.objectToClass(
-            httpRes?.data,
-            operations.OverridenResponse
-          );
+        const res: operations.DeprecatedNoCommentsGetResponse =
+            new operations.DeprecatedNoCommentsGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
         }
-        break;
+
+        return res;
     }
 
-    return res;
-  }
+    /**
+     * This is an endpoint setup to test deprecation with comments
+     *
+     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
+     */
+    async deprecatedWithCommentsGet(
+        deprecatedParameter?: string,
+        newParameter?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeprecatedWithCommentsGetResponse> {
+        const req = new operations.DeprecatedWithCommentsGetRequest({
+            deprecatedParameter: deprecatedParameter,
+            newParameter: newParameter,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedWithComments";
 
-  /**
-   * An operation used for testing usage examples
-   *
-   * @remarks
-   * An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
-   *
-   * @see {@link https://docs.example.com} - Usage example docs
-   */
-  async usageExamplePost(
-    req: operations.UsageExamplePostRequest,
-    security: operations.UsageExamplePostSecurity,
-    config?: AxiosRequestConfig
-  ): Promise<operations.UsageExamplePostResponse> {
-    if (!(req instanceof utils.SpeakeasyBase)) {
-      req = new operations.UsageExamplePostRequest(req);
-    }
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
 
-    const baseURL: string = this._serverURL;
-    const url: string = baseURL.replace(/\/$/, "") + "/anything/usageExample";
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "*/*";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
 
-    let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
 
-    try {
-      [reqBodyHeaders, reqBody] = utils.serializeRequestBody(
-        req,
-        "requestBody",
-        "json"
-      );
-    } catch (e: unknown) {
-      if (e instanceof Error) {
-        throw new Error(`Error serializing request body, cause: ${e.message}`);
-      }
-    }
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
 
-    if (!(security instanceof utils.SpeakeasyBase)) {
-      security = new operations.UsageExamplePostSecurity(security);
-    }
-    const client: AxiosInstance = utils.createSecurityClient(
-      this._defaultClient,
-      security
-    );
-
-    const headers = { ...reqBodyHeaders, ...config?.headers };
-    const queryParams: string = utils.serializeQueryParams(req, this._globals);
-    headers["Accept"] = "application/json";
-    headers[
-      "x-speakeasy-user-agent"
-    ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
-
-    const httpRes: AxiosResponse = await client.request({
-      validateStatus: () => true,
-      url: url + queryParams,
-      method: "post",
-      headers: headers,
-      data: reqBody,
-      ...config,
-    });
-
-    const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-    if (httpRes?.status == null) {
-      throw new Error(`status code not found in response: ${httpRes}`);
-    }
-
-    const res: operations.UsageExamplePostResponse =
-      new operations.UsageExamplePostResponse({
-        statusCode: httpRes.status,
-        contentType: contentType,
-        rawResponse: httpRes,
-      });
-    switch (true) {
-      case httpRes?.status == 200:
-        if (utils.matchContentType(contentType, `application/json`)) {
-          res.usageExamplePost200ApplicationJSONObject = utils.objectToClass(
-            httpRes?.data,
-            operations.UsageExamplePost200ApplicationJSON
-          );
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
         }
-        break;
+
+        const res: operations.DeprecatedWithCommentsGetResponse =
+            new operations.DeprecatedWithCommentsGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
     }
 
-    return res;
-  }
+    async globalNameOverridden(
+        config?: AxiosRequestConfig
+    ): Promise<operations.GetGlobalNameOverrideResponse> {
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/globalNameOverride";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.GetGlobalNameOverrideResponse =
+            new operations.GetGlobalNameOverrideResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.getGlobalNameOverride200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.GetGlobalNameOverride200ApplicationJSON
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async ignoredGenerationGet(
+        config?: AxiosRequestConfig
+    ): Promise<operations.IgnoredGenerationGetResponse> {
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/ignoredGeneration";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.IgnoredGenerationGetResponse =
+            new operations.IgnoredGenerationGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.ignoredGenerationGet200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.IgnoredGenerationGet200ApplicationJSON
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async ignoresPost(
+        requestBody?: operations.IgnoresPostApplicationJSON,
+        testParam?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.IgnoresPostResponse> {
+        const req = new operations.IgnoresPostRequest({
+            requestBody: requestBody,
+            testParam: testParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/ignores";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.IgnoresPostResponse = new operations.IgnoresPostResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.httpBinSimpleJsonObject = utils.objectToClass(
+                        httpRes?.data,
+                        shared.HttpBinSimpleJsonObject
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async nameOverride(
+        testQueryParam: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.NameOverrideGetResponse> {
+        const req = new operations.NameOverrideGetRequest({
+            testQueryParam: testQueryParam,
+        });
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/nameOverride";
+
+        const client: AxiosInstance = this._securityClient || this._defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.NameOverrideGetResponse = new operations.NameOverrideGetResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.overridenResponse = utils.objectToClass(
+                        httpRes?.data,
+                        operations.OverridenResponse
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    /**
+     * An operation used for testing usage examples
+     *
+     * @remarks
+     * An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
+     *
+     * @see {@link https://docs.example.com} - Usage example docs
+     */
+    async usageExamplePost(
+        req: operations.UsageExamplePostRequest,
+        security: operations.UsageExamplePostSecurity,
+        config?: AxiosRequestConfig
+    ): Promise<operations.UsageExamplePostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.UsageExamplePostRequest(req);
+        }
+
+        const baseURL: string = this._serverURL;
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/usageExample";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        if (!(security instanceof utils.SpeakeasyBase)) {
+            security = new operations.UsageExamplePostSecurity(security);
+        }
+        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.UsageExamplePostResponse = new operations.UsageExamplePostResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.usageExamplePost200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.UsageExamplePost200ApplicationJSON
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
 }
