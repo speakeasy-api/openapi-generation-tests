@@ -11,6 +11,7 @@ servers.go
 telemetry.go
 unions.go
 sdk.go
+.gitignore
 go.mod
 go.sum
 pkg/types/bigint.go
@@ -29,6 +30,7 @@ tests/auth_test.go
 tests/flattening_test.go
 tests/globals_test.go
 tests/helpers_test.go
+tests/pagination_test.go
 tests/parameter_test.go
 tests/requestbodies_test.go
 tests/responsebodies_test.go

@@ -12,6 +12,7 @@ src/Telemetry.php
 src/Unions.php
 src/SDK.php
 src/SDKBuilder.php
+.gitignore
 composer.json
 phpstan.neon
 src/Utils/EnumHandler.php

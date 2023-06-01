@@ -12,6 +12,7 @@ src/sdk/telemetry.ts
 src/sdk/unions.ts
 src/sdk/sdk.ts
 .eslintrc.yml
+.gitignore
 jest.config.js
 package-lock.json
 package.json
@@ -34,6 +35,7 @@ __tests__/errors.test.ts
 __tests__/flattening.test.ts
 __tests__/globals.test.ts
 __tests__/helpers.ts
+__tests__/pagination.test.ts
 __tests__/parameter.test.ts
 __tests__/requestbodies.test.ts
 __tests__/responsebodies.test.ts
