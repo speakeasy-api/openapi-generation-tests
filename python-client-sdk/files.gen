@@ -11,6 +11,7 @@ src/sdk/servers.py
 src/sdk/telemetry.py
 src/sdk/unions.py
 src/sdk/sdk.py
+.gitignore
 pylintrc
 setup.py
 src/sdk/__init__.py
@@ -24,6 +25,7 @@ tests/testUpload.json
 tests/test_auth.py
 tests/test_flattening.py
 tests/test_globals.py
+tests/test_pagination.py
 tests/test_parameters.py
 tests/test_request_bodies.py
 tests/test_response_bodies.py

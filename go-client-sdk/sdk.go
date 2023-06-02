@@ -149,8 +149,8 @@ func WithGlobalQueryParam(globalQueryParam string) SDKOption {
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		_language:   "go",
-		_sdkVersion: "1.3.1",
-		_genVersion: "2.32.7",
+		_sdkVersion: "1.4.0",
+		_genVersion: "2.34.7",
 
 		_globals: map[string]map[string]map[string]interface{}{
 			"parameters": {},
