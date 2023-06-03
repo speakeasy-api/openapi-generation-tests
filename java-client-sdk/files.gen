@@ -1,3 +1,4 @@
+lib/src/main/java/org/openapis/openapi/SDKConfiguration.java
 lib/src/main/java/org/openapis/openapi/Auth.java
 lib/src/main/java/org/openapis/openapi/AuthNew.java
 lib/src/main/java/org/openapis/openapi/Errors.java

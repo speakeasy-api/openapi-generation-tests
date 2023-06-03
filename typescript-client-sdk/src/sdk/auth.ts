@@ -4,55 +4,42 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
+import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
  * Endpoints for testing authentication.
  */
 export class Auth {
-    _defaultClient: AxiosInstance;
-    _securityClient: AxiosInstance;
-    _serverURL: string;
-    _language: string;
-    _sdkVersion: string;
-    _genVersion: string;
-    _globals: any;
+    private sdkConfiguration: SDKConfiguration;
 
-    constructor(
-        defaultClient: AxiosInstance,
-        securityClient: AxiosInstance,
-        serverURL: string,
-        language: string,
-        sdkVersion: string,
-        genVersion: string,
-        globals: any
-    ) {
-        this._defaultClient = defaultClient;
-        this._securityClient = securityClient;
-        this._serverURL = serverURL;
-        this._language = language;
-        this._sdkVersion = sdkVersion;
-        this._genVersion = genVersion;
-        this._globals = globals;
+    constructor(sdkConfig: SDKConfiguration) {
+        this.sdkConfiguration = sdkConfig;
     }
 
     async apiKeyAuth(
         security: operations.ApiKeyAuthSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.ApiKeyAuthResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/bearer#operation";
 
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.ApiKeyAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -89,16 +76,20 @@ export class Auth {
     async apiKeyAuthGlobal(
         config?: AxiosRequestConfig
     ): Promise<operations.ApiKeyAuthGlobalResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/bearer";
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -145,24 +136,30 @@ export class Auth {
             passwd: passwd,
             user: user,
         });
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = utils.generateURL(
             baseURL,
             "/basic-auth/{user}/{passwd}",
             req,
-            this._globals
+            this.sdkConfiguration.globals
         );
 
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.BasicAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -200,19 +197,25 @@ export class Auth {
         security: operations.BearerAuthSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.BearerAuthResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/bearer#bearer";
 
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.BearerAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -250,19 +253,25 @@ export class Auth {
         security: operations.Oauth2AuthSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.Oauth2AuthResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/bearer#oauth2";
 
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.Oauth2AuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -300,19 +309,25 @@ export class Auth {
         security: operations.OpenIdConnectAuthSecurity,
         config?: AxiosRequestConfig
     ): Promise<operations.OpenIdConnectAuthResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/bearer#openIdConnect";
 
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.OpenIdConnectAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

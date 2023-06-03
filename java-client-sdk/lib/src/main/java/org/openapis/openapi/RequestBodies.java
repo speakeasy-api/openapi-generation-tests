@@ -89,22 +89,10 @@ public class RequestBodies {
         "http://localhost:35456",
     };
 	
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private String _serverUrl;
-	private String _language;
-	private String _sdkVersion;
-	private String _genVersion;
-	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
+	private SDKConfiguration sdkConfiguration;
 
-	public RequestBodies(HTTPClient defaultClient, HTTPClient securityClient, String serverUrl, String language, String sdkVersion, String genVersion, java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> globals) {
-		this._defaultClient = defaultClient;
-		this._securityClient = securityClient;
-		this._serverUrl = serverUrl;
-		this._language = language;
-		this._sdkVersion = sdkVersion;
-		this._genVersion = genVersion;
-		this._globals = globals;
+	public RequestBodies(SDKConfiguration sdkConfiguration) {
+		this.sdkConfiguration = sdkConfiguration;
 	}
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse requestBodyPostApplicationJsonArray(org.openapis.openapi.models.shared.SimpleObject[] request) throws Exception {
@@ -112,7 +100,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse requestBodyPostApplicationJsonArray(org.openapis.openapi.models.shared.SimpleObject[] request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -126,9 +114,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -151,7 +139,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse requestBodyPostApplicationJsonArrayObj(org.openapis.openapi.models.shared.SimpleObject[] request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/array/objResponse");
         
         HTTPRequest req = new HTTPRequest();
@@ -164,9 +152,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -193,7 +181,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayResponse requestBodyPostApplicationJsonArrayOfArray(org.openapis.openapi.models.shared.SimpleObject[][] request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -207,9 +195,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -236,7 +224,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse requestBodyPostApplicationJsonArrayOfArrayOfPrimitive(String[][] request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_OF_PRIMITIVE_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_OF_PRIMITIVE_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -250,9 +238,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -279,7 +267,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapResponse requestBodyPostApplicationJsonArrayOfMap(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>[] request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -293,9 +281,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -322,7 +310,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse requestBodyPostApplicationJsonArrayOfPrimitive(String[] request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -336,9 +324,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -361,7 +349,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepResponse requestBodyPostApplicationJsonDeep(org.openapis.openapi.models.shared.DeepObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/deep");
         
         HTTPRequest req = new HTTPRequest();
@@ -371,9 +359,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -400,7 +388,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapResponse requestBodyPostApplicationJsonMap(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -414,9 +402,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -439,7 +427,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjResponse requestBodyPostApplicationJsonMapObj(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/map/objResponse");
         
         HTTPRequest req = new HTTPRequest();
@@ -452,9 +440,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -481,7 +469,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayResponse requestBodyPostApplicationJsonMapOfArray(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject[]> request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -495,9 +483,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -524,7 +512,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapResponse requestBodyPostApplicationJsonMapOfMap(java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>> request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -538,9 +526,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -567,7 +555,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse requestBodyPostApplicationJsonMapOfMapOfPrimitive(java.util.Map<String, java.util.Map<String, String>> request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -581,9 +569,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -610,7 +598,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfPrimitiveResponse requestBodyPostApplicationJsonMapOfPrimitive(java.util.Map<String, String> request, String serverURL) throws Exception {
-        String baseUrl = REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -624,9 +612,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -649,7 +637,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMultipleJsonFilteredResponse requestBodyPostApplicationJsonMultipleJsonFiltered(org.openapis.openapi.models.shared.SimpleObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/multiple/json/filtered");
         
         HTTPRequest req = new HTTPRequest();
@@ -662,9 +650,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -687,7 +675,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleResponse requestBodyPostApplicationJsonSimple(org.openapis.openapi.models.shared.SimpleObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/simple");
         
         HTTPRequest req = new HTTPRequest();
@@ -700,9 +688,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -725,7 +713,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostFormDeepResponse requestBodyPostFormDeep(org.openapis.openapi.models.shared.DeepObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/form/deep");
         
         HTTPRequest req = new HTTPRequest();
@@ -738,9 +726,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -763,7 +751,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostFormMapPrimitiveResponse requestBodyPostFormMapPrimitive(java.util.Map<String, String> request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/form/map/primitive");
         
         HTTPRequest req = new HTTPRequest();
@@ -776,9 +764,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -801,7 +789,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostFormSimpleResponse requestBodyPostFormSimple(org.openapis.openapi.models.shared.SimpleObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/form/simple");
         
         HTTPRequest req = new HTTPRequest();
@@ -814,9 +802,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -839,7 +827,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse requestBodyPostMultipleContentTypesComponentFiltered(org.openapis.openapi.models.shared.SimpleObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/component/filtered");
         
         HTTPRequest req = new HTTPRequest();
@@ -852,9 +840,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -877,7 +865,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse requestBodyPostMultipleContentTypesInlineFiltered(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/inline/filtered");
         
         HTTPRequest req = new HTTPRequest();
@@ -890,9 +878,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -917,7 +905,7 @@ public class RequestBodies {
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse requestBodyPostMultipleContentTypesSplitParamForm(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded requestBody, String paramStr) throws Exception {
         org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest request = new org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest(requestBody, paramStr);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split/param");
         
         HTTPRequest req = new HTTPRequest();
@@ -930,15 +918,15 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -963,7 +951,7 @@ public class RequestBodies {
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse requestBodyPostMultipleContentTypesSplitParamJson(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON requestBody, String paramStr) throws Exception {
         org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest request = new org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest(requestBody, paramStr);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split/param");
         
         HTTPRequest req = new HTTPRequest();
@@ -976,15 +964,15 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1009,7 +997,7 @@ public class RequestBodies {
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse requestBodyPostMultipleContentTypesSplitParamMultipart(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData requestBody, String paramStr) throws Exception {
         org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest request = new org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest(requestBody, paramStr);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split/param");
         
         HTTPRequest req = new HTTPRequest();
@@ -1022,15 +1010,15 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1053,7 +1041,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormResponse requestBodyPostMultipleContentTypesSplitForm(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split");
         
         HTTPRequest req = new HTTPRequest();
@@ -1066,9 +1054,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1091,7 +1079,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonResponse requestBodyPostMultipleContentTypesSplitJson(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split");
         
         HTTPRequest req = new HTTPRequest();
@@ -1104,9 +1092,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1129,7 +1117,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse requestBodyPostMultipleContentTypesSplitMultipart(org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/multiple/contentTypes/split");
         
         HTTPRequest req = new HTTPRequest();
@@ -1142,9 +1130,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1167,7 +1155,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPutBytesResponse requestBodyPutBytes(byte[] request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/bytes");
         
         HTTPRequest req = new HTTPRequest();
@@ -1180,9 +1168,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1205,7 +1193,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPutMultipartDeepResponse requestBodyPutMultipartDeep(org.openapis.openapi.models.shared.DeepObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/multipart/deep");
         
         HTTPRequest req = new HTTPRequest();
@@ -1218,9 +1206,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1243,7 +1231,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPutMultipartFileResponse requestBodyPutMultipartFile(org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBody request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/multipart/file");
         
         HTTPRequest req = new HTTPRequest();
@@ -1256,9 +1244,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1281,7 +1269,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPutMultipartSimpleResponse requestBodyPutMultipartSimple(org.openapis.openapi.models.shared.SimpleObject request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/multipart/simple");
         
         HTTPRequest req = new HTTPRequest();
@@ -1294,9 +1282,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -1319,7 +1307,7 @@ public class RequestBodies {
     }
 
     public org.openapis.openapi.models.operations.RequestBodyPutStringResponse requestBodyPutString(String request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/string");
         
         HTTPRequest req = new HTTPRequest();
@@ -1332,9 +1320,9 @@ public class RequestBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 

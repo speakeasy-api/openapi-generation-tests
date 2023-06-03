@@ -15,34 +15,14 @@ class Errors
 		'http://somebrokenapi.broken',
 	];
 
-	// SDK private variables namespaced with _ to avoid conflicts with API models
-	private \GuzzleHttp\ClientInterface $_defaultClient;
-	private \GuzzleHttp\ClientInterface $_securityClient;
-	private string $_serverUrl;
-	private string $_language;
-	private string $_sdkVersion;
-	private string $_genVersion;
-	/** @var array<string, array<string, array<string, string>>> */
-	private array $_globals;	
+	private SDKConfiguration $sdkConfiguration;
 
 	/**
-	 * @param \GuzzleHttp\ClientInterface $defaultClient
-	 * @param \GuzzleHttp\ClientInterface $securityClient
-	 * @param string $serverUrl
-	 * @param string $language
-	 * @param string $sdkVersion
-	 * @param string $genVersion
-	 * @param array<string, array<string, array<string, string>>> $globals
+	 * @param SDKConfiguration $sdkConfig
 	 */
-	public function __construct(\GuzzleHttp\ClientInterface $defaultClient, \GuzzleHttp\ClientInterface $securityClient, string $serverUrl, string $language, string $sdkVersion, string $genVersion, array $globals)
+	public function __construct(SDKConfiguration $sdkConfig)
 	{
-		$this->_defaultClient = $defaultClient;
-		$this->_securityClient = $securityClient;
-		$this->_serverUrl = $serverUrl;
-		$this->_language = $language;
-		$this->_sdkVersion = $sdkVersion;
-		$this->_genVersion = $genVersion;
-		$this->_globals = $globals;
+		$this->sdkConfiguration = $sdkConfig;
 	}
 	
     /**
@@ -55,7 +35,8 @@ class Errors
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse
     {
-        $baseUrl = Errors::CONNECTION_ERROR_GET_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(Errors::CONNECTION_ERROR_GET_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -64,9 +45,9 @@ class Errors
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -94,14 +75,14 @@ class Errors
         $request = new \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest();
         $request->statusCode = $statusCode;
         
-        $baseUrl = $this->_serverUrl;
-        $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest::class, $request, $this->_globals);
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest::class, $request, $this->sdkConfiguration->globals);
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -132,16 +113,16 @@ class Errors
         $request->statusCode = $statusCode;
         $request->simpleObject = $simpleObject;
         
-        $baseUrl = $this->_serverUrl;
-        $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest::class, $request, $this->_globals);
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest::class, $request, $this->sdkConfiguration->globals);
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "simpleObject", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('POST', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 

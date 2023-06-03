@@ -3,6 +3,7 @@
 declare(strict_types=1);
 require_once 'vendor/autoload.php';
 
+use OpenAPI\OpenAPI\ServerSomething;
 use OpenAPI\OpenAPI\Tests\Helpers\Helpers;
 use PHPUnit\Framework\TestCase;
 
@@ -25,7 +26,7 @@ final class ServersTest extends TestCase
     {
         Helpers::recordTest('servers-select-global-server-broken');
 
-        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerUrl(\OpenAPI\OpenAPI\SDK::SERVERS[1])->build();
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerIndex(1)->build();
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $this->expectException(\GuzzleHttp\Exception\ConnectException::class);
@@ -75,10 +76,33 @@ final class ServersTest extends TestCase
     {
         Helpers::recordTest('servers-server-with-templates-global');
 
-        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerUrl(\OpenAPI\OpenAPI\SDK::SERVERS[2], [
-            'hostname' => 'localhost',
-            'port' => '35123',
-        ])->build();
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerIndex(2)->setHostname('localhost')->setPort('35123')->build();
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->servers->serverWithTemplatesGlobal();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+    }
+
+    public function testServerWithTemplatesGlobalDefaults(): void
+    {
+        Helpers::recordTest('servers-server-with-templates-global-defaults');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerIndex(2)->build();
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->servers->serverWithTemplatesGlobal();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+    }
+
+    public function testServerWithTemplatesGlobalEnum(): void
+    {
+        Helpers::recordTest('servers-server-with-templates-global-enum');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerIndex(3)->setSomething(ServerSomething::SOMETHING_ELSE_AGAIN)->build();
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $response = $sdk->servers->serverWithTemplatesGlobal();
@@ -98,6 +122,32 @@ final class ServersTest extends TestCase
             'hostname' => 'localhost',
             'port' => '35123',
         ]));
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+    }
+
+    public function testServerWithTemplatesDefaults(): void
+    {
+        Helpers::recordTest('servers-server-with-templates-defaults');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->servers->serverWithTemplates();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+    }
+
+    public function testServerByIDWithTemplates(): void
+    {
+        Helpers::recordTest('servers-server-by-id-with-templates');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->servers->serversByIDWithTemplates();
 
         $this->assertNotNull($response);
         $this->assertEquals(200, $response->statusCode);

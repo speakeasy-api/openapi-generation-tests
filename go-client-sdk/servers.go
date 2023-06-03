@@ -9,34 +9,23 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/utils"
 	"strings"
 )
 
 // servers - Endpoints for testing servers.
 type servers struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
-	globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
-func newServers(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, globals map[string]map[string]map[string]interface{}) *servers {
+func newServers(sdkConfig sdkConfiguration) *servers {
 	return &servers{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
-		globals:        globals,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
 func (s *servers) SelectGlobalServer(ctx context.Context) (*operations.SelectGlobalServerResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/selectGlobalServer"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -44,9 +33,9 @@ func (s *servers) SelectGlobalServer(ctx context.Context) (*operations.SelectGlo
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -90,7 +79,7 @@ func (s *servers) SelectServerWithID(ctx context.Context, opts ...operations.Opt
 			return nil, fmt.Errorf("error applying option: %w", err)
 		}
 	}
-	baseURL := operations.SelectServerWithIDServerList[operations.SelectServerWithIDServerValid]
+	baseURL := utils.ReplaceParameters(operations.SelectServerWithIDServerList[operations.SelectServerWithIDServerValid], map[string]string{})
 	if o.ServerURL != nil {
 		baseURL = *o.ServerURL
 	}
@@ -102,9 +91,9 @@ func (s *servers) SelectServerWithID(ctx context.Context, opts ...operations.Opt
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -146,7 +135,10 @@ func (s *servers) ServerWithTemplates(ctx context.Context, opts ...operations.Op
 			return nil, fmt.Errorf("error applying option: %w", err)
 		}
 	}
-	baseURL := operations.ServerWithTemplatesServerList[0]
+	baseURL := utils.ReplaceParameters(operations.ServerWithTemplatesServerList[0], map[string]string{
+		"hostname": "localhost",
+		"port":     "35123",
+	})
 	if o.ServerURL != nil {
 		baseURL = *o.ServerURL
 	}
@@ -158,9 +150,9 @@ func (s *servers) ServerWithTemplates(ctx context.Context, opts ...operations.Op
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -192,7 +184,7 @@ func (s *servers) ServerWithTemplates(ctx context.Context, opts ...operations.Op
 }
 
 func (s *servers) ServerWithTemplatesGlobal(ctx context.Context) (*operations.ServerWithTemplatesGlobalResponse, error) {
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/serverWithTemplatesGlobal"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -200,9 +192,9 @@ func (s *servers) ServerWithTemplatesGlobal(ctx context.Context) (*operations.Se
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

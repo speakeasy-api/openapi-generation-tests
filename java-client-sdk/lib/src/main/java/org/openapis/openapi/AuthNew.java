@@ -84,22 +84,10 @@ public class AuthNew {
         "http://localhost:35456",
     };
 	
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private String _serverUrl;
-	private String _language;
-	private String _sdkVersion;
-	private String _genVersion;
-	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
+	private SDKConfiguration sdkConfiguration;
 
-	public AuthNew(HTTPClient defaultClient, HTTPClient securityClient, String serverUrl, String language, String sdkVersion, String genVersion, java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> globals) {
-		this._defaultClient = defaultClient;
-		this._securityClient = securityClient;
-		this._serverUrl = serverUrl;
-		this._language = language;
-		this._sdkVersion = sdkVersion;
-		this._genVersion = genVersion;
-		this._globals = globals;
+	public AuthNew(SDKConfiguration sdkConfiguration) {
+		this.sdkConfiguration = sdkConfiguration;
 	}
 
     public org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse apiKeyAuthGlobalNew(org.openapis.openapi.models.shared.AuthServiceRequestBody request) throws Exception {
@@ -107,7 +95,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse apiKeyAuthGlobalNew(org.openapis.openapi.models.shared.AuthServiceRequestBody request, String serverURL) throws Exception {
-        String baseUrl = API_KEY_AUTH_GLOBAL_NEW_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(API_KEY_AUTH_GLOBAL_NEW_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -121,9 +109,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -144,7 +132,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.BasicAuthNewResponse basicAuthNew(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.BasicAuthNewSecurity security, String serverURL) throws Exception {
-        String baseUrl = BASIC_AUTH_NEW_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(BASIC_AUTH_NEW_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -158,9 +146,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -181,7 +169,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.MultipleMixedOptionsAuthResponse multipleMixedOptionsAuth(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.MultipleMixedOptionsAuthSecurity security, String serverURL) throws Exception {
-        String baseUrl = MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -195,9 +183,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -218,7 +206,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.MultipleMixedSchemeAuthResponse multipleMixedSchemeAuth(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.MultipleMixedSchemeAuthSecurity security, String serverURL) throws Exception {
-        String baseUrl = MULTIPLE_MIXED_SCHEME_AUTH_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(MULTIPLE_MIXED_SCHEME_AUTH_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -232,9 +220,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -255,7 +243,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthResponse multipleOptionsWithMixedSchemesAuth(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.MultipleOptionsWithMixedSchemesAuthSecurity security, String serverURL) throws Exception {
-        String baseUrl = MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -269,9 +257,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -292,7 +280,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthResponse multipleOptionsWithSimpleSchemesAuth(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.MultipleOptionsWithSimpleSchemesAuthSecurity security, String serverURL) throws Exception {
-        String baseUrl = MULTIPLE_OPTIONS_WITH_SIMPLE_SCHEMES_AUTH_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(MULTIPLE_OPTIONS_WITH_SIMPLE_SCHEMES_AUTH_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -306,9 +294,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -329,7 +317,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthResponse multipleSimpleOptionsAuth(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.MultipleSimpleOptionsAuthSecurity security, String serverURL) throws Exception {
-        String baseUrl = MULTIPLE_SIMPLE_OPTIONS_AUTH_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(MULTIPLE_SIMPLE_OPTIONS_AUTH_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -343,9 +331,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -366,7 +354,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthResponse multipleSimpleSchemeAuth(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.MultipleSimpleSchemeAuthSecurity security, String serverURL) throws Exception {
-        String baseUrl = MULTIPLE_SIMPLE_SCHEME_AUTH_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(MULTIPLE_SIMPLE_SCHEME_AUTH_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -380,9 +368,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -403,7 +391,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.Oauth2AuthNewResponse oauth2AuthNew(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.Oauth2AuthNewSecurity security, String serverURL) throws Exception {
-        String baseUrl = OAUTH2_AUTH_NEW_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(OAUTH2_AUTH_NEW_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -417,9 +405,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -440,7 +428,7 @@ public class AuthNew {
     }
 
     public org.openapis.openapi.models.operations.OpenIdConnectAuthNewResponse openIdConnectAuthNew(org.openapis.openapi.models.shared.AuthServiceRequestBody request, org.openapis.openapi.models.operations.OpenIdConnectAuthNewSecurity security, String serverURL) throws Exception {
-        String baseUrl = OPEN_ID_CONNECT_AUTH_NEW_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(OPEN_ID_CONNECT_AUTH_NEW_SERVERS[0], new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -454,9 +442,9 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, security);
+        HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
         HttpResponse<byte[]> httpRes = client.send(req);
 

@@ -48,6 +48,27 @@ func Float32(f float32) *float32 { return &f }
 // Float64 provides a helper function to return a pointer to a float64
 func Float64(f float64) *float64 { return &f }
 
+type sdkConfiguration struct {
+	DefaultClient  HTTPClient
+	SecurityClient HTTPClient
+	Security       *shared.Security
+	ServerURL      string
+	ServerIndex    int
+	ServerDefaults []map[string]string
+	Language       string
+	SDKVersion     string
+	GenVersion     string
+	Globals        map[string]map[string]map[string]interface{}
+}
+
+func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
+	if c.ServerURL != "" {
+		return c.ServerURL, nil
+	}
+
+	return ServerList[c.ServerIndex], c.ServerDefaults[c.ServerIndex]
+}
+
 // SDK - Test Summary
 // Some test description.
 // About our test document.
@@ -78,15 +99,7 @@ type SDK struct {
 	// Unions - Endpoints for testing union types.
 	Unions *unions
 
-	// Non-idiomatic field names below are to namespace fields from the fields names above to avoid name conflicts
-	_defaultClient  HTTPClient
-	_securityClient HTTPClient
-	_security       *shared.Security
-	_serverURL      string
-	_language       string
-	_sdkVersion     string
-	_genVersion     string
-	_globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
 type SDKOption func(*SDK)
@@ -94,7 +107,7 @@ type SDKOption func(*SDK)
 // WithServerURL allows the overriding of the default server URL
 func WithServerURL(serverURL string) SDKOption {
 	return func(sdk *SDK) {
-		sdk._serverURL = serverURL
+		sdk.sdkConfiguration.ServerURL = serverURL
 	}
 }
 
@@ -105,55 +118,101 @@ func WithTemplatedServerURL(serverURL string, params map[string]string) SDKOptio
 			serverURL = utils.ReplaceParameters(serverURL, params)
 		}
 
-		sdk._serverURL = serverURL
+		sdk.sdkConfiguration.ServerURL = serverURL
+	}
+}
+
+// WithServerIndex allows the overriding of the default server by index
+func WithServerIndex(serverIndex int) SDKOption {
+	return func(sdk *SDK) {
+		if serverIndex < 0 || serverIndex >= len(ServerList) {
+			panic(fmt.Errorf("server index %d out of range", serverIndex))
+		}
+
+		sdk.sdkConfiguration.ServerIndex = serverIndex
+	}
+}
+
+// WithHostname allows setting the $name variable for url substitution
+func WithHostname(hostname string) SDKOption {
+	return func(sdk *SDK) {
+		for idx := range sdk.sdkConfiguration.ServerDefaults {
+			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["hostname"]; !ok {
+				continue
+			}
+
+			sdk.sdkConfiguration.ServerDefaults[idx]["hostname"] = fmt.Sprintf("%v", hostname)
+		}
+	}
+}
+
+// WithPort allows setting the $name variable for url substitution
+func WithPort(port string) SDKOption {
+	return func(sdk *SDK) {
+		for idx := range sdk.sdkConfiguration.ServerDefaults {
+			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["port"]; !ok {
+				continue
+			}
+
+			sdk.sdkConfiguration.ServerDefaults[idx]["port"] = fmt.Sprintf("%v", port)
+		}
 	}
 }
 
 // WithClient allows the overriding of the default HTTP client used by the SDK
 func WithClient(client HTTPClient) SDKOption {
 	return func(sdk *SDK) {
-		sdk._defaultClient = client
+		sdk.sdkConfiguration.DefaultClient = client
 	}
 }
 
 // WithSecurity configures the SDK to use the provided security details
 func WithSecurity(security shared.Security) SDKOption {
 	return func(sdk *SDK) {
-		sdk._security = &security
+		sdk.sdkConfiguration.Security = &security
 	}
 }
 
 // WithGlobalPathParam allows setting the GlobalPathParam parameter for all supported operations
 func WithGlobalPathParam(globalPathParam int64) SDKOption {
 	return func(sdk *SDK) {
-		if _, ok := sdk._globals["parameters"]["pathParam"]; !ok {
-			sdk._globals["parameters"]["pathParam"] = map[string]interface{}{}
+		if _, ok := sdk.sdkConfiguration.Globals["parameters"]["pathParam"]; !ok {
+			sdk.sdkConfiguration.Globals["parameters"]["pathParam"] = map[string]interface{}{}
 		}
 
-		sdk._globals["parameters"]["pathParam"]["GlobalPathParam"] = globalPathParam
+		sdk.sdkConfiguration.Globals["parameters"]["pathParam"]["GlobalPathParam"] = globalPathParam
 	}
 }
 
 // WithGlobalQueryParam allows setting the GlobalQueryParam parameter for all supported operations
 func WithGlobalQueryParam(globalQueryParam string) SDKOption {
 	return func(sdk *SDK) {
-		if _, ok := sdk._globals["parameters"]["queryParam"]; !ok {
-			sdk._globals["parameters"]["queryParam"] = map[string]interface{}{}
+		if _, ok := sdk.sdkConfiguration.Globals["parameters"]["queryParam"]; !ok {
+			sdk.sdkConfiguration.Globals["parameters"]["queryParam"] = map[string]interface{}{}
 		}
 
-		sdk._globals["parameters"]["queryParam"]["GlobalQueryParam"] = globalQueryParam
+		sdk.sdkConfiguration.Globals["parameters"]["queryParam"]["GlobalQueryParam"] = globalQueryParam
 	}
 }
 
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
-		_language:   "go",
-		_sdkVersion: "1.4.0",
-		_genVersion: "2.34.7",
-
-		_globals: map[string]map[string]map[string]interface{}{
-			"parameters": {},
+		sdkConfiguration: sdkConfiguration{
+			Language:   "go",
+			SDKVersion: "1.5.0",
+			GenVersion: "2.35.3",
+			Globals: map[string]map[string]map[string]interface{}{
+				"parameters": {},
+			},
+			ServerDefaults: []map[string]string{
+				{},
+				{},
+				{
+					"hostname": "localhost",
+					"port":     "35123",
+				},
+			},
 		},
 	}
 	for _, opt := range opts {
@@ -161,146 +220,46 @@ func New(opts ...SDKOption) *SDK {
 	}
 
 	// Use WithClient to override the default client if you would like to customize the timeout
-	if sdk._defaultClient == nil {
-		sdk._defaultClient = &http.Client{Timeout: 60 * time.Second}
+	if sdk.sdkConfiguration.DefaultClient == nil {
+		sdk.sdkConfiguration.DefaultClient = &http.Client{Timeout: 60 * time.Second}
 	}
-	if sdk._securityClient == nil {
-		if sdk._security != nil {
-			sdk._securityClient = utils.ConfigureSecurityClient(sdk._defaultClient, sdk._security)
+	if sdk.sdkConfiguration.SecurityClient == nil {
+		if sdk.sdkConfiguration.Security != nil {
+			sdk.sdkConfiguration.SecurityClient = utils.ConfigureSecurityClient(sdk.sdkConfiguration.DefaultClient, sdk.sdkConfiguration.Security)
 		} else {
-			sdk._securityClient = sdk._defaultClient
+			sdk.sdkConfiguration.SecurityClient = sdk.sdkConfiguration.DefaultClient
 		}
 	}
 
-	if sdk._serverURL == "" {
-		sdk._serverURL = ServerList[0]
-	}
+	sdk.Auth = newAuth(sdk.sdkConfiguration)
 
-	sdk.Auth = newAuth(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.AuthNew = newAuthNew(sdk.sdkConfiguration)
 
-	sdk.AuthNew = newAuthNew(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Errors = newErrors(sdk.sdkConfiguration)
 
-	sdk.Errors = newErrors(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Flattening = newFlattening(sdk.sdkConfiguration)
 
-	sdk.Flattening = newFlattening(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Generation = newGeneration(sdk.sdkConfiguration)
 
-	sdk.Generation = newGeneration(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Globals = newGlobals(sdk.sdkConfiguration)
 
-	sdk.Globals = newGlobals(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Parameters = newParameters(sdk.sdkConfiguration)
 
-	sdk.Parameters = newParameters(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.RequestBodies = newRequestBodies(sdk.sdkConfiguration)
 
-	sdk.RequestBodies = newRequestBodies(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.ResponseBodies = newResponseBodies(sdk.sdkConfiguration)
 
-	sdk.ResponseBodies = newResponseBodies(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Servers = newServers(sdk.sdkConfiguration)
 
-	sdk.Servers = newServers(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Telemetry = newTelemetry(sdk.sdkConfiguration)
 
-	sdk.Telemetry = newTelemetry(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
-
-	sdk.Unions = newUnions(
-		sdk._defaultClient,
-		sdk._securityClient,
-		sdk._serverURL,
-		sdk._language,
-		sdk._sdkVersion,
-		sdk._genVersion,
-		sdk._globals,
-	)
+	sdk.Unions = newUnions(sdk.sdkConfiguration)
 
 	return sdk
 }
 
 func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) (*operations.PutAnythingIgnoredGenerationResponse, error) {
-	baseURL := s._serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/ignoredGeneration"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "string")
@@ -313,11 +272,11 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := s._securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -358,7 +317,7 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 }
 
 func (s *SDK) ResponseBodyJSONGet(ctx context.Context) (*operations.ResponseBodyJSONGetResponse, error) {
-	baseURL := s._serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/json"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -366,9 +325,9 @@ func (s *SDK) ResponseBodyJSONGet(ctx context.Context) (*operations.ResponseBody
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s._language, s._sdkVersion, s._genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
-	client := s._securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

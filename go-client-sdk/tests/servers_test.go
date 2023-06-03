@@ -29,7 +29,7 @@ func TestSelectGlobalServerValid(t *testing.T) {
 func TestSelectGlobalServerBroken(t *testing.T) {
 	recordTest("servers-select-global-server-broken")
 
-	s := sdk.New(sdk.WithServerURL(sdk.ServerList[1]))
+	s := sdk.New(sdk.WithServerIndex(1))
 
 	res, err := s.Servers.SelectGlobalServer(context.Background())
 	assert.Error(t, err)
@@ -71,10 +71,29 @@ func TestSelectServerWithIDBroken(t *testing.T) {
 func TestServerWithTemplatesGlobal(t *testing.T) {
 	recordTest("servers-server-with-templates-global")
 
-	s := sdk.New(sdk.WithTemplatedServerURL(sdk.ServerList[2], map[string]string{
-		"hostname": "localhost",
-		"port":     "35123",
-	}))
+	s := sdk.New(sdk.WithServerIndex(2), sdk.WithHostname("localhost"), sdk.WithPort("35123"))
+
+	res, err := s.Servers.ServerWithTemplatesGlobal(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestServerWithTemplatesGlobalDefaults(t *testing.T) {
+	recordTest("servers-server-with-templates-global-defaults")
+
+	s := sdk.New(sdk.WithServerIndex(2))
+
+	res, err := s.Servers.ServerWithTemplatesGlobal(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestServerWithTemplatesGlobalEnum(t *testing.T) {
+	recordTest("servers-server-with-templates-global-enum")
+
+	s := sdk.New(sdk.WithServerIndex(3), sdk.WithSomething(sdk.ServerSomethingSomethingElseAgain))
 
 	res, err := s.Servers.ServerWithTemplatesGlobal(context.Background())
 	require.NoError(t, err)
@@ -91,6 +110,28 @@ func TestServerWithTemplates(t *testing.T) {
 		"hostname": "localhost",
 		"port":     "35123",
 	}))
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestServerWithTemplatesDefaults(t *testing.T) {
+	recordTest("servers-server-with-templates-defaults")
+
+	s := sdk.New()
+
+	res, err := s.Servers.ServerWithTemplates(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestServerByIDWithTemplates(t *testing.T) {
+	recordTest("servers-server-by-id-with-templates")
+
+	s := sdk.New()
+
+	res, err := s.Servers.ServersByIDWithTemplates(context.Background())
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)

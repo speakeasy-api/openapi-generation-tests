@@ -12,10 +12,12 @@ import java.util.HashMap;
 
 import org.openapis.openapi.utils.Utils;
 import org.junit.jupiter.api.Test;
+import org.openapis.openapi.SDK.Builder.ServerSomething;
 import org.openapis.openapi.models.operations.SelectGlobalServerResponse;
 import org.openapis.openapi.models.operations.SelectServerWithIDResponse;
 import org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse;
 import org.openapis.openapi.models.operations.ServerWithTemplatesResponse;
+import org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse;
 
 public class ServerTests {
     @Test
@@ -35,7 +37,7 @@ public class ServerTests {
     void testSelectGlobalServerBroken() throws Exception {
         Helpers.recordTest("servers-select-global-server-broken");
 
-        SDK s = SDK.builder().setServerURL(SDK.SERVERS[1]).build();
+        SDK s = SDK.builder().setServerIndex(1).build();
         assertNotNull(s);
 
         assertThrows(Exception.class, () -> s.servers.selectGlobalServer());
@@ -83,12 +85,33 @@ public class ServerTests {
     void testServerWithTemplatesGlobal() throws Exception {
         Helpers.recordTest("servers-server-with-templates-global");
 
-        SDK s = SDK.builder().setServerURL(SDK.SERVERS[2], new HashMap<String, String>() {
-            {
-                put("hostname", "localhost");
-                put("port", "35123");
-            }
-        }).build();
+        SDK s = SDK.builder().setServerIndex(2).setHostname("localhost").setPort("35123").build();
+        assertNotNull(s);
+
+        ServerWithTemplatesGlobalResponse res = s.servers.serverWithTemplatesGlobal();
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+    }
+
+    @Test
+    void testServerWithTemplatesGlobalDefaults() throws Exception {
+        Helpers.recordTest("servers-server-with-templates-global-defaults");
+
+        SDK s = SDK.builder().setServerIndex(2).build();
+        assertNotNull(s);
+
+        ServerWithTemplatesGlobalResponse res = s.servers.serverWithTemplatesGlobal();
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+    }
+
+    @Test
+    void testServerWithTemplatesGlobalEnum() throws Exception {
+        Helpers.recordTest("servers-server-with-templates-global-enum");
+
+        SDK s = SDK.builder().setServerIndex(3).setSomething(ServerSomething.SOMETHING_ELSE_AGAIN).build();
         assertNotNull(s);
 
         ServerWithTemplatesGlobalResponse res = s.servers.serverWithTemplatesGlobal();
@@ -112,6 +135,32 @@ public class ServerTests {
                                 put("port", "35123");
                             }
                         }));
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+    }
+
+    @Test
+    void testServerWithTemplatesDefaults() throws Exception {
+        Helpers.recordTest("servers-server-with-templates-defaults");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        ServerWithTemplatesResponse res = s.servers.serverWithTemplates();
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+    }
+
+    @Test
+    void testServerByIDWithTemplates() throws Exception {
+        Helpers.recordTest("servers-server-by-id-with-templates");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        ServersByIDWithTemplatesResponse res = s.servers.serversByIDWithTemplates();
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);

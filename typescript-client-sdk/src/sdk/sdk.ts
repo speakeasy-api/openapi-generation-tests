@@ -46,23 +46,57 @@ export type SDKProps = {
      * The security details required to authenticate the SDK
      */
     security?: shared.Security;
+
     /**
      * Allows setting the globalPathParam parameter for all supported operations
      */
     globalPathParam?: number;
+
     /**
      * Allows setting the globalQueryParam parameter for all supported operations
      */
     globalQueryParam?: string;
+
     /**
      * Allows overriding the default axios client used by the SDK
      */
     defaultClient?: AxiosInstance;
+
+    /**
+     * Allows overriding the default server used by the SDK
+     */
+    serverIdx?: number;
+
+    /**
+     * Allows setting the hostname variable for url substitution
+     */
+    hostname?: string;
+
+    /**
+     * Allows setting the port variable for url substitution
+     */
+    port?: string;
+
     /**
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
 };
+
+export class SDKConfiguration {
+    defaultClient: AxiosInstance;
+    securityClient: AxiosInstance;
+    serverURL: string;
+    serverDefaults: any;
+    language = "typescript";
+    sdkVersion = "1.5.0";
+    genVersion = "2.35.3";
+    globals: any;
+
+    public constructor(init?: Partial<SDKConfiguration>) {
+        Object.assign(this, init);
+    }
+}
 
 /**
  * Test Summary
@@ -123,164 +157,77 @@ export class SDK {
      */
     public unions: Unions;
 
-    public _defaultClient: AxiosInstance;
-    public _securityClient: AxiosInstance;
-    public _serverURL: string;
-    private _language = "typescript";
-    private _sdkVersion = "1.4.0";
-    private _genVersion = "2.34.7";
-    private _globals: any;
+    private sdkConfiguration: SDKConfiguration;
 
     constructor(props?: SDKProps) {
-        this._serverURL = props?.serverURL ?? ServerList[0];
+        let serverURL = props?.serverURL;
+        let defaults: any = {};
 
-        this._defaultClient = props?.defaultClient ?? axios.create({ baseURL: this._serverURL });
-        if (props?.security) {
-            let security: shared.Security = props.security;
-            if (!(props.security instanceof utils.SpeakeasyBase))
-                security = new shared.Security(props.security);
-            this._securityClient = utils.createSecurityClient(this._defaultClient, security);
-        } else {
-            this._securityClient = this._defaultClient;
+        const serverDefaults = [
+            {},
+            {},
+            {
+                hostname: props?.hostname?.toString() ?? "localhost",
+                port: props?.port?.toString() ?? "35123",
+            },
+        ];
+        const serverIdx = props?.serverIdx ?? 0;
+
+        if (!serverURL) {
+            serverURL = ServerList[serverIdx];
+            defaults = serverDefaults[serverIdx];
         }
 
-        this._globals = {
-            parameters: {
-                queryParam: {
-                    globalQueryParam: props?.globalQueryParam,
-                },
-                pathParam: {
-                    globalPathParam: props?.globalPathParam,
+        const defaultClient = props?.defaultClient ?? axios.create({ baseURL: serverURL });
+        let securityClient = defaultClient;
+
+        if (props?.security) {
+            let security: shared.Security = props.security;
+            if (!(props.security instanceof utils.SpeakeasyBase)) {
+                security = new shared.Security(props.security);
+            }
+            securityClient = utils.createSecurityClient(defaultClient, security);
+        }
+
+        this.sdkConfiguration = new SDKConfiguration({
+            defaultClient: defaultClient,
+            securityClient: securityClient,
+            serverURL: serverURL,
+            serverDefaults: defaults,
+            globals: {
+                parameters: {
+                    queryParam: {
+                        globalQueryParam: props?.globalQueryParam,
+                    },
+                    pathParam: {
+                        globalPathParam: props?.globalPathParam,
+                    },
                 },
             },
-        };
+        });
 
-        this.auth = new Auth(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.authNew = new AuthNew(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.errors = new Errors(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.flattening = new Flattening(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.generation = new Generation(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.globals = new Globals(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.parameters = new ParametersT(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.requestBodies = new RequestBodies(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.responseBodies = new ResponseBodies(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.servers = new Servers(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.telemetry = new Telemetry(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
-
-        this.unions = new Unions(
-            this._defaultClient,
-            this._securityClient,
-            this._serverURL,
-            this._language,
-            this._sdkVersion,
-            this._genVersion,
-            this._globals
-        );
+        this.auth = new Auth(this.sdkConfiguration);
+        this.authNew = new AuthNew(this.sdkConfiguration);
+        this.errors = new Errors(this.sdkConfiguration);
+        this.flattening = new Flattening(this.sdkConfiguration);
+        this.generation = new Generation(this.sdkConfiguration);
+        this.globals = new Globals(this.sdkConfiguration);
+        this.parameters = new ParametersT(this.sdkConfiguration);
+        this.requestBodies = new RequestBodies(this.sdkConfiguration);
+        this.responseBodies = new ResponseBodies(this.sdkConfiguration);
+        this.servers = new Servers(this.sdkConfiguration);
+        this.telemetry = new Telemetry(this.sdkConfiguration);
+        this.unions = new Unions(this.sdkConfiguration);
     }
 
     async putAnythingIgnoredGeneration(
         req: string,
         config?: AxiosRequestConfig
     ): Promise<operations.PutAnythingIgnoredGenerationResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/ignoredGeneration";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -293,13 +240,14 @@ export class SDK {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -339,16 +287,20 @@ export class SDK {
     async responseBodyJsonGet(
         config?: AxiosRequestConfig
     ): Promise<operations.ResponseBodyJsonGetResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/json";
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

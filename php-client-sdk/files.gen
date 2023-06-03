@@ -1,3 +1,4 @@
+src/SDKConfiguration.php
 src/Auth.php
 src/AuthNew.php
 src/Errors.php

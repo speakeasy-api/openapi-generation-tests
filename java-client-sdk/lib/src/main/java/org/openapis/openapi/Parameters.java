@@ -17,22 +17,10 @@ import org.openapis.openapi.utils.JSON;
  */
 public class Parameters {
 	
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private String _serverUrl;
-	private String _language;
-	private String _sdkVersion;
-	private String _genVersion;
-	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
+	private SDKConfiguration sdkConfiguration;
 
-	public Parameters(HTTPClient defaultClient, HTTPClient securityClient, String serverUrl, String language, String sdkVersion, String genVersion, java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> globals) {
-		this._defaultClient = defaultClient;
-		this._securityClient = securityClient;
-		this._serverUrl = serverUrl;
-		this._language = language;
-		this._sdkVersion = sdkVersion;
-		this._genVersion = genVersion;
-		this._globals = globals;
+	public Parameters(SDKConfiguration sdkConfiguration) {
+		this.sdkConfiguration = sdkConfiguration;
 	}
 
     public org.openapis.openapi.models.operations.DeepObjectQueryParamsMapResponse deepObjectQueryParamsMap(java.util.Map<String, String> mapParam) throws Exception {
@@ -43,7 +31,7 @@ public class Parameters {
         org.openapis.openapi.models.operations.DeepObjectQueryParamsMapRequest request = new org.openapis.openapi.models.operations.DeepObjectQueryParamsMapRequest(mapParam);
         request.mapArrParam=mapArrParam;
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/deepObject/map");
         
         HTTPRequest req = new HTTPRequest();
@@ -51,15 +39,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeepObjectQueryParamsMapRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeepObjectQueryParamsMapRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -89,7 +77,7 @@ public class Parameters {
         org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest request = new org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest(objParam);
         request.objArrParam=objArrParam;
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/deepObject/obj");
         
         HTTPRequest req = new HTTPRequest();
@@ -97,15 +85,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeepObjectQueryParamsObjectRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -140,7 +128,7 @@ public class Parameters {
         request.arrParam=arrParam;
         request.arrParamExploded=arrParamExploded;
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/array");
         
         HTTPRequest req = new HTTPRequest();
@@ -148,15 +136,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsArrayRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsArrayRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -191,7 +179,7 @@ public class Parameters {
         request.mapParam=mapParam;
         request.mapParamExploded=mapParamExploded;
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/map");
         
         HTTPRequest req = new HTTPRequest();
@@ -199,15 +187,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsMapRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsMapRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -237,7 +225,7 @@ public class Parameters {
         org.openapis.openapi.models.operations.FormQueryParamsObjectRequest request = new org.openapis.openapi.models.operations.FormQueryParamsObjectRequest(objParamExploded);
         request.objParam=objParam;
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/obj");
         
         HTTPRequest req = new HTTPRequest();
@@ -245,15 +233,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsObjectRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsObjectRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -278,7 +266,7 @@ public class Parameters {
     public org.openapis.openapi.models.operations.FormQueryParamsPrimitiveResponse formQueryParamsPrimitive(Boolean boolParam, Long intParam, Double numParam, String strParam) throws Exception {
         org.openapis.openapi.models.operations.FormQueryParamsPrimitiveRequest request = new org.openapis.openapi.models.operations.FormQueryParamsPrimitiveRequest(boolParam, intParam, numParam, strParam);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/primitive");
         
         HTTPRequest req = new HTTPRequest();
@@ -286,15 +274,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsPrimitiveRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsPrimitiveRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -333,7 +321,7 @@ public class Parameters {
         request.refObjParam=refObjParam;
         request.refObjParamExploded=refObjParamExploded;
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/refParamObject");
         
         HTTPRequest req = new HTTPRequest();
@@ -341,15 +329,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsRefParamObjectRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -374,7 +362,7 @@ public class Parameters {
     public org.openapis.openapi.models.operations.HeaderParamsArrayResponse headerParamsArray(String[] xHeaderArray) throws Exception {
         org.openapis.openapi.models.operations.HeaderParamsArrayRequest request = new org.openapis.openapi.models.operations.HeaderParamsArrayRequest(xHeaderArray);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/array");
         
         HTTPRequest req = new HTTPRequest();
@@ -382,7 +370,7 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.Map<String, java.util.List<String>> headers = org.openapis.openapi.utils.Utils.getHeaders(request);
         if (headers != null) {
             for (java.util.Map.Entry<String, java.util.List<String>> header : headers.entrySet()) {
@@ -392,7 +380,7 @@ public class Parameters {
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -417,7 +405,7 @@ public class Parameters {
     public org.openapis.openapi.models.operations.HeaderParamsMapResponse headerParamsMap(java.util.Map<String, String> xHeaderMap, java.util.Map<String, String> xHeaderMapExplode) throws Exception {
         org.openapis.openapi.models.operations.HeaderParamsMapRequest request = new org.openapis.openapi.models.operations.HeaderParamsMapRequest(xHeaderMap, xHeaderMapExplode);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/map");
         
         HTTPRequest req = new HTTPRequest();
@@ -425,7 +413,7 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.Map<String, java.util.List<String>> headers = org.openapis.openapi.utils.Utils.getHeaders(request);
         if (headers != null) {
             for (java.util.Map.Entry<String, java.util.List<String>> header : headers.entrySet()) {
@@ -435,7 +423,7 @@ public class Parameters {
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -460,7 +448,7 @@ public class Parameters {
     public org.openapis.openapi.models.operations.HeaderParamsObjectResponse headerParamsObject(org.openapis.openapi.models.shared.SimpleObject xHeaderObj, org.openapis.openapi.models.shared.SimpleObject xHeaderObjExplode) throws Exception {
         org.openapis.openapi.models.operations.HeaderParamsObjectRequest request = new org.openapis.openapi.models.operations.HeaderParamsObjectRequest(xHeaderObj, xHeaderObjExplode);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/obj");
         
         HTTPRequest req = new HTTPRequest();
@@ -468,7 +456,7 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.Map<String, java.util.List<String>> headers = org.openapis.openapi.utils.Utils.getHeaders(request);
         if (headers != null) {
             for (java.util.Map.Entry<String, java.util.List<String>> header : headers.entrySet()) {
@@ -478,7 +466,7 @@ public class Parameters {
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -503,7 +491,7 @@ public class Parameters {
     public org.openapis.openapi.models.operations.HeaderParamsPrimitiveResponse headerParamsPrimitive(Boolean xHeaderBoolean, Long xHeaderInteger, Double xHeaderNumber, String xHeaderString) throws Exception {
         org.openapis.openapi.models.operations.HeaderParamsPrimitiveRequest request = new org.openapis.openapi.models.operations.HeaderParamsPrimitiveRequest(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/headers/primitive");
         
         HTTPRequest req = new HTTPRequest();
@@ -511,7 +499,7 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         java.util.Map<String, java.util.List<String>> headers = org.openapis.openapi.utils.Utils.getHeaders(request);
         if (headers != null) {
             for (java.util.Map.Entry<String, java.util.List<String>> header : headers.entrySet()) {
@@ -521,7 +509,7 @@ public class Parameters {
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -546,7 +534,7 @@ public class Parameters {
     public org.openapis.openapi.models.operations.JsonQueryParamsObjectResponse jsonQueryParamsObject(org.openapis.openapi.models.shared.DeepObject deepObjParam, org.openapis.openapi.models.shared.SimpleObject simpleObjParam) throws Exception {
         org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest request = new org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest(deepObjParam, simpleObjParam);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/json/obj");
         
         HTTPRequest req = new HTTPRequest();
@@ -554,15 +542,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.JsonQueryParamsObjectRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -587,7 +575,7 @@ public class Parameters {
     public org.openapis.openapi.models.operations.MixedQueryParamsResponse mixedQueryParams(org.openapis.openapi.models.shared.SimpleObject deepObjectParam, org.openapis.openapi.models.shared.SimpleObject formParam, org.openapis.openapi.models.shared.SimpleObject jsonParam) throws Exception {
         org.openapis.openapi.models.operations.MixedQueryParamsRequest request = new org.openapis.openapi.models.operations.MixedQueryParamsRequest(deepObjectParam, formParam, jsonParam);
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/mixed");
         
         HTTPRequest req = new HTTPRequest();
@@ -595,15 +583,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.MixedQueryParamsRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.MixedQueryParamsRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -628,17 +616,17 @@ public class Parameters {
     public org.openapis.openapi.models.operations.PathParameterJsonResponse pathParameterJson(org.openapis.openapi.models.shared.SimpleObject jsonObj) throws Exception {
         org.openapis.openapi.models.operations.PathParameterJsonRequest request = new org.openapis.openapi.models.operations.PathParameterJsonRequest(jsonObj);
         
-        String baseUrl = this._serverUrl;
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.PathParameterJsonRequest.class, baseUrl, "/anything/pathParams/json/{jsonObj}", request, this._globals);
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.PathParameterJsonRequest.class, baseUrl, "/anything/pathParams/json/{jsonObj}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -711,7 +699,7 @@ public class Parameters {
         request.mapParam=mapParam;
         request.objParam=objParam;
         
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/pipe/array");
         
         HTTPRequest req = new HTTPRequest();
@@ -719,15 +707,15 @@ public class Parameters {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayRequest.class, request, this._globals);
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.PipeDelimitedQueryParamsArrayRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
             }
         }
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -752,17 +740,17 @@ public class Parameters {
     public org.openapis.openapi.models.operations.SimplePathParameterArraysResponse simplePathParameterArrays(String[] arrParam) throws Exception {
         org.openapis.openapi.models.operations.SimplePathParameterArraysRequest request = new org.openapis.openapi.models.operations.SimplePathParameterArraysRequest(arrParam);
         
-        String baseUrl = this._serverUrl;
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterArraysRequest.class, baseUrl, "/anything/pathParams/arr/{arrParam}", request, this._globals);
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterArraysRequest.class, baseUrl, "/anything/pathParams/arr/{arrParam}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -787,17 +775,17 @@ public class Parameters {
     public org.openapis.openapi.models.operations.SimplePathParameterMapsResponse simplePathParameterMaps(java.util.Map<String, String> mapParam, java.util.Map<String, Long> mapParamExploded) throws Exception {
         org.openapis.openapi.models.operations.SimplePathParameterMapsRequest request = new org.openapis.openapi.models.operations.SimplePathParameterMapsRequest(mapParam, mapParamExploded);
         
-        String baseUrl = this._serverUrl;
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterMapsRequest.class, baseUrl, "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}", request, this._globals);
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterMapsRequest.class, baseUrl, "/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -822,17 +810,17 @@ public class Parameters {
     public org.openapis.openapi.models.operations.SimplePathParameterObjectsResponse simplePathParameterObjects(org.openapis.openapi.models.shared.SimpleObject objParam, org.openapis.openapi.models.shared.SimpleObject objParamExploded) throws Exception {
         org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest request = new org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest(objParam, objParamExploded);
         
-        String baseUrl = this._serverUrl;
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest.class, baseUrl, "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}", request, this._globals);
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterObjectsRequest.class, baseUrl, "/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -857,17 +845,17 @@ public class Parameters {
     public org.openapis.openapi.models.operations.SimplePathParameterPrimitivesResponse simplePathParameterPrimitives(Boolean boolParam, Long intParam, Double numParam, String strParam) throws Exception {
         org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest request = new org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest(boolParam, intParam, numParam, strParam);
         
-        String baseUrl = this._serverUrl;
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest.class, baseUrl, "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}", request, this._globals);
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.SimplePathParameterPrimitivesRequest.class, baseUrl, "/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 

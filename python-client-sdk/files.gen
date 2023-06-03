@@ -1,3 +1,4 @@
+src/sdk/sdkconfiguration.py
 src/sdk/auth.py
 src/sdk/authnew.py
 src/sdk/errors.py

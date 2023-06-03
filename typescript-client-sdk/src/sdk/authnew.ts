@@ -5,36 +5,17 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
+import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
  * Endpoints for testing authentication.
  */
 export class AuthNew {
-    _defaultClient: AxiosInstance;
-    _securityClient: AxiosInstance;
-    _serverURL: string;
-    _language: string;
-    _sdkVersion: string;
-    _genVersion: string;
-    _globals: any;
+    private sdkConfiguration: SDKConfiguration;
 
-    constructor(
-        defaultClient: AxiosInstance,
-        securityClient: AxiosInstance,
-        serverURL: string,
-        language: string,
-        sdkVersion: string,
-        genVersion: string,
-        globals: any
-    ) {
-        this._defaultClient = defaultClient;
-        this._securityClient = securityClient;
-        this._serverURL = serverURL;
-        this._language = language;
-        this._sdkVersion = sdkVersion;
-        this._genVersion = genVersion;
-        this._globals = globals;
+    constructor(sdkConfig: SDKConfiguration) {
+        this.sdkConfiguration = sdkConfig;
     }
 
     async apiKeyAuthGlobalNew(
@@ -46,7 +27,7 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.ApiKeyAuthGlobalNewServerList[0];
+        let baseURL: string = utils.templateUrl(operations.ApiKeyAuthGlobalNewServerList[0], {});
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -62,13 +43,14 @@ export class AuthNew {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -109,7 +91,7 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.BasicAuthNewServerList[0];
+        let baseURL: string = utils.templateUrl(operations.BasicAuthNewServerList[0], {});
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -128,13 +110,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.BasicAuthNewSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -174,7 +159,10 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.MultipleMixedOptionsAuthServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.MultipleMixedOptionsAuthServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -193,13 +181,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleMixedOptionsAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -240,7 +231,10 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.MultipleMixedSchemeAuthServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.MultipleMixedSchemeAuthServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -259,13 +253,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleMixedSchemeAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -306,7 +303,10 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.MultipleOptionsWithMixedSchemesAuthServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.MultipleOptionsWithMixedSchemesAuthServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -326,13 +326,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleOptionsWithMixedSchemesAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -373,7 +376,10 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.MultipleOptionsWithSimpleSchemesAuthServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.MultipleOptionsWithSimpleSchemesAuthServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -393,13 +399,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleOptionsWithSimpleSchemesAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -440,7 +449,10 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.MultipleSimpleOptionsAuthServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.MultipleSimpleOptionsAuthServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -459,13 +471,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleSimpleOptionsAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -506,7 +521,10 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.MultipleSimpleSchemeAuthServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.MultipleSimpleSchemeAuthServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -525,13 +543,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleSimpleSchemeAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -572,7 +593,7 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.Oauth2AuthNewServerList[0];
+        let baseURL: string = utils.templateUrl(operations.Oauth2AuthNewServerList[0], {});
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -591,13 +612,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.Oauth2AuthNewSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -637,7 +661,7 @@ export class AuthNew {
             req = new shared.AuthServiceRequestBody(req);
         }
 
-        let baseURL: string = operations.OpenIdConnectAuthNewServerList[0];
+        let baseURL: string = utils.templateUrl(operations.OpenIdConnectAuthNewServerList[0], {});
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -656,13 +680,16 @@ export class AuthNew {
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.OpenIdConnectAuthNewSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(this._defaultClient, security);
+        const client: AxiosInstance = utils.createSecurityClient(
+            this.sdkConfiguration.defaultClient,
+            security
+        );
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "*/*";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

@@ -49,26 +49,14 @@ public class Servers {
         "http://{hostname}:{port}",
     };
 	
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private String _serverUrl;
-	private String _language;
-	private String _sdkVersion;
-	private String _genVersion;
-	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
+	private SDKConfiguration sdkConfiguration;
 
-	public Servers(HTTPClient defaultClient, HTTPClient securityClient, String serverUrl, String language, String sdkVersion, String genVersion, java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> globals) {
-		this._defaultClient = defaultClient;
-		this._securityClient = securityClient;
-		this._serverUrl = serverUrl;
-		this._language = language;
-		this._sdkVersion = sdkVersion;
-		this._genVersion = genVersion;
-		this._globals = globals;
+	public Servers(SDKConfiguration sdkConfiguration) {
+		this.sdkConfiguration = sdkConfiguration;
 	}
 
     public org.openapis.openapi.models.operations.SelectGlobalServerResponse selectGlobalServer() throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/selectGlobalServer");
         
         HTTPRequest req = new HTTPRequest();
@@ -76,9 +64,9 @@ public class Servers {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -112,7 +100,7 @@ public class Servers {
      * @throws Exception if the API call fails
      */
     public org.openapis.openapi.models.operations.SelectServerWithIDResponse selectServerWithID(String serverURL) throws Exception {
-        String baseUrl = SELECT_SERVER_WITH_ID_SERVERS.get(SelectServerWithIDServers.VALID);
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(SELECT_SERVER_WITH_ID_SERVERS.get(SelectServerWithIDServers.VALID), new java.util.HashMap<String, String>());
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -124,9 +112,9 @@ public class Servers {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -147,7 +135,10 @@ public class Servers {
     }
 
     public org.openapis.openapi.models.operations.ServerWithTemplatesResponse serverWithTemplates(String serverURL) throws Exception {
-        String baseUrl = SERVER_WITH_TEMPLATES_SERVERS[0];
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(SERVER_WITH_TEMPLATES_SERVERS[0], new java.util.HashMap<String, String>(){{
+            put("hostname", "localhost");
+            put("port", "35123");
+        }});
         if (serverURL != null && !serverURL.isBlank()) {
             baseUrl = serverURL;
         }
@@ -159,9 +150,9 @@ public class Servers {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -178,7 +169,7 @@ public class Servers {
     }
 
     public org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse serverWithTemplatesGlobal() throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/serverWithTemplatesGlobal");
         
         HTTPRequest req = new HTTPRequest();
@@ -186,9 +177,9 @@ public class Servers {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 

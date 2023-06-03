@@ -28,34 +28,14 @@ class Servers
 		'http://{hostname}:{port}',
 	];
 
-	// SDK private variables namespaced with _ to avoid conflicts with API models
-	private \GuzzleHttp\ClientInterface $_defaultClient;
-	private \GuzzleHttp\ClientInterface $_securityClient;
-	private string $_serverUrl;
-	private string $_language;
-	private string $_sdkVersion;
-	private string $_genVersion;
-	/** @var array<string, array<string, array<string, string>>> */
-	private array $_globals;	
+	private SDKConfiguration $sdkConfiguration;
 
 	/**
-	 * @param \GuzzleHttp\ClientInterface $defaultClient
-	 * @param \GuzzleHttp\ClientInterface $securityClient
-	 * @param string $serverUrl
-	 * @param string $language
-	 * @param string $sdkVersion
-	 * @param string $genVersion
-	 * @param array<string, array<string, array<string, string>>> $globals
+	 * @param SDKConfiguration $sdkConfig
 	 */
-	public function __construct(\GuzzleHttp\ClientInterface $defaultClient, \GuzzleHttp\ClientInterface $securityClient, string $serverUrl, string $language, string $sdkVersion, string $genVersion, array $globals)
+	public function __construct(SDKConfiguration $sdkConfig)
 	{
-		$this->_defaultClient = $defaultClient;
-		$this->_securityClient = $securityClient;
-		$this->_serverUrl = $serverUrl;
-		$this->_language = $language;
-		$this->_sdkVersion = $sdkVersion;
-		$this->_genVersion = $genVersion;
-		$this->_globals = $globals;
+		$this->sdkConfiguration = $sdkConfig;
 	}
 	
     /**
@@ -66,14 +46,14 @@ class Servers
 	public function selectGlobalServer(
     ): \OpenAPI\OpenAPI\Models\Operations\SelectGlobalServerResponse
     {
-        $baseUrl = $this->_serverUrl;
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/selectGlobalServer');
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -100,7 +80,8 @@ class Servers
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\SelectServerWithIDResponse
     {
-        $baseUrl = Servers::SELECT_SERVER_WITH_ID_SERVERS[Servers::SELECT_SERVER_WITH_ID_SERVER_VALID];
+        $baseUrl = Utils\Utils::templateUrl(Servers::SELECT_SERVER_WITH_ID_SERVERS[Servers::SELECT_SERVER_WITH_ID_SERVER_VALID], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -109,9 +90,9 @@ class Servers
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -136,7 +117,10 @@ class Servers
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesResponse
     {
-        $baseUrl = Servers::SERVER_WITH_TEMPLATES_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(Servers::SERVER_WITH_TEMPLATES_SERVERS[0], array(
+            'hostname' => 'localhost',
+            'port' => '35123',
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -145,9 +129,9 @@ class Servers
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -170,14 +154,14 @@ class Servers
 	public function serverWithTemplatesGlobal(
     ): \OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesGlobalResponse
     {
-        $baseUrl = $this->_serverUrl;
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
         $url = Utils\Utils::generateUrl($baseUrl, '/anything/serverWithTemplatesGlobal');
         
         $options = ['http_errors' => false];
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('GET', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 

@@ -51,34 +51,14 @@ class AuthNew
 		'http://localhost:35456',
 	];
 
-	// SDK private variables namespaced with _ to avoid conflicts with API models
-	private \GuzzleHttp\ClientInterface $_defaultClient;
-	private \GuzzleHttp\ClientInterface $_securityClient;
-	private string $_serverUrl;
-	private string $_language;
-	private string $_sdkVersion;
-	private string $_genVersion;
-	/** @var array<string, array<string, array<string, string>>> */
-	private array $_globals;	
+	private SDKConfiguration $sdkConfiguration;
 
 	/**
-	 * @param \GuzzleHttp\ClientInterface $defaultClient
-	 * @param \GuzzleHttp\ClientInterface $securityClient
-	 * @param string $serverUrl
-	 * @param string $language
-	 * @param string $sdkVersion
-	 * @param string $genVersion
-	 * @param array<string, array<string, array<string, string>>> $globals
+	 * @param SDKConfiguration $sdkConfig
 	 */
-	public function __construct(\GuzzleHttp\ClientInterface $defaultClient, \GuzzleHttp\ClientInterface $securityClient, string $serverUrl, string $language, string $sdkVersion, string $genVersion, array $globals)
+	public function __construct(SDKConfiguration $sdkConfig)
 	{
-		$this->_defaultClient = $defaultClient;
-		$this->_securityClient = $securityClient;
-		$this->_serverUrl = $serverUrl;
-		$this->_language = $language;
-		$this->_sdkVersion = $sdkVersion;
-		$this->_genVersion = $genVersion;
-		$this->_globals = $globals;
+		$this->sdkConfiguration = $sdkConfig;
 	}
 	
     /**
@@ -93,7 +73,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse
     {
-        $baseUrl = AuthNew::API_KEY_AUTH_GLOBAL_NEW_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::API_KEY_AUTH_GLOBAL_NEW_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -104,9 +85,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $httpResponse = $this->_securityClient->request('POST', $url, $options);
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
@@ -135,7 +116,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\BasicAuthNewResponse
     {
-        $baseUrl = AuthNew::BASIC_AUTH_NEW_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::BASIC_AUTH_NEW_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -146,9 +128,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -178,7 +160,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleMixedOptionsAuthResponse
     {
-        $baseUrl = AuthNew::MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -189,9 +172,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -221,7 +204,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleMixedSchemeAuthResponse
     {
-        $baseUrl = AuthNew::MULTIPLE_MIXED_SCHEME_AUTH_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::MULTIPLE_MIXED_SCHEME_AUTH_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -232,9 +216,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -264,7 +248,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithMixedSchemesAuthResponse
     {
-        $baseUrl = AuthNew::MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -275,9 +260,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -307,7 +292,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithSimpleSchemesAuthResponse
     {
-        $baseUrl = AuthNew::MULTIPLE_OPTIONS_WITH_SIMPLE_SCHEMES_AUTH_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::MULTIPLE_OPTIONS_WITH_SIMPLE_SCHEMES_AUTH_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -318,9 +304,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -350,7 +336,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleOptionsAuthResponse
     {
-        $baseUrl = AuthNew::MULTIPLE_SIMPLE_OPTIONS_AUTH_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::MULTIPLE_SIMPLE_OPTIONS_AUTH_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -361,9 +348,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -393,7 +380,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleSchemeAuthResponse
     {
-        $baseUrl = AuthNew::MULTIPLE_SIMPLE_SCHEME_AUTH_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::MULTIPLE_SIMPLE_SCHEME_AUTH_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -404,9 +392,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -436,7 +424,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthNewResponse
     {
-        $baseUrl = AuthNew::OAUTH2_AUTH_NEW_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::OAUTH2_AUTH_NEW_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -447,9 +436,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
@@ -479,7 +468,8 @@ class AuthNew
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthNewResponse
     {
-        $baseUrl = AuthNew::OPEN_ID_CONNECT_AUTH_NEW_SERVERS[0];
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::OPEN_ID_CONNECT_AUTH_NEW_SERVERS[0], array(
+        ));
         if (!empty($serverURL)) {
             $baseUrl = $serverURL;
         }
@@ -490,9 +480,9 @@ class AuthNew
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->_language, $this->_sdkVersion, $this->_genVersion);
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
         
-        $client = Utils\Utils::configureSecurityClient($this->_defaultClient, $security);
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
         $httpResponse = $client->request('POST', $url, $options);
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';

@@ -15,24 +15,12 @@ import (
 
 // globals - Endpoints for testing global parameters.
 type globals struct {
-	defaultClient  HTTPClient
-	securityClient HTTPClient
-	serverURL      string
-	language       string
-	sdkVersion     string
-	genVersion     string
-	globals        map[string]map[string]map[string]interface{}
+	sdkConfiguration sdkConfiguration
 }
 
-func newGlobals(defaultClient, securityClient HTTPClient, serverURL, language, sdkVersion, genVersion string, gbls map[string]map[string]map[string]interface{}) *globals {
+func newGlobals(sdkConfig sdkConfiguration) *globals {
 	return &globals{
-		defaultClient:  defaultClient,
-		securityClient: securityClient,
-		serverURL:      serverURL,
-		language:       language,
-		sdkVersion:     sdkVersion,
-		genVersion:     genVersion,
-		globals:        gbls,
+		sdkConfiguration: sdkConfig,
 	}
 }
 
@@ -41,8 +29,8 @@ func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *i
 		GlobalPathParam: globalPathParam,
 	}
 
-	baseURL := s.serverURL
-	url, err := utils.GenerateURL(ctx, baseURL, "/anything/globals/pathParameter/{globalPathParam}", request, s.globals)
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url, err := utils.GenerateURL(ctx, baseURL, "/anything/globals/pathParameter/{globalPathParam}", request, s.sdkConfiguration.Globals)
 	if err != nil {
 		return nil, fmt.Errorf("error generating URL: %w", err)
 	}
@@ -52,9 +40,9 @@ func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *i
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -99,7 +87,7 @@ func (s *globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam
 		GlobalQueryParam: globalQueryParam,
 	}
 
-	baseURL := s.serverURL
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/globals/queryParameter"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
@@ -107,13 +95,13 @@ func (s *globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.language, s.sdkVersion, s.genVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
 
-	if err := utils.PopulateQueryParams(ctx, req, request, s.globals); err != nil {
+	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
 		return nil, fmt.Errorf("error populating query params: %w", err)
 	}
 
-	client := s.securityClient
+	client := s.sdkConfiguration.SecurityClient
 
 	httpRes, err := client.Do(req)
 	if err != nil {

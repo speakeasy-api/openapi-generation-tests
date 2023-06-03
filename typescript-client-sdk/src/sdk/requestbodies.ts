@@ -5,36 +5,17 @@
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
+import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
  * Endpoints for testing request bodies.
  */
 export class RequestBodies {
-    _defaultClient: AxiosInstance;
-    _securityClient: AxiosInstance;
-    _serverURL: string;
-    _language: string;
-    _sdkVersion: string;
-    _genVersion: string;
-    _globals: any;
+    private sdkConfiguration: SDKConfiguration;
 
-    constructor(
-        defaultClient: AxiosInstance,
-        securityClient: AxiosInstance,
-        serverURL: string,
-        language: string,
-        sdkVersion: string,
-        genVersion: string,
-        globals: any
-    ) {
-        this._defaultClient = defaultClient;
-        this._securityClient = securityClient;
-        this._serverURL = serverURL;
-        this._language = language;
-        this._sdkVersion = sdkVersion;
-        this._genVersion = genVersion;
-        this._globals = globals;
+    constructor(sdkConfig: SDKConfiguration) {
+        this.sdkConfiguration = sdkConfig;
     }
 
     async requestBodyPostApplicationJsonArray(
@@ -42,7 +23,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonArrayResponse> {
-        let baseURL: string = operations.RequestBodyPostApplicationJsonArrayServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -58,13 +42,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -108,7 +93,10 @@ export class RequestBodies {
         req: shared.SimpleObject[],
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonArrayObjResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/array/objResponse";
@@ -123,7 +111,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -131,7 +120,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -170,7 +159,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonArrayOfArrayResponse> {
-        let baseURL: string = operations.RequestBodyPostApplicationJsonArrayOfArrayServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayOfArrayServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -186,13 +178,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -237,8 +230,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse> {
-        let baseURL: string =
-            operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -254,13 +249,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -299,7 +295,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonArrayOfMapResponse> {
-        let baseURL: string = operations.RequestBodyPostApplicationJsonArrayOfMapServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayOfMapServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -315,13 +314,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -366,8 +366,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse> {
-        let baseURL: string =
-            operations.RequestBodyPostApplicationJsonArrayOfPrimitiveServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayOfPrimitiveServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -383,13 +385,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -431,7 +434,10 @@ export class RequestBodies {
             req = new shared.DeepObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/application/json/deep";
 
@@ -445,13 +451,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -493,7 +500,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonMapResponse> {
-        let baseURL: string = operations.RequestBodyPostApplicationJsonMapServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -509,13 +519,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -559,7 +570,10 @@ export class RequestBodies {
         req: Record<string, shared.SimpleObject>,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonMapObjResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/map/objResponse";
@@ -574,7 +588,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -582,7 +597,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -621,7 +636,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonMapOfArrayResponse> {
-        let baseURL: string = operations.RequestBodyPostApplicationJsonMapOfArrayServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapOfArrayServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -637,13 +655,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -688,7 +707,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonMapOfMapResponse> {
-        let baseURL: string = operations.RequestBodyPostApplicationJsonMapOfMapServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapOfMapServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -704,13 +726,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -755,8 +778,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse> {
-        let baseURL: string =
-            operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -772,13 +797,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -817,7 +843,10 @@ export class RequestBodies {
         serverURL?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostApplicationJsonMapOfPrimitiveResponse> {
-        let baseURL: string = operations.RequestBodyPostApplicationJsonMapOfPrimitiveServerList[0];
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapOfPrimitiveServerList[0],
+            {}
+        );
         if (serverURL) {
             baseURL = serverURL;
         }
@@ -833,13 +862,14 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -881,7 +911,10 @@ export class RequestBodies {
             req = new shared.SimpleObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/application/json/multiple/json/filtered";
@@ -896,7 +929,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -904,7 +938,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -949,7 +983,10 @@ export class RequestBodies {
             req = new shared.SimpleObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/application/json/simple";
 
@@ -963,7 +1000,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -971,7 +1009,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1016,7 +1054,10 @@ export class RequestBodies {
             req = new shared.DeepObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/deep";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -1029,7 +1070,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1037,7 +1079,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1078,7 +1120,10 @@ export class RequestBodies {
         req: Record<string, string>,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPostFormMapPrimitiveResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/map/primitive";
 
@@ -1092,7 +1137,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1100,7 +1146,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1145,7 +1191,10 @@ export class RequestBodies {
             req = new shared.SimpleObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/form/simple";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -1158,7 +1207,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1166,7 +1216,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1211,7 +1261,10 @@ export class RequestBodies {
             req = new shared.SimpleObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/component/filtered";
@@ -1226,7 +1279,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1234,7 +1288,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1281,7 +1335,10 @@ export class RequestBodies {
             );
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/inline/filtered";
@@ -1296,7 +1353,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1304,7 +1362,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1350,7 +1408,10 @@ export class RequestBodies {
             requestBody: requestBody,
             paramStr: paramStr,
         });
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/split/param";
@@ -1365,16 +1426,17 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
-        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1420,7 +1482,10 @@ export class RequestBodies {
             requestBody: requestBody,
             paramStr: paramStr,
         });
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/split/param";
@@ -1435,16 +1500,17 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
-        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1490,7 +1556,10 @@ export class RequestBodies {
             requestBody: requestBody,
             paramStr: paramStr,
         });
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") +
             "/anything/requestBodies/post/multiple/contentTypes/split/param";
@@ -1505,16 +1574,17 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
-        const queryParams: string = utils.serializeQueryParams(req, this._globals);
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         if (reqBody == null || Object.keys(reqBody).length === 0)
             throw new Error("request body is required");
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1562,7 +1632,10 @@ export class RequestBodies {
                 );
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/multiple/contentTypes/split";
 
@@ -1576,7 +1649,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1584,7 +1658,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1629,7 +1703,10 @@ export class RequestBodies {
             req = new operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/multiple/contentTypes/split";
 
@@ -1643,7 +1720,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1651,7 +1729,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1696,7 +1774,10 @@ export class RequestBodies {
             req = new operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/multiple/contentTypes/split";
 
@@ -1710,7 +1791,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1718,7 +1800,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1759,7 +1841,10 @@ export class RequestBodies {
         req: Uint8Array,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPutBytesResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/bytes";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -1772,7 +1857,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1780,7 +1866,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1822,7 +1908,10 @@ export class RequestBodies {
             req = new shared.DeepObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/multipart/deep";
 
@@ -1836,7 +1925,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1844,7 +1934,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1889,7 +1979,10 @@ export class RequestBodies {
             req = new operations.RequestBodyPutMultipartFileRequestBody(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/multipart/file";
 
@@ -1903,7 +1996,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1911,7 +2005,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1956,7 +2050,10 @@ export class RequestBodies {
             req = new shared.SimpleObject(req);
         }
 
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/multipart/simple";
 
@@ -1970,7 +2067,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -1978,7 +2076,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2019,7 +2117,10 @@ export class RequestBodies {
         req: string,
         config?: AxiosRequestConfig
     ): Promise<operations.RequestBodyPutStringResponse> {
-        const baseURL: string = this._serverURL;
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/string";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
@@ -2032,7 +2133,8 @@ export class RequestBodies {
             }
         }
 
-        const client: AxiosInstance = this._securityClient || this._defaultClient;
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
 
         const headers = { ...reqBodyHeaders, ...config?.headers };
         if (reqBody == null || Object.keys(reqBody).length === 0)
@@ -2040,7 +2142,7 @@ export class RequestBodies {
         headers["Accept"] = "application/json";
         headers[
             "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this._language} ${this._sdkVersion} ${this._genVersion}`;
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

@@ -89,26 +89,13 @@ public class SDK {
      */
     public Unions unions;	
 
-	private HTTPClient _defaultClient;
-	private HTTPClient _securityClient;
-	private org.openapis.openapi.models.shared.Security _security;
-	private String _serverUrl;
-	private String _language = "java";
-	private String _sdkVersion = "1.4.0";
-	private String _genVersion = "2.34.7";
-	java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> _globals;
-	
+	private SDKConfiguration sdkConfiguration;
+
 	/**
 	 * The Builder class allows the configuration of a new instance of the SDK.
 	 */
 	public static class Builder {
-		private HTTPClient client;
-		private org.openapis.openapi.models.shared.Security security;
-		private String serverUrl;
-		private java.util.Map<String, String> params = new java.util.HashMap<String, String>();
-		private java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> globals = new java.util.HashMap<String, java.util.Map<String, java.util.Map<String, Object>>>(){{
-			put("parameters", new java.util.HashMap<String, java.util.Map<String, Object>>());
-		}};
+		private SDKConfiguration sdkConfiguration = new SDKConfiguration();
 
 		private Builder() {
 		}
@@ -119,7 +106,7 @@ public class SDK {
 		 * @return The builder instance.
 		 */
 		public Builder setClient(HTTPClient client) {
-			this.client = client;
+			this.sdkConfiguration.defaultClient = client;
 			return this;
 		}
 		
@@ -129,7 +116,7 @@ public class SDK {
 		 * @return The builder instance.
 		 */
 		public Builder setSecurity(org.openapis.openapi.models.shared.Security security) {
-			this.security = security;
+			this.sdkConfiguration.security = security;
 			return this;
 		}
 		
@@ -139,7 +126,7 @@ public class SDK {
 		 * @return The builder instance.
 		 */
 		public Builder setServerURL(String serverUrl) {
-			this.serverUrl = serverUrl;
+			this.sdkConfiguration.serverUrl = serverUrl;
 			return this;
 		}
 		
@@ -150,8 +137,50 @@ public class SDK {
 		 * @return The builder instance.
 		 */
 		public Builder setServerURL(String serverUrl, java.util.Map<String, String> params) {
-			this.serverUrl = serverUrl;
-			this.params = params;
+			this.sdkConfiguration.serverUrl = org.openapis.openapi.utils.Utils.templateUrl(serverUrl, params);
+			return this;
+		}
+		
+		/**
+		 * Allows the overriding of the default server by index
+		 * @param serverIdx The server to use for all requests.
+		 * @return The builder instance.
+		 */
+		public Builder setServerIndex(int serverIdx) {
+			this.sdkConfiguration.serverIdx = serverIdx;
+			this.sdkConfiguration.serverUrl = SERVERS[serverIdx];
+			return this;
+		}
+		
+		/**
+		 * Allows setting the $name variable for url substitution.
+		 * @param hostname The value to set.
+		 * @return The builder instance.
+		 */
+		public Builder setHostname(String hostname) {
+			for (java.util.Map<String, String> server : this.sdkConfiguration.serverDefaults) {
+				if (!server.containsKey("hostname")) {
+					continue;
+				}
+				server.put("hostname", hostname.toString());
+			}
+
+			return this;
+		}
+		
+		/**
+		 * Allows setting the $name variable for url substitution.
+		 * @param port The value to set.
+		 * @return The builder instance.
+		 */
+		public Builder setPort(String port) {
+			for (java.util.Map<String, String> server : this.sdkConfiguration.serverDefaults) {
+				if (!server.containsKey("port")) {
+					continue;
+				}
+				server.put("port", port.toString());
+			}
+
 			return this;
 		}
 		
@@ -161,11 +190,11 @@ public class SDK {
 		 * @return The builder instance.
 		 */
 		public Builder setGlobalPathParam(Long globalPathParam) {
-			if (!this.globals.get("parameters").containsKey("pathParam")) {
-				this.globals.get("parameters").put("pathParam", new java.util.HashMap<String, Object>());
+			if (!this.sdkConfiguration.globals.get("parameters").containsKey("pathParam")) {
+				this.sdkConfiguration.globals.get("parameters").put("pathParam", new java.util.HashMap<String, Object>());
 			}
 
-			this.globals.get("parameters").get("pathParam").put("globalPathParam", globalPathParam);
+			this.sdkConfiguration.globals.get("parameters").get("pathParam").put("globalPathParam", globalPathParam);
 
 			return this;
 		}
@@ -176,11 +205,11 @@ public class SDK {
 		 * @return The builder instance.
 		 */
 		public Builder setGlobalQueryParam(String globalQueryParam) {
-			if (!this.globals.get("parameters").containsKey("queryParam")) {
-				this.globals.get("parameters").put("queryParam", new java.util.HashMap<String, Object>());
+			if (!this.sdkConfiguration.globals.get("parameters").containsKey("queryParam")) {
+				this.sdkConfiguration.globals.get("parameters").put("queryParam", new java.util.HashMap<String, Object>());
 			}
 
-			this.globals.get("parameters").get("queryParam").put("globalQueryParam", globalQueryParam);
+			this.sdkConfiguration.globals.get("parameters").get("queryParam").put("globalQueryParam", globalQueryParam);
 
 			return this;
 		}
@@ -191,7 +220,28 @@ public class SDK {
 		 * @throws Exception Thrown if the SDK could not be built.
 		 */
 		public SDK build() throws Exception {
-			return new SDK(this.client, this.security, this.serverUrl, this.params, this.globals);
+			if (this.sdkConfiguration.defaultClient == null) {
+				this.sdkConfiguration.defaultClient = new SpeakeasyHTTPClient();
+			}
+			
+			if (this.sdkConfiguration.security != null) {
+				this.sdkConfiguration.securityClient = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, this.sdkConfiguration.security);
+			}
+			
+			if (this.sdkConfiguration.securityClient == null) {
+				this.sdkConfiguration.securityClient = this.sdkConfiguration.defaultClient;
+			}
+			
+			if (this.sdkConfiguration.serverUrl == null || this.sdkConfiguration.serverUrl.isBlank()) {
+				this.sdkConfiguration.serverUrl = SERVERS[0];
+				this.sdkConfiguration.serverIdx = 0;
+			}
+
+			if (this.sdkConfiguration.serverUrl.endsWith("/")) {
+				this.sdkConfiguration.serverUrl = this.sdkConfiguration.serverUrl.substring(0, this.sdkConfiguration.serverUrl.length() - 1);
+			}
+			
+			return new SDK(this.sdkConfiguration);
 		}
 	}
 
@@ -203,160 +253,36 @@ public class SDK {
 		return new Builder();
 	}
 
-	private SDK(HTTPClient client, org.openapis.openapi.models.shared.Security security, String serverUrl, java.util.Map<String, String> params, java.util.Map<String, java.util.Map<String, java.util.Map<String, Object>>> globals) throws Exception {
-		this._defaultClient = client;
+	private SDK(SDKConfiguration sdkConfiguration) throws Exception {
+		this.sdkConfiguration = sdkConfiguration;
 		
-		if (this._defaultClient == null) {
-			this._defaultClient = new SpeakeasyHTTPClient();
-		}
+		this.auth = new Auth(this.sdkConfiguration);
 		
-		if (security != null) {
-			this._security = security;
-			this._securityClient = org.openapis.openapi.utils.Utils.configureSecurityClient(this._defaultClient, this._security);
-		}
+		this.authNew = new AuthNew(this.sdkConfiguration);
 		
-		if (this._securityClient == null) {
-			this._securityClient = this._defaultClient;
-		}
-
-		if (serverUrl != null && !serverUrl.isBlank()) {
-			this._serverUrl = org.openapis.openapi.utils.Utils.templateUrl(serverUrl, params);
-		}
+		this.errors = new Errors(this.sdkConfiguration);
 		
-		if (this._serverUrl == null) {
-			this._serverUrl = SERVERS[0];
-		}
-
-		if (this._serverUrl.endsWith("/")) {
-            this._serverUrl = this._serverUrl.substring(0, this._serverUrl.length() - 1);
-        }
-
+		this.flattening = new Flattening(this.sdkConfiguration);
 		
-		this._globals = globals;
+		this.generation = new Generation(this.sdkConfiguration);
 		
-		this.auth = new Auth(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
+		this.globals = new Globals(this.sdkConfiguration);
 		
-		this.authNew = new AuthNew(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
+		this.parameters = new Parameters(this.sdkConfiguration);
 		
-		this.errors = new Errors(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
+		this.requestBodies = new RequestBodies(this.sdkConfiguration);
 		
-		this.flattening = new Flattening(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
+		this.responseBodies = new ResponseBodies(this.sdkConfiguration);
 		
-		this.generation = new Generation(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
+		this.servers = new Servers(this.sdkConfiguration);
 		
-		this.globals = new Globals(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
+		this.telemetry = new Telemetry(this.sdkConfiguration);
 		
-		this.parameters = new Parameters(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
-		
-		this.requestBodies = new RequestBodies(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
-		
-		this.responseBodies = new ResponseBodies(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
-		
-		this.servers = new Servers(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
-		
-		this.telemetry = new Telemetry(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
-		
-		this.unions = new Unions(
-			this._defaultClient,
-			this._securityClient,
-			this._serverUrl,
-			this._language,
-			this._sdkVersion,
-			this._genVersion,
-			this._globals
-		);
+		this.unions = new Unions(this.sdkConfiguration);
 	}
 
     public org.openapis.openapi.models.operations.PutAnythingIgnoredGenerationResponse putAnythingIgnoredGeneration(String request) throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/ignoredGeneration");
         
         HTTPRequest req = new HTTPRequest();
@@ -366,9 +292,9 @@ public class SDK {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
@@ -391,7 +317,7 @@ public class SDK {
     }
 
     public org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse responseBodyJsonGet() throws Exception {
-        String baseUrl = this._serverUrl;
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/json");
         
         HTTPRequest req = new HTTPRequest();
@@ -399,9 +325,9 @@ public class SDK {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this._language, this._sdkVersion, this._genVersion));
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
         
-        HTTPClient client = this._securityClient;
+        HTTPClient client = this.sdkConfiguration.securityClient;
         
         HttpResponse<byte[]> httpRes = client.send(req);
 
