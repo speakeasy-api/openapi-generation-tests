@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.5.0'
+implementation 'org.openapis.openapi:openapi:1.5.1'
 ```
 <!-- End SDK Installation -->
 
@@ -139,6 +139,15 @@ public class Application {
 * [globalPathParameterGet](docs/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/globals/README.md#globalsqueryparameterget)
 
+### [pagination](docs/pagination/README.md)
+
+* [paginationCursorBody](docs/pagination/README.md#paginationcursorbody)
+* [paginationCursorParams](docs/pagination/README.md#paginationcursorparams)
+* [paginationLimitOffsetOffsetBody](docs/pagination/README.md#paginationlimitoffsetoffsetbody)
+* [paginationLimitOffsetOffsetParams](docs/pagination/README.md#paginationlimitoffsetoffsetparams)
+* [paginationLimitOffsetPageBody](docs/pagination/README.md#paginationlimitoffsetpagebody)
+* [paginationLimitOffsetPageParams](docs/pagination/README.md#paginationlimitoffsetpageparams)
+
 ### [parameters](docs/parameters/README.md)
 
 * [deepObjectQueryParamsMap](docs/parameters/README.md#deepobjectqueryparamsmap)
@@ -207,6 +216,7 @@ public class Application {
 * [selectServerWithID](docs/servers/README.md#selectserverwithid) - Select a server by ID.
 * [serverWithTemplates](docs/servers/README.md#serverwithtemplates)
 * [serverWithTemplatesGlobal](docs/servers/README.md#serverwithtemplatesglobal)
+* [serversByIDWithTemplates](docs/servers/README.md#serversbyidwithtemplates)
 
 ### [telemetry](docs/telemetry/README.md)
 

@@ -149,6 +149,15 @@ func main() {
 * [GlobalPathParameterGet](docs/globals/README.md#globalpathparameterget)
 * [GlobalsQueryParameterGet](docs/globals/README.md#globalsqueryparameterget)
 
+### [Pagination](docs/pagination/README.md)
+
+* [PaginationCursorBody](docs/pagination/README.md#paginationcursorbody)
+* [PaginationCursorParams](docs/pagination/README.md#paginationcursorparams)
+* [PaginationLimitOffsetOffsetBody](docs/pagination/README.md#paginationlimitoffsetoffsetbody)
+* [PaginationLimitOffsetOffsetParams](docs/pagination/README.md#paginationlimitoffsetoffsetparams)
+* [PaginationLimitOffsetPageBody](docs/pagination/README.md#paginationlimitoffsetpagebody)
+* [PaginationLimitOffsetPageParams](docs/pagination/README.md#paginationlimitoffsetpageparams)
+
 ### [Parameters](docs/parameters/README.md)
 
 * [DeepObjectQueryParamsMap](docs/parameters/README.md#deepobjectqueryparamsmap)
@@ -217,6 +226,7 @@ func main() {
 * [SelectServerWithID](docs/servers/README.md#selectserverwithid) - Select a server by ID.
 * [ServerWithTemplates](docs/servers/README.md#serverwithtemplates)
 * [ServerWithTemplatesGlobal](docs/servers/README.md#serverwithtemplatesglobal)
+* [ServersByIDWithTemplates](docs/servers/README.md#serversbyidwithtemplates)
 
 ### [Telemetry](docs/telemetry/README.md)
 

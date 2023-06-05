@@ -10,6 +10,7 @@ Endpoints for testing servers.
 * [selectServerWithID](#selectserverwithid) - Select a server by ID.
 * [serverWithTemplates](#serverwithtemplates)
 * [serverWithTemplatesGlobal](#serverwithtemplatesglobal)
+* [serversByIDWithTemplates](#serversbyidwithtemplates)
 
 ## selectGlobalServer
 
@@ -138,6 +139,40 @@ public class Application {
                 .build();
 
             ServerWithTemplatesGlobalResponse res = sdk.servers.serverWithTemplatesGlobal();
+
+            if (res.statusCode == 200) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+## serversByIDWithTemplates
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            ServersByIDWithTemplatesResponse res = sdk.servers.serversByIDWithTemplates();
 
             if (res.statusCode == 200) {
                 // handle response

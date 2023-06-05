@@ -5,6 +5,7 @@ src/Errors.php
 src/Flattening.php
 src/Generation.php
 src/Globals.php
+src/Pagination.php
 src/Parameters.php
 src/RequestBodies.php
 src/ResponseBodies.php
@@ -12,6 +13,7 @@ src/Servers.php
 src/Telemetry.php
 src/Unions.php
 src/SDK.php
+src/ServerSomething.php
 src/SDKBuilder.php
 .gitignore
 composer.json
@@ -122,7 +124,7 @@ src/Models/Operations/IgnoresPostApplicationJSON.php
 src/Models/Operations/IgnoresPostRequest.php
 src/Models/Operations/IgnoresPostResponse.php
 src/Models/Operations/NameOverrideGetRequest.php
-src/Models/Operations/OverridenResponse.php
+src/Models/Operations/OverriddenResponse.php
 src/Models/Operations/NameOverrideGetResponse.php
 src/Models/Operations/UsageExamplePostSecurity.php
 src/Models/Operations/UsageExamplePostRequestBody.php
@@ -139,6 +141,22 @@ src/Models/Operations/GlobalsQueryParameterGetRequest.php
 src/Models/Operations/GlobalsQueryParameterGetResArgs.php
 src/Models/Operations/GlobalsQueryParameterGetRes.php
 src/Models/Operations/GlobalsQueryParameterGetResponse.php
+src/Models/Operations/PaginationCursorBodyRequestBody.php
+src/Models/Operations/PaginationCursorBodyRes.php
+src/Models/Operations/PaginationCursorBodyResponse.php
+src/Models/Operations/PaginationCursorParamsRequest.php
+src/Models/Operations/PaginationCursorParamsRes.php
+src/Models/Operations/PaginationCursorParamsResponse.php
+src/Models/Operations/PaginationLimitOffsetOffsetBodyRes.php
+src/Models/Operations/PaginationLimitOffsetOffsetBodyResponse.php
+src/Models/Operations/PaginationLimitOffsetOffsetParamsRequest.php
+src/Models/Operations/PaginationLimitOffsetOffsetParamsRes.php
+src/Models/Operations/PaginationLimitOffsetOffsetParamsResponse.php
+src/Models/Operations/PaginationLimitOffsetPageBodyRes.php
+src/Models/Operations/PaginationLimitOffsetPageBodyResponse.php
+src/Models/Operations/PaginationLimitOffsetPageParamsRequest.php
+src/Models/Operations/PaginationLimitOffsetPageParamsRes.php
+src/Models/Operations/PaginationLimitOffsetPageParamsResponse.php
 src/Models/Operations/DeepObjectQueryParamsMapRequest.php
 src/Models/Operations/DeepObjectQueryParamsMapRes.php
 src/Models/Operations/DeepObjectQueryParamsMapResponse.php
@@ -281,6 +299,7 @@ src/Models/Operations/SelectGlobalServerResponse.php
 src/Models/Operations/SelectServerWithIDResponse.php
 src/Models/Operations/ServerWithTemplatesResponse.php
 src/Models/Operations/ServerWithTemplatesGlobalResponse.php
+src/Models/Operations/ServersByIDWithTemplatesResponse.php
 src/Models/Operations/TelemetrySpeakeasyUserAgentGetRequest.php
 src/Models/Operations/TelemetrySpeakeasyUserAgentGetRes.php
 src/Models/Operations/TelemetrySpeakeasyUserAgentGetResponse.php
@@ -312,6 +331,7 @@ src/Models/Shared/ValidCircularReferenceObject.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshowSlides.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshow.php
 src/Models/Shared/HttpBinSimpleJsonObject.php
+src/Models/Shared/LimitOffsetConfig.php
 src/Models/Shared/RefQueryParamObjExploded.php
 src/Models/Shared/RefQueryParamObj.php
 src/Models/Shared/DeepObject.php
@@ -338,6 +358,7 @@ docs/errors/README.md
 docs/flattening/README.md
 docs/generation/README.md
 docs/globals/README.md
+docs/pagination/README.md
 docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md

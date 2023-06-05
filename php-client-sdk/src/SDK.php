@@ -28,6 +28,8 @@ class SDK
 		'http://broken',
         /** A server url with templated variables. */
 		'http://{hostname}:{port}',
+        /** A server url with templated variables. */
+		'http://localhost:35123/anything/{something}',
 	];
   	
     /**
@@ -71,6 +73,13 @@ class SDK
      * @var Globals $$globals
      */
 	public Globals $globals;
+	
+    /**
+     * Endpoints for testing the pagination extension
+     * 
+     * @var Pagination $$pagination
+     */
+	public Pagination $pagination;
 	
     /**
      * Endpoints for testing parameters.
@@ -144,6 +153,8 @@ class SDK
 		$this->generation = new Generation($this->sdkConfiguration);
 		
 		$this->globals = new Globals($this->sdkConfiguration);
+		
+		$this->pagination = new Pagination($this->sdkConfiguration);
 		
 		$this->parameters = new Parameters($this->sdkConfiguration);
 		

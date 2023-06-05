@@ -8,6 +8,7 @@ export * from "./deepobject";
 export * from "./deepobjectwithtype";
 export * from "./enum";
 export * from "./httpbinsimplejsonobject";
+export * from "./limitoffsetconfig";
 export * from "./mapobjvalue";
 export * from "./refqueryparamobj";
 export * from "./refqueryparamobjexploded";

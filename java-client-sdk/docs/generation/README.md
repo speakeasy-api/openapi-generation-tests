@@ -296,7 +296,7 @@ public class Application {
 
             NameOverrideGetResponse res = sdk.generation.nameOverride("example");
 
-            if (res.overridenResponse != null) {
+            if (res.overriddenResponse != null) {
                 // handle response
             }
         } catch (Exception e) {

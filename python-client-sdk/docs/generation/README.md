@@ -205,7 +205,7 @@ s = sdk.SDK(
 
 res = s.generation.name_override('example')
 
-if res.overriden_response is not None:
+if res.overridden_response is not None:
     # handle response
 ```
 

@@ -10,12 +10,12 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 
 
 /**
- * OverridenResponse - A successful response that contains the simpleObject sent in the request body
+ * OverriddenResponse - A successful response that contains the simpleObject sent in the request body
  * 
  * @package OpenAPI\OpenAPI\Models\Operations
  * @access public
  */
-class OverridenResponse
+class OverriddenResponse
 {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.

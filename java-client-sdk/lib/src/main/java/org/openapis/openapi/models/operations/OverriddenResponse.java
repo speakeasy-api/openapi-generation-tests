@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * OverridenResponse - A successful response that contains the simpleObject sent in the request body
+ * OverriddenResponse - A successful response that contains the simpleObject sent in the request body
  */
-public class OverridenResponse {
+public class OverriddenResponse {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      * https://docs.speakeasyapi.dev - A link to the external docs.
@@ -20,10 +20,10 @@ public class OverridenResponse {
     @JsonProperty("json")
     public org.openapis.openapi.models.shared.SimpleObject json;
 
-    public OverridenResponse withJson(org.openapis.openapi.models.shared.SimpleObject json) {
+    public OverriddenResponse withJson(org.openapis.openapi.models.shared.SimpleObject json) {
         this.json = json;
         return this;
     }
     
-    public OverridenResponse(){}
+    public OverriddenResponse(){}
 }

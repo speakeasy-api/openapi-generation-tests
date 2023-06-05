@@ -36,10 +36,10 @@ public class NameOverrideGetResponse {
      * A successful response that contains the simpleObject sent in the request body
      */
     
-    public OverridenResponse overridenResponse;
+    public OverriddenResponse overriddenResponse;
 
-    public NameOverrideGetResponse withOverridenResponse(OverridenResponse overridenResponse) {
-        this.overridenResponse = overridenResponse;
+    public NameOverrideGetResponse withOverriddenResponse(OverriddenResponse overriddenResponse) {
+        this.overriddenResponse = overriddenResponse;
         return this;
     }
     

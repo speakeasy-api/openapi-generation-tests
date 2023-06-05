@@ -24,7 +24,7 @@ module OpenApiSDK
     end
 
     # A successful response that contains the simpleObject sent in the request body
-    class OverridenResponse < OpenApiSDK::Utils::FieldAugmented
+    class OverriddenResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
       # A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -47,16 +47,16 @@ module OpenApiSDK
 
       field :status_code, Integer
       # A successful response that contains the simpleObject sent in the request body
-      field :overriden_response, T.nilable(Operations::OverridenResponse)
+      field :overridden_response, T.nilable(Operations::OverriddenResponse)
 
       field :raw_response, T.nilable(Faraday::Response)
 
 
-      sig { params(content_type: String, status_code: Integer, overriden_response: T.nilable(Operations::OverridenResponse), raw_response: T.nilable(Faraday::Response)).void }
-      def initialize(content_type: nil, status_code: nil, overriden_response: nil, raw_response: nil)
+      sig { params(content_type: String, status_code: Integer, overridden_response: T.nilable(Operations::OverriddenResponse), raw_response: T.nilable(Faraday::Response)).void }
+      def initialize(content_type: nil, status_code: nil, overridden_response: nil, raw_response: nil)
         @content_type = content_type
         @status_code = status_code
-        @overriden_response = overriden_response
+        @overridden_response = overridden_response
         @raw_response = raw_response
       end
     end

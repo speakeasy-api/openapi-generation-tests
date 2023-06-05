@@ -11,8 +11,8 @@ type NameOverrideGetRequest struct {
 	TestQueryParam string `queryParam:"style=form,explode=true,name=nameOverride"`
 }
 
-// OverridenResponse - A successful response that contains the simpleObject sent in the request body
-type OverridenResponse struct {
+// OverriddenResponse - A successful response that contains the simpleObject sent in the request body
+type OverriddenResponse struct {
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	JSON *shared.SimpleObject `json:"json,omitempty"`
 }
@@ -22,5 +22,5 @@ type NameOverrideGetResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
-	OverridenResponse *OverridenResponse
+	OverriddenResponse *OverriddenResponse
 }

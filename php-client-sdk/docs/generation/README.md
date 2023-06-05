@@ -247,7 +247,7 @@ try {
 
     $response = $sdk->generation->nameOverride('example');
 
-    if ($response->overridenResponse !== null) {
+    if ($response->overriddenResponse !== null) {
         // handle response
     }
 } catch (Exception $e) {

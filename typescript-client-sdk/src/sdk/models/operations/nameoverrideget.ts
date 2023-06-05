@@ -15,7 +15,7 @@ export class NameOverrideGetRequest extends SpeakeasyBase {
 /**
  * A successful response that contains the simpleObject sent in the request body
  */
-export class OverridenResponse extends SpeakeasyBase {
+export class OverriddenResponse extends SpeakeasyBase {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
      */
@@ -39,5 +39,5 @@ export class NameOverrideGetResponse extends SpeakeasyBase {
      * A successful response that contains the simpleObject sent in the request body
      */
     @SpeakeasyMetadata()
-    overridenResponse?: OverridenResponse;
+    overriddenResponse?: OverriddenResponse;
 }

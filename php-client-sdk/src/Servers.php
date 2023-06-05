@@ -27,6 +27,12 @@ class Servers
 	public const SERVER_WITH_TEMPLATES_SERVERS = [
 		'http://{hostname}:{port}',
 	];
+	
+	public const SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN = 'main';
+	
+	public const SERVERS_BY_ID_WITH_TEMPLATES_SERVERS = [
+		Servers::SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN => 'http://{hostname}:{port}',
+	];
 
 	private SDKConfiguration $sdkConfiguration;
 
@@ -166,6 +172,45 @@ class Servers
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $response = new \OpenAPI\OpenAPI\Models\Operations\ServerWithTemplatesGlobalResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+        }
+
+        return $response;
+    }
+	
+    /**
+     * serversByIDWithTemplates
+     * 
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\ServersByIDWithTemplatesResponse
+     */
+	public function serversByIDWithTemplates(
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\ServersByIDWithTemplatesResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(Servers::SERVERS_BY_ID_WITH_TEMPLATES_SERVERS[Servers::SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN], array(
+            'hostname' => 'localhost',
+            'port' => '35123',
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/serversByIDWithTemplates');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ServersByIDWithTemplatesResponse();
         $response->statusCode = $httpResponse->getStatusCode();
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;

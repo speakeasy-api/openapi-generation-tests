@@ -23,16 +23,16 @@ class NameOverrideGetResponse
     /**
      * A successful response that contains the simpleObject sent in the request body
      * 
-     * @var ?\OpenAPI\OpenAPI\Models\Operations\OverridenResponse $overridenResponse
+     * @var ?\OpenAPI\OpenAPI\Models\Operations\OverriddenResponse $overriddenResponse
      */
 	
-    public ?OverridenResponse $overridenResponse = null;
+    public ?OverriddenResponse $overriddenResponse = null;
     
 	public function __construct()
 	{
 		$this->contentType = "";
 		$this->statusCode = 0;
 		$this->rawResponse = null;
-		$this->overridenResponse = null;
+		$this->overriddenResponse = null;
 	}
 }

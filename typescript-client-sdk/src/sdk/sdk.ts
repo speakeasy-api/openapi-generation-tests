@@ -11,6 +11,7 @@ import { Generation } from "./generation";
 import { Globals } from "./globals";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
+import { Pagination } from "./pagination";
 import { ParametersT } from "./parameters";
 import { RequestBodies } from "./requestbodies";
 import { ResponseBodies } from "./responsebodies";
@@ -36,7 +37,20 @@ export const ServerList = [
      * A server url with templated variables.
      */
     "http://{hostname}:{port}",
+    /**
+     * A server url with templated variables.
+     */
+    "http://localhost:35123/anything/{something}",
 ] as const;
+
+/**
+ * Something is a variable for changing the root path
+ */
+export enum ServerSomething {
+    Something = "something",
+    SomethingElse = "somethingElse",
+    SomethingElseAgain = "somethingElseAgain",
+}
 
 /**
  * The available configuration options for the SDK
@@ -78,6 +92,11 @@ export type SDKProps = {
     port?: string;
 
     /**
+     * Allows setting the something variable for url substitution
+     */
+    something?: ServerSomething;
+
+    /**
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
@@ -89,7 +108,7 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    sdkVersion = "1.5.0";
+    sdkVersion = "1.5.1";
     genVersion = "2.35.3";
     globals: any;
 
@@ -133,6 +152,10 @@ export class SDK {
      */
     public globals: Globals;
     /**
+     * Endpoints for testing the pagination extension
+     */
+    public pagination: Pagination;
+    /**
      * Endpoints for testing parameters.
      */
     public parameters: ParametersT;
@@ -169,6 +192,9 @@ export class SDK {
             {
                 hostname: props?.hostname?.toString() ?? "localhost",
                 port: props?.port?.toString() ?? "35123",
+            },
+            {
+                something: props?.something?.toString() ?? "something",
             },
         ];
         const serverIdx = props?.serverIdx ?? 0;
@@ -212,6 +238,7 @@ export class SDK {
         this.flattening = new Flattening(this.sdkConfiguration);
         this.generation = new Generation(this.sdkConfiguration);
         this.globals = new Globals(this.sdkConfiguration);
+        this.pagination = new Pagination(this.sdkConfiguration);
         this.parameters = new ParametersT(this.sdkConfiguration);
         this.requestBodies = new RequestBodies(this.sdkConfiguration);
         this.responseBodies = new ResponseBodies(this.sdkConfiguration);

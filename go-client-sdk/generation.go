@@ -450,12 +450,12 @@ func (s *generation) NameOverride(ctx context.Context, testQueryParam string) (*
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *operations.OverridenResponse
+			var out *operations.OverriddenResponse
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
 
-			res.OverridenResponse = out
+			res.OverriddenResponse = out
 		}
 	}
 

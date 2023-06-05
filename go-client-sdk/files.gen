@@ -4,6 +4,7 @@ errors.go
 flattening.go
 generation.go
 globals.go
+pagination.go
 parameters.go
 requestbodies.go
 responsebodies.go
@@ -73,6 +74,12 @@ pkg/models/operations/nameoverrideget.go
 pkg/models/operations/usageexamplepost.go
 pkg/models/operations/globalpathparameterget.go
 pkg/models/operations/globalsqueryparameterget.go
+pkg/models/operations/paginationcursorbody.go
+pkg/models/operations/paginationcursorparams.go
+pkg/models/operations/paginationlimitoffsetoffsetbody.go
+pkg/models/operations/paginationlimitoffsetoffsetparams.go
+pkg/models/operations/paginationlimitoffsetpagebody.go
+pkg/models/operations/paginationlimitoffsetpageparams.go
 pkg/models/operations/deepobjectqueryparamsmap.go
 pkg/models/operations/deepobjectqueryparamsobject.go
 pkg/models/operations/formqueryparamsarray.go
@@ -130,6 +137,7 @@ pkg/models/operations/selectglobalserver.go
 pkg/models/operations/selectserverwithid.go
 pkg/models/operations/serverwithtemplates.go
 pkg/models/operations/serverwithtemplatesglobal.go
+pkg/models/operations/serversbyidwithtemplates.go
 pkg/models/operations/telemetryspeakeasyuseragentget.go
 pkg/models/operations/telemetryuseragentget.go
 pkg/models/operations/mixedtypeoneofpost.go
@@ -145,6 +153,7 @@ pkg/models/shared/simpleobject.go
 pkg/models/shared/enum.go
 pkg/models/shared/validcircularreferenceobject.go
 pkg/models/shared/httpbinsimplejsonobject.go
+pkg/models/shared/limitoffsetconfig.go
 pkg/models/shared/refqueryparamobjexploded.go
 pkg/models/shared/refqueryparamobj.go
 pkg/models/shared/deepobject.go
@@ -166,6 +175,7 @@ docs/errors/README.md
 docs/flattening/README.md
 docs/generation/README.md
 docs/globals/README.md
+docs/pagination/README.md
 docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md

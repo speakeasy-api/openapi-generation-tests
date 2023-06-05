@@ -22,7 +22,7 @@ s = sdk::SDK.new
    
 req = Operations::Operations::TelemetrySpeakeasyUserAgentGetRequest(
   headers=Operations::TelemetrySpeakeasyUserAgentGetRequest(
-    user_agent="maiores",
+    user_agent="expedita",
   ),
 )
     

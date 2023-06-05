@@ -48,6 +48,25 @@ public class Servers {
     public static final String[] SERVER_WITH_TEMPLATES_SERVERS = {
         "http://{hostname}:{port}",
     };
+	/**
+	 * ServersByIDWithTemplatesServers contains identifiers for the servers available to the SDK.
+	 */ 
+    public enum ServersByIDWithTemplatesServers {
+        MAIN("main");
+
+        public final String server;
+
+        private ServersByIDWithTemplatesServers(String server) {
+            this.server = server;
+        }
+    }
+
+    /**
+	 * SERVERS_BY_ID_WITH_TEMPLATES_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final java.util.Map<ServersByIDWithTemplatesServers, String> SERVERS_BY_ID_WITH_TEMPLATES_SERVERS = new java.util.HashMap<ServersByIDWithTemplatesServers, String>() {{
+        put(ServersByIDWithTemplatesServers.MAIN, "http://{hostname}:{port}");
+    }};
 	
 	private SDKConfiguration sdkConfiguration;
 
@@ -186,6 +205,44 @@ public class Servers {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse res = new org.openapis.openapi.models.operations.ServerWithTemplatesGlobalResponse(contentType, httpRes.statusCode()) {{
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse serversByIDWithTemplates() throws Exception {
+        return this.serversByIDWithTemplates(null);
+    }
+
+    public org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse serversByIDWithTemplates(String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(SERVERS_BY_ID_WITH_TEMPLATES_SERVERS.get(ServersByIDWithTemplatesServers.MAIN), new java.util.HashMap<String, String>(){{
+            put("hostname", "localhost");
+            put("port", "35123");
+        }});
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/serversByIDWithTemplates");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "*/*");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse res = new org.openapis.openapi.models.operations.ServersByIDWithTemplatesResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         

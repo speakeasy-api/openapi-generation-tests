@@ -213,8 +213,8 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[operations.OverridenResponse])
-                res.overriden_response = out
+                out = utils.unmarshal_json(http_res.text, Optional[operations.OverriddenResponse])
+                res.overridden_response = out
 
         return res
 

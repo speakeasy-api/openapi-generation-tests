@@ -4,6 +4,7 @@
 
 package org.openapis.openapi;
 
+import com.fasterxml.jackson.annotation.JsonValue;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
@@ -36,6 +37,10 @@ public class SDK {
          * A server url with templated variables.
          */
         "http://{hostname}:{port}",
+        /**
+         * A server url with templated variables.
+         */
+        "http://localhost:35123/anything/{something}",
 	};
 	
 	
@@ -64,6 +69,10 @@ public class SDK {
      * Endpoints for testing global parameters.
      */
     public Globals globals;
+    /**
+     * Endpoints for testing the pagination extension
+     */
+    public Pagination pagination;
     /**
      * Endpoints for testing parameters.
      */
@@ -183,6 +192,38 @@ public class SDK {
 
 			return this;
 		}
+		        
+        /**
+         * ServerSomething - Something is a variable for changing the root path
+         */
+        public enum ServerSomething {
+            SOMETHING("something"),
+            SOMETHING_ELSE("somethingElse"),
+            SOMETHING_ELSE_AGAIN("somethingElseAgain");
+        
+            @JsonValue
+            public final String value;
+        
+            private ServerSomething(String value) {
+                this.value = value;
+            }
+        }
+        
+		/**
+		 * Allows setting the $name variable for url substitution.
+		 * @param something The value to set.
+		 * @return The builder instance.
+		 */
+		public Builder setSomething(ServerSomething something) {
+			for (java.util.Map<String, String> server : this.sdkConfiguration.serverDefaults) {
+				if (!server.containsKey("something")) {
+					continue;
+				}
+				server.put("something", something.toString());
+			}
+
+			return this;
+		}
 		
 		/**
 		 * Allows setting the globalPathParam parameter for all supported operations.
@@ -267,6 +308,8 @@ public class SDK {
 		this.generation = new Generation(this.sdkConfiguration);
 		
 		this.globals = new Globals(this.sdkConfiguration);
+		
+		this.pagination = new Pagination(this.sdkConfiguration);
 		
 		this.parameters = new Parameters(this.sdkConfiguration);
 		

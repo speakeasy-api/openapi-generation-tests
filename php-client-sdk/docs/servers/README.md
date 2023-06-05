@@ -10,6 +10,7 @@ Endpoints for testing servers.
 * [selectServerWithID](#selectserverwithid) - Select a server by ID.
 * [serverWithTemplates](#serverwithtemplates)
 * [serverWithTemplatesGlobal](#serverwithtemplatesglobal)
+* [serversByIDWithTemplates](#serversbyidwithtemplates)
 
 ## selectGlobalServer
 
@@ -112,6 +113,33 @@ $sdk = SDK::builder()
 
 try {
     $response = $sdk->servers->serverWithTemplatesGlobal();
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+## serversByIDWithTemplates
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->servers->serversByIDWithTemplates();
 
     if ($response->statusCode === 200) {
         // handle response

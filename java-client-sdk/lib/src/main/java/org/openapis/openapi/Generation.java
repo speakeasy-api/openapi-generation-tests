@@ -361,15 +361,15 @@ public class Generation {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.NameOverrideGetResponse res = new org.openapis.openapi.models.operations.NameOverrideGetResponse(contentType, httpRes.statusCode()) {{
-            overridenResponse = null;
+            overriddenResponse = null;
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.operations.OverridenResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.OverridenResponse.class);
-                res.overridenResponse = out;
+                org.openapis.openapi.models.operations.OverriddenResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.OverriddenResponse.class);
+                res.overriddenResponse = out;
             }
         }
 

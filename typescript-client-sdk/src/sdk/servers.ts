@@ -212,4 +212,59 @@ export class Servers {
 
         return res;
     }
+
+    async serversByIDWithTemplates(
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ServersByIDWithTemplatesResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.ServersByIDWithTemplatesServerList[
+                operations.ServersByIDWithTemplatesServerMain
+            ],
+            {
+                hostname: "localhost",
+                port: "35123",
+            }
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/serversByIDWithTemplates";
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "*/*";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ServersByIDWithTemplatesResponse =
+            new operations.ServersByIDWithTemplatesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
+    }
 }

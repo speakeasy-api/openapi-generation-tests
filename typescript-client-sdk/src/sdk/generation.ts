@@ -449,9 +449,9 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.overridenResponse = utils.objectToClass(
+                    res.overriddenResponse = utils.objectToClass(
                         httpRes?.data,
-                        operations.OverridenResponse
+                        operations.OverriddenResponse
                     );
                 }
                 break;

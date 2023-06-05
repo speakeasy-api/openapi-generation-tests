@@ -5,6 +5,7 @@ lib/src/main/java/org/openapis/openapi/Errors.java
 lib/src/main/java/org/openapis/openapi/Flattening.java
 lib/src/main/java/org/openapis/openapi/Generation.java
 lib/src/main/java/org/openapis/openapi/Globals.java
+lib/src/main/java/org/openapis/openapi/Pagination.java
 lib/src/main/java/org/openapis/openapi/Parameters.java
 lib/src/main/java/org/openapis/openapi/RequestBodies.java
 lib/src/main/java/org/openapis/openapi/ResponseBodies.java
@@ -131,7 +132,7 @@ lib/src/main/java/org/openapis/openapi/models/operations/IgnoresPostApplicationJ
 lib/src/main/java/org/openapis/openapi/models/operations/IgnoresPostRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/IgnoresPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NameOverrideGetRequest.java
-lib/src/main/java/org/openapis/openapi/models/operations/OverridenResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/OverriddenResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NameOverrideGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/UsageExamplePostSecurity.java
 lib/src/main/java/org/openapis/openapi/models/operations/UsageExamplePostRequestBody.java
@@ -148,6 +149,22 @@ lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGe
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetResArgs.java
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyRequestBody.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorParamsRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorParamsRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorParamsResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetOffsetBodyRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetOffsetBodyResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetOffsetParamsRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetOffsetParamsRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetOffsetParamsResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetPageBodyRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetPageBodyResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetPageParamsRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetPageParamsRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/PaginationLimitOffsetPageParamsResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeepObjectQueryParamsMapRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeepObjectQueryParamsMapRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeepObjectQueryParamsMapResponse.java
@@ -290,6 +307,7 @@ lib/src/main/java/org/openapis/openapi/models/operations/SelectGlobalServerRespo
 lib/src/main/java/org/openapis/openapi/models/operations/SelectServerWithIDResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ServerWithTemplatesResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ServerWithTemplatesGlobalResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/ServersByIDWithTemplatesResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/TelemetrySpeakeasyUserAgentGetRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/TelemetrySpeakeasyUserAgentGetRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/TelemetrySpeakeasyUserAgentGetResponse.java
@@ -321,6 +339,7 @@ lib/src/main/java/org/openapis/openapi/models/shared/ValidCircularReferenceObjec
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObjectSlideshow.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObject.java
+lib/src/main/java/org/openapis/openapi/models/shared/LimitOffsetConfig.java
 lib/src/main/java/org/openapis/openapi/models/shared/RefQueryParamObjExploded.java
 lib/src/main/java/org/openapis/openapi/models/shared/RefQueryParamObj.java
 lib/src/main/java/org/openapis/openapi/models/shared/DeepObject.java
@@ -347,6 +366,7 @@ docs/errors/README.md
 docs/flattening/README.md
 docs/generation/README.md
 docs/globals/README.md
+docs/pagination/README.md
 docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md

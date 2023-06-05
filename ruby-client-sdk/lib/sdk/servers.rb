@@ -120,5 +120,30 @@ module OpenApiSDK
       end
       res
     end
+
+    sig { params(server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def servers_by_id_with_templates(server_url = nil)
+
+      base_url = Operations::SERVERS_BY_ID_WITH_TEMPLATES_SERVERS[:SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN]
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url.delete_suffix('/')}/anything/serversByIDWithTemplates"
+      headers = {}
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+
+      r = @client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::ServersByIDWithTemplatesResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+      end
+      res
+    end
   end
 end

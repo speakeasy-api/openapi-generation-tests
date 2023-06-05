@@ -25,9 +25,12 @@ class SDKConfiguration
 			'hostname' => 'localhost',
 			'port' => '35123',
 		],
+		[
+			'something' => 'something',
+		],
 	];
 	public string $language = 'php';
-	public string $sdkVersion = '1.5.0';
+	public string $sdkVersion = '1.5.1';
 	public string $genVersion = '2.35.3';
 	/** @var array<string, array<string, array<string, mixed>>> */
 	public ?array $globals = [

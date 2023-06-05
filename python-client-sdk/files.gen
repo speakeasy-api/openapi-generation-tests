@@ -5,6 +5,7 @@ src/sdk/errors.py
 src/sdk/flattening.py
 src/sdk/generation.py
 src/sdk/globals.py
+src/sdk/pagination.py
 src/sdk/parameters.py
 src/sdk/requestbodies.py
 src/sdk/responsebodies.py
@@ -67,6 +68,12 @@ src/sdk/models/operations/nameoverrideget.py
 src/sdk/models/operations/usageexamplepost.py
 src/sdk/models/operations/globalpathparameterget.py
 src/sdk/models/operations/globalsqueryparameterget.py
+src/sdk/models/operations/paginationcursorbody.py
+src/sdk/models/operations/paginationcursorparams.py
+src/sdk/models/operations/paginationlimitoffsetoffsetbody.py
+src/sdk/models/operations/paginationlimitoffsetoffsetparams.py
+src/sdk/models/operations/paginationlimitoffsetpagebody.py
+src/sdk/models/operations/paginationlimitoffsetpageparams.py
 src/sdk/models/operations/deepobjectqueryparamsmap.py
 src/sdk/models/operations/deepobjectqueryparamsobject.py
 src/sdk/models/operations/formqueryparamsarray.py
@@ -124,6 +131,7 @@ src/sdk/models/operations/selectglobalserver.py
 src/sdk/models/operations/selectserverwithid.py
 src/sdk/models/operations/serverwithtemplates.py
 src/sdk/models/operations/serverwithtemplatesglobal.py
+src/sdk/models/operations/serversbyidwithtemplates.py
 src/sdk/models/operations/telemetryspeakeasyuseragentget.py
 src/sdk/models/operations/telemetryuseragentget.py
 src/sdk/models/operations/mixedtypeoneofpost.py
@@ -140,6 +148,7 @@ src/sdk/models/shared/simpleobject.py
 src/sdk/models/shared/enum.py
 src/sdk/models/shared/validcircularreferenceobject.py
 src/sdk/models/shared/httpbinsimplejsonobject.py
+src/sdk/models/shared/limitoffsetconfig.py
 src/sdk/models/shared/refqueryparamobjexploded.py
 src/sdk/models/shared/refqueryparamobj.py
 src/sdk/models/shared/deepobject.py
@@ -160,6 +169,7 @@ docs/errors/README.md
 docs/flattening/README.md
 docs/generation/README.md
 docs/globals/README.md
+docs/pagination/README.md
 docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md

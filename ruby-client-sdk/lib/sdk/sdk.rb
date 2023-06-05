@@ -11,12 +11,13 @@ module OpenApiSDK
   SERVERS = [
     'http://localhost:35123',
     'http://broken',
-    'http://{hostname}:{port}'
+    'http://{hostname}:{port}',
+    'http://localhost:35123/anything/{something}'
   ].freeze
   class SDK
     extend T::Sig
 
-    attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :parameters, :request_bodies, :response_bodies, :servers, :telemetry, :unions
+    attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :pagination, :parameters, :request_bodies, :response_bodies, :servers, :telemetry, :unions
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -71,7 +72,7 @@ module OpenApiSDK
       @security = nil
       @server_url = SERVERS[0]
       @language = 'ruby'
-      @sdk_version = '1.5.0'
+      @sdk_version = '1.5.1'
       @gen_version = '2.35.3'
       init_sdks
     end
@@ -139,6 +140,15 @@ module OpenApiSDK
         @_globals
       )
       @globals = Globals.new(
+        self,
+        @client,
+        @server_url,
+        @language,
+        @sdk_version,
+        @gen_version,
+        @_globals
+      )
+      @pagination = Pagination.new(
         self,
         @client,
         @server_url,

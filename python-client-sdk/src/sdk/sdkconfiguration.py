@@ -3,6 +3,7 @@
 import requests
 from dataclasses import dataclass, field
 from typing import Any
+from enum import Enum
 
 SERVERS = [
     'http://localhost:35123',
@@ -11,9 +12,16 @@ SERVERS = [
     # A server url to a non-existent server.
     'http://{hostname}:{port}',
     # A server url with templated variables.
+    'http://localhost:35123/anything/{something}',
+    # A server url with templated variables.
 ]
 """Contains the list of servers available to the SDK"""
 
+class ServerSomething(str, Enum):
+    r"""Something is a variable for changing the root path"""
+    SOMETHING = 'something'
+    SOMETHING_ELSE = 'somethingElse'
+    SOMETHING_ELSE_AGAIN = 'somethingElseAgain'
 
 
 @dataclass
@@ -25,7 +33,7 @@ class SDKConfiguration:
     server_defaults: list[dict[str, str]] = field(default_factory=list)
     globals: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
     language: str = 'python'
-    sdk_version: str = '1.5.0'
+    sdk_version: str = '1.5.1'
     gen_version: str = '2.35.3'
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:

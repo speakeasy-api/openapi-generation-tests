@@ -270,8 +270,8 @@ module OpenApiSDK
       )
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
-          out = Utils.unmarshal_complex(r.env.response_body, Operations::OverridenResponse)
-          res.overriden_response = out
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::OverriddenResponse)
+          res.overridden_response = out
         end
       end
       res

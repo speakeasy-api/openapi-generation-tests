@@ -108,6 +108,25 @@ class SDKBuilder
 
         return $this;
     }
+    /**
+     * setSomething is used to configure the something variable for url substitution
+     *
+     * @param ServerSomething $something
+     * @return SDKBuilder
+     */
+    public function setSomething(ServerSomething $something): SDKBuilder
+    {
+        foreach ($this->sdkConfig->serverDefaults as $idx => $serverDefaults) {
+            if (!array_key_exists('something', $serverDefaults)) {
+                continue;
+            }
+            
+            $this->sdkConfig->serverDefaults[$idx]['something'] = $something->value;
+            
+        }
+
+        return $this;
+    }
     
     /**
      * setGlobalPathParam is used to configure the globalPathParam parameter for the SDK.

@@ -194,7 +194,7 @@ req = Operations::Operations::NameOverrideGetRequest(
     
 res = s.generation::name_override(req)
 
-if ! res.overriden_response.nil?
+if ! res.overridden_response.nil?
     # handle response
 
 ```

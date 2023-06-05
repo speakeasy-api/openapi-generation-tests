@@ -17,7 +17,7 @@ class NameOverrideGetRequest:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
-class OverridenResponse:
+class OverriddenResponse:
     r"""A successful response that contains the simpleObject sent in the request body"""
     
     json: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
@@ -31,7 +31,7 @@ class NameOverrideGetResponse:
     
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
-    overriden_response: Optional[OverridenResponse] = dataclasses.field(default=None)
+    overridden_response: Optional[OverriddenResponse] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     

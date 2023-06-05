@@ -4,6 +4,7 @@ lib/sdk/errors.rb
 lib/sdk/flattening.rb
 lib/sdk/generation.rb
 lib/sdk/globals.rb
+lib/sdk/pagination.rb
 lib/sdk/parameters.rb
 lib/sdk/requestbodies.rb
 lib/sdk/responsebodies.rb
@@ -54,6 +55,12 @@ lib/sdk/models/operations/nameoverrideget.rb
 lib/sdk/models/operations/usageexamplepost.rb
 lib/sdk/models/operations/globalpathparameterget.rb
 lib/sdk/models/operations/globalsqueryparameterget.rb
+lib/sdk/models/operations/paginationcursorbody.rb
+lib/sdk/models/operations/paginationcursorparams.rb
+lib/sdk/models/operations/paginationlimitoffsetoffsetbody.rb
+lib/sdk/models/operations/paginationlimitoffsetoffsetparams.rb
+lib/sdk/models/operations/paginationlimitoffsetpagebody.rb
+lib/sdk/models/operations/paginationlimitoffsetpageparams.rb
 lib/sdk/models/operations/deepobjectqueryparamsmap.rb
 lib/sdk/models/operations/deepobjectqueryparamsobject.rb
 lib/sdk/models/operations/formqueryparamsarray.rb
@@ -111,6 +118,7 @@ lib/sdk/models/operations/selectglobalserver.rb
 lib/sdk/models/operations/selectserverwithid.rb
 lib/sdk/models/operations/serverwithtemplates.rb
 lib/sdk/models/operations/serverwithtemplatesglobal.rb
+lib/sdk/models/operations/serversbyidwithtemplates.rb
 lib/sdk/models/operations/telemetryspeakeasyuseragentget.rb
 lib/sdk/models/operations/telemetryuseragentget.rb
 lib/sdk/models/operations/mixedtypeoneofpost.rb
@@ -126,6 +134,7 @@ lib/sdk/models/shared/simpleobject.rb
 lib/sdk/models/shared/enum.rb
 lib/sdk/models/shared/validcircularreferenceobject.rb
 lib/sdk/models/shared/httpbinsimplejsonobject.rb
+lib/sdk/models/shared/limitoffsetconfig.rb
 lib/sdk/models/shared/refqueryparamobjexploded.rb
 lib/sdk/models/shared/refqueryparamobj.rb
 lib/sdk/models/shared/deepobject.rb
@@ -145,6 +154,7 @@ docs/errors/README.md
 docs/flattening/README.md
 docs/generation/README.md
 docs/globals/README.md
+docs/pagination/README.md
 docs/parameters/README.md
 docs/requestbodies/README.md
 docs/responsebodies/README.md

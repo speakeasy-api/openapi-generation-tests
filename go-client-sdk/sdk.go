@@ -5,6 +5,7 @@ package sdk
 import (
 	"bytes"
 	"context"
+	"encoding/json"
 	"fmt"
 	"io"
 	"net/http"
@@ -23,6 +24,8 @@ var ServerList = []string{
 	"http://broken",
 	// A server url with templated variables.
 	"http://{hostname}:{port}",
+	// A server url with templated variables.
+	"http://localhost:35123/anything/{something}",
 }
 
 // HTTPClient provides an interface for suplying the SDK with a custom HTTP client
@@ -86,6 +89,8 @@ type SDK struct {
 	Generation *generation
 	// Globals - Endpoints for testing global parameters.
 	Globals *globals
+	// Pagination - Endpoints for testing the pagination extension
+	Pagination *pagination
 	// Parameters - Endpoints for testing parameters.
 	Parameters *parameters
 	// RequestBodies - Endpoints for testing request bodies.
@@ -159,6 +164,50 @@ func WithPort(port string) SDKOption {
 	}
 }
 
+// ServerSomething - Something is a variable for changing the root path
+type ServerSomething string
+
+const (
+	ServerSomethingSomething          ServerSomething = "something"
+	ServerSomethingSomethingElse      ServerSomething = "somethingElse"
+	ServerSomethingSomethingElseAgain ServerSomething = "somethingElseAgain"
+)
+
+func (e ServerSomething) ToPointer() *ServerSomething {
+	return &e
+}
+
+func (e *ServerSomething) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "something":
+		fallthrough
+	case "somethingElse":
+		fallthrough
+	case "somethingElseAgain":
+		*e = ServerSomething(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for ServerSomething: %v", v)
+	}
+}
+
+// WithSomething allows setting the $name variable for url substitution
+func WithSomething(something ServerSomething) SDKOption {
+	return func(sdk *SDK) {
+		for idx := range sdk.sdkConfiguration.ServerDefaults {
+			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["something"]; !ok {
+				continue
+			}
+
+			sdk.sdkConfiguration.ServerDefaults[idx]["something"] = fmt.Sprintf("%v", something)
+		}
+	}
+}
+
 // WithClient allows the overriding of the default HTTP client used by the SDK
 func WithClient(client HTTPClient) SDKOption {
 	return func(sdk *SDK) {
@@ -200,7 +249,7 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		sdkConfiguration: sdkConfiguration{
 			Language:   "go",
-			SDKVersion: "1.5.0",
+			SDKVersion: "1.5.1",
 			GenVersion: "2.35.3",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
@@ -211,6 +260,9 @@ func New(opts ...SDKOption) *SDK {
 				{
 					"hostname": "localhost",
 					"port":     "35123",
+				},
+				{
+					"something": "something",
 				},
 			},
 		},
@@ -242,6 +294,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Generation = newGeneration(sdk.sdkConfiguration)
 
 	sdk.Globals = newGlobals(sdk.sdkConfiguration)
+
+	sdk.Pagination = newPagination(sdk.sdkConfiguration)
 
 	sdk.Parameters = newParameters(sdk.sdkConfiguration)
 

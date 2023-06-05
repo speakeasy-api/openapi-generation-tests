@@ -136,6 +136,15 @@ if res.usage_example_post_200_application_json_object is not None:
 * [global_path_parameter_get](docs/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/globals/README.md#globals_query_parameter_get)
 
+### [pagination](docs/pagination/README.md)
+
+* [pagination_cursor_body](docs/pagination/README.md#pagination_cursor_body)
+* [pagination_cursor_params](docs/pagination/README.md#pagination_cursor_params)
+* [pagination_limit_offset_offset_body](docs/pagination/README.md#pagination_limit_offset_offset_body)
+* [pagination_limit_offset_offset_params](docs/pagination/README.md#pagination_limit_offset_offset_params)
+* [pagination_limit_offset_page_body](docs/pagination/README.md#pagination_limit_offset_page_body)
+* [pagination_limit_offset_page_params](docs/pagination/README.md#pagination_limit_offset_page_params)
+
 ### [parameters](docs/parameters/README.md)
 
 * [deep_object_query_params_map](docs/parameters/README.md#deep_object_query_params_map)
@@ -204,6 +213,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [select_server_with_id](docs/servers/README.md#select_server_with_id) - Select a server by ID.
 * [server_with_templates](docs/servers/README.md#server_with_templates)
 * [server_with_templates_global](docs/servers/README.md#server_with_templates_global)
+* [servers_by_id_with_templates](docs/servers/README.md#servers_by_id_with_templates)
 
 ### [telemetry](docs/telemetry/README.md)
 

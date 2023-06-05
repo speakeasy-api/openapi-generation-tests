@@ -101,3 +101,27 @@ class Servers:
         return res
 
     
+    def servers_by_id_with_templates(self, server_url: Optional[str] = None) -> operations.ServersByIDWithTemplatesResponse:
+        base_url = utils.template_url(operations.SERVERS_BY_ID_WITH_TEMPLATES_SERVERS[operations.SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN], {
+            'hostname': 'localhost',
+            'port': '35123',
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/anything/serversByIDWithTemplates'
+        headers = {}
+        headers['Accept'] = '*/*'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('GET', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ServersByIDWithTemplatesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+
+        return res
+
+    

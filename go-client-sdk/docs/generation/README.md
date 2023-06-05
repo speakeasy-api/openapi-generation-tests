@@ -297,7 +297,7 @@ func main() {
         log.Fatal(err)
     }
 
-    if res.OverridenResponse != nil {
+    if res.OverriddenResponse != nil {
         // handle response
     }
 }
