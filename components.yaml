@@ -361,6 +361,15 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/validCircularReferenceObject"
+    limitOffsetConfig:
+      type: object
+      properties:
+        offset:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
   responses:
     tokenAuthResponse:
       description: Successful authentication.
@@ -477,6 +486,23 @@ components:
                   - arr
             required:
               - form
+    paginationResponse:
+      description: OK
+      content:
+        application/json:
+          schema:
+            title: res
+            type: object
+            properties:
+              numPages:
+                type: integer
+              resultArray:
+                type: array
+                items:
+                  type: integer
+            required:
+              - numPages
+              - resultArray
   parameters:
     strPathParam:
       name: strParam
