@@ -27,6 +27,16 @@ servers:
       hostname:
         default: localhost
         description: The hostname of the server.
+  - url: http://localhost:35123/anything/{something}
+    description: A server url with templated variables.
+    variables:
+      something:
+        default: something
+        description: Something is a variable for changing the root path
+        enum:
+          - something
+          - somethingElse
+          - somethingElseAgain
 x-speakeasy-globals:
   parameters:
     - name: globalQueryParam
@@ -71,6 +81,8 @@ tags:
     description: Endpoints for testing error responses.
   - name: telemetry
     description: Endpoints for testing telemetry.
+  - name: pagination
+    description: Endpoints for testing the pagination extension
 security:
   - apiKeyAuth: []
   - apiKeyAuthNew: []
@@ -118,6 +130,24 @@ paths:
             hostname:
               default: localhost
               description: The hostname of the server.
+      responses:
+        "200":
+          description: OK
+  /anything/serversByIDWithTemplates:
+    get:
+      operationId: serversByIDWithTemplates
+      tags:
+        - servers
+      servers:
+        - url: http://{hostname}:{port}
+          variables:
+            port:
+              default: "35123"
+              description: The port on which the server is running.
+            hostname:
+              default: localhost
+              description: The hostname of the server.
+          x-speakeasy-server-id: main
       responses:
         "200":
           description: OK
@@ -2570,7 +2600,7 @@ paths:
             application/json:
               schema:
                 type: object
-                x-speakeasy-name-override: overridenResponse
+                x-speakeasy-name-override: overriddenResponse
                 properties:
                   json:
                     $ref: "components.yaml#/components/schemas/simpleObject"
@@ -3055,6 +3085,161 @@ paths:
                       type: string
                 required:
                   - headers
+  /pagination/limitoffset/page:
+    get:
+      operationId: paginationLimitOffsetPageParams
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: page
+            in: parameters
+            type: page
+        outputs:
+          results: $.resultArray
+    put:
+      operationId: paginationLimitOffsetPageBody
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/limitOffsetConfig"
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: requestBody
+            type: limit
+          - name: page
+            in: requestBody
+            type: page
+        outputs:
+          numPages: $.numPages
+  /pagination/limitoffset/offset:
+    get:
+      operationId: paginationLimitOffsetOffsetParams
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: offset
+          in: query
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: parameters
+            type: limit
+          - name: offset
+            in: parameters
+            type: offset
+        outputs:
+          results: $.resultArray
+    put:
+      operationId: paginationLimitOffsetOffsetBody
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/limitOffsetConfig"
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: offsetLimit
+        inputs:
+          - name: limit
+            in: requestBody
+            type: limit
+          - name: offset
+            in: requestBody
+            type: offset
+        outputs:
+          results: $.resultArray
+  /pagination/cursor:
+    get:
+      operationId: paginationCursorParams
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: cursor
+          in: query
+          schema:
+            type: integer
+          required: true
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: parameters
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
+    put:
+      operationId: paginationCursorBody
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                cursor:
+                  type: integer
+              required:
+                - cursor
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/paginationResponse"
+      tags:
+        - pagination
+      x-speakeasy-pagination:
+        type: cursor
+        inputs:
+          - name: cursor
+            in: requestBody
+            type: cursor
+        outputs:
+          nextCursor: $.resultArray[(@.length-1)]
 components:
   securitySchemes:
     basicAuth:
