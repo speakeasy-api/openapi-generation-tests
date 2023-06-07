@@ -21,34 +21,29 @@ module OpenApiSDK
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
-    sig { params(security: Shared::Security,
-                 global_path_param: Integer,
-                 global_query_param: String,
-                 server_url: String,
-                 url_params: T::Hash[Symbol, String],
-                 client: Faraday::Request).void }
+    sig do
+      params(security: Shared::Security,
+             global_path_param: Integer,
+             global_query_param: String,
+             server_url: String,
+             url_params: T::Hash[Symbol, String],
+             client: Faraday::Request).void
+    end
     def initialize(security: nil,
-                 global_path_param: nil,
-                 global_query_param: nil,
-                 server_url: nil,
-                 url_params: nil,
-                 client: nil
-                 )
-        """Instantiates the SDK configuring it with the provided parameters.
-        
-        :param security: The security details required for authentication
-        :type security: shared.Security
-        :param global_path_param: Configures the global_path_param parameter for all supported operations
-        :type global_path_param: Integer
-        :param global_query_param: Configures the global_query_param parameter for all supported operations
-        :type global_query_param: String
-        :param server_url: The server URL to use for all operations
-        :type server_url: str
-        :param url_params: Parameters to optionally template the server URL with
-        :type url_params: dict[str, str]
-        :param client: The requests.Session HTTP client to use for all operations
-        :type client: requests_http.Session        
-        """
+                   global_path_param: nil,
+                   global_query_param: nil,
+                   server_url: nil,
+                   url_params: nil,
+                   client: nil)
+
+      ## Instantiates the SDK configuring it with the provided parameters.
+      # @param [Shared::Security] security The security details required for authentication
+      # @param [Integer] global_path_param Configures the global_path_param parameter for all supported operations
+      # @param [String] global_query_param Configures the global_query_param parameter for all supported operations
+      # @param [String] server_url The server URL to use for all operations
+      # @param [Hash<Symbol, String>] url_params Parameters to optionally template the server URL with
+      # @param [Faraday::Request] client The faraday HTTP client to use for all operations
+
       @client = Faraday.new(request: {
                               params_encoder: Faraday::FlatParamsEncoder
                             }) do |f|
@@ -58,22 +53,22 @@ module OpenApiSDK
 
       
       @_globals = {
-          'parameters': {
-              'queryParam': {
-                  'global_query_param': global_query_param,
-              },
-              'pathParam': {
-                  'global_path_param': global_path_param,
-              },
+        'parameters': {
+          'queryParam': {
+            'global_query_param': global_query_param
           },
+          'pathParam': {
+            'global_path_param': global_path_param
+          }
+        }
       }
 
 
       @security = nil
       @server_url = SERVERS[0]
       @language = 'ruby'
-      @sdk_version = '1.5.1'
-      @gen_version = '2.35.3'
+      @sdk_version = '1.5.2'
+      @gen_version = '2.35.9'
       init_sdks
     end
 

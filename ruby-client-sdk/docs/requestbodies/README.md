@@ -117,7 +117,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_array(req)
 
 if ! res.simple_objects.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -180,7 +181,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_array_obj(req)
 
 if ! res.arr_obj_value.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -327,7 +329,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_array_of_array(req)
 
 if ! res.arrs.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -363,7 +366,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_array_of_array_of_primitive(req)
 
 if ! res.arrs.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -428,7 +432,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_array_of_map(req)
 
 if ! res.maps.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -454,7 +459,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_array_of_primitive(req)
 
 if ! res.strings.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -626,7 +632,8 @@ req = Operations::Shared::DeepObject(
 res = s.request_bodies::request_body_post_application_json_deep(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -729,7 +736,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_map(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -772,7 +780,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_map_obj(req)
 
 if ! res.map_obj_value.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1003,7 +1012,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_map_of_array(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1108,7 +1118,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_map_of_map(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1145,7 +1156,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_map_of_map_of_primitive(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1169,7 +1181,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_application_json_map_of_primitive(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1210,7 +1223,8 @@ req = Operations::Shared::SimpleObject(
 res = s.request_bodies::request_body_post_application_json_multiple_json_filtered(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1251,7 +1265,8 @@ req = Operations::Shared::SimpleObject(
 res = s.request_bodies::request_body_post_application_json_simple(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1424,7 +1439,8 @@ req = Operations::Shared::DeepObject(
 res = s.request_bodies::request_body_post_form_deep(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1450,7 +1466,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_post_form_map_primitive(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1491,7 +1508,8 @@ req = Operations::Shared::SimpleObject(
 res = s.request_bodies::request_body_post_form_simple(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1532,7 +1550,8 @@ req = Operations::Shared::SimpleObject(
 res = s.request_bodies::request_body_post_multiple_content_types_component_filtered(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1558,7 +1577,8 @@ req = Operations::Operations::RequestBodyPostMultipleContentTypesInlineFilteredA
 res = s.request_bodies::request_body_post_multiple_content_types_inline_filtered(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1592,7 +1612,8 @@ req = Operations::Operations::RequestBodyPostMultipleContentTypesSplitParamFormR
 res = s.request_bodies::request_body_post_multiple_content_types_split_param_form(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1626,7 +1647,8 @@ req = Operations::Operations::RequestBodyPostMultipleContentTypesSplitParamJsonR
 res = s.request_bodies::request_body_post_multiple_content_types_split_param_json(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1660,7 +1682,8 @@ req = Operations::Operations::RequestBodyPostMultipleContentTypesSplitParamMulti
 res = s.request_bodies::request_body_post_multiple_content_types_split_param_multipart(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1686,7 +1709,8 @@ req = Operations::Operations::RequestBodyPostMultipleContentTypesSplitApplicatio
 res = s.request_bodies::request_body_post_multiple_content_types_split_form(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1712,7 +1736,8 @@ req = Operations::Operations::RequestBodyPostMultipleContentTypesSplitApplicatio
 res = s.request_bodies::request_body_post_multiple_content_types_split_json(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1738,7 +1763,8 @@ req = Operations::Operations::RequestBodyPostMultipleContentTypesSplitMultipartF
 res = s.request_bodies::request_body_post_multiple_content_types_split_multipart(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1760,7 +1786,8 @@ req = Operations::::(
 res = s.request_bodies::request_body_put_bytes(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1972,7 +1999,8 @@ req = Operations::Shared::DeepObject(
 res = s.request_bodies::request_body_put_multipart_deep(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -1999,7 +2027,8 @@ req = Operations::Operations::RequestBodyPutMultipartFileRequestBody(
 res = s.request_bodies::request_body_put_multipart_file(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -2040,7 +2069,8 @@ req = Operations::Shared::SimpleObject(
 res = s.request_bodies::request_body_put_multipart_simple(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -2062,6 +2092,7 @@ req = Operations::::(
 res = s.request_bodies::request_body_put_string(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```

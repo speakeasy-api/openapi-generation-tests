@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI;
 
 /**
- * SDK - Test Summary
+ * SDK - Test: Test Summary
  * 
  * Some test description.
  * About our test document.

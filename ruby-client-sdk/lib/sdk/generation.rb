@@ -84,9 +84,8 @@ module OpenApiSDK
       # 
       # @deprecated this null will be removed in a future release, please migrate away from it as soon as possible
       request = Operations::DeprecatedNoCommentsGetRequest.new(
-        deprecated_parameter: deprecated_parameter,
+        deprecated_parameter: deprecated_parameter
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/deprecatedNoComments"
       headers = {}
@@ -117,9 +116,8 @@ module OpenApiSDK
       # @deprecated this null will be removed in a future release, please migrate away from it as soon as possible. Use simple_path_parameter_objects instead
       request = Operations::DeprecatedWithCommentsGetRequest.new(
         deprecated_parameter: deprecated_parameter,
-        new_parameter: new_parameter,
+        new_parameter: new_parameter
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/deprecatedWithComments"
       headers = {}
@@ -204,9 +202,8 @@ module OpenApiSDK
 
       request = Operations::IgnoresPostRequest.new(
         request_body: request_body,
-        test_param: test_param,
+        test_param: test_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/ignores"
       headers = {}
@@ -247,9 +244,8 @@ module OpenApiSDK
     def name_override(test_query_param)
 
       request = Operations::NameOverrideGetRequest.new(
-        test_query_param: test_query_param,
+        test_query_param: test_query_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/nameOverride"
       headers = {}

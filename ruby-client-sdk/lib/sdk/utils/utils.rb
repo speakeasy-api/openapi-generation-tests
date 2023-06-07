@@ -265,11 +265,11 @@ module OpenApiSDK
             )
           when 'form'
             params = params.merge _get_delimited_query_params(
-              metadata, f_name, value, ","
+              metadata, f_name, value, ','
             )
           when 'pipeDelimited'
             params = params.merge _get_delimited_query_params(
-              metadata, f_name, value, "|"
+              metadata, f_name, value, '|'
             )
           else
             raise StandardError, 'not yet implemented'

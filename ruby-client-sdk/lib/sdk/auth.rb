@@ -85,15 +85,14 @@ module OpenApiSDK
 
       request = Operations::BasicAuthRequest.new(
         passwd: passwd,
-        user: user,
+        user: user
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::BasicAuthRequest,
         base_url,
         '/basic-auth/{user}/{passwd}',
-        request, 
+        request,
         @globals
       )
       headers = {}

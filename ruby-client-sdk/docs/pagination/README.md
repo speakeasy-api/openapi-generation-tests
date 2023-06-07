@@ -33,7 +33,8 @@ req = Operations::Operations::PaginationCursorBodyRequestBody(
 res = s.pagination::pagination_cursor_body(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -57,7 +58,8 @@ req = Operations::Operations::PaginationCursorParamsRequest(
 res = s.pagination::pagination_cursor_params(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -83,7 +85,8 @@ req = Operations::Shared::LimitOffsetConfig(
 res = s.pagination::pagination_limit_offset_offset_body(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -108,7 +111,8 @@ req = Operations::Operations::PaginationLimitOffsetOffsetParamsRequest(
 res = s.pagination::pagination_limit_offset_offset_params(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -134,7 +138,8 @@ req = Operations::Shared::LimitOffsetConfig(
 res = s.pagination::pagination_limit_offset_page_body(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -158,6 +163,7 @@ req = Operations::Operations::PaginationLimitOffsetPageParamsRequest(
 res = s.pagination::pagination_limit_offset_page_params(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```

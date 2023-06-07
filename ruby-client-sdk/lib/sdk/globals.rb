@@ -26,15 +26,14 @@ module OpenApiSDK
     def global_path_parameter_get(global_path_param = nil)
 
       request = Operations::GlobalPathParameterGetRequest.new(
-        global_path_param: global_path_param,
+        global_path_param: global_path_param
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::GlobalPathParameterGetRequest,
         base_url,
         '/anything/globals/pathParameter/{globalPathParam}',
-        request, 
+        request,
         @globals
       )
       headers = {}
@@ -64,9 +63,8 @@ module OpenApiSDK
     def globals_query_parameter_get(global_query_param = nil)
 
       request = Operations::GlobalsQueryParameterGetRequest.new(
-        global_query_param: global_query_param,
+        global_query_param: global_query_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/globals/queryParameter"
       headers = {}

@@ -15,7 +15,7 @@ import org.openapis.openapi.utils.SerializedBody;
 import org.openapis.openapi.utils.SpeakeasyHTTPClient;
 
 /**
- * Test Summary
+ * Test: Test Summary
  * Some test description.
  * About our test document.
  * https://speakeasyapi.dev/docs/home - Speakeasy Docs

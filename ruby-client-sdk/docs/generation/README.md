@@ -30,7 +30,8 @@ s = sdk::SDK.new
 res = s.generation::anchor_types_get()
 
 if ! res.type_from_anchor.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -48,7 +49,8 @@ s = sdk::SDK.new
 res = s.generation::circular_reference_get()
 
 if ! res.valid_circular_reference_object.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -73,8 +75,9 @@ req = Operations::Operations::DeprecatedNoCommentsGetRequest(
     
 res = s.generation::deprecated_no_comments_get(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -102,8 +105,9 @@ req = Operations::Operations::DeprecatedWithCommentsGetRequest(
     
 res = s.generation::deprecated_with_comments_get(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -121,7 +125,8 @@ s = sdk::SDK.new
 res = s.generation::global_name_overridden()
 
 if ! res.get_global_name_override_200_application_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -139,7 +144,8 @@ s = sdk::SDK.new
 res = s.generation::ignored_generation_get()
 
 if ! res.ignored_generation_get_200_application_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -171,7 +177,8 @@ req = Operations::Operations::IgnoresPostRequest(
 res = s.generation::ignores_post(req)
 
 if ! res.http_bin_simple_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -195,7 +202,8 @@ req = Operations::Operations::NameOverrideGetRequest(
 res = s.generation::name_override(req)
 
 if ! res.overridden_response.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -301,6 +309,7 @@ req = Operations::Operations::UsageExamplePostRequest(
 res = s.generation::usage_example_post(req)
 
 if ! res.usage_example_post_200_application_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```

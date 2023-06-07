@@ -53,8 +53,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::api_key_auth_global_new(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -98,8 +99,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::basic_auth_new(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -138,8 +140,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::multiple_mixed_options_auth(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -190,8 +193,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::multiple_mixed_scheme_auth(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -229,8 +233,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::multiple_options_with_mixed_schemes_auth(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -272,8 +277,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::multiple_options_with_simple_schemes_auth(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -312,8 +318,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::multiple_simple_options_auth(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -349,8 +356,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::multiple_simple_scheme_auth(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -385,8 +393,9 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::oauth2_auth_new(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -433,7 +442,8 @@ req = Operations::Shared::AuthServiceRequestBody(
     
 res = s.auth_new::open_id_connect_auth_new(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```

@@ -33,8 +33,8 @@ class SDKConfiguration:
     server_defaults: list[dict[str, str]] = field(default_factory=list)
     globals: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
     language: str = 'python'
-    sdk_version: str = '1.5.1'
-    gen_version: str = '2.35.3'
+    sdk_version: str = '1.5.2'
+    gen_version: str = '2.35.9'
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:
         if self.server_url:

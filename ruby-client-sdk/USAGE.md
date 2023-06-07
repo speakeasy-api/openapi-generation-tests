@@ -92,7 +92,8 @@ req = Operations::Operations::UsageExamplePostRequest(
 res = s.generation::usage_example_post(req)
 
 if ! res.usage_example_post_200_application_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```
 

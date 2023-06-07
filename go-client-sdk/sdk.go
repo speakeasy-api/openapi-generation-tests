@@ -72,7 +72,7 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 	return ServerList[c.ServerIndex], c.ServerDefaults[c.ServerIndex]
 }
 
-// SDK - Test Summary
+// SDK - Test: Test Summary
 // Some test description.
 // About our test document.
 // https://speakeasyapi.dev/docs/home - Speakeasy Docs
@@ -249,8 +249,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		sdkConfiguration: sdkConfiguration{
 			Language:   "go",
-			SDKVersion: "1.5.1",
-			GenVersion: "2.35.3",
+			SDKVersion: "1.5.2",
+			GenVersion: "2.35.9",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},

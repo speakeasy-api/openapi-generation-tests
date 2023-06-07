@@ -27,9 +27,8 @@ module OpenApiSDK
 
       request = Operations::ComponentBodyAndParamConflictRequest.new(
         simple_object: simple_object,
-        str_: str_,
+        str_: str_
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/componentBodyAndParamConflict"
       headers = {}
@@ -72,9 +71,8 @@ module OpenApiSDK
 
       request = Operations::ComponentBodyAndParamNoConflictRequest.new(
         param_str: param_str,
-        simple_object: simple_object,
+        simple_object: simple_object
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/componentBodyAndParamNoConflict"
       headers = {}
@@ -117,15 +115,14 @@ module OpenApiSDK
 
       request = Operations::ConflictingParamsRequest.new(
         str_path_parameter: str_path_parameter,
-        str_query_parameter: str_query_parameter,
+        str_query_parameter: str_query_parameter
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::ConflictingParamsRequest,
         base_url,
         '/anything/flattening/conflictingParams/{str}',
-        request, 
+        request,
         @globals
       )
       headers = {}
@@ -158,9 +155,8 @@ module OpenApiSDK
 
       request = Operations::InlineBodyAndParamConflictRequest.new(
         request_body: request_body,
-        str_: str_,
+        str_: str_
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/inlineBodyAndParamConflict"
       headers = {}
@@ -203,9 +199,8 @@ module OpenApiSDK
 
       request = Operations::InlineBodyAndParamNoConflictRequest.new(
         request_body: request_body,
-        param_str: param_str,
+        param_str: param_str
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/flattening/inlineBodyAndParamNoConflict"
       headers = {}

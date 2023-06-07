@@ -30,7 +30,8 @@ req = Operations::::(
 res = s.sdk::put_anything_ignored_generation(req)
 
 if ! res.put_anything_ignored_generation_200_application_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -48,6 +49,7 @@ s = sdk::SDK.new
 res = s.sdk::response_body_json_get()
 
 if ! res.http_bin_simple_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```

@@ -27,7 +27,8 @@ s = sdk::SDK.new
 res = s.auth::api_key_auth()
 
 if ! res.token.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -45,7 +46,8 @@ s = sdk::SDK.new
 res = s.auth::api_key_auth_global()
 
 if ! res.token.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -74,7 +76,8 @@ req = Operations::Operations::BasicAuthRequest(
 res = s.auth::basic_auth(req)
 
 if ! res.user.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -92,7 +95,8 @@ s = sdk::SDK.new
 res = s.auth::bearer_auth()
 
 if ! res.token.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -110,7 +114,8 @@ s = sdk::SDK.new
 res = s.auth::oauth2_auth()
 
 if ! res.token.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -128,6 +133,7 @@ s = sdk::SDK.new
 res = s.auth::open_id_connect_auth()
 
 if ! res.token.nil?
-    # handle response
+  # handle response
+end
 
 ```

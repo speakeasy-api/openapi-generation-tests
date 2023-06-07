@@ -29,7 +29,8 @@ req = Operations::Operations::TelemetrySpeakeasyUserAgentGetRequest(
 res = s.telemetry::telemetry_speakeasy_user_agent_get(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -47,6 +48,7 @@ s = sdk::SDK.new
 res = s.telemetry::telemetry_user_agent_get()
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```

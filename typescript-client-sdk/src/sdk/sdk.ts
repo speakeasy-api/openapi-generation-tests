@@ -108,8 +108,8 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    sdkVersion = "1.5.1";
-    genVersion = "2.35.3";
+    sdkVersion = "1.5.2";
+    genVersion = "2.35.9";
     globals: any;
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -118,7 +118,7 @@ export class SDKConfiguration {
 }
 
 /**
- * Test Summary
+ * Test: Test Summary
  *
  * @remarks
  * Some test description.

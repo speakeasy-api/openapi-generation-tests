@@ -64,9 +64,8 @@ module OpenApiSDK
     def pagination_cursor_params(cursor, server_url = nil)
 
       request = Operations::PaginationCursorParamsRequest.new(
-        cursor: cursor,
+        cursor: cursor
       )
-      
       base_url = Operations::PAGINATION_CURSOR_PARAMS_SERVERS[0]
       base_url = server_url if !server_url.nil?
       url = "#{base_url.delete_suffix('/')}/pagination/cursor"
@@ -138,9 +137,8 @@ module OpenApiSDK
 
       request = Operations::PaginationLimitOffsetOffsetParamsRequest.new(
         limit: limit,
-        offset: offset,
+        offset: offset
       )
-      
       base_url = Operations::PAGINATION_LIMIT_OFFSET_OFFSET_PARAMS_SERVERS[0]
       base_url = server_url if !server_url.nil?
       url = "#{base_url.delete_suffix('/')}/pagination/limitoffset/offset"
@@ -211,9 +209,8 @@ module OpenApiSDK
     def pagination_limit_offset_page_params(page, server_url = nil)
 
       request = Operations::PaginationLimitOffsetPageParamsRequest.new(
-        page: page,
+        page: page
       )
-      
       base_url = Operations::PAGINATION_LIMIT_OFFSET_PAGE_PARAMS_SERVERS[0]
       base_url = server_url if !server_url.nil?
       url = "#{base_url.delete_suffix('/')}/pagination/limitoffset/page"

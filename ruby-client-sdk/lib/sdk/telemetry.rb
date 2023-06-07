@@ -26,9 +26,8 @@ module OpenApiSDK
     def telemetry_speakeasy_user_agent_get(user_agent)
 
       request = Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-        user_agent: user_agent,
+        user_agent: user_agent
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/telemetry/speakeasy-user-agent"
       headers = Utils.get_headers(request)

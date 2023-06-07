@@ -67,7 +67,8 @@ req = Operations::Operations::DeepObjectQueryParamsMapRequest(
 res = s.parameters::deep_object_query_params_map(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -116,7 +117,8 @@ req = Operations::Operations::DeepObjectQueryParamsObjectRequest(
 res = s.parameters::deep_object_query_params_object(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -149,7 +151,8 @@ req = Operations::Operations::FormQueryParamsArrayRequest(
 res = s.parameters::form_query_params_array(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -181,7 +184,8 @@ req = Operations::Operations::FormQueryParamsMapRequest(
 res = s.parameters::form_query_params_map(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -244,7 +248,8 @@ req = Operations::Operations::FormQueryParamsObjectRequest(
 res = s.parameters::form_query_params_object(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -271,7 +276,8 @@ req = Operations::Operations::FormQueryParamsPrimitiveRequest(
 res = s.parameters::form_query_params_primitive(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -306,7 +312,8 @@ req = Operations::Operations::FormQueryParamsRefParamObjectRequest(
 res = s.parameters::form_query_params_ref_param_object(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -335,7 +342,8 @@ req = Operations::Operations::HeaderParamsArrayRequest(
 res = s.parameters::header_params_array(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -370,7 +378,8 @@ req = Operations::Operations::HeaderParamsMapRequest(
 res = s.parameters::header_params_map(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -433,7 +442,8 @@ req = Operations::Operations::HeaderParamsObjectRequest(
 res = s.parameters::header_params_object(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -460,7 +470,8 @@ req = Operations::Operations::HeaderParamsPrimitiveRequest(
 res = s.parameters::header_params_primitive(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -595,7 +606,8 @@ req = Operations::Operations::JsonQueryParamsObjectRequest(
 res = s.parameters::json_query_params_object(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -678,7 +690,8 @@ req = Operations::Operations::MixedQueryParamsRequest(
 res = s.parameters::mixed_query_params(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -721,7 +734,8 @@ req = Operations::Operations::PathParameterJsonRequest(
 res = s.parameters::path_parameter_json(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -780,7 +794,8 @@ req = Operations::Operations::PipeDelimitedQueryParamsArrayRequest(
 res = s.parameters::pipe_delimited_query_params_array(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -808,7 +823,8 @@ req = Operations::Operations::SimplePathParameterArraysRequest(
 res = s.parameters::simple_path_parameter_arrays(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -841,7 +857,8 @@ req = Operations::Operations::SimplePathParameterMapsRequest(
 res = s.parameters::simple_path_parameter_maps(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -904,7 +921,8 @@ req = Operations::Operations::SimplePathParameterObjectsRequest(
 res = s.parameters::simple_path_parameter_objects(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -931,6 +949,7 @@ req = Operations::Operations::SimplePathParameterPrimitivesRequest(
 res = s.parameters::simple_path_parameter_primitives(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```

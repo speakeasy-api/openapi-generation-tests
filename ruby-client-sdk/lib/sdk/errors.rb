@@ -51,15 +51,14 @@ module OpenApiSDK
     def status_get(status_code)
 
       request = Operations::StatusGetRequest.new(
-        status_code: status_code,
+        status_code: status_code
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::StatusGetRequest,
         base_url,
         '/status/{statusCode}',
-        request, 
+        request,
         @globals
       )
       headers = {}
@@ -86,15 +85,14 @@ module OpenApiSDK
 
       request = Operations::StatusPostRetriesRequest.new(
         status_code: status_code,
-        simple_object: simple_object,
+        simple_object: simple_object
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::StatusPostRetriesRequest,
         base_url,
         '/status/{statusCode}',
-        request, 
+        request,
         @globals
       )
       headers = {}

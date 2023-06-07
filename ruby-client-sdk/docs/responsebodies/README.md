@@ -24,7 +24,8 @@ s = sdk::SDK.new
 res = s.response_bodies::response_body_bytes_get()
 
 if ! res.bytes.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -42,7 +43,8 @@ s = sdk::SDK.new
 res = s.response_bodies::response_body_string_get()
 
 if ! res.html.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -60,6 +62,7 @@ s = sdk::SDK.new
 res = s.response_bodies::response_body_xml_get()
 
 if ! res.xml.nil?
-    # handle response
+  # handle response
+end
 
 ```

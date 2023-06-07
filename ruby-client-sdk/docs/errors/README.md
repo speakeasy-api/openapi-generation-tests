@@ -23,8 +23,9 @@ s = sdk::SDK.new
     
 res = s.errors::connection_error_get()
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -47,8 +48,9 @@ req = Operations::Operations::StatusGetRequest(
     
 res = s.errors::status_get(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -111,7 +113,8 @@ req = Operations::Operations::StatusPostRetriesRequest(
     
 res = s.errors::status_post_retries(req)
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```

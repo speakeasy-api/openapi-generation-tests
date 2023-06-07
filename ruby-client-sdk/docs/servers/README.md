@@ -25,8 +25,9 @@ s = sdk::SDK.new
     
 res = s.servers::select_global_server()
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -45,8 +46,9 @@ s = sdk::SDK.new
     
 res = s.servers::select_server_with_id()
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -63,8 +65,9 @@ s = sdk::SDK.new
     
 res = s.servers::server_with_templates()
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -81,8 +84,9 @@ s = sdk::SDK.new
     
 res = s.servers::server_with_templates_global()
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```
 
@@ -99,7 +103,8 @@ s = sdk::SDK.new
     
 res = s.servers::servers_by_id_with_templates()
 
-if res.status == 200:
-    # handle response
+if res.status == 200
+  # handle response
+end
 
 ```

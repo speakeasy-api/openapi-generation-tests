@@ -786,9 +786,8 @@ module OpenApiSDK
 
       request = Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
         request_body: request_body,
-        param_str: param_str,
+        param_str: param_str
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}
@@ -831,9 +830,8 @@ module OpenApiSDK
 
       request = Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
         request_body: request_body,
-        param_str: param_str,
+        param_str: param_str
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}
@@ -876,9 +874,8 @@ module OpenApiSDK
 
       request = Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.new(
         request_body: request_body,
-        param_str: param_str,
+        param_str: param_str
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}

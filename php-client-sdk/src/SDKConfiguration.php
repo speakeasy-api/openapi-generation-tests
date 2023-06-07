@@ -30,8 +30,8 @@ class SDKConfiguration
 		],
 	];
 	public string $language = 'php';
-	public string $sdkVersion = '1.5.1';
-	public string $genVersion = '2.35.3';
+	public string $sdkVersion = '1.5.2';
+	public string $genVersion = '2.35.9';
 	/** @var array<string, array<string, array<string, mixed>>> */
 	public ?array $globals = [
     	'parameters' => []

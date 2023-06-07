@@ -20,7 +20,7 @@ from sdk.models import operations, shared
 from typing import Optional
 
 class SDK:
-    r"""Test Summary
+    r"""Test: Test Summary
     Some test description.
     About our test document.
     https://speakeasyapi.dev/docs/home - Speakeasy Docs

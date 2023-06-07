@@ -8,14 +8,14 @@ require 'faraday'
 
 module OpenApiSDK
   module Operations
-      # SELECT_SERVER_WITH_ID_SERVER_VALID - The default server.
+    # SELECT_SERVER_WITH_ID_SERVER_VALID - The default server.
     SELECT_SERVER_WITH_ID_SERVER_VALID = 'valid'
-      # SELECT_SERVER_WITH_ID_SERVER_BROKEN - A server url to a non-existent server.
+    # SELECT_SERVER_WITH_ID_SERVER_BROKEN - A server url to a non-existent server.
     SELECT_SERVER_WITH_ID_SERVER_BROKEN = 'broken'
     SELECT_SERVER_WITH_ID_SERVERS = {
-  # The default server.
+      # The default server.
       SELECT_SERVER_WITH_ID_SERVER_VALID: 'http://localhost:35123',
-  # A server url to a non-existent server.
+      # A server url to a non-existent server.
       SELECT_SERVER_WITH_ID_SERVER_BROKEN: 'http://broken'
     }.freeze
 

@@ -27,7 +27,8 @@ req = Operations::Operations::GlobalPathParameterGetRequest(
 res = s.globals::global_path_parameter_get(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -49,6 +50,7 @@ req = Operations::Operations::GlobalsQueryParameterGetRequest(
 res = s.globals::globals_query_parameter_get(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```

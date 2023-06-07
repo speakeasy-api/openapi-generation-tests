@@ -30,7 +30,8 @@ req = Operations::::(
 res = s.unions::mixed_type_one_of_post(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -52,7 +53,8 @@ req = Operations::::(
 res = s.unions::primitive_type_one_of_post(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -94,7 +96,8 @@ req = Operations::::(
 res = s.unions::strongly_typed_one_of_post(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -119,7 +122,8 @@ req = Operations::::(
 res = s.unions::typed_object_one_of_post(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -272,6 +276,7 @@ req = Operations::::(
 res = s.unions::weakly_typed_one_of_post(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```

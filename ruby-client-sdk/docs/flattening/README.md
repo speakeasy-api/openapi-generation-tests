@@ -72,7 +72,8 @@ req = Operations::Operations::ComponentBodyAndParamConflictRequest(
 res = s.flattening::component_body_and_param_conflict(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -136,7 +137,8 @@ req = Operations::Operations::ComponentBodyAndParamNoConflictRequest(
 res = s.flattening::component_body_and_param_no_conflict(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -165,7 +167,8 @@ req = Operations::Operations::ConflictingParamsRequest(
 res = s.flattening::conflicting_params(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -195,7 +198,8 @@ req = Operations::Operations::InlineBodyAndParamConflictRequest(
 res = s.flattening::inline_body_and_param_conflict(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```
 
@@ -225,6 +229,7 @@ req = Operations::Operations::InlineBodyAndParamNoConflictRequest(
 res = s.flattening::inline_body_and_param_no_conflict(req)
 
 if ! res.res.nil?
-    # handle response
+  # handle response
+end
 
 ```

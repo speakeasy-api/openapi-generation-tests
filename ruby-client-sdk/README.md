@@ -2,9 +2,9 @@
 ## SDK Installation
 
 ```bash
-gem install openapi
+gem install specific_install
+gem specific_install https://github.com/speakeasy-api/openapi-generation-tests -d ruby-client-sdk 
 ```
-
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
@@ -102,7 +102,8 @@ req = Operations::Operations::UsageExamplePostRequest(
 res = s.generation::usage_example_post(req)
 
 if ! res.usage_example_post_200_application_json_object.nil?
-    # handle response
+  # handle response
+end
 
 ```
 

@@ -2,9 +2,6 @@ AllCops:
   Exclude:
     - Rakefile
     - test/*.rb
-    - lib/sdk/models/shared/*.rb
-    - lib/sdk/models/operations/*.rb
-    - lib/sdk/*.rb
   TargetRubyVersion: "3.0"
 Metrics:
   Enabled: false
@@ -30,4 +27,27 @@ Layout/LineLength:
 Lint/EmptyConditionalBody:
   Enabled: false
 Lint/MissingSuper:
+  Enabled: false
+#To eventually re-enable:
+Layout/EmptyLines:
+  Enabled: false
+Layout/EmptyLinesAroundMethodBody:
+  Enabled: false
+Layout/EmptyLineBetweenDefs:
+  Enabled: false
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+Layout/EmptyLinesAroundModuleBody:
+  Enabled: false
+Layout/MultilineBlockLayout:
+  Enabled: false
+Lint/UnusedMethodArgument:
+  Enabled: false
+Layout/TrailingWhitespace:
+  Enabled: false
+Style/IfUnlessModifier:
+  Enabled: false
+Naming/AccessorMethodName:
+  Enabled: false
+Naming/MethodParameterName:
   Enabled: false

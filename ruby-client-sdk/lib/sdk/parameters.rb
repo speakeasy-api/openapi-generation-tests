@@ -27,9 +27,8 @@ module OpenApiSDK
 
       request = Operations::DeepObjectQueryParamsMapRequest.new(
         map_param: map_param,
-        map_arr_param: map_arr_param,
+        map_arr_param: map_arr_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/deepObject/map"
       headers = {}
@@ -62,9 +61,8 @@ module OpenApiSDK
 
       request = Operations::DeepObjectQueryParamsObjectRequest.new(
         obj_param: obj_param,
-        obj_arr_param: obj_arr_param,
+        obj_arr_param: obj_arr_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/deepObject/obj"
       headers = {}
@@ -97,9 +95,8 @@ module OpenApiSDK
 
       request = Operations::FormQueryParamsArrayRequest.new(
         arr_param: arr_param,
-        arr_param_exploded: arr_param_exploded,
+        arr_param_exploded: arr_param_exploded
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/array"
       headers = {}
@@ -132,9 +129,8 @@ module OpenApiSDK
 
       request = Operations::FormQueryParamsMapRequest.new(
         map_param: map_param,
-        map_param_exploded: map_param_exploded,
+        map_param_exploded: map_param_exploded
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/map"
       headers = {}
@@ -167,9 +163,8 @@ module OpenApiSDK
 
       request = Operations::FormQueryParamsObjectRequest.new(
         obj_param_exploded: obj_param_exploded,
-        obj_param: obj_param,
+        obj_param: obj_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/obj"
       headers = {}
@@ -204,9 +199,8 @@ module OpenApiSDK
         bool_param: bool_param,
         int_param: int_param,
         num_param: num_param,
-        str_param: str_param,
+        str_param: str_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/primitive"
       headers = {}
@@ -239,9 +233,8 @@ module OpenApiSDK
 
       request = Operations::FormQueryParamsRefParamObjectRequest.new(
         ref_obj_param: ref_obj_param,
-        ref_obj_param_exploded: ref_obj_param_exploded,
+        ref_obj_param_exploded: ref_obj_param_exploded
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/refParamObject"
       headers = {}
@@ -273,9 +266,8 @@ module OpenApiSDK
     def header_params_array(x_header_array)
 
       request = Operations::HeaderParamsArrayRequest.new(
-        x_header_array: x_header_array,
+        x_header_array: x_header_array
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/headers/array"
       headers = Utils.get_headers(request)
@@ -306,9 +298,8 @@ module OpenApiSDK
 
       request = Operations::HeaderParamsMapRequest.new(
         x_header_map: x_header_map,
-        x_header_map_explode: x_header_map_explode,
+        x_header_map_explode: x_header_map_explode
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/headers/map"
       headers = Utils.get_headers(request)
@@ -339,9 +330,8 @@ module OpenApiSDK
 
       request = Operations::HeaderParamsObjectRequest.new(
         x_header_obj: x_header_obj,
-        x_header_obj_explode: x_header_obj_explode,
+        x_header_obj_explode: x_header_obj_explode
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/headers/obj"
       headers = Utils.get_headers(request)
@@ -374,9 +364,8 @@ module OpenApiSDK
         x_header_boolean: x_header_boolean,
         x_header_integer: x_header_integer,
         x_header_number: x_header_number,
-        x_header_string: x_header_string,
+        x_header_string: x_header_string
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/headers/primitive"
       headers = Utils.get_headers(request)
@@ -407,9 +396,8 @@ module OpenApiSDK
 
       request = Operations::JsonQueryParamsObjectRequest.new(
         deep_obj_param: deep_obj_param,
-        simple_obj_param: simple_obj_param,
+        simple_obj_param: simple_obj_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/json/obj"
       headers = {}
@@ -443,9 +431,8 @@ module OpenApiSDK
       request = Operations::MixedQueryParamsRequest.new(
         deep_object_param: deep_object_param,
         form_param: form_param,
-        json_param: json_param,
+        json_param: json_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/mixed"
       headers = {}
@@ -477,15 +464,14 @@ module OpenApiSDK
     def path_parameter_json(json_obj)
 
       request = Operations::PathParameterJsonRequest.new(
-        json_obj: json_obj,
+        json_obj: json_obj
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::PathParameterJsonRequest,
         base_url,
         '/anything/pathParams/json/{jsonObj}',
-        request, 
+        request,
         @globals
       )
       headers = {}
@@ -518,9 +504,8 @@ module OpenApiSDK
         arr_param: arr_param,
         arr_param_exploded: arr_param_exploded,
         map_param: map_param,
-        obj_param: obj_param,
+        obj_param: obj_param
       )
-      
       base_url = @server_url
       url = "#{base_url.delete_suffix('/')}/anything/queryParams/pipe/array"
       headers = {}
@@ -552,15 +537,14 @@ module OpenApiSDK
     def simple_path_parameter_arrays(arr_param)
 
       request = Operations::SimplePathParameterArraysRequest.new(
-        arr_param: arr_param,
+        arr_param: arr_param
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::SimplePathParameterArraysRequest,
         base_url,
         '/anything/pathParams/arr/{arrParam}',
-        request, 
+        request,
         @globals
       )
       headers = {}
@@ -591,15 +575,14 @@ module OpenApiSDK
 
       request = Operations::SimplePathParameterMapsRequest.new(
         map_param: map_param,
-        map_param_exploded: map_param_exploded,
+        map_param_exploded: map_param_exploded
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::SimplePathParameterMapsRequest,
         base_url,
         '/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}',
-        request, 
+        request,
         @globals
       )
       headers = {}
@@ -630,15 +613,14 @@ module OpenApiSDK
 
       request = Operations::SimplePathParameterObjectsRequest.new(
         obj_param: obj_param,
-        obj_param_exploded: obj_param_exploded,
+        obj_param_exploded: obj_param_exploded
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::SimplePathParameterObjectsRequest,
         base_url,
         '/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}',
-        request, 
+        request,
         @globals
       )
       headers = {}
@@ -671,15 +653,14 @@ module OpenApiSDK
         bool_param: bool_param,
         int_param: int_param,
         num_param: num_param,
-        str_param: str_param,
+        str_param: str_param
       )
-      
       base_url = @server_url
       url = Utils.generate_url(
         Operations::SimplePathParameterPrimitivesRequest,
         base_url,
         '/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}',
-        request, 
+        request,
         @globals
       )
       headers = {}
