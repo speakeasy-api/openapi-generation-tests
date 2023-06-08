@@ -11,14 +11,15 @@ module OpenApiSDK
   extend T::Sig
   class Auth
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, gbls)
+    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
+    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version, gbls)
       @sdk = sdk
       @client = client
       @server_url = server_url
       @language = language
       @sdk_version = sdk_version
       @gen_version = gen_version
+      @openapi_doc_version = openapi_doc_version
       @globals = gbls
     end
 
@@ -29,7 +30,7 @@ module OpenApiSDK
       url = "#{base_url.delete_suffix('/')}/bearer#operation"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -58,7 +59,7 @@ module OpenApiSDK
       url = "#{base_url.delete_suffix('/')}/bearer"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -97,7 +98,7 @@ module OpenApiSDK
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -126,7 +127,7 @@ module OpenApiSDK
       url = "#{base_url.delete_suffix('/')}/bearer#bearer"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -155,7 +156,7 @@ module OpenApiSDK
       url = "#{base_url.delete_suffix('/')}/bearer#oauth2"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers
@@ -184,7 +185,7 @@ module OpenApiSDK
       url = "#{base_url.delete_suffix('/')}/bearer#openIdConnect"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers

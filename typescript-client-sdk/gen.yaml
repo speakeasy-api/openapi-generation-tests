@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: 21ea5b5dd57e8e37ef21490c368b0bfb
   docVersion: 0.0.1
-  speakeasyVersion: 1.44.2
-  generationVersion: 2.35.9
+  speakeasyVersion: 1.45.0
+  generationVersion: 2.37.0
 generation:
   sdkClassName: SDK
   singleTagPerOp: false
 typescript:
-  version: 1.5.2
+  version: 1.6.0
   author: Speakeasy
   maxMethodParams: 5
   packageName: openapi

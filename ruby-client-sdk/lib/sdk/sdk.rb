@@ -67,8 +67,9 @@ module OpenApiSDK
       @security = nil
       @server_url = SERVERS[0]
       @language = 'ruby'
-      @sdk_version = '1.5.2'
-      @gen_version = '2.35.9'
+      @sdk_version = '1.6.0'
+      @gen_version = '2.37.0'
+      @openapi_doc_version = '0.0.1'
       init_sdks
     end
 
@@ -96,6 +97,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @auth_new = AuthNew.new(
@@ -105,6 +107,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @errors = Errors.new(
@@ -114,6 +117,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @flattening = Flattening.new(
@@ -123,6 +127,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @generation = Generation.new(
@@ -132,6 +137,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @globals = Globals.new(
@@ -141,6 +147,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @pagination = Pagination.new(
@@ -150,6 +157,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @parameters = Parameters.new(
@@ -159,6 +167,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @request_bodies = RequestBodies.new(
@@ -168,6 +177,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @response_bodies = ResponseBodies.new(
@@ -177,6 +187,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @servers = Servers.new(
@@ -186,6 +197,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @telemetry = Telemetry.new(
@@ -195,6 +207,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
       @unions = Unions.new(
@@ -204,6 +217,7 @@ module OpenApiSDK
         @language,
         @sdk_version,
         @gen_version,
+        @openapi_doc_version,
         @_globals
       )
     end
@@ -218,7 +232,7 @@ module OpenApiSDK
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :string)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.put(url) do |req|
         req.headers = headers
@@ -254,7 +268,7 @@ module OpenApiSDK
       url = "#{base_url.delete_suffix('/')}/json"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
 
       r = @client.get(url) do |req|
         req.headers = headers

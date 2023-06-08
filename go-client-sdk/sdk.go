@@ -52,16 +52,17 @@ func Float32(f float32) *float32 { return &f }
 func Float64(f float64) *float64 { return &f }
 
 type sdkConfiguration struct {
-	DefaultClient  HTTPClient
-	SecurityClient HTTPClient
-	Security       *shared.Security
-	ServerURL      string
-	ServerIndex    int
-	ServerDefaults []map[string]string
-	Language       string
-	SDKVersion     string
-	GenVersion     string
-	Globals        map[string]map[string]map[string]interface{}
+	DefaultClient     HTTPClient
+	SecurityClient    HTTPClient
+	Security          *shared.Security
+	ServerURL         string
+	ServerIndex       int
+	ServerDefaults    []map[string]string
+	Language          string
+	OpenAPIDocVersion string
+	SDKVersion        string
+	GenVersion        string
+	Globals           map[string]map[string]map[string]interface{}
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -248,9 +249,10 @@ func WithGlobalQueryParam(globalQueryParam string) SDKOption {
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		sdkConfiguration: sdkConfiguration{
-			Language:   "go",
-			SDKVersion: "1.5.2",
-			GenVersion: "2.35.9",
+			Language:          "go",
+			OpenAPIDocVersion: "0.0.1",
+			SDKVersion:        "1.6.0",
+			GenVersion:        "2.37.0",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -326,7 +328,7 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -379,7 +381,7 @@ func (s *SDK) ResponseBodyJSONGet(ctx context.Context) (*operations.ResponseBody
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "application/json")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion))
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
 
 	client := s.sdkConfiguration.SecurityClient
 
