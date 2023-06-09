@@ -25,7 +25,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222, UsageExamplePostEnumParameter.VALUE3, 1.1, 111111L, 1, "example") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 1.1d, 111111L, 1, "example") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     email = "Larue_Rau85@yahoo.com";
                     formatEmail = "Roselyn_Kassulke@yahoo.com";
@@ -34,12 +34,12 @@ public class Application {
                     hostname = "soulful-poppy.com";
                     ipv4 = "184.163.148.36";
                     ipv6 = "8fc8:1674:2cb7:3920:5929:396f:ea75:96eb";
-                    simpleObject = new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1, "example") {{
+                    simpleObject = new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
                         bigint = 666767L;
                         bigintStr = "mollitia";
                         boolOpt = true;
                         intOptNull = 999999L;
-                        numOptNull = 1.1;
+                        numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
                     unknown = "laborum";

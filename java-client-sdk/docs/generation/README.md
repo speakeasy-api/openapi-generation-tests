@@ -341,7 +341,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222, UsageExamplePostEnumParameter.VALUE3, 1.1, 111111L, 1, "example") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 1.1d, 111111L, 1, "example") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     email = "Alexanne_Bernhard37@yahoo.com";
                     formatEmail = "Heidi86@yahoo.com";
@@ -350,12 +350,12 @@ public class Application {
                     hostname = "petty-atom.name";
                     ipv4 = "178.60.254.239";
                     ipv6 = "49a8:d9cb:f486:3332:3f9b:77f3:a410:0674";
-                    simpleObject = new SimpleObject("accusamus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1, "example") {{
+                    simpleObject = new SimpleObject("accusamus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
                         bigint = 377752L;
                         bigintStr = "natus";
                         boolOpt = true;
                         intOptNull = 999999L;
-                        numOptNull = 1.1;
+                        numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
                     unknown = "eos";

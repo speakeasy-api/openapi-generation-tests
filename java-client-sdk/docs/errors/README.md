@@ -108,7 +108,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusPostRetriesResponse res = sdk.errors.statusPostRetries(574325L, new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1, "example") {{
+            StatusPostRetriesResponse res = sdk.errors.statusPostRetries(574325L, new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
                 any = "accusantium";
                 bigint = 653201L;
                 bigintStr = "reiciendis";
@@ -117,14 +117,14 @@ public class Application {
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                 enum_ = Enum.TWO;
-                float32 = 2.2222222;
+                float32 = 2.2222222d;
                 int_ = 999999L;
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                 intEnum = SimpleObjectIntEnum.First;
                 intOptNull = 999999L;
-                num = 1.1;
-                numOptNull = 1.1;
+                num = 1.1d;
+                numOptNull = 1.1d;
                 str = "example";
                 strOpt = "optional example";
             }});

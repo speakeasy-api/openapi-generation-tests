@@ -122,7 +122,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObjectWithType("ullam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectWithTypeInt32Enum.FIFTY_FIVE, SimpleObjectWithTypeIntEnum.Third, 1.1, "example", "totam") {{
+            org.openapis.openapi.models.. req = new SimpleObjectWithType("ullam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectWithTypeInt32Enum.FIFTY_FIVE, SimpleObjectWithTypeIntEnum.Third, 1.1d, "example", "totam") {{
                 any = "sapiente";
                 bigint = 524184L;
                 bigintStr = "minus";
@@ -131,14 +131,14 @@ public class Application {
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                 enum_ = Enum.TWO;
-                float32 = 2.2222222;
+                float32 = 2.2222222d;
                 int_ = 999999L;
                 int32 = 1;
                 int32Enum = SimpleObjectWithTypeInt32Enum.SIXTY_NINE;
                 intEnum = SimpleObjectWithTypeIntEnum.Third;
                 intOptNull = 999999L;
-                num = 1.1;
-                numOptNull = 1.1;
+                num = 1.1d;
+                numOptNull = 1.1d;
                 str = "example";
                 strOpt = "optional example";
                 type = "ratione";
@@ -230,7 +230,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObject("veritatis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1, "example") {{
+            org.openapis.openapi.models.. req = new SimpleObject("veritatis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
                 any = "culpa";
                 bigint = 222864L;
                 bigintStr = "aliquam";
@@ -239,14 +239,14 @@ public class Application {
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                 enum_ = Enum.TWO;
-                float32 = 2.2222222;
+                float32 = 2.2222222d;
                 int_ = 999999L;
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
                 intEnum = SimpleObjectIntEnum.Second;
                 intOptNull = 999999L;
-                num = 1.1;
-                numOptNull = 1.1;
+                num = 1.1d;
+                numOptNull = 1.1d;
                 str = "example";
                 strOpt = "optional example";
             }}            

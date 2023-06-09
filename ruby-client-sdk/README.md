@@ -106,7 +106,6 @@ if ! res.usage_example_post_200_application_json_object.nil?
 end
 
 ```
-
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
