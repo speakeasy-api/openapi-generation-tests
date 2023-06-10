@@ -5,7 +5,7 @@
 openapi: 3.1.0
 info:
   title: Test
-  version: 0.0.1
+  version: 0.1.0
   summary: Test Summary
   description: |-
     Some test description.
@@ -129,6 +129,7 @@ paths:
               description: The port on which the server is running.
             hostname:
               default: localhost
+
               description: The hostname of the server.
       responses:
         "200":
@@ -1713,6 +1714,7 @@ paths:
                 properties:
                   json:
                     type: object
+                    additionalProperties: true
   /anything/requestBodies/post/multiple/contentTypes/split:
     post:
       operationId: requestBodyPostMultipleContentTypesSplit
@@ -1774,8 +1776,10 @@ paths:
                 properties:
                   json:
                     type: object
+                    additionalProperties: true
                   form:
                     type: object
+                    additionalProperties: true
   /anything/requestBodies/post/multiple/contentTypes/split/param:
     post:
       operationId: requestBodyPostMultipleContentTypesSplitParam
@@ -1843,8 +1847,10 @@ paths:
                 properties:
                   json:
                     type: object
+                    additionalProperties: true
                   form:
                     type: object
+                    additionalProperties: true
                   args:
                     type: object
                     additionalProperties:
@@ -2012,6 +2018,35 @@ paths:
                     type: string
                 required:
                   - data
+  /anything/requestBodies/put/empty-object:
+    post:
+      operationId: requestBodyPostEmptyObject
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                empty:
+                  type: object
+                emptyWithEmptyProperties:
+                  type: object
+                  properties: {}
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: object
+                  emptyRespWithEmptyProperies:
+                    type: object
+                    properties: {}
   /anything/flattening/inlineBodyAndParamNoConflict:
     post:
       operationId: inlineBodyAndParamNoConflict
@@ -2269,6 +2304,18 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/validCircularReferenceObject"
+  /anything/emptyResponseObjectWithComment:
+    get:
+      operationId: emptyResponseObjectWithCommentGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/octet-stream:
+              schema:
+                type: object
   /anything/ignores:
     post:
       operationId: ignoresPost
@@ -2378,7 +2425,10 @@ paths:
           schema:
             type: string
             description: A string type
-            example: "example"
+            examples:
+              - "example 1"
+              - "example 2"
+              - "example 3"
         - name: intParameter
           in: query
           required: true
@@ -2463,6 +2513,14 @@ paths:
               - "value2"
               - "value3"
             example: "value3"
+        - name: falseyNumberParameter
+          in: query
+          required: true
+          description: A number parameter that contains a falsey example value
+          schema:
+            type: number
+            description: A number type
+            example: 0
       requestBody:
         description: A request body that contains fields with different formats for testing example generation
         content:
@@ -2776,6 +2834,40 @@ paths:
           schema:
             type: string
           deprecated: true
+      responses:
+        "200":
+          description: OK
+  /anything/typedParameterGeneration:
+    get:
+      operationId: typedParameterGenerationGet
+      tags:
+        - generation
+      parameters:
+        - name: date
+          in: query
+          schema:
+            type: string
+            format: date
+        - name: bigint
+          in: query
+          schema:
+            type: integer
+            format: bigint
+        - name: obj
+          in: query
+          schema:
+            type: object
+            properties:
+              str:
+                type: string
+              num:
+                type: number
+              bool:
+                type: boolean
+            required:
+              - str
+              - num
+              - bool
       responses:
         "200":
           description: OK
@@ -3240,7 +3332,99 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /resource:
+    post:
+      x-speakeasy-entity-operation: ExampleResource#create
+      operationId: createResource
+      tags:
+        - resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExampleResource"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExampleResource"
+  /resource/{resourceId}:
+    get:
+      x-speakeasy-entity-operation: ExampleResource#read
+      operationId: getResource
+      tags:
+        - resource
+      parameters:
+        - name: resourceId
+          in: path
+          x-speakeasy-match: id
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExampleResource"
+    post:
+      x-speakeasy-entity-operation: ExampleResource#update
+      operationId: updateResource
+      tags:
+        - resource
+      parameters:
+        - name: resourceId
+          in: path
+          x-speakeasy-match: id
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ExampleResource"
+    delete:
+      x-speakeasy-entity-operation: ExampleResource#delete
+      operationId: deleteResource
+      tags:
+        - resource
+      parameters:
+        - name: resourceId
+          in: path
+          x-speakeasy-match: id
+          schema:
+            type: string
+          required: true
+      responseBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ExampleResource"
+      responses:
+        204:
+          description: No Content
 components:
+  schemas:
+    ExampleResource:
+      x-speakeasy-entity: ExampleResource
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
   securitySchemes:
     basicAuth:
       type: http
