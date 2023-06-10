@@ -17,7 +17,7 @@ module OpenApiSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :pagination, :parameters, :request_bodies, :response_bodies, :servers, :telemetry, :unions
+    attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :pagination, :parameters, :request_bodies, :resource, :response_bodies, :servers, :telemetry, :unions
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -67,9 +67,9 @@ module OpenApiSDK
       @security = nil
       @server_url = SERVERS[0]
       @language = 'ruby'
-      @sdk_version = '1.7.0'
+      @sdk_version = '1.8.0'
       @gen_version = '2.39.0'
-      @openapi_doc_version = '0.0.1'
+      @openapi_doc_version = '0.1.0'
       init_sdks
     end
 
@@ -171,6 +171,16 @@ module OpenApiSDK
         @_globals
       )
       @request_bodies = RequestBodies.new(
+        self,
+        @client,
+        @server_url,
+        @language,
+        @sdk_version,
+        @gen_version,
+        @openapi_doc_version,
+        @_globals
+      )
+      @resource = Resource.new(
         self,
         @client,
         @server_url,

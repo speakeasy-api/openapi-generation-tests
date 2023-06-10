@@ -25,7 +25,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.telemetry.telemetrySpeakeasyUserAgentGet("dolorum").then((res: TelemetrySpeakeasyUserAgentGetResponse) => {
+sdk.telemetry.telemetrySpeakeasyUserAgentGet("fugit").then((res: TelemetrySpeakeasyUserAgentGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

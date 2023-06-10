@@ -10,10 +10,12 @@ Endpoints for purely testing valid generation behavior.
 * [circular_reference_get](#circular_reference_get)
 * [~~deprecated_no_comments_get~~](#deprecated_no_comments_get) - :warning: **Deprecated**
 * [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
+* [empty_response_object_with_comment_get](#empty_response_object_with_comment_get)
 * [global_name_overridden](#global_name_overridden)
 * [ignored_generation_get](#ignored_generation_get)
 * [ignores_post](#ignores_post)
 * [name_override](#name_override)
+* [typed_parameter_generation_get](#typed_parameter_generation_get)
 * [usage_example_post](#usage_example_post) - An operation used for testing usage examples
 
 ## anchor_types_get
@@ -146,6 +148,31 @@ end
 ### Response
 
 **[T.nilable(Operations::DeprecatedWithCommentsGetResponse)](../../models/operations/deprecatedwithcommentsgetresponse.md)**
+
+
+## empty_response_object_with_comment_get
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+    
+res = s.generation.empty_response_object_with_comment_get()
+
+if ! res.body.nil?
+  # handle response
+end
+
+```
+
+
+### Response
+
+**[T.nilable(Operations::EmptyResponseObjectWithCommentGetResponse)](../../models/operations/emptyresponseobjectwithcommentgetresponse.md)**
 
 
 ## global_name_overridden
@@ -281,6 +308,51 @@ end
 **[T.nilable(Operations::NameOverrideGetResponse)](../../models/operations/nameoverridegetresponse.md)**
 
 
+## typed_parameter_generation_get
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = Operations::TypedParameterGenerationGetRequest.new(
+  query_params=Operations::TypedParameterGenerationGetRequest.new(
+    bigint=469497,
+    date=Date.parse("2022-07-18"),
+    obj=Operations::TypedParameterGenerationGetObj.new(
+      bool=false,
+      num=6630.78,
+      str_="saepe",
+    ),
+  ),
+)
+    
+res = s.generation.typed_parameter_generation_get(req)
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `bigint`                                                                                                           | *T.nilable(Integer)*                                                                                               | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `date`                                                                                                             | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html)                                       | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `obj`                                                                                                              | [T.nilable(Operations::TypedParameterGenerationGetObj)](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+
+
+### Response
+
+**[T.nilable(Operations::TypedParameterGenerationGetResponse)](../../models/operations/typedparametergenerationgetresponse.md)**
+
+
 ## usage_example_post
 
 An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
@@ -304,17 +376,17 @@ req = Operations::UsageExamplePostRequest.new(
   ),
   query_params=Operations::UsageExamplePostRequest.new(
     request_body=Operations::UsageExamplePostRequestBody.new(
-      email="Curt_Klocko@yahoo.com",
-      format_email="Brigitte75@gmail.com",
-      format_uri="https://fumbling-throne.info",
-      format_uuid="a95d8a0d-446c-4e2a-b7a7-3cf3be453f87",
-      hostname="alienated-quality.biz",
-      ipv4="39.108.186.95",
-      ipv6="a734:29cd:b1a8:422b:b679:d232:2715:bf0c",
+      email="Brigitte75@gmail.com",
+      format_email="Emmanuelle_Turner@hotmail.com",
+      format_uri="https://gaseous-spank.name",
+      format_uuid="a0d446ce-2af7-4a73-8f3b-e453f870b326",
+      hostname="self-assured-gale.name",
+      ipv4="118.55.71.47",
+      ipv6="9cdb:1a84:22bb:679d:2322:715b:f0cb:b1e3",
       simple_object=Shared::SimpleObject.new(
-        any="soluta",
-        bigint=748664,
-        bigint_str="et",
+        any="veritatis",
+        bigint=749255,
+        bigint_str="quos",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
@@ -324,40 +396,41 @@ req = Operations::UsageExamplePostRequest.new(
         int=999999,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int_enum=Shared::SimpleObjectIntEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
         str_="example",
         str_opt="optional example",
       ),
-      unknown="veritatis",
-      uri="https://mushy-reflection.name",
-      uuid="0f3443a1-108e-40ad-8f4b-921879fce953",
+      unknown="aperiam",
+      uri="https://dopey-eardrum.biz",
+      uuid="3a1108e0-adcf-44b9-a187-9fce953f73ef",
     ),
     bool_parameter=false,
     date_parameter=Date.parse("2020-01-01"),
     date_time_parameter=DateTime.iso8601('2020-01-01T00:00:00Z'),
     double_parameter=2.2222222,
     enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE3,
+    falsey_number_parameter=0,
     float_parameter=1.1,
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
-    str_parameter="example",
+    str_parameter="example 2",
   ),
   request_body=Operations::UsageExamplePostRequestBody.new(
-    email="Jackie_Feeney49@hotmail.com",
-    format_email="Michel_Schmidt@hotmail.com",
-    format_uri="https://trustworthy-landscape.biz",
-    format_uuid="dd39c0f5-d2cf-4f7c-b0a4-5626d436813f",
-    hostname="buoyant-gun.org",
-    ipv4="145.249.87.245",
-    ipv6="ce6c:5561:46c3:e250:fb00:8c42:e141:aac3",
+    email="Michel_Schmidt@hotmail.com",
+    format_email="Scotty84@hotmail.com",
+    format_uri="https://diligent-otter.net",
+    format_uuid="0f5d2cff-7c70-4a45-a26d-436813f16d9f",
+    hostname="gracious-vista.net",
+    ipv4="232.105.198.91",
+    ipv6="5614:6c3e:250f:b008:c42e:141a:ac36:6c8d",
     simple_object=Shared::SimpleObject.new(
-      any="eum",
-      bigint=420539,
-      bigint_str="nobis",
+      any="nulla",
+      bigint=379034,
+      bigint_str="libero",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -366,17 +439,17 @@ req = Operations::UsageExamplePostRequest.new(
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnum::FIRST,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
     ),
-    unknown="nulla",
-    uri="http://scrawny-booty.biz",
-    uuid="42907474-778a-47bd-866d-28c10ab3cdca",
+    unknown="numquam",
+    uri="http://optimistic-avenue.info",
+    uuid="474778a7-bd46-46d2-8c10-ab3cdca42519",
   ),
 )
     

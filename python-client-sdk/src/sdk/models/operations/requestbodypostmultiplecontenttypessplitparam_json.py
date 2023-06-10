@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
+from typing import Any, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -28,26 +28,14 @@ class RequestBodyPostMultipleContentTypesSplitParamJSONRequest:
 
 
 
-
-@dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitParamJSONResForm:
-    pass
-
-
-
-@dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitParamJSONResJSON:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamJSONRes:
     r"""OK"""
     args: Optional[dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args'), 'exclude': lambda f: f is None }})
-    form: Optional[RequestBodyPostMultipleContentTypesSplitParamJSONResForm] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
-    json: Optional[RequestBodyPostMultipleContentTypesSplitParamJSONResJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
+    form: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
+    json: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
 
 

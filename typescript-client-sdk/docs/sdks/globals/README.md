@@ -25,7 +25,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.globals.globalPathParameterGet(434417).then((res: GlobalPathParameterGetResponse) => {
+sdk.globals.globalPathParameterGet(617658).then((res: GlobalPathParameterGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -61,7 +61,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.globals.globalsQueryParameterGet("odio").then((res: GlobalsQueryParameterGetResponse) => {
+sdk.globals.globalsQueryParameterGet("eos").then((res: GlobalsQueryParameterGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

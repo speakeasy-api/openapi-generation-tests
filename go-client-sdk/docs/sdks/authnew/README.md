@@ -43,8 +43,8 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.APIKeyAuthGlobalNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "tenetur",
-            Username: "Freida.Ondricka9",
+            Password: "ipsam",
+            Username: "Makayla9",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{

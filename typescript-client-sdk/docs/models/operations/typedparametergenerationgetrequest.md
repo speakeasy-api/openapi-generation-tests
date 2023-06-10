@@ -1,0 +1,10 @@
+# TypedParameterGenerationGetRequest
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `bigint`                                                                                    | *number*                                                                                    | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `date`                                                                                      | [RFCDate](../../types/rfcdate.md)                                                           | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `obj`                                                                                       | [TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |

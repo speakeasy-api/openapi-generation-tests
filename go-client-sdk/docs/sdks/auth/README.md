@@ -130,7 +130,7 @@ func main() {
     res, err := s.Auth.BasicAuth(ctx, operations.BasicAuthSecurity{
         Password: "YOUR_PASSWORD",
         Username: "YOUR_USERNAME",
-    }, "quo", "sequi")
+    }, "sequi", "tenetur")
     if err != nil {
         log.Fatal(err)
     }

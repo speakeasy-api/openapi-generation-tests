@@ -7,6 +7,7 @@ package org.openapis.openapi;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import org.apache.http.NameValuePair;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
@@ -212,6 +213,38 @@ public class Generation {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse emptyResponseObjectWithCommentGet() throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/emptyResponseObjectWithComment");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/octet-stream");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse res = new org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse(contentType, httpRes.statusCode()) {{
+            body = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/octet-stream")) {
+                byte[] out = httpRes.body();
+                res.body = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse globalNameOverridden() throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/globalNameOverride");
@@ -371,6 +404,72 @@ public class Generation {
                 org.openapis.openapi.models.operations.OverriddenResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.OverriddenResponse.class);
                 res.overriddenResponse = out;
             }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet() throws Exception {
+        return this.typedParameterGenerationGet(null, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        return this.typedParameterGenerationGet(null, null, obj);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date) throws Exception {
+        return this.typedParameterGenerationGet(null, date, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        return this.typedParameterGenerationGet(null, date, obj);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint) throws Exception {
+        return this.typedParameterGenerationGet(bigint, null, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        return this.typedParameterGenerationGet(bigint, null, obj);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date) throws Exception {
+        return this.typedParameterGenerationGet(bigint, date, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest request = new org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest();
+        request.bigint=bigint;
+        request.date=date;
+        request.obj=obj;
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/typedParameterGeneration");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "*/*");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse res = new org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse(contentType, httpRes.statusCode()) {{
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
         }
 
         return res;

@@ -45,26 +45,6 @@ module OpenApiSDK
       end
     end
 
-
-    class RequestBodyPostMultipleContentTypesSplitParamJsonResForm < OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-
-      
-      def initialize; end
-    end
-
-
-    class RequestBodyPostMultipleContentTypesSplitParamJsonResJson < OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-
-      
-      def initialize; end
-    end
-
     # OK
     class RequestBodyPostMultipleContentTypesSplitParamJsonRes < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
@@ -72,12 +52,12 @@ module OpenApiSDK
 
       field :args, T.nilable(T::Hash[Symbol, String]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('args') } }
 
-      field :form, T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitParamJsonResForm), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
 
-      field :json, T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitParamJsonResJson), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
 
 
-      sig { params(args: T.nilable(T::Hash[Symbol, String]), form: T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitParamJsonResForm), json: T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitParamJsonResJson)).void }
+      sig { params(args: T.nilable(T::Hash[Symbol, String]), form: T.nilable(T::Hash[Symbol, Object]), json: T.nilable(T::Hash[Symbol, Object])).void }
       def initialize(args: nil, form: nil, json: nil)
         @args = args
         @form = form

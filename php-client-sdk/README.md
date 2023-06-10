@@ -70,11 +70,12 @@ try {
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
+    $request->falseyNumberParameter = 0;
     $request->floatParameter = 1.1;
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example';
+    $request->strParameter = 'example 1';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
@@ -141,10 +142,12 @@ try {
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
 * [~~deprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - deprecatedNoCommentsGet :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)
 * [ignoredGenerationGet](docs/sdks/generation/README.md#ignoredgenerationget)
 * [ignoresPost](docs/sdks/generation/README.md#ignorespost)
 * [nameOverride](docs/sdks/generation/README.md#nameoverride)
+* [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
 ### [globals](docs/sdks/globals/README.md)
@@ -200,6 +203,7 @@ try {
 * [requestBodyPostApplicationJsonMapOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofprimitive)
 * [requestBodyPostApplicationJsonMultipleJsonFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [requestBodyPostApplicationJsonSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
+* [requestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)
 * [requestBodyPostFormSimple](docs/sdks/requestbodies/README.md#requestbodypostformsimple)
@@ -216,6 +220,13 @@ try {
 * [requestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
 * [requestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [requestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
+
+### [resource](docs/sdks/resource/README.md)
+
+* [createResource](docs/sdks/resource/README.md#createresource)
+* [deleteResource](docs/sdks/resource/README.md#deleteresource)
+* [getResource](docs/sdks/resource/README.md#getresource)
+* [updateResource](docs/sdks/resource/README.md#updateresource)
 
 ### [responseBodies](docs/sdks/responsebodies/README.md)
 

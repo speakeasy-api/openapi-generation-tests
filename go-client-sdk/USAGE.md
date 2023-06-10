@@ -57,11 +57,12 @@ func main() {
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
+        FalseyNumberParameter: 0,
         FloatParameter: 1.1,
         Int64Parameter: 111111,
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example",
+        StrParameter: "example 1",
     }, operations.UsageExamplePostSecurity{
         Password: "YOUR_PASSWORD",
         Username: "YOUR_USERNAME",

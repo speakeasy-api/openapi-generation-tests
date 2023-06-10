@@ -7,9 +7,11 @@ import (
 	"context"
 	"fmt"
 	"io"
+	"math/big"
 	"net/http"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/types"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -229,6 +231,52 @@ func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedPa
 	}
 	switch {
 	case httpRes.StatusCode == 200:
+	}
+
+	return res, nil
+}
+
+func (s *generation) EmptyResponseObjectWithCommentGet(ctx context.Context) (*operations.EmptyResponseObjectWithCommentGetResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/emptyResponseObjectWithComment"
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/octet-stream")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.EmptyResponseObjectWithCommentGetResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/octet-stream`):
+			res.Body = rawBody
+		}
 	}
 
 	return res, nil
@@ -457,6 +505,58 @@ func (s *generation) NameOverride(ctx context.Context, testQueryParam string) (*
 
 			res.OverriddenResponse = out
 		}
+	}
+
+	return res, nil
+}
+
+func (s *generation) TypedParameterGenerationGet(ctx context.Context, bigint *big.Int, date *types.Date, obj *operations.TypedParameterGenerationGetObj) (*operations.TypedParameterGenerationGetResponse, error) {
+	request := operations.TypedParameterGenerationGetRequest{
+		Bigint: bigint,
+		Date:   date,
+		Obj:    obj,
+	}
+
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/typedParameterGeneration"
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "*/*")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	if err := utils.PopulateQueryParams(ctx, req, request, s.sdkConfiguration.Globals); err != nil {
+		return nil, fmt.Errorf("error populating query params: %w", err)
+	}
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.TypedParameterGenerationGetResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
 	}
 
 	return res, nil

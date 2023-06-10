@@ -23,18 +23,18 @@ public class RequestBodyPostMultipleContentTypesSplitParamFormRes {
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("form")
-    public RequestBodyPostMultipleContentTypesSplitParamFormResForm form;
+    public java.util.Map<String, Object> form;
 
-    public RequestBodyPostMultipleContentTypesSplitParamFormRes withForm(RequestBodyPostMultipleContentTypesSplitParamFormResForm form) {
+    public RequestBodyPostMultipleContentTypesSplitParamFormRes withForm(java.util.Map<String, Object> form) {
         this.form = form;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")
-    public RequestBodyPostMultipleContentTypesSplitParamFormResJson json;
+    public java.util.Map<String, Object> json;
 
-    public RequestBodyPostMultipleContentTypesSplitParamFormRes withJson(RequestBodyPostMultipleContentTypesSplitParamFormResJson json) {
+    public RequestBodyPostMultipleContentTypesSplitParamFormRes withJson(java.util.Map<String, Object> json) {
         this.json = json;
         return this;
     }

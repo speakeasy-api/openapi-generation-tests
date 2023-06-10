@@ -21,6 +21,7 @@ Endpoints for testing request bodies.
 * [request_body_post_application_json_map_of_primitive](#request_body_post_application_json_map_of_primitive)
 * [request_body_post_application_json_multiple_json_filtered](#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](#request_body_post_application_json_simple)
+* [request_body_post_empty_object](#request_body_post_empty_object)
 * [request_body_post_form_deep](#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](#request_body_post_form_map_primitive)
 * [request_body_post_form_simple](#request_body_post_form_simple)
@@ -51,6 +52,26 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new[
+    Shared::SimpleObject.new(
+      any="numquam",
+      bigint=985492,
+      bigint_str="suscipit",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      enum=Shared::Enum::TWO,
+      float32=2.2222222,
+      int=999999,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_opt_null=999999,
+      num=1.1,
+      num_opt_null=1.1,
+      str_="example",
+      str_opt="optional example",
+    ),
     Shared::SimpleObject.new(
       any="saepe",
       bigint=897071,
@@ -1458,6 +1479,44 @@ end
 ### Response
 
 **[T.nilable(Operations::RequestBodyPostApplicationJsonSimpleResponse)](../../models/operations/requestbodypostapplicationjsonsimpleresponse.md)**
+
+
+## request_body_post_empty_object
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = Operations::RequestBodyPostEmptyObjectRequestBody.new(
+  request=Operations::RequestBodyPostEmptyObjectRequestBody.new(
+    empty=Operations::RequestBodyPostEmptyObjectRequestBodyEmpty.new(),
+    empty_with_empty_properties=Operations::RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.new(),
+  ),
+)
+    
+res = s.request_bodies.request_body_post_empty_object(req)
+
+if ! res.request_body_post_empty_object_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                             | Type                                                                                                                  | Required                                                                                                              | Description                                                                                                           |
+| --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                             | [Operations::RequestBodyPostEmptyObjectRequestBody](../../models/operations/requestbodypostemptyobjectrequestbody.md) | :heavy_check_mark:                                                                                                    | The request object to use for the request.                                                                            |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostEmptyObjectResponse)](../../models/operations/requestbodypostemptyobjectresponse.md)**
 
 
 ## request_body_post_form_deep

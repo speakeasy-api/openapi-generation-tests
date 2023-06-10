@@ -40,7 +40,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "deleniti"            
+            org.openapis.openapi.models.. req = 897277L            
 
             MixedTypeOneOfPostResponse res = sdk.unions.mixedTypeOneOfPost(req);
 
@@ -88,7 +88,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = false            
+            org.openapis.openapi.models.. req = "veniam"            
 
             PrimitiveTypeOneOfPostResponse res = sdk.unions.primitiveTypeOneOfPost(req);
 
@@ -146,10 +146,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObjectWithType("ullam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectWithTypeInt32Enum.FIFTY_FIVE, SimpleObjectWithTypeIntEnum.Third, 1.1d, "example", "totam") {{
-                any = "sapiente";
-                bigint = 524184L;
-                bigintStr = "minus";
+            org.openapis.openapi.models.. req = new SimpleObjectWithType("ab", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectWithTypeInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectWithTypeIntEnum.Second, 1.1d, "example", "nobis") {{
+                any = "expedita";
+                bigint = 432984L;
+                bigintStr = "vel";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
@@ -159,13 +159,13 @@ public class Application {
                 int_ = 999999L;
                 int32 = 1;
                 int32Enum = SimpleObjectWithTypeInt32Enum.SIXTY_NINE;
-                intEnum = SimpleObjectWithTypeIntEnum.Third;
+                intEnum = SimpleObjectWithTypeIntEnum.First;
                 intOptNull = 999999L;
                 num = 1.1d;
                 numOptNull = 1.1d;
                 str = "example";
                 strOpt = "optional example";
-                type = "ratione";
+                type = "exercitationem";
             }}            
 
             StronglyTypedOneOfPostResponse res = sdk.unions.stronglyTypedOneOfPost(req);
@@ -220,9 +220,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new TypedObject3(TypedObject3Type.OBJ3, "nam") {{
-                type = TypedObject3Type.OBJ3;
-                value = "quibusdam";
+            org.openapis.openapi.models.. req = new TypedObject2(TypedObject2Type.OBJ2, "consequuntur") {{
+                type = TypedObject2Type.OBJ2;
+                value = "recusandae";
             }}            
 
             TypedObjectOneOfPostResponse res = sdk.unions.typedObjectOneOfPost(req);
@@ -278,10 +278,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObject("veritatis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                any = "culpa";
-                bigint = 222864L;
-                bigintStr = "aliquam";
+            org.openapis.openapi.models.. req = new SimpleObject("vero", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                any = "exercitationem";
+                bigint = 895692L;
+                bigintStr = "quasi";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
@@ -290,8 +290,8 @@ public class Application {
                 float32 = 2.2222222d;
                 int_ = 999999L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
+                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                intEnum = SimpleObjectIntEnum.Third;
                 intOptNull = 999999L;
                 num = 1.1d;
                 numOptNull = 1.1d;

@@ -29,7 +29,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'odit'
+'quo'
 
     $response = $sdk->sdk->putAnythingIgnoredGeneration($request);
 

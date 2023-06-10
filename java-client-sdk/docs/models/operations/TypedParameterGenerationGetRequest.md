@@ -1,0 +1,10 @@
+# TypedParameterGenerationGetRequest
+
+
+## Fields
+
+| Field                                                                                       | Type                                                                                        | Required                                                                                    | Description                                                                                 |
+| ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------- |
+| `bigint`                                                                                    | *Long*                                                                                      | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `date`                                                                                      | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)             | :heavy_minus_sign:                                                                          | N/A                                                                                         |
+| `obj`                                                                                       | [TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                          | N/A                                                                                         |

@@ -143,6 +143,31 @@ module OpenApiSDK
     end
 
     sig { returns(Utils::FieldAugmented) }
+    def empty_response_object_with_comment_get
+
+      base_url = @server_url
+      url = "#{base_url.delete_suffix('/')}/anything/emptyResponseObjectWithComment"
+      headers = {}
+      headers['Accept'] = 'application/octet-stream'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+
+      r = @client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::EmptyResponseObjectWithCommentGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        res.body = r.env.response_body if Utils.match_content_type(content_type, 'application/octet-stream')
+      end
+      res
+    end
+
+    sig { returns(Utils::FieldAugmented) }
     def global_name_overridden
 
       base_url = @server_url
@@ -270,6 +295,37 @@ module OpenApiSDK
           out = Utils.unmarshal_complex(r.env.response_body, Operations::OverriddenResponse)
           res.overridden_response = out
         end
+      end
+      res
+    end
+
+    sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).returns(Utils::FieldAugmented) }
+    def typed_parameter_generation_get(bigint = nil, date = nil, obj = nil)
+
+      request = Operations::TypedParameterGenerationGetRequest.new(
+        bigint: bigint,
+        date: date,
+        obj: obj
+      )
+      base_url = @server_url
+      url = "#{base_url.delete_suffix('/')}/anything/typedParameterGeneration"
+      headers = {}
+      query_params = Utils.get_query_params(Operations::TypedParameterGenerationGetRequest, request, @globals)
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+
+      r = @client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::TypedParameterGenerationGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
       end
       res
     end

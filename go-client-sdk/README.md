@@ -68,11 +68,12 @@ func main() {
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
+        FalseyNumberParameter: 0,
         FloatParameter: 1.1,
         Int64Parameter: 111111,
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example",
+        StrParameter: "example 1",
     }, operations.UsageExamplePostSecurity{
         Password: "YOUR_PASSWORD",
         Username: "YOUR_USERNAME",
@@ -138,10 +139,12 @@ func main() {
 * [CircularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
 * [~~DeprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - :warning: **Deprecated**
 * [~~DeprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `SimplePathParameterObjects` instead.
+* [EmptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [GlobalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)
 * [IgnoredGenerationGet](docs/sdks/generation/README.md#ignoredgenerationget)
 * [IgnoresPost](docs/sdks/generation/README.md#ignorespost)
 * [NameOverride](docs/sdks/generation/README.md#nameoverride)
+* [TypedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [UsageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
 ### [Globals](docs/sdks/globals/README.md)
@@ -197,6 +200,7 @@ func main() {
 * [RequestBodyPostApplicationJSONMapOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofprimitive)
 * [RequestBodyPostApplicationJSONMultipleJSONFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [RequestBodyPostApplicationJSONSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
+* [RequestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [RequestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [RequestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)
 * [RequestBodyPostFormSimple](docs/sdks/requestbodies/README.md#requestbodypostformsimple)
@@ -213,6 +217,13 @@ func main() {
 * [RequestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
 * [RequestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [RequestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
+
+### [Resource](docs/sdks/resource/README.md)
+
+* [CreateResource](docs/sdks/resource/README.md#createresource)
+* [DeleteResource](docs/sdks/resource/README.md#deleteresource)
+* [GetResource](docs/sdks/resource/README.md#getresource)
+* [UpdateResource](docs/sdks/resource/README.md#updateresource)
 
 ### [ResponseBodies](docs/sdks/responsebodies/README.md)
 

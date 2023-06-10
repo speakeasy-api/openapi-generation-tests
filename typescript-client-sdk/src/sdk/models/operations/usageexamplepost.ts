@@ -155,6 +155,12 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
     enumParameter: UsageExamplePostEnumParameter;
 
     /**
+     * A number parameter that contains a falsey example value
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=falseyNumberParameter" })
+    falseyNumberParameter: number;
+
+    /**
      * A float parameter
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=floatParameter" })

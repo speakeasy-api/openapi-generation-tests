@@ -1,0 +1,10 @@
+# TypedParameterGenerationGetRequest
+
+
+## Fields
+
+| Field                                                                                        | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `bigint`                                                                                     | *?int*                                                                                       | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `date`                                                                                       | [\DateTime](https://www.php.net/manual/en/class.datetime.php)                                | :heavy_minus_sign:                                                                           | N/A                                                                                          |
+| `obj`                                                                                        | [?TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                           | N/A                                                                                          |

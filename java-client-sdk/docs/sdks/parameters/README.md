@@ -50,15 +50,11 @@ public class Application {
                 .build();
 
             DeepObjectQueryParamsMapResponse res = sdk.parameters.deepObjectQueryParamsMap(new java.util.HashMap<String, String>() {{
-                put("tenetur", "amet");
-                put("tempore", "accusamus");
-                put("numquam", "enim");
-                put("dolorem", "sapiente");
+                put("sapiente", "totam");
             }}, new java.util.HashMap<String, String[]>() {{
-                put("nihil", new String[]{{
-                    add("expedita"),
-                }});
-                put("neque", new String[]{{
+                put("sit", new String[]{{
+                    add("neque"),
+                    add("sed"),
                     add("vel"),
                 }});
                 put("libero", new String[]{{

@@ -1046,6 +1046,74 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPostEmptyObject(
+        req: operations.RequestBodyPostEmptyObjectRequestBody,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostEmptyObjectResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new operations.RequestBodyPostEmptyObjectRequestBody(req);
+        }
+
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/empty-object";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostEmptyObjectResponse =
+            new operations.RequestBodyPostEmptyObjectResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostEmptyObject200ApplicationJSONObject = utils.objectToClass(
+                        httpRes?.data,
+                        operations.RequestBodyPostEmptyObject200ApplicationJSON
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async requestBodyPostFormDeep(
         req: shared.DeepObject,
         config?: AxiosRequestConfig

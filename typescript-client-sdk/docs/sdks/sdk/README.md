@@ -28,7 +28,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.sdk.putAnythingIgnoredGeneration("odit").then((res: PutAnythingIgnoredGenerationResponse) => {
+sdk.sdk.putAnythingIgnoredGeneration("quo").then((res: PutAnythingIgnoredGenerationResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

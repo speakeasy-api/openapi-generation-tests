@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
+from typing import Any, Optional
 
 
 
@@ -18,25 +18,13 @@ class RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded:
 
 
 
-
-@dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitFormResForm:
-    pass
-
-
-
-@dataclasses.dataclass
-class RequestBodyPostMultipleContentTypesSplitFormResJSON:
-    pass
-
-
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitFormRes:
     r"""OK"""
-    form: Optional[RequestBodyPostMultipleContentTypesSplitFormResForm] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
-    json: Optional[RequestBodyPostMultipleContentTypesSplitFormResJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
+    form: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
+    json: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
 
 

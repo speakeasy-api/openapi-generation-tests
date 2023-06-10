@@ -10,6 +10,7 @@ from .globals import Globals
 from .pagination import Pagination
 from .parameters import Parameters
 from .requestbodies import RequestBodies
+from .resource import Resource
 from .responsebodies import ResponseBodies
 from .sdkconfiguration import SDKConfiguration, ServerSomething
 from .servers import Servers
@@ -43,6 +44,7 @@ class SDK:
     r"""Endpoints for testing parameters."""
     request_bodies: RequestBodies
     r"""Endpoints for testing request bodies."""
+    resource: Resource
     response_bodies: ResponseBodies
     r"""Endpoints for testing response bodies."""
     servers: Servers
@@ -134,6 +136,7 @@ class SDK:
         self.pagination = Pagination(self.sdk_configuration)
         self.parameters = Parameters(self.sdk_configuration)
         self.request_bodies = RequestBodies(self.sdk_configuration)
+        self.resource = Resource(self.sdk_configuration)
         self.response_bodies = ResponseBodies(self.sdk_configuration)
         self.servers = Servers(self.sdk_configuration)
         self.telemetry = Telemetry(self.sdk_configuration)

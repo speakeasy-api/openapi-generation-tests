@@ -58,11 +58,12 @@ req = operations.UsageExamplePostRequest(
     date_time_parameter=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
+    falsey_number_parameter=0,
     float_parameter=1.1,
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
-    str_parameter='example',
+    str_parameter='example 1',
 )
 
 res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
@@ -125,10 +126,12 @@ if res.usage_example_post_200_application_json_object is not None:
 * [circular_reference_get](docs/sdks/generation/README.md#circular_reference_get)
 * [~~deprecated_no_comments_get~~](docs/sdks/generation/README.md#deprecated_no_comments_get) - :warning: **Deprecated**
 * [~~deprecated_with_comments_get~~](docs/sdks/generation/README.md#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
+* [empty_response_object_with_comment_get](docs/sdks/generation/README.md#empty_response_object_with_comment_get)
 * [global_name_overridden](docs/sdks/generation/README.md#global_name_overridden)
 * [ignored_generation_get](docs/sdks/generation/README.md#ignored_generation_get)
 * [ignores_post](docs/sdks/generation/README.md#ignores_post)
 * [name_override](docs/sdks/generation/README.md#name_override)
+* [typed_parameter_generation_get](docs/sdks/generation/README.md#typed_parameter_generation_get)
 * [usage_example_post](docs/sdks/generation/README.md#usage_example_post) - An operation used for testing usage examples
 
 ### [globals](docs/sdks/globals/README.md)
@@ -184,6 +187,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_post_application_json_map_of_primitive](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_of_primitive)
 * [request_body_post_application_json_multiple_json_filtered](docs/sdks/requestbodies/README.md#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple)
+* [request_body_post_empty_object](docs/sdks/requestbodies/README.md#request_body_post_empty_object)
 * [request_body_post_form_deep](docs/sdks/requestbodies/README.md#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](docs/sdks/requestbodies/README.md#request_body_post_form_map_primitive)
 * [request_body_post_form_simple](docs/sdks/requestbodies/README.md#request_body_post_form_simple)
@@ -200,6 +204,13 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_put_multipart_file](docs/sdks/requestbodies/README.md#request_body_put_multipart_file)
 * [request_body_put_multipart_simple](docs/sdks/requestbodies/README.md#request_body_put_multipart_simple)
 * [request_body_put_string](docs/sdks/requestbodies/README.md#request_body_put_string)
+
+### [resource](docs/sdks/resource/README.md)
+
+* [create_resource](docs/sdks/resource/README.md#create_resource)
+* [delete_resource](docs/sdks/resource/README.md#delete_resource)
+* [get_resource](docs/sdks/resource/README.md#get_resource)
+* [update_resource](docs/sdks/resource/README.md#update_resource)
 
 ### [response_bodies](docs/sdks/responsebodies/README.md)
 

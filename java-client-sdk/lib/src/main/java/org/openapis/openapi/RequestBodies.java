@@ -712,6 +712,41 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse requestBodyPostEmptyObject(org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBody request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/empty-object");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse res = new org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse(contentType, httpRes.statusCode()) {{
+            requestBodyPostEmptyObject200ApplicationJSONObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RequestBodyPostEmptyObject200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RequestBodyPostEmptyObject200ApplicationJSON.class);
+                res.requestBodyPostEmptyObject200ApplicationJSONObject = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPostFormDeepResponse requestBodyPostFormDeep(org.openapis.openapi.models.shared.DeepObject request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/form/deep");

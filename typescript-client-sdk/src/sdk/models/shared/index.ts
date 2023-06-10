@@ -7,6 +7,7 @@ export * from "./authservicerequestbody";
 export * from "./deepobject";
 export * from "./deepobjectwithtype";
 export * from "./enum";
+export * from "./exampleresource";
 export * from "./httpbinsimplejsonobject";
 export * from "./limitoffsetconfig";
 export * from "./mapobjvalue";
