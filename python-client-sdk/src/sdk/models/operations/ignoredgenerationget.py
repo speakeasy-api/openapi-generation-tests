@@ -10,22 +10,25 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class IgnoredGenerationGet200ApplicationJSON:
     r"""A successful response that contains the simpleObject sent in the request body"""
-    
     json: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
     
 
+
+
+
 @dataclasses.dataclass
 class IgnoredGenerationGetResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     ignored_generation_get_200_application_json_object: Optional[IgnoredGenerationGet200ApplicationJSON] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

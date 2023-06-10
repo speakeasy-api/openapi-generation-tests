@@ -6,11 +6,12 @@ import requests as requests_http
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class SelectGlobalServerResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     headers: Optional[dict[str, list[str]]] = dataclasses.field(default=None)
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

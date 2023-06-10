@@ -27,25 +27,15 @@ class RequestBodyPostMultipleContentTypesSplitParamFormRes
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?array $args = null;
     
-    /**
-     * $form
-     * 
-     * @var ?array<string, mixed> $form
-     */
 	#[\JMS\Serializer\Annotation\SerializedName('form')]
-    #[\JMS\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormResForm')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?array $form = null;
+    public ?RequestBodyPostMultipleContentTypesSplitParamFormResForm $form = null;
     
-    /**
-     * $json
-     * 
-     * @var ?array<string, mixed> $json
-     */
 	#[\JMS\Serializer\Annotation\SerializedName('json')]
-    #[\JMS\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormResJson')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?array $json = null;
+    public ?RequestBodyPostMultipleContentTypesSplitParamFormResJson $json = null;
     
 	public function __construct()
 	{

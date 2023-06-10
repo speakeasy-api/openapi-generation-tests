@@ -9,9 +9,9 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class MixedQueryParamsRequest:
-    
     deep_object_param: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'query_param': { 'field_name': 'deepObjectParam', 'style': 'deepObject', 'explode': True }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     form_param: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'query_param': { 'field_name': 'formParam', 'style': 'form', 'explode': True }})
@@ -20,21 +20,26 @@ class MixedQueryParamsRequest:
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class MixedQueryParamsRes:
     r"""OK"""
-    
     args: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
+
+
+
 @dataclasses.dataclass
 class MixedQueryParamsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[MixedQueryParamsRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

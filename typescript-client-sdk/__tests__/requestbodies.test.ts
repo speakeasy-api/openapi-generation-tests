@@ -606,3 +606,13 @@ test("Request Body Put Bytes", async () => {
   expect(res.res).toBeDefined();
   expect(res.res?.data).toEqual(data.toString());
 });
+
+test("Request Body Post Empty Object", async () => {
+  recordTest("request-bodies-post-empty-object");
+
+  const s = new SDK({});
+
+  const res = await s.requestBodies.requestBodyPostEmptyObject({});
+  expect(res.requestBodyPostEmptyObject200ApplicationJSONObject).toBeDefined();
+  expect(res.statusCode).toBe(200);
+});

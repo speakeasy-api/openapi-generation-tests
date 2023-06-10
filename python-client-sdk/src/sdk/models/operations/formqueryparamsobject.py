@@ -9,19 +9,21 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class FormQueryParamsObjectRequest:
-    
     obj_param_exploded: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'query_param': { 'field_name': 'objParamExploded', 'style': 'form', 'explode': True }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     obj_param: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'objParam', 'style': 'form', 'explode': False }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class FormQueryParamsObjectResArgs:
-    
     any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
@@ -43,21 +45,26 @@ class FormQueryParamsObjectResArgs:
     str_opt: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('strOpt'), 'exclude': lambda f: f is None }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class FormQueryParamsObjectRes:
     r"""OK"""
-    
     args: FormQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
+
+
+
 @dataclasses.dataclass
 class FormQueryParamsObjectResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[FormQueryParamsObjectRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -8,33 +8,40 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class HeaderParamsArrayRequest:
-    
     x_header_array: list[str] = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Array', 'style': 'simple', 'explode': False }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class HeaderParamsArrayResHeaders:
-    
     x_header_array: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Array') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class HeaderParamsArrayRes:
     r"""OK"""
-    
     headers: HeaderParamsArrayResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
 
+
+
+
 @dataclasses.dataclass
 class HeaderParamsArrayResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[HeaderParamsArrayRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

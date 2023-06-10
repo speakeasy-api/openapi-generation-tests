@@ -5,6 +5,8 @@
 package org.openapis.openapi;
 
 import java.net.http.HttpResponse;
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
 import org.openapis.openapi.utils.SerializedBody;

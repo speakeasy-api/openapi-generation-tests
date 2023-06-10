@@ -13,17 +13,19 @@ PAGINATION_LIMIT_OFFSET_OFFSET_BODY_SERVERS = [
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class PaginationLimitOffsetOffsetBodyRes:
     r"""OK"""
-    
     num_pages: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numPages') }})
     result_array: list[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resultArray') }})
     
 
+
+
+
 @dataclasses.dataclass
 class PaginationLimitOffsetOffsetBodyResponse:
-    
     next: Callable[[], Optional[Undefined]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
@@ -31,3 +33,4 @@ class PaginationLimitOffsetOffsetBodyResponse:
     res: Optional[PaginationLimitOffsetOffsetBodyRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -12,10 +12,16 @@ type RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded struc
 	Str3  string  `form:"name=str3"`
 }
 
+type RequestBodyPostMultipleContentTypesSplitFormResForm struct {
+}
+
+type RequestBodyPostMultipleContentTypesSplitFormResJSON struct {
+}
+
 // RequestBodyPostMultipleContentTypesSplitFormRes - OK
 type RequestBodyPostMultipleContentTypesSplitFormRes struct {
-	Form map[string]interface{} `json:"form,omitempty"`
-	JSON map[string]interface{} `json:"json,omitempty"`
+	Form *RequestBodyPostMultipleContentTypesSplitFormResForm `json:"form,omitempty"`
+	JSON *RequestBodyPostMultipleContentTypesSplitFormResJSON `json:"json,omitempty"`
 }
 
 type RequestBodyPostMultipleContentTypesSplitFormResponse struct {

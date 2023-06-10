@@ -25,12 +25,12 @@ class SimpleObjectIntEnum(int, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SimpleObject:
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
-    
     any: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }, 'header': { 'field_name': 'any' }, 'path_param': { 'field_name': 'any' }, 'query_param': { 'field_name': 'any' }, 'form': { 'field_name': 'any' }, 'multipart_form': { 'field_name': 'any' }})
     r"""An any property."""
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }, 'header': { 'field_name': 'bool' }, 'path_param': { 'field_name': 'bool' }, 'query_param': { 'field_name': 'bool' }, 'form': { 'field_name': 'bool' }, 'multipart_form': { 'field_name': 'bool' }})
@@ -66,3 +66,4 @@ class SimpleObject:
     str_opt: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('strOpt'), 'exclude': lambda f: f is None }, 'header': { 'field_name': 'strOpt' }, 'path_param': { 'field_name': 'strOpt' }, 'query_param': { 'field_name': 'strOpt' }, 'form': { 'field_name': 'strOpt' }, 'multipart_form': { 'field_name': 'strOpt' }})
     r"""An optional string property."""
     
+

@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
 
 export class RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "form, name=bool3" })
@@ -17,17 +17,23 @@ export class RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencod
     str3: string;
 }
 
+export class RequestBodyPostMultipleContentTypesSplitFormResForm extends SpeakeasyBase {}
+
+export class RequestBodyPostMultipleContentTypesSplitFormResJson extends SpeakeasyBase {}
+
 /**
  * OK
  */
 export class RequestBodyPostMultipleContentTypesSplitFormRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "form" })
-    form?: Record<string, any>;
+    @Type(() => RequestBodyPostMultipleContentTypesSplitFormResForm)
+    form?: RequestBodyPostMultipleContentTypesSplitFormResForm;
 
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
-    json?: Record<string, any>;
+    @Type(() => RequestBodyPostMultipleContentTypesSplitFormResJson)
+    json?: RequestBodyPostMultipleContentTypesSplitFormResJson;
 }
 
 export class RequestBodyPostMultipleContentTypesSplitFormResponse extends SpeakeasyBase {

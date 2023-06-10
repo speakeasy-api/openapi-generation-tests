@@ -1,0 +1,9 @@
+# AuthServiceRequestBody
+
+
+## Fields
+
+| Field                                                                                                         | Type                                                                                                          | Required                                                                                                      | Description                                                                                                   |
+| ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| `basic_auth`                                                                                                  | [T.nilable(Shared::AuthServiceRequestBodyBasicAuth)](../../models/shared/authservicerequestbodybasicauth.md)  | :heavy_minus_sign:                                                                                            | N/A                                                                                                           |
+| `header_auth`                                                                                                 | T::Array<[Shared::AuthServiceRequestBodyHeaderAuth](../../models/shared/authservicerequestbodyheaderauth.md)> | :heavy_minus_sign:                                                                                            | N/A                                                                                                           |

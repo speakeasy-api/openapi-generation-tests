@@ -11,31 +11,38 @@ MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class MultipleOptionsWithMixedSchemesAuthSecurityOption1:
-    
     api_key_auth_new: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' }})
     oauth2: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'oauth2', 'field_name': 'Authorization' }})
     
 
+
+
+
 @dataclasses.dataclass
 class MultipleOptionsWithMixedSchemesAuthSecurityOption2:
-    
     api_key_auth_new: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' }})
     basic_auth: shared_security.SchemeBasicAuth = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic' }})
     
 
+
+
+
 @dataclasses.dataclass
 class MultipleOptionsWithMixedSchemesAuthSecurity:
-    
     option1: Optional[MultipleOptionsWithMixedSchemesAuthSecurityOption1] = dataclasses.field(default=None, metadata={'security': { 'option': True }})
     option2: Optional[MultipleOptionsWithMixedSchemesAuthSecurityOption2] = dataclasses.field(default=None, metadata={'security': { 'option': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class MultipleOptionsWithMixedSchemesAuthResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

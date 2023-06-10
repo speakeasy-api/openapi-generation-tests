@@ -12,10 +12,16 @@ type RequestBodyPostMultipleContentTypesSplitMultipartFormData struct {
 	Str2  string  `multipartForm:"name=str2"`
 }
 
+type RequestBodyPostMultipleContentTypesSplitMultipartResForm struct {
+}
+
+type RequestBodyPostMultipleContentTypesSplitMultipartResJSON struct {
+}
+
 // RequestBodyPostMultipleContentTypesSplitMultipartRes - OK
 type RequestBodyPostMultipleContentTypesSplitMultipartRes struct {
-	Form map[string]interface{} `json:"form,omitempty"`
-	JSON map[string]interface{} `json:"json,omitempty"`
+	Form *RequestBodyPostMultipleContentTypesSplitMultipartResForm `json:"form,omitempty"`
+	JSON *RequestBodyPostMultipleContentTypesSplitMultipartResJSON `json:"json,omitempty"`
 }
 
 type RequestBodyPostMultipleContentTypesSplitMultipartResponse struct {

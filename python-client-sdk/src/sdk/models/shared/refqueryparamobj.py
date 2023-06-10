@@ -4,11 +4,12 @@ from __future__ import annotations
 import dataclasses
 
 
+
 @dataclasses.dataclass
 class RefQueryParamObj:
-    
     bool: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'bool' }})
     int: int = dataclasses.field(metadata={'query_param': { 'field_name': 'int' }})
     num: float = dataclasses.field(metadata={'query_param': { 'field_name': 'num' }})
     str_: str = dataclasses.field(metadata={'query_param': { 'field_name': 'str' }})
     
+

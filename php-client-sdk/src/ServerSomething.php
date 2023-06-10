@@ -11,7 +11,7 @@ namespace OpenAPI\OpenAPI;
 /** Something is a variable for changing the root path */
 enum ServerSomething: string
 {
-    case SOMETHING = 'something';
-    case SOMETHING_ELSE = 'somethingElse';
-    case SOMETHING_ELSE_AGAIN = 'somethingElseAgain';
+    case Something = 'something';
+    case SomethingElse = 'somethingElse';
+    case SomethingElseAgain = 'somethingElseAgain';
 }

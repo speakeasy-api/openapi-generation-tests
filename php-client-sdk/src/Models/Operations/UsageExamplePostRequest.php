@@ -106,7 +106,7 @@ class UsageExamplePostRequest
 		$this->dateParameter = new \DateTime();
 		$this->dateTimeParameter = new \DateTime();
 		$this->doubleParameter = 0;
-		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter::VALUE1;
+		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter::Value1;
 		$this->floatParameter = 0;
 		$this->int64Parameter = 0;
 		$this->intParameter = 0;

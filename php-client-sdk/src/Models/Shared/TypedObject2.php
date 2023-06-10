@@ -21,7 +21,7 @@ class TypedObject2
     
 	public function __construct()
 	{
-		$this->type = \OpenAPI\OpenAPI\Models\Shared\TypedObject2Type::OBJ2;
+		$this->type = \OpenAPI\OpenAPI\Models\Shared\TypedObject2Type::Obj2;
 		$this->value = "";
 	}
 }

@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { AxiosResponse } from "axios";
-import { Expose } from "class-transformer";
+import { Expose, Type } from "class-transformer";
 
 export class RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -20,13 +20,16 @@ export class RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON ex
     str: string;
 }
 
+export class RequestBodyPostMultipleContentTypesInlineFilteredResJson extends SpeakeasyBase {}
+
 /**
  * OK
  */
 export class RequestBodyPostMultipleContentTypesInlineFilteredRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
-    json?: Record<string, any>;
+    @Type(() => RequestBodyPostMultipleContentTypesInlineFilteredResJson)
+    json?: RequestBodyPostMultipleContentTypesInlineFilteredResJson;
 }
 
 export class RequestBodyPostMultipleContentTypesInlineFilteredResponse extends SpeakeasyBase {

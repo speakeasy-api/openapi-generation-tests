@@ -10,12 +10,13 @@ REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONArrayOfPrimitiveResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     strings: Optional[list[str]] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -11,5 +11,5 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 
 enum TypedObject1Type: string
 {
-    case OBJ1 = 'obj1';
+    case Obj1 = 'obj1';
 }

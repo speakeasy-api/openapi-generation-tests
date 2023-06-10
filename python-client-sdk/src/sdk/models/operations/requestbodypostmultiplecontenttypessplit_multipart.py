@@ -5,32 +5,49 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional
+
 
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitMultipartFormData:
-    
     bool2: bool = dataclasses.field(metadata={'multipart_form': { 'field_name': 'bool2' }})
     num2: float = dataclasses.field(metadata={'multipart_form': { 'field_name': 'num2' }})
     str2: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'str2' }})
     
 
+
+
+
+@dataclasses.dataclass
+class RequestBodyPostMultipleContentTypesSplitMultipartResForm:
+    pass
+
+
+
+@dataclasses.dataclass
+class RequestBodyPostMultipleContentTypesSplitMultipartResJSON:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitMultipartRes:
     r"""OK"""
+    form: Optional[RequestBodyPostMultipleContentTypesSplitMultipartResForm] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
+    json: Optional[RequestBodyPostMultipleContentTypesSplitMultipartResJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
-    form: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
-    json: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
-    
+
+
+
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitMultipartResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[RequestBodyPostMultipleContentTypesSplitMultipartRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -10,19 +10,22 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONDeepRes:
     r"""OK"""
-    
     json: Optional[shared_deepobject.DeepObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONDeepResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[RequestBodyPostApplicationJSONDeepRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

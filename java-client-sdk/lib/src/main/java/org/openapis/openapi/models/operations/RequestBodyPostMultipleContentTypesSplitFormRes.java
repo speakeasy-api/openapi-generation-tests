@@ -14,18 +14,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class RequestBodyPostMultipleContentTypesSplitFormRes {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("form")
-    public java.util.Map<String, Object> form;
+    public RequestBodyPostMultipleContentTypesSplitFormResForm form;
 
-    public RequestBodyPostMultipleContentTypesSplitFormRes withForm(java.util.Map<String, Object> form) {
+    public RequestBodyPostMultipleContentTypesSplitFormRes withForm(RequestBodyPostMultipleContentTypesSplitFormResForm form) {
         this.form = form;
         return this;
     }
     
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")
-    public java.util.Map<String, Object> json;
+    public RequestBodyPostMultipleContentTypesSplitFormResJson json;
 
-    public RequestBodyPostMultipleContentTypesSplitFormRes withJson(java.util.Map<String, Object> json) {
+    public RequestBodyPostMultipleContentTypesSplitFormRes withJson(RequestBodyPostMultipleContentTypesSplitFormResJson json) {
         this.json = json;
         return this;
     }

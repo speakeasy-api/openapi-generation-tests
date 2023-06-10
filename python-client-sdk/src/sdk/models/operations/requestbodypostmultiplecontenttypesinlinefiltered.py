@@ -5,32 +5,43 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON:
-    
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     str_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('str') }})
     
 
+
+
+
+@dataclasses.dataclass
+class RequestBodyPostMultipleContentTypesInlineFilteredResJSON:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesInlineFilteredRes:
     r"""OK"""
+    json: Optional[RequestBodyPostMultipleContentTypesInlineFilteredResJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
-    json: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
-    
+
+
+
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesInlineFilteredResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[RequestBodyPostMultipleContentTypesInlineFilteredRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

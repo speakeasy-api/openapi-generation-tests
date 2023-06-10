@@ -654,3 +654,18 @@ func TestRequestBodyPutBytes(t *testing.T) {
 	assert.NotNil(t, res.Res)
 	assert.Equal(t, string(data), res.Res.Data)
 }
+
+func TestRequestBodyEmptyObject(t *testing.T) {
+	recordTest("request-bodies-post-empty-object")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyPostEmptyObject(context.Background(), operations.RequestBodyPostEmptyObjectRequestBody{
+		Empty:                    &operations.RequestBodyPostEmptyObjectRequestBodyEmpty{},
+		EmptyWithEmptyProperties: &operations.RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties{},
+	})
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.RequestBodyPostEmptyObject200ApplicationJSONObject)
+}

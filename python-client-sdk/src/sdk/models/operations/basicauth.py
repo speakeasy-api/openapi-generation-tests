@@ -8,35 +8,42 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class BasicAuthSecurity:
-    
     password: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'password' }})
     username: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'username' }})
     
 
+
+
+
 @dataclasses.dataclass
 class BasicAuthRequest:
-    
     passwd: str = dataclasses.field(metadata={'path_param': { 'field_name': 'passwd', 'style': 'simple', 'explode': False }})
     user: str = dataclasses.field(metadata={'path_param': { 'field_name': 'user', 'style': 'simple', 'explode': False }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class BasicAuthUser:
     r"""Successful authentication."""
-    
     authenticated: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('authenticated') }})
     user: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user') }})
     
 
+
+
+
 @dataclasses.dataclass
 class BasicAuthResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     user: Optional[BasicAuthUser] = dataclasses.field(default=None)
     r"""Successful authentication."""
     
+

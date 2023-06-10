@@ -1,0 +1,11 @@
+# AnchorTypesGetResponse
+
+
+## Fields
+
+| Field                                                                              | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `content_type`                                                                     | *String*                                                                           | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `status_code`                                                                      | *Integer*                                                                          | :heavy_check_mark:                                                                 | N/A                                                                                |
+| `raw_response`                                                                     | [Faraday::Response](https://www.rubydoc.info/gems/faraday/Faraday/Response)        | :heavy_minus_sign:                                                                 | N/A                                                                                |
+| `type_from_anchor`                                                                 | [T.nilable(Operations::TypeFromAnchor)](../../models/operations/typefromanchor.md) | :heavy_minus_sign:                                                                 | A successful response that contains the simpleObject sent in the request body      |

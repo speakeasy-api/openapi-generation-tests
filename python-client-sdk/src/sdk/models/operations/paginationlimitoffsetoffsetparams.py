@@ -12,25 +12,29 @@ PAGINATION_LIMIT_OFFSET_OFFSET_PARAMS_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class PaginationLimitOffsetOffsetParamsRequest:
-    
     limit: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'limit', 'style': 'form', 'explode': True }})
     offset: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'offset', 'style': 'form', 'explode': True }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class PaginationLimitOffsetOffsetParamsRes:
     r"""OK"""
-    
     num_pages: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numPages') }})
     result_array: list[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resultArray') }})
     
 
+
+
+
 @dataclasses.dataclass
 class PaginationLimitOffsetOffsetParamsResponse:
-    
     next: Callable[[], Optional[Undefined]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
@@ -38,3 +42,4 @@ class PaginationLimitOffsetOffsetParamsResponse:
     res: Optional[PaginationLimitOffsetOffsetParamsRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

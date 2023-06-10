@@ -6,12 +6,13 @@ import requests as requests_http
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ResponseBodyBytesGetResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     bytes: Optional[bytes] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

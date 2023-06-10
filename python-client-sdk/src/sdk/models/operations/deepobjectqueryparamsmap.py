@@ -8,28 +8,33 @@ from sdk import utils
 from typing import Any, Optional
 
 
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapRequest:
-    
     map_param: dict[str, str] = dataclasses.field(metadata={'query_param': { 'field_name': 'mapParam', 'style': 'deepObject', 'explode': True }})
     map_arr_param: Optional[dict[str, list[str]]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'mapArrParam', 'style': 'deepObject', 'explode': True }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapRes:
     r"""OK"""
-    
     args: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
+
+
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[DeepObjectQueryParamsMapRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

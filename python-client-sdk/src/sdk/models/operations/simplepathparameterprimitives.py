@@ -8,29 +8,34 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class SimplePathParameterPrimitivesRequest:
-    
     bool_param: bool = dataclasses.field(metadata={'path_param': { 'field_name': 'boolParam', 'style': 'simple', 'explode': False }})
     int_param: int = dataclasses.field(metadata={'path_param': { 'field_name': 'intParam', 'style': 'simple', 'explode': False }})
     num_param: float = dataclasses.field(metadata={'path_param': { 'field_name': 'numParam', 'style': 'simple', 'explode': False }})
     str_param: str = dataclasses.field(metadata={'path_param': { 'field_name': 'strParam', 'style': 'simple', 'explode': False }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SimplePathParameterPrimitivesRes:
     r"""OK"""
-    
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
+
+
+
 @dataclasses.dataclass
 class SimplePathParameterPrimitivesResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[SimplePathParameterPrimitivesRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

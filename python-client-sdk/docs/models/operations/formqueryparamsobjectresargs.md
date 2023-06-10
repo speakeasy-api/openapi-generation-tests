@@ -1,0 +1,26 @@
+# FormQueryParamsObjectResArgs
+
+
+## Fields
+
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `any`              | *str*              | :heavy_check_mark: | N/A                |
+| `bigint`           | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `bigint_str`       | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `bool`             | *str*              | :heavy_check_mark: | N/A                |
+| `bool_opt`         | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `date_`            | *str*              | :heavy_check_mark: | N/A                |
+| `date_time`        | *str*              | :heavy_check_mark: | N/A                |
+| `enum`             | *str*              | :heavy_check_mark: | N/A                |
+| `float32`          | *str*              | :heavy_check_mark: | N/A                |
+| `int`              | *str*              | :heavy_check_mark: | N/A                |
+| `int32`            | *str*              | :heavy_check_mark: | N/A                |
+| `int32_enum`       | *str*              | :heavy_check_mark: | N/A                |
+| `int_enum`         | *str*              | :heavy_check_mark: | N/A                |
+| `int_opt_null`     | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `num`              | *str*              | :heavy_check_mark: | N/A                |
+| `num_opt_null`     | *Optional[str]*    | :heavy_minus_sign: | N/A                |
+| `obj_param`        | *str*              | :heavy_check_mark: | N/A                |
+| `str_`             | *str*              | :heavy_check_mark: | N/A                |
+| `str_opt`          | *Optional[str]*    | :heavy_minus_sign: | N/A                |

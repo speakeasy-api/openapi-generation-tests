@@ -11,18 +11,20 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class UsageExamplePostSecurity:
-    
     password: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'password' }})
     username: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'username' }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class UsageExamplePostRequestBody:
     r"""A request body that contains fields with different formats for testing example generation"""
-    
     email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
     r"""A field called email that will have emails generated as examples"""
     format_email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatEmail'), 'exclude': lambda f: f is None }})
@@ -48,6 +50,8 @@ class UsageExamplePostRequestBody:
     uuid: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uuid'), 'exclude': lambda f: f is None }})
     r"""A field called uuid that will have uuids generated as examples"""
     
+
+
 class UsageExamplePostEnumParameter(str, Enum):
     r"""An enum type"""
     VALUE1 = 'value1'
@@ -61,9 +65,9 @@ class UsageExamplePostOptEnumParameter(str, Enum):
     VALUE3 = 'value3'
 
 
+
 @dataclasses.dataclass
 class UsageExamplePostRequest:
-    
     bool_parameter: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'boolParameter', 'style': 'form', 'explode': True }})
     r"""A boolean parameter"""
     date_parameter: date = dataclasses.field(metadata={'query_param': { 'field_name': 'dateParameter', 'style': 'form', 'explode': True }})
@@ -88,10 +92,12 @@ class UsageExamplePostRequest:
     r"""A request body that contains fields with different formats for testing example generation"""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class UsageExamplePost200ApplicationJSONJSON:
-    
     email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
     r"""A field called email that will have emails generated as examples"""
     format_email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatEmail'), 'exclude': lambda f: f is None }})
@@ -118,20 +124,25 @@ class UsageExamplePost200ApplicationJSONJSON:
     r"""A field called uuid that will have uuids generated as examples"""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class UsageExamplePost200ApplicationJSON:
     r"""A response body that contains the simpleObject sent in the request body"""
-    
     json: UsageExamplePost200ApplicationJSONJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
+
+
+
 @dataclasses.dataclass
 class UsageExamplePostResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     usage_example_post_200_application_json_object: Optional[UsageExamplePost200ApplicationJSON] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
     
+

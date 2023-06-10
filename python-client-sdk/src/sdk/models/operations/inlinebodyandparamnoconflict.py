@@ -9,41 +9,50 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictRequestBody:
-    
     body_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bodyStr') }})
     
 
+
+
+
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictRequest:
-    
     param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
     request_body: InlineBodyAndParamNoConflictRequestBody = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictResJSON:
-    
     body_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bodyStr') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictRes:
     r"""OK"""
-    
     args: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     json: InlineBodyAndParamNoConflictResJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
+
+
+
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[InlineBodyAndParamNoConflictRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

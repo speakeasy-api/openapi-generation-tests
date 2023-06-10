@@ -10,12 +10,13 @@ REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[dict[str, dict[str, str]]] = dataclasses.field(default=None)
     r"""OK"""
     
+

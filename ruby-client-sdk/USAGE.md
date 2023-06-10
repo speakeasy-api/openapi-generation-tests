@@ -1,18 +1,18 @@
 <!-- Start SDK Example Usage -->
 ```ruby
-require_relative sdk
+require_relative openapi
 
 
-s = sdk::SDK.new
+s = OpenApiSDK::SDK.new
 
    
-req = Operations::Operations::UsageExamplePostRequest(
-  security=Operations::UsageExamplePostSecurity(
+req = Operations::UsageExamplePostRequest.new(
+  security=Operations::UsageExamplePostSecurity.new(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
   ),
-  query_params=Operations::UsageExamplePostRequest(
-    request_body=Operations::UsageExamplePostRequestBody(
+  query_params=Operations::UsageExamplePostRequest.new(
+    request_body=Operations::UsageExamplePostRequestBody.new(
       email="Larue_Rau85@yahoo.com",
       format_email="Roselyn_Kassulke@yahoo.com",
       format_uri="http://innocent-effect.org",
@@ -20,7 +20,7 @@ req = Operations::Operations::UsageExamplePostRequest(
       hostname="soulful-poppy.com",
       ipv4="184.163.148.36",
       ipv6="8fc8:1674:2cb7:3920:5929:396f:ea75:96eb",
-      simple_object=Shared::SimpleObject(
+      simple_object=Shared::SimpleObject.new(
         any="architecto",
         bigint=60225,
         bigint_str="reiciendis",
@@ -55,7 +55,7 @@ req = Operations::Operations::UsageExamplePostRequest(
     opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
     str_parameter="example",
   ),
-  request_body=Operations::UsageExamplePostRequestBody(
+  request_body=Operations::UsageExamplePostRequestBody.new(
     email="Orlando.Dietrich66@gmail.com",
     format_email="Adrain_Boyer@hotmail.com",
     format_uri="https://bubbly-waterbed.org",
@@ -63,7 +63,7 @@ req = Operations::Operations::UsageExamplePostRequest(
     hostname="meaty-tortoise.com",
     ipv4="235.147.21.237",
     ipv6="450a:d2ab:d442:6980:2d50:2a94:bb4f:63c9",
-    simple_object=Shared::SimpleObject(
+    simple_object=Shared::SimpleObject.new(
       any="aliquid",
       bigint=592042,
       bigint_str="necessitatibus",
@@ -89,7 +89,7 @@ req = Operations::Operations::UsageExamplePostRequest(
   ),
 )
     
-res = s.generation::usage_example_post(req)
+res = s.generation.usage_example_post(req)
 
 if ! res.usage_example_post_200_application_json_object.nil?
   # handle response

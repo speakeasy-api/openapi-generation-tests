@@ -1,0 +1,9 @@
+# FormQueryParamsRefParamObjectRequest
+
+
+## Fields
+
+| Field                                                                                                          | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `refObjParam`                                                                                                  | [org.openapis.openapi.models.shared.RefQueryParamObj](../../models/shared/RefQueryParamObj.md)                 | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |
+| `refObjParamExploded`                                                                                          | [org.openapis.openapi.models.shared.RefQueryParamObjExploded](../../models/shared/RefQueryParamObjExploded.md) | :heavy_minus_sign:                                                                                             | N/A                                                                                                            |

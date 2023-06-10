@@ -277,11 +277,11 @@ class SimpleObject
 		$this->boolOpt = null;
 		$this->date = new \DateTime();
 		$this->dateTime = new \DateTime();
-		$this->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::ONE;
+		$this->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::One;
 		$this->float32 = 0;
 		$this->int = 0;
 		$this->int32 = 0;
-		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum::FIFTY_FIVE;
+		$this->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum::FiftyFive;
 		$this->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum::First;
 		$this->intOptNull = null;
 		$this->num = 0;

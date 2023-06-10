@@ -9,19 +9,22 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostFormMapPrimitiveRes:
     r"""OK"""
-    
     form: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
     
 
+
+
+
 @dataclasses.dataclass
 class RequestBodyPostFormMapPrimitiveResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[RequestBodyPostFormMapPrimitiveRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

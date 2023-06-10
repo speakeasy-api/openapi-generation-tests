@@ -9,19 +9,22 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class PutAnythingIgnoredGeneration200ApplicationJSON:
     r"""OK"""
-    
     json: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class PutAnythingIgnoredGenerationResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     put_anything_ignored_generation_200_application_json_object: Optional[PutAnythingIgnoredGeneration200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

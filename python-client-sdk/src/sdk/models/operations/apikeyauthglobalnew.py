@@ -10,10 +10,11 @@ API_KEY_AUTH_GLOBAL_NEW_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class APIKeyAuthGlobalNewResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

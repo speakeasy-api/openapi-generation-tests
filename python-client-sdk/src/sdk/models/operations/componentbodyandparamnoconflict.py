@@ -9,18 +9,20 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ComponentBodyAndParamNoConflictRequest:
-    
     param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
     simple_object: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class ComponentBodyAndParamNoConflictRes:
     r"""OK"""
-    
     args: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     json: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -28,12 +30,15 @@ class ComponentBodyAndParamNoConflictRes:
     """
     
 
+
+
+
 @dataclasses.dataclass
 class ComponentBodyAndParamNoConflictResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[ComponentBodyAndParamNoConflictRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -17,25 +17,15 @@ namespace OpenAPI\OpenAPI\Models\Operations;
  */
 class RequestBodyPostMultipleContentTypesSplitMultipartRes
 {
-    /**
-     * $form
-     * 
-     * @var ?array<string, mixed> $form
-     */
 	#[\JMS\Serializer\Annotation\SerializedName('form')]
-    #[\JMS\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartResForm')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?array $form = null;
+    public ?RequestBodyPostMultipleContentTypesSplitMultipartResForm $form = null;
     
-    /**
-     * $json
-     * 
-     * @var ?array<string, mixed> $json
-     */
 	#[\JMS\Serializer\Annotation\SerializedName('json')]
-    #[\JMS\Serializer\Annotation\Type('array<string, mixed>')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartResJson')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?array $json = null;
+    public ?RequestBodyPostMultipleContentTypesSplitMultipartResJson $json = null;
     
 	public function __construct()
 	{

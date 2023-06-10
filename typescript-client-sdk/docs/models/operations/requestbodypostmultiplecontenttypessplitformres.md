@@ -1,0 +1,11 @@
+# RequestBodyPostMultipleContentTypesSplitFormRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                                                                 | Type                                                                                                                                  | Required                                                                                                                              | Description                                                                                                                           |
+| ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `form`                                                                                                                                | [RequestBodyPostMultipleContentTypesSplitFormResForm](../../models/operations/requestbodypostmultiplecontenttypessplitformresform.md) | :heavy_minus_sign:                                                                                                                    | N/A                                                                                                                                   |
+| `json`                                                                                                                                | [RequestBodyPostMultipleContentTypesSplitFormResJson](../../models/operations/requestbodypostmultiplecontenttypessplitformresjson.md) | :heavy_minus_sign:                                                                                                                    | N/A                                                                                                                                   |

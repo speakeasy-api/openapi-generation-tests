@@ -7,12 +7,13 @@ from ..shared import validcircularreferenceobject as shared_validcircularreferen
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class CircularReferenceGetResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     valid_circular_reference_object: Optional[shared_validcircularreferenceobject.ValidCircularReferenceObject] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -5,41 +5,60 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamApplicationJSON:
-    
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     str_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('str') }})
     
 
+
+
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamJSONRequest:
-    
     param_str: str = dataclasses.field(metadata={'query_param': { 'field_name': 'paramStr', 'style': 'form', 'explode': True }})
     request_body: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     
 
+
+
+
+@dataclasses.dataclass
+class RequestBodyPostMultipleContentTypesSplitParamJSONResForm:
+    pass
+
+
+
+@dataclasses.dataclass
+class RequestBodyPostMultipleContentTypesSplitParamJSONResJSON:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamJSONRes:
     r"""OK"""
-    
     args: Optional[dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args'), 'exclude': lambda f: f is None }})
-    form: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
-    json: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
+    form: Optional[RequestBodyPostMultipleContentTypesSplitParamJSONResForm] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
+    json: Optional[RequestBodyPostMultipleContentTypesSplitParamJSONResJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
+
+
+
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitParamJSONResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[RequestBodyPostMultipleContentTypesSplitParamJSONRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

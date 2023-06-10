@@ -34,8 +34,8 @@ class SDKConfiguration:
     globals: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
     language: str = 'python'
     openapi_doc_version: str = '0.0.1'
-    sdk_version: str = '1.6.1'
-    gen_version: str = '2.37.2'
+    sdk_version: str = '1.7.0'
+    gen_version: str = '2.39.0'
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:
         if self.server_url:

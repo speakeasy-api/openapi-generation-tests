@@ -1,0 +1,9 @@
+# AuthServiceRequestBody
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `basicAuth`                                                                                        | [?AuthServiceRequestBodyBasicAuth](../../models/shared/AuthServiceRequestBodyBasicAuth.md)         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
+| `headerAuth`                                                                                       | array<[AuthServiceRequestBodyHeaderAuth](../../models/shared/AuthServiceRequestBodyHeaderAuth.md)> | :heavy_minus_sign:                                                                                 | N/A                                                                                                |

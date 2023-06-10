@@ -28,17 +28,37 @@ module OpenApiSDK
       end
     end
 
+
+    class RequestBodyPostMultipleContentTypesSplitMultipartResForm < OpenApiSDK::Utils::FieldAugmented
+      extend T::Sig
+
+
+
+      
+      def initialize; end
+    end
+
+
+    class RequestBodyPostMultipleContentTypesSplitMultipartResJson < OpenApiSDK::Utils::FieldAugmented
+      extend T::Sig
+
+
+
+      
+      def initialize; end
+    end
+
     # OK
     class RequestBodyPostMultipleContentTypesSplitMultipartRes < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :form, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
+      field :form, T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitMultipartResForm), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
 
-      field :json, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitMultipartResJson), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
 
 
-      sig { params(form: T.nilable(T::Hash[Symbol, Object]), json: T.nilable(T::Hash[Symbol, Object])).void }
+      sig { params(form: T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitMultipartResForm), json: T.nilable(Operations::RequestBodyPostMultipleContentTypesSplitMultipartResJson)).void }
       def initialize(form: nil, json: nil)
         @form = form
         @json = json

@@ -12,46 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import org.junit.jupiter.api.Test;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfPrimitiveResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMultipleJsonFilteredResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostFormDeepResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostFormMapPrimitiveResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostFormSimpleResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitFormResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitJsonResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData;
-import org.openapis.openapi.models.operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse;
-import org.openapis.openapi.models.operations.RequestBodyPutBytesResponse;
-import org.openapis.openapi.models.operations.RequestBodyPutMultipartDeepResponse;
-import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBody;
-import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileRequestBodyFile;
-import org.openapis.openapi.models.operations.RequestBodyPutMultipartFileResponse;
-import org.openapis.openapi.models.operations.RequestBodyPutMultipartSimpleResponse;
-import org.openapis.openapi.models.operations.RequestBodyPutStringResponse;
+import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.SimpleObject;
 import org.openapis.openapi.utils.JSON;
@@ -817,5 +778,20 @@ public class RequestBodiesTests {
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
         assertEquals(new String(data, StandardCharsets.UTF_8), res.res.data);
+    }
+
+
+    @Test
+    void testRequestBodyEmptyObject() throws Exception {
+        Helpers.recordTest("request-bodies-post-empty-object");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        RequestBodyPostEmptyObjectResponse res = s.requestBodies
+                .requestBodyPostEmptyObject(new RequestBodyPostEmptyObjectRequestBody());
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
     }
 }

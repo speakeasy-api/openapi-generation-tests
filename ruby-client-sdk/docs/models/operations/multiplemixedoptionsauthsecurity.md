@@ -1,0 +1,9 @@
+# MultipleMixedOptionsAuthSecurity
+
+
+## Fields
+
+| Field                                                                        | Type                                                                         | Required                                                                     | Description                                                                  | Example                                                                      |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `api_key_auth_new`                                                           | *T.nilable(String)*                                                          | :heavy_minus_sign:                                                           | N/A                                                                          | Token <YOUR_API_KEY>                                                         |
+| `basic_auth`                                                                 | [T.nilable(Shared::SchemeBasicAuth)](../../models/shared/schemebasicauth.md) | :heavy_minus_sign:                                                           | N/A                                                                          |                                                                              |

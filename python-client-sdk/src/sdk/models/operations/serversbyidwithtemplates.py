@@ -12,10 +12,11 @@ SERVERS_BY_ID_WITH_TEMPLATES_SERVERS = {
 }
 
 
+
 @dataclasses.dataclass
 class ServersByIDWithTemplatesResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

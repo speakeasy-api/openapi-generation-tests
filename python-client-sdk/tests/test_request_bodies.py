@@ -684,3 +684,15 @@ def test_request_body_put_bytes():
     assert res.status_code == 200
     assert res.res is not None
     assert res.res.data == data
+
+
+def test_request_body_post_empty_object():
+    record_test('request-bodies-post-empty-object')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_empty_object(request={})
+
+    assert res is not None
+    assert res.status_code == 200

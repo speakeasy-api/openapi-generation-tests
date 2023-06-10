@@ -583,5 +583,16 @@ module OpenApiSDK
       refute_nil(res.res)
       assert_equal(data.to_s, res.res.data)
     end
+
+    def test_request_body_post_empty_object
+      record_test('request-bodies-post-empty-object')
+
+      res = @sdk.request_bodies.request_body_post_empty_object(request=Operations::RequestBodyPostEmptyObjectRequestBody.new(
+        empty: Operations::RequestBodyPostEmptyObjectRequestBodyEmpty.new(),
+        empty_with_empty_properties: Operations::RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.new(),
+      ))
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
   end
 end

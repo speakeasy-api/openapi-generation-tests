@@ -11,17 +11,20 @@ MULTIPLE_MIXED_OPTIONS_AUTH_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class MultipleMixedOptionsAuthSecurity:
-    
     api_key_auth_new: Optional[str] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' }})
     basic_auth: Optional[shared_security.SchemeBasicAuth] = dataclasses.field(default=None, metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic' }})
     
 
+
+
+
 @dataclasses.dataclass
 class MultipleMixedOptionsAuthResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

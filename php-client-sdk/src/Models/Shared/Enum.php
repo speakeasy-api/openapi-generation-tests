@@ -12,7 +12,7 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 /** An string based enum */
 enum Enum: string
 {
-    case ONE = 'one';
-    case TWO = 'two';
-    case THREE = 'three';
+    case One = 'one';
+    case Two = 'two';
+    case Three = 'three';
 }

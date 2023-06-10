@@ -7,12 +7,13 @@ from ..shared import httpbinsimplejsonobject as shared_httpbinsimplejsonobject
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class ResponseBodyJSONGetResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     http_bin_simple_json_object: Optional[shared_httpbinsimplejsonobject.HTTPBinSimpleJSONObject] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

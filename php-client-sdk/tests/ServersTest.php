@@ -102,7 +102,7 @@ final class ServersTest extends TestCase
     {
         Helpers::recordTest('servers-server-with-templates-global-enum');
 
-        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerIndex(3)->setSomething(ServerSomething::SOMETHING_ELSE_AGAIN)->build();
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->setServerIndex(3)->setSomething(ServerSomething::SomethingElseAgain)->build();
         $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
 
         $response = $sdk->servers->serverWithTemplatesGlobal();

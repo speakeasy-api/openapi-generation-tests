@@ -12,7 +12,7 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 /** An int32 enum property. */
 enum SimpleObjectWithTypeInt32Enum: int
 {
-    case FIFTY_FIVE = 55;
-    case SIXTY_NINE = 69;
-    case ONE_HUNDRED_AND_EIGHTY_ONE = 181;
+    case FiftyFive = 55;
+    case SixtyNine = 69;
+    case OneHundredAndEightyOne = 181;
 }

@@ -9,29 +9,34 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class NameOverrideGetRequest:
-    
     test_query_param: str = dataclasses.field(metadata={'query_param': { 'field_name': 'nameOverride', 'style': 'form', 'explode': True }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class OverriddenResponse:
     r"""A successful response that contains the simpleObject sent in the request body"""
-    
     json: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
     
 
+
+
+
 @dataclasses.dataclass
 class NameOverrideGetResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     overridden_response: Optional[OverriddenResponse] = dataclasses.field(default=None)
     r"""A successful response that contains the simpleObject sent in the request body"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

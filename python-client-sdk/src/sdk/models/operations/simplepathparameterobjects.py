@@ -9,29 +9,34 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class SimplePathParameterObjectsRequest:
-    
     obj_param: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'path_param': { 'field_name': 'objParam', 'style': 'simple', 'explode': False }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     obj_param_exploded: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'path_param': { 'field_name': 'objParamExploded', 'style': 'simple', 'explode': True }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class SimplePathParameterObjectsRes:
     r"""OK"""
-    
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
+
+
+
 @dataclasses.dataclass
 class SimplePathParameterObjectsResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[SimplePathParameterObjectsRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

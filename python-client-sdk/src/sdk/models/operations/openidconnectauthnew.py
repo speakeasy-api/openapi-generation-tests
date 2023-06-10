@@ -10,16 +10,19 @@ OPEN_ID_CONNECT_AUTH_NEW_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class OpenIDConnectAuthNewSecurity:
-    
     open_id_connect: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'openIdConnect', 'field_name': 'Authorization' }})
     
 
+
+
+
 @dataclasses.dataclass
 class OpenIDConnectAuthNewResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

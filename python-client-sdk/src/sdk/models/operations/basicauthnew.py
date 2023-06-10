@@ -10,17 +10,20 @@ BASIC_AUTH_NEW_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class BasicAuthNewSecurity:
-    
     password: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'password' }})
     username: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'username' }})
     
 
+
+
+
 @dataclasses.dataclass
 class BasicAuthNewResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

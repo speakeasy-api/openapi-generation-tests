@@ -9,24 +9,28 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectObjArrParam:
-    
     arr: Optional[list[str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arr' }})
     
 
+
+
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectRequest:
-    
     obj_param: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'query_param': { 'field_name': 'objParam', 'style': 'deepObject', 'explode': True }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     obj_arr_param: Optional[DeepObjectQueryParamsObjectObjArrParam] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'objArrParam', 'style': 'deepObject', 'explode': True }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectResArgs:
-    
     obj_arr_param_arr: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objArrParam[arr]') }})
     obj_param_any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[any]') }})
     obj_param_bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bool]') }})
@@ -46,21 +50,26 @@ class DeepObjectQueryParamsObjectResArgs:
     obj_param_bigint_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bigintStr]'), 'exclude': lambda f: f is None }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectRes:
     r"""OK"""
-    
     args: DeepObjectQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
+
+
+
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[DeepObjectQueryParamsObjectRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

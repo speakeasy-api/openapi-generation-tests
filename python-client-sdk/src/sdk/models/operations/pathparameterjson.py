@@ -9,27 +9,32 @@ from sdk import utils
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class PathParameterJSONRequest:
-    
     json_obj: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'path_param': { 'field_name': 'jsonObj', 'serialization': 'json' }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties."""
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class PathParameterJSONRes:
     r"""OK"""
-    
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 
+
+
+
 @dataclasses.dataclass
 class PathParameterJSONResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[PathParameterJSONRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

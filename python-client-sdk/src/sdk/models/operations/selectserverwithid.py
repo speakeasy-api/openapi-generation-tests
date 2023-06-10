@@ -17,10 +17,11 @@ SELECT_SERVER_WITH_ID_SERVERS = {
 }
 
 
+
 @dataclasses.dataclass
 class SelectServerWithIDResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

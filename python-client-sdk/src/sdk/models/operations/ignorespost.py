@@ -10,26 +10,31 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class IgnoresPostApplicationJSON:
-    
     callback_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('callbackUrl'), 'exclude': lambda f: f is None }})
     test_prop: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('testProp'), 'exclude': lambda f: f is None }})
     
 
+
+
+
 @dataclasses.dataclass
 class IgnoresPostRequest:
-    
     request_body: Optional[IgnoresPostApplicationJSON] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     test_param: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'testParam', 'style': 'form', 'explode': True }})
     
 
+
+
+
 @dataclasses.dataclass
 class IgnoresPostResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     http_bin_simple_json_object: Optional[shared_httpbinsimplejsonobject.HTTPBinSimpleJSONObject] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

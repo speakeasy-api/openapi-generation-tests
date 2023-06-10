@@ -10,22 +10,25 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesComponentFilteredRes:
     r"""OK"""
-    
     json: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
     
 
+
+
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesComponentFilteredResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[RequestBodyPostMultipleContentTypesComponentFilteredRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

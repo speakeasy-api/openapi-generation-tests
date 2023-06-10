@@ -7,12 +7,13 @@ from ..shared import arrobjvalue as shared_arrobjvalue
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONArrayObjResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     arr_obj_value: Optional[shared_arrobjvalue.ArrObjValue] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

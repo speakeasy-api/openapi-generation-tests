@@ -10,17 +10,20 @@ MULTIPLE_SIMPLE_SCHEME_AUTH_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class MultipleSimpleSchemeAuthSecurity:
-    
     api_key_auth_new: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' }})
     oauth2: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'oauth2', 'field_name': 'Authorization' }})
     
 
+
+
+
 @dataclasses.dataclass
 class MultipleSimpleSchemeAuthResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

@@ -8,25 +8,30 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class AuthServiceRequestBodyBasicAuth:
-    
     password: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('password') }})
     username: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('username') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class AuthServiceRequestBodyHeaderAuth:
-    
     expected_value: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expectedValue') }})
     header_name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headerName') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class AuthServiceRequestBody:
-    
     basic_auth: Optional[AuthServiceRequestBodyBasicAuth] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('basicAuth'), 'exclude': lambda f: f is None }})
     header_auth: Optional[list[AuthServiceRequestBodyHeaderAuth]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headerAuth'), 'exclude': lambda f: f is None }})
     
+

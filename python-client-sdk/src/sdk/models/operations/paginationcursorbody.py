@@ -13,24 +13,28 @@ PAGINATION_CURSOR_BODY_SERVERS = [
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class PaginationCursorBodyRequestBody:
-    
     cursor: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('cursor') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class PaginationCursorBodyRes:
     r"""OK"""
-    
     num_pages: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numPages') }})
     result_array: list[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resultArray') }})
     
 
+
+
+
 @dataclasses.dataclass
 class PaginationCursorBodyResponse:
-    
     next: Callable[[], Optional[Undefined]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
@@ -38,3 +42,4 @@ class PaginationCursorBodyResponse:
     res: Optional[PaginationCursorBodyRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

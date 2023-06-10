@@ -11,12 +11,13 @@ REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS = [
 ]
 
 
+
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONMapResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[dict[str, shared_simpleobject.SimpleObject]] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -8,28 +8,33 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class HTTPBinSimpleJSONObjectSlideshowSlides:
-    
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})
     type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     items: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('items'), 'exclude': lambda f: f is None }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class HTTPBinSimpleJSONObjectSlideshow:
-    
     author: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('author') }})
     date_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date') }})
     slides: list[HTTPBinSimpleJSONObjectSlideshowSlides] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slides') }})
     title: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('title') }})
     
 
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class HTTPBinSimpleJSONObject:
     r"""OK"""
-    
     slideshow: HTTPBinSimpleJSONObjectSlideshow = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slideshow') }})
     
+

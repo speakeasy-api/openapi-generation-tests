@@ -5,33 +5,50 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitApplicationJSON:
-    
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     str_: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('str') }})
     
 
+
+
+
+@dataclasses.dataclass
+class RequestBodyPostMultipleContentTypesSplitJSONResForm:
+    pass
+
+
+
+@dataclasses.dataclass
+class RequestBodyPostMultipleContentTypesSplitJSONResJSON:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
+
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitJSONRes:
     r"""OK"""
+    form: Optional[RequestBodyPostMultipleContentTypesSplitJSONResForm] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
+    json: Optional[RequestBodyPostMultipleContentTypesSplitJSONResJSON] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     
-    form: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form'), 'exclude': lambda f: f is None }})
-    json: Optional[dict[str, Any]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
-    
+
+
+
 
 @dataclasses.dataclass
 class RequestBodyPostMultipleContentTypesSplitJSONResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     res: Optional[RequestBodyPostMultipleContentTypesSplitJSONRes] = dataclasses.field(default=None)
     r"""OK"""
     
+

@@ -7,12 +7,13 @@ from ..shared import mapobjvalue as shared_mapobjvalue
 from typing import Optional
 
 
+
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONMapObjResponse:
-    
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     map_obj_value: Optional[shared_mapobjvalue.MapObjValue] = dataclasses.field(default=None)
     r"""OK"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     
+

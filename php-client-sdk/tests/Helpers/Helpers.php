@@ -15,11 +15,11 @@ class Helpers
         $object->bool = true;
         $object->int = 1;
         $object->int32 = 1;
-        $object->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum::FIFTY_FIVE;
+        $object->int32Enum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum::FiftyFive;
         $object->intEnum = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum::Second;
         $object->num = 1.1;
         $object->float32 = 1.1;
-        $object->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::ONE;
+        $object->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::One;
         $object->any = 'any';
         $object->date = new \DateTime('2020-01-01');
         $object->dateTime = \DateTime::createFromFormat('Y-m-d\TH:i:s.uP', '2020-01-01T00:00:00.000001Z');
