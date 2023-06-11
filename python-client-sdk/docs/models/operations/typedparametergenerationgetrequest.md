@@ -1,0 +1,10 @@
+# TypedParameterGenerationGetRequest
+
+
+## Fields
+
+| Field                                                                                                 | Type                                                                                                  | Required                                                                                              | Description                                                                                           |
+| ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| `bigint`                                                                                              | *Optional[int]*                                                                                       | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `date_`                                                                                               | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                          | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |
+| `obj`                                                                                                 | [Optional[TypedParameterGenerationGetObj]](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                    | N/A                                                                                                   |

@@ -81,6 +81,7 @@ public class SDK {
      * Endpoints for testing request bodies.
      */
     public RequestBodies requestBodies;
+    public Resource resource;
     /**
      * Endpoints for testing response bodies.
      */
@@ -314,6 +315,8 @@ public class SDK {
 		this.parameters = new Parameters(this.sdkConfiguration);
 		
 		this.requestBodies = new RequestBodies(this.sdkConfiguration);
+		
+		this.resource = new Resource(this.sdkConfiguration);
 		
 		this.responseBodies = new ResponseBodies(this.sdkConfiguration);
 		

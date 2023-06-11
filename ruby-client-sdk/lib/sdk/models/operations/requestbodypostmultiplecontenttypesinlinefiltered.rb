@@ -28,25 +28,15 @@ module OpenApiSDK
       end
     end
 
-
-    class RequestBodyPostMultipleContentTypesInlineFilteredResJson < OpenApiSDK::Utils::FieldAugmented
-      extend T::Sig
-
-
-
-      
-      def initialize; end
-    end
-
     # OK
     class RequestBodyPostMultipleContentTypesInlineFilteredRes < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
 
-      field :json, T.nilable(Operations::RequestBodyPostMultipleContentTypesInlineFilteredResJson), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, T.nilable(T::Hash[Symbol, Object]), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
 
 
-      sig { params(json: T.nilable(Operations::RequestBodyPostMultipleContentTypesInlineFilteredResJson)).void }
+      sig { params(json: T.nilable(T::Hash[Symbol, Object])).void }
       def initialize(json: nil)
         @json = json
       end

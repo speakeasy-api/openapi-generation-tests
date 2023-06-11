@@ -10,10 +10,12 @@ Endpoints for purely testing valid generation behavior.
 * [circularReferenceGet](#circularreferenceget)
 * [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
 * [ignoredGenerationGet](#ignoredgenerationget)
 * [ignoresPost](#ignorespost)
 * [nameOverride](#nameoverride)
+* [typedParameterGenerationGet](#typedparametergenerationget)
 * [usageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
 ## anchorTypesGet
@@ -195,6 +197,46 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse](../../models/operations/DeprecatedWithCommentsGetResponse.md)**
+
+
+## emptyResponseObjectWithCommentGet
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            EmptyResponseObjectWithCommentGetResponse res = sdk.generation.emptyResponseObjectWithCommentGet();
+
+            if (res.body != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/EmptyResponseObjectWithCommentGetResponse.md)**
 
 
 ## globalNameOverridden
@@ -380,6 +422,61 @@ public class Application {
 **[org.openapis.openapi.models.operations.NameOverrideGetResponse](../../models/operations/NameOverrideGetResponse.md)**
 
 
+## typedParameterGenerationGet
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.time.LocalDate;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.TypedParameterGenerationGetObj;
+import org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest;
+import org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(407183L, LocalDate.parse("2022-12-06"), new TypedParameterGenerationGetObj(false, 3732.91d, "voluptate") {{
+                bool = false;
+                num = 9825.75d;
+                str = "quidem";
+            }});
+
+            if (res.statusCode == 200) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
+| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
+| `bigint`                                                                                                                           | *Long*                                                                                                                             | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `date`                                                                                                                             | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)                                                    | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `obj`                                                                                                                              | [org.openapis.openapi.models.operations.TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse](../../models/operations/TypedParameterGenerationGetResponse.md)**
+
+
 ## usageExamplePost
 
 An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
@@ -415,26 +512,26 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 1.1d, 111111L, 1, "example") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1d, 111111L, 1, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Alexanne_Bernhard37@yahoo.com";
-                    formatEmail = "Heidi86@yahoo.com";
-                    formatUri = "http://wise-airbag.org";
-                    formatUuid = "30c5fbb2-5870-4532-82c7-3d5fe9b90c28";
-                    hostname = "petty-atom.name";
-                    ipv4 = "178.60.254.239";
-                    ipv6 = "49a8:d9cb:f486:3332:3f9b:77f3:a410:0674";
-                    simpleObject = new SimpleObject("accusamus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        bigint = 377752L;
-                        bigintStr = "natus";
+                    email = "Ambrose_Streich@hotmail.com";
+                    formatEmail = "Russ76@gmail.com";
+                    formatUri = "http://wasteful-rectangle.net";
+                    formatUuid = "25870532-02c7-43d5-be9b-90c28909b3fe";
+                    hostname = "fantastic-option.net";
+                    ipv4 = "137.221.151.192";
+                    ipv6 = "bf48:6333:23f9:b77f:3a41:0067:4ebf:6928";
+                    simpleObject = new SimpleObject("sit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        bigint = 743835L;
+                        bigintStr = "dolorum";
                         boolOpt = true;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "eos";
-                    uri = "https://alert-stir-fry.com";
-                    uuid = "ba77a89e-bf73-47ae-8203-ce5e6a95d8a0";
+                    unknown = "iusto";
+                    uri = "http://ragged-man.name";
+                    uuid = "ebf737ae-4203-4ce5-a6a9-5d8a0d446ce2";
                 }};;
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            

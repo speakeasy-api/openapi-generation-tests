@@ -21,6 +21,7 @@ Endpoints for testing request bodies.
 * [requestBodyPostApplicationJsonMapOfPrimitive](#requestbodypostapplicationjsonmapofprimitive)
 * [requestBodyPostApplicationJsonMultipleJsonFiltered](#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [requestBodyPostApplicationJsonSimple](#requestbodypostapplicationjsonsimple)
+* [requestBodyPostEmptyObject](#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](#requestbodypostformmapprimitive)
 * [requestBodyPostFormSimple](#requestbodypostformsimple)
@@ -60,6 +61,8 @@ $sdk = SDK::builder()
 
 try {
     $request = [
+        new SimpleObject(),
+        new SimpleObject(),
         new SimpleObject(),
     ]
 
@@ -111,7 +114,6 @@ try {
         new SimpleObject(),
         new SimpleObject(),
         new SimpleObject(),
-        new SimpleObject(),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayObj($request);
@@ -159,6 +161,17 @@ $sdk = SDK::builder()
 try {
     $request = [
         [
+            new SimpleObject(),
+            new SimpleObject(),
+        ],
+        [
+            new SimpleObject(),
+            new SimpleObject(),
+        ],
+        [
+            new SimpleObject(),
+            new SimpleObject(),
+            new SimpleObject(),
             new SimpleObject(),
         ],
         [
@@ -211,24 +224,9 @@ $sdk = SDK::builder()
 try {
     $request = [
         [
-            'hic',
-            'distinctio',
-        ],
-        [
-            'odio',
-            'similique',
-            'facilis',
-            'vero',
-        ],
-        [
-            'dolore',
-            'quibusdam',
-        ],
-        [
-            'sequi',
-            'natus',
             'impedit',
             'aut',
+            'voluptatibus',
         ],
     ]
 
@@ -278,22 +276,14 @@ $sdk = SDK::builder()
 try {
     $request = [
         [
-            'nulla' => new SimpleObject(),
             'fugit' => new SimpleObject(),
-        ],
-        [
+            'porro' => new SimpleObject(),
             'maiores' => new SimpleObject(),
             'doloribus' => new SimpleObject(),
-            'iusto' => new SimpleObject(),
+        ],
+        [
             'eligendi' => new SimpleObject(),
-        ],
-        [
-            'alias' => new SimpleObject(),
-            'officia' => new SimpleObject(),
-        ],
-        [
-            'ipsam' => new SimpleObject(),
-            'ea' => new SimpleObject(),
+            'ducimus' => new SimpleObject(),
         ],
     ]
 
@@ -338,7 +328,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'vel',
+        'officia',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonArrayOfPrimitive($request);
@@ -387,22 +377,40 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObject();
-    $request->any = 'magnam';
+    $request->any = new SimpleObject();
+    $request->any->any = 'ipsam';
+    $request->any->bigint = 410492;
+    $request->any->bigintStr = 'aspernatur';
+    $request->any->bool = true;
+    $request->any->boolOpt = true;
+    $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->any->enum = Enum::Two;
+    $request->any->float32 = 2.2222222;
+    $request->any->int = 999999;
+    $request->any->int32 = 1;
+    $request->any->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->any->intEnum = SimpleObjectIntEnum::Third;
+    $request->any->intOptNull = 999999;
+    $request->any->num = 1.1;
+    $request->any->numOptNull = 1.1;
+    $request->any->str = 'example';
+    $request->any->strOpt = 'optional example';
     $request->arr = [
+        new SimpleObject(),
         new SimpleObject(),
     ];
     $request->bool = false;
-    $request->int = 401132;
+    $request->int = 189848;
     $request->map = [
+        'laudantium' => new SimpleObject(),
         'dicta' => new SimpleObject(),
-        'dolor' => new SimpleObject(),
-        'maiores' => new SimpleObject(),
     ];
-    $request->num = 978.44;
+    $request->num = 2243.17;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'ex';
-    $request->obj->bigint = 862192;
-    $request->obj->bigintStr = 'excepturi';
+    $request->obj->any = 'maiores';
+    $request->obj->bigint = 97844;
+    $request->obj->bigintStr = 'ex';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -418,8 +426,8 @@ try {
     $request->obj->numOptNull = 1.1;
     $request->obj->str = 'example';
     $request->obj->strOpt = 'optional example';
-    $request->str = 'sapiente';
-    $request->type = 'quisquam';
+    $request->str = 'voluptatibus';
+    $request->type = 'nostrum';
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeep($request);
 
@@ -465,10 +473,10 @@ $sdk = SDK::builder()
 
 try {
     $request = [
+        'quisquam' => new SimpleObject(),
+        'saepe' => new SimpleObject(),
         'ea' => new SimpleObject(),
         'impedit' => new SimpleObject(),
-        'corporis' => new SimpleObject(),
-        'veniam' => new SimpleObject(),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMap($request);
@@ -516,8 +524,8 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'inventore' => new SimpleObject(),
-        'magnam' => new SimpleObject(),
+        'veniam' => new SimpleObject(),
+        'aliquid' => new SimpleObject(),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObj($request);
@@ -564,10 +572,8 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'quo' => [
+        'magnam' => [
             new SimpleObject(),
-        ],
-        'recusandae' => [
             new SimpleObject(),
         ],
     ]
@@ -617,15 +623,23 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'eaque' => [
-            'libero' => new SimpleObject(),
-            'aut' => new SimpleObject(),
-            'aut' => new SimpleObject(),
-            'deleniti' => new SimpleObject(),
+        'consectetur' => [
+            'aspernatur' => new SimpleObject(),
+            'minima' => new SimpleObject(),
+            'eaque' => new SimpleObject(),
+            'a' => new SimpleObject(),
         ],
-        'impedit' => [
+        'libero' => [
+            'aut' => new SimpleObject(),
+        ],
+        'deleniti' => [
+            'aliquam' => new SimpleObject(),
             'fugit' => new SimpleObject(),
             'accusamus' => new SimpleObject(),
+            'inventore' => new SimpleObject(),
+        ],
+        'non' => [
+            'dolorum' => new SimpleObject(),
         ],
     ]
 
@@ -670,8 +684,16 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'non' => [
-            'dolorum' => 'laborum',
+        'placeat' => [
+            'eum' => 'autem',
+        ],
+        'nobis' => [
+            'assumenda' => 'nulla',
+            'voluptas' => 'libero',
+            'quasi' => 'tempora',
+        ],
+        'numquam' => [
+            'provident' => 'ipsa',
         ],
     ]
 
@@ -716,10 +738,8 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'velit' => 'eum',
-        'autem' => 'nobis',
-        'quas' => 'assumenda',
-        'nulla' => 'voluptas',
+        'magnam' => 'odio',
+        'eius' => 'esse',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfPrimitive($request);
@@ -767,9 +787,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'libero';
-    $request->bigint = 96549;
-    $request->bigintStr = 'tempora';
+    $request->any = 'esse';
+    $request->bigint = 524593;
+    $request->bigintStr = 'fuga';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -778,8 +798,8 @@ try {
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::First;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -830,9 +850,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'provident';
-    $request->bigint = 55374;
-    $request->bigintStr = 'molestiae';
+    $request->any = 'fugiat';
+    $request->bigint = 283519;
+    $request->bigintStr = 'eum';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -841,8 +861,8 @@ try {
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -871,6 +891,52 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleResponse](../../models/operations/RequestBodyPostApplicationJsonSimpleResponse.md)**
 
 
+## requestBodyPostEmptyObject
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBody;
+use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBodyEmpty;
+use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = new RequestBodyPostEmptyObjectRequestBody();
+    $request->empty = new RequestBodyPostEmptyObjectRequestBodyEmpty();
+    $request->emptyWithEmptyProperties = new RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties();
+
+    $response = $sdk->requestBodies->requestBodyPostEmptyObject($request);
+
+    if ($response->requestBodyPostEmptyObject200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                    | Type                                                                                                                                         | Required                                                                                                                                     | Description                                                                                                                                  |
+| -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                                                                   | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBody](../../models/operations/RequestBodyPostEmptyObjectRequestBody.md) | :heavy_check_mark:                                                                                                                           | The request object to use for the request.                                                                                                   |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectResponse](../../models/operations/RequestBodyPostEmptyObjectResponse.md)**
+
+
 ## requestBodyPostFormDeep
 
 ### Example Usage
@@ -895,9 +961,9 @@ $sdk = SDK::builder()
 try {
     $request = new DeepObject();
     $request->any = new SimpleObject();
-    $request->any->any = 'esse';
-    $request->any->bigint = 456141;
-    $request->any->bigintStr = 'rem';
+    $request->any->any = 'praesentium';
+    $request->any->bigint = 788546;
+    $request->any->bigintStr = 'veritatis';
     $request->any->bool = true;
     $request->any->boolOpt = true;
     $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -906,7 +972,7 @@ try {
     $request->any->float32 = 2.2222222;
     $request->any->int = 999999;
     $request->any->int32 = 1;
-    $request->any->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->any->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $request->any->intEnum = SimpleObjectIntEnum::Second;
     $request->any->intOptNull = 999999;
     $request->any->num = 1.1;
@@ -919,16 +985,18 @@ try {
         new SimpleObject(),
     ];
     $request->bool = false;
-    $request->int = 852635;
+    $request->int = 206594;
     $request->map = [
-        'eum' => new SimpleObject(),
-        'suscipit' => new SimpleObject(),
+        'illum' => new SimpleObject(),
+        'quo' => new SimpleObject(),
+        'fuga' => new SimpleObject(),
+        'eius' => new SimpleObject(),
     ];
-    $request->num = 8268.71;
+    $request->num = 1783.67;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'eos';
-    $request->obj->bigint = 509342;
-    $request->obj->bigintStr = 'quisquam';
+    $request->obj->any = 'voluptas';
+    $request->obj->bigint = 69859;
+    $request->obj->bigintStr = 'cupiditate';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -944,8 +1012,8 @@ try {
     $request->obj->numOptNull = 1.1;
     $request->obj->str = 'example';
     $request->obj->strOpt = 'optional example';
-    $request->str = 'id';
-    $request->type = 'quidem';
+    $request->str = 'debitis';
+    $request->type = 'ipsam';
 
     $response = $sdk->requestBodies->requestBodyPostFormDeep($request);
 
@@ -987,7 +1055,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'quo' => 'illum',
+        'sequi' => 'quo',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostFormMapPrimitive($request);
@@ -1034,9 +1102,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'quo';
-    $request->bigint = 681359;
-    $request->bigintStr = 'eius';
+    $request->any = 'esse';
+    $request->bigint = 925164;
+    $request->bigintStr = 'aperiam';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -1045,8 +1113,8 @@ try {
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -1097,9 +1165,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'ab';
-    $request->bigint = 587600;
-    $request->bigintStr = 'consequatur';
+    $request->any = 'dignissimos';
+    $request->bigint = 76956;
+    $request->bigintStr = 'nihil';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -1108,7 +1176,7 @@ try {
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
@@ -1158,8 +1226,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON();
     $request->bool = false;
-    $request->num = 3708.53;
-    $request->str = 'aspernatur';
+    $request->num = 3068.1;
+    $request->str = 'odio';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesInlineFiltered($request);
 
@@ -1204,10 +1272,10 @@ $sdk = SDK::builder()
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded();
     $requestBody->bool3 = false;
-    $requestBody->num3 = 1970.54;
-    $requestBody->str3 = 'quo';
+    $requestBody->num3 = 5775.43;
+    $requestBody->str3 = 'commodi';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'esse');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'sapiente');
 
     if ($response->res !== null) {
         // handle response
@@ -1251,10 +1319,10 @@ $sdk = SDK::builder()
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON();
     $requestBody->bool = false;
-    $requestBody->num = 9251.64;
-    $requestBody->str = 'aperiam';
+    $requestBody->num = 1741.12;
+    $requestBody->str = 'deserunt';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'distinctio');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'molestiae');
 
     if ($response->res !== null) {
         // handle response
@@ -1298,10 +1366,10 @@ $sdk = SDK::builder()
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData();
     $requestBody->bool2 = false;
-    $requestBody->num2 = 7997.96;
-    $requestBody->str2 = 'dignissimos';
+    $requestBody->num2 = 353.62;
+    $requestBody->str2 = 'porro';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'inventore');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'eum');
 
     if ($response->res !== null) {
         // handle response
@@ -1344,8 +1412,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded();
     $request->bool3 = false;
-    $request->num3 = 4694.98;
-    $request->str3 = 'totam';
+    $request->num3 = 5564.29;
+    $request->str3 = 'praesentium';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitForm($request);
 
@@ -1389,8 +1457,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitApplicationJSON();
     $request->bool = false;
-    $request->num = 8827.1;
-    $request->str = 'aliquam';
+    $request->num = 1598.67;
+    $request->str = 'deleniti';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitJson($request);
 
@@ -1434,8 +1502,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitMultipartFormData();
     $request->bool2 = false;
-    $request->num2 = 4884.1;
-    $request->str2 = 'occaecati';
+    $request->num2 = 1438.29;
+    $request->str2 = 'fuga';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitMultipart($request);
 
@@ -1476,7 +1544,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'commodi'
+'mollitia'
 
     $response = $sdk->requestBodies->requestBodyPutBytes($request);
 
@@ -1523,22 +1591,41 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObject();
-    $request->any = 'dolores';
+    $request->any = new SimpleObject();
+    $request->any->any = 'atque';
+    $request->any->bigint = 128860;
+    $request->any->bigintStr = 'minima';
+    $request->any->bool = true;
+    $request->any->boolOpt = true;
+    $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->any->enum = Enum::Two;
+    $request->any->float32 = 2.2222222;
+    $request->any->int = 999999;
+    $request->any->int32 = 1;
+    $request->any->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->any->intEnum = SimpleObjectIntEnum::First;
+    $request->any->intOptNull = 999999;
+    $request->any->num = 1.1;
+    $request->any->numOptNull = 1.1;
+    $request->any->str = 'example';
+    $request->any->strOpt = 'optional example';
     $request->arr = [
+        new SimpleObject(),
         new SimpleObject(),
         new SimpleObject(),
         new SimpleObject(),
     ];
     $request->bool = false;
-    $request->int = 475289;
+    $request->int = 159870;
     $request->map = [
-        'porro' => new SimpleObject(),
+        'explicabo' => new SimpleObject(),
     ];
-    $request->num = 4304.02;
+    $request->num = 9039.84;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'quas';
-    $request->obj->bigint = 510017;
-    $request->obj->bigintStr = 'consequuntur';
+    $request->obj->any = 'occaecati';
+    $request->obj->bigint = 543806;
+    $request->obj->bigintStr = 'et';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -1548,14 +1635,14 @@ try {
     $request->obj->int = 999999;
     $request->obj->int32 = 1;
     $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->obj->intEnum = SimpleObjectIntEnum::First;
+    $request->obj->intEnum = SimpleObjectIntEnum::Third;
     $request->obj->intOptNull = 999999;
     $request->obj->num = 1.1;
     $request->obj->numOptNull = 1.1;
     $request->obj->str = 'example';
     $request->obj->strOpt = 'optional example';
-    $request->str = 'fuga';
-    $request->type = 'mollitia';
+    $request->str = 'accusamus';
+    $request->type = 'veritatis';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDeep($request);
 
@@ -1600,8 +1687,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPutMultipartFileRequestBody();
     $request->file = new RequestBodyPutMultipartFileRequestBodyFile();
-    $request->file->content = 'incidunt';
-    $request->file->file = 'atque';
+    $request->file->content = 'esse';
+    $request->file->file = 'quod';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
 
@@ -1647,9 +1734,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'explicabo';
-    $request->bigint = 325685;
-    $request->bigintStr = 'nisi';
+    $request->any = 'nam';
+    $request->bigint = 877131;
+    $request->bigintStr = 'aliquid';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -1705,7 +1792,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'consequuntur'
+'vel'
 
     $response = $sdk->requestBodies->requestBodyPutString($request);
 

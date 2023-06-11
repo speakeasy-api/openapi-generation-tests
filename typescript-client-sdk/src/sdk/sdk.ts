@@ -14,6 +14,7 @@ import * as shared from "./models/shared";
 import { Pagination } from "./pagination";
 import { ParametersT } from "./parameters";
 import { RequestBodies } from "./requestbodies";
+import { Resource } from "./resource";
 import { ResponseBodies } from "./responsebodies";
 import { Servers } from "./servers";
 import { Telemetry } from "./telemetry";
@@ -108,9 +109,9 @@ export class SDKConfiguration {
     serverURL: string;
     serverDefaults: any;
     language = "typescript";
-    openapiDocVersion = "0.0.1";
-    sdkVersion = "1.7.0";
-    genVersion = "2.39.0";
+    openapiDocVersion = "0.1.0";
+    sdkVersion = "1.8.0";
+    genVersion = "2.39.2";
     globals: any;
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -164,6 +165,7 @@ export class SDK {
      * Endpoints for testing request bodies.
      */
     public requestBodies: RequestBodies;
+    public resource: Resource;
     /**
      * Endpoints for testing response bodies.
      */
@@ -242,6 +244,7 @@ export class SDK {
         this.pagination = new Pagination(this.sdkConfiguration);
         this.parameters = new ParametersT(this.sdkConfiguration);
         this.requestBodies = new RequestBodies(this.sdkConfiguration);
+        this.resource = new Resource(this.sdkConfiguration);
         this.responseBodies = new ResponseBodies(this.sdkConfiguration);
         this.servers = new Servers(this.sdkConfiguration);
         this.telemetry = new Telemetry(this.sdkConfiguration);

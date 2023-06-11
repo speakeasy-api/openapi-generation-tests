@@ -35,8 +35,8 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='tenetur',
-        username='Freida.Ondricka9',
+        password='ipsam',
+        username='Makayla9',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(

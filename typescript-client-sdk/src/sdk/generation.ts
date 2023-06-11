@@ -6,6 +6,7 @@ import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
+import { RFCDate } from "./types";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
@@ -225,6 +226,58 @@ export class Generation {
             });
         switch (true) {
             case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
+    }
+
+    async emptyResponseObjectWithCommentGet(
+        config?: AxiosRequestConfig
+    ): Promise<operations.EmptyResponseObjectWithCommentGetResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/emptyResponseObjectWithComment";
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/octet-stream";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.EmptyResponseObjectWithCommentGetResponse =
+            new operations.EmptyResponseObjectWithCommentGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/octet-stream`)) {
+                    const resBody: string = JSON.stringify(httpRes?.data, null, 0);
+                    const out: Uint8Array = new Uint8Array(resBody.length);
+                    for (let i = 0; i < resBody.length; i++) out[i] = resBody.charCodeAt(i);
+                    res.body = out;
+                }
                 break;
         }
 
@@ -454,6 +507,61 @@ export class Generation {
                         operations.OverriddenResponse
                     );
                 }
+                break;
+        }
+
+        return res;
+    }
+
+    async typedParameterGenerationGet(
+        bigint?: number,
+        date?: RFCDate,
+        obj?: operations.TypedParameterGenerationGetObj,
+        config?: AxiosRequestConfig
+    ): Promise<operations.TypedParameterGenerationGetResponse> {
+        const req = new operations.TypedParameterGenerationGetRequest({
+            bigint: bigint,
+            date: date,
+            obj: obj,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/typedParameterGeneration";
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        headers["Accept"] = "*/*";
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.TypedParameterGenerationGetResponse =
+            new operations.TypedParameterGenerationGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
                 break;
         }
 

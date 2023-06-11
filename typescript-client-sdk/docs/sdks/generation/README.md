@@ -10,10 +10,12 @@ Endpoints for purely testing valid generation behavior.
 * [circularReferenceGet](#circularreferenceget)
 * [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
 * [ignoredGenerationGet](#ignoredgenerationget)
 * [ignoresPost](#ignorespost)
 * [nameOverride](#nameoverride)
+* [typedParameterGenerationGet](#typedparametergenerationget)
 * [usageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
 ## anchorTypesGet
@@ -165,6 +167,41 @@ sdk.generation.deprecatedWithCommentsGet("aspernatur", "architecto").then((res: 
 ### Response
 
 **Promise<[operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md)>**
+
+
+## emptyResponseObjectWithCommentGet
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { EmptyResponseObjectWithCommentGetResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.emptyResponseObjectWithCommentGet().then((res: EmptyResponseObjectWithCommentGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/emptyresponseobjectwithcommentgetresponse.md)>**
 
 
 ## globalNameOverridden
@@ -319,6 +356,49 @@ sdk.generation.nameOverride("example").then((res: NameOverrideGetResponse) => {
 **Promise<[operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md)>**
 
 
+## typedParameterGenerationGet
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { TypedParameterGenerationGetResponse } from "openapi/dist/sdk/models/operations";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.typedParameterGenerationGet(574325, new RFCDate("2022-05-07"), {
+  bool: false,
+  num: 9689.62,
+  str: "mollitia",
+}).then((res: TypedParameterGenerationGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `bigint`                                                                                               | *number*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `date`                                                                                                 | [RFCDate](../../types/rfcdate.md)                                                                      | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `obj`                                                                                                  | [operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
+
+
+### Response
+
+**Promise<[operations.TypedParameterGenerationGetResponse](../../models/operations/typedparametergenerationgetresponse.md)>**
+
+
 ## usageExamplePost
 
 An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
@@ -345,17 +425,17 @@ const sdk = new SDK({
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Alexis_OHara32@yahoo.com",
-    formatEmail: "Dallas36@yahoo.com",
-    formatUri: "http://infinite-winery.org",
-    formatUuid: "4c8b711e-5b7f-4d2e-9028-921cddc69260",
-    hostname: "big-willingness.net",
-    ipv4: "95.116.107.184",
-    ipv6: "0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b",
+    email: "Holden.Ernser36@gmail.com",
+    formatEmail: "Hubert.Wyman80@gmail.com",
+    formatUri: "https://rotating-identification.com",
+    formatUuid: "1e5b7fd2-ed02-4892-9cdd-c692601fb576",
+    hostname: "scared-atrium.org",
+    ipv4: "93.249.4.219",
+    ipv6: "30c5:fbb2:5870:5320:2c73:d5fe:9b90:c289",
     simpleObject: {
-      any: "perspiciatis",
-      bigint: 31838,
-      bigintStr: "porro",
+      any: "eaque",
+      bigint: 577229,
+      bigintStr: "rerum",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -365,27 +445,28 @@ sdk.generation.usageExamplePost({
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "error",
-    uri: "http://noxious-pronunciation.biz",
-    uuid: "fe49a8d9-cbf4-4863-b323-f9b77f3a4100",
+    unknown: "earum",
+    uri: "http://peaceful-popularity.name",
+    uuid: "d9cbf486-3332-43f9-b77f-3a4100674ebf",
   },
   boolParameter: false,
   dateParameter: new RFCDate("2020-01-01"),
   dateTimeParameter: new Date("2020-01-01T00:00:00Z"),
   doubleParameter: 2.2222222,
   enumParameter: UsageExamplePostEnumParameter.Value3,
+  falseyNumberParameter: 0,
   floatParameter: 1.1,
   int64Parameter: 111111,
   intParameter: 1,
   optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
-  strParameter: "example",
+  strParameter: "example 2",
 }, {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",

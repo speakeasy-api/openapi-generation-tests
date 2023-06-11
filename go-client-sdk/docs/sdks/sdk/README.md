@@ -35,7 +35,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.SDK.PutAnythingIgnoredGeneration(ctx, "odit")
+    res, err := s.SDK.PutAnythingIgnoredGeneration(ctx, "quo")
     if err != nil {
         log.Fatal(err)
     }

@@ -17,17 +17,11 @@ type RequestBodyPostMultipleContentTypesSplitParamJSONRequest struct {
 	ParamStr    string                                                       `queryParam:"style=form,explode=true,name=paramStr"`
 }
 
-type RequestBodyPostMultipleContentTypesSplitParamJSONResForm struct {
-}
-
-type RequestBodyPostMultipleContentTypesSplitParamJSONResJSON struct {
-}
-
 // RequestBodyPostMultipleContentTypesSplitParamJSONRes - OK
 type RequestBodyPostMultipleContentTypesSplitParamJSONRes struct {
-	Args map[string]string                                         `json:"args,omitempty"`
-	Form *RequestBodyPostMultipleContentTypesSplitParamJSONResForm `json:"form,omitempty"`
-	JSON *RequestBodyPostMultipleContentTypesSplitParamJSONResJSON `json:"json,omitempty"`
+	Args map[string]string      `json:"args,omitempty"`
+	Form map[string]interface{} `json:"form,omitempty"`
+	JSON map[string]interface{} `json:"json,omitempty"`
 }
 
 type RequestBodyPostMultipleContentTypesSplitParamJSONResponse struct {

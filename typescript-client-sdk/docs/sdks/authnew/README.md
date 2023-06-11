@@ -35,8 +35,8 @@ const sdk = new SDK({
 
 sdk.authNew.apiKeyAuthGlobalNew({
   basicAuth: {
-    password: "tenetur",
-    username: "Freida.Ondricka9",
+    password: "ipsam",
+    username: "Makayla9",
   },
   headerAuth: [
     {

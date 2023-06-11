@@ -99,7 +99,7 @@ const sdk = new SDK({
 sdk.auth.basicAuth({
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",
-}, "quo", "sequi").then((res: BasicAuthResponse) => {
+}, "sequi", "tenetur").then((res: BasicAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

@@ -10,10 +10,12 @@ Endpoints for purely testing valid generation behavior.
 * [circularReferenceGet](#circularreferenceget)
 * [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - deprecatedNoCommentsGet :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
 * [ignoredGenerationGet](#ignoredgenerationget)
 * [ignoresPost](#ignorespost)
 * [nameOverride](#nameoverride)
+* [typedParameterGenerationGet](#typedparametergenerationget)
 * [usageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
 ## anchorTypesGet
@@ -175,6 +177,39 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse](../../models/operations/DeprecatedWithCommentsGetResponse.md)**
 
 
+## emptyResponseObjectWithCommentGet
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->generation->emptyResponseObjectWithCommentGet();
+
+    if ($response->body !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse](../../models/operations/EmptyResponseObjectWithCommentGetResponse.md)**
+
+
 ## globalNameOverridden
 
 ### Example Usage
@@ -329,6 +364,54 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse](../../models/operations/NameOverrideGetResponse.md)**
 
 
+## typedParameterGenerationGet
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest;
+use \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $obj = new TypedParameterGenerationGetObj();
+    $obj->bool = false;
+    $obj->num = 2974.37;
+    $obj->str = 'cumque';
+
+    $response = $sdk->generation->typedParameterGenerationGet(813798, DateTime::createFromFormat('Y-m-d', '2022-08-09'), $obj);
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `bigint`                                                                                                                        | *?int*                                                                                                                          | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+| `date`                                                                                                                          | [\DateTime](https://www.php.net/manual/en/class.datetime.php)                                                                   | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+| `obj`                                                                                                                           | [?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse](../../models/operations/TypedParameterGenerationGetResponse.md)**
+
+
 ## usageExamplePost
 
 An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
@@ -362,17 +445,17 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Obie.Schulist@gmail.com';
-    $request->requestBody->formatEmail = 'Shaniya.Friesen@hotmail.com';
-    $request->requestBody->formatUri = 'https://white-printing.name';
-    $request->requestBody->formatUuid = 'ba88f3a6-6997-4074-ba44-69b6e2141959';
-    $request->requestBody->hostname = 'murky-monotheism.com';
-    $request->requestBody->ipv4 = '167.248.166.82';
-    $request->requestBody->ipv6 = '63e2:516f:e4c8:b711:e5b7:fd2e:d028:921c';
+    $request->requestBody->email = 'Shaniya.Friesen@hotmail.com';
+    $request->requestBody->formatEmail = 'Virgil_Pouros@hotmail.com';
+    $request->requestBody->formatUri = 'https://lost-mailman.org';
+    $request->requestBody->formatUuid = '3a669970-74ba-4446-9b6e-2141959890af';
+    $request->requestBody->hostname = 'private-examiner.info';
+    $request->requestBody->ipv4 = '56.229.36.94';
+    $request->requestBody->ipv6 = '16fe:4c8b:711e:5b7f:d2ed:0289:21cd:dc69';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'illum';
-    $request->requestBody->simpleObject->bigint = 864934;
-    $request->requestBody->simpleObject->bigintStr = 'maxime';
+    $request->requestBody->simpleObject->any = 'odit';
+    $request->requestBody->simpleObject->bigint = 407183;
+    $request->requestBody->simpleObject->bigintStr = 'accusantium';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -381,26 +464,27 @@ try {
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Second;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Third;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'odit';
-    $request->requestBody->uri = 'http://ancient-basin.org';
-    $request->requestBody->uuid = 'b576b0d5-f0d3-40c5-bbb2-587053202c73';
+    $request->requestBody->unknown = 'quidem';
+    $request->requestBody->uri = 'http://jealous-hearing.net';
+    $request->requestBody->uuid = '0d5f0d30-c5fb-4b25-8705-3202c73d5fe9';
     $request->boolParameter = false;
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
+    $request->falseyNumberParameter = 0;
     $request->floatParameter = 1.1;
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example';
+    $request->strParameter = 'example 3';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';

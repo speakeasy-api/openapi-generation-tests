@@ -96,6 +96,7 @@ type SDK struct {
 	Parameters *parameters
 	// RequestBodies - Endpoints for testing request bodies.
 	RequestBodies *requestBodies
+	Resource      *resource
 	// ResponseBodies - Endpoints for testing response bodies.
 	ResponseBodies *responseBodies
 	// Servers - Endpoints for testing servers.
@@ -250,9 +251,9 @@ func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
-			OpenAPIDocVersion: "0.0.1",
-			SDKVersion:        "1.7.0",
-			GenVersion:        "2.39.0",
+			OpenAPIDocVersion: "0.1.0",
+			SDKVersion:        "1.8.0",
+			GenVersion:        "2.39.2",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -302,6 +303,8 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Parameters = newParameters(sdk.sdkConfiguration)
 
 	sdk.RequestBodies = newRequestBodies(sdk.sdkConfiguration)
+
+	sdk.Resource = newResource(sdk.sdkConfiguration)
 
 	sdk.ResponseBodies = newResponseBodies(sdk.sdkConfiguration)
 

@@ -117,6 +117,8 @@ type UsageExamplePostRequest struct {
 	DoubleParameter float64 `queryParam:"style=form,explode=true,name=doubleParameter"`
 	// An enum parameter
 	EnumParameter UsageExamplePostEnumParameter `queryParam:"style=form,explode=true,name=enumParameter"`
+	// A number parameter that contains a falsey example value
+	FalseyNumberParameter float64 `queryParam:"style=form,explode=true,name=falseyNumberParameter"`
 	// A float parameter
 	FloatParameter float64 `queryParam:"style=form,explode=true,name=floatParameter"`
 	// An int64 parameter

@@ -39,8 +39,8 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'tenetur';
-    $request->basicAuth->username = 'Freida.Ondricka9';
+    $request->basicAuth->password = 'ipsam';
+    $request->basicAuth->username = 'Makayla9';
     $request->headerAuth = [
         new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),

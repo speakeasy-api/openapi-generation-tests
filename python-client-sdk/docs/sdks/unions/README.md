@@ -29,7 +29,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 639028
+req = 'fugiat'
 
 res = s.unions.mixed_type_one_of_post(req)
 
@@ -65,7 +65,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 5483.61
+req = 'culpa'
 
 res = s.unions.primitive_type_one_of_post(req)
 
@@ -104,9 +104,9 @@ s = sdk.SDK(
 
 req = shared.DeepObjectWithType(
     any=shared.SimpleObject(
-        any='atque',
-        bigint=148268,
-        bigint_str='ut',
+        any='consequatur',
+        bigint=460220,
+        bigint_str='ipsam',
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
@@ -115,8 +115,8 @@ req = shared.DeepObjectWithType(
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -125,9 +125,9 @@ req = shared.DeepObjectWithType(
     ),
     arr=[
         shared.SimpleObject(
-            any='expedita',
-            bigint=299643,
-            bigint_str='consequatur',
+            any='repudiandae',
+            bigint=361151,
+            bigint_str='et',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -145,9 +145,9 @@ req = shared.DeepObjectWithType(
             str_opt='optional example',
         ),
         shared.SimpleObject(
-            any='sit',
-            bigint=530537,
-            bigint_str='quas',
+            any='sed',
+            bigint=24313,
+            bigint_str='vel',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -156,8 +156,8 @@ req = shared.DeepObjectWithType(
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
@@ -165,30 +165,6 @@ req = shared.DeepObjectWithType(
             str_opt='optional example',
         ),
         shared.SimpleObject(
-            any='et',
-            bigint=502710,
-            bigint_str='ex',
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    ],
-    bool=False,
-    int=425508,
-    map={
-        "saepe": shared.SimpleObject(
             any='error',
             bigint=8511,
             bigint_str='incidunt',
@@ -208,10 +184,14 @@ req = shared.DeepObjectWithType(
             str_='example',
             str_opt='optional example',
         ),
-        "harum": shared.SimpleObject(
-            any='dicta',
-            bigint=99416,
-            bigint_str='occaecati',
+    ],
+    bool=False,
+    int=690894,
+    map={
+        "architecto": shared.SimpleObject(
+            any='occaecati',
+            bigint=289776,
+            bigint_str='quidem',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -220,7 +200,7 @@ req = shared.DeepObjectWithType(
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
             int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
@@ -229,11 +209,11 @@ req = shared.DeepObjectWithType(
             str_opt='optional example',
         ),
     },
-    num=5390.74,
+    num=7241.48,
     obj=shared.SimpleObject(
-        any='laborum',
-        bigint=724148,
-        bigint_str='tenetur',
+        any='tenetur',
+        bigint=388867,
+        bigint_str='alias',
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
@@ -242,16 +222,16 @@ req = shared.DeepObjectWithType(
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
         str_='example',
         str_opt='optional example',
     ),
-    str_='amet',
-    type='deserunt',
+    str_='voluptate',
+    type='unde',
 )
 
 res = s.unions.strongly_typed_one_of_post(req)
@@ -288,9 +268,9 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject2(
-    type=shared.TypedObject2Type.OBJ2,
-    value='unde',
+req = shared.TypedObject3(
+    type=shared.TypedObject3Type.OBJ3,
+    value='provident',
 )
 
 res = s.unions.typed_object_one_of_post(req)
@@ -329,12 +309,12 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any='repellendus',
+    any='voluptates',
     arr=[
         shared.SimpleObject(
-            any='voluptates',
-            bigint=16871,
-            bigint_str='est',
+            any='est',
+            bigint=696483,
+            bigint_str='reprehenderit',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -344,34 +324,18 @@ req = shared.DeepObject(
             int=999999,
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
             str_='example',
             str_opt='optional example',
         ),
-        shared.SimpleObject(
-            any='facere',
-            bigint=685092,
-            bigint_str='praesentium',
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-        shared.SimpleObject(
+    ],
+    bool=False,
+    int=509807,
+    map={
+        "veniam": shared.SimpleObject(
             any='voluptatem',
             bigint=790840,
             bigint_str='repudiandae',
@@ -391,10 +355,10 @@ req = shared.DeepObject(
             str_='example',
             str_opt='optional example',
         ),
-        shared.SimpleObject(
-            any='reprehenderit',
-            bigint=991142,
-            bigint_str='totam',
+        "reprehenderit": shared.SimpleObject(
+            any='asperiores',
+            bigint=519952,
+            bigint_str='suscipit',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -403,7 +367,7 @@ req = shared.DeepObject(
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
             int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
@@ -411,14 +375,10 @@ req = shared.DeepObject(
             str_='example',
             str_opt='optional example',
         ),
-    ],
-    bool=False,
-    int=806670,
-    map={
-        "esse": shared.SimpleObject(
-            any='amet',
-            bigint=826825,
-            bigint_str='ea',
+        "et": shared.SimpleObject(
+            any='esse',
+            bigint=227759,
+            bigint_str='assumenda',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -436,11 +396,11 @@ req = shared.DeepObject(
             str_opt='optional example',
         ),
     },
-    num=8872.65,
+    num=6232.95,
     obj=shared.SimpleObject(
         any='officiis',
-        bigint=880107,
-        bigint_str='natus',
+        bigint=886961,
+        bigint_str='accusamus',
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
@@ -449,7 +409,7 @@ req = shared.DeepObject(
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
         int_enum=shared.SimpleObjectIntEnum.FIRST,
         int_opt_null=999999,
         num=1.1,
@@ -457,8 +417,8 @@ req = shared.DeepObject(
         str_='example',
         str_opt='optional example',
     ),
-    str_='ex',
-    type='maiores',
+    str_='aspernatur',
+    type='ex',
 )
 
 res = s.unions.weakly_typed_one_of_post(req)

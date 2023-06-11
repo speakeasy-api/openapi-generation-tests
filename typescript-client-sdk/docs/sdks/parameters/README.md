@@ -43,30 +43,13 @@ const sdk = new SDK({
 });
 
 sdk.parameters.deepObjectQueryParamsMap({
-  "dolorum": "iusto",
-  "voluptate": "dolorum",
-  "deleniti": "omnis",
+  "distinctio": "asperiores",
+  "nihil": "ipsum",
+  "voluptate": "id",
+  "saepe": "eius",
 }, {
-  "distinctio": [
-    "nihil",
-    "ipsum",
-    "voluptate",
-    "id",
-  ],
-  "saepe": [
-    "aspernatur",
-    "perferendis",
-  ],
-  "amet": [
-    "accusamus",
-    "ad",
-    "saepe",
-    "suscipit",
-  ],
-  "deserunt": [
-    "minima",
-    "repellendus",
-    "totam",
+  "perferendis": [
+    "optio",
   ],
 }).then((res: DeepObjectQueryParamsMapResponse) => {
   if (res.statusCode == 200) {
@@ -108,9 +91,9 @@ const sdk = new SDK({
 });
 
 sdk.parameters.deepObjectQueryParamsObject({
-  any: "similique",
-  bigint: 55,
-  bigintStr: "at",
+  any: "accusamus",
+  bigint: 320017,
+  bigintStr: "saepe",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -119,8 +102,8 @@ sdk.parameters.deepObjectQueryParamsObject({
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -128,8 +111,9 @@ sdk.parameters.deepObjectQueryParamsObject({
   strOpt: "optional example",
 }, {
   arr: [
-    "quod",
-    "officiis",
+    "minima",
+    "repellendus",
+    "totam",
   ],
 }).then((res: DeepObjectQueryParamsObjectResponse) => {
   if (res.statusCode == 200) {
@@ -169,12 +153,12 @@ const sdk = new SDK({
 });
 
 sdk.parameters.formQueryParamsArray([
-  "dolorum",
+  "alias",
+  "at",
+  "quaerat",
 ], [
-  456130,
-  687488,
-  483409,
-  215507,
+  425451,
+  798047,
 ]).then((res: FormQueryParamsArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -213,14 +197,15 @@ const sdk = new SDK({
 });
 
 sdk.parameters.formQueryParamsMap({
-  "tenetur": "amet",
-  "tempore": "accusamus",
-  "numquam": "enim",
-  "dolorem": "sapiente",
+  "qui": "dolorum",
+  "a": "esse",
+  "harum": "iusto",
+  "ipsum": "quisquam",
 }, {
-  "nihil": 25662,
-  "expedita": 207470,
-  "sed": 424685,
+  "amet": 730856,
+  "accusamus": 253941,
+  "enim": 213312,
+  "sapiente": 518201,
 }).then((res: FormQueryParamsMapResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -261,9 +246,28 @@ const sdk = new SDK({
 });
 
 sdk.parameters.formQueryParamsObject({
-  any: "libero",
-  bigint: 374170,
-  bigintStr: "deserunt",
+  any: "nihil",
+  bigint: 25662,
+  bigintStr: "expedita",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.First,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
+}, {
+  any: "vel",
+  bigint: 730442,
+  bigintStr: "voluptas",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -273,26 +277,7 @@ sdk.parameters.formQueryParamsObject({
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-}, {
-  any: "incidunt",
-  bigint: 186458,
-  bigintStr: "cupiditate",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Third,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -335,7 +320,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.parameters.formQueryParamsPrimitive(false, 747080, 1175.31, "laborum").then((res: FormQueryParamsPrimitiveResponse) => {
+sdk.parameters.formQueryParamsPrimitive(false, 214880, 2776.28, "qui").then((res: FormQueryParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -376,14 +361,14 @@ const sdk = new SDK({
 
 sdk.parameters.formQueryParamsRefParamObject({
   bool: false,
-  int: 517379,
-  num: 2768.94,
-  str: "aspernatur",
+  int: 586784,
+  num: 8075.81,
+  str: "pariatur",
 }, {
   bool: false,
-  int: 174909,
-  num: 7168.6,
-  str: "facilis",
+  int: 747080,
+  num: 1175.31,
+  str: "laborum",
 }).then((res: FormQueryParamsRefParamObjectResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -422,8 +407,9 @@ const sdk = new SDK({
 });
 
 sdk.parameters.headerParamsArray([
-  "quam",
-  "molestias",
+  "incidunt",
+  "aspernatur",
+  "dolores",
 ]).then((res: HeaderParamsArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -461,15 +447,11 @@ const sdk = new SDK({
 });
 
 sdk.parameters.headerParamsMap({
-  "qui": "neque",
-  "fugit": "magni",
-  "odio": "sunt",
-  "ullam": "nam",
+  "facilis": "aliquid",
+  "quam": "molestias",
+  "temporibus": "qui",
 }, {
-  "voluptatem": "cumque",
-  "soluta": "nobis",
-  "et": "saepe",
-  "ipsum": "veritatis",
+  "fugit": "magni",
 }).then((res: HeaderParamsMapResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -510,9 +492,9 @@ const sdk = new SDK({
 });
 
 sdk.parameters.headerParamsObject({
-  any: "nobis",
-  bigint: 552193,
-  bigintStr: "tempore",
+  any: "odio",
+  bigint: 124833,
+  bigintStr: "ullam",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -521,17 +503,17 @@ sdk.parameters.headerParamsObject({
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.First,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
 }, {
-  any: "delectus",
-  bigint: 209157,
-  bigintStr: "dolore",
+  any: "voluptatem",
+  bigint: 765326,
+  bigintStr: "soluta",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -540,7 +522,7 @@ sdk.parameters.headerParamsObject({
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
   intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
@@ -584,7 +566,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.parameters.headerParamsPrimitive(false, 677263, 1002.94, "quae").then((res: HeaderParamsPrimitiveResponse) => {
+sdk.parameters.headerParamsPrimitive(false, 903720, 2174.5, "veritatis").then((res: HeaderParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -626,135 +608,12 @@ const sdk = new SDK({
 });
 
 sdk.parameters.jsonQueryParamsObject({
-  any: {
-    any: "quas",
-    bigint: 929530,
-    bigintStr: "consequatur",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
+  any: "quos",
   arr: [
     {
-      any: "doloribus",
-      bigint: 281730,
-      bigintStr: "facilis",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "quae",
-      bigint: 512393,
-      bigintStr: "odio",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "quisquam",
-      bigint: 876506,
-      bigintStr: "omnis",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "delectus",
-      bigint: 455169,
-      bigintStr: "consectetur",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  bool: false,
-  int: 492268,
-  map: {
-    "distinctio": {
-      any: "quod",
-      bigint: 486160,
-      bigintStr: "similique",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "ducimus": {
-      any: "dolore",
-      bigint: 844550,
-      bigintStr: "illum",
+      any: "cupiditate",
+      bigint: 45614,
+      bigintStr: "delectus",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -764,26 +623,6 @@ sdk.parameters.jsonQueryParamsObject({
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "impedit": {
-      any: "aut",
-      bigint: 974259,
-      bigintStr: "exercitationem",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
       intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
@@ -791,10 +630,74 @@ sdk.parameters.jsonQueryParamsObject({
       str: "example",
       strOpt: "optional example",
     },
-    "porro": {
-      any: "maiores",
-      bigint: 985033,
-      bigintStr: "iusto",
+    {
+      any: "labore",
+      bigint: 240829,
+      bigintStr: "dolorum",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "aut",
+      bigint: 555649,
+      bigintStr: "itaque",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  ],
+  bool: false,
+  int: 833038,
+  map: {
+    "doloribus": {
+      any: "ut",
+      bigint: 703495,
+      bigintStr: "cupiditate",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "laudantium": {
+      any: "odio",
+      bigint: 580447,
+      bigintStr: "voluptatibus",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -804,7 +707,47 @@ sdk.parameters.jsonQueryParamsObject({
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Second,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "omnis": {
+      any: "quis",
+      bigint: 218403,
+      bigintStr: "delectus",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "vero": {
+      any: "tenetur",
+      bigint: 492268,
+      bigintStr: "hic",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -812,11 +755,11 @@ sdk.parameters.jsonQueryParamsObject({
       strOpt: "optional example",
     },
   },
-  num: 40.48,
+  num: 4861.6,
   obj: {
-    any: "officia",
-    bigint: 269479,
-    bigintStr: "ipsam",
+    any: "similique",
+    bigint: 708548,
+    bigintStr: "vero",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
@@ -833,12 +776,12 @@ sdk.parameters.jsonQueryParamsObject({
     str: "example",
     strOpt: "optional example",
   },
-  str: "vel",
-  type: "possimus",
+  str: "quibusdam",
+  type: "illum",
 }, {
-  any: "magnam",
-  bigint: 189848,
-  bigintStr: "ex",
+  any: "sequi",
+  bigint: 617877,
+  bigintStr: "impedit",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -847,8 +790,8 @@ sdk.parameters.jsonQueryParamsObject({
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.First,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -894,28 +837,9 @@ const sdk = new SDK({
 });
 
 sdk.parameters.mixedQueryParams({
-  any: "dolor",
-  bigint: 980700,
-  bigintStr: "quasi",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-}, {
-  any: "excepturi",
-  bigint: 972920,
-  bigintStr: "nostrum",
+  any: "exercitationem",
+  bigint: 862310,
+  bigintStr: "fugit",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -932,9 +856,28 @@ sdk.parameters.mixedQueryParams({
   str: "example",
   strOpt: "optional example",
 }, {
-  any: "saepe",
-  bigint: 411372,
-  bigintStr: "impedit",
+  any: "doloribus",
+  bigint: 478370,
+  bigintStr: "eligendi",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
+}, {
+  any: "officia",
+  bigint: 269479,
+  bigintStr: "ipsam",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -991,8 +934,8 @@ const sdk = new SDK({
 });
 
 sdk.parameters.pathParameterJson({
-  any: "aliquid",
-  bigint: 81101,
+  any: "vel",
+  bigint: 822118,
   bigintStr: "magnam",
   bool: true,
   boolOpt: true,
@@ -1002,8 +945,8 @@ sdk.parameters.pathParameterJson({
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -1048,15 +991,20 @@ const sdk = new SDK({
 });
 
 sdk.parameters.pipeDelimitedQueryParamsArray([
-  "recusandae",
+  "dicta",
+  "dolor",
+  "maiores",
 ], [
-  325310,
+  406120,
 ], {
-  "a": "libero",
+  "excepturi": "voluptatibus",
+  "nostrum": "sapiente",
+  "quisquam": "saepe",
+  "ea": "impedit",
 }, {
-  any: "aut",
-  bigint: 11427,
-  bigintStr: "deleniti",
+  any: "corporis",
+  bigint: 333145,
+  bigintStr: "aliquid",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -1065,7 +1013,7 @@ sdk.parameters.pipeDelimitedQueryParamsArray([
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
@@ -1112,7 +1060,8 @@ const sdk = new SDK({
 });
 
 sdk.parameters.simplePathParameterArrays([
-  "accusamus",
+  "quo",
+  "consectetur",
 ]).then((res: SimplePathParameterArraysResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1150,11 +1099,15 @@ const sdk = new SDK({
 });
 
 sdk.parameters.simplePathParameterMaps({
-  "non": "et",
+  "aspernatur": "minima",
+  "eaque": "a",
+  "libero": "aut",
+  "aut": "deleniti",
 }, {
-  "laborum": 810424,
-  "velit": 432148,
-  "autem": 752135,
+  "aliquam": 146946,
+  "accusamus": 79522,
+  "non": 89603,
+  "dolorum": 672048,
 }).then((res: SimplePathParameterMapsResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1195,9 +1148,9 @@ const sdk = new SDK({
 });
 
 sdk.parameters.simplePathParameterObjects({
-  any: "quas",
-  bigint: 829603,
-  bigintStr: "nulla",
+  any: "placeat",
+  bigint: 245367,
+  bigintStr: "eum",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -1214,9 +1167,9 @@ sdk.parameters.simplePathParameterObjects({
   str: "example",
   strOpt: "optional example",
 }, {
-  any: "quasi",
-  bigint: 270328,
-  bigintStr: "numquam",
+  any: "quas",
+  bigint: 829603,
+  bigintStr: "nulla",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -1225,8 +1178,8 @@ sdk.parameters.simplePathParameterObjects({
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -1269,7 +1222,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.parameters.simplePathParameterPrimitives(false, 55374, 4764.77, "magnam").then((res: SimplePathParameterPrimitivesResponse) => {
+sdk.parameters.simplePathParameterPrimitives(false, 96549, 2703.28, "numquam").then((res: SimplePathParameterPrimitivesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

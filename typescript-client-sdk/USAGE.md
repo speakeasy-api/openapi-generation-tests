@@ -52,11 +52,12 @@ sdk.generation.usageExamplePost({
   dateTimeParameter: new Date("2020-01-01T00:00:00Z"),
   doubleParameter: 2.2222222,
   enumParameter: UsageExamplePostEnumParameter.Value3,
+  falseyNumberParameter: 0,
   floatParameter: 1.1,
   int64Parameter: 111111,
   intParameter: 1,
   optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
-  strParameter: "example",
+  strParameter: "example 1",
 }, {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",

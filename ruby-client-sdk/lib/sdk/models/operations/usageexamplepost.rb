@@ -105,6 +105,8 @@ module OpenApiSDK
       field :double_parameter, Float, { 'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': true } }
       # An enum parameter
       field :enum_parameter, Operations::UsageExamplePostEnumParameter, { 'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': true } }
+      # A number parameter that contains a falsey example value
+      field :falsey_number_parameter, Float, { 'query_param': { 'field_name': 'falseyNumberParameter', 'style': 'form', 'explode': true } }
       # A float parameter
       field :float_parameter, Float, { 'query_param': { 'field_name': 'floatParameter', 'style': 'form', 'explode': true } }
       # An int64 parameter
@@ -119,13 +121,14 @@ module OpenApiSDK
       field :request_body, T.nilable(Operations::UsageExamplePostRequestBody), { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(bool_parameter: T::Boolean, date_parameter: Date, date_time_parameter: DateTime, double_parameter: Float, enum_parameter: Operations::UsageExamplePostEnumParameter, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, opt_enum_parameter: T.nilable(Operations::UsageExamplePostOptEnumParameter), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
-      def initialize(bool_parameter: nil, date_parameter: nil, date_time_parameter: nil, double_parameter: nil, enum_parameter: nil, float_parameter: nil, int64_parameter: nil, int_parameter: nil, str_parameter: nil, opt_enum_parameter: nil, request_body: nil)
+      sig { params(bool_parameter: T::Boolean, date_parameter: Date, date_time_parameter: DateTime, double_parameter: Float, enum_parameter: Operations::UsageExamplePostEnumParameter, falsey_number_parameter: Float, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, opt_enum_parameter: T.nilable(Operations::UsageExamplePostOptEnumParameter), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
+      def initialize(bool_parameter: nil, date_parameter: nil, date_time_parameter: nil, double_parameter: nil, enum_parameter: nil, falsey_number_parameter: nil, float_parameter: nil, int64_parameter: nil, int_parameter: nil, str_parameter: nil, opt_enum_parameter: nil, request_body: nil)
         @bool_parameter = bool_parameter
         @date_parameter = date_parameter
         @date_time_parameter = date_time_parameter
         @double_parameter = double_parameter
         @enum_parameter = enum_parameter
+        @falsey_number_parameter = falsey_number_parameter
         @float_parameter = float_parameter
         @int64_parameter = int64_parameter
         @int_parameter = int_parameter

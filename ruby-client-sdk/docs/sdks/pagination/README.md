@@ -26,7 +26,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::PaginationCursorBodyRequestBody.new(
   request=Operations::PaginationCursorBodyRequestBody.new(
-    cursor=259422,
+    cursor=9688,
   ),
 )
     
@@ -64,7 +64,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::PaginationCursorParamsRequest.new(
   query_params=Operations::PaginationCursorParamsRequest.new(
-    cursor=178367,
+    cursor=272822,
   ),
 )
     
@@ -102,9 +102,9 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::LimitOffsetConfig.new(
   request=Shared::LimitOffsetConfig.new(
-    limit=373813,
-    offset=69859,
-    page=587600,
+    limit=892050,
+    offset=370853,
+    page=133465,
   ),
 )
     
@@ -142,8 +142,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::PaginationLimitOffsetOffsetParamsRequest.new(
   query_params=Operations::PaginationLimitOffsetOffsetParamsRequest.new(
-    limit=9688,
-    offset=272822,
+    limit=197054,
+    offset=779192,
   ),
 )
     
@@ -182,9 +182,9 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::LimitOffsetConfig.new(
   request=Shared::LimitOffsetConfig.new(
-    limit=892050,
-    offset=370853,
-    page=133465,
+    limit=459856,
+    offset=925164,
+    page=44612,
   ),
 )
     
@@ -222,7 +222,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::PaginationLimitOffsetPageParamsRequest.new(
   query_params=Operations::PaginationLimitOffsetPageParamsRequest.new(
-    page=197054,
+    page=715179,
   ),
 )
     

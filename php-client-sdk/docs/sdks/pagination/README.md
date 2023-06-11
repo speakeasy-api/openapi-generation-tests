@@ -32,7 +32,7 @@ $sdk = SDK::builder()
 
 try {
     $request = new PaginationCursorBodyRequestBody();
-    $request->cursor = 944120;
+    $request->cursor = 783645;
 
     $response = $sdk->pagination->paginationCursorBody($request);
 
@@ -77,7 +77,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->pagination->paginationCursorParams(928082);
+    $response = $sdk->pagination->paginationCursorParams(164694);
 
     if ($response->res !== null) {
         // handle response
@@ -119,9 +119,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new LimitOffsetConfig();
-    $request->limit = 608253;
-    $request->offset = 704415;
-    $request->page = 596656;
+    $request->limit = 500026;
+    $request->offset = 621479;
+    $request->page = 50370;
 
     $response = $sdk->pagination->paginationLimitOffsetOffsetBody($request);
 
@@ -166,7 +166,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->pagination->paginationLimitOffsetOffsetParams(31838, 783645);
+    $response = $sdk->pagination->paginationLimitOffsetOffsetParams(577229, 699098);
 
     if ($response->res !== null) {
         // handle response
@@ -209,9 +209,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new LimitOffsetConfig();
-    $request->limit = 164694;
-    $request->offset = 500026;
-    $request->page = 621479;
+    $request->limit = 237893;
+    $request->offset = 992397;
+    $request->page = 934214;
 
     $response = $sdk->pagination->paginationLimitOffsetPageBody($request);
 
@@ -256,7 +256,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->pagination->paginationLimitOffsetPageParams(50370);
+    $response = $sdk->pagination->paginationLimitOffsetPageParams(267262);
 
     if ($response->res !== null) {
         // handle response

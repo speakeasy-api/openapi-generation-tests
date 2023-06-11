@@ -12,12 +12,9 @@ type RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON struct {
 	Str  string  `json:"str"`
 }
 
-type RequestBodyPostMultipleContentTypesInlineFilteredResJSON struct {
-}
-
 // RequestBodyPostMultipleContentTypesInlineFilteredRes - OK
 type RequestBodyPostMultipleContentTypesInlineFilteredRes struct {
-	JSON *RequestBodyPostMultipleContentTypesInlineFilteredResJSON `json:"json,omitempty"`
+	JSON map[string]interface{} `json:"json,omitempty"`
 }
 
 type RequestBodyPostMultipleContentTypesInlineFilteredResponse struct {

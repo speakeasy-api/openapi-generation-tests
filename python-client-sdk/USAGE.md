@@ -47,11 +47,12 @@ req = operations.UsageExamplePostRequest(
     date_time_parameter=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
+    falsey_number_parameter=0,
     float_parameter=1.1,
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
-    str_parameter='example',
+    str_parameter='example 1',
 )
 
 res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(

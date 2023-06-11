@@ -171,6 +171,39 @@ class Generation
     }
 	
     /**
+     * emptyResponseObjectWithCommentGet
+     * 
+     * @return \OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse
+     */
+	public function emptyResponseObjectWithCommentGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/emptyResponseObjectWithComment');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/octet-stream';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\EmptyResponseObjectWithCommentGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/octet-stream')) {
+                $response->body = $httpResponse->getBody()->getContents();
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * globalNameOverridden
      * 
      * @return \OpenAPI\OpenAPI\Models\Operations\GetGlobalNameOverrideResponse
@@ -318,6 +351,48 @@ class Generation
                 $serializer = Utils\JSON::createSerializer();
                 $response->overriddenResponse = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\OverriddenResponse', 'json');
             }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * typedParameterGenerationGet
+     * 
+     * @param ?int $bigint
+     * @param ?\DateTime $date
+     * @param ?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj $obj
+     * @return \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
+     */
+	public function typedParameterGenerationGet(
+        ?int $bigint = null,
+        ?\DateTime $date = null,
+        ?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj $obj = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest();
+        $request->bigint = $bigint;
+        $request->date = $date;
+        $request->obj = $obj;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/typedParameterGeneration');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
         }
 
         return $response;

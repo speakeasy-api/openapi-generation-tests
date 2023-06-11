@@ -57,11 +57,12 @@ try {
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
+    $request->falseyNumberParameter = 0;
     $request->floatParameter = 1.1;
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example';
+    $request->strParameter = 'example 1';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';

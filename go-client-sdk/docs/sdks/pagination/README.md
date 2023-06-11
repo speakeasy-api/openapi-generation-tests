@@ -38,7 +38,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 311796,
+        Cursor: 542499,
     })
     if err != nil {
         log.Fatal(err)
@@ -88,7 +88,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationCursorParams(ctx, 881005)
+    res, err := s.Pagination.PaginationCursorParams(ctx, 24678)
     if err != nil {
         log.Fatal(err)
     }
@@ -138,9 +138,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(696344),
-        Offset: sdk.Int64(976405),
-        Page: sdk.Int64(377752),
+        Limit: sdk.Int64(854614),
+        Offset: sdk.Int64(67249),
+        Page: sdk.Int64(743835),
     })
     if err != nil {
         log.Fatal(err)
@@ -190,7 +190,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, 617658, 179603)
+    res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, 679393, 478596)
     if err != nil {
         log.Fatal(err)
     }
@@ -241,9 +241,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(542499),
-        Offset: sdk.Int64(24678),
-        Page: sdk.Int64(854614),
+        Limit: sdk.Int64(453697),
+        Offset: sdk.Int64(677082),
+        Page: sdk.Int64(536579),
     })
     if err != nil {
         log.Fatal(err)
@@ -293,7 +293,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, 67249)
+    res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, 607045)
     if err != nil {
         log.Fatal(err)
     }

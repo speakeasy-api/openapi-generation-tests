@@ -10,10 +10,12 @@ Endpoints for purely testing valid generation behavior.
 * [CircularReferenceGet](#circularreferenceget)
 * [~~DeprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
 * [~~DeprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `SimplePathParameterObjects` instead.
+* [EmptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [GlobalNameOverridden](#globalnameoverridden)
 * [IgnoredGenerationGet](#ignoredgenerationget)
 * [IgnoresPost](#ignorespost)
 * [NameOverride](#nameoverride)
+* [TypedParameterGenerationGet](#typedparametergenerationget)
 * [UsageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
 ## AnchorTypesGet
@@ -211,6 +213,52 @@ func main() {
 **[*operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md), error**
 
 
+## EmptyResponseObjectWithCommentGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.EmptyResponseObjectWithCommentGet(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Body != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.EmptyResponseObjectWithCommentGetResponse](../../models/operations/emptyresponseobjectwithcommentgetresponse.md), error**
+
+
 ## GlobalNameOverridden
 
 ### Example Usage
@@ -405,6 +453,62 @@ func main() {
 **[*operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md), error**
 
 
+## TypedParameterGenerationGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/operations"
+	"math/big"
+	"openapi/pkg/types"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.TypedParameterGenerationGet(ctx, big.NewInt(574325), types.MustDateFromString("2022-05-07"), &operations.TypedParameterGenerationGetObj{
+        Bool: false,
+        Num: 9689.62,
+        Str: "mollitia",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |
+| `bigint`                                                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                                                             | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `date`                                                                                                  | [*types.Date](../../types/date.md)                                                                      | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `obj`                                                                                                   | [*operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+
+
+### Response
+
+**[*operations.TypedParameterGenerationGetResponse](../../models/operations/typedparametergenerationgetresponse.md), error**
+
+
 ## UsageExamplePost
 
 An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
@@ -436,17 +540,17 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Alexis_OHara32@yahoo.com"),
-            FormatEmail: sdk.String("Dallas36@yahoo.com"),
-            FormatURI: sdk.String("http://infinite-winery.org"),
-            FormatUUID: sdk.String("4c8b711e-5b7f-4d2e-9028-921cddc69260"),
-            Hostname: sdk.String("big-willingness.net"),
-            Ipv4: sdk.String("95.116.107.184"),
-            Ipv6: sdk.String("0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b"),
+            Email: sdk.String("Holden.Ernser36@gmail.com"),
+            FormatEmail: sdk.String("Hubert.Wyman80@gmail.com"),
+            FormatURI: sdk.String("https://rotating-identification.com"),
+            FormatUUID: sdk.String("1e5b7fd2-ed02-4892-9cdd-c692601fb576"),
+            Hostname: sdk.String("scared-atrium.org"),
+            Ipv4: sdk.String("93.249.4.219"),
+            Ipv6: sdk.String("30c5:fbb2:5870:5320:2c73:d5fe:9b90:c289"),
             SimpleObject: &shared.SimpleObject{
-                Any: "perspiciatis",
-                Bigint: big.NewInt(31838),
-                BigintStr: types.MustBigIntFromString("783645"),
+                Any: "eaque",
+                Bigint: big.NewInt(577229),
+                BigintStr: types.MustBigIntFromString("699098"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
@@ -456,27 +560,28 @@ func main() {
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                IntEnum: shared.SimpleObjectIntEnumThird,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            Unknown: sdk.String("error"),
-            URI: sdk.String("http://noxious-pronunciation.biz"),
-            UUID: sdk.String("fe49a8d9-cbf4-4863-b323-f9b77f3a4100"),
+            Unknown: sdk.String("earum"),
+            URI: sdk.String("http://peaceful-popularity.name"),
+            UUID: sdk.String("d9cbf486-3332-43f9-b77f-3a4100674ebf"),
         },
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
+        FalseyNumberParameter: 0,
         FloatParameter: 1.1,
         Int64Parameter: 111111,
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example",
+        StrParameter: "example 2",
     }, operations.UsageExamplePostSecurity{
         Password: "YOUR_PASSWORD",
         Username: "YOUR_USERNAME",

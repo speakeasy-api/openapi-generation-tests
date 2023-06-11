@@ -25,9 +25,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 1.1d, 111111L, 1, "example") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1d, 111111L, 1, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Larue_Rau85@yahoo.com";
+                    email = "Micheal_Sporer@yahoo.com";
                     formatEmail = "Roselyn_Kassulke@yahoo.com";
                     formatUri = "http://innocent-effect.org";
                     formatUuid = "0f467cc8-796e-4d15-9a05-dfc2ddf7cc78";
