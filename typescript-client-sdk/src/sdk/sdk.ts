@@ -110,8 +110,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.8.0";
-    genVersion = "2.39.2";
+    sdkVersion = "1.8.1";
+    genVersion = "2.39.8";
     globals: any;
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -285,6 +285,7 @@ export class SDK {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -301,11 +302,12 @@ export class SDK {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.putAnythingIgnoredGeneration200ApplicationJSONObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PutAnythingIgnoredGeneration200ApplicationJSON
                     );
                 }
@@ -338,6 +340,7 @@ export class SDK {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -353,11 +356,12 @@ export class SDK {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.httpBinSimpleJsonObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.HttpBinSimpleJsonObject
                     );
                 }

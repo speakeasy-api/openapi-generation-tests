@@ -40,6 +40,7 @@ export class ResponseBodies {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -58,10 +59,7 @@ export class ResponseBodies {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/octet-stream`)) {
-                    const resBody: string = JSON.stringify(httpRes?.data, null, 0);
-                    const out: Uint8Array = new Uint8Array(resBody.length);
-                    for (let i = 0; i < resBody.length; i++) out[i] = resBody.charCodeAt(i);
-                    res.bytes = out;
+                    res.bytes = httpRes?.data;
                 }
                 break;
         }
@@ -92,6 +90,7 @@ export class ResponseBodies {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -107,10 +106,11 @@ export class ResponseBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `text/html`)) {
-                    res.html = JSON.stringify(httpRes?.data);
+                    res.html = decodedRes;
                 }
                 break;
         }
@@ -141,6 +141,7 @@ export class ResponseBodies {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -156,10 +157,11 @@ export class ResponseBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/xml`)) {
-                    res.xml = httpRes?.data;
+                    res.xml = decodedRes;
                 }
                 break;
         }

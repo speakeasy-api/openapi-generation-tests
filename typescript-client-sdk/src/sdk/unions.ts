@@ -53,6 +53,7 @@ export class Unions {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -69,10 +70,14 @@ export class Unions {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.MixedTypeOneOfPostRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.MixedTypeOneOfPostRes
+                    );
                 }
                 break;
         }
@@ -116,6 +121,7 @@ export class Unions {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -132,11 +138,12 @@ export class Unions {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PrimitiveTypeOneOfPostRes
                     );
                 }
@@ -182,6 +189,7 @@ export class Unions {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -198,11 +206,12 @@ export class Unions {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.StronglyTypedOneOfPostRes
                     );
                 }
@@ -248,6 +257,7 @@ export class Unions {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -264,11 +274,12 @@ export class Unions {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.TypedObjectOneOfPostRes
                     );
                 }
@@ -314,6 +325,7 @@ export class Unions {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -330,11 +342,12 @@ export class Unions {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.WeaklyTypedOneOfPostRes
                     );
                 }

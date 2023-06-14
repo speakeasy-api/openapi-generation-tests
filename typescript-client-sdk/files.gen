@@ -41,6 +41,7 @@ __tests__/pagination.test.ts
 __tests__/parameter.test.ts
 __tests__/requestbodies.test.ts
 __tests__/responsebodies.test.ts
+__tests__/retries.test.ts
 __tests__/servers.test.ts
 __tests__/telemetry.test.ts
 __tests__/testdata/testUpload.json

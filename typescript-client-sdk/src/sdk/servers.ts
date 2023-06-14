@@ -40,6 +40,7 @@ export class Servers {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -94,6 +95,7 @@ export class Servers {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -144,6 +146,7 @@ export class Servers {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -190,6 +193,7 @@ export class Servers {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -245,6 +249,7 @@ export class Servers {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 

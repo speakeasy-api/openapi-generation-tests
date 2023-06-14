@@ -78,9 +78,7 @@ class Errors:
         
         retry_config = retries
         if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', True)
-            retry_config.backoff = utils.BackoffStrategy(10, 200, 1.5, 1000)
-            
+            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(10, 200, 1.5, 1000), True)
 
         def do_request():
             return client.request('POST', url, data=data, files=form, headers=headers)

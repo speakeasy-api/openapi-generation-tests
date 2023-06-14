@@ -48,6 +48,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -63,11 +64,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.DeepObjectQueryParamsMapRes
                     );
                 }
@@ -107,6 +109,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -122,11 +125,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.DeepObjectQueryParamsObjectRes
                     );
                 }
@@ -166,6 +170,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -181,11 +186,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.FormQueryParamsArrayRes
                     );
                 }
@@ -225,6 +231,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -240,10 +247,14 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.FormQueryParamsMapRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.FormQueryParamsMapRes
+                    );
                 }
                 break;
         }
@@ -281,6 +292,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -296,11 +308,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.FormQueryParamsObjectRes
                     );
                 }
@@ -344,6 +357,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -359,11 +373,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.FormQueryParamsPrimitiveRes
                     );
                 }
@@ -404,6 +419,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -419,11 +435,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.FormQueryParamsRefParamObjectRes
                     );
                 }
@@ -460,6 +477,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -474,10 +492,14 @@ export class ParametersT {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.HeaderParamsArrayRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.HeaderParamsArrayRes
+                    );
                 }
                 break;
         }
@@ -514,6 +536,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -528,10 +551,14 @@ export class ParametersT {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.HeaderParamsMapRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.HeaderParamsMapRes
+                    );
                 }
                 break;
         }
@@ -568,6 +595,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -583,10 +611,14 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.HeaderParamsObjectRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.HeaderParamsObjectRes
+                    );
                 }
                 break;
         }
@@ -627,6 +659,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -642,11 +675,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.HeaderParamsPrimitiveRes
                     );
                 }
@@ -686,6 +720,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -701,11 +736,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.JsonQueryParamsObjectRes
                     );
                 }
@@ -747,6 +783,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -761,10 +798,14 @@ export class ParametersT {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.MixedQueryParamsRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.MixedQueryParamsRes
+                    );
                 }
                 break;
         }
@@ -804,6 +845,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -818,10 +860,14 @@ export class ParametersT {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.PathParameterJsonRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.PathParameterJsonRes
+                    );
                 }
                 break;
         }
@@ -863,6 +909,7 @@ export class ParametersT {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -878,11 +925,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PipeDelimitedQueryParamsArrayRes
                     );
                 }
@@ -924,6 +972,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -939,11 +988,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.SimplePathParameterArraysRes
                     );
                 }
@@ -987,6 +1037,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -1002,11 +1053,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.SimplePathParameterMapsRes
                     );
                 }
@@ -1050,6 +1102,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -1065,11 +1118,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.SimplePathParameterObjectsRes
                     );
                 }
@@ -1117,6 +1171,7 @@ export class ParametersT {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -1132,11 +1187,12 @@ export class ParametersT {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.SimplePathParameterPrimitivesRes
                     );
                 }

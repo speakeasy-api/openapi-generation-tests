@@ -56,6 +56,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -72,13 +73,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.simpleObjects = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.simpleObjects = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
                     );
@@ -127,6 +129,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -143,10 +146,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.arrObjValue = utils.objectToClass(httpRes?.data, shared.ArrObjValue);
+                    res.arrObjValue = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ArrObjValue
+                    );
                 }
                 break;
         }
@@ -192,6 +199,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -208,13 +216,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.arrs = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.arrs = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
                     );
@@ -263,6 +272,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -279,10 +289,11 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.arrs = utils.objectToClass(httpRes?.data);
+                    res.arrs = utils.objectToClass(JSON.parse(decodedRes));
                 }
                 break;
         }
@@ -328,6 +339,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -344,13 +356,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.maps = [];
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.maps = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
                     );
@@ -399,6 +412,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -415,10 +429,11 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.strings = utils.objectToClass(httpRes?.data);
+                    res.strings = utils.objectToClass(JSON.parse(decodedRes));
                 }
                 break;
         }
@@ -465,6 +480,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -481,11 +497,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostApplicationJsonDeepRes
                     );
                 }
@@ -533,6 +550,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -549,13 +567,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = {};
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
                     );
@@ -604,6 +623,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -620,10 +640,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.mapObjValue = utils.objectToClass(httpRes?.data, shared.MapObjValue);
+                    res.mapObjValue = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.MapObjValue
+                    );
                 }
                 break;
         }
@@ -669,6 +693,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -685,13 +710,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = {};
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
                     );
@@ -740,6 +766,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -756,13 +783,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = {};
                     const resFieldDepth: number = utils.getResFieldDepth(res);
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.SimpleObject,
                         resFieldDepth
                     );
@@ -811,6 +839,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -827,10 +856,11 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data);
+                    res.res = utils.objectToClass(JSON.parse(decodedRes));
                 }
                 break;
         }
@@ -876,6 +906,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -892,10 +923,11 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data);
+                    res.res = utils.objectToClass(JSON.parse(decodedRes));
                 }
                 break;
         }
@@ -945,6 +977,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -961,11 +994,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostApplicationJsonMultipleJsonFilteredRes
                     );
                 }
@@ -1016,6 +1050,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1032,11 +1067,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostApplicationJsonSimpleRes
                     );
                 }
@@ -1084,6 +1120,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1100,11 +1137,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.requestBodyPostEmptyObject200ApplicationJSONObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostEmptyObject200ApplicationJSON
                     );
                 }
@@ -1154,6 +1192,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1170,11 +1209,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostFormDeepRes
                     );
                 }
@@ -1221,6 +1261,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1237,11 +1278,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostFormMapPrimitiveRes
                     );
                 }
@@ -1291,6 +1333,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1307,11 +1350,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostFormSimpleRes
                     );
                 }
@@ -1363,6 +1407,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1379,11 +1424,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesComponentFilteredRes
                     );
                 }
@@ -1437,6 +1483,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1453,11 +1500,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesInlineFilteredRes
                     );
                 }
@@ -1511,6 +1559,7 @@ export class RequestBodies {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1527,11 +1576,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesSplitParamFormRes
                     );
                 }
@@ -1585,6 +1635,7 @@ export class RequestBodies {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1601,11 +1652,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesSplitParamJsonRes
                     );
                 }
@@ -1659,6 +1711,7 @@ export class RequestBodies {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1675,11 +1728,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesSplitParamMultipartRes
                     );
                 }
@@ -1733,6 +1787,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1749,11 +1804,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesSplitFormRes
                     );
                 }
@@ -1804,6 +1860,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1820,11 +1877,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesSplitJsonRes
                     );
                 }
@@ -1875,6 +1933,7 @@ export class RequestBodies {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1891,11 +1950,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPostMultipleContentTypesSplitMultipartRes
                     );
                 }
@@ -1941,6 +2001,7 @@ export class RequestBodies {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -1957,10 +2018,14 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.RequestBodyPutBytesRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPutBytesRes
+                    );
                 }
                 break;
         }
@@ -2009,6 +2074,7 @@ export class RequestBodies {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -2025,11 +2091,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPutMultipartDeepRes
                     );
                 }
@@ -2080,6 +2147,7 @@ export class RequestBodies {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -2096,11 +2164,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPutMultipartFileRes
                     );
                 }
@@ -2151,6 +2220,7 @@ export class RequestBodies {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -2167,11 +2237,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPutMultipartSimpleRes
                     );
                 }
@@ -2217,6 +2288,7 @@ export class RequestBodies {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -2233,11 +2305,12 @@ export class RequestBodies {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.RequestBodyPutStringRes
                     );
                 }

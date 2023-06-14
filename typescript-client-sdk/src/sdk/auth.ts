@@ -46,6 +46,7 @@ export class Auth {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -60,10 +61,14 @@ export class Auth {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.token = utils.objectToClass(httpRes?.data, operations.ApiKeyAuthToken);
+                    res.token = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.ApiKeyAuthToken
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -96,6 +101,7 @@ export class Auth {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -110,11 +116,12 @@ export class Auth {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.token = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.ApiKeyAuthGlobalToken
                     );
                 }
@@ -166,6 +173,7 @@ export class Auth {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -180,10 +188,14 @@ export class Auth {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.user = utils.objectToClass(httpRes?.data, operations.BasicAuthUser);
+                    res.user = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.BasicAuthUser
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -222,6 +234,7 @@ export class Auth {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -236,10 +249,14 @@ export class Auth {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.token = utils.objectToClass(httpRes?.data, operations.BearerAuthToken);
+                    res.token = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.BearerAuthToken
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -278,6 +295,7 @@ export class Auth {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -292,10 +310,14 @@ export class Auth {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.token = utils.objectToClass(httpRes?.data, operations.Oauth2AuthToken);
+                    res.token = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.Oauth2AuthToken
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -334,6 +356,7 @@ export class Auth {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -348,11 +371,12 @@ export class Auth {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.token = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.OpenIdConnectAuthToken
                     );
                 }

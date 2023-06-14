@@ -42,6 +42,7 @@ export class Errors {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -97,6 +98,7 @@ export class Errors {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -161,8 +163,11 @@ export class Errors {
 
         let retryConfig: any = retries;
         if (!retryConfig) {
-            retryConfig = new utils.RetryConfig("backoff", true);
-            retryConfig.backoff = new utils.BackoffStrategy(10, 200, 1.5, 1000);
+            retryConfig = new utils.RetryConfig(
+                "backoff",
+                new utils.BackoffStrategy(10, 200, 1.5, 1000),
+                true
+            );
         }
         const httpRes: AxiosResponse = await utils.Retry(() => {
             return client.request({
@@ -170,6 +175,7 @@ export class Errors {
                 url: url,
                 method: "post",
                 headers: headers,
+                responseType: "arraybuffer",
                 data: reqBody,
                 ...config,
             });

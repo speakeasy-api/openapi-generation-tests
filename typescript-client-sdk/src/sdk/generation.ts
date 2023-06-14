@@ -40,6 +40,7 @@ export class Generation {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -54,11 +55,12 @@ export class Generation {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.typeFromAnchor = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.TypeFromAnchor
                     );
                 }
@@ -91,6 +93,7 @@ export class Generation {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -106,11 +109,12 @@ export class Generation {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.validCircularReferenceObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.ValidCircularReferenceObject
                     );
                 }
@@ -151,6 +155,7 @@ export class Generation {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -209,6 +214,7 @@ export class Generation {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -255,6 +261,7 @@ export class Generation {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -273,10 +280,7 @@ export class Generation {
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/octet-stream`)) {
-                    const resBody: string = JSON.stringify(httpRes?.data, null, 0);
-                    const out: Uint8Array = new Uint8Array(resBody.length);
-                    for (let i = 0; i < resBody.length; i++) out[i] = resBody.charCodeAt(i);
-                    res.body = out;
+                    res.body = httpRes?.data;
                 }
                 break;
         }
@@ -307,6 +311,7 @@ export class Generation {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -322,11 +327,12 @@ export class Generation {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.getGlobalNameOverride200ApplicationJSONObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.GetGlobalNameOverride200ApplicationJSON
                     );
                 }
@@ -359,6 +365,7 @@ export class Generation {
             url: url,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -374,11 +381,12 @@ export class Generation {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.ignoredGenerationGet200ApplicationJSONObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.IgnoredGenerationGet200ApplicationJSON
                     );
                 }
@@ -428,6 +436,7 @@ export class Generation {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -443,11 +452,12 @@ export class Generation {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.httpBinSimpleJsonObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         shared.HttpBinSimpleJsonObject
                     );
                 }
@@ -485,6 +495,7 @@ export class Generation {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -499,11 +510,12 @@ export class Generation {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.overriddenResponse = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.OverriddenResponse
                     );
                 }
@@ -545,6 +557,7 @@ export class Generation {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -621,6 +634,7 @@ export class Generation {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -636,11 +650,12 @@ export class Generation {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.usageExamplePost200ApplicationJSONObject = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.UsageExamplePost200ApplicationJSON
                     );
                 }

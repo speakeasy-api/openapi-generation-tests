@@ -61,6 +61,7 @@ export class Flattening {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -77,11 +78,12 @@ export class Flattening {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.ComponentBodyAndParamConflictRes
                     );
                 }
@@ -134,6 +136,7 @@ export class Flattening {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -150,11 +153,12 @@ export class Flattening {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.ComponentBodyAndParamNoConflictRes
                     );
                 }
@@ -199,6 +203,7 @@ export class Flattening {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -213,10 +218,14 @@ export class Flattening {
             contentType: contentType,
             rawResponse: httpRes,
         });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
-                    res.res = utils.objectToClass(httpRes?.data, operations.ConflictingParamsRes);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.ConflictingParamsRes
+                    );
                 }
                 break;
         }
@@ -267,6 +276,7 @@ export class Flattening {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -283,11 +293,12 @@ export class Flattening {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.InlineBodyAndParamConflictRes
                     );
                 }
@@ -340,6 +351,7 @@ export class Flattening {
             url: url + queryParams,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -356,11 +368,12 @@ export class Flattening {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.InlineBodyAndParamNoConflictRes
                     );
                 }

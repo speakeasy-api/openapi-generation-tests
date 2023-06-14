@@ -57,6 +57,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -126,6 +127,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -197,6 +199,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -269,6 +272,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -342,6 +346,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -415,6 +420,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -487,6 +493,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -559,6 +566,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -628,6 +636,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -696,6 +705,7 @@ export class AuthNew {
             url: url,
             method: "post",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });

@@ -58,6 +58,7 @@ export class Pagination {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -74,11 +75,12 @@ export class Pagination {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PaginationCursorBodyRes
                     );
                 }
@@ -86,7 +88,7 @@ export class Pagination {
         }
 
         res.next = async (): Promise<operations.PaginationCursorBodyResponse | null> => {
-            const nextCursor = jp.value(httpRes?.data, "$.resultArray[(@.length-1)]");
+            const nextCursor = jp.value(JSON.parse(decodedRes), "$.resultArray[(@.length-1)]");
             if (nextCursor === undefined) {
                 return null;
             }
@@ -132,6 +134,7 @@ export class Pagination {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -147,11 +150,12 @@ export class Pagination {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PaginationCursorParamsRes
                     );
                 }
@@ -159,7 +163,7 @@ export class Pagination {
         }
 
         res.next = async (): Promise<operations.PaginationCursorParamsResponse | null> => {
-            const nextCursor = jp.value(httpRes?.data, "$.resultArray[(@.length-1)]");
+            const nextCursor = jp.value(JSON.parse(decodedRes), "$.resultArray[(@.length-1)]");
             if (nextCursor === undefined) {
                 return null;
             }
@@ -211,6 +215,7 @@ export class Pagination {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -227,11 +232,12 @@ export class Pagination {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetOffsetBodyRes
                     );
                 }
@@ -241,10 +247,10 @@ export class Pagination {
         res.next = async (): Promise<operations.PaginationLimitOffsetOffsetBodyResponse | null> => {
             const offset = req.offset || 0;
 
-            if (!httpRes?.data) {
+            if (!JSON.parse(decodedRes)) {
                 return null;
             }
-            const results = jp.value(httpRes?.data, "$.resultArray");
+            const results = jp.value(JSON.parse(decodedRes), "$.resultArray");
             if (!results.length) {
                 return null;
             }
@@ -300,6 +306,7 @@ export class Pagination {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -315,11 +322,12 @@ export class Pagination {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetOffsetParamsRes
                     );
                 }
@@ -330,10 +338,10 @@ export class Pagination {
             async (): Promise<operations.PaginationLimitOffsetOffsetParamsResponse | null> => {
                 const offset = req.offset || 0;
 
-                if (!httpRes?.data) {
+                if (!JSON.parse(decodedRes)) {
                     return null;
                 }
-                const results = jp.value(httpRes?.data, "$.resultArray");
+                const results = jp.value(JSON.parse(decodedRes), "$.resultArray");
                 if (!results.length) {
                     return null;
                 }
@@ -395,6 +403,7 @@ export class Pagination {
             url: url,
             method: "put",
             headers: headers,
+            responseType: "arraybuffer",
             data: reqBody,
             ...config,
         });
@@ -411,11 +420,12 @@ export class Pagination {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetPageBodyRes
                     );
                 }
@@ -425,12 +435,12 @@ export class Pagination {
         res.next = async (): Promise<operations.PaginationLimitOffsetPageBodyResponse | null> => {
             const page = req.page || 0;
             const newPage = page + 1;
-            const numPages = jp.value(httpRes?.data, "$.numPages");
+            const numPages = jp.value(JSON.parse(decodedRes), "$.numPages");
             if (numPages == undefined || numPages <= page) {
                 return null;
             }
 
-            if (!httpRes?.data) {
+            if (!JSON.parse(decodedRes)) {
                 return null;
             }
 
@@ -478,6 +488,7 @@ export class Pagination {
             url: url + queryParams,
             method: "get",
             headers: headers,
+            responseType: "arraybuffer",
             ...config,
         });
 
@@ -493,11 +504,12 @@ export class Pagination {
                 contentType: contentType,
                 rawResponse: httpRes,
             });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
         switch (true) {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/json`)) {
                     res.res = utils.objectToClass(
-                        httpRes?.data,
+                        JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetPageParamsRes
                     );
                 }
@@ -508,10 +520,10 @@ export class Pagination {
             const page = req.page || 0;
             const newPage = page + 1;
 
-            if (!httpRes?.data) {
+            if (!JSON.parse(decodedRes)) {
                 return null;
             }
-            const results = jp.value(httpRes?.data, "$.resultArray");
+            const results = jp.value(JSON.parse(decodedRes), "$.resultArray");
             if (!results.length) {
                 return null;
             }

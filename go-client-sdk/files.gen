@@ -36,6 +36,7 @@ tests/pagination_test.go
 tests/parameter_test.go
 tests/requestbodies_test.go
 tests/responsebodies_test.go
+tests/retries_test.go
 tests/servers_test.go
 tests/telemetry_test.go
 tests/testdata/testUpload.json

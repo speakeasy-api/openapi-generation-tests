@@ -3,7 +3,7 @@
  */
 
 import { expect, test } from "@jest/globals";
-import { createSimpleObject, recordTest } from "./helpers";
+import { recordTest } from "./helpers";
 
 import { AxiosError } from "axios";
 import { SDK } from "../src/sdk";
@@ -31,40 +31,6 @@ test("Test Errors Connection Error", async () => {
     await sdk.errors.connectionErrorGet();
   } catch (err) {
     expect(err).toBeInstanceOf(AxiosError);
-    caught = true;
-  }
-
-  expect(caught).toBe(true);
-});
-
-test("Test Errors 5XX Retries", async () => {
-  recordTest("errors-5XX-retries");
-
-  const sdk = new SDK({});
-
-  let caught = false;
-
-  try {
-    await sdk.errors.statusPostRetries(500, createSimpleObject());
-  } catch (err) {
-    expect(err).toBeInstanceOf(Error);
-    caught = true;
-  }
-
-  expect(caught).toBe(true);
-});
-
-test("Test Errors 204 Retries", async () => {
-  recordTest("errors-204-retries");
-
-  const sdk = new SDK({});
-
-  let caught = false;
-
-  try {
-    await sdk.errors.statusPostRetries(204, createSimpleObject());
-  } catch (err) {
-    expect(err).toBeInstanceOf(Error);
     caught = true;
   }
 
