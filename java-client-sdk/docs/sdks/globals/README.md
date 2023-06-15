@@ -32,7 +32,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(679880L);
+            GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(273542L);
 
             if (res.res != null) {
                 // handle response
@@ -79,7 +79,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("a");
+            GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("vel");
 
             if (res.res != null) {
                 // handle response

@@ -33,7 +33,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Telemetry.TelemetrySpeakeasyUserAgentGet(ctx, "fugit")
+    res, err := s.Telemetry.TelemetrySpeakeasyUserAgentGet(ctx, "fugiat")
     if err != nil {
         log.Fatal(err)
     }

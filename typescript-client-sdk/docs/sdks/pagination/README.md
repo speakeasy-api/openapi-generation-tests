@@ -30,7 +30,7 @@ const sdk = new SDK({
 });
 
 sdk.pagination.paginationCursorBody({
-  cursor: 542499,
+  cursor: 881005,
 }).then((res: PaginationCursorBodyResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -68,7 +68,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.pagination.paginationCursorParams(24678).then((res: PaginationCursorParamsResponse) => {
+sdk.pagination.paginationCursorParams(696344).then((res: PaginationCursorParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -106,9 +106,9 @@ const sdk = new SDK({
 });
 
 sdk.pagination.paginationLimitOffsetOffsetBody({
-  limit: 854614,
-  offset: 67249,
-  page: 743835,
+  limit: 976405,
+  offset: 377752,
+  page: 617658,
 }).then((res: PaginationLimitOffsetOffsetBodyResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -146,7 +146,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.pagination.paginationLimitOffsetOffsetParams(679393, 478596).then((res: PaginationLimitOffsetOffsetParamsResponse) => {
+sdk.pagination.paginationLimitOffsetOffsetParams(179603, 542499).then((res: PaginationLimitOffsetOffsetParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -185,9 +185,9 @@ const sdk = new SDK({
 });
 
 sdk.pagination.paginationLimitOffsetPageBody({
-  limit: 453697,
-  offset: 677082,
-  page: 536579,
+  limit: 24678,
+  offset: 854614,
+  page: 67249,
 }).then((res: PaginationLimitOffsetPageBodyResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -225,7 +225,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.pagination.paginationLimitOffsetPageParams(607045).then((res: PaginationLimitOffsetPageParamsResponse) => {
+sdk.pagination.paginationLimitOffsetPageParams(743835).then((res: PaginationLimitOffsetPageParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

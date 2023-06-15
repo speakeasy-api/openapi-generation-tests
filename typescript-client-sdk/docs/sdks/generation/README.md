@@ -8,8 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchorTypesGet](#anchortypesget)
 * [circularReferenceGet](#circularreferenceget)
+* [deprecatedInSchemaWithCommentsGet](#deprecatedinschemawithcommentsget)
 * [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyObjectGet](#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
 * [ignoredGenerationGet](#ignoredgenerationget)
@@ -90,6 +92,46 @@ sdk.generation.circularReferenceGet().then((res: CircularReferenceGetResponse) =
 **Promise<[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)>**
 
 
+## deprecatedInSchemaWithCommentsGet
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { DeprecatedInSchemaWithCommentsGetResponse } from "openapi/dist/sdk/models/operations";
+import { ObjectWithDeprecatedFieldDeprecatedEnum } from "openapi/dist/sdk/models/shared";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.deprecatedInSchemaWithCommentsGet({
+  deprecatedField: "labore",
+  newField: "labore",
+}).then((res: DeprecatedInSchemaWithCommentsGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [shared.ObjectWithDeprecatedField](../../models/shared/objectwithdeprecatedfield.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+
+
+### Response
+
+**Promise<[operations.DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/deprecatedinschemawithcommentsgetresponse.md)>**
+
+
 ## ~~deprecatedNoCommentsGet~~
 
 > :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
@@ -108,7 +150,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.deprecatedNoCommentsGet("vero").then((res: DeprecatedNoCommentsGetResponse) => {
+sdk.generation.deprecatedNoCommentsGet("suscipit").then((res: DeprecatedNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -148,7 +190,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.deprecatedWithCommentsGet("aspernatur", "architecto").then((res: DeprecatedWithCommentsGetResponse) => {
+sdk.generation.deprecatedWithCommentsGet("natus", "nobis").then((res: DeprecatedWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -167,6 +209,42 @@ sdk.generation.deprecatedWithCommentsGet("aspernatur", "architecto").then((res: 
 ### Response
 
 **Promise<[operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md)>**
+
+
+## emptyObjectGet
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { EmptyObjectGetResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.emptyObjectGet({}).then((res: EmptyObjectGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `emptyObject`                                                      | [shared.EmptyObjectParam](../../models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                 | N/A                                                                |
+| `config`                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)       | :heavy_minus_sign:                                                 | Available config options for making requests.                      |
+
+
+### Response
+
+**Promise<[operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md)>**
 
 
 ## emptyResponseObjectWithCommentGet
@@ -295,9 +373,9 @@ const sdk = new SDK({
 });
 
 sdk.generation.ignoresPost({
-  callbackUrl: "http://brisk-mobile.info",
-  testProp: "provident",
-}, "quos").then((res: IgnoresPostResponse) => {
+  callbackUrl: "http://ugly-cash.com",
+  testProp: "magnam",
+}, "et").then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -373,10 +451,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.typedParameterGenerationGet(574325, new RFCDate("2022-05-07"), {
+sdk.generation.typedParameterGenerationGet(569965, new RFCDate("2022-05-30"), {
   bool: false,
-  num: 9689.62,
-  str: "mollitia",
+  num: 5518.16,
+  str: "sint",
 }).then((res: TypedParameterGenerationGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -425,17 +503,17 @@ const sdk = new SDK({
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Holden.Ernser36@gmail.com",
-    formatEmail: "Hubert.Wyman80@gmail.com",
-    formatUri: "https://rotating-identification.com",
-    formatUuid: "1e5b7fd2-ed02-4892-9cdd-c692601fb576",
-    hostname: "scared-atrium.org",
-    ipv4: "93.249.4.219",
-    ipv6: "30c5:fbb2:5870:5320:2c73:d5fe:9b90:c289",
+    email: "Madaline.Wisozk@gmail.com",
+    formatEmail: "Dallas36@yahoo.com",
+    formatUri: "http://infinite-winery.org",
+    formatUuid: "4c8b711e-5b7f-4d2e-9028-921cddc69260",
+    hostname: "big-willingness.net",
+    ipv4: "95.116.107.184",
+    ipv6: "0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b",
     simpleObject: {
-      any: "eaque",
-      bigint: 577229,
-      bigintStr: "rerum",
+      any: "perspiciatis",
+      bigint: 31838,
+      bigintStr: "porro",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -445,16 +523,16 @@ sdk.generation.usageExamplePost({
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Third,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "earum",
-    uri: "http://peaceful-popularity.name",
-    uuid: "d9cbf486-3332-43f9-b77f-3a4100674ebf",
+    unknown: "error",
+    uri: "http://noxious-pronunciation.biz",
+    uuid: "fe49a8d9-cbf4-4863-b323-f9b77f3a4100",
   },
   boolParameter: false,
   dateParameter: new RFCDate("2020-01-01"),

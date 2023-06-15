@@ -1,6 +1,7 @@
 src/sdk/auth.ts
 src/sdk/authnew.ts
 src/sdk/errors.ts
+src/sdk/first.ts
 src/sdk/flattening.ts
 src/sdk/generation.ts
 src/sdk/globals.ts
@@ -9,6 +10,8 @@ src/sdk/parameters.ts
 src/sdk/requestbodies.ts
 src/sdk/resource.ts
 src/sdk/responsebodies.ts
+src/sdk/retries.ts
+src/sdk/second.ts
 src/sdk/servers.ts
 src/sdk/telemetry.ts
 src/sdk/unions.ts
@@ -63,7 +66,7 @@ src/sdk/models/operations/oauth2authnew.ts
 src/sdk/models/operations/openidconnectauthnew.ts
 src/sdk/models/operations/connectionerrorget.ts
 src/sdk/models/operations/statusget.ts
-src/sdk/models/operations/statuspostretries.ts
+src/sdk/models/operations/groupfirstget.ts
 src/sdk/models/operations/componentbodyandparamconflict.ts
 src/sdk/models/operations/componentbodyandparamnoconflict.ts
 src/sdk/models/operations/conflictingparams.ts
@@ -71,8 +74,10 @@ src/sdk/models/operations/inlinebodyandparamconflict.ts
 src/sdk/models/operations/inlinebodyandparamnoconflict.ts
 src/sdk/models/operations/anchortypesget.ts
 src/sdk/models/operations/circularreferenceget.ts
+src/sdk/models/operations/deprecatedinschemawithcommentsget.ts
 src/sdk/models/operations/deprecatednocommentsget.ts
 src/sdk/models/operations/deprecatedwithcommentsget.ts
+src/sdk/models/operations/emptyobjectget.ts
 src/sdk/models/operations/emptyresponseobjectwithcommentget.ts
 src/sdk/models/operations/getglobalnameoverride.ts
 src/sdk/models/operations/ignoredgenerationget.ts
@@ -146,6 +151,8 @@ src/sdk/models/operations/updateresource.ts
 src/sdk/models/operations/responsebodybytesget.ts
 src/sdk/models/operations/responsebodystringget.ts
 src/sdk/models/operations/responsebodyxmlget.ts
+src/sdk/models/operations/retriesget.ts
+src/sdk/models/operations/groupsecondget.ts
 src/sdk/models/operations/selectglobalserver.ts
 src/sdk/models/operations/selectserverwithid.ts
 src/sdk/models/operations/serverwithtemplates.ts
@@ -166,6 +173,8 @@ src/sdk/models/shared/security.ts
 src/sdk/models/shared/simpleobject.ts
 src/sdk/models/shared/enum.ts
 src/sdk/models/shared/validcircularreferenceobject.ts
+src/sdk/models/shared/objectwithdeprecatedfield.ts
+src/sdk/models/shared/emptyobjectparam.ts
 src/sdk/models/shared/httpbinsimplejsonobject.ts
 src/sdk/models/shared/limitoffsetconfig.ts
 src/sdk/models/shared/refqueryparamobjexploded.ts
@@ -185,8 +194,8 @@ src/sdk/models/callbacks/index.ts
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
-docs/models/utils/retryconfig.md
 docs/sdks/errors/README.md
+docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/types/rfcdate.md
 docs/sdks/generation/README.md
@@ -196,6 +205,9 @@ docs/sdks/parameters/README.md
 docs/sdks/requestbodies/README.md
 docs/sdks/resource/README.md
 docs/sdks/responsebodies/README.md
+docs/models/utils/retryconfig.md
+docs/sdks/retries/README.md
+docs/sdks/second/README.md
 docs/sdks/servers/README.md
 docs/sdks/telemetry/README.md
 docs/sdks/unions/README.md
@@ -244,8 +256,7 @@ docs/models/operations/openidconnectauthnewresponse.md
 docs/models/operations/connectionerrorgetresponse.md
 docs/models/operations/statusgetrequest.md
 docs/models/operations/statusgetresponse.md
-docs/models/operations/statuspostretriesrequest.md
-docs/models/operations/statuspostretriesresponse.md
+docs/models/operations/groupfirstgetresponse.md
 docs/models/operations/componentbodyandparamconflictrequest.md
 docs/models/operations/componentbodyandparamconflictres.md
 docs/models/operations/componentbodyandparamconflictresponse.md
@@ -268,10 +279,13 @@ docs/models/operations/inlinebodyandparamnoconflictresponse.md
 docs/models/operations/typefromanchor.md
 docs/models/operations/anchortypesgetresponse.md
 docs/models/operations/circularreferencegetresponse.md
+docs/models/operations/deprecatedinschemawithcommentsgetresponse.md
 docs/models/operations/deprecatednocommentsgetrequest.md
 docs/models/operations/deprecatednocommentsgetresponse.md
 docs/models/operations/deprecatedwithcommentsgetrequest.md
 docs/models/operations/deprecatedwithcommentsgetresponse.md
+docs/models/operations/emptyobjectgetrequest.md
+docs/models/operations/emptyobjectgetresponse.md
 docs/models/operations/emptyresponseobjectwithcommentget200applicationoctetstream.md
 docs/models/operations/emptyresponseobjectwithcommentgetresponse.md
 docs/models/operations/getglobalnameoverride200applicationjson.md
@@ -470,6 +484,10 @@ docs/models/operations/updateresourceresponse.md
 docs/models/operations/responsebodybytesgetresponse.md
 docs/models/operations/responsebodystringgetresponse.md
 docs/models/operations/responsebodyxmlgetresponse.md
+docs/models/operations/retriesgetrequest.md
+docs/models/operations/retriesgetretries.md
+docs/models/operations/retriesgetresponse.md
+docs/models/operations/groupsecondgetresponse.md
 docs/models/operations/selectglobalserverresponse.md
 docs/models/operations/selectserverwithidresponse.md
 docs/models/operations/serverwithtemplatesresponse.md
@@ -503,6 +521,9 @@ docs/models/shared/simpleobjectintenum.md
 docs/models/shared/simpleobject.md
 docs/models/shared/enum.md
 docs/models/shared/validcircularreferenceobject.md
+docs/models/shared/objectwithdeprecatedfielddeprecatedenum.md
+docs/models/shared/objectwithdeprecatedfield.md
+docs/models/shared/emptyobjectparam.md
 docs/models/shared/httpbinsimplejsonobjectslideshowslides.md
 docs/models/shared/httpbinsimplejsonobjectslideshow.md
 docs/models/shared/httpbinsimplejsonobject.md

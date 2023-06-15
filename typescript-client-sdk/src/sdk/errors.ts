@@ -4,7 +4,6 @@
 
 import * as utils from "../internal/utils";
 import * as operations from "./models/operations";
-import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
@@ -115,85 +114,6 @@ export class Errors {
         });
         switch (true) {
             case [200, 300, 400, 500].includes(httpRes?.status):
-                break;
-        }
-
-        return res;
-    }
-
-    async statusPostRetries(
-        statusCode: number,
-        simpleObject?: shared.SimpleObject,
-        retries?: utils.RetryConfig,
-        config?: AxiosRequestConfig
-    ): Promise<operations.StatusPostRetriesResponse> {
-        const req = new operations.StatusPostRetriesRequest({
-            statusCode: statusCode,
-            simpleObject: simpleObject,
-        });
-        const baseURL: string = utils.templateUrl(
-            this.sdkConfiguration.serverURL,
-            this.sdkConfiguration.serverDefaults
-        );
-        const url: string = utils.generateURL(
-            baseURL,
-            "/status/{statusCode}",
-            req,
-            this.sdkConfiguration.globals
-        );
-
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
-
-        try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "simpleObject", "json");
-        } catch (e: unknown) {
-            if (e instanceof Error) {
-                throw new Error(`Error serializing request body, cause: ${e.message}`);
-            }
-        }
-
-        const client: AxiosInstance =
-            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
-        headers["Accept"] = "*/*";
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
-
-        let retryConfig: any = retries;
-        if (!retryConfig) {
-            retryConfig = new utils.RetryConfig(
-                "backoff",
-                new utils.BackoffStrategy(10, 200, 1.5, 1000),
-                true
-            );
-        }
-        const httpRes: AxiosResponse = await utils.Retry(() => {
-            return client.request({
-                validateStatus: () => true,
-                url: url,
-                method: "post",
-                headers: headers,
-                responseType: "arraybuffer",
-                data: reqBody,
-                ...config,
-            });
-        }, new utils.Retries(retryConfig, ["204", "5XX"]));
-
-        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
-
-        if (httpRes?.status == null) {
-            throw new Error(`status code not found in response: ${httpRes}`);
-        }
-
-        const res: operations.StatusPostRetriesResponse = new operations.StatusPostRetriesResponse({
-            statusCode: httpRes.status,
-            contentType: contentType,
-            rawResponse: httpRes,
-        });
-        switch (true) {
-            case [200, 204, 300, 400, 500].includes(httpRes?.status):
                 break;
         }
 

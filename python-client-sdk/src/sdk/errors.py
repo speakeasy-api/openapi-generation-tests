@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from sdk import utils
-from sdk.models import operations, shared
+from sdk.models import operations
 from typing import Optional
 
 class Errors:
@@ -53,43 +53,6 @@ class Errors:
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.StatusGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
-        
-
-        return res
-
-    
-    def status_post_retries(self, status_code: int, simple_object: Optional[shared.SimpleObject] = None, retries: Optional[utils.RetryConfig] = None) -> operations.StatusPostRetriesResponse:
-        request = operations.StatusPostRetriesRequest(
-            status_code=status_code,
-            simple_object=simple_object,
-        )
-        
-        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
-        
-        url = utils.generate_url(operations.StatusPostRetriesRequest, base_url, '/status/{statusCode}', request, self.sdk_configuration.globals)
-        headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "simple_object", 'json')
-        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
-            headers['content-type'] = req_content_type
-        headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
-        
-        client = self.sdk_configuration.security_client
-        
-        retry_config = retries
-        if retry_config is None:
-            retry_config = utils.RetryConfig('backoff', utils.BackoffStrategy(10, 200, 1.5, 1000), True)
-
-        def do_request():
-            return client.request('POST', url, data=data, files=form, headers=headers)
-        
-        http_res = utils.retry(do_request, utils.Retries(retry_config, [
-            '204',
-            '5XX'
-        ]))
-        content_type = http_res.headers.get('Content-Type')
-
-        res = operations.StatusPostRetriesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
 
         return res

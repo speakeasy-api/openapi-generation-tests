@@ -126,7 +126,10 @@ try {
 
 * [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
 * [statusGet](docs/sdks/errors/README.md#statusget)
-* [statusPostRetries](docs/sdks/errors/README.md#statuspostretries)
+
+### [first](docs/sdks/first/README.md)
+
+* [get](docs/sdks/first/README.md#get)
 
 ### [flattening](docs/sdks/flattening/README.md)
 
@@ -140,8 +143,10 @@ try {
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
+* [deprecatedInSchemaWithCommentsGet](docs/sdks/generation/README.md#deprecatedinschemawithcommentsget)
 * [~~deprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - deprecatedNoCommentsGet :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyObjectGet](docs/sdks/generation/README.md#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)
 * [ignoredGenerationGet](docs/sdks/generation/README.md#ignoredgenerationget)
@@ -233,6 +238,14 @@ try {
 * [responseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
 * [responseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
 * [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
+
+### [retries](docs/sdks/retries/README.md)
+
+* [retriesGet](docs/sdks/retries/README.md#retriesget)
+
+### [second](docs/sdks/second/README.md)
+
+* [get](docs/sdks/second/README.md#get)
 
 ### [servers](docs/sdks/servers/README.md)
 

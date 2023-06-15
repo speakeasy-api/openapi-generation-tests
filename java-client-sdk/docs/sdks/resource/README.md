@@ -32,10 +32,10 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource() {{
-                createdAt = OffsetDateTime.parse("2022-12-31T13:25:17.006Z");
-                id = "8e6f8c5f-350d-48cd-b5a3-418143010421";
-                name = "Eric Fadel";
-                updatedAt = OffsetDateTime.parse("2022-12-11T21:15:35.891Z");
+                createdAt = OffsetDateTime.parse("2022-01-03T21:25:59.161Z");
+                id = "350d8cdb-5a34-4181-8301-0421813d5208";
+                name = "Edmund Torp";
+                updatedAt = OffsetDateTime.parse("2022-09-01T18:00:27.481Z");
             }};            
 
             CreateResourceResponse res = sdk.resource.createResource(req);
@@ -85,7 +85,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeleteResourceResponse res = sdk.resource.deleteResource("quas");
+            DeleteResourceResponse res = sdk.resource.deleteResource("nesciunt");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -132,7 +132,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetResourceResponse res = sdk.resource.getResource("eveniet");
+            GetResourceResponse res = sdk.resource.getResource("expedita");
 
             if (res.exampleResource != null) {
                 // handle response
@@ -179,7 +179,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UpdateResourceResponse res = sdk.resource.updateResource("impedit");
+            UpdateResourceResponse res = sdk.resource.updateResource("eum");
 
             if (res.exampleResource != null) {
                 // handle response

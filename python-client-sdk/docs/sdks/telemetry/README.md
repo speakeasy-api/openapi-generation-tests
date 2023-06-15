@@ -26,7 +26,7 @@ s = sdk.SDK(
 )
 
 
-res = s.telemetry.telemetry_speakeasy_user_agent_get('fugit')
+res = s.telemetry.telemetry_speakeasy_user_agent_get('fugiat')
 
 if res.res is not None:
     # handle response

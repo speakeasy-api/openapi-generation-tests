@@ -5,11 +5,8 @@
 package org.openapis.openapi;
 
 import java.net.http.HttpResponse;
-import java.time.LocalDate;
-import java.time.OffsetDateTime;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
-import org.openapis.openapi.utils.SerializedBody;
 
 /**
  * Endpoints for testing error responses.
@@ -88,42 +85,6 @@ public class Errors {
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 300 || httpRes.statusCode() == 400 || httpRes.statusCode() == 500) {
-        }
-
-        return res;
-    }
-
-    public org.openapis.openapi.models.operations.StatusPostRetriesResponse statusPostRetries(Long statusCode) throws Exception {
-        return this.statusPostRetries(statusCode, null);
-    }
-
-    public org.openapis.openapi.models.operations.StatusPostRetriesResponse statusPostRetries(Long statusCode, org.openapis.openapi.models.shared.SimpleObject simpleObject) throws Exception {
-        org.openapis.openapi.models.operations.StatusPostRetriesRequest request = new org.openapis.openapi.models.operations.StatusPostRetriesRequest(statusCode);
-        request.simpleObject=simpleObject;
-        
-        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.StatusPostRetriesRequest.class, baseUrl, "/status/{statusCode}", request, this.sdkConfiguration.globals);
-        
-        HTTPRequest req = new HTTPRequest();
-        req.setMethod("POST");
-        req.setURL(url);
-        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "simpleObject", "json");
-        req.setBody(serializedRequestBody);
-
-        req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
-        
-        HTTPClient client = this.sdkConfiguration.securityClient;
-        
-        HttpResponse<byte[]> httpRes = client.send(req);
-
-        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
-
-        org.openapis.openapi.models.operations.StatusPostRetriesResponse res = new org.openapis.openapi.models.operations.StatusPostRetriesResponse(contentType, httpRes.statusCode()) {{
-        }};
-        res.rawResponse = httpRes;
-        
-        if (httpRes.statusCode() == 200 || httpRes.statusCode() == 204 || httpRes.statusCode() == 300 || httpRes.statusCode() == 400 || httpRes.statusCode() == 500) {
         }
 
         return res;

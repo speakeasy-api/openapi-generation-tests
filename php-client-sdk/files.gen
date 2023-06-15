@@ -2,6 +2,7 @@ src/SDKConfiguration.php
 src/Auth.php
 src/AuthNew.php
 src/Errors.php
+src/First.php
 src/Flattening.php
 src/Generation.php
 src/Globals.php
@@ -10,6 +11,8 @@ src/Parameters.php
 src/RequestBodies.php
 src/Resource.php
 src/ResponseBodies.php
+src/Retries.php
+src/Second.php
 src/Servers.php
 src/Telemetry.php
 src/Unions.php
@@ -89,8 +92,7 @@ src/Models/Operations/OpenIdConnectAuthNewResponse.php
 src/Models/Operations/ConnectionErrorGetResponse.php
 src/Models/Operations/StatusGetRequest.php
 src/Models/Operations/StatusGetResponse.php
-src/Models/Operations/StatusPostRetriesRequest.php
-src/Models/Operations/StatusPostRetriesResponse.php
+src/Models/Operations/GroupFirstGetResponse.php
 src/Models/Operations/ComponentBodyAndParamConflictRequest.php
 src/Models/Operations/ComponentBodyAndParamConflictRes.php
 src/Models/Operations/ComponentBodyAndParamConflictResponse.php
@@ -113,10 +115,13 @@ src/Models/Operations/InlineBodyAndParamNoConflictResponse.php
 src/Models/Operations/TypeFromAnchor.php
 src/Models/Operations/AnchorTypesGetResponse.php
 src/Models/Operations/CircularReferenceGetResponse.php
+src/Models/Operations/DeprecatedInSchemaWithCommentsGetResponse.php
 src/Models/Operations/DeprecatedNoCommentsGetRequest.php
 src/Models/Operations/DeprecatedNoCommentsGetResponse.php
 src/Models/Operations/DeprecatedWithCommentsGetRequest.php
 src/Models/Operations/DeprecatedWithCommentsGetResponse.php
+src/Models/Operations/EmptyObjectGetRequest.php
+src/Models/Operations/EmptyObjectGetResponse.php
 src/Models/Operations/EmptyResponseObjectWithCommentGet200ApplicationOctetStream.php
 src/Models/Operations/EmptyResponseObjectWithCommentGetResponse.php
 src/Models/Operations/GetGlobalNameOverride200ApplicationJSON.php
@@ -315,6 +320,10 @@ src/Models/Operations/UpdateResourceResponse.php
 src/Models/Operations/ResponseBodyBytesGetResponse.php
 src/Models/Operations/ResponseBodyStringGetResponse.php
 src/Models/Operations/ResponseBodyXmlGetResponse.php
+src/Models/Operations/RetriesGetRequest.php
+src/Models/Operations/RetriesGetRetries.php
+src/Models/Operations/RetriesGetResponse.php
+src/Models/Operations/GroupSecondGetResponse.php
 src/Models/Operations/SelectGlobalServerResponse.php
 src/Models/Operations/SelectServerWithIDResponse.php
 src/Models/Operations/ServerWithTemplatesResponse.php
@@ -348,6 +357,9 @@ src/Models/Shared/SimpleObjectIntEnum.php
 src/Models/Shared/SimpleObject.php
 src/Models/Shared/Enum.php
 src/Models/Shared/ValidCircularReferenceObject.php
+src/Models/Shared/ObjectWithDeprecatedFieldDeprecatedEnum.php
+src/Models/Shared/ObjectWithDeprecatedField.php
+src/Models/Shared/EmptyObjectParam.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshowSlides.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshow.php
 src/Models/Shared/HttpBinSimpleJsonObject.php
@@ -376,6 +388,7 @@ docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
 docs/sdks/errors/README.md
+docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
@@ -384,6 +397,8 @@ docs/sdks/parameters/README.md
 docs/sdks/requestbodies/README.md
 docs/sdks/resource/README.md
 docs/sdks/responsebodies/README.md
+docs/sdks/retries/README.md
+docs/sdks/second/README.md
 docs/sdks/servers/README.md
 docs/sdks/telemetry/README.md
 docs/sdks/unions/README.md
@@ -432,8 +447,7 @@ docs/models/operations/OpenIdConnectAuthNewResponse.md
 docs/models/operations/ConnectionErrorGetResponse.md
 docs/models/operations/StatusGetRequest.md
 docs/models/operations/StatusGetResponse.md
-docs/models/operations/StatusPostRetriesRequest.md
-docs/models/operations/StatusPostRetriesResponse.md
+docs/models/operations/GroupFirstGetResponse.md
 docs/models/operations/ComponentBodyAndParamConflictRequest.md
 docs/models/operations/ComponentBodyAndParamConflictRes.md
 docs/models/operations/ComponentBodyAndParamConflictResponse.md
@@ -456,10 +470,13 @@ docs/models/operations/InlineBodyAndParamNoConflictResponse.md
 docs/models/operations/TypeFromAnchor.md
 docs/models/operations/AnchorTypesGetResponse.md
 docs/models/operations/CircularReferenceGetResponse.md
+docs/models/operations/DeprecatedInSchemaWithCommentsGetResponse.md
 docs/models/operations/DeprecatedNoCommentsGetRequest.md
 docs/models/operations/DeprecatedNoCommentsGetResponse.md
 docs/models/operations/DeprecatedWithCommentsGetRequest.md
 docs/models/operations/DeprecatedWithCommentsGetResponse.md
+docs/models/operations/EmptyObjectGetRequest.md
+docs/models/operations/EmptyObjectGetResponse.md
 docs/models/operations/EmptyResponseObjectWithCommentGet200ApplicationOctetStream.md
 docs/models/operations/EmptyResponseObjectWithCommentGetResponse.md
 docs/models/operations/GetGlobalNameOverride200ApplicationJSON.md
@@ -658,6 +675,10 @@ docs/models/operations/UpdateResourceResponse.md
 docs/models/operations/ResponseBodyBytesGetResponse.md
 docs/models/operations/ResponseBodyStringGetResponse.md
 docs/models/operations/ResponseBodyXmlGetResponse.md
+docs/models/operations/RetriesGetRequest.md
+docs/models/operations/RetriesGetRetries.md
+docs/models/operations/RetriesGetResponse.md
+docs/models/operations/GroupSecondGetResponse.md
 docs/models/operations/SelectGlobalServerResponse.md
 docs/models/operations/SelectServerWithIDResponse.md
 docs/models/operations/ServerWithTemplatesResponse.md
@@ -691,6 +712,9 @@ docs/models/shared/SimpleObjectIntEnum.md
 docs/models/shared/SimpleObject.md
 docs/models/shared/Enum.md
 docs/models/shared/ValidCircularReferenceObject.md
+docs/models/shared/ObjectWithDeprecatedFieldDeprecatedEnum.md
+docs/models/shared/ObjectWithDeprecatedField.md
+docs/models/shared/EmptyObjectParam.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshow.md
 docs/models/shared/HttpBinSimpleJsonObject.md

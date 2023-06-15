@@ -1,6 +1,7 @@
 lib/sdk/auth.rb
 lib/sdk/authnew.rb
 lib/sdk/errors.rb
+lib/sdk/first.rb
 lib/sdk/flattening.rb
 lib/sdk/generation.rb
 lib/sdk/globals.rb
@@ -9,6 +10,8 @@ lib/sdk/parameters.rb
 lib/sdk/requestbodies.rb
 lib/sdk/resource.rb
 lib/sdk/responsebodies.rb
+lib/sdk/retries.rb
+lib/sdk/second.rb
 lib/sdk/servers.rb
 lib/sdk/telemetry.rb
 lib/sdk/unions.rb
@@ -39,7 +42,7 @@ lib/sdk/models/operations/oauth2authnew.rb
 lib/sdk/models/operations/openidconnectauthnew.rb
 lib/sdk/models/operations/connectionerrorget.rb
 lib/sdk/models/operations/statusget.rb
-lib/sdk/models/operations/statuspostretries.rb
+lib/sdk/models/operations/groupfirstget.rb
 lib/sdk/models/operations/componentbodyandparamconflict.rb
 lib/sdk/models/operations/componentbodyandparamnoconflict.rb
 lib/sdk/models/operations/conflictingparams.rb
@@ -47,8 +50,10 @@ lib/sdk/models/operations/inlinebodyandparamconflict.rb
 lib/sdk/models/operations/inlinebodyandparamnoconflict.rb
 lib/sdk/models/operations/anchortypesget.rb
 lib/sdk/models/operations/circularreferenceget.rb
+lib/sdk/models/operations/deprecatedinschemawithcommentsget.rb
 lib/sdk/models/operations/deprecatednocommentsget.rb
 lib/sdk/models/operations/deprecatedwithcommentsget.rb
+lib/sdk/models/operations/emptyobjectget.rb
 lib/sdk/models/operations/emptyresponseobjectwithcommentget.rb
 lib/sdk/models/operations/getglobalnameoverride.rb
 lib/sdk/models/operations/ignoredgenerationget.rb
@@ -122,6 +127,8 @@ lib/sdk/models/operations/updateresource.rb
 lib/sdk/models/operations/responsebodybytesget.rb
 lib/sdk/models/operations/responsebodystringget.rb
 lib/sdk/models/operations/responsebodyxmlget.rb
+lib/sdk/models/operations/retriesget.rb
+lib/sdk/models/operations/groupsecondget.rb
 lib/sdk/models/operations/selectglobalserver.rb
 lib/sdk/models/operations/selectserverwithid.rb
 lib/sdk/models/operations/serverwithtemplates.rb
@@ -141,6 +148,8 @@ lib/sdk/models/shared/security.rb
 lib/sdk/models/shared/simpleobject.rb
 lib/sdk/models/shared/enum.rb
 lib/sdk/models/shared/validcircularreferenceobject.rb
+lib/sdk/models/shared/objectwithdeprecatedfield.rb
+lib/sdk/models/shared/emptyobjectparam.rb
 lib/sdk/models/shared/httpbinsimplejsonobject.rb
 lib/sdk/models/shared/limitoffsetconfig.rb
 lib/sdk/models/shared/refqueryparamobjexploded.rb
@@ -160,6 +169,7 @@ docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
 docs/sdks/errors/README.md
+docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
@@ -168,6 +178,8 @@ docs/sdks/parameters/README.md
 docs/sdks/requestbodies/README.md
 docs/sdks/resource/README.md
 docs/sdks/responsebodies/README.md
+docs/sdks/retries/README.md
+docs/sdks/second/README.md
 docs/sdks/servers/README.md
 docs/sdks/telemetry/README.md
 docs/sdks/unions/README.md
@@ -216,8 +228,7 @@ docs/models/operations/openidconnectauthnewresponse.md
 docs/models/operations/connectionerrorgetresponse.md
 docs/models/operations/statusgetrequest.md
 docs/models/operations/statusgetresponse.md
-docs/models/operations/statuspostretriesrequest.md
-docs/models/operations/statuspostretriesresponse.md
+docs/models/operations/groupfirstgetresponse.md
 docs/models/operations/componentbodyandparamconflictrequest.md
 docs/models/operations/componentbodyandparamconflictres.md
 docs/models/operations/componentbodyandparamconflictresponse.md
@@ -240,10 +251,13 @@ docs/models/operations/inlinebodyandparamnoconflictresponse.md
 docs/models/operations/typefromanchor.md
 docs/models/operations/anchortypesgetresponse.md
 docs/models/operations/circularreferencegetresponse.md
+docs/models/operations/deprecatedinschemawithcommentsgetresponse.md
 docs/models/operations/deprecatednocommentsgetrequest.md
 docs/models/operations/deprecatednocommentsgetresponse.md
 docs/models/operations/deprecatedwithcommentsgetrequest.md
 docs/models/operations/deprecatedwithcommentsgetresponse.md
+docs/models/operations/emptyobjectgetrequest.md
+docs/models/operations/emptyobjectgetresponse.md
 docs/models/operations/emptyresponseobjectwithcommentget200applicationoctetstream.md
 docs/models/operations/emptyresponseobjectwithcommentgetresponse.md
 docs/models/operations/getglobalnameoverride200applicationjson.md
@@ -442,6 +456,10 @@ docs/models/operations/updateresourceresponse.md
 docs/models/operations/responsebodybytesgetresponse.md
 docs/models/operations/responsebodystringgetresponse.md
 docs/models/operations/responsebodyxmlgetresponse.md
+docs/models/operations/retriesgetrequest.md
+docs/models/operations/retriesgetretries.md
+docs/models/operations/retriesgetresponse.md
+docs/models/operations/groupsecondgetresponse.md
 docs/models/operations/selectglobalserverresponse.md
 docs/models/operations/selectserverwithidresponse.md
 docs/models/operations/serverwithtemplatesresponse.md
@@ -475,6 +493,9 @@ docs/models/shared/simpleobjectintenum.md
 docs/models/shared/simpleobject.md
 docs/models/shared/enum.md
 docs/models/shared/validcircularreferenceobject.md
+docs/models/shared/objectwithdeprecatedfielddeprecatedenum.md
+docs/models/shared/objectwithdeprecatedfield.md
+docs/models/shared/emptyobjectparam.md
 docs/models/shared/httpbinsimplejsonobjectslideshowslides.md
 docs/models/shared/httpbinsimplejsonobjectslideshow.md
 docs/models/shared/httpbinsimplejsonobject.md

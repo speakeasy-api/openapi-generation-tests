@@ -17,7 +17,7 @@ module OpenApiSDK
   class SDK
     extend T::Sig
 
-    attr_accessor :auth, :auth_new, :errors, :flattening, :generation, :globals, :pagination, :parameters, :request_bodies, :resource, :response_bodies, :servers, :telemetry, :unions
+    attr_accessor :auth, :auth_new, :errors, :first, :flattening, :generation, :globals, :pagination, :parameters, :request_bodies, :resource, :response_bodies, :retries, :second, :servers, :telemetry, :unions
 
     attr_accessor :security, :language, :sdk_version, :gen_version
 
@@ -67,7 +67,7 @@ module OpenApiSDK
       @security = nil
       @server_url = SERVERS[0]
       @language = 'ruby'
-      @sdk_version = '1.9.0'
+      @sdk_version = '1.9.1'
       @gen_version = '2.40.1'
       @openapi_doc_version = '0.1.0'
       init_sdks
@@ -111,6 +111,16 @@ module OpenApiSDK
         @_globals
       )
       @errors = Errors.new(
+        self,
+        @client,
+        @server_url,
+        @language,
+        @sdk_version,
+        @gen_version,
+        @openapi_doc_version,
+        @_globals
+      )
+      @first = First.new(
         self,
         @client,
         @server_url,
@@ -191,6 +201,26 @@ module OpenApiSDK
         @_globals
       )
       @response_bodies = ResponseBodies.new(
+        self,
+        @client,
+        @server_url,
+        @language,
+        @sdk_version,
+        @gen_version,
+        @openapi_doc_version,
+        @_globals
+      )
+      @retries = Retries.new(
+        self,
+        @client,
+        @server_url,
+        @language,
+        @sdk_version,
+        @gen_version,
+        @openapi_doc_version,
+        @_globals
+      )
+      @second = Second.new(
         self,
         @client,
         @server_url,

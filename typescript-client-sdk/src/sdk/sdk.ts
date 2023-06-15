@@ -6,6 +6,7 @@ import * as utils from "../internal/utils";
 import { Auth } from "./auth";
 import { AuthNew } from "./authnew";
 import { Errors } from "./errors";
+import { First } from "./first";
 import { Flattening } from "./flattening";
 import { Generation } from "./generation";
 import { Globals } from "./globals";
@@ -16,6 +17,8 @@ import { ParametersT } from "./parameters";
 import { RequestBodies } from "./requestbodies";
 import { Resource } from "./resource";
 import { ResponseBodies } from "./responsebodies";
+import { Retries } from "./retries";
+import { Second } from "./second";
 import { Servers } from "./servers";
 import { Telemetry } from "./telemetry";
 import { Unions } from "./unions";
@@ -110,7 +113,7 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.9.0";
+    sdkVersion = "1.9.1";
     genVersion = "2.40.1";
     globals: any;
 
@@ -141,6 +144,7 @@ export class SDK {
      * Endpoints for testing error responses.
      */
     public errors: Errors;
+    public first: First;
     /**
      * Endpoints for testing flattening through request body and parameter combinations.
      */
@@ -170,6 +174,11 @@ export class SDK {
      * Endpoints for testing response bodies.
      */
     public responseBodies: ResponseBodies;
+    /**
+     * Endpoints for testing retries.
+     */
+    public retries: Retries;
+    public second: Second;
     /**
      * Endpoints for testing servers.
      */
@@ -238,6 +247,7 @@ export class SDK {
         this.auth = new Auth(this.sdkConfiguration);
         this.authNew = new AuthNew(this.sdkConfiguration);
         this.errors = new Errors(this.sdkConfiguration);
+        this.first = new First(this.sdkConfiguration);
         this.flattening = new Flattening(this.sdkConfiguration);
         this.generation = new Generation(this.sdkConfiguration);
         this.globals = new Globals(this.sdkConfiguration);
@@ -246,6 +256,8 @@ export class SDK {
         this.requestBodies = new RequestBodies(this.sdkConfiguration);
         this.resource = new Resource(this.sdkConfiguration);
         this.responseBodies = new ResponseBodies(this.sdkConfiguration);
+        this.retries = new Retries(this.sdkConfiguration);
+        this.second = new Second(this.sdkConfiguration);
         this.servers = new Servers(this.sdkConfiguration);
         this.telemetry = new Telemetry(this.sdkConfiguration);
         this.unions = new Unions(this.sdkConfiguration);

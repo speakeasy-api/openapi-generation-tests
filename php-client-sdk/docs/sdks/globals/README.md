@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalPathParameterGet(596656);
+    $response = $sdk->globals->globalPathParameterGet(944120);
 
     if ($response->res !== null) {
         // handle response
@@ -71,7 +71,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalsQueryParameterGet('voluptatem');
+    $response = $sdk->globals->globalsQueryParameterGet('recusandae');
 
     if ($response->res !== null) {
         // handle response

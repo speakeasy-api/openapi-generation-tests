@@ -31,9 +31,9 @@ s = sdk.SDK(
 
 
 res = s.flattening.component_body_and_param_conflict(shared.SimpleObject(
-    any='amet',
-    bigint=643990,
-    bigint_str='nisi',
+    any='provident',
+    bigint=725255,
+    bigint_str='id',
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
@@ -49,7 +49,7 @@ res = s.flattening.component_body_and_param_conflict(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), 'omnis')
+), 'sapiente')
 
 if res.res is not None:
     # handle response
@@ -86,10 +86,10 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict('molestiae', shared.SimpleObject(
-    any='perferendis',
-    bigint=470132,
-    bigint_str='magnam',
+res = s.flattening.component_body_and_param_no_conflict('amet', shared.SimpleObject(
+    any='deserunt',
+    bigint=394869,
+    bigint_str='vel',
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
@@ -98,7 +98,7 @@ res = s.flattening.component_body_and_param_no_conflict('molestiae', shared.Simp
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
+    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
     int_enum=shared.SimpleObjectIntEnum.SECOND,
     int_opt_null=999999,
     num=1.1,
@@ -141,7 +141,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.conflicting_params('labore', 'labore')
+res = s.flattening.conflicting_params('molestiae', 'perferendis')
 
 if res.res is not None:
     # handle response
@@ -178,8 +178,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_conflict(operations.InlineBodyAndParamConflictRequestBody(
-    str_='suscipit',
-), 'natus')
+    str_='nihil',
+), 'magnam')
 
 if res.res is not None:
     # handle response
@@ -216,8 +216,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_no_conflict(operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='nobis',
-), 'eum')
+    body_str='distinctio',
+), 'id')
 
 if res.res is not None:
     # handle response

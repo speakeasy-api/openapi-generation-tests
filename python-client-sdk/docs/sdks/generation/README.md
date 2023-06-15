@@ -8,8 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchor_types_get](#anchor_types_get)
 * [circular_reference_get](#circular_reference_get)
+* [deprecated_in_schema_with_comments_get](#deprecated_in_schema_with_comments_get)
 * [~~deprecated_no_comments_get~~](#deprecated_no_comments_get) - :warning: **Deprecated**
 * [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
+* [empty_object_get](#empty_object_get)
 * [empty_response_object_with_comment_get](#empty_response_object_with_comment_get)
 * [global_name_overridden](#global_name_overridden)
 * [ignored_generation_get](#ignored_generation_get)
@@ -76,6 +78,45 @@ if res.valid_circular_reference_object is not None:
 **[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)**
 
 
+## deprecated_in_schema_with_comments_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.ObjectWithDeprecatedField(
+    deprecated_field='labore',
+    new_field='labore',
+)
+
+res = s.generation.deprecated_in_schema_with_comments_get(req)
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [shared.ObjectWithDeprecatedField](../../models/shared/objectwithdeprecatedfield.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+
+
+### Response
+
+**[operations.DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/deprecatedinschemawithcommentsgetresponse.md)**
+
+
 ## ~~deprecated_no_comments_get~~
 
 > :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
@@ -95,7 +136,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_no_comments_get('vero')
+res = s.generation.deprecated_no_comments_get('suscipit')
 
 if res.status_code == 200:
     # handle response
@@ -134,7 +175,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_with_comments_get('aspernatur', 'architecto')
+res = s.generation.deprecated_with_comments_get('natus', 'nobis')
 
 if res.status_code == 200:
     # handle response
@@ -151,6 +192,41 @@ if res.status_code == 200:
 ### Response
 
 **[operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md)**
+
+
+## empty_object_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.empty_object_get(shared.EmptyObjectParam())
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `empty_object`                                                     | [shared.EmptyObjectParam](../../models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                 | N/A                                                                |
+
+
+### Response
+
+**[operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md)**
 
 
 ## empty_response_object_with_comment_get
@@ -258,9 +334,9 @@ s = sdk.SDK(
 
 
 res = s.generation.ignores_post(operations.IgnoresPostApplicationJSON(
-    callback_url='http://brisk-mobile.info',
-    test_prop='provident',
-), 'quos')
+    callback_url='http://ugly-cash.com',
+    test_prop='magnam',
+), 'et')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
@@ -332,10 +408,10 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.typed_parameter_generation_get(574325, dateutil.parser.parse('2022-05-07').date(), operations.TypedParameterGenerationGetObj(
+res = s.generation.typed_parameter_generation_get(569965, dateutil.parser.parse('2022-05-30').date(), operations.TypedParameterGenerationGetObj(
     bool=False,
-    num=9689.62,
-    str_='mollitia',
+    num=5518.16,
+    str_='sint',
 ))
 
 if res.status_code == 200:
@@ -377,17 +453,17 @@ s = sdk.SDK(
 
 req = operations.UsageExamplePostRequest(
     request_body=operations.UsageExamplePostRequestBody(
-        email='Holden.Ernser36@gmail.com',
-        format_email='Hubert.Wyman80@gmail.com',
-        format_uri='https://rotating-identification.com',
-        format_uuid='1e5b7fd2-ed02-4892-9cdd-c692601fb576',
-        hostname='scared-atrium.org',
-        ipv4='93.249.4.219',
-        ipv6='30c5:fbb2:5870:5320:2c73:d5fe:9b90:c289',
+        email='Madaline.Wisozk@gmail.com',
+        format_email='Dallas36@yahoo.com',
+        format_uri='http://infinite-winery.org',
+        format_uuid='4c8b711e-5b7f-4d2e-9028-921cddc69260',
+        hostname='big-willingness.net',
+        ipv4='95.116.107.184',
+        ipv6='0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b',
         simple_object=shared.SimpleObject(
-            any='eaque',
-            bigint=577229,
-            bigint_str='rerum',
+            any='perspiciatis',
+            bigint=31838,
+            bigint_str='porro',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -397,16 +473,16 @@ req = operations.UsageExamplePostRequest(
             int=999999,
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
             str_='example',
             str_opt='optional example',
         ),
-        unknown='earum',
-        uri='http://peaceful-popularity.name',
-        uuid='d9cbf486-3332-43f9-b77f-3a4100674ebf',
+        unknown='error',
+        uri='http://noxious-pronunciation.biz',
+        uuid='fe49a8d9-cbf4-4863-b323-f9b77f3a4100',
     ),
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),

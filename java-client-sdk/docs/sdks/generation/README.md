@@ -8,8 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchorTypesGet](#anchortypesget)
 * [circularReferenceGet](#circularreferenceget)
+* [deprecatedInSchemaWithCommentsGet](#deprecatedinschemawithcommentsget)
 * [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyObjectGet](#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
 * [ignoredGenerationGet](#ignoredgenerationget)
@@ -98,6 +100,60 @@ public class Application {
 **[org.openapis.openapi.models.operations.CircularReferenceGetResponse](../../models/operations/CircularReferenceGetResponse.md)**
 
 
+## deprecatedInSchemaWithCommentsGet
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse;
+import org.openapis.openapi.models.shared.ObjectWithDeprecatedField;
+import org.openapis.openapi.models.shared.ObjectWithDeprecatedFieldDeprecatedEnum;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.shared.ObjectWithDeprecatedField req = new ObjectWithDeprecatedField() {{
+                deprecatedEnum = ObjectWithDeprecatedFieldDeprecatedEnum.C;
+                deprecatedField = "quibusdam";
+                newField = "sed";
+            }};            
+
+            DeprecatedInSchemaWithCommentsGetResponse res = sdk.generation.deprecatedInSchemaWithCommentsGet(req);
+
+            if (res.statusCode == 200) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                        | [org.openapis.openapi.models.shared.ObjectWithDeprecatedField](../../models/shared/ObjectWithDeprecatedField.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/DeprecatedInSchemaWithCommentsGetResponse.md)**
+
+
 ## ~~deprecatedNoCommentsGet~~
 
 > :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
@@ -123,7 +179,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedNoCommentsGetResponse res = sdk.generation.deprecatedNoCommentsGet("magni");
+            DeprecatedNoCommentsGetResponse res = sdk.generation.deprecatedNoCommentsGet("saepe");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -174,7 +230,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedWithCommentsGetResponse res = sdk.generation.deprecatedWithCommentsGet("sunt", "quo");
+            DeprecatedWithCommentsGetResponse res = sdk.generation.deprecatedWithCommentsGet("pariatur", "accusantium");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -197,6 +253,54 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse](../../models/operations/DeprecatedWithCommentsGetResponse.md)**
+
+
+## emptyObjectGet
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.EmptyObjectGetRequest;
+import org.openapis.openapi.models.operations.EmptyObjectGetResponse;
+import org.openapis.openapi.models.shared.EmptyObjectParam;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            EmptyObjectGetResponse res = sdk.generation.emptyObjectGet(new EmptyObjectParam() {{}});
+
+            if (res.statusCode == 200) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `emptyObject`                                                                                  | [org.openapis.openapi.models.shared.EmptyObjectParam](../../models/shared/EmptyObjectParam.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.EmptyObjectGetResponse](../../models/operations/EmptyObjectGetResponse.md)**
 
 
 ## emptyResponseObjectWithCommentGet
@@ -348,9 +452,9 @@ public class Application {
                 .build();
 
             IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostApplicationJSON() {{
-                callbackUrl = "https://treasured-simple.info";
-                testProp = "excepturi";
-            }}, "odit");
+                callbackUrl = "http://luminous-oregano.biz";
+                testProp = "sunt";
+            }}, "quo");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -447,10 +551,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(407183L, LocalDate.parse("2022-12-06"), new TypedParameterGenerationGetObj(false, 3732.91d, "voluptate") {{
+            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(848009L, LocalDate.parse("2020-07-30"), new TypedParameterGenerationGetObj(false, 1399.72d, "ea") {{
                 bool = false;
-                num = 9825.75d;
-                str = "quidem";
+                num = 4113.97d;
+                str = "excepturi";
             }});
 
             if (res.statusCode == 200) {
@@ -512,26 +616,26 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1d, 111111L, 1, "example 2") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1d, 111111L, 1, "example 1") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Ambrose_Streich@hotmail.com";
-                    formatEmail = "Russ76@gmail.com";
-                    formatUri = "http://wasteful-rectangle.net";
-                    formatUuid = "25870532-02c7-43d5-be9b-90c28909b3fe";
-                    hostname = "fantastic-option.net";
-                    ipv4 = "137.221.151.192";
-                    ipv6 = "bf48:6333:23f9:b77f:3a41:0067:4ebf:6928";
-                    simpleObject = new SimpleObject("sit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        bigint = 743835L;
-                        bigintStr = "dolorum";
+                    email = "Willow.Predovic@gmail.com";
+                    formatEmail = "Mireya.Beatty97@yahoo.com";
+                    formatUri = "http://threadbare-cupola.com";
+                    formatUuid = "c5fbb258-7053-4202-873d-5fe9b90c2890";
+                    hostname = "noxious-pronunciation.biz";
+                    ipv4 = "254.239.68.157";
+                    ipv6 = "a8d9:cbf4:8633:323f:9b77:f3a4:1006:74eb";
+                    simpleObject = new SimpleObject("voluptatibus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        bigint = 179603L;
+                        bigintStr = "atque";
                         boolOpt = true;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "iusto";
-                    uri = "http://ragged-man.name";
-                    uuid = "ebf737ae-4203-4ce5-a6a9-5d8a0d446ce2";
+                    unknown = "sit";
+                    uri = "https://best-respite.net";
+                    uuid = "77a89ebf-737a-4e42-83ce-5e6a95d8a0d4";
                 }};;
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            

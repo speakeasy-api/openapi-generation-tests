@@ -110,7 +110,10 @@ if res.usage_example_post_200_application_json_object is not None:
 
 * [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
 * [status_get](docs/sdks/errors/README.md#status_get)
-* [status_post_retries](docs/sdks/errors/README.md#status_post_retries)
+
+### [first](docs/sdks/first/README.md)
+
+* [get](docs/sdks/first/README.md#get)
 
 ### [flattening](docs/sdks/flattening/README.md)
 
@@ -124,8 +127,10 @@ if res.usage_example_post_200_application_json_object is not None:
 
 * [anchor_types_get](docs/sdks/generation/README.md#anchor_types_get)
 * [circular_reference_get](docs/sdks/generation/README.md#circular_reference_get)
+* [deprecated_in_schema_with_comments_get](docs/sdks/generation/README.md#deprecated_in_schema_with_comments_get)
 * [~~deprecated_no_comments_get~~](docs/sdks/generation/README.md#deprecated_no_comments_get) - :warning: **Deprecated**
 * [~~deprecated_with_comments_get~~](docs/sdks/generation/README.md#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
+* [empty_object_get](docs/sdks/generation/README.md#empty_object_get)
 * [empty_response_object_with_comment_get](docs/sdks/generation/README.md#empty_response_object_with_comment_get)
 * [global_name_overridden](docs/sdks/generation/README.md#global_name_overridden)
 * [ignored_generation_get](docs/sdks/generation/README.md#ignored_generation_get)
@@ -217,6 +222,14 @@ if res.usage_example_post_200_application_json_object is not None:
 * [response_body_bytes_get](docs/sdks/responsebodies/README.md#response_body_bytes_get)
 * [response_body_string_get](docs/sdks/responsebodies/README.md#response_body_string_get)
 * [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
+
+### [retries](docs/sdks/retries/README.md)
+
+* [retries_get](docs/sdks/retries/README.md#retries_get)
+
+### [second](docs/sdks/second/README.md)
+
+* [get](docs/sdks/second/README.md#get)
 
 ### [servers](docs/sdks/servers/README.md)
 

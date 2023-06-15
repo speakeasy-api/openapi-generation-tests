@@ -79,6 +79,40 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: Shared::ObjectWithDeprecatedField).returns(Utils::FieldAugmented) }
+    def deprecated_in_schema_with_comments_get(request)
+
+      base_url = @server_url
+      url = "#{base_url.delete_suffix('/')}/anything/deprecatedInSchemaWithComments"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+
+      r = @client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::DeprecatedInSchemaWithCommentsGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+      end
+      res
+    end
+
     sig { params(deprecated_parameter: T.nilable(String)).returns(Utils::FieldAugmented) }
     def deprecated_no_comments_get(deprecated_parameter = nil)
       # deprecated_no_comments_get
@@ -135,6 +169,39 @@ module OpenApiSDK
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
       res = Operations::DeprecatedWithCommentsGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+      end
+      res
+    end
+
+    sig { params(empty_object: Shared::EmptyObjectParam).returns(Utils::FieldAugmented) }
+    def empty_object_get(empty_object)
+
+      request = Operations::EmptyObjectGetRequest.new(
+        empty_object: empty_object
+      )
+      base_url = @server_url
+      url = Utils.generate_url(
+        Operations::EmptyObjectGetRequest,
+        base_url,
+        '/anything/{emptyObject}',
+        request,
+        @globals
+      )
+      headers = {}
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+
+      r = @client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::EmptyObjectGetResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200

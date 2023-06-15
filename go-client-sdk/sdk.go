@@ -84,6 +84,7 @@ type SDK struct {
 	AuthNew *authNew
 	// Errors - Endpoints for testing error responses.
 	Errors *errors
+	First  *first
 	// Flattening - Endpoints for testing flattening through request body and parameter combinations.
 	Flattening *flattening
 	// Generation - Endpoints for purely testing valid generation behavior.
@@ -99,6 +100,9 @@ type SDK struct {
 	Resource      *resource
 	// ResponseBodies - Endpoints for testing response bodies.
 	ResponseBodies *responseBodies
+	// Retries - Endpoints for testing retries.
+	Retries *retries
+	Second  *second
 	// Servers - Endpoints for testing servers.
 	Servers *servers
 	// Telemetry - Endpoints for testing telemetry.
@@ -252,7 +256,7 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.9.0",
+			SDKVersion:        "1.9.1",
 			GenVersion:        "2.40.1",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
@@ -292,6 +296,8 @@ func New(opts ...SDKOption) *SDK {
 
 	sdk.Errors = newErrors(sdk.sdkConfiguration)
 
+	sdk.First = newFirst(sdk.sdkConfiguration)
+
 	sdk.Flattening = newFlattening(sdk.sdkConfiguration)
 
 	sdk.Generation = newGeneration(sdk.sdkConfiguration)
@@ -307,6 +313,10 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Resource = newResource(sdk.sdkConfiguration)
 
 	sdk.ResponseBodies = newResponseBodies(sdk.sdkConfiguration)
+
+	sdk.Retries = newRetries(sdk.sdkConfiguration)
+
+	sdk.Second = newSecond(sdk.sdkConfiguration)
 
 	sdk.Servers = newServers(sdk.sdkConfiguration)
 

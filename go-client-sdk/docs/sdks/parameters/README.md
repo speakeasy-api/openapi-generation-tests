@@ -51,13 +51,25 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Parameters.DeepObjectQueryParamsMap(ctx, map[string]string{
-        "distinctio": "asperiores",
-        "nihil": "ipsum",
-        "voluptate": "id",
-        "saepe": "eius",
+        "iusto": "voluptate",
+        "dolorum": "deleniti",
+        "omnis": "necessitatibus",
     }, map[string][]string{
-        "perferendis": []string{
-            "optio",
+        "asperiores": []string{
+            "ipsum",
+            "voluptate",
+        },
+        "id": []string{
+            "eius",
+            "aspernatur",
+            "perferendis",
+            "amet",
+        },
+        "optio": []string{
+            "ad",
+            "saepe",
+            "suscipit",
+            "deserunt",
         },
     })
     if err != nil {
@@ -112,9 +124,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Parameters.DeepObjectQueryParamsObject(ctx, shared.SimpleObject{
-        Any: "accusamus",
-        Bigint: big.NewInt(320017),
-        BigintStr: types.MustBigIntFromString("904425"),
+        Any: "provident",
+        Bigint: big.NewInt(324683),
+        BigintStr: types.MustBigIntFromString("831049"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
@@ -132,9 +144,7 @@ func main() {
         StrOpt: sdk.String("optional example"),
     }, &operations.DeepObjectQueryParamsObjectObjArrParam{
         Arr: []string{
-            "minima",
-            "repellendus",
-            "totam",
+            "at",
         },
     })
     if err != nil {
@@ -186,12 +196,13 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsArray(ctx, []string{
-        "alias",
-        "at",
-        "quaerat",
+        "tempora",
+        "vel",
     }, []int64{
-        425451,
-        798047,
+        885338,
+        185636,
+        679880,
+        952792,
     })
     if err != nil {
         log.Fatal(err)
@@ -242,8 +253,6 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsMap(ctx, map[string]string{
-        "qui": "dolorum",
-        "a": "esse",
         "harum": "iusto",
         "ipsum": "quisquam",
     }, map[string]int64{

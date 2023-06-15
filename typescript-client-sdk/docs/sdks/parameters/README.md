@@ -43,13 +43,25 @@ const sdk = new SDK({
 });
 
 sdk.parameters.deepObjectQueryParamsMap({
-  "distinctio": "asperiores",
-  "nihil": "ipsum",
-  "voluptate": "id",
-  "saepe": "eius",
+  "iusto": "voluptate",
+  "dolorum": "deleniti",
+  "omnis": "necessitatibus",
 }, {
-  "perferendis": [
-    "optio",
+  "asperiores": [
+    "ipsum",
+    "voluptate",
+  ],
+  "id": [
+    "eius",
+    "aspernatur",
+    "perferendis",
+    "amet",
+  ],
+  "optio": [
+    "ad",
+    "saepe",
+    "suscipit",
+    "deserunt",
   ],
 }).then((res: DeepObjectQueryParamsMapResponse) => {
   if (res.statusCode == 200) {
@@ -91,9 +103,9 @@ const sdk = new SDK({
 });
 
 sdk.parameters.deepObjectQueryParamsObject({
-  any: "accusamus",
-  bigint: 320017,
-  bigintStr: "saepe",
+  any: "provident",
+  bigint: 324683,
+  bigintStr: "repellendus",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -111,9 +123,7 @@ sdk.parameters.deepObjectQueryParamsObject({
   strOpt: "optional example",
 }, {
   arr: [
-    "minima",
-    "repellendus",
-    "totam",
+    "at",
   ],
 }).then((res: DeepObjectQueryParamsObjectResponse) => {
   if (res.statusCode == 200) {
@@ -153,12 +163,13 @@ const sdk = new SDK({
 });
 
 sdk.parameters.formQueryParamsArray([
-  "alias",
-  "at",
-  "quaerat",
+  "tempora",
+  "vel",
 ], [
-  425451,
-  798047,
+  885338,
+  185636,
+  679880,
+  952792,
 ]).then((res: FormQueryParamsArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -197,8 +208,6 @@ const sdk = new SDK({
 });
 
 sdk.parameters.formQueryParamsMap({
-  "qui": "dolorum",
-  "a": "esse",
   "harum": "iusto",
   "ipsum": "quisquam",
 }, {

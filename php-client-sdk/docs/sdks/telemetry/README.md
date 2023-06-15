@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('vel');
+    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('error');
 
     if ($response->res !== null) {
         // handle response

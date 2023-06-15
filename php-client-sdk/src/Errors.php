@@ -96,44 +96,4 @@ class Errors
 
         return $response;
     }
-	
-    /**
-     * statusPostRetries
-     * 
-     * @param int $statusCode
-     * @param ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject
-     * @return \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesResponse
-     */
-	public function statusPostRetries(
-        int $statusCode,
-        ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesResponse
-    {
-        $request = new \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest();
-        $request->statusCode = $statusCode;
-        $request->simpleObject = $simpleObject;
-        
-        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/status/{statusCode}', \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesRequest::class, $request, $this->sdkConfiguration->globals);
-        
-        $options = ['http_errors' => false];
-        $body = Utils\Utils::serializeRequestBody($request, "simpleObject", "json");
-        $options = array_merge_recursive($options, $body);
-        $options['headers']['Accept'] = '*/*';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
-        
-        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
-        
-        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
-
-        $response = new \OpenAPI\OpenAPI\Models\Operations\StatusPostRetriesResponse();
-        $response->statusCode = $httpResponse->getStatusCode();
-        $response->contentType = $contentType;
-        $response->rawResponse = $httpResponse;
-        
-        if ($httpResponse->getStatusCode() === 200 or $httpResponse->getStatusCode() === 204 or $httpResponse->getStatusCode() === 300 or $httpResponse->getStatusCode() === 400 or $httpResponse->getStatusCode() === 500) {
-        }
-
-        return $response;
-    }
 }

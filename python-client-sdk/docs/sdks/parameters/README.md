@@ -44,13 +44,25 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_map({
-    "distinctio": 'asperiores',
-    "nihil": 'ipsum',
-    "voluptate": 'id',
-    "saepe": 'eius',
+    "iusto": 'voluptate',
+    "dolorum": 'deleniti',
+    "omnis": 'necessitatibus',
 }, {
-    "perferendis": [
-        'optio',
+    "asperiores": [
+        'ipsum',
+        'voluptate',
+    ],
+    "id": [
+        'eius',
+        'aspernatur',
+        'perferendis',
+        'amet',
+    ],
+    "optio": [
+        'ad',
+        'saepe',
+        'suscipit',
+        'deserunt',
     ],
 })
 
@@ -90,9 +102,9 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_object(shared.SimpleObject(
-    any='accusamus',
-    bigint=320017,
-    bigint_str='saepe',
+    any='provident',
+    bigint=324683,
+    bigint_str='repellendus',
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
@@ -110,9 +122,7 @@ res = s.parameters.deep_object_query_params_object(shared.SimpleObject(
     str_opt='optional example',
 ), operations.DeepObjectQueryParamsObjectObjArrParam(
     arr=[
-        'minima',
-        'repellendus',
-        'totam',
+        'at',
     ],
 ))
 
@@ -151,12 +161,13 @@ s = sdk.SDK(
 
 
 res = s.parameters.form_query_params_array([
-    'alias',
-    'at',
-    'quaerat',
+    'tempora',
+    'vel',
 ], [
-    425451,
-    798047,
+    885338,
+    185636,
+    679880,
+    952792,
 ])
 
 if res.res is not None:
@@ -194,8 +205,6 @@ s = sdk.SDK(
 
 
 res = s.parameters.form_query_params_map({
-    "qui": 'dolorum',
-    "a": 'esse',
     "harum": 'iusto',
     "ipsum": 'quisquam',
 }, {

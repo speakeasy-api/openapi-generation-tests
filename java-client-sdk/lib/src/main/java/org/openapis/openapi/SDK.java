@@ -57,6 +57,7 @@ public class SDK {
      * Endpoints for testing error responses.
      */
     public Errors errors;
+    public First first;
     /**
      * Endpoints for testing flattening through request body and parameter combinations.
      */
@@ -86,6 +87,11 @@ public class SDK {
      * Endpoints for testing response bodies.
      */
     public ResponseBodies responseBodies;
+    /**
+     * Endpoints for testing retries.
+     */
+    public Retries retries;
+    public Second second;
     /**
      * Endpoints for testing servers.
      */
@@ -304,6 +310,8 @@ public class SDK {
 		
 		this.errors = new Errors(this.sdkConfiguration);
 		
+		this.first = new First(this.sdkConfiguration);
+		
 		this.flattening = new Flattening(this.sdkConfiguration);
 		
 		this.generation = new Generation(this.sdkConfiguration);
@@ -319,6 +327,10 @@ public class SDK {
 		this.resource = new Resource(this.sdkConfiguration);
 		
 		this.responseBodies = new ResponseBodies(this.sdkConfiguration);
+		
+		this.retries = new Retries(this.sdkConfiguration);
+		
+		this.second = new Second(this.sdkConfiguration);
 		
 		this.servers = new Servers(this.sdkConfiguration);
 		

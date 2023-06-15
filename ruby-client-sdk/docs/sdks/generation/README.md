@@ -8,8 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchor_types_get](#anchor_types_get)
 * [circular_reference_get](#circular_reference_get)
+* [deprecated_in_schema_with_comments_get](#deprecated_in_schema_with_comments_get)
 * [~~deprecated_no_comments_get~~](#deprecated_no_comments_get) - :warning: **Deprecated**
 * [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
+* [empty_object_get](#empty_object_get)
 * [empty_response_object_with_comment_get](#empty_response_object_with_comment_get)
 * [global_name_overridden](#global_name_overridden)
 * [ignored_generation_get](#ignored_generation_get)
@@ -68,6 +70,41 @@ end
 **[T.nilable(Operations::CircularReferenceGetResponse)](../../models/operations/circularreferencegetresponse.md)**
 
 
+## deprecated_in_schema_with_comments_get
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = Shared::ObjectWithDeprecatedField.new(
+,
+)
+    
+res = s.generation.deprecated_in_schema_with_comments_get(req)
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [Shared::ObjectWithDeprecatedField](../../models/shared/objectwithdeprecatedfield.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+
+### Response
+
+**[T.nilable(Operations::DeprecatedInSchemaWithCommentsGetResponse)](../../models/operations/deprecatedinschemawithcommentsgetresponse.md)**
+
+
 ## ~~deprecated_no_comments_get~~
 
 > :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
@@ -83,7 +120,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::DeprecatedNoCommentsGetRequest.new(
   query_params=Operations::DeprecatedNoCommentsGetRequest.new(
-    deprecated_parameter="atque",
+    deprecated_parameter="ipsa",
   ),
 )
     
@@ -124,8 +161,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::DeprecatedWithCommentsGetRequest.new(
   query_params=Operations::DeprecatedWithCommentsGetRequest.new(
-    deprecated_parameter="sit",
-    new_parameter="fugiat",
+    deprecated_parameter="ipsa",
+    new_parameter="iure",
   ),
 )
     
@@ -148,6 +185,43 @@ end
 ### Response
 
 **[T.nilable(Operations::DeprecatedWithCommentsGetResponse)](../../models/operations/deprecatedwithcommentsgetresponse.md)**
+
+
+## empty_object_get
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = Operations::EmptyObjectGetRequest.new(
+  path_params=Operations::EmptyObjectGetRequest.new(
+    empty_object=Shared::EmptyObjectParam.new(),
+  ),
+)
+    
+res = s.generation.empty_object_get(req)
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                           | Type                                                                | Required                                                            | Description                                                         |
+| ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| `empty_object`                                                      | [Shared::EmptyObjectParam](../../models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                  | N/A                                                                 |
+
+
+### Response
+
+**[T.nilable(Operations::EmptyObjectGetResponse)](../../models/operations/emptyobjectgetresponse.md)**
 
 
 ## empty_response_object_with_comment_get
@@ -239,14 +313,14 @@ s = OpenApiSDK::SDK.new
 req = Operations::IgnoresPostRequest.new(
   query_params=Operations::IgnoresPostRequest.new(
     request_body=Operations::IgnoresPostApplicationJSON.new(
-      callback_url="http://shimmering-populist.info",
-      test_prop="voluptate",
+      callback_url="http://frightening-synergy.net",
+      test_prop="voluptatibus",
     ),
-    test_param="dolorum",
+    test_param="voluptas",
   ),
   request_body=Operations::IgnoresPostApplicationJSON.new(
-    callback_url="https://overlooked-terminal.net",
-    test_prop="asperiores",
+    callback_url="https://definite-marines.com",
+    test_prop="fugiat",
   ),
 )
     
@@ -321,12 +395,12 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::TypedParameterGenerationGetRequest.new(
   query_params=Operations::TypedParameterGenerationGetRequest.new(
-    bigint=469497,
-    date=Date.parse("2022-07-18"),
+    bigint=67249,
+    date=Date.parse("2021-08-23"),
     obj=Operations::TypedParameterGenerationGetObj.new(
       bool=false,
-      num=6630.78,
-      str_="saepe",
+      num=4785.96,
+      str_="voluptate",
     ),
   ),
 )
@@ -376,17 +450,17 @@ req = Operations::UsageExamplePostRequest.new(
   ),
   query_params=Operations::UsageExamplePostRequest.new(
     request_body=Operations::UsageExamplePostRequestBody.new(
-      email="Brigitte75@gmail.com",
-      format_email="Emmanuelle_Turner@hotmail.com",
-      format_uri="https://gaseous-spank.name",
-      format_uuid="a0d446ce-2af7-4a73-8f3b-e453f870b326",
-      hostname="self-assured-gale.name",
-      ipv4="118.55.71.47",
-      ipv6="9cdb:1a84:22bb:679d:2322:715b:f0cb:b1e3",
+      email="Kaitlin_Mohr99@hotmail.com",
+      format_email="Curt_Klocko@yahoo.com",
+      format_uri="http://concrete-alien.biz",
+      format_uuid="ce5e6a95-d8a0-4d44-ace2-af7a73cf3be4",
+      hostname="frizzy-counter.org",
+      ipv4="132.120.6.182",
+      ipv6="326b:5a73:429c:db1a:8422:bb67:9d23:2271",
       simple_object=Shared::SimpleObject.new(
-        any="veritatis",
-        bigint=749255,
-        bigint_str="quos",
+        any="ullam",
+        bigint=722081,
+        bigint_str="hic",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
@@ -395,17 +469,17 @@ req = Operations::UsageExamplePostRequest.new(
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+        int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
         str_="example",
         str_opt="optional example",
       ),
-      unknown="aperiam",
-      uri="https://dopey-eardrum.biz",
-      uuid="3a1108e0-adcf-44b9-a187-9fce953f73ef",
+      unknown="soluta",
+      uri="https://brisk-threat.biz",
+      uuid="1b8b90f3-443a-4110-8e0a-dcf4b921879f",
     ),
     bool_parameter=false,
     date_parameter=Date.parse("2020-01-01"),
@@ -417,20 +491,20 @@ req = Operations::UsageExamplePostRequest.new(
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
-    str_parameter="example 2",
+    str_parameter="example 3",
   ),
   request_body=Operations::UsageExamplePostRequestBody.new(
-    email="Michel_Schmidt@hotmail.com",
-    format_email="Scotty84@hotmail.com",
-    format_uri="https://diligent-otter.net",
-    format_uuid="0f5d2cff-7c70-4a45-a26d-436813f16d9f",
-    hostname="gracious-vista.net",
-    ipv4="232.105.198.91",
-    ipv6="5614:6c3e:250f:b008:c42e:141a:ac36:6c8d",
+    email="Lenna96@hotmail.com",
+    format_email="Dario.Thiel94@yahoo.com",
+    format_uri="https://starchy-kazoo.name",
+    format_uuid="bd74dd39-c0f5-4d2c-bf7c-70a45626d436",
+    hostname="mad-caboose.biz",
+    ipv4="251.25.103.220",
+    ipv6="9f5f:ce6c:5561:46c3:e250:fb00:8c42:e141",
     simple_object=Shared::SimpleObject.new(
-      any="nulla",
-      bigint=379034,
-      bigint_str="libero",
+      any="dolorum",
+      bigint=672048,
+      bigint_str="placeat",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
@@ -440,16 +514,16 @@ req = Operations::UsageExamplePostRequest.new(
       int=999999,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
     ),
-    unknown="numquam",
-    uri="http://optimistic-avenue.info",
-    uuid="474778a7-bd46-46d2-8c10-ab3cdca42519",
+    unknown="autem",
+    uri="https://natural-sovereignty.org",
+    uuid="6b144290-7474-4778-a7bd-466d28c10ab3",
   ),
 )
     

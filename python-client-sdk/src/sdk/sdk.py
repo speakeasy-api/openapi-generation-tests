@@ -4,6 +4,7 @@ import requests as requests_http
 from .auth import Auth
 from .authnew import AuthNew
 from .errors import Errors
+from .first import First
 from .flattening import Flattening
 from .generation import Generation
 from .globals import Globals
@@ -12,7 +13,9 @@ from .parameters import Parameters
 from .requestbodies import RequestBodies
 from .resource import Resource
 from .responsebodies import ResponseBodies
+from .retries import Retries
 from .sdkconfiguration import SDKConfiguration, ServerSomething
+from .second import Second
 from .servers import Servers
 from .telemetry import Telemetry
 from .unions import Unions
@@ -32,6 +35,7 @@ class SDK:
     r"""Endpoints for testing authentication."""
     errors: Errors
     r"""Endpoints for testing error responses."""
+    first: First
     flattening: Flattening
     r"""Endpoints for testing flattening through request body and parameter combinations."""
     generation: Generation
@@ -47,6 +51,9 @@ class SDK:
     resource: Resource
     response_bodies: ResponseBodies
     r"""Endpoints for testing response bodies."""
+    retries: Retries
+    r"""Endpoints for testing retries."""
+    second: Second
     servers: Servers
     r"""Endpoints for testing servers."""
     telemetry: Telemetry
@@ -130,6 +137,7 @@ class SDK:
         self.auth = Auth(self.sdk_configuration)
         self.auth_new = AuthNew(self.sdk_configuration)
         self.errors = Errors(self.sdk_configuration)
+        self.first = First(self.sdk_configuration)
         self.flattening = Flattening(self.sdk_configuration)
         self.generation = Generation(self.sdk_configuration)
         self.globals = Globals(self.sdk_configuration)
@@ -138,6 +146,8 @@ class SDK:
         self.request_bodies = RequestBodies(self.sdk_configuration)
         self.resource = Resource(self.sdk_configuration)
         self.response_bodies = ResponseBodies(self.sdk_configuration)
+        self.retries = Retries(self.sdk_configuration)
+        self.second = Second(self.sdk_configuration)
         self.servers = Servers(self.sdk_configuration)
         self.telemetry = Telemetry(self.sdk_configuration)
         self.unions = Unions(self.sdk_configuration)

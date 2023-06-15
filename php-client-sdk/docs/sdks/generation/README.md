@@ -8,8 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchorTypesGet](#anchortypesget)
 * [circularReferenceGet](#circularreferenceget)
+* [deprecatedInSchemaWithCommentsGet](#deprecatedinschemawithcommentsget)
 * [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - deprecatedNoCommentsGet :warning: **Deprecated**
 * [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [emptyObjectGet](#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
 * [ignoredGenerationGet](#ignoredgenerationget)
@@ -84,6 +86,51 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse](../../models/operations/CircularReferenceGetResponse.md)**
 
 
+## deprecatedInSchemaWithCommentsGet
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField;
+use \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedFieldDeprecatedEnum;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = new ObjectWithDeprecatedField();
+    $request->deprecatedField = 'aliquid';
+    $request->newField = 'provident';
+
+    $response = $sdk->generation->deprecatedInSchemaWithCommentsGet($request);
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField](../../models/shared/ObjectWithDeprecatedField.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/DeprecatedInSchemaWithCommentsGetResponse.md)**
+
+
 ## ~~deprecatedNoCommentsGet~~
 
 deprecatedNoCommentsGet
@@ -108,7 +155,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedNoCommentsGet('debitis');
+    $response = $sdk->generation->deprecatedNoCommentsGet('necessitatibus');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -154,7 +201,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedWithCommentsGet('a', 'dolorum');
+    $response = $sdk->generation->deprecatedWithCommentsGet('sint', 'officia');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -175,6 +222,49 @@ try {
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse](../../models/operations/DeprecatedWithCommentsGetResponse.md)**
+
+
+## emptyObjectGet
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetRequest;
+use \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $emptyObject = new EmptyObjectParam();
+
+    $response = $sdk->generation->emptyObjectGet($emptyObject);
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                  | Type                                                                                       | Required                                                                                   | Description                                                                                |
+| ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| `emptyObject`                                                                              | [\OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam](../../models/shared/EmptyObjectParam.md) | :heavy_check_mark:                                                                         | N/A                                                                                        |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse](../../models/operations/EmptyObjectGetResponse.md)**
 
 
 ## emptyResponseObjectWithCommentGet
@@ -296,10 +386,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'http://irritating-standardisation.org';
-    $requestBody->testProp = 'rerum';
+    $requestBody->callbackUrl = 'http://unimportant-venture.net';
+    $requestBody->testProp = 'in';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'dicta');
+    $response = $sdk->generation->ignoresPost($requestBody, 'in');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -385,10 +475,10 @@ $sdk = SDK::builder()
 try {
     $obj = new TypedParameterGenerationGetObj();
     $obj->bool = false;
-    $obj->num = 2974.37;
-    $obj->str = 'cumque';
+    $obj->num = 8464.09;
+    $obj->str = 'maiores';
 
-    $response = $sdk->generation->typedParameterGenerationGet(813798, DateTime::createFromFormat('Y-m-d', '2022-08-09'), $obj);
+    $response = $sdk->generation->typedParameterGenerationGet(699479, DateTime::createFromFormat('Y-m-d', '2022-09-14'), $obj);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -445,17 +535,17 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Shaniya.Friesen@hotmail.com';
-    $request->requestBody->formatEmail = 'Virgil_Pouros@hotmail.com';
-    $request->requestBody->formatUri = 'https://lost-mailman.org';
-    $request->requestBody->formatUuid = '3a669970-74ba-4446-9b6e-2141959890af';
-    $request->requestBody->hostname = 'private-examiner.info';
-    $request->requestBody->ipv4 = '56.229.36.94';
-    $request->requestBody->ipv6 = '16fe:4c8b:711e:5b7f:d2ed:0289:21cd:dc69';
+    $request->requestBody->email = 'Raquel_Jenkins@hotmail.com';
+    $request->requestBody->formatEmail = 'Delphine88@hotmail.com';
+    $request->requestBody->formatUri = 'https://repentant-nectar.net';
+    $request->requestBody->formatUuid = 'a88f3a66-9970-474b-a446-9b6e21419598';
+    $request->requestBody->hostname = 'noted-antling.name';
+    $request->requestBody->ipv4 = '248.166.82.110';
+    $request->requestBody->ipv6 = '3e25:16fe:4c8b:711e:5b7f:d2ed:0289:21cd';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'odit';
-    $request->requestBody->simpleObject->bigint = 407183;
-    $request->requestBody->simpleObject->bigintStr = 'accusantium';
+    $request->requestBody->simpleObject->any = 'pariatur';
+    $request->requestBody->simpleObject->bigint = 807319;
+    $request->requestBody->simpleObject->bigintStr = 'ea';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
@@ -464,16 +554,16 @@ try {
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Third;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::First;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'quidem';
-    $request->requestBody->uri = 'http://jealous-hearing.net';
-    $request->requestBody->uuid = '0d5f0d30-c5fb-4b25-8705-3202c73d5fe9';
+    $request->requestBody->unknown = 'ea';
+    $request->requestBody->uri = 'http://big-willingness.net';
+    $request->requestBody->uuid = '576b0d5f-0d30-4c5f-bb25-87053202c73d';
     $request->boolParameter = false;
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
@@ -484,7 +574,7 @@ try {
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example 3';
+    $request->strParameter = 'example 2';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';

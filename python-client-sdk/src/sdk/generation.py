@@ -60,6 +60,30 @@ class Generation:
         return res
 
     
+    def deprecated_in_schema_with_comments_get(self, request: shared.ObjectWithDeprecatedField) -> operations.DeprecatedInSchemaWithCommentsGetResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/deprecatedInSchemaWithComments'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = '*/*'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DeprecatedInSchemaWithCommentsGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+
+        return res
+
+    
     def deprecated_no_comments_get(self, deprecated_parameter: Optional[str] = None) -> operations.DeprecatedNoCommentsGetResponse:
         r"""Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible"""
         request = operations.DeprecatedNoCommentsGetRequest(
@@ -109,6 +133,29 @@ class Generation:
         content_type = http_res.headers.get('Content-Type')
 
         res = operations.DeprecatedWithCommentsGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+
+        return res
+
+    
+    def empty_object_get(self, empty_object: shared.EmptyObjectParam) -> operations.EmptyObjectGetResponse:
+        request = operations.EmptyObjectGetRequest(
+            empty_object=empty_object,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.EmptyObjectGetRequest, base_url, '/anything/{emptyObject}', request, self.sdk_configuration.globals)
+        headers = {}
+        headers['Accept'] = '*/*'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('GET', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.EmptyObjectGetResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
         
 
         return res

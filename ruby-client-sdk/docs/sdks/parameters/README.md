@@ -40,12 +40,21 @@ s = OpenApiSDK::SDK.new
 req = Operations::DeepObjectQueryParamsMapRequest.new(
   query_params=Operations::DeepObjectQueryParamsMapRequest.new(
     map_param=.new{
-      "dignissimos": "inventore",
-      "nihil": "totam",
-      "accusamus": "aliquam",
-      "odio": "occaecati",
+      "ipsam": "aspernatur",
+      "sequi": "quo",
+      "esse": "recusandae",
+      "aperiam": "distinctio",
     },
     map_arr_param=.new{
+      "dignissimos": .new[
+        "nihil",
+      ],
+      "totam": .new[
+        "aliquam",
+        "odio",
+        "occaecati",
+        "commodi",
+      ],
       "sapiente": .new[
         "deserunt",
       ],

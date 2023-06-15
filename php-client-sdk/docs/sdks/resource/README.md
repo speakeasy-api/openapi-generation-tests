@@ -26,10 +26,10 @@ $sdk = SDK::builder()
 
 try {
     $request = new ExampleResource();
-    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-01-20T13:10:25.426Z');
-    $request->id = 'b95bc0ab-3c20-4c4f-b789-fd871f99dd2e';
-    $request->name = 'Carroll Bogan V';
-    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-03-16T03:25:53.830Z');
+    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-11-14T18:20:51.649Z');
+    $request->id = 'e9817ee1-7cbe-461e-ab7b-95bc0ab3c20c';
+    $request->name = 'Miranda Feest';
+    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2021-02-03T18:48:04.995Z');
 
     $response = $sdk->resource->createResource($request);
 
@@ -73,7 +73,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->deleteResource('tenetur');
+    $response = $sdk->resource->deleteResource('nulla');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -115,7 +115,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->getResource('quae');
+    $response = $sdk->resource->getResource('quas');
 
     if ($response->exampleResource !== null) {
         // handle response
@@ -157,7 +157,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->updateResource('earum');
+    $response = $sdk->resource->updateResource('esse');
 
     if ($response->exampleResource !== null) {
         // handle response

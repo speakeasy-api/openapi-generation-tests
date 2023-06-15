@@ -90,6 +90,43 @@ class Generation
     }
 	
     /**
+     * deprecatedInSchemaWithCommentsGet
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse
+     */
+	public function deprecatedInSchemaWithCommentsGet(
+        \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedInSchemaWithComments');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+        }
+
+        return $response;
+    }
+	
+    /**
      * deprecatedNoCommentsGet
      * 
      * @param ?string $deprecatedParameter
@@ -160,6 +197,41 @@ class Generation
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+        }
+
+        return $response;
+    }
+	
+    /**
+     * emptyObjectGet
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam $emptyObject
+     * @return \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse
+     */
+	public function emptyObjectGet(
+        \OpenAPI\OpenAPI\Models\Shared\EmptyObjectParam $emptyObject,
+    ): \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetRequest();
+        $request->emptyObject = $emptyObject;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/{emptyObject}', \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetRequest::class, $request, $this->sdkConfiguration->globals);
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\EmptyObjectGetResponse();
         $response->statusCode = $httpResponse->getStatusCode();
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;

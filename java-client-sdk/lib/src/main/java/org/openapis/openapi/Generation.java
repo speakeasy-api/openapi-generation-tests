@@ -91,6 +91,38 @@ public class Generation {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse deprecatedInSchemaWithCommentsGet(org.openapis.openapi.models.shared.ObjectWithDeprecatedField request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedInSchemaWithComments");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "*/*");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse res = new org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse(contentType, httpRes.statusCode()) {{
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+        }
+
+        return res;
+    }
+
     /**
      * @return the response from the API call
      * @throws Exception if the API call fails
@@ -204,6 +236,35 @@ public class Generation {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse res = new org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse(contentType, httpRes.statusCode()) {{
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.EmptyObjectGetResponse emptyObjectGet(org.openapis.openapi.models.shared.EmptyObjectParam emptyObject) throws Exception {
+        org.openapis.openapi.models.operations.EmptyObjectGetRequest request = new org.openapis.openapi.models.operations.EmptyObjectGetRequest(emptyObject);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.EmptyObjectGetRequest.class, baseUrl, "/anything/{emptyObject}", request, this.sdkConfiguration.globals);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "*/*");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.EmptyObjectGetResponse res = new org.openapis.openapi.models.operations.EmptyObjectGetResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         

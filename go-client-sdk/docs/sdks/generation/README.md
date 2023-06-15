@@ -8,8 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [AnchorTypesGet](#anchortypesget)
 * [CircularReferenceGet](#circularreferenceget)
+* [DeprecatedInSchemaWithCommentsGet](#deprecatedinschemawithcommentsget)
 * [~~DeprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
 * [~~DeprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `SimplePathParameterObjects` instead.
+* [EmptyObjectGet](#emptyobjectget)
 * [EmptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [GlobalNameOverridden](#globalnameoverridden)
 * [IgnoredGenerationGet](#ignoredgenerationget)
@@ -110,6 +112,57 @@ func main() {
 **[*operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md), error**
 
 
+## DeprecatedInSchemaWithCommentsGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.DeprecatedInSchemaWithCommentsGet(ctx, shared.ObjectWithDeprecatedField{
+        DeprecatedField: sdk.String("labore"),
+        NewField: sdk.String("labore"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
+| `request`                                                                            | [shared.ObjectWithDeprecatedField](../../models/shared/objectwithdeprecatedfield.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+
+
+### Response
+
+**[*operations.DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/deprecatedinschemawithcommentsgetresponse.md), error**
+
+
 ## ~~DeprecatedNoCommentsGet~~
 
 > :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
@@ -136,7 +189,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedNoCommentsGet(ctx, "vero")
+    res, err := s.Generation.DeprecatedNoCommentsGet(ctx, "suscipit")
     if err != nil {
         log.Fatal(err)
     }
@@ -188,7 +241,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, "aspernatur", "architecto")
+    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, "natus", "nobis")
     if err != nil {
         log.Fatal(err)
     }
@@ -211,6 +264,55 @@ func main() {
 ### Response
 
 **[*operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md), error**
+
+
+## EmptyObjectGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/operations"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.EmptyObjectGet(ctx, shared.EmptyObjectParam{})
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
+| ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
+| `ctx`                                                              | [context.Context](https://pkg.go.dev/context#Context)              | :heavy_check_mark:                                                 | The context to use for the request.                                |
+| `emptyObject`                                                      | [shared.EmptyObjectParam](../../models/shared/emptyobjectparam.md) | :heavy_check_mark:                                                 | N/A                                                                |
+
+
+### Response
+
+**[*operations.EmptyObjectGetResponse](../../models/operations/emptyobjectgetresponse.md), error**
 
 
 ## EmptyResponseObjectWithCommentGet
@@ -378,9 +480,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, &operations.IgnoresPostApplicationJSON{
-        CallbackURL: sdk.String("http://brisk-mobile.info"),
-        TestProp: sdk.String("provident"),
-    }, "quos")
+        CallbackURL: sdk.String("http://ugly-cash.com"),
+        TestProp: sdk.String("magnam"),
+    }, "et")
     if err != nil {
         log.Fatal(err)
     }
@@ -479,10 +581,10 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.TypedParameterGenerationGet(ctx, big.NewInt(574325), types.MustDateFromString("2022-05-07"), &operations.TypedParameterGenerationGetObj{
+    res, err := s.Generation.TypedParameterGenerationGet(ctx, big.NewInt(569965), types.MustDateFromString("2022-05-30"), &operations.TypedParameterGenerationGetObj{
         Bool: false,
-        Num: 9689.62,
-        Str: "mollitia",
+        Num: 5518.16,
+        Str: "sint",
     })
     if err != nil {
         log.Fatal(err)
@@ -540,17 +642,17 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Holden.Ernser36@gmail.com"),
-            FormatEmail: sdk.String("Hubert.Wyman80@gmail.com"),
-            FormatURI: sdk.String("https://rotating-identification.com"),
-            FormatUUID: sdk.String("1e5b7fd2-ed02-4892-9cdd-c692601fb576"),
-            Hostname: sdk.String("scared-atrium.org"),
-            Ipv4: sdk.String("93.249.4.219"),
-            Ipv6: sdk.String("30c5:fbb2:5870:5320:2c73:d5fe:9b90:c289"),
+            Email: sdk.String("Madaline.Wisozk@gmail.com"),
+            FormatEmail: sdk.String("Dallas36@yahoo.com"),
+            FormatURI: sdk.String("http://infinite-winery.org"),
+            FormatUUID: sdk.String("4c8b711e-5b7f-4d2e-9028-921cddc69260"),
+            Hostname: sdk.String("big-willingness.net"),
+            Ipv4: sdk.String("95.116.107.184"),
+            Ipv6: sdk.String("0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b"),
             SimpleObject: &shared.SimpleObject{
-                Any: "eaque",
-                Bigint: big.NewInt(577229),
-                BigintStr: types.MustBigIntFromString("699098"),
+                Any: "perspiciatis",
+                Bigint: big.NewInt(31838),
+                BigintStr: types.MustBigIntFromString("783645"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
@@ -560,16 +662,16 @@ func main() {
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            Unknown: sdk.String("earum"),
-            URI: sdk.String("http://peaceful-popularity.name"),
-            UUID: sdk.String("d9cbf486-3332-43f9-b77f-3a4100674ebf"),
+            Unknown: sdk.String("error"),
+            URI: sdk.String("http://noxious-pronunciation.biz"),
+            UUID: sdk.String("fe49a8d9-cbf4-4863-b323-f9b77f3a4100"),
         },
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),

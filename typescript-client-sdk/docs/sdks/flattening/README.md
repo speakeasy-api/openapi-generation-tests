@@ -31,9 +31,9 @@ const sdk = new SDK({
 });
 
 sdk.flattening.componentBodyAndParamConflict({
-  any: "amet",
-  bigint: 643990,
-  bigintStr: "nisi",
+  any: "provident",
+  bigint: 725255,
+  bigintStr: "id",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -49,7 +49,7 @@ sdk.flattening.componentBodyAndParamConflict({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, "omnis").then((res: ComponentBodyAndParamConflictResponse) => {
+}, "sapiente").then((res: ComponentBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -88,10 +88,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.flattening.componentBodyAndParamNoConflict("molestiae", {
-  any: "perferendis",
-  bigint: 470132,
-  bigintStr: "magnam",
+sdk.flattening.componentBodyAndParamNoConflict("amet", {
+  any: "deserunt",
+  bigint: 394869,
+  bigintStr: "vel",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -100,7 +100,7 @@ sdk.flattening.componentBodyAndParamNoConflict("molestiae", {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
   intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
@@ -144,7 +144,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.flattening.conflictingParams("labore", "labore").then((res: ConflictingParamsResponse) => {
+sdk.flattening.conflictingParams("molestiae", "perferendis").then((res: ConflictingParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -182,8 +182,8 @@ const sdk = new SDK({
 });
 
 sdk.flattening.inlineBodyAndParamConflict({
-  str: "suscipit",
-}, "natus").then((res: InlineBodyAndParamConflictResponse) => {
+  str: "nihil",
+}, "magnam").then((res: InlineBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -221,8 +221,8 @@ const sdk = new SDK({
 });
 
 sdk.flattening.inlineBodyAndParamNoConflict({
-  bodyStr: "nobis",
-}, "eum").then((res: InlineBodyAndParamNoConflictResponse) => {
+  bodyStr: "distinctio",
+}, "id").then((res: InlineBodyAndParamNoConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

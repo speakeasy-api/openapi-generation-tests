@@ -36,7 +36,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody(456130L);            
+            PaginationCursorBodyRequestBody req = new PaginationCursorBodyRequestBody(798047L);            
 
             PaginationCursorBodyResponse res = sdk.pagination.paginationCursorBody(req);
 
@@ -86,7 +86,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationCursorParamsResponse res = sdk.pagination.paginationCursorParams(687488L);
+            PaginationCursorParamsResponse res = sdk.pagination.paginationCursorParams(885338L);
 
             if (res.res != null) {
                 // handle response
@@ -135,9 +135,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig() {{
-                limit = 483409L;
-                offset = 215507L;
-                page = 788740L;
+                limit = 185636L;
+                offset = 679880L;
+                page = 952792L;
             }};            
 
             PaginationLimitOffsetOffsetBodyResponse res = sdk.pagination.paginationLimitOffsetOffsetBody(req);
@@ -188,7 +188,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetOffsetParamsResponse res = sdk.pagination.paginationLimitOffsetOffsetParams(947371L, 229442L);
+            PaginationLimitOffsetOffsetParamsResponse res = sdk.pagination.paginationLimitOffsetOffsetParams(456130L, 687488L);
 
             if (res.res != null) {
                 // handle response
@@ -238,9 +238,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.LimitOffsetConfig req = new LimitOffsetConfig() {{
-                limit = 730856L;
-                offset = 880298L;
-                page = 253941L;
+                limit = 483409L;
+                offset = 215507L;
+                page = 788740L;
             }};            
 
             PaginationLimitOffsetPageBodyResponse res = sdk.pagination.paginationLimitOffsetPageBody(req);
@@ -291,7 +291,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PaginationLimitOffsetPageParamsResponse res = sdk.pagination.paginationLimitOffsetPageParams(313692L);
+            PaginationLimitOffsetPageParamsResponse res = sdk.pagination.paginationLimitOffsetPageParams(947371L);
 
             if (res.res != null) {
                 // handle response
