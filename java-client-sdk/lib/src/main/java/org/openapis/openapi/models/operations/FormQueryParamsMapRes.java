@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * FormQueryParamsMapRes - OK
  */
+
 public class FormQueryParamsMapRes {
     @JsonProperty("args")
     public java.util.Map<String, String> args;

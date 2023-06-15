@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * WeaklyTypedOneOfPostRes - OK
  */
+
 public class WeaklyTypedOneOfPostRes {
     @JsonProperty("json")
     public Object json;

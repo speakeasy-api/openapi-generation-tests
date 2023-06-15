@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * TelemetrySpeakeasyUserAgentGetRes - OK
  */
+
 public class TelemetrySpeakeasyUserAgentGetRes {
     @JsonProperty("headers")
     public java.util.Map<String, String> headers;

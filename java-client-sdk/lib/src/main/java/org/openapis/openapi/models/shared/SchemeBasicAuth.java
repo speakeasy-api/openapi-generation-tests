@@ -7,6 +7,7 @@ package org.openapis.openapi.models.shared;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class SchemeBasicAuth {
     @SpeakeasyMetadata("security:name=password")
     public String password;

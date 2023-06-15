@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class SimplePathParameterMapsRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=mapParam")
     public java.util.Map<String, String> mapParam;

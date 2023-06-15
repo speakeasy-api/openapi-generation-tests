@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * UsageExamplePostRequestBody - A request body that contains fields with different formats for testing example generation
  */
+
 public class UsageExamplePostRequestBody {
     /**
      * A field called email that will have emails generated as examples

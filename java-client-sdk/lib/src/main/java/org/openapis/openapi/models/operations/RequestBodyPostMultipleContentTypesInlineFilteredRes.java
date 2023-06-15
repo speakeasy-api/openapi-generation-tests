@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPostMultipleContentTypesInlineFilteredRes - OK
  */
+
 public class RequestBodyPostMultipleContentTypesInlineFilteredRes {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")

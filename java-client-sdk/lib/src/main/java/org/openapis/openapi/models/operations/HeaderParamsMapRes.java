@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * HeaderParamsMapRes - OK
  */
+
 public class HeaderParamsMapRes {
     @JsonProperty("headers")
     public HeaderParamsMapResHeaders headers;

@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class ConflictingParamsRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=str")
     public String strPathParameter;

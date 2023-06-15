@@ -6,6 +6,7 @@ package org.openapis.openapi.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class TypedObject3 {
     @JsonProperty("type")
     public TypedObject3Type type;

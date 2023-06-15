@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class HeaderParamsPrimitiveResHeaders {
     @JsonProperty("X-Header-Boolean")
     public String xHeaderBoolean;

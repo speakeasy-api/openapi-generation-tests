@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class PaginationLimitOffsetOffsetParamsRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=limit")
     public Long limit;

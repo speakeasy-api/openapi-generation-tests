@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class HeaderParamsPrimitiveRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=X-Header-Boolean")
     public Boolean xHeaderBoolean;

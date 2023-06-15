@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * MixedQueryParamsRes - OK
  */
+
 public class MixedQueryParamsRes {
     @JsonProperty("args")
     public java.util.Map<String, String> args;

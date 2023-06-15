@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * GetGlobalNameOverride200ApplicationJSON - A successful response that contains the simpleObject sent in the request body
  */
+
 public class GetGlobalNameOverride200ApplicationJSON {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.

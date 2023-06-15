@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * MapObjValue - OK
  */
+
 public class MapObjValue {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")

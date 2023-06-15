@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class RequestBodyPostMultipleContentTypesSplitApplicationJSON {
     @JsonProperty("bool")
     public Boolean bool;

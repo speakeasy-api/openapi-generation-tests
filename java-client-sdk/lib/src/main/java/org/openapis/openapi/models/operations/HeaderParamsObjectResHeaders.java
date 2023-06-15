@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+
 public class HeaderParamsObjectResHeaders {
     @JsonProperty("X-Header-Obj")
     public String xHeaderObj;

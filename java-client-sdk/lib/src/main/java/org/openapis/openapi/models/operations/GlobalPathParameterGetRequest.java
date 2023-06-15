@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class GlobalPathParameterGetRequest {
     @SpeakeasyMetadata("pathParam:style=simple,explode=false,name=globalPathParam")
     public Long globalPathParam;

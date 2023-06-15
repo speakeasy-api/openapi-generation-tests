@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class DeepObject {
     @JsonProperty("any")
     @SpeakeasyMetadata("form:name=any,json multipartForm:name=any,json")

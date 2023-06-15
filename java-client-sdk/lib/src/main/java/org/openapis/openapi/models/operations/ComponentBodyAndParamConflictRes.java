@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * ComponentBodyAndParamConflictRes - OK
  */
+
 public class ComponentBodyAndParamConflictRes {
     @JsonProperty("args")
     public java.util.Map<String, String> args;

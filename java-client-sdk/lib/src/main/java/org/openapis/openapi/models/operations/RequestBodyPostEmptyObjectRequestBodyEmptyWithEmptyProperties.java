@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 
 
+
 public class RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties {
     public RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties(){}
 }

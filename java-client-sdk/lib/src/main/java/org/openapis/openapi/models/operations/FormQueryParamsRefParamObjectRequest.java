@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class FormQueryParamsRefParamObjectRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=false,name=refObjParam")
     public org.openapis.openapi.models.shared.RefQueryParamObj refObjParam;

@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * GlobalsQueryParameterGetRes - OK
  */
+
 public class GlobalsQueryParameterGetRes {
     @JsonProperty("args")
     public GlobalsQueryParameterGetResArgs args;

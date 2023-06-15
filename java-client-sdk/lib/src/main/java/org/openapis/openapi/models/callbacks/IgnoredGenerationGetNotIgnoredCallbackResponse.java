@@ -7,6 +7,7 @@ package org.openapis.openapi.models.callbacks;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.http.HttpResponse;
 
+
 public class IgnoredGenerationGetNotIgnoredCallbackResponse {
     
     public String contentType;

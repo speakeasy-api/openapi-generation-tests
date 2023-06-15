@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPostFormMapPrimitiveRes - OK
  */
+
 public class RequestBodyPostFormMapPrimitiveRes {
     @JsonProperty("form")
     public java.util.Map<String, String> form;

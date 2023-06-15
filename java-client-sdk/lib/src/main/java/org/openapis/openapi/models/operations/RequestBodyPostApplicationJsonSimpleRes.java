@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPostApplicationJsonSimpleRes - OK
  */
+
 public class RequestBodyPostApplicationJsonSimpleRes {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.

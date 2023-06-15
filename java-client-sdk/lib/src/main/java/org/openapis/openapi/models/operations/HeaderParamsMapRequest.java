@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class HeaderParamsMapRequest {
     @SpeakeasyMetadata("header:style=simple,explode=false,name=X-Header-Map")
     public java.util.Map<String, String> xHeaderMap;

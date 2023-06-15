@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * StronglyTypedOneOfPostRes - OK
  */
+
 public class StronglyTypedOneOfPostRes {
     @JsonProperty("json")
     public Object json;

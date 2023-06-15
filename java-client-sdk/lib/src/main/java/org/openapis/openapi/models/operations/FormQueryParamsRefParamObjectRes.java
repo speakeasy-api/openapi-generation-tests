@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * FormQueryParamsRefParamObjectRes - OK
  */
+
 public class FormQueryParamsRefParamObjectRes {
     @JsonProperty("args")
     public FormQueryParamsRefParamObjectResArgs args;

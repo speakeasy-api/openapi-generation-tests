@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class RequestBodyPutMultipartFileRequestBody {
     @SpeakeasyMetadata("multipartForm:file")
     public RequestBodyPutMultipartFileRequestBodyFile file;

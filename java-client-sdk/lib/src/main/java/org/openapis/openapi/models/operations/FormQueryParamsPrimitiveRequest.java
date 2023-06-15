@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class FormQueryParamsPrimitiveRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=boolParam")
     public Boolean boolParam;

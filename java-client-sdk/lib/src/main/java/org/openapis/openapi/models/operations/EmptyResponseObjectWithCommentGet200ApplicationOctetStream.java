@@ -9,6 +9,7 @@ package org.openapis.openapi.models.operations;
 /**
  * EmptyResponseObjectWithCommentGet200ApplicationOctetStream - OK
  */
+
 public class EmptyResponseObjectWithCommentGet200ApplicationOctetStream {
     public EmptyResponseObjectWithCommentGet200ApplicationOctetStream(){}
 }

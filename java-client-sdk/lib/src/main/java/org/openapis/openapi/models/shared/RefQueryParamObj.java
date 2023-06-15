@@ -10,6 +10,7 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 /**
  * RefQueryParamObj
  */
+
 public class RefQueryParamObj {
     @SpeakeasyMetadata("queryParam:name=bool")
     public Boolean bool;

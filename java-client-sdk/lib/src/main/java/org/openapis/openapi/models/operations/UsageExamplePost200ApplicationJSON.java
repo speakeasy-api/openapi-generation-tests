@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * UsageExamplePost200ApplicationJSON - A response body that contains the simpleObject sent in the request body
  */
+
 public class UsageExamplePost200ApplicationJSON {
     @JsonProperty("json")
     public UsageExamplePost200ApplicationJSONJSON json;

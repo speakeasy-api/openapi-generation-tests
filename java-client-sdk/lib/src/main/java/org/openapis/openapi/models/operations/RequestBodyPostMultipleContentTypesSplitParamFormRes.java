@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPostMultipleContentTypesSplitParamFormRes - OK
  */
+
 public class RequestBodyPostMultipleContentTypesSplitParamFormRes {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("args")

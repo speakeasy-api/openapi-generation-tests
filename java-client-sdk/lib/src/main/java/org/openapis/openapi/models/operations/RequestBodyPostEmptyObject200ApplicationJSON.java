@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPostEmptyObject200ApplicationJSON - OK
  */
+
 public class RequestBodyPostEmptyObject200ApplicationJSON {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("empty")

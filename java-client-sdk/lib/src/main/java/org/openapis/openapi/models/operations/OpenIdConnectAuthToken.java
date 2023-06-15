@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * OpenIdConnectAuthToken - Successful authentication.
  */
+
 public class OpenIdConnectAuthToken {
     @JsonProperty("authenticated")
     public Boolean authenticated;

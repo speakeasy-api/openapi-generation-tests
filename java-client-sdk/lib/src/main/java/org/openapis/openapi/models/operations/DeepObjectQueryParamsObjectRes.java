@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * DeepObjectQueryParamsObjectRes - OK
  */
+
 public class DeepObjectQueryParamsObjectRes {
     @JsonProperty("args")
     public DeepObjectQueryParamsObjectResArgs args;

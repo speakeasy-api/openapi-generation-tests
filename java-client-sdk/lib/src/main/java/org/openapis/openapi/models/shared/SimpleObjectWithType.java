@@ -19,6 +19,7 @@ import org.openapis.openapi.utils.DateTimeSerializer;
  * SimpleObjectWithType - A simple object that uses all our supported primitive types and enums and has optional properties.
  * https://docs.speakeasyapi.dev - A link to the external docs.
  */
+
 public class SimpleObjectWithType {
     /**
      * An any property.

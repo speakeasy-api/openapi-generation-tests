@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * BearerAuthToken - Successful authentication.
  */
+
 public class BearerAuthToken {
     @JsonProperty("authenticated")
     public Boolean authenticated;

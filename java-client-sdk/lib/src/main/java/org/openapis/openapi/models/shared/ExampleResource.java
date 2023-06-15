@@ -16,6 +16,7 @@ import org.openapis.openapi.utils.DateTimeSerializer;
 /**
  * ExampleResource - OK
  */
+
 public class ExampleResource {
     @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)

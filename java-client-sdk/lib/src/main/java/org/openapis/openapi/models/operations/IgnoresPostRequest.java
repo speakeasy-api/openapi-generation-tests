@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class IgnoresPostRequest {
     @SpeakeasyMetadata("request:mediaType=application/json")
     public IgnoresPostApplicationJSON requestBody;

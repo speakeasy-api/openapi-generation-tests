@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class MultipleOptionsWithSimpleSchemesAuthSecurity {
     @SpeakeasyMetadata("security:option=true")
     public MultipleOptionsWithSimpleSchemesAuthSecurityOption1 option1;

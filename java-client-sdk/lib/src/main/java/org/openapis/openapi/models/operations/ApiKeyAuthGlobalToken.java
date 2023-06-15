@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * ApiKeyAuthGlobalToken - Successful authentication.
  */
+
 public class ApiKeyAuthGlobalToken {
     @JsonProperty("authenticated")
     public Boolean authenticated;

@@ -20,6 +20,7 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
  * SimpleObject - A simple object that uses all our supported primitive types and enums and has optional properties.
  * https://docs.speakeasyapi.dev - A link to the external docs.
  */
+
 public class SimpleObject {
     /**
      * An any property.

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * ArrObjValue - OK
  */
+
 public class ArrObjValue {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")

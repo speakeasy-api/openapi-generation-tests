@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class FormQueryParamsMapRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=false,name=mapParam")
     public java.util.Map<String, String> mapParam;

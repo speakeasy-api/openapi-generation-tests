@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class UsageExamplePostRequest {
     /**
      * A request body that contains fields with different formats for testing example generation

@@ -9,6 +9,7 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 /**
  * DeepObjectQueryParamsObjectObjArrParam
  */
+
 public class DeepObjectQueryParamsObjectObjArrParam {
     @SpeakeasyMetadata("queryParam:name=arr")
     public String[] arr;

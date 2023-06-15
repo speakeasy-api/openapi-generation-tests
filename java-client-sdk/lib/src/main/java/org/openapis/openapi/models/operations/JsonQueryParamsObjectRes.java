@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * JsonQueryParamsObjectRes - OK
  */
+
 public class JsonQueryParamsObjectRes {
     @JsonProperty("args")
     public JsonQueryParamsObjectResArgs args;

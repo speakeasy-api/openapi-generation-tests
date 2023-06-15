@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPutMultipartFileRes - OK
  */
+
 public class RequestBodyPutMultipartFileRes {
     @JsonProperty("files")
     public java.util.Map<String, String> files;

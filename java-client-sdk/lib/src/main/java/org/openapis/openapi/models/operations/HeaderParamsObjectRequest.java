@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class HeaderParamsObjectRequest {
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.

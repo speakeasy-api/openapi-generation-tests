@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * SimplePathParameterObjectsRes - OK
  */
+
 public class SimplePathParameterObjectsRes {
     @JsonProperty("url")
     public String url;

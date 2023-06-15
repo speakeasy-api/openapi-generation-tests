@@ -10,6 +10,7 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 /**
  * TypedParameterGenerationGetObj
  */
+
 public class TypedParameterGenerationGetObj {
     @SpeakeasyMetadata("queryParam:name=bool")
     public Boolean bool;

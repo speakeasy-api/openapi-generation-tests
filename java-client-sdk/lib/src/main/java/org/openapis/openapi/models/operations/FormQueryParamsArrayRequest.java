@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class FormQueryParamsArrayRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=false,name=arrParam")
     public String[] arrParam;

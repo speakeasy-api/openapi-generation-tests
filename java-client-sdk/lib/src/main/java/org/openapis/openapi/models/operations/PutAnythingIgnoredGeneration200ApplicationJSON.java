@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * PutAnythingIgnoredGeneration200ApplicationJSON - OK
  */
+
 public class PutAnythingIgnoredGeneration200ApplicationJSON {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")

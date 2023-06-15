@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * PipeDelimitedQueryParamsArrayRes - OK
  */
+
 public class PipeDelimitedQueryParamsArrayRes {
     @JsonProperty("args")
     public PipeDelimitedQueryParamsArrayResArgs args;

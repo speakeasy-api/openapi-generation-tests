@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPutBytesRes - OK
  */
+
 public class RequestBodyPutBytesRes {
     @JsonProperty("data")
     public String data;

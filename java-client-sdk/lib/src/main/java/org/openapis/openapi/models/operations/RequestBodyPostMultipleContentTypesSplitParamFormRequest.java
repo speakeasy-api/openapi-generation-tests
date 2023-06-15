@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class RequestBodyPostMultipleContentTypesSplitParamFormRequest {
     @SpeakeasyMetadata("request:mediaType=application/x-www-form-urlencoded")
     public RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded requestBody;

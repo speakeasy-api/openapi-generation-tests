@@ -6,6 +6,7 @@ package org.openapis.openapi.models.operations;
 
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class DeprecatedNoCommentsGetRequest {
     /**
      * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible

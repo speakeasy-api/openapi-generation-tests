@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPostApplicationJsonDeepRes - OK
  */
+
 public class RequestBodyPostApplicationJsonDeepRes {
     @JsonInclude(Include.NON_ABSENT)
     @JsonProperty("json")

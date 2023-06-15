@@ -7,6 +7,7 @@ package org.openapis.openapi.models.operations;
 import java.time.LocalDate;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
+
 public class TypedParameterGenerationGetRequest {
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=bigint")
     public Long bigint;

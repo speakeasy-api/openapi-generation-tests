@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * RequestBodyPutMultipartSimpleRes - OK
  */
+
 public class RequestBodyPutMultipartSimpleRes {
     @JsonProperty("form")
     public RequestBodyPutMultipartSimpleResForm form;

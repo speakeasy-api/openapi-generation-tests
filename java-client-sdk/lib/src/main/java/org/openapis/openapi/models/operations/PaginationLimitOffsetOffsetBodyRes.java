@@ -9,6 +9,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 /**
  * PaginationLimitOffsetOffsetBodyRes - OK
  */
+
 public class PaginationLimitOffsetOffsetBodyRes {
     @JsonProperty("numPages")
     public Long numPages;
