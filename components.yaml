@@ -361,6 +361,20 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/validCircularReferenceObject"
+    objectWithDeprecatedField:
+      type: object
+      deprecated: true
+      properties:
+        deprecatedField:
+          type: string
+          deprecated: true
+          x-speakeasy-deprecation-replacement: newField
+        deprecatedEnum:
+          type: string
+          enum: [ "a", "b", "c" ]
+          deprecated: true
+        newField:
+          type: string
     limitOffsetConfig:
       type: object
       properties:
@@ -504,6 +518,13 @@ components:
               - numPages
               - resultArray
   parameters:
+    emptyObjectParam:
+      name: emptyObject
+      in: path
+      required: true
+      schema:
+        type: object
+        properties: {}
     strPathParam:
       name: strParam
       in: path

@@ -2292,6 +2292,16 @@ paths:
                 title: bytes
                 type: string
                 format: binary
+  /anything/{emptyObject}:
+    get:
+      operationId: emptyObjectGet
+      tags:
+        - generation
+      parameters:
+        - $ref: "components.yaml#/components/parameters/emptyObjectParam"
+      responses:
+        "200":
+          description: OK
   /anything/circularReference:
     get:
       operationId: circularReferenceGet
@@ -2837,6 +2847,20 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/deprecatedInSchemaWithComments:
+    post:
+      operationId: deprecatedInSchemaWithCommentsGet
+      tags:
+        - generation
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objectWithDeprecatedField"
+        required: true
+      responses:
+        "200":
+          description: OK
   /anything/typedParameterGeneration:
     get:
       operationId: typedParameterGenerationGet
@@ -3084,43 +3108,6 @@ paths:
           description: Bad Request
         "500":
           description: Internal Server Error
-    post:
-      operationId: statusPostRetries
-      tags:
-        - errors
-      parameters:
-        - name: statusCode
-          in: path
-          required: true
-          schema:
-            type: integer
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: "components.yaml#/components/schemas/simpleObject"
-      x-speakeasy-retries:
-        strategy: backoff
-        backoff:
-          initialInterval: 10 # 10 ms
-          maxInterval: 200 # 200 ms
-          maxElapsedTime: 1000 # 1 seconds
-          exponent: 1.5
-        statusCodes:
-          - 204
-          - 5XX
-        retryConnectionErrors: true
-      responses:
-        "200":
-          description: OK
-        "204":
-          description: No Content
-        "300":
-          description: Multiple Choices
-        "400":
-          description: Bad Request
-        "500":
-          description: Internal Server Error
   /anything/connectionError:
     get:
       operationId: connectionErrorGet
@@ -3332,6 +3319,22 @@ paths:
             type: cursor
         outputs:
           nextCursor: $.resultArray[(@.length-1)]
+  /group/first:
+    get:
+      operationId: groupFirstGet
+      x-speakeasy-name-override: get
+      x-speakeasy-group: first
+      responses:
+        "200":
+          description: OK
+  /group/second:
+    get:
+      operationId: groupSecondGet
+      x-speakeasy-name-override: get
+      x-speakeasy-group: second
+      responses:
+        "200":
+          description: OK
   /resource:
     post:
       x-speakeasy-entity-operation: ExampleResource#create
@@ -3409,6 +3412,46 @@ paths:
       responses:
         204:
           description: No Content
+  /retries:
+    get:
+      operationId: retriesGet
+      servers:
+        - url: http://localhost:35456
+      parameters:
+        - name: request-id
+          in: query
+          schema:
+            type: string
+          required: true
+        - name: num-retries
+          in: query
+          schema:
+            type: integer
+      tags:
+        - retries
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: retries
+                type: object
+                properties:
+                  retries:
+                    type: integer
+                required:
+                  - retries
+      x-speakeasy-retries:
+        strategy: backoff
+        backoff:
+          initialInterval: 10 # 10 ms
+          maxInterval: 200 # 200 ms
+          maxElapsedTime: 1000 # 1 seconds
+          exponent: 1.5
+        statusCodes:
+          - 503
+        retryConnectionErrors: false
 components:
   schemas:
     ExampleResource:
