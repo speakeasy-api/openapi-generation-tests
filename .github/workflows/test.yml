@@ -15,8 +15,8 @@ jobs:
         image: kennethreitz/httpbin
         ports:
           - 35123:80
-      speakeasy-auth-test-service:
-        image: ghcr.io/speakeasy-api/speakeasy-auth-test-service:latest
+      speakeasy-api-test-service:
+        image: ghcr.io/speakeasy-api/speakeasy-api-test-service:latest
         ports:
           - 35456:8080
     steps:
@@ -36,8 +36,8 @@ jobs:
         image: kennethreitz/httpbin
         ports:
           - 35123:80
-      speakeasy-auth-test-service:
-        image: ghcr.io/speakeasy-api/speakeasy-auth-test-service:latest
+      speakeasy-api-test-service:
+        image: ghcr.io/speakeasy-api/speakeasy-api-test-service:latest
         ports:
           - 35456:8080
     steps:
@@ -58,8 +58,8 @@ jobs:
         image: kennethreitz/httpbin
         ports:
           - 35123:80
-      speakeasy-auth-test-service:
-        image: ghcr.io/speakeasy-api/speakeasy-auth-test-service:latest
+      speakeasy-api-test-service:
+        image: ghcr.io/speakeasy-api/speakeasy-api-test-service:latest
         ports:
           - 35456:8080
     steps:
@@ -80,8 +80,8 @@ jobs:
         image: kennethreitz/httpbin
         ports:
           - 35123:80
-      speakeasy-auth-test-service:
-        image: ghcr.io/speakeasy-api/speakeasy-auth-test-service:latest
+      speakeasy-api-test-service:
+        image: ghcr.io/speakeasy-api/speakeasy-api-test-service:latest
         ports:
           - 35456:8080
     steps:
@@ -103,8 +103,8 @@ jobs:
         image: kennethreitz/httpbin
         ports:
           - 35123:80
-      speakeasy-auth-test-service:
-        image: ghcr.io/speakeasy-api/speakeasy-auth-test-service:latest
+      speakeasy-api-test-service:
+        image: ghcr.io/speakeasy-api/speakeasy-api-test-service:latest
         ports:
           - 35456:8080
     steps:
@@ -124,8 +124,8 @@ jobs:
         image: kennethreitz/httpbin
         ports:
           - 35123:80
-      speakeasy-auth-test-service:
-        image: ghcr.io/speakeasy-api/speakeasy-auth-test-service:latest
+      speakeasy-api-test-service:
+        image: ghcr.io/speakeasy-api/speakeasy-api-test-service:latest
         ports:
           - 35456:8080
     steps:
