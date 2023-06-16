@@ -17,7 +17,6 @@ src/sdk/servers.py
 src/sdk/telemetry.py
 src/sdk/unions.py
 src/sdk/sdk.py
-.gitignore
 pylintrc
 setup.py
 src/sdk/__init__.py

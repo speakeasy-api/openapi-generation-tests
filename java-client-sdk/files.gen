@@ -18,7 +18,6 @@ lib/src/main/java/org/openapis/openapi/Telemetry.java
 lib/src/main/java/org/openapis/openapi/Unions.java
 lib/src/main/java/org/openapis/openapi/SDK.java
 .gitattributes
-.gitignore
 gradle/wrapper/gradle-wrapper.jar
 gradle/wrapper/gradle-wrapper.properties
 gradlew

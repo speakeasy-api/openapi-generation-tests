@@ -17,7 +17,6 @@ src/sdk/telemetry.ts
 src/sdk/unions.ts
 src/sdk/sdk.ts
 .eslintrc.yml
-.gitignore
 jest.config.js
 package-lock.json
 package.json

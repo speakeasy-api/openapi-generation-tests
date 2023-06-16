@@ -16,7 +16,6 @@ lib/sdk/servers.rb
 lib/sdk/telemetry.rb
 lib/sdk/unions.rb
 lib/sdk/sdk.rb
-.gitignore
 .rubocop.yml
 Gemfile
 Rakefile
