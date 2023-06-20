@@ -2,13 +2,13 @@ configVersion: 1.0.0
 management:
   docChecksum: a78b824343ebcfa1fa1e0b640c6c9866
   docVersion: 0.1.0
-  speakeasyVersion: 1.48.0
-  generationVersion: 2.41.1
+  speakeasyVersion: 1.49.0
+  generationVersion: 2.41.4
 generation:
   sdkClassName: SDK
   singleTagPerOp: false
 php:
-  version: 1.10.0
+  version: 1.10.1
   maxMethodParams: 5
   namespace: OpenAPI\OpenAPI
   packageName: openapi/openapi
