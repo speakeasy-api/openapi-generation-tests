@@ -1,6 +1,6 @@
 {
   "name": "openapi",
-  "version": "1.10.1",
+  "version": "1.10.2",
   "author": "Speakeasy",
   "scripts": {
     "prepare": "tsc --build",
