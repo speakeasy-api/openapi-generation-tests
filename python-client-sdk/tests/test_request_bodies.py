@@ -686,6 +686,39 @@ def test_request_body_put_bytes():
     assert res.res.data == data
 
 
+def test_request_body_put_string_with_params():
+    record_test('request-bodies-put-string-with-params')
+
+    s = SDK()
+    assert s is not None
+
+    string = 'Hello world'
+    res = s.request_bodies.request_body_put_string_with_params(request_body=string, query_string_param="test param")
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.res is not None
+    assert res.res.data == string
+    assert res.res.args.query_string_param == "test param"
+
+
+def test_request_body_put_bytes_with_params():
+    record_test('request-bodies-put-bytes-with-params')
+
+    s = SDK()
+    assert s is not None
+
+    f = open('./tests/testUpload.json')
+    data = f.read()
+    res = s.request_bodies.request_body_put_bytes_with_params(request_body=data, query_string_param="test param")
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.res is not None
+    assert res.res.data == data
+    assert res.res.args.query_string_param == "test param"
+
+
 def test_request_body_post_empty_object():
     record_test('request-bodies-post-empty-object')
 

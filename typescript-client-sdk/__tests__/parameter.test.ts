@@ -7,6 +7,25 @@ import {createDeepObject, createSimpleObject, recordTest} from "./helpers";
 
 import {SDK} from "../src";
 
+test("Test Mixed Parameters Primitives", async () => {
+    recordTest("parameters-mixed-primitives");
+
+    const sdk = new SDK({});
+
+    const res = await sdk.parameters.mixedParametersPrimitives(
+        "headerValue",
+        "pathValue",
+        "queryValue"
+    );
+
+    expect(res.statusCode).toBeDefined();
+    expect(res.statusCode).toBe(200);
+    expect(res.res!.url).toBe(
+        "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue");
+    expect(res.res!.headers.headerparam).toBe("headerValue");
+    expect(res.res!.args.queryStringParam).toBe("queryValue");
+});
+
 test("Test Simple Path Parameter Primitives", async () => {
     recordTest("parameters-simple-path-parameter-primitives");
 

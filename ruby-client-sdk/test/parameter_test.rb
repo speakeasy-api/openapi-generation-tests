@@ -8,6 +8,20 @@ module OpenApiSDK
       @sdk = OpenApiSDK::SDK.new
     end
 
+    def test_mixed_parameters_primitives
+      record_test('parameters-mixed-primitives')
+
+      res = @sdk.parameters.mixed_parameters_primitives(header_param="headerValue",
+        path_param="pathValue",
+        query_param="queryValue"
+      )
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.res)
+      assert_equal("http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue", res.res.url)
+      assert_equal("headerValue", res.res.headers.headerparam)
+      assert_equal("queryValue", res.res.args.query_string_param)
+    end
 
     def test_simple_path_parameter_primitives
       record_test('parameters-simple-path-parameter-primitives')

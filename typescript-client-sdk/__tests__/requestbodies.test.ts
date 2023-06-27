@@ -5,15 +5,10 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import { expect, test } from "@jest/globals";
-import {
-  createDeepObject,
-  createSimpleObject,
-  recordTest,
-  sortKeys,
-} from "./helpers";
+import {expect, test} from "@jest/globals";
+import {createDeepObject, createSimpleObject, recordTest, sortKeys,} from "./helpers";
 
-import { SDK } from "../src";
+import {SDK} from "../src";
 
 test("Request Body Post Application JSON Simple", async () => {
   recordTest("request-bodies-post-application-json-simple");
@@ -605,6 +600,33 @@ test("Request Body Put Bytes", async () => {
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
   expect(res.res?.data).toEqual(data.toString());
+});
+
+test("Request Body Put String With Params", async () => {
+  recordTest("request-bodies-put-string-with-params");
+
+  const s = new SDK({});
+  const str = "Hello World";
+  const res = await s.requestBodies.requestBodyPutStringWithParams(str, "test param");
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res?.data).toEqual(str);
+  expect(res.res?.args.queryStringParam).toEqual("test param");
+});
+
+test("Request Body Put Bytes With Params", async () => {
+  recordTest("request-bodies-put-bytes-with-params");
+
+  const s = new SDK({});
+
+  const filePath = path.resolve(__dirname, "./testdata/testUpload.json");
+  const data = fs.readFileSync(filePath);
+
+  const res = await s.requestBodies.requestBodyPutBytesWithParams(data, "test param");
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res?.data).toEqual(data.toString());
+  expect(res.res?.args.queryStringParam).toEqual("test param");
 });
 
 test("Request Body Post Empty Object", async () => {

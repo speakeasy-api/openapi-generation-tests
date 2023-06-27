@@ -9,6 +9,24 @@ use PHPUnit\Framework\TestCase;
 
 final class ParameterTest extends TestCase
 {
+    public function testMixedParametersPrimitives(): void
+    {
+        Helpers::recordTest('parameters-mixed-primitives');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->parameters->mixedParametersPrimitives('headerValue', 'pathValue', 'queryValue');
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->res);
+        $this->assertEquals('http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue', $response->res->url);
+        $this->assertEquals('headerValue', $response->res->headers->headerparam);
+        $this->assertEquals('queryValue', $response->res->args->queryStringParam);
+    }
+
     public function testSimplePathParameterPrimitives(): void
     {
         Helpers::recordTest('parameters-simple-path-parameter-primitives');

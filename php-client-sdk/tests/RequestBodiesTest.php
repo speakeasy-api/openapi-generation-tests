@@ -736,4 +736,44 @@ final class RequestBodiesTest extends TestCase
         $this->assertNotNull($response->res);
         $this->assertEquals($content, $response->res->data);
     }
+
+    public function testRequestBodyPutStringWithParams(): void
+    {
+        Helpers::recordTest('request-bodies-put-string-with-params');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $str = 'Hello World';
+
+        $response = $sdk->requestBodies->requestBodyPutStringWithParams($str, 'test param');
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->res);
+        $this->assertEquals($str, $response->res->data);
+        $this->assertEquals('test param', $response->res->args->queryStringParam);
+    }
+
+    public function testRequestBodyPutBytesWithParams(): void
+    {
+        Helpers::recordTest('request-bodies-put-bytes-with-params');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $path = './tests/testUpload.json';
+        $file = fopen($path, 'r');
+        $content = fread($file, filesize($path));
+
+        $response = $sdk->requestBodies->requestBodyPutBytesWithParams($content, 'test param');
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->res);
+        $this->assertEquals($content, $response->res->data);
+        $this->assertEquals('test param', $response->res->args->queryStringParam);
+    }
 }

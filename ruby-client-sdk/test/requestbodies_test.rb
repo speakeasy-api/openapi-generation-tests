@@ -584,6 +584,33 @@ module OpenApiSDK
       assert_equal(data.to_s, res.res.data)
     end
 
+
+    def test_request_body_put_string_with_params
+      record_test('request-bodies-put-string-with-params')
+
+      str = "Hello World"
+      res = @sdk.request_bodies.request_body_put_string_with_params(str, "test param")
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.res)
+      assert_equal(str, res.res.data)
+      assert_equal("test param", res.res.args.query_string_param)
+    end
+
+
+    def test_request_body_put_bytes_with_params
+      record_test('request-bodies-put-bytes-with-params')
+
+      data = File.open("test/testdata/testUpload.json").read
+
+      res = @sdk.request_bodies.request_body_put_bytes_with_params(data, "test param")
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.res)
+      assert_equal(data.to_s, res.res.data)
+      assert_equal("test param", res.res.args.query_string_param)
+    end
+
     def test_request_body_post_empty_object
       record_test('request-bodies-post-empty-object')
 

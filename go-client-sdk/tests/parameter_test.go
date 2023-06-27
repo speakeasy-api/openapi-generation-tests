@@ -16,6 +16,21 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
+func TestMixedParameterPrimitives(t *testing.T) {
+	recordTest("parameters-mixed-primitives")
+
+	s := sdk.New()
+
+	res, err := s.Parameters.MixedParametersPrimitives(context.Background(), "headerValue", "pathValue", "queryValue")
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, "http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue", res.Res.URL)
+	assert.Equal(t, "headerValue", res.Res.Headers.Headerparam)
+	assert.Equal(t, "queryValue", res.Res.Args.QueryStringParam)
+}
+
 func TestSimplePathParameterPrimitives(t *testing.T) {
 	recordTest("parameters-simple-path-parameter-primitives")
 

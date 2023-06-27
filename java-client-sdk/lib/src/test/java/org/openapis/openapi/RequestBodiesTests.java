@@ -780,6 +780,42 @@ public class RequestBodiesTests {
         assertEquals(new String(data, StandardCharsets.UTF_8), res.res.data);
     }
 
+    @Test
+    void testRequestBodyPutStringWithParams() throws Exception {
+        Helpers.recordTest("request-bodies-put-string-with-params");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        String str = "Hello world";
+        RequestBodyPutStringWithParamsResponse res = s.requestBodies
+                .requestBodyPutStringWithParams(str, "test param");
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.res);
+        assertEquals(str, res.res.data);
+        assertEquals("test param", res.res.args.queryStringParam);
+    }
+
+    @Test
+    void testRequestBodyPutBytesWithParams() throws Exception {
+        Helpers.recordTest("request-bodies-put-bytes-with-params");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        byte[] data = Helpers.getData();
+        RequestBodyPutBytesWithParamsResponse res = s.requestBodies
+                .requestBodyPutBytesWithParams(data, "test param");
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.res);
+        assertEquals(new String(data, StandardCharsets.UTF_8), res.res.data);
+        assertEquals("test param", res.res.args.queryStringParam);
+    }
+
 
     @Test
     void testRequestBodyEmptyObject() throws Exception {

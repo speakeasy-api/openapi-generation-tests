@@ -6,6 +6,24 @@ from src.sdk.utils import *
 
 from .helpers import *
 
+def test_mixed_parameters_primitives():
+    record_test('parameters-mixed-primitives')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.parameters.mixed_parameters_primitives(
+        header_param='headerValue',
+        path_param='pathValue',
+        query_string_param='queryValue'
+    )
+    assert res is not None
+    assert res.status_code == 200
+    assert res.res is not None
+    assert res.res.url == 'http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue'
+    assert res.res.headers.headerparam == 'headerValue'
+    assert res.res.args.query_string_param == 'queryValue'
+
 
 def test_simple_path_parameter_primitives():
     record_test('parameters-simple-path-parameter-primitives')

@@ -655,6 +655,36 @@ func TestRequestBodyPutBytes(t *testing.T) {
 	assert.Equal(t, string(data), res.Res.Data)
 }
 
+func TestRequestBodyPutStringWithParams(t *testing.T) {
+	recordTest("request-bodies-put-string-with-params")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyPutStringWithParams(context.Background(), "Hello world", "test param")
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, "Hello world", res.Res.Data)
+	assert.Equal(t, "test param", res.Res.Args.QueryStringParam)
+}
+
+func TestRequestBodyPutBytesWithParams(t *testing.T) {
+	recordTest("request-bodies-put-bytes-with-params")
+
+	s := sdk.New()
+
+	data, err := os.ReadFile("testdata/testUpload.json")
+	require.NoError(t, err)
+
+	res, err := s.RequestBodies.RequestBodyPutBytesWithParams(context.Background(), data, "test param")
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, string(data), res.Res.Data)
+	assert.Equal(t, "test param", res.Res.Args.QueryStringParam)
+}
+
 func TestRequestBodyEmptyObject(t *testing.T) {
 	recordTest("request-bodies-post-empty-object")
 
