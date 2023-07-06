@@ -15,6 +15,7 @@ import org.junit.jupiter.api.Test;
 import org.openapis.openapi.models.operations.*;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.SimpleObject;
+import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 import org.openapis.openapi.utils.JSON;
 
 public class RequestBodiesTests {
@@ -33,7 +34,7 @@ public class RequestBodiesTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
-        Helpers.assertSimpleObjectEqual(obj, res.res.json);
+        Helpers.assertSimpleObject(res.res.json);
     }
 
     @Test
@@ -52,8 +53,8 @@ public class RequestBodiesTests {
         assertEquals(200, res.statusCode);
         assertNotNull(res.simpleObjects);
         assertEquals(res.simpleObjects.length, 2);
-        Helpers.assertSimpleObjectEqual(res.simpleObjects[0], obj);
-        Helpers.assertSimpleObjectEqual(res.simpleObjects[1], obj);
+        Helpers.assertSimpleObject(res.simpleObjects[0]);
+        Helpers.assertSimpleObject(res.simpleObjects[1]);
     }
 
     @Test
@@ -77,10 +78,10 @@ public class RequestBodiesTests {
         assertEquals(res.arrs.length, 2);
         assertEquals(res.arrs[0].length, 2);
         assertEquals(res.arrs[1].length, 2);
-        Helpers.assertSimpleObjectEqual(res.arrs[0][0], obj);
-        Helpers.assertSimpleObjectEqual(res.arrs[0][1], obj);
-        Helpers.assertSimpleObjectEqual(res.arrs[1][0], obj);
-        Helpers.assertSimpleObjectEqual(res.arrs[1][1], obj);
+        Helpers.assertSimpleObject(res.arrs[0][0]);
+        Helpers.assertSimpleObject(res.arrs[0][1]);
+        Helpers.assertSimpleObject(res.arrs[1][0]);
+        Helpers.assertSimpleObject(res.arrs[1][1]);
     }
 
     @Test
@@ -104,8 +105,8 @@ public class RequestBodiesTests {
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
         assertEquals(res.res.size(), 2);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem1"), obj);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem2"), obj);
+        Helpers.assertSimpleObject(res.res.get("mapElem1"));
+        Helpers.assertSimpleObject(res.res.get("mapElem2"));
     }
 
     @Test
@@ -141,10 +142,10 @@ public class RequestBodiesTests {
         assertEquals(res.res.size(), 2);
         assertEquals(res.res.get("mapElem1").size(), 2);
         assertEquals(res.res.get("mapElem2").size(), 2);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem1").get("subMapElem1"), obj);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem1").get("subMapElem2"), obj);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem2").get("subMapElem1"), obj);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem2").get("subMapElem2"), obj);
+        Helpers.assertSimpleObject(res.res.get("mapElem1").get("subMapElem1"));
+        Helpers.assertSimpleObject(res.res.get("mapElem1").get("subMapElem2"));
+        Helpers.assertSimpleObject(res.res.get("mapElem2").get("subMapElem1"));
+        Helpers.assertSimpleObject(res.res.get("mapElem2").get("subMapElem2"));
     }
 
     @Test
@@ -170,10 +171,10 @@ public class RequestBodiesTests {
         assertEquals(res.res.size(), 2);
         assertEquals(res.res.get("mapElem1").length, 2);
         assertEquals(res.res.get("mapElem2").length, 2);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem1")[0], obj);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem1")[1], obj);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem2")[0], obj);
-        Helpers.assertSimpleObjectEqual(res.res.get("mapElem2")[1], obj);
+        Helpers.assertSimpleObject(res.res.get("mapElem1")[0]);
+        Helpers.assertSimpleObject(res.res.get("mapElem1")[1]);
+        Helpers.assertSimpleObject(res.res.get("mapElem2")[0]);
+        Helpers.assertSimpleObject(res.res.get("mapElem2")[1]);
     }
 
     @Test
@@ -201,10 +202,10 @@ public class RequestBodiesTests {
         assertEquals(res.maps.length, 2);
         assertEquals(res.maps[0].size(), 2);
         assertEquals(res.maps[1].size(), 2);
-        Helpers.assertSimpleObjectEqual(res.maps[0].get("mapElem1"), obj);
-        Helpers.assertSimpleObjectEqual(res.maps[0].get("mapElem2"), obj);
-        Helpers.assertSimpleObjectEqual(res.maps[1].get("mapElem1"), obj);
-        Helpers.assertSimpleObjectEqual(res.maps[1].get("mapElem2"), obj);
+        Helpers.assertSimpleObject(res.maps[0].get("mapElem1"));
+        Helpers.assertSimpleObject(res.maps[0].get("mapElem2"));
+        Helpers.assertSimpleObject(res.maps[1].get("mapElem1"));
+        Helpers.assertSimpleObject(res.maps[1].get("mapElem2"));
     }
 
     @Test
@@ -327,8 +328,8 @@ public class RequestBodiesTests {
         assertNotNull(res.arrObjValue);
         assertNotNull(res.arrObjValue.json);
         assertEquals(res.arrObjValue.json.length, 2);
-        Helpers.assertSimpleObjectEqual(res.arrObjValue.json[0], obj);
-        Helpers.assertSimpleObjectEqual(res.arrObjValue.json[1], obj);
+        Helpers.assertSimpleObject(res.arrObjValue.json[0]);
+        Helpers.assertSimpleObject(res.arrObjValue.json[1]);
     }
 
     @Test
@@ -353,8 +354,8 @@ public class RequestBodiesTests {
         assertNotNull(res.mapObjValue);
         assertNotNull(res.mapObjValue.json);
         assertEquals(res.mapObjValue.json.size(), 2);
-        Helpers.assertSimpleObjectEqual(res.mapObjValue.json.get("mapElem1"), obj);
-        Helpers.assertSimpleObjectEqual(res.mapObjValue.json.get("mapElem2"), obj);
+        Helpers.assertSimpleObject(res.mapObjValue.json.get("mapElem1"));
+        Helpers.assertSimpleObject(res.mapObjValue.json.get("mapElem2"));
     }
 
     @Test
@@ -390,7 +391,7 @@ public class RequestBodiesTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
-        Helpers.assertSimpleObjectEqual(obj, res.res.json);
+        Helpers.assertSimpleObject(res.res.json);
     }
 
     @Test
@@ -408,7 +409,7 @@ public class RequestBodiesTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
-        Helpers.assertSimpleObjectEqual(obj, res.res.json);
+        Helpers.assertSimpleObject(res.res.json);
     }
 
     @Test
@@ -829,5 +830,24 @@ public class RequestBodiesTests {
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
+    }
+
+
+    @Test
+    void testRequestBodyCamelCase() throws Exception {
+        Helpers.recordTest("request-bodies-camel-case");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        SimpleObjectCamelCase obj = Helpers.createSimpleObjectCamelCase();
+
+        RequestBodyCamelCaseResponse res = s.requestBodies
+                .requestBodyCamelCase(obj);
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.res);
+        Helpers.assertSimpleObjectCamelCase(res.res.json);
     }
 }

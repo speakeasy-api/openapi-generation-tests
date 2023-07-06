@@ -27,6 +27,26 @@ def create_simple_object():
     )
 
 
+def create_simple_object_camel_case():
+    return shared.SimpleObjectCamelCase(
+        any_val="any",
+        bool_val=True,
+        bool_opt_val=True,
+        date_val=date(2020, 1, 1),
+        date_time_val=datetime(2020, 1, 1, 0, 0, 0, 1, tzutc()),
+        enum_val=shared.EnumT.ONE,
+        float32_val=1.1,
+        int_val=1,
+        int32_val=1,
+        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
+        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.SECOND,
+        int_opt_null_val=None,
+        num_val=1.1,
+        num_opt_null_val=None,
+        str_val="test",
+        str_opt_val="testOptional",
+    )
+
 def create_deep_object():
     return shared.DeepObject(
         any=create_simple_object(),
@@ -56,6 +76,23 @@ def compare_simple_object(obj1: shared.SimpleObject, obj2: shared.SimpleObject):
     assert obj1.str_ == obj2.str_
     assert obj1.str_opt == obj2.str_opt
 
+
+def compare_simple_object_camel_case(actual: shared.SimpleObjectCamelCase):
+    expected = create_simple_object_camel_case()
+    assert expected.any_val == actual.any_val
+    assert expected.bool_val == actual.bool_val
+    assert expected.bool_opt_val == actual.bool_opt_val
+    assert expected.date_val == actual.date_val
+    assert expected.date_time_val == actual.date_time_val
+    assert expected.enum_val == actual.enum_val
+    assert expected.float32_val == actual.float32_val
+    assert expected.int_val == actual.int_val
+    assert expected.int32_val == actual.int32_val
+    assert actual.int_opt_null_val is None
+    assert expected.num_val == actual.num_val
+    assert actual.num_opt_null_val is None
+    assert expected.str_val == actual.str_val
+    assert expected.str_opt_val == actual.str_opt_val
 
 def compare_deep_object(obj1: shared.DeepObject, obj2: shared.DeepObject):
     assert len(obj1.arr) == len(obj2.arr)

@@ -8,11 +8,12 @@ import {
   DeepObject,
   Enum,
   SimpleObject,
+  SimpleObjectCamelCase,
   SimpleObjectInt32Enum,
   SimpleObjectIntEnum,
 } from "../src/sdk/models/shared";
 
-import { RFCDate } from "../src/sdk/types";
+import {RFCDate} from "../src/sdk/types";
 
 export const createSimpleObject = (): SimpleObject => {
   return new SimpleObject({
@@ -30,6 +31,25 @@ export const createSimpleObject = (): SimpleObject => {
     dateTime: new Date("2020-01-01T00:00:00.001Z"),
     boolOpt: true,
     strOpt: "testOptional",
+  });
+};
+
+export const createSimpleObjectCamelCase = (): SimpleObjectCamelCase => {
+  return new SimpleObjectCamelCase({
+    strVal: "test",
+    boolVal: true,
+    intVal: 1,
+    int32Val: 1,
+    int32EnumVal: SimpleObjectInt32Enum.FiftyFive,
+    intEnumVal: SimpleObjectIntEnum.Second,
+    numVal: 1.1,
+    float32Val: 1.1,
+    enumVal: Enum.One,
+    anyVal: "any",
+    dateVal: new RFCDate(new Date("2020-01-01")),
+    dateTimeVal: new Date("2020-01-01T00:00:00.001Z"),
+    boolOptVal: true,
+    strOptVal: "testOptional",
   });
 };
 

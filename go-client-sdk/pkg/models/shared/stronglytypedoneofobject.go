@@ -60,7 +60,6 @@ func (u *StronglyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 	switch dis.Type {
 	case "simpleObjectWithType":
 		d = json.NewDecoder(bytes.NewReader(data))
-		d.DisallowUnknownFields()
 		simpleObjectWithType := new(SimpleObjectWithType)
 		if err := d.Decode(&simpleObjectWithType); err != nil {
 			return fmt.Errorf("could not unmarshal expected type: %w", err)
@@ -71,7 +70,6 @@ func (u *StronglyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 		return nil
 	case "deepObjectWithType":
 		d = json.NewDecoder(bytes.NewReader(data))
-		d.DisallowUnknownFields()
 		deepObjectWithType := new(DeepObjectWithType)
 		if err := d.Decode(&deepObjectWithType); err != nil {
 			return fmt.Errorf("could not unmarshal expected type: %w", err)

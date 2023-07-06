@@ -26,6 +26,25 @@ test("Test Mixed Parameters Primitives", async () => {
     expect(res.res!.args.queryStringParam).toBe("queryValue");
 });
 
+test("Test Mixed Parameters Camel Case", async () => {
+    recordTest("parameters-camel-case");
+
+    const sdk = new SDK({});
+
+    const res = await sdk.parameters.mixedParametersCamelCase(
+        "headerValue",
+        "pathValue",
+        "queryValue"
+    );
+
+    expect(res.statusCode).toBeDefined();
+    expect(res.statusCode).toBe(200);
+    expect(res.res!.url).toBe(
+        "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue");
+    expect(res.res!.headers.headerParam).toBe("headerValue");
+    expect(res.res!.args.queryStringParam).toBe("queryValue");
+});
+
 test("Test Simple Path Parameter Primitives", async () => {
     recordTest("parameters-simple-path-parameter-primitives");
 

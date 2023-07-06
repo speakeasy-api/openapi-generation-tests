@@ -18,7 +18,7 @@ import java.util.HashMap;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParameterTests {
-@Test
+    @Test
     void testMixedParametersPrimitives() throws Exception {
         Helpers.recordTest("parameters-mixed-primitives");
 
@@ -33,6 +33,24 @@ public class ParameterTests {
         assertNotNull(res.res);
         assertEquals("http://localhost:35123/anything/mixedParams/path/pathValue?queryStringParam=queryValue", res.res.url);
         assertEquals("headerValue", res.res.headers.headerparam);
+        assertEquals("queryValue", res.res.args.queryStringParam);
+    }
+
+    @Test
+    void testMixedParametersCamelCase() throws Exception {
+        Helpers.recordTest("parameters-camel-case");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        MixedParametersCamelCaseResponse res = s.parameters
+                .mixedParametersCamelCase("headerValue", "pathValue", "queryValue");
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.res);
+        assertEquals("http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue", res.res.url);
+        assertEquals("headerValue", res.res.headers.headerParam);
         assertEquals("queryValue", res.res.args.queryStringParam);
     }
 

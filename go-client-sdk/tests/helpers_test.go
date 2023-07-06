@@ -46,6 +46,29 @@ func createSimpleObject() shared.SimpleObject {
 	}
 }
 
+func createSimpleObjectCamelCase() shared.SimpleObjectCamelCase {
+	return shared.SimpleObjectCamelCase{
+		StrVal:        "test",
+		BoolVal:       true,
+		IntVal:        1,
+		Int32Val:      1,
+		IntEnumVal:    shared.SimpleObjectCamelCaseIntEnumValSecond,
+		Int32EnumVal:  shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
+		NumVal:        1.1,
+		Float32Val:    1.1,
+		EnumVal:       shared.EnumOne,
+		AnyVal:        "any",
+		DateVal:       types.Date{time.Date(2020, 1, 1, 0, 0, 0, 0, time.UTC)},
+		DateTimeVal:   time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
+		BoolOptVal:    pointer.ToBool(true),
+		StrOptVal:     pointer.ToString("testOptional"),
+		IntOptNullVal: nil,
+		NumOptNullVal: nil,
+		BigintVal:     big.NewInt(8821239038968084),
+		BigintStrVal:  types.MustBigIntFromString("1344719667586153181419716641724567886890850696275767987106294472017884974410332069524504824747437757"),
+	}
+}
+
 func createDeepObject() shared.DeepObject {
 	return shared.DeepObject{
 		Any: createSimpleObject(),

@@ -5,6 +5,7 @@
 package org.openapis.openapi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -19,6 +20,9 @@ import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.SimpleObject;
 import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
 import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
+import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
+import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
+import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
 
 public class Helpers {
     public static SimpleObject createSimpleObject() {
@@ -30,6 +34,19 @@ public class Helpers {
                 intOptNull = null;
                 numOptNull = null;
                 strOpt = "testOptional";
+            }
+        };
+    }
+
+    public static SimpleObjectCamelCase createSimpleObjectCamelCase() {
+        return new SimpleObjectCamelCase("any", true, OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"),
+                LocalDate.parse("2020-01-01"), Enum.ONE, 1.1, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1,
+                 SimpleObjectCamelCaseIntEnumVal.Second, Long.valueOf(1), 1.1, "test") {
+            {
+                boolOptVal = true;
+                intOptNullVal = null;
+                numOptNullVal = null;
+                strOptVal = "testOptional";
             }
         };
     }
@@ -49,7 +66,8 @@ public class Helpers {
                 .getBytes();
     }
 
-    public static void assertSimpleObjectEqual(SimpleObject l, SimpleObject r) {
+    public static void assertSimpleObject(SimpleObject r) {
+        SimpleObject l = createSimpleObject();
         assertEquals(l.any, r.any);
         assertEquals(l.bool, r.bool);
         assertEquals(l.boolOpt, r.boolOpt);
@@ -58,12 +76,30 @@ public class Helpers {
         assertEquals(l.enum_, r.enum_);
         assertEquals(l.float32, r.float32);
         assertEquals(l.int32, r.int32);
-        assertEquals(l.intOptNull, r.intOptNull);
+        assertNull(r.intOptNull);
         assertEquals(l.int_, r.int_);
         assertEquals(l.num, r.num);
-        assertEquals(l.numOptNull, r.numOptNull);
+        assertNull(r.numOptNull);
         assertEquals(l.str, r.str);
         assertEquals(l.strOpt, r.strOpt);
+    }
+
+    public static void assertSimpleObjectCamelCase(SimpleObjectCamelCase r) {
+        SimpleObjectCamelCase l = createSimpleObjectCamelCase();
+        assertEquals(l.anyVal, r.anyVal);
+        assertEquals(l.boolVal, r.boolVal);
+        assertEquals(l.boolOptVal, r.boolOptVal);
+        assertEquals(l.dateVal, r.dateVal);
+        assertEquals(l.dateTimeVal, r.dateTimeVal);
+        assertEquals(l.enumVal, r.enumVal);
+        assertEquals(l.float32Val, r.float32Val);
+        assertEquals(l.int32Val, r.int32Val);
+        assertNull(r.intOptNullVal);
+        assertEquals(l.intVal, r.intVal);
+        assertEquals(l.numVal, r.numVal);
+        assertNull(r.numOptNullVal);
+        assertEquals(l.strVal, r.strVal);
+        assertEquals(l.strOptVal, r.strOptVal);
     }
 
     public static void assertDeepObjectEqual(DeepObject l, DeepObject r) {
@@ -85,16 +121,16 @@ public class Helpers {
 
         assertEquals(l.arr.length, r.arr.length);
         for (int i = 0; i < l.arr.length; i++) {
-            assertSimpleObjectEqual(l.arr[i], r.arr[i]);
+            assertSimpleObject(r.arr[i]);
         }
         assertEquals(l.bool, r.bool);
         assertEquals(l.int_, r.int_);
         assertEquals(l.map.size(), r.map.size());
         for (String key : l.map.keySet()) {
-            assertSimpleObjectEqual(l.map.get(key), r.map.get(key));
+            assertSimpleObject(r.map.get(key));
         }
         assertEquals(l.num, r.num);
-        assertSimpleObjectEqual(l.obj, r.obj);
+        assertSimpleObject(r.obj);
         assertEquals(l.str, r.str);
     }
 

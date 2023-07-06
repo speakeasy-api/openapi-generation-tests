@@ -729,3 +729,19 @@ def test_request_body_post_empty_object():
 
     assert res is not None
     assert res.status_code == 200
+
+
+def test_request_body_camel_case():
+    record_test('request-bodies-camel-case')
+
+    s = SDK()
+    assert s is not None
+
+    obj = create_simple_object_camel_case()
+
+    res = s.request_bodies.request_body_camel_case(request=obj)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.res is not None
+    compare_simple_object_camel_case(res.res.json)

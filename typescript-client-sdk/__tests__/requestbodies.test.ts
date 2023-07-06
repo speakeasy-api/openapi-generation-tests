@@ -6,7 +6,7 @@ import * as fs from "fs";
 import * as path from "path";
 
 import {expect, test} from "@jest/globals";
-import {createDeepObject, createSimpleObject, recordTest, sortKeys,} from "./helpers";
+import {createDeepObject, createSimpleObject, createSimpleObjectCamelCase, recordTest, sortKeys,} from "./helpers";
 
 import {SDK} from "../src";
 
@@ -637,4 +637,17 @@ test("Request Body Post Empty Object", async () => {
   const res = await s.requestBodies.requestBodyPostEmptyObject({});
   expect(res.requestBodyPostEmptyObject200ApplicationJSONObject).toBeDefined();
   expect(res.statusCode).toBe(200);
+});
+
+test("Request Body Camel Case", async () => {
+  recordTest("request-bodies-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyCamelCase(obj);
+
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res?.json).toEqual(obj);
+  expect(res.rawResponse?.config.data.match(/_val/g)?.length).toBe(14);
 });

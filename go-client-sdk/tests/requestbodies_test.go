@@ -4,8 +4,10 @@ package tests
 
 import (
 	"context"
+	"io"
 	"net/http"
 	"os"
+	"regexp"
 	"testing"
 
 	"openapi/pkg/models/operations"
@@ -698,4 +700,23 @@ func TestRequestBodyEmptyObject(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.RequestBodyPostEmptyObject200ApplicationJSONObject)
+}
+
+func TestRequestBodyCamelCase(t *testing.T) {
+	recordTest("request-bodies-camel-case")
+
+	s := sdk.New()
+
+	obj := createSimpleObjectCamelCase()
+
+	res, err := s.RequestBodies.RequestBodyCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res.JSON)
+
+	rawBody, err := io.ReadAll(res.RawResponse.Body)
+	assert.NoError(t, err)
+	assert.Equal(t, 32, len(regexp.MustCompile("_val").FindAllStringSubmatch(string(rawBody), -1)))
 }

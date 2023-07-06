@@ -31,6 +31,21 @@ func TestMixedParameterPrimitives(t *testing.T) {
 	assert.Equal(t, "queryValue", res.Res.Args.QueryStringParam)
 }
 
+func TestMixedParametersCamelCase(t *testing.T) {
+	recordTest("parameters-camel-case")
+
+	s := sdk.New()
+
+	res, err := s.Parameters.MixedParametersCamelCase(context.Background(), "headerValue", "pathValue", "queryValue")
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, "http://localhost:35123/anything/mixedParams/path/pathValue/camelcase?query_string_param=queryValue", res.Res.URL)
+	assert.Equal(t, "headerValue", res.Res.Headers.HeaderParam)
+	assert.Equal(t, "queryValue", res.Res.Args.QueryStringParam)
+}
+
 func TestSimplePathParameterPrimitives(t *testing.T) {
 	recordTest("parameters-simple-path-parameter-primitives")
 

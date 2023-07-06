@@ -34,7 +34,7 @@ public class FlatteningTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertEquals("param test", res.res.args.get("paramStr"));
-        Helpers.assertSimpleObjectEqual(obj, res.res.json);
+        Helpers.assertSimpleObject(res.res.json);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class FlatteningTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertEquals("param test", res.res.args.get("str"));
-        Helpers.assertSimpleObjectEqual(obj, res.res.json);
+        Helpers.assertSimpleObject(res.res.json);
     }
 
     @Test
