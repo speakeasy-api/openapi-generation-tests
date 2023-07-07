@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.15.0'
+implementation 'org.openapis.openapi:openapi:1.16.0'
 ```
 <!-- End SDK Installation -->
 
