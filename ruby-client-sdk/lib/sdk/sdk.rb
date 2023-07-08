@@ -67,8 +67,8 @@ module OpenApiSDK
       @security = nil
       @server_url = SERVERS[0]
       @language = 'ruby'
-      @sdk_version = '1.16.0'
-      @gen_version = '2.58.0'
+      @sdk_version = '1.16.1'
+      @gen_version = '2.58.2'
       @openapi_doc_version = '0.1.0'
       init_sdks
     end
