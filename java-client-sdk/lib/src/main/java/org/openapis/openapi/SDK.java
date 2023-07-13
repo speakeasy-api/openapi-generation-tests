@@ -199,7 +199,7 @@ public class SDK {
 
 			return this;
 		}
-		        
+		
         /**
          * ServerSomething - Something is a variable for changing the root path
          */
@@ -207,15 +207,15 @@ public class SDK {
             SOMETHING("something"),
             SOMETHING_ELSE("somethingElse"),
             SOMETHING_ELSE_AGAIN("somethingElseAgain");
-        
+
             @JsonValue
             public final String value;
-        
+
             private ServerSomething(String value) {
                 this.value = value;
             }
         }
-        
+
 		/**
 		 * Allows setting the $name variable for url substitution.
 		 * @param something The value to set.
