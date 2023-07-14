@@ -55,7 +55,7 @@ if res.res is not None:
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(

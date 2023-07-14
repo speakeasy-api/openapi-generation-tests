@@ -6,12 +6,14 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.18.0'
+implementation 'org.openapis.openapi:openapi:1.19.0'
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```java
 package hello.world;
 

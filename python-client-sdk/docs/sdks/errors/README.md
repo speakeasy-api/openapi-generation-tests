@@ -15,7 +15,7 @@ Endpoints for testing error responses.
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -50,7 +50,7 @@ if res.status_code == 200:
 
 ```python
 import sdk
-from sdk.models import operations
+from sdk.models import operations, shared
 
 s = sdk.SDK(
     security=shared.Security(

@@ -1,4 +1,6 @@
 <!-- Start SDK Example Usage -->
+
+
 ```ruby
 require_relative openapi
 

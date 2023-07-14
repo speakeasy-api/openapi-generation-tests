@@ -18,7 +18,7 @@ Speakeasy Docs
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -54,7 +54,7 @@ if res.put_anything_ignored_generation_200_application_json_object is not None:
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(

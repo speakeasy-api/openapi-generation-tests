@@ -12,6 +12,8 @@ composer require "openapi/openapi"
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```php
 <?php
 

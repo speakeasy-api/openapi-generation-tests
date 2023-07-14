@@ -16,7 +16,7 @@ Endpoints for testing response bodies.
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -45,7 +45,7 @@ if res.bytes is not None:
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -74,7 +74,7 @@ if res.html is not None:
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(

@@ -31,6 +31,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 )
 
 func main() {
@@ -77,6 +78,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 )
 
 func main() {
@@ -176,6 +178,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -228,6 +231,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -277,8 +281,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -326,6 +330,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 )
 
 func main() {
@@ -372,6 +377,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 )
 
 func main() {
@@ -418,6 +424,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/callbacks"
 	"net/http"
 )
@@ -466,6 +473,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -518,6 +526,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -566,6 +575,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"

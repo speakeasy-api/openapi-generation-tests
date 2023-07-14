@@ -27,8 +27,6 @@ Endpoints for purely testing valid generation behavior.
 ```typescript
 import { SDK } from "openapi";
 import { AnchorTypesGetResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
   security: {
@@ -289,8 +287,6 @@ sdk.generation.emptyResponseObjectWithCommentGet().then((res: EmptyResponseObjec
 ```typescript
 import { SDK } from "openapi";
 import { GetGlobalNameOverrideResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
   security: {
@@ -326,8 +322,6 @@ sdk.generation.globalNameOverridden().then((res: GetGlobalNameOverrideResponse) 
 ```typescript
 import { SDK } from "openapi";
 import { IgnoredGenerationGetResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
   security: {
@@ -403,8 +397,6 @@ sdk.generation.ignoresPost({
 ```typescript
 import { SDK } from "openapi";
 import { NameOverrideGetResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
   security: {

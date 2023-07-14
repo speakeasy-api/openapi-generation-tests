@@ -10,6 +10,8 @@ go get github.com/speakeasy-api/openapi-generation-tests/go-client-sdk
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```go
 package main
 

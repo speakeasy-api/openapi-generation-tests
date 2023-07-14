@@ -20,6 +20,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -68,6 +69,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 )
 
 func main() {

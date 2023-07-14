@@ -26,7 +26,7 @@ Endpoints for purely testing valid generation behavior.
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -55,7 +55,7 @@ if res.type_from_anchor is not None:
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -125,7 +125,7 @@ if res.status_code == 200:
 
 ```python
 import sdk
-from sdk.models import operations
+from sdk.models import operations, shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -164,7 +164,7 @@ This is an endpoint setup to test deprecation with comments
 
 ```python
 import sdk
-from sdk.models import operations
+from sdk.models import operations, shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -235,7 +235,7 @@ if res.status_code == 200:
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -264,7 +264,7 @@ if res.body is not None:
 
 ```python
 import sdk
-
+from sdk.models import shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -293,7 +293,7 @@ if res.get_global_name_override_200_application_json_object is not None:
 
 ```python
 import sdk
-from sdk.models import callbacks
+from sdk.models import callbacks, shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -322,7 +322,7 @@ if res.ignored_generation_get_200_application_json_object is not None:
 
 ```python
 import sdk
-from sdk.models import operations
+from sdk.models import operations, shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -361,7 +361,7 @@ if res.http_bin_simple_json_object is not None:
 
 ```python
 import sdk
-from sdk.models import operations
+from sdk.models import operations, shared
 
 s = sdk.SDK(
     security=shared.Security(
@@ -397,7 +397,7 @@ if res.overridden_response is not None:
 ```python
 import sdk
 import dateutil.parser
-from sdk.models import operations
+from sdk.models import operations, shared
 
 s = sdk.SDK(
     security=shared.Security(

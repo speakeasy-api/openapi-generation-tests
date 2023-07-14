@@ -37,6 +37,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -107,8 +108,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -182,6 +183,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -239,6 +241,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -296,8 +299,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -386,6 +389,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -437,8 +441,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -497,6 +501,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -549,6 +554,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -604,8 +610,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -694,6 +700,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -745,8 +752,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -987,8 +994,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -1097,8 +1104,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -1167,8 +1174,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -1251,6 +1258,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -1302,6 +1310,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 
@@ -1361,8 +1370,8 @@ import(
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -1451,6 +1460,7 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 )
 

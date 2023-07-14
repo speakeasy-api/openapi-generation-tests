@@ -9,6 +9,8 @@ gem specific_install https://github.com/speakeasy-api/openapi-generation-tests -
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
+
+
 ```ruby
 require_relative openapi
 
