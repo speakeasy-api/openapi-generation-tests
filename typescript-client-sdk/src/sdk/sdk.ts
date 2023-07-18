@@ -10,6 +10,7 @@ import { First } from "./first";
 import { Flattening } from "./flattening";
 import { Generation } from "./generation";
 import { Globals } from "./globals";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { Pagination } from "./pagination";
@@ -113,8 +114,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.19.0";
-    genVersion = "2.65.0";
+    sdkVersion = "1.20.0";
+    genVersion = "2.70.0";
     globals: any;
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -322,6 +323,13 @@ export class SDK {
                         JSON.parse(decodedRes),
                         operations.PutAnythingIgnoredGeneration200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -375,6 +383,13 @@ export class SDK {
                     res.httpBinSimpleJsonObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.HttpBinSimpleJsonObject
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

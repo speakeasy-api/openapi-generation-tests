@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
@@ -80,6 +81,8 @@ func (s *unions) MixedTypeOneOfPost(ctx context.Context, request operations.Mixe
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -141,6 +144,8 @@ func (s *unions) PrimitiveTypeOneOfPost(ctx context.Context, request operations.
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -202,6 +207,8 @@ func (s *unions) StronglyTypedOneOfPost(ctx context.Context, request shared.Stro
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -263,6 +270,8 @@ func (s *unions) TypedObjectOneOfPost(ctx context.Context, request shared.TypedO
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -324,6 +333,8 @@ func (s *unions) WeaklyTypedOneOfPost(ctx context.Context, request shared.Weakly
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

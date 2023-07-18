@@ -12,10 +12,45 @@ type RequestBodyPostMultipleContentTypesSplitApplicationJSON struct {
 	Str  string  `json:"str"`
 }
 
+func (o *RequestBodyPostMultipleContentTypesSplitApplicationJSON) GetBool() bool {
+	if o == nil {
+		return false
+	}
+	return o.Bool
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitApplicationJSON) GetNum() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Num
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitApplicationJSON) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
 // RequestBodyPostMultipleContentTypesSplitJSONRes - OK
 type RequestBodyPostMultipleContentTypesSplitJSONRes struct {
 	Form map[string]interface{} `json:"form,omitempty"`
 	JSON map[string]interface{} `json:"json,omitempty"`
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitJSONRes) GetForm() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Form
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitJSONRes) GetJSON() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
 }
 
 type RequestBodyPostMultipleContentTypesSplitJSONResponse struct {
@@ -24,4 +59,32 @@ type RequestBodyPostMultipleContentTypesSplitJSONResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPostMultipleContentTypesSplitJSONRes
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitJSONResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitJSONResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitJSONResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitJSONResponse) GetRes() *RequestBodyPostMultipleContentTypesSplitJSONRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

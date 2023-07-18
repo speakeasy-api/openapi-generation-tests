@@ -18,3 +18,31 @@ type RequestBodyPostApplicationJSONArrayOfArrayResponse struct {
 	// OK
 	Arrs [][]shared.SimpleObject
 }
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayResponse) GetArrs() [][]shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.Arrs
+}

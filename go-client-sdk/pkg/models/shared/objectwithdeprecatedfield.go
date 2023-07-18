@@ -50,3 +50,24 @@ type ObjectWithDeprecatedField struct {
 	DeprecatedField *string `json:"deprecatedField,omitempty"`
 	NewField        *string `json:"newField,omitempty"`
 }
+
+func (o *ObjectWithDeprecatedField) GetDeprecatedEnum() *ObjectWithDeprecatedFieldDeprecatedEnum {
+	if o == nil {
+		return nil
+	}
+	return o.DeprecatedEnum
+}
+
+func (o *ObjectWithDeprecatedField) GetDeprecatedField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeprecatedField
+}
+
+func (o *ObjectWithDeprecatedField) GetNewField() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NewField
+}

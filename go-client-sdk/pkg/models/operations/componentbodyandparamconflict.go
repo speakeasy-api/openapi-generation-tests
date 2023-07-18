@@ -12,11 +12,39 @@ type ComponentBodyAndParamConflictRequest struct {
 	Str          string              `queryParam:"style=form,explode=true,name=str"`
 }
 
+func (o *ComponentBodyAndParamConflictRequest) GetSimpleObject() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.SimpleObject
+}
+
+func (o *ComponentBodyAndParamConflictRequest) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
 // ComponentBodyAndParamConflictRes - OK
 type ComponentBodyAndParamConflictRes struct {
 	Args map[string]string `json:"args"`
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	JSON shared.SimpleObject `json:"json"`
+}
+
+func (o *ComponentBodyAndParamConflictRes) GetArgs() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Args
+}
+
+func (o *ComponentBodyAndParamConflictRes) GetJSON() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.JSON
 }
 
 type ComponentBodyAndParamConflictResponse struct {
@@ -25,4 +53,32 @@ type ComponentBodyAndParamConflictResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *ComponentBodyAndParamConflictRes
+}
+
+func (o *ComponentBodyAndParamConflictResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ComponentBodyAndParamConflictResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ComponentBodyAndParamConflictResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ComponentBodyAndParamConflictResponse) GetRes() *ComponentBodyAndParamConflictRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

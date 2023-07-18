@@ -15,10 +15,38 @@ type PaginationLimitOffsetOffsetParamsRequest struct {
 	Offset *int64 `queryParam:"style=form,explode=true,name=offset"`
 }
 
+func (o *PaginationLimitOffsetOffsetParamsRequest) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *PaginationLimitOffsetOffsetParamsRequest) GetOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}
+
 // PaginationLimitOffsetOffsetParamsRes - OK
 type PaginationLimitOffsetOffsetParamsRes struct {
 	NumPages    int64   `json:"numPages"`
 	ResultArray []int64 `json:"resultArray"`
+}
+
+func (o *PaginationLimitOffsetOffsetParamsRes) GetNumPages() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.NumPages
+}
+
+func (o *PaginationLimitOffsetOffsetParamsRes) GetResultArray() []int64 {
+	if o == nil {
+		return []int64{}
+	}
+	return o.ResultArray
 }
 
 type PaginationLimitOffsetOffsetParamsResponse struct {
@@ -29,4 +57,32 @@ type PaginationLimitOffsetOffsetParamsResponse struct {
 	Res *PaginationLimitOffsetOffsetParamsRes
 
 	Next func() (*PaginationLimitOffsetOffsetParamsResponse, error)
+}
+
+func (o *PaginationLimitOffsetOffsetParamsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PaginationLimitOffsetOffsetParamsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PaginationLimitOffsetOffsetParamsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PaginationLimitOffsetOffsetParamsResponse) GetRes() *PaginationLimitOffsetOffsetParamsRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

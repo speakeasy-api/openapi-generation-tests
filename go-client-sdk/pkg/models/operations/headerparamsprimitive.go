@@ -13,6 +13,34 @@ type HeaderParamsPrimitiveRequest struct {
 	XHeaderString  string  `header:"style=simple,explode=false,name=X-Header-String"`
 }
 
+func (o *HeaderParamsPrimitiveRequest) GetXHeaderBoolean() bool {
+	if o == nil {
+		return false
+	}
+	return o.XHeaderBoolean
+}
+
+func (o *HeaderParamsPrimitiveRequest) GetXHeaderInteger() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.XHeaderInteger
+}
+
+func (o *HeaderParamsPrimitiveRequest) GetXHeaderNumber() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.XHeaderNumber
+}
+
+func (o *HeaderParamsPrimitiveRequest) GetXHeaderString() string {
+	if o == nil {
+		return ""
+	}
+	return o.XHeaderString
+}
+
 type HeaderParamsPrimitiveResHeaders struct {
 	XHeaderBoolean string `json:"X-Header-Boolean"`
 	XHeaderInteger string `json:"X-Header-Integer"`
@@ -20,9 +48,44 @@ type HeaderParamsPrimitiveResHeaders struct {
 	XHeaderString  string `json:"X-Header-String"`
 }
 
+func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderBoolean() string {
+	if o == nil {
+		return ""
+	}
+	return o.XHeaderBoolean
+}
+
+func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderInteger() string {
+	if o == nil {
+		return ""
+	}
+	return o.XHeaderInteger
+}
+
+func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderNumber() string {
+	if o == nil {
+		return ""
+	}
+	return o.XHeaderNumber
+}
+
+func (o *HeaderParamsPrimitiveResHeaders) GetXHeaderString() string {
+	if o == nil {
+		return ""
+	}
+	return o.XHeaderString
+}
+
 // HeaderParamsPrimitiveRes - OK
 type HeaderParamsPrimitiveRes struct {
 	Headers HeaderParamsPrimitiveResHeaders `json:"headers"`
+}
+
+func (o *HeaderParamsPrimitiveRes) GetHeaders() HeaderParamsPrimitiveResHeaders {
+	if o == nil {
+		return HeaderParamsPrimitiveResHeaders{}
+	}
+	return o.Headers
 }
 
 type HeaderParamsPrimitiveResponse struct {
@@ -31,4 +94,32 @@ type HeaderParamsPrimitiveResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *HeaderParamsPrimitiveRes
+}
+
+func (o *HeaderParamsPrimitiveResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *HeaderParamsPrimitiveResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *HeaderParamsPrimitiveResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *HeaderParamsPrimitiveResponse) GetRes() *HeaderParamsPrimitiveRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

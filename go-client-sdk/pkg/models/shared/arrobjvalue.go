@@ -7,3 +7,17 @@ type ArrObjValue struct {
 	JSON     []SimpleObject `json:"json,omitempty"`
 	Required interface{}    `json:"required,omitempty"`
 }
+
+func (o *ArrObjValue) GetJSON() []SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
+}
+
+func (o *ArrObjValue) GetRequired() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}

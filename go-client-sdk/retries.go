@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -114,6 +115,8 @@ func (s *retries) RetriesGet(ctx context.Context, requestID string, numRetries *
 			}
 
 			res.Retries = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

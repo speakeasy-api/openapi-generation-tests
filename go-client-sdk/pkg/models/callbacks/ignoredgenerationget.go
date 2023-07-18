@@ -12,8 +12,36 @@ type IgnoredGenerationGetSingledIgnoredCallbackOperationResponse struct {
 	RawResponse *http.Response
 }
 
+func (o *IgnoredGenerationGetSingledIgnoredCallbackOperationResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *IgnoredGenerationGetSingledIgnoredCallbackOperationResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *IgnoredGenerationGetSingledIgnoredCallbackOperationResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
 type IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody struct {
 	SomeProp *string `json:"someProp,omitempty"`
+}
+
+func (o *IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody) GetSomeProp() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SomeProp
 }
 
 type IgnoredGenerationGetNotIgnoredCallbackResponse struct {
@@ -22,6 +50,34 @@ type IgnoredGenerationGetNotIgnoredCallbackResponse struct {
 	RawResponse *http.Response
 }
 
+func (o *IgnoredGenerationGetNotIgnoredCallbackResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *IgnoredGenerationGetNotIgnoredCallbackResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *IgnoredGenerationGetNotIgnoredCallbackResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
 type IgnoredGenerationGetNotIgnoredCallbackRequestBody struct {
 	SomeProp *string `json:"someProp,omitempty"`
+}
+
+func (o *IgnoredGenerationGetNotIgnoredCallbackRequestBody) GetSomeProp() *string {
+	if o == nil {
+		return nil
+	}
+	return o.SomeProp
 }

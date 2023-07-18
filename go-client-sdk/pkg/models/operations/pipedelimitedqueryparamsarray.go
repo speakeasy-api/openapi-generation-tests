@@ -15,9 +15,51 @@ type PipeDelimitedQueryParamsArrayRequest struct {
 	ObjParam *shared.SimpleObject `queryParam:"style=pipeDelimited,explode=false,name=objParam"`
 }
 
+func (o *PipeDelimitedQueryParamsArrayRequest) GetArrParam() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ArrParam
+}
+
+func (o *PipeDelimitedQueryParamsArrayRequest) GetArrParamExploded() []int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ArrParamExploded
+}
+
+func (o *PipeDelimitedQueryParamsArrayRequest) GetMapParam() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.MapParam
+}
+
+func (o *PipeDelimitedQueryParamsArrayRequest) GetObjParam() *shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.ObjParam
+}
+
 type PipeDelimitedQueryParamsArrayResArgs struct {
 	ArrParam         string   `json:"arrParam"`
 	ArrParamExploded []string `json:"arrParamExploded"`
+}
+
+func (o *PipeDelimitedQueryParamsArrayResArgs) GetArrParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.ArrParam
+}
+
+func (o *PipeDelimitedQueryParamsArrayResArgs) GetArrParamExploded() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ArrParamExploded
 }
 
 // PipeDelimitedQueryParamsArrayRes - OK
@@ -26,10 +68,52 @@ type PipeDelimitedQueryParamsArrayRes struct {
 	URL  string                               `json:"url"`
 }
 
+func (o *PipeDelimitedQueryParamsArrayRes) GetArgs() PipeDelimitedQueryParamsArrayResArgs {
+	if o == nil {
+		return PipeDelimitedQueryParamsArrayResArgs{}
+	}
+	return o.Args
+}
+
+func (o *PipeDelimitedQueryParamsArrayRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
 type PipeDelimitedQueryParamsArrayResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *PipeDelimitedQueryParamsArrayRes
+}
+
+func (o *PipeDelimitedQueryParamsArrayResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PipeDelimitedQueryParamsArrayResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PipeDelimitedQueryParamsArrayResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PipeDelimitedQueryParamsArrayResponse) GetRes() *PipeDelimitedQueryParamsArrayRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

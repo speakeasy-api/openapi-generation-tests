@@ -13,10 +13,45 @@ type RequestBodyPostApplicationJSONSimpleRes struct {
 	JSON shared.SimpleObject `json:"json"`
 }
 
+func (o *RequestBodyPostApplicationJSONSimpleRes) GetJSON() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.JSON
+}
+
 type RequestBodyPostApplicationJSONSimpleResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPostApplicationJSONSimpleRes
+}
+
+func (o *RequestBodyPostApplicationJSONSimpleResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostApplicationJSONSimpleResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostApplicationJSONSimpleResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostApplicationJSONSimpleResponse) GetRes() *RequestBodyPostApplicationJSONSimpleRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

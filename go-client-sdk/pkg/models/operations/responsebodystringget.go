@@ -13,3 +13,31 @@ type ResponseBodyStringGetResponse struct {
 	// OK
 	HTML *string
 }
+
+func (o *ResponseBodyStringGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ResponseBodyStringGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ResponseBodyStringGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ResponseBodyStringGetResponse) GetHTML() *string {
+	if o == nil {
+		return nil
+	}
+	return o.HTML
+}

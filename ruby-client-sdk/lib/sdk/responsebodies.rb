@@ -10,31 +10,26 @@ require 'sorbet-runtime'
 module OpenApiSDK
   extend T::Sig
   class ResponseBodies
+    # Endpoints for testing response bodies.
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version, gbls)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
-      @globals = gbls
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { returns(Utils::FieldAugmented) }
     def response_body_bytes_get
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/bytes/100"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/bytes/100"
       headers = {}
       headers['Accept'] = 'application/octet-stream'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -51,15 +46,16 @@ module OpenApiSDK
     sig { returns(Utils::FieldAugmented) }
     def response_body_string_get
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/html"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/html"
       headers = {}
       headers['Accept'] = 'text/html'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -76,15 +72,16 @@ module OpenApiSDK
     sig { returns(Utils::FieldAugmented) }
     def response_body_xml_get
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/xml"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/xml"
       headers = {}
       headers['Accept'] = 'application/xml'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')

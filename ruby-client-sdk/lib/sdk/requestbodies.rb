@@ -10,34 +10,29 @@ require 'sorbet-runtime'
 module OpenApiSDK
   extend T::Sig
   class RequestBodies
+    # Endpoints for testing request bodies.
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version, gbls)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
-      @globals = gbls
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { params(request: T::Array[Shared::SimpleObject], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#array"
+      url = "#{base_url}/requestbody#array"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -64,18 +59,19 @@ module OpenApiSDK
     sig { params(request: T::Array[Shared::SimpleObject]).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_obj(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/application/json/array/objResponse"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/array/objResponse"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -102,18 +98,19 @@ module OpenApiSDK
     sig { params(request: T::Array[T::Array[Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_array(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#arrayOfArrays"
+      url = "#{base_url}/requestbody#arrayOfArrays"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -140,18 +137,19 @@ module OpenApiSDK
     sig { params(request: T::Array[T::Array[String]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_array_of_primitive(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_OF_PRIMITIVE_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_OF_PRIMITIVE_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#arrayOfArraysOfPrimitives"
+      url = "#{base_url}/requestbody#arrayOfArraysOfPrimitives"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -178,18 +176,19 @@ module OpenApiSDK
     sig { params(request: T::Array[T::Hash[Symbol, Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_map(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#arrayOfMaps"
+      url = "#{base_url}/requestbody#arrayOfMaps"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -216,18 +215,19 @@ module OpenApiSDK
     sig { params(request: T::Array[String], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_primitive(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#arrayOfPrimitives"
+      url = "#{base_url}/requestbody#arrayOfPrimitives"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -254,17 +254,18 @@ module OpenApiSDK
     sig { params(request: Shared::DeepObject).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_deep(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/application/json/deep"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/deep"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -291,18 +292,19 @@ module OpenApiSDK
     sig { params(request: T::Hash[Symbol, Shared::SimpleObject], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#map"
+      url = "#{base_url}/requestbody#map"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -329,18 +331,19 @@ module OpenApiSDK
     sig { params(request: T::Hash[Symbol, Shared::SimpleObject]).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_obj(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/application/json/map/objResponse"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/map/objResponse"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -367,18 +370,19 @@ module OpenApiSDK
     sig { params(request: T::Hash[Symbol, T::Array[Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_array(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#mapOfArrays"
+      url = "#{base_url}/requestbody#mapOfArrays"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -405,18 +409,19 @@ module OpenApiSDK
     sig { params(request: T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_map(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#mapOfMaps"
+      url = "#{base_url}/requestbody#mapOfMaps"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -443,18 +448,19 @@ module OpenApiSDK
     sig { params(request: T::Hash[Symbol, T::Hash[Symbol, String]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_map_of_primitive(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#mapOfMapsOfPrimitives"
+      url = "#{base_url}/requestbody#mapOfMapsOfPrimitives"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -481,18 +487,19 @@ module OpenApiSDK
     sig { params(request: T::Hash[Symbol, String], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_primitive(request, server_url = nil)
 
-      base_url = Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS[0]
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS[0], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/requestbody#mapOfPrimitives"
+      url = "#{base_url}/requestbody#mapOfPrimitives"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -519,18 +526,19 @@ module OpenApiSDK
     sig { params(request: Shared::SimpleObject).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_multiple_json_filtered(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/application/json/multiple/json/filtered"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/multiple/json/filtered"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -557,18 +565,19 @@ module OpenApiSDK
     sig { params(request: Shared::SimpleObject).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_simple(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/application/json/simple"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/simple"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -595,17 +604,18 @@ module OpenApiSDK
     sig { params(request: Operations::RequestBodyPostEmptyObjectRequestBody).returns(Utils::FieldAugmented) }
     def request_body_post_empty_object(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/put/empty-object"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/empty-object"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -632,18 +642,19 @@ module OpenApiSDK
     sig { params(request: Shared::DeepObject).returns(Utils::FieldAugmented) }
     def request_body_post_form_deep(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/form/deep"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/form/deep"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :form)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -670,18 +681,19 @@ module OpenApiSDK
     sig { params(request: T::Hash[Symbol, String]).returns(Utils::FieldAugmented) }
     def request_body_post_form_map_primitive(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/form/map/primitive"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/form/map/primitive"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :form)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -708,18 +720,19 @@ module OpenApiSDK
     sig { params(request: Shared::SimpleObject).returns(Utils::FieldAugmented) }
     def request_body_post_form_simple(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/form/simple"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/form/simple"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :form)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -746,18 +759,19 @@ module OpenApiSDK
     sig { params(request: Shared::SimpleObject).returns(Utils::FieldAugmented) }
     def request_body_post_multiple_content_types_component_filtered(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/component/filtered"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/component/filtered"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -784,18 +798,19 @@ module OpenApiSDK
     sig { params(request: Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON).returns(Utils::FieldAugmented) }
     def request_body_post_multiple_content_types_inline_filtered(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/inline/filtered"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/inline/filtered"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -826,20 +841,21 @@ module OpenApiSDK
         request_body: request_body,
         param_str: param_str
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :form)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -870,20 +886,21 @@ module OpenApiSDK
         request_body: request_body,
         param_str: param_str
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -914,20 +931,21 @@ module OpenApiSDK
         request_body: request_body,
         param_str: param_str
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split/param"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/split/param"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -954,18 +972,19 @@ module OpenApiSDK
     sig { params(request: Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded).returns(Utils::FieldAugmented) }
     def request_body_post_multiple_content_types_split_form(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/split"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :form)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -992,18 +1011,19 @@ module OpenApiSDK
     sig { params(request: Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON).returns(Utils::FieldAugmented) }
     def request_body_post_multiple_content_types_split_json(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/split"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -1030,18 +1050,19 @@ module OpenApiSDK
     sig { params(request: Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData).returns(Utils::FieldAugmented) }
     def request_body_post_multiple_content_types_split_multipart(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/post/multiple/contentTypes/split"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/multiple/contentTypes/split"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -1068,18 +1089,19 @@ module OpenApiSDK
     sig { params(request: String).returns(Utils::FieldAugmented) }
     def request_body_put_bytes(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/put/bytes"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/bytes"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :raw)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -1106,18 +1128,19 @@ module OpenApiSDK
     sig { params(request: Shared::DeepObject).returns(Utils::FieldAugmented) }
     def request_body_put_multipart_deep(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/put/multipart/deep"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/multipart/deep"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -1144,18 +1167,19 @@ module OpenApiSDK
     sig { params(request: Operations::RequestBodyPutMultipartFileRequestBody).returns(Utils::FieldAugmented) }
     def request_body_put_multipart_file(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/put/multipart/file"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/multipart/file"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -1182,18 +1206,19 @@ module OpenApiSDK
     sig { params(request: Shared::SimpleObject).returns(Utils::FieldAugmented) }
     def request_body_put_multipart_simple(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/put/multipart/simple"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/multipart/simple"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :multipart)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -1220,18 +1245,19 @@ module OpenApiSDK
     sig { params(request: String).returns(Utils::FieldAugmented) }
     def request_body_put_string(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/requestBodies/put/string"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/string"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :string)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')

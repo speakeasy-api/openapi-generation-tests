@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -68,6 +69,13 @@ export class Telemetry {
                         JSON.parse(decodedRes),
                         operations.TelemetrySpeakeasyUserAgentGetRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -121,6 +129,13 @@ export class Telemetry {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.TelemetryUserAgentGetRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

@@ -707,7 +707,12 @@ module OpenApiSDK
     sig { params(url_with_params: String, params: T::Hash[Symbol, String]).returns(String) }
     def self.template_url(url_with_params, params)
       params.each do |key, value|
-        url_with_params = url_with_params.gsub("{#{key}}", value)
+        if value.respond_to? :serialize
+          val_str = value.serialize
+        else
+          val_str = value
+        end
+        url_with_params = url_with_params.gsub("{#{key}}", val_str)
       end
 
       url_with_params

@@ -13,3 +13,31 @@ type ResponseBodyXMLGetResponse struct {
 	// OK
 	XML *string
 }
+
+func (o *ResponseBodyXMLGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ResponseBodyXMLGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ResponseBodyXMLGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ResponseBodyXMLGetResponse) GetXML() *string {
+	if o == nil {
+		return nil
+	}
+	return o.XML
+}

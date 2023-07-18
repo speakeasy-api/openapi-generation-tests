@@ -110,3 +110,129 @@ type SimpleObject struct {
 	// An optional string property.
 	StrOpt *string `json:"strOpt,omitempty" header:"name=strOpt" pathParam:"name=strOpt" queryParam:"name=strOpt" form:"name=strOpt" multipartForm:"name=strOpt"`
 }
+
+func (o *SimpleObject) GetAny() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *SimpleObject) GetBigint() *big.Int {
+	if o == nil {
+		return nil
+	}
+	return o.Bigint
+}
+
+func (o *SimpleObject) GetBigintStr() *types.BigInt {
+	if o == nil {
+		return nil
+	}
+	return o.BigintStr
+}
+
+func (o *SimpleObject) GetBool() bool {
+	if o == nil {
+		return false
+	}
+	return o.Bool
+}
+
+func (o *SimpleObject) GetBoolOpt() *bool {
+	if o == nil {
+		return nil
+	}
+	return o.BoolOpt
+}
+
+func (o *SimpleObject) GetDate() types.Date {
+	if o == nil {
+		return types.Date{}
+	}
+	return o.Date
+}
+
+func (o *SimpleObject) GetDateTime() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.DateTime
+}
+
+func (o *SimpleObject) GetEnum() Enum {
+	if o == nil {
+		return Enum("")
+	}
+	return o.Enum
+}
+
+func (o *SimpleObject) GetFloat32() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Float32
+}
+
+func (o *SimpleObject) GetInt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Int
+}
+
+func (o *SimpleObject) GetInt32() int {
+	if o == nil {
+		return 0
+	}
+	return o.Int32
+}
+
+func (o *SimpleObject) GetInt32Enum() SimpleObjectInt32Enum {
+	if o == nil {
+		return SimpleObjectInt32Enum(0)
+	}
+	return o.Int32Enum
+}
+
+func (o *SimpleObject) GetIntEnum() SimpleObjectIntEnum {
+	if o == nil {
+		return SimpleObjectIntEnum(0)
+	}
+	return o.IntEnum
+}
+
+func (o *SimpleObject) GetIntOptNull() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.IntOptNull
+}
+
+func (o *SimpleObject) GetNum() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Num
+}
+
+func (o *SimpleObject) GetNumOptNull() *float64 {
+	if o == nil {
+		return nil
+	}
+	return o.NumOptNull
+}
+
+func (o *SimpleObject) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
+func (o *SimpleObject) GetStrOpt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StrOpt
+}

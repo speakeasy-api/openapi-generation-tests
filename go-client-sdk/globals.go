@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -76,6 +77,8 @@ func (s *globals) GlobalPathParameterGet(ctx context.Context, globalPathParam *i
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -135,6 +138,8 @@ func (s *globals) GlobalsQueryParameterGet(ctx context.Context, globalQueryParam
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

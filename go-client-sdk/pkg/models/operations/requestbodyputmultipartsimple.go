@@ -23,9 +23,114 @@ type RequestBodyPutMultipartSimpleResForm struct {
 	StrOpt     *string `json:"strOpt,omitempty"`
 }
 
+func (o *RequestBodyPutMultipartSimpleResForm) GetAny() string {
+	if o == nil {
+		return ""
+	}
+	return o.Any
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetBool() string {
+	if o == nil {
+		return ""
+	}
+	return o.Bool
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetBoolOpt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BoolOpt
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetDate() string {
+	if o == nil {
+		return ""
+	}
+	return o.Date
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetDateTime() string {
+	if o == nil {
+		return ""
+	}
+	return o.DateTime
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetEnum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Enum
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetFloat32() string {
+	if o == nil {
+		return ""
+	}
+	return o.Float32
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetInt() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetInt32() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int32
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetIntOptNull() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntOptNull
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetNum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Num
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetNumOptNull() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NumOptNull
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
+func (o *RequestBodyPutMultipartSimpleResForm) GetStrOpt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StrOpt
+}
+
 // RequestBodyPutMultipartSimpleRes - OK
 type RequestBodyPutMultipartSimpleRes struct {
 	Form RequestBodyPutMultipartSimpleResForm `json:"form"`
+}
+
+func (o *RequestBodyPutMultipartSimpleRes) GetForm() RequestBodyPutMultipartSimpleResForm {
+	if o == nil {
+		return RequestBodyPutMultipartSimpleResForm{}
+	}
+	return o.Form
 }
 
 type RequestBodyPutMultipartSimpleResponse struct {
@@ -34,4 +139,32 @@ type RequestBodyPutMultipartSimpleResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPutMultipartSimpleRes
+}
+
+func (o *RequestBodyPutMultipartSimpleResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPutMultipartSimpleResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPutMultipartSimpleResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPutMultipartSimpleResponse) GetRes() *RequestBodyPutMultipartSimpleRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

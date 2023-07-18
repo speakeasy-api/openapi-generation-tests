@@ -10,29 +10,24 @@ require 'sorbet-runtime'
 module OpenApiSDK
   extend T::Sig
   class Auth
+    # Endpoints for testing authentication.
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version, gbls)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
-      @globals = gbls
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { params(security: Operations::ApiKeyAuthSecurity).returns(Utils::FieldAugmented) }
     def api_key_auth(security)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/bearer#operation"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/bearer#operation"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         Utils.configure_request_security(req, security) if !security.nil?
       end
@@ -55,15 +50,16 @@ module OpenApiSDK
     sig { returns(Utils::FieldAugmented) }
     def api_key_auth_global
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/bearer"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/bearer"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -88,19 +84,20 @@ module OpenApiSDK
         passwd: passwd,
         user: user
       )
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::BasicAuthRequest,
         base_url,
         '/basic-auth/{user}/{passwd}',
         request,
-        @globals
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         Utils.configure_request_security(req, security) if !security.nil?
       end
@@ -123,13 +120,14 @@ module OpenApiSDK
     sig { params(security: Operations::BearerAuthSecurity).returns(Utils::FieldAugmented) }
     def bearer_auth(security)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/bearer#bearer"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/bearer#bearer"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         Utils.configure_request_security(req, security) if !security.nil?
       end
@@ -152,13 +150,14 @@ module OpenApiSDK
     sig { params(security: Operations::Oauth2AuthSecurity).returns(Utils::FieldAugmented) }
     def oauth2_auth(security)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/bearer#oauth2"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/bearer#oauth2"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         Utils.configure_request_security(req, security) if !security.nil?
       end
@@ -181,13 +180,14 @@ module OpenApiSDK
     sig { params(security: Operations::OpenIdConnectAuthSecurity).returns(Utils::FieldAugmented) }
     def open_id_connect_auth(security)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/bearer#openIdConnect"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/bearer#openIdConnect"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         Utils.configure_request_security(req, security) if !security.nil?
       end

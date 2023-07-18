@@ -14,3 +14,66 @@ type DeepObject struct {
 	Str  string       `json:"str" form:"name=str" multipartForm:"name=str"`
 	Type *string      `json:"type,omitempty" form:"name=type" multipartForm:"name=type"`
 }
+
+func (o *DeepObject) GetAny() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Any
+}
+
+func (o *DeepObject) GetArr() []SimpleObject {
+	if o == nil {
+		return []SimpleObject{}
+	}
+	return o.Arr
+}
+
+func (o *DeepObject) GetBool() bool {
+	if o == nil {
+		return false
+	}
+	return o.Bool
+}
+
+func (o *DeepObject) GetInt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Int
+}
+
+func (o *DeepObject) GetMap() map[string]SimpleObject {
+	if o == nil {
+		return map[string]SimpleObject{}
+	}
+	return o.Map
+}
+
+func (o *DeepObject) GetNum() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Num
+}
+
+func (o *DeepObject) GetObj() SimpleObject {
+	if o == nil {
+		return SimpleObject{}
+	}
+	return o.Obj
+}
+
+func (o *DeepObject) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
+func (o *DeepObject) GetType() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Type
+}

@@ -11,9 +11,37 @@ type FormQueryParamsArrayRequest struct {
 	ArrParamExploded []int64  `queryParam:"style=form,explode=true,name=arrParamExploded"`
 }
 
+func (o *FormQueryParamsArrayRequest) GetArrParam() []string {
+	if o == nil {
+		return nil
+	}
+	return o.ArrParam
+}
+
+func (o *FormQueryParamsArrayRequest) GetArrParamExploded() []int64 {
+	if o == nil {
+		return nil
+	}
+	return o.ArrParamExploded
+}
+
 type FormQueryParamsArrayResArgs struct {
 	ArrParam         string   `json:"arrParam"`
 	ArrParamExploded []string `json:"arrParamExploded"`
+}
+
+func (o *FormQueryParamsArrayResArgs) GetArrParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.ArrParam
+}
+
+func (o *FormQueryParamsArrayResArgs) GetArrParamExploded() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ArrParamExploded
 }
 
 // FormQueryParamsArrayRes - OK
@@ -22,10 +50,52 @@ type FormQueryParamsArrayRes struct {
 	URL  string                      `json:"url"`
 }
 
+func (o *FormQueryParamsArrayRes) GetArgs() FormQueryParamsArrayResArgs {
+	if o == nil {
+		return FormQueryParamsArrayResArgs{}
+	}
+	return o.Args
+}
+
+func (o *FormQueryParamsArrayRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
 type FormQueryParamsArrayResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *FormQueryParamsArrayRes
+}
+
+func (o *FormQueryParamsArrayResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FormQueryParamsArrayResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FormQueryParamsArrayResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *FormQueryParamsArrayResponse) GetRes() *FormQueryParamsArrayRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

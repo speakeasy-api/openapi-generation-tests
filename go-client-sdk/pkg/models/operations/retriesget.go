@@ -15,9 +15,30 @@ type RetriesGetRequest struct {
 	NumRetries *int64 `queryParam:"style=form,explode=true,name=num-retries"`
 }
 
+func (o *RetriesGetRequest) GetRequestID() string {
+	if o == nil {
+		return ""
+	}
+	return o.RequestID
+}
+
+func (o *RetriesGetRequest) GetNumRetries() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.NumRetries
+}
+
 // RetriesGetRetries - OK
 type RetriesGetRetries struct {
 	Retries int64 `json:"retries"`
+}
+
+func (o *RetriesGetRetries) GetRetries() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Retries
 }
 
 type RetriesGetResponse struct {
@@ -26,4 +47,32 @@ type RetriesGetResponse struct {
 	RawResponse *http.Response
 	// OK
 	Retries *RetriesGetRetries
+}
+
+func (o *RetriesGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RetriesGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RetriesGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RetriesGetResponse) GetRetries() *RetriesGetRetries {
+	if o == nil {
+		return nil
+	}
+	return o.Retries
 }

@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -78,6 +79,13 @@ export class Unions {
                         JSON.parse(decodedRes),
                         operations.MixedTypeOneOfPostRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -145,6 +153,13 @@ export class Unions {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.PrimitiveTypeOneOfPostRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -214,6 +229,13 @@ export class Unions {
                         JSON.parse(decodedRes),
                         operations.StronglyTypedOneOfPostRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -282,6 +304,13 @@ export class Unions {
                         JSON.parse(decodedRes),
                         operations.TypedObjectOneOfPostRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -349,6 +378,13 @@ export class Unions {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.WeaklyTypedOneOfPostRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

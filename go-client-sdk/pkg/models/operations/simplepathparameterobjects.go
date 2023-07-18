@@ -14,9 +14,30 @@ type SimplePathParameterObjectsRequest struct {
 	ObjParamExploded shared.SimpleObject `pathParam:"style=simple,explode=true,name=objParamExploded"`
 }
 
+func (o *SimplePathParameterObjectsRequest) GetObjParam() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.ObjParam
+}
+
+func (o *SimplePathParameterObjectsRequest) GetObjParamExploded() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.ObjParamExploded
+}
+
 // SimplePathParameterObjectsRes - OK
 type SimplePathParameterObjectsRes struct {
 	URL string `json:"url"`
+}
+
+func (o *SimplePathParameterObjectsRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type SimplePathParameterObjectsResponse struct {
@@ -25,4 +46,32 @@ type SimplePathParameterObjectsResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *SimplePathParameterObjectsRes
+}
+
+func (o *SimplePathParameterObjectsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SimplePathParameterObjectsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SimplePathParameterObjectsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *SimplePathParameterObjectsResponse) GetRes() *SimplePathParameterObjectsRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

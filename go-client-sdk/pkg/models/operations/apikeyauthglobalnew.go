@@ -15,3 +15,24 @@ type APIKeyAuthGlobalNewResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *APIKeyAuthGlobalNewResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *APIKeyAuthGlobalNewResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *APIKeyAuthGlobalNewResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

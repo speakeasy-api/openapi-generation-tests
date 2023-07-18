@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -83,6 +84,13 @@ export class Pagination {
                         JSON.parse(decodedRes),
                         operations.PaginationCursorBodyRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -157,6 +165,13 @@ export class Pagination {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.PaginationCursorParamsRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -239,6 +254,13 @@ export class Pagination {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetOffsetBodyRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -329,6 +351,13 @@ export class Pagination {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetOffsetParamsRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -428,6 +457,13 @@ export class Pagination {
                         JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetPageBodyRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -511,6 +547,13 @@ export class Pagination {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.PaginationLimitOffsetPageParamsRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

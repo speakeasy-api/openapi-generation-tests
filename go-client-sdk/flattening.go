@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
@@ -89,6 +90,8 @@ func (s *flattening) ComponentBodyAndParamConflict(ctx context.Context, simpleOb
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -159,6 +162,8 @@ func (s *flattening) ComponentBodyAndParamNoConflict(ctx context.Context, paramS
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -222,6 +227,8 @@ func (s *flattening) ConflictingParams(ctx context.Context, strPathParameter str
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -292,6 +299,8 @@ func (s *flattening) InlineBodyAndParamConflict(ctx context.Context, requestBody
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -362,6 +371,8 @@ func (s *flattening) InlineBodyAndParamNoConflict(ctx context.Context, requestBo
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -11,3 +11,24 @@ type GroupFirstGetResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 }
+
+func (o *GroupFirstGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GroupFirstGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GroupFirstGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

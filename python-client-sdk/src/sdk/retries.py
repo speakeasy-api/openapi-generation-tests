@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from sdk import utils
-from sdk.models import operations
+from sdk.models import errors, operations
 from typing import Optional
 
 class Retries:
@@ -50,6 +50,8 @@ class Retries:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.RetriesGetRetries])
                 res.retries = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

@@ -10,17 +10,11 @@ require 'sorbet-runtime'
 module OpenApiSDK
   extend T::Sig
   class Parameters
+    # Endpoints for testing parameters.
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version, gbls)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
-      @globals = gbls
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { params(map_param: T::Hash[Symbol, String], map_arr_param: T.nilable(T::Hash[Symbol, T::Array[String]])).returns(Utils::FieldAugmented) }
@@ -30,17 +24,18 @@ module OpenApiSDK
         map_param: map_param,
         map_arr_param: map_arr_param
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/deepObject/map"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/deepObject/map"
       headers = {}
-      query_params = Utils.get_query_params(Operations::DeepObjectQueryParamsMapRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::DeepObjectQueryParamsMapRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -64,17 +59,18 @@ module OpenApiSDK
         obj_param: obj_param,
         obj_arr_param: obj_arr_param
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/deepObject/obj"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/deepObject/obj"
       headers = {}
-      query_params = Utils.get_query_params(Operations::DeepObjectQueryParamsObjectRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::DeepObjectQueryParamsObjectRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -98,17 +94,18 @@ module OpenApiSDK
         arr_param: arr_param,
         arr_param_exploded: arr_param_exploded
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/array"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/form/array"
       headers = {}
-      query_params = Utils.get_query_params(Operations::FormQueryParamsArrayRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::FormQueryParamsArrayRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -132,17 +129,18 @@ module OpenApiSDK
         map_param: map_param,
         map_param_exploded: map_param_exploded
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/map"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/form/map"
       headers = {}
-      query_params = Utils.get_query_params(Operations::FormQueryParamsMapRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::FormQueryParamsMapRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -166,17 +164,18 @@ module OpenApiSDK
         obj_param_exploded: obj_param_exploded,
         obj_param: obj_param
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/obj"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/form/obj"
       headers = {}
-      query_params = Utils.get_query_params(Operations::FormQueryParamsObjectRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::FormQueryParamsObjectRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -202,17 +201,18 @@ module OpenApiSDK
         num_param: num_param,
         str_param: str_param
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/primitive"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/form/primitive"
       headers = {}
-      query_params = Utils.get_query_params(Operations::FormQueryParamsPrimitiveRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::FormQueryParamsPrimitiveRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -236,17 +236,18 @@ module OpenApiSDK
         ref_obj_param: ref_obj_param,
         ref_obj_param_exploded: ref_obj_param_exploded
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/form/refParamObject"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/form/refParamObject"
       headers = {}
-      query_params = Utils.get_query_params(Operations::FormQueryParamsRefParamObjectRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::FormQueryParamsRefParamObjectRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -269,15 +270,16 @@ module OpenApiSDK
       request = Operations::HeaderParamsArrayRequest.new(
         x_header_array: x_header_array
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/headers/array"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/headers/array"
       headers = Utils.get_headers(request)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -301,15 +303,16 @@ module OpenApiSDK
         x_header_map: x_header_map,
         x_header_map_explode: x_header_map_explode
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/headers/map"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/headers/map"
       headers = Utils.get_headers(request)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -333,15 +336,16 @@ module OpenApiSDK
         x_header_obj: x_header_obj,
         x_header_obj_explode: x_header_obj_explode
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/headers/obj"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/headers/obj"
       headers = Utils.get_headers(request)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -367,15 +371,16 @@ module OpenApiSDK
         x_header_number: x_header_number,
         x_header_string: x_header_string
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/headers/primitive"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/headers/primitive"
       headers = Utils.get_headers(request)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -399,17 +404,18 @@ module OpenApiSDK
         deep_obj_param: deep_obj_param,
         simple_obj_param: simple_obj_param
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/json/obj"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/json/obj"
       headers = {}
-      query_params = Utils.get_query_params(Operations::JsonQueryParamsObjectRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::JsonQueryParamsObjectRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -434,17 +440,18 @@ module OpenApiSDK
         form_param: form_param,
         json_param: json_param
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/mixed"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/mixed"
       headers = {}
-      query_params = Utils.get_query_params(Operations::MixedQueryParamsRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::MixedQueryParamsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -467,21 +474,22 @@ module OpenApiSDK
       request = Operations::PathParameterJsonRequest.new(
         json_obj: json_obj
       )
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::PathParameterJsonRequest,
         base_url,
         '/anything/pathParams/json/{jsonObj}',
         request,
-        @globals
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -507,17 +515,18 @@ module OpenApiSDK
         map_param: map_param,
         obj_param: obj_param
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/queryParams/pipe/array"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/pipe/array"
       headers = {}
-      query_params = Utils.get_query_params(Operations::PipeDelimitedQueryParamsArrayRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::PipeDelimitedQueryParamsArrayRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -540,21 +549,22 @@ module OpenApiSDK
       request = Operations::SimplePathParameterArraysRequest.new(
         arr_param: arr_param
       )
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::SimplePathParameterArraysRequest,
         base_url,
         '/anything/pathParams/arr/{arrParam}',
         request,
-        @globals
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -578,21 +588,22 @@ module OpenApiSDK
         map_param: map_param,
         map_param_exploded: map_param_exploded
       )
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::SimplePathParameterMapsRequest,
         base_url,
         '/anything/pathParams/map/{mapParam}/mapExploded/{mapParamExploded}',
         request,
-        @globals
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -616,21 +627,22 @@ module OpenApiSDK
         obj_param: obj_param,
         obj_param_exploded: obj_param_exploded
       )
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::SimplePathParameterObjectsRequest,
         base_url,
         '/anything/pathParams/obj/{objParam}/objExploded/{objParamExploded}',
         request,
-        @globals
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -656,21 +668,22 @@ module OpenApiSDK
         num_param: num_param,
         str_param: str_param
       )
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::SimplePathParameterPrimitivesRequest,
         base_url,
         '/anything/pathParams/str/{strParam}/bool/{boolParam}/int/{intParam}/num/{numParam}',
         request,
-        @globals
+        @sdk_configuration.globals
       )
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')

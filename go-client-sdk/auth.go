@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -69,6 +70,8 @@ func (s *auth) APIKeyAuth(ctx context.Context, security operations.APIKeyAuthSec
 			}
 
 			res.Token = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 401:
 	}
@@ -121,6 +124,8 @@ func (s *auth) APIKeyAuthGlobal(ctx context.Context) (*operations.APIKeyAuthGlob
 			}
 
 			res.Token = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 401:
 	}
@@ -181,6 +186,8 @@ func (s *auth) BasicAuth(ctx context.Context, security operations.BasicAuthSecur
 			}
 
 			res.User = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 401:
 	}
@@ -233,6 +240,8 @@ func (s *auth) BearerAuth(ctx context.Context, security operations.BearerAuthSec
 			}
 
 			res.Token = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 401:
 	}
@@ -285,6 +294,8 @@ func (s *auth) Oauth2Auth(ctx context.Context, security operations.Oauth2AuthSec
 			}
 
 			res.Token = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 401:
 	}
@@ -337,6 +348,8 @@ func (s *auth) OpenIDConnectAuth(ctx context.Context, security operations.OpenID
 			}
 
 			res.Token = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	case httpRes.StatusCode == 401:
 	}

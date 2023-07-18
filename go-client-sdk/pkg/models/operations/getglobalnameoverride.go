@@ -13,10 +13,45 @@ type GetGlobalNameOverride200ApplicationJSON struct {
 	JSON *shared.SimpleObject `json:"json,omitempty"`
 }
 
+func (o *GetGlobalNameOverride200ApplicationJSON) GetJSON() *shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
+}
+
 type GetGlobalNameOverrideResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
 	GetGlobalNameOverride200ApplicationJSONObject *GetGlobalNameOverride200ApplicationJSON
+}
+
+func (o *GetGlobalNameOverrideResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GetGlobalNameOverrideResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GetGlobalNameOverrideResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GetGlobalNameOverrideResponse) GetGetGlobalNameOverride200ApplicationJSONObject() *GetGlobalNameOverride200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.GetGlobalNameOverride200ApplicationJSONObject
 }

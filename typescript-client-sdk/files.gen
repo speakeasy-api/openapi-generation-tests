@@ -31,6 +31,7 @@ src/internal/utils/retries.ts
 src/internal/utils/security.ts
 src/internal/utils/utils.ts
 src/sdk/index.ts
+src/sdk/models/errors/sdkerror.ts
 src/sdk/types/index.ts
 src/sdk/types/rfcdate.ts
 tsconfig.json
@@ -190,6 +191,7 @@ src/sdk/models/shared/typedobject3.ts
 src/sdk/models/shared/index.ts
 src/sdk/models/callbacks/ignoredgenerationget.ts
 src/sdk/models/callbacks/index.ts
+src/sdk/models/errors/index.ts
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md

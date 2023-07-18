@@ -7,3 +7,24 @@ type LimitOffsetConfig struct {
 	Offset *int64 `json:"offset,omitempty"`
 	Page   *int64 `json:"page,omitempty"`
 }
+
+func (o *LimitOffsetConfig) GetLimit() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Limit
+}
+
+func (o *LimitOffsetConfig) GetOffset() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Offset
+}
+
+func (o *LimitOffsetConfig) GetPage() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.Page
+}

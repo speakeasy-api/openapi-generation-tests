@@ -246,10 +246,45 @@ type PrimitiveTypeOneOfPostRes struct {
 	JSON PrimitiveTypeOneOfPostResJSON `json:"json"`
 }
 
+func (o *PrimitiveTypeOneOfPostRes) GetJSON() PrimitiveTypeOneOfPostResJSON {
+	if o == nil {
+		return PrimitiveTypeOneOfPostResJSON{}
+	}
+	return o.JSON
+}
+
 type PrimitiveTypeOneOfPostResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *PrimitiveTypeOneOfPostRes
+}
+
+func (o *PrimitiveTypeOneOfPostResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PrimitiveTypeOneOfPostResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PrimitiveTypeOneOfPostResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PrimitiveTypeOneOfPostResponse) GetRes() *PrimitiveTypeOneOfPostRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

@@ -9,3 +9,31 @@ type RefQueryParamObjExploded struct {
 	Num  float64 `queryParam:"name=num"`
 	Str  string  `queryParam:"name=str"`
 }
+
+func (o *RefQueryParamObjExploded) GetBool() bool {
+	if o == nil {
+		return false
+	}
+	return o.Bool
+}
+
+func (o *RefQueryParamObjExploded) GetInt() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Int
+}
+
+func (o *RefQueryParamObjExploded) GetNum() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Num
+}
+
+func (o *RefQueryParamObjExploded) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}

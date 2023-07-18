@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from sdk import utils
-from sdk.models import operations
+from sdk.models import errors, operations
 
 class ResponseBodies:
     r"""Endpoints for testing response bodies."""
@@ -30,6 +30,8 @@ class ResponseBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
                 res.bytes = http_res.content
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -52,6 +54,8 @@ class ResponseBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'text/html'):
                 res.html = http_res.content
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -74,6 +78,8 @@ class ResponseBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/xml'):
                 res.xml = http_res.content
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

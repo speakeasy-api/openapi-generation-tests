@@ -10,6 +10,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
@@ -130,6 +131,8 @@ func (s *pagination) PaginationCursorBody(ctx context.Context, request operation
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -239,6 +242,8 @@ func (s *pagination) PaginationCursorParams(ctx context.Context, cursor int64, o
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -349,6 +354,8 @@ func (s *pagination) PaginationLimitOffsetOffsetBody(ctx context.Context, reques
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -458,6 +465,8 @@ func (s *pagination) PaginationLimitOffsetOffsetParams(ctx context.Context, limi
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -566,6 +575,8 @@ func (s *pagination) PaginationLimitOffsetPageBody(ctx context.Context, request 
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -669,6 +680,8 @@ func (s *pagination) PaginationLimitOffsetPageParams(ctx context.Context, page i
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

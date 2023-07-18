@@ -15,8 +15,43 @@ type MultipleSimpleOptionsAuthSecurity struct {
 	Oauth2        *string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *MultipleSimpleOptionsAuthSecurity) GetAPIKeyAuthNew() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyAuthNew
+}
+
+func (o *MultipleSimpleOptionsAuthSecurity) GetOauth2() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Oauth2
+}
+
 type MultipleSimpleOptionsAuthResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *MultipleSimpleOptionsAuthResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *MultipleSimpleOptionsAuthResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *MultipleSimpleOptionsAuthResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

@@ -16,10 +16,45 @@ type MixedQueryParamsRequest struct {
 	JSONParam shared.SimpleObject `queryParam:"serialization=json,name=jsonParam"`
 }
 
+func (o *MixedQueryParamsRequest) GetDeepObjectParam() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.DeepObjectParam
+}
+
+func (o *MixedQueryParamsRequest) GetFormParam() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.FormParam
+}
+
+func (o *MixedQueryParamsRequest) GetJSONParam() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.JSONParam
+}
+
 // MixedQueryParamsRes - OK
 type MixedQueryParamsRes struct {
 	Args map[string]string `json:"args"`
 	URL  string            `json:"url"`
+}
+
+func (o *MixedQueryParamsRes) GetArgs() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Args
+}
+
+func (o *MixedQueryParamsRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type MixedQueryParamsResponse struct {
@@ -28,4 +63,32 @@ type MixedQueryParamsResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *MixedQueryParamsRes
+}
+
+func (o *MixedQueryParamsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *MixedQueryParamsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *MixedQueryParamsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *MixedQueryParamsResponse) GetRes() *MixedQueryParamsRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

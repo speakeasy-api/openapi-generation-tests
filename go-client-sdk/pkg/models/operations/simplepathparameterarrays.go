@@ -10,9 +10,23 @@ type SimplePathParameterArraysRequest struct {
 	ArrParam []string `pathParam:"style=simple,explode=false,name=arrParam"`
 }
 
+func (o *SimplePathParameterArraysRequest) GetArrParam() []string {
+	if o == nil {
+		return []string{}
+	}
+	return o.ArrParam
+}
+
 // SimplePathParameterArraysRes - OK
 type SimplePathParameterArraysRes struct {
 	URL string `json:"url"`
+}
+
+func (o *SimplePathParameterArraysRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type SimplePathParameterArraysResponse struct {
@@ -21,4 +35,32 @@ type SimplePathParameterArraysResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *SimplePathParameterArraysRes
+}
+
+func (o *SimplePathParameterArraysResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *SimplePathParameterArraysResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *SimplePathParameterArraysResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *SimplePathParameterArraysResponse) GetRes() *SimplePathParameterArraysRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

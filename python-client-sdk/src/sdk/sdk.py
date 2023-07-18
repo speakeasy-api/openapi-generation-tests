@@ -20,7 +20,7 @@ from .servers import Servers
 from .telemetry import Telemetry
 from .unions import Unions
 from sdk import utils
-from sdk.models import operations, shared
+from sdk.models import errors, operations, shared
 from typing import Optional
 
 class SDK:
@@ -174,6 +174,8 @@ class SDK:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PutAnythingIgnoredGeneration200ApplicationJSON])
                 res.put_anything_ignored_generation_200_application_json_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -197,6 +199,8 @@ class SDK:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.HTTPBinSimpleJSONObject])
                 res.http_bin_simple_json_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

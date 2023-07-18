@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -72,6 +73,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.DeepObjectQueryParamsMapRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -132,6 +140,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.DeepObjectQueryParamsObjectRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -194,6 +209,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.FormQueryParamsArrayRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -255,6 +277,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.FormQueryParamsMapRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -315,6 +344,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.FormQueryParamsObjectRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -381,6 +417,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.FormQueryParamsPrimitiveRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -443,6 +486,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.FormQueryParamsRefParamObjectRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -499,6 +549,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.HeaderParamsArrayRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -559,6 +616,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.HeaderParamsMapRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -618,6 +682,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.HeaderParamsObjectRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -683,6 +754,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.HeaderParamsPrimitiveRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -743,6 +821,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.JsonQueryParamsObjectRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -806,6 +891,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.MixedQueryParamsRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -867,6 +959,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.PathParameterJsonRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -933,6 +1032,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.PipeDelimitedQueryParamsArrayRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -995,6 +1101,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.SimplePathParameterArraysRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -1061,6 +1174,13 @@ export class ParametersT {
                         JSON.parse(decodedRes),
                         operations.SimplePathParameterMapsRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -1125,6 +1245,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.SimplePathParameterObjectsRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -1194,6 +1321,13 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.SimplePathParameterPrimitivesRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

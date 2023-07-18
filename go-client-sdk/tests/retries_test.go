@@ -10,6 +10,7 @@ import (
 	"testing"
 
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/utils"
 
 	sdk "openapi"
@@ -46,9 +47,9 @@ func TestRetriesTimeout(t *testing.T) {
 		},
 		RetryConnectionErrors: false,
 	}))
-	require.NoError(t, err)
-	require.NotNil(t, res)
-	assert.Equal(t, http.StatusServiceUnavailable, res.StatusCode)
+	assert.Error(t, err)
+	assert.Nil(t, res)
+	assert.Equal(t, http.StatusServiceUnavailable, err.(*sdkerrors.SDKError).StatusCode)
 }
 
 func pseudo_uuid() string {

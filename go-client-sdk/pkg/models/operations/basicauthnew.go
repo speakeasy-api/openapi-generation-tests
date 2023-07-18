@@ -15,8 +15,43 @@ type BasicAuthNewSecurity struct {
 	Username string `security:"scheme,type=http,subtype=basic,name=username"`
 }
 
+func (o *BasicAuthNewSecurity) GetPassword() string {
+	if o == nil {
+		return ""
+	}
+	return o.Password
+}
+
+func (o *BasicAuthNewSecurity) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 type BasicAuthNewResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *BasicAuthNewResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *BasicAuthNewResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *BasicAuthNewResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

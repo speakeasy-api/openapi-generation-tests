@@ -199,10 +199,45 @@ type MixedTypeOneOfPostRes struct {
 	JSON MixedTypeOneOfPostResJSON `json:"json"`
 }
 
+func (o *MixedTypeOneOfPostRes) GetJSON() MixedTypeOneOfPostResJSON {
+	if o == nil {
+		return MixedTypeOneOfPostResJSON{}
+	}
+	return o.JSON
+}
+
 type MixedTypeOneOfPostResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *MixedTypeOneOfPostRes
+}
+
+func (o *MixedTypeOneOfPostResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *MixedTypeOneOfPostResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *MixedTypeOneOfPostResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *MixedTypeOneOfPostResponse) GetRes() *MixedTypeOneOfPostRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

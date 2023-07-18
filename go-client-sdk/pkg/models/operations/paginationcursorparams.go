@@ -14,10 +14,31 @@ type PaginationCursorParamsRequest struct {
 	Cursor int64 `queryParam:"style=form,explode=true,name=cursor"`
 }
 
+func (o *PaginationCursorParamsRequest) GetCursor() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Cursor
+}
+
 // PaginationCursorParamsRes - OK
 type PaginationCursorParamsRes struct {
 	NumPages    int64   `json:"numPages"`
 	ResultArray []int64 `json:"resultArray"`
+}
+
+func (o *PaginationCursorParamsRes) GetNumPages() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.NumPages
+}
+
+func (o *PaginationCursorParamsRes) GetResultArray() []int64 {
+	if o == nil {
+		return []int64{}
+	}
+	return o.ResultArray
 }
 
 type PaginationCursorParamsResponse struct {
@@ -28,4 +49,32 @@ type PaginationCursorParamsResponse struct {
 	Res *PaginationCursorParamsRes
 
 	Next func() (*PaginationCursorParamsResponse, error)
+}
+
+func (o *PaginationCursorParamsResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PaginationCursorParamsResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PaginationCursorParamsResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PaginationCursorParamsResponse) GetRes() *PaginationCursorParamsRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

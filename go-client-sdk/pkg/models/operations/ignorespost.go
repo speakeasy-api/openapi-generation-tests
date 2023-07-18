@@ -12,9 +12,37 @@ type IgnoresPostApplicationJSON struct {
 	TestProp    *string `json:"testProp,omitempty"`
 }
 
+func (o *IgnoresPostApplicationJSON) GetCallbackURL() *string {
+	if o == nil {
+		return nil
+	}
+	return o.CallbackURL
+}
+
+func (o *IgnoresPostApplicationJSON) GetTestProp() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TestProp
+}
+
 type IgnoresPostRequest struct {
 	RequestBody *IgnoresPostApplicationJSON `request:"mediaType=application/json"`
 	TestParam   *string                     `queryParam:"style=form,explode=true,name=testParam"`
+}
+
+func (o *IgnoresPostRequest) GetRequestBody() *IgnoresPostApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
+}
+
+func (o *IgnoresPostRequest) GetTestParam() *string {
+	if o == nil {
+		return nil
+	}
+	return o.TestParam
 }
 
 type IgnoresPostResponse struct {
@@ -23,4 +51,32 @@ type IgnoresPostResponse struct {
 	RawResponse *http.Response
 	// OK
 	HTTPBinSimpleJSONObject *shared.HTTPBinSimpleJSONObject
+}
+
+func (o *IgnoresPostResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *IgnoresPostResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *IgnoresPostResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *IgnoresPostResponse) GetHTTPBinSimpleJSONObject() *shared.HTTPBinSimpleJSONObject {
+	if o == nil {
+		return nil
+	}
+	return o.HTTPBinSimpleJSONObject
 }

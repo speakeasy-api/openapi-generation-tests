@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -60,6 +61,13 @@ export class ResponseBodies {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/octet-stream`)) {
                     res.bytes = httpRes?.data;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        httpRes?.data,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -111,6 +119,13 @@ export class ResponseBodies {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `text/html`)) {
                     res.html = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -162,6 +177,13 @@ export class ResponseBodies {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/xml`)) {
                     res.xml = decodedRes;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }

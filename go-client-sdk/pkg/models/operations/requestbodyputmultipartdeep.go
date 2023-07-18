@@ -16,9 +16,65 @@ type RequestBodyPutMultipartDeepResForm struct {
 	Str  string `json:"str"`
 }
 
+func (o *RequestBodyPutMultipartDeepResForm) GetArr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Arr
+}
+
+func (o *RequestBodyPutMultipartDeepResForm) GetBool() string {
+	if o == nil {
+		return ""
+	}
+	return o.Bool
+}
+
+func (o *RequestBodyPutMultipartDeepResForm) GetInt() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int
+}
+
+func (o *RequestBodyPutMultipartDeepResForm) GetMap() string {
+	if o == nil {
+		return ""
+	}
+	return o.Map
+}
+
+func (o *RequestBodyPutMultipartDeepResForm) GetNum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Num
+}
+
+func (o *RequestBodyPutMultipartDeepResForm) GetObj() string {
+	if o == nil {
+		return ""
+	}
+	return o.Obj
+}
+
+func (o *RequestBodyPutMultipartDeepResForm) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
 // RequestBodyPutMultipartDeepRes - OK
 type RequestBodyPutMultipartDeepRes struct {
 	Form RequestBodyPutMultipartDeepResForm `json:"form"`
+}
+
+func (o *RequestBodyPutMultipartDeepRes) GetForm() RequestBodyPutMultipartDeepResForm {
+	if o == nil {
+		return RequestBodyPutMultipartDeepResForm{}
+	}
+	return o.Form
 }
 
 type RequestBodyPutMultipartDeepResponse struct {
@@ -27,4 +83,32 @@ type RequestBodyPutMultipartDeepResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPutMultipartDeepRes
+}
+
+func (o *RequestBodyPutMultipartDeepResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPutMultipartDeepResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPutMultipartDeepResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPutMultipartDeepResponse) GetRes() *RequestBodyPutMultipartDeepRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

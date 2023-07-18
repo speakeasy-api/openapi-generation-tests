@@ -14,6 +14,20 @@ type FormQueryParamsObjectRequest struct {
 	ObjParam *shared.SimpleObject `queryParam:"style=form,explode=false,name=objParam"`
 }
 
+func (o *FormQueryParamsObjectRequest) GetObjParamExploded() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.ObjParamExploded
+}
+
+func (o *FormQueryParamsObjectRequest) GetObjParam() *shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.ObjParam
+}
+
 type FormQueryParamsObjectResArgs struct {
 	Any        string  `json:"any"`
 	Bigint     *string `json:"bigint,omitempty"`
@@ -36,10 +50,157 @@ type FormQueryParamsObjectResArgs struct {
 	StrOpt     *string `json:"strOpt,omitempty"`
 }
 
+func (o *FormQueryParamsObjectResArgs) GetAny() string {
+	if o == nil {
+		return ""
+	}
+	return o.Any
+}
+
+func (o *FormQueryParamsObjectResArgs) GetBigint() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Bigint
+}
+
+func (o *FormQueryParamsObjectResArgs) GetBigintStr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BigintStr
+}
+
+func (o *FormQueryParamsObjectResArgs) GetBool() string {
+	if o == nil {
+		return ""
+	}
+	return o.Bool
+}
+
+func (o *FormQueryParamsObjectResArgs) GetBoolOpt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.BoolOpt
+}
+
+func (o *FormQueryParamsObjectResArgs) GetDate() string {
+	if o == nil {
+		return ""
+	}
+	return o.Date
+}
+
+func (o *FormQueryParamsObjectResArgs) GetDateTime() string {
+	if o == nil {
+		return ""
+	}
+	return o.DateTime
+}
+
+func (o *FormQueryParamsObjectResArgs) GetEnum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Enum
+}
+
+func (o *FormQueryParamsObjectResArgs) GetFloat32() string {
+	if o == nil {
+		return ""
+	}
+	return o.Float32
+}
+
+func (o *FormQueryParamsObjectResArgs) GetInt() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int
+}
+
+func (o *FormQueryParamsObjectResArgs) GetInt32() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int32
+}
+
+func (o *FormQueryParamsObjectResArgs) GetInt32Enum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Int32Enum
+}
+
+func (o *FormQueryParamsObjectResArgs) GetIntEnum() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntEnum
+}
+
+func (o *FormQueryParamsObjectResArgs) GetIntOptNull() *string {
+	if o == nil {
+		return nil
+	}
+	return o.IntOptNull
+}
+
+func (o *FormQueryParamsObjectResArgs) GetNum() string {
+	if o == nil {
+		return ""
+	}
+	return o.Num
+}
+
+func (o *FormQueryParamsObjectResArgs) GetNumOptNull() *string {
+	if o == nil {
+		return nil
+	}
+	return o.NumOptNull
+}
+
+func (o *FormQueryParamsObjectResArgs) GetObjParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.ObjParam
+}
+
+func (o *FormQueryParamsObjectResArgs) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
+func (o *FormQueryParamsObjectResArgs) GetStrOpt() *string {
+	if o == nil {
+		return nil
+	}
+	return o.StrOpt
+}
+
 // FormQueryParamsObjectRes - OK
 type FormQueryParamsObjectRes struct {
 	Args FormQueryParamsObjectResArgs `json:"args"`
 	URL  string                       `json:"url"`
+}
+
+func (o *FormQueryParamsObjectRes) GetArgs() FormQueryParamsObjectResArgs {
+	if o == nil {
+		return FormQueryParamsObjectResArgs{}
+	}
+	return o.Args
+}
+
+func (o *FormQueryParamsObjectRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type FormQueryParamsObjectResponse struct {
@@ -48,4 +209,32 @@ type FormQueryParamsObjectResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *FormQueryParamsObjectRes
+}
+
+func (o *FormQueryParamsObjectResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FormQueryParamsObjectResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FormQueryParamsObjectResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *FormQueryParamsObjectResponse) GetRes() *FormQueryParamsObjectRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

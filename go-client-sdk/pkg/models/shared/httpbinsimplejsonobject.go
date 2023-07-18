@@ -8,6 +8,27 @@ type HTTPBinSimpleJSONObjectSlideshowSlides struct {
 	Type  string   `json:"type"`
 }
 
+func (o *HTTPBinSimpleJSONObjectSlideshowSlides) GetItems() []string {
+	if o == nil {
+		return nil
+	}
+	return o.Items
+}
+
+func (o *HTTPBinSimpleJSONObjectSlideshowSlides) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}
+
+func (o *HTTPBinSimpleJSONObjectSlideshowSlides) GetType() string {
+	if o == nil {
+		return ""
+	}
+	return o.Type
+}
+
 type HTTPBinSimpleJSONObjectSlideshow struct {
 	Author string                                   `json:"author"`
 	Date   string                                   `json:"date"`
@@ -15,7 +36,42 @@ type HTTPBinSimpleJSONObjectSlideshow struct {
 	Title  string                                   `json:"title"`
 }
 
+func (o *HTTPBinSimpleJSONObjectSlideshow) GetAuthor() string {
+	if o == nil {
+		return ""
+	}
+	return o.Author
+}
+
+func (o *HTTPBinSimpleJSONObjectSlideshow) GetDate() string {
+	if o == nil {
+		return ""
+	}
+	return o.Date
+}
+
+func (o *HTTPBinSimpleJSONObjectSlideshow) GetSlides() []HTTPBinSimpleJSONObjectSlideshowSlides {
+	if o == nil {
+		return []HTTPBinSimpleJSONObjectSlideshowSlides{}
+	}
+	return o.Slides
+}
+
+func (o *HTTPBinSimpleJSONObjectSlideshow) GetTitle() string {
+	if o == nil {
+		return ""
+	}
+	return o.Title
+}
+
 // HTTPBinSimpleJSONObject - OK
 type HTTPBinSimpleJSONObject struct {
 	Slideshow HTTPBinSimpleJSONObjectSlideshow `json:"slideshow"`
+}
+
+func (o *HTTPBinSimpleJSONObject) GetSlideshow() HTTPBinSimpleJSONObjectSlideshow {
+	if o == nil {
+		return HTTPBinSimpleJSONObjectSlideshow{}
+	}
+	return o.Slideshow
 }

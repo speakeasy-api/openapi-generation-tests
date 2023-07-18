@@ -16,6 +16,20 @@ type UsageExamplePostSecurity struct {
 	Username string `security:"scheme,type=http,subtype=basic,name=username"`
 }
 
+func (o *UsageExamplePostSecurity) GetPassword() string {
+	if o == nil {
+		return ""
+	}
+	return o.Password
+}
+
+func (o *UsageExamplePostSecurity) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 // UsageExamplePostRequestBody - A request body that contains fields with different formats for testing example generation
 type UsageExamplePostRequestBody struct {
 	// A field called email that will have emails generated as examples
@@ -40,6 +54,83 @@ type UsageExamplePostRequestBody struct {
 	URI *string `json:"uri,omitempty"`
 	// A field called uuid that will have uuids generated as examples
 	UUID *string `json:"uuid,omitempty"`
+}
+
+func (o *UsageExamplePostRequestBody) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *UsageExamplePostRequestBody) GetFormatEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FormatEmail
+}
+
+func (o *UsageExamplePostRequestBody) GetFormatURI() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FormatURI
+}
+
+func (o *UsageExamplePostRequestBody) GetFormatUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FormatUUID
+}
+
+func (o *UsageExamplePostRequestBody) GetHostname() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hostname
+}
+
+func (o *UsageExamplePostRequestBody) GetIpv4() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ipv4
+}
+
+func (o *UsageExamplePostRequestBody) GetIpv6() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ipv6
+}
+
+func (o *UsageExamplePostRequestBody) GetSimpleObject() *shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.SimpleObject
+}
+
+func (o *UsageExamplePostRequestBody) GetUnknown() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Unknown
+}
+
+func (o *UsageExamplePostRequestBody) GetURI() *string {
+	if o == nil {
+		return nil
+	}
+	return o.URI
+}
+
+func (o *UsageExamplePostRequestBody) GetUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UUID
 }
 
 // UsageExamplePostEnumParameter - An enum type
@@ -131,6 +222,90 @@ type UsageExamplePostRequest struct {
 	StrParameter string `queryParam:"style=form,explode=true,name=strParameter"`
 }
 
+func (o *UsageExamplePostRequest) GetRequestBody() *UsageExamplePostRequestBody {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBody
+}
+
+func (o *UsageExamplePostRequest) GetBoolParameter() bool {
+	if o == nil {
+		return false
+	}
+	return o.BoolParameter
+}
+
+func (o *UsageExamplePostRequest) GetDateParameter() types.Date {
+	if o == nil {
+		return types.Date{}
+	}
+	return o.DateParameter
+}
+
+func (o *UsageExamplePostRequest) GetDateTimeParameter() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.DateTimeParameter
+}
+
+func (o *UsageExamplePostRequest) GetDoubleParameter() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DoubleParameter
+}
+
+func (o *UsageExamplePostRequest) GetEnumParameter() UsageExamplePostEnumParameter {
+	if o == nil {
+		return UsageExamplePostEnumParameter("")
+	}
+	return o.EnumParameter
+}
+
+func (o *UsageExamplePostRequest) GetFalseyNumberParameter() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.FalseyNumberParameter
+}
+
+func (o *UsageExamplePostRequest) GetFloatParameter() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.FloatParameter
+}
+
+func (o *UsageExamplePostRequest) GetInt64Parameter() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.Int64Parameter
+}
+
+func (o *UsageExamplePostRequest) GetIntParameter() int {
+	if o == nil {
+		return 0
+	}
+	return o.IntParameter
+}
+
+func (o *UsageExamplePostRequest) GetOptEnumParameter() *UsageExamplePostOptEnumParameter {
+	if o == nil {
+		return nil
+	}
+	return o.OptEnumParameter
+}
+
+func (o *UsageExamplePostRequest) GetStrParameter() string {
+	if o == nil {
+		return ""
+	}
+	return o.StrParameter
+}
+
 type UsageExamplePost200ApplicationJSONJSON struct {
 	// A field called email that will have emails generated as examples
 	Email *string `json:"email,omitempty"`
@@ -156,9 +331,93 @@ type UsageExamplePost200ApplicationJSONJSON struct {
 	UUID *string `json:"uuid,omitempty"`
 }
 
+func (o *UsageExamplePost200ApplicationJSONJSON) GetEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Email
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetFormatEmail() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FormatEmail
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetFormatURI() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FormatURI
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetFormatUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.FormatUUID
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetHostname() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Hostname
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetIpv4() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ipv4
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetIpv6() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Ipv6
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetSimpleObject() *shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.SimpleObject
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetUnknown() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Unknown
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetURI() *string {
+	if o == nil {
+		return nil
+	}
+	return o.URI
+}
+
+func (o *UsageExamplePost200ApplicationJSONJSON) GetUUID() *string {
+	if o == nil {
+		return nil
+	}
+	return o.UUID
+}
+
 // UsageExamplePost200ApplicationJSON - A response body that contains the simpleObject sent in the request body
 type UsageExamplePost200ApplicationJSON struct {
 	JSON UsageExamplePost200ApplicationJSONJSON `json:"json"`
+}
+
+func (o *UsageExamplePost200ApplicationJSON) GetJSON() UsageExamplePost200ApplicationJSONJSON {
+	if o == nil {
+		return UsageExamplePost200ApplicationJSONJSON{}
+	}
+	return o.JSON
 }
 
 type UsageExamplePostResponse struct {
@@ -167,4 +426,32 @@ type UsageExamplePostResponse struct {
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
 	UsageExamplePost200ApplicationJSONObject *UsageExamplePost200ApplicationJSON
+}
+
+func (o *UsageExamplePostResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UsageExamplePostResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UsageExamplePostResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *UsageExamplePostResponse) GetUsageExamplePost200ApplicationJSONObject() *UsageExamplePost200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.UsageExamplePost200ApplicationJSONObject
 }

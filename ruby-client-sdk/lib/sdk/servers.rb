@@ -10,31 +10,26 @@ require 'sorbet-runtime'
 module OpenApiSDK
   extend T::Sig
   class Servers
+    # Endpoints for testing servers.
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version, gbls)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
-      @globals = gbls
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { returns(Utils::FieldAugmented) }
     def select_global_server
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/selectGlobalServer"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/selectGlobalServer"
       headers = {}
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -51,16 +46,17 @@ module OpenApiSDK
     sig { params(server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def select_server_with_id(server_url = nil)
       # select_server_with_id - Select a server by ID.
-      base_url = Operations::SELECT_SERVER_WITH_ID_SERVERS[:SELECT_SERVER_WITH_ID_SERVER_VALID]
+      base_url = Utils.template_url(Operations::SELECT_SERVER_WITH_ID_SERVERS[:SELECT_SERVER_WITH_ID_SERVER_VALID], {
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/anything/selectServerWithID"
+      url = "#{base_url}/anything/selectServerWithID"
       headers = {}
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -76,16 +72,19 @@ module OpenApiSDK
     sig { params(server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def server_with_templates(server_url = nil)
 
-      base_url = Operations::SERVER_WITH_TEMPLATES_SERVERS[0]
+      base_url = Utils.template_url(Operations::SERVER_WITH_TEMPLATES_SERVERS[0], {
+          'hostname': 'localhost',
+          'port': '35123',
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/anything/serverWithTemplates"
+      url = "#{base_url}/anything/serverWithTemplates"
       headers = {}
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -101,15 +100,16 @@ module OpenApiSDK
     sig { returns(Utils::FieldAugmented) }
     def server_with_templates_global
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/serverWithTemplatesGlobal"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/serverWithTemplatesGlobal"
       headers = {}
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -125,16 +125,19 @@ module OpenApiSDK
     sig { params(server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def servers_by_id_with_templates(server_url = nil)
 
-      base_url = Operations::SERVERS_BY_ID_WITH_TEMPLATES_SERVERS[:SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN]
+      base_url = Utils.template_url(Operations::SERVERS_BY_ID_WITH_TEMPLATES_SERVERS[:SERVERS_BY_ID_WITH_TEMPLATES_SERVER_MAIN], {
+            'hostname': 'localhost',
+            'port': '35123',
+      })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url.delete_suffix('/')}/anything/serversByIDWithTemplates"
+      url = "#{base_url}/anything/serversByIDWithTemplates"
       headers = {}
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')

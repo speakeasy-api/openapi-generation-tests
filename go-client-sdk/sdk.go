@@ -10,6 +10,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
@@ -256,8 +257,8 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.19.0",
-			GenVersion:        "2.65.0",
+			SDKVersion:        "1.20.0",
+			GenVersion:        "2.70.0",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -379,6 +380,8 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 			}
 
 			res.PutAnythingIgnoredGeneration200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -430,6 +433,8 @@ func (s *SDK) ResponseBodyJSONGet(ctx context.Context) (*operations.ResponseBody
 			}
 
 			res.HTTPBinSimpleJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

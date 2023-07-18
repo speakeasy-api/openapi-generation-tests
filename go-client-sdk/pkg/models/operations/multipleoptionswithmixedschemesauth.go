@@ -16,9 +16,37 @@ type MultipleOptionsWithMixedSchemesAuthSecurityOption1 struct {
 	Oauth2        string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
+func (o *MultipleOptionsWithMixedSchemesAuthSecurityOption1) GetAPIKeyAuthNew() string {
+	if o == nil {
+		return ""
+	}
+	return o.APIKeyAuthNew
+}
+
+func (o *MultipleOptionsWithMixedSchemesAuthSecurityOption1) GetOauth2() string {
+	if o == nil {
+		return ""
+	}
+	return o.Oauth2
+}
+
 type MultipleOptionsWithMixedSchemesAuthSecurityOption2 struct {
 	APIKeyAuthNew string                 `security:"scheme,type=apiKey,subtype=header,name=x-api-key"`
 	BasicAuth     shared.SchemeBasicAuth `security:"scheme,type=http,subtype=basic"`
+}
+
+func (o *MultipleOptionsWithMixedSchemesAuthSecurityOption2) GetAPIKeyAuthNew() string {
+	if o == nil {
+		return ""
+	}
+	return o.APIKeyAuthNew
+}
+
+func (o *MultipleOptionsWithMixedSchemesAuthSecurityOption2) GetBasicAuth() shared.SchemeBasicAuth {
+	if o == nil {
+		return shared.SchemeBasicAuth{}
+	}
+	return o.BasicAuth
 }
 
 type MultipleOptionsWithMixedSchemesAuthSecurity struct {
@@ -26,8 +54,43 @@ type MultipleOptionsWithMixedSchemesAuthSecurity struct {
 	Option2 *MultipleOptionsWithMixedSchemesAuthSecurityOption2 `security:"option"`
 }
 
+func (o *MultipleOptionsWithMixedSchemesAuthSecurity) GetOption1() *MultipleOptionsWithMixedSchemesAuthSecurityOption1 {
+	if o == nil {
+		return nil
+	}
+	return o.Option1
+}
+
+func (o *MultipleOptionsWithMixedSchemesAuthSecurity) GetOption2() *MultipleOptionsWithMixedSchemesAuthSecurityOption2 {
+	if o == nil {
+		return nil
+	}
+	return o.Option2
+}
+
 type MultipleOptionsWithMixedSchemesAuthResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *MultipleOptionsWithMixedSchemesAuthResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *MultipleOptionsWithMixedSchemesAuthResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *MultipleOptionsWithMixedSchemesAuthResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

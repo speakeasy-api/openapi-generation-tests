@@ -14,3 +14,31 @@ type CreateResourceResponse struct {
 	StatusCode      int
 	RawResponse     *http.Response
 }
+
+func (o *CreateResourceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *CreateResourceResponse) GetExampleResource() *shared.ExampleResource {
+	if o == nil {
+		return nil
+	}
+	return o.ExampleResource
+}
+
+func (o *CreateResourceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *CreateResourceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}

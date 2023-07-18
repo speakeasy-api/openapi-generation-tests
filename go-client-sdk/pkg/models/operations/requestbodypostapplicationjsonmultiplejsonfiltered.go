@@ -13,10 +13,45 @@ type RequestBodyPostApplicationJSONMultipleJSONFilteredRes struct {
 	JSON shared.SimpleObject `json:"json"`
 }
 
+func (o *RequestBodyPostApplicationJSONMultipleJSONFilteredRes) GetJSON() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.JSON
+}
+
 type RequestBodyPostApplicationJSONMultipleJSONFilteredResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPostApplicationJSONMultipleJSONFilteredRes
+}
+
+func (o *RequestBodyPostApplicationJSONMultipleJSONFilteredResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostApplicationJSONMultipleJSONFilteredResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostApplicationJSONMultipleJSONFilteredResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostApplicationJSONMultipleJSONFilteredResponse) GetRes() *RequestBodyPostApplicationJSONMultipleJSONFilteredRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

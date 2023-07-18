@@ -7,7 +7,35 @@ type SchemeBasicAuth struct {
 	Username string `security:"name=username"`
 }
 
+func (o *SchemeBasicAuth) GetPassword() string {
+	if o == nil {
+		return ""
+	}
+	return o.Password
+}
+
+func (o *SchemeBasicAuth) GetUsername() string {
+	if o == nil {
+		return ""
+	}
+	return o.Username
+}
+
 type Security struct {
 	APIKeyAuth    *string `security:"scheme,type=apiKey,subtype=header,name=Authorization"`
 	APIKeyAuthNew *string `security:"scheme,type=apiKey,subtype=header,name=x-api-key"`
+}
+
+func (o *Security) GetAPIKeyAuth() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyAuth
+}
+
+func (o *Security) GetAPIKeyAuthNew() *string {
+	if o == nil {
+		return nil
+	}
+	return o.APIKeyAuthNew
 }

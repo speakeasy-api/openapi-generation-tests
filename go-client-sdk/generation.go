@@ -10,6 +10,7 @@ import (
 	"math/big"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/types"
 	"openapi/pkg/utils"
@@ -72,6 +73,8 @@ func (s *generation) AnchorTypesGet(ctx context.Context) (*operations.AnchorType
 			}
 
 			res.TypeFromAnchor = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -123,6 +126,8 @@ func (s *generation) CircularReferenceGet(ctx context.Context) (*operations.Circ
 			}
 
 			res.ValidCircularReferenceObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -377,6 +382,8 @@ func (s *generation) EmptyResponseObjectWithCommentGet(ctx context.Context) (*op
 		switch {
 		case utils.MatchContentType(contentType, `application/octet-stream`):
 			res.Body = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -428,6 +435,8 @@ func (s *generation) GlobalNameOverridden(ctx context.Context) (*operations.GetG
 			}
 
 			res.GetGlobalNameOverride200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -479,6 +488,8 @@ func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.Igno
 			}
 
 			res.IgnoredGenerationGet200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -546,6 +557,8 @@ func (s *generation) IgnoresPost(ctx context.Context, requestBody *operations.Ig
 			}
 
 			res.HTTPBinSimpleJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -605,6 +618,8 @@ func (s *generation) NameOverride(ctx context.Context, testQueryParam string) (*
 			}
 
 			res.OverriddenResponse = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -722,6 +737,8 @@ func (s *generation) UsageExamplePost(ctx context.Context, request operations.Us
 			}
 
 			res.UsageExamplePost200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

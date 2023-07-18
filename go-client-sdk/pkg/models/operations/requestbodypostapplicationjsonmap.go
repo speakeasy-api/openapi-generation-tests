@@ -18,3 +18,31 @@ type RequestBodyPostApplicationJSONMapResponse struct {
 	// OK
 	Res map[string]shared.SimpleObject
 }
+
+func (o *RequestBodyPostApplicationJSONMapResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostApplicationJSONMapResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostApplicationJSONMapResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostApplicationJSONMapResponse) GetRes() map[string]shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.Res
+}

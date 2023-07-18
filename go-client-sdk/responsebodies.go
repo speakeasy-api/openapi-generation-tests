@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -64,6 +65,8 @@ func (s *responseBodies) ResponseBodyBytesGet(ctx context.Context) (*operations.
 		switch {
 		case utils.MatchContentType(contentType, `application/octet-stream`):
 			res.Bytes = rawBody
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -111,6 +114,8 @@ func (s *responseBodies) ResponseBodyStringGet(ctx context.Context) (*operations
 		case utils.MatchContentType(contentType, `text/html`):
 			out := string(rawBody)
 			res.HTML = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -158,6 +163,8 @@ func (s *responseBodies) ResponseBodyXMLGet(ctx context.Context) (*operations.Re
 		case utils.MatchContentType(contentType, `application/xml`):
 			out := string(rawBody)
 			res.XML = &out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

@@ -2,7 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from sdk import utils
-from sdk.models import operations
+from sdk.models import errors, operations
 from typing import Optional
 
 class Auth:
@@ -32,6 +32,8 @@ class Auth:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.APIKeyAuthToken])
                 res.token = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
             pass
 
@@ -57,6 +59,8 @@ class Auth:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.APIKeyAuthGlobalToken])
                 res.token = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
             pass
 
@@ -87,6 +91,8 @@ class Auth:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.BasicAuthUser])
                 res.user = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
             pass
 
@@ -112,6 +118,8 @@ class Auth:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.BearerAuthToken])
                 res.token = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
             pass
 
@@ -137,6 +145,8 @@ class Auth:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.Oauth2AuthToken])
                 res.token = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
             pass
 
@@ -162,6 +172,8 @@ class Auth:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.OpenIDConnectAuthToken])
                 res.token = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code == 401:
             pass
 

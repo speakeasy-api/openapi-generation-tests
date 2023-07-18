@@ -2,7 +2,7 @@
 
 from datetime import date, datetime
 
-import src.sdk.models.shared as shared
+import sdk.models.shared as shared
 from dateutil.tz import tzutc
 
 
@@ -46,6 +46,7 @@ def create_simple_object_camel_case():
         str_val="test",
         str_opt_val="testOptional",
     )
+
 
 def create_deep_object():
     return shared.DeepObject(
@@ -93,6 +94,7 @@ def compare_simple_object_camel_case(actual: shared.SimpleObjectCamelCase):
     assert actual.num_opt_null_val is None
     assert expected.str_val == actual.str_val
     assert expected.str_opt_val == actual.str_opt_val
+
 
 def compare_deep_object(obj1: shared.DeepObject, obj2: shared.DeepObject):
     assert len(obj1.arr) == len(obj2.arr)

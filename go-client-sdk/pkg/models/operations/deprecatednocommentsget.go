@@ -11,8 +11,36 @@ type DeprecatedNoCommentsGetRequest struct {
 	DeprecatedParameter *string `queryParam:"style=form,explode=true,name=deprecatedParameter"`
 }
 
+func (o *DeprecatedNoCommentsGetRequest) GetDeprecatedParameter() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DeprecatedParameter
+}
+
 type DeprecatedNoCommentsGetResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *DeprecatedNoCommentsGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeprecatedNoCommentsGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeprecatedNoCommentsGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

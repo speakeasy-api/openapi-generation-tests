@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from jsonpath import JSONPath
 from sdk import utils
-from sdk.models import operations, shared
+from sdk.models import errors, operations, shared
 from typing import Any, Dict, Optional
 
 class Pagination:
@@ -54,6 +54,8 @@ class Pagination:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationCursorBodyRes])
                 res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -98,6 +100,8 @@ class Pagination:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationCursorParamsRes])
                 res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -150,6 +154,8 @@ class Pagination:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationLimitOffsetOffsetBodyRes])
                 res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -202,6 +208,8 @@ class Pagination:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationLimitOffsetOffsetParamsRes])
                 res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -252,6 +260,8 @@ class Pagination:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationLimitOffsetPageBodyRes])
                 res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -300,6 +310,8 @@ class Pagination:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.PaginationLimitOffsetPageParamsRes])
                 res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

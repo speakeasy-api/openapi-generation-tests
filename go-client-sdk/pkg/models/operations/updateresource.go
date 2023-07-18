@@ -11,10 +11,45 @@ type UpdateResourceRequest struct {
 	ResourceID string `pathParam:"style=simple,explode=false,name=resourceId"`
 }
 
+func (o *UpdateResourceRequest) GetResourceID() string {
+	if o == nil {
+		return ""
+	}
+	return o.ResourceID
+}
+
 type UpdateResourceResponse struct {
 	ContentType string
 	// OK
 	ExampleResource *shared.ExampleResource
 	StatusCode      int
 	RawResponse     *http.Response
+}
+
+func (o *UpdateResourceResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *UpdateResourceResponse) GetExampleResource() *shared.ExampleResource {
+	if o == nil {
+		return nil
+	}
+	return o.ExampleResource
+}
+
+func (o *UpdateResourceResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *UpdateResourceResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

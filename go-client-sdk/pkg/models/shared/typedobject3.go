@@ -35,3 +35,17 @@ type TypedObject3 struct {
 	Type  TypedObject3Type `json:"type"`
 	Value string           `json:"value"`
 }
+
+func (o *TypedObject3) GetType() TypedObject3Type {
+	if o == nil {
+		return TypedObject3Type("")
+	}
+	return o.Type
+}
+
+func (o *TypedObject3) GetValue() string {
+	if o == nil {
+		return ""
+	}
+	return o.Value
+}

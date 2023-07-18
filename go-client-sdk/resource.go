@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
@@ -76,6 +77,8 @@ func (s *resource) CreateResource(ctx context.Context, request shared.ExampleRes
 			}
 
 			res.ExampleResource = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -183,6 +186,8 @@ func (s *resource) GetResource(ctx context.Context, resourceID string) (*operati
 			}
 
 			res.ExampleResource = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -241,6 +246,8 @@ func (s *resource) UpdateResource(ctx context.Context, resourceID string) (*oper
 			}
 
 			res.ExampleResource = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

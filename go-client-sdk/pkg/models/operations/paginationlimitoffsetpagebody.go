@@ -16,6 +16,20 @@ type PaginationLimitOffsetPageBodyRes struct {
 	ResultArray []int64 `json:"resultArray"`
 }
 
+func (o *PaginationLimitOffsetPageBodyRes) GetNumPages() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.NumPages
+}
+
+func (o *PaginationLimitOffsetPageBodyRes) GetResultArray() []int64 {
+	if o == nil {
+		return []int64{}
+	}
+	return o.ResultArray
+}
+
 type PaginationLimitOffsetPageBodyResponse struct {
 	ContentType string
 	StatusCode  int
@@ -24,4 +38,32 @@ type PaginationLimitOffsetPageBodyResponse struct {
 	Res *PaginationLimitOffsetPageBodyRes
 
 	Next func() (*PaginationLimitOffsetPageBodyResponse, error)
+}
+
+func (o *PaginationLimitOffsetPageBodyResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PaginationLimitOffsetPageBodyResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PaginationLimitOffsetPageBodyResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PaginationLimitOffsetPageBodyResponse) GetRes() *PaginationLimitOffsetPageBodyRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

@@ -11,10 +11,45 @@ type RequestBodyPutBytesRes struct {
 	Data string `json:"data"`
 }
 
+func (o *RequestBodyPutBytesRes) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
+}
+
 type RequestBodyPutBytesResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPutBytesRes
+}
+
+func (o *RequestBodyPutBytesResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPutBytesResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPutBytesResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPutBytesResponse) GetRes() *RequestBodyPutBytesRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

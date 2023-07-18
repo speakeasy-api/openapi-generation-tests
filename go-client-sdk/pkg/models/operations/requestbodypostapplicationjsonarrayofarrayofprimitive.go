@@ -17,3 +17,31 @@ type RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse struct {
 	// OK
 	Arrs [][]string
 }
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse) GetArrs() [][]string {
+	if o == nil {
+		return nil
+	}
+	return o.Arrs
+}

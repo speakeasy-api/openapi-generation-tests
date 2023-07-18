@@ -11,10 +11,38 @@ type DeepObjectQueryParamsMapRequest struct {
 	MapArrParam map[string][]string `queryParam:"style=deepObject,explode=true,name=mapArrParam"`
 }
 
+func (o *DeepObjectQueryParamsMapRequest) GetMapParam() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.MapParam
+}
+
+func (o *DeepObjectQueryParamsMapRequest) GetMapArrParam() map[string][]string {
+	if o == nil {
+		return nil
+	}
+	return o.MapArrParam
+}
+
 // DeepObjectQueryParamsMapRes - OK
 type DeepObjectQueryParamsMapRes struct {
 	Args map[string]interface{} `json:"args"`
 	URL  string                 `json:"url"`
+}
+
+func (o *DeepObjectQueryParamsMapRes) GetArgs() map[string]interface{} {
+	if o == nil {
+		return map[string]interface{}{}
+	}
+	return o.Args
+}
+
+func (o *DeepObjectQueryParamsMapRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type DeepObjectQueryParamsMapResponse struct {
@@ -23,4 +51,32 @@ type DeepObjectQueryParamsMapResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *DeepObjectQueryParamsMapRes
+}
+
+func (o *DeepObjectQueryParamsMapResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *DeepObjectQueryParamsMapResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *DeepObjectQueryParamsMapResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *DeepObjectQueryParamsMapResponse) GetRes() *DeepObjectQueryParamsMapRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

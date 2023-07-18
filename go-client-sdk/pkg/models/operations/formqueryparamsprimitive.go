@@ -13,11 +13,67 @@ type FormQueryParamsPrimitiveRequest struct {
 	StrParam  string  `queryParam:"style=form,explode=true,name=strParam"`
 }
 
+func (o *FormQueryParamsPrimitiveRequest) GetBoolParam() bool {
+	if o == nil {
+		return false
+	}
+	return o.BoolParam
+}
+
+func (o *FormQueryParamsPrimitiveRequest) GetIntParam() int64 {
+	if o == nil {
+		return 0
+	}
+	return o.IntParam
+}
+
+func (o *FormQueryParamsPrimitiveRequest) GetNumParam() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.NumParam
+}
+
+func (o *FormQueryParamsPrimitiveRequest) GetStrParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.StrParam
+}
+
 type FormQueryParamsPrimitiveResArgs struct {
 	BoolParam string `json:"boolParam"`
 	IntParam  string `json:"intParam"`
 	NumParam  string `json:"numParam"`
 	StrParam  string `json:"strParam"`
+}
+
+func (o *FormQueryParamsPrimitiveResArgs) GetBoolParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.BoolParam
+}
+
+func (o *FormQueryParamsPrimitiveResArgs) GetIntParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.IntParam
+}
+
+func (o *FormQueryParamsPrimitiveResArgs) GetNumParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.NumParam
+}
+
+func (o *FormQueryParamsPrimitiveResArgs) GetStrParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.StrParam
 }
 
 // FormQueryParamsPrimitiveRes - OK
@@ -26,10 +82,52 @@ type FormQueryParamsPrimitiveRes struct {
 	URL  string                          `json:"url"`
 }
 
+func (o *FormQueryParamsPrimitiveRes) GetArgs() FormQueryParamsPrimitiveResArgs {
+	if o == nil {
+		return FormQueryParamsPrimitiveResArgs{}
+	}
+	return o.Args
+}
+
+func (o *FormQueryParamsPrimitiveRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
 type FormQueryParamsPrimitiveResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *FormQueryParamsPrimitiveRes
+}
+
+func (o *FormQueryParamsPrimitiveResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FormQueryParamsPrimitiveResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FormQueryParamsPrimitiveResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *FormQueryParamsPrimitiveResponse) GetRes() *FormQueryParamsPrimitiveRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

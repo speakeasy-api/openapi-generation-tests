@@ -12,9 +12,23 @@ type PathParameterJSONRequest struct {
 	JSONObj shared.SimpleObject `pathParam:"serialization=json,name=jsonObj"`
 }
 
+func (o *PathParameterJSONRequest) GetJSONObj() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.JSONObj
+}
+
 // PathParameterJSONRes - OK
 type PathParameterJSONRes struct {
 	URL string `json:"url"`
+}
+
+func (o *PathParameterJSONRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type PathParameterJSONResponse struct {
@@ -23,4 +37,32 @@ type PathParameterJSONResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *PathParameterJSONRes
+}
+
+func (o *PathParameterJSONResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *PathParameterJSONResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *PathParameterJSONResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *PathParameterJSONResponse) GetRes() *PathParameterJSONRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

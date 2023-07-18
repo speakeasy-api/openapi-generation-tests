@@ -10,9 +10,23 @@ type GlobalPathParameterGetRequest struct {
 	GlobalPathParam *int64 `pathParam:"style=simple,explode=false,name=globalPathParam"`
 }
 
+func (o *GlobalPathParameterGetRequest) GetGlobalPathParam() *int64 {
+	if o == nil {
+		return nil
+	}
+	return o.GlobalPathParam
+}
+
 // GlobalPathParameterGetRes - OK
 type GlobalPathParameterGetRes struct {
 	URL string `json:"url"`
+}
+
+func (o *GlobalPathParameterGetRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type GlobalPathParameterGetResponse struct {
@@ -21,4 +35,32 @@ type GlobalPathParameterGetResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *GlobalPathParameterGetRes
+}
+
+func (o *GlobalPathParameterGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *GlobalPathParameterGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *GlobalPathParameterGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *GlobalPathParameterGetResponse) GetRes() *GlobalPathParameterGetRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

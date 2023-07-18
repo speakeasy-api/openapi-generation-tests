@@ -16,8 +16,43 @@ type MultipleMixedSchemeAuthSecurity struct {
 	BasicAuth     shared.SchemeBasicAuth `security:"scheme,type=http,subtype=basic"`
 }
 
+func (o *MultipleMixedSchemeAuthSecurity) GetAPIKeyAuthNew() string {
+	if o == nil {
+		return ""
+	}
+	return o.APIKeyAuthNew
+}
+
+func (o *MultipleMixedSchemeAuthSecurity) GetBasicAuth() shared.SchemeBasicAuth {
+	if o == nil {
+		return shared.SchemeBasicAuth{}
+	}
+	return o.BasicAuth
+}
+
 type MultipleMixedSchemeAuthResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
+}
+
+func (o *MultipleMixedSchemeAuthResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *MultipleMixedSchemeAuthResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *MultipleMixedSchemeAuthResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
 }

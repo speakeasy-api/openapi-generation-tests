@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -86,6 +87,13 @@ export class Flattening {
                         JSON.parse(decodedRes),
                         operations.ComponentBodyAndParamConflictRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -161,6 +169,13 @@ export class Flattening {
                         JSON.parse(decodedRes),
                         operations.ComponentBodyAndParamNoConflictRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -225,6 +240,13 @@ export class Flattening {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ConflictingParamsRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -301,6 +323,13 @@ export class Flattening {
                         JSON.parse(decodedRes),
                         operations.InlineBodyAndParamConflictRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -375,6 +404,13 @@ export class Flattening {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.InlineBodyAndParamNoConflictRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

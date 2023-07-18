@@ -14,3 +14,31 @@ type RequestBodyPostApplicationJSONArrayObjResponse struct {
 	// OK
 	ArrObjValue *shared.ArrObjValue
 }
+
+func (o *RequestBodyPostApplicationJSONArrayObjResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostApplicationJSONArrayObjResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostApplicationJSONArrayObjResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostApplicationJSONArrayObjResponse) GetArrObjValue() *shared.ArrObjValue {
+	if o == nil {
+		return nil
+	}
+	return o.ArrObjValue
+}

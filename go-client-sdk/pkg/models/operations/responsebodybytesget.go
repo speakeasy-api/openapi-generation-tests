@@ -13,3 +13,31 @@ type ResponseBodyBytesGetResponse struct {
 	// OK
 	Bytes []byte
 }
+
+func (o *ResponseBodyBytesGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *ResponseBodyBytesGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *ResponseBodyBytesGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *ResponseBodyBytesGetResponse) GetBytes() []byte {
+	if o == nil {
+		return nil
+	}
+	return o.Bytes
+}

@@ -13,9 +13,37 @@ type JSONQueryParamsObjectRequest struct {
 	SimpleObjParam shared.SimpleObject `queryParam:"serialization=json,name=simpleObjParam"`
 }
 
+func (o *JSONQueryParamsObjectRequest) GetDeepObjParam() shared.DeepObject {
+	if o == nil {
+		return shared.DeepObject{}
+	}
+	return o.DeepObjParam
+}
+
+func (o *JSONQueryParamsObjectRequest) GetSimpleObjParam() shared.SimpleObject {
+	if o == nil {
+		return shared.SimpleObject{}
+	}
+	return o.SimpleObjParam
+}
+
 type JSONQueryParamsObjectResArgs struct {
 	DeepObjParam   string `json:"deepObjParam"`
 	SimpleObjParam string `json:"simpleObjParam"`
+}
+
+func (o *JSONQueryParamsObjectResArgs) GetDeepObjParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.DeepObjParam
+}
+
+func (o *JSONQueryParamsObjectResArgs) GetSimpleObjParam() string {
+	if o == nil {
+		return ""
+	}
+	return o.SimpleObjParam
 }
 
 // JSONQueryParamsObjectRes - OK
@@ -24,10 +52,52 @@ type JSONQueryParamsObjectRes struct {
 	URL  string                       `json:"url"`
 }
 
+func (o *JSONQueryParamsObjectRes) GetArgs() JSONQueryParamsObjectResArgs {
+	if o == nil {
+		return JSONQueryParamsObjectResArgs{}
+	}
+	return o.Args
+}
+
+func (o *JSONQueryParamsObjectRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
+}
+
 type JSONQueryParamsObjectResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *JSONQueryParamsObjectRes
+}
+
+func (o *JSONQueryParamsObjectResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *JSONQueryParamsObjectResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *JSONQueryParamsObjectResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *JSONQueryParamsObjectResponse) GetRes() *JSONQueryParamsObjectRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

@@ -12,9 +12,37 @@ type RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON struct {
 	Str  string  `json:"str"`
 }
 
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) GetBool() bool {
+	if o == nil {
+		return false
+	}
+	return o.Bool
+}
+
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) GetNum() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Num
+}
+
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON) GetStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str
+}
+
 // RequestBodyPostMultipleContentTypesInlineFilteredRes - OK
 type RequestBodyPostMultipleContentTypesInlineFilteredRes struct {
 	JSON map[string]interface{} `json:"json,omitempty"`
+}
+
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredRes) GetJSON() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
 }
 
 type RequestBodyPostMultipleContentTypesInlineFilteredResponse struct {
@@ -23,4 +51,32 @@ type RequestBodyPostMultipleContentTypesInlineFilteredResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPostMultipleContentTypesInlineFilteredRes
+}
+
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostMultipleContentTypesInlineFilteredResponse) GetRes() *RequestBodyPostMultipleContentTypesInlineFilteredRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

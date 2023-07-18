@@ -8,12 +8,7 @@ require 'faraday/multipart'
 require 'sorbet-runtime'
 module OpenApiSDK
   extend T::Sig
-  SERVERS = [
-    'http://localhost:35123',
-    'http://broken',
-    'http://{hostname}:{port}',
-    'http://localhost:35123/anything/{something}'
-  ].freeze
+
   class SDK
     extend T::Sig
 
@@ -22,9 +17,13 @@ module OpenApiSDK
     attr_accessor :security, :language, :sdk_version, :gen_version
 
     sig do
-      params(security: Shared::Security,
+      params(security: T.nilable(Shared::Security),
              global_path_param: Integer,
              global_query_param: String,
+             hostname: T.nilable(String),
+             port: T.nilable(String),
+             something: T.nilable(ServerSomething),
+             server_idx: Integer,
              server_url: String,
              url_params: T::Hash[Symbol, String],
              client: Faraday::Request).void
@@ -32,27 +31,57 @@ module OpenApiSDK
     def initialize(security: nil,
                    global_path_param: nil,
                    global_query_param: nil,
+                   hostname: nil,
+                   port: nil,
+                   something: nil,
+                   server_idx: nil,
                    server_url: nil,
                    url_params: nil,
                    client: nil)
 
       ## Instantiates the SDK configuring it with the provided parameters.
       # @param [Shared::Security] security The security details required for authentication
-      # @param [Integer] global_path_param Configures the global_path_param parameter for all supported operations
-      # @param [String] global_query_param Configures the global_query_param parameter for all supported operations
+      # @param [Integer] global_path_param: Configures the global_path_param parameter for all supported operations
+      # @param [String] global_query_param: Configures the global_query_param parameter for all supported operations
+      # @param [T.nilable(String)] hostname: Allows setting the hostname variable for url substitution
+      # @param [T.nilable(String)] port: Allows setting the port variable for url substitution
+      # @param [T.nilable(ServerSomething)] something: Allows setting the something variable for url substitution
+      # @param [Integer] server_idx The index of the server to use for all operations
       # @param [String] server_url The server URL to use for all operations
       # @param [Hash<Symbol, String>] url_params Parameters to optionally template the server URL with
       # @param [Faraday::Request] client The faraday HTTP client to use for all operations
 
-      @client = Faraday.new(request: {
-                              params_encoder: Faraday::FlatParamsEncoder
-                            }) do |f|
-        f.request :multipart, {}
-        # f.response :logger
+      if client.nil?
+        client = Faraday.new(request: {
+                          params_encoder: Faraday::FlatParamsEncoder
+                        }) do |f|
+          f.request :multipart, {}
+          # f.response :logger
+        end
       end
 
+      if !server_url.nil?
+        if !url_params.nil?
+          server_url = Utils.template_url(server_url, url_params)
+        end
+      end
+      server_idx = 0 if server_idx.nil?
+      server_defaults = [
+        {
+        },
+        {
+        },
+        {
+            'hostname': hostname || 'localhost',
+            'port': port || '35123',
+        },
+        {
+            'something': something || 'something',
+        },
+      ]
+
       
-      @_globals = {
+      globals = {
         'parameters': {
           'queryParam': {
             'global_query_param': global_query_param
@@ -63,22 +92,14 @@ module OpenApiSDK
         }
       }
 
-
-      @security = nil
-      @server_url = SERVERS[0]
-      @language = 'ruby'
-      @sdk_version = '1.19.0'
-      @gen_version = '2.65.0'
-      @openapi_doc_version = '0.1.0'
+      @sdk_configuration = SDKConfiguration.new(client, security, server_url, server_idx, server_defaults, globals)
       init_sdks
     end
 
-    sig { params(server_url: String, params: T.nilable(T::Hash[Symbol, String])).void }
-    def config_server_url(server_url, params)
-      if params.nil?
-        @server_url = server_url
-      else
-        @server_url = Utils.template_url(server_url, params)
+    sig { params(params: T.nilable(T::Hash[Symbol, String])).void }
+    def config_server_url(params)
+      if !params.nil?
+        @server_url = Utils.template_url(@server_url, params)
       end
       init_sdks
     end
@@ -86,197 +107,46 @@ module OpenApiSDK
     sig { params(security: Shared::Security).void }
     def config_security(security)
       @security = security
+      @sdk_configuration.security = security
     end
 
     sig { void }
     def init_sdks
-      @auth = Auth.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @auth_new = AuthNew.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @errors = Errors.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @first = First.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @flattening = Flattening.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @generation = Generation.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @globals = Globals.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @pagination = Pagination.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @parameters = Parameters.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @request_bodies = RequestBodies.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @resource = Resource.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @response_bodies = ResponseBodies.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @retries = Retries.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @second = Second.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @servers = Servers.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @telemetry = Telemetry.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
-      @unions = Unions.new(
-        self,
-        @client,
-        @server_url,
-        @language,
-        @sdk_version,
-        @gen_version,
-        @openapi_doc_version,
-        @_globals
-      )
+      @auth = Auth.new(@sdk_configuration)
+      @auth_new = AuthNew.new(@sdk_configuration)
+      @errors = Errors.new(@sdk_configuration)
+      @first = First.new(@sdk_configuration)
+      @flattening = Flattening.new(@sdk_configuration)
+      @generation = Generation.new(@sdk_configuration)
+      @globals = Globals.new(@sdk_configuration)
+      @pagination = Pagination.new(@sdk_configuration)
+      @parameters = Parameters.new(@sdk_configuration)
+      @request_bodies = RequestBodies.new(@sdk_configuration)
+      @resource = Resource.new(@sdk_configuration)
+      @response_bodies = ResponseBodies.new(@sdk_configuration)
+      @retries = Retries.new(@sdk_configuration)
+      @second = Second.new(@sdk_configuration)
+      @servers = Servers.new(@sdk_configuration)
+      @telemetry = Telemetry.new(@sdk_configuration)
+      @unions = Unions.new(@sdk_configuration)
     end
 
     
     sig { params(request: String).returns(Utils::FieldAugmented) }
     def put_anything_ignored_generation(request)
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/ignoredGeneration"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/ignoredGeneration"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :string)
       headers['content-type'] = req_content_type
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.put(url) do |req|
+      r = @sdk_configuration.client.put(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -304,15 +174,16 @@ module OpenApiSDK
     sig { returns(Utils::FieldAugmented) }
     def response_body_json_get
 
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/json"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/json"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')

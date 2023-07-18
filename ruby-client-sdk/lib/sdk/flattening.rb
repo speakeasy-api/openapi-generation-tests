@@ -10,17 +10,11 @@ require 'sorbet-runtime'
 module OpenApiSDK
   extend T::Sig
   class Flattening
+    # Endpoints for testing flattening through request body and parameter combinations.
     extend T::Sig
-    sig { params(sdk: OpenApiSDK::SDK, client: Faraday::Connection, server_url: String, language: String, sdk_version: String, gen_version: String, openapi_doc_version: String, gbls: T::Hash[Symbol, T::Hash[Symbol, T::Hash[Symbol, Object]]]).void }
-    def initialize(sdk, client, server_url, language, sdk_version, gen_version, openapi_doc_version, gbls)
-      @sdk = sdk
-      @client = client
-      @server_url = server_url
-      @language = language
-      @sdk_version = sdk_version
-      @gen_version = gen_version
-      @openapi_doc_version = openapi_doc_version
-      @globals = gbls
+    sig { params(sdk_config: SDKConfiguration).void }
+    def initialize(sdk_config)
+      @sdk_configuration = sdk_config
     end
 
     sig { params(simple_object: Shared::SimpleObject, str_: String).returns(Utils::FieldAugmented) }
@@ -30,20 +24,21 @@ module OpenApiSDK
         simple_object: simple_object,
         str_: str_
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/flattening/componentBodyAndParamConflict"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/flattening/componentBodyAndParamConflict"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :simple_object, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(Operations::ComponentBodyAndParamConflictRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::ComponentBodyAndParamConflictRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -74,20 +69,21 @@ module OpenApiSDK
         param_str: param_str,
         simple_object: simple_object
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/flattening/componentBodyAndParamNoConflict"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/flattening/componentBodyAndParamNoConflict"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :simple_object, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(Operations::ComponentBodyAndParamNoConflictRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::ComponentBodyAndParamNoConflictRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -118,23 +114,24 @@ module OpenApiSDK
         str_path_parameter: str_path_parameter,
         str_query_parameter: str_query_parameter
       )
-      base_url = @server_url
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
       url = Utils.generate_url(
         Operations::ConflictingParamsRequest,
         base_url,
         '/anything/flattening/conflictingParams/{str}',
         request,
-        @globals
+        @sdk_configuration.globals
       )
       headers = {}
-      query_params = Utils.get_query_params(Operations::ConflictingParamsRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::ConflictingParamsRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.get(url) do |req|
+      r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
       end
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
@@ -158,20 +155,21 @@ module OpenApiSDK
         request_body: request_body,
         str_: str_
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/flattening/inlineBodyAndParamConflict"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/flattening/inlineBodyAndParamConflict"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(Operations::InlineBodyAndParamConflictRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::InlineBodyAndParamConflictRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
@@ -202,20 +200,21 @@ module OpenApiSDK
         request_body: request_body,
         param_str: param_str
       )
-      base_url = @server_url
-      url = "#{base_url.delete_suffix('/')}/anything/flattening/inlineBodyAndParamNoConflict"
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/flattening/inlineBodyAndParamNoConflict"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
-      query_params = Utils.get_query_params(Operations::InlineBodyAndParamNoConflictRequest, request, @globals)
+      query_params = Utils.get_query_params(Operations::InlineBodyAndParamNoConflictRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@language} #{@sdk_version} #{@gen_version} #{@openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
-      r = @client.post(url) do |req|
+      r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
         req.params = query_params
-        Utils.configure_request_security(req, @sdk.security) if !@sdk.nil? && !@sdk.security.nil?
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
         if form
           req.body = Utils.encode_form(form)
         elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')

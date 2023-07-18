@@ -21,6 +21,7 @@ pylintrc
 setup.py
 src/sdk/__init__.py
 src/sdk/models/__init__.py
+src/sdk/models/errors/sdkerror.py
 src/sdk/utils/__init__.py
 src/sdk/utils/retries.py
 src/sdk/utils/utils.py
@@ -28,6 +29,7 @@ tests/__init__.py
 tests/helpers.py
 tests/testUpload.json
 tests/test_auth.py
+tests/test_errors.py
 tests/test_flattening.py
 tests/test_globals.py
 tests/test_pagination.py
@@ -180,6 +182,7 @@ src/sdk/models/shared/typedobject3.py
 src/sdk/models/shared/__init__.py
 src/sdk/models/callbacks/ignoredgenerationget.py
 src/sdk/models/callbacks/__init__.py
+src/sdk/models/errors/__init__.py
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md

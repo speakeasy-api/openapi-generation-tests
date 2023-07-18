@@ -13,10 +13,45 @@ type TypeFromAnchor struct {
 	JSON *shared.SimpleObject `json:"json,omitempty"`
 }
 
+func (o *TypeFromAnchor) GetJSON() *shared.SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
+}
+
 type AnchorTypesGetResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
 	TypeFromAnchor *TypeFromAnchor
+}
+
+func (o *AnchorTypesGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *AnchorTypesGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *AnchorTypesGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *AnchorTypesGetResponse) GetTypeFromAnchor() *TypeFromAnchor {
+	if o == nil {
+		return nil
+	}
+	return o.TypeFromAnchor
 }

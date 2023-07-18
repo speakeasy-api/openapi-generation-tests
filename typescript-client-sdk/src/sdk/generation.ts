@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -63,6 +64,13 @@ export class Generation {
                         JSON.parse(decodedRes),
                         operations.TypeFromAnchor
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -116,6 +124,13 @@ export class Generation {
                     res.validCircularReferenceObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ValidCircularReferenceObject
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -401,6 +416,13 @@ export class Generation {
             case httpRes?.status == 200:
                 if (utils.matchContentType(contentType, `application/octet-stream`)) {
                     res.body = httpRes?.data;
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        httpRes?.data,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -455,6 +477,13 @@ export class Generation {
                         JSON.parse(decodedRes),
                         operations.GetGlobalNameOverride200ApplicationJSON
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -508,6 +537,13 @@ export class Generation {
                     res.ignoredGenerationGet200ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.IgnoredGenerationGet200ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -580,6 +616,13 @@ export class Generation {
                         JSON.parse(decodedRes),
                         shared.HttpBinSimpleJsonObject
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
         }
@@ -637,6 +680,13 @@ export class Generation {
                     res.overriddenResponse = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.OverriddenResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -777,6 +827,13 @@ export class Generation {
                     res.usageExamplePost200ApplicationJSONObject = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.UsageExamplePost200ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

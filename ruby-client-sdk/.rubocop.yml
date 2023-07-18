@@ -51,3 +51,13 @@ Naming/AccessorMethodName:
   Enabled: false
 Naming/MethodParameterName:
   Enabled: false
+Layout/SpaceInsideHashLiteralBraces:
+  Enabled: false
+Layout/FirstHashElementIndentation:
+  Enabled: false
+Style/TrailingCommaInHashLiteral:
+  Enabled: false
+Style/TrailingCommaInArrayLiteral:
+  Enabled: false
+Layout/EmptyLinesAroundClassBody:
+  Enabled: false

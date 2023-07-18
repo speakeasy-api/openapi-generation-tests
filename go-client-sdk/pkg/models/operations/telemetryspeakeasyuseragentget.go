@@ -10,9 +10,23 @@ type TelemetrySpeakeasyUserAgentGetRequest struct {
 	UserAgent string `header:"style=simple,explode=false,name=User-Agent"`
 }
 
+func (o *TelemetrySpeakeasyUserAgentGetRequest) GetUserAgent() string {
+	if o == nil {
+		return ""
+	}
+	return o.UserAgent
+}
+
 // TelemetrySpeakeasyUserAgentGetRes - OK
 type TelemetrySpeakeasyUserAgentGetRes struct {
 	Headers map[string]string `json:"headers"`
+}
+
+func (o *TelemetrySpeakeasyUserAgentGetRes) GetHeaders() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Headers
 }
 
 type TelemetrySpeakeasyUserAgentGetResponse struct {
@@ -21,4 +35,32 @@ type TelemetrySpeakeasyUserAgentGetResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *TelemetrySpeakeasyUserAgentGetRes
+}
+
+func (o *TelemetrySpeakeasyUserAgentGetResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *TelemetrySpeakeasyUserAgentGetResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *TelemetrySpeakeasyUserAgentGetResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *TelemetrySpeakeasyUserAgentGetResponse) GetRes() *TelemetrySpeakeasyUserAgentGetRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

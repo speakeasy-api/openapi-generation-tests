@@ -9,11 +9,9 @@ module OpenApiSDK
     def test_select_global_server
       record_test('servers-select-global-server-valid')
 
-      sdk = SDK.new
+      sdk = SDK.new(server_url: SERVERS[0])
       
       refute_nil sdk
-      sdk.config_server_url(SERVERS[0], nil)
-
 
       res =  sdk.servers.select_global_server
       refute_nil res
@@ -24,16 +22,14 @@ module OpenApiSDK
     def test_select_global_server_broken
       record_test('servers-select-global-server-broken')
 
-      sdk = SDK.new
+      sdk = SDK.new(server_idx: 1)
       refute_nil sdk
-
-      sdk.config_server_url(SERVERS[1], nil)
 
       error = nil
       begin
         res = sdk.servers.select_global_server
-      rescue => e
-        error = e
+      rescue => err
+        error = err
       end
 
       refute_nil error
@@ -44,10 +40,9 @@ module OpenApiSDK
     def test_select_server_with_id_default
       record_test('servers-select-server-with-id-default')
 
-      sdk = SDK.new
+      sdk = SDK.new(server_url: SERVERS[0])
       
       refute_nil sdk
-      sdk.config_server_url(SERVERS[0], nil)
 
       res = sdk.servers.select_server_with_id()
       refute_nil res
@@ -58,10 +53,9 @@ module OpenApiSDK
     def test_select_server_with_id_valid
       record_test('servers-select-server-with-id-valid')
 
-      sdk = SDK.new
+      sdk = SDK.new(server_url: SERVERS[0])
       
       refute_nil sdk
-      sdk.config_server_url(SERVERS[0], nil)
 
       res = sdk.servers.select_server_with_id(server_url=Operations::SELECT_SERVER_WITH_ID_SERVERS[:SELECT_SERVER_WITH_ID_SERVER_VALID])
 
@@ -72,10 +66,9 @@ module OpenApiSDK
     def test_select_server_with_id_broken
       record_test('servers-select-server-with-id-broken')
 
-      sdk = OpenApiSDK::SDK.new
+      sdk = OpenApiSDK::SDK.new(server_url: SERVERS[0])
       
       refute_nil sdk
-      sdk.config_server_url(SERVERS[0], nil)
 
       error = nil
       begin
@@ -90,15 +83,33 @@ module OpenApiSDK
     def test_server_with_templates_global
       record_test('servers-server-with-templates-global')
 
-      sdk = SDK.new
-      
+      sdk = SDK.new(server_idx: 2, hostname: "localhost", port: "35123")
+
       refute_nil sdk
-      sdk.config_server_url(SERVERS[2], {
-        :hostname => "localhost",
-        :port =>     "35123"
-      })
 
       res = sdk.servers.server_with_templates_global
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+
+    def test_server_with_templates_global_defaults
+      record_test('servers-server-with-templates-global-defaults')
+  
+      sdk = SDK.new(server_idx: 2)
+  
+      res = sdk.servers.server_with_templates_global
+
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+
+    def test_server_with_templates_global_enum
+      record_test('servers-server-with-templates-global-enum')
+  
+      sdk = SDK.new(server_idx:3, something: ServerSomething::SOMETHING_ELSE_AGAIN)
+
+      res = sdk.servers.server_with_templates_global
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
     end
@@ -112,6 +123,28 @@ module OpenApiSDK
         :hostname => "localhost",
         :port =>     "35123"
       }))
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+
+    def test_server_with_templates_defaults
+      record_test('servers-server-with-templates-defaults')
+  
+      sdk = SDK.new
+  
+      res = sdk.servers.server_with_templates
+  
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+  
+    def test_servers_by_id_with_templates
+      record_test('servers-server-by-id-with-templates')
+  
+      sdk = SDK.new
+  
+      res = sdk.servers.servers_by_id_with_templates()
+  
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
     end

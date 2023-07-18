@@ -9,6 +9,7 @@ import (
 	"io"
 	"net/http"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/utils"
 	"strings"
@@ -91,6 +92,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context,
 			}
 
 			res.SimpleObjects = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -152,6 +155,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayObj(ctx context.Conte
 			}
 
 			res.ArrObjValue = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -224,6 +229,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.C
 			}
 
 			res.Arrs = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -296,6 +303,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ct
 			}
 
 			res.Arrs = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -368,6 +377,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Con
 			}
 
 			res.Maps = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -440,6 +451,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx conte
 			}
 
 			res.Strings = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -498,6 +511,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, 
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -570,6 +585,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, r
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -631,6 +648,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapObj(ctx context.Context
 			}
 
 			res.MapObjValue = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -703,6 +722,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Con
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -775,6 +796,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Conte
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -847,6 +870,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx co
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -919,6 +944,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -980,6 +1007,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx c
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1041,6 +1070,8 @@ func (s *requestBodies) RequestBodyPostApplicationJSONSimple(ctx context.Context
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1099,6 +1130,8 @@ func (s *requestBodies) RequestBodyPostEmptyObject(ctx context.Context, request 
 			}
 
 			res.RequestBodyPostEmptyObject200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1160,6 +1193,8 @@ func (s *requestBodies) RequestBodyPostFormDeep(ctx context.Context, request sha
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1221,6 +1256,8 @@ func (s *requestBodies) RequestBodyPostFormMapPrimitive(ctx context.Context, req
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1282,6 +1319,8 @@ func (s *requestBodies) RequestBodyPostFormSimple(ctx context.Context, request s
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1343,6 +1382,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesComponentFiltered(ctx
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1404,6 +1445,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesInlineFiltered(ctx co
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1474,6 +1517,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamForm(ctx co
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1544,6 +1589,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamJSON(ctx co
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1614,6 +1661,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitParamMultipart(c
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1675,6 +1724,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitForm(ctx context
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1736,6 +1787,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitJSON(ctx context
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1797,6 +1850,8 @@ func (s *requestBodies) RequestBodyPostMultipleContentTypesSplitMultipart(ctx co
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1858,6 +1913,8 @@ func (s *requestBodies) RequestBodyPutBytes(ctx context.Context, request []byte)
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1919,6 +1976,8 @@ func (s *requestBodies) RequestBodyPutMultipartDeep(ctx context.Context, request
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -1980,6 +2039,8 @@ func (s *requestBodies) RequestBodyPutMultipartFile(ctx context.Context, request
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -2041,6 +2102,8 @@ func (s *requestBodies) RequestBodyPutMultipartSimple(ctx context.Context, reque
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 
@@ -2102,6 +2165,8 @@ func (s *requestBodies) RequestBodyPutString(ctx context.Context, request string
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
 	}
 

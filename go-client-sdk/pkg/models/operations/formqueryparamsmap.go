@@ -11,10 +11,38 @@ type FormQueryParamsMapRequest struct {
 	MapParamExploded map[string]int64  `queryParam:"style=form,explode=true,name=mapParamExploded"`
 }
 
+func (o *FormQueryParamsMapRequest) GetMapParam() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.MapParam
+}
+
+func (o *FormQueryParamsMapRequest) GetMapParamExploded() map[string]int64 {
+	if o == nil {
+		return nil
+	}
+	return o.MapParamExploded
+}
+
 // FormQueryParamsMapRes - OK
 type FormQueryParamsMapRes struct {
 	Args map[string]string `json:"args"`
 	URL  string            `json:"url"`
+}
+
+func (o *FormQueryParamsMapRes) GetArgs() map[string]string {
+	if o == nil {
+		return map[string]string{}
+	}
+	return o.Args
+}
+
+func (o *FormQueryParamsMapRes) GetURL() string {
+	if o == nil {
+		return ""
+	}
+	return o.URL
 }
 
 type FormQueryParamsMapResponse struct {
@@ -23,4 +51,32 @@ type FormQueryParamsMapResponse struct {
 	RawResponse *http.Response
 	// OK
 	Res *FormQueryParamsMapRes
+}
+
+func (o *FormQueryParamsMapResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *FormQueryParamsMapResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *FormQueryParamsMapResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *FormQueryParamsMapResponse) GetRes() *FormQueryParamsMapRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

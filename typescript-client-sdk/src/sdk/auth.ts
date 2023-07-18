@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
@@ -69,6 +70,13 @@ export class Auth {
                         JSON.parse(decodedRes),
                         operations.ApiKeyAuthToken
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -123,6 +131,13 @@ export class Auth {
                     res.token = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.ApiKeyAuthGlobalToken
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -196,6 +211,13 @@ export class Auth {
                         JSON.parse(decodedRes),
                         operations.BasicAuthUser
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -256,6 +278,13 @@ export class Auth {
                     res.token = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.BearerAuthToken
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;
@@ -318,6 +347,13 @@ export class Auth {
                         JSON.parse(decodedRes),
                         operations.Oauth2AuthToken
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
                 }
                 break;
             case httpRes?.status == 401:
@@ -378,6 +414,13 @@ export class Auth {
                     res.token = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.OpenIdConnectAuthToken
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
                     );
                 }
                 break;

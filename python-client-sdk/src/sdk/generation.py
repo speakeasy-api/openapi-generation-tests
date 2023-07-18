@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from datetime import date
 from sdk import utils
-from sdk.models import operations, shared
+from sdk.models import errors, operations, shared
 from typing import Optional
 
 class Generation:
@@ -33,6 +33,8 @@ class Generation:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.TypeFromAnchor])
                 res.type_from_anchor = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -56,6 +58,8 @@ class Generation:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.ValidCircularReferenceObject])
                 res.valid_circular_reference_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -179,6 +183,8 @@ class Generation:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
                 res.body = http_res.content
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -202,6 +208,8 @@ class Generation:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.GetGlobalNameOverride200ApplicationJSON])
                 res.get_global_name_override_200_application_json_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -225,6 +233,8 @@ class Generation:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.IgnoredGenerationGet200ApplicationJSON])
                 res.ignored_generation_get_200_application_json_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -257,6 +267,8 @@ class Generation:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.HTTPBinSimpleJSONObject])
                 res.http_bin_simple_json_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -285,6 +297,8 @@ class Generation:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.OverriddenResponse])
                 res.overridden_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 
@@ -342,6 +356,8 @@ class Generation:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.UsageExamplePost200ApplicationJSON])
                 res.usage_example_post_200_application_json_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 
         return res
 

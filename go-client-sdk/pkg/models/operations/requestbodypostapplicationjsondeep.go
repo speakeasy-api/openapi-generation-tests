@@ -12,10 +12,45 @@ type RequestBodyPostApplicationJSONDeepRes struct {
 	JSON *shared.DeepObject `json:"json,omitempty"`
 }
 
+func (o *RequestBodyPostApplicationJSONDeepRes) GetJSON() *shared.DeepObject {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
+}
+
 type RequestBodyPostApplicationJSONDeepResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPostApplicationJSONDeepRes
+}
+
+func (o *RequestBodyPostApplicationJSONDeepResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostApplicationJSONDeepResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostApplicationJSONDeepResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostApplicationJSONDeepResponse) GetRes() *RequestBodyPostApplicationJSONDeepRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

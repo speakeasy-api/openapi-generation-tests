@@ -5,6 +5,7 @@
 import { expect, test } from "@jest/globals";
 
 import { SDK } from "../src/sdk";
+import { SDKError } from "../src/sdk/models/errors";
 import { RetriesGetResponse } from "../src/sdk/models/operations";
 import { recordTest } from "./helpers";
 
@@ -25,10 +26,9 @@ test("Test Retries Timeout", async () => {
 
   const sdk = new SDK({});
 
-  const res: RetriesGetResponse = await sdk.retries.retriesGet(
-    pseudoUUID(),
-    1000000000,
-    {
+  expect.assertions(2);
+  try {
+    await sdk.retries.retriesGet(pseudoUUID(), 1000000000, {
       strategy: "backoff",
       backoff: {
         initialInterval: 1,
@@ -37,11 +37,13 @@ test("Test Retries Timeout", async () => {
         maxElapsedTime: 100,
       },
       retryConnectionErrors: false,
-    }
-  );
+    });
+  } catch (e) {
+    expect(e).toBeInstanceOf(SDKError);
 
-  expect(res.statusCode).toBeDefined();
-  expect(res.statusCode).toBe(503);
+    const sdkErr = e as SDKError;
+    expect(sdkErr.statusCode).toBe(503);
+  }
 });
 
 function pseudoUUID() {

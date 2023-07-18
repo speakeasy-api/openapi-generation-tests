@@ -12,9 +12,44 @@ type RequestBodyPostMultipleContentTypesSplitParamMultipartFormData struct {
 	Str2  string  `multipartForm:"name=str2"`
 }
 
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartFormData) GetBool2() bool {
+	if o == nil {
+		return false
+	}
+	return o.Bool2
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartFormData) GetNum2() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Num2
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartFormData) GetStr2() string {
+	if o == nil {
+		return ""
+	}
+	return o.Str2
+}
+
 type RequestBodyPostMultipleContentTypesSplitParamMultipartRequest struct {
 	RequestBody RequestBodyPostMultipleContentTypesSplitParamMultipartFormData `request:"mediaType=multipart/form-data"`
 	ParamStr    string                                                         `queryParam:"style=form,explode=true,name=paramStr"`
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRequest) GetRequestBody() RequestBodyPostMultipleContentTypesSplitParamMultipartFormData {
+	if o == nil {
+		return RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{}
+	}
+	return o.RequestBody
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRequest) GetParamStr() string {
+	if o == nil {
+		return ""
+	}
+	return o.ParamStr
 }
 
 // RequestBodyPostMultipleContentTypesSplitParamMultipartRes - OK
@@ -24,10 +59,59 @@ type RequestBodyPostMultipleContentTypesSplitParamMultipartRes struct {
 	JSON map[string]interface{} `json:"json,omitempty"`
 }
 
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRes) GetArgs() map[string]string {
+	if o == nil {
+		return nil
+	}
+	return o.Args
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRes) GetForm() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Form
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartRes) GetJSON() map[string]interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
+}
+
 type RequestBodyPostMultipleContentTypesSplitParamMultipartResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	Res *RequestBodyPostMultipleContentTypesSplitParamMultipartRes
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) GetRes() *RequestBodyPostMultipleContentTypesSplitParamMultipartRes {
+	if o == nil {
+		return nil
+	}
+	return o.Res
 }

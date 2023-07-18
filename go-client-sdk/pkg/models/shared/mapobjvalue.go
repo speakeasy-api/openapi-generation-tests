@@ -7,3 +7,17 @@ type MapObjValue struct {
 	JSON     map[string]SimpleObject `json:"json,omitempty"`
 	Required interface{}             `json:"required,omitempty"`
 }
+
+func (o *MapObjValue) GetJSON() map[string]SimpleObject {
+	if o == nil {
+		return nil
+	}
+	return o.JSON
+}
+
+func (o *MapObjValue) GetRequired() interface{} {
+	if o == nil {
+		return nil
+	}
+	return o.Required
+}

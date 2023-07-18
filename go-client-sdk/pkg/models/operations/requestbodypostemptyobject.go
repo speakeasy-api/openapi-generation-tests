@@ -17,6 +17,20 @@ type RequestBodyPostEmptyObjectRequestBody struct {
 	EmptyWithEmptyProperties *RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties `json:"emptyWithEmptyProperties,omitempty"`
 }
 
+func (o *RequestBodyPostEmptyObjectRequestBody) GetEmpty() *RequestBodyPostEmptyObjectRequestBodyEmpty {
+	if o == nil {
+		return nil
+	}
+	return o.Empty
+}
+
+func (o *RequestBodyPostEmptyObjectRequestBody) GetEmptyWithEmptyProperties() *RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties {
+	if o == nil {
+		return nil
+	}
+	return o.EmptyWithEmptyProperties
+}
+
 type RequestBodyPostEmptyObject200ApplicationJSONEmpty struct {
 }
 
@@ -29,10 +43,52 @@ type RequestBodyPostEmptyObject200ApplicationJSON struct {
 	EmptyRespWithEmptyProperies *RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies `json:"emptyRespWithEmptyProperies,omitempty"`
 }
 
+func (o *RequestBodyPostEmptyObject200ApplicationJSON) GetEmpty() *RequestBodyPostEmptyObject200ApplicationJSONEmpty {
+	if o == nil {
+		return nil
+	}
+	return o.Empty
+}
+
+func (o *RequestBodyPostEmptyObject200ApplicationJSON) GetEmptyRespWithEmptyProperies() *RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies {
+	if o == nil {
+		return nil
+	}
+	return o.EmptyRespWithEmptyProperies
+}
+
 type RequestBodyPostEmptyObjectResponse struct {
 	ContentType string
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
 	RequestBodyPostEmptyObject200ApplicationJSONObject *RequestBodyPostEmptyObject200ApplicationJSON
+}
+
+func (o *RequestBodyPostEmptyObjectResponse) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
+func (o *RequestBodyPostEmptyObjectResponse) GetStatusCode() int {
+	if o == nil {
+		return 0
+	}
+	return o.StatusCode
+}
+
+func (o *RequestBodyPostEmptyObjectResponse) GetRawResponse() *http.Response {
+	if o == nil {
+		return nil
+	}
+	return o.RawResponse
+}
+
+func (o *RequestBodyPostEmptyObjectResponse) GetRequestBodyPostEmptyObject200ApplicationJSONObject() *RequestBodyPostEmptyObject200ApplicationJSON {
+	if o == nil {
+		return nil
+	}
+	return o.RequestBodyPostEmptyObject200ApplicationJSONObject
 }

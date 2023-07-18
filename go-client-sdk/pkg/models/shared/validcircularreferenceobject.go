@@ -5,3 +5,10 @@ package shared
 type ValidCircularReferenceObject struct {
 	Circular []ValidCircularReferenceObject `json:"circular,omitempty"`
 }
+
+func (o *ValidCircularReferenceObject) GetCircular() []ValidCircularReferenceObject {
+	if o == nil {
+		return nil
+	}
+	return o.Circular
+}
