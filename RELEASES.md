@@ -301,3 +301,11 @@ Based on:
 - Speakeasy CLI 1.64.1 (2.71.0) https://github.com/speakeasy-api/speakeasy
 ### Releases
 - [Go v1.21.0] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.21.0 - go-client-sdk
+
+## 2023-07-26 00:12:53
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.65.0 (2.73.0) https://github.com/speakeasy-api/speakeasy
+### Releases
+- [Go v1.22.0] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.22.0 - go-client-sdk
