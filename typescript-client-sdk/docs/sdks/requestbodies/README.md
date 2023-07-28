@@ -1741,7 +1741,11 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitParamFormResponse } from "openapi/dist/sdk/models/operations";
+import {
+  RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded,
+  RequestBodyPostMultipleContentTypesSplitParamFormRequest,
+  RequestBodyPostMultipleContentTypesSplitParamFormResponse,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -1750,12 +1754,14 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm({
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
   bool3: false,
   num3: 8672.9,
   str3: "totam",
-}, "hic").then((res: RequestBodyPostMultipleContentTypesSplitParamFormResponse) => {
+};
+const paramStr: string = "hic";
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamFormResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1782,7 +1788,11 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitParamJsonResponse } from "openapi/dist/sdk/models/operations";
+import {
+  RequestBodyPostMultipleContentTypesSplitParamApplicationJSON,
+  RequestBodyPostMultipleContentTypesSplitParamJsonRequest,
+  RequestBodyPostMultipleContentTypesSplitParamJsonResponse,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -1791,12 +1801,14 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson({
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
   bool: false,
   num: 3487.83,
   str: "nobis",
-}, "sit").then((res: RequestBodyPostMultipleContentTypesSplitParamJsonResponse) => {
+};
+const paramStr: string = "sit";
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1823,7 +1835,11 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitParamMultipartResponse } from "openapi/dist/sdk/models/operations";
+import {
+  RequestBodyPostMultipleContentTypesSplitParamMultipartFormData,
+  RequestBodyPostMultipleContentTypesSplitParamMultipartRequest,
+  RequestBodyPostMultipleContentTypesSplitParamMultipartResponse,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -1832,12 +1848,14 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart({
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
   bool2: false,
   num2: 6995.75,
   str2: "sed",
-}, "reiciendis").then((res: RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) => {
+};
+const paramStr: string = "reiciendis";
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

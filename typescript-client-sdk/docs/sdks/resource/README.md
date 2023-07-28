@@ -54,7 +54,7 @@ sdk.resource.createResource({
 
 ```typescript
 import { SDK } from "openapi";
-import { DeleteResourceResponse } from "openapi/dist/sdk/models/operations";
+import { DeleteResourceRequest, DeleteResourceResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -63,8 +63,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const resourceId: string = "accusamus";
 
-sdk.resource.deleteResource("accusamus").then((res: DeleteResourceResponse) => {
+sdk.resource.deleteResource(resourceId).then((res: DeleteResourceResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -90,7 +91,7 @@ sdk.resource.deleteResource("accusamus").then((res: DeleteResourceResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { GetResourceResponse } from "openapi/dist/sdk/models/operations";
+import { GetResourceRequest, GetResourceResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -99,8 +100,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const resourceId: string = "tempora";
 
-sdk.resource.getResource("tempora").then((res: GetResourceResponse) => {
+sdk.resource.getResource(resourceId).then((res: GetResourceResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -126,7 +128,7 @@ sdk.resource.getResource("tempora").then((res: GetResourceResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { UpdateResourceResponse } from "openapi/dist/sdk/models/operations";
+import { UpdateResourceRequest, UpdateResourceResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -135,8 +137,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const resourceId: string = "atque";
 
-sdk.resource.updateResource("atque").then((res: UpdateResourceResponse) => {
+sdk.resource.updateResource(resourceId).then((res: UpdateResourceResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

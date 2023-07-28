@@ -6,6 +6,7 @@ import { expect, test } from "@jest/globals";
 
 import { SDK } from "../src";
 import { recordTest } from "./helpers";
+import { ResponseBodyOptionalGetAcceptEnum } from "../src/sdk/responsebodies";
 
 test("Response Body JSON Get", async () => {
   recordTest("response-bodies-json-get");
@@ -107,4 +108,26 @@ test("Response Body Bytes Get", async () => {
   expect(res.statusCode).toBe(200);
   expect(res.bytes).toBeDefined();
   expect(res.bytes).toHaveLength(100);
+});
+
+test("Response Selectable by Accept Header Text Plain", async () => {
+  recordTest("response-selectable-by-accept-header-text-plain")
+  const s = new SDK({});
+
+  const res = await s.responseBodies.responseBodyOptionalGet(undefined, undefined, ResponseBodyOptionalGetAcceptEnum.textPlain);
+
+  expect(res.statusCode).toBe(200);
+  expect(res.contentType).toContain("text/plain");
+  expect(res.responseBodyOptionalGet200TextPlainString).toEqual("Success")
+});
+
+test("Response Selectable by Accept Header No Override", async () => {
+  recordTest("response-selectable-by-accept-header-no-override")
+  const s = new SDK({});
+
+  const res = await s.responseBodies.responseBodyOptionalGet();
+
+  expect(res.statusCode).toBe(200);
+  expect(res.contentType).toContain("application/json");
+  expect(res.typedObject1?.type).toEqual("obj1")
 });

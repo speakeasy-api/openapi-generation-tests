@@ -15,7 +15,7 @@ Endpoints for testing global parameters.
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalPathParameterGetResponse } from "openapi/dist/sdk/models/operations";
+import { GlobalPathParameterGetRequest, GlobalPathParameterGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -24,8 +24,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const globalPathParam: number = 487838;
 
-sdk.globals.globalPathParameterGet(487838).then((res: GlobalPathParameterGetResponse) => {
+sdk.globals.globalPathParameterGet(globalPathParam).then((res: GlobalPathParameterGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -51,7 +52,7 @@ sdk.globals.globalPathParameterGet(487838).then((res: GlobalPathParameterGetResp
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalsQueryParameterGetResponse } from "openapi/dist/sdk/models/operations";
+import { GlobalsQueryParameterGetRequest, GlobalsQueryParameterGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -60,8 +61,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const globalQueryParam: string = "quaerat";
 
-sdk.globals.globalsQueryParameterGet("quaerat").then((res: GlobalsQueryParameterGetResponse) => {
+sdk.globals.globalsQueryParameterGet(globalQueryParam).then((res: GlobalsQueryParameterGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

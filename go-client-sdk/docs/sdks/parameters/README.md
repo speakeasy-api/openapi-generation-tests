@@ -49,13 +49,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.DeepObjectQueryParamsMap(ctx, map[string]string{
+    mapParam := map[string]string{
         "iusto": "voluptate",
         "dolorum": "deleniti",
         "omnis": "necessitatibus",
-    }, map[string][]string{
+    }
+    mapArrParam := map[string][]string{
         "asperiores": []string{
             "ipsum",
             "voluptate",
@@ -72,7 +71,10 @@ func main() {
             "suscipit",
             "deserunt",
         },
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.DeepObjectQueryParamsMap(ctx, mapParam, mapArrParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -122,9 +124,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.DeepObjectQueryParamsObject(ctx, shared.SimpleObject{
+    objParam := shared.SimpleObject{
         Any: "provident",
         Bigint: big.NewInt(324683),
         BigintStr: types.MustBigIntFromString("831049"),
@@ -143,11 +143,15 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    }, &operations.DeepObjectQueryParamsObjectObjArrParam{
+    }
+    objArrParam := &operations.DeepObjectQueryParamsObjectObjArrParam{
         Arr: []string{
             "at",
         },
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.DeepObjectQueryParamsObject(ctx, objParam, objArrParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -195,17 +199,19 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.FormQueryParamsArray(ctx, []string{
+    arrParam := []string{
         "tempora",
         "vel",
-    }, []int64{
+    }
+    arrParamExploded := []int64{
         885338,
         185636,
         679880,
         952792,
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.FormQueryParamsArray(ctx, arrParam, arrParamExploded)
     if err != nil {
         log.Fatal(err)
     }
@@ -253,17 +259,19 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.FormQueryParamsMap(ctx, map[string]string{
+    mapParam := map[string]string{
         "harum": "iusto",
         "ipsum": "quisquam",
-    }, map[string]int64{
+    }
+    mapParamExploded := map[string]int64{
         "amet": 730856,
         "accusamus": 253941,
         "enim": 213312,
         "sapiente": 518201,
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.FormQueryParamsMap(ctx, mapParam, mapParamExploded)
     if err != nil {
         log.Fatal(err)
     }
@@ -313,9 +321,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.FormQueryParamsObject(ctx, shared.SimpleObject{
+    objParamExploded := shared.SimpleObject{
         Any: "nihil",
         Bigint: big.NewInt(25662),
         BigintStr: types.MustBigIntFromString("711584"),
@@ -334,7 +340,8 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    }, &shared.SimpleObject{
+    }
+    objParam := &shared.SimpleObject{
         Any: "vel",
         Bigint: big.NewInt(730442),
         BigintStr: types.MustBigIntFromString("374170"),
@@ -353,7 +360,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.FormQueryParamsObject(ctx, objParamExploded, objParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -401,9 +411,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    boolParam := false
+    intParam := 214880
+    numParam := 2776.28
+    strParam := "qui"
 
     ctx := context.Background()
-    res, err := s.Parameters.FormQueryParamsPrimitive(ctx, false, 214880, 2776.28, "qui")
+    res, err := s.Parameters.FormQueryParamsPrimitive(ctx, boolParam, intParam, numParam, strParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -453,19 +467,21 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.FormQueryParamsRefParamObject(ctx, &shared.RefQueryParamObj{
+    refObjParam := &shared.RefQueryParamObj{
         Bool: false,
         Int: 586784,
         Num: 8075.81,
         Str: "pariatur",
-    }, &shared.RefQueryParamObjExploded{
+    }
+    refObjParamExploded := &shared.RefQueryParamObjExploded{
         Bool: false,
         Int: 747080,
         Num: 1175.31,
         Str: "laborum",
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.FormQueryParamsRefParamObject(ctx, refObjParam, refObjParamExploded)
     if err != nil {
         log.Fatal(err)
     }
@@ -513,13 +529,14 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.HeaderParamsArray(ctx, []string{
+    xHeaderArray := []string{
         "incidunt",
         "aspernatur",
         "dolores",
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.HeaderParamsArray(ctx, xHeaderArray)
     if err != nil {
         log.Fatal(err)
     }
@@ -566,15 +583,17 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.HeaderParamsMap(ctx, map[string]string{
+    xHeaderMap := map[string]string{
         "facilis": "aliquid",
         "quam": "molestias",
         "temporibus": "qui",
-    }, map[string]string{
+    }
+    xHeaderMapExplode := map[string]string{
         "fugit": "magni",
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.HeaderParamsMap(ctx, xHeaderMap, xHeaderMapExplode)
     if err != nil {
         log.Fatal(err)
     }
@@ -624,9 +643,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.HeaderParamsObject(ctx, shared.SimpleObject{
+    xHeaderObj := shared.SimpleObject{
         Any: "odio",
         Bigint: big.NewInt(124833),
         BigintStr: types.MustBigIntFromString("355613"),
@@ -645,7 +662,8 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    }, shared.SimpleObject{
+    }
+    xHeaderObjExplode := shared.SimpleObject{
         Any: "voluptatem",
         Bigint: big.NewInt(765326),
         BigintStr: types.MustBigIntFromString("746994"),
@@ -664,7 +682,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.HeaderParamsObject(ctx, xHeaderObj, xHeaderObjExplode)
     if err != nil {
         log.Fatal(err)
     }
@@ -712,9 +733,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    xHeaderBoolean := false
+    xHeaderInteger := 903720
+    xHeaderNumber := 2174.5
+    xHeaderString := "veritatis"
 
     ctx := context.Background()
-    res, err := s.Parameters.HeaderParamsPrimitive(ctx, false, 903720, 2174.5, "veritatis")
+    res, err := s.Parameters.HeaderParamsPrimitive(ctx, xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString)
     if err != nil {
         log.Fatal(err)
     }
@@ -766,9 +791,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.JSONQueryParamsObject(ctx, shared.DeepObject{
+    deepObjParam := shared.DeepObject{
         Any: "quos",
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
@@ -939,7 +962,8 @@ func main() {
         },
         Str: "quibusdam",
         Type: sdk.String("illum"),
-    }, shared.SimpleObject{
+    }
+    simpleObjParam := shared.SimpleObject{
         Any: "sequi",
         Bigint: big.NewInt(617877),
         BigintStr: types.MustBigIntFromString("773326"),
@@ -958,7 +982,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.JSONQueryParamsObject(ctx, deepObjParam, simpleObjParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -1008,9 +1035,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.MixedQueryParams(ctx, shared.SimpleObject{
+    deepObjectParam := shared.SimpleObject{
         Any: "exercitationem",
         Bigint: big.NewInt(862310),
         BigintStr: types.MustBigIntFromString("148141"),
@@ -1029,7 +1054,8 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    }, shared.SimpleObject{
+    }
+    formParam := shared.SimpleObject{
         Any: "doloribus",
         Bigint: big.NewInt(478370),
         BigintStr: types.MustBigIntFromString("753570"),
@@ -1048,7 +1074,8 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    }, shared.SimpleObject{
+    }
+    jsonParam := shared.SimpleObject{
         Any: "officia",
         Bigint: big.NewInt(269479),
         BigintStr: types.MustBigIntFromString("368584"),
@@ -1067,7 +1094,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.MixedQueryParams(ctx, deepObjectParam, formParam, jsonParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -1118,9 +1148,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.PathParameterJSON(ctx, shared.SimpleObject{
+    jsonObj := shared.SimpleObject{
         Any: "vel",
         Bigint: big.NewInt(822118),
         BigintStr: types.MustBigIntFromString("297842"),
@@ -1139,7 +1167,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.PathParameterJSON(ctx, jsonObj)
     if err != nil {
         log.Fatal(err)
     }
@@ -1188,20 +1219,21 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.PipeDelimitedQueryParamsArray(ctx, []string{
+    arrParam := []string{
         "dicta",
         "dolor",
         "maiores",
-    }, []int64{
+    }
+    arrParamExploded := []int64{
         406120,
-    }, map[string]string{
+    }
+    mapParam := map[string]string{
         "excepturi": "voluptatibus",
         "nostrum": "sapiente",
         "quisquam": "saepe",
         "ea": "impedit",
-    }, &shared.SimpleObject{
+    }
+    objParam := &shared.SimpleObject{
         Any: "corporis",
         Bigint: big.NewInt(333145),
         BigintStr: types.MustBigIntFromString("399499"),
@@ -1220,7 +1252,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.PipeDelimitedQueryParamsArray(ctx, arrParam, arrParamExploded, mapParam, objParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -1270,12 +1305,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.SimplePathParameterArrays(ctx, []string{
+    arrParam := []string{
         "quo",
         "consectetur",
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.SimplePathParameterArrays(ctx, arrParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -1322,19 +1358,21 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.SimplePathParameterMaps(ctx, map[string]string{
+    mapParam := map[string]string{
         "aspernatur": "minima",
         "eaque": "a",
         "libero": "aut",
         "aut": "deleniti",
-    }, map[string]int64{
+    }
+    mapParamExploded := map[string]int64{
         "aliquam": 146946,
         "accusamus": 79522,
         "non": 89603,
         "dolorum": 672048,
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.SimplePathParameterMaps(ctx, mapParam, mapParamExploded)
     if err != nil {
         log.Fatal(err)
     }
@@ -1384,9 +1422,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Parameters.SimplePathParameterObjects(ctx, shared.SimpleObject{
+    objParam := shared.SimpleObject{
         Any: "placeat",
         Bigint: big.NewInt(245367),
         BigintStr: types.MustBigIntFromString("432148"),
@@ -1405,7 +1441,8 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    }, shared.SimpleObject{
+    }
+    objParamExploded := shared.SimpleObject{
         Any: "quas",
         Bigint: big.NewInt(829603),
         BigintStr: types.MustBigIntFromString("860552"),
@@ -1424,7 +1461,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.SimplePathParameterObjects(ctx, objParam, objParamExploded)
     if err != nil {
         log.Fatal(err)
     }
@@ -1472,9 +1512,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    boolParam := false
+    intParam := 96549
+    numParam := 2703.28
+    strParam := "numquam"
 
     ctx := context.Background()
-    res, err := s.Parameters.SimplePathParameterPrimitives(ctx, false, 96549, 2703.28, "numquam")
+    res, err := s.Parameters.SimplePathParameterPrimitives(ctx, boolParam, intParam, numParam, strParam)
     if err != nil {
         log.Fatal(err)
     }

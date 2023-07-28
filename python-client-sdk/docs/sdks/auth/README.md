@@ -93,7 +93,7 @@ s = sdk.SDK(
 res = s.auth.basic_auth(operations.BasicAuthSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
-), 'sequi', 'tenetur')
+), passwd='sequi', user='tenetur')
 
 if res.user is not None:
     # handle response

@@ -10,6 +10,7 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Endpoints for testing error responses.
  */
+
 export class Errors {
     private sdkConfiguration: SDKConfiguration;
 
@@ -32,6 +33,7 @@ export class Errors {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -88,6 +90,7 @@ export class Errors {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

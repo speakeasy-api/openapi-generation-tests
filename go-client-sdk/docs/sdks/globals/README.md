@@ -32,9 +32,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    globalPathParam := 487838
 
     ctx := context.Background()
-    res, err := s.Globals.GlobalPathParameterGet(ctx, 487838)
+    res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -81,9 +82,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    globalQueryParam := "quaerat"
 
     ctx := context.Background()
-    res, err := s.Globals.GlobalsQueryParameterGet(ctx, "quaerat")
+    res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)
     if err != nil {
         log.Fatal(err)
     }

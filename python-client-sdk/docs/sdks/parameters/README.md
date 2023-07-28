@@ -43,11 +43,11 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.deep_object_query_params_map({
+res = s.parameters.deep_object_query_params_map(map_param={
     "iusto": 'voluptate',
     "dolorum": 'deleniti',
     "omnis": 'necessitatibus',
-}, {
+}, map_arr_param={
     "asperiores": [
         'ipsum',
         'voluptate',
@@ -101,7 +101,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.deep_object_query_params_object(shared.SimpleObject(
+res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject(
     any='provident',
     bigint=324683,
     bigint_str='repellendus',
@@ -120,7 +120,7 @@ res = s.parameters.deep_object_query_params_object(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), operations.DeepObjectQueryParamsObjectObjArrParam(
+), obj_arr_param=operations.DeepObjectQueryParamsObjectObjArrParam(
     arr=[
         'at',
     ],
@@ -160,10 +160,10 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.form_query_params_array([
+res = s.parameters.form_query_params_array(arr_param=[
     'tempora',
     'vel',
-], [
+], arr_param_exploded=[
     885338,
     185636,
     679880,
@@ -204,10 +204,10 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.form_query_params_map({
+res = s.parameters.form_query_params_map(map_param={
     "harum": 'iusto',
     "ipsum": 'quisquam',
-}, {
+}, map_param_exploded={
     "amet": 730856,
     "accusamus": 253941,
     "enim": 213312,
@@ -249,7 +249,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.form_query_params_object(shared.SimpleObject(
+res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObject(
     any='nihil',
     bigint=25662,
     bigint_str='expedita',
@@ -268,7 +268,7 @@ res = s.parameters.form_query_params_object(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), shared.SimpleObject(
+), obj_param=shared.SimpleObject(
     any='vel',
     bigint=730442,
     bigint_str='voluptas',
@@ -323,7 +323,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.form_query_params_primitive(False, 214880, 2776.28, 'qui')
+res = s.parameters.form_query_params_primitive(bool_param=False, int_param=214880, num_param=2776.28, str_param='qui')
 
 if res.res is not None:
     # handle response
@@ -361,12 +361,12 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.form_query_params_ref_param_object(shared.RefQueryParamObj(
+res = s.parameters.form_query_params_ref_param_object(ref_obj_param=shared.RefQueryParamObj(
     bool=False,
     int=586784,
     num=8075.81,
     str_='pariatur',
-), shared.RefQueryParamObjExploded(
+), ref_obj_param_exploded=shared.RefQueryParamObjExploded(
     bool=False,
     int=747080,
     num=1175.31,
@@ -407,7 +407,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.header_params_array([
+res = s.parameters.header_params_array(x_header_array=[
     'incidunt',
     'aspernatur',
     'dolores',
@@ -446,11 +446,11 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.header_params_map({
+res = s.parameters.header_params_map(x_header_map={
     "facilis": 'aliquid',
     "quam": 'molestias',
     "temporibus": 'qui',
-}, {
+}, x_header_map_explode={
     "fugit": 'magni',
 })
 
@@ -489,7 +489,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.header_params_object(shared.SimpleObject(
+res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     any='odio',
     bigint=124833,
     bigint_str='ullam',
@@ -508,7 +508,7 @@ res = s.parameters.header_params_object(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), shared.SimpleObject(
+), x_header_obj_explode=shared.SimpleObject(
     any='voluptatem',
     bigint=765326,
     bigint_str='soluta',
@@ -563,7 +563,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.header_params_primitive(False, 903720, 2174.5, 'veritatis')
+res = s.parameters.header_params_primitive(x_header_boolean=False, x_header_integer=903720, x_header_number=2174.5, x_header_string='veritatis')
 
 if res.res is not None:
     # handle response
@@ -602,7 +602,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.json_query_params_object(shared.DeepObject(
+res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
     any='quos',
     arr=[
         shared.SimpleObject(
@@ -773,7 +773,7 @@ res = s.parameters.json_query_params_object(shared.DeepObject(
     ),
     str_='quibusdam',
     type='illum',
-), shared.SimpleObject(
+), simple_obj_param=shared.SimpleObject(
     any='sequi',
     bigint=617877,
     bigint_str='impedit',
@@ -829,7 +829,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.mixed_query_params(shared.SimpleObject(
+res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     any='exercitationem',
     bigint=862310,
     bigint_str='fugit',
@@ -848,7 +848,7 @@ res = s.parameters.mixed_query_params(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), shared.SimpleObject(
+), form_param=shared.SimpleObject(
     any='doloribus',
     bigint=478370,
     bigint_str='eligendi',
@@ -867,7 +867,7 @@ res = s.parameters.mixed_query_params(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), shared.SimpleObject(
+), json_param=shared.SimpleObject(
     any='officia',
     bigint=269479,
     bigint_str='ipsam',
@@ -924,7 +924,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.path_parameter_json(shared.SimpleObject(
+res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
     any='vel',
     bigint=822118,
     bigint_str='magnam',
@@ -979,18 +979,18 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.pipe_delimited_query_params_array([
+res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     'dicta',
     'dolor',
     'maiores',
-], [
+], arr_param_exploded=[
     406120,
-], {
+], map_param={
     "excepturi": 'voluptatibus',
     "nostrum": 'sapiente',
     "quisquam": 'saepe',
     "ea": 'impedit',
-}, shared.SimpleObject(
+}, obj_param=shared.SimpleObject(
     any='corporis',
     bigint=333145,
     bigint_str='aliquid',
@@ -1047,7 +1047,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.simple_path_parameter_arrays([
+res = s.parameters.simple_path_parameter_arrays(arr_param=[
     'quo',
     'consectetur',
 ])
@@ -1085,12 +1085,12 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.simple_path_parameter_maps({
+res = s.parameters.simple_path_parameter_maps(map_param={
     "aspernatur": 'minima',
     "eaque": 'a',
     "libero": 'aut',
     "aut": 'deleniti',
-}, {
+}, map_param_exploded={
     "aliquam": 146946,
     "accusamus": 79522,
     "non": 89603,
@@ -1132,7 +1132,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.simple_path_parameter_objects(shared.SimpleObject(
+res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     any='placeat',
     bigint=245367,
     bigint_str='eum',
@@ -1151,7 +1151,7 @@ res = s.parameters.simple_path_parameter_objects(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), shared.SimpleObject(
+), obj_param_exploded=shared.SimpleObject(
     any='quas',
     bigint=829603,
     bigint_str='nulla',
@@ -1206,7 +1206,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.simple_path_parameter_primitives(False, 96549, 2703.28, 'numquam')
+res = s.parameters.simple_path_parameter_primitives(bool_param=False, int_param=96549, num_param=2703.28, str_param='numquam')
 
 if res.res is not None:
     # handle response

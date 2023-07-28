@@ -1738,11 +1738,11 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_post_multiple_content_types_split_param_form(operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(
+res = s.request_bodies.request_body_post_multiple_content_types_split_param_form(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(
     bool3=False,
     num3=8672.9,
     str3='totam',
-), 'hic')
+), param_str='hic')
 
 if res.res is not None:
     # handle response
@@ -1778,11 +1778,11 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_post_multiple_content_types_split_param_json(operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(
+res = s.request_bodies.request_body_post_multiple_content_types_split_param_json(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(
     bool=False,
     num=3487.83,
     str_='nobis',
-), 'sit')
+), param_str='sit')
 
 if res.res is not None:
     # handle response
@@ -1818,11 +1818,11 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_post_multiple_content_types_split_param_multipart(operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(
+res = s.request_bodies.request_body_post_multiple_content_types_split_param_multipart(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(
     bool2=False,
     num2=6995.75,
     str2='sed',
-), 'reiciendis')
+), param_str='reiciendis')
 
 if res.res is not None:
     # handle response

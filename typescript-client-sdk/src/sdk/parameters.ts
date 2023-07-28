@@ -12,6 +12,7 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Endpoints for testing parameters.
  */
+
 export class ParametersT {
     private sdkConfiguration: SDKConfiguration;
 
@@ -40,6 +41,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -108,6 +110,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -176,6 +179,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -244,6 +248,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -312,6 +317,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -384,6 +390,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -453,6 +460,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -518,6 +526,7 @@ export class ParametersT {
 
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -584,6 +593,7 @@ export class ParametersT {
 
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -650,6 +660,7 @@ export class ParametersT {
 
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -721,6 +732,7 @@ export class ParametersT {
 
         const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -789,6 +801,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -859,6 +872,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -928,6 +942,7 @@ export class ParametersT {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -999,6 +1014,7 @@ export class ParametersT {
         const headers = { ...config?.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -1069,6 +1085,7 @@ export class ParametersT {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -1141,6 +1158,7 @@ export class ParametersT {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -1213,6 +1231,7 @@ export class ParametersT {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -1289,6 +1308,7 @@ export class ParametersT {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

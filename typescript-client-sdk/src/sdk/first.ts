@@ -26,6 +26,7 @@ export class First {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

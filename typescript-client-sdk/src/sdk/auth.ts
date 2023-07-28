@@ -11,6 +11,7 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Endpoints for testing authentication.
  */
+
 export class Auth {
     private sdkConfiguration: SDKConfiguration;
 
@@ -38,6 +39,7 @@ export class Auth {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -100,6 +102,7 @@ export class Auth {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -179,6 +182,7 @@ export class Auth {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -247,6 +251,7 @@ export class Auth {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -315,6 +320,7 @@ export class Auth {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -383,6 +389,7 @@ export class Auth {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/json";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

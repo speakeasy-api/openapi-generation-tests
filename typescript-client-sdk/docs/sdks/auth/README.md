@@ -19,16 +19,17 @@ Endpoints for testing authentication.
 
 ```typescript
 import { SDK } from "openapi";
-import { ApiKeyAuthResponse } from "openapi/dist/sdk/models/operations";
+import { ApiKeyAuthResponse, ApiKeyAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.auth.apiKeyAuth({
+const operationSecurity: ApiKeyAuthSecurity = {
   apiKeyAuth: "Token YOUR_API_KEY",
-}).then((res: ApiKeyAuthResponse) => {
+};
+
+sdk.auth.apiKeyAuth(operationSecurity).then((res: ApiKeyAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -89,17 +90,20 @@ sdk.auth.apiKeyAuthGlobal().then((res: ApiKeyAuthGlobalResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { BasicAuthResponse } from "openapi/dist/sdk/models/operations";
+import { BasicAuthRequest, BasicAuthResponse, BasicAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.auth.basicAuth({
+const passwd: string = "sequi";
+const user: string = "tenetur";
+const operationSecurity: BasicAuthSecurity = {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",
-}, "sequi", "tenetur").then((res: BasicAuthResponse) => {
+};
+
+sdk.auth.basicAuth(operationSecurity, passwd, user).then((res: BasicAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -127,16 +131,17 @@ sdk.auth.basicAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { BearerAuthResponse } from "openapi/dist/sdk/models/operations";
+import { BearerAuthResponse, BearerAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.auth.bearerAuth({
+const operationSecurity: BearerAuthSecurity = {
   bearerAuth: "YOUR_JWT",
-}).then((res: BearerAuthResponse) => {
+};
+
+sdk.auth.bearerAuth(operationSecurity).then((res: BearerAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -162,16 +167,17 @@ sdk.auth.bearerAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { Oauth2AuthResponse } from "openapi/dist/sdk/models/operations";
+import { Oauth2AuthResponse, Oauth2AuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.auth.oauth2Auth({
+const operationSecurity: Oauth2AuthSecurity = {
   oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-}).then((res: Oauth2AuthResponse) => {
+};
+
+sdk.auth.oauth2Auth(operationSecurity).then((res: Oauth2AuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -197,16 +203,17 @@ sdk.auth.oauth2Auth({
 
 ```typescript
 import { SDK } from "openapi";
-import { OpenIdConnectAuthResponse } from "openapi/dist/sdk/models/operations";
+import { OpenIdConnectAuthResponse, OpenIdConnectAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.auth.openIdConnectAuth({
+const operationSecurity: OpenIdConnectAuthSecurity = {
   openIdConnect: "Bearer YOUR_OPENID_TOKEN",
-}).then((res: OpenIdConnectAuthResponse) => {
+};
+
+sdk.auth.openIdConnectAuth(operationSecurity).then((res: OpenIdConnectAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

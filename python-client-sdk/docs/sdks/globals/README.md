@@ -26,7 +26,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.global_path_parameter_get(487838)
+res = s.globals.global_path_parameter_get(global_path_param=487838)
 
 if res.res is not None:
     # handle response
@@ -61,7 +61,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.globals_query_parameter_get('quaerat')
+res = s.globals.globals_query_parameter_get(global_query_param='quaerat')
 
 if res.res is not None:
     # handle response

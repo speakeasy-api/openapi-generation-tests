@@ -79,12 +79,16 @@ sdk.authNew.apiKeyAuthGlobalNew({
 
 ```typescript
 import { SDK } from "openapi";
-import { BasicAuthNewResponse } from "openapi/dist/sdk/models/operations";
+import { BasicAuthNewResponse, BasicAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: BasicAuthNewSecurity = {
+  password: "YOUR_PASSWORD",
+  username: "YOUR_USERNAME",
+};
 
 sdk.authNew.basicAuthNew({
   basicAuth: {
@@ -101,10 +105,7 @@ sdk.authNew.basicAuthNew({
       headerName: "reprehenderit",
     },
   ],
-}, {
-  password: "YOUR_PASSWORD",
-  username: "YOUR_USERNAME",
-}).then((res: BasicAuthNewResponse) => {
+}, operationSecurity).then((res: BasicAuthNewResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -132,12 +133,15 @@ sdk.authNew.basicAuthNew({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleMixedOptionsAuthResponse } from "openapi/dist/sdk/models/operations";
+import { MultipleMixedOptionsAuthResponse, MultipleMixedOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: MultipleMixedOptionsAuthSecurity = {
+  apiKeyAuthNew: "Token <YOUR_API_KEY>",
+};
 
 sdk.authNew.multipleMixedOptionsAuth({
   basicAuth: {
@@ -154,9 +158,7 @@ sdk.authNew.multipleMixedOptionsAuth({
       headerName: "accusamus",
     },
   ],
-}, {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-}).then((res: MultipleMixedOptionsAuthResponse) => {
+}, operationSecurity).then((res: MultipleMixedOptionsAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -184,12 +186,19 @@ sdk.authNew.multipleMixedOptionsAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleMixedSchemeAuthResponse } from "openapi/dist/sdk/models/operations";
+import { MultipleMixedSchemeAuthResponse, MultipleMixedSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: MultipleMixedSchemeAuthSecurity = {
+  apiKeyAuthNew: "Token <YOUR_API_KEY>",
+  basicAuth: {
+    password: "YOUR_PASSWORD",
+    username: "YOUR_USERNAME",
+  },
+};
 
 sdk.authNew.multipleMixedSchemeAuth({
   basicAuth: {
@@ -210,13 +219,7 @@ sdk.authNew.multipleMixedSchemeAuth({
       headerName: "voluptates",
     },
   ],
-}, {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-  basicAuth: {
-    password: "YOUR_PASSWORD",
-    username: "YOUR_USERNAME",
-  },
-}).then((res: MultipleMixedSchemeAuthResponse) => {
+}, operationSecurity).then((res: MultipleMixedSchemeAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -244,12 +247,21 @@ sdk.authNew.multipleMixedSchemeAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleOptionsWithMixedSchemesAuthResponse } from "openapi/dist/sdk/models/operations";
+import {
+  MultipleOptionsWithMixedSchemesAuthResponse,
+  MultipleOptionsWithMixedSchemesAuthSecurity,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
+  option1: {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+  },
+};
 
 sdk.authNew.multipleOptionsWithMixedSchemesAuth({
   basicAuth: {
@@ -266,12 +278,7 @@ sdk.authNew.multipleOptionsWithMixedSchemesAuth({
       headerName: "quibusdam",
     },
   ],
-}, {
-  option1: {
-    apiKeyAuthNew: "Token <YOUR_API_KEY>",
-    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-  },
-}).then((res: MultipleOptionsWithMixedSchemesAuthResponse) => {
+}, operationSecurity).then((res: MultipleOptionsWithMixedSchemesAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -299,12 +306,21 @@ sdk.authNew.multipleOptionsWithMixedSchemesAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleOptionsWithSimpleSchemesAuthResponse } from "openapi/dist/sdk/models/operations";
+import {
+  MultipleOptionsWithSimpleSchemesAuthResponse,
+  MultipleOptionsWithSimpleSchemesAuthSecurity,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
+  option1: {
+    apiKeyAuthNew: "Token <YOUR_API_KEY>",
+    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+  },
+};
 
 sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
   basicAuth: {
@@ -317,12 +333,7 @@ sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
       headerName: "cupiditate",
     },
   ],
-}, {
-  option1: {
-    apiKeyAuthNew: "Token <YOUR_API_KEY>",
-    oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-  },
-}).then((res: MultipleOptionsWithSimpleSchemesAuthResponse) => {
+}, operationSecurity).then((res: MultipleOptionsWithSimpleSchemesAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -350,12 +361,15 @@ sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleSimpleOptionsAuthResponse } from "openapi/dist/sdk/models/operations";
+import { MultipleSimpleOptionsAuthResponse, MultipleSimpleOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
+  apiKeyAuthNew: "Token <YOUR_API_KEY>",
+};
 
 sdk.authNew.multipleSimpleOptionsAuth({
   basicAuth: {
@@ -368,9 +382,7 @@ sdk.authNew.multipleSimpleOptionsAuth({
       headerName: "excepturi",
     },
   ],
-}, {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-}).then((res: MultipleSimpleOptionsAuthResponse) => {
+}, operationSecurity).then((res: MultipleSimpleOptionsAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -398,12 +410,16 @@ sdk.authNew.multipleSimpleOptionsAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleSimpleSchemeAuthResponse } from "openapi/dist/sdk/models/operations";
+import { MultipleSimpleSchemeAuthResponse, MultipleSimpleSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
+  apiKeyAuthNew: "Token <YOUR_API_KEY>",
+  oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+};
 
 sdk.authNew.multipleSimpleSchemeAuth({
   basicAuth: {
@@ -420,10 +436,7 @@ sdk.authNew.multipleSimpleSchemeAuth({
       headerName: "aliquid",
     },
   ],
-}, {
-  apiKeyAuthNew: "Token <YOUR_API_KEY>",
-  oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-}).then((res: MultipleSimpleSchemeAuthResponse) => {
+}, operationSecurity).then((res: MultipleSimpleSchemeAuthResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -451,12 +464,15 @@ sdk.authNew.multipleSimpleSchemeAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { Oauth2AuthNewResponse } from "openapi/dist/sdk/models/operations";
+import { Oauth2AuthNewResponse, Oauth2AuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: Oauth2AuthNewSecurity = {
+  oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+};
 
 sdk.authNew.oauth2AuthNew({
   basicAuth: {
@@ -481,9 +497,7 @@ sdk.authNew.oauth2AuthNew({
       headerName: "dicta",
     },
   ],
-}, {
-  oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-}).then((res: Oauth2AuthNewResponse) => {
+}, operationSecurity).then((res: Oauth2AuthNewResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -511,12 +525,15 @@ sdk.authNew.oauth2AuthNew({
 
 ```typescript
 import { SDK } from "openapi";
-import { OpenIdConnectAuthNewResponse } from "openapi/dist/sdk/models/operations";
+import { OpenIdConnectAuthNewResponse, OpenIdConnectAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: OpenIdConnectAuthNewSecurity = {
+  openIdConnect: "Bearer YOUR_OPENID_TOKEN",
+};
 
 sdk.authNew.openIdConnectAuthNew({
   basicAuth: {
@@ -537,9 +554,7 @@ sdk.authNew.openIdConnectAuthNew({
       headerName: "delectus",
     },
   ],
-}, {
-  openIdConnect: "Bearer YOUR_OPENID_TOKEN",
-}).then((res: OpenIdConnectAuthNewResponse) => {
+}, operationSecurity).then((res: OpenIdConnectAuthNewResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

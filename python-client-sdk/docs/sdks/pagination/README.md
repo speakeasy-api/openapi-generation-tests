@@ -69,7 +69,7 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_cursor_params(696344)
+res = s.pagination.pagination_cursor_params(cursor=696344)
 
 if res.res is not None:
     # handle response
@@ -146,7 +146,7 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_limit_offset_offset_params(179603, 542499)
+res = s.pagination.pagination_limit_offset_offset_params(limit=179603, offset=542499)
 
 if res.res is not None:
     # handle response
@@ -224,7 +224,7 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_limit_offset_page_params(743835)
+res = s.pagination.pagination_limit_offset_page_params(page=743835)
 
 if res.res is not None:
     # handle response

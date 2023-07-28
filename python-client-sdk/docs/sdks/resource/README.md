@@ -66,7 +66,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource('accusamus')
+res = s.resource.delete_resource(resource_id='accusamus')
 
 if res.status_code == 200:
     # handle response
@@ -101,7 +101,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource('tempora')
+res = s.resource.get_resource(resource_id='tempora')
 
 if res.example_resource is not None:
     # handle response
@@ -136,7 +136,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource('atque')
+res = s.resource.update_resource(resource_id='atque')
 
 if res.example_resource is not None:
     # handle response

@@ -19,6 +19,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.UsageExamplePostSecurity{
+            Password: "YOUR_PASSWORD",
+            Username: "YOUR_USERNAME",
+        }
 
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
@@ -65,10 +69,7 @@ func main() {
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
         StrParameter: "example 1",
-    }, operations.UsageExamplePostSecurity{
-        Password: "YOUR_PASSWORD",
-        Username: "YOUR_USERNAME",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }

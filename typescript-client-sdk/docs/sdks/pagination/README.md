@@ -58,7 +58,7 @@ sdk.pagination.paginationCursorBody({
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationCursorParamsResponse } from "openapi/dist/sdk/models/operations";
+import { PaginationCursorParamsRequest, PaginationCursorParamsResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -67,8 +67,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const cursor: number = 696344;
 
-sdk.pagination.paginationCursorParams(696344).then((res: PaginationCursorParamsResponse) => {
+sdk.pagination.paginationCursorParams(cursor).then((res: PaginationCursorParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -136,7 +137,10 @@ sdk.pagination.paginationLimitOffsetOffsetBody({
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationLimitOffsetOffsetParamsResponse } from "openapi/dist/sdk/models/operations";
+import {
+  PaginationLimitOffsetOffsetParamsRequest,
+  PaginationLimitOffsetOffsetParamsResponse,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -145,8 +149,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const limit: number = 179603;
+const offset: number = 542499;
 
-sdk.pagination.paginationLimitOffsetOffsetParams(179603, 542499).then((res: PaginationLimitOffsetOffsetParamsResponse) => {
+sdk.pagination.paginationLimitOffsetOffsetParams(limit, offset).then((res: PaginationLimitOffsetOffsetParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -215,7 +221,7 @@ sdk.pagination.paginationLimitOffsetPageBody({
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationLimitOffsetPageParamsResponse } from "openapi/dist/sdk/models/operations";
+import { PaginationLimitOffsetPageParamsRequest, PaginationLimitOffsetPageParamsResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -224,8 +230,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const page: number = 743835;
 
-sdk.pagination.paginationLimitOffsetPageParams(743835).then((res: PaginationLimitOffsetPageParamsResponse) => {
+sdk.pagination.paginationLimitOffsetPageParams(page).then((res: PaginationLimitOffsetPageParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

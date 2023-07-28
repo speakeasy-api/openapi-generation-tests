@@ -37,9 +37,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, shared.SimpleObject{
+    simpleObject := shared.SimpleObject{
         Any: "provident",
         Bigint: big.NewInt(725255),
         BigintStr: types.MustBigIntFromString("659669"),
@@ -58,7 +56,11 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    }, "sapiente")
+    }
+    str := "sapiente"
+
+    ctx := context.Background()
+    res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, simpleObject, str)
     if err != nil {
         log.Fatal(err)
     }
@@ -108,9 +110,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Flattening.ComponentBodyAndParamNoConflict(ctx, "amet", shared.SimpleObject{
+    paramStr := "amet"
+    simpleObject := shared.SimpleObject{
         Any: "deserunt",
         Bigint: big.NewInt(394869),
         BigintStr: types.MustBigIntFromString("423855"),
@@ -129,7 +130,10 @@ func main() {
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Flattening.ComponentBodyAndParamNoConflict(ctx, paramStr, simpleObject)
     if err != nil {
         log.Fatal(err)
     }
@@ -177,9 +181,11 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    strPathParameter := "molestiae"
+    strQueryParameter := "perferendis"
 
     ctx := context.Background()
-    res, err := s.Flattening.ConflictingParams(ctx, "molestiae", "perferendis")
+    res, err := s.Flattening.ConflictingParams(ctx, strPathParameter, strQueryParameter)
     if err != nil {
         log.Fatal(err)
     }
@@ -227,11 +233,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    requestBody := operations.InlineBodyAndParamConflictRequestBody{
+        Str: "nihil",
+    }
+    str := "magnam"
 
     ctx := context.Background()
-    res, err := s.Flattening.InlineBodyAndParamConflict(ctx, operations.InlineBodyAndParamConflictRequestBody{
-        Str: "nihil",
-    }, "magnam")
+    res, err := s.Flattening.InlineBodyAndParamConflict(ctx, requestBody, str)
     if err != nil {
         log.Fatal(err)
     }
@@ -279,11 +287,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
+        BodyStr: "distinctio",
+    }
+    paramStr := "id"
 
     ctx := context.Background()
-    res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, operations.InlineBodyAndParamNoConflictRequestBody{
-        BodyStr: "distinctio",
-    }, "id")
+    res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, requestBody, paramStr)
     if err != nil {
         log.Fatal(err)
     }

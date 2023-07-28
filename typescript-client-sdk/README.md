@@ -26,6 +26,7 @@ import {
   UsageExamplePostEnumParameter,
   UsageExamplePostOptEnumParameter,
   UsageExamplePostResponse,
+  UsageExamplePostSecurity,
 } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
@@ -34,6 +35,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: UsageExamplePostSecurity = {
+  password: "YOUR_PASSWORD",
+  username: "YOUR_USERNAME",
+};
 
 sdk.generation.usageExamplePost({
   requestBody: {
@@ -79,10 +84,7 @@ sdk.generation.usageExamplePost({
   intParameter: 1,
   optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
   strParameter: "example 1",
-}, {
-  password: "YOUR_PASSWORD",
-  username: "YOUR_USERNAME",
-}).then((res: UsageExamplePostResponse) => {
+}, operationSecurity).then((res: UsageExamplePostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

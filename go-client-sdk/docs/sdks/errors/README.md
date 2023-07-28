@@ -80,9 +80,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    statusCode := 692532
 
     ctx := context.Background()
-    res, err := s.Errors.StatusGet(ctx, 692532)
+    res, err := s.Errors.StatusGet(ctx, statusCode)
     if err != nil {
         log.Fatal(err)
     }

@@ -32,11 +32,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.APIKeyAuthSecurity{
+            APIKeyAuth: "Token YOUR_API_KEY",
+        }
 
     ctx := context.Background()
-    res, err := s.Auth.APIKeyAuth(ctx, operations.APIKeyAuthSecurity{
-        APIKeyAuth: "Token YOUR_API_KEY",
-    })
+    res, err := s.Auth.APIKeyAuth(ctx, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -126,12 +127,15 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    passwd := "sequi"
+    user := "tenetur"
+    operationSecurity := operations.BasicAuthSecurity{
+            Password: "YOUR_PASSWORD",
+            Username: "YOUR_USERNAME",
+        }
 
     ctx := context.Background()
-    res, err := s.Auth.BasicAuth(ctx, operations.BasicAuthSecurity{
-        Password: "YOUR_PASSWORD",
-        Username: "YOUR_USERNAME",
-    }, "sequi", "tenetur")
+    res, err := s.Auth.BasicAuth(ctx, operationSecurity, passwd, user)
     if err != nil {
         log.Fatal(err)
     }
@@ -176,11 +180,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.BearerAuthSecurity{
+            BearerAuth: "YOUR_JWT",
+        }
 
     ctx := context.Background()
-    res, err := s.Auth.BearerAuth(ctx, operations.BearerAuthSecurity{
-        BearerAuth: "YOUR_JWT",
-    })
+    res, err := s.Auth.BearerAuth(ctx, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -223,11 +228,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.Oauth2AuthSecurity{
+            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+        }
 
     ctx := context.Background()
-    res, err := s.Auth.Oauth2Auth(ctx, operations.Oauth2AuthSecurity{
-        Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-    })
+    res, err := s.Auth.Oauth2Auth(ctx, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -270,11 +276,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.OpenIDConnectAuthSecurity{
+            OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
+        }
 
     ctx := context.Background()
-    res, err := s.Auth.OpenIDConnectAuth(ctx, operations.OpenIDConnectAuthSecurity{
-        OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
-    })
+    res, err := s.Auth.OpenIDConnectAuth(ctx, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }

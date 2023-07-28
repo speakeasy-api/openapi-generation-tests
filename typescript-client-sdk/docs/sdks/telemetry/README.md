@@ -15,7 +15,7 @@ Endpoints for testing telemetry.
 
 ```typescript
 import { SDK } from "openapi";
-import { TelemetrySpeakeasyUserAgentGetResponse } from "openapi/dist/sdk/models/operations";
+import { TelemetrySpeakeasyUserAgentGetRequest, TelemetrySpeakeasyUserAgentGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -24,8 +24,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const userAgent: string = "fugiat";
 
-sdk.telemetry.telemetrySpeakeasyUserAgentGet("fugiat").then((res: TelemetrySpeakeasyUserAgentGetResponse) => {
+sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent).then((res: TelemetrySpeakeasyUserAgentGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

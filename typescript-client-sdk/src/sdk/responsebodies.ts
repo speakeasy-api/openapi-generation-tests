@@ -11,6 +11,7 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Endpoints for testing response bodies.
  */
+
 export class ResponseBodies {
     private sdkConfiguration: SDKConfiguration;
 
@@ -32,6 +33,7 @@ export class ResponseBodies {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/octet-stream";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -89,6 +91,7 @@ export class ResponseBodies {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "text/html";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -147,6 +150,7 @@ export class ResponseBodies {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "application/xml";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

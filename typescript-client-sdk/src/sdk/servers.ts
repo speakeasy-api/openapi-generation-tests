@@ -10,6 +10,7 @@ import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 /**
  * Endpoints for testing servers.
  */
+
 export class Servers {
     private sdkConfiguration: SDKConfiguration;
 
@@ -31,6 +32,7 @@ export class Servers {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -86,6 +88,7 @@ export class Servers {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -137,6 +140,7 @@ export class Servers {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -184,6 +188,7 @@ export class Servers {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
@@ -240,6 +245,7 @@ export class Servers {
 
         const headers = { ...config?.headers };
         headers["Accept"] = "*/*";
+
         headers[
             "x-speakeasy-user-agent"
         ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;

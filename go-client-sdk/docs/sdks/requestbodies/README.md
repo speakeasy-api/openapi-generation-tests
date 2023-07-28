@@ -2012,13 +2012,15 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamForm(ctx, operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
+    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
         Bool3: false,
         Num3: 8672.9,
         Str3: "totam",
-    }, "hic")
+    }
+    paramStr := "hic"
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamForm(ctx, requestBody, paramStr)
     if err != nil {
         log.Fatal(err)
     }
@@ -2066,13 +2068,15 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJSON(ctx, operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
+    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
         Bool: false,
         Num: 3487.83,
         Str: "nobis",
-    }, "sit")
+    }
+    paramStr := "sit"
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJSON(ctx, requestBody, paramStr)
     if err != nil {
         log.Fatal(err)
     }
@@ -2120,13 +2124,15 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx, operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
+    requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
         Bool2: false,
         Num2: 6995.75,
         Str2: "sed",
-    }, "reiciendis")
+    }
+    paramStr := "reiciendis"
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx, requestBody, paramStr)
     if err != nil {
         log.Fatal(err)
     }

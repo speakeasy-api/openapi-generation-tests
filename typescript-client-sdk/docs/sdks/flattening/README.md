@@ -18,8 +18,8 @@ Endpoints for testing flattening through request body and parameter combinations
 
 ```typescript
 import { SDK } from "openapi";
-import { ComponentBodyAndParamConflictResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { ComponentBodyAndParamConflictRequest, ComponentBodyAndParamConflictResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -29,8 +29,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.flattening.componentBodyAndParamConflict({
+const simpleObject: SimpleObject = {
   any: "provident",
   bigint: 725255,
   bigintStr: "id",
@@ -49,7 +48,10 @@ sdk.flattening.componentBodyAndParamConflict({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, "sapiente").then((res: ComponentBodyAndParamConflictResponse) => {
+};
+const str: string = "sapiente";
+
+sdk.flattening.componentBodyAndParamConflict(simpleObject, str).then((res: ComponentBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -76,8 +78,8 @@ sdk.flattening.componentBodyAndParamConflict({
 
 ```typescript
 import { SDK } from "openapi";
-import { ComponentBodyAndParamNoConflictResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { ComponentBodyAndParamNoConflictRequest, ComponentBodyAndParamNoConflictResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -87,8 +89,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.flattening.componentBodyAndParamNoConflict("amet", {
+const paramStr: string = "amet";
+const simpleObject: SimpleObject = {
   any: "deserunt",
   bigint: 394869,
   bigintStr: "vel",
@@ -107,7 +109,9 @@ sdk.flattening.componentBodyAndParamNoConflict("amet", {
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: ComponentBodyAndParamNoConflictResponse) => {
+};
+
+sdk.flattening.componentBodyAndParamNoConflict(paramStr, simpleObject).then((res: ComponentBodyAndParamNoConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -134,7 +138,7 @@ sdk.flattening.componentBodyAndParamNoConflict("amet", {
 
 ```typescript
 import { SDK } from "openapi";
-import { ConflictingParamsResponse } from "openapi/dist/sdk/models/operations";
+import { ConflictingParamsRequest, ConflictingParamsResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -143,8 +147,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const strPathParameter: string = "molestiae";
+const strQueryParameter: string = "perferendis";
 
-sdk.flattening.conflictingParams("molestiae", "perferendis").then((res: ConflictingParamsResponse) => {
+sdk.flattening.conflictingParams(strPathParameter, strQueryParameter).then((res: ConflictingParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -171,7 +177,11 @@ sdk.flattening.conflictingParams("molestiae", "perferendis").then((res: Conflict
 
 ```typescript
 import { SDK } from "openapi";
-import { InlineBodyAndParamConflictResponse } from "openapi/dist/sdk/models/operations";
+import {
+  InlineBodyAndParamConflictRequest,
+  InlineBodyAndParamConflictRequestBody,
+  InlineBodyAndParamConflictResponse,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -180,10 +190,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.flattening.inlineBodyAndParamConflict({
+const requestBody: InlineBodyAndParamConflictRequestBody = {
   str: "nihil",
-}, "magnam").then((res: InlineBodyAndParamConflictResponse) => {
+};
+const str: string = "magnam";
+
+sdk.flattening.inlineBodyAndParamConflict(requestBody, str).then((res: InlineBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -210,7 +222,11 @@ sdk.flattening.inlineBodyAndParamConflict({
 
 ```typescript
 import { SDK } from "openapi";
-import { InlineBodyAndParamNoConflictResponse } from "openapi/dist/sdk/models/operations";
+import {
+  InlineBodyAndParamNoConflictRequest,
+  InlineBodyAndParamNoConflictRequestBody,
+  InlineBodyAndParamNoConflictResponse,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -219,10 +235,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.flattening.inlineBodyAndParamNoConflict({
+const requestBody: InlineBodyAndParamNoConflictRequestBody = {
   bodyStr: "distinctio",
-}, "id").then((res: InlineBodyAndParamNoConflictResponse) => {
+};
+const paramStr: string = "id";
+
+sdk.flattening.inlineBodyAndParamNoConflict(requestBody, paramStr).then((res: InlineBodyAndParamNoConflictResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

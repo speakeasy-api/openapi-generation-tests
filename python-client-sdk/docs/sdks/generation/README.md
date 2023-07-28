@@ -136,7 +136,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_no_comments_get('suscipit')
+res = s.generation.deprecated_no_comments_get(deprecated_parameter='suscipit')
 
 if res.status_code == 200:
     # handle response
@@ -175,7 +175,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_with_comments_get('natus', 'nobis')
+res = s.generation.deprecated_with_comments_get(deprecated_parameter='natus', new_parameter='nobis')
 
 if res.status_code == 200:
     # handle response
@@ -211,7 +211,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.empty_object_get(shared.EmptyObjectParam())
+res = s.generation.empty_object_get(empty_object=shared.EmptyObjectParam())
 
 if res.status_code == 200:
     # handle response
@@ -333,10 +333,10 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.ignores_post(operations.IgnoresPostApplicationJSON(
+res = s.generation.ignores_post(request_body=operations.IgnoresPostApplicationJSON(
     callback_url='http://ugly-cash.com',
     test_prop='magnam',
-), 'et')
+), test_param='et')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
@@ -372,7 +372,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.name_override('example')
+res = s.generation.name_override(test_query_param='example')
 
 if res.overridden_response is not None:
     # handle response
@@ -408,7 +408,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.typed_parameter_generation_get(569965, dateutil.parser.parse('2022-05-30').date(), operations.TypedParameterGenerationGetObj(
+res = s.generation.typed_parameter_generation_get(bigint=569965, date_=dateutil.parser.parse('2022-05-30').date(), obj=operations.TypedParameterGenerationGetObj(
     bool=False,
     num=5518.16,
     str_='sint',

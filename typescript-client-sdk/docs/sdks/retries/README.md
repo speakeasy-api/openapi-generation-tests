@@ -14,7 +14,7 @@ Endpoints for testing retries.
 
 ```typescript
 import { SDK } from "openapi";
-import { RetriesGetResponse } from "openapi/dist/sdk/models/operations";
+import { RetriesGetRequest, RetriesGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -23,8 +23,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const requestId: string = "fugit";
+const numRetries: number = 282699;
 
-sdk.retries.retriesGet("fugit", 282699).then((res: RetriesGetResponse) => {
+sdk.retries.retriesGet(requestId, numRetries).then((res: RetriesGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

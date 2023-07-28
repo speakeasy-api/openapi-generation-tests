@@ -30,7 +30,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_conflict(shared.SimpleObject(
+res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
     any='provident',
     bigint=725255,
     bigint_str='id',
@@ -49,7 +49,7 @@ res = s.flattening.component_body_and_param_conflict(shared.SimpleObject(
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), 'sapiente')
+), str_='sapiente')
 
 if res.res is not None:
     # handle response
@@ -86,7 +86,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict('amet', shared.SimpleObject(
+res = s.flattening.component_body_and_param_no_conflict(param_str='amet', simple_object=shared.SimpleObject(
     any='deserunt',
     bigint=394869,
     bigint_str='vel',
@@ -141,7 +141,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.conflicting_params('molestiae', 'perferendis')
+res = s.flattening.conflicting_params(str_path_parameter='molestiae', str_query_parameter='perferendis')
 
 if res.res is not None:
     # handle response
@@ -177,9 +177,9 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.inline_body_and_param_conflict(operations.InlineBodyAndParamConflictRequestBody(
+res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
     str_='nihil',
-), 'magnam')
+), str_='magnam')
 
 if res.res is not None:
     # handle response
@@ -215,9 +215,9 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.inline_body_and_param_no_conflict(operations.InlineBodyAndParamNoConflictRequestBody(
+res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
     body_str='distinctio',
-), 'id')
+), param_str='id')
 
 if res.res is not None:
     # handle response

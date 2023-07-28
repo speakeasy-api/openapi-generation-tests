@@ -51,7 +51,7 @@ sdk.errors.connectionErrorGet().then((res: ConnectionErrorGetResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { StatusGetResponse } from "openapi/dist/sdk/models/operations";
+import { StatusGetRequest, StatusGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -60,8 +60,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const statusCode: number = 692532;
 
-sdk.errors.statusGet(692532).then((res: StatusGetResponse) => {
+sdk.errors.statusGet(statusCode).then((res: StatusGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

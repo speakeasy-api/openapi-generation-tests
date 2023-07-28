@@ -88,9 +88,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    cursor := 696344
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationCursorParams(ctx, 696344)
+    res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
     if err != nil {
         log.Fatal(err)
     }
@@ -191,9 +192,11 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    limit := 179603
+    offset := 542499
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, 179603, 542499)
+    res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
     if err != nil {
         log.Fatal(err)
     }
@@ -295,9 +298,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    page := 743835
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, 743835)
+    res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)
     if err != nil {
         log.Fatal(err)
     }

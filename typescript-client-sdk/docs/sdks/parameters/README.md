@@ -32,7 +32,7 @@ Endpoints for testing parameters.
 
 ```typescript
 import { SDK } from "openapi";
-import { DeepObjectQueryParamsMapResponse } from "openapi/dist/sdk/models/operations";
+import { DeepObjectQueryParamsMapRequest, DeepObjectQueryParamsMapResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -41,12 +41,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.deepObjectQueryParamsMap({
+const mapParam: Record<string, string> = {
   "iusto": "voluptate",
   "dolorum": "deleniti",
   "omnis": "necessitatibus",
-}, {
+};
+const mapArrParam: Record<string, string[]> = {
   "asperiores": [
     "ipsum",
     "voluptate",
@@ -63,7 +63,9 @@ sdk.parameters.deepObjectQueryParamsMap({
     "suscipit",
     "deserunt",
   ],
-}).then((res: DeepObjectQueryParamsMapResponse) => {
+};
+
+sdk.parameters.deepObjectQueryParamsMap(mapParam, mapArrParam).then((res: DeepObjectQueryParamsMapResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -90,8 +92,12 @@ sdk.parameters.deepObjectQueryParamsMap({
 
 ```typescript
 import { SDK } from "openapi";
-import { DeepObjectQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import {
+  DeepObjectQueryParamsObjectObjArrParam,
+  DeepObjectQueryParamsObjectRequest,
+  DeepObjectQueryParamsObjectResponse,
+} from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -101,8 +107,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.deepObjectQueryParamsObject({
+const objParam: SimpleObject = {
   any: "provident",
   bigint: 324683,
   bigintStr: "repellendus",
@@ -121,11 +126,14 @@ sdk.parameters.deepObjectQueryParamsObject({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, {
+};
+const objArrParam: DeepObjectQueryParamsObjectObjArrParam = {
   arr: [
     "at",
   ],
-}).then((res: DeepObjectQueryParamsObjectResponse) => {
+};
+
+sdk.parameters.deepObjectQueryParamsObject(objParam, objArrParam).then((res: DeepObjectQueryParamsObjectResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -152,7 +160,7 @@ sdk.parameters.deepObjectQueryParamsObject({
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsArrayResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsArrayRequest, FormQueryParamsArrayResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -161,16 +169,18 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.formQueryParamsArray([
+const arrParam: string[] = [
   "tempora",
   "vel",
-], [
+];
+const arrParamExploded: number[] = [
   885338,
   185636,
   679880,
   952792,
-]).then((res: FormQueryParamsArrayResponse) => {
+];
+
+sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded).then((res: FormQueryParamsArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -197,7 +207,7 @@ sdk.parameters.formQueryParamsArray([
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsMapResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsMapRequest, FormQueryParamsMapResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -206,16 +216,18 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.formQueryParamsMap({
+const mapParam: Record<string, string> = {
   "harum": "iusto",
   "ipsum": "quisquam",
-}, {
+};
+const mapParamExploded: Record<string, number> = {
   "amet": 730856,
   "accusamus": 253941,
   "enim": 213312,
   "sapiente": 518201,
-}).then((res: FormQueryParamsMapResponse) => {
+};
+
+sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded).then((res: FormQueryParamsMapResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -242,8 +254,8 @@ sdk.parameters.formQueryParamsMap({
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { FormQueryParamsObjectRequest, FormQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -253,8 +265,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.formQueryParamsObject({
+const objParamExploded: SimpleObject = {
   any: "nihil",
   bigint: 25662,
   bigintStr: "expedita",
@@ -273,7 +284,8 @@ sdk.parameters.formQueryParamsObject({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, {
+};
+const objParam: SimpleObject = {
   any: "vel",
   bigint: 730442,
   bigintStr: "voluptas",
@@ -292,7 +304,9 @@ sdk.parameters.formQueryParamsObject({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: FormQueryParamsObjectResponse) => {
+};
+
+sdk.parameters.formQueryParamsObject(objParamExploded, objParam).then((res: FormQueryParamsObjectResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -319,7 +333,7 @@ sdk.parameters.formQueryParamsObject({
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsPrimitiveResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsPrimitiveRequest, FormQueryParamsPrimitiveResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -328,8 +342,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const boolParam: boolean = false;
+const intParam: number = 214880;
+const numParam: number = 2776.28;
+const strParam: string = "qui";
 
-sdk.parameters.formQueryParamsPrimitive(false, 214880, 2776.28, "qui").then((res: FormQueryParamsPrimitiveResponse) => {
+sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam).then((res: FormQueryParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -358,7 +376,8 @@ sdk.parameters.formQueryParamsPrimitive(false, 214880, 2776.28, "qui").then((res
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsRefParamObjectResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsRefParamObjectRequest, FormQueryParamsRefParamObjectResponse } from "openapi/dist/sdk/models/operations";
+import { RefQueryParamObj, RefQueryParamObjExploded } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -367,18 +386,20 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.formQueryParamsRefParamObject({
+const refObjParam: RefQueryParamObj = {
   bool: false,
   int: 586784,
   num: 8075.81,
   str: "pariatur",
-}, {
+};
+const refObjParamExploded: RefQueryParamObjExploded = {
   bool: false,
   int: 747080,
   num: 1175.31,
   str: "laborum",
-}).then((res: FormQueryParamsRefParamObjectResponse) => {
+};
+
+sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded).then((res: FormQueryParamsRefParamObjectResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -405,7 +426,7 @@ sdk.parameters.formQueryParamsRefParamObject({
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsArrayResponse } from "openapi/dist/sdk/models/operations";
+import { HeaderParamsArrayRequest, HeaderParamsArrayResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -414,12 +435,13 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.headerParamsArray([
+const xHeaderArray: string[] = [
   "incidunt",
   "aspernatur",
   "dolores",
-]).then((res: HeaderParamsArrayResponse) => {
+];
+
+sdk.parameters.headerParamsArray(xHeaderArray).then((res: HeaderParamsArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -445,7 +467,7 @@ sdk.parameters.headerParamsArray([
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsMapResponse } from "openapi/dist/sdk/models/operations";
+import { HeaderParamsMapRequest, HeaderParamsMapResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -454,14 +476,16 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.headerParamsMap({
+const xHeaderMap: Record<string, string> = {
   "facilis": "aliquid",
   "quam": "molestias",
   "temporibus": "qui",
-}, {
+};
+const xHeaderMapExplode: Record<string, string> = {
   "fugit": "magni",
-}).then((res: HeaderParamsMapResponse) => {
+};
+
+sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode).then((res: HeaderParamsMapResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -488,8 +512,8 @@ sdk.parameters.headerParamsMap({
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { HeaderParamsObjectRequest, HeaderParamsObjectResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -499,8 +523,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.headerParamsObject({
+const xHeaderObj: SimpleObject = {
   any: "odio",
   bigint: 124833,
   bigintStr: "ullam",
@@ -519,7 +542,8 @@ sdk.parameters.headerParamsObject({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, {
+};
+const xHeaderObjExplode: SimpleObject = {
   any: "voluptatem",
   bigint: 765326,
   bigintStr: "soluta",
@@ -538,7 +562,9 @@ sdk.parameters.headerParamsObject({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: HeaderParamsObjectResponse) => {
+};
+
+sdk.parameters.headerParamsObject(xHeaderObj, xHeaderObjExplode).then((res: HeaderParamsObjectResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -565,7 +591,7 @@ sdk.parameters.headerParamsObject({
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsPrimitiveResponse } from "openapi/dist/sdk/models/operations";
+import { HeaderParamsPrimitiveRequest, HeaderParamsPrimitiveResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -574,8 +600,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const xHeaderBoolean: boolean = false;
+const xHeaderInteger: number = 903720;
+const xHeaderNumber: number = 2174.5;
+const xHeaderString: string = "veritatis";
 
-sdk.parameters.headerParamsPrimitive(false, 903720, 2174.5, "veritatis").then((res: HeaderParamsPrimitiveResponse) => {
+sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString).then((res: HeaderParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -604,8 +634,8 @@ sdk.parameters.headerParamsPrimitive(false, 903720, 2174.5, "veritatis").then((r
 
 ```typescript
 import { SDK } from "openapi";
-import { JsonQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { JsonQueryParamsObjectRequest, JsonQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
+import { DeepObject, Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -615,8 +645,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.jsonQueryParamsObject({
+const deepObjParam: DeepObject = {
   any: "quos",
   arr: [
     {
@@ -787,7 +816,8 @@ sdk.parameters.jsonQueryParamsObject({
   },
   str: "quibusdam",
   type: "illum",
-}, {
+};
+const simpleObjParam: SimpleObject = {
   any: "sequi",
   bigint: 617877,
   bigintStr: "impedit",
@@ -806,7 +836,9 @@ sdk.parameters.jsonQueryParamsObject({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: JsonQueryParamsObjectResponse) => {
+};
+
+sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam).then((res: JsonQueryParamsObjectResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -833,8 +865,8 @@ sdk.parameters.jsonQueryParamsObject({
 
 ```typescript
 import { SDK } from "openapi";
-import { MixedQueryParamsResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { MixedQueryParamsRequest, MixedQueryParamsResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -844,8 +876,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.mixedQueryParams({
+const deepObjectParam: SimpleObject = {
   any: "exercitationem",
   bigint: 862310,
   bigintStr: "fugit",
@@ -864,7 +895,8 @@ sdk.parameters.mixedQueryParams({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, {
+};
+const formParam: SimpleObject = {
   any: "doloribus",
   bigint: 478370,
   bigintStr: "eligendi",
@@ -883,7 +915,8 @@ sdk.parameters.mixedQueryParams({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, {
+};
+const jsonParam: SimpleObject = {
   any: "officia",
   bigint: 269479,
   bigintStr: "ipsam",
@@ -902,7 +935,9 @@ sdk.parameters.mixedQueryParams({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: MixedQueryParamsResponse) => {
+};
+
+sdk.parameters.mixedQueryParams(deepObjectParam, formParam, jsonParam).then((res: MixedQueryParamsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -930,8 +965,8 @@ sdk.parameters.mixedQueryParams({
 
 ```typescript
 import { SDK } from "openapi";
-import { PathParameterJsonResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { PathParameterJsonRequest, PathParameterJsonResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -941,8 +976,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.pathParameterJson({
+const jsonObj: SimpleObject = {
   any: "vel",
   bigint: 822118,
   bigintStr: "magnam",
@@ -961,7 +995,9 @@ sdk.parameters.pathParameterJson({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: PathParameterJsonResponse) => {
+};
+
+sdk.parameters.pathParameterJson(jsonObj).then((res: PathParameterJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -987,8 +1023,8 @@ sdk.parameters.pathParameterJson({
 
 ```typescript
 import { SDK } from "openapi";
-import { PipeDelimitedQueryParamsArrayResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { PipeDelimitedQueryParamsArrayRequest, PipeDelimitedQueryParamsArrayResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -998,19 +1034,21 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.pipeDelimitedQueryParamsArray([
+const arrParam: string[] = [
   "dicta",
   "dolor",
   "maiores",
-], [
+];
+const arrParamExploded: number[] = [
   406120,
-], {
+];
+const mapParam: Record<string, string> = {
   "excepturi": "voluptatibus",
   "nostrum": "sapiente",
   "quisquam": "saepe",
   "ea": "impedit",
-}, {
+};
+const objParam: SimpleObject = {
   any: "corporis",
   bigint: 333145,
   bigintStr: "aliquid",
@@ -1029,7 +1067,9 @@ sdk.parameters.pipeDelimitedQueryParamsArray([
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: PipeDelimitedQueryParamsArrayResponse) => {
+};
+
+sdk.parameters.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapParam, objParam).then((res: PipeDelimitedQueryParamsArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1058,7 +1098,7 @@ sdk.parameters.pipeDelimitedQueryParamsArray([
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterArraysResponse } from "openapi/dist/sdk/models/operations";
+import { SimplePathParameterArraysRequest, SimplePathParameterArraysResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -1067,11 +1107,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.simplePathParameterArrays([
+const arrParam: string[] = [
   "quo",
   "consectetur",
-]).then((res: SimplePathParameterArraysResponse) => {
+];
+
+sdk.parameters.simplePathParameterArrays(arrParam).then((res: SimplePathParameterArraysResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1097,7 +1138,7 @@ sdk.parameters.simplePathParameterArrays([
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterMapsResponse } from "openapi/dist/sdk/models/operations";
+import { SimplePathParameterMapsRequest, SimplePathParameterMapsResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -1106,18 +1147,20 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.simplePathParameterMaps({
+const mapParam: Record<string, string> = {
   "aspernatur": "minima",
   "eaque": "a",
   "libero": "aut",
   "aut": "deleniti",
-}, {
+};
+const mapParamExploded: Record<string, number> = {
   "aliquam": 146946,
   "accusamus": 79522,
   "non": 89603,
   "dolorum": 672048,
-}).then((res: SimplePathParameterMapsResponse) => {
+};
+
+sdk.parameters.simplePathParameterMaps(mapParam, mapParamExploded).then((res: SimplePathParameterMapsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1144,8 +1187,8 @@ sdk.parameters.simplePathParameterMaps({
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterObjectsResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { SimplePathParameterObjectsRequest, SimplePathParameterObjectsResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -1155,8 +1198,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.parameters.simplePathParameterObjects({
+const objParam: SimpleObject = {
   any: "placeat",
   bigint: 245367,
   bigintStr: "eum",
@@ -1175,7 +1217,8 @@ sdk.parameters.simplePathParameterObjects({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}, {
+};
+const objParamExploded: SimpleObject = {
   any: "quas",
   bigint: 829603,
   bigintStr: "nulla",
@@ -1194,7 +1237,9 @@ sdk.parameters.simplePathParameterObjects({
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-}).then((res: SimplePathParameterObjectsResponse) => {
+};
+
+sdk.parameters.simplePathParameterObjects(objParam, objParamExploded).then((res: SimplePathParameterObjectsResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1221,7 +1266,7 @@ sdk.parameters.simplePathParameterObjects({
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterPrimitivesResponse } from "openapi/dist/sdk/models/operations";
+import { SimplePathParameterPrimitivesRequest, SimplePathParameterPrimitivesResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -1230,8 +1275,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const boolParam: boolean = false;
+const intParam: number = 96549;
+const numParam: number = 2703.28;
+const strParam: string = "numquam";
 
-sdk.parameters.simplePathParameterPrimitives(false, 96549, 2703.28, "numquam").then((res: SimplePathParameterPrimitivesResponse) => {
+sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam).then((res: SimplePathParameterPrimitivesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

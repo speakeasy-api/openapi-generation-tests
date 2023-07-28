@@ -138,7 +138,7 @@ sdk.generation.deprecatedInSchemaWithCommentsGet({
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedNoCommentsGetResponse } from "openapi/dist/sdk/models/operations";
+import { DeprecatedNoCommentsGetRequest, DeprecatedNoCommentsGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -147,8 +147,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const deprecatedParameter: string = "suscipit";
 
-sdk.generation.deprecatedNoCommentsGet("suscipit").then((res: DeprecatedNoCommentsGetResponse) => {
+sdk.generation.deprecatedNoCommentsGet(deprecatedParameter).then((res: DeprecatedNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -178,7 +179,7 @@ This is an endpoint setup to test deprecation with comments
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedWithCommentsGetResponse } from "openapi/dist/sdk/models/operations";
+import { DeprecatedWithCommentsGetRequest, DeprecatedWithCommentsGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -187,8 +188,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const deprecatedParameter: string = "natus";
+const newParameter: string = "nobis";
 
-sdk.generation.deprecatedWithCommentsGet("natus", "nobis").then((res: DeprecatedWithCommentsGetResponse) => {
+sdk.generation.deprecatedWithCommentsGet(deprecatedParameter, newParameter).then((res: DeprecatedWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -215,7 +218,8 @@ sdk.generation.deprecatedWithCommentsGet("natus", "nobis").then((res: Deprecated
 
 ```typescript
 import { SDK } from "openapi";
-import { EmptyObjectGetResponse } from "openapi/dist/sdk/models/operations";
+import { EmptyObjectGetRequest, EmptyObjectGetResponse } from "openapi/dist/sdk/models/operations";
+import { EmptyObjectParam } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -224,8 +228,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const emptyObject: EmptyObjectParam = {};
 
-sdk.generation.emptyObjectGet({}).then((res: EmptyObjectGetResponse) => {
+sdk.generation.emptyObjectGet(emptyObject).then((res: EmptyObjectGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -356,7 +361,7 @@ sdk.generation.ignoredGenerationGet().then((res: IgnoredGenerationGetResponse) =
 
 ```typescript
 import { SDK } from "openapi";
-import { IgnoresPostResponse } from "openapi/dist/sdk/models/operations";
+import { IgnoresPostApplicationJSON, IgnoresPostRequest, IgnoresPostResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -365,11 +370,13 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.generation.ignoresPost({
+const requestBody: IgnoresPostApplicationJSON = {
   callbackUrl: "http://ugly-cash.com",
   testProp: "magnam",
-}, "et").then((res: IgnoresPostResponse) => {
+};
+const testParam: string = "et";
+
+sdk.generation.ignoresPost(requestBody, testParam).then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -396,7 +403,7 @@ sdk.generation.ignoresPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { NameOverrideGetResponse } from "openapi/dist/sdk/models/operations";
+import { NameOverrideGetRequest, NameOverrideGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -405,8 +412,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const testQueryParam: string = "example";
 
-sdk.generation.nameOverride("example").then((res: NameOverrideGetResponse) => {
+sdk.generation.nameOverride(testQueryParam).then((res: NameOverrideGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -432,7 +440,11 @@ sdk.generation.nameOverride("example").then((res: NameOverrideGetResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { TypedParameterGenerationGetResponse } from "openapi/dist/sdk/models/operations";
+import {
+  TypedParameterGenerationGetObj,
+  TypedParameterGenerationGetRequest,
+  TypedParameterGenerationGetResponse,
+} from "openapi/dist/sdk/models/operations";
 import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
@@ -442,12 +454,15 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-
-sdk.generation.typedParameterGenerationGet(569965, new RFCDate("2022-05-30"), {
+const bigint: number = 569965;
+const date: RFCDate = new RFCDate("2022-05-30");
+const obj: TypedParameterGenerationGetObj = {
   bool: false,
   num: 5518.16,
   str: "sint",
-}).then((res: TypedParameterGenerationGetResponse) => {
+};
+
+sdk.generation.typedParameterGenerationGet(bigint, date, obj).then((res: TypedParameterGenerationGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -484,6 +499,7 @@ import {
   UsageExamplePostEnumParameter,
   UsageExamplePostOptEnumParameter,
   UsageExamplePostResponse,
+  UsageExamplePostSecurity,
 } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
@@ -492,6 +508,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const operationSecurity: UsageExamplePostSecurity = {
+  password: "YOUR_PASSWORD",
+  username: "YOUR_USERNAME",
+};
 
 sdk.generation.usageExamplePost({
   requestBody: {
@@ -537,10 +557,7 @@ sdk.generation.usageExamplePost({
   intParameter: 1,
   optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
   strParameter: "example 2",
-}, {
-  password: "YOUR_PASSWORD",
-  username: "YOUR_USERNAME",
-}).then((res: UsageExamplePostResponse) => {
+}, operationSecurity).then((res: UsageExamplePostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

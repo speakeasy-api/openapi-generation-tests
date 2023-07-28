@@ -61,7 +61,7 @@ s = sdk.SDK(
 )
 
 
-res = s.errors.status_get(692532)
+res = s.errors.status_get(status_code=692532)
 
 if res.status_code == 200:
     # handle response

@@ -105,6 +105,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.BasicAuthNewSecurity{
+            Password: "YOUR_PASSWORD",
+            Username: "YOUR_USERNAME",
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.BasicAuthNew(ctx, shared.AuthServiceRequestBody{
@@ -122,10 +126,7 @@ func main() {
                 HeaderName: "reprehenderit",
             },
         },
-    }, operations.BasicAuthNewSecurity{
-        Password: "YOUR_PASSWORD",
-        Username: "YOUR_USERNAME",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -171,6 +172,9 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.MultipleMixedOptionsAuthSecurity{
+            APIKeyAuthNew: sdk.String("Token <YOUR_API_KEY>"),
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, shared.AuthServiceRequestBody{
@@ -188,9 +192,7 @@ func main() {
                 HeaderName: "accusamus",
             },
         },
-    }, operations.MultipleMixedOptionsAuthSecurity{
-        APIKeyAuthNew: sdk.String("Token <YOUR_API_KEY>"),
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -236,6 +238,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.MultipleMixedSchemeAuthSecurity{
+            APIKeyAuthNew: "Token <YOUR_API_KEY>",
+            BasicAuth: shared.SchemeBasicAuth{
+                Password: "YOUR_PASSWORD",
+                Username: "YOUR_USERNAME",
+            },
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, shared.AuthServiceRequestBody{
@@ -257,13 +266,7 @@ func main() {
                 HeaderName: "voluptates",
             },
         },
-    }, operations.MultipleMixedSchemeAuthSecurity{
-        APIKeyAuthNew: "Token <YOUR_API_KEY>",
-        BasicAuth: shared.SchemeBasicAuth{
-            Password: "YOUR_PASSWORD",
-            Username: "YOUR_USERNAME",
-        },
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -309,6 +312,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.MultipleOptionsWithMixedSchemesAuthSecurity{
+            Option1: &operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1{
+                APIKeyAuthNew: "Token <YOUR_API_KEY>",
+                Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+            },
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, shared.AuthServiceRequestBody{
@@ -326,12 +335,7 @@ func main() {
                 HeaderName: "quibusdam",
             },
         },
-    }, operations.MultipleOptionsWithMixedSchemesAuthSecurity{
-        Option1: &operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1{
-            APIKeyAuthNew: "Token <YOUR_API_KEY>",
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        },
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -377,6 +381,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
+            Option1: &operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1{
+                APIKeyAuthNew: "Token <YOUR_API_KEY>",
+                Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+            },
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, shared.AuthServiceRequestBody{
@@ -390,12 +400,7 @@ func main() {
                 HeaderName: "cupiditate",
             },
         },
-    }, operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
-        Option1: &operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1{
-            APIKeyAuthNew: "Token <YOUR_API_KEY>",
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        },
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -441,6 +446,9 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.MultipleSimpleOptionsAuthSecurity{
+            APIKeyAuthNew: sdk.String("Token <YOUR_API_KEY>"),
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, shared.AuthServiceRequestBody{
@@ -454,9 +462,7 @@ func main() {
                 HeaderName: "excepturi",
             },
         },
-    }, operations.MultipleSimpleOptionsAuthSecurity{
-        APIKeyAuthNew: sdk.String("Token <YOUR_API_KEY>"),
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -502,6 +508,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.MultipleSimpleSchemeAuthSecurity{
+            APIKeyAuthNew: "Token <YOUR_API_KEY>",
+            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, shared.AuthServiceRequestBody{
@@ -519,10 +529,7 @@ func main() {
                 HeaderName: "aliquid",
             },
         },
-    }, operations.MultipleSimpleSchemeAuthSecurity{
-        APIKeyAuthNew: "Token <YOUR_API_KEY>",
-        Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -568,6 +575,9 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.Oauth2AuthNewSecurity{
+            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{
@@ -593,9 +603,7 @@ func main() {
                 HeaderName: "dicta",
             },
         },
-    }, operations.Oauth2AuthNewSecurity{
-        Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }
@@ -641,6 +649,9 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.OpenIDConnectAuthNewSecurity{
+            OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
+        }
 
     ctx := context.Background()
     res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{
@@ -662,9 +673,7 @@ func main() {
                 HeaderName: "delectus",
             },
         },
-    }, operations.OpenIDConnectAuthNewSecurity{
-        OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }

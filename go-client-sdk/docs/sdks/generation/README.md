@@ -190,9 +190,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    deprecatedParameter := "suscipit"
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedNoCommentsGet(ctx, "suscipit")
+    res, err := s.Generation.DeprecatedNoCommentsGet(ctx, deprecatedParameter)
     if err != nil {
         log.Fatal(err)
     }
@@ -243,9 +244,11 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    deprecatedParameter := "natus"
+    newParameter := "nobis"
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, "natus", "nobis")
+    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, deprecatedParameter, newParameter)
     if err != nil {
         log.Fatal(err)
     }
@@ -293,9 +296,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    emptyObject := shared.EmptyObjectParam{}
 
     ctx := context.Background()
-    res, err := s.Generation.EmptyObjectGet(ctx, shared.EmptyObjectParam{})
+    res, err := s.Generation.EmptyObjectGet(ctx, emptyObject)
     if err != nil {
         log.Fatal(err)
     }
@@ -485,12 +489,14 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Generation.IgnoresPost(ctx, &operations.IgnoresPostApplicationJSON{
+    requestBody := &operations.IgnoresPostApplicationJSON{
         CallbackURL: sdk.String("http://ugly-cash.com"),
         TestProp: sdk.String("magnam"),
-    }, "et")
+    }
+    testParam := "et"
+
+    ctx := context.Background()
+    res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -538,9 +544,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    testQueryParam := "example"
 
     ctx := context.Background()
-    res, err := s.Generation.NameOverride(ctx, "example")
+    res, err := s.Generation.NameOverride(ctx, testQueryParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -589,13 +596,16 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-
-    ctx := context.Background()
-    res, err := s.Generation.TypedParameterGenerationGet(ctx, big.NewInt(569965), types.MustDateFromString("2022-05-30"), &operations.TypedParameterGenerationGetObj{
+    bigint := big.NewInt(569965)
+    date := types.MustDateFromString("2022-05-30")
+    obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
         Num: 5518.16,
         Str: "sint",
-    })
+    }
+
+    ctx := context.Background()
+    res, err := s.Generation.TypedParameterGenerationGet(ctx, bigint, date, obj)
     if err != nil {
         log.Fatal(err)
     }
@@ -648,6 +658,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    operationSecurity := operations.UsageExamplePostSecurity{
+            Password: "YOUR_PASSWORD",
+            Username: "YOUR_USERNAME",
+        }
 
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
@@ -694,10 +708,7 @@ func main() {
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
         StrParameter: "example 2",
-    }, operations.UsageExamplePostSecurity{
-        Password: "YOUR_PASSWORD",
-        Username: "YOUR_USERNAME",
-    })
+    }, operationSecurity)
     if err != nil {
         log.Fatal(err)
     }

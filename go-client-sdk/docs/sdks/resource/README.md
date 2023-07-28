@@ -84,9 +84,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    resourceID := "accusamus"
 
     ctx := context.Background()
-    res, err := s.Resource.DeleteResource(ctx, "accusamus")
+    res, err := s.Resource.DeleteResource(ctx, resourceID)
     if err != nil {
         log.Fatal(err)
     }
@@ -133,9 +134,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    resourceID := "tempora"
 
     ctx := context.Background()
-    res, err := s.Resource.GetResource(ctx, "tempora")
+    res, err := s.Resource.GetResource(ctx, resourceID)
     if err != nil {
         log.Fatal(err)
     }
@@ -182,9 +184,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    resourceID := "atque"
 
     ctx := context.Background()
-    res, err := s.Resource.UpdateResource(ctx, "atque")
+    res, err := s.Resource.UpdateResource(ctx, resourceID)
     if err != nil {
         log.Fatal(err)
     }
