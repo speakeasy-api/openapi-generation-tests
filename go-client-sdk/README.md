@@ -145,7 +145,7 @@ func main() {
 * [CircularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
 * [DeprecatedInSchemaWithCommentsGet](docs/sdks/generation/README.md#deprecatedinschemawithcommentsget)
 * [~~DeprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~DeprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `SimplePathParameterObjects` instead.
+* [~~DeprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `SimplePathParameterObjects` instead.
 * [EmptyObjectGet](docs/sdks/generation/README.md#emptyobjectget)
 * [EmptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [GlobalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)

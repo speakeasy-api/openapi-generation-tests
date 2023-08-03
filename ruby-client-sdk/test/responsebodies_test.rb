@@ -65,5 +65,17 @@ module OpenApiSDK
       refute_nil(res.bytes)
       assert_equal(100, res.bytes.length)
     end
+
+    def test_response_body_read_only
+      record_test('response-bodies-read-only')
+
+      res = @sdk.response_bodies.response_body_read_only
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.read_only_object)
+      assert_equal(true, res.read_only_object.bool)
+      assert_equal(1.0, res.read_only_object.num)
+      assert_equal('hello', res.read_only_object.string)
+    end
   end
 end

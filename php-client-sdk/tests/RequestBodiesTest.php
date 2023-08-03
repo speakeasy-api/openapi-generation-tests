@@ -776,4 +776,87 @@ final class RequestBodiesTest extends TestCase
         $this->assertEquals($content, $response->res->data);
         $this->assertEquals('test param', $response->res->args->queryStringParam);
     }
+
+    public function testRequestBodyReadOnlyInput(): void
+    {
+        Helpers::recordTest('request-bodies-read-only-input');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->requestBodies->requestBodyReadOnlyInput(new \OpenAPI\OpenAPI\Models\Shared\ReadOnlyObjectInput());
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->readOnlyObject);
+        $this->assertEquals(true, $response->readOnlyObject->bool);
+        $this->assertEquals(1.0, $response->readOnlyObject->num);
+        $this->assertEquals('hello', $response->readOnlyObject->string);
+    }
+
+    public function testRequestBodyWriteOnlyOutput(): void
+    {
+        Helpers::recordTest('request-bodies-write-only-output');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $r = new \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject();
+        $r->bool = true;
+        $r->num = 1.0;
+        $r->string = 'hello';
+
+        $response = $sdk->requestBodies->requestBodyWriteOnlyOutput($r);
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->writeOnlyObject);
+    }
+
+    public function testRequestBodyWriteOnly(): void
+    {
+        Helpers::recordTest('request-bodies-write-only');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $r = new \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject();
+        $r->bool = true;
+        $r->num = 1.0;
+        $r->string = 'hello';
+
+        $response = $sdk->requestBodies->requestBodyWriteOnly($r);
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->readOnlyObject);
+        $this->assertEquals(true, $response->readOnlyObject->bool);
+        $this->assertEquals(1.0, $response->readOnlyObject->num);
+        $this->assertEquals('hello', $response->readOnlyObject->string);
+    }
+
+    public function testRequestBodyReadAndWrite(): void
+    {
+        Helpers::recordTest('request-bodies-read-and-write');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $r = new \OpenAPI\OpenAPI\Models\Shared\ReadWriteObjectInput();
+        $r->num1 = 1;
+        $r->num2 = 2;
+        $r->num3 = 4;
+
+        $response = $sdk->requestBodies->requestBodyReadAndWrite($r);
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->readWriteObject);
+        $this->assertEquals(4, $response->readWriteObject->num3);
+        $this->assertEquals(7, $response->readWriteObject->sum);
+    }
 }

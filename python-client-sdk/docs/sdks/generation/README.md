@@ -10,7 +10,7 @@ Endpoints for purely testing valid generation behavior.
 * [circular_reference_get](#circular_reference_get)
 * [deprecated_in_schema_with_comments_get](#deprecated_in_schema_with_comments_get)
 * [~~deprecated_no_comments_get~~](#deprecated_no_comments_get) - :warning: **Deprecated**
-* [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
+* [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simple_path_parameter_objects` instead.
 * [empty_object_get](#empty_object_get)
 * [empty_response_object_with_comment_get](#empty_response_object_with_comment_get)
 * [global_name_overridden](#global_name_overridden)
@@ -119,7 +119,7 @@ if res.status_code == 200:
 
 ## ~~deprecated_no_comments_get~~
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
 ### Example Usage
 
@@ -144,9 +144,9 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
-| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| `deprecated_parameter`                                                                                               | *Optional[str]*                                                                                                      | :heavy_minus_sign:                                                                                                   | :warning: **DEPRECATED**: this will be removed in a future release, please migrate away from it as soon as possible. |
+| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `deprecated_parameter`                                                                                                  | *Optional[str]*                                                                                                         | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
 
 
 ### Response
@@ -158,7 +158,7 @@ if res.status_code == 200:
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: this method will be removed in a future release, please migrate away from it as soon as possible. Use `simple_path_parameter_objects` instead.
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible. Use `simple_path_parameter_objects` instead.
 
 ### Example Usage
 
@@ -183,10 +183,10 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                                                                                                                                    | Type                                                                                                                                                                         | Required                                                                                                                                                                     | Description                                                                                                                                                                  |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `deprecated_parameter`                                                                                                                                                       | *Optional[str]*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                           | :warning: **DEPRECATED**: this will be removed in a future release, please migrate away from it as soon as possible.Use `new_parameter` instead.<br/><br/>This is a string parameter |
-| `new_parameter`                                                                                                                                                              | *Optional[str]*                                                                                                                                                              | :heavy_minus_sign:                                                                                                                                                           | This is a string parameter                                                                                                                                                   |
+| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `deprecated_parameter`                                                                                                                                                         | *Optional[str]*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                             | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. Use new_parameter instead.<br/><br/>This is a string parameter |
+| `new_parameter`                                                                                                                                                                | *Optional[str]*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                             | This is a string parameter                                                                                                                                                     |
 
 
 ### Response

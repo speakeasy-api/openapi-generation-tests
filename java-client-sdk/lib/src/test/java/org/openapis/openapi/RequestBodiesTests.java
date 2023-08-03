@@ -13,9 +13,7 @@ import java.util.Map;
 
 import org.junit.jupiter.api.Test;
 import org.openapis.openapi.models.operations.*;
-import org.openapis.openapi.models.shared.DeepObject;
-import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
+import org.openapis.openapi.models.shared.*;
 import org.openapis.openapi.utils.JSON;
 
 public class RequestBodiesTests {
@@ -817,7 +815,6 @@ public class RequestBodiesTests {
         assertEquals("test param", res.res.args.queryStringParam);
     }
 
-
     @Test
     void testRequestBodyEmptyObject() throws Exception {
         Helpers.recordTest("request-bodies-post-empty-object");
@@ -831,7 +828,6 @@ public class RequestBodiesTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
     }
-
 
     @Test
     void testRequestBodyCamelCase() throws Exception {
@@ -849,5 +845,73 @@ public class RequestBodiesTests {
         assertEquals(200, res.statusCode);
         assertNotNull(res.res);
         Helpers.assertSimpleObjectCamelCase(res.res.json);
+    }
+
+    @Test
+    void testRequestBodyReadOnlyInput() throws Exception {
+        Helpers.recordTest("request-bodies-read-only-input");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        RequestBodyReadOnlyInputResponse res = s.requestBodies
+                .requestBodyReadOnlyInput(new ReadOnlyObjectInput());
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.readOnlyObject);
+        assertEquals(true, res.readOnlyObject.bool);
+        assertEquals(1.0, res.readOnlyObject.num);
+        assertEquals("hello", res.readOnlyObject.string);
+    }
+
+    @Test
+    void testRequestBodyWriteOnlyOutput() throws Exception {
+        Helpers.recordTest("request-bodies-write-only-output");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        RequestBodyWriteOnlyOutputResponse res = s.requestBodies
+                .requestBodyWriteOnlyOutput(new WriteOnlyObject(true, 1.0, "hello"));
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.writeOnlyObject);
+    }
+
+    @Test
+    void testRequestBodyWriteOnly() throws Exception {
+        Helpers.recordTest("request-bodies-write-only");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        RequestBodyWriteOnlyResponse res = s.requestBodies
+                .requestBodyWriteOnly(new WriteOnlyObject(true, 1.0, "hello"));
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.readOnlyObject);
+        assertEquals(true, res.readOnlyObject.bool);
+        assertEquals(1.0, res.readOnlyObject.num);
+        assertEquals("hello", res.readOnlyObject.string);
+    }
+
+    @Test
+    void testRequestBodyReadAndWrite() throws Exception {
+        Helpers.recordTest("request-bodies-read-and-write");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        RequestBodyReadAndWriteResponse res = s.requestBodies
+                .requestBodyReadAndWrite(new ReadWriteObjectInput(1l, 2l, 4l));
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.readWriteObject);
+        assertEquals(4l, res.readWriteObject.num3);
+        assertEquals(7l, res.readWriteObject.sum);
     }
 }

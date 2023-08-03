@@ -12,7 +12,7 @@ module OpenApiSDK
     class DeprecatedNoCommentsGetRequest < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # @deprecated this true will be removed in a future release, please migrate away from it as soon as possible
+      # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
       field :deprecated_parameter, T.nilable(String), { 'query_param': { 'field_name': 'deprecatedParameter', 'style': 'form', 'explode': true } }
 
 

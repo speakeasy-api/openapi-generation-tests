@@ -8,7 +8,7 @@ from sdk import utils
 from typing import Optional
 
 class ObjectWithDeprecatedFieldDeprecatedEnum(str, Enum):
-    r"""Deprecated: this class will be removed in a future release, please migrate away from it as soon as possible"""
+    r"""Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible."""
     A = 'a'
     B = 'b'
     C = 'c'
@@ -18,11 +18,11 @@ class ObjectWithDeprecatedFieldDeprecatedEnum(str, Enum):
 
 @dataclasses.dataclass
 class ObjectWithDeprecatedField:
-    r"""Deprecated: this class will be removed in a future release, please migrate away from it as soon as possible"""
+    r"""Deprecated class: This will be removed in a future release, please migrate away from it as soon as possible."""
     deprecated_enum: Optional[ObjectWithDeprecatedFieldDeprecatedEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deprecatedEnum'), 'exclude': lambda f: f is None }})
-    r"""Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible"""
+    r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible."""
     deprecated_field: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deprecatedField'), 'exclude': lambda f: f is None }})
-    r"""Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible. Use new_field instead"""
+    r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible. Use new_field instead."""
     new_field: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('newField'), 'exclude': lambda f: f is None }})
     
 

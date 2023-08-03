@@ -147,7 +147,7 @@ try {
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
 * [deprecatedInSchemaWithCommentsGet](docs/sdks/generation/README.md#deprecatedinschemawithcommentsget)
 * [~~deprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - deprecatedNoCommentsGet :warning: **Deprecated**
-* [~~deprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [~~deprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
 * [emptyObjectGet](docs/sdks/generation/README.md#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)

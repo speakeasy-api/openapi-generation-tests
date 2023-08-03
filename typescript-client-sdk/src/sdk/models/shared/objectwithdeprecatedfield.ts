@@ -6,7 +6,7 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
 /**
- * @deprecated this enum will be removed in a future release, please migrate away from it as soon as possible
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export enum ObjectWithDeprecatedFieldDeprecatedEnum {
     A = "a",
@@ -15,18 +15,18 @@ export enum ObjectWithDeprecatedFieldDeprecatedEnum {
 }
 
 /**
- * @deprecated this class will be removed in a future release, please migrate away from it as soon as possible
+ * @deprecated class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 export class ObjectWithDeprecatedField extends SpeakeasyBase {
     /**
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "deprecatedEnum" })
     deprecatedEnum?: ObjectWithDeprecatedFieldDeprecatedEnum;
 
     /**
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible. Use newField instead
+     * @deprecated field: This will be removed in a future release, please migrate away from it as soon as possible. Use newField instead.
      */
     @SpeakeasyMetadata()
     @Expose({ name: "deprecatedField" })

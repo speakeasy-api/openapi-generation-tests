@@ -91,3 +91,18 @@ func TestResponseBodyBytesGet(t *testing.T) {
 	assert.NotNil(t, res.Bytes)
 	assert.Len(t, res.Bytes, 100)
 }
+
+func TestResponseBodyReadOnly(t *testing.T) {
+	recordTest("response-bodies-read-only")
+
+	s := sdk.New()
+
+	res, err := s.ResponseBodies.ResponseBodyReadOnly(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+
+	assert.Equal(t, true, res.ReadOnlyObject.Bool)
+	assert.Equal(t, 1.0, res.ReadOnlyObject.Num)
+	assert.Equal(t, "hello", res.ReadOnlyObject.String)
+}

@@ -14,14 +14,14 @@ namespace OpenAPI\OpenAPI\Models\Shared;
  * 
  * @package OpenAPI\OpenAPI\Models\Shared
  * @access public
- * @deprecated this class will be removed in a future release, please migrate away from it as soon as possible
+ * @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 class ObjectWithDeprecatedField
 {
     /**
      * 
      * @var ?\OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedFieldDeprecatedEnum $deprecatedEnum
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible.
      */
 	#[\JMS\Serializer\Annotation\SerializedName('deprecatedEnum')]
     #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedFieldDeprecatedEnum>')]
@@ -31,7 +31,7 @@ class ObjectWithDeprecatedField
     /**
      * 
      * @var ?string $deprecatedField
-     * @deprecated this field will be removed in a future release, please migrate away from it as soon as possible. Use newField instead
+     * @deprecated  field: This will be removed in a future release, please migrate away from it as soon as possible. Use newField instead.
      */
 	#[\JMS\Serializer\Annotation\SerializedName('deprecatedField')]
     #[\JMS\Serializer\Annotation\Type('string')]

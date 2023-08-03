@@ -11,10 +11,8 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.nio.charset.StandardCharsets;
 
 import org.junit.jupiter.api.Test;
-import org.openapis.openapi.models.operations.ResponseBodyBytesGetResponse;
-import org.openapis.openapi.models.operations.ResponseBodyJsonGetResponse;
-import org.openapis.openapi.models.operations.ResponseBodyStringGetResponse;
-import org.openapis.openapi.models.operations.ResponseBodyXmlGetResponse;
+import org.openapis.openapi.models.operations.*;
+import org.openapis.openapi.models.shared.*;
 
 public class ResponseBodiesTests {
     @Test
@@ -90,5 +88,22 @@ public class ResponseBodiesTests {
         assertEquals(200, res.statusCode);
         assertNotNull(res.bytes);
         assertTrue(res.bytes.length == 100);
+    }
+
+    @Test
+    void testResponseBodyReadOnly() throws Exception {
+        Helpers.recordTest("response-bodies-read-only");
+
+        SDK s = SDK.builder().build();
+        assertNotNull(s);
+
+        ResponseBodyReadOnlyResponse res = s.responseBodies.responseBodyReadOnly();
+
+        assertNotNull(res);
+        assertEquals(200, res.statusCode);
+        assertNotNull(res.readOnlyObject);
+        assertEquals(true, res.readOnlyObject.bool);
+        assertEquals(1.0, res.readOnlyObject.num);
+        assertEquals("hello", res.readOnlyObject.string);
     }
 }

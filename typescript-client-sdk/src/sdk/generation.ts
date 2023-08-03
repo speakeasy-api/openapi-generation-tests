@@ -209,7 +209,7 @@ export class Generation {
     }
 
     /**
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     async deprecatedNoCommentsGet(
         deprecatedParameter?: string,
@@ -267,7 +267,7 @@ export class Generation {
     /**
      * This is an endpoint setup to test deprecation with comments
      *
-     * @deprecated this method will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead
+     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead.
      */
     async deprecatedWithCommentsGet(
         deprecatedParameter?: string,

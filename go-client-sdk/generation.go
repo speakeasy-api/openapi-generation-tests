@@ -188,7 +188,7 @@ func (s *generation) DeprecatedInSchemaWithCommentsGet(ctx context.Context, requ
 
 // DeprecatedNoCommentsGet
 //
-// Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible.
+// Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
 func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedNoCommentsGetResponse, error) {
 	request := operations.DeprecatedNoCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,
@@ -241,7 +241,7 @@ func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedPara
 
 // DeprecatedWithCommentsGet - This is an endpoint setup to test deprecation with comments
 //
-// Deprecated: this method will be removed in a future release, please migrate away from it as soon as possible. Use SimplePathParameterObjects instead.
+// Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use SimplePathParameterObjects instead.
 func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedParameter *string, newParameter *string) (*operations.DeprecatedWithCommentsGetResponse, error) {
 	request := operations.DeprecatedWithCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,

@@ -10,7 +10,7 @@ from typing import Optional
 @dataclasses.dataclass
 class DeprecatedNoCommentsGetRequest:
     deprecated_parameter: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'deprecatedParameter', 'style': 'form', 'explode': True }})
-    r"""Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible"""
+    r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible."""
     
 
 

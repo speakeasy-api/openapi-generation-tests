@@ -10,7 +10,7 @@ module OpenApiSDK
   module Shared
     # ObjectWithDeprecatedFieldDeprecatedEnum
     # 
-    # @deprecated this class will be removed in a future release, please migrate away from it as soon as possible
+    # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
     class ObjectWithDeprecatedFieldDeprecatedEnum < T::Enum
       enums do
         A = new('a')
@@ -20,13 +20,13 @@ module OpenApiSDK
     end
 
 
-    # @deprecated this class will be removed in a future release, please migrate away from it as soon as possible
+    # @deprecated  class: This will be removed in a future release, please migrate away from it as soon as possible.
     class ObjectWithDeprecatedField < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # @deprecated this true will be removed in a future release, please migrate away from it as soon as possible
+      # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible.
       field :deprecated_enum, T.nilable(Shared::ObjectWithDeprecatedFieldDeprecatedEnum), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('deprecatedEnum'), 'decoder': Utils.enum_from_string(Shared::ObjectWithDeprecatedFieldDeprecatedEnum, true) } }
-      # @deprecated this true will be removed in a future release, please migrate away from it as soon as possible. Use new_field instead
+      # @deprecated  true: This will be removed in a future release, please migrate away from it as soon as possible. Use new_field instead.
       field :deprecated_field, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('deprecatedField') } }
 
       field :new_field, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('newField') } }

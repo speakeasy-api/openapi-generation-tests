@@ -5,10 +5,21 @@
 import * as fs from "fs";
 import * as path from "path";
 
-import {expect, test} from "@jest/globals";
-import {createDeepObject, createSimpleObject, createSimpleObjectCamelCase, recordTest, sortKeys,} from "./helpers";
+import {
+  ReadOnlyObjectInput,
+  ReadWriteObjectInput,
+  WriteOnlyObject,
+} from "../src/sdk/models/shared";
+import {
+  createDeepObject,
+  createSimpleObject,
+  createSimpleObjectCamelCase,
+  recordTest,
+  sortKeys,
+} from "./helpers";
+import { expect, test } from "@jest/globals";
 
-import {SDK} from "../src";
+import { SDK } from "../src";
 
 test("Request Body Post Application JSON Simple", async () => {
   recordTest("request-bodies-post-application-json-simple");
@@ -607,7 +618,10 @@ test("Request Body Put String With Params", async () => {
 
   const s = new SDK({});
   const str = "Hello World";
-  const res = await s.requestBodies.requestBodyPutStringWithParams(str, "test param");
+  const res = await s.requestBodies.requestBodyPutStringWithParams(
+    str,
+    "test param"
+  );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
   expect(res.res?.data).toEqual(str);
@@ -622,7 +636,10 @@ test("Request Body Put Bytes With Params", async () => {
   const filePath = path.resolve(__dirname, "./testdata/testUpload.json");
   const data = fs.readFileSync(filePath);
 
-  const res = await s.requestBodies.requestBodyPutBytesWithParams(data, "test param");
+  const res = await s.requestBodies.requestBodyPutBytesWithParams(
+    data,
+    "test param"
+  );
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
   expect(res.res?.data).toEqual(data.toString());
@@ -650,4 +667,72 @@ test("Request Body Camel Case", async () => {
   expect(res.res).toBeDefined();
   expect(res.res?.json).toEqual(obj);
   expect(res.rawResponse?.config.data.match(/_val/g)?.length).toBe(14);
+});
+
+test("Request Body Read Only Input", async () => {
+  recordTest("request-bodies-read-only-input");
+
+  const s = new SDK({});
+  const res = await s.requestBodies.requestBodyReadOnlyInput(
+    new ReadOnlyObjectInput()
+  );
+
+  expect(res.statusCode).toBe(200);
+  expect(res.readOnlyObject).toBeDefined();
+  expect(res.readOnlyObject?.bool).toEqual(true);
+  expect(res.readOnlyObject?.num).toEqual(1.0);
+  expect(res.readOnlyObject?.string).toEqual("hello");
+});
+
+test("Request Body Write Only Output", async () => {
+  recordTest("request-bodies-write-only-output");
+
+  const s = new SDK({});
+  const res = await s.requestBodies.requestBodyWriteOnlyOutput(
+    new WriteOnlyObject({
+      bool: true,
+      num: 1.0,
+      string: "hello",
+    })
+  );
+
+  expect(res.statusCode).toBe(200);
+  expect(res.writeOnlyObject).toBeDefined();
+});
+
+test("Request Body Write Only", async () => {
+  recordTest("request-bodies-write-only");
+
+  const s = new SDK({});
+  const res = await s.requestBodies.requestBodyWriteOnly(
+    new WriteOnlyObject({
+      bool: true,
+      num: 1.0,
+      string: "hello",
+    })
+  );
+
+  expect(res.statusCode).toBe(200);
+  expect(res.readOnlyObject).toBeDefined();
+  expect(res.readOnlyObject?.bool).toEqual(true);
+  expect(res.readOnlyObject?.num).toEqual(1.0);
+  expect(res.readOnlyObject?.string).toEqual("hello");
+});
+
+test("Request Body Read And Write", async () => {
+  recordTest("request-bodies-read-and-write");
+
+  const s = new SDK({});
+  const res = await s.requestBodies.requestBodyReadAndWrite(
+    new ReadWriteObjectInput({
+      num1: 1,
+      num2: 2,
+      num3: 4,
+    })
+  );
+
+  expect(res.statusCode).toBe(200);
+  expect(res.readWriteObject).toBeDefined();
+  expect(res.readWriteObject?.num3).toEqual(4);
+  expect(res.readWriteObject?.sum).toEqual(7);
 });

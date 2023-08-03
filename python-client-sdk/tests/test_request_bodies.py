@@ -751,3 +751,67 @@ def test_request_body_camel_case():
     assert res.status_code == 200
     assert res.res is not None
     compare_simple_object_camel_case(res.res.json)
+
+
+def test_request_body_read_only_input():
+    record_test('request-bodies-read-only-input')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_read_only_input(
+        shared.ReadOnlyObjectInput())
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.read_only_object is not None
+    assert res.read_only_object.bool == True
+    assert res.read_only_object.num == 1.0
+    assert res.read_only_object.string == 'hello'
+
+
+def test_request_body_write_only_output():
+    record_test('request-bodies-write-only-output')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_write_only_output(
+        shared.WriteOnlyObject(True, 1.0, 'hello'))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.write_only_object is not None
+
+
+def test_request_body_write_only():
+    record_test('request-bodies-write-only')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_write_only(
+        shared.WriteOnlyObject(True, 1.0, 'hello'))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.read_only_object is not None
+    assert res.read_only_object.bool == True
+    assert res.read_only_object.num == 1.0
+    assert res.read_only_object.string == 'hello'
+
+
+def test_request_body_read_and_write():
+    record_test('request-bodies-read-and-write')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_read_and_write(
+        shared.ReadWriteObjectInput(1, 2, 4))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.read_write_object is not None
+    assert res.read_write_object.num3 == 4
+    assert res.read_write_object.sum == 7

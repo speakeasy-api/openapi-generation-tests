@@ -52,8 +52,8 @@ module OpenApiSDK
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = '0.1.0'
-      @sdk_version = '1.23.1'
-      @gen_version = '2.75.2'
+      @sdk_version = '1.24.0'
+      @gen_version = '2.77.1'
     end
 
     sig { returns([String, T::Hash[Symbol, String]]) }

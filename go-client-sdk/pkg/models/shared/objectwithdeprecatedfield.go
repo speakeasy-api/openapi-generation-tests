@@ -9,7 +9,7 @@ import (
 
 // ObjectWithDeprecatedFieldDeprecatedEnum
 //
-// Deprecated: this type will be removed in a future release, please migrate away from it as soon as possible.
+// Deprecated type: This will be removed in a future release, please migrate away from it as soon as possible.
 type ObjectWithDeprecatedFieldDeprecatedEnum string
 
 const (
@@ -42,11 +42,11 @@ func (e *ObjectWithDeprecatedFieldDeprecatedEnum) UnmarshalJSON(data []byte) err
 
 // ObjectWithDeprecatedField
 //
-// Deprecated: this type will be removed in a future release, please migrate away from it as soon as possible.
+// Deprecated type: This will be removed in a future release, please migrate away from it as soon as possible.
 type ObjectWithDeprecatedField struct {
-	// Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible.
+	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible.
 	DeprecatedEnum *ObjectWithDeprecatedFieldDeprecatedEnum `json:"deprecatedEnum,omitempty"`
-	// Deprecated: this field will be removed in a future release, please migrate away from it as soon as possible. Use NewField instead.
+	// Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible. Use NewField instead.
 	DeprecatedField *string `json:"deprecatedField,omitempty"`
 	NewField        *string `json:"newField,omitempty"`
 }

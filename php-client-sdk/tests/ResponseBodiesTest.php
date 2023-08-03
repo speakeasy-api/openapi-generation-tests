@@ -127,4 +127,22 @@ final class ResponseBodiesTest extends TestCase
         $this->assertNotNull($response->bytes);
         $this->assertEquals(100, strlen($response->bytes));
     }
+
+    public function testResponseBodyReadOnly(): void
+    {
+        Helpers::recordTest('response-bodies-read-only');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->responseBodies->responseBodyReadOnly();
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertNotNull($response->readOnlyObject);
+        $this->assertEquals(true, $response->readOnlyObject->bool);
+        $this->assertEquals(1.0, $response->readOnlyObject->num);
+        $this->assertEquals('hello', $response->readOnlyObject->string);
+    }
 }

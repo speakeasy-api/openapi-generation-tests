@@ -70,3 +70,19 @@ def test_response_body_bytes_get():
     assert res is not None
     assert res.status_code == 200
     assert len(res.bytes) == 100
+
+
+def test_response_body_read_only():
+    record_test('response-bodies-read-only')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.response_bodies.response_body_read_only()
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.read_only_object is not None
+    assert res.read_only_object.bool == True
+    assert res.read_only_object.num == 1.0
+    assert res.read_only_object.string == 'hello'

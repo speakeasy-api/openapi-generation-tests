@@ -720,3 +720,71 @@ func TestRequestBodyCamelCase(t *testing.T) {
 	assert.NoError(t, err)
 	assert.Equal(t, 32, len(regexp.MustCompile("_val").FindAllStringSubmatch(string(rawBody), -1)))
 }
+
+func TestRequestBodyReadOnlyInput(t *testing.T) {
+	recordTest("request-bodies-read-only-input")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyReadOnlyInput(context.Background(), shared.ReadOnlyObjectInput{})
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+
+	assert.Equal(t, true, res.ReadOnlyObject.Bool)
+	assert.Equal(t, 1.0, res.ReadOnlyObject.Num)
+	assert.Equal(t, "hello", res.ReadOnlyObject.String)
+}
+
+func TestRequestBodyWriteOnlyOutput(t *testing.T) {
+	recordTest("request-bodies-write-only-output")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(context.Background(), shared.WriteOnlyObject{
+		Bool:   true,
+		Num:    1.0,
+		String: "hello",
+	})
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, shared.WriteOnlyObjectOutput{}, *res.WriteOnlyObject)
+}
+
+func TestRequestBodyWriteOnly(t *testing.T) {
+	recordTest("request-bodies-write-only")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyWriteOnly(context.Background(), shared.WriteOnlyObject{
+		Bool:   true,
+		Num:    1.0,
+		String: "hello",
+	})
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+
+	assert.Equal(t, true, res.ReadOnlyObject.Bool)
+	assert.Equal(t, 1.0, res.ReadOnlyObject.Num)
+	assert.Equal(t, "hello", res.ReadOnlyObject.String)
+}
+
+func TestRequestBodyReadAndWrite(t *testing.T) {
+	recordTest("request-bodies-read-and-write")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyReadAndWrite(context.Background(), shared.ReadWriteObjectInput{
+		Num1: 1,
+		Num2: 2,
+		Num3: 4,
+	})
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+
+	assert.Equal(t, int64(4), res.ReadWriteObject.Num3)
+	assert.Equal(t, int64(7), res.ReadWriteObject.Sum)
+}

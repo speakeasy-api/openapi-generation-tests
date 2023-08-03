@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
  * ObjectWithDeprecatedFieldDeprecatedEnum
- * @deprecated this enum will be removed in a future release, please migrate away from it as soon as possible
+ * @deprecated enum: This will be removed in a future release, please migrate away from it as soon as possible.
  */
 public enum ObjectWithDeprecatedFieldDeprecatedEnum {
     A("a"),

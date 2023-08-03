@@ -257,8 +257,8 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.23.1",
-			GenVersion:        "2.75.2",
+			SDKVersion:        "1.24.0",
+			GenVersion:        "2.77.1",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},

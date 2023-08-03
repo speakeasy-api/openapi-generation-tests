@@ -131,7 +131,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [circular_reference_get](docs/sdks/generation/README.md#circular_reference_get)
 * [deprecated_in_schema_with_comments_get](docs/sdks/generation/README.md#deprecated_in_schema_with_comments_get)
 * [~~deprecated_no_comments_get~~](docs/sdks/generation/README.md#deprecated_no_comments_get) - :warning: **Deprecated**
-* [~~deprecated_with_comments_get~~](docs/sdks/generation/README.md#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simple_path_parameter_objects` instead.
+* [~~deprecated_with_comments_get~~](docs/sdks/generation/README.md#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simple_path_parameter_objects` instead.
 * [empty_object_get](docs/sdks/generation/README.md#empty_object_get)
 * [empty_response_object_with_comment_get](docs/sdks/generation/README.md#empty_response_object_with_comment_get)
 * [global_name_overridden](docs/sdks/generation/README.md#global_name_overridden)

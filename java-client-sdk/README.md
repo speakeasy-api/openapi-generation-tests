@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.23.1'
+implementation 'org.openapis.openapi:openapi:1.24.0'
 ```
 <!-- End SDK Installation -->
 
@@ -133,7 +133,7 @@ public class Application {
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
 * [deprecatedInSchemaWithCommentsGet](docs/sdks/generation/README.md#deprecatedinschemawithcommentsget)
 * [~~deprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~deprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** - Use `simplePathParameterObjects` instead.
+* [~~deprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
 * [emptyObjectGet](docs/sdks/generation/README.md#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)

@@ -24,21 +24,21 @@ module OpenApiSDK
       record_test('request-bodies-post-application-json-array')
 
       obj = create_simple_object
-  
+
       res = @sdk.request_bodies.request_body_post_application_json_array(request=[obj])
-  
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.simple_objects)
       compare_simple_object(obj, res.simple_objects[0])
     end
-  
-  
+
+
     def test_request_body_post_application_json_array_of_array
       record_test('request-bodies-post-application-json-array-of-array')
 
       obj = create_simple_object
-    
+
       res = @sdk.request_bodies.request_body_post_application_json_array_of_array(request=[[obj], [obj]])
 
       refute_nil(res)
@@ -47,18 +47,18 @@ module OpenApiSDK
       compare_simple_object(obj, res.arrs[0][0])
       compare_simple_object(obj, res.arrs[1][0])
     end
-  
-  
+
+
     def test_request_body_post_application_json_map
       record_test('request-bodies-post-application-json-map')
 
       obj = create_simple_object
-      
+
       res = @sdk.request_bodies.request_body_post_application_json_map(request={
             "mapElem1": obj,
             "mapElem2": obj,
         })
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.res)
@@ -70,7 +70,7 @@ module OpenApiSDK
       record_test('request-bodies-post-application-json-map-of-map')
 
       obj = create_simple_object
-      
+
       res = @sdk.request_bodies.request_body_post_application_json_map_of_map(request={
         "mapElem1": {
           "subMapElem1": obj,
@@ -81,7 +81,7 @@ module OpenApiSDK
             "subMapElem2": obj,
         },
       })
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.res)
@@ -90,17 +90,17 @@ module OpenApiSDK
       compare_simple_object(obj, res.res["mapElem2"]["subMapElem1"])
       compare_simple_object(obj, res.res["mapElem2"]["subMapElem2"])
     end
-  
+
     def test_request_body_post_application_json_map_of_array
       record_test('request-bodies-post-application-json-map-of-array')
 
       obj = create_simple_object
-      
+
       res = @sdk.request_bodies.request_body_post_application_json_map_of_array(request={
         "mapElem1": [obj, obj],
         "mapElem2": [obj, obj],
       })
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.res)
@@ -114,7 +114,7 @@ module OpenApiSDK
       record_test('request-bodies-post-application-json-array-of-map')
 
       obj = create_simple_object
-      
+
       res = @sdk.request_bodies.request_body_post_application_json_array_of_map(request=[
         {
             "mapElem1": obj,
@@ -125,7 +125,7 @@ module OpenApiSDK
             "mapElem2": obj,
         },
       ])
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.maps)
@@ -142,7 +142,7 @@ module OpenApiSDK
         "mapElem1": "hello",
         "mapElem2": "world",
     })
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.res)
@@ -154,7 +154,7 @@ module OpenApiSDK
       record_test('request-bodies-post-application-json-array-of-primitive')
 
       res = @sdk.request_bodies.request_body_post_application_json_array_of_primitive(request=["hello", "world"])
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.strings)
@@ -174,7 +174,7 @@ module OpenApiSDK
             "subMapElem2": "bazz",
         },
       })
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.res)
@@ -191,7 +191,7 @@ module OpenApiSDK
         ["foo", "bar"],
         ["buzz", "bazz"],
     ])
-    
+
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.arrs)
@@ -229,7 +229,7 @@ module OpenApiSDK
       assert_equal(2, res.map_obj_value.json.length)
       compare_simple_object(obj, res.map_obj_value.json["mapElem1"])
       compare_simple_object(obj, res.map_obj_value.json["mapElem2"])
-    end  
+    end
 
     def test_request_body_post_application_json_deep
       record_test('request-bodies-post-application-json-deep')
@@ -306,7 +306,7 @@ module OpenApiSDK
         "num" => 1.1,
         "str" => 'test'
       })
-    end  
+    end
 
 
     def test_request_body_post_multiple_content_types_split_json
@@ -374,7 +374,7 @@ module OpenApiSDK
           bool: true,
           num: 1.1,
           str_: 'test body'
-        ), 
+        ),
         param_str='test param'
       )
 
@@ -390,7 +390,7 @@ module OpenApiSDK
       assert_equal(res.res.args, {'paramStr' => 'test param'})
 
     end
-  
+
     def test_request_body_post_multiple_content_types_split_multipart_param
       record_test('request-bodies-post-multiple-content-types-split-multipart-with-param')
 
@@ -399,7 +399,7 @@ module OpenApiSDK
           bool2: true,
           num2: 1.1,
           str2: 'test body'
-        ), 
+        ),
         param_str='test param'
       )
 
@@ -415,8 +415,8 @@ module OpenApiSDK
       )
       assert_equal(res.res.args, {'paramStr' => 'test param'})
 
-    end  
-  
+    end
+
     def test_request_body_post_multiple_content_types_split_form_param
       record_test('request-bodies-post-multiple-content-types-split-form-with-param')
 
@@ -425,7 +425,7 @@ module OpenApiSDK
           bool3: true,
           num3: 1.1,
           str3: 'test body'
-        ), 
+        ),
         param_str='test param'
         )
       assert_equal(res.res.form, {
@@ -436,7 +436,7 @@ module OpenApiSDK
       )
       assert_equal(res.res.args, {'paramStr' => 'test param'})
 
-    end  
+    end
 
     def test_request_body_put_multipart_simple
       record_test('request-bodies-put-multipart-simple')
@@ -447,7 +447,7 @@ module OpenApiSDK
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       refute_nil(res.res)
-      
+
       assert_equal("any", res.res.form.any)
       assert_equal("true", res.res.form.bool_opt)
       assert_equal("true", res.res.form.bool)
@@ -620,6 +620,62 @@ module OpenApiSDK
       ))
       refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+    end
+
+    def test_request_body_read_only_input
+      record_test('request-bodies-read-only-input')
+
+      res = @sdk.request_bodies.request_body_read_only_input(request=Shared::ReadOnlyObjectInput.new())
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.read_only_object)
+      assert_equal(true, res.read_only_object.bool)
+      assert_equal(1.0, res.read_only_object.num)
+      assert_equal('hello', res.read_only_object.string)
+    end
+
+    def test_request_body_write_only_output
+      record_test('request-bodies-write-only-output')
+
+      res = @sdk.request_bodies.request_body_write_only_output(request=Shared::WriteOnlyObject.new(
+        bool: true,
+        num: 1.0,
+        string: 'hello',
+      ))
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.write_only_object)
+    end
+
+    def test_request_body_write_only
+      record_test('request-bodies-write-only')
+
+      res = @sdk.request_bodies.request_body_write_only(request=Shared::WriteOnlyObject.new(
+        bool: true,
+        num: 1.0,
+        string: 'hello',
+      ))
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.read_only_object)
+      assert_equal(true, res.read_only_object.bool)
+      assert_equal(1.0, res.read_only_object.num)
+      assert_equal('hello', res.read_only_object.string)
+    end
+
+    def test_request_body_read_and_write
+      record_test('request-bodies-read-and-write')
+
+      res = @sdk.request_bodies.request_body_read_and_write(request=Shared::ReadWriteObjectInput.new(
+        num1: 1,
+        num2: 2,
+        num3: 4,
+      ))
+      refute_nil(res)
+      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
+      refute_nil(res.read_write_object)
+      assert_equal(4, res.read_write_object.num3)
+      assert_equal(7, res.read_write_object.sum)
     end
   end
 end
