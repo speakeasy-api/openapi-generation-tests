@@ -21,7 +21,6 @@ lib/sdk/sdk.rb
 Gemfile
 Rakefile
 lib/sdk/utils/metadata_fields.rb
-lib/sdk/utils/retries.rb
 lib/sdk/utils/utils.rb
 openapi.gemspec
 lib/sdk/models/operations/apikeyauth.rb

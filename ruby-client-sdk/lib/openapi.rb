@@ -3,7 +3,6 @@
 # typed: true
 # frozen_string_literal: true
 
-require_relative 'sdk/utils/retries'
 require_relative 'sdk/utils/utils'
 require_relative 'sdk/utils/metadata_fields'
 require_relative 'sdk/sdk'
