@@ -70,7 +70,7 @@ module OpenApiSDK
           end
         end
 
-        return items.join(',') if !items.empty?
+        items.join(',') if !items.empty?
       elsif obj.is_a? Hash
         items = []
         obj.each do |key, value|
@@ -83,8 +83,8 @@ module OpenApiSDK
             items.append(val_to_string(value))
           end
         end
-        return items.join(',') if !items.empty?
 
+        items.join(',') if !items.empty?
       elsif obj.is_a? Array
         items = obj.filter { |v| !v.nil? }.map { |v| val_to_string(v) }.join(',')
       else
@@ -289,7 +289,7 @@ module OpenApiSDK
           param = path_params.send(f.name) if !path_params.nil?
           param = _populate_from_globals(f.name, param, 'pathParam', gbls)
         end
-        
+
         f_name = param_metadata.fetch(:field_name, f.name)
         serialization = param_metadata.fetch(:serialization, '')
         if serialization != ''

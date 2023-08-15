@@ -136,3 +136,53 @@ func TestServerByIDWithTemplates(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 }
+
+func TestGlobalServerWithTemplatedProtocol(t *testing.T) {
+	recordTest("servers-global-server-with-templated-protocol")
+
+	s := sdk.New(sdk.WithServerIndex(4), sdk.WithProtocol("http"), sdk.WithHostname("localhost"), sdk.WithPort("35123"))
+
+	res, err := s.Servers.SelectGlobalServer(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestGlobalServerWithInvalidTemplatedProtocol(t *testing.T) {
+	recordTest("servers-global-server-with-invalid-templated-protocol")
+
+	s := sdk.New(sdk.WithServerIndex(4), sdk.WithProtocol("invalid"), sdk.WithHostname("localhost"), sdk.WithPort("35123"))
+
+	res, err := s.Servers.SelectGlobalServer(context.Background())
+	assert.Error(t, err)
+	assert.Nil(t, res)
+}
+
+func TestServerWithProtocolTemplate(t *testing.T) {
+	recordTest("servers-server-with-protocol-template")
+
+	s := sdk.New()
+
+	res, err := s.Servers.ServerWithProtocolTemplate(context.Background(), operations.WithTemplatedServerURL(operations.ServerWithProtocolTemplateServerList[operations.ServerWithProtocolTemplateServerMain], map[string]string{
+		"protocol": "http",
+		"hostname": "localhost",
+		"port":     "35123",
+	}))
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+}
+
+func TestServerWithInvalidProtocolTemplate(t *testing.T) {
+	recordTest("servers-server-with-invalid-protocol-template")
+
+	s := sdk.New()
+
+	res, err := s.Servers.ServerWithProtocolTemplate(context.Background(), operations.WithTemplatedServerURL(operations.ServerWithProtocolTemplateServerList[operations.ServerWithProtocolTemplateServerMain], map[string]string{
+		"protocol": "invalid",
+		"hostname": "localhost",
+		"port":     "35123",
+	}))
+	assert.Error(t, err)
+	assert.Nil(t, res)
+}
