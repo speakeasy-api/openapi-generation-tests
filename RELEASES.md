@@ -370,3 +370,12 @@ Based on:
 - [php v1.27.0] php-client-sdk
 ### Releases
 - [Go v1.27.0] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.27.0 - go-client-sdk
+
+## 2023-08-19 00:10:30
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.74.3 (2.86.6) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v1.27.1] java-client-sdk
+- [python v1.27.1] python-client-sdk

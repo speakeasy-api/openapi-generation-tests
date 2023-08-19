@@ -3,6 +3,7 @@
 import sdk.models.shared as shared
 from sdk import SDK
 from sdk.models.operations import *
+from sdk.responsebodies import ResponseBodyOptionalGetAcceptEnum
 from sdk.utils import *
 
 from .helpers import *
@@ -86,3 +87,34 @@ def test_response_body_read_only():
     assert res.read_only_object.bool == True
     assert res.read_only_object.num == 1.0
     assert res.read_only_object.string == 'hello'
+
+
+def test_response_body_override_accept_header():
+    record_test('response-bodies-override-accept-header')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.response_bodies.response_body_optional_get(
+        accept_header_override=ResponseBodyOptionalGetAcceptEnum.TEXT_PLAIN
+    )
+
+    assert res is not None
+    assert res.status_code == 200
+    assert "text/plain" in res.content_type
+    assert res.response_body_optional_get_200_text_plain_string.decode(
+        "utf-8") == "Success"
+
+
+def test_response_body_default_accept_header():
+    record_test('response-bodies-default-accept-header')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.response_bodies.response_body_optional_get()
+
+    assert res is not None
+    assert res.status_code == 200
+    assert "application/json" in res.content_type
+    assert type(res.typed_object1) == shared.TypedObject1

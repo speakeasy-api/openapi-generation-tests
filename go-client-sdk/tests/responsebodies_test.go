@@ -8,6 +8,7 @@ import (
 	"net/http"
 	"testing"
 
+	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
 
 	sdk "openapi"
@@ -90,6 +91,30 @@ func TestResponseBodyBytesGet(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Bytes)
 	assert.Len(t, res.Bytes, 100)
+}
+
+func TestResponseSelectableByAcceptHeaderTextPlain(t *testing.T) {
+	recordTest("response-selectable-by-accept-header-text-plain")
+	s := sdk.New()
+
+	res, err := s.ResponseBodies.ResponseBodyOptionalGet(context.Background(), operations.WithAcceptHeaderOverride(operations.AcceptHeaderEnumTextPlain))
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.GetResponseBodyOptionalGet200TextPlainString)
+	assert.Equal(t, "Success", *res.GetResponseBodyOptionalGet200TextPlainString())
+}
+
+func TestResponseSelectableByAcceptHeaderNoOverride(t *testing.T) {
+	recordTest("response-selectable-by-accept-header-no-override")
+	s := sdk.New()
+
+	res, err := s.ResponseBodies.ResponseBodyOptionalGet(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.GetTypedObject1)
+	assert.Equal(t, shared.TypedObject1TypeObj1, res.GetTypedObject1().GetType())
 }
 
 func TestResponseBodyReadOnly(t *testing.T) {
