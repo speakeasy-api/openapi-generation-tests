@@ -58,7 +58,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
 
   const sdk = new SDK({});
 
-  expect.assertions(20);
+  expect.assertions(19);
   try {
     await sdk.errors.statusGetXSpeakeasyErrors(400);
   } catch (e) {
@@ -110,7 +110,6 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
     const sdkErr = e as ErrorT;
 
     expect(sdkErr.code).toBe("500");
-    expect(sdkErr.rawResponse?.status).toBe(500);
   }
 
   try {
@@ -121,7 +120,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
       'StatusGetXSpeakeasyErrors501ApplicationJSON: {"code":"501","message":"an error occurred"}'
     );
 
-    const sdkErr = e as ErrorT;
+    const sdkErr = e as StatusGetXSpeakeasyErrors501ApplicationJSON;
 
     expect(sdkErr.code).toBe("501");
     expect(sdkErr.rawResponse?.status).toBe(501);

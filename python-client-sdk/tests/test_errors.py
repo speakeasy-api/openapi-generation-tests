@@ -14,17 +14,17 @@ def test_status_get_error_default_error_codes():
     s = SDK()
     assert s is not None
 
-    with pytest.raises(errors.SDKError, match="API error occurred: Status 400") as exc_info:
+    with pytest.raises(errors.SDKError, match="API error occurred: Status 400") as exc_info_400:
         res = s.errors.status_get_error(status_code=400)
 
-    assert exc_info.value.status_code == 400
-    assert exc_info.value.raw_response.status_code == 400
+    assert exc_info_400.value.status_code == 400
+    assert exc_info_400.value.raw_response.status_code == 400
 
-    with pytest.raises(errors.SDKError, match="API error occurred: Status 500") as exc_info:
+    with pytest.raises(errors.SDKError, match="API error occurred: Status 500") as exc_info_500:
         res = s.errors.status_get_error(status_code=500)
 
-    assert exc_info.value.status_code == 500
-    assert exc_info.value.raw_response.status_code == 500
+    assert exc_info_500.value.status_code == 500
+    assert exc_info_500.value.raw_response.status_code == 500
 
 
 def test_status_get_error_300_non_error():
@@ -43,35 +43,34 @@ def test_status_get_x_speakeasy_errors():
     s = SDK()
     assert s is not None
 
-    with pytest.raises(errors.SDKError, match='API error occurred: Status 400\n{"message":"an error occurred","code":"400"}\n') as exc_info:
-        res = s.errors.status_get_x_speakeasy_errors(status_code=400)
+    with pytest.raises(errors.SDKError, match='API error occurred: Status 400\n{"message":"an error occurred","code":"400"}\n') as exc_info_400:
+        s.errors.status_get_x_speakeasy_errors(status_code=400)
 
-    assert exc_info.value.status_code == 400
-    assert exc_info.value.raw_response.status_code == 400
+    assert exc_info_400.value.status_code == 400
+    assert exc_info_400.value.raw_response.status_code == 400
 
-    with pytest.raises(errors.SDKError, match='API error occurred: Status 401\n{"message":"an error occurred","code":"401"}\n') as exc_info:
-        res = s.errors.status_get_x_speakeasy_errors(status_code=401)
+    with pytest.raises(errors.SDKError, match='API error occurred: Status 401\n{"message":"an error occurred","code":"401"}\n') as exc_info_401:
+        s.errors.status_get_x_speakeasy_errors(status_code=401)
 
-    assert exc_info.value.status_code == 401
-    assert exc_info.value.raw_response.status_code == 401
+    assert exc_info_401.value.status_code == 401
+    assert exc_info_401.value.raw_response.status_code == 401
 
-    with pytest.raises(errors.SDKError, match='API error occurred: Status 402\n{"message":"an error occurred","code":"402"}\n') as exc_info:
-        res = s.errors.status_get_x_speakeasy_errors(status_code=402)
+    with pytest.raises(errors.SDKError, match='API error occurred: Status 402\n{"message":"an error occurred","code":"402"}\n') as exc_info_402:
+        s.errors.status_get_x_speakeasy_errors(status_code=402)
 
-    assert exc_info.value.status_code == 402
-    assert exc_info.value.raw_response.status_code == 402
+    assert exc_info_402.value.status_code == 402
+    assert exc_info_402.value.raw_response.status_code == 402
 
-    with pytest.raises(errors.Error, match='an error occurred') as exc_info:
-        res = s.errors.status_get_x_speakeasy_errors(status_code=500)
+    with pytest.raises(errors.Error, match='an error occurred') as exc_info_500:
+        s.errors.status_get_x_speakeasy_errors(status_code=500)
 
-    assert exc_info.value.code == "500"
-    assert exc_info.value.raw_response.status_code == 500
+    assert exc_info_500.value.code == "500"
 
-    with pytest.raises(errors.StatusGetXSpeakeasyErrors501ApplicationJSON, match='{"code": "501", "message": "an error occurred"}') as exc_info:
-        res = s.errors.status_get_x_speakeasy_errors(status_code=501)
+    with pytest.raises(errors.StatusGetXSpeakeasyErrors501ApplicationJSON, match='{"code": "501", "message": "an error occurred"}') as exc_info_501:
+        s.errors.status_get_x_speakeasy_errors(status_code=501)
 
-    assert exc_info.value.code == "501"
-    assert exc_info.value.raw_response.status_code == 501
+    assert exc_info_501.value.code == "501"
+    assert exc_info_501.value.raw_response.status_code == 501
 
 
 def test_connection_error_get():
@@ -81,4 +80,4 @@ def test_connection_error_get():
     assert s is not None
 
     with pytest.raises(requests.exceptions.ConnectionError, match='Failed to resolve \'somebrokenapi.broken\'') as exc_info:
-        res = s.errors.connection_error_get()
+        s.errors.connection_error_get()

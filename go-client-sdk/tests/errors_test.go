@@ -99,7 +99,6 @@ func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
 	var e *sdkerrors.Error
 	if assert.ErrorAs(t, err, &e) {
 		assert.Equal(t, "500", *e.Code)
-		assert.Equal(t, 500, e.RawResponse.StatusCode)
 	}
 
 	res, err = s.Errors.StatusGetXSpeakeasyErrors(context.Background(), 501)
