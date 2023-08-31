@@ -139,7 +139,7 @@ components:
         - slideshow
     enum:
       type: string
-      description: "An string based enum"
+      description: "A string based enum"
       enum:
         - "one"
         - "two"
@@ -606,8 +606,8 @@ components:
       deprecated: true
       x-speakeasy-deprecation-message: This object is deprecated
       properties:
-          str:
-            type: string
+        str:
+          type: string
     deprecatedFieldInObject:
       type: object
       properties:
