@@ -4,10 +4,8 @@ package tests
 
 import (
 	"context"
-	"io"
 	"net/http"
 	"os"
-	"regexp"
 	"testing"
 
 	"openapi/pkg/models/operations"
@@ -35,6 +33,21 @@ func TestRequestBodyPostApplicationJSONSimple(t *testing.T) {
 	assert.Equal(t, obj, res.Res.JSON)
 }
 
+func TestRequestBodyPostApplicationJSONSimpleCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-simple-camel-case")
+
+	s := sdk.New()
+
+	obj := createSimpleObjectCamelCase()
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONSimpleCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res.JSON)
+}
+
 func TestRequestBodyPostApplicationJSONDeep(t *testing.T) {
 	recordTest("request-bodies-post-application-json-deep")
 
@@ -49,6 +62,22 @@ func TestRequestBodyPostApplicationJSONDeep(t *testing.T) {
 	assert.NotNil(t, res.Res)
 
 	compareDeepObject(t, obj, *res.Res.JSON)
+}
+
+func TestRequestBodyPostApplicationJSONDeepCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-deep-camel-case")
+
+	s := sdk.New()
+
+	obj := createDeepObjectCamelCase()
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONDeepCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+
+	compareDeepObjectCamelCase(t, obj, *res.Res.JSON)
 }
 
 func TestRequestBodyPostApplicationJSONMultipleJSONFiltered(t *testing.T) {
@@ -270,6 +299,23 @@ func TestRequestBodyPostApplicationJSONArray(t *testing.T) {
 	assert.Equal(t, obj, res.SimpleObjects)
 }
 
+func TestRequestBodyPostApplicationJSONArrayCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-array-camel-case")
+
+	s := sdk.New()
+
+	obj := []shared.SimpleObjectCamelCase{
+		createSimpleObjectCamelCase(),
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.SimpleObjectCamelCases)
+	assert.Equal(t, obj, res.SimpleObjectCamelCases)
+}
+
 func TestRequestBodyPostApplicationJSONArrayOfArray(t *testing.T) {
 	recordTest("request-bodies-post-application-json-array-of-array")
 
@@ -289,6 +335,25 @@ func TestRequestBodyPostApplicationJSONArrayOfArray(t *testing.T) {
 	assert.Equal(t, obj, res.Arrs)
 }
 
+func TestRequestBodyPostApplicationJSONArrayOfArrayCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-array-of-array-camel-case")
+
+	s := sdk.New()
+
+	obj := [][]shared.SimpleObjectCamelCase{
+		{
+			createSimpleObjectCamelCase(),
+		},
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfArrayCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Arrs)
+	assert.Equal(t, obj, res.Arrs)
+}
+
 func TestRequestBodyPostApplicationJSONMap(t *testing.T) {
 	recordTest("request-bodies-post-application-json-map")
 
@@ -300,6 +365,24 @@ func TestRequestBodyPostApplicationJSONMap(t *testing.T) {
 	}
 
 	res, err := s.RequestBodies.RequestBodyPostApplicationJSONMap(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
+}
+
+func TestRequestBodyPostApplicationJSONMapCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-map-camel-case")
+
+	s := sdk.New()
+
+	obj := map[string]shared.SimpleObjectCamelCase{
+		"mapElem1": createSimpleObjectCamelCase(),
+		"mapElem2": createSimpleObjectCamelCase(),
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapCamelCase(context.Background(), obj)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -331,6 +414,30 @@ func TestRequestBodyPostApplicationJSONMapOfMap(t *testing.T) {
 	assert.Equal(t, obj, res.Res)
 }
 
+func TestRequestBodyPostApplicationJSONMapOfMapCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-map-of-map-camel-case")
+
+	s := sdk.New()
+
+	obj := map[string]map[string]shared.SimpleObjectCamelCase{
+		"mapElem1": {
+			"subMapElem1": createSimpleObjectCamelCase(),
+			"subMapElem2": createSimpleObjectCamelCase(),
+		},
+		"mapElem2": {
+			"subMapElem1": createSimpleObjectCamelCase(),
+			"subMapElem2": createSimpleObjectCamelCase(),
+		},
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMapCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
+}
+
 func TestRequestBodyPostApplicationJSONMapOfArray(t *testing.T) {
 	recordTest("request-bodies-post-application-json-map-of-array")
 
@@ -342,6 +449,24 @@ func TestRequestBodyPostApplicationJSONMapOfArray(t *testing.T) {
 	}
 
 	res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArray(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Res)
+	assert.Equal(t, obj, res.Res)
+}
+
+func TestRequestBodyPostApplicationJSONMapOfArrayCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-map-of-array-camel-case")
+
+	s := sdk.New()
+
+	obj := map[string][]shared.SimpleObjectCamelCase{
+		"mapElem1": {createSimpleObjectCamelCase(), createSimpleObjectCamelCase()},
+		"mapElem2": {createSimpleObjectCamelCase(), createSimpleObjectCamelCase()},
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArrayCamelCase(context.Background(), obj)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -366,6 +491,30 @@ func TestRequestBodyPostApplicationJSONArrayOfMap(t *testing.T) {
 	}
 
 	res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMap(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Maps)
+	assert.Equal(t, obj, res.Maps)
+}
+
+func TestRequestBodyPostApplicationJSONArrayOfMapCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-array-of-map-camel-case")
+
+	s := sdk.New()
+
+	obj := []map[string]shared.SimpleObjectCamelCase{
+		{
+			"mapElem1": createSimpleObjectCamelCase(),
+			"mapElem2": createSimpleObjectCamelCase(),
+		},
+		{
+			"mapElem1": createSimpleObjectCamelCase(),
+			"mapElem2": createSimpleObjectCamelCase(),
+		},
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMapCamelCase(context.Background(), obj)
 	require.NoError(t, err)
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
@@ -463,6 +612,21 @@ func TestRequestBodyPostApplicationJSONArrayObject(t *testing.T) {
 	assert.Equal(t, obj, res.ArrObjValue.JSON)
 }
 
+func TestRequestBodyPostApplicationJSONArrayObjectCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-array-object-camel-case")
+
+	s := sdk.New()
+
+	obj := []shared.SimpleObjectCamelCase{createSimpleObjectCamelCase(), createSimpleObjectCamelCase()}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayObjCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.ArrObjValueCamelCase)
+	assert.Equal(t, obj, res.ArrObjValueCamelCase.JSON)
+}
+
 func TestRequestBodyPostApplicationJSONMapObject(t *testing.T) {
 	recordTest("request-bodies-post-application-json-map-object")
 
@@ -479,6 +643,24 @@ func TestRequestBodyPostApplicationJSONMapObject(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.MapObjValue)
 	assert.Equal(t, obj, res.MapObjValue.JSON)
+}
+
+func TestRequestBodyPostApplicationJSONMapObjectCamelCase(t *testing.T) {
+	recordTest("request-bodies-post-application-json-map-object-camel-case")
+
+	s := sdk.New()
+
+	obj := map[string]shared.SimpleObjectCamelCase{
+		"mapElem1": createSimpleObjectCamelCase(),
+		"mapElem2": createSimpleObjectCamelCase(),
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObjCamelCase(context.Background(), obj)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.MapObjValueCamelCase)
+	assert.Equal(t, obj, res.MapObjValueCamelCase.JSON)
 }
 
 func TestRequestBodyPutMultipartSimple(t *testing.T) {
@@ -700,25 +882,6 @@ func TestRequestBodyEmptyObject(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.RequestBodyPostEmptyObject200ApplicationJSONObject)
-}
-
-func TestRequestBodyCamelCase(t *testing.T) {
-	recordTest("request-bodies-camel-case")
-
-	s := sdk.New()
-
-	obj := createSimpleObjectCamelCase()
-
-	res, err := s.RequestBodies.RequestBodyCamelCase(context.Background(), obj)
-	require.NoError(t, err)
-	require.NotNil(t, res)
-	assert.Equal(t, http.StatusOK, res.StatusCode)
-	assert.NotNil(t, res.Res)
-	assert.Equal(t, obj, res.Res.JSON)
-
-	rawBody, err := io.ReadAll(res.RawResponse.Body)
-	assert.NoError(t, err)
-	assert.Equal(t, 32, len(regexp.MustCompile("_val").FindAllStringSubmatch(string(rawBody), -1)))
 }
 
 func TestRequestBodyReadOnlyInput(t *testing.T) {

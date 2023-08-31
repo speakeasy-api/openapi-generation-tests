@@ -6,6 +6,7 @@ import * as fs from "fs";
 
 import {
   DeepObject,
+  DeepObjectCamelCase,
   Enum,
   SimpleObject,
   SimpleObjectCamelCase,
@@ -67,6 +68,21 @@ export const createDeepObject = (): DeepObject => {
     str: "test",
   });
 };
+
+export const createDeepObjectCamelCase = (): DeepObjectCamelCase => {
+  return new DeepObjectCamelCase({
+    anyVal: createSimpleObjectCamelCase(),
+    arrVal: [createSimpleObjectCamelCase(), createSimpleObjectCamelCase()],
+    boolVal: true,
+    intVal: 1,
+    mapVal: {
+      key: createSimpleObjectCamelCase(),
+    },
+    numVal: 1.1,
+    objVal: createSimpleObjectCamelCase(),
+    strVal: "test",
+  });
+}
 
 export const sortKeys = (obj: any): any => {
   if (Array.isArray(obj)) {

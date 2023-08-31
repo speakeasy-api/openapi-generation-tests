@@ -86,6 +86,23 @@ func createDeepObject() shared.DeepObject {
 	}
 }
 
+func createDeepObjectCamelCase() shared.DeepObjectCamelCase {
+	return shared.DeepObjectCamelCase{
+		AnyVal: createSimpleObjectCamelCase(),
+		ArrVal: []shared.SimpleObjectCamelCase{
+			createSimpleObjectCamelCase(), createSimpleObjectCamelCase(),
+		},
+		BoolVal: true,
+		IntVal:  1,
+		MapVal: map[string]shared.SimpleObjectCamelCase{
+			"key": createSimpleObjectCamelCase(),
+		},
+		NumVal: 1.1,
+		ObjVal: createSimpleObjectCamelCase(),
+		StrVal: "test",
+	}
+}
+
 func compareDeepObject(t *testing.T, expected shared.DeepObject, got shared.DeepObject) {
 	resAny := got.Any.(map[string]interface{})
 	got.Any = nil
@@ -104,6 +121,26 @@ func compareDeepObject(t *testing.T, expected shared.DeepObject, got shared.Deep
 	assert.Equal(t, 1.1, resAny["num"])
 	assert.Equal(t, "test", resAny["str"])
 	assert.Equal(t, "testOptional", resAny["strOpt"])
+}
+
+func compareDeepObjectCamelCase(t *testing.T, expected shared.DeepObjectCamelCase, got shared.DeepObjectCamelCase) {
+	resAny := got.AnyVal.(map[string]interface{})
+	got.AnyVal = nil
+	expected.AnyVal = nil
+
+	assert.Equal(t, expected, got)
+	assert.Equal(t, "any", resAny["any_val"])
+	assert.Equal(t, true, resAny["bool_val"])
+	assert.Equal(t, true, resAny["bool_opt_val"])
+	assert.Equal(t, "2020-01-01", resAny["date_val"])
+	assert.Equal(t, "2020-01-01T00:00:00.000000001Z", resAny["date_time_val"])
+	assert.Equal(t, "one", resAny["enum_val"])
+	assert.Equal(t, 1.1, resAny["float32_val"])
+	assert.Equal(t, float64(1), resAny["int_val"])
+	assert.Equal(t, float64(1), resAny["int32_val"])
+	assert.Equal(t, 1.1, resAny["num_val"])
+	assert.Equal(t, "test", resAny["str_val"])
+	assert.Equal(t, "testOptional", resAny["str_opt_val"])
 }
 
 func sortSerializedMaps(input, regex string, delim string) string {

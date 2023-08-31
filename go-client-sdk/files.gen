@@ -554,3 +554,4 @@ docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationrequest
 docs/models/callbacks/ignoredgenerationgetnotignoredcallbackresponse.md
 docs/models/callbacks/ignoredgenerationgetnotignoredcallbackrequestbody.md
 pkg/models/operations/options.go
+.gitattributes

@@ -549,3 +549,4 @@ docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationrespons
 docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationrequestbody.md
 docs/models/callbacks/ignoredgenerationgetnotignoredcallbackresponse.md
 docs/models/callbacks/ignoredgenerationgetnotignoredcallbackrequestbody.md
+.gitattributes

@@ -11,7 +11,7 @@ import {
   WriteOnlyObject,
 } from "../src/sdk/models/shared";
 import {
-  createDeepObject,
+  createDeepObject, createDeepObjectCamelCase,
   createSimpleObject,
   createSimpleObjectCamelCase,
   recordTest,
@@ -32,6 +32,18 @@ test("Request Body Post Application JSON Simple", async () => {
   expect(res.res?.json).toEqual(obj);
 });
 
+test("Request Body Post Application JSON Simple Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-simple-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase(obj);
+
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res?.json).toEqual(obj);
+});
+
 test("Request Body Post Application JSON Array", async () => {
   recordTest("request-bodies-post-application-json-array");
 
@@ -44,6 +56,20 @@ test("Request Body Post Application JSON Array", async () => {
   expect(res.statusCode).toBe(200);
   expect(res.simpleObjects).toBeDefined();
   expect(res.simpleObjects).toEqual([obj, obj]);
+});
+
+test("Request Body Post Application JSON Array Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-array-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonArrayCamelCase([
+    obj,
+    obj,
+  ]);
+  expect(res.statusCode).toBe(200);
+  expect(res.simpleObjectCamelCases).toBeDefined();
+  expect(res.simpleObjectCamelCases).toEqual([obj, obj]);
 });
 
 test("Request Body Post Application JSON Array of Array", async () => {
@@ -60,12 +86,43 @@ test("Request Body Post Application JSON Array of Array", async () => {
   expect(res.arrs).toEqual([[obj], [obj]]);
 });
 
+test("Request Body Post Application JSON Array of Array Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-array-of-array-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase([
+    [obj],
+    [obj],
+  ]);
+  expect(res.statusCode).toBe(200);
+  expect(res.arrs).toBeDefined();
+  expect(res.arrs).toEqual([[obj], [obj]]);
+});
+
 test("Request Body Post Application JSON Map", async () => {
   recordTest("request-bodies-post-application-json-map");
 
   const s = new SDK({});
   const obj = createSimpleObject();
   const res = await s.requestBodies.requestBodyPostApplicationJsonMap({
+    mapElem1: obj,
+    mapElem2: obj,
+  });
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res).toEqual({
+    mapElem1: obj,
+    mapElem2: obj,
+  });
+});
+
+test("Request Body Post Application JSON Map Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-map-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
     mapElem1: obj,
     mapElem2: obj,
   });
@@ -106,6 +163,35 @@ test("Request Body Post Application JSON Map of Map", async () => {
   });
 });
 
+test("Request Body Post Application JSON Map of Map Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-map-of-map-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
+    mapElem1: {
+      subMapElem1: obj,
+      subMapElem2: obj,
+    },
+    mapElem2: {
+      subMapElem1: obj,
+      subMapElem2: obj,
+    },
+  });
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res).toEqual({
+    mapElem1: {
+      subMapElem1: obj,
+      subMapElem2: obj,
+    },
+    mapElem2: {
+      subMapElem1: obj,
+      subMapElem2: obj,
+    },
+  });
+});
+
 test("Request Body Post Application JSON Map of Array", async () => {
   recordTest("request-bodies-post-application-json-map-of-array");
 
@@ -123,12 +209,58 @@ test("Request Body Post Application JSON Map of Array", async () => {
   });
 });
 
+test("Request Body Post Application JSON Map of Array Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-map-of-array-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
+    mapElem1: [obj, obj],
+    mapElem2: [obj, obj],
+  });
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res).toEqual({
+    mapElem1: [obj, obj],
+    mapElem2: [obj, obj],
+  });
+});
+
 test("Request Body Post Application JSON Array of Map", async () => {
   recordTest("request-bodies-post-application-json-array-of-map");
 
   const s = new SDK({});
   const obj = createSimpleObject();
   const res = await s.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
+    {
+      mapElem1: obj,
+      mapElem2: obj,
+    },
+    {
+      mapElem1: obj,
+      mapElem2: obj,
+    },
+  ]);
+  expect(res.statusCode).toBe(200);
+  expect(res.maps).toBeDefined();
+  expect(res.maps).toEqual([
+    {
+      mapElem1: obj,
+      mapElem2: obj,
+    },
+    {
+      mapElem1: obj,
+      mapElem2: obj,
+    },
+  ]);
+});
+
+test("Request Body Post Application JSON Array of Map Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-array-of-map-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
     {
       mapElem1: obj,
       mapElem2: obj,
@@ -247,6 +379,20 @@ test("Request Body Post Application JSON Array Object", async () => {
   expect(res.arrObjValue?.json).toEqual([obj, obj]);
 });
 
+test("Request Body Post Application JSON Array Object Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-array-object-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase([
+    obj,
+    obj,
+  ]);
+  expect(res.statusCode).toBe(200);
+  expect(res.arrObjValueCamelCase).toBeDefined();
+  expect(res.arrObjValueCamelCase?.json).toEqual([obj, obj]);
+});
+
 test("Request Body Post Application JSON Map Object", async () => {
   recordTest("request-bodies-post-application-json-map-object");
 
@@ -264,6 +410,23 @@ test("Request Body Post Application JSON Map Object", async () => {
   });
 });
 
+test("Request Body Post Application JSON Map Object Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-map-object-camel-case");
+
+  const s = new SDK({});
+  const obj = createSimpleObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
+    mapElem1: obj,
+    mapElem2: obj,
+  });
+  expect(res.statusCode).toBe(200);
+  expect(res.mapObjValueCamelCase).toBeDefined();
+  expect(res.mapObjValueCamelCase?.json).toEqual({
+    mapElem1: obj,
+    mapElem2: obj,
+  });
+});
+
 test("Request Body Post Application JSON Deep", async () => {
   recordTest("request-bodies-post-application-json-deep");
 
@@ -275,6 +438,21 @@ test("Request Body Post Application JSON Deep", async () => {
 
   if (res.res?.json?.any) res.res.json.any = null;
   obj.any = null;
+
+  expect(res.res?.json).toEqual(obj);
+});
+
+test("Request Body Post Application JSON Deep Camel Case", async () => {
+  recordTest("request-bodies-post-application-json-deep-camel-case");
+
+  const s = new SDK({});
+  const obj = createDeepObjectCamelCase();
+  const res = await s.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(obj);
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+
+  if (res.res?.json?.anyVal) res.res.json.anyVal = null;
+  obj.anyVal = null;
 
   expect(res.res?.json).toEqual(obj);
 });
@@ -654,19 +832,6 @@ test("Request Body Post Empty Object", async () => {
   const res = await s.requestBodies.requestBodyPostEmptyObject({});
   expect(res.requestBodyPostEmptyObject200ApplicationJSONObject).toBeDefined();
   expect(res.statusCode).toBe(200);
-});
-
-test("Request Body Camel Case", async () => {
-  recordTest("request-bodies-camel-case");
-
-  const s = new SDK({});
-  const obj = createSimpleObjectCamelCase();
-  const res = await s.requestBodies.requestBodyCamelCase(obj);
-
-  expect(res.statusCode).toBe(200);
-  expect(res.res).toBeDefined();
-  expect(res.res?.json).toEqual(obj);
-  expect(res.rawResponse?.config.data.match(/_val/g)?.length).toBe(14);
 });
 
 test("Request Body Read Only Input", async () => {

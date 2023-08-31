@@ -831,15 +831,15 @@ public class RequestBodiesTests {
 
     @Test
     void testRequestBodyCamelCase() throws Exception {
-        Helpers.recordTest("request-bodies-camel-case");
+        Helpers.recordTest("request-bodies-post-application-json-simple-camel-case");
 
         SDK s = SDK.builder().build();
         assertNotNull(s);
 
         SimpleObjectCamelCase obj = Helpers.createSimpleObjectCamelCase();
 
-        RequestBodyCamelCaseResponse res = s.requestBodies
-                .requestBodyCamelCase(obj);
+        RequestBodyPostApplicationJsonSimpleCamelCaseResponse res = s.requestBodies
+                .requestBodyPostApplicationJsonSimpleCamelCase(obj);
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);

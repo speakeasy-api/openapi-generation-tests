@@ -738,3 +738,4 @@ docs/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRespons
 docs/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.md
 docs/models/callbacks/IgnoredGenerationGetNotIgnoredCallbackResponse.md
 docs/models/callbacks/IgnoredGenerationGetNotIgnoredCallbackRequestBody.md
+.gitattributes
