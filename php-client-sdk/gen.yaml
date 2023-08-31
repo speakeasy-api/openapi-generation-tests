@@ -26,7 +26,7 @@ features:
     nameOverrides: 2.81.1
     serverIDs: 2.81.1
 php:
-  version: 1.29.1
+  version: 1.30.0
   maxMethodParams: 5
   namespace: OpenAPI\OpenAPI
   packageName: openapi/openapi

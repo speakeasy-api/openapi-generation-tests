@@ -63,6 +63,14 @@ export class Errors {
         switch (true) {
             case httpRes?.status == 200:
                 break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -117,8 +125,18 @@ export class Errors {
             rawResponse: httpRes,
         });
         switch (true) {
-            case [200, 300, 400, 500].includes(httpRes?.status):
+            case [200, 300].includes(httpRes?.status):
                 break;
+            case httpRes?.status == 400 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                httpRes?.status == 500 ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;

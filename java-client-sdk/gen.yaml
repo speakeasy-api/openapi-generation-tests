@@ -26,7 +26,7 @@ features:
     nameOverrides: 2.81.1
     serverIDs: 2.81.1
 java:
-  version: 1.29.1
+  version: 1.30.0
   artifactID: openapi
   companyEmail: info@mycompany.com
   companyName: My Company

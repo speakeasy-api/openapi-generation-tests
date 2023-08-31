@@ -30,7 +30,7 @@ features:
     serverIDs: 2.81.1
     unions: 2.81.2
 go:
-  version: 1.29.1
+  version: 1.30.0
+  clientServerStatusCodesAsErrors: true
   maxMethodParams: 5
   packageName: openapi
-  clientServerStatusCodesAsErrors: true

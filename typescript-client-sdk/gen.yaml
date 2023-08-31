@@ -30,8 +30,8 @@ features:
     retries: 2.81.1
     serverIDs: 2.81.1
 typescript:
-  version: 1.29.1
+  version: 1.30.0
   author: Speakeasy
+  clientServerStatusCodesAsErrors: true
   maxMethodParams: 5
   packageName: openapi
-  clientServerStatusCodesAsErrors: true

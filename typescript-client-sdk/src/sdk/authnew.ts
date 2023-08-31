@@ -3,6 +3,7 @@
  */
 
 import * as utils from "../internal/utils";
+import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { SDKConfiguration } from "./sdk";
@@ -77,8 +78,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -147,8 +157,17 @@ export class AuthNew {
             rawResponse: httpRes,
         });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -221,8 +240,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -295,8 +323,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -370,8 +407,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -445,8 +491,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -519,8 +574,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -593,8 +657,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -663,8 +736,17 @@ export class AuthNew {
             rawResponse: httpRes,
         });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;
@@ -734,8 +816,17 @@ export class AuthNew {
                 rawResponse: httpRes,
             });
         switch (true) {
-            case [200, 401].includes(httpRes?.status):
+            case httpRes?.status == 200:
                 break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
         }
 
         return res;

@@ -76,6 +76,10 @@ func (s *errors) ConnectionErrorGet(ctx context.Context, opts ...operations.Opti
 	}
 	switch {
 	case httpRes.StatusCode == 200:
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
@@ -127,10 +131,14 @@ func (s *errors) StatusGetError(ctx context.Context, statusCode int64) (*operati
 	case httpRes.StatusCode == 200:
 		fallthrough
 	case httpRes.StatusCode == 300:
-		fallthrough
 	case httpRes.StatusCode == 400:
 		fallthrough
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
 	case httpRes.StatusCode == 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
 	}
 
 	return res, nil
