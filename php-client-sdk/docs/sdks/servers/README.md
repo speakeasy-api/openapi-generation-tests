@@ -8,6 +8,7 @@ Endpoints for testing servers.
 
 * [selectGlobalServer](#selectglobalserver)
 * [selectServerWithID](#selectserverwithid) - Select a server by ID.
+* [serverWithProtocolTemplate](#serverwithprotocoltemplate)
 * [serverWithTemplates](#serverwithtemplates)
 * [serverWithTemplatesGlobal](#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](#serversbyidwithtemplates)
@@ -84,6 +85,45 @@ try {
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\SelectServerWithIDResponse](../../models/operations/SelectServerWithIDResponse.md)**
+
+
+## serverWithProtocolTemplate
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->servers->serverWithProtocolTemplate();
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\ServerWithProtocolTemplateResponse](../../models/operations/ServerWithProtocolTemplateResponse.md)**
 
 
 ## serverWithTemplates

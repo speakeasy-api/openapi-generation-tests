@@ -2,10 +2,51 @@
 
 ### Available Operations
 
+* [create_file](#create_file)
 * [create_resource](#create_resource)
 * [delete_resource](#delete_resource)
 * [get_resource](#get_resource)
 * [update_resource](#update_resource)
+
+## create_file
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = Operations::CreateFileRequestBody.new(
+  request=Operations::CreateFileRequestBody.new(
+    file=Operations::CreateFileRequestBodyFile.new(
+      content="officia".encode(),
+      file="dignissimos",
+    ),
+  ),
+)
+    
+res = s.resource.create_file(req)
+
+if ! res.file_resource.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                             | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `request`                                                                             | [Operations::CreateFileRequestBody](../../models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                    | The request object to use for the request.                                            |
+
+
+### Response
+
+**[T.nilable(Operations::CreateFileResponse)](../../models/operations/createfileresponse.md)**
+
 
 ## create_resource
 
@@ -20,10 +61,51 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::ExampleResource.new(
   request=Shared::ExampleResource.new(
-    created_at=DateTime.iso8601('2022-03-15T05:49:38.899Z'),
-    id="a660659a-1ade-4aab-9851-d6c645b08b61",
-    name="Arturo Bogan",
-    updated_at=DateTime.iso8601('2022-12-10T08:47:52.188Z'),
+    array_of_number=.new[
+      8989.61,
+      3591.11,
+      1855.18,
+      7088.98,
+    ],
+    array_of_string=.new[
+      "cupiditate",
+      "minima",
+      "placeat",
+    ],
+    chocolates=.new[
+      Shared::ExampleResourceChocolates.new(
+        description="neque",
+      ),
+      Shared::ExampleResourceChocolates.new(
+        description="in",
+      ),
+    ],
+    created_at=DateTime.iso8601('2021-09-13T18:43:27.876Z'),
+    enum_number=Shared::ExampleResourceEnumNumber::ONE,
+    enum_str=Shared::ExampleResourceEnumStr::TWO,
+    id="4efb0b34-896c-43ca-9acf-be2fd5707577",
+    map_of_integer=.new{
+      "dolores": 621169,
+      "veritatis": 498180,
+      "voluptate": 866789,
+    },
+    map_of_string=.new{
+      "similique": "optio",
+      "ex": "quaerat",
+      "commodi": "officiis",
+      "placeat": "quidem",
+    },
+    name="Constance Effertz V",
+    updated_at=DateTime.iso8601('2022-06-01T14:00:05.540Z'),
+    vehicle=Shared::ExampleCar.new(
+      created_at=DateTime.iso8601('2022-10-05T07:29:39.358Z'),
+      make="earum",
+      model="veniam",
+      name="Mr. Todd Reilly",
+      type=Shared::ExampleCarType::CAR,
+      updated_at=DateTime.iso8601('2022-11-20T11:30:36.362Z'),
+      year=4973.57,
+    ),
   ),
 )
     
@@ -60,7 +142,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::DeleteResourceRequest.new(
   path_params=Operations::DeleteResourceRequest.new(
-    resource_id="sapiente",
+    resource_id="maiores",
   ),
 )
     
@@ -97,7 +179,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::GetResourceRequest.new(
   path_params=Operations::GetResourceRequest.new(
-    resource_id="officiis",
+    resource_id="veritatis",
   ),
 )
     
@@ -134,13 +216,13 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::UpdateResourceRequest.new(
   path_params=Operations::UpdateResourceRequest.new(
-    resource_id="architecto",
+    resource_id="quasi",
   ),
 )
     
 res = s.resource.update_resource(req)
 
-if ! res.example_resource.nil?
+if res.status == 200
   # handle response
 end
 

@@ -28,10 +28,15 @@ class SDKConfiguration
 		[
 			'something' => 'something',
 		],
+		[
+			'hostname' => 'localhost',
+			'port' => '35123',
+			'protocol' => 'http',
+		],
 	];
 	public string $language = 'php';
 	public string $openapiDocVersion = '0.1.0';
-	public string $sdkVersion = '1.29.0';
+	public string $sdkVersion = '1.29.1';
 	public string $genVersion = '2.89.1';
 	/** @var array<string, array<string, array<string, mixed>>> */
 	public ?array $globals = [

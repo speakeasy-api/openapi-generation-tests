@@ -22,6 +22,47 @@ class Resource
 	}
 	
     /**
+     * createFile
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBody $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\CreateFileResponse
+     */
+	public function createFile(
+        \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBody $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\CreateFileResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/fileResource');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "multipart");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\CreateFileResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->fileResource = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\FileResource', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * createResource
      * 
      * @param \OpenAPI\OpenAPI\Models\Shared\ExampleResource $request
@@ -150,7 +191,7 @@ class Resource
         $url = Utils\Utils::generateUrl($baseUrl, '/resource/{resourceId}', \OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest::class, $request, $this->sdkConfiguration->globals);
         
         $options = ['http_errors' => false];
-        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
         $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
@@ -162,11 +203,7 @@ class Resource
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
         
-        if ($httpResponse->getStatusCode() === 200) {
-            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
-                $serializer = Utils\JSON::createSerializer();
-                $response->exampleResource = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ExampleResource', 'json');
-            }
+        if ($httpResponse->getStatusCode() === 202) {
         }
 
         return $response;

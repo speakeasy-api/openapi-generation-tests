@@ -30,6 +30,8 @@ class SDK
 		'http://{hostname}:{port}',
         /** A server url with templated variables. */
 		'http://localhost:35123/anything/{something}',
+        /** A server url with templated variables (including the protocol). */
+		'{protocol}://{hostname}:{port}',
 	];
   	
     /**

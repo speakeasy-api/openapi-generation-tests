@@ -41,6 +41,10 @@ public class SDK {
          * A server url with templated variables.
          */
         "http://localhost:35123/anything/{something}",
+        /**
+         * A server url with templated variables (including the protocol).
+         */
+        "{protocol}://{hostname}:{port}",
 	};
 	
 	
@@ -195,6 +199,22 @@ public class SDK {
 					continue;
 				}
 				server.put("port", port.toString());
+			}
+
+			return this;
+		}
+		
+		/**
+		 * Allows setting the $name variable for url substitution.
+		 * @param protocol The value to set.
+		 * @return The builder instance.
+		 */
+		public Builder setProtocol(String protocol) {
+			for (java.util.Map<String, String> server : this.sdkConfiguration.serverDefaults) {
+				if (!server.containsKey("protocol")) {
+					continue;
+				}
+				server.put("protocol", protocol.toString());
 			}
 
 			return this;

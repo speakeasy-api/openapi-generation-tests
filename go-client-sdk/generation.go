@@ -134,9 +134,9 @@ func (s *generation) CircularReferenceGet(ctx context.Context) (*operations.Circ
 	return res, nil
 }
 
-func (s *generation) DeprecatedInSchemaWithCommentsGet(ctx context.Context, request shared.ObjectWithDeprecatedField) (*operations.DeprecatedInSchemaWithCommentsGetResponse, error) {
+func (s *generation) DeprecatedFieldInSchemaPost(ctx context.Context, request shared.DeprecatedFieldInObject) (*operations.DeprecatedFieldInSchemaPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedInSchemaWithComments"
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedFieldInSchema"
 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
@@ -174,7 +174,7 @@ func (s *generation) DeprecatedInSchemaWithCommentsGet(ctx context.Context, requ
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.DeprecatedInSchemaWithCommentsGetResponse{
+	res := &operations.DeprecatedFieldInSchemaPostResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -186,16 +186,69 @@ func (s *generation) DeprecatedInSchemaWithCommentsGet(ctx context.Context, requ
 	return res, nil
 }
 
-// DeprecatedNoCommentsGet
+func (s *generation) DeprecatedObjectInSchemaGet(ctx context.Context) (*operations.DeprecatedObjectInSchemaGetResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedObjectInSchema"
+
+	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.DeprecatedObjectInSchemaGetResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.DeprecatedObjectInSchemaGet200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.DeprecatedObjectInSchemaGet200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	}
+
+	return res, nil
+}
+
+// DeprecatedOperationNoCommentsGet
 //
 // Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
-func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedNoCommentsGetResponse, error) {
-	request := operations.DeprecatedNoCommentsGetRequest{
+func (s *generation) DeprecatedOperationNoCommentsGet(ctx context.Context, deprecatedParameter *string) (*operations.DeprecatedOperationNoCommentsGetResponse, error) {
+	request := operations.DeprecatedOperationNoCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedNoComments"
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedOperationNoComments"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -227,7 +280,7 @@ func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedPara
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.DeprecatedNoCommentsGetResponse{
+	res := &operations.DeprecatedOperationNoCommentsGetResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -239,17 +292,17 @@ func (s *generation) DeprecatedNoCommentsGet(ctx context.Context, deprecatedPara
 	return res, nil
 }
 
-// DeprecatedWithCommentsGet - This is an endpoint setup to test deprecation with comments
+// DeprecatedOperationWithCommentsGet - This is an endpoint setup to test deprecation with comments
 //
-// Deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use SimplePathParameterObjects instead.
-func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedParameter *string, newParameter *string) (*operations.DeprecatedWithCommentsGetResponse, error) {
-	request := operations.DeprecatedWithCommentsGetRequest{
+// Deprecated method: This operation is deprecated. Use SimplePathParameterObjects instead.
+func (s *generation) DeprecatedOperationWithCommentsGet(ctx context.Context, deprecatedParameter *string, newParameter *string) (*operations.DeprecatedOperationWithCommentsGetResponse, error) {
+	request := operations.DeprecatedOperationWithCommentsGetRequest{
 		DeprecatedParameter: deprecatedParameter,
 		NewParameter:        newParameter,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
-	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedWithComments"
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/deprecatedOperationWithComments"
 
 	req, err := http.NewRequestWithContext(ctx, "GET", url, nil)
 	if err != nil {
@@ -281,7 +334,7 @@ func (s *generation) DeprecatedWithCommentsGet(ctx context.Context, deprecatedPa
 
 	contentType := httpRes.Header.Get("Content-Type")
 
-	res := &operations.DeprecatedWithCommentsGetResponse{
+	res := &operations.DeprecatedOperationWithCommentsGetResponse{
 		StatusCode:  httpRes.StatusCode,
 		ContentType: contentType,
 		RawResponse: httpRes,
@@ -565,9 +618,10 @@ func (s *generation) IgnoresPost(ctx context.Context, requestBody *operations.Ig
 	return res, nil
 }
 
-func (s *generation) NameOverride(ctx context.Context, testQueryParam string) (*operations.NameOverrideGetResponse, error) {
+func (s *generation) NameOverride(ctx context.Context, testEnumQueryParam operations.NameOverrideGetEnumNameOverride, testQueryParam string) (*operations.NameOverrideGetResponse, error) {
 	request := operations.NameOverrideGetRequest{
-		TestQueryParam: testQueryParam,
+		TestEnumQueryParam: testEnumQueryParam,
+		TestQueryParam:     testQueryParam,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())

@@ -21,8 +21,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::RetriesGetRequest.new(
   query_params=Operations::RetriesGetRequest.new(
-    request_id="fuga",
-    num_retries=867168,
+    request_id="libero",
+    num_retries=566506,
   ),
 )
     

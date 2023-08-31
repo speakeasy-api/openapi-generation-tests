@@ -1,0 +1,10 @@
+# RequestBodyPostApplicationJsonSimpleCamelCaseRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                                                                                             | Type                                                                                                                                                              | Required                                                                                                                                                          | Description                                                                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `json`                                                                                                                                                            | [\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase](../../models/shared/SimpleObjectCamelCase.md)                                                              | :heavy_check_mark:                                                                                                                                                | A simple object that uses all our supported primitive types and enums and has optional properties.<br/><br/>[A link to the external docs.](https://docs.speakeasyapi.dev) |

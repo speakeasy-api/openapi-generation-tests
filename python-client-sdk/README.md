@@ -14,6 +14,28 @@ pip install git+https://github.com/speakeasy-api/openapi-generation-tests.git#su
 
 ```python
 import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.global_name_overridden()
+
+if res.get_global_name_override_200_application_json_object is not None:
+    # handle response
+```
+
+
+## Second
+Do this second
+```python
+import sdk
 import dateutil.parser
 from sdk.models import operations, shared
 
@@ -61,6 +83,7 @@ req = operations.UsageExamplePostRequest(
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,
+    float32_parameter=1.1,
     float_parameter=1.1,
     int64_parameter=111111,
     int_parameter=1,
@@ -111,7 +134,8 @@ if res.usage_example_post_200_application_json_object is not None:
 ### [errors](docs/sdks/errors/README.md)
 
 * [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
-* [status_get](docs/sdks/errors/README.md#status_get)
+* [status_get_error](docs/sdks/errors/README.md#status_get_error)
+* [status_get_x_speakeasy_errors](docs/sdks/errors/README.md#status_get_x_speakeasy_errors)
 
 ### [first](docs/sdks/first/README.md)
 
@@ -129,9 +153,10 @@ if res.usage_example_post_200_application_json_object is not None:
 
 * [anchor_types_get](docs/sdks/generation/README.md#anchor_types_get)
 * [circular_reference_get](docs/sdks/generation/README.md#circular_reference_get)
-* [deprecated_in_schema_with_comments_get](docs/sdks/generation/README.md#deprecated_in_schema_with_comments_get)
-* [~~deprecated_no_comments_get~~](docs/sdks/generation/README.md#deprecated_no_comments_get) - :warning: **Deprecated**
-* [~~deprecated_with_comments_get~~](docs/sdks/generation/README.md#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simple_path_parameter_objects` instead.
+* [deprecated_field_in_schema_post](docs/sdks/generation/README.md#deprecated_field_in_schema_post)
+* [deprecated_object_in_schema_get](docs/sdks/generation/README.md#deprecated_object_in_schema_get)
+* [~~deprecated_operation_no_comments_get~~](docs/sdks/generation/README.md#deprecated_operation_no_comments_get) - :warning: **Deprecated**
+* [~~deprecated_operation_with_comments_get~~](docs/sdks/generation/README.md#deprecated_operation_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simple_path_parameter_objects` instead.
 * [empty_object_get](docs/sdks/generation/README.md#empty_object_get)
 * [empty_response_object_with_comment_get](docs/sdks/generation/README.md#empty_response_object_with_comment_get)
 * [global_name_overridden](docs/sdks/generation/README.md#global_name_overridden)
@@ -159,6 +184,7 @@ if res.usage_example_post_200_application_json_object is not None:
 
 * [deep_object_query_params_map](docs/sdks/parameters/README.md#deep_object_query_params_map)
 * [deep_object_query_params_object](docs/sdks/parameters/README.md#deep_object_query_params_object)
+* [duplicate_param](docs/sdks/parameters/README.md#duplicate_param)
 * [form_query_params_array](docs/sdks/parameters/README.md#form_query_params_array)
 * [form_query_params_map](docs/sdks/parameters/README.md#form_query_params_map)
 * [form_query_params_object](docs/sdks/parameters/README.md#form_query_params_object)
@@ -169,6 +195,8 @@ if res.usage_example_post_200_application_json_object is not None:
 * [header_params_object](docs/sdks/parameters/README.md#header_params_object)
 * [header_params_primitive](docs/sdks/parameters/README.md#header_params_primitive)
 * [json_query_params_object](docs/sdks/parameters/README.md#json_query_params_object)
+* [mixed_parameters_camel_case](docs/sdks/parameters/README.md#mixed_parameters_camel_case)
+* [mixed_parameters_primitives](docs/sdks/parameters/README.md#mixed_parameters_primitives)
 * [mixed_query_params](docs/sdks/parameters/README.md#mixed_query_params)
 * [path_parameter_json](docs/sdks/parameters/README.md#path_parameter_json)
 * [pipe_delimited_query_params_array](docs/sdks/parameters/README.md#pipe_delimited_query_params_array)
@@ -180,20 +208,30 @@ if res.usage_example_post_200_application_json_object is not None:
 ### [request_bodies](docs/sdks/requestbodies/README.md)
 
 * [request_body_post_application_json_array](docs/sdks/requestbodies/README.md#request_body_post_application_json_array)
+* [request_body_post_application_json_array_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_camel_case)
 * [request_body_post_application_json_array_obj](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_obj)
+* [request_body_post_application_json_array_obj_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_obj_camel_case)
 * [request_body_post_application_json_array_of_array](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_of_array)
+* [request_body_post_application_json_array_of_array_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_of_array_camel_case)
 * [request_body_post_application_json_array_of_array_of_primitive](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_of_array_of_primitive)
 * [request_body_post_application_json_array_of_map](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_of_map)
+* [request_body_post_application_json_array_of_map_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_of_map_camel_case)
 * [request_body_post_application_json_array_of_primitive](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_of_primitive)
 * [request_body_post_application_json_deep](docs/sdks/requestbodies/README.md#request_body_post_application_json_deep)
+* [request_body_post_application_json_deep_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_deep_camel_case)
 * [request_body_post_application_json_map](docs/sdks/requestbodies/README.md#request_body_post_application_json_map)
+* [request_body_post_application_json_map_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_camel_case)
 * [request_body_post_application_json_map_obj](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_obj)
+* [request_body_post_application_json_map_obj_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_obj_camel_case)
 * [request_body_post_application_json_map_of_array](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_of_array)
+* [request_body_post_application_json_map_of_array_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_of_array_camel_case)
 * [request_body_post_application_json_map_of_map](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_of_map)
+* [request_body_post_application_json_map_of_map_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_of_map_camel_case)
 * [request_body_post_application_json_map_of_map_of_primitive](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_of_map_of_primitive)
 * [request_body_post_application_json_map_of_primitive](docs/sdks/requestbodies/README.md#request_body_post_application_json_map_of_primitive)
 * [request_body_post_application_json_multiple_json_filtered](docs/sdks/requestbodies/README.md#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple)
+* [request_body_post_application_json_simple_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple_camel_case)
 * [request_body_post_empty_object](docs/sdks/requestbodies/README.md#request_body_post_empty_object)
 * [request_body_post_form_deep](docs/sdks/requestbodies/README.md#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](docs/sdks/requestbodies/README.md#request_body_post_form_map_primitive)
@@ -207,13 +245,20 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_post_multiple_content_types_split_json](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_json)
 * [request_body_post_multiple_content_types_split_multipart](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_multipart)
 * [request_body_put_bytes](docs/sdks/requestbodies/README.md#request_body_put_bytes)
+* [request_body_put_bytes_with_params](docs/sdks/requestbodies/README.md#request_body_put_bytes_with_params)
 * [request_body_put_multipart_deep](docs/sdks/requestbodies/README.md#request_body_put_multipart_deep)
 * [request_body_put_multipart_file](docs/sdks/requestbodies/README.md#request_body_put_multipart_file)
 * [request_body_put_multipart_simple](docs/sdks/requestbodies/README.md#request_body_put_multipart_simple)
 * [request_body_put_string](docs/sdks/requestbodies/README.md#request_body_put_string)
+* [request_body_put_string_with_params](docs/sdks/requestbodies/README.md#request_body_put_string_with_params)
+* [request_body_read_and_write](docs/sdks/requestbodies/README.md#request_body_read_and_write)
+* [request_body_read_only_input](docs/sdks/requestbodies/README.md#request_body_read_only_input)
+* [request_body_write_only](docs/sdks/requestbodies/README.md#request_body_write_only)
+* [request_body_write_only_output](docs/sdks/requestbodies/README.md#request_body_write_only_output)
 
 ### [resource](docs/sdks/resource/README.md)
 
+* [create_file](docs/sdks/resource/README.md#create_file)
 * [create_resource](docs/sdks/resource/README.md#create_resource)
 * [delete_resource](docs/sdks/resource/README.md#delete_resource)
 * [get_resource](docs/sdks/resource/README.md#get_resource)
@@ -222,6 +267,9 @@ if res.usage_example_post_200_application_json_object is not None:
 ### [response_bodies](docs/sdks/responsebodies/README.md)
 
 * [response_body_bytes_get](docs/sdks/responsebodies/README.md#response_body_bytes_get)
+* [response_body_empty_with_headers](docs/sdks/responsebodies/README.md#response_body_empty_with_headers)
+* [response_body_optional_get](docs/sdks/responsebodies/README.md#response_body_optional_get)
+* [response_body_read_only](docs/sdks/responsebodies/README.md#response_body_read_only)
 * [response_body_string_get](docs/sdks/responsebodies/README.md#response_body_string_get)
 * [response_body_xml_get](docs/sdks/responsebodies/README.md#response_body_xml_get)
 
@@ -237,6 +285,7 @@ if res.usage_example_post_200_application_json_object is not None:
 
 * [select_global_server](docs/sdks/servers/README.md#select_global_server)
 * [select_server_with_id](docs/sdks/servers/README.md#select_server_with_id) - Select a server by ID.
+* [server_with_protocol_template](docs/sdks/servers/README.md#server_with_protocol_template)
 * [server_with_templates](docs/sdks/servers/README.md#server_with_templates)
 * [server_with_templates_global](docs/sdks/servers/README.md#server_with_templates_global)
 * [servers_by_id_with_templates](docs/sdks/servers/README.md#servers_by_id_with_templates)

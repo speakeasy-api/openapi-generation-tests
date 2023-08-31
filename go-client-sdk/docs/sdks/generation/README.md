@@ -8,9 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [AnchorTypesGet](#anchortypesget)
 * [CircularReferenceGet](#circularreferenceget)
-* [DeprecatedInSchemaWithCommentsGet](#deprecatedinschemawithcommentsget)
-* [~~DeprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~DeprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `SimplePathParameterObjects` instead.
+* [DeprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
+* [DeprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
+* [~~DeprecatedOperationNoCommentsGet~~](#deprecatedoperationnocommentsget) - :warning: **Deprecated**
+* [~~DeprecatedOperationWithCommentsGet~~](#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `SimplePathParameterObjects` instead.
 * [EmptyObjectGet](#emptyobjectget)
 * [EmptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [GlobalNameOverridden](#globalnameoverridden)
@@ -114,7 +115,7 @@ func main() {
 **[*operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md), error**
 
 
-## DeprecatedInSchemaWithCommentsGet
+## DeprecatedFieldInSchemaPost
 
 ### Example Usage
 
@@ -138,9 +139,9 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedInSchemaWithCommentsGet(ctx, shared.ObjectWithDeprecatedField{
+    res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{
         DeprecatedField: sdk.String("labore"),
-        NewField: sdk.String("labore"),
+        NewField: sdk.String("suscipit"),
     })
     if err != nil {
         log.Fatal(err)
@@ -154,18 +155,65 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `ctx`                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                | :heavy_check_mark:                                                                   | The context to use for the request.                                                  |
-| `request`                                                                            | [shared.ObjectWithDeprecatedField](../../models/shared/objectwithdeprecatedfield.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `ctx`                                                                            | [context.Context](https://pkg.go.dev/context#Context)                            | :heavy_check_mark:                                                               | The context to use for the request.                                              |
+| `request`                                                                        | [shared.DeprecatedFieldInObject](../../models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 
 
 ### Response
 
-**[*operations.DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/deprecatedinschemawithcommentsgetresponse.md), error**
+**[*operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md), error**
 
 
-## ~~DeprecatedNoCommentsGet~~
+## DeprecatedObjectInSchemaGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.DeprecatedObjectInSchemaGet(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.DeprecatedObjectInSchemaGet200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md), error**
+
+
+## ~~DeprecatedOperationNoCommentsGet~~
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -190,10 +238,10 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "suscipit"
+    deprecatedParameter := "natus"
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedNoCommentsGet(ctx, deprecatedParameter)
+    res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
     if err != nil {
         log.Fatal(err)
     }
@@ -214,14 +262,14 @@ func main() {
 
 ### Response
 
-**[*operations.DeprecatedNoCommentsGetResponse](../../models/operations/deprecatednocommentsgetresponse.md), error**
+**[*operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md), error**
 
 
-## ~~DeprecatedWithCommentsGet~~
+## ~~DeprecatedOperationWithCommentsGet~~
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible. Use `SimplePathParameterObjects` instead.
+> :warning: **DEPRECATED**: This operation is deprecated. Use `SimplePathParameterObjects` instead.
 
 ### Example Usage
 
@@ -244,11 +292,11 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "natus"
-    newParameter := "nobis"
+    deprecatedParameter := "nobis"
+    newParameter := "eum"
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedWithCommentsGet(ctx, deprecatedParameter, newParameter)
+    res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
     if err != nil {
         log.Fatal(err)
     }
@@ -261,16 +309,16 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                     | Type                                                                                                                                                                          | Required                                                                                                                                                                      | Description                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                                                                                                         | [context.Context](https://pkg.go.dev/context#Context)                                                                                                                         | :heavy_check_mark:                                                                                                                                                            | The context to use for the request.                                                                                                                                           |
-| `deprecatedParameter`                                                                                                                                                         | **string*                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                            | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. Use NewParameter instead.<br/><br/>This is a string parameter |
-| `newParameter`                                                                                                                                                                | **string*                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                            | This is a string parameter                                                                                                                                                    |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                            | :heavy_check_mark:                                                                                               | The context to use for the request.                                                                              |
+| `deprecatedParameter`                                                                                            | **string*                                                                                                        | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use NewParameter instead.<br/><br/>This is a string parameter |
+| `newParameter`                                                                                                   | **string*                                                                                                        | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
 
 
 ### Response
 
-**[*operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md), error**
+**[*operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md), error**
 
 
 ## EmptyObjectGet
@@ -490,10 +538,10 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := &operations.IgnoresPostApplicationJSON{
-        CallbackURL: sdk.String("http://ugly-cash.com"),
-        TestProp: sdk.String("magnam"),
+        CallbackURL: sdk.String("https://composed-branch.biz"),
+        TestProp: sdk.String("et"),
     }
-    testParam := "et"
+    testParam := "excepturi"
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
@@ -544,10 +592,11 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
+    testEnumQueryParam := operations.NameOverrideGetEnumNameOverrideValue3
     testQueryParam := "example"
 
     ctx := context.Background()
-    res, err := s.Generation.NameOverride(ctx, testQueryParam)
+    res, err := s.Generation.NameOverride(ctx, testEnumQueryParam, testQueryParam)
     if err != nil {
         log.Fatal(err)
     }
@@ -560,10 +609,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
-| `testQueryParam`                                      | *string*                                              | :heavy_check_mark:                                    | N/A                                                   | example                                               |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                    | [context.Context](https://pkg.go.dev/context#Context)                                                    | :heavy_check_mark:                                                                                       | The context to use for the request.                                                                      |                                                                                                          |
+| `testEnumQueryParam`                                                                                     | [operations.NameOverrideGetEnumNameOverride](../../models/operations/nameoverridegetenumnameoverride.md) | :heavy_check_mark:                                                                                       | An enum type                                                                                             | value3                                                                                                   |
+| `testQueryParam`                                                                                         | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | example                                                                                                  |
 
 
 ### Response
@@ -596,12 +646,12 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    bigint := big.NewInt(569965)
-    date := types.MustDateFromString("2022-05-30")
+    bigint := big.NewInt(354047)
+    date := types.MustDateFromString("2021-11-24")
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
-        Num: 5518.16,
-        Str: "sint",
+        Num: 5743.25,
+        Str: "accusantium",
     }
 
     ctx := context.Background()
@@ -666,17 +716,17 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Madaline.Wisozk@gmail.com"),
-            FormatEmail: sdk.String("Dallas36@yahoo.com"),
-            FormatURI: sdk.String("http://infinite-winery.org"),
-            FormatUUID: sdk.String("4c8b711e-5b7f-4d2e-9028-921cddc69260"),
-            Hostname: sdk.String("big-willingness.net"),
-            Ipv4: sdk.String("95.116.107.184"),
-            Ipv6: sdk.String("0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b"),
+            Email: sdk.String("Vivienne43@yahoo.com"),
+            FormatEmail: sdk.String("Sophie.Connelly@gmail.com"),
+            FormatURI: sdk.String("http://worrisome-teenager.biz"),
+            FormatUUID: sdk.String("c8b711e5-b7fd-42ed-8289-21cddc692601"),
+            Hostname: sdk.String("worn-programme.info"),
+            Ipv4: sdk.String("116.107.184.12"),
+            Ipv6: sdk.String("d5f0:d30c:5fbb:2587:0532:02c7:3d5f:e9b9"),
             SimpleObject: &shared.SimpleObject{
-                Any: "perspiciatis",
-                Bigint: big.NewInt(31838),
-                BigintStr: types.MustBigIntFromString("783645"),
+                Any: "voluptatem",
+                Bigint: big.NewInt(783645),
+                BigintStr: types.MustBigIntFromString("164694"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
@@ -685,7 +735,7 @@ func main() {
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
@@ -693,9 +743,9 @@ func main() {
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            Unknown: sdk.String("error"),
-            URI: sdk.String("http://noxious-pronunciation.biz"),
-            UUID: sdk.String("fe49a8d9-cbf4-4863-b323-f9b77f3a4100"),
+            Unknown: sdk.String("eaque"),
+            URI: sdk.String("https://right-damage.org"),
+            UUID: sdk.String("e49a8d9c-bf48-4633-b23f-9b77f3a41006"),
         },
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
@@ -703,6 +753,7 @@ func main() {
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
+        Float32Parameter: 1.1,
         FloatParameter: 1.1,
         Int64Parameter: 111111,
         IntParameter: 1,

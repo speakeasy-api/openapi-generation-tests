@@ -7,7 +7,22 @@ import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 import { Expose, Type } from "class-transformer";
 
+/**
+ * An enum type
+ */
+export enum NameOverrideGetEnumNameOverride {
+    Value1 = "value1",
+    Value2 = "value2",
+    Value3 = "value3",
+}
+
 export class NameOverrideGetRequest extends SpeakeasyBase {
+    /**
+     * An enum type
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=enumNameOverride" })
+    testEnumQueryParam: NameOverrideGetEnumNameOverride;
+
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=nameOverride" })
     testQueryParam: string;
 }

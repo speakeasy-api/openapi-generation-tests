@@ -70,6 +70,35 @@ module OpenApiSDK
     end
 
     sig { params(server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def server_with_protocol_template(server_url = nil)
+
+      base_url = Utils.template_url(Operations::SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS[:SERVER_WITH_PROTOCOL_TEMPLATE_SERVER_MAIN], {
+            'hostname': 'localhost',
+            'port': '35123',
+            'protocol': 'http',
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/anything/serverWithProtocolTemplate"
+      headers = {}
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::ServerWithProtocolTemplateResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+      end
+      res
+    end
+
+    sig { params(server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def server_with_templates(server_url = nil)
 
       base_url = Utils.template_url(Operations::SERVER_WITH_TEMPLATES_SERVERS[0], {

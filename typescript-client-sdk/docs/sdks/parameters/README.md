@@ -8,6 +8,7 @@ Endpoints for testing parameters.
 
 * [deepObjectQueryParamsMap](#deepobjectqueryparamsmap)
 * [deepObjectQueryParamsObject](#deepobjectqueryparamsobject)
+* [duplicateParam](#duplicateparam)
 * [formQueryParamsArray](#formqueryparamsarray)
 * [formQueryParamsMap](#formqueryparamsmap)
 * [formQueryParamsObject](#formqueryparamsobject)
@@ -18,6 +19,8 @@ Endpoints for testing parameters.
 * [headerParamsObject](#headerparamsobject)
 * [headerParamsPrimitive](#headerparamsprimitive)
 * [jsonQueryParamsObject](#jsonqueryparamsobject)
+* [mixedParametersCamelCase](#mixedparameterscamelcase)
+* [mixedParametersPrimitives](#mixedparametersprimitives)
 * [mixedQueryParams](#mixedqueryparams)
 * [pathParameterJson](#pathparameterjson)
 * [pipeDelimitedQueryParamsArray](#pipedelimitedqueryparamsarray)
@@ -42,26 +45,30 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const mapParam: Record<string, string> = {
-  "iusto": "voluptate",
-  "dolorum": "deleniti",
-  "omnis": "necessitatibus",
+  "voluptate": "dolorum",
+  "deleniti": "omnis",
 };
 const mapArrParam: Record<string, string[]> = {
-  "asperiores": [
+  "distinctio": [
+    "nihil",
     "ipsum",
     "voluptate",
+    "id",
   ],
-  "id": [
-    "eius",
+  "saepe": [
     "aspernatur",
     "perferendis",
-    "amet",
   ],
-  "optio": [
+  "amet": [
+    "accusamus",
     "ad",
     "saepe",
     "suscipit",
-    "deserunt",
+  ],
+  "deserunt": [
+    "minima",
+    "repellendus",
+    "totam",
   ],
 };
 
@@ -108,9 +115,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const objParam: SimpleObject = {
-  any: "provident",
-  bigint: 324683,
-  bigintStr: "repellendus",
+  any: "similique",
+  bigint: 55,
+  bigintStr: "at",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -119,8 +126,8 @@ const objParam: SimpleObject = {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -129,7 +136,8 @@ const objParam: SimpleObject = {
 };
 const objArrParam: DeepObjectQueryParamsObjectObjArrParam = {
   arr: [
-    "at",
+    "quod",
+    "officiis",
   ],
 };
 
@@ -154,6 +162,43 @@ sdk.parameters.deepObjectQueryParamsObject(objParam, objArrParam).then((res: Dee
 **Promise<[operations.DeepObjectQueryParamsObjectResponse](../../models/operations/deepobjectqueryparamsobjectresponse.md)>**
 
 
+## duplicateParam
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { DuplicateParamRequest, DuplicateParamResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const duplicateParamRequest: string = "qui";
+
+sdk.parameters.duplicateParam(duplicateParamRequest).then((res: DuplicateParamResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `duplicateParamRequest`                                      | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.DuplicateParamResponse](../../models/operations/duplicateparamresponse.md)>**
+
+
 ## formQueryParamsArray
 
 ### Example Usage
@@ -170,14 +215,13 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const arrParam: string[] = [
-  "tempora",
-  "vel",
+  "a",
+  "esse",
+  "harum",
 ];
 const arrParamExploded: number[] = [
-  885338,
-  185636,
-  679880,
-  952792,
+  215507,
+  788740,
 ];
 
 sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded).then((res: FormQueryParamsArrayResponse) => {
@@ -217,14 +261,14 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const mapParam: Record<string, string> = {
-  "harum": "iusto",
-  "ipsum": "quisquam",
+  "amet": "tempore",
+  "accusamus": "numquam",
+  "enim": "dolorem",
+  "sapiente": "totam",
 };
 const mapParamExploded: Record<string, number> = {
-  "amet": 730856,
-  "accusamus": 253941,
-  "enim": 213312,
-  "sapiente": 518201,
+  "sit": 711584,
+  "neque": 153694,
 };
 
 sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded).then((res: FormQueryParamsMapResponse) => {
@@ -266,26 +310,6 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const objParamExploded: SimpleObject = {
-  any: "nihil",
-  bigint: 25662,
-  bigintStr: "expedita",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-};
-const objParam: SimpleObject = {
   any: "vel",
   bigint: 730442,
   bigintStr: "voluptas",
@@ -299,6 +323,26 @@ const objParam: SimpleObject = {
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.SixtyNine,
   intEnum: SimpleObjectIntEnum.Second,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
+};
+const objParam: SimpleObject = {
+  any: "ipsum",
+  bigint: 277628,
+  bigintStr: "qui",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -343,9 +387,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const boolParam: boolean = false;
-const intParam: number = 214880;
-const numParam: number = 2776.28;
-const strParam: string = "qui";
+const intParam: number = 863856;
+const numParam: number = 7470.8;
+const strParam: string = "dicta";
 
 sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam).then((res: FormQueryParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -388,15 +432,15 @@ const sdk = new SDK({
 });
 const refObjParam: RefQueryParamObj = {
   bool: false,
-  int: 586784,
-  num: 8075.81,
-  str: "pariatur",
+  int: 674848,
+  num: 5173.79,
+  str: "incidunt",
 };
 const refObjParamExploded: RefQueryParamObjExploded = {
   bool: false,
-  int: 747080,
-  num: 1175.31,
-  str: "laborum",
+  int: 132068,
+  num: 1749.09,
+  str: "distinctio",
 };
 
 sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded).then((res: FormQueryParamsRefParamObjectResponse) => {
@@ -436,9 +480,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const xHeaderArray: string[] = [
-  "incidunt",
-  "aspernatur",
-  "dolores",
+  "aliquid",
+  "quam",
+  "molestias",
 ];
 
 sdk.parameters.headerParamsArray(xHeaderArray).then((res: HeaderParamsArrayResponse) => {
@@ -477,12 +521,16 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const xHeaderMap: Record<string, string> = {
-  "facilis": "aliquid",
-  "quam": "molestias",
-  "temporibus": "qui",
+  "qui": "neque",
+  "fugit": "magni",
+  "odio": "sunt",
+  "ullam": "nam",
 };
 const xHeaderMapExplode: Record<string, string> = {
-  "fugit": "magni",
+  "voluptatem": "cumque",
+  "soluta": "nobis",
+  "et": "saepe",
+  "ipsum": "veritatis",
 };
 
 sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode).then((res: HeaderParamsMapResponse) => {
@@ -524,9 +572,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const xHeaderObj: SimpleObject = {
-  any: "odio",
-  bigint: 124833,
-  bigintStr: "ullam",
+  any: "nobis",
+  bigint: 552193,
+  bigintStr: "tempore",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -535,8 +583,8 @@ const xHeaderObj: SimpleObject = {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -544,9 +592,9 @@ const xHeaderObj: SimpleObject = {
   strOpt: "optional example",
 };
 const xHeaderObjExplode: SimpleObject = {
-  any: "voluptatem",
-  bigint: 765326,
-  bigintStr: "soluta",
+  any: "delectus",
+  bigint: 209157,
+  bigintStr: "dolore",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -555,7 +603,7 @@ const xHeaderObjExplode: SimpleObject = {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
@@ -601,9 +649,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const xHeaderBoolean: boolean = false;
-const xHeaderInteger: number = 903720;
-const xHeaderNumber: number = 2174.5;
-const xHeaderString: string = "veritatis";
+const xHeaderInteger: number = 677263;
+const xHeaderNumber: number = 1002.94;
+const xHeaderString: string = "quae";
 
 sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString).then((res: HeaderParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -646,116 +694,31 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const deepObjParam: DeepObject = {
-  any: "quos",
+  any: {
+    any: "quas",
+    bigint: 929530,
+    bigintStr: "consequatur",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+    intEnum: SimpleObjectIntEnum.Third,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
   arr: [
     {
-      any: "cupiditate",
-      bigint: 45614,
-      bigintStr: "delectus",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "labore",
-      bigint: 240829,
-      bigintStr: "dolorum",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "aut",
-      bigint: 555649,
-      bigintStr: "itaque",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  bool: false,
-  int: 833038,
-  map: {
-    "doloribus": {
-      any: "ut",
-      bigint: 703495,
-      bigintStr: "cupiditate",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "laudantium": {
-      any: "odio",
-      bigint: 580447,
-      bigintStr: "voluptatibus",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "omnis": {
-      any: "quis",
-      bigint: 218403,
-      bigintStr: "delectus",
+      any: "doloribus",
+      bigint: 281730,
+      bigintStr: "facilis",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -772,10 +735,50 @@ const deepObjParam: DeepObject = {
       str: "example",
       strOpt: "optional example",
     },
-    "vero": {
-      any: "tenetur",
-      bigint: 492268,
-      bigintStr: "hic",
+    {
+      any: "quae",
+      bigint: 512393,
+      bigintStr: "odio",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "quisquam",
+      bigint: 876506,
+      bigintStr: "omnis",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "delectus",
+      bigint: 455169,
+      bigintStr: "consectetur",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -792,12 +795,96 @@ const deepObjParam: DeepObject = {
       str: "example",
       strOpt: "optional example",
     },
+  ],
+  bool: false,
+  int: 492268,
+  map: {
+    "distinctio": {
+      any: "quod",
+      bigint: 486160,
+      bigintStr: "similique",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "ducimus": {
+      any: "dolore",
+      bigint: 844550,
+      bigintStr: "illum",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "impedit": {
+      any: "aut",
+      bigint: 974259,
+      bigintStr: "exercitationem",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "porro": {
+      any: "maiores",
+      bigint: 985033,
+      bigintStr: "iusto",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
   },
-  num: 4861.6,
+  num: 40.48,
   obj: {
-    any: "similique",
-    bigint: 708548,
-    bigintStr: "vero",
+    any: "officia",
+    bigint: 269479,
+    bigintStr: "ipsam",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
@@ -814,13 +901,13 @@ const deepObjParam: DeepObject = {
     str: "example",
     strOpt: "optional example",
   },
-  str: "quibusdam",
-  type: "illum",
+  str: "vel",
+  type: "possimus",
 };
 const simpleObjParam: SimpleObject = {
-  any: "sequi",
-  bigint: 617877,
-  bigintStr: "impedit",
+  any: "magnam",
+  bigint: 189848,
+  bigintStr: "ex",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -829,8 +916,8 @@ const simpleObjParam: SimpleObject = {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -859,6 +946,88 @@ sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam).then((res: Js
 **Promise<[operations.JsonQueryParamsObjectResponse](../../models/operations/jsonqueryparamsobjectresponse.md)>**
 
 
+## mixedParametersCamelCase
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { MixedParametersCamelCaseRequest, MixedParametersCamelCaseResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const headerParam: string = "dolor";
+const pathParam: string = "maiores";
+const queryStringParam: string = "quasi";
+
+sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam).then((res: MixedParametersCamelCaseResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `headerParam`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `pathParam`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.MixedParametersCamelCaseResponse](../../models/operations/mixedparameterscamelcaseresponse.md)>**
+
+
+## mixedParametersPrimitives
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { MixedParametersPrimitivesRequest, MixedParametersPrimitivesResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const headerParam: string = "ex";
+const pathParam: string = "nulla";
+const queryStringParam: string = "excepturi";
+
+sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringParam).then((res: MixedParametersPrimitivesResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `headerParam`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `pathParam`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.MixedParametersPrimitivesResponse](../../models/operations/mixedparametersprimitivesresponse.md)>**
+
+
 ## mixedQueryParams
 
 ### Example Usage
@@ -877,9 +1046,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const deepObjectParam: SimpleObject = {
-  any: "exercitationem",
-  bigint: 862310,
-  bigintStr: "fugit",
+  any: "voluptatibus",
+  bigint: 343605,
+  bigintStr: "sapiente",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -897,9 +1066,9 @@ const deepObjectParam: SimpleObject = {
   strOpt: "optional example",
 };
 const formParam: SimpleObject = {
-  any: "doloribus",
-  bigint: 478370,
-  bigintStr: "eligendi",
+  any: "ea",
+  bigint: 774048,
+  bigintStr: "corporis",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -908,8 +1077,8 @@ const formParam: SimpleObject = {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.First,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -917,9 +1086,9 @@ const formParam: SimpleObject = {
   strOpt: "optional example",
 };
 const jsonParam: SimpleObject = {
-  any: "officia",
-  bigint: 269479,
-  bigintStr: "ipsam",
+  any: "inventore",
+  bigint: 301831,
+  bigintStr: "ea",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -928,7 +1097,7 @@ const jsonParam: SimpleObject = {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
   intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
@@ -977,9 +1146,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const jsonObj: SimpleObject = {
-  any: "vel",
-  bigint: 822118,
-  bigintStr: "magnam",
+  any: "recusandae",
+  bigint: 132487,
+  bigintStr: "minima",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -989,7 +1158,7 @@ const jsonObj: SimpleObject = {
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -1035,23 +1204,24 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const arrParam: string[] = [
-  "dicta",
-  "dolor",
-  "maiores",
+  "aut",
+  "aut",
+  "deleniti",
 ];
 const arrParamExploded: number[] = [
-  406120,
+  304582,
+  146946,
+  882860,
+  79522,
 ];
 const mapParam: Record<string, string> = {
-  "excepturi": "voluptatibus",
-  "nostrum": "sapiente",
-  "quisquam": "saepe",
-  "ea": "impedit",
+  "et": "dolorum",
+  "laborum": "placeat",
 };
 const objParam: SimpleObject = {
-  any: "corporis",
-  bigint: 333145,
-  bigintStr: "aliquid",
+  any: "velit",
+  bigint: 432148,
+  bigintStr: "autem",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -1060,8 +1230,8 @@ const objParam: SimpleObject = {
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -1108,8 +1278,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const arrParam: string[] = [
-  "quo",
-  "consectetur",
+  "nulla",
+  "voluptas",
+  "libero",
+  "quasi",
 ];
 
 sdk.parameters.simplePathParameterArrays(arrParam).then((res: SimplePathParameterArraysResponse) => {
@@ -1148,16 +1320,12 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const mapParam: Record<string, string> = {
-  "aspernatur": "minima",
-  "eaque": "a",
-  "libero": "aut",
-  "aut": "deleniti",
+  "numquam": "explicabo",
+  "provident": "ipsa",
 };
 const mapParamExploded: Record<string, number> = {
-  "aliquam": 146946,
-  "accusamus": 79522,
-  "non": 89603,
-  "dolorum": 672048,
+  "magnam": 487935,
+  "eius": 458515,
 };
 
 sdk.parameters.simplePathParameterMaps(mapParam, mapParamExploded).then((res: SimplePathParameterMapsResponse) => {
@@ -1199,9 +1367,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const objParam: SimpleObject = {
-  any: "placeat",
-  bigint: 245367,
-  bigintStr: "eum",
+  any: "esse",
+  bigint: 524593,
+  bigintStr: "fuga",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -1219,9 +1387,9 @@ const objParam: SimpleObject = {
   strOpt: "optional example",
 };
 const objParamExploded: SimpleObject = {
-  any: "quas",
-  bigint: 829603,
-  bigintStr: "nulla",
+  any: "fugiat",
+  bigint: 283519,
+  bigintStr: "eum",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -1276,9 +1444,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const boolParam: boolean = false;
-const intParam: number = 96549;
-const numParam: number = 2703.28;
-const strParam: string = "numquam";
+const intParam: number = 181151;
+const numParam: number = 5093.42;
+const strParam: string = "quisquam";
 
 sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam).then((res: SimplePathParameterPrimitivesResponse) => {
   if (res.statusCode == 200) {

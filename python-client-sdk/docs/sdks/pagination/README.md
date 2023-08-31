@@ -30,7 +30,7 @@ s = sdk.SDK(
 )
 
 req = operations.PaginationCursorBodyRequestBody(
-    cursor=881005,
+    cursor=696344,
 )
 
 res = s.pagination.pagination_cursor_body(req)
@@ -69,7 +69,7 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_cursor_params(cursor=696344)
+res = s.pagination.pagination_cursor_params(cursor=976405)
 
 if res.res is not None:
     # handle response
@@ -105,9 +105,9 @@ s = sdk.SDK(
 )
 
 req = shared.LimitOffsetConfig(
-    limit=976405,
-    offset=377752,
-    page=617658,
+    limit=377752,
+    offset=617658,
+    page=179603,
 )
 
 res = s.pagination.pagination_limit_offset_offset_body(req)
@@ -146,7 +146,7 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_limit_offset_offset_params(limit=179603, offset=542499)
+res = s.pagination.pagination_limit_offset_offset_params(limit=542499, offset=24678)
 
 if res.res is not None:
     # handle response
@@ -183,9 +183,9 @@ s = sdk.SDK(
 )
 
 req = shared.LimitOffsetConfig(
-    limit=24678,
-    offset=854614,
-    page=67249,
+    limit=854614,
+    offset=67249,
+    page=743835,
 )
 
 res = s.pagination.pagination_limit_offset_page_body(req)
@@ -224,7 +224,7 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_limit_offset_page_params(page=743835)
+res = s.pagination.pagination_limit_offset_page_params(page=679393)
 
 if res.res is not None:
     # handle response

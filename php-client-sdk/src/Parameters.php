@@ -108,6 +108,45 @@ class Parameters
     }
 	
     /**
+     * duplicateParam
+     * 
+     * @param string $duplicateParamRequest
+     * @return \OpenAPI\OpenAPI\Models\Operations\DuplicateParamResponse
+     */
+	public function duplicateParam(
+        string $duplicateParamRequest,
+    ): \OpenAPI\OpenAPI\Models\Operations\DuplicateParamResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DuplicateParamRequest();
+        $request->duplicateParamRequest = $duplicateParamRequest;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/params/{duplicateParamRequest}', \OpenAPI\OpenAPI\Models\Operations\DuplicateParamRequest::class, $request, $this->sdkConfiguration->globals);
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DuplicateParamResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->duplicateParamResponse = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\DuplicateParamDuplicateParamResponse', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * formQueryParamsArray
      * 
      * @param ?array<string> $arrParam
@@ -552,6 +591,106 @@ class Parameters
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\JsonQueryParamsObjectRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * mixedParametersCamelCase
+     * 
+     * @param string $headerParam
+     * @param string $pathParam
+     * @param string $queryStringParam
+     * @return \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResponse
+     */
+	public function mixedParametersCamelCase(
+        string $headerParam,
+        string $pathParam,
+        string $queryStringParam,
+    ): \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseRequest();
+        $request->headerParam = $headerParam;
+        $request->pathParam = $pathParam;
+        $request->queryStringParam = $queryStringParam;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/mixedParams/path/{path_param}/camelcase', \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseRequest::class, $request, $this->sdkConfiguration->globals);
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseRequest::class, $request, $this->sdkConfiguration->globals));
+        $options = array_merge_recursive($options, Utils\Utils::getHeaders($request));
+        if (!array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * mixedParametersPrimitives
+     * 
+     * @param string $headerParam
+     * @param string $pathParam
+     * @param string $queryStringParam
+     * @return \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResponse
+     */
+	public function mixedParametersPrimitives(
+        string $headerParam,
+        string $pathParam,
+        string $queryStringParam,
+    ): \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesRequest();
+        $request->headerParam = $headerParam;
+        $request->pathParam = $pathParam;
+        $request->queryStringParam = $queryStringParam;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/mixedParams/path/{pathParam}', \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesRequest::class, $request, $this->sdkConfiguration->globals);
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesRequest::class, $request, $this->sdkConfiguration->globals));
+        $options = array_merge_recursive($options, Utils\Utils::getHeaders($request));
+        if (!array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesRes', 'json');
             }
         }
 

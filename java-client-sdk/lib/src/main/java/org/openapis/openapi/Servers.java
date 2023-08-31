@@ -41,6 +41,25 @@ public class Servers {
         put(SelectServerWithIDServers.VALID, "http://localhost:35123");
         put(SelectServerWithIDServers.BROKEN, "http://broken");
     }};
+	/**
+	 * ServerWithProtocolTemplateServers contains identifiers for the servers available to the SDK.
+	 */ 
+    public enum ServerWithProtocolTemplateServers {
+        MAIN("main");
+
+        public final String server;
+
+        private ServerWithProtocolTemplateServers(String server) {
+            this.server = server;
+        }
+    }
+
+    /**
+	 * SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final java.util.Map<ServerWithProtocolTemplateServers, String> SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS = new java.util.HashMap<ServerWithProtocolTemplateServers, String>() {{
+        put(ServerWithProtocolTemplateServers.MAIN, "{protocol}://{hostname}:{port}");
+    }};
 	
     /**
 	 * SERVER_WITH_TEMPLATES_SERVERS contains the list of server urls available to the SDK.
@@ -140,6 +159,45 @@ public class Servers {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.SelectServerWithIDResponse res = new org.openapis.openapi.models.operations.SelectServerWithIDResponse(contentType, httpRes.statusCode()) {{
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse serverWithProtocolTemplate() throws Exception {
+        return this.serverWithProtocolTemplate(null);
+    }
+
+    public org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse serverWithProtocolTemplate(String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS.get(ServerWithProtocolTemplateServers.MAIN), new java.util.HashMap<String, String>(){{
+            put("hostname", "localhost");
+            put("port", "35123");
+            put("protocol", "http");
+        }});
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/serverWithProtocolTemplate");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "*/*");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse res = new org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         

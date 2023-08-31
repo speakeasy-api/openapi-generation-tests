@@ -31,8 +31,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    requestID := "fugit"
-    numRetries := 282699
+    requestID := "iste"
+    numRetries := 661607
 
     ctx := context.Background()
     res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)

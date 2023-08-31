@@ -38,9 +38,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     simpleObject := shared.SimpleObject{
-        Any: "provident",
-        Bigint: big.NewInt(725255),
-        BigintStr: types.MustBigIntFromString("659669"),
+        Any: "nam",
+        Bigint: big.NewInt(659669),
+        BigintStr: types.MustBigIntFromString("501324"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
@@ -50,14 +50,14 @@ func main() {
         Int: 999999,
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
         Str: "example",
         StrOpt: sdk.String("optional example"),
     }
-    str := "sapiente"
+    str := "amet"
 
     ctx := context.Background()
     res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, simpleObject, str)
@@ -110,11 +110,11 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    paramStr := "amet"
+    paramStr := "deserunt"
     simpleObject := shared.SimpleObject{
-        Any: "deserunt",
-        Bigint: big.NewInt(394869),
-        BigintStr: types.MustBigIntFromString("423855"),
+        Any: "nisi",
+        Bigint: big.NewInt(423855),
+        BigintStr: types.MustBigIntFromString("618809"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
@@ -181,8 +181,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    strPathParameter := "molestiae"
-    strQueryParameter := "perferendis"
+    strPathParameter := "perferendis"
+    strQueryParameter := "nihil"
 
     ctx := context.Background()
     res, err := s.Flattening.ConflictingParams(ctx, strPathParameter, strQueryParameter)
@@ -234,9 +234,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
-        Str: "nihil",
+        Str: "magnam",
     }
-    str := "magnam"
+    str := "distinctio"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamConflict(ctx, requestBody, str)
@@ -288,9 +288,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
-        BodyStr: "distinctio",
+        BodyStr: "id",
     }
-    paramStr := "id"
+    paramStr := "labore"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, requestBody, paramStr)

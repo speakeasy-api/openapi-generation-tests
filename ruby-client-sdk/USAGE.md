@@ -7,6 +7,24 @@ require_relative openapi
 
 s = OpenApiSDK::SDK.new
 
+    
+res = s.generation.global_name_overridden()
+
+if ! res.get_global_name_override_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+
+## Second
+Do this second
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
    
 req = Operations::UsageExamplePostRequest.new(
   security=Operations::UsageExamplePostSecurity.new(
@@ -52,6 +70,7 @@ req = Operations::UsageExamplePostRequest.new(
     double_parameter=2.2222222,
     enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE3,
     falsey_number_parameter=0,
+    float32_parameter=1.1,
     float_parameter=1.1,
     int64_parameter=111111,
     int_parameter=1,

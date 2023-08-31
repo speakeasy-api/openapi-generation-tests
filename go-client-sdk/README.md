@@ -19,6 +19,40 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.GlobalNameOverridden(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.GetGlobalNameOverride200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+
+## Second
+Do this second
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
 	"math/big"
@@ -75,6 +109,7 @@ func main() {
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
+        Float32Parameter: 1.1,
         FloatParameter: 1.1,
         Int64Parameter: 111111,
         IntParameter: 1,
@@ -125,7 +160,8 @@ func main() {
 ### [Errors](docs/sdks/errors/README.md)
 
 * [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [StatusGet](docs/sdks/errors/README.md#statusget)
+* [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
 
 ### [First](docs/sdks/first/README.md)
 
@@ -143,9 +179,10 @@ func main() {
 
 * [AnchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [CircularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
-* [DeprecatedInSchemaWithCommentsGet](docs/sdks/generation/README.md#deprecatedinschemawithcommentsget)
-* [~~DeprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~DeprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `SimplePathParameterObjects` instead.
+* [DeprecatedFieldInSchemaPost](docs/sdks/generation/README.md#deprecatedfieldinschemapost)
+* [DeprecatedObjectInSchemaGet](docs/sdks/generation/README.md#deprecatedobjectinschemaget)
+* [~~DeprecatedOperationNoCommentsGet~~](docs/sdks/generation/README.md#deprecatedoperationnocommentsget) - :warning: **Deprecated**
+* [~~DeprecatedOperationWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `SimplePathParameterObjects` instead.
 * [EmptyObjectGet](docs/sdks/generation/README.md#emptyobjectget)
 * [EmptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [GlobalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)
@@ -173,6 +210,7 @@ func main() {
 
 * [DeepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [DeepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
+* [DuplicateParam](docs/sdks/parameters/README.md#duplicateparam)
 * [FormQueryParamsArray](docs/sdks/parameters/README.md#formqueryparamsarray)
 * [FormQueryParamsMap](docs/sdks/parameters/README.md#formqueryparamsmap)
 * [FormQueryParamsObject](docs/sdks/parameters/README.md#formqueryparamsobject)
@@ -183,6 +221,8 @@ func main() {
 * [HeaderParamsObject](docs/sdks/parameters/README.md#headerparamsobject)
 * [HeaderParamsPrimitive](docs/sdks/parameters/README.md#headerparamsprimitive)
 * [JSONQueryParamsObject](docs/sdks/parameters/README.md#jsonqueryparamsobject)
+* [MixedParametersCamelCase](docs/sdks/parameters/README.md#mixedparameterscamelcase)
+* [MixedParametersPrimitives](docs/sdks/parameters/README.md#mixedparametersprimitives)
 * [MixedQueryParams](docs/sdks/parameters/README.md#mixedqueryparams)
 * [PathParameterJSON](docs/sdks/parameters/README.md#pathparameterjson)
 * [PipeDelimitedQueryParamsArray](docs/sdks/parameters/README.md#pipedelimitedqueryparamsarray)
@@ -194,20 +234,30 @@ func main() {
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [RequestBodyPostApplicationJSONArray](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarray)
+* [RequestBodyPostApplicationJSONArrayCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarraycamelcase)
 * [RequestBodyPostApplicationJSONArrayObj](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayobj)
+* [RequestBodyPostApplicationJSONArrayObjCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayobjcamelcase)
 * [RequestBodyPostApplicationJSONArrayOfArray](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofarray)
+* [RequestBodyPostApplicationJSONArrayOfArrayCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofarraycamelcase)
 * [RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofarrayofprimitive)
 * [RequestBodyPostApplicationJSONArrayOfMap](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofmap)
+* [RequestBodyPostApplicationJSONArrayOfMapCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofmapcamelcase)
 * [RequestBodyPostApplicationJSONArrayOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofprimitive)
 * [RequestBodyPostApplicationJSONDeep](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsondeep)
+* [RequestBodyPostApplicationJSONDeepCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsondeepcamelcase)
 * [RequestBodyPostApplicationJSONMap](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmap)
+* [RequestBodyPostApplicationJSONMapCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapcamelcase)
 * [RequestBodyPostApplicationJSONMapObj](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapobj)
+* [RequestBodyPostApplicationJSONMapObjCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapobjcamelcase)
 * [RequestBodyPostApplicationJSONMapOfArray](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofarray)
+* [RequestBodyPostApplicationJSONMapOfArrayCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofarraycamelcase)
 * [RequestBodyPostApplicationJSONMapOfMap](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofmap)
+* [RequestBodyPostApplicationJSONMapOfMapCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofmapcamelcase)
 * [RequestBodyPostApplicationJSONMapOfMapOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofmapofprimitive)
 * [RequestBodyPostApplicationJSONMapOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofprimitive)
 * [RequestBodyPostApplicationJSONMultipleJSONFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [RequestBodyPostApplicationJSONSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
+* [RequestBodyPostApplicationJSONSimpleCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimplecamelcase)
 * [RequestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [RequestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [RequestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)
@@ -221,13 +271,20 @@ func main() {
 * [RequestBodyPostMultipleContentTypesSplitJSON](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitjson)
 * [RequestBodyPostMultipleContentTypesSplitMultipart](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitmultipart)
 * [RequestBodyPutBytes](docs/sdks/requestbodies/README.md#requestbodyputbytes)
+* [RequestBodyPutBytesWithParams](docs/sdks/requestbodies/README.md#requestbodyputbyteswithparams)
 * [RequestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [RequestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
 * [RequestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [RequestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
+* [RequestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
+* [RequestBodyReadAndWrite](docs/sdks/requestbodies/README.md#requestbodyreadandwrite)
+* [RequestBodyReadOnlyInput](docs/sdks/requestbodies/README.md#requestbodyreadonlyinput)
+* [RequestBodyWriteOnly](docs/sdks/requestbodies/README.md#requestbodywriteonly)
+* [RequestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 
 ### [Resource](docs/sdks/resource/README.md)
 
+* [CreateFile](docs/sdks/resource/README.md#createfile)
 * [CreateResource](docs/sdks/resource/README.md#createresource)
 * [DeleteResource](docs/sdks/resource/README.md#deleteresource)
 * [GetResource](docs/sdks/resource/README.md#getresource)
@@ -236,6 +293,9 @@ func main() {
 ### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
 * [ResponseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
+* [ResponseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
+* [ResponseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
+* [ResponseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
 * [ResponseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
 * [ResponseBodyXMLGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 
@@ -251,6 +311,7 @@ func main() {
 
 * [SelectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [SelectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
+* [ServerWithProtocolTemplate](docs/sdks/servers/README.md#serverwithprotocoltemplate)
 * [ServerWithTemplates](docs/sdks/servers/README.md#serverwithtemplates)
 * [ServerWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [ServersByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)

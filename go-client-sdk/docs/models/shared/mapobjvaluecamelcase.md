@@ -1,0 +1,11 @@
+# MapObjValueCamelCase
+
+OK
+
+
+## Fields
+
+| Field                                                                            | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `JSON`                                                                           | map[string][SimpleObjectCamelCase](../../models/shared/simpleobjectcamelcase.md) | :heavy_minus_sign:                                                               | N/A                                                                              |
+| `Required`                                                                       | *interface{}*                                                                    | :heavy_minus_sign:                                                               | N/A                                                                              |

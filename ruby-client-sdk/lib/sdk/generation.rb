@@ -75,12 +75,12 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::ObjectWithDeprecatedField).returns(Utils::FieldAugmented) }
-    def deprecated_in_schema_with_comments_get(request)
+    sig { params(request: Shared::DeprecatedFieldInObject).returns(Utils::FieldAugmented) }
+    def deprecated_field_in_schema_post(request)
 
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = "#{base_url}/anything/deprecatedInSchemaWithComments"
+      url = "#{base_url}/anything/deprecatedFieldInSchema"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
@@ -102,7 +102,7 @@ module OpenApiSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = Operations::DeprecatedInSchemaWithCommentsGetResponse.new(
+      res = Operations::DeprecatedFieldInSchemaPostResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
@@ -110,19 +110,48 @@ module OpenApiSDK
       res
     end
 
+    sig { returns(Utils::FieldAugmented) }
+    def deprecated_object_in_schema_get
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/deprecatedObjectInSchema"
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::DeprecatedObjectInSchemaGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::DeprecatedObjectInSchemaGet200ApplicationJSON)
+          res.deprecated_object_in_schema_get_200_application_json_object = out
+        end
+      end
+      res
+    end
+
     sig { params(deprecated_parameter: T.nilable(String)).returns(Utils::FieldAugmented) }
-    def deprecated_no_comments_get(deprecated_parameter = nil)
-      # deprecated_no_comments_get
+    def deprecated_operation_no_comments_get(deprecated_parameter = nil)
+      # deprecated_operation_no_comments_get
       # 
       # @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
-      request = Operations::DeprecatedNoCommentsGetRequest.new(
+      request = Operations::DeprecatedOperationNoCommentsGetRequest.new(
         deprecated_parameter: deprecated_parameter
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = "#{base_url}/anything/deprecatedNoComments"
+      url = "#{base_url}/anything/deprecatedOperationNoComments"
       headers = {}
-      query_params = Utils.get_query_params(Operations::DeprecatedNoCommentsGetRequest, request, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Operations::DeprecatedOperationNoCommentsGetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -134,7 +163,7 @@ module OpenApiSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = Operations::DeprecatedNoCommentsGetResponse.new(
+      res = Operations::DeprecatedOperationNoCommentsGetResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
@@ -143,19 +172,19 @@ module OpenApiSDK
     end
 
     sig { params(deprecated_parameter: T.nilable(String), new_parameter: T.nilable(String)).returns(Utils::FieldAugmented) }
-    def deprecated_with_comments_get(deprecated_parameter = nil, new_parameter = nil)
-      # deprecated_with_comments_get - This is an endpoint setup to test deprecation with comments
+    def deprecated_operation_with_comments_get(deprecated_parameter = nil, new_parameter = nil)
+      # deprecated_operation_with_comments_get - This is an endpoint setup to test deprecation with comments
       # 
-      # @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible. Use simple_path_parameter_objects instead.
-      request = Operations::DeprecatedWithCommentsGetRequest.new(
+      # @deprecated  method: This operation is deprecated. Use simple_path_parameter_objects instead.
+      request = Operations::DeprecatedOperationWithCommentsGetRequest.new(
         deprecated_parameter: deprecated_parameter,
         new_parameter: new_parameter
       )
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
-      url = "#{base_url}/anything/deprecatedWithComments"
+      url = "#{base_url}/anything/deprecatedOperationWithComments"
       headers = {}
-      query_params = Utils.get_query_params(Operations::DeprecatedWithCommentsGetRequest, request, @sdk_configuration.globals)
+      query_params = Utils.get_query_params(Operations::DeprecatedOperationWithCommentsGetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = '*/*'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -167,7 +196,7 @@ module OpenApiSDK
 
       content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
 
-      res = Operations::DeprecatedWithCommentsGetResponse.new(
+      res = Operations::DeprecatedOperationWithCommentsGetResponse.new(
         status_code: r.status, content_type: content_type, raw_response: r
       )
       if r.status == 200
@@ -337,10 +366,11 @@ module OpenApiSDK
       res
     end
 
-    sig { params(test_query_param: String).returns(Utils::FieldAugmented) }
-    def name_override(test_query_param)
+    sig { params(test_enum_query_param: Operations::NameOverrideGetEnumNameOverride, test_query_param: String).returns(Utils::FieldAugmented) }
+    def name_override(test_enum_query_param, test_query_param)
 
       request = Operations::NameOverrideGetRequest.new(
+        test_enum_query_param: test_enum_query_param,
         test_query_param: test_query_param
       )
       url, params = @sdk_configuration.get_server_details

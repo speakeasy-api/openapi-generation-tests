@@ -8,9 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchor_types_get](#anchor_types_get)
 * [circular_reference_get](#circular_reference_get)
-* [deprecated_in_schema_with_comments_get](#deprecated_in_schema_with_comments_get)
-* [~~deprecated_no_comments_get~~](#deprecated_no_comments_get) - :warning: **Deprecated**
-* [~~deprecated_with_comments_get~~](#deprecated_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simple_path_parameter_objects` instead.
+* [deprecated_field_in_schema_post](#deprecated_field_in_schema_post)
+* [deprecated_object_in_schema_get](#deprecated_object_in_schema_get)
+* [~~deprecated_operation_no_comments_get~~](#deprecated_operation_no_comments_get) - :warning: **Deprecated**
+* [~~deprecated_operation_with_comments_get~~](#deprecated_operation_with_comments_get) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simple_path_parameter_objects` instead.
 * [empty_object_get](#empty_object_get)
 * [empty_response_object_with_comment_get](#empty_response_object_with_comment_get)
 * [global_name_overridden](#global_name_overridden)
@@ -78,7 +79,7 @@ if res.valid_circular_reference_object is not None:
 **[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)**
 
 
-## deprecated_in_schema_with_comments_get
+## deprecated_field_in_schema_post
 
 ### Example Usage
 
@@ -94,12 +95,12 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.ObjectWithDeprecatedField(
+req = shared.DeprecatedFieldInObject(
     deprecated_field='labore',
-    new_field='labore',
+    new_field='suscipit',
 )
 
-res = s.generation.deprecated_in_schema_with_comments_get(req)
+res = s.generation.deprecated_field_in_schema_post(req)
 
 if res.status_code == 200:
     # handle response
@@ -107,17 +108,46 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [shared.ObjectWithDeprecatedField](../../models/shared/objectwithdeprecatedfield.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [shared.DeprecatedFieldInObject](../../models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
 
 
 ### Response
 
-**[operations.DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/deprecatedinschemawithcommentsgetresponse.md)**
+**[operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md)**
 
 
-## ~~deprecated_no_comments_get~~
+## deprecated_object_in_schema_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.deprecated_object_in_schema_get()
+
+if res.deprecated_object_in_schema_get_200_application_json_object is not None:
+    # handle response
+```
+
+
+### Response
+
+**[operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md)**
+
+
+## ~~deprecated_operation_no_comments_get~~
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -136,7 +166,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_no_comments_get(deprecated_parameter='suscipit')
+res = s.generation.deprecated_operation_no_comments_get(deprecated_parameter='natus')
 
 if res.status_code == 200:
     # handle response
@@ -151,14 +181,14 @@ if res.status_code == 200:
 
 ### Response
 
-**[operations.DeprecatedNoCommentsGetResponse](../../models/operations/deprecatednocommentsgetresponse.md)**
+**[operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md)**
 
 
-## ~~deprecated_with_comments_get~~
+## ~~deprecated_operation_with_comments_get~~
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible. Use `simple_path_parameter_objects` instead.
+> :warning: **DEPRECATED**: This operation is deprecated. Use `simple_path_parameter_objects` instead.
 
 ### Example Usage
 
@@ -175,7 +205,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_with_comments_get(deprecated_parameter='natus', new_parameter='nobis')
+res = s.generation.deprecated_operation_with_comments_get(deprecated_parameter='nobis', new_parameter='eum')
 
 if res.status_code == 200:
     # handle response
@@ -183,15 +213,15 @@ if res.status_code == 200:
 
 ### Parameters
 
-| Parameter                                                                                                                                                                      | Type                                                                                                                                                                           | Required                                                                                                                                                                       | Description                                                                                                                                                                    |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `deprecated_parameter`                                                                                                                                                         | *Optional[str]*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                             | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. Use new_parameter instead.<br/><br/>This is a string parameter |
-| `new_parameter`                                                                                                                                                                | *Optional[str]*                                                                                                                                                                | :heavy_minus_sign:                                                                                                                                                             | This is a string parameter                                                                                                                                                     |
+| Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `deprecated_parameter`                                                                                            | *Optional[str]*                                                                                                   | :heavy_minus_sign:                                                                                                | : warning: ** DEPRECATED **: This parameter is deprecated. Use new_parameter instead.<br/><br/>This is a string parameter |
+| `new_parameter`                                                                                                   | *Optional[str]*                                                                                                   | :heavy_minus_sign:                                                                                                | This is a string parameter                                                                                        |
 
 
 ### Response
 
-**[operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md)**
+**[operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md)**
 
 
 ## empty_object_get
@@ -334,9 +364,9 @@ s = sdk.SDK(
 
 
 res = s.generation.ignores_post(request_body=operations.IgnoresPostApplicationJSON(
-    callback_url='http://ugly-cash.com',
-    test_prop='magnam',
-), test_param='et')
+    callback_url='https://composed-branch.biz',
+    test_prop='et',
+), test_param='excepturi')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
@@ -372,7 +402,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.name_override(test_query_param='example')
+res = s.generation.name_override(test_enum_query_param=operations.NameOverrideGetEnumNameOverride.VALUE3, test_query_param='example')
 
 if res.overridden_response is not None:
     # handle response
@@ -380,9 +410,10 @@ if res.overridden_response is not None:
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `test_query_param` | *str*              | :heavy_check_mark: | N/A                | example            |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `test_enum_query_param`                                                                                  | [operations.NameOverrideGetEnumNameOverride](../../models/operations/nameoverridegetenumnameoverride.md) | :heavy_check_mark:                                                                                       | An enum type                                                                                             | value3                                                                                                   |
+| `test_query_param`                                                                                       | *str*                                                                                                    | :heavy_check_mark:                                                                                       | N/A                                                                                                      | example                                                                                                  |
 
 
 ### Response
@@ -408,10 +439,10 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.typed_parameter_generation_get(bigint=569965, date_=dateutil.parser.parse('2022-05-30').date(), obj=operations.TypedParameterGenerationGetObj(
+res = s.generation.typed_parameter_generation_get(bigint=354047, date_=dateutil.parser.parse('2021-11-24').date(), obj=operations.TypedParameterGenerationGetObj(
     bool=False,
-    num=5518.16,
-    str_='sint',
+    num=5743.25,
+    str_='accusantium',
 ))
 
 if res.status_code == 200:
@@ -453,17 +484,17 @@ s = sdk.SDK(
 
 req = operations.UsageExamplePostRequest(
     request_body=operations.UsageExamplePostRequestBody(
-        email='Madaline.Wisozk@gmail.com',
-        format_email='Dallas36@yahoo.com',
-        format_uri='http://infinite-winery.org',
-        format_uuid='4c8b711e-5b7f-4d2e-9028-921cddc69260',
-        hostname='big-willingness.net',
-        ipv4='95.116.107.184',
-        ipv6='0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b',
+        email='Vivienne43@yahoo.com',
+        format_email='Sophie.Connelly@gmail.com',
+        format_uri='http://worrisome-teenager.biz',
+        format_uuid='c8b711e5-b7fd-42ed-8289-21cddc692601',
+        hostname='worn-programme.info',
+        ipv4='116.107.184.12',
+        ipv6='d5f0:d30c:5fbb:2587:0532:02c7:3d5f:e9b9',
         simple_object=shared.SimpleObject(
-            any='perspiciatis',
-            bigint=31838,
-            bigint_str='porro',
+            any='voluptatem',
+            bigint=783645,
+            bigint_str='consequuntur',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
@@ -472,7 +503,7 @@ req = operations.UsageExamplePostRequest(
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
             int_enum=shared.SimpleObjectIntEnum.SECOND,
             int_opt_null=999999,
             num=1.1,
@@ -480,9 +511,9 @@ req = operations.UsageExamplePostRequest(
             str_='example',
             str_opt='optional example',
         ),
-        unknown='error',
-        uri='http://noxious-pronunciation.biz',
-        uuid='fe49a8d9-cbf4-4863-b323-f9b77f3a4100',
+        unknown='eaque',
+        uri='https://right-damage.org',
+        uuid='e49a8d9c-bf48-4633-b23f-9b77f3a41006',
     ),
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),
@@ -490,6 +521,7 @@ req = operations.UsageExamplePostRequest(
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,
+    float32_parameter=1.1,
     float_parameter=1.1,
     int64_parameter=111111,
     int_parameter=1,

@@ -3,27 +3,78 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
+
+export class ExampleResourceChocolates extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    @Expose({ name: "description" })
+    description: string;
+}
+
+export enum ExampleResourceEnumNumber {
+    One = 1,
+    Two = 2,
+    Three = 3,
+}
+
+export enum ExampleResourceEnumStr {
+    One = "one",
+    Two = "two",
+    Three = "three",
+}
 
 /**
  * OK
  */
 export class ExampleResource extends SpeakeasyBase {
     @SpeakeasyMetadata()
+    @Expose({ name: "arrayOfNumber" })
+    arrayOfNumber?: number[];
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "arrayOfString" })
+    arrayOfString?: string[];
+
+    @SpeakeasyMetadata({ elemType: ExampleResourceChocolates })
+    @Expose({ name: "chocolates" })
+    @Type(() => ExampleResourceChocolates)
+    chocolates: ExampleResourceChocolates[];
+
+    @SpeakeasyMetadata()
     @Expose({ name: "createdAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     createdAt?: Date;
 
     @SpeakeasyMetadata()
+    @Expose({ name: "enumNumber" })
+    enumNumber?: ExampleResourceEnumNumber;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "enumStr" })
+    enumStr?: ExampleResourceEnumStr;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "id" })
-    id?: string;
+    id: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "mapOfInteger" })
+    mapOfInteger?: Record<string, number>;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "mapOfString" })
+    mapOfString?: Record<string, string>;
 
     @SpeakeasyMetadata()
     @Expose({ name: "name" })
-    name?: string;
+    name: string;
 
     @SpeakeasyMetadata()
     @Expose({ name: "updatedAt" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     updatedAt?: Date;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "vehicle" })
+    vehicle: any;
 }

@@ -4,9 +4,12 @@
 
 package org.openapis.openapi;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.http.HttpResponse;
+import java.nio.charset.StandardCharsets;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
+import org.openapis.openapi.utils.JSON;
 
 /**
  * Endpoints for testing error responses.
@@ -18,6 +21,13 @@ public class Errors {
 	 */
     public static final String[] CONNECTION_ERROR_GET_SERVERS = {
         "http://somebrokenapi.broken",
+    };
+	
+    /**
+	 * STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS = {
+        "http://localhost:35456",
     };
 	
 	private SDKConfiguration sdkConfiguration;
@@ -61,11 +71,11 @@ public class Errors {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.StatusGetResponse statusGet(Long statusCode) throws Exception {
-        org.openapis.openapi.models.operations.StatusGetRequest request = new org.openapis.openapi.models.operations.StatusGetRequest(statusCode);
+    public org.openapis.openapi.models.operations.StatusGetErrorResponse statusGetError(Long statusCode) throws Exception {
+        org.openapis.openapi.models.operations.StatusGetErrorRequest request = new org.openapis.openapi.models.operations.StatusGetErrorRequest(statusCode);
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.StatusGetRequest.class, baseUrl, "/status/{statusCode}", request, this.sdkConfiguration.globals);
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.StatusGetErrorRequest.class, baseUrl, "/status/{statusCode}", request, this.sdkConfiguration.globals);
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
@@ -80,11 +90,64 @@ public class Errors {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        org.openapis.openapi.models.operations.StatusGetResponse res = new org.openapis.openapi.models.operations.StatusGetResponse(contentType, httpRes.statusCode()) {{
+        org.openapis.openapi.models.operations.StatusGetErrorResponse res = new org.openapis.openapi.models.operations.StatusGetErrorResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200 || httpRes.statusCode() == 300 || httpRes.statusCode() == 400 || httpRes.statusCode() == 500) {
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse statusGetXSpeakeasyErrors(Long statusCode) throws Exception {
+        return this.statusGetXSpeakeasyErrors(statusCode, null);
+    }
+
+    public org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse statusGetXSpeakeasyErrors(Long statusCode, String serverURL) throws Exception {
+        org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsRequest request = new org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsRequest(statusCode);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsRequest.class, baseUrl, "/errors/{statusCode}", request, this.sdkConfiguration.globals);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse res = new org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrorsResponse(contentType, httpRes.statusCode()) {{
+            error = null;
+            statusGetXSpeakeasyErrors501ApplicationJSONObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200 || httpRes.statusCode() == 300 || httpRes.statusCode() == 400) {
+        }
+        else if (httpRes.statusCode() == 500) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.Error out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.Error.class);
+                res.error = out;
+            }
+        }
+        else if (httpRes.statusCode() == 501) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrors501ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.StatusGetXSpeakeasyErrors501ApplicationJSON.class);
+                res.statusGetXSpeakeasyErrors501ApplicationJSONObject = out;
+            }
         }
 
         return res;

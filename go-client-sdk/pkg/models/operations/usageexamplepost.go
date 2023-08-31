@@ -210,6 +210,8 @@ type UsageExamplePostRequest struct {
 	EnumParameter UsageExamplePostEnumParameter `queryParam:"style=form,explode=true,name=enumParameter"`
 	// A number parameter that contains a falsey example value
 	FalseyNumberParameter float64 `queryParam:"style=form,explode=true,name=falseyNumberParameter"`
+	// A float32 parameter
+	Float32Parameter float32 `queryParam:"style=form,explode=true,name=float32Parameter"`
 	// A float parameter
 	FloatParameter float64 `queryParam:"style=form,explode=true,name=floatParameter"`
 	// An int64 parameter
@@ -269,6 +271,13 @@ func (o *UsageExamplePostRequest) GetFalseyNumberParameter() float64 {
 		return 0.0
 	}
 	return o.FalseyNumberParameter
+}
+
+func (o *UsageExamplePostRequest) GetFloat32Parameter() float32 {
+	if o == nil {
+		return 0.0
+	}
+	return o.Float32Parameter
 }
 
 func (o *UsageExamplePostRequest) GetFloatParameter() float64 {

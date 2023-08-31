@@ -87,6 +87,44 @@ module OpenApiSDK
       res
     end
 
+    sig { params(duplicate_param_request: String).returns(Utils::FieldAugmented) }
+    def duplicate_param(duplicate_param_request)
+
+      request = Operations::DuplicateParamRequest.new(
+        duplicate_param_request: duplicate_param_request
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Operations::DuplicateParamRequest,
+        base_url,
+        '/anything/params/{duplicateParamRequest}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::DuplicateParamResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::DuplicateParamDuplicateParamResponse)
+          res.duplicate_param_response = out
+        end
+      end
+      res
+    end
+
     sig { params(arr_param: T.nilable(T::Array[String]), arr_param_exploded: T.nilable(T::Array[Integer])).returns(Utils::FieldAugmented) }
     def form_query_params_array(arr_param = nil, arr_param_exploded = nil)
 
@@ -426,6 +464,90 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Operations::JsonQueryParamsObjectRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(header_param: String, path_param: String, query_string_param: String).returns(Utils::FieldAugmented) }
+    def mixed_parameters_camel_case(header_param, path_param, query_string_param)
+
+      request = Operations::MixedParametersCamelCaseRequest.new(
+        header_param: header_param,
+        path_param: path_param,
+        query_string_param: query_string_param
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Operations::MixedParametersCamelCaseRequest,
+        base_url,
+        '/anything/mixedParams/path/{path_param}/camelcase',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = Utils.get_headers(request)
+      query_params = Utils.get_query_params(Operations::MixedParametersCamelCaseRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::MixedParametersCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::MixedParametersCamelCaseRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(header_param: String, path_param: String, query_string_param: String).returns(Utils::FieldAugmented) }
+    def mixed_parameters_primitives(header_param, path_param, query_string_param)
+
+      request = Operations::MixedParametersPrimitivesRequest.new(
+        header_param: header_param,
+        path_param: path_param,
+        query_string_param: query_string_param
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Operations::MixedParametersPrimitivesRequest,
+        base_url,
+        '/anything/mixedParams/path/{pathParam}',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = Utils.get_headers(request)
+      query_params = Utils.get_query_params(Operations::MixedParametersPrimitivesRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::MixedParametersPrimitivesResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::MixedParametersPrimitivesRes)
           res.res = out
         end
       end

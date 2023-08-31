@@ -24,6 +24,12 @@ class Servers
 		Servers::SELECT_SERVER_WITH_ID_SERVER_BROKEN => 'http://broken',
 	];
 	
+	public const SERVER_WITH_PROTOCOL_TEMPLATE_SERVER_MAIN = 'main';
+	
+	public const SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS = [
+		Servers::SERVER_WITH_PROTOCOL_TEMPLATE_SERVER_MAIN => '{protocol}://{hostname}:{port}',
+	];
+	
 	public const SERVER_WITH_TEMPLATES_SERVERS = [
 		'http://{hostname}:{port}',
 	];
@@ -103,6 +109,46 @@ class Servers
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $response = new \OpenAPI\OpenAPI\Models\Operations\SelectServerWithIDResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+        }
+
+        return $response;
+    }
+	
+    /**
+     * serverWithProtocolTemplate
+     * 
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\ServerWithProtocolTemplateResponse
+     */
+	public function serverWithProtocolTemplate(
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\ServerWithProtocolTemplateResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(Servers::SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS[Servers::SERVER_WITH_PROTOCOL_TEMPLATE_SERVER_MAIN], array(
+            'hostname' => 'localhost',
+            'port' => '35123',
+            'protocol' => 'http',
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/serverWithProtocolTemplate');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ServerWithProtocolTemplateResponse();
         $response->statusCode = $httpResponse->getStatusCode();
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;

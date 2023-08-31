@@ -56,6 +56,45 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: T::Array[Shared::SimpleObjectCamelCase], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_array_camel_case(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/requestbody#arrayCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonArrayCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[Shared::SimpleObjectCamelCase])
+          res.simple_object_camel_cases = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T::Array[Shared::SimpleObject]).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_obj(request)
 
@@ -95,6 +134,45 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: T::Array[Shared::SimpleObjectCamelCase]).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_array_obj_camel_case(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/array/objResponseCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonArrayObjCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::ArrObjValueCamelCase)
+          res.arr_obj_value_camel_case = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T::Array[T::Array[Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_array(request, server_url = nil)
 
@@ -128,6 +206,45 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Array[T::Array[Shared::SimpleObject]])
+          res.arrs = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T::Array[T::Array[Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_array_of_array_camel_case(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/requestbody#arrayOfArraysCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[T::Array[Shared::SimpleObjectCamelCase]])
           res.arrs = out
         end
       end
@@ -212,6 +329,45 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: T::Array[T::Hash[Symbol, Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_array_of_map_camel_case(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/requestbody#arrayOfMapsCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[T::Hash[Symbol, Shared::SimpleObjectCamelCase]])
+          res.maps = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T::Array[String], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_primitive(request, server_url = nil)
 
@@ -289,6 +445,44 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: Shared::DeepObjectCamelCase).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_deep_camel_case(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/deep/camelcase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonDeepCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPostApplicationJsonDeepCamelCaseRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T::Hash[Symbol, Shared::SimpleObject], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map(request, server_url = nil)
 
@@ -322,6 +516,45 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Shared::SimpleObject])
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T::Hash[Symbol, Shared::SimpleObjectCamelCase], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_map_camel_case(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/requestbody#mapCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonMapCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, Shared::SimpleObjectCamelCase])
           res.res = out
         end
       end
@@ -367,6 +600,45 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: T::Hash[Symbol, Shared::SimpleObjectCamelCase]).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_map_obj_camel_case(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/map/objResponseCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonMapObjCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::MapObjValueCamelCase)
+          res.map_obj_value_camel_case = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T::Hash[Symbol, T::Array[Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_array(request, server_url = nil)
 
@@ -406,6 +678,45 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: T::Hash[Symbol, T::Array[Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_map_of_array_camel_case(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/requestbody#mapOfArraysCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, T::Array[Shared::SimpleObjectCamelCase]])
+          res.res = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_map(request, server_url = nil)
 
@@ -439,6 +750,45 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObject]])
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_map_of_map_camel_case(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/requestbody#mapOfMapsCamelCase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObjectCamelCase]])
           res.res = out
         end
       end
@@ -595,6 +945,45 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPostApplicationJsonSimpleRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: Shared::SimpleObjectCamelCase).returns(Utils::FieldAugmented) }
+    def request_body_post_application_json_simple_camel_case(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/post/application/json/camelcase"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostApplicationJsonSimpleCamelCaseResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPostApplicationJsonSimpleCamelCaseRes)
           res.res = out
         end
       end
@@ -1125,6 +1514,51 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request_body: String, query_string_param: String).returns(Utils::FieldAugmented) }
+    def request_body_put_bytes_with_params(request_body, query_string_param)
+
+      request = Operations::RequestBodyPutBytesWithParamsRequest.new(
+        request_body: request_body,
+        query_string_param: query_string_param
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/bytesWithParams"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :raw)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      query_params = Utils.get_query_params(Operations::RequestBodyPutBytesWithParamsRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.put(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPutBytesWithParamsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPutBytesWithParamsRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
     sig { params(request: Shared::DeepObject).returns(Utils::FieldAugmented) }
     def request_body_put_multipart_deep(request)
 
@@ -1276,6 +1710,207 @@ module OpenApiSDK
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPutStringRes)
           res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request_body: String, query_string_param: String).returns(Utils::FieldAugmented) }
+    def request_body_put_string_with_params(request_body, query_string_param)
+
+      request = Operations::RequestBodyPutStringWithParamsRequest.new(
+        request_body: request_body,
+        query_string_param: query_string_param
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/requestBodies/put/stringWithParams"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :string)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      query_params = Utils.get_query_params(Operations::RequestBodyPutStringWithParamsRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.put(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPutStringWithParamsResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPutStringWithParamsRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: Shared::ReadWriteObjectInput, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_read_and_write(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_READ_AND_WRITE_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/readonlyandwriteonly"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyReadAndWriteResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::ReadWriteObjectOutput)
+          res.read_write_object = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: Shared::ReadOnlyObjectInput, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_read_only_input(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_READ_ONLY_INPUT_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/readonlyorwriteonly#readOnlyInput"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyReadOnlyInputResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::ReadOnlyObject)
+          res.read_only_object = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: Shared::WriteOnlyObject, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_write_only(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_WRITE_ONLY_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/readonlyorwriteonly#writeOnly"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyWriteOnlyResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::ReadOnlyObject)
+          res.read_only_object = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: Shared::WriteOnlyObject, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_write_only_output(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/readonlyorwriteonly#writeOnlyOutput"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyWriteOnlyOutputResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::WriteOnlyObjectOutput)
+          res.write_only_object = out
         end
       end
       res

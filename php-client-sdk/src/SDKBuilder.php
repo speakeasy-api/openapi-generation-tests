@@ -109,6 +109,24 @@ class SDKBuilder
         return $this;
     }
     /**
+     * setProtocol is used to configure the protocol variable for url substitution
+     *
+     * @param string $protocol
+     * @return SDKBuilder
+     */
+    public function setProtocol(string $protocol): SDKBuilder
+    {
+        foreach ($this->sdkConfig->serverDefaults as $idx => $serverDefaults) {
+            if (!array_key_exists('protocol', $serverDefaults)) {
+                continue;
+            }
+            
+            $this->sdkConfig->serverDefaults[$idx]['protocol'] = $protocol;
+        }
+
+        return $this;
+    }
+    /**
      * setSomething is used to configure the something variable for url substitution
      *
      * @param ServerSomething $something

@@ -3,7 +3,6 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
 import { AxiosResponse } from "axios";
 
 export class UpdateResourceRequest extends SpeakeasyBase {
@@ -14,12 +13,6 @@ export class UpdateResourceRequest extends SpeakeasyBase {
 export class UpdateResourceResponse extends SpeakeasyBase {
     @SpeakeasyMetadata()
     contentType: string;
-
-    /**
-     * OK
-     */
-    @SpeakeasyMetadata()
-    exampleResource?: shared.ExampleResource;
 
     @SpeakeasyMetadata()
     statusCode: number;

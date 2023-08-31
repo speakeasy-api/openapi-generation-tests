@@ -68,6 +68,14 @@ class UsageExamplePostRequest
     public float $falseyNumberParameter;
     
     /**
+     * A float32 parameter
+     * 
+     * @var float $float32Parameter
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=float32Parameter')]
+    public float $float32Parameter;
+    
+    /**
      * A float parameter
      * 
      * @var float $floatParameter
@@ -116,6 +124,7 @@ class UsageExamplePostRequest
 		$this->doubleParameter = 0;
 		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter::Value1;
 		$this->falseyNumberParameter = 0;
+		$this->float32Parameter = 0;
 		$this->floatParameter = 0;
 		$this->int64Parameter = 0;
 		$this->intParameter = 0;

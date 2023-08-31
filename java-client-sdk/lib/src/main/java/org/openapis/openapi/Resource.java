@@ -21,6 +21,44 @@ public class Resource {
 		this.sdkConfiguration = sdkConfiguration;
 	}
 
+    public org.openapis.openapi.models.operations.CreateFileResponse createFile(org.openapis.openapi.models.operations.CreateFileRequestBody request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/fileResource");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "multipart");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.CreateFileResponse res = new org.openapis.openapi.models.operations.CreateFileResponse(contentType, httpRes.statusCode()) {{
+            fileResource = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.FileResource out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.FileResource.class);
+                res.fileResource = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.CreateResourceResponse createResource(org.openapis.openapi.models.shared.ExampleResource request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/resource");
@@ -130,7 +168,7 @@ public class Resource {
         req.setMethod("POST");
         req.setURL(url);
 
-        req.addHeader("Accept", "application/json");
+        req.addHeader("Accept", "*/*");
         req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
         
         HTTPClient client = this.sdkConfiguration.securityClient;
@@ -140,16 +178,10 @@ public class Resource {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.UpdateResourceResponse res = new org.openapis.openapi.models.operations.UpdateResourceResponse(contentType, httpRes.statusCode()) {{
-            exampleResource = null;
         }};
         res.rawResponse = httpRes;
         
-        if (httpRes.statusCode() == 200) {
-            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
-                ObjectMapper mapper = JSON.getMapper();
-                org.openapis.openapi.models.shared.ExampleResource out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ExampleResource.class);
-                res.exampleResource = out;
-            }
+        if (httpRes.statusCode() == 202) {
         }
 
         return res;

@@ -91,9 +91,9 @@ public class Generation {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse deprecatedInSchemaWithCommentsGet(org.openapis.openapi.models.shared.ObjectWithDeprecatedField request) throws Exception {
+    public org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse deprecatedFieldInSchemaPost(org.openapis.openapi.models.shared.DeprecatedFieldInObject request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedInSchemaWithComments");
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedFieldInSchema");
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("POST");
@@ -113,11 +113,44 @@ public class Generation {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse res = new org.openapis.openapi.models.operations.DeprecatedInSchemaWithCommentsGetResponse(contentType, httpRes.statusCode()) {{
+        org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse res = new org.openapis.openapi.models.operations.DeprecatedFieldInSchemaPostResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         
         if (httpRes.statusCode() == 200) {
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse deprecatedObjectInSchemaGet() throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedObjectInSchema");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse res = new org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGetResponse(contentType, httpRes.statusCode()) {{
+            deprecatedObjectInSchemaGet200ApplicationJSONObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGet200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.DeprecatedObjectInSchemaGet200ApplicationJSON.class);
+                res.deprecatedObjectInSchemaGet200ApplicationJSONObject = out;
+            }
         }
 
         return res;
@@ -129,8 +162,8 @@ public class Generation {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public org.openapis.openapi.models.operations.DeprecatedNoCommentsGetResponse deprecatedNoCommentsGet() throws Exception {
-        return this.deprecatedNoCommentsGet(null);
+    public org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse deprecatedOperationNoCommentsGet() throws Exception {
+        return this.deprecatedOperationNoCommentsGet(null);
     }
 
     /**
@@ -140,12 +173,12 @@ public class Generation {
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
     @Deprecated
-    public org.openapis.openapi.models.operations.DeprecatedNoCommentsGetResponse deprecatedNoCommentsGet(String deprecatedParameter) throws Exception {
-        org.openapis.openapi.models.operations.DeprecatedNoCommentsGetRequest request = new org.openapis.openapi.models.operations.DeprecatedNoCommentsGetRequest();
+    public org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse deprecatedOperationNoCommentsGet(String deprecatedParameter) throws Exception {
+        org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetRequest request = new org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetRequest();
         request.deprecatedParameter=deprecatedParameter;
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedNoComments");
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedOperationNoComments");
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
@@ -153,7 +186,7 @@ public class Generation {
 
         req.addHeader("Accept", "*/*");
         req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeprecatedNoCommentsGetRequest.class, request, this.sdkConfiguration.globals);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
@@ -166,7 +199,7 @@ public class Generation {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        org.openapis.openapi.models.operations.DeprecatedNoCommentsGetResponse res = new org.openapis.openapi.models.operations.DeprecatedNoCommentsGetResponse(contentType, httpRes.statusCode()) {{
+        org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse res = new org.openapis.openapi.models.operations.DeprecatedOperationNoCommentsGetResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         
@@ -180,11 +213,11 @@ public class Generation {
      * This is an endpoint setup to test deprecation with comments
      * @return the response from the API call
      * @throws Exception if the API call fails
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead.
+     * @deprecated method: This operation is deprecated. Use simplePathParameterObjects instead.
      */
     @Deprecated
-    public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet() throws Exception {
-        return this.deprecatedWithCommentsGet(null, null);
+    public org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse deprecatedOperationWithCommentsGet() throws Exception {
+        return this.deprecatedOperationWithCommentsGet(null, null);
     }
 
     /**
@@ -192,11 +225,11 @@ public class Generation {
      * @param deprecatedParameter This is a string parameter
      * @return the response from the API call
      * @throws Exception if the API call fails
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead.
+     * @deprecated method: This operation is deprecated. Use simplePathParameterObjects instead.
      */
     @Deprecated
-    public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(String deprecatedParameter) throws Exception {
-        return this.deprecatedWithCommentsGet(deprecatedParameter, null);
+    public org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse deprecatedOperationWithCommentsGet(String deprecatedParameter) throws Exception {
+        return this.deprecatedOperationWithCommentsGet(deprecatedParameter, null);
     }
 
     /**
@@ -205,16 +238,16 @@ public class Generation {
      * @param newParameter This is a string parameter
      * @return the response from the API call
      * @throws Exception if the API call fails
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead.
+     * @deprecated method: This operation is deprecated. Use simplePathParameterObjects instead.
      */
     @Deprecated
-    public org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse deprecatedWithCommentsGet(String deprecatedParameter, String newParameter) throws Exception {
-        org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest request = new org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest();
+    public org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse deprecatedOperationWithCommentsGet(String deprecatedParameter, String newParameter) throws Exception {
+        org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetRequest request = new org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetRequest();
         request.deprecatedParameter=deprecatedParameter;
         request.newParameter=newParameter;
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedWithComments");
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/deprecatedOperationWithComments");
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("GET");
@@ -222,7 +255,7 @@ public class Generation {
 
         req.addHeader("Accept", "*/*");
         req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
-        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeprecatedWithCommentsGetRequest.class, request, this.sdkConfiguration.globals);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
                 req.addQueryParam(queryParam);
@@ -235,7 +268,7 @@ public class Generation {
 
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
-        org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse res = new org.openapis.openapi.models.operations.DeprecatedWithCommentsGetResponse(contentType, httpRes.statusCode()) {{
+        org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse res = new org.openapis.openapi.models.operations.DeprecatedOperationWithCommentsGetResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         
@@ -429,8 +462,8 @@ public class Generation {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.NameOverrideGetResponse nameOverride(String testQueryParam) throws Exception {
-        org.openapis.openapi.models.operations.NameOverrideGetRequest request = new org.openapis.openapi.models.operations.NameOverrideGetRequest(testQueryParam);
+    public org.openapis.openapi.models.operations.NameOverrideGetResponse nameOverride(org.openapis.openapi.models.operations.NameOverrideGetEnumNameOverride testEnumQueryParam, String testQueryParam) throws Exception {
+        org.openapis.openapi.models.operations.NameOverrideGetRequest request = new org.openapis.openapi.models.operations.NameOverrideGetRequest(testEnumQueryParam, testQueryParam);
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/nameOverride");

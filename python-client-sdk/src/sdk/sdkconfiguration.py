@@ -14,6 +14,8 @@ SERVERS = [
     # A server url with templated variables.
     'http://localhost:35123/anything/{something}',
     # A server url with templated variables.
+    '{protocol}://{hostname}:{port}',
+    # A server url with templated variables (including the protocol).
 ]
 """Contains the list of servers available to the SDK"""
 
@@ -34,7 +36,7 @@ class SDKConfiguration:
     globals: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
     language: str = 'python'
     openapi_doc_version: str = '0.1.0'
-    sdk_version: str = '1.29.0'
+    sdk_version: str = '1.29.1'
     gen_version: str = '2.89.1'
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:

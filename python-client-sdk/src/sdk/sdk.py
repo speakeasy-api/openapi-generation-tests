@@ -69,6 +69,7 @@ class SDK:
                  global_query_param: str = None,
                  hostname: str = None,
                  port: str = None,
+                 protocol: str = None,
                  something: ServerSomething = None,
                  server_idx: int = None,
                  server_url: str = None,
@@ -87,6 +88,8 @@ class SDK:
         :type hostname: str
         :param port: Allows setting the port variable for url substitution
         :type port: str
+        :param protocol: Allows setting the protocol variable for url substitution
+        :type protocol: str
         :param something: Allows setting the something variable for url substitution
         :type something: sdk.ServerSomething
         :param server_idx: The index of the server to use for all operations
@@ -117,6 +120,11 @@ class SDK:
             },
             {
                 'something': something or 'something',
+            },
+            {
+                'hostname': hostname or 'localhost',
+                'port': port or '35123',
+                'protocol': protocol or 'http',
             },
         ]
 

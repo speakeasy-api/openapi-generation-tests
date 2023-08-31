@@ -16,6 +16,7 @@ module OpenApiSDK
     'http://broken', # 1 - A server url to a non-existent server.
     'http://{hostname}:{port}', # 1 - A server url with templated variables.
     'http://localhost:35123/anything/{something}', # 1 - A server url with templated variables.
+    '{protocol}://{hostname}:{port}', # 1 - A server url with templated variables (including the protocol).
   ].freeze
   # Contains the list of servers available to the SDK
   # ServerSomething - Something is a variable for changing the root path
@@ -52,7 +53,7 @@ module OpenApiSDK
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = '0.1.0'
-      @sdk_version = '1.29.0'
+      @sdk_version = '1.29.1'
       @gen_version = '2.89.1'
     end
 

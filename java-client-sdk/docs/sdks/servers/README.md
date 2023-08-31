@@ -8,6 +8,7 @@ Endpoints for testing servers.
 
 * [selectGlobalServer](#selectglobalserver)
 * [selectServerWithID](#selectserverwithid) - Select a server by ID.
+* [serverWithProtocolTemplate](#serverwithprotocoltemplate)
 * [serverWithTemplates](#serverwithtemplates)
 * [serverWithTemplatesGlobal](#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](#serversbyidwithtemplates)
@@ -98,6 +99,52 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.SelectServerWithIDResponse](../../models/operations/SelectServerWithIDResponse.md)**
+
+
+## serverWithProtocolTemplate
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            ServerWithProtocolTemplateResponse res = sdk.servers.serverWithProtocolTemplate();
+
+            if (res.statusCode == 200) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `serverURL`                    | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.ServerWithProtocolTemplateResponse](../../models/operations/ServerWithProtocolTemplateResponse.md)**
 
 
 ## serverWithTemplates

@@ -8,6 +8,7 @@ Endpoints for testing servers.
 
 * [select_global_server](#select_global_server)
 * [select_server_with_id](#select_server_with_id) - Select a server by ID.
+* [server_with_protocol_template](#server_with_protocol_template)
 * [server_with_templates](#server_with_templates)
 * [server_with_templates_global](#server_with_templates_global)
 * [servers_by_id_with_templates](#servers_by_id_with_templates)
@@ -76,6 +77,41 @@ if res.status_code == 200:
 ### Response
 
 **[operations.SelectServerWithIDResponse](../../models/operations/selectserverwithidresponse.md)**
+
+
+## server_with_protocol_template
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.servers.server_with_protocol_template()
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `server_url`                   | *Optional[str]*                | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[operations.ServerWithProtocolTemplateResponse](../../models/operations/serverwithprotocoltemplateresponse.md)**
 
 
 ## server_with_templates

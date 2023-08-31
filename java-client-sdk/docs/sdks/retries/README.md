@@ -31,7 +31,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RetriesGetResponse res = sdk.retries.retriesGet("vel", 528234L);
+            RetriesGetResponse res = sdk.retries.retriesGet("nemo", 475826L);
 
             if (res.retries != null) {
                 // handle response

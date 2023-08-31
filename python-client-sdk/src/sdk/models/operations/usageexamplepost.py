@@ -80,6 +80,8 @@ class UsageExamplePostRequest:
     r"""An enum parameter"""
     falsey_number_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'falseyNumberParameter', 'style': 'form', 'explode': True }})
     r"""A number parameter that contains a falsey example value"""
+    float32_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'float32Parameter', 'style': 'form', 'explode': True }})
+    r"""A float32 parameter"""
     float_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'floatParameter', 'style': 'form', 'explode': True }})
     r"""A float parameter"""
     int64_parameter: int = dataclasses.field(metadata={'query_param': { 'field_name': 'int64Parameter', 'style': 'form', 'explode': True }})

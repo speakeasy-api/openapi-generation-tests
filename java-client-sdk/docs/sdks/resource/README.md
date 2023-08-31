@@ -2,22 +2,23 @@
 
 ### Available Operations
 
+* [createFile](#createfile)
 * [createResource](#createresource)
 * [deleteResource](#deleteresource)
 * [getResource](#getresource)
 * [updateResource](#updateresource)
 
-## createResource
+## createFile
 
 ### Example Usage
 
 ```java
 package hello.world;
 
-import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
-import org.openapis.openapi.models.operations.CreateResourceResponse;
-import org.openapis.openapi.models.shared.ExampleResource;
+import org.openapis.openapi.models.operations.CreateFileRequestBody;
+import org.openapis.openapi.models.operations.CreateFileRequestBodyFile;
+import org.openapis.openapi.models.operations.CreateFileResponse;
 import org.openapis.openapi.models.shared.Security;
 
 public class Application {
@@ -31,11 +32,104 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource() {{
-                createdAt = OffsetDateTime.parse("2022-01-03T21:25:59.161Z");
-                id = "350d8cdb-5a34-4181-8301-0421813d5208";
-                name = "Edmund Torp";
-                updatedAt = OffsetDateTime.parse("2022-09-01T18:00:27.481Z");
+            CreateFileRequestBody req = new CreateFileRequestBody() {{
+                file = new CreateFileRequestBodyFile("sequi".getBytes(), "nihil");;
+            }};            
+
+            CreateFileResponse res = sdk.resource.createFile(req);
+
+            if (res.fileResource != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                        | [org.openapis.openapi.models.operations.CreateFileRequestBody](../../models/operations/CreateFileRequestBody.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.CreateFileResponse](../../models/operations/CreateFileResponse.md)**
+
+
+## createResource
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.time.OffsetDateTime;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.CreateResourceResponse;
+import org.openapis.openapi.models.shared.ExampleBoat;
+import org.openapis.openapi.models.shared.ExampleBoatType;
+import org.openapis.openapi.models.shared.ExampleCar;
+import org.openapis.openapi.models.shared.ExampleCarType;
+import org.openapis.openapi.models.shared.ExampleResource;
+import org.openapis.openapi.models.shared.ExampleResourceChocolates;
+import org.openapis.openapi.models.shared.ExampleResourceEnumNumber;
+import org.openapis.openapi.models.shared.ExampleResourceEnumStr;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(                new org.openapis.openapi.models.shared.ExampleResourceChocolates[]{{
+                                add(new ExampleResourceChocolates("labore") {{
+                                    description = "illo";
+                                }}),
+                                add(new ExampleResourceChocolates("aliquam") {{
+                                    description = "assumenda";
+                                }}),
+                                add(new ExampleResourceChocolates("provident") {{
+                                    description = "quisquam";
+                                }}),
+                            }}, "laudantium", "repudiandae",                 new ExampleBoat(8738.33d, "similique", ExampleBoatType.BOAT) {{
+                                createdAt = OffsetDateTime.parse("2022-08-04T16:32:15.873Z");
+                                length = 7239.42d;
+                                name = "Willard McLaughlin";
+                                type = ExampleBoatType.BOAT;
+                                updatedAt = OffsetDateTime.parse("2022-08-22T06:12:50.001Z");
+                            }}) {{
+                arrayOfNumber = new Double[]{{
+                    add(4348.27d),
+                    add(2138.35d),
+                    add(4138.01d),
+                    add(7712.26d),
+                }};
+                arrayOfString = new String[]{{
+                    add("aut"),
+                    add("voluptatem"),
+                }};
+                createdAt = OffsetDateTime.parse("2022-12-09T17:41:00.537Z");
+                enumNumber = ExampleResourceEnumNumber.ONE;
+                enumStr = ExampleResourceEnumStr.THREE;
+                mapOfInteger = new java.util.HashMap<String, Long>() {{
+                    put("quidem", 736853L);
+                    put("amet", 97676L);
+                    put("dicta", 514922L);
+                }};
+                mapOfString = new java.util.HashMap<String, String>() {{
+                    put("earum", "iusto");
+                }};
+                updatedAt = OffsetDateTime.parse("2022-05-31T09:24:28.393Z");
             }};            
 
             CreateResourceResponse res = sdk.resource.createResource(req);
@@ -85,7 +179,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeleteResourceResponse res = sdk.resource.deleteResource("nesciunt");
+            DeleteResourceResponse res = sdk.resource.deleteResource("dolorum");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -132,7 +226,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetResourceResponse res = sdk.resource.getResource("expedita");
+            GetResourceResponse res = sdk.resource.getResource("necessitatibus");
 
             if (res.exampleResource != null) {
                 // handle response
@@ -179,9 +273,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UpdateResourceResponse res = sdk.resource.updateResource("eum");
+            UpdateResourceResponse res = sdk.resource.updateResource("provident");
 
-            if (res.exampleResource != null) {
+            if (res.statusCode == 200) {
                 // handle response
             }
         } catch (Exception e) {

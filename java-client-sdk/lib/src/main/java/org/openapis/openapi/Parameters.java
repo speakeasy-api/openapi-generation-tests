@@ -117,6 +117,41 @@ public class Parameters {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.DuplicateParamResponse duplicateParam(String duplicateParamRequest) throws Exception {
+        org.openapis.openapi.models.operations.DuplicateParamRequest request = new org.openapis.openapi.models.operations.DuplicateParamRequest(duplicateParamRequest);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.DuplicateParamRequest.class, baseUrl, "/anything/params/{duplicateParamRequest}", request, this.sdkConfiguration.globals);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.DuplicateParamResponse res = new org.openapis.openapi.models.operations.DuplicateParamResponse(contentType, httpRes.statusCode()) {{
+            duplicateParamResponse = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.DuplicateParamDuplicateParamResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.DuplicateParamDuplicateParamResponse.class);
+                res.duplicateParamResponse = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.FormQueryParamsArrayResponse formQueryParamsArray() throws Exception {
         return this.formQueryParamsArray(null, null);
     }
@@ -567,6 +602,104 @@ public class Parameters {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.operations.JsonQueryParamsObjectRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.JsonQueryParamsObjectRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.MixedParametersCamelCaseResponse mixedParametersCamelCase(String headerParam, String pathParam, String queryStringParam) throws Exception {
+        org.openapis.openapi.models.operations.MixedParametersCamelCaseRequest request = new org.openapis.openapi.models.operations.MixedParametersCamelCaseRequest(headerParam, pathParam, queryStringParam);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.MixedParametersCamelCaseRequest.class, baseUrl, "/anything/mixedParams/path/{path_param}/camelcase", request, this.sdkConfiguration.globals);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.MixedParametersCamelCaseRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        java.util.Map<String, java.util.List<String>> headers = org.openapis.openapi.utils.Utils.getHeaders(request);
+        if (headers != null) {
+            for (java.util.Map.Entry<String, java.util.List<String>> header : headers.entrySet()) {
+                for (String value : header.getValue()) {
+                    req.addHeader(header.getKey(), value);
+                }
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.MixedParametersCamelCaseResponse res = new org.openapis.openapi.models.operations.MixedParametersCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.MixedParametersCamelCaseRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.MixedParametersCamelCaseRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.MixedParametersPrimitivesResponse mixedParametersPrimitives(String headerParam, String pathParam, String queryStringParam) throws Exception {
+        org.openapis.openapi.models.operations.MixedParametersPrimitivesRequest request = new org.openapis.openapi.models.operations.MixedParametersPrimitivesRequest(headerParam, pathParam, queryStringParam);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(org.openapis.openapi.models.operations.MixedParametersPrimitivesRequest.class, baseUrl, "/anything/mixedParams/path/{pathParam}", request, this.sdkConfiguration.globals);
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.MixedParametersPrimitivesRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        java.util.Map<String, java.util.List<String>> headers = org.openapis.openapi.utils.Utils.getHeaders(request);
+        if (headers != null) {
+            for (java.util.Map.Entry<String, java.util.List<String>> header : headers.entrySet()) {
+                for (String value : header.getValue()) {
+                    req.addHeader(header.getKey(), value);
+                }
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.MixedParametersPrimitivesResponse res = new org.openapis.openapi.models.operations.MixedParametersPrimitivesResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.MixedParametersPrimitivesRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.MixedParametersPrimitivesRes.class);
                 res.res = out;
             }
         }

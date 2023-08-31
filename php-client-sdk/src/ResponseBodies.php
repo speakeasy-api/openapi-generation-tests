@@ -10,6 +10,14 @@ namespace OpenAPI\OpenAPI;
 
 class ResponseBodies 
 {
+	
+	public const RESPONSE_BODY_OPTIONAL_GET_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const RESPONSE_BODY_READ_ONLY_SERVERS = [
+		'http://localhost:35456',
+	];
 
 	private SDKConfiguration $sdkConfiguration;
 
@@ -48,6 +56,132 @@ class ResponseBodies
         if ($httpResponse->getStatusCode() === 200) {
             if (Utils\Utils::matchContentType($contentType, 'application/octet-stream')) {
                 $response->bytes = $httpResponse->getBody()->getContents();
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * responseBodyEmptyWithHeaders
+     * 
+     * @param float $xNumberHeader
+     * @param string $xStringHeader
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse
+     */
+	public function responseBodyEmptyWithHeaders(
+        float $xNumberHeader,
+        string $xStringHeader,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersRequest();
+        $request->xNumberHeader = $xNumberHeader;
+        $request->xStringHeader = $xStringHeader;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/response-headers');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            $response->headers = $httpResponse->getHeaders();
+            
+        }
+
+        return $response;
+    }
+	
+    /**
+     * responseBodyOptionalGet
+     * 
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse
+     */
+	public function responseBodyOptionalGet(
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(ResponseBodies::RESPONSE_BODY_OPTIONAL_GET_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/optional');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json;q=1, text/plain;q=0';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyOptionalGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->typedObject1 = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\TypedObject1', 'json');
+            }
+            if (Utils\Utils::matchContentType($contentType, 'text/plain')) {
+                $response->responseBodyOptionalGet200TextPlainString = $httpResponse->getBody()->getContents();
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * responseBodyReadOnly
+     * 
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse
+     */
+	public function responseBodyReadOnly(
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(ResponseBodies::RESPONSE_BODY_READ_ONLY_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyorwriteonly#readOnly');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyReadOnlyResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->readOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ReadOnlyObject', 'json');
             }
         }
 

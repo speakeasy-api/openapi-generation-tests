@@ -46,6 +46,10 @@ export const ServerList = [
      * A server url with templated variables.
      */
     "http://localhost:35123/anything/{something}",
+    /**
+     * A server url with templated variables (including the protocol).
+     */
+    "{protocol}://{hostname}:{port}",
 ] as const;
 
 /**
@@ -97,6 +101,11 @@ export type SDKProps = {
     port?: string;
 
     /**
+     * Allows setting the protocol variable for url substitution
+     */
+    protocol?: string;
+
+    /**
      * Allows setting the something variable for url substitution
      */
     something?: ServerSomething;
@@ -114,7 +123,7 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.29.0";
+    sdkVersion = "1.29.1";
     genVersion = "2.89.1";
     globals: any;
 
@@ -208,6 +217,11 @@ export class SDK {
             },
             {
                 something: props?.something?.toString() ?? "something",
+            },
+            {
+                hostname: props?.hostname?.toString() ?? "localhost",
+                port: props?.port?.toString() ?? "35123",
+                protocol: props?.protocol?.toString() ?? "http",
             },
         ];
         const serverIdx = props?.serverIdx ?? 0;

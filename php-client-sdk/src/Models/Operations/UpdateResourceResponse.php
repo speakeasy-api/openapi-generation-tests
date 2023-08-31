@@ -14,14 +14,6 @@ class UpdateResourceResponse
 	
     public string $contentType;
     
-    /**
-     * OK
-     * 
-     * @var ?\OpenAPI\OpenAPI\Models\Shared\ExampleResource $exampleResource
-     */
-	
-    public ?\OpenAPI\OpenAPI\Models\Shared\ExampleResource $exampleResource = null;
-    
 	
     public int $statusCode;
     
@@ -31,7 +23,6 @@ class UpdateResourceResponse
 	public function __construct()
 	{
 		$this->contentType = "";
-		$this->exampleResource = null;
 		$this->statusCode = 0;
 		$this->rawResponse = null;
 	}

@@ -161,6 +161,12 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
     falseyNumberParameter: number;
 
     /**
+     * A float32 parameter
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=float32Parameter" })
+    float32Parameter: number;
+
+    /**
      * A float parameter
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=floatParameter" })

@@ -3,6 +3,28 @@
 
 ```python
 import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.global_name_overridden()
+
+if res.get_global_name_override_200_application_json_object is not None:
+    # handle response
+```
+
+
+## Second
+Do this second
+```python
+import sdk
 import dateutil.parser
 from sdk.models import operations, shared
 
@@ -50,6 +72,7 @@ req = operations.UsageExamplePostRequest(
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,
+    float32_parameter=1.1,
     float_parameter=1.1,
     int64_parameter=111111,
     int_parameter=1,

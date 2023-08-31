@@ -7,7 +7,8 @@ Endpoints for testing error responses.
 ### Available Operations
 
 * [connectionErrorGet](#connectionerrorget)
-* [statusGet](#statusget)
+* [statusGetError](#statusgeterror)
+* [statusGetXSpeakeasyErrors](#statusgetxspeakeasyerrors)
 
 ## connectionErrorGet
 
@@ -45,13 +46,13 @@ sdk.errors.connectionErrorGet().then((res: ConnectionErrorGetResponse) => {
 **Promise<[operations.ConnectionErrorGetResponse](../../models/operations/connectionerrorgetresponse.md)>**
 
 
-## statusGet
+## statusGetError
 
 ### Example Usage
 
 ```typescript
 import { SDK } from "openapi";
-import { StatusGetRequest, StatusGetResponse } from "openapi/dist/sdk/models/operations";
+import { StatusGetErrorRequest, StatusGetErrorResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -62,7 +63,7 @@ const sdk = new SDK({
 });
 const statusCode: number = 692532;
 
-sdk.errors.statusGet(statusCode).then((res: StatusGetResponse) => {
+sdk.errors.statusGetError(statusCode).then((res: StatusGetErrorResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -79,5 +80,43 @@ sdk.errors.statusGet(statusCode).then((res: StatusGetResponse) => {
 
 ### Response
 
-**Promise<[operations.StatusGetResponse](../../models/operations/statusgetresponse.md)>**
+**Promise<[operations.StatusGetErrorResponse](../../models/operations/statusgeterrorresponse.md)>**
+
+
+## statusGetXSpeakeasyErrors
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { StatusGetXSpeakeasyErrorsRequest, StatusGetXSpeakeasyErrorsResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const statusCode: number = 588465;
+
+sdk.errors.statusGetXSpeakeasyErrors(statusCode).then((res: StatusGetXSpeakeasyErrorsResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `statusCode`                                                 | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `serverURL`                                                  | *string*                                                     | :heavy_minus_sign:                                           | An optional server URL to use.                               |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.StatusGetXSpeakeasyErrorsResponse](../../models/operations/statusgetxspeakeasyerrorsresponse.md)>**
 

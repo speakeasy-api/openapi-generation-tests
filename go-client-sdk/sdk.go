@@ -27,6 +27,8 @@ var ServerList = []string{
 	"http://{hostname}:{port}",
 	// A server url with templated variables.
 	"http://localhost:35123/anything/{something}",
+	// A server url with templated variables (including the protocol).
+	"{protocol}://{hostname}:{port}",
 }
 
 // HTTPClient provides an interface for suplying the SDK with a custom HTTP client
@@ -171,6 +173,19 @@ func WithPort(port string) SDKOption {
 	}
 }
 
+// WithProtocol allows setting the $name variable for url substitution
+func WithProtocol(protocol string) SDKOption {
+	return func(sdk *SDK) {
+		for idx := range sdk.sdkConfiguration.ServerDefaults {
+			if _, ok := sdk.sdkConfiguration.ServerDefaults[idx]["protocol"]; !ok {
+				continue
+			}
+
+			sdk.sdkConfiguration.ServerDefaults[idx]["protocol"] = fmt.Sprintf("%v", protocol)
+		}
+	}
+}
+
 // ServerSomething - Something is a variable for changing the root path
 type ServerSomething string
 
@@ -257,7 +272,7 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.29.0",
+			SDKVersion:        "1.29.1",
 			GenVersion:        "2.89.1",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
@@ -271,6 +286,11 @@ func New(opts ...SDKOption) *SDK {
 				},
 				{
 					"something": "something",
+				},
+				{
+					"hostname": "localhost",
+					"port":     "35123",
+					"protocol": "http",
 				},
 			},
 		},

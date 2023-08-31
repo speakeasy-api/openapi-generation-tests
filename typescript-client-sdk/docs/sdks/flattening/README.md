@@ -30,9 +30,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const simpleObject: SimpleObject = {
-  any: "provident",
-  bigint: 725255,
-  bigintStr: "id",
+  any: "nam",
+  bigint: 659669,
+  bigintStr: "blanditiis",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -42,14 +42,14 @@ const simpleObject: SimpleObject = {
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
 };
-const str: string = "sapiente";
+const str: string = "amet";
 
 sdk.flattening.componentBodyAndParamConflict(simpleObject, str).then((res: ComponentBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
@@ -89,11 +89,11 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const paramStr: string = "amet";
+const paramStr: string = "deserunt";
 const simpleObject: SimpleObject = {
-  any: "deserunt",
-  bigint: 394869,
-  bigintStr: "vel",
+  any: "nisi",
+  bigint: 423855,
+  bigintStr: "natus",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
@@ -147,8 +147,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const strPathParameter: string = "molestiae";
-const strQueryParameter: string = "perferendis";
+const strPathParameter: string = "perferendis";
+const strQueryParameter: string = "nihil";
 
 sdk.flattening.conflictingParams(strPathParameter, strQueryParameter).then((res: ConflictingParamsResponse) => {
   if (res.statusCode == 200) {
@@ -191,9 +191,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: InlineBodyAndParamConflictRequestBody = {
-  str: "nihil",
+  str: "magnam",
 };
-const str: string = "magnam";
+const str: string = "distinctio";
 
 sdk.flattening.inlineBodyAndParamConflict(requestBody, str).then((res: InlineBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
@@ -236,9 +236,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: InlineBodyAndParamNoConflictRequestBody = {
-  bodyStr: "distinctio",
+  bodyStr: "id",
 };
-const paramStr: string = "id";
+const paramStr: string = "labore";
 
 sdk.flattening.inlineBodyAndParamNoConflict(requestBody, paramStr).then((res: InlineBodyAndParamNoConflictResponse) => {
   if (res.statusCode == 200) {

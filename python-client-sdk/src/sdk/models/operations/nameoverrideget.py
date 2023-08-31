@@ -5,13 +5,22 @@ import dataclasses
 import requests as requests_http
 from ..shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from sdk import utils
 from typing import Optional
+
+class NameOverrideGetEnumNameOverride(str, Enum):
+    r"""An enum type"""
+    VALUE1 = 'value1'
+    VALUE2 = 'value2'
+    VALUE3 = 'value3'
 
 
 
 @dataclasses.dataclass
 class NameOverrideGetRequest:
+    test_enum_query_param: NameOverrideGetEnumNameOverride = dataclasses.field(metadata={'query_param': { 'field_name': 'enumNameOverride', 'style': 'form', 'explode': True }})
+    r"""An enum type"""
     test_query_param: str = dataclasses.field(metadata={'query_param': { 'field_name': 'nameOverride', 'style': 'form', 'explode': True }})
     
 

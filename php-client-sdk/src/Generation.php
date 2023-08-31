@@ -90,17 +90,17 @@ class Generation
     }
 	
     /**
-     * deprecatedInSchemaWithCommentsGet
+     * deprecatedFieldInSchemaPost
      * 
-     * @param \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField $request
-     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse
+     * @param \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse
      */
-	public function deprecatedInSchemaWithCommentsGet(
-        \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField $request,
-    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse
+	public function deprecatedFieldInSchemaPost(
+        \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedInSchemaWithComments');
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedFieldInSchema');
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
@@ -115,7 +115,7 @@ class Generation
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse();
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse();
         $response->statusCode = $httpResponse->getStatusCode();
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
@@ -127,26 +127,60 @@ class Generation
     }
 	
     /**
-     * deprecatedNoCommentsGet
+     * deprecatedObjectInSchemaGet
+     * 
+     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse
+     */
+	public function deprecatedObjectInSchemaGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedObjectInSchema');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->deprecatedObjectInSchemaGet200ApplicationJSONObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGet200ApplicationJSON', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * deprecatedOperationNoCommentsGet
      * 
      * @param ?string $deprecatedParameter
-     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetResponse
+     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse
      * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-	public function deprecatedNoCommentsGet(
+	public function deprecatedOperationNoCommentsGet(
         ?string $deprecatedParameter = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetResponse
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse
     {
         trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
         
-        $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetRequest();
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetRequest();
         $request->deprecatedParameter = $deprecatedParameter;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedNoComments');
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedOperationNoComments');
         
         $options = ['http_errors' => false];
-        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetRequest::class, $request, $this->sdkConfiguration->globals));
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -154,7 +188,7 @@ class Generation
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetResponse();
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse();
         $response->statusCode = $httpResponse->getStatusCode();
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
@@ -170,25 +204,25 @@ class Generation
      * 
      * @param ?string $deprecatedParameter
      * @param ?string $newParameter
-     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse
-     * @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead.
+     * @return \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse
+     * @deprecated  method: This operation is deprecated. Use simplePathParameterObjects instead.
      */
-	public function deprecatedWithCommentsGet(
+	public function deprecatedOperationWithCommentsGet(
         ?string $deprecatedParameter = null,
         ?string $newParameter = null,
-    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse
+    ): \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse
     {
         trigger_error('Method ' . __METHOD__ . ' is deprecated', E_USER_DEPRECATED);
         
-        $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest();
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetRequest();
         $request->deprecatedParameter = $deprecatedParameter;
         $request->newParameter = $newParameter;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedWithComments');
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/deprecatedOperationWithComments');
         
         $options = ['http_errors' => false];
-        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest::class, $request, $this->sdkConfiguration->globals));
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -196,7 +230,7 @@ class Generation
         
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
-        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse();
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse();
         $response->statusCode = $httpResponse->getStatusCode();
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;
@@ -391,14 +425,17 @@ class Generation
     /**
      * nameOverride
      * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride $testEnumQueryParam
      * @param string $testQueryParam
      * @return \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse
      */
 	public function nameOverride(
+        \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride $testEnumQueryParam,
         string $testQueryParam,
     ): \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse
     {
         $request = new \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest();
+        $request->testEnumQueryParam = $testEnumQueryParam;
         $request->testQueryParam = $testQueryParam;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());

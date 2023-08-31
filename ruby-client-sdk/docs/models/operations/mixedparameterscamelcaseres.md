@@ -1,0 +1,12 @@
+# MixedParametersCamelCaseRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                                           | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `args`                                                                                                          | [Operations::MixedParametersCamelCaseResArgs](../../models/operations/mixedparameterscamelcaseresargs.md)       | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `headers`                                                                                                       | [Operations::MixedParametersCamelCaseResHeaders](../../models/operations/mixedparameterscamelcaseresheaders.md) | :heavy_check_mark:                                                                                              | N/A                                                                                                             |
+| `url`                                                                                                           | *String*                                                                                                        | :heavy_check_mark:                                                                                              | N/A                                                                                                             |

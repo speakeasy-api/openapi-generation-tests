@@ -2,10 +2,52 @@
 
 ### Available Operations
 
+* [create_file](#create_file)
 * [create_resource](#create_resource)
 * [delete_resource](#delete_resource)
 * [get_resource](#get_resource)
 * [update_resource](#update_resource)
+
+## create_file
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = operations.CreateFileRequestBody(
+    file=operations.CreateFileRequestBodyFile(
+        content='minima'.encode(),
+        file='beatae',
+    ),
+)
+
+res = s.resource.create_file(req)
+
+if res.file_resource is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreateFileRequestBody](../../models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+
+
+### Response
+
+**[operations.CreateFileResponse](../../models/operations/createfileresponse.md)**
+
 
 ## create_resource
 
@@ -25,10 +67,51 @@ s = sdk.SDK(
 )
 
 req = shared.ExampleResource(
-    created_at=dateutil.parser.isoparse('2021-08-01T17:10:22.856Z'),
-    id='445e80ca-55ef-4d20-a457-e1858b6a89fb',
-    name='Tony Pagac',
-    updated_at=dateutil.parser.isoparse('2021-11-26T16:42:33.328Z'),
+    array_of_number=[
+        5896.95,
+        9364.69,
+        7453.98,
+    ],
+    array_of_string=[
+        'illum',
+        'eaque',
+        'earum',
+        'perspiciatis',
+    ],
+    chocolates=[
+        shared.ExampleResourceChocolates(
+            description='debitis',
+        ),
+        shared.ExampleResourceChocolates(
+            description='aliquid',
+        ),
+        shared.ExampleResourceChocolates(
+            description='porro',
+        ),
+        shared.ExampleResourceChocolates(
+            description='suscipit',
+        ),
+    ],
+    created_at=dateutil.parser.isoparse('2022-11-08T01:11:44.885Z'),
+    enum_number=shared.ExampleResourceEnumNumber.THREE,
+    enum_str=shared.ExampleResourceEnumStr.THREE,
+    id='3aed0117-9963-412f-9e04-771778ff61d0',
+    map_of_integer={
+        "odio": 271252,
+    },
+    map_of_string={
+        "ex": 'consectetur',
+        "aliquid": 'ipsa',
+    },
+    name='Ralph Hegmann',
+    updated_at=dateutil.parser.isoparse('2022-05-12T16:43:21.506Z'),
+    vehicle=shared.ExampleBoat(
+        created_at=dateutil.parser.isoparse('2022-12-23T23:30:38.445Z'),
+        length=4317.6,
+        name='Miss Cora Olson',
+        type=shared.ExampleBoatType.BOAT,
+        updated_at=dateutil.parser.isoparse('2021-01-15T12:05:30.894Z'),
+    ),
 )
 
 res = s.resource.create_resource(req)
@@ -66,7 +149,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='accusamus')
+res = s.resource.delete_resource(resource_id='laborum')
 
 if res.status_code == 200:
     # handle response
@@ -101,7 +184,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='tempora')
+res = s.resource.get_resource(resource_id='libero')
 
 if res.example_resource is not None:
     # handle response
@@ -136,9 +219,9 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='atque')
+res = s.resource.update_resource(resource_id='ad')
 
-if res.example_resource is not None:
+if res.status_code == 200:
     # handle response
 ```
 

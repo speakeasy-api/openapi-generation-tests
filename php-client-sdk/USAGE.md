@@ -9,6 +9,32 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->generation->globalNameOverridden();
+
+    if ($response->getGlobalNameOverride200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+
+## Second
+Do this second
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest;
 use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequestBody;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
@@ -60,6 +86,7 @@ try {
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
     $request->falseyNumberParameter = 0;
+    $request->float32Parameter = 1.1;
     $request->floatParameter = 1.1;
     $request->int64Parameter = 111111;
     $request->intParameter = 1;

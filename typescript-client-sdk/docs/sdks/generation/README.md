@@ -8,9 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchorTypesGet](#anchortypesget)
 * [circularReferenceGet](#circularreferenceget)
-* [deprecatedInSchemaWithCommentsGet](#deprecatedinschemawithcommentsget)
-* [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
+* [deprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
+* [deprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
+* [~~deprecatedOperationNoCommentsGet~~](#deprecatedoperationnocommentsget) - :warning: **Deprecated**
+* [~~deprecatedOperationWithCommentsGet~~](#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
 * [emptyObjectGet](#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
@@ -90,14 +91,14 @@ sdk.generation.circularReferenceGet().then((res: CircularReferenceGetResponse) =
 **Promise<[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)>**
 
 
-## deprecatedInSchemaWithCommentsGet
+## deprecatedFieldInSchemaPost
 
 ### Example Usage
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedInSchemaWithCommentsGetResponse } from "openapi/dist/sdk/models/operations";
-import { ObjectWithDeprecatedFieldDeprecatedEnum } from "openapi/dist/sdk/models/shared";
+import { DeprecatedFieldInSchemaPostResponse } from "openapi/dist/sdk/models/operations";
+import { DeprecatedFieldInObjectDeprecatedEnum } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -107,10 +108,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.generation.deprecatedInSchemaWithCommentsGet({
+sdk.generation.deprecatedFieldInSchemaPost({
   deprecatedField: "labore",
-  newField: "labore",
-}).then((res: DeprecatedInSchemaWithCommentsGetResponse) => {
+  newField: "suscipit",
+}).then((res: DeprecatedFieldInSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -119,26 +120,24 @@ sdk.generation.deprecatedInSchemaWithCommentsGet({
 
 ### Parameters
 
-| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
-| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
-| `request`                                                                            | [shared.ObjectWithDeprecatedField](../../models/shared/objectwithdeprecatedfield.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
-| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+| Parameter                                                                        | Type                                                                             | Required                                                                         | Description                                                                      |
+| -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- |
+| `request`                                                                        | [shared.DeprecatedFieldInObject](../../models/shared/deprecatedfieldinobject.md) | :heavy_check_mark:                                                               | The request object to use for the request.                                       |
+| `config`                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                     | :heavy_minus_sign:                                                               | Available config options for making requests.                                    |
 
 
 ### Response
 
-**Promise<[operations.DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/deprecatedinschemawithcommentsgetresponse.md)>**
+**Promise<[operations.DeprecatedFieldInSchemaPostResponse](../../models/operations/deprecatedfieldinschemapostresponse.md)>**
 
 
-## ~~deprecatedNoCommentsGet~~
-
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+## deprecatedObjectInSchemaGet
 
 ### Example Usage
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedNoCommentsGetRequest, DeprecatedNoCommentsGetResponse } from "openapi/dist/sdk/models/operations";
+import { DeprecatedObjectInSchemaGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -147,9 +146,49 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "suscipit";
 
-sdk.generation.deprecatedNoCommentsGet(deprecatedParameter).then((res: DeprecatedNoCommentsGetResponse) => {
+sdk.generation.deprecatedObjectInSchemaGet().then((res: DeprecatedObjectInSchemaGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.DeprecatedObjectInSchemaGetResponse](../../models/operations/deprecatedobjectinschemagetresponse.md)>**
+
+
+## ~~deprecatedOperationNoCommentsGet~~
+
+> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import {
+  DeprecatedOperationNoCommentsGetRequest,
+  DeprecatedOperationNoCommentsGetResponse,
+} from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const deprecatedParameter: string = "natus";
+
+sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter).then((res: DeprecatedOperationNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -166,20 +205,23 @@ sdk.generation.deprecatedNoCommentsGet(deprecatedParameter).then((res: Deprecate
 
 ### Response
 
-**Promise<[operations.DeprecatedNoCommentsGetResponse](../../models/operations/deprecatednocommentsgetresponse.md)>**
+**Promise<[operations.DeprecatedOperationNoCommentsGetResponse](../../models/operations/deprecatedoperationnocommentsgetresponse.md)>**
 
 
-## ~~deprecatedWithCommentsGet~~
+## ~~deprecatedOperationWithCommentsGet~~
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible. Use `simplePathParameterObjects` instead.
+> :warning: **DEPRECATED**: This operation is deprecated. Use `simplePathParameterObjects` instead.
 
 ### Example Usage
 
 ```typescript
 import { SDK } from "openapi";
-import { DeprecatedWithCommentsGetRequest, DeprecatedWithCommentsGetResponse } from "openapi/dist/sdk/models/operations";
+import {
+  DeprecatedOperationWithCommentsGetRequest,
+  DeprecatedOperationWithCommentsGetResponse,
+} from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -188,10 +230,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "natus";
-const newParameter: string = "nobis";
+const deprecatedParameter: string = "nobis";
+const newParameter: string = "eum";
 
-sdk.generation.deprecatedWithCommentsGet(deprecatedParameter, newParameter).then((res: DeprecatedWithCommentsGetResponse) => {
+sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter).then((res: DeprecatedOperationWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -200,16 +242,16 @@ sdk.generation.deprecatedWithCommentsGet(deprecatedParameter, newParameter).then
 
 ### Parameters
 
-| Parameter                                                                                                                                                                     | Type                                                                                                                                                                          | Required                                                                                                                                                                      | Description                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                                                                                         | *string*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                            | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. Use newParameter instead.<br/><br/>This is a string parameter |
-| `newParameter`                                                                                                                                                                | *string*                                                                                                                                                                      | :heavy_minus_sign:                                                                                                                                                            | This is a string parameter                                                                                                                                                    |
-| `config`                                                                                                                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                  | :heavy_minus_sign:                                                                                                                                                            | Available config options for making requests.                                                                                                                                 |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `deprecatedParameter`                                                                                            | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter |
+| `newParameter`                                                                                                   | *string*                                                                                                         | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
+| `config`                                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                     | :heavy_minus_sign:                                                                                               | Available config options for making requests.                                                                    |
 
 
 ### Response
 
-**Promise<[operations.DeprecatedWithCommentsGetResponse](../../models/operations/deprecatedwithcommentsgetresponse.md)>**
+**Promise<[operations.DeprecatedOperationWithCommentsGetResponse](../../models/operations/deprecatedoperationwithcommentsgetresponse.md)>**
 
 
 ## emptyObjectGet
@@ -371,10 +413,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: IgnoresPostApplicationJSON = {
-  callbackUrl: "http://ugly-cash.com",
-  testProp: "magnam",
+  callbackUrl: "https://composed-branch.biz",
+  testProp: "et",
 };
-const testParam: string = "et";
+const testParam: string = "excepturi";
 
 sdk.generation.ignoresPost(requestBody, testParam).then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
@@ -403,7 +445,7 @@ sdk.generation.ignoresPost(requestBody, testParam).then((res: IgnoresPostRespons
 
 ```typescript
 import { SDK } from "openapi";
-import { NameOverrideGetRequest, NameOverrideGetResponse } from "openapi/dist/sdk/models/operations";
+import { NameOverrideGetEnumNameOverride, NameOverrideGetRequest, NameOverrideGetResponse } from "openapi/dist/sdk/models/operations";
 
 const sdk = new SDK({
   security: {
@@ -412,9 +454,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
+const testEnumQueryParam: NameOverrideGetEnumNameOverride = NameOverrideGetEnumNameOverride.Value3;
 const testQueryParam: string = "example";
 
-sdk.generation.nameOverride(testQueryParam).then((res: NameOverrideGetResponse) => {
+sdk.generation.nameOverride(testEnumQueryParam, testQueryParam).then((res: NameOverrideGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -423,10 +466,11 @@ sdk.generation.nameOverride(testQueryParam).then((res: NameOverrideGetResponse) 
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `testQueryParam`                                             | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | example                                                      |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              | Example                                                                                                  |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `testEnumQueryParam`                                                                                     | [operations.NameOverrideGetEnumNameOverride](../../models/operations/nameoverridegetenumnameoverride.md) | :heavy_check_mark:                                                                                       | An enum type                                                                                             | value3                                                                                                   |
+| `testQueryParam`                                                                                         | *string*                                                                                                 | :heavy_check_mark:                                                                                       | N/A                                                                                                      | example                                                                                                  |
+| `config`                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                             | :heavy_minus_sign:                                                                                       | Available config options for making requests.                                                            |                                                                                                          |
 
 
 ### Response
@@ -454,12 +498,12 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const bigint: number = 569965;
-const date: RFCDate = new RFCDate("2022-05-30");
+const bigint: number = 354047;
+const date: RFCDate = new RFCDate("2021-11-24");
 const obj: TypedParameterGenerationGetObj = {
   bool: false,
-  num: 5518.16,
-  str: "sint",
+  num: 5743.25,
+  str: "accusantium",
 };
 
 sdk.generation.typedParameterGenerationGet(bigint, date, obj).then((res: TypedParameterGenerationGetResponse) => {
@@ -515,17 +559,17 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Madaline.Wisozk@gmail.com",
-    formatEmail: "Dallas36@yahoo.com",
-    formatUri: "http://infinite-winery.org",
-    formatUuid: "4c8b711e-5b7f-4d2e-9028-921cddc69260",
-    hostname: "big-willingness.net",
-    ipv4: "95.116.107.184",
-    ipv6: "0d5f:0d30:c5fb:b258:7053:202c:73d5:fe9b",
+    email: "Vivienne43@yahoo.com",
+    formatEmail: "Sophie.Connelly@gmail.com",
+    formatUri: "http://worrisome-teenager.biz",
+    formatUuid: "c8b711e5-b7fd-42ed-8289-21cddc692601",
+    hostname: "worn-programme.info",
+    ipv4: "116.107.184.12",
+    ipv6: "d5f0:d30c:5fbb:2587:0532:02c7:3d5f:e9b9",
     simpleObject: {
-      any: "perspiciatis",
-      bigint: 31838,
-      bigintStr: "porro",
+      any: "voluptatem",
+      bigint: 783645,
+      bigintStr: "consequuntur",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
@@ -534,7 +578,7 @@ sdk.generation.usageExamplePost({
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
       intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
@@ -542,9 +586,9 @@ sdk.generation.usageExamplePost({
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "error",
-    uri: "http://noxious-pronunciation.biz",
-    uuid: "fe49a8d9-cbf4-4863-b323-f9b77f3a4100",
+    unknown: "eaque",
+    uri: "https://right-damage.org",
+    uuid: "e49a8d9c-bf48-4633-b23f-9b77f3a41006",
   },
   boolParameter: false,
   dateParameter: new RFCDate("2020-01-01"),
@@ -552,6 +596,7 @@ sdk.generation.usageExamplePost({
   doubleParameter: 2.2222222,
   enumParameter: UsageExamplePostEnumParameter.Value3,
   falseyNumberParameter: 0,
+  float32Parameter: 1.1,
   floatParameter: 1.1,
   int64Parameter: 111111,
   intParameter: 1,

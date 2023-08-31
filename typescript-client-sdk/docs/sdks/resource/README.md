@@ -2,10 +2,52 @@
 
 ### Available Operations
 
+* [createFile](#createfile)
 * [createResource](#createresource)
 * [deleteResource](#deleteresource)
 * [getResource](#getresource)
 * [updateResource](#updateresource)
+
+## createFile
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { CreateFileResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.resource.createFile({
+  file: {
+    content: "minima".encode(),
+    file: "beatae",
+  },
+}).then((res: CreateFileResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                            | Type                                                                                 | Required                                                                             | Description                                                                          |
+| ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------ |
+| `request`                                                                            | [operations.CreateFileRequestBody](../../models/operations/createfilerequestbody.md) | :heavy_check_mark:                                                                   | The request object to use for the request.                                           |
+| `config`                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                         | :heavy_minus_sign:                                                                   | Available config options for making requests.                                        |
+
+
+### Response
+
+**Promise<[operations.CreateFileResponse](../../models/operations/createfileresponse.md)>**
+
 
 ## createResource
 
@@ -14,6 +56,12 @@
 ```typescript
 import { SDK } from "openapi";
 import { CreateResourceResponse } from "openapi/dist/sdk/models/operations";
+import {
+  ExampleBoatType,
+  ExampleCarType,
+  ExampleResourceEnumNumber,
+  ExampleResourceEnumStr,
+} from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -24,10 +72,51 @@ const sdk = new SDK({
 });
 
 sdk.resource.createResource({
-  createdAt: new Date("2021-08-01T17:10:22.856Z"),
-  id: "445e80ca-55ef-4d20-a457-e1858b6a89fb",
-  name: "Tony Pagac",
-  updatedAt: new Date("2021-11-26T16:42:33.328Z"),
+  arrayOfNumber: [
+    5896.95,
+    9364.69,
+    7453.98,
+  ],
+  arrayOfString: [
+    "illum",
+    "eaque",
+    "earum",
+    "perspiciatis",
+  ],
+  chocolates: [
+    {
+      description: "debitis",
+    },
+    {
+      description: "aliquid",
+    },
+    {
+      description: "porro",
+    },
+    {
+      description: "suscipit",
+    },
+  ],
+  createdAt: new Date("2022-11-08T01:11:44.885Z"),
+  enumNumber: ExampleResourceEnumNumber.Three,
+  enumStr: ExampleResourceEnumStr.Three,
+  id: "3aed0117-9963-412f-9e04-771778ff61d0",
+  mapOfInteger: {
+    "odio": 271252,
+  },
+  mapOfString: {
+    "ex": "consectetur",
+    "aliquid": "ipsa",
+  },
+  name: "Ralph Hegmann",
+  updatedAt: new Date("2022-05-12T16:43:21.506Z"),
+  vehicle: {
+    createdAt: new Date("2022-12-23T23:30:38.445Z"),
+    length: 4317.6,
+    name: "Miss Cora Olson",
+    type: ExampleBoatType.Boat,
+    updatedAt: new Date("2021-01-15T12:05:30.894Z"),
+  },
 }).then((res: CreateResourceResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -63,7 +152,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "accusamus";
+const resourceId: string = "laborum";
 
 sdk.resource.deleteResource(resourceId).then((res: DeleteResourceResponse) => {
   if (res.statusCode == 200) {
@@ -100,7 +189,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "tempora";
+const resourceId: string = "libero";
 
 sdk.resource.getResource(resourceId).then((res: GetResourceResponse) => {
   if (res.statusCode == 200) {
@@ -137,7 +226,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "atque";
+const resourceId: string = "ad";
 
 sdk.resource.updateResource(resourceId).then((res: UpdateResourceResponse) => {
   if (res.statusCode == 200) {

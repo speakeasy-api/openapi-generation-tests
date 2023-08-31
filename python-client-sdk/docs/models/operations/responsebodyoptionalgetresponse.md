@@ -1,0 +1,12 @@
+# ResponseBodyOptionalGetResponse
+
+
+## Fields
+
+| Field                                                                                 | Type                                                                                  | Required                                                                              | Description                                                                           |
+| ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| `content_type`                                                                        | *str*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `status_code`                                                                         | *int*                                                                                 | :heavy_check_mark:                                                                    | N/A                                                                                   |
+| `raw_response`                                                                        | [requests.Response](https://requests.readthedocs.io/en/latest/api/#requests.Response) | :heavy_minus_sign:                                                                    | N/A                                                                                   |
+| `response_body_optional_get_200_text_plain_string`                                    | *Optional[str]*                                                                       | :heavy_minus_sign:                                                                    | OK                                                                                    |
+| `typed_object1`                                                                       | [Optional[shared.TypedObject1]](../../models/shared/typedobject1.md)                  | :heavy_minus_sign:                                                                    | OK                                                                                    |

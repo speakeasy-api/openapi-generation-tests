@@ -75,6 +75,35 @@ class Parameters:
         return res
 
     
+    def duplicate_param(self, duplicate_param_request: str) -> operations.DuplicateParamResponse:
+        request = operations.DuplicateParamRequest(
+            duplicate_param_request=duplicate_param_request,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.DuplicateParamRequest, base_url, '/anything/params/{duplicateParamRequest}', request, self.sdk_configuration.globals)
+        headers = {}
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('GET', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.DuplicateParamResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.DuplicateParamDuplicateParamResponse])
+                res.duplicate_param_response = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def form_query_params_array(self, arr_param: Optional[list[str]] = None, arr_param_exploded: Optional[list[int]] = None) -> operations.FormQueryParamsArrayResponse:
         request = operations.FormQueryParamsArrayRequest(
             arr_param=arr_param,
@@ -377,6 +406,70 @@ class Parameters:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.JSONQueryParamsObjectRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def mixed_parameters_camel_case(self, header_param: str, path_param: str, query_string_param: str) -> operations.MixedParametersCamelCaseResponse:
+        request = operations.MixedParametersCamelCaseRequest(
+            header_param=header_param,
+            path_param=path_param,
+            query_string_param=query_string_param,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.MixedParametersCamelCaseRequest, base_url, '/anything/mixedParams/path/{path_param}/camelcase', request, self.sdk_configuration.globals)
+        headers = utils.get_headers(request)
+        query_params = utils.get_query_params(operations.MixedParametersCamelCaseRequest, request, self.sdk_configuration.globals)
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('GET', url, params=query_params, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.MixedParametersCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.MixedParametersCamelCaseRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def mixed_parameters_primitives(self, header_param: str, path_param: str, query_string_param: str) -> operations.MixedParametersPrimitivesResponse:
+        request = operations.MixedParametersPrimitivesRequest(
+            header_param=header_param,
+            path_param=path_param,
+            query_string_param=query_string_param,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = utils.generate_url(operations.MixedParametersPrimitivesRequest, base_url, '/anything/mixedParams/path/{pathParam}', request, self.sdk_configuration.globals)
+        headers = utils.get_headers(request)
+        query_params = utils.get_query_params(operations.MixedParametersPrimitivesRequest, request, self.sdk_configuration.globals)
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('GET', url, params=query_params, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.MixedParametersPrimitivesResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.MixedParametersPrimitivesRes])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)

@@ -23,7 +23,7 @@ public class TelemetryTests {
 
         assertNotNull(res);
         assertEquals(200, res.statusCode);
-        assertEquals("speakeasy-sdk/java 1.29.0 2.89.1 0.1.0", res.res.headers.get("X-Speakeasy-User-Agent"));
+        assertEquals("speakeasy-sdk/java 1.29.1 2.89.1 0.1.0", res.res.headers.get("X-Speakeasy-User-Agent"));
     }
 
     @Test
@@ -40,6 +40,6 @@ public class TelemetryTests {
         assertNotNull(res);
         assertEquals(200, res.statusCode);
         assertEquals(userAgent, res.res.headers.get("User-Agent"));
-        assertEquals("speakeasy-sdk/java 1.29.0 2.89.1 0.1.0", res.res.headers.get("X-Speakeasy-User-Agent"));
+        assertEquals("speakeasy-sdk/java 1.29.1 2.89.1 0.1.0", res.res.headers.get("X-Speakeasy-User-Agent"));
     }
 }

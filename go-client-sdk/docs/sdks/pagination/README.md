@@ -39,7 +39,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 881005,
+        Cursor: 696344,
     })
     if err != nil {
         log.Fatal(err)
@@ -88,7 +88,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    cursor := 696344
+    cursor := 976405
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
@@ -141,9 +141,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(976405),
-        Offset: sdk.Int64(377752),
-        Page: sdk.Int64(617658),
+        Limit: sdk.Int64(377752),
+        Offset: sdk.Int64(617658),
+        Page: sdk.Int64(179603),
     })
     if err != nil {
         log.Fatal(err)
@@ -192,8 +192,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    limit := 179603
-    offset := 542499
+    limit := 542499
+    offset := 24678
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
@@ -247,9 +247,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(24678),
-        Offset: sdk.Int64(854614),
-        Page: sdk.Int64(67249),
+        Limit: sdk.Int64(854614),
+        Offset: sdk.Int64(67249),
+        Page: sdk.Int64(743835),
     })
     if err != nil {
         log.Fatal(err)
@@ -298,7 +298,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    page := 743835
+    page := 679393
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)

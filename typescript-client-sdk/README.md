@@ -22,6 +22,28 @@ yarn add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript
 
 ```typescript
 import { SDK } from "openapi";
+import { GetGlobalNameOverrideResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.globalNameOverridden().then((res: GetGlobalNameOverrideResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+
+## Second
+Do this second
+```typescript
+import { SDK } from "openapi";
 import {
   UsageExamplePostEnumParameter,
   UsageExamplePostOptEnumParameter,
@@ -79,6 +101,7 @@ sdk.generation.usageExamplePost({
   doubleParameter: 2.2222222,
   enumParameter: UsageExamplePostEnumParameter.Value3,
   falseyNumberParameter: 0,
+  float32Parameter: 1.1,
   floatParameter: 1.1,
   int64Parameter: 111111,
   intParameter: 1,
@@ -125,7 +148,8 @@ sdk.generation.usageExamplePost({
 ### [errors](docs/sdks/errors/README.md)
 
 * [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
-* [statusGet](docs/sdks/errors/README.md#statusget)
+* [statusGetError](docs/sdks/errors/README.md#statusgeterror)
+* [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
 
 ### [first](docs/sdks/first/README.md)
 
@@ -143,9 +167,10 @@ sdk.generation.usageExamplePost({
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
-* [deprecatedInSchemaWithCommentsGet](docs/sdks/generation/README.md#deprecatedinschemawithcommentsget)
-* [~~deprecatedNoCommentsGet~~](docs/sdks/generation/README.md#deprecatednocommentsget) - :warning: **Deprecated**
-* [~~deprecatedWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
+* [deprecatedFieldInSchemaPost](docs/sdks/generation/README.md#deprecatedfieldinschemapost)
+* [deprecatedObjectInSchemaGet](docs/sdks/generation/README.md#deprecatedobjectinschemaget)
+* [~~deprecatedOperationNoCommentsGet~~](docs/sdks/generation/README.md#deprecatedoperationnocommentsget) - :warning: **Deprecated**
+* [~~deprecatedOperationWithCommentsGet~~](docs/sdks/generation/README.md#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
 * [emptyObjectGet](docs/sdks/generation/README.md#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](docs/sdks/generation/README.md#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](docs/sdks/generation/README.md#globalnameoverridden)
@@ -173,6 +198,7 @@ sdk.generation.usageExamplePost({
 
 * [deepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
+* [duplicateParam](docs/sdks/parameters/README.md#duplicateparam)
 * [formQueryParamsArray](docs/sdks/parameters/README.md#formqueryparamsarray)
 * [formQueryParamsMap](docs/sdks/parameters/README.md#formqueryparamsmap)
 * [formQueryParamsObject](docs/sdks/parameters/README.md#formqueryparamsobject)
@@ -183,6 +209,8 @@ sdk.generation.usageExamplePost({
 * [headerParamsObject](docs/sdks/parameters/README.md#headerparamsobject)
 * [headerParamsPrimitive](docs/sdks/parameters/README.md#headerparamsprimitive)
 * [jsonQueryParamsObject](docs/sdks/parameters/README.md#jsonqueryparamsobject)
+* [mixedParametersCamelCase](docs/sdks/parameters/README.md#mixedparameterscamelcase)
+* [mixedParametersPrimitives](docs/sdks/parameters/README.md#mixedparametersprimitives)
 * [mixedQueryParams](docs/sdks/parameters/README.md#mixedqueryparams)
 * [pathParameterJson](docs/sdks/parameters/README.md#pathparameterjson)
 * [pipeDelimitedQueryParamsArray](docs/sdks/parameters/README.md#pipedelimitedqueryparamsarray)
@@ -194,20 +222,30 @@ sdk.generation.usageExamplePost({
 ### [requestBodies](docs/sdks/requestbodies/README.md)
 
 * [requestBodyPostApplicationJsonArray](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarray)
+* [requestBodyPostApplicationJsonArrayCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarraycamelcase)
 * [requestBodyPostApplicationJsonArrayObj](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayobj)
+* [requestBodyPostApplicationJsonArrayObjCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayobjcamelcase)
 * [requestBodyPostApplicationJsonArrayOfArray](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofarray)
+* [requestBodyPostApplicationJsonArrayOfArrayCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofarraycamelcase)
 * [requestBodyPostApplicationJsonArrayOfArrayOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofarrayofprimitive)
 * [requestBodyPostApplicationJsonArrayOfMap](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofmap)
+* [requestBodyPostApplicationJsonArrayOfMapCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofmapcamelcase)
 * [requestBodyPostApplicationJsonArrayOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonarrayofprimitive)
 * [requestBodyPostApplicationJsonDeep](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsondeep)
+* [requestBodyPostApplicationJsonDeepCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsondeepcamelcase)
 * [requestBodyPostApplicationJsonMap](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmap)
+* [requestBodyPostApplicationJsonMapCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapcamelcase)
 * [requestBodyPostApplicationJsonMapObj](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapobj)
+* [requestBodyPostApplicationJsonMapObjCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapobjcamelcase)
 * [requestBodyPostApplicationJsonMapOfArray](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofarray)
+* [requestBodyPostApplicationJsonMapOfArrayCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofarraycamelcase)
 * [requestBodyPostApplicationJsonMapOfMap](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofmap)
+* [requestBodyPostApplicationJsonMapOfMapCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofmapcamelcase)
 * [requestBodyPostApplicationJsonMapOfMapOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofmapofprimitive)
 * [requestBodyPostApplicationJsonMapOfPrimitive](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmapofprimitive)
 * [requestBodyPostApplicationJsonMultipleJsonFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [requestBodyPostApplicationJsonSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
+* [requestBodyPostApplicationJsonSimpleCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimplecamelcase)
 * [requestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)
@@ -221,13 +259,20 @@ sdk.generation.usageExamplePost({
 * [requestBodyPostMultipleContentTypesSplitJson](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitjson)
 * [requestBodyPostMultipleContentTypesSplitMultipart](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitmultipart)
 * [requestBodyPutBytes](docs/sdks/requestbodies/README.md#requestbodyputbytes)
+* [requestBodyPutBytesWithParams](docs/sdks/requestbodies/README.md#requestbodyputbyteswithparams)
 * [requestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
 * [requestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
 * [requestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [requestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
+* [requestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
+* [requestBodyReadAndWrite](docs/sdks/requestbodies/README.md#requestbodyreadandwrite)
+* [requestBodyReadOnlyInput](docs/sdks/requestbodies/README.md#requestbodyreadonlyinput)
+* [requestBodyWriteOnly](docs/sdks/requestbodies/README.md#requestbodywriteonly)
+* [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 
 ### [resource](docs/sdks/resource/README.md)
 
+* [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
 * [deleteResource](docs/sdks/resource/README.md#deleteresource)
 * [getResource](docs/sdks/resource/README.md#getresource)
@@ -236,6 +281,9 @@ sdk.generation.usageExamplePost({
 ### [responseBodies](docs/sdks/responsebodies/README.md)
 
 * [responseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
+* [responseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
+* [responseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)
+* [responseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
 * [responseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
 * [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 
@@ -251,6 +299,7 @@ sdk.generation.usageExamplePost({
 
 * [selectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [selectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
+* [serverWithProtocolTemplate](docs/sdks/servers/README.md#serverwithprotocoltemplate)
 * [serverWithTemplates](docs/sdks/servers/README.md#serverwithtemplates)
 * [serverWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)

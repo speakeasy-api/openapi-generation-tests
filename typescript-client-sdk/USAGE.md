@@ -3,6 +3,28 @@
 
 ```typescript
 import { SDK } from "openapi";
+import { GetGlobalNameOverrideResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.globalNameOverridden().then((res: GetGlobalNameOverrideResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+
+## Second
+Do this second
+```typescript
+import { SDK } from "openapi";
 import {
   UsageExamplePostEnumParameter,
   UsageExamplePostOptEnumParameter,
@@ -60,6 +82,7 @@ sdk.generation.usageExamplePost({
   doubleParameter: 2.2222222,
   enumParameter: UsageExamplePostEnumParameter.Value3,
   falseyNumberParameter: 0,
+  float32Parameter: 1.1,
   floatParameter: 1.1,
   int64Parameter: 111111,
   intParameter: 1,

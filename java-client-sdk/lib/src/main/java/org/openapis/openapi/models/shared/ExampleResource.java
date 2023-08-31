@@ -19,6 +19,32 @@ import org.openapis.openapi.utils.DateTimeSerializer;
 
 public class ExampleResource {
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("arrayOfNumber")
+    public Double[] arrayOfNumber;
+
+    public ExampleResource withArrayOfNumber(Double[] arrayOfNumber) {
+        this.arrayOfNumber = arrayOfNumber;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("arrayOfString")
+    public String[] arrayOfString;
+
+    public ExampleResource withArrayOfString(String[] arrayOfString) {
+        this.arrayOfString = arrayOfString;
+        return this;
+    }
+    
+    @JsonProperty("chocolates")
+    public ExampleResourceChocolates[] chocolates;
+
+    public ExampleResource withChocolates(ExampleResourceChocolates[] chocolates) {
+        this.chocolates = chocolates;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("createdAt")
@@ -30,6 +56,23 @@ public class ExampleResource {
     }
     
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("enumNumber")
+    public ExampleResourceEnumNumber enumNumber;
+
+    public ExampleResource withEnumNumber(ExampleResourceEnumNumber enumNumber) {
+        this.enumNumber = enumNumber;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("enumStr")
+    public ExampleResourceEnumStr enumStr;
+
+    public ExampleResource withEnumStr(ExampleResourceEnumStr enumStr) {
+        this.enumStr = enumStr;
+        return this;
+    }
+    
     @JsonProperty("id")
     public String id;
 
@@ -39,6 +82,23 @@ public class ExampleResource {
     }
     
     @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("mapOfInteger")
+    public java.util.Map<String, Long> mapOfInteger;
+
+    public ExampleResource withMapOfInteger(java.util.Map<String, Long> mapOfInteger) {
+        this.mapOfInteger = mapOfInteger;
+        return this;
+    }
+    
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("mapOfString")
+    public java.util.Map<String, String> mapOfString;
+
+    public ExampleResource withMapOfString(java.util.Map<String, String> mapOfString) {
+        this.mapOfString = mapOfString;
+        return this;
+    }
+    
     @JsonProperty("name")
     public String name;
 
@@ -58,5 +118,18 @@ public class ExampleResource {
         return this;
     }
     
-    public ExampleResource(){}
+    @JsonProperty("vehicle")
+    public Object vehicle;
+
+    public ExampleResource withVehicle(Object vehicle) {
+        this.vehicle = vehicle;
+        return this;
+    }
+    
+    public ExampleResource(@JsonProperty("chocolates") ExampleResourceChocolates[] chocolates, @JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("vehicle") Object vehicle) {
+        this.chocolates = chocolates;
+        this.id = id;
+        this.name = name;
+        this.vehicle = vehicle;
+  }
 }

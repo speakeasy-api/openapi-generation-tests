@@ -58,6 +58,31 @@ class Servers:
         return res
 
     
+    def server_with_protocol_template(self, server_url: Optional[str] = None) -> operations.ServerWithProtocolTemplateResponse:
+        base_url = utils.template_url(operations.SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS[operations.SERVER_WITH_PROTOCOL_TEMPLATE_SERVER_MAIN], {
+            'hostname': 'localhost',
+            'port': '35123',
+            'protocol': 'http',
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/anything/serverWithProtocolTemplate'
+        headers = {}
+        headers['Accept'] = '*/*'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('GET', url, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.ServerWithProtocolTemplateResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+
+        return res
+
+    
     def server_with_templates(self, server_url: Optional[str] = None) -> operations.ServerWithTemplatesResponse:
         base_url = utils.template_url(operations.SERVER_WITH_TEMPLATES_SERVERS[0], {
             'hostname': 'localhost',

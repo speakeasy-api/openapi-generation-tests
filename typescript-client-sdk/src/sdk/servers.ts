@@ -122,6 +122,64 @@ export class Servers {
         return res;
     }
 
+    async serverWithProtocolTemplate(
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.ServerWithProtocolTemplateResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.ServerWithProtocolTemplateServerList[
+                operations.ServerWithProtocolTemplateServerMain
+            ],
+            {
+                hostname: "localhost",
+                port: "35123",
+                protocol: "http",
+            }
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/serverWithProtocolTemplate";
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "*/*";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.ServerWithProtocolTemplateResponse =
+            new operations.ServerWithProtocolTemplateResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+        }
+
+        return res;
+    }
+
     async serverWithTemplates(
         serverURL?: string,
         config?: AxiosRequestConfig

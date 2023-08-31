@@ -4,7 +4,6 @@ package operations
 
 import (
 	"net/http"
-	"openapi/pkg/models/shared"
 )
 
 type UpdateResourceRequest struct {
@@ -20,10 +19,8 @@ func (o *UpdateResourceRequest) GetResourceID() string {
 
 type UpdateResourceResponse struct {
 	ContentType string
-	// OK
-	ExampleResource *shared.ExampleResource
-	StatusCode      int
-	RawResponse     *http.Response
+	StatusCode  int
+	RawResponse *http.Response
 }
 
 func (o *UpdateResourceResponse) GetContentType() string {
@@ -31,13 +28,6 @@ func (o *UpdateResourceResponse) GetContentType() string {
 		return ""
 	}
 	return o.ContentType
-}
-
-func (o *UpdateResourceResponse) GetExampleResource() *shared.ExampleResource {
-	if o == nil {
-		return nil
-	}
-	return o.ExampleResource
 }
 
 func (o *UpdateResourceResponse) GetStatusCode() int {

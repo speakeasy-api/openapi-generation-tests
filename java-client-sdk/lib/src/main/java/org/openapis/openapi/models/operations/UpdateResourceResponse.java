@@ -17,17 +17,6 @@ public class UpdateResourceResponse {
         return this;
     }
     
-    /**
-     * OK
-     */
-    
-    public org.openapis.openapi.models.shared.ExampleResource exampleResource;
-
-    public UpdateResourceResponse withExampleResource(org.openapis.openapi.models.shared.ExampleResource exampleResource) {
-        this.exampleResource = exampleResource;
-        return this;
-    }
-    
     
     public Integer statusCode;
 

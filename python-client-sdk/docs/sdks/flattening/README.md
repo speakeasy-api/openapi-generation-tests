@@ -31,9 +31,9 @@ s = sdk.SDK(
 
 
 res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
-    any='provident',
-    bigint=725255,
-    bigint_str='id',
+    any='nam',
+    bigint=659669,
+    bigint_str='blanditiis',
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
@@ -43,13 +43,13 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
     int=999999,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int_enum=shared.SimpleObjectIntEnum.THIRD,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), str_='sapiente')
+), str_='amet')
 
 if res.res is not None:
     # handle response
@@ -86,10 +86,10 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict(param_str='amet', simple_object=shared.SimpleObject(
-    any='deserunt',
-    bigint=394869,
-    bigint_str='vel',
+res = s.flattening.component_body_and_param_no_conflict(param_str='deserunt', simple_object=shared.SimpleObject(
+    any='nisi',
+    bigint=423855,
+    bigint_str='natus',
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
@@ -141,7 +141,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.conflicting_params(str_path_parameter='molestiae', str_query_parameter='perferendis')
+res = s.flattening.conflicting_params(str_path_parameter='perferendis', str_query_parameter='nihil')
 
 if res.res is not None:
     # handle response
@@ -178,8 +178,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
-    str_='nihil',
-), str_='magnam')
+    str_='magnam',
+), str_='distinctio')
 
 if res.res is not None:
     # handle response
@@ -216,8 +216,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='distinctio',
-), param_str='id')
+    body_str='id',
+), param_str='labore')
 
 if res.res is not None:
     # handle response

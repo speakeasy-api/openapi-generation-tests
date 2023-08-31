@@ -8,6 +8,40 @@ import(
 	"context"
 	"log"
 	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.GlobalNameOverridden(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.GetGlobalNameOverride200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+
+## Second
+Do this second
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
 	"math/big"
@@ -64,6 +98,7 @@ func main() {
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
+        Float32Parameter: 1.1,
         FloatParameter: 1.1,
         Int64Parameter: 111111,
         IntParameter: 1,

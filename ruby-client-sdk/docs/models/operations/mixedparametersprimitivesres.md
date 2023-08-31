@@ -1,0 +1,12 @@
+# MixedParametersPrimitivesRes
+
+OK
+
+
+## Fields
+
+| Field                                                                                                             | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
+| ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| `args`                                                                                                            | [Operations::MixedParametersPrimitivesResArgs](../../models/operations/mixedparametersprimitivesresargs.md)       | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
+| `headers`                                                                                                         | [Operations::MixedParametersPrimitivesResHeaders](../../models/operations/mixedparametersprimitivesresheaders.md) | :heavy_check_mark:                                                                                                | N/A                                                                                                               |
+| `url`                                                                                                             | *String*                                                                                                          | :heavy_check_mark:                                                                                                | N/A                                                                                                               |

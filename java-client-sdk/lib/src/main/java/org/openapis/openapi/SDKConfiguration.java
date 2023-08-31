@@ -27,10 +27,15 @@ class SDKConfiguration {
 		add(new HashMap<String, String>(){{
 			put("something", "something");
 		}});
+		add(new HashMap<String, String>(){{
+			put("hostname", "localhost");
+			put("port", "35123");
+			put("protocol", "http");
+		}});
 	}};
 	public String language = "java";
 	public String openapiDocVersion = "0.1.0";
-	public String sdkVersion = "1.29.0";
+	public String sdkVersion = "1.29.1";
 	public String genVersion = "2.89.1";
 	public Map<String, Map<String, Map<String, Object>>> globals = new HashMap<String, Map<String, Map<String, Object>>>(){{
 		put("parameters", new HashMap<String, Map<String, Object>>());

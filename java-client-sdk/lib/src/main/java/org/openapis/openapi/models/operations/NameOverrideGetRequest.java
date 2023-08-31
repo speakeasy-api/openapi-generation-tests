@@ -9,6 +9,17 @@ import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 
 public class NameOverrideGetRequest {
+    /**
+     * An enum type
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=enumNameOverride")
+    public NameOverrideGetEnumNameOverride testEnumQueryParam;
+
+    public NameOverrideGetRequest withTestEnumQueryParam(NameOverrideGetEnumNameOverride testEnumQueryParam) {
+        this.testEnumQueryParam = testEnumQueryParam;
+        return this;
+    }
+    
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=nameOverride")
     public String testQueryParam;
 
@@ -17,7 +28,8 @@ public class NameOverrideGetRequest {
         return this;
     }
     
-    public NameOverrideGetRequest(@JsonProperty("testQueryParam") String testQueryParam) {
+    public NameOverrideGetRequest(@JsonProperty("testEnumQueryParam") NameOverrideGetEnumNameOverride testEnumQueryParam, @JsonProperty("testQueryParam") String testQueryParam) {
+        this.testEnumQueryParam = testEnumQueryParam;
         this.testQueryParam = testQueryParam;
   }
 }

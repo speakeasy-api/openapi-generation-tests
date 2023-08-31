@@ -15,7 +15,15 @@ class RequestBodies
 		'http://localhost:35456',
 	];
 	
+	public const REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS = [
+		'http://localhost:35456',
+	];
+	
 	public const REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS = [
 		'http://localhost:35456',
 	];
 	
@@ -27,6 +35,10 @@ class RequestBodies
 		'http://localhost:35456',
 	];
 	
+	public const REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS = [
+		'http://localhost:35456',
+	];
+	
 	public const REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS = [
 		'http://localhost:35456',
 	];
@@ -35,11 +47,23 @@ class RequestBodies
 		'http://localhost:35456',
 	];
 	
+	public const REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS = [
+		'http://localhost:35456',
+	];
+	
 	public const REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS = [
 		'http://localhost:35456',
 	];
 	
+	public const REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS = [
+		'http://localhost:35456',
+	];
+	
 	public const REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS = [
 		'http://localhost:35456',
 	];
 	
@@ -48,6 +72,22 @@ class RequestBodies
 	];
 	
 	public const REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_READ_AND_WRITE_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_READ_ONLY_INPUT_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_WRITE_ONLY_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS = [
 		'http://localhost:35456',
 	];
 
@@ -107,6 +147,51 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPostApplicationJsonArrayCamelCase
+     * 
+     * @param array<\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase> $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonArrayCamelCase(
+        array $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/requestbody#arrayCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->simpleObjectCamelCases = $serializer->deserialize((string)$httpResponse->getBody(), 'array<OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPostApplicationJsonArrayObj
      * 
      * @param array<\OpenAPI\OpenAPI\Models\Shared\SimpleObject> $request
@@ -141,6 +226,47 @@ class RequestBodies
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->arrObjValue = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ArrObjValue', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyPostApplicationJsonArrayObjCamelCase
+     * 
+     * @param array<\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase> $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayObjCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonArrayObjCamelCase(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayObjCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/application/json/array/objResponseCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayObjCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->arrObjValueCamelCase = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ArrObjValueCamelCase', 'json');
             }
         }
 
@@ -186,6 +312,51 @@ class RequestBodies
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->arrs = $serializer->deserialize((string)$httpResponse->getBody(), 'array<array<OpenAPI\OpenAPI\Models\Shared\SimpleObject>>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyPostApplicationJsonArrayOfArrayCamelCase
+     * 
+     * @param array<array<\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>> $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonArrayOfArrayCamelCase(
+        array $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/requestbody#arrayOfArraysCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->arrs = $serializer->deserialize((string)$httpResponse->getBody(), 'array<array<OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>>', 'json');
             }
         }
 
@@ -283,6 +454,51 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPostApplicationJsonArrayOfMapCamelCase
+     * 
+     * @param array<array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>> $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonArrayOfMapCamelCase(
+        array $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/requestbody#arrayOfMapsCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->maps = $serializer->deserialize((string)$httpResponse->getBody(), 'array<array<string, OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPostApplicationJsonArrayOfPrimitive
      * 
      * @param array<string> $request
@@ -366,6 +582,44 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPostApplicationJsonDeepCamelCase
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\DeepObjectCamelCase $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonDeepCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonDeepCamelCase(
+        \OpenAPI\OpenAPI\Models\Shared\DeepObjectCamelCase $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonDeepCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/application/json/deep/camelcase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonDeepCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonDeepCamelCaseRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPostApplicationJsonMap
      * 
      * @param array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObject> $request
@@ -411,6 +665,51 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPostApplicationJsonMapCamelCase
+     * 
+     * @param array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase> $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonMapCamelCase(
+        array $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/requestbody#mapCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'array<string, OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPostApplicationJsonMapObj
      * 
      * @param array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObject> $request
@@ -445,6 +744,47 @@ class RequestBodies
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->mapObjValue = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\MapObjValue', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyPostApplicationJsonMapObjCamelCase
+     * 
+     * @param array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase> $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapObjCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonMapObjCamelCase(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapObjCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/application/json/map/objResponseCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapObjCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->mapObjValueCamelCase = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\MapObjValueCamelCase', 'json');
             }
         }
 
@@ -497,6 +837,51 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPostApplicationJsonMapOfArrayCamelCase
+     * 
+     * @param array<string, array<\OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>> $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonMapOfArrayCamelCase(
+        array $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/requestbody#mapOfArraysCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'array<string, array<OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPostApplicationJsonMapOfMap
      * 
      * @param array<string, array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObject>> $request
@@ -535,6 +920,51 @@ class RequestBodies
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'array<string, array<string, OpenAPI\OpenAPI\Models\Shared\SimpleObject>>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyPostApplicationJsonMapOfMapCamelCase
+     * 
+     * @param array<string, array<string, \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>> $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonMapOfMapCamelCase(
+        array $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/requestbody#mapOfMapsCamelCase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'array<string, array<string, OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase>>', 'json');
             }
         }
 
@@ -707,6 +1137,47 @@ class RequestBodies
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyPostApplicationJsonSimpleCamelCase
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleCamelCaseResponse
+     */
+	public function requestBodyPostApplicationJsonSimpleCamelCase(
+        \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCase $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleCamelCaseResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/application/json/camelcase');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleCamelCaseResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPostApplicationJsonSimpleCamelCaseRes', 'json');
             }
         }
 
@@ -1265,6 +1736,54 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPutBytesWithParams
+     * 
+     * @param string $requestBody
+     * @param string $queryStringParam
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsResponse
+     */
+	public function requestBodyPutBytesWithParams(
+        string $requestBody,
+        string $queryStringParam,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsRequest();
+        $request->requestBody = $requestBody;
+        $request->queryStringParam = $queryStringParam;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/put/bytesWithParams');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "requestBody", "raw");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('PUT', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPutMultipartDeep
      * 
      * @param \OpenAPI\OpenAPI\Models\Shared\DeepObject $request
@@ -1422,6 +1941,234 @@ class RequestBodies
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyPutStringWithParams
+     * 
+     * @param string $requestBody
+     * @param string $queryStringParam
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsResponse
+     */
+	public function requestBodyPutStringWithParams(
+        string $requestBody,
+        string $queryStringParam,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsRequest();
+        $request->requestBody = $requestBody;
+        $request->queryStringParam = $queryStringParam;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/put/stringWithParams');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "requestBody", "string");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('PUT', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyReadAndWrite
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\ReadWriteObjectInput $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadAndWriteResponse
+     */
+	public function requestBodyReadAndWrite(
+        \OpenAPI\OpenAPI\Models\Shared\ReadWriteObjectInput $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadAndWriteResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_READ_AND_WRITE_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyandwriteonly');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadAndWriteResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->readWriteObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ReadWriteObjectOutput', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyReadOnlyInput
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\ReadOnlyObjectInput $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyInputResponse
+     */
+	public function requestBodyReadOnlyInput(
+        \OpenAPI\OpenAPI\Models\Shared\ReadOnlyObjectInput $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyInputResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_READ_ONLY_INPUT_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyorwriteonly#readOnlyInput');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyInputResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->readOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ReadOnlyObject', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyWriteOnly
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyResponse
+     */
+	public function requestBodyWriteOnly(
+        \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_WRITE_ONLY_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyorwriteonly#writeOnly');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->readOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ReadOnlyObject', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyWriteOnlyOutput
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyOutputResponse
+     */
+	public function requestBodyWriteOnlyOutput(
+        \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyOutputResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyorwriteonly#writeOnlyOutput');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyOutputResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->writeOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\WriteOnlyObjectOutput', 'json');
             }
         }
 

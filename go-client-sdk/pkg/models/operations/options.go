@@ -21,6 +21,7 @@ const (
 	AcceptHeaderEnumApplicationJson        AcceptHeaderEnum = "application/json"
 	AcceptHeaderEnumWildcardWildcard       AcceptHeaderEnum = "*/*"
 	AcceptHeaderEnumApplicationOctetStream AcceptHeaderEnum = "application/octet-stream"
+	AcceptHeaderEnumTextPlain              AcceptHeaderEnum = "text/plain"
 	AcceptHeaderEnumTextHtml               AcceptHeaderEnum = "text/html"
 	AcceptHeaderEnumApplicationXml         AcceptHeaderEnum = "application/xml"
 )

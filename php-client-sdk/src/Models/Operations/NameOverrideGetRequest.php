@@ -11,11 +11,20 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class NameOverrideGetRequest
 {
+    /**
+     * An enum type
+     * 
+     * @var \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride $testEnumQueryParam
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=enumNameOverride')]
+    public NameOverrideGetEnumNameOverride $testEnumQueryParam;
+    
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=nameOverride')]
     public string $testQueryParam;
     
 	public function __construct()
 	{
+		$this->testEnumQueryParam = \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride::Value1;
 		$this->testQueryParam = "";
 	}
 }

@@ -3,12 +3,54 @@
 package operations
 
 import (
+	"encoding/json"
+	"fmt"
 	"net/http"
 	"openapi/pkg/models/shared"
 )
 
+// NameOverrideGetEnumNameOverride - An enum type
+type NameOverrideGetEnumNameOverride string
+
+const (
+	NameOverrideGetEnumNameOverrideValue1 NameOverrideGetEnumNameOverride = "value1"
+	NameOverrideGetEnumNameOverrideValue2 NameOverrideGetEnumNameOverride = "value2"
+	NameOverrideGetEnumNameOverrideValue3 NameOverrideGetEnumNameOverride = "value3"
+)
+
+func (e NameOverrideGetEnumNameOverride) ToPointer() *NameOverrideGetEnumNameOverride {
+	return &e
+}
+
+func (e *NameOverrideGetEnumNameOverride) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "value1":
+		fallthrough
+	case "value2":
+		fallthrough
+	case "value3":
+		*e = NameOverrideGetEnumNameOverride(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for NameOverrideGetEnumNameOverride: %v", v)
+	}
+}
+
 type NameOverrideGetRequest struct {
-	TestQueryParam string `queryParam:"style=form,explode=true,name=nameOverride"`
+	// An enum type
+	TestEnumQueryParam NameOverrideGetEnumNameOverride `queryParam:"style=form,explode=true,name=enumNameOverride"`
+	TestQueryParam     string                          `queryParam:"style=form,explode=true,name=nameOverride"`
+}
+
+func (o *NameOverrideGetRequest) GetTestEnumQueryParam() NameOverrideGetEnumNameOverride {
+	if o == nil {
+		return NameOverrideGetEnumNameOverride("")
+	}
+	return o.TestEnumQueryParam
 }
 
 func (o *NameOverrideGetRequest) GetTestQueryParam() string {

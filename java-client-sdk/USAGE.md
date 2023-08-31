@@ -4,6 +4,39 @@
 ```java
 package hello.world;
 
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.GetGlobalNameOverrideResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            GetGlobalNameOverrideResponse res = sdk.generation.globalNameOverridden();
+
+            if (res.getGlobalNameOverride200ApplicationJSONObject != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+## Second
+Do this second
+```java
+package hello.world;
+
 import java.time.LocalDate;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
@@ -27,7 +60,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1d, 111111L, 1, "example 2") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     email = "Micheal_Sporer@yahoo.com";
                     formatEmail = "Roselyn_Kassulke@yahoo.com";

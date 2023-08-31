@@ -8,9 +8,10 @@ Endpoints for purely testing valid generation behavior.
 
 * [anchorTypesGet](#anchortypesget)
 * [circularReferenceGet](#circularreferenceget)
-* [deprecatedInSchemaWithCommentsGet](#deprecatedinschemawithcommentsget)
-* [~~deprecatedNoCommentsGet~~](#deprecatednocommentsget) - deprecatedNoCommentsGet :warning: **Deprecated**
-* [~~deprecatedWithCommentsGet~~](#deprecatedwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
+* [deprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
+* [deprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
+* [~~deprecatedOperationNoCommentsGet~~](#deprecatedoperationnocommentsget) - deprecatedOperationNoCommentsGet :warning: **Deprecated**
+* [~~deprecatedOperationWithCommentsGet~~](#deprecatedoperationwithcommentsget) - This is an endpoint setup to test deprecation with comments :warning: **Deprecated** Use `simplePathParameterObjects` instead.
 * [emptyObjectGet](#emptyobjectget)
 * [emptyResponseObjectWithCommentGet](#emptyresponseobjectwithcommentget)
 * [globalNameOverridden](#globalnameoverridden)
@@ -86,7 +87,7 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse](../../models/operations/CircularReferenceGetResponse.md)**
 
 
-## deprecatedInSchemaWithCommentsGet
+## deprecatedFieldInSchemaPost
 
 ### Example Usage
 
@@ -98,18 +99,18 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField;
-use \OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedFieldDeprecatedEnum;
+use \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject;
+use \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObjectDeprecatedEnum;
 
 $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new ObjectWithDeprecatedField();
-    $request->deprecatedField = 'aliquid';
-    $request->newField = 'provident';
+    $request = new DeprecatedFieldInObject();
+    $request->deprecatedField = 'provident';
+    $request->newField = 'necessitatibus';
 
-    $response = $sdk->generation->deprecatedInSchemaWithCommentsGet($request);
+    $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -121,19 +122,52 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                    | Type                                                                                                         | Required                                                                                                     | Description                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
-| `$request`                                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\ObjectWithDeprecatedField](../../models/shared/ObjectWithDeprecatedField.md) | :heavy_check_mark:                                                                                           | The request object to use for the request.                                                                   |
+| Parameter                                                                                                | Type                                                                                                     | Required                                                                                                 | Description                                                                                              |
+| -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
+| `$request`                                                                                               | [\OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject](../../models/shared/DeprecatedFieldInObject.md) | :heavy_check_mark:                                                                                       | The request object to use for the request.                                                               |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedInSchemaWithCommentsGetResponse](../../models/operations/DeprecatedInSchemaWithCommentsGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedFieldInSchemaPostResponse](../../models/operations/DeprecatedFieldInSchemaPostResponse.md)**
 
 
-## ~~deprecatedNoCommentsGet~~
+## deprecatedObjectInSchemaGet
 
-deprecatedNoCommentsGet
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->generation->deprecatedObjectInSchemaGet();
+
+    if ($response->deprecatedObjectInSchemaGet200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedObjectInSchemaGetResponse](../../models/operations/DeprecatedObjectInSchemaGetResponse.md)**
+
+
+## ~~deprecatedOperationNoCommentsGet~~
+
+deprecatedOperationNoCommentsGet
 
 > :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible.
 
@@ -147,7 +181,7 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetRequest;
+use \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetRequest;
 
 $sdk = SDK::builder()
     ->build();
@@ -155,7 +189,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedNoCommentsGet('necessitatibus');
+    $response = $sdk->generation->deprecatedOperationNoCommentsGet('sint');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -174,14 +208,14 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedNoCommentsGetResponse](../../models/operations/DeprecatedNoCommentsGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationNoCommentsGetResponse](../../models/operations/DeprecatedOperationNoCommentsGetResponse.md)**
 
 
-## ~~deprecatedWithCommentsGet~~
+## ~~deprecatedOperationWithCommentsGet~~
 
 This is an endpoint setup to test deprecation with comments
 
-> :warning: **DEPRECATED**: This will be removed in a future release, please migrate away from it as soon as possible. Use `simplePathParameterObjects` instead.
+> :warning: **DEPRECATED**: This operation is deprecated. Use `simplePathParameterObjects` instead.
 
 ### Example Usage
 
@@ -193,7 +227,7 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetRequest;
+use \OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetRequest;
 
 $sdk = SDK::builder()
     ->build();
@@ -201,7 +235,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedWithCommentsGet('sint', 'officia');
+    $response = $sdk->generation->deprecatedOperationWithCommentsGet('officia', 'dolor');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -213,15 +247,15 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                                                     | Type                                                                                                                                                                          | Required                                                                                                                                                                      | Description                                                                                                                                                                   |
-| ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `deprecatedParameter`                                                                                                                                                         | *?string*                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                            | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. Use newParameter instead.<br/><br/>This is a string parameter |
-| `newParameter`                                                                                                                                                                | *?string*                                                                                                                                                                     | :heavy_minus_sign:                                                                                                                                                            | This is a string parameter                                                                                                                                                    |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `deprecatedParameter`                                                                                            | *?string*                                                                                                        | :heavy_minus_sign:                                                                                               | : warning: ** DEPRECATED **: This parameter is deprecated. Use newParameter instead.<br/><br/>This is a string parameter |
+| `newParameter`                                                                                                   | *?string*                                                                                                        | :heavy_minus_sign:                                                                                               | This is a string parameter                                                                                       |
 
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedWithCommentsGetResponse](../../models/operations/DeprecatedWithCommentsGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\DeprecatedOperationWithCommentsGetResponse](../../models/operations/DeprecatedOperationWithCommentsGetResponse.md)**
 
 
 ## emptyObjectGet
@@ -386,10 +420,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'http://unimportant-venture.net';
+    $requestBody->callbackUrl = 'https://weepy-pork.info';
     $requestBody->testProp = 'in';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'in');
+    $response = $sdk->generation->ignoresPost($requestBody, 'illum');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -425,6 +459,7 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetRequest;
+use \OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride;
 
 $sdk = SDK::builder()
     ->build();
@@ -432,7 +467,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->nameOverride('example');
+    $response = $sdk->generation->nameOverride(NameOverrideGetEnumNameOverride::Value3, 'example');
 
     if ($response->overriddenResponse !== null) {
         // handle response
@@ -444,9 +479,10 @@ try {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        | Example            |
-| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
-| `testQueryParam`   | *string*           | :heavy_check_mark: | N/A                | example            |
+| Parameter                                                                                                                        | Type                                                                                                                             | Required                                                                                                                         | Description                                                                                                                      | Example                                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| `testEnumQueryParam`                                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetEnumNameOverride](../../models/operations/NameOverrideGetEnumNameOverride.md) | :heavy_check_mark:                                                                                                               | An enum type                                                                                                                     | value3                                                                                                                           |
+| `testQueryParam`                                                                                                                 | *string*                                                                                                                         | :heavy_check_mark:                                                                                                               | N/A                                                                                                                              | example                                                                                                                          |
 
 
 ### Response
@@ -475,10 +511,10 @@ $sdk = SDK::builder()
 try {
     $obj = new TypedParameterGenerationGetObj();
     $obj->bool = false;
-    $obj->num = 8464.09;
-    $obj->str = 'maiores';
+    $obj->num = 9785.71;
+    $obj->str = 'rerum';
 
-    $response = $sdk->generation->typedParameterGenerationGet(699479, DateTime::createFromFormat('Y-m-d', '2022-09-14'), $obj);
+    $response = $sdk->generation->typedParameterGenerationGet(116202, DateTime::createFromFormat('Y-m-d', '2022-03-27'), $obj);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -535,16 +571,16 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Raquel_Jenkins@hotmail.com';
-    $request->requestBody->formatEmail = 'Delphine88@hotmail.com';
-    $request->requestBody->formatUri = 'https://repentant-nectar.net';
-    $request->requestBody->formatUuid = 'a88f3a66-9970-474b-a446-9b6e21419598';
-    $request->requestBody->hostname = 'noted-antling.name';
-    $request->requestBody->ipv4 = '248.166.82.110';
-    $request->requestBody->ipv6 = '3e25:16fe:4c8b:711e:5b7f:d2ed:0289:21cd';
+    $request->requestBody->email = 'Hans_Hyatt24@hotmail.com';
+    $request->requestBody->formatEmail = 'Elyssa_Tillman58@yahoo.com';
+    $request->requestBody->formatUri = 'https://pungent-latter.name';
+    $request->requestBody->formatUuid = 'f3a66997-074b-4a44-a9b6-e2141959890a';
+    $request->requestBody->hostname = 'wide-eyed-perspective.biz';
+    $request->requestBody->ipv4 = '110.56.229.36';
+    $request->requestBody->ipv6 = '516f:e4c8:b711:e5b7:fd2e:d028:921c:ddc6';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'pariatur';
-    $request->requestBody->simpleObject->bigint = 807319;
+    $request->requestBody->simpleObject->any = 'excepturi';
+    $request->requestBody->simpleObject->bigint = 139972;
     $request->requestBody->simpleObject->bigintStr = 'ea';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
@@ -554,22 +590,23 @@ try {
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::First;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'ea';
-    $request->requestBody->uri = 'http://big-willingness.net';
-    $request->requestBody->uuid = '576b0d5f-0d30-4c5f-bb25-87053202c73d';
+    $request->requestBody->unknown = 'maiores';
+    $request->requestBody->uri = 'https://harmonious-in-joke.info';
+    $request->requestBody->uuid = 'b0d5f0d3-0c5f-4bb2-9870-53202c73d5fe';
     $request->boolParameter = false;
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
     $request->falseyNumberParameter = 0;
+    $request->float32Parameter = 1.1;
     $request->floatParameter = 1.1;
     $request->int64Parameter = 111111;
     $request->intParameter = 1;

@@ -9,16 +9,29 @@ require_relative '../shared/simpleobject'
 
 module OpenApiSDK
   module Operations
+    # NameOverrideGetEnumNameOverride - An enum type
+    class NameOverrideGetEnumNameOverride < T::Enum
+      enums do
+        VALUE1 = new('value1')
+        VALUE2 = new('value2')
+        VALUE3 = new('value3')
+      end
+    end
+
+
 
     class NameOverrideGetRequest < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
+      # An enum type
+      field :test_enum_query_param, Operations::NameOverrideGetEnumNameOverride, { 'query_param': { 'field_name': 'enumNameOverride', 'style': 'form', 'explode': true } }
 
       field :test_query_param, String, { 'query_param': { 'field_name': 'nameOverride', 'style': 'form', 'explode': true } }
 
 
-      sig { params(test_query_param: String).void }
-      def initialize(test_query_param: nil)
+      sig { params(test_enum_query_param: Operations::NameOverrideGetEnumNameOverride, test_query_param: String).void }
+      def initialize(test_enum_query_param: nil, test_query_param: nil)
+        @test_enum_query_param = test_enum_query_param
         @test_query_param = test_query_param
       end
     end

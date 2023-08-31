@@ -44,6 +44,37 @@ class RequestBodies:
         return res
 
     
+    def request_body_post_application_json_array_camel_case(self, request: list[shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/requestbody#arrayCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[list[shared.SimpleObjectCamelCase]])
+                res.simple_object_camel_cases = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_post_application_json_array_obj(self, request: list[shared.SimpleObject]) -> operations.RequestBodyPostApplicationJSONArrayObjResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -74,6 +105,36 @@ class RequestBodies:
         return res
 
     
+    def request_body_post_application_json_array_obj_camel_case(self, request: list[shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/requestBodies/post/application/json/array/objResponseCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ArrObjValueCamelCase])
+                res.arr_obj_value_camel_case = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_post_application_json_array_of_array(self, request: list[list[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0], {
         })
@@ -98,6 +159,37 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[list[list[shared.SimpleObject]]])
+                res.arrs = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_post_application_json_array_of_array_camel_case(self, request: list[list[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/requestbody#arrayOfArraysCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[list[list[shared.SimpleObjectCamelCase]]])
                 res.arrs = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -167,6 +259,37 @@ class RequestBodies:
         return res
 
     
+    def request_body_post_application_json_array_of_map_camel_case(self, request: list[dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/requestbody#arrayOfMapsCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[list[dict[str, shared.SimpleObjectCamelCase]]])
+                res.maps = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_post_application_json_array_of_primitive(self, request: list[str], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0], {
         })
@@ -226,6 +349,34 @@ class RequestBodies:
         return res
 
     
+    def request_body_post_application_json_deep_camel_case(self, request: shared.DeepObjectCamelCase) -> operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/requestBodies/post/application/json/deep/camelcase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONDeepCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostApplicationJSONDeepCamelCaseRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_post_application_json_map(self, request: dict[str, shared.SimpleObject], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0], {
         })
@@ -250,6 +401,37 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.SimpleObject]])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_post_application_json_map_camel_case(self, request: dict[str, shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapCamelCaseResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/requestbody#mapCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONMapCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.SimpleObjectCamelCase]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -287,6 +469,36 @@ class RequestBodies:
         return res
 
     
+    def request_body_post_application_json_map_obj_camel_case(self, request: dict[str, shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/requestBodies/post/application/json/map/objResponseCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.MapObjValueCamelCase])
+                res.map_obj_value_camel_case = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_post_application_json_map_of_array(self, request: dict[str, list[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0], {
         })
@@ -318,6 +530,37 @@ class RequestBodies:
         return res
 
     
+    def request_body_post_application_json_map_of_array_camel_case(self, request: dict[str, list[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/requestbody#mapOfArraysCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, list[shared.SimpleObjectCamelCase]]])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_post_application_json_map_of_map(self, request: dict[str, dict[str, shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0], {
         })
@@ -342,6 +585,37 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[dict[str, dict[str, shared.SimpleObject]]])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_post_application_json_map_of_map_camel_case(self, request: dict[str, dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/requestbody#mapOfMapsCamelCase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[dict[str, dict[str, shared.SimpleObjectCamelCase]]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -464,6 +738,36 @@ class RequestBodies:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostApplicationJSONSimpleRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_post_application_json_simple_camel_case(self, request: shared.SimpleObjectCamelCase) -> operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/requestBodies/post/application/json/camelcase'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPostApplicationJSONSimpleCamelCaseRes])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -877,6 +1181,42 @@ class RequestBodies:
         return res
 
     
+    def request_body_put_bytes_with_params(self, request_body: bytes, query_string_param: str) -> operations.RequestBodyPutBytesWithParamsResponse:
+        request = operations.RequestBodyPutBytesWithParamsRequest(
+            request_body=request_body,
+            query_string_param=query_string_param,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/requestBodies/put/bytesWithParams'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'raw')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        query_params = utils.get_query_params(operations.RequestBodyPutBytesWithParamsRequest, request, self.sdk_configuration.globals)
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPutBytesWithParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPutBytesWithParamsRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_put_multipart_deep(self, request: shared.DeepObject) -> operations.RequestBodyPutMultipartDeepResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -991,6 +1331,166 @@ class RequestBodies:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPutStringRes])
                 res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_put_string_with_params(self, request_body: str, query_string_param: str) -> operations.RequestBodyPutStringWithParamsResponse:
+        request = operations.RequestBodyPutStringWithParamsRequest(
+            request_body=request_body,
+            query_string_param=query_string_param,
+        )
+        
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/requestBodies/put/stringWithParams'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'string')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        query_params = utils.get_query_params(operations.RequestBodyPutStringWithParamsRequest, request, self.sdk_configuration.globals)
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('PUT', url, params=query_params, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyPutStringWithParamsResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.RequestBodyPutStringWithParamsRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_read_and_write(self, request: shared.ReadWriteObjectInput, server_url: Optional[str] = None) -> operations.RequestBodyReadAndWriteResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_READ_AND_WRITE_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/readonlyandwriteonly'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyReadAndWriteResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ReadWriteObjectOutput])
+                res.read_write_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_read_only_input(self, request: shared.ReadOnlyObjectInput, server_url: Optional[str] = None) -> operations.RequestBodyReadOnlyInputResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_READ_ONLY_INPUT_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/readonlyorwriteonly#readOnlyInput'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyReadOnlyInputResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ReadOnlyObject])
+                res.read_only_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_write_only(self, request: shared.WriteOnlyObject, server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/readonlyorwriteonly#writeOnly'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyWriteOnlyResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.ReadOnlyObject])
+                res.read_only_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_write_only_output(self, request: shared.WriteOnlyObject, server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyOutputResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/readonlyorwriteonly#writeOnlyOutput'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyWriteOnlyOutputResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[shared.WriteOnlyObjectOutput])
+                res.write_only_object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
 

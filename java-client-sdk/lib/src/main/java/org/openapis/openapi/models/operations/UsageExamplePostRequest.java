@@ -89,6 +89,17 @@ public class UsageExamplePostRequest {
     }
     
     /**
+     * A float32 parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=float32Parameter")
+    public Float float32Parameter;
+
+    public UsageExamplePostRequest withFloat32Parameter(Float float32Parameter) {
+        this.float32Parameter = float32Parameter;
+        return this;
+    }
+    
+    /**
      * A float parameter
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=floatParameter")
@@ -143,13 +154,14 @@ public class UsageExamplePostRequest {
         return this;
     }
     
-    public UsageExamplePostRequest(@JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameter enumParameter, @JsonProperty("falseyNumberParameter") Double falseyNumberParameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
+    public UsageExamplePostRequest(@JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameter enumParameter, @JsonProperty("falseyNumberParameter") Double falseyNumberParameter, @JsonProperty("float32Parameter") Float float32Parameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
         this.boolParameter = boolParameter;
         this.dateParameter = dateParameter;
         this.dateTimeParameter = dateTimeParameter;
         this.doubleParameter = doubleParameter;
         this.enumParameter = enumParameter;
         this.falseyNumberParameter = falseyNumberParameter;
+        this.float32Parameter = float32Parameter;
         this.floatParameter = floatParameter;
         this.int64Parameter = int64Parameter;
         this.intParameter = intParameter;

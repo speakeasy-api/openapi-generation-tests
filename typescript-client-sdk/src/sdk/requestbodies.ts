@@ -101,6 +101,87 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPostApplicationJsonArrayCamelCase(
+        req: shared.SimpleObjectCamelCase[],
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayCamelCaseServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.simpleObjectCamelCases = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.simpleObjectCamelCases = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.SimpleObjectCamelCase,
+                        resFieldDepth
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async requestBodyPostApplicationJsonArrayObj(
         req: shared.SimpleObject[],
         config?: AxiosRequestConfig
@@ -164,6 +245,84 @@ export class RequestBodies {
                     res.arrObjValue = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.ArrObjValue
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyPostApplicationJsonArrayObjCamelCase(
+        req: shared.SimpleObjectCamelCase[],
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") +
+            "/anything/requestBodies/post/application/json/array/objResponseCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.arrObjValueCamelCase = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ArrObjValueCamelCase
                     );
                 } else {
                     throw new errors.SDKError(
@@ -244,6 +403,87 @@ export class RequestBodies {
                     res.arrs = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObject,
+                        resFieldDepth
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyPostApplicationJsonArrayOfArrayCamelCase(
+        req: shared.SimpleObjectCamelCase[][],
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfArraysCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.arrs = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.arrs = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.SimpleObjectCamelCase,
                         resFieldDepth
                     );
                 } else {
@@ -416,6 +656,87 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPostApplicationJsonArrayOfMapCamelCase(
+        req: Record<string, shared.SimpleObjectCamelCase>[],
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#arrayOfMapsCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.maps = [];
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.maps = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.SimpleObjectCamelCase,
+                        resFieldDepth
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async requestBodyPostApplicationJsonArrayOfPrimitive(
         req: string[],
         serverURL?: string,
@@ -570,6 +891,86 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPostApplicationJsonDeepCamelCase(
+        req: shared.DeepObjectCamelCase,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.DeepObjectCamelCase(req);
+        }
+
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") +
+            "/anything/requestBodies/post/application/json/deep/camelcase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostApplicationJsonDeepCamelCaseRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async requestBodyPostApplicationJsonMap(
         req: Record<string, shared.SimpleObject>,
         serverURL?: string,
@@ -651,6 +1052,87 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPostApplicationJsonMapCamelCase(
+        req: Record<string, shared.SimpleObjectCamelCase>,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonMapCamelCaseResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapCamelCaseServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonMapCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonMapCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = {};
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.SimpleObjectCamelCase,
+                        resFieldDepth
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async requestBodyPostApplicationJsonMapObj(
         req: Record<string, shared.SimpleObject>,
         config?: AxiosRequestConfig
@@ -714,6 +1196,84 @@ export class RequestBodies {
                     res.mapObjValue = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.MapObjValue
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyPostApplicationJsonMapObjCamelCase(
+        req: Record<string, shared.SimpleObjectCamelCase>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") +
+            "/anything/requestBodies/post/application/json/map/objResponseCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.mapObjValueCamelCase = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.MapObjValueCamelCase
                     );
                 } else {
                     throw new errors.SDKError(
@@ -810,6 +1370,87 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPostApplicationJsonMapOfArrayCamelCase(
+        req: Record<string, shared.SimpleObjectCamelCase[]>,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfArraysCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = {};
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.SimpleObjectCamelCase,
+                        resFieldDepth
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async requestBodyPostApplicationJsonMapOfMap(
         req: Record<string, Record<string, shared.SimpleObject>>,
         serverURL?: string,
@@ -875,6 +1516,87 @@ export class RequestBodies {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         shared.SimpleObject,
+                        resFieldDepth
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyPostApplicationJsonMapOfMapCamelCase(
+        req: Record<string, Record<string, shared.SimpleObjectCamelCase>>,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse> {
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/requestbody#mapOfMapsCamelCase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = {};
+                    const resFieldDepth: number = utils.getResFieldDepth(res);
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.SimpleObjectCamelCase,
                         resFieldDepth
                     );
                 } else {
@@ -1189,6 +1911,87 @@ export class RequestBodies {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.RequestBodyPostApplicationJsonSimpleRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyPostApplicationJsonSimpleCamelCase(
+        req: shared.SimpleObjectCamelCase,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.SimpleObjectCamelCase(req);
+        }
+
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/application/json/camelcase";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse =
+            new operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPostApplicationJsonSimpleCamelCaseRes
                     );
                 } else {
                     throw new errors.SDKError(
@@ -2259,6 +3062,89 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPutBytesWithParams(
+        requestBody: Uint8Array,
+        queryStringParam: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPutBytesWithParamsResponse> {
+        const req = new operations.RequestBodyPutBytesWithParamsRequest({
+            requestBody: requestBody,
+            queryStringParam: queryStringParam,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/bytesWithParams";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "raw");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "put",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPutBytesWithParamsResponse =
+            new operations.RequestBodyPutBytesWithParamsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPutBytesWithParamsRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async requestBodyPutMultipartDeep(
         req: shared.DeepObject,
         config?: AxiosRequestConfig
@@ -2563,6 +3449,414 @@ export class RequestBodies {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.RequestBodyPutStringRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyPutStringWithParams(
+        requestBody: string,
+        queryStringParam: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPutStringWithParamsResponse> {
+        const req = new operations.RequestBodyPutStringWithParamsRequest({
+            requestBody: requestBody,
+            queryStringParam: queryStringParam,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/put/stringWithParams";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "string");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "put",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPutStringWithParamsResponse =
+            new operations.RequestBodyPutStringWithParamsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.RequestBodyPutStringWithParamsRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyReadAndWrite(
+        req: shared.ReadWriteObjectInput,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyReadAndWriteResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.ReadWriteObjectInput(req);
+        }
+
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyReadAndWriteServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/readonlyandwriteonly";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyReadAndWriteResponse =
+            new operations.RequestBodyReadAndWriteResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.readWriteObject = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ReadWriteObjectOutput
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyReadOnlyInput(
+        req: shared.ReadOnlyObjectInput,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyReadOnlyInputResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.ReadOnlyObjectInput(req);
+        }
+
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyReadOnlyInputServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#readOnlyInput";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyReadOnlyInputResponse =
+            new operations.RequestBodyReadOnlyInputResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.readOnlyObject = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ReadOnlyObject
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyWriteOnly(
+        req: shared.WriteOnlyObject,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyWriteOnlyResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.WriteOnlyObject(req);
+        }
+
+        let baseURL: string = utils.templateUrl(operations.RequestBodyWriteOnlyServerList[0], {});
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#writeOnly";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyWriteOnlyResponse =
+            new operations.RequestBodyWriteOnlyResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.readOnlyObject = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.ReadOnlyObject
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async requestBodyWriteOnlyOutput(
+        req: shared.WriteOnlyObject,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyWriteOnlyOutputResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.WriteOnlyObject(req);
+        }
+
+        let baseURL: string = utils.templateUrl(
+            operations.RequestBodyWriteOnlyOutputServerList[0],
+            {}
+        );
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/readonlyorwriteonly#writeOnlyOutput";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...reqBodyHeaders, ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyWriteOnlyOutputResponse =
+            new operations.RequestBodyWriteOnlyOutputResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.writeOnlyObject = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        shared.WriteOnlyObjectOutput
                     );
                 } else {
                     throw new errors.SDKError(

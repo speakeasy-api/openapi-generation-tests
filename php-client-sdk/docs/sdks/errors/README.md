@@ -7,7 +7,8 @@ Endpoints for testing error responses.
 ### Available Operations
 
 * [connectionErrorGet](#connectionerrorget)
-* [statusGet](#statusget)
+* [statusGetError](#statusgeterror)
+* [statusGetXSpeakeasyErrors](#statusgetxspeakeasyerrors)
 
 ## connectionErrorGet
 
@@ -48,7 +49,7 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\ConnectionErrorGetResponse](../../models/operations/ConnectionErrorGetResponse.md)**
 
 
-## statusGet
+## statusGetError
 
 ### Example Usage
 
@@ -60,7 +61,7 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Operations\StatusGetRequest;
+use \OpenAPI\OpenAPI\Models\Operations\StatusGetErrorRequest;
 
 $sdk = SDK::builder()
     ->build();
@@ -68,7 +69,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->errors->statusGet(586513);
+    $response = $sdk->errors->statusGetError(586513);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -87,5 +88,48 @@ try {
 
 ### Response
 
-**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetResponse](../../models/operations/StatusGetResponse.md)**
+**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetErrorResponse](../../models/operations/StatusGetErrorResponse.md)**
+
+
+## statusGetXSpeakeasyErrors
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsRequest;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+
+
+    $response = $sdk->errors->statusGetXSpeakeasyErrors(552822);
+
+    if ($response->statusCode === 200) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `statusCode`                   | *int*                          | :heavy_check_mark:             | N/A                            |
+| `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\StatusGetXSpeakeasyErrorsResponse](../../models/operations/StatusGetXSpeakeasyErrorsResponse.md)**
 

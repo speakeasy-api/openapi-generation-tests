@@ -5,9 +5,29 @@ import dataclasses
 import dateutil.parser
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
+from enum import Enum
 from marshmallow import fields
 from sdk import utils
-from typing import Optional
+from typing import Any, Optional
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+
+@dataclasses.dataclass
+class ExampleResourceChocolates:
+    description: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('description') }})
+    
+
+
+class ExampleResourceEnumNumber(int, Enum):
+    ONE = 1
+    TWO = 2
+    THREE = 3
+
+class ExampleResourceEnumStr(str, Enum):
+    ONE = 'one'
+    TWO = 'two'
+    THREE = 'three'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -15,9 +35,17 @@ from typing import Optional
 @dataclasses.dataclass
 class ExampleResource:
     r"""OK"""
+    chocolates: list[ExampleResourceChocolates] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('chocolates') }})
+    id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
+    name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
+    vehicle: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vehicle') }})
+    array_of_number: Optional[list[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrayOfNumber'), 'exclude': lambda f: f is None }})
+    array_of_string: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrayOfString'), 'exclude': lambda f: f is None }})
     created_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
-    id: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id'), 'exclude': lambda f: f is None }})
-    name: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name'), 'exclude': lambda f: f is None }})
+    enum_number: Optional[ExampleResourceEnumNumber] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enumNumber'), 'exclude': lambda f: f is None }})
+    enum_str: Optional[ExampleResourceEnumStr] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enumStr'), 'exclude': lambda f: f is None }})
+    map_of_integer: Optional[dict[str, int]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mapOfInteger'), 'exclude': lambda f: f is None }})
+    map_of_string: Optional[dict[str, str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('mapOfString'), 'exclude': lambda f: f is None }})
     updated_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso'), 'exclude': lambda f: f is None }})
     
 

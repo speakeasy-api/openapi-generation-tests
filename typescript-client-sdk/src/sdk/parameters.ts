@@ -158,6 +158,76 @@ export class ParametersT {
         return res;
     }
 
+    async duplicateParam(
+        duplicateParamRequest: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DuplicateParamResponse> {
+        const req = new operations.DuplicateParamRequest({
+            duplicateParamRequest: duplicateParamRequest,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/params/{duplicateParamRequest}",
+            req,
+            this.sdkConfiguration.globals
+        );
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DuplicateParamResponse = new operations.DuplicateParamResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.duplicateParamResponse = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.DuplicateParamDuplicateParamResponse
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     async formQueryParamsArray(
         arrParam?: string[],
         arrParamExploded?: number[],
@@ -834,6 +904,158 @@ export class ParametersT {
                     res.res = utils.objectToClass(
                         JSON.parse(decodedRes),
                         operations.JsonQueryParamsObjectRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async mixedParametersCamelCase(
+        headerParam: string,
+        pathParam: string,
+        queryStringParam: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.MixedParametersCamelCaseResponse> {
+        const req = new operations.MixedParametersCamelCaseRequest({
+            headerParam: headerParam,
+            pathParam: pathParam,
+            queryStringParam: queryStringParam,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/mixedParams/path/{path_param}/camelcase",
+            req,
+            this.sdkConfiguration.globals
+        );
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.MixedParametersCamelCaseResponse =
+            new operations.MixedParametersCamelCaseResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.MixedParametersCamelCaseRes
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
+    async mixedParametersPrimitives(
+        headerParam: string,
+        pathParam: string,
+        queryStringParam: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.MixedParametersPrimitivesResponse> {
+        const req = new operations.MixedParametersPrimitivesRequest({
+            headerParam: headerParam,
+            pathParam: pathParam,
+            queryStringParam: queryStringParam,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = utils.generateURL(
+            baseURL,
+            "/anything/mixedParams/path/{pathParam}",
+            req,
+            this.sdkConfiguration.globals
+        );
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...utils.getHeadersFromRequest(req), ...config?.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.MixedParametersPrimitivesResponse =
+            new operations.MixedParametersPrimitivesResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.res = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.MixedParametersPrimitivesRes
                     );
                 } else {
                     throw new errors.SDKError(

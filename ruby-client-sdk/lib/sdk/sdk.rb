@@ -22,6 +22,7 @@ module OpenApiSDK
              global_query_param: String,
              hostname: T.nilable(String),
              port: T.nilable(String),
+             protocol: T.nilable(String),
              something: T.nilable(ServerSomething),
              server_idx: Integer,
              server_url: String,
@@ -33,6 +34,7 @@ module OpenApiSDK
                    global_query_param: nil,
                    hostname: nil,
                    port: nil,
+                   protocol: nil,
                    something: nil,
                    server_idx: nil,
                    server_url: nil,
@@ -45,6 +47,7 @@ module OpenApiSDK
       # @param [String] global_query_param: Configures the global_query_param parameter for all supported operations
       # @param [T.nilable(String)] hostname: Allows setting the hostname variable for url substitution
       # @param [T.nilable(String)] port: Allows setting the port variable for url substitution
+      # @param [T.nilable(String)] protocol: Allows setting the protocol variable for url substitution
       # @param [T.nilable(ServerSomething)] something: Allows setting the something variable for url substitution
       # @param [Integer] server_idx The index of the server to use for all operations
       # @param [String] server_url The server URL to use for all operations
@@ -77,6 +80,11 @@ module OpenApiSDK
         },
         {
             'something': something || 'something',
+        },
+        {
+            'hostname': hostname || 'localhost',
+            'port': port || '35123',
+            'protocol': protocol || 'http',
         },
       ]
 

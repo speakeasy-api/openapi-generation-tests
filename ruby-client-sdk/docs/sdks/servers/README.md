@@ -8,6 +8,7 @@ Endpoints for testing servers.
 
 * [select_global_server](#select_global_server)
 * [select_server_with_id](#select_server_with_id) - Select a server by ID.
+* [server_with_protocol_template](#server_with_protocol_template)
 * [server_with_templates](#server_with_templates)
 * [server_with_templates_global](#server_with_templates_global)
 * [servers_by_id_with_templates](#servers_by_id_with_templates)
@@ -68,6 +69,37 @@ end
 ### Response
 
 **[T.nilable(Operations::SelectServerWithIDResponse)](../../models/operations/selectserverwithidresponse.md)**
+
+
+## server_with_protocol_template
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+    
+res = s.servers.server_with_protocol_template()
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                      | Type                           | Required                       | Description                    |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `server_url`                   | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
+
+
+### Response
+
+**[T.nilable(Operations::ServerWithProtocolTemplateResponse)](../../models/operations/serverwithprotocoltemplateresponse.md)**
 
 
 ## server_with_templates

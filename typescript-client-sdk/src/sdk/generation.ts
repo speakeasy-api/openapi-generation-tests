@@ -142,19 +142,19 @@ export class Generation {
         return res;
     }
 
-    async deprecatedInSchemaWithCommentsGet(
-        req: shared.ObjectWithDeprecatedField,
+    async deprecatedFieldInSchemaPost(
+        req: shared.DeprecatedFieldInObject,
         config?: AxiosRequestConfig
-    ): Promise<operations.DeprecatedInSchemaWithCommentsGetResponse> {
+    ): Promise<operations.DeprecatedFieldInSchemaPostResponse> {
         if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new shared.ObjectWithDeprecatedField(req);
+            req = new shared.DeprecatedFieldInObject(req);
         }
 
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedInSchemaWithComments";
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedFieldInSchema";
 
         let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
 
@@ -194,8 +194,8 @@ export class Generation {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.DeprecatedInSchemaWithCommentsGetResponse =
-            new operations.DeprecatedInSchemaWithCommentsGetResponse({
+        const res: operations.DeprecatedFieldInSchemaPostResponse =
+            new operations.DeprecatedFieldInSchemaPostResponse({
                 statusCode: httpRes.status,
                 contentType: contentType,
                 rawResponse: httpRes,
@@ -208,21 +208,83 @@ export class Generation {
         return res;
     }
 
+    async deprecatedObjectInSchemaGet(
+        config?: AxiosRequestConfig
+    ): Promise<operations.DeprecatedObjectInSchemaGetResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedObjectInSchema";
+
+        const client: AxiosInstance =
+            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
+
+        const headers = { ...config?.headers };
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DeprecatedObjectInSchemaGetResponse =
+            new operations.DeprecatedObjectInSchemaGetResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.deprecatedObjectInSchemaGet200ApplicationJSONObject = utils.objectToClass(
+                        JSON.parse(decodedRes),
+                        operations.DeprecatedObjectInSchemaGet200ApplicationJSON
+                    );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+        }
+
+        return res;
+    }
+
     /**
      * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible.
      */
-    async deprecatedNoCommentsGet(
+    async deprecatedOperationNoCommentsGet(
         deprecatedParameter?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.DeprecatedNoCommentsGetResponse> {
-        const req = new operations.DeprecatedNoCommentsGetRequest({
+    ): Promise<operations.DeprecatedOperationNoCommentsGetResponse> {
+        const req = new operations.DeprecatedOperationNoCommentsGetRequest({
             deprecatedParameter: deprecatedParameter,
         });
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedNoComments";
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedOperationNoComments";
 
         const client: AxiosInstance =
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
@@ -250,8 +312,8 @@ export class Generation {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.DeprecatedNoCommentsGetResponse =
-            new operations.DeprecatedNoCommentsGetResponse({
+        const res: operations.DeprecatedOperationNoCommentsGetResponse =
+            new operations.DeprecatedOperationNoCommentsGetResponse({
                 statusCode: httpRes.status,
                 contentType: contentType,
                 rawResponse: httpRes,
@@ -267,14 +329,14 @@ export class Generation {
     /**
      * This is an endpoint setup to test deprecation with comments
      *
-     * @deprecated method: This will be removed in a future release, please migrate away from it as soon as possible. Use simplePathParameterObjects instead.
+     * @deprecated method: This operation is deprecated. Use simplePathParameterObjects instead.
      */
-    async deprecatedWithCommentsGet(
+    async deprecatedOperationWithCommentsGet(
         deprecatedParameter?: string,
         newParameter?: string,
         config?: AxiosRequestConfig
-    ): Promise<operations.DeprecatedWithCommentsGetResponse> {
-        const req = new operations.DeprecatedWithCommentsGetRequest({
+    ): Promise<operations.DeprecatedOperationWithCommentsGetResponse> {
+        const req = new operations.DeprecatedOperationWithCommentsGetRequest({
             deprecatedParameter: deprecatedParameter,
             newParameter: newParameter,
         });
@@ -282,7 +344,8 @@ export class Generation {
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
         );
-        const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedWithComments";
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/deprecatedOperationWithComments";
 
         const client: AxiosInstance =
             this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
@@ -310,8 +373,8 @@ export class Generation {
             throw new Error(`status code not found in response: ${httpRes}`);
         }
 
-        const res: operations.DeprecatedWithCommentsGetResponse =
-            new operations.DeprecatedWithCommentsGetResponse({
+        const res: operations.DeprecatedOperationWithCommentsGetResponse =
+            new operations.DeprecatedOperationWithCommentsGetResponse({
                 statusCode: httpRes.status,
                 contentType: contentType,
                 rawResponse: httpRes,
@@ -642,10 +705,12 @@ export class Generation {
     }
 
     async nameOverride(
+        testEnumQueryParam: operations.NameOverrideGetEnumNameOverride,
         testQueryParam: string,
         config?: AxiosRequestConfig
     ): Promise<operations.NameOverrideGetResponse> {
         const req = new operations.NameOverrideGetRequest({
+            testEnumQueryParam: testEnumQueryParam,
             testQueryParam: testQueryParam,
         });
         const baseURL: string = utils.templateUrl(

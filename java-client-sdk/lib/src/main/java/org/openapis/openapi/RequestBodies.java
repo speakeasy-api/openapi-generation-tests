@@ -27,9 +27,23 @@ public class RequestBodies {
     };
 	
     /**
+	 * REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
 	 * REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS = {
         "http://localhost:35456",
     };
 	
@@ -48,6 +62,13 @@ public class RequestBodies {
     };
 	
     /**
+	 * REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
 	 * REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS = {
@@ -62,6 +83,13 @@ public class RequestBodies {
     };
 	
     /**
+	 * REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
 	 * REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS = {
@@ -69,9 +97,23 @@ public class RequestBodies {
     };
 	
     /**
+	 * REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
 	 * REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS = {
         "http://localhost:35456",
     };
 	
@@ -86,6 +128,34 @@ public class RequestBodies {
 	 * REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_READ_AND_WRITE_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_READ_AND_WRITE_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_READ_ONLY_INPUT_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_READ_ONLY_INPUT_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_WRITE_ONLY_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_WRITE_ONLY_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS = {
         "http://localhost:35456",
     };
 	
@@ -138,6 +208,49 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse requestBodyPostApplicationJsonArrayCamelCase(org.openapis.openapi.models.shared.SimpleObjectCamelCase[] request) throws Exception {
+        return this.requestBodyPostApplicationJsonArrayCamelCase(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse requestBodyPostApplicationJsonArrayCamelCase(org.openapis.openapi.models.shared.SimpleObjectCamelCase[] request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/requestbody#arrayCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            simpleObjectCamelCases = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.SimpleObjectCamelCase[] out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.SimpleObjectCamelCase[].class);
+                res.simpleObjectCamelCases = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjResponse requestBodyPostApplicationJsonArrayObj(org.openapis.openapi.models.shared.SimpleObject[] request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/array/objResponse");
@@ -170,6 +283,44 @@ public class RequestBodies {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.shared.ArrObjValue out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ArrObjValue.class);
                 res.arrObjValue = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse requestBodyPostApplicationJsonArrayObjCamelCase(org.openapis.openapi.models.shared.SimpleObjectCamelCase[] request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/array/objResponseCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayObjCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            arrObjValueCamelCase = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.ArrObjValueCamelCase out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ArrObjValueCamelCase.class);
+                res.arrObjValueCamelCase = out;
             }
         }
 
@@ -212,6 +363,49 @@ public class RequestBodies {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.shared.SimpleObject[][] out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.SimpleObject[][].class);
+                res.arrs = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse requestBodyPostApplicationJsonArrayOfArrayCamelCase(org.openapis.openapi.models.shared.SimpleObjectCamelCase[][] request) throws Exception {
+        return this.requestBodyPostApplicationJsonArrayOfArrayCamelCase(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse requestBodyPostApplicationJsonArrayOfArrayCamelCase(org.openapis.openapi.models.shared.SimpleObjectCamelCase[][] request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/requestbody#arrayOfArraysCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            arrs = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.SimpleObjectCamelCase[][] out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.SimpleObjectCamelCase[][].class);
                 res.arrs = out;
             }
         }
@@ -305,6 +499,49 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse requestBodyPostApplicationJsonArrayOfMapCamelCase(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] request) throws Exception {
+        return this.requestBodyPostApplicationJsonArrayOfMapCamelCase(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse requestBodyPostApplicationJsonArrayOfMapCamelCase(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/requestbody#arrayOfMapsCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            maps = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[] out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), new TypeReference<java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]>() {});
+                res.maps = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayOfPrimitiveResponse requestBodyPostApplicationJsonArrayOfPrimitive(String[] request) throws Exception {
         return this.requestBodyPostApplicationJsonArrayOfPrimitive(request, null);
     }
@@ -383,6 +620,41 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse requestBodyPostApplicationJsonDeepCamelCase(org.openapis.openapi.models.shared.DeepObjectCamelCase request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/deep/camelcase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonDeepCamelCaseRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapResponse requestBodyPostApplicationJsonMap(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> request) throws Exception {
         return this.requestBodyPostApplicationJsonMap(request, null);
     }
@@ -426,6 +698,49 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse requestBodyPostApplicationJsonMapCamelCase(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase> request) throws Exception {
+        return this.requestBodyPostApplicationJsonMapCamelCase(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse requestBodyPostApplicationJsonMapCamelCase(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase> request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/requestbody#mapCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase> out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), new TypeReference<java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>() {});
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjResponse requestBodyPostApplicationJsonMapObj(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject> request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/map/objResponse");
@@ -458,6 +773,44 @@ public class RequestBodies {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.shared.MapObjValue out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.MapObjValue.class);
                 res.mapObjValue = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse requestBodyPostApplicationJsonMapObjCamelCase(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase> request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/map/objResponseCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapObjCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            mapObjValueCamelCase = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.MapObjValueCamelCase out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.MapObjValueCamelCase.class);
+                res.mapObjValueCamelCase = out;
             }
         }
 
@@ -507,6 +860,49 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse requestBodyPostApplicationJsonMapOfArrayCamelCase(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]> request) throws Exception {
+        return this.requestBodyPostApplicationJsonMapOfArrayCamelCase(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse requestBodyPostApplicationJsonMapOfArrayCamelCase(java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]> request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/requestbody#mapOfArraysCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]> out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), new TypeReference<java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]>>() {});
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapResponse requestBodyPostApplicationJsonMapOfMap(java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>> request) throws Exception {
         return this.requestBodyPostApplicationJsonMapOfMap(request, null);
     }
@@ -543,6 +939,49 @@ public class RequestBodies {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
                 java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>> out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), new TypeReference<java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObject>>>() {});
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse requestBodyPostApplicationJsonMapOfMapCamelCase(java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>> request) throws Exception {
+        return this.requestBodyPostApplicationJsonMapOfMapCamelCase(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse requestBodyPostApplicationJsonMapOfMapCamelCase(java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>> request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/requestbody#mapOfMapsCamelCase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>> out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), new TypeReference<java.util.Map<String, java.util.Map<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>>() {});
                 res.res = out;
             }
         }
@@ -705,6 +1144,44 @@ public class RequestBodies {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse requestBodyPostApplicationJsonSimpleCamelCase(org.openapis.openapi.models.shared.SimpleObjectCamelCase request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/application/json/camelcase");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse res = new org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonSimpleCamelCaseRes.class);
                 res.res = out;
             }
         }
@@ -1227,6 +1704,52 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsResponse requestBodyPutBytesWithParams(byte[] requestBody, String queryStringParam) throws Exception {
+        org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsRequest request = new org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsRequest(requestBody, queryStringParam);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/bytesWithParams");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("PUT");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "requestBody", "raw");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsResponse res = new org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RequestBodyPutBytesWithParamsRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPutMultipartDeepResponse requestBodyPutMultipartDeep(org.openapis.openapi.models.shared.DeepObject request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/multipart/deep");
@@ -1373,6 +1896,224 @@ public class RequestBodies {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.operations.RequestBodyPutStringRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RequestBodyPutStringRes.class);
                 res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsResponse requestBodyPutStringWithParams(String requestBody, String queryStringParam) throws Exception {
+        org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsRequest request = new org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsRequest(requestBody, queryStringParam);
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/stringWithParams");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("PUT");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "requestBody", "string");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsResponse res = new org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.RequestBodyPutStringWithParamsRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse requestBodyReadAndWrite(org.openapis.openapi.models.shared.ReadWriteObjectInput request) throws Exception {
+        return this.requestBodyReadAndWrite(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse requestBodyReadAndWrite(org.openapis.openapi.models.shared.ReadWriteObjectInput request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_READ_AND_WRITE_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/readonlyandwriteonly");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse res = new org.openapis.openapi.models.operations.RequestBodyReadAndWriteResponse(contentType, httpRes.statusCode()) {{
+            readWriteObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.ReadWriteObjectOutput out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ReadWriteObjectOutput.class);
+                res.readWriteObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyReadOnlyInputResponse requestBodyReadOnlyInput(org.openapis.openapi.models.shared.ReadOnlyObjectInput request) throws Exception {
+        return this.requestBodyReadOnlyInput(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyReadOnlyInputResponse requestBodyReadOnlyInput(org.openapis.openapi.models.shared.ReadOnlyObjectInput request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_READ_ONLY_INPUT_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/readonlyorwriteonly#readOnlyInput");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyReadOnlyInputResponse res = new org.openapis.openapi.models.operations.RequestBodyReadOnlyInputResponse(contentType, httpRes.statusCode()) {{
+            readOnlyObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.ReadOnlyObject out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ReadOnlyObject.class);
+                res.readOnlyObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse requestBodyWriteOnly(org.openapis.openapi.models.shared.WriteOnlyObject request) throws Exception {
+        return this.requestBodyWriteOnly(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse requestBodyWriteOnly(org.openapis.openapi.models.shared.WriteOnlyObject request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_WRITE_ONLY_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/readonlyorwriteonly#writeOnly");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse res = new org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse(contentType, httpRes.statusCode()) {{
+            readOnlyObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.ReadOnlyObject out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ReadOnlyObject.class);
+                res.readOnlyObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyWriteOnlyOutputResponse requestBodyWriteOnlyOutput(org.openapis.openapi.models.shared.WriteOnlyObject request) throws Exception {
+        return this.requestBodyWriteOnlyOutput(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyWriteOnlyOutputResponse requestBodyWriteOnlyOutput(org.openapis.openapi.models.shared.WriteOnlyObject request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/readonlyorwriteonly#writeOnlyOutput");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyWriteOnlyOutputResponse res = new org.openapis.openapi.models.operations.RequestBodyWriteOnlyOutputResponse(contentType, httpRes.statusCode()) {{
+            writeOnlyObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.WriteOnlyObjectOutput out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.WriteOnlyObjectOutput.class);
+                res.writeOnlyObject = out;
             }
         }
 

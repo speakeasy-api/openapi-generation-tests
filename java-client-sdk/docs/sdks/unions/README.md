@@ -40,7 +40,26 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 70410L            
+            org.openapis.openapi.models.. req = new SimpleObject("totam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                any = "corrupti";
+                bigint = 43975L;
+                bigintStr = "sint";
+                bool = true;
+                boolOpt = true;
+                date = LocalDate.parse("2020-01-01");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                enum_ = Enum.TWO;
+                float32 = 2.2222222d;
+                int_ = 999999L;
+                int32 = 1;
+                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                intEnum = SimpleObjectIntEnum.First;
+                intOptNull = 999999L;
+                num = 1.1d;
+                numOptNull = 1.1d;
+                str = "example";
+                strOpt = "optional example";
+            }}            
 
             MixedTypeOneOfPostResponse res = sdk.unions.mixedTypeOneOfPost(req);
 
@@ -88,7 +107,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = false            
+            org.openapis.openapi.models.. req = "dolor"            
 
             PrimitiveTypeOneOfPostResponse res = sdk.unions.primitiveTypeOneOfPost(req);
 
@@ -146,10 +165,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObjectWithType("necessitatibus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectWithTypeInt32Enum.FIFTY_FIVE, SimpleObjectWithTypeIntEnum.Second, 1.1d, "example", "at") {{
-                any = "nobis";
-                bigint = 388319L;
-                bigintStr = "recusandae";
+            org.openapis.openapi.models.. req = new SimpleObjectWithType("labore", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectWithTypeInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectWithTypeIntEnum.Second, 1.1d, "example", "voluptatem") {{
+                any = "a";
+                bigint = 223291L;
+                bigintStr = "occaecati";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
@@ -158,14 +177,14 @@ public class Application {
                 float32 = 2.2222222d;
                 int_ = 999999L;
                 int32 = 1;
-                int32Enum = SimpleObjectWithTypeInt32Enum.FIFTY_FIVE;
+                int32Enum = SimpleObjectWithTypeInt32Enum.SIXTY_NINE;
                 intEnum = SimpleObjectWithTypeIntEnum.First;
                 intOptNull = 999999L;
                 num = 1.1d;
                 numOptNull = 1.1d;
                 str = "example";
                 strOpt = "optional example";
-                type = "exercitationem";
+                type = "at";
             }}            
 
             StronglyTypedOneOfPostResponse res = sdk.unions.stronglyTypedOneOfPost(req);
@@ -220,9 +239,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new TypedObject3(TypedObject3Type.OBJ3, "harum") {{
-                type = TypedObject3Type.OBJ3;
-                value = "est";
+            org.openapis.openapi.models.. req = new TypedObject1(TypedObject1Type.OBJ1, "ea") {{
+                type = TypedObject1Type.OBJ1;
+                value = "rerum";
             }}            
 
             TypedObjectOneOfPostResponse res = sdk.unions.typedObjectOneOfPost(req);
@@ -278,10 +297,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObject("voluptate", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                any = "doloribus";
-                bigint = 918092L;
-                bigintStr = "optio";
+            org.openapis.openapi.models.. req = new SimpleObject("consectetur", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                any = "dignissimos";
+                bigint = 998026L;
+                bigintStr = "velit";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
@@ -290,7 +309,7 @@ public class Application {
                 float32 = 2.2222222d;
                 int_ = 999999L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
                 intEnum = SimpleObjectIntEnum.Second;
                 intOptNull = 999999L;
                 num = 1.1d;
