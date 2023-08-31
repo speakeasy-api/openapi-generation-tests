@@ -1,5 +1,56 @@
 components:
   schemas:
+    readOnlyObject:
+      type: object
+      properties:
+        string:
+          type: string
+          readOnly: true
+        bool:
+          type: boolean
+          readOnly: true
+        num:
+          type: number
+          readOnly: true
+      required:
+        - string
+        - bool
+        - num
+    writeOnlyObject:
+      type: object
+      properties:
+        string:
+          type: string
+          writeOnly: true
+        bool:
+          type: boolean
+          writeOnly: true
+        num:
+          type: number
+          writeOnly: true
+      required:
+        - string
+        - bool
+        - num
+    readWriteObject:
+      type: object
+      properties:
+        num1:
+          type: integer
+          writeOnly: true
+        num2:
+          type: integer
+          writeOnly: true
+        num3:
+          type: integer
+        sum:
+          type: integer
+          readOnly: true
+      required:
+        - num1
+        - num2
+        - num3
+        - sum
     stronglyTypedOneOfObject:
       oneOf:
         - $ref: "#/components/schemas/simpleObjectWithType"
@@ -195,10 +246,113 @@ components:
         - enum
         - date
         - dateTime
-        - bytes
         - any
         - intEnum
         - int32Enum
+    simpleObjectCamelCase:
+      description: "A simple object that uses all our supported primitive types and enums and has optional properties."
+      externalDocs:
+        description: "A link to the external docs."
+        url: "https://docs.speakeasyapi.dev"
+      type: object
+      properties:
+        str_val:
+          type: string
+          description: "A string property."
+          example: "example"
+        bool_val:
+          type: boolean
+          description: "A boolean property."
+          example: true
+        int_val:
+          type: integer
+          description: "An integer property."
+          example: 999999
+        int32_val:
+          type: integer
+          format: int32
+          description: "An int32 property."
+          example: 1
+        num_val:
+          type: number
+          description: "A number property."
+          example: 1.1
+        float32_val:
+          type: number
+          format: float32
+          description: "A float32 property."
+          example: 2.2222222
+        enum_val:
+          $ref: "#/components/schemas/enum"
+        date_val:
+          type: string
+          format: date
+          description: "A date property."
+          example: "2020-01-01"
+        date_time_val:
+          type: string
+          format: date-time
+          description: "A date-time property."
+          example: "2020-01-01T00:00:00Z"
+        any_val:
+          description: "An any property."
+          example: "any example"
+        str_opt_val:
+          type: string
+          description: "An optional string property."
+          example: "optional example"
+        bool_opt_val:
+          type: boolean
+          description: "An optional boolean property."
+          example: true
+        int_opt_null_val:
+          type: integer
+          description: "An optional integer property will be null for tests."
+          example: 999999
+        num_opt_null_val:
+          type: number
+          description: "An optional number property will be null for tests."
+          example: 1.1
+        int_enum_val:
+          type: integer
+          description: "An integer enum property."
+          enum:
+            - 1
+            - 2
+            - 3
+          example: 3
+          x-speakeasy-enums:
+            - First
+            - Second
+            - Third
+        int32_enum_val:
+          type: integer
+          format: int32
+          description: "An int32 enum property."
+          enum:
+            - 55
+            - 69
+            - 181
+          example: 69
+        bigint_val:
+          type: integer
+          format: bigint
+        bigint_str_val:
+          type: string
+          format: bigint
+      required:
+        - str_val
+        - bool_val
+        - int_val
+        - int32_val
+        - num_val
+        - float32_val
+        - enum_val
+        - date_val
+        - date_time_val
+        - any_val
+        - int_enum_val
+        - int32_enum_val
     simpleObjectWithType:
       allOf:
         - $ref: "#/components/schemas/simpleObject"
@@ -244,6 +398,42 @@ components:
         - map
         - arr
         - any
+    deepObjectCamelCase:
+      type: object
+      properties:
+        str_val:
+          type: string
+        bool_val:
+          type: boolean
+        int_val:
+          type: integer
+        num_val:
+          type: number
+        obj_val:
+          $ref: "#/components/schemas/simpleObjectCamelCase"
+        map_val:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/simpleObjectCamelCase"
+        arr_val:
+          type: array
+          items:
+            $ref: "#/components/schemas/simpleObjectCamelCase"
+        any_val:
+          anyOf:
+            - $ref: "#/components/schemas/simpleObjectCamelCase"
+            - type: string
+        type:
+          type: string
+      required:
+        - str_val
+        - bool_val
+        - int_val
+        - num_val
+        - obj_val
+        - map_val
+        - arr_val
+        - any_val
     deepObjectWithType:
       allOf:
         - $ref: "#/components/schemas/deepObject"
@@ -280,12 +470,22 @@ components:
       type: array
       items:
         $ref: "#/components/schemas/simpleObject"
+    arrValueCamelCase:
+      type: array
+      items:
+        $ref: "#/components/schemas/simpleObjectCamelCase"
     arrArrValue:
       type: array
       items:
         type: array
         items:
           $ref: "#/components/schemas/simpleObject"
+    arrArrValueCamelCase:
+      type: array
+      items:
+        type: array
+        items:
+          $ref: "#/components/schemas/simpleObjectCamelCase"
     arrObjValue:
       type: object
       properties:
@@ -295,16 +495,35 @@ components:
           type: array
         required:
           - json
+    arrObjValueCamelCase:
+      type: object
+      properties:
+        json:
+          items:
+            $ref: "#/components/schemas/simpleObjectCamelCase"
+          type: array
+        required:
+          - json
     mapValue:
       type: object
       additionalProperties:
         $ref: "#/components/schemas/simpleObject"
+    mapValueCamelCase:
+      type: object
+      additionalProperties:
+        $ref: "#/components/schemas/simpleObjectCamelCase"
     mapMapValue:
       type: object
       additionalProperties:
         type: object
         additionalProperties:
           $ref: "#/components/schemas/simpleObject"
+    mapMapValueCamelCase:
+      type: object
+      additionalProperties:
+        type: object
+        additionalProperties:
+          $ref: "#/components/schemas/simpleObjectCamelCase"
     mapObjValue:
       type: object
       properties:
@@ -314,18 +533,39 @@ components:
             $ref: "#/components/schemas/simpleObject"
         required:
           - json
+    mapObjValueCamelCase:
+      type: object
+      properties:
+        json:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/simpleObjectCamelCase"
+        required:
+          - json
     arrMapValue:
       type: array
       items:
         type: object
         additionalProperties:
           $ref: "#/components/schemas/simpleObject"
+    arrMapValueCamelCase:
+      type: array
+      items:
+        type: object
+        additionalProperties:
+          $ref: "#/components/schemas/simpleObjectCamelCase"
     mapArrValue:
       type: object
       additionalProperties:
         type: array
         items:
           $ref: "#/components/schemas/simpleObject"
+    mapArrValueCamelCase:
+      type: object
+      additionalProperties:
+        type: array
+        items:
+          $ref: "#/components/schemas/simpleObjectCamelCase"
     arrPrimitiveValue:
       type: array
       items:
@@ -361,9 +601,15 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/validCircularReferenceObject"
-    objectWithDeprecatedField:
+    deprecatedObject:
       type: object
       deprecated: true
+      x-speakeasy-deprecation-message: This object is deprecated
+      properties:
+          str:
+            type: string
+    deprecatedFieldInObject:
+      type: object
       properties:
         deprecatedField:
           type: string
@@ -371,8 +617,9 @@ components:
           x-speakeasy-deprecation-replacement: newField
         deprecatedEnum:
           type: string
-          enum: [ "a", "b", "c" ]
+          enum: ["a", "b", "c"]
           deprecated: true
+          x-speakeasy-deprecation-message: This enum is deprecated
         newField:
           type: string
     limitOffsetConfig:
@@ -384,6 +631,14 @@ components:
           type: integer
         limit:
           type: integer
+    error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+          x-speakeasy-error-message: true
   responses:
     tokenAuthResponse:
       description: Successful authentication.
@@ -461,7 +716,6 @@ components:
                   - enum
                   - date
                   - dateTime
-                  - bytes
                   - any
             required:
               - form
