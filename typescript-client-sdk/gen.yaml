@@ -34,3 +34,4 @@ typescript:
   author: Speakeasy
   maxMethodParams: 5
   packageName: openapi
+  clientServerStatusCodesAsErrors: true
