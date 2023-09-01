@@ -4014,6 +4014,30 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/nested:
+    get:
+      operationId: nestedGet
+      x-speakeasy-name-override: get
+      x-speakeasy-group: nested
+      responses:
+        "200":
+          description: OK
+  /anything/nested/first:
+    get:
+      operationId: nestedFirstGet
+      x-speakeasy-name-override: get
+      x-speakeasy-group: nested.first
+      responses:
+        "200":
+          description: OK
+  /anything/nested/second:
+    get:
+      operationId: nestedSecondGet
+      x-speakeasy-name-override: get
+      x-speakeasy-group: nested.second
+      responses:
+        "200":
+          description: OK
   /resource:
     post:
       x-speakeasy-entity-operation: ExampleResource#create
