@@ -8,7 +8,7 @@ require 'faraday'
 
 module OpenApiSDK
   module Shared
-    # Enum - An string based enum
+    # Enum - A string based enum
     class Enum < T::Enum
       enums do
         ONE = new('one')

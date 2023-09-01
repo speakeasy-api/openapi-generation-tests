@@ -77,7 +77,7 @@ class SimpleObjectCamelCase
     public \DateTime $dateVal;
     
     /**
-     * An string based enum
+     * A string based enum
      * 
      * @var \OpenAPI\OpenAPI\Models\Shared\Enum $enumVal
      */

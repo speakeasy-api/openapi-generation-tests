@@ -77,7 +77,7 @@ class SimpleObjectWithType
     public \DateTime $dateTime;
     
     /**
-     * An string based enum
+     * A string based enum
      * 
      * @var \OpenAPI\OpenAPI\Models\Shared\Enum $enum
      */

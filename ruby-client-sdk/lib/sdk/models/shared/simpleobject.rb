@@ -42,7 +42,7 @@ module OpenApiSDK
       field :date, Date, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date'), 'decoder': Utils.date_from_iso_format(false) }, 'header': { 'field_name': 'date' }, 'path_param': { 'field_name': 'date' }, 'query_param': { 'field_name': 'date' }, 'form': { 'field_name': 'date' }, 'multipart_form': { 'field_name': 'date' } }
       # A date-time property.
       field :date_time, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('dateTime'), 'decoder': Utils.datetime_from_iso_format(false) }, 'header': { 'field_name': 'dateTime' }, 'path_param': { 'field_name': 'dateTime' }, 'query_param': { 'field_name': 'dateTime' }, 'form': { 'field_name': 'dateTime' }, 'multipart_form': { 'field_name': 'dateTime' } }
-      # An string based enum
+      # A string based enum
       field :enum, Shared::Enum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enum'), 'decoder': Utils.enum_from_string(Shared::Enum, false) }, 'header': { 'field_name': 'enum' }, 'path_param': { 'field_name': 'enum' }, 'query_param': { 'field_name': 'enum' }, 'form': { 'field_name': 'enum' }, 'multipart_form': { 'field_name': 'enum' } }
       # A float32 property.
       field :float32, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('float32') }, 'header': { 'field_name': 'float32' }, 'path_param': { 'field_name': 'float32' }, 'query_param': { 'field_name': 'float32' }, 'form': { 'field_name': 'float32' }, 'multipart_form': { 'field_name': 'float32' } }

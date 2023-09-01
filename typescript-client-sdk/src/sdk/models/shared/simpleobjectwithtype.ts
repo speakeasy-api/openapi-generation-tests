@@ -77,7 +77,7 @@ export class SimpleObjectWithType extends SpeakeasyBase {
     dateTime: Date;
 
     /**
-     * An string based enum
+     * A string based enum
      */
     @SpeakeasyMetadata()
     @Expose({ name: "enum" })

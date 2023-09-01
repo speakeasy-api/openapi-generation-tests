@@ -4,7 +4,7 @@ from __future__ import annotations
 from enum import Enum
 
 class EnumT(str, Enum):
-    r"""An string based enum"""
+    r"""A string based enum"""
     ONE = 'one'
     TWO = 'two'
     THREE = 'three'

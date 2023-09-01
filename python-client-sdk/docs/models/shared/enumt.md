@@ -1,6 +1,6 @@
 # EnumT
 
-An string based enum
+A string based enum
 
 
 ## Values

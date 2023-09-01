@@ -7,7 +7,7 @@ import (
 	"fmt"
 )
 
-// Enum - An string based enum
+// Enum - A string based enum
 type Enum string
 
 const (

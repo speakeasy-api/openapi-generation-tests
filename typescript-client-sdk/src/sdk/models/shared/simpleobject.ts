@@ -91,7 +91,7 @@ export class SimpleObject extends SpeakeasyBase {
     dateTime: Date;
 
     /**
-     * An string based enum
+     * A string based enum
      */
     @SpeakeasyMetadata({
         data: "header, name=enum, pathParam, name=enum, queryParam, name=enum, form, name=enum, multipart_form, name=enum",

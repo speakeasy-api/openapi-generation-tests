@@ -99,7 +99,7 @@ public class SimpleObjectWithType {
     }
     
     /**
-     * An string based enum
+     * A string based enum
      */
     @JsonProperty("enum")
     public Enum enum_;

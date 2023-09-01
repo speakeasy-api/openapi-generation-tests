@@ -107,7 +107,7 @@ public class SimpleObject {
     }
     
     /**
-     * An string based enum
+     * A string based enum
      */
     @JsonProperty("enum")
     @SpeakeasyMetadata("header:name=enum pathParam:name=enum queryParam:name=enum form:name=enum multipartForm:name=enum")

@@ -87,7 +87,7 @@ type SimpleObjectWithType struct {
 	Date types.Date `json:"date"`
 	// A date-time property.
 	DateTime time.Time `json:"dateTime"`
-	// An string based enum
+	// A string based enum
 	Enum Enum `json:"enum"`
 	// A float32 property.
 	Float32 float64 `json:"float32"`

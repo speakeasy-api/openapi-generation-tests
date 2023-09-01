@@ -87,7 +87,7 @@ type SimpleObject struct {
 	Date types.Date `json:"date" header:"name=date" pathParam:"name=date" queryParam:"name=date" form:"name=date" multipartForm:"name=date"`
 	// A date-time property.
 	DateTime time.Time `json:"dateTime" header:"name=dateTime" pathParam:"name=dateTime" queryParam:"name=dateTime" form:"name=dateTime" multipartForm:"name=dateTime"`
-	// An string based enum
+	// A string based enum
 	Enum Enum `json:"enum" header:"name=enum" pathParam:"name=enum" queryParam:"name=enum" form:"name=enum" multipartForm:"name=enum"`
 	// A float32 property.
 	Float32 float64 `json:"float32" header:"name=float32" pathParam:"name=float32" queryParam:"name=float32" form:"name=float32" multipartForm:"name=float32"`

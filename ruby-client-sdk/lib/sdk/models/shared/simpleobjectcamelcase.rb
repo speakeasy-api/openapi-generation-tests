@@ -42,7 +42,7 @@ module OpenApiSDK
       field :date_time_val, DateTime, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date_time_val'), 'decoder': Utils.datetime_from_iso_format(false) } }
       # A date property.
       field :date_val, Date, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('date_val'), 'decoder': Utils.date_from_iso_format(false) } }
-      # An string based enum
+      # A string based enum
       field :enum_val, Shared::Enum, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('enum_val'), 'decoder': Utils.enum_from_string(Shared::Enum, false) } }
       # A float32 property.
       field :float32_val, Float, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('float32_val') } }

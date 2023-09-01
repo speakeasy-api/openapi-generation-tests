@@ -87,7 +87,7 @@ type SimpleObjectCamelCase struct {
 	DateTimeVal time.Time `json:"date_time_val"`
 	// A date property.
 	DateVal types.Date `json:"date_val"`
-	// An string based enum
+	// A string based enum
 	EnumVal Enum `json:"enum_val"`
 	// A float32 property.
 	Float32Val float64 `json:"float32_val"`

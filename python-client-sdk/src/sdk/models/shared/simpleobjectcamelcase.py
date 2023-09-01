@@ -40,7 +40,7 @@ class SimpleObjectCamelCase:
     date_val: date = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date_val'), 'encoder': utils.dateisoformat(False), 'decoder': utils.datefromisoformat, 'mm_field': fields.DateTime(format='iso') }})
     r"""A date property."""
     enum_val: shared_enum.EnumT = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum_val') }})
-    r"""An string based enum"""
+    r"""A string based enum"""
     float32_val: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('float32_val') }})
     r"""A float32 property."""
     int_enum_val: SimpleObjectCamelCaseIntEnumVal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_enum_val') }})

@@ -7,7 +7,7 @@ package org.openapis.openapi.models.shared;
 import com.fasterxml.jackson.annotation.JsonValue;
 
 /**
- * Enum - An string based enum
+ * Enum - A string based enum
  */
 public enum Enum {
     ONE("one"),

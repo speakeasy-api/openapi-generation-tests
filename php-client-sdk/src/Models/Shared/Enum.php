@@ -9,7 +9,7 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-/** An string based enum */
+/** A string based enum */
 enum Enum: string
 {
     case One = 'one';

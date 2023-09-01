@@ -77,7 +77,7 @@ export class SimpleObjectCamelCase extends SpeakeasyBase {
     dateVal: RFCDate;
 
     /**
-     * An string based enum
+     * A string based enum
      */
     @SpeakeasyMetadata()
     @Expose({ name: "enum_val" })

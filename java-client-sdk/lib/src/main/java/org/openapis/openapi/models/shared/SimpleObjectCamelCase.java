@@ -99,7 +99,7 @@ public class SimpleObjectCamelCase {
     }
     
     /**
-     * An string based enum
+     * A string based enum
      */
     @JsonProperty("enum_val")
     public Enum enumVal;
