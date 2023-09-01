@@ -6,6 +6,9 @@ lib/sdk/first.rb
 lib/sdk/flattening.rb
 lib/sdk/generation.rb
 lib/sdk/globals.rb
+lib/sdk/nested.rb
+lib/sdk/nested_first.rb
+lib/sdk/nested_second.rb
 lib/sdk/pagination.rb
 lib/sdk/parameters.rb
 lib/sdk/requestbodies.rb
@@ -64,6 +67,9 @@ lib/sdk/models/operations/typedparametergenerationget.rb
 lib/sdk/models/operations/usageexamplepost.rb
 lib/sdk/models/operations/globalpathparameterget.rb
 lib/sdk/models/operations/globalsqueryparameterget.rb
+lib/sdk/models/operations/nestedget.rb
+lib/sdk/models/operations/nestedfirstget.rb
+lib/sdk/models/operations/nestedsecondget.rb
 lib/sdk/models/operations/paginationcursorbody.rb
 lib/sdk/models/operations/paginationcursorparams.rb
 lib/sdk/models/operations/paginationlimitoffsetoffsetbody.rb
@@ -211,6 +217,9 @@ docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nested/README.md
+docs/sdks/nestedfirst/README.md
+docs/sdks/nestedsecond/README.md
 docs/sdks/pagination/README.md
 docs/sdks/parameters/README.md
 docs/sdks/requestbodies/README.md
@@ -332,6 +341,9 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestedgetresponse.md
+docs/models/operations/nestedfirstgetresponse.md
+docs/models/operations/nestedsecondgetresponse.md
 docs/models/operations/paginationcursorbodyrequestbody.md
 docs/models/operations/paginationcursorbodyres.md
 docs/models/operations/paginationcursorbodyresponse.md

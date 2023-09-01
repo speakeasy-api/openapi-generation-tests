@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.31.0'
+implementation 'org.openapis.openapi:openapi:1.31.1'
 ```
 <!-- End SDK Installation -->
 
@@ -182,6 +182,18 @@ public class Application {
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
+
+### [nested](docs/sdks/nested/README.md)
+
+* [get](docs/sdks/nested/README.md#get)
+
+### [nestedFirst](docs/sdks/nestedfirst/README.md)
+
+* [get](docs/sdks/nestedfirst/README.md#get)
+
+### [nestedSecond](docs/sdks/nestedsecond/README.md)
+
+* [get](docs/sdks/nestedsecond/README.md#get)
 
 ### [pagination](docs/sdks/pagination/README.md)
 

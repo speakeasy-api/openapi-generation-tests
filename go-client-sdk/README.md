@@ -197,6 +197,18 @@ func main() {
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
+### [Nested](docs/sdks/nested/README.md)
+
+* [Get](docs/sdks/nested/README.md#get)
+
+### [NestedFirst](docs/sdks/nestedfirst/README.md)
+
+* [Get](docs/sdks/nestedfirst/README.md#get)
+
+### [NestedSecond](docs/sdks/nestedsecond/README.md)
+
+* [Get](docs/sdks/nestedsecond/README.md#get)
+
 ### [Pagination](docs/sdks/pagination/README.md)
 
 * [PaginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)

@@ -6,6 +6,9 @@ src/First.php
 src/Flattening.php
 src/Generation.php
 src/Globals.php
+src/Nested.php
+src/NestedFirst.php
+src/NestedSecond.php
 src/Pagination.php
 src/Parameters.php
 src/RequestBodies.php
@@ -157,6 +160,9 @@ src/Models/Operations/GlobalsQueryParameterGetRequest.php
 src/Models/Operations/GlobalsQueryParameterGetResArgs.php
 src/Models/Operations/GlobalsQueryParameterGetRes.php
 src/Models/Operations/GlobalsQueryParameterGetResponse.php
+src/Models/Operations/NestedGetResponse.php
+src/Models/Operations/NestedFirstGetResponse.php
+src/Models/Operations/NestedSecondGetResponse.php
 src/Models/Operations/PaginationCursorBodyRequestBody.php
 src/Models/Operations/PaginationCursorBodyRes.php
 src/Models/Operations/PaginationCursorBodyResponse.php
@@ -465,6 +471,9 @@ docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nested/README.md
+docs/sdks/nestedfirst/README.md
+docs/sdks/nestedsecond/README.md
 docs/sdks/pagination/README.md
 docs/sdks/parameters/README.md
 docs/sdks/requestbodies/README.md
@@ -586,6 +595,9 @@ docs/models/operations/GlobalsQueryParameterGetRequest.md
 docs/models/operations/GlobalsQueryParameterGetResArgs.md
 docs/models/operations/GlobalsQueryParameterGetRes.md
 docs/models/operations/GlobalsQueryParameterGetResponse.md
+docs/models/operations/NestedGetResponse.md
+docs/models/operations/NestedFirstGetResponse.md
+docs/models/operations/NestedSecondGetResponse.md
 docs/models/operations/PaginationCursorBodyRequestBody.md
 docs/models/operations/PaginationCursorBodyRes.md
 docs/models/operations/PaginationCursorBodyResponse.md

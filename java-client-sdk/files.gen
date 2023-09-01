@@ -6,6 +6,9 @@ lib/src/main/java/org/openapis/openapi/First.java
 lib/src/main/java/org/openapis/openapi/Flattening.java
 lib/src/main/java/org/openapis/openapi/Generation.java
 lib/src/main/java/org/openapis/openapi/Globals.java
+lib/src/main/java/org/openapis/openapi/Nested.java
+lib/src/main/java/org/openapis/openapi/NestedFirst.java
+lib/src/main/java/org/openapis/openapi/NestedSecond.java
 lib/src/main/java/org/openapis/openapi/Pagination.java
 lib/src/main/java/org/openapis/openapi/Parameters.java
 lib/src/main/java/org/openapis/openapi/RequestBodies.java
@@ -165,6 +168,9 @@ lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGe
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetResArgs.java
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/NestedGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/NestedFirstGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/NestedSecondGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyRequestBody.java
 lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyResponse.java
@@ -473,6 +479,9 @@ docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nested/README.md
+docs/sdks/nestedfirst/README.md
+docs/sdks/nestedsecond/README.md
 docs/sdks/pagination/README.md
 docs/sdks/parameters/README.md
 docs/sdks/requestbodies/README.md
@@ -594,6 +603,9 @@ docs/models/operations/GlobalsQueryParameterGetRequest.md
 docs/models/operations/GlobalsQueryParameterGetResArgs.md
 docs/models/operations/GlobalsQueryParameterGetRes.md
 docs/models/operations/GlobalsQueryParameterGetResponse.md
+docs/models/operations/NestedGetResponse.md
+docs/models/operations/NestedFirstGetResponse.md
+docs/models/operations/NestedSecondGetResponse.md
 docs/models/operations/PaginationCursorBodyRequestBody.md
 docs/models/operations/PaginationCursorBodyRes.md
 docs/models/operations/PaginationCursorBodyResponse.md

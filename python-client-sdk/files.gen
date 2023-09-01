@@ -6,6 +6,9 @@ src/sdk/first.py
 src/sdk/flattening.py
 src/sdk/generation.py
 src/sdk/globals.py
+src/sdk/nested.py
+src/sdk/nested_first.py
+src/sdk/nested_second.py
 src/sdk/pagination.py
 src/sdk/parameters.py
 src/sdk/requestbodies.py
@@ -80,6 +83,9 @@ src/sdk/models/operations/typedparametergenerationget.py
 src/sdk/models/operations/usageexamplepost.py
 src/sdk/models/operations/globalpathparameterget.py
 src/sdk/models/operations/globalsqueryparameterget.py
+src/sdk/models/operations/nestedget.py
+src/sdk/models/operations/nestedfirstget.py
+src/sdk/models/operations/nestedsecondget.py
 src/sdk/models/operations/paginationcursorbody.py
 src/sdk/models/operations/paginationcursorparams.py
 src/sdk/models/operations/paginationlimitoffsetoffsetbody.py
@@ -231,6 +237,9 @@ docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nested/README.md
+docs/sdks/nestedfirst/README.md
+docs/sdks/nestedsecond/README.md
 docs/sdks/pagination/README.md
 docs/sdks/parameters/README.md
 docs/sdks/requestbodies/README.md
@@ -352,6 +361,9 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestedgetresponse.md
+docs/models/operations/nestedfirstgetresponse.md
+docs/models/operations/nestedsecondgetresponse.md
 docs/models/operations/paginationcursorbodyrequestbody.md
 docs/models/operations/paginationcursorbodyres.md
 docs/models/operations/paginationcursorbodyresponse.md

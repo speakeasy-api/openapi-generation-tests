@@ -93,7 +93,10 @@ type SDK struct {
 	// Generation - Endpoints for purely testing valid generation behavior.
 	Generation *generation
 	// Globals - Endpoints for testing global parameters.
-	Globals *globals
+	Globals      *globals
+	Nested       *nested
+	NestedFirst  *nestedFirst
+	NestedSecond *nestedSecond
 	// Pagination - Endpoints for testing the pagination extension
 	Pagination *pagination
 	// Parameters - Endpoints for testing parameters.
@@ -272,8 +275,8 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.31.0",
-			GenVersion:        "2.91.2",
+			SDKVersion:        "1.30.1",
+			GenVersion:        "2.91.4",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -324,6 +327,12 @@ func New(opts ...SDKOption) *SDK {
 	sdk.Generation = newGeneration(sdk.sdkConfiguration)
 
 	sdk.Globals = newGlobals(sdk.sdkConfiguration)
+
+	sdk.Nested = newNested(sdk.sdkConfiguration)
+
+	sdk.NestedFirst = newNestedFirst(sdk.sdkConfiguration)
+
+	sdk.NestedSecond = newNestedSecond(sdk.sdkConfiguration)
 
 	sdk.Pagination = newPagination(sdk.sdkConfiguration)
 
