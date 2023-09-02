@@ -5,9 +5,9 @@ src/sdk/first.ts
 src/sdk/flattening.ts
 src/sdk/generation.ts
 src/sdk/globals.ts
-src/sdk/nested.ts
 src/sdk/nestedfirst.ts
 src/sdk/nestedsecond.ts
+src/sdk/nested.ts
 src/sdk/pagination.ts
 src/sdk/parameters.ts
 src/sdk/requestbodies.ts
@@ -43,6 +43,7 @@ __tests__/errors.test.ts
 __tests__/flattening.test.ts
 __tests__/globals.test.ts
 __tests__/helpers.ts
+__tests__/multilevel.test.ts
 __tests__/pagination.test.ts
 __tests__/parameter.test.ts
 __tests__/requestbodies.test.ts
@@ -92,9 +93,9 @@ src/sdk/models/operations/typedparametergenerationget.ts
 src/sdk/models/operations/usageexamplepost.ts
 src/sdk/models/operations/globalpathparameterget.ts
 src/sdk/models/operations/globalsqueryparameterget.ts
-src/sdk/models/operations/nestedget.ts
 src/sdk/models/operations/nestedfirstget.ts
 src/sdk/models/operations/nestedsecondget.ts
+src/sdk/models/operations/nestedget.ts
 src/sdk/models/operations/paginationcursorbody.ts
 src/sdk/models/operations/paginationcursorparams.ts
 src/sdk/models/operations/paginationlimitoffsetoffsetbody.ts
@@ -371,9 +372,9 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
-docs/models/operations/nestedgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
+docs/models/operations/nestedgetresponse.md
 docs/models/operations/paginationcursorbodyrequestbody.md
 docs/models/operations/paginationcursorbodyres.md
 docs/models/operations/paginationcursorbodyresponse.md

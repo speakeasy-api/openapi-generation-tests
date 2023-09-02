@@ -1,4 +1,4 @@
-# NestedSecond
+# Second
 
 ### Available Operations
 
@@ -28,7 +28,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.NestedSecond.Get(ctx)
+    res, err := s.Nested.Second.Get(ctx)
     if err != nil {
         log.Fatal(err)
     }

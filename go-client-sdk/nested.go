@@ -15,12 +15,17 @@ import (
 )
 
 type nested struct {
+	First  *nestedFirst
+	Second *nestedSecond
+
 	sdkConfiguration sdkConfiguration
 }
 
 func newNested(sdkConfig sdkConfiguration) *nested {
 	return &nested{
 		sdkConfiguration: sdkConfig,
+		First:            newNestedFirst(sdkConfig),
+		Second:           newNestedSecond(sdkConfig),
 	}
 }
 

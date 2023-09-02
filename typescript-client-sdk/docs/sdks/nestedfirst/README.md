@@ -20,7 +20,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.nestedFirst.get().then((res: NestedFirstGetResponse) => {
+sdk.nested.first.get().then((res: NestedFirstGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

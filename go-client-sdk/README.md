@@ -201,11 +201,11 @@ func main() {
 
 * [Get](docs/sdks/nested/README.md#get)
 
-### [NestedFirst](docs/sdks/nestedfirst/README.md)
+### [First](docs/sdks/nestedfirst/README.md)
 
 * [Get](docs/sdks/nestedfirst/README.md#get)
 
-### [NestedSecond](docs/sdks/nestedsecond/README.md)
+### [Second](docs/sdks/nestedsecond/README.md)
 
 * [Get](docs/sdks/nestedsecond/README.md#get)
 

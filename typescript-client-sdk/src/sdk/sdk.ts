@@ -14,8 +14,6 @@ import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
 import { Nested } from "./nested";
-import { NestedFirst } from "./nestedfirst";
-import { NestedSecond } from "./nestedsecond";
 import { Pagination } from "./pagination";
 import { ParametersT } from "./parameters";
 import { RequestBodies } from "./requestbodies";
@@ -126,8 +124,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.31.1";
-    genVersion = "2.91.4";
+    sdkVersion = "1.31.2";
+    genVersion = "2.93.0";
     globals: any;
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -171,8 +169,6 @@ export class SDK {
      */
     public globals: Globals;
     public nested: Nested;
-    public nestedFirst: NestedFirst;
-    public nestedSecond: NestedSecond;
     /**
      * Endpoints for testing the pagination extension
      */
@@ -273,8 +269,6 @@ export class SDK {
         this.generation = new Generation(this.sdkConfiguration);
         this.globals = new Globals(this.sdkConfiguration);
         this.nested = new Nested(this.sdkConfiguration);
-        this.nestedFirst = new NestedFirst(this.sdkConfiguration);
-        this.nestedSecond = new NestedSecond(this.sdkConfiguration);
         this.pagination = new Pagination(this.sdkConfiguration);
         this.parameters = new ParametersT(this.sdkConfiguration);
         this.requestBodies = new RequestBodies(this.sdkConfiguration);

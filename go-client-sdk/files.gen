@@ -5,9 +5,9 @@ first.go
 flattening.go
 generation.go
 globals.go
-nested.go
 nestedfirst.go
 nestedsecond.go
+nested.go
 pagination.go
 parameters.go
 requestbodies.go
@@ -39,6 +39,7 @@ tests/errors_test.go
 tests/flattening_test.go
 tests/globals_test.go
 tests/helpers_test.go
+tests/multilevel_test.go
 tests/pagination_test.go
 tests/parameter_test.go
 tests/requestbodies_test.go
@@ -89,9 +90,9 @@ pkg/models/operations/typedparametergenerationget.go
 pkg/models/operations/usageexamplepost.go
 pkg/models/operations/globalpathparameterget.go
 pkg/models/operations/globalsqueryparameterget.go
-pkg/models/operations/nestedget.go
 pkg/models/operations/nestedfirstget.go
 pkg/models/operations/nestedsecondget.go
+pkg/models/operations/nestedget.go
 pkg/models/operations/paginationcursorbody.go
 pkg/models/operations/paginationcursorparams.go
 pkg/models/operations/paginationlimitoffsetoffsetbody.go
@@ -369,9 +370,9 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
-docs/models/operations/nestedgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
+docs/models/operations/nestedgetresponse.md
 docs/models/operations/paginationcursorbodyrequestbody.md
 docs/models/operations/paginationcursorbodyres.md
 docs/models/operations/paginationcursorbodyresponse.md

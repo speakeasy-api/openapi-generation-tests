@@ -1,4 +1,4 @@
-# NestedFirst
+# First
 
 ### Available Operations
 
@@ -28,7 +28,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.NestedFirst.Get(ctx)
+    res, err := s.Nested.First.Get(ctx)
     if err != nil {
         log.Fatal(err)
     }
