@@ -4343,6 +4343,22 @@ components:
             id:
               type: string
           title: "allOf4"
+    unsupportedEnums:
+      type: object
+      x-speakeasy-include: true
+      properties:
+        booleanEnum:
+          type: boolean
+          enum:
+            - false
+        numberEnum:
+          type: number
+          enum:
+            - 1.5
+            - 2.5
+      required:
+        - booleanEnum
+        - numberEnum
   securitySchemes:
     basicAuth:
       type: http
