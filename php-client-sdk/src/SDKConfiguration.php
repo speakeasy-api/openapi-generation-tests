@@ -36,8 +36,8 @@ class SDKConfiguration
 	];
 	public string $language = 'php';
 	public string $openapiDocVersion = '0.1.0';
-	public string $sdkVersion = '1.31.2';
-	public string $genVersion = '2.93.0';
+	public string $sdkVersion = '1.31.3';
+	public string $genVersion = '2.95.0';
 	/** @var array<string, array<string, array<string, mixed>>> */
 	public ?array $globals = [
     	'parameters' => []

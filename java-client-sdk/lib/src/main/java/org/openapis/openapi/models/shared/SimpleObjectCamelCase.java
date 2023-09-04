@@ -98,6 +98,15 @@ public class SimpleObjectCamelCase {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("decimal_val")
+    public Double decimalVal;
+
+    public SimpleObjectCamelCase withDecimalVal(Double decimalVal) {
+        this.decimalVal = decimalVal;
+        return this;
+    }
+    
     /**
      * A string based enum
      */
@@ -113,9 +122,9 @@ public class SimpleObjectCamelCase {
      * A float32 property.
      */
     @JsonProperty("float32_val")
-    public Double float32Val;
+    public Float float32Val;
 
-    public SimpleObjectCamelCase withFloat32Val(Double float32Val) {
+    public SimpleObjectCamelCase withFloat32Val(Float float32Val) {
         this.float32Val = float32Val;
         return this;
     }
@@ -222,7 +231,7 @@ public class SimpleObjectCamelCase {
         return this;
     }
     
-    public SimpleObjectCamelCase(@JsonProperty("any_val") Object anyVal, @JsonProperty("bool_val") Boolean boolVal, @JsonProperty("date_time_val") OffsetDateTime dateTimeVal, @JsonProperty("date_val") LocalDate dateVal, @JsonProperty("enum_val") Enum enumVal, @JsonProperty("float32_val") Double float32Val, @JsonProperty("int32_enum_val") SimpleObjectCamelCaseInt32EnumVal int32EnumVal, @JsonProperty("int32_val") Integer int32Val, @JsonProperty("int_enum_val") SimpleObjectCamelCaseIntEnumVal intEnumVal, @JsonProperty("int_val") Long intVal, @JsonProperty("num_val") Double numVal, @JsonProperty("str_val") String strVal) {
+    public SimpleObjectCamelCase(@JsonProperty("any_val") Object anyVal, @JsonProperty("bool_val") Boolean boolVal, @JsonProperty("date_time_val") OffsetDateTime dateTimeVal, @JsonProperty("date_val") LocalDate dateVal, @JsonProperty("enum_val") Enum enumVal, @JsonProperty("float32_val") Float float32Val, @JsonProperty("int32_enum_val") SimpleObjectCamelCaseInt32EnumVal int32EnumVal, @JsonProperty("int32_val") Integer int32Val, @JsonProperty("int_enum_val") SimpleObjectCamelCaseIntEnumVal intEnumVal, @JsonProperty("int_val") Long intVal, @JsonProperty("num_val") Double numVal, @JsonProperty("str_val") String strVal) {
         this.anyVal = anyVal;
         this.boolVal = boolVal;
         this.dateTimeVal = dateTimeVal;

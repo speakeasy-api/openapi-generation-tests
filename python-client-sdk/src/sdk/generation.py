@@ -361,10 +361,11 @@ class Generation:
         return res
 
     
-    def typed_parameter_generation_get(self, bigint: Optional[int] = None, date_: Optional[date] = None, obj: Optional[operations.TypedParameterGenerationGetObj] = None) -> operations.TypedParameterGenerationGetResponse:
+    def typed_parameter_generation_get(self, bigint: Optional[int] = None, date_: Optional[date] = None, decimal: Optional[float] = None, obj: Optional[operations.TypedParameterGenerationGetObj] = None) -> operations.TypedParameterGenerationGetResponse:
         request = operations.TypedParameterGenerationGetRequest(
             bigint=bigint,
             date_=date_,
+            decimal=decimal,
             obj=obj,
         )
         

@@ -64,6 +64,8 @@ module OpenApiSDK
       field :bigint_val, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigint_val') } }
       # An optional boolean property.
       field :bool_opt_val, T.nilable(T::Boolean), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bool_opt_val') } }
+
+      field :decimal_val, T.nilable(Float), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimal_val') } }
       # An optional integer property will be null for tests.
       field :int_opt_null_val, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('int_opt_null_val') } }
       # An optional number property will be null for tests.
@@ -72,8 +74,8 @@ module OpenApiSDK
       field :str_opt_val, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('str_opt_val') } }
 
 
-      sig { params(any_val: Object, bool_val: T::Boolean, date_time_val: DateTime, date_val: Date, enum_val: Shared::Enum, float32_val: Float, int_enum_val: Shared::SimpleObjectCamelCaseIntEnumVal, int_val: Integer, int32_enum_val: Shared::SimpleObjectCamelCaseInt32EnumVal, int32_val: Integer, num_val: Float, str_val: String, bigint_str_val: T.nilable(String), bigint_val: T.nilable(Integer), bool_opt_val: T.nilable(T::Boolean), int_opt_null_val: T.nilable(Integer), num_opt_null_val: T.nilable(Float), str_opt_val: T.nilable(String)).void }
-      def initialize(any_val: nil, bool_val: nil, date_time_val: nil, date_val: nil, enum_val: nil, float32_val: nil, int_enum_val: nil, int_val: nil, int32_enum_val: nil, int32_val: nil, num_val: nil, str_val: nil, bigint_str_val: nil, bigint_val: nil, bool_opt_val: nil, int_opt_null_val: nil, num_opt_null_val: nil, str_opt_val: nil)
+      sig { params(any_val: Object, bool_val: T::Boolean, date_time_val: DateTime, date_val: Date, enum_val: Shared::Enum, float32_val: Float, int_enum_val: Shared::SimpleObjectCamelCaseIntEnumVal, int_val: Integer, int32_enum_val: Shared::SimpleObjectCamelCaseInt32EnumVal, int32_val: Integer, num_val: Float, str_val: String, bigint_str_val: T.nilable(String), bigint_val: T.nilable(Integer), bool_opt_val: T.nilable(T::Boolean), decimal_val: T.nilable(Float), int_opt_null_val: T.nilable(Integer), num_opt_null_val: T.nilable(Float), str_opt_val: T.nilable(String)).void }
+      def initialize(any_val: nil, bool_val: nil, date_time_val: nil, date_val: nil, enum_val: nil, float32_val: nil, int_enum_val: nil, int_val: nil, int32_enum_val: nil, int32_val: nil, num_val: nil, str_val: nil, bigint_str_val: nil, bigint_val: nil, bool_opt_val: nil, decimal_val: nil, int_opt_null_val: nil, num_opt_null_val: nil, str_opt_val: nil)
         @any_val = any_val
         @bool_val = bool_val
         @date_time_val = date_time_val
@@ -89,6 +91,7 @@ module OpenApiSDK
         @bigint_str_val = bigint_str_val
         @bigint_val = bigint_val
         @bool_opt_val = bool_opt_val
+        @decimal_val = decimal_val
         @int_opt_null_val = int_opt_null_val
         @num_opt_null_val = num_opt_null_val
         @str_opt_val = str_opt_val

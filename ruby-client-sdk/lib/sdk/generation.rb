@@ -401,12 +401,13 @@ module OpenApiSDK
       res
     end
 
-    sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).returns(Utils::FieldAugmented) }
-    def typed_parameter_generation_get(bigint = nil, date = nil, obj = nil)
+    sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), decimal: T.nilable(Float), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).returns(Utils::FieldAugmented) }
+    def typed_parameter_generation_get(bigint = nil, date = nil, decimal = nil, obj = nil)
 
       request = Operations::TypedParameterGenerationGetRequest.new(
         bigint: bigint,
         date: date,
+        decimal: decimal,
         obj: obj
       )
       url, params = @sdk_configuration.get_server_details

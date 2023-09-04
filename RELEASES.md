@@ -501,3 +501,18 @@ Based on:
 - [typescript v1.31.2] typescript-client-sdk
 ### Releases
 - [Go v1.30.2] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.30.2 - go-client-sdk
+
+## 2023-09-04 16:29:19
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.78.1 (2.95.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [typescript v1.31.3] typescript-client-sdk
+- [go v1.30.3] go-client-sdk
+- [java v1.31.3] java-client-sdk
+- [php v1.31.3] php-client-sdk
+- [python v1.31.3] python-client-sdk
+- [ruby v1.31.3] ruby-client-sdk
+### Releases
+- [Go v1.30.3] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.30.3 - go-client-sdk

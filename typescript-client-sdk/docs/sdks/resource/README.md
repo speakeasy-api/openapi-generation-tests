@@ -26,8 +26,8 @@ const sdk = new SDK({
 
 sdk.resource.createFile({
   file: {
-    content: "minima".encode(),
-    file: "beatae",
+    content: "sint".encode(),
+    file: "nulla",
   },
 }).then((res: CreateFileResponse) => {
   if (res.statusCode == 200) {
@@ -73,49 +73,52 @@ const sdk = new SDK({
 
 sdk.resource.createResource({
   arrayOfNumber: [
-    5896.95,
-    9364.69,
-    7453.98,
+    4585.03,
+    3644.63,
+    4445.87,
   ],
   arrayOfString: [
-    "illum",
-    "eaque",
-    "earum",
-    "perspiciatis",
+    "quis",
+    "sint",
+    "accusamus",
   ],
   chocolates: [
     {
-      description: "debitis",
+      description: "hic",
     },
     {
-      description: "aliquid",
+      description: "necessitatibus",
     },
     {
-      description: "porro",
+      description: "asperiores",
     },
     {
-      description: "suscipit",
+      description: "ex",
     },
   ],
-  createdAt: new Date("2022-11-08T01:11:44.885Z"),
+  createdAt: new Date("2022-02-08T04:46:36.382Z"),
   enumNumber: ExampleResourceEnumNumber.Three,
-  enumStr: ExampleResourceEnumStr.Three,
-  id: "3aed0117-9963-412f-9e04-771778ff61d0",
+  enumStr: ExampleResourceEnumStr.One,
+  id: "caa3383c-2beb-4477-b73c-8d72f64d1db1",
   mapOfInteger: {
-    "odio": 271252,
+    "quia": 782090,
+    "aliquam": 247045,
+    "illo": 36561,
+    "vel": 406922,
   },
   mapOfString: {
-    "ex": "consectetur",
-    "aliquid": "ipsa",
+    "vero": "excepturi",
   },
-  name: "Ralph Hegmann",
-  updatedAt: new Date("2022-05-12T16:43:21.506Z"),
+  name: "Sheila Graham",
+  updatedAt: new Date("2022-03-25T02:57:12.529Z"),
   vehicle: {
-    createdAt: new Date("2022-12-23T23:30:38.445Z"),
-    length: 4317.6,
-    name: "Miss Cora Olson",
-    type: ExampleBoatType.Boat,
-    updatedAt: new Date("2021-01-15T12:05:30.894Z"),
+    createdAt: new Date("2021-02-19T05:31:39.522Z"),
+    make: "alias",
+    model: "nisi",
+    name: "Jacob Pacocha",
+    type: ExampleCarType.Car,
+    updatedAt: new Date("2022-12-22T23:09:45.932Z"),
+    year: 399.92,
   },
 }).then((res: CreateResourceResponse) => {
   if (res.statusCode == 200) {
@@ -152,7 +155,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "laborum";
+const resourceId: string = "consequatur";
 
 sdk.resource.deleteResource(resourceId).then((res: DeleteResourceResponse) => {
   if (res.statusCode == 200) {
@@ -189,7 +192,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "libero";
+const resourceId: string = "officia";
 
 sdk.resource.getResource(resourceId).then((res: GetResourceResponse) => {
   if (res.statusCode == 200) {
@@ -226,7 +229,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "ad";
+const resourceId: string = "recusandae";
 
 sdk.resource.updateResource(resourceId).then((res: UpdateResourceResponse) => {
   if (res.statusCode == 200) {

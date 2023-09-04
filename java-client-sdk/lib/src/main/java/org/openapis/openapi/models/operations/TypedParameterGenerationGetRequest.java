@@ -25,6 +25,14 @@ public class TypedParameterGenerationGetRequest {
         return this;
     }
     
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=decimal")
+    public Double decimal;
+
+    public TypedParameterGenerationGetRequest withDecimal(Double decimal) {
+        this.decimal = decimal;
+        return this;
+    }
+    
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=obj")
     public TypedParameterGenerationGetObj obj;
 

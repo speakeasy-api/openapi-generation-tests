@@ -76,6 +76,10 @@ export class SimpleObjectWithType extends SpeakeasyBase {
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     dateTime: Date;
 
+    @SpeakeasyMetadata()
+    @Expose({ name: "decimal" })
+    decimal?: number;
+
     /**
      * A string based enum
      */

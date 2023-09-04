@@ -125,6 +125,12 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
     requestBody?: UsageExamplePostRequestBody;
 
     /**
+     * An bigint parameter
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=bigintParameter" })
+    bigintParameter: number;
+
+    /**
      * A boolean parameter
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=boolParameter" })
@@ -141,6 +147,12 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=dateTimeParameter" })
     dateTimeParameter: Date;
+
+    /**
+     * A decimal parameter
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=decimalParameter" })
+    decimalParameter: number;
 
     /**
      * A double parameter

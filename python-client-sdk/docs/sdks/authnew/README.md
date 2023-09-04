@@ -7,6 +7,7 @@ Endpoints for testing authentication.
 ### Available Operations
 
 * [api_key_auth_global_new](#api_key_auth_global_new)
+* [auth_global](#auth_global)
 * [basic_auth_new](#basic_auth_new)
 * [multiple_mixed_options_auth](#multiple_mixed_options_auth)
 * [multiple_mixed_scheme_auth](#multiple_mixed_scheme_auth)
@@ -35,21 +36,25 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='ipsam',
-        username='Makayla9',
+        password='id',
+        username='Reid62',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='temporibus',
-            header_name='laborum',
+            expected_value='laborum',
+            header_name='quasi',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='quasi',
-            header_name='reiciendis',
+            expected_value='reiciendis',
+            header_name='voluptatibus',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='voluptatibus',
-            header_name='vero',
+            expected_value='vero',
+            header_name='nihil',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='praesentium',
+            header_name='voluptatibus',
         ),
     ],
 )
@@ -73,6 +78,58 @@ if res.status_code == 200:
 **[operations.APIKeyAuthGlobalNewResponse](../../models/operations/apikeyauthglobalnewresponse.md)**
 
 
+## auth_global
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.AuthServiceRequestBody(
+    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+        password='ipsa',
+        username='Lelah.Klein3',
+    ),
+    header_auth=[
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='ut',
+            header_name='maiores',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='dicta',
+            header_name='corporis',
+        ),
+    ],
+)
+
+res = s.auth_new.auth_global(req)
+
+if res.status_code == 200:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [shared.AuthServiceRequestBody](../../models/shared/authservicerequestbody.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `server_url`                                                                   | *Optional[str]*                                                                | :heavy_minus_sign:                                                             | An optional server URL to use.                                                 |
+
+
+### Response
+
+**[operations.AuthGlobalResponse](../../models/operations/authglobalresponse.md)**
+
+
 ## basic_auth_new
 
 ### Example Usage
@@ -88,17 +145,17 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='nihil',
-        username='John60',
+        password='dolore',
+        username='Jayden.Carter88',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='cum',
-            header_name='perferendis',
+            expected_value='repudiandae',
+            header_name='quae',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='doloremque',
-            header_name='reprehenderit',
+            expected_value='ipsum',
+            header_name='quidem',
         ),
     ],
 )
@@ -141,17 +198,21 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='ut',
-        username='Wilfrid.Carter',
+        password='molestias',
+        username='Kenny50',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='dicta',
-            header_name='harum',
+            expected_value='voluptates',
+            header_name='quasi',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='enim',
-            header_name='accusamus',
+            expected_value='repudiandae',
+            header_name='sint',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='veritatis',
+            header_name='itaque',
         ),
     ],
 )
@@ -193,21 +254,21 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='commodi',
-        username='Terrill69',
+        password='incidunt',
+        username='Emily_Altenwerth13',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='excepturi',
-            header_name='pariatur',
+            expected_value='distinctio',
+            header_name='quibusdam',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='modi',
-            header_name='praesentium',
+            expected_value='labore',
+            header_name='modi',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='rem',
-            header_name='voluptates',
+            expected_value='qui',
+            header_name='aliquid',
         ),
     ],
 )
@@ -253,17 +314,17 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='quasi',
-        username='Thelma92',
+        password='cupiditate',
+        username='Kavon82',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='enim',
-            header_name='consequatur',
+            expected_value='alias',
+            header_name='fugit',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='est',
-            header_name='quibusdam',
+            expected_value='dolorum',
+            header_name='excepturi',
         ),
     ],
 )
@@ -308,13 +369,17 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='explicabo',
-        username='Luther.Rau26',
+        password='tempora',
+        username='Mckayla96',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='aliquid',
-            header_name='cupiditate',
+            expected_value='non',
+            header_name='eligendi',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='sint',
+            header_name='aliquid',
         ),
     ],
 )
@@ -359,13 +424,25 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='quos',
-        username='Aiyana.Cummerata0',
+        password='provident',
+        username='Sonya.Marquardt',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='dolorum',
-            header_name='excepturi',
+            expected_value='a',
+            header_name='dolorum',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='in',
+            header_name='in',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='illum',
+            header_name='maiores',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='rerum',
+            header_name='dicta',
         ),
     ],
 )
@@ -407,17 +484,21 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='tempora',
-        username='Mckayla96',
+        password='magnam',
+        username='Obie.Schulist',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='non',
-            header_name='eligendi',
+            expected_value='accusamus',
+            header_name='non',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='sint',
-            header_name='aliquid',
+            expected_value='occaecati',
+            header_name='enim',
+        ),
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='accusamus',
+            header_name='delectus',
         ),
     ],
 )
@@ -460,25 +541,21 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='provident',
-        username='Sonya.Marquardt',
+        password='quidem',
+        username='Lafayette_Reinger',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='a',
-            header_name='dolorum',
+            expected_value='sapiente',
+            header_name='amet',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='in',
-            header_name='in',
+            expected_value='deserunt',
+            header_name='nisi',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='illum',
-            header_name='maiores',
-        ),
-        shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='rerum',
-            header_name='dicta',
+            expected_value='vel',
+            header_name='natus',
         ),
     ],
 )
@@ -520,21 +597,21 @@ s = sdk.SDK(
 
 req = shared.AuthServiceRequestBody(
     basic_auth=shared.AuthServiceRequestBodyBasicAuth(
-        password='magnam',
-        username='Obie.Schulist',
+        password='omnis',
+        username='Jarred.Aufderhar',
     ),
     header_auth=[
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='accusamus',
-            header_name='non',
+            expected_value='id',
+            header_name='labore',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='occaecati',
-            header_name='enim',
+            expected_value='labore',
+            header_name='suscipit',
         ),
         shared.AuthServiceRequestBodyHeaderAuth(
-            expected_value='accusamus',
-            header_name='delectus',
+            expected_value='natus',
+            header_name='nobis',
         ),
     ],
 )

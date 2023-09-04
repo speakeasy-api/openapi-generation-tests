@@ -871,12 +871,14 @@ export class Generation {
     async typedParameterGenerationGet(
         bigint?: number,
         date?: RFCDate,
+        decimal?: number,
         obj?: operations.TypedParameterGenerationGetObj,
         config?: AxiosRequestConfig
     ): Promise<operations.TypedParameterGenerationGetResponse> {
         const req = new operations.TypedParameterGenerationGetRequest({
             bigint: bigint,
             date: date,
+            decimal: decimal,
             obj: obj,
         });
         const baseURL: string = utils.templateUrl(

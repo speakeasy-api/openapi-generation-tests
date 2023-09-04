@@ -76,6 +76,11 @@ class SimpleObjectWithType
     #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d\TH:i:s.up'>")]
     public \DateTime $dateTime;
     
+	#[\JMS\Serializer\Annotation\SerializedName('decimal')]
+    #[\JMS\Serializer\Annotation\Type('float')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?float $decimal = null;
+    
     /**
      * A string based enum
      * 
@@ -191,6 +196,7 @@ class SimpleObjectWithType
 		$this->boolOpt = null;
 		$this->date = new \DateTime();
 		$this->dateTime = new \DateTime();
+		$this->decimal = null;
 		$this->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::One;
 		$this->float32 = 0;
 		$this->int = 0;

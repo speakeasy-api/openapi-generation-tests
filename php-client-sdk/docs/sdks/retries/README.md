@@ -28,7 +28,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->retries->retriesGet('dolore', 121059);
+    $response = $sdk->retries->retriesGet('voluptate', 709072);
 
     if ($response->retries !== null) {
         // handle response

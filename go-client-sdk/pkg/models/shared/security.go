@@ -24,6 +24,7 @@ func (o *SchemeBasicAuth) GetUsername() string {
 type Security struct {
 	APIKeyAuth    *string `security:"scheme,type=apiKey,subtype=header,name=Authorization"`
 	APIKeyAuthNew *string `security:"scheme,type=apiKey,subtype=header,name=x-api-key"`
+	Oauth2        *string `security:"scheme,type=oauth2,name=Authorization"`
 }
 
 func (o *Security) GetAPIKeyAuth() *string {
@@ -38,4 +39,11 @@ func (o *Security) GetAPIKeyAuthNew() *string {
 		return nil
 	}
 	return o.APIKeyAuthNew
+}
+
+func (o *Security) GetOauth2() *string {
+	if o == nil {
+		return nil
+	}
+	return o.Oauth2
 }

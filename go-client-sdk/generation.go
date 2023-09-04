@@ -728,11 +728,12 @@ func (s *generation) NameOverride(ctx context.Context, testEnumQueryParam operat
 	return res, nil
 }
 
-func (s *generation) TypedParameterGenerationGet(ctx context.Context, bigint *big.Int, date *types.Date, obj *operations.TypedParameterGenerationGetObj) (*operations.TypedParameterGenerationGetResponse, error) {
+func (s *generation) TypedParameterGenerationGet(ctx context.Context, bigint *big.Int, date *types.Date, decimal *float64, obj *operations.TypedParameterGenerationGetObj) (*operations.TypedParameterGenerationGetResponse, error) {
 	request := operations.TypedParameterGenerationGetRequest{
-		Bigint: bigint,
-		Date:   date,
-		Obj:    obj,
+		Bigint:  bigint,
+		Date:    date,
+		Decimal: decimal,
+		Obj:     obj,
 	}
 
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())

@@ -76,6 +76,10 @@ export class SimpleObjectCamelCase extends SpeakeasyBase {
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     dateVal: RFCDate;
 
+    @SpeakeasyMetadata()
+    @Expose({ name: "decimal_val" })
+    decimalVal?: number;
+
     /**
      * A string based enum
      */

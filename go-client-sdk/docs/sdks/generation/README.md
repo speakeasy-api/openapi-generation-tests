@@ -140,8 +140,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{
-        DeprecatedField: sdk.String("labore"),
-        NewField: sdk.String("suscipit"),
+        DeprecatedField: sdk.String("iure"),
+        NewField: sdk.String("doloribus"),
     })
     if err != nil {
         log.Fatal(err)
@@ -238,7 +238,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "natus"
+    deprecatedParameter := "debitis"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
@@ -292,8 +292,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "nobis"
-    newParameter := "eum"
+    deprecatedParameter := "eius"
+    newParameter := "maxime"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
@@ -538,10 +538,10 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := &operations.IgnoresPostApplicationJSON{
-        CallbackURL: sdk.String("https://composed-branch.biz"),
-        TestProp: sdk.String("et"),
+        CallbackURL: sdk.String("https://rotating-identification.com"),
+        TestProp: sdk.String("architecto"),
     }
-    testParam := "excepturi"
+    testParam := "repudiandae"
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
@@ -646,16 +646,17 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    bigint := big.NewInt(354047)
-    date := types.MustDateFromString("2021-11-24")
+    bigint := big.NewInt(352312)
+    date := types.MustDateFromString("2022-01-23")
+    decimal := 9988.48
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
-        Num: 5743.25,
-        Str: "accusantium",
+        Num: 8411.4,
+        Str: "sed",
     }
 
     ctx := context.Background()
-    res, err := s.Generation.TypedParameterGenerationGet(ctx, bigint, date, obj)
+    res, err := s.Generation.TypedParameterGenerationGet(ctx, bigint, date, decimal, obj)
     if err != nil {
         log.Fatal(err)
     }
@@ -673,6 +674,7 @@ func main() {
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |
 | `bigint`                                                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                                                             | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 | `date`                                                                                                  | [*types.Date](../../types/date.md)                                                                      | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `decimal`                                                                                               | **float64*                                                                                              | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 | `obj`                                                                                                   | [*operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 
 
@@ -716,40 +718,43 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Vivienne43@yahoo.com"),
-            FormatEmail: sdk.String("Sophie.Connelly@gmail.com"),
-            FormatURI: sdk.String("http://worrisome-teenager.biz"),
-            FormatUUID: sdk.String("c8b711e5-b7fd-42ed-8289-21cddc692601"),
-            Hostname: sdk.String("worn-programme.info"),
-            Ipv4: sdk.String("116.107.184.12"),
-            Ipv6: sdk.String("d5f0:d30c:5fbb:2587:0532:02c7:3d5f:e9b9"),
+            Email: sdk.String("Sanford50@hotmail.com"),
+            FormatEmail: sdk.String("Catalina_Casper86@yahoo.com"),
+            FormatURI: sdk.String("https://imaginary-mix.com"),
+            FormatUUID: sdk.String("601fb576-b0d5-4f0d-b0c5-fbb258705320"),
+            Hostname: sdk.String("deadly-shanty.info"),
+            Ipv4: sdk.String("57.223.88.241"),
+            Ipv6: sdk.String("e9b9:0c28:909b:3fe4:9a8d:9cbf:4863:3323"),
             SimpleObject: &shared.SimpleObject{
-                Any: "voluptatem",
-                Bigint: big.NewInt(783645),
-                BigintStr: types.MustBigIntFromString("164694"),
+                Any: "hic",
+                Bigint: big.NewInt(569574),
+                BigintStr: types.MustBigIntFromString("739551"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                Decimal: sdk.Float64(4521.09),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                IntEnum: shared.SimpleObjectIntEnumThird,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            Unknown: sdk.String("eaque"),
-            URI: sdk.String("https://right-damage.org"),
-            UUID: sdk.String("e49a8d9c-bf48-4633-b23f-9b77f3a41006"),
+            Unknown: sdk.String("amet"),
+            URI: sdk.String("https://expensive-bite.com"),
+            UUID: sdk.String("0674ebf6-9280-4d1b-a77a-89ebf737ae42"),
         },
+        BigintParameter: big.NewInt(111111),
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+        DecimalParameter: 1.1,
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
@@ -758,7 +763,7 @@ func main() {
         Int64Parameter: 111111,
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example 2",
+        StrParameter: "example 1",
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)

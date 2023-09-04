@@ -63,6 +63,8 @@ module OpenApiSDK
 
       field :bool_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('boolOpt') } }
 
+      field :decimal, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimal') } }
+
       field :int_opt_null, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intOptNull') } }
 
       field :num_opt_null, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('numOptNull') } }
@@ -70,8 +72,8 @@ module OpenApiSDK
       field :str_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('strOpt') } }
 
 
-      sig { params(any: String, bool: String, date: String, date_time: String, enum: String, float32: String, int: String, int32: String, int32_enum: String, int_enum: String, num: String, obj_param: String, str_: String, bigint: T.nilable(String), bigint_str: T.nilable(String), bool_opt: T.nilable(String), int_opt_null: T.nilable(String), num_opt_null: T.nilable(String), str_opt: T.nilable(String)).void }
-      def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, obj_param: nil, str_: nil, bigint: nil, bigint_str: nil, bool_opt: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
+      sig { params(any: String, bool: String, date: String, date_time: String, enum: String, float32: String, int: String, int32: String, int32_enum: String, int_enum: String, num: String, obj_param: String, str_: String, bigint: T.nilable(String), bigint_str: T.nilable(String), bool_opt: T.nilable(String), decimal: T.nilable(String), int_opt_null: T.nilable(String), num_opt_null: T.nilable(String), str_opt: T.nilable(String)).void }
+      def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, obj_param: nil, str_: nil, bigint: nil, bigint_str: nil, bool_opt: nil, decimal: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
         @any = any
         @bool = bool
         @date = date
@@ -88,6 +90,7 @@ module OpenApiSDK
         @bigint = bigint
         @bigint_str = bigint_str
         @bool_opt = bool_opt
+        @decimal = decimal
         @int_opt_null = int_opt_null
         @num_opt_null = num_opt_null
         @str_opt = str_opt

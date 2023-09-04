@@ -51,6 +51,10 @@ export class FormQueryParamsObjectResArgs extends SpeakeasyBase {
     dateTime: string;
 
     @SpeakeasyMetadata()
+    @Expose({ name: "decimal" })
+    decimal?: string;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "enum" })
     enum: string;
 

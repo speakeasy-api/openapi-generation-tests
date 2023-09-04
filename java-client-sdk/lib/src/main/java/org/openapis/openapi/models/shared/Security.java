@@ -24,5 +24,13 @@ public class Security {
         return this;
     }
     
+    @SpeakeasyMetadata("security:scheme=true,type=oauth2,name=Authorization")
+    public String oauth2;
+
+    public Security withOauth2(String oauth2) {
+        this.oauth2 = oauth2;
+        return this;
+    }
+    
     public Security(){}
 }

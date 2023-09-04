@@ -48,6 +48,7 @@ class DeepObjectQueryParamsObjectResArgs:
     obj_param_str_opt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[strOpt]') }})
     obj_param_bigint: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bigint]'), 'exclude': lambda f: f is None }})
     obj_param_bigint_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bigintStr]'), 'exclude': lambda f: f is None }})
+    obj_param_decimal: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[decimal]'), 'exclude': lambda f: f is None }})
     
 
 

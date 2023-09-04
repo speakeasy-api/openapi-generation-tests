@@ -127,8 +127,8 @@ public class Application {
 
             org.openapis.openapi.models.shared.DeprecatedFieldInObject req = new DeprecatedFieldInObject() {{
                 deprecatedEnum = DeprecatedFieldInObjectDeprecatedEnum.C;
-                deprecatedField = "sed";
-                newField = "saepe";
+                deprecatedField = "corporis";
+                newField = "hic";
             }};            
 
             DeprecatedFieldInSchemaPostResponse res = sdk.generation.deprecatedFieldInSchemaPost(req);
@@ -220,7 +220,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("pariatur");
+            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("libero");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -271,7 +271,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("accusantium", "consequuntur");
+            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("nobis", "dolores");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -493,9 +493,9 @@ public class Application {
                 .build();
 
             IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostApplicationJSON() {{
-                callbackUrl = "https://perfect-clause.com";
-                testProp = "quo";
-            }}, "illum");
+                callbackUrl = "http://mealy-kilometer.com";
+                testProp = "quis";
+            }}, "nesciunt");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -594,10 +594,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(864934L, LocalDate.parse("2021-10-07"), new TypedParameterGenerationGetObj(false, 4071.83d, "accusantium") {{
+            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(179490L, LocalDate.parse("2022-10-30"), 7936.98d, new TypedParameterGenerationGetObj(false, 8745.73d, "nostrum") {{
                 bool = false;
-                num = 5691.01d;
-                str = "odit";
+                num = 4634.51d;
+                str = "dolor";
             }});
 
             if (res.statusCode == 200) {
@@ -616,6 +616,7 @@ public class Application {
 | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
 | `bigint`                                                                                                                           | *Long*                                                                                                                             | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `date`                                                                                                                             | [LocalDate](https://docs.oracle.com/javase/8/docs/api/java/time/LocalDate.html)                                                    | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| `decimal`                                                                                                                          | *Double*                                                                                                                           | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 | `obj`                                                                                                                              | [org.openapis.openapi.models.operations.TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
 
 
@@ -659,26 +660,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 1") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 3") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Max.Hintz@hotmail.com";
-                    formatEmail = "Ambrose_Streich@hotmail.com";
-                    formatUri = "http://threadbare-cupola.com";
-                    formatUuid = "c5fbb258-7053-4202-873d-5fe9b90c2890";
-                    hostname = "noxious-pronunciation.biz";
-                    ipv4 = "254.239.68.157";
-                    ipv6 = "a8d9:cbf4:8633:323f:9b77:f3a4:1006:74eb";
-                    simpleObject = new SimpleObject("voluptatibus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        bigint = 179603L;
-                        bigintStr = "atque";
+                    email = "Leo.Purdy@hotmail.com";
+                    formatEmail = "Casimer.Kutch@hotmail.com";
+                    formatUri = "https://right-damage.org";
+                    formatUuid = "e49a8d9c-bf48-4633-b23f-9b77f3a41006";
+                    hostname = "likely-epauliere.org";
+                    ipv4 = "178.249.96.158";
+                    ipv6 = "280d:1ba7:7a89:ebf7:37ae:4203:ce5e:6a95";
+                    simpleObject = new SimpleObject("repellendus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        bigint = 55L;
+                        bigintStr = "at";
                         boolOpt = true;
+                        decimal = 3118.6d;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "sit";
-                    uri = "https://best-respite.net";
-                    uuid = "77a89ebf-737a-4e42-83ce-5e6a95d8a0d4";
+                    unknown = "tempora";
+                    uri = "http://stale-talk.biz";
+                    uuid = "af7a73cf-3be4-453f-870b-326b5a73429c";
                 }};;
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            

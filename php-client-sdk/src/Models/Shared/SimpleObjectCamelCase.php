@@ -76,6 +76,11 @@ class SimpleObjectCamelCase
     #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d', '', '|Y-m-d'>")]
     public \DateTime $dateVal;
     
+	#[\JMS\Serializer\Annotation\SerializedName('decimal_val')]
+    #[\JMS\Serializer\Annotation\Type('float')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?float $decimalVal = null;
+    
     /**
      * A string based enum
      * 
@@ -187,6 +192,7 @@ class SimpleObjectCamelCase
 		$this->boolVal = false;
 		$this->dateTimeVal = new \DateTime();
 		$this->dateVal = new \DateTime();
+		$this->decimalVal = null;
 		$this->enumVal = \OpenAPI\OpenAPI\Models\Shared\Enum::One;
 		$this->float32Val = 0;
 		$this->int32EnumVal = \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal::FiftyFive;

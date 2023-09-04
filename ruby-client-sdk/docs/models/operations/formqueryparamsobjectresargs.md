@@ -12,6 +12,7 @@
 | `bool_opt`          | *T.nilable(String)* | :heavy_minus_sign:  | N/A                 |
 | `date`              | *String*            | :heavy_check_mark:  | N/A                 |
 | `date_time`         | *String*            | :heavy_check_mark:  | N/A                 |
+| `decimal`           | *T.nilable(String)* | :heavy_minus_sign:  | N/A                 |
 | `enum`              | *String*            | :heavy_check_mark:  | N/A                 |
 | `float32`           | *String*            | :heavy_check_mark:  | N/A                 |
 | `int`               | *String*            | :heavy_check_mark:  | N/A                 |

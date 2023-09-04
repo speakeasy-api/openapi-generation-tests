@@ -31,25 +31,26 @@ s = sdk.SDK(
 
 
 res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
-    any='nam',
-    bigint=659669,
-    bigint_str='blanditiis',
+    any='aspernatur',
+    bigint=102863,
+    bigint_str='magnam',
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=923.73,
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), str_='amet')
+), str_='provident')
 
 if res.res is not None:
     # handle response
@@ -86,20 +87,21 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict(param_str='deserunt', simple_object=shared.SimpleObject(
-    any='nisi',
-    bigint=423855,
-    bigint_str='natus',
+res = s.flattening.component_body_and_param_no_conflict(param_str='quos', simple_object=shared.SimpleObject(
+    any='sint',
+    bigint=33625,
+    bigint_str='mollitia',
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=9689.62,
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int_enum=shared.SimpleObjectIntEnum.FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -141,7 +143,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.conflicting_params(str_path_parameter='perferendis', str_query_parameter='nihil')
+res = s.flattening.conflicting_params(str_path_parameter='eum', str_query_parameter='dolor')
 
 if res.res is not None:
     # handle response
@@ -178,8 +180,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
-    str_='magnam',
-), str_='distinctio')
+    str_='necessitatibus',
+), str_='odit')
 
 if res.res is not None:
     # handle response
@@ -216,8 +218,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='id',
-), param_str='labore')
+    body_str='nemo',
+), param_str='quasi')
 
 if res.res is not None:
     # handle response

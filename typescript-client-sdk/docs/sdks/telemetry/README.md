@@ -24,7 +24,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const userAgent: string = "ex";
+const userAgent: string = "placeat";
 
 sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent).then((res: TelemetrySpeakeasyUserAgentGetResponse) => {
   if (res.statusCode == 200) {

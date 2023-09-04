@@ -183,6 +183,42 @@ class Auth
     }
 	
     /**
+     * globalBearerAuth
+     * 
+     * @return \OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse
+     */
+	public function globalBearerAuth(
+    ): \OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/bearer#global');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->token = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthToken', 'json');
+            }
+        }
+        else if ($httpResponse->getStatusCode() === 401) {
+        }
+
+        return $response;
+    }
+	
+    /**
      * oauth2Auth
      * 
      * @param \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthSecurity $security
@@ -213,6 +249,51 @@ class Auth
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->token = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\Oauth2AuthToken', 'json');
+            }
+        }
+        else if ($httpResponse->getStatusCode() === 401) {
+        }
+
+        return $response;
+    }
+	
+    /**
+     * oauth2Override
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity $security
+     * @return \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse
+     */
+	public function oauth2Override(
+        \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity $security,
+    ): \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideRequest();
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/bearer#oauth2AuthOverride');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getHeaders($request));
+        if (!array_key_exists('headers', $options)) {
+            $options['headers'] = [];
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $client = Utils\Utils::configureSecurityClient($this->sdkConfiguration->defaultClient, $security);
+        $httpResponse = $client->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->token = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideToken', 'json');
             }
         }
         else if ($httpResponse->getStatusCode() === 401) {

@@ -66,6 +66,8 @@ module OpenApiSDK
       field :bigint_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('bigintStr') } }
       # An optional boolean property.
       field :bool_opt, T.nilable(T::Boolean), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('boolOpt') } }
+
+      field :decimal, T.nilable(Float), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimal') } }
       # An optional integer property will be null for tests.
       field :int_opt_null, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intOptNull') } }
       # An optional number property will be null for tests.
@@ -74,8 +76,8 @@ module OpenApiSDK
       field :str_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('strOpt') } }
 
 
-      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::Enum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::SimpleObjectWithTypeInt32Enum, int_enum: Shared::SimpleObjectWithTypeIntEnum, num: Float, str_: String, type: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
-      def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, str_: nil, type: nil, bigint: nil, bigint_str: nil, bool_opt: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
+      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::Enum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::SimpleObjectWithTypeInt32Enum, int_enum: Shared::SimpleObjectWithTypeIntEnum, num: Float, str_: String, type: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), decimal: T.nilable(Float), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
+      def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, str_: nil, type: nil, bigint: nil, bigint_str: nil, bool_opt: nil, decimal: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
         @any = any
         @bool = bool
         @date = date
@@ -92,6 +94,7 @@ module OpenApiSDK
         @bigint = bigint
         @bigint_str = bigint_str
         @bool_opt = bool_opt
+        @decimal = decimal
         @int_opt_null = int_opt_null
         @num_opt_null = num_opt_null
         @str_opt = str_opt

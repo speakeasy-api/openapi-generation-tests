@@ -61,25 +61,28 @@ req = operations.UsageExamplePostRequest(
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=6667.67,
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
             str_='example',
             str_opt='optional example',
         ),
-        unknown='laborum',
-        uri='http://doting-footage.com',
-        uuid='c5955907-aff1-4a3a-afa9-467739251aa5',
+        unknown='dolores',
+        uri='http://growing-cappelletti.net',
+        uuid='5955907a-ff1a-43a2-ba94-67739251aa52',
     ),
+    bigint_parameter=111111,
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),
     date_time_parameter=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal_parameter=1.1,
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,
@@ -88,7 +91,7 @@ req = operations.UsageExamplePostRequest(
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
-    str_parameter='example 1',
+    str_parameter='example 3',
 )
 
 res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
@@ -115,12 +118,15 @@ if res.usage_example_post_200_application_json_object is not None:
 * [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
 * [basic_auth](docs/sdks/auth/README.md#basic_auth)
 * [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
+* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
 * [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
+* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
 * [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
 ### [auth_new](docs/sdks/authnew/README.md)
 
 * [api_key_auth_global_new](docs/sdks/authnew/README.md#api_key_auth_global_new)
+* [auth_global](docs/sdks/authnew/README.md#auth_global)
 * [basic_auth_new](docs/sdks/authnew/README.md#basic_auth_new)
 * [multiple_mixed_options_auth](docs/sdks/authnew/README.md#multiple_mixed_options_auth)
 * [multiple_mixed_scheme_auth](docs/sdks/authnew/README.md#multiple_mixed_scheme_auth)
@@ -256,6 +262,8 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_post_multiple_content_types_split_form](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_form)
 * [request_body_post_multiple_content_types_split_json](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_json)
 * [request_body_post_multiple_content_types_split_multipart](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_multipart)
+* [request_body_post_null_array](docs/sdks/requestbodies/README.md#request_body_post_null_array)
+* [request_body_post_null_dictionary](docs/sdks/requestbodies/README.md#request_body_post_null_dictionary)
 * [request_body_put_bytes](docs/sdks/requestbodies/README.md#request_body_put_bytes)
 * [request_body_put_bytes_with_params](docs/sdks/requestbodies/README.md#request_body_put_bytes_with_params)
 * [request_body_put_multipart_deep](docs/sdks/requestbodies/README.md#request_body_put_multipart_deep)

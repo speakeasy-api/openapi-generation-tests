@@ -20,6 +20,14 @@ class UsageExamplePostRequest
     public ?UsageExamplePostRequestBody $requestBody = null;
     
     /**
+     * An bigint parameter
+     * 
+     * @var int $bigintParameter
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=bigintParameter')]
+    public int $bigintParameter;
+    
+    /**
      * A boolean parameter
      * 
      * @var bool $boolParameter
@@ -42,6 +50,14 @@ class UsageExamplePostRequest
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=dateTimeParameter,dateTimeFormat=Y-m-d\TH:i:s.up')]
     public \DateTime $dateTimeParameter;
+    
+    /**
+     * A decimal parameter
+     * 
+     * @var float $decimalParameter
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimalParameter')]
+    public float $decimalParameter;
     
     /**
      * A double parameter
@@ -118,9 +134,11 @@ class UsageExamplePostRequest
 	public function __construct()
 	{
 		$this->requestBody = null;
+		$this->bigintParameter = 0;
 		$this->boolParameter = false;
 		$this->dateParameter = new \DateTime();
 		$this->dateTimeParameter = new \DateTime();
+		$this->decimalParameter = 0;
 		$this->doubleParameter = 0;
 		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter::Value1;
 		$this->falseyNumberParameter = 0;

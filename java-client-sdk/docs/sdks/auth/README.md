@@ -10,7 +10,9 @@ Endpoints for testing authentication.
 * [apiKeyAuthGlobal](#apikeyauthglobal)
 * [basicAuth](#basicauth)
 * [bearerAuth](#bearerauth)
+* [globalBearerAuth](#globalbearerauth)
 * [oauth2Auth](#oauth2auth)
+* [oauth2Override](#oauth2override)
 * [openIdConnectAuth](#openidconnectauth)
 
 ## apiKeyAuth
@@ -123,7 +125,7 @@ public class Application {
             BasicAuthResponse res = sdk.auth.basicAuth(new BasicAuthSecurity("YOUR_PASSWORD", "YOUR_USERNAME") {{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
-            }}, "quo", "sequi");
+            }}, "sequi", "tenetur");
 
             if (res.user != null) {
                 // handle response
@@ -195,6 +197,46 @@ public class Application {
 **[org.openapis.openapi.models.operations.BearerAuthResponse](../../models/operations/BearerAuthResponse.md)**
 
 
+## globalBearerAuth
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.GlobalBearerAuthResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            GlobalBearerAuthResponse res = sdk.auth.globalBearerAuth();
+
+            if (res.token != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
+
+
 ## oauth2Auth
 
 ### Example Usage
@@ -239,6 +281,53 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.Oauth2AuthResponse](../../models/operations/Oauth2AuthResponse.md)**
+
+
+## oauth2Override
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.Oauth2OverrideRequest;
+import org.openapis.openapi.models.operations.Oauth2OverrideResponse;
+import org.openapis.openapi.models.operations.Oauth2OverrideSecurity;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            Oauth2OverrideResponse res = sdk.auth.oauth2Override(new Oauth2OverrideSecurity("Bearer YOUR_OAUTH2_TOKEN") {{
+                oauth2 = "Bearer YOUR_OAUTH2_TOKEN";
+            }});
+
+            if (res.token != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `security`                                                                                                         | [org.openapis.openapi.models.operations.Oauth2OverrideSecurity](../../models/operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                                 | The security requirements to use for the request.                                                                  |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.Oauth2OverrideResponse](../../models/operations/Oauth2OverrideResponse.md)**
 
 
 ## openIdConnectAuth

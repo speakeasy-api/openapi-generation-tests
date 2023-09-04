@@ -10,7 +10,9 @@ Endpoints for testing authentication.
 * [api_key_auth_global](#api_key_auth_global)
 * [basic_auth](#basic_auth)
 * [bearer_auth](#bearer_auth)
+* [global_bearer_auth](#global_bearer_auth)
 * [oauth2_auth](#oauth2_auth)
+* [oauth2_override](#oauth2_override)
 * [open_id_connect_auth](#open_id_connect_auth)
 
 ## api_key_auth
@@ -93,7 +95,7 @@ s = sdk.SDK(
 res = s.auth.basic_auth(operations.BasicAuthSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
-), passwd='sequi', user='tenetur')
+), passwd='tenetur', user='ipsam')
 
 if res.user is not None:
     # handle response
@@ -147,6 +149,35 @@ if res.token is not None:
 **[operations.BearerAuthResponse](../../models/operations/bearerauthresponse.md)**
 
 
+## global_bearer_auth
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.auth.global_bearer_auth()
+
+if res.token is not None:
+    # handle response
+```
+
+
+### Response
+
+**[operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md)**
+
+
 ## oauth2_auth
 
 ### Example Usage
@@ -179,6 +210,40 @@ if res.token is not None:
 ### Response
 
 **[operations.Oauth2AuthResponse](../../models/operations/oauth2authresponse.md)**
+
+
+## oauth2_override
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import operations
+
+s = sdk.SDK(
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.auth.oauth2_override(operations.Oauth2OverrideSecurity(
+    oauth2="Bearer YOUR_OAUTH2_TOKEN",
+))
+
+if res.token is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `security`                                                                             | [operations.Oauth2OverrideSecurity](../../models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
+
+
+### Response
+
+**[operations.Oauth2OverrideResponse](../../models/operations/oauth2overrideresponse.md)**
 
 
 ## open_id_connect_auth

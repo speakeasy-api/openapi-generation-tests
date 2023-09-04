@@ -98,6 +98,15 @@ public class SimpleObjectWithType {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("decimal")
+    public Double decimal;
+
+    public SimpleObjectWithType withDecimal(Double decimal) {
+        this.decimal = decimal;
+        return this;
+    }
+    
     /**
      * A string based enum
      */
@@ -113,9 +122,9 @@ public class SimpleObjectWithType {
      * A float32 property.
      */
     @JsonProperty("float32")
-    public Double float32;
+    public Float float32;
 
-    public SimpleObjectWithType withFloat32(Double float32) {
+    public SimpleObjectWithType withFloat32(Float float32) {
         this.float32 = float32;
         return this;
     }
@@ -230,7 +239,7 @@ public class SimpleObjectWithType {
         return this;
     }
     
-    public SimpleObjectWithType(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") Enum enum_, @JsonProperty("float32") Double float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectWithTypeInt32Enum int32Enum, @JsonProperty("intEnum") SimpleObjectWithTypeIntEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str, @JsonProperty("type") String type) {
+    public SimpleObjectWithType(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") Enum enum_, @JsonProperty("float32") Float float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectWithTypeInt32Enum int32Enum, @JsonProperty("intEnum") SimpleObjectWithTypeIntEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str, @JsonProperty("type") String type) {
         this.any = any;
         this.bool = bool;
         this.date = date;

@@ -7,6 +7,7 @@ Endpoints for testing authentication.
 ### Available Operations
 
 * [apiKeyAuthGlobalNew](#apikeyauthglobalnew)
+* [authGlobal](#authglobal)
 * [basicAuthNew](#basicauthnew)
 * [multipleMixedOptionsAuth](#multiplemixedoptionsauth)
 * [multipleMixedSchemeAuth](#multiplemixedschemeauth)
@@ -35,21 +36,25 @@ const sdk = new SDK({
 
 sdk.authNew.apiKeyAuthGlobalNew({
   basicAuth: {
-    password: "ipsam",
-    username: "Makayla9",
+    password: "id",
+    username: "Reid62",
   },
   headerAuth: [
     {
-      expectedValue: "temporibus",
-      headerName: "laborum",
+      expectedValue: "laborum",
+      headerName: "quasi",
     },
     {
-      expectedValue: "quasi",
-      headerName: "reiciendis",
+      expectedValue: "reiciendis",
+      headerName: "voluptatibus",
     },
     {
-      expectedValue: "voluptatibus",
-      headerName: "vero",
+      expectedValue: "vero",
+      headerName: "nihil",
+    },
+    {
+      expectedValue: "praesentium",
+      headerName: "voluptatibus",
     },
   ],
 }).then((res: ApiKeyAuthGlobalNewResponse) => {
@@ -73,6 +78,58 @@ sdk.authNew.apiKeyAuthGlobalNew({
 **Promise<[operations.ApiKeyAuthGlobalNewResponse](../../models/operations/apikeyauthglobalnewresponse.md)>**
 
 
+## authGlobal
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { AuthGlobalResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.authNew.authGlobal({
+  basicAuth: {
+    password: "ipsa",
+    username: "Lelah.Klein3",
+  },
+  headerAuth: [
+    {
+      expectedValue: "ut",
+      headerName: "maiores",
+    },
+    {
+      expectedValue: "dicta",
+      headerName: "corporis",
+    },
+  ],
+}).then((res: AuthGlobalResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                      | Type                                                                           | Required                                                                       | Description                                                                    |
+| ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ | ------------------------------------------------------------------------------ |
+| `request`                                                                      | [shared.AuthServiceRequestBody](../../models/shared/authservicerequestbody.md) | :heavy_check_mark:                                                             | The request object to use for the request.                                     |
+| `serverURL`                                                                    | *string*                                                                       | :heavy_minus_sign:                                                             | An optional server URL to use.                                                 |
+| `config`                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                   | :heavy_minus_sign:                                                             | Available config options for making requests.                                  |
+
+
+### Response
+
+**Promise<[operations.AuthGlobalResponse](../../models/operations/authglobalresponse.md)>**
+
+
 ## basicAuthNew
 
 ### Example Usage
@@ -92,17 +149,17 @@ const operationSecurity: BasicAuthNewSecurity = {
 
 sdk.authNew.basicAuthNew({
   basicAuth: {
-    password: "nihil",
-    username: "John60",
+    password: "dolore",
+    username: "Jayden.Carter88",
   },
   headerAuth: [
     {
-      expectedValue: "cum",
-      headerName: "perferendis",
+      expectedValue: "repudiandae",
+      headerName: "quae",
     },
     {
-      expectedValue: "doloremque",
-      headerName: "reprehenderit",
+      expectedValue: "ipsum",
+      headerName: "quidem",
     },
   ],
 }, operationSecurity).then((res: BasicAuthNewResponse) => {
@@ -145,17 +202,21 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
 
 sdk.authNew.multipleMixedOptionsAuth({
   basicAuth: {
-    password: "ut",
-    username: "Wilfrid.Carter",
+    password: "molestias",
+    username: "Kenny50",
   },
   headerAuth: [
     {
-      expectedValue: "dicta",
-      headerName: "harum",
+      expectedValue: "voluptates",
+      headerName: "quasi",
     },
     {
-      expectedValue: "enim",
-      headerName: "accusamus",
+      expectedValue: "repudiandae",
+      headerName: "sint",
+    },
+    {
+      expectedValue: "veritatis",
+      headerName: "itaque",
     },
   ],
 }, operationSecurity).then((res: MultipleMixedOptionsAuthResponse) => {
@@ -202,21 +263,21 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
 
 sdk.authNew.multipleMixedSchemeAuth({
   basicAuth: {
-    password: "commodi",
-    username: "Terrill69",
+    password: "incidunt",
+    username: "Emily_Altenwerth13",
   },
   headerAuth: [
     {
-      expectedValue: "excepturi",
-      headerName: "pariatur",
+      expectedValue: "distinctio",
+      headerName: "quibusdam",
     },
     {
-      expectedValue: "modi",
-      headerName: "praesentium",
+      expectedValue: "labore",
+      headerName: "modi",
     },
     {
-      expectedValue: "rem",
-      headerName: "voluptates",
+      expectedValue: "qui",
+      headerName: "aliquid",
     },
   ],
 }, operationSecurity).then((res: MultipleMixedSchemeAuthResponse) => {
@@ -265,17 +326,17 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
 
 sdk.authNew.multipleOptionsWithMixedSchemesAuth({
   basicAuth: {
-    password: "quasi",
-    username: "Thelma92",
+    password: "cupiditate",
+    username: "Kavon82",
   },
   headerAuth: [
     {
-      expectedValue: "enim",
-      headerName: "consequatur",
+      expectedValue: "alias",
+      headerName: "fugit",
     },
     {
-      expectedValue: "est",
-      headerName: "quibusdam",
+      expectedValue: "dolorum",
+      headerName: "excepturi",
     },
   ],
 }, operationSecurity).then((res: MultipleOptionsWithMixedSchemesAuthResponse) => {
@@ -324,13 +385,17 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
 
 sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
   basicAuth: {
-    password: "explicabo",
-    username: "Luther.Rau26",
+    password: "tempora",
+    username: "Mckayla96",
   },
   headerAuth: [
     {
-      expectedValue: "aliquid",
-      headerName: "cupiditate",
+      expectedValue: "non",
+      headerName: "eligendi",
+    },
+    {
+      expectedValue: "sint",
+      headerName: "aliquid",
     },
   ],
 }, operationSecurity).then((res: MultipleOptionsWithSimpleSchemesAuthResponse) => {
@@ -373,13 +438,25 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
 
 sdk.authNew.multipleSimpleOptionsAuth({
   basicAuth: {
-    password: "quos",
-    username: "Aiyana.Cummerata0",
+    password: "provident",
+    username: "Sonya.Marquardt",
   },
   headerAuth: [
     {
-      expectedValue: "dolorum",
-      headerName: "excepturi",
+      expectedValue: "a",
+      headerName: "dolorum",
+    },
+    {
+      expectedValue: "in",
+      headerName: "in",
+    },
+    {
+      expectedValue: "illum",
+      headerName: "maiores",
+    },
+    {
+      expectedValue: "rerum",
+      headerName: "dicta",
     },
   ],
 }, operationSecurity).then((res: MultipleSimpleOptionsAuthResponse) => {
@@ -423,17 +500,21 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
 
 sdk.authNew.multipleSimpleSchemeAuth({
   basicAuth: {
-    password: "tempora",
-    username: "Mckayla96",
+    password: "magnam",
+    username: "Obie.Schulist",
   },
   headerAuth: [
     {
-      expectedValue: "non",
-      headerName: "eligendi",
+      expectedValue: "accusamus",
+      headerName: "non",
     },
     {
-      expectedValue: "sint",
-      headerName: "aliquid",
+      expectedValue: "occaecati",
+      headerName: "enim",
+    },
+    {
+      expectedValue: "accusamus",
+      headerName: "delectus",
     },
   ],
 }, operationSecurity).then((res: MultipleSimpleSchemeAuthResponse) => {
@@ -476,25 +557,21 @@ const operationSecurity: Oauth2AuthNewSecurity = {
 
 sdk.authNew.oauth2AuthNew({
   basicAuth: {
-    password: "provident",
-    username: "Sonya.Marquardt",
+    password: "quidem",
+    username: "Lafayette_Reinger",
   },
   headerAuth: [
     {
-      expectedValue: "a",
-      headerName: "dolorum",
+      expectedValue: "sapiente",
+      headerName: "amet",
     },
     {
-      expectedValue: "in",
-      headerName: "in",
+      expectedValue: "deserunt",
+      headerName: "nisi",
     },
     {
-      expectedValue: "illum",
-      headerName: "maiores",
-    },
-    {
-      expectedValue: "rerum",
-      headerName: "dicta",
+      expectedValue: "vel",
+      headerName: "natus",
     },
   ],
 }, operationSecurity).then((res: Oauth2AuthNewResponse) => {
@@ -537,21 +614,21 @@ const operationSecurity: OpenIdConnectAuthNewSecurity = {
 
 sdk.authNew.openIdConnectAuthNew({
   basicAuth: {
-    password: "magnam",
-    username: "Obie.Schulist",
+    password: "omnis",
+    username: "Jarred.Aufderhar",
   },
   headerAuth: [
     {
-      expectedValue: "accusamus",
-      headerName: "non",
+      expectedValue: "id",
+      headerName: "labore",
     },
     {
-      expectedValue: "occaecati",
-      headerName: "enim",
+      expectedValue: "labore",
+      headerName: "suscipit",
     },
     {
-      expectedValue: "accusamus",
-      headerName: "delectus",
+      expectedValue: "natus",
+      headerName: "nobis",
     },
   ],
 }, operationSecurity).then((res: OpenIdConnectAuthNewResponse) => {

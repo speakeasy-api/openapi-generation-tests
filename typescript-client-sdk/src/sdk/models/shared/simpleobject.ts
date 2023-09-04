@@ -90,6 +90,12 @@ export class SimpleObject extends SpeakeasyBase {
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     dateTime: Date;
 
+    @SpeakeasyMetadata({
+        data: "header, name=decimal, pathParam, name=decimal, queryParam, name=decimal, form, name=decimal, multipart_form, name=decimal",
+    })
+    @Expose({ name: "decimal" })
+    decimal?: number;
+
     /**
      * A string based enum
      */

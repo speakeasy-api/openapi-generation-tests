@@ -87,25 +87,28 @@ func main() {
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                Decimal: sdk.Float64(6667.67),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+                IntEnum: shared.SimpleObjectIntEnumThird,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            Unknown: sdk.String("laborum"),
-            URI: sdk.String("http://doting-footage.com"),
-            UUID: sdk.String("c5955907-aff1-4a3a-afa9-467739251aa5"),
+            Unknown: sdk.String("dolores"),
+            URI: sdk.String("http://growing-cappelletti.net"),
+            UUID: sdk.String("5955907a-ff1a-43a2-ba94-67739251aa52"),
         },
+        BigintParameter: big.NewInt(111111),
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+        DecimalParameter: 1.1,
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
@@ -114,7 +117,7 @@ func main() {
         Int64Parameter: 111111,
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example 1",
+        StrParameter: "example 3",
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)
@@ -141,12 +144,15 @@ func main() {
 * [APIKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
 * [BasicAuth](docs/sdks/auth/README.md#basicauth)
 * [BearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [GlobalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
 * [Oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [OpenIDConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [AuthNew](docs/sdks/authnew/README.md)
 
 * [APIKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
+* [AuthGlobal](docs/sdks/authnew/README.md#authglobal)
 * [BasicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
 * [MultipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
 * [MultipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
@@ -282,6 +288,8 @@ func main() {
 * [RequestBodyPostMultipleContentTypesSplitForm](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitform)
 * [RequestBodyPostMultipleContentTypesSplitJSON](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitjson)
 * [RequestBodyPostMultipleContentTypesSplitMultipart](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitmultipart)
+* [RequestBodyPostNullArray](docs/sdks/requestbodies/README.md#requestbodypostnullarray)
+* [RequestBodyPostNullDictionary](docs/sdks/requestbodies/README.md#requestbodypostnulldictionary)
 * [RequestBodyPutBytes](docs/sdks/requestbodies/README.md#requestbodyputbytes)
 * [RequestBodyPutBytesWithParams](docs/sdks/requestbodies/README.md#requestbodyputbyteswithparams)
 * [RequestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)

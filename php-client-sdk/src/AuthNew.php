@@ -15,6 +15,10 @@ class AuthNew
 		'http://localhost:35456',
 	];
 	
+	public const AUTH_GLOBAL_SERVERS = [
+		'http://localhost:35456',
+	];
+	
 	public const BASIC_AUTH_NEW_SERVERS = [
 		'http://localhost:35456',
 	];
@@ -92,6 +96,47 @@ class AuthNew
         $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
 
         $response = new \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200 or $httpResponse->getStatusCode() === 401) {
+        }
+
+        return $response;
+    }
+	
+    /**
+     * authGlobal
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\AuthGlobalResponse
+     */
+	public function authGlobal(
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\AuthGlobalResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(AuthNew::AUTH_GLOBAL_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/auth#authGlobal');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\AuthGlobalResponse();
         $response->statusCode = $httpResponse->getStatusCode();
         $response->contentType = $contentType;
         $response->rawResponse = $httpResponse;

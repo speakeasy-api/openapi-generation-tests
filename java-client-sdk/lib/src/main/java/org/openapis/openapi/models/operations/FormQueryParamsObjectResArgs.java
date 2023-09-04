@@ -69,6 +69,15 @@ public class FormQueryParamsObjectResArgs {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("decimal")
+    public String decimal;
+
+    public FormQueryParamsObjectResArgs withDecimal(String decimal) {
+        this.decimal = decimal;
+        return this;
+    }
+    
     @JsonProperty("enum")
     public String enum_;
 

@@ -106,6 +106,16 @@ public class SimpleObject {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("decimal")
+    @SpeakeasyMetadata("header:name=decimal pathParam:name=decimal queryParam:name=decimal form:name=decimal multipartForm:name=decimal")
+    public Double decimal;
+
+    public SimpleObject withDecimal(Double decimal) {
+        this.decimal = decimal;
+        return this;
+    }
+    
     /**
      * A string based enum
      */
@@ -123,9 +133,9 @@ public class SimpleObject {
      */
     @JsonProperty("float32")
     @SpeakeasyMetadata("header:name=float32 pathParam:name=float32 queryParam:name=float32 form:name=float32 multipartForm:name=float32")
-    public Double float32;
+    public Float float32;
 
-    public SimpleObject withFloat32(Double float32) {
+    public SimpleObject withFloat32(Float float32) {
         this.float32 = float32;
         return this;
     }
@@ -241,7 +251,7 @@ public class SimpleObject {
         return this;
     }
     
-    public SimpleObject(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") Enum enum_, @JsonProperty("float32") Double float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectInt32Enum int32Enum, @JsonProperty("intEnum") SimpleObjectIntEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str) {
+    public SimpleObject(@JsonProperty("any") Object any, @JsonProperty("bool") Boolean bool, @JsonProperty("date") LocalDate date, @JsonProperty("dateTime") OffsetDateTime dateTime, @JsonProperty("enum") Enum enum_, @JsonProperty("float32") Float float32, @JsonProperty("int") Long int_, @JsonProperty("int32") Integer int32, @JsonProperty("int32Enum") SimpleObjectInt32Enum int32Enum, @JsonProperty("intEnum") SimpleObjectIntEnum intEnum, @JsonProperty("num") Double num, @JsonProperty("str") String str) {
         this.any = any;
         this.bool = bool;
         this.date = date;
