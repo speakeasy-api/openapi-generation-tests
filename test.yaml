@@ -833,6 +833,8 @@ paths:
                         type: string
                       bigintStr:
                         type: string
+                      decimal:
+                        type: string
                     required:
                       - str
                       - bool
@@ -1109,6 +1111,8 @@ paths:
                       objParam[bigint]:
                         type: string
                       objParam[bigintStr]:
+                        type: string
+                      objParam[decimal]:
                         type: string
                     required:
                       - objArrParam[arr]
@@ -3054,6 +3058,15 @@ paths:
             format: int64
             description: An int64 type
             example: 111111
+        - name: bigintParameter
+          in: query
+          required: true
+          description: An bigint parameter
+          schema:
+            type: integer
+            format: bigint
+            description: An bigint type
+            example: 111111
         - name: floatParameter
           in: query
           required: true
@@ -3070,6 +3083,15 @@ paths:
             type: number
             format: float
             description: A float32 type
+            example: 1.1
+        - name: decimalParameter
+          in: query
+          required: true
+          description: A decimal parameter
+          schema:
+            type: number
+            format: decimal
+            description: A decimal type
             example: 1.1
         - name: doubleParameter
           in: query
@@ -3514,6 +3536,11 @@ paths:
           schema:
             type: integer
             format: bigint
+        - name: decimal
+          in: query
+          schema:
+            type: number
+            format: decimal
         - name: obj
           in: query
           schema:

@@ -175,7 +175,7 @@ components:
           example: 1.1
         float32:
           type: number
-          format: float32
+          format: float
           description: "A float32 property."
           example: 2.2222222
         enum:
@@ -236,6 +236,9 @@ components:
         bigintStr:
           type: string
           format: bigint
+        decimal:
+          type: number
+          format: decimal
       required:
         - str
         - bool
@@ -279,7 +282,7 @@ components:
           example: 1.1
         float32_val:
           type: number
-          format: float32
+          format: float
           description: "A float32 property."
           example: 2.2222222
         enum_val:
@@ -340,6 +343,9 @@ components:
         bigint_str_val:
           type: string
           format: bigint
+        decimal_val:
+          type: number
+          format: decimal
       required:
         - str_val
         - bool_val
