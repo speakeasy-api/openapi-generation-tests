@@ -107,8 +107,8 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeprecatedFieldInObject();
-    $request->deprecatedField = 'provident';
-    $request->newField = 'necessitatibus';
+    $request->deprecatedField = 'rerum';
+    $request->newField = 'dicta';
 
     $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
 
@@ -189,7 +189,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationNoCommentsGet('sint');
+    $response = $sdk->generation->deprecatedOperationNoCommentsGet('magnam');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -235,7 +235,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationWithCommentsGet('officia', 'dolor');
+    $response = $sdk->generation->deprecatedOperationWithCommentsGet('cumque', 'facere');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -420,10 +420,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'https://weepy-pork.info';
-    $requestBody->testProp = 'in';
+    $requestBody->callbackUrl = 'http://humming-police.org';
+    $requestBody->testProp = 'non';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'illum');
+    $response = $sdk->generation->ignoresPost($requestBody, 'occaecati');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -511,10 +511,10 @@ $sdk = SDK::builder()
 try {
     $obj = new TypedParameterGenerationGetObj();
     $obj->bool = false;
-    $obj->num = 9785.71;
-    $obj->str = 'rerum';
+    $obj->num = 3132.18;
+    $obj->str = 'accusamus';
 
-    $response = $sdk->generation->typedParameterGenerationGet(116202, DateTime::createFromFormat('Y-m-d', '2022-03-27'), $obj);
+    $response = $sdk->generation->typedParameterGenerationGet(965417, DateTime::createFromFormat('Y-m-d', '2021-10-28'), 7252.55, $obj);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -530,6 +530,7 @@ try {
 | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `bigint`                                                                                                                        | *?int*                                                                                                                          | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
 | `date`                                                                                                                          | [\DateTime](https://www.php.net/manual/en/class.datetime.php)                                                                   | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+| `decimal`                                                                                                                       | *?float*                                                                                                                        | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
 | `obj`                                                                                                                           | [?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj](../../models/operations/TypedParameterGenerationGetObj.md) | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
 
 
@@ -571,38 +572,41 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Hans_Hyatt24@hotmail.com';
-    $request->requestBody->formatEmail = 'Elyssa_Tillman58@yahoo.com';
-    $request->requestBody->formatUri = 'https://pungent-latter.name';
-    $request->requestBody->formatUuid = 'f3a66997-074b-4a44-a9b6-e2141959890a';
-    $request->requestBody->hostname = 'wide-eyed-perspective.biz';
-    $request->requestBody->ipv4 = '110.56.229.36';
-    $request->requestBody->ipv6 = '516f:e4c8:b711:e5b7:fd2e:d028:921c:ddc6';
+    $request->requestBody->email = 'Jewell.Lesch64@yahoo.com';
+    $request->requestBody->formatEmail = 'Henry.Mosciski@yahoo.com';
+    $request->requestBody->formatUri = 'http://knotty-eligibility.net';
+    $request->requestBody->formatUuid = 'a4469b6e-2141-4959-890a-fa563e2516fe';
+    $request->requestBody->hostname = 'failing-silicon.name';
+    $request->requestBody->ipv4 = '180.114.25.25';
+    $request->requestBody->ipv6 = 'e5b7:fd2e:d028:921c:ddc6:9260:1fb5:76b0';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'excepturi';
-    $request->requestBody->simpleObject->bigint = 139972;
-    $request->requestBody->simpleObject->bigintStr = 'ea';
+    $request->requestBody->simpleObject->any = 'pariatur';
+    $request->requestBody->simpleObject->bigint = 365496;
+    $request->requestBody->simpleObject->bigintStr = 'voluptatibus';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->requestBody->simpleObject->decimal = 166.27;
     $request->requestBody->simpleObject->enum = Enum::Two;
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
     $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::First;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'maiores';
-    $request->requestBody->uri = 'https://harmonious-in-joke.info';
-    $request->requestBody->uuid = 'b0d5f0d3-0c5f-4bb2-9870-53202c73d5fe';
+    $request->requestBody->unknown = 'aut';
+    $request->requestBody->uri = 'https://grubby-urge.net';
+    $request->requestBody->uuid = 'b2587053-202c-473d-9fe9-b90c28909b3f';
+    $request->bigintParameter = 111111;
     $request->boolParameter = false;
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->decimalParameter = 1.1;
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
     $request->falseyNumberParameter = 0;
@@ -611,7 +615,7 @@ try {
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example 2';
+    $request->strParameter = 'example 3';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';

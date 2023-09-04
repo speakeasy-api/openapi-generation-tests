@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.31.2'
+implementation 'org.openapis.openapi:openapi:1.31.3'
 ```
 <!-- End SDK Installation -->
 
@@ -73,7 +73,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     email = "Micheal_Sporer@yahoo.com";
                     formatEmail = "Roselyn_Kassulke@yahoo.com";
@@ -82,17 +82,18 @@ public class Application {
                     hostname = "soulful-poppy.com";
                     ipv4 = "184.163.148.36";
                     ipv6 = "8fc8:1674:2cb7:3920:5929:396f:ea75:96eb";
-                    simpleObject = new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222d, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                    simpleObject = new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
                         bigint = 666767L;
                         bigintStr = "mollitia";
                         boolOpt = true;
+                        decimal = 6706.38d;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "laborum";
-                    uri = "http://doting-footage.com";
-                    uuid = "c5955907-aff1-4a3a-afa9-467739251aa5";
+                    unknown = "dolores";
+                    uri = "http://growing-cappelletti.net";
+                    uuid = "5955907a-ff1a-43a2-ba94-67739251aa52";
                 }};;
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
@@ -127,12 +128,15 @@ public class Application {
 * [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
 * [basicAuth](docs/sdks/auth/README.md#basicauth)
 * [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
 * [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [authNew](docs/sdks/authnew/README.md)
 
 * [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
+* [authGlobal](docs/sdks/authnew/README.md#authglobal)
 * [basicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
 * [multipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
 * [multipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)

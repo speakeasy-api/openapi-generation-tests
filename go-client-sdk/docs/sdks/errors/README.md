@@ -81,7 +81,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    statusCode := 692532
+    statusCode := 428769
 
     ctx := context.Background()
     res, err := s.Errors.StatusGetError(ctx, statusCode)
@@ -131,7 +131,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    statusCode := 588465
+    statusCode := 878453
 
     ctx := context.Background()
     res, err := s.Errors.StatusGetXSpeakeasyErrors(ctx, statusCode)

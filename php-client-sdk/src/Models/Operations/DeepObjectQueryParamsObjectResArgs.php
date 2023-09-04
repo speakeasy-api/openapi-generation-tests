@@ -50,6 +50,11 @@ class DeepObjectQueryParamsObjectResArgs
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $objParamDate;
     
+	#[\JMS\Serializer\Annotation\SerializedName('objParam[decimal]')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $objParamDecimal = null;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('objParam[enum]')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $objParamEnum;
@@ -96,6 +101,7 @@ class DeepObjectQueryParamsObjectResArgs
 		$this->objParamBool = "";
 		$this->objParamDateTime = "";
 		$this->objParamDate = "";
+		$this->objParamDecimal = null;
 		$this->objParamEnum = "";
 		$this->objParamFloat32 = "";
 		$this->objParamInt32Enum = "";

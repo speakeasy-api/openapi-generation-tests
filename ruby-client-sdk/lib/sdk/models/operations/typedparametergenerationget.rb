@@ -37,13 +37,16 @@ module OpenApiSDK
 
       field :date, T.nilable(Date), { 'query_param': { 'field_name': 'date', 'style': 'form', 'explode': true } }
 
+      field :decimal, T.nilable(Float), { 'query_param': { 'field_name': 'decimal', 'style': 'form', 'explode': true } }
+
       field :obj, T.nilable(Operations::TypedParameterGenerationGetObj), { 'query_param': { 'field_name': 'obj', 'style': 'form', 'explode': true } }
 
 
-      sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).void }
-      def initialize(bigint: nil, date: nil, obj: nil)
+      sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), decimal: T.nilable(Float), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).void }
+      def initialize(bigint: nil, date: nil, decimal: nil, obj: nil)
         @bigint = bigint
         @date = date
+        @decimal = decimal
         @obj = obj
       end
     end

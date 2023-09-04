@@ -5,6 +5,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
+	"math/big"
 	"net/http"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/types"
@@ -198,12 +199,16 @@ func (e *UsageExamplePostOptEnumParameter) UnmarshalJSON(data []byte) error {
 type UsageExamplePostRequest struct {
 	// A request body that contains fields with different formats for testing example generation
 	RequestBody *UsageExamplePostRequestBody `request:"mediaType=application/json"`
+	// An bigint parameter
+	BigintParameter *big.Int `queryParam:"style=form,explode=true,name=bigintParameter"`
 	// A boolean parameter
 	BoolParameter bool `queryParam:"style=form,explode=true,name=boolParameter"`
 	// A date parameter
 	DateParameter types.Date `queryParam:"style=form,explode=true,name=dateParameter"`
 	// A date time parameter
 	DateTimeParameter time.Time `queryParam:"style=form,explode=true,name=dateTimeParameter"`
+	// A decimal parameter
+	DecimalParameter float64 `queryParam:"style=form,explode=true,name=decimalParameter"`
 	// A double parameter
 	DoubleParameter float64 `queryParam:"style=form,explode=true,name=doubleParameter"`
 	// An enum parameter
@@ -231,6 +236,13 @@ func (o *UsageExamplePostRequest) GetRequestBody() *UsageExamplePostRequestBody 
 	return o.RequestBody
 }
 
+func (o *UsageExamplePostRequest) GetBigintParameter() *big.Int {
+	if o == nil {
+		return big.NewInt(0)
+	}
+	return o.BigintParameter
+}
+
 func (o *UsageExamplePostRequest) GetBoolParameter() bool {
 	if o == nil {
 		return false
@@ -250,6 +262,13 @@ func (o *UsageExamplePostRequest) GetDateTimeParameter() time.Time {
 		return time.Time{}
 	}
 	return o.DateTimeParameter
+}
+
+func (o *UsageExamplePostRequest) GetDecimalParameter() float64 {
+	if o == nil {
+		return 0.0
+	}
+	return o.DecimalParameter
 }
 
 func (o *UsageExamplePostRequest) GetDoubleParameter() float64 {

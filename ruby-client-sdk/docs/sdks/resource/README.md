@@ -22,8 +22,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::CreateFileRequestBody.new(
   request=Operations::CreateFileRequestBody.new(
     file=Operations::CreateFileRequestBodyFile.new(
-      content="officia".encode(),
-      file="dignissimos",
+      content="inventore".encode(),
+      file="aperiam",
     ),
   ),
 )
@@ -62,49 +62,42 @@ s = OpenApiSDK::SDK.new
 req = Shared::ExampleResource.new(
   request=Shared::ExampleResource.new(
     array_of_number=.new[
-      8989.61,
-      3591.11,
-      1855.18,
-      7088.98,
+      2928.88,
+      7551.06,
+      7150.53,
     ],
     array_of_string=.new[
-      "cupiditate",
-      "minima",
-      "placeat",
+      "autem",
     ],
     chocolates=.new[
       Shared::ExampleResourceChocolates.new(
-        description="neque",
+        description="dolores",
       ),
       Shared::ExampleResourceChocolates.new(
-        description="in",
+        description="assumenda",
       ),
     ],
-    created_at=DateTime.iso8601('2021-09-13T18:43:27.876Z'),
-    enum_number=Shared::ExampleResourceEnumNumber::ONE,
+    created_at=DateTime.iso8601('2022-05-01T23:00:45.808Z'),
+    enum_number=Shared::ExampleResourceEnumNumber::THREE,
     enum_str=Shared::ExampleResourceEnumStr::TWO,
-    id="4efb0b34-896c-43ca-9acf-be2fd5707577",
+    id="79eeb966-5b85-4efb-902b-ae0be2d78225",
     map_of_integer=.new{
-      "dolores": 621169,
-      "veritatis": 498180,
-      "voluptate": 866789,
+      "earum": 239337,
+      "recusandae": 630871,
+      "ut": 693746,
     },
     map_of_string=.new{
-      "similique": "optio",
-      "ex": "quaerat",
-      "commodi": "officiis",
-      "placeat": "quidem",
+      "beatae": "unde",
+      "molestiae": "delectus",
     },
-    name="Constance Effertz V",
-    updated_at=DateTime.iso8601('2022-06-01T14:00:05.540Z'),
-    vehicle=Shared::ExampleCar.new(
-      created_at=DateTime.iso8601('2022-10-05T07:29:39.358Z'),
-      make="earum",
-      model="veniam",
-      name="Mr. Todd Reilly",
-      type=Shared::ExampleCarType::CAR,
-      updated_at=DateTime.iso8601('2022-11-20T11:30:36.362Z'),
-      year=4973.57,
+    name="Steve Fritsch",
+    updated_at=DateTime.iso8601('2021-02-01T13:09:02.595Z'),
+    vehicle=Shared::ExampleBoat.new(
+      created_at=DateTime.iso8601('2020-04-21T15:18:08.742Z'),
+      length=3591.11,
+      name="Kristy Lemke",
+      type=Shared::ExampleBoatType::BOAT,
+      updated_at=DateTime.iso8601('2022-01-19T09:15:40.360Z'),
     ),
   ),
 )
@@ -142,7 +135,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::DeleteResourceRequest.new(
   path_params=Operations::DeleteResourceRequest.new(
-    resource_id="maiores",
+    resource_id="neque",
   ),
 )
     
@@ -179,7 +172,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::GetResourceRequest.new(
   path_params=Operations::GetResourceRequest.new(
-    resource_id="veritatis",
+    resource_id="in",
   ),
 )
     
@@ -216,7 +209,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::UpdateResourceRequest.new(
   path_params=Operations::UpdateResourceRequest.new(
-    resource_id="quasi",
+    resource_id="minus",
   ),
 )
     

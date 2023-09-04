@@ -109,8 +109,8 @@ const sdk = new SDK({
 });
 
 sdk.generation.deprecatedFieldInSchemaPost({
-  deprecatedField: "labore",
-  newField: "suscipit",
+  deprecatedField: "iure",
+  newField: "doloribus",
 }).then((res: DeprecatedFieldInSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -186,7 +186,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "natus";
+const deprecatedParameter: string = "debitis";
 
 sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter).then((res: DeprecatedOperationNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -230,8 +230,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "nobis";
-const newParameter: string = "eum";
+const deprecatedParameter: string = "eius";
+const newParameter: string = "maxime";
 
 sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter).then((res: DeprecatedOperationWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -413,10 +413,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: IgnoresPostApplicationJSON = {
-  callbackUrl: "https://composed-branch.biz",
-  testProp: "et",
+  callbackUrl: "https://rotating-identification.com",
+  testProp: "architecto",
 };
-const testParam: string = "excepturi";
+const testParam: string = "repudiandae";
 
 sdk.generation.ignoresPost(requestBody, testParam).then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
@@ -498,15 +498,16 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const bigint: number = 354047;
-const date: RFCDate = new RFCDate("2021-11-24");
+const bigint: number = 352312;
+const date: RFCDate = new RFCDate("2022-01-23");
+const decimal: number = 9988.48;
 const obj: TypedParameterGenerationGetObj = {
   bool: false,
-  num: 5743.25,
-  str: "accusantium",
+  num: 8411.4,
+  str: "sed",
 };
 
-sdk.generation.typedParameterGenerationGet(bigint, date, obj).then((res: TypedParameterGenerationGetResponse) => {
+sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj).then((res: TypedParameterGenerationGetResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -519,6 +520,7 @@ sdk.generation.typedParameterGenerationGet(bigint, date, obj).then((res: TypedPa
 | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
 | `bigint`                                                                                               | *number*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 | `date`                                                                                                 | [RFCDate](../../types/rfcdate.md)                                                                      | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
+| `decimal`                                                                                              | *number*                                                                                               | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 | `obj`                                                                                                  | [operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                     | N/A                                                                                                    |
 | `config`                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                           | :heavy_minus_sign:                                                                                     | Available config options for making requests.                                                          |
 
@@ -559,40 +561,43 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Vivienne43@yahoo.com",
-    formatEmail: "Sophie.Connelly@gmail.com",
-    formatUri: "http://worrisome-teenager.biz",
-    formatUuid: "c8b711e5-b7fd-42ed-8289-21cddc692601",
-    hostname: "worn-programme.info",
-    ipv4: "116.107.184.12",
-    ipv6: "d5f0:d30c:5fbb:2587:0532:02c7:3d5f:e9b9",
+    email: "Sanford50@hotmail.com",
+    formatEmail: "Catalina_Casper86@yahoo.com",
+    formatUri: "https://imaginary-mix.com",
+    formatUuid: "601fb576-b0d5-4f0d-b0c5-fbb258705320",
+    hostname: "deadly-shanty.info",
+    ipv4: "57.223.88.241",
+    ipv6: "e9b9:0c28:909b:3fe4:9a8d:9cbf:4863:3323",
     simpleObject: {
-      any: "voluptatem",
-      bigint: 783645,
-      bigintStr: "consequuntur",
+      any: "hic",
+      bigint: 569574,
+      bigintStr: "cum",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 4521.09,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "eaque",
-    uri: "https://right-damage.org",
-    uuid: "e49a8d9c-bf48-4633-b23f-9b77f3a41006",
+    unknown: "amet",
+    uri: "https://expensive-bite.com",
+    uuid: "0674ebf6-9280-4d1b-a77a-89ebf737ae42",
   },
+  bigintParameter: 111111,
   boolParameter: false,
   dateParameter: new RFCDate("2020-01-01"),
   dateTimeParameter: new Date("2020-01-01T00:00:00Z"),
+  decimalParameter: 1.1,
   doubleParameter: 2.2222222,
   enumParameter: UsageExamplePostEnumParameter.Value3,
   falseyNumberParameter: 0,
@@ -601,7 +606,7 @@ sdk.generation.usageExamplePost({
   int64Parameter: 111111,
   intParameter: 1,
   optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
-  strParameter: "example 2",
+  strParameter: "example 1",
 }, operationSecurity).then((res: UsageExamplePostResponse) => {
   if (res.statusCode == 200) {
     // handle response

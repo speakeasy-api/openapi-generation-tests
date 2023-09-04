@@ -96,8 +96,8 @@ s = sdk.SDK(
 )
 
 req = shared.DeprecatedFieldInObject(
-    deprecated_field='labore',
-    new_field='suscipit',
+    deprecated_field='iure',
+    new_field='doloribus',
 )
 
 res = s.generation.deprecated_field_in_schema_post(req)
@@ -166,7 +166,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_operation_no_comments_get(deprecated_parameter='natus')
+res = s.generation.deprecated_operation_no_comments_get(deprecated_parameter='debitis')
 
 if res.status_code == 200:
     # handle response
@@ -205,7 +205,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.deprecated_operation_with_comments_get(deprecated_parameter='nobis', new_parameter='eum')
+res = s.generation.deprecated_operation_with_comments_get(deprecated_parameter='eius', new_parameter='maxime')
 
 if res.status_code == 200:
     # handle response
@@ -364,9 +364,9 @@ s = sdk.SDK(
 
 
 res = s.generation.ignores_post(request_body=operations.IgnoresPostApplicationJSON(
-    callback_url='https://composed-branch.biz',
-    test_prop='et',
-), test_param='excepturi')
+    callback_url='https://rotating-identification.com',
+    test_prop='architecto',
+), test_param='repudiandae')
 
 if res.http_bin_simple_json_object is not None:
     # handle response
@@ -439,10 +439,10 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.typed_parameter_generation_get(bigint=354047, date_=dateutil.parser.parse('2021-11-24').date(), obj=operations.TypedParameterGenerationGetObj(
+res = s.generation.typed_parameter_generation_get(bigint=352312, date_=dateutil.parser.parse('2022-01-23').date(), decimal=9988.48, obj=operations.TypedParameterGenerationGetObj(
     bool=False,
-    num=5743.25,
-    str_='accusantium',
+    num=8411.4,
+    str_='sed',
 ))
 
 if res.status_code == 200:
@@ -455,6 +455,7 @@ if res.status_code == 200:
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `bigint`                                                                                                         | *Optional[int]*                                                                                                  | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 | `date_`                                                                                                          | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                                     | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `decimal`                                                                                                        | *Optional[float]*                                                                                                | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 | `obj`                                                                                                            | [Optional[operations.TypedParameterGenerationGetObj]](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 
 
@@ -484,40 +485,43 @@ s = sdk.SDK(
 
 req = operations.UsageExamplePostRequest(
     request_body=operations.UsageExamplePostRequestBody(
-        email='Vivienne43@yahoo.com',
-        format_email='Sophie.Connelly@gmail.com',
-        format_uri='http://worrisome-teenager.biz',
-        format_uuid='c8b711e5-b7fd-42ed-8289-21cddc692601',
-        hostname='worn-programme.info',
-        ipv4='116.107.184.12',
-        ipv6='d5f0:d30c:5fbb:2587:0532:02c7:3d5f:e9b9',
+        email='Sanford50@hotmail.com',
+        format_email='Catalina_Casper86@yahoo.com',
+        format_uri='https://imaginary-mix.com',
+        format_uuid='601fb576-b0d5-4f0d-b0c5-fbb258705320',
+        hostname='deadly-shanty.info',
+        ipv4='57.223.88.241',
+        ipv6='e9b9:0c28:909b:3fe4:9a8d:9cbf:4863:3323',
         simple_object=shared.SimpleObject(
-            any='voluptatem',
-            bigint=783645,
-            bigint_str='consequuntur',
+            any='hic',
+            bigint=569574,
+            bigint_str='cum',
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=4521.09,
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
             str_='example',
             str_opt='optional example',
         ),
-        unknown='eaque',
-        uri='https://right-damage.org',
-        uuid='e49a8d9c-bf48-4633-b23f-9b77f3a41006',
+        unknown='amet',
+        uri='https://expensive-bite.com',
+        uuid='0674ebf6-9280-4d1b-a77a-89ebf737ae42',
     ),
+    bigint_parameter=111111,
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),
     date_time_parameter=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal_parameter=1.1,
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,
@@ -526,7 +530,7 @@ req = operations.UsageExamplePostRequest(
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
-    str_parameter='example 2',
+    str_parameter='example 1',
 )
 
 res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(

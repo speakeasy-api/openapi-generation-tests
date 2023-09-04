@@ -470,18 +470,21 @@ class Generation
      * 
      * @param ?int $bigint
      * @param ?\DateTime $date
+     * @param ?float $decimal
      * @param ?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj $obj
      * @return \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
      */
 	public function typedParameterGenerationGet(
         ?int $bigint = null,
         ?\DateTime $date = null,
+        ?float $decimal = null,
         ?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj $obj = null,
     ): \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
     {
         $request = new \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest();
         $request->bigint = $bigint;
         $request->date = $date;
+        $request->decimal = $decimal;
         $request->obj = $obj;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());

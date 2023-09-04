@@ -504,37 +504,70 @@ public class Generation {
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet() throws Exception {
-        return this.typedParameterGenerationGet(null, null, null);
+        return this.typedParameterGenerationGet(null, null, null, null);
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
-        return this.typedParameterGenerationGet(null, null, obj);
+        return this.typedParameterGenerationGet(null, null, null, obj);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Double decimal) throws Exception {
+        return this.typedParameterGenerationGet(null, null, decimal, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        return this.typedParameterGenerationGet(null, null, decimal, obj);
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date) throws Exception {
-        return this.typedParameterGenerationGet(null, date, null);
+        return this.typedParameterGenerationGet(null, date, null, null);
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
-        return this.typedParameterGenerationGet(null, date, obj);
+        return this.typedParameterGenerationGet(null, date, null, obj);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, Double decimal) throws Exception {
+        return this.typedParameterGenerationGet(null, date, decimal, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(LocalDate date, Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        return this.typedParameterGenerationGet(null, date, decimal, obj);
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint) throws Exception {
-        return this.typedParameterGenerationGet(bigint, null, null);
+        return this.typedParameterGenerationGet(bigint, null, null, null);
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
-        return this.typedParameterGenerationGet(bigint, null, obj);
+        return this.typedParameterGenerationGet(bigint, null, null, obj);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, Double decimal) throws Exception {
+        return this.typedParameterGenerationGet(bigint, null, decimal, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        return this.typedParameterGenerationGet(bigint, null, decimal, obj);
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date) throws Exception {
-        return this.typedParameterGenerationGet(bigint, date, null);
+        return this.typedParameterGenerationGet(bigint, date, null, null);
     }
 
     public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
+        return this.typedParameterGenerationGet(bigint, date, null, obj);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, Double decimal) throws Exception {
+        return this.typedParameterGenerationGet(bigint, date, decimal, null);
+    }
+
+    public org.openapis.openapi.models.operations.TypedParameterGenerationGetResponse typedParameterGenerationGet(Long bigint, LocalDate date, Double decimal, org.openapis.openapi.models.operations.TypedParameterGenerationGetObj obj) throws Exception {
         org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest request = new org.openapis.openapi.models.operations.TypedParameterGenerationGetRequest();
         request.bigint=bigint;
         request.date=date;
+        request.decimal=decimal;
         request.obj=obj;
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());

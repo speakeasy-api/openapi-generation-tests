@@ -48,6 +48,7 @@ type DeepObjectQueryParamsObjectResArgs struct {
 	ObjParamBool      string   `json:"objParam[bool]"`
 	ObjParamDateTime  string   `json:"objParam[dateTime]"`
 	ObjParamDate      string   `json:"objParam[date]"`
+	ObjParamDecimal   *string  `json:"objParam[decimal],omitempty"`
 	ObjParamEnum      string   `json:"objParam[enum]"`
 	ObjParamFloat32   string   `json:"objParam[float32]"`
 	ObjParamInt32Enum string   `json:"objParam[int32Enum]"`
@@ -113,6 +114,13 @@ func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDate() string {
 		return ""
 	}
 	return o.ObjParamDate
+}
+
+func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDecimal() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ObjParamDecimal
 }
 
 func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamEnum() string {

@@ -52,6 +52,41 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: Shared::AuthServiceRequestBody, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def auth_global(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::AUTH_GLOBAL_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/auth#authGlobal"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::AuthGlobalResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if [200, 401].include?(r.status)
+      end
+      res
+    end
+
     sig { params(request: Shared::AuthServiceRequestBody, security: Operations::BasicAuthNewSecurity, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def basic_auth_new(request, security, server_url = nil)
 

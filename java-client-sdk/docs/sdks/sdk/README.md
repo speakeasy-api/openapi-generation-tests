@@ -34,7 +34,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "odit"            
+            org.openapis.openapi.models.. req = "quo"            
 
             PutAnythingIgnoredGenerationResponse res = sdk.sdk.putAnythingIgnoredGeneration(req);
 

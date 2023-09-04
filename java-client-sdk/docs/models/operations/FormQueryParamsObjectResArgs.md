@@ -12,6 +12,7 @@
 | `boolOpt`          | *String*           | :heavy_minus_sign: | N/A                |
 | `date`             | *String*           | :heavy_check_mark: | N/A                |
 | `dateTime`         | *String*           | :heavy_check_mark: | N/A                |
+| `decimal`          | *String*           | :heavy_minus_sign: | N/A                |
 | `enum_`            | *String*           | :heavy_check_mark: | N/A                |
 | `float32`          | *String*           | :heavy_check_mark: | N/A                |
 | `int_`             | *String*           | :heavy_check_mark: | N/A                |

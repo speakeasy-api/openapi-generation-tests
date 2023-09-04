@@ -32,5 +32,6 @@ export * from "./simpleobjectwithtype";
 export * from "./typedobject1";
 export * from "./typedobject2";
 export * from "./typedobject3";
+export * from "./unsupportedenums";
 export * from "./validcircularreferenceobject";
 export * from "./writeonlyobject";

@@ -13,6 +13,7 @@
 | `ObjParamBool`      | *string*            | :heavy_check_mark:  | N/A                 |
 | `ObjParamDateTime`  | *string*            | :heavy_check_mark:  | N/A                 |
 | `ObjParamDate`      | *string*            | :heavy_check_mark:  | N/A                 |
+| `ObjParamDecimal`   | **string*           | :heavy_minus_sign:  | N/A                 |
 | `ObjParamEnum`      | *string*            | :heavy_check_mark:  | N/A                 |
 | `ObjParamFloat32`   | *string*            | :heavy_check_mark:  | N/A                 |
 | `ObjParamInt32Enum` | *string*            | :heavy_check_mark:  | N/A                 |

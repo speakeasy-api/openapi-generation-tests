@@ -76,6 +76,15 @@ public class DeepObjectQueryParamsObjectResArgs {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("objParam[decimal]")
+    public String objParamDecimal;
+
+    public DeepObjectQueryParamsObjectResArgs withObjParamDecimal(String objParamDecimal) {
+        this.objParamDecimal = objParamDecimal;
+        return this;
+    }
+    
     @JsonProperty("objParam[enum]")
     public String objParamEnum;
 

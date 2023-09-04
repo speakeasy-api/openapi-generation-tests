@@ -68,12 +68,16 @@ class UsageExamplePostOptEnumParameter(str, Enum):
 
 @dataclasses.dataclass
 class UsageExamplePostRequest:
+    bigint_parameter: int = dataclasses.field(metadata={'query_param': { 'field_name': 'bigintParameter', 'style': 'form', 'explode': True }})
+    r"""An bigint parameter"""
     bool_parameter: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'boolParameter', 'style': 'form', 'explode': True }})
     r"""A boolean parameter"""
     date_parameter: date = dataclasses.field(metadata={'query_param': { 'field_name': 'dateParameter', 'style': 'form', 'explode': True }})
     r"""A date parameter"""
     date_time_parameter: datetime = dataclasses.field(metadata={'query_param': { 'field_name': 'dateTimeParameter', 'style': 'form', 'explode': True }})
     r"""A date time parameter"""
+    decimal_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'decimalParameter', 'style': 'form', 'explode': True }})
+    r"""A decimal parameter"""
     double_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': True }})
     r"""A double parameter"""
     enum_parameter: UsageExamplePostEnumParameter = dataclasses.field(metadata={'query_param': { 'field_name': 'enumParameter', 'style': 'form', 'explode': True }})
