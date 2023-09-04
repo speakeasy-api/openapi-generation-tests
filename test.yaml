@@ -10,6 +10,8 @@ info:
   description: |-
     Some test description.
     About our test document.
+x-speakeasy-extension-rewrite:
+  x-speakeasy-ignore: x-my-ignore
 externalDocs:
   url: https://speakeasyapi.dev/docs/home
   description: Speakeasy Docs
@@ -2930,7 +2932,7 @@ paths:
             type: string
         - name: test_param
           in: query
-          x-speakeasy-ignore: true
+          x-my-ignore: true
           schema:
             type: string
       requestBody:
@@ -2942,13 +2944,13 @@ paths:
                 testProp:
                   type: string
                 test_prop:
-                  x-speakeasy-ignore: true
+                  x-my-ignore: true
                   type: string
                 callbackUrl:
                   type: string
                   format: uri
           application/xml:
-            x-speakeasy-ignore: true
+            x-my-ignore: true
             schema:
               type: object
               properties:
@@ -2957,7 +2959,7 @@ paths:
       callbacks:
         cb:
           "{$request.bodycomponents.yaml#/callbackUrl}":
-            x-speakeasy-ignore: true
+            x-my-ignore: true
             post:
               requestBody:
                 content:
@@ -2979,18 +2981,18 @@ paths:
               schema:
                 $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
             application/xml:
-              x-speakeasy-ignore: true
+              x-my-ignore: true
               schema:
                 $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
             text/plain:
-              x-speakeasy-ignore: true
+              x-my-ignore: true
               schema:
                 $ref: "components.yaml#/components/schemas/httpBinSimpleJsonObject"
         "201":
-          x-speakeasy-ignore: true
+          x-my-ignore: true
           description: Created
     get:
-      x-speakeasy-ignore: true
+      x-my-ignore: true
       operationId: ignoresGet
       tags:
         - generation
@@ -2998,7 +3000,7 @@ paths:
         "200":
           description: OK
   /anything/ignoreAll:
-    x-speakeasy-ignore: true
+    x-my-ignore: true
     get:
       operationId: ignoreAllGet
       tags:
@@ -3314,7 +3316,7 @@ paths:
         - name: ignoredParameter
           in: query
           required: true
-          x-speakeasy-ignore: true
+          x-my-ignore: true
           schema:
             type: string
             description: A string type
@@ -3331,7 +3333,7 @@ paths:
                     $ref: "components.yaml#/components/schemas/simpleObject"
                   ignoredProperty:
                     type: string
-                    x-speakeasy-ignore: true
+                    x-my-ignore: true
       callbacks:
         notIgnoredCallback:
           "/somecallback":
@@ -3349,7 +3351,7 @@ paths:
                   description: OK
         ignoredCallbackItem:
           "/someignoredcallback":
-            x-speakeasy-ignore: true
+            x-my-ignore: true
             post:
               requestBody:
                 content:
@@ -3374,7 +3376,7 @@ paths:
                 "200":
                   description: OK
             put:
-              x-speakeasy-ignore: true
+              x-my-ignore: true
               requestBody:
                 content:
                   application/json:
@@ -3390,7 +3392,7 @@ paths:
             schema:
               type: string
           application/xml:
-            x-speakeasy-ignore: true
+            x-my-ignore: true
             schema:
               type: object
               properties:
@@ -3407,7 +3409,7 @@ paths:
                   json:
                     type: string
             application/xml:
-              x-speakeasy-ignore: true
+              x-my-ignore: true
               schema:
                 type: object
                 properties:
@@ -3415,9 +3417,9 @@ paths:
                     type: string
         "201":
           description: Created
-          x-speakeasy-ignore: true
+          x-my-ignore: true
     post:
-      x-speakeasy-ignore: true
+      x-my-ignore: true
       requestBody:
         content:
           application/json:
@@ -3531,7 +3533,7 @@ paths:
         "200":
           description: OK
   /anything/ignoredPath:
-    x-speakeasy-ignore: true
+    x-my-ignore: true
     get:
       responses:
         "200":
@@ -4327,12 +4329,12 @@ components:
       title: "allOf1"
       type: object
       allOf:
-        - $ref: '#/components/schemas/allOf2'
+        - $ref: "#/components/schemas/allOf2"
     allOf2:
       type: object
       title: "allOf2"
       allOf:
-        - $ref: '#/components/schemas/allOf3'
+        - $ref: "#/components/schemas/allOf3"
     allOf3:
       type: object
       title: "allOf3"
