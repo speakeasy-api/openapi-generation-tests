@@ -2634,6 +2634,54 @@ paths:
                   emptyRespWithEmptyProperies:
                     type: object
                     properties: {}
+  /anything/requestBodies/post/null-dictionary:
+    post:
+      operationId: requestBodyPostNullDictionary
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                required:
+                  - data
+  /anything/requestBodies/post/null-array:
+    post:
+      operationId: requestBodyPostNullArray
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type: string
+                required:
+                  - data
   /anything/flattening/inlineBodyAndParamNoConflict:
     post:
       operationId: inlineBodyAndParamNoConflict
