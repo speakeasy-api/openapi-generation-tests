@@ -100,6 +100,7 @@ tags:
 security:
   - apiKeyAuth: []
   - apiKeyAuthNew: []
+  - oauth2: []
   - {}
 paths:
   /anything/selectGlobalServer:
@@ -265,6 +266,16 @@ paths:
           $ref: "components.yaml#/components/responses/tokenAuthResponse"
         "401":
           description: Unsuccessful authentication.
+  /bearer#global:
+    get:
+      operationId: globalBearerAuth
+      tags:
+        - auth
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
   /bearer#openIdConnect:
     get:
       operationId: openIdConnectAuth
@@ -284,6 +295,24 @@ paths:
         - auth
       security:
         - bearerAuth: []
+      responses:
+        "200":
+          $ref: "components.yaml#/components/responses/tokenAuthResponse"
+        "401":
+          description: Unsuccessful authentication.
+  /bearer#oauth2AuthOverride:
+    get:
+      operationId: oauth2Override
+      tags:
+        - auth
+      parameters:
+        - name: Authorization
+          in: header
+          required: true
+          schema:
+            type: string
+      security:
+        - oauth2: []
       responses:
         "200":
           $ref: "components.yaml#/components/responses/tokenAuthResponse"
@@ -332,6 +361,23 @@ paths:
         - authNew
       security:
         - oauth2: []
+      servers:
+        - url: http://localhost:35456
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/authServiceRequestBody"
+      responses:
+        "200":
+          description: OK
+        "401":
+          description: Unsuccessful authentication.
+  /auth#authGlobal:
+    post:
+      operationId: authGlobal
+      tags:
+        - authNew
       servers:
         - url: http://localhost:35456
       requestBody:
