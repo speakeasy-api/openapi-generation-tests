@@ -4161,6 +4161,14 @@ paths:
       responses:
         "200":
           description: OK
+  /anything/nest/first:
+    get:
+      operationId: nestFirstGet
+      x-speakeasy-name-override: get
+      x-speakeasy-group: nest.first
+      responses:
+        "200":
+          description: OK
   /resource:
     post:
       x-speakeasy-entity-operation: ExampleResource#create
