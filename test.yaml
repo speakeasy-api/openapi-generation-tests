@@ -97,6 +97,15 @@ tags:
     description: Endpoints for testing telemetry.
   - name: pagination
     description: Endpoints for testing the pagination extension
+  - name: documentation
+    description: Testing for documentation extensions and tooling.
+    x-speakeasy-docs:
+      go:
+        description: Testing for documentation extensions in Go.
+      python:
+        description: Testing for documentation extensions in Python.
+      typescript:
+        description: Testing for documentation extensions in TypeScript.
 security:
   - apiKeyAuth: []
   - apiKeyAuthNew: []
@@ -4305,6 +4314,43 @@ paths:
         statusCodes:
           - 503
         retryConnectionErrors: false
+  /docs/per-language-docs:
+    get:
+      operationId: getDocumentationPerLanguage
+      description: Gets documentation for some language, I guess.
+      x-speakeasy-docs:
+        go:
+          description: Get stuff in Golang.
+        python:
+          description: Get stuff in Python.
+        typescript:
+          description: Get stuff in TypeScript.
+      parameters:
+        - name: language
+          description: The language parameter for this endpoint.
+          in: query
+          required: true
+          schema:
+            type: string
+          x-speakeasy-docs:
+            go:
+              description: The Golang language is uptight.
+            python:
+              description: The Python language is popular.
+            typescript:
+              description: THe TypeScript language is corporate.
+      tags:
+        - documentation
+      responses:
+        "200":
+          description: OK
+          x-speakeasy-docs:
+            go:
+              description: Golang is OK
+            python:
+              description: Python is OK
+            typescript:
+              description: TypeScript is OK
 components:
   schemas:
     ExampleVehicle:
