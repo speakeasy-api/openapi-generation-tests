@@ -191,6 +191,11 @@ sdk.generation.usageExamplePost({
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
+
+### [nestFirst](docs/sdks/nestfirst/README.md)
+
+* [get](docs/sdks/nestfirst/README.md#get)
+
 ### [nested](docs/sdks/nested/README.md)
 
 * [get](docs/sdks/nested/README.md#get)

@@ -78,6 +78,8 @@ class SDK
      */
 	public Globals $globals;
 	
+	public NestFirst $nestFirst;
+	
 	public Nested $nested;
 	
 	public NestedFirst $nestedFirst;
@@ -176,6 +178,8 @@ class SDK
 		$this->generation = new Generation($this->sdkConfiguration);
 		
 		$this->globals = new Globals($this->sdkConfiguration);
+		
+		$this->nestFirst = new NestFirst($this->sdkConfiguration);
 		
 		$this->nested = new Nested($this->sdkConfiguration);
 		

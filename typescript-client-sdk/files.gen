@@ -5,6 +5,8 @@ src/sdk/first.ts
 src/sdk/flattening.ts
 src/sdk/generation.ts
 src/sdk/globals.ts
+src/sdk/nestfirst.ts
+src/sdk/nest.ts
 src/sdk/nestedfirst.ts
 src/sdk/nestedsecond.ts
 src/sdk/nested.ts
@@ -96,6 +98,7 @@ src/sdk/models/operations/typedparametergenerationget.ts
 src/sdk/models/operations/usageexamplepost.ts
 src/sdk/models/operations/globalpathparameterget.ts
 src/sdk/models/operations/globalsqueryparameterget.ts
+src/sdk/models/operations/nestfirstget.ts
 src/sdk/models/operations/nestedfirstget.ts
 src/sdk/models/operations/nestedsecondget.ts
 src/sdk/models/operations/nestedget.ts
@@ -254,6 +257,8 @@ docs/sdks/flattening/README.md
 docs/types/rfcdate.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nest/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -385,6 +390,7 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestfirstgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
 docs/models/operations/nestedgetresponse.md

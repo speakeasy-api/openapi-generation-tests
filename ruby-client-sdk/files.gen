@@ -6,6 +6,7 @@ lib/sdk/first.rb
 lib/sdk/flattening.rb
 lib/sdk/generation.rb
 lib/sdk/globals.rb
+lib/sdk/nest_first.rb
 lib/sdk/nested.rb
 lib/sdk/nested_first.rb
 lib/sdk/nested_second.rb
@@ -70,6 +71,7 @@ lib/sdk/models/operations/typedparametergenerationget.rb
 lib/sdk/models/operations/usageexamplepost.rb
 lib/sdk/models/operations/globalpathparameterget.rb
 lib/sdk/models/operations/globalsqueryparameterget.rb
+lib/sdk/models/operations/nestfirstget.rb
 lib/sdk/models/operations/nestedget.rb
 lib/sdk/models/operations/nestedfirstget.rb
 lib/sdk/models/operations/nestedsecondget.rb
@@ -223,6 +225,7 @@ docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -354,6 +357,7 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestfirstgetresponse.md
 docs/models/operations/nestedgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md

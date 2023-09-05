@@ -62,6 +62,7 @@ export * from "./nameoverrideget";
 export * from "./nestedfirstget";
 export * from "./nestedget";
 export * from "./nestedsecondget";
+export * from "./nestfirstget";
 export * from "./oauth2auth";
 export * from "./oauth2authnew";
 export * from "./oauth2override";

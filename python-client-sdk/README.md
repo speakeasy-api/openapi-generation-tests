@@ -177,6 +177,10 @@ if res.usage_example_post_200_application_json_object is not None:
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
+### [nest_first](docs/sdks/nestfirst/README.md)
+
+* [get](docs/sdks/nestfirst/README.md#get)
+
 ### [nested](docs/sdks/nested/README.md)
 
 * [get](docs/sdks/nested/README.md#get)

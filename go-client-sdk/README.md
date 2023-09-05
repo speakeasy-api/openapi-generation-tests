@@ -203,6 +203,11 @@ func main() {
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
+
+### [First](docs/sdks/nestfirst/README.md)
+
+* [Get](docs/sdks/nestfirst/README.md#get)
+
 ### [Nested](docs/sdks/nested/README.md)
 
 * [Get](docs/sdks/nested/README.md#get)
