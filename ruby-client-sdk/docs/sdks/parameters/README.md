@@ -43,7 +43,6 @@ s = OpenApiSDK::SDK.new
 req = Operations::DeepObjectQueryParamsMapRequest.new(
   query_params=Operations::DeepObjectQueryParamsMapRequest.new(
     map_param=.new{
-      "eum": "quas",
       "praesentium": "consequuntur",
       "deleniti": "fugit",
       "fuga": "mollitia",

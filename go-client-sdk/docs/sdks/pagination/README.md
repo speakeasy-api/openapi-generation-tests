@@ -39,7 +39,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 881586,
+        Cursor: 320017,
     })
     if err != nil {
         log.Fatal(err)
@@ -88,7 +88,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    cursor := 320017
+    cursor := 904425
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
@@ -141,9 +141,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(904425),
-        Offset: sdk.Int64(383464),
-        Page: sdk.Int64(645785),
+        Limit: sdk.Int64(383464),
+        Offset: sdk.Int64(645785),
+        Page: sdk.Int64(588317),
     })
     if err != nil {
         log.Fatal(err)
@@ -192,8 +192,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    limit := 588317
-    offset := 324683
+    limit := 324683
+    offset := 831049
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
@@ -247,9 +247,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(831049),
-        Offset: sdk.Int64(519711),
-        Page: sdk.Int64(628982),
+        Limit: sdk.Int64(519711),
+        Offset: sdk.Int64(628982),
+        Page: sdk.Int64(55),
     })
     if err != nil {
         log.Fatal(err)
@@ -298,7 +298,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    page := 55
+    page := 872651
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)

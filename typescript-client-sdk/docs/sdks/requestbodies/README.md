@@ -77,40 +77,19 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArray([
   {
-    any: "debitis",
-    bigint: 370853,
-    bigintStr: "aspernatur",
+    any: "quo",
+    bigint: 847276,
+    bigintStr: "quo",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 1970.54,
+    decimal: 6813.59,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  {
-    any: "recusandae",
-    bigint: 44612,
-    bigintStr: "distinctio",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 7997.96,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
     intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
@@ -159,17 +138,17 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase([
   {
-    anyVal: "totam",
-    bigintStrVal: "accusamus",
-    bigintVal: 306810,
+    anyVal: "ab",
+    bigintStrVal: "cupiditate",
+    bigintVal: 9688,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 4884.1,
+    decimalVal: 2728.22,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
     int32Val: 1,
     intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
     intOptNullVal: 999999,
@@ -180,19 +159,19 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase([
     strVal: "example",
   },
   {
-    anyVal: "sapiente",
-    bigintStrVal: "dolores",
-    bigintVal: 645570,
+    anyVal: "aspernatur",
+    bigintStrVal: "sequi",
+    bigintVal: 779192,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 4752.89,
+    decimalVal: 4598.56,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
     int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
     intOptNullVal: 999999,
     intVal: 999999,
     numOptNullVal: 1.1,
@@ -241,19 +220,19 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayObj([
   {
-    any: "quas",
-    bigint: 510017,
-    bigintStr: "consequuntur",
+    any: "quod",
+    bigint: 490819,
+    bigintStr: "inventore",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 5361.78,
+    decimal: 4694.98,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
     intEnum: SimpleObjectIntEnum.Third,
     intOptNull: 999999,
     num: 1.1,
@@ -262,19 +241,40 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayObj([
     strOpt: "optional example",
   },
   {
-    any: "mollitia",
-    bigint: 277596,
-    bigintStr: "atque",
+    any: "aliquam",
+    bigint: 488410,
+    bigintStr: "occaecati",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 1288.6,
+    decimal: 4145.67,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+    intEnum: SimpleObjectIntEnum.First,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  {
+    any: "deserunt",
+    bigint: 475289,
+    bigintStr: "accusantium",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 7836.48,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
     intEnum: SimpleObjectIntEnum.Second,
     intOptNull: 999999,
     num: 1.1,
@@ -322,17 +322,59 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase([
   {
-    anyVal: "sapiente",
-    bigintStrVal: "consequuntur",
-    bigintVal: 187131,
+    anyVal: "consequuntur",
+    bigintStrVal: "deleniti",
+    bigintVal: 143829,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 1294.12,
+    decimalVal: 6813.93,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+    int32Val: 1,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+    intOptNullVal: 999999,
+    intVal: 999999,
+    numOptNullVal: 1.1,
+    numVal: 1.1,
+    strOptVal: "optional example",
+    strVal: "example",
+  },
+  {
+    anyVal: "atque",
+    bigintStrVal: "explicabo",
+    bigintVal: 325685,
+    boolOptVal: true,
+    boolVal: true,
+    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+    dateVal: new RFCDate("2020-01-01"),
+    decimalVal: 3926.76,
+    enumVal: Enum.Two,
+    float32Val: 2.2222222,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+    int32Val: 1,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+    intOptNullVal: 999999,
+    intVal: 999999,
+    numOptNullVal: 1.1,
+    numVal: 1.1,
+    strOptVal: "optional example",
+    strVal: "example",
+  },
+  {
+    anyVal: "consequuntur",
+    bigintStrVal: "ratione",
+    bigintVal: 129412,
+    boolOptVal: true,
+    boolVal: true,
+    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+    dateVal: new RFCDate("2020-01-01"),
+    decimalVal: 9039.84,
+    enumVal: Enum.Two,
+    float32Val: 2.2222222,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
     int32Val: 1,
     intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
     intOptNullVal: 999999,
@@ -383,19 +425,19 @@ const sdk = new SDK({
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray([
   [
     {
-      any: "esse",
-      bigint: 910545,
-      bigintStr: "accusamus",
+      any: "eveniet",
+      bigint: 882042,
+      bigintStr: "veritatis",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 829.71,
+      decimal: 4586.04,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
       intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
@@ -403,8 +445,6 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray([
       str: "example",
       strOpt: "optional example",
     },
-  ],
-  [
     {
       any: "vero",
       bigint: 399025,
@@ -420,71 +460,6 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray([
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.SixtyNine,
       intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "molestiae",
-      bigint: 699622,
-      bigintStr: "occaecati",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 3277.2,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "sit",
-      bigint: 636061,
-      bigintStr: "tempore",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2400.2,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  [
-    {
-      any: "minus",
-      bigint: 308286,
-      bigintStr: "sapiente",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2328.65,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -532,6 +507,71 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase([
+  [
+    {
+      anyVal: "occaecati",
+      bigintStrVal: "minima",
+      bigintVal: 716244,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 7567.79,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    {
+      anyVal: "tempore",
+      bigintStrVal: "adipisci",
+      bigintVal: 766964,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 1605.38,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    {
+      anyVal: "quaerat",
+      bigintStrVal: "sapiente",
+      bigintVal: 232865,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 4581.39,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  ],
   [
     {
       anyVal: "nulla",
@@ -618,115 +658,6 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase([
       strVal: "example",
     },
   ],
-  [
-    {
-      anyVal: "libero",
-      bigintStrVal: "illum",
-      bigintVal: 742238,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 333.04,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    {
-      anyVal: "dicta",
-      bigintStrVal: "ullam",
-      bigintVal: 443879,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 3567.07,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  ],
-  [
-    {
-      anyVal: "qui",
-      bigintStrVal: "quibusdam",
-      bigintVal: 401259,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 5362.75,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    {
-      anyVal: "architecto",
-      bigintStrVal: "omnis",
-      bigintVal: 945302,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 984.78,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    {
-      anyVal: "voluptate",
-      bigintStrVal: "ipsa",
-      bigintVal: 326701,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 865.32,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  ],
 ]).then((res: RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -766,19 +697,13 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive([
   [
+    "illum",
+    "soluta",
     "accusantium",
-    "rem",
-    "aut",
-    "laudantium",
   ],
   [
-    "mollitia",
-    "ab",
-  ],
-  [
-    "non",
-    "voluptatem",
-    "dolor",
+    "sapiente",
+    "dicta",
   ],
 ]).then((res: RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -821,42 +746,42 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
   {
-    "impedit": {
-      any: "explicabo",
-      bigint: 376226,
-      bigintStr: "aut",
+    "ullam": {
+      any: "nisi",
+      bigint: 16328,
+      bigintStr: "voluptatum",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4910.25,
+      decimal: 1852.32,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Third,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    "natus": {
-      any: "velit",
-      bigint: 974257,
-      bigintStr: "voluptas",
+    "deleniti": {
+      any: "itaque",
+      bigint: 680270,
+      bigintStr: "architecto",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9903.45,
+      decimal: 6091.78,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -865,36 +790,15 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
     },
   },
   {
-    "consequuntur": {
-      any: "repellendus",
-      bigint: 638762,
-      bigintStr: "maxime",
+    "et": {
+      any: "voluptate",
+      bigint: 55965,
+      bigintStr: "minima",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4903.05,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "nemo": {
-      any: "quae",
-      bigint: 312753,
-      bigintStr: "porro",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 8018.36,
+      decimal: 865.32,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
@@ -907,23 +811,63 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
       str: "example",
       strOpt: "optional example",
     },
-  },
-  {
-    "fuga": {
-      any: "id",
-      bigint: 380729,
-      bigintStr: "velit",
+    "iste": {
+      any: "temporibus",
+      bigint: 33074,
+      bigintStr: "rem",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 6339.31,
+      decimal: 156.06,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Third,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "mollitia": {
+      any: "ab",
+      bigint: 544591,
+      bigintStr: "non",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 324.65,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "numquam": {
+      any: "impedit",
+      bigint: 131055,
+      bigintStr: "voluptas",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 120.36,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -972,15 +916,124 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
   {
-    "vel": {
-      anyVal: "ducimus",
-      bigintStrVal: "quos",
-      bigintVal: 427834,
+    "velit": {
+      anyVal: "voluptatibus",
+      bigintStrVal: "voluptas",
+      bigintVal: 990345,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2870.51,
+      decimalVal: 456.59,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    "consequuntur": {
+      anyVal: "repellendus",
+      bigintStrVal: "officia",
+      bigintVal: 807023,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 4903.05,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    "nemo": {
+      anyVal: "quae",
+      bigintStrVal: "quaerat",
+      bigintVal: 783235,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 8018.36,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  },
+  {
+    "fuga": {
+      anyVal: "id",
+      bigintStrVal: "suscipit",
+      bigintVal: 246063,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 6339.31,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  },
+  {
+    "fugiat": {
+      anyVal: "vel",
+      bigintStrVal: "ducimus",
+      bigintVal: 554688,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 4278.34,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    "facilis": {
+      anyVal: "cum",
+      bigintStrVal: "commodi",
+      bigintVal: 447144,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 3605.45,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
       int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
@@ -993,18 +1046,18 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
       strOptVal: "optional example",
       strVal: "example",
     },
-    "cum": {
-      anyVal: "commodi",
-      bigintStrVal: "in",
-      bigintVal: 360545,
+    "nemo": {
+      anyVal: "recusandae",
+      bigintStrVal: "aliquid",
+      bigintVal: 46007,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 9689.04,
+      decimalVal: 7386.83,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
       int32Val: 1,
       intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
       intOptNullVal: 999999,
@@ -1014,27 +1067,8 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
       strOptVal: "optional example",
       strVal: "example",
     },
-    "recusandae": {
-      anyVal: "aliquid",
-      bigintStrVal: "aperiam",
-      bigintVal: 738683,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2326.27,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
+  },
+  {
     "earum": {
       anyVal: "facere",
       bigintStrVal: "numquam",
@@ -1056,150 +1090,20 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
       strOptVal: "optional example",
       strVal: "example",
     },
-  },
-  {
-    "necessitatibus": {
-      anyVal: "dolore",
-      bigintStrVal: "sunt",
-      bigintVal: 992012,
+    "saepe": {
+      anyVal: "necessitatibus",
+      bigintStrVal: "dolore",
+      bigintVal: 121059,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2415.45,
+      decimalVal: 9920.12,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
       int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
       int32Val: 1,
       intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    "beatae": {
-      anyVal: "dignissimos",
-      bigintStrVal: "a",
-      bigintVal: 891523,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2334.2,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    "laboriosam": {
-      anyVal: "ipsa",
-      bigintStrVal: "voluptates",
-      bigintVal: 730709,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 1138.16,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    "tempora": {
-      anyVal: "aspernatur",
-      bigintStrVal: "voluptas",
-      bigintVal: 374244,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 3742.96,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  },
-  {
-    "adipisci": {
-      anyVal: "minus",
-      bigintStrVal: "dolores",
-      bigintVal: 503934,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 4492.92,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    "officiis": {
-      anyVal: "temporibus",
-      bigintStrVal: "ullam",
-      bigintVal: 237742,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 7383.91,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    "hic": {
-      anyVal: "nesciunt",
-      bigintStrVal: "culpa",
-      bigintVal: 548519,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 8672.9,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -1246,8 +1150,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive([
-  "nobis",
-  "sit",
+  "beatae",
 ]).then((res: RequestBodyPostApplicationJsonArrayOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1288,86 +1191,43 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonDeep({
-  any: "sed",
+  any: {
+    any: "a",
+    bigint: 891523,
+    bigintStr: "consectetur",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 3581.07,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+    intEnum: SimpleObjectIntEnum.Second,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
   arr: [
     {
-      any: "explicabo",
-      bigint: 994401,
-      bigintStr: "facilis",
+      any: "voluptates",
+      bigint: 730709,
+      bigintStr: "vitae",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4518.22,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "iste",
-      bigint: 292794,
-      bigintStr: "laborum",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 1523.54,
+      decimal: 8817.21,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "quidem",
-      bigint: 131289,
-      bigintStr: "voluptas",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 6041.18,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "sapiente",
-      bigint: 895386,
-      bigintStr: "illo",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9677.95,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -1376,44 +1236,44 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeep({
     },
   ],
   bool: false,
-  int: 979574,
+  int: 132815,
   map: {
-    "sed": {
-      any: "provident",
-      bigint: 258702,
-      bigintStr: "necessitatibus",
+    "voluptas": {
+      any: "voluptas",
+      bigint: 324405,
+      bigintStr: "nobis",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2155.29,
+      decimal: 6801.16,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    "quos": {
-      any: "voluptatibus",
-      bigint: 271653,
-      bigintStr: "tempora",
+    "dolores": {
+      any: "blanditiis",
+      bigint: 449292,
+      bigintStr: "dolore",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4554.44,
+      decimal: 3044.68,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Second,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -1421,21 +1281,21 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeep({
       strOpt: "optional example",
     },
   },
-  num: 254.97,
+  num: 3518.7,
   obj: {
-    any: "non",
-    bigint: 888044,
-    bigintStr: "praesentium",
+    any: "adipisci",
+    bigint: 738391,
+    bigintStr: "blanditiis",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 7086.09,
+    decimal: 5553.61,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
     intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
@@ -1443,8 +1303,8 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeep({
     str: "example",
     strOpt: "optional example",
   },
-  str: "ipsam",
-  type: "debitis",
+  str: "culpa",
+  type: "corrupti",
 }).then((res: RequestBodyPostApplicationJsonDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1484,63 +1344,21 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
-  anyVal: "sit",
+  anyVal: "totam",
   arrVal: [
     {
-      anyVal: "error",
-      bigintStrVal: "veniam",
-      bigintVal: 329543,
+      anyVal: "exercitationem",
+      bigintStrVal: "nobis",
+      bigintVal: 24619,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 9241.59,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    {
-      anyVal: "magni",
-      bigintStrVal: "aperiam",
-      bigintVal: 901483,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2536.42,
+      decimalVal: 6995.75,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
       int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    {
-      anyVal: "officiis",
-      bigintStrVal: "beatae",
-      bigintVal: 512452,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 3484.76,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
       intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
@@ -1550,39 +1368,14 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
       strVal: "example",
     },
     {
-      anyVal: "laboriosam",
-      bigintStrVal: "dolorum",
-      bigintVal: 530089,
+      anyVal: "explicabo",
+      bigintStrVal: "asperiores",
+      bigintVal: 707918,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 6223.85,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  ],
-  boolVal: false,
-  intVal: 892863,
-  mapVal: {
-    "dolorum": {
-      anyVal: "nostrum",
-      bigintStrVal: "officia",
-      bigintVal: 676243,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 5483.61,
+      decimalVal: 4518.22,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
       int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
@@ -1595,22 +1388,152 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
       strOptVal: "optional example",
       strVal: "example",
     },
+    {
+      anyVal: "iste",
+      bigintStrVal: "dolore",
+      bigintVal: 671907,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 1523.54,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    {
+      anyVal: "quidem",
+      bigintStrVal: "explicabo",
+      bigintVal: 378326,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 6041.18,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  ],
+  boolVal: false,
+  intVal: 960257,
+  mapVal: {
+    "illo": {
+      anyVal: "reiciendis",
+      bigintStrVal: "perferendis",
+      bigintVal: 546885,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 9795.74,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    "provident": {
+      anyVal: "eius",
+      bigintStrVal: "necessitatibus",
+      bigintVal: 215529,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 4067.33,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    "voluptatibus": {
+      anyVal: "tempora",
+      bigintStrVal: "tempora",
+      bigintVal: 455444,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 9700.76,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+    "non": {
+      anyVal: "officiis",
+      bigintStrVal: "praesentium",
+      bigintVal: 708609,
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      decimalVal: 3103.81,
+      enumVal: Enum.Two,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
   },
-  numVal: 5436.78,
+  numVal: 8948.64,
   objVal: {
-    anyVal: "fugit",
-    bigintStrVal: "ut",
-    bigintVal: 856303,
+    anyVal: "rem",
+    bigintStrVal: "sit",
+    bigintVal: 750595,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 302.35,
+    decimalVal: 6256.37,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
     int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
     int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
     intOptNullVal: 999999,
     intVal: 999999,
     numOptNullVal: 1.1,
@@ -1618,8 +1541,8 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
     strOptVal: "optional example",
     strVal: "example",
   },
-  strVal: "magnam",
-  type: "consequatur",
+  strVal: "recusandae",
+  type: "reiciendis",
 }).then((res: RequestBodyPostApplicationJsonDeepCamelCaseResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1659,42 +1582,84 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMap({
-  "ipsam": {
-    any: "sit",
-    bigint: 530537,
-    bigintStr: "quas",
+  "magni": {
+    any: "aperiam",
+    bigint: 901483,
+    bigintStr: "numquam",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 9221.12,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.First,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  "blanditiis": {
-    any: "ex",
-    bigint: 153627,
-    bigintStr: "sit",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 4255.08,
+    decimal: 3299.35,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
     int32Enum: SimpleObjectInt32Enum.SixtyNine,
     intEnum: SimpleObjectIntEnum.Third,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  "beatae": {
+    any: "laudantium",
+    bigint: 348476,
+    bigintStr: "praesentium",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 7400.98,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    intEnum: SimpleObjectIntEnum.Third,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  "voluptatum": {
+    any: "error",
+    bigint: 944708,
+    bigintStr: "expedita",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 8928.63,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Third,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  "nostrum": {
+    any: "officia",
+    bigint: 676243,
+    bigintStr: "corrupti",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 8792.35,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
@@ -1741,6 +1706,148 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
+  "ut": {
+    anyVal: "fugiat",
+    bigintStrVal: "voluptatem",
+    bigintVal: 635057,
+    boolOptVal: true,
+    boolVal: true,
+    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+    dateVal: new RFCDate("2020-01-01"),
+    decimalVal: 7103.37,
+    enumVal: Enum.Two,
+    float32Val: 2.2222222,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+    int32Val: 1,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+    intOptNullVal: 999999,
+    intVal: 999999,
+    numOptNullVal: 1.1,
+    numVal: 1.1,
+    strOptVal: "optional example",
+    strVal: "example",
+  },
+}).then((res: RequestBodyPostApplicationJsonMapCamelCaseResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
+| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
+| `request`                                                         | [Record<string, shared.SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
+| `serverURL`                                                       | *string*                                                          | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
+| `config`                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)      | :heavy_minus_sign:                                                | Available config options for making requests.                     |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostApplicationJsonMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapcamelcaseresponse.md)>**
+
+
+## requestBodyPostApplicationJsonMapObj
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostApplicationJsonMapObjResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostApplicationJsonMapObj({
+  "ipsam": {
+    any: "sit",
+    bigint: 530537,
+    bigintStr: "quas",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 9221.12,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    intEnum: SimpleObjectIntEnum.First,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  "blanditiis": {
+    any: "ex",
+    bigint: 153627,
+    bigintStr: "sit",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 4255.08,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    intEnum: SimpleObjectIntEnum.Third,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+}).then((res: RequestBodyPostApplicationJsonMapObjResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, shared.SimpleObject>](../../models//.md)     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostApplicationJsonMapObjResponse](../../models/operations/requestbodypostapplicationjsonmapobjresponse.md)>**
+
+
+## requestBodyPostApplicationJsonMapObjCamelCase
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostApplicationJsonMapObjCamelCaseResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
   "consequatur": {
     anyVal: "incidunt",
     bigintStrVal: "reiciendis",
@@ -1804,211 +1911,6 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
     strOptVal: "optional example",
     strVal: "example",
   },
-}).then((res: RequestBodyPostApplicationJsonMapCamelCaseResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                         | Type                                                              | Required                                                          | Description                                                       |
-| ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- | ----------------------------------------------------------------- |
-| `request`                                                         | [Record<string, shared.SimpleObjectCamelCase>](../../models//.md) | :heavy_check_mark:                                                | The request object to use for the request.                        |
-| `serverURL`                                                       | *string*                                                          | :heavy_minus_sign:                                                | An optional server URL to use.                                    |
-| `config`                                                          | [AxiosRequestConfig](https://axios-http.com/docs/req_config)      | :heavy_minus_sign:                                                | Available config options for making requests.                     |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostApplicationJsonMapCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonmapcamelcaseresponse.md)>**
-
-
-## requestBodyPostApplicationJsonMapObj
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapObjResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonMapObj({
-  "repellendus": {
-    any: "delectus",
-    bigint: 914791,
-    bigintStr: "perferendis",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 6672.85,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  "facere": {
-    any: "fuga",
-    bigint: 509807,
-    bigintStr: "mollitia",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 3339.65,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  "repudiandae": {
-    any: "quasi",
-    bigint: 542457,
-    bigintStr: "reprehenderit",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 9911.42,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-}).then((res: RequestBodyPostApplicationJsonMapObjResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Record<string, shared.SimpleObject>](../../models//.md)     | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostApplicationJsonMapObjResponse](../../models/operations/requestbodypostapplicationjsonmapobjresponse.md)>**
-
-
-## requestBodyPostApplicationJsonMapObjCamelCase
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapObjCamelCaseResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
-  "maxime": {
-    anyVal: "et",
-    bigintStrVal: "esse",
-    bigintVal: 227759,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 8268.25,
-    enumVal: Enum.Two,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
-  "error": {
-    anyVal: "officiis",
-    bigintStrVal: "officiis",
-    bigintVal: 880107,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 6188.26,
-    enumVal: Enum.Two,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
-  "ex": {
-    anyVal: "maiores",
-    bigintStrVal: "corrupti",
-    bigintVal: 871786,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 6216.93,
-    enumVal: Enum.Two,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
 }).then((res: RequestBodyPostApplicationJsonMapObjCamelCaseResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2048,16 +1950,37 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray({
-  "atque": [
+  "repellendus": [
     {
-      any: "sunt",
-      bigint: 923306,
-      bigintStr: "dolorum",
+      any: "voluptates",
+      bigint: 16871,
+      bigintStr: "est",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 8298.98,
+      decimal: 6964.83,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "fuga",
+      bigint: 509807,
+      bigintStr: "mollitia",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 3339.65,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
@@ -2071,151 +1994,149 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray({
       strOpt: "optional example",
     },
     {
-      any: "doloremque",
-      bigint: 919783,
-      bigintStr: "dicta",
+      any: "repudiandae",
+      bigint: 97243,
+      bigintStr: "atque",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 360.33,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "enim",
-      bigint: 389135,
-      bigintStr: "velit",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9521.43,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  "saepe": [
-    {
-      any: "occaecati",
-      bigint: 886305,
-      bigintStr: "perspiciatis",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4463.94,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  "occaecati": [
-    {
-      any: "fugit",
-      bigint: 661118,
-      bigintStr: "quis",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4402.64,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  "corporis": [
-    {
-      any: "eveniet",
-      bigint: 247399,
-      bigintStr: "vero",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 396.15,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "totam",
-      bigint: 61078,
-      bigintStr: "molestiae",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9077.33,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "iure",
-      bigint: 898063,
-      bigintStr: "ratione",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 6725.82,
+      decimal: 4420.36,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "suscipit",
+      bigint: 693957,
+      bigintStr: "maxime",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 908.85,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  ],
+  "assumenda": [
+    {
+      any: "atque",
+      bigint: 623295,
+      bigintStr: "officiis",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 8869.61,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "minima",
+      bigint: 133461,
+      bigintStr: "ex",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 9805.81,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  ],
+  "error": [
+    {
+      any: "suscipit",
+      bigint: 922348,
+      bigintStr: "atque",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 5413.81,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "dolorum",
+      bigint: 829898,
+      bigintStr: "labore",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 9682.87,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "dicta",
+      bigint: 36033,
+      bigintStr: "beatae",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 1747.72,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
       intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
@@ -2264,19 +2185,19 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
-  "aliquam": [
+  "a": [
     {
-      anyVal: "repellat",
-      bigintStrVal: "alias",
-      bigintVal: 362189,
+      anyVal: "magnam",
+      bigintStrVal: "saepe",
+      bigintVal: 160467,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 5973.03,
+      decimalVal: 5801.07,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
       int32Val: 1,
       intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
       intOptNullVal: 999999,
@@ -2287,40 +2208,17 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
       strVal: "example",
     },
     {
-      anyVal: "voluptas",
-      bigintStrVal: "alias",
-      bigintVal: 979527,
+      anyVal: "in",
+      bigintStrVal: "adipisci",
+      bigintVal: 907876,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 9702.22,
+      decimalVal: 5808.87,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
       int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  ],
-  "minima": [
-    {
-      anyVal: "dolorum",
-      bigintStrVal: "nesciunt",
-      bigintVal: 63207,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 9257.03,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
       int32Val: 1,
       intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
       intOptNullVal: 999999,
@@ -2331,58 +2229,14 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
       strVal: "example",
     },
     {
-      anyVal: "molestiae",
-      bigintStrVal: "ex",
-      bigintVal: 284000,
+      anyVal: "id",
+      bigintStrVal: "quis",
+      bigintVal: 440264,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 6330.62,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  ],
-  "laudantium": [
-    {
-      anyVal: "nemo",
-      bigintStrVal: "recusandae",
-      bigintVal: 456520,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 5920.81,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-    {
-      anyVal: "reiciendis",
-      bigintStrVal: "provident",
-      bigintVal: 133439,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 3545.06,
+      decimalVal: 6255.28,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
       int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
@@ -2436,64 +2290,22 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap({
-  "mollitia": {
-    "possimus": {
-      any: "animi",
-      bigint: 402767,
-      bigintStr: "aliquid",
+  "eveniet": {
+    "vero": {
+      any: "doloremque",
+      bigint: 434156,
+      bigintStr: "ipsa",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 375.65,
+      decimal: 5176.12,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "ullam": {
-      any: "in",
-      bigint: 721407,
-      bigintStr: "earum",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 6375.83,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "modi": {
-      any: "voluptatibus",
-      bigint: 564064,
-      bigintStr: "officiis",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9569.33,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -2501,42 +2313,65 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap({
       strOpt: "optional example",
     },
   },
-  "rerum": {
-    "quis": {
-      any: "inventore",
-      bigint: 147685,
-      bigintStr: "cumque",
+  "eveniet": {
+    "cum": {
+      any: "iure",
+      bigint: 898063,
+      bigintStr: "ratione",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 626.36,
+      decimal: 6725.82,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.First,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    "aspernatur": {
-      any: "eum",
-      bigint: 260628,
-      bigintStr: "rem",
+  },
+  "rem": {
+    "ad": {
+      any: "repellat",
+      bigint: 3099,
+      bigintStr: "corporis",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 8710.83,
+      decimal: 5973.03,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "voluptas": {
+      any: "alias",
+      bigint: 979527,
+      bigintStr: "reiciendis",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 1746.58,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
       intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
@@ -2585,21 +2420,21 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
-  "eum": {
-    "minima": {
-      anyVal: "beatae",
-      bigintStrVal: "cupiditate",
-      bigintVal: 589695,
+  "dolorum": {
+    "quae": {
+      anyVal: "recusandae",
+      bigintStrVal: "omnis",
+      bigintVal: 309251,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 9364.69,
+      decimalVal: 4776.46,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -2608,67 +2443,21 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
       strVal: "example",
     },
   },
-  "illum": {
-    "earum": {
-      anyVal: "perspiciatis",
-      bigintStrVal: "maiores",
-      bigintVal: 891801,
+  "culpa": {
+    "debitis": {
+      anyVal: "laudantium",
+      bigintStrVal: "eum",
+      bigintVal: 367927,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 3998.02,
+      decimalVal: 9282.19,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
       int32Val: 1,
       intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  },
-  "dolorem": {
-    "cumque": {
-      anyVal: "fuga",
-      bigintStrVal: "ratione",
-      bigintVal: 656762,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 8987.6,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  },
-  "quasi": {
-    "ducimus": {
-      anyVal: "natus",
-      bigintStrVal: "occaecati",
-      bigintVal: 382440,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2415.57,
-      enumVal: Enum.Two,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -2715,23 +2504,16 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive({
-  "nulla": {
-    "ipsa": "tempora",
-    "nihil": "molestiae",
-    "dicta": "iusto",
-    "esse": "praesentium",
+  "eum": {
+    "provident": "aspernatur",
+    "ullam": "quasi",
+    "animi": "nostrum",
+    "mollitia": "provident",
   },
-  "maiores": {
-    "vel": "architecto",
-    "fugiat": "doloremque",
-    "dicta": "odio",
-    "tempora": "esse",
-  },
-  "ex": {
-    "aliquid": "ipsa",
-  },
-  "laborum": {
-    "nostrum": "fugiat",
+  "possimus": {
+    "ex": "aliquid",
+    "accusantium": "repellat",
+    "doloribus": "ullam",
   },
 }).then((res: RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -2771,9 +2553,8 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive({
-  "aliquid": "officia",
-  "suscipit": "aliquid",
-  "perferendis": "eum",
+  "nam": "earum",
+  "officia": "laborum",
 }).then((res: RequestBodyPostApplicationJsonMapOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2814,19 +2595,19 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered({
-  any: "voluptas",
-  bigint: 614528,
-  bigintStr: "id",
+  any: "placeat",
+  bigint: 266697,
+  bigintStr: "voluptatibus",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 700.42,
+  decimal: 5640.64,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
   intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
@@ -2872,20 +2653,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonSimple({
-  any: "voluptates",
-  bigint: 653421,
-  bigintStr: "laborum",
+  any: "cumque",
+  bigint: 113486,
+  bigintStr: "rerum",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 7263.43,
+  decimal: 2722.29,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -2930,19 +2711,19 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase({
-  anyVal: "enim",
-  bigintStrVal: "vitae",
-  bigintVal: 833316,
+  anyVal: "fugit",
+  bigintStrVal: "cumque",
+  bigintVal: 62636,
   boolOptVal: true,
   boolVal: true,
   dateTimeVal: new Date("2020-01-01T00:00:00Z"),
   dateVal: new RFCDate("2020-01-01"),
-  decimalVal: 4050.36,
+  decimalVal: 216.88,
   enumVal: Enum.Two,
   float32Val: 2.2222222,
-  int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
+  int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
   int32Val: 1,
-  intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+  intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
   intOptNullVal: 999999,
   intVal: 999999,
   numOptNullVal: 1.1,
@@ -3028,14 +2809,168 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostFormDeep({
   any: {
-    any: "ad",
-    bigint: 713927,
-    bigintStr: "voluptatem",
+    any: "eius",
+    bigint: 521996,
+    bigintStr: "at",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 5615.77,
+    decimal: 7730.84,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Third,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  arr: [
+    {
+      any: "dicta",
+      bigint: 325118,
+      bigintStr: "beatae",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 5834.04,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    {
+      any: "soluta",
+      bigint: 940782,
+      bigintStr: "illum",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 525.08,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  ],
+  bool: false,
+  int: 983427,
+  map: {
+    "aliquid": {
+      any: "porro",
+      bigint: 380335,
+      bigintStr: "dolorem",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 1478.08,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "ratione": {
+      any: "animi",
+      bigint: 898760,
+      bigintStr: "nulla",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 89.31,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "ducimus": {
+      any: "natus",
+      bigint: 581082,
+      bigintStr: "suscipit",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 2415.57,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+    "doloribus": {
+      any: "nulla",
+      bigint: 896582,
+      bigintStr: "ipsa",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 2711.13,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  },
+  num: 1158.34,
+  obj: {
+    any: "iusto",
+    bigint: 457059,
+    bigintStr: "praesentium",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 9799.63,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
@@ -3048,6 +2983,656 @@ sdk.requestBodies.requestBodyPostFormDeep({
     str: "example",
     strOpt: "optional example",
   },
+  str: "architecto",
+  type: "fugiat",
+}).then((res: RequestBodyPostFormDeepResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [shared.DeepObject](../../models/shared/deepobject.md)       | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostFormDeepResponse](../../models/operations/requestbodypostformdeepresponse.md)>**
+
+
+## requestBodyPostFormMapPrimitive
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostFormMapPrimitiveResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostFormMapPrimitive({
+  "dicta": "odio",
+}).then((res: RequestBodyPostFormMapPrimitiveResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostFormMapPrimitiveResponse](../../models/operations/requestbodypostformmapprimitiveresponse.md)>**
+
+
+## requestBodyPostFormSimple
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostFormSimpleResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostFormSimple({
+  any: "tempora",
+  bigint: 458259,
+  bigintStr: "ex",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 2352.63,
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
+}).then((res: RequestBodyPostFormSimpleResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [shared.SimpleObject](../../models/shared/simpleobject.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesComponentFiltered
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostMultipleContentTypesComponentFilteredResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered({
+  any: "laborum",
+  bigint: 123844,
+  bigintStr: "nostrum",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 8567.56,
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Second,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
+}).then((res: RequestBodyPostMultipleContentTypesComponentFilteredResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [shared.SimpleObject](../../models/shared/simpleobject.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypescomponentfilteredresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesInlineFiltered
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostMultipleContentTypesInlineFilteredResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
+  bool: false,
+  num: 6391.87,
+  str: "suscipit",
+}).then((res: RequestBodyPostMultipleContentTypesInlineFilteredResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                  | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredapplicationjson.md) | :heavy_check_mark:                                                                                                                                                         | The request object to use for the request.                                                                                                                                 |
+| `config`                                                                                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                               | :heavy_minus_sign:                                                                                                                                                         | Available config options for making requests.                                                                                                                              |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesSplitParamForm
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import {
+  RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded,
+  RequestBodyPostMultipleContentTypesSplitParamFormRequest,
+  RequestBodyPostMultipleContentTypesSplitParamFormResponse,
+} from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
+  bool3: false,
+  num3: 3991.61,
+  str3: "perferendis",
+};
+const paramStr: string = "eum";
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamFormResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| `paramStr`                                                                                                                                                                                     | *string*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
+| `config`                                                                                                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                             | Available config options for making requests.                                                                                                                                                  |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamformresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesSplitParamJson
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import {
+  RequestBodyPostMultipleContentTypesSplitParamApplicationJSON,
+  RequestBodyPostMultipleContentTypesSplitParamJsonRequest,
+  RequestBodyPostMultipleContentTypesSplitParamJsonResponse,
+} from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
+  bool: false,
+  num: 3747.53,
+  str: "iste",
+};
+const paramStr: string = "id";
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamJsonResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationjson.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
+| `config`                                                                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                       | :heavy_minus_sign:                                                                                                                                                 | Available config options for making requests.                                                                                                                      |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesSplitParamMultipart
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import {
+  RequestBodyPostMultipleContentTypesSplitParamMultipartFormData,
+  RequestBodyPostMultipleContentTypesSplitParamMultipartRequest,
+  RequestBodyPostMultipleContentTypesSplitParamMultipartResponse,
+} from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
+  bool2: false,
+  num2: 700.42,
+  str2: "error",
+};
+const paramStr: string = "possimus";
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartformdata.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
+| `config`                                                                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                           | :heavy_minus_sign:                                                                                                                                                     | Available config options for making requests.                                                                                                                          |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesSplitForm
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostMultipleContentTypesSplitFormResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
+  bool3: false,
+  num3: 9139.92,
+  str3: "mollitia",
+}).then((res: RequestBodyPostMultipleContentTypesSplitFormResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                                            | [operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
+| `config`                                                                                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                   | Available config options for making requests.                                                                                                                                        |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitformresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesSplitJson
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostMultipleContentTypesSplitJsonResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
+  bool: false,
+  num: 6717.94,
+  str: "libero",
+}).then((res: RequestBodyPostMultipleContentTypesSplitJsonResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationjson.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
+| `config`                                                                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                             | :heavy_minus_sign:                                                                                                                                       | Available config options for making requests.                                                                                                            |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesSplitJsonResponse](../../models/operations/requestbodypostmultiplecontenttypessplitjsonresponse.md)>**
+
+
+## requestBodyPostMultipleContentTypesSplitMultipart
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostMultipleContentTypesSplitMultipartResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
+  bool2: false,
+  num2: 3240.83,
+  str2: "deleniti",
+}).then((res: RequestBodyPostMultipleContentTypesSplitMultipartResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                    | [operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartformdata.md) | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
+| `config`                                                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                 | :heavy_minus_sign:                                                                                                                                           | Available config options for making requests.                                                                                                                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md)>**
+
+
+## requestBodyPostNullArray
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostNullArrayResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostNullArray([
+  "vitae",
+  "repellendus",
+]).then((res: RequestBodyPostNullArrayResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string[]](../../models//.md)                                | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostNullArrayResponse](../../models/operations/requestbodypostnullarrayresponse.md)>**
+
+
+## requestBodyPostNullDictionary
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostNullDictionaryResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostNullDictionary({
+  "quo": "ex",
+  "ut": "ad",
+}).then((res: RequestBodyPostNullDictionaryResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md)>**
+
+
+## requestBodyPutBytes
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPutBytesResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPutBytes("expedita".encode()).then((res: RequestBodyPutBytesResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Uint8Array](../../models//.md)                              | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPutBytesResponse](../../models/operations/requestbodyputbytesresponse.md)>**
+
+
+## requestBodyPutBytesWithParams
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPutBytesWithParamsRequest, RequestBodyPutBytesWithParamsResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const requestBody: Uint8Array = "voluptatem".encode();
+const queryStringParam: string = "molestias";
+
+sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam).then((res: RequestBodyPutBytesWithParamsResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `requestBody`                                                | *Uint8Array*                                                 | :heavy_check_mark:                                           | N/A                                                          |
+| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPutBytesWithParamsResponse](../../models/operations/requestbodyputbyteswithparamsresponse.md)>**
+
+
+## requestBodyPutMultipartDeep
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPutMultipartDeepResponse } from "openapi/dist/sdk/models/operations";
+import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPutMultipartDeep({
+  any: "aliquid",
   arr: [
     {
       any: "voluptatum",
@@ -3183,771 +3768,6 @@ sdk.requestBodies.requestBodyPostFormDeep({
   },
   str: "modi",
   type: "fugit",
-}).then((res: RequestBodyPostFormDeepResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.DeepObject](../../models/shared/deepobject.md)       | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostFormDeepResponse](../../models/operations/requestbodypostformdeepresponse.md)>**
-
-
-## requestBodyPostFormMapPrimitive
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostFormMapPrimitiveResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostFormMapPrimitive({
-  "laudantium": "quae",
-}).then((res: RequestBodyPostFormMapPrimitiveResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostFormMapPrimitiveResponse](../../models/operations/requestbodypostformmapprimitiveresponse.md)>**
-
-
-## requestBodyPostFormSimple
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostFormSimpleResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostFormSimple({
-  any: "dolor",
-  bigint: 856277,
-  bigintStr: "ipsam",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 1621.2,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-}).then((res: RequestBodyPostFormSimpleResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.SimpleObject](../../models/shared/simpleobject.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesComponentFiltered
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesComponentFilteredResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered({
-  any: "eveniet",
-  bigint: 773456,
-  bigintStr: "officiis",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 4564.1,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-}).then((res: RequestBodyPostMultipleContentTypesComponentFilteredResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [shared.SimpleObject](../../models/shared/simpleobject.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesComponentFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypescomponentfilteredresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesInlineFiltered
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesInlineFilteredResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
-  bool: false,
-  num: 3321.91,
-  str: "nesciunt",
-}).then((res: RequestBodyPostMultipleContentTypesInlineFilteredResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                  | Type                                                                                                                                                                       | Required                                                                                                                                                                   | Description                                                                                                                                                                |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredapplicationjson.md) | :heavy_check_mark:                                                                                                                                                         | The request object to use for the request.                                                                                                                                 |
-| `config`                                                                                                                                                                   | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                               | :heavy_minus_sign:                                                                                                                                                         | Available config options for making requests.                                                                                                                              |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesInlineFilteredResponse](../../models/operations/requestbodypostmultiplecontenttypesinlinefilteredresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesSplitParamForm
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import {
-  RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded,
-  RequestBodyPostMultipleContentTypesSplitParamFormRequest,
-  RequestBodyPostMultipleContentTypesSplitParamFormResponse,
-} from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
-  bool3: false,
-  num3: 7129.27,
-  str3: "eum",
-};
-const paramStr: string = "vel";
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamFormResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                                      | Type                                                                                                                                                                                           | Required                                                                                                                                                                                       | Description                                                                                                                                                                                    |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                                                  | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `paramStr`                                                                                                                                                                                     | *string*                                                                                                                                                                                       | :heavy_check_mark:                                                                                                                                                                             | N/A                                                                                                                                                                                            |
-| `config`                                                                                                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                                   | :heavy_minus_sign:                                                                                                                                                                             | Available config options for making requests.                                                                                                                                                  |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamformresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesSplitParamJson
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import {
-  RequestBodyPostMultipleContentTypesSplitParamApplicationJSON,
-  RequestBodyPostMultipleContentTypesSplitParamJsonRequest,
-  RequestBodyPostMultipleContentTypesSplitParamJsonResponse,
-} from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
-  bool: false,
-  num: 5282.34,
-  str: "magnam",
-};
-const paramStr: string = "exercitationem";
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamJsonResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                          | Type                                                                                                                                                               | Required                                                                                                                                                           | Description                                                                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `requestBody`                                                                                                                                                      | [operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitparamapplicationjson.md) | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
-| `paramStr`                                                                                                                                                         | *string*                                                                                                                                                           | :heavy_check_mark:                                                                                                                                                 | N/A                                                                                                                                                                |
-| `config`                                                                                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                       | :heavy_minus_sign:                                                                                                                                                 | Available config options for making requests.                                                                                                                      |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamJsonResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparamjsonresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesSplitParamMultipart
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import {
-  RequestBodyPostMultipleContentTypesSplitParamMultipartFormData,
-  RequestBodyPostMultipleContentTypesSplitParamMultipartRequest,
-  RequestBodyPostMultipleContentTypesSplitParamMultipartResponse,
-} from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
-  bool2: false,
-  num2: 704.1,
-  str2: "porro",
-};
-const paramStr: string = "autem";
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                              | Type                                                                                                                                                                   | Required                                                                                                                                                               | Description                                                                                                                                                            |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `requestBody`                                                                                                                                                          | [operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartformdata.md) | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `paramStr`                                                                                                                                                             | *string*                                                                                                                                                               | :heavy_check_mark:                                                                                                                                                     | N/A                                                                                                                                                                    |
-| `config`                                                                                                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                           | :heavy_minus_sign:                                                                                                                                                     | Available config options for making requests.                                                                                                                          |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesSplitParamMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitparammultipartresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesSplitForm
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitFormResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
-  bool3: false,
-  num3: 7510.22,
-  str3: "laboriosam",
-}).then((res: RequestBodyPostMultipleContentTypesSplitFormResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                                            | Type                                                                                                                                                                                 | Required                                                                                                                                                                             | Description                                                                                                                                                                          |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                                            | [operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationxwwwformurlencoded.md) | :heavy_check_mark:                                                                                                                                                                   | The request object to use for the request.                                                                                                                                           |
-| `config`                                                                                                                                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                                         | :heavy_minus_sign:                                                                                                                                                                   | Available config options for making requests.                                                                                                                                        |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesSplitFormResponse](../../models/operations/requestbodypostmultiplecontenttypessplitformresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesSplitJson
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitJsonResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
-  bool: false,
-  num: 9272.12,
-  str: "consequuntur",
-}).then((res: RequestBodyPostMultipleContentTypesSplitJsonResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                | Type                                                                                                                                                     | Required                                                                                                                                                 | Description                                                                                                                                              |
-| -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `request`                                                                                                                                                | [operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON](../../models/operations/requestbodypostmultiplecontenttypessplitapplicationjson.md) | :heavy_check_mark:                                                                                                                                       | The request object to use for the request.                                                                                                               |
-| `config`                                                                                                                                                 | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                             | :heavy_minus_sign:                                                                                                                                       | Available config options for making requests.                                                                                                            |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesSplitJsonResponse](../../models/operations/requestbodypostmultiplecontenttypessplitjsonresponse.md)>**
-
-
-## requestBodyPostMultipleContentTypesSplitMultipart
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitMultipartResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
-  bool2: false,
-  num2: 289.52,
-  str2: "exercitationem",
-}).then((res: RequestBodyPostMultipleContentTypesSplitMultipartResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
-| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `request`                                                                                                                                                    | [operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartformdata.md) | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
-| `config`                                                                                                                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                                                 | :heavy_minus_sign:                                                                                                                                           | Available config options for making requests.                                                                                                                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md)>**
-
-
-## requestBodyPostNullArray
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostNullArrayResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostNullArray([
-  "quasi",
-  "nisi",
-  "at",
-  "vero",
-]).then((res: RequestBodyPostNullArrayResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [string[]](../../models//.md)                                | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostNullArrayResponse](../../models/operations/requestbodypostnullarrayresponse.md)>**
-
-
-## requestBodyPostNullDictionary
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPostNullDictionaryResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostNullDictionary({
-  "harum": "sequi",
-  "doloribus": "repudiandae",
-  "optio": "occaecati",
-}).then((res: RequestBodyPostNullDictionaryResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md)>**
-
-
-## requestBodyPutBytes
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPutBytesResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPutBytes("nemo".encode()).then((res: RequestBodyPutBytesResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [Uint8Array](../../models//.md)                              | :heavy_check_mark:                                           | The request object to use for the request.                   |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPutBytesResponse](../../models/operations/requestbodyputbytesresponse.md)>**
-
-
-## requestBodyPutBytesWithParams
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPutBytesWithParamsRequest, RequestBodyPutBytesWithParamsResponse } from "openapi/dist/sdk/models/operations";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-const requestBody: Uint8Array = "voluptate".encode();
-const queryStringParam: string = "blanditiis";
-
-sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam).then((res: RequestBodyPutBytesWithParamsResponse) => {
-  if (res.statusCode == 200) {
-    // handle response
-  }
-});
-```
-
-### Parameters
-
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `requestBody`                                                | *Uint8Array*                                                 | :heavy_check_mark:                                           | N/A                                                          |
-| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
-
-
-### Response
-
-**Promise<[operations.RequestBodyPutBytesWithParamsResponse](../../models/operations/requestbodyputbyteswithparamsresponse.md)>**
-
-
-## requestBodyPutMultipartDeep
-
-### Example Usage
-
-```typescript
-import { SDK } from "openapi";
-import { RequestBodyPutMultipartDeepResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
-
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPutMultipartDeep({
-  any: "voluptas",
-  arr: [
-    {
-      any: "nemo",
-      bigint: 551079,
-      bigintStr: "eius",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 1319.03,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    {
-      any: "fuga",
-      bigint: 514054,
-      bigintStr: "incidunt",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 974.93,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  bool: false,
-  int: 117380,
-  map: {
-    "consequuntur": {
-      any: "consectetur",
-      bigint: 46806,
-      bigintStr: "cupiditate",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9707.32,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-    "omnis": {
-      any: "eos",
-      bigint: 579011,
-      bigintStr: "iste",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 1700.99,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  },
-  num: 8818.97,
-  obj: {
-    any: "voluptatibus",
-    bigint: 719620,
-    bigintStr: "omnis",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 9663.9,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  str: "maxime",
-  type: "magnam",
 }).then((res: RequestBodyPutMultipartDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3986,8 +3806,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPutMultipartFile({
   file: {
-    content: "temporibus".encode(),
-    file: "quos",
+    content: "ab".encode(),
+    file: "laudantium",
   },
 }).then((res: RequestBodyPutMultipartFileResponse) => {
   if (res.statusCode == 200) {
@@ -4028,19 +3848,19 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPutMultipartSimple({
-  any: "commodi",
-  bigint: 930819,
-  bigintStr: "commodi",
+  any: "quae",
+  bigint: 222658,
+  bigintStr: "fugiat",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 5207.61,
+  decimal: 3694.9,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
@@ -4083,7 +3903,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPutString("nam").then((res: RequestBodyPutStringResponse) => {
+sdk.requestBodies.requestBodyPutString("quas").then((res: RequestBodyPutStringResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4118,8 +3938,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestBody: string = "vero";
-const queryStringParam: string = "voluptatem";
+const requestBody: string = "eveniet";
+const queryStringParam: string = "impedit";
 
 sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam).then((res: RequestBodyPutStringWithParamsResponse) => {
   if (res.statusCode == 200) {
@@ -4159,9 +3979,9 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadAndWrite({
-  num1: 371919,
-  num2: 425946,
-  num3: 1383,
+  num1: 884952,
+  num2: 456410,
+  num3: 897277,
 }).then((res: RequestBodyReadAndWriteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -4238,8 +4058,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnly({
   bool: false,
-  num: 938.94,
-  string: "non",
+  num: 1533.69,
+  string: "veniam",
 }).then((res: RequestBodyWriteOnlyResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -4279,8 +4099,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnlyOutput({
   bool: false,
-  num: 9785.48,
-  string: "enim",
+  num: 1995.96,
+  string: "expedita",
 }).then((res: RequestBodyWriteOnlyOutputResponse) => {
   if (res.statusCode == 200) {
     // handle response

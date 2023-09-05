@@ -53,18 +53,15 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     mapParam := map[string]string{
-        "quaerat": "tempora",
-        "vel": "quod",
-        "officiis": "qui",
-        "dolorum": "a",
+        "tempora": "vel",
+        "quod": "officiis",
     }
     mapArrParam := map[string][]string{
-        "harum": []string{
+        "dolorum": []string{
+            "esse",
+            "harum",
+            "iusto",
             "ipsum",
-            "quisquam",
-        },
-        "tenetur": []string{
-            "tempore",
         },
     }
 
@@ -120,20 +117,20 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     objParam := shared.SimpleObject{
-        Any: "accusamus",
-        Bigint: big.NewInt(253941),
-        BigintStr: types.MustBigIntFromString("313692"),
+        Any: "quisquam",
+        Bigint: big.NewInt(947371),
+        BigintStr: types.MustBigIntFromString("229442"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(2133.12),
+        Decimal: sdk.Float64(7308.56),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        IntEnum: shared.SimpleObjectIntEnumFirst,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -142,8 +139,8 @@ func main() {
     }
     objArrParam := &operations.DeepObjectQueryParamsObjectObjArrParam{
         Arr: []string{
-            "sit",
-            "expedita",
+            "dolorem",
+            "sapiente",
         },
     }
 
@@ -196,7 +193,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    duplicateParamRequest := "neque"
+    duplicateParamRequest := "totam"
 
     ctx := context.Background()
     res, err := s.Parameters.DuplicateParam(ctx, duplicateParamRequest)
@@ -247,12 +244,11 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     arrParam := []string{
-        "vel",
+        "sit",
+        "expedita",
     }
     arrParamExploded := []int64{
-        374170,
-        646265,
-        463575,
+        153694,
     }
 
     ctx := context.Background()
@@ -305,12 +301,11 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     mapParam := map[string]string{
-        "incidunt": "qui",
+        "libero": "voluptas",
+        "deserunt": "quam",
     }
     mapParamExploded := map[string]int64{
-        "maxime": 863856,
-        "soluta": 117531,
-        "laborum": 517379,
+        "incidunt": 186458,
     }
 
     ctx := context.Background()
@@ -365,20 +360,20 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     objParamExploded := shared.SimpleObject{
-        Any: "incidunt",
-        Bigint: big.NewInt(132068),
-        BigintStr: types.MustBigIntFromString("174909"),
+        Any: "cupiditate",
+        Bigint: big.NewInt(807581),
+        BigintStr: types.MustBigIntFromString("863856"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(7168.6),
+        Decimal: sdk.Float64(7470.8),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+        IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -386,20 +381,20 @@ func main() {
         StrOpt: sdk.String("optional example"),
     }
     objParam := &shared.SimpleObject{
-        Any: "quam",
-        Bigint: big.NewInt(565421),
-        BigintStr: types.MustBigIntFromString("840429"),
+        Any: "totam",
+        Bigint: big.NewInt(276894),
+        BigintStr: types.MustBigIntFromString("132068"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(1832.8),
+        Decimal: sdk.Float64(1749.09),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumFirst,
+        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+        IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -457,9 +452,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     boolParam := false
-    intParam := 164959
-    numParam := 4880.56
-    strParam := "sunt"
+    intParam := 396060
+    numParam := 4631.5
+    strParam := "molestias"
 
     ctx := context.Background()
     res, err := s.Parameters.FormQueryParamsPrimitive(ctx, boolParam, intParam, numParam, strParam)
@@ -514,15 +509,15 @@ func main() {
     )
     refObjParam := &shared.RefQueryParamObj{
         Bool: false,
-        Int: 355613,
-        Num: 7220.81,
-        Str: "hic",
+        Int: 840429,
+        Num: 1832.8,
+        Str: "neque",
     }
     refObjParamExploded := &shared.RefQueryParamObjExploded{
         Bool: false,
-        Int: 30452,
-        Num: 7653.26,
-        Str: "soluta",
+        Int: 144847,
+        Num: 1649.59,
+        Str: "odio",
     }
 
     ctx := context.Background()
@@ -575,9 +570,7 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderArray := []string{
-        "et",
-        "saepe",
-        "ipsum",
+        "ullam",
     }
 
     ctx := context.Background()
@@ -629,12 +622,15 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderMap := map[string]string{
-        "nobis": "quos",
+        "hic": "voluptatem",
+        "cumque": "soluta",
+        "nobis": "et",
     }
     xHeaderMapExplode := map[string]string{
-        "cupiditate": "aperiam",
-        "delectus": "dolorem",
-        "dolore": "labore",
+        "ipsum": "veritatis",
+        "nobis": "quos",
+        "tempore": "cupiditate",
+        "aperiam": "delectus",
     }
 
     ctx := context.Background()
@@ -689,20 +685,20 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderObj := shared.SimpleObject{
-        Any: "adipisci",
-        Bigint: big.NewInt(677263),
-        BigintStr: types.MustBigIntFromString("100294"),
+        Any: "dolorem",
+        Bigint: big.NewInt(292147),
+        BigintStr: types.MustBigIntFromString("286915"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(630.38),
+        Decimal: sdk.Float64(2408.29),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+        IntEnum: shared.SimpleObjectIntEnumFirst,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -710,19 +706,19 @@ func main() {
         StrOpt: sdk.String("optional example"),
     }
     xHeaderObjExplode := shared.SimpleObject{
-        Any: "itaque",
-        Bigint: big.NewInt(9240),
-        BigintStr: types.MustBigIntFromString("669917"),
+        Any: "quae",
+        Bigint: big.NewInt(16429),
+        BigintStr: types.MustBigIntFromString("555649"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(8330.38),
+        Decimal: sdk.Float64(9295.3),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
@@ -781,9 +777,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderBoolean := false
-    xHeaderInteger := 281730
-    xHeaderNumber := 7034.95
-    xHeaderString := "cupiditate"
+    xHeaderInteger := 833038
+    xHeaderNumber := 7851.53
+    xHeaderString := "doloribus"
 
     ctx := context.Background()
     res, err := s.Parameters.HeaderParamsPrimitive(ctx, xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString)
@@ -840,20 +836,20 @@ func main() {
     )
     deepObjParam := shared.DeepObject{
         Any: shared.SimpleObject{
-            Any: "quae",
-            Bigint: big.NewInt(512393),
-            BigintStr: types.MustBigIntFromString("485628"),
+            Any: "facilis",
+            Bigint: big.NewInt(586410),
+            BigintStr: types.MustBigIntFromString("181631"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: sdk.Float64(5804.47),
+            Decimal: sdk.Float64(639.55),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-            IntEnum: shared.SimpleObjectIntEnumThird,
+            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+            IntEnum: shared.SimpleObjectIntEnumSecond,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
@@ -862,14 +858,14 @@ func main() {
         },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "omnis",
-                Bigint: big.NewInt(338159),
-                BigintStr: types.MustBigIntFromString("218403"),
+                Any: "voluptatibus",
+                Bigint: big.NewInt(787542),
+                BigintStr: types.MustBigIntFromString("876506"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(9615.71),
+                Decimal: sdk.Float64(6064.76),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
@@ -883,19 +879,40 @@ func main() {
                 StrOpt: sdk.String("optional example"),
             },
             shared.SimpleObject{
-                Any: "vero",
-                Bigint: big.NewInt(949319),
-                BigintStr: types.MustBigIntFromString("492268"),
+                Any: "delectus",
+                Bigint: big.NewInt(455169),
+                BigintStr: types.MustBigIntFromString("231701"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(9413.78),
+                Decimal: sdk.Float64(8788.7),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
+                IntOptNull: sdk.Int64(999999),
+                Num: 1.1,
+                NumOptNull: sdk.Float64(1.1),
+                Str: "example",
+                StrOpt: sdk.String("optional example"),
+            },
+            shared.SimpleObject{
+                Any: "hic",
+                Bigint: big.NewInt(715561),
+                BigintStr: types.MustBigIntFromString("799203"),
+                Bool: true,
+                BoolOpt: sdk.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                Decimal: sdk.Float64(4861.6),
+                Enum: shared.EnumTwo,
+                Float32: 2.2222222,
+                Int: 999999,
+                Int32: 1,
+                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
                 IntEnum: shared.SimpleObjectIntEnumThird,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
@@ -903,28 +920,11 @@ func main() {
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            shared.SimpleObject{
-                Any: "odio",
-                Bigint: big.NewInt(630448),
-                BigintStr: types.MustBigIntFromString("708548"),
-                Bool: true,
-                BoolOpt: sdk.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(8742.88),
-                Enum: shared.EnumTwo,
-                Float32: 2.2222222,
-                Int: 999999,
-                Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumFirst,
-                IntOptNull: sdk.Int64(999999),
-                Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
-                Str: "example",
-                StrOpt: sdk.String("optional example"),
-            },
-            shared.SimpleObject{
+        },
+        Bool: false,
+        Int: 874288,
+        Map: map[string]shared.SimpleObject{
+            "dolore": shared.SimpleObject{
                 Any: "quibusdam",
                 Bigint: big.NewInt(848944),
                 BigintStr: types.MustBigIntFromString("194342"),
@@ -945,24 +945,20 @@ func main() {
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-        },
-        Bool: false,
-        Int: 974259,
-        Map: map[string]shared.SimpleObject{
-            "nulla": shared.SimpleObject{
-                Any: "fugit",
-                Bigint: big.NewInt(780427),
-                BigintStr: types.MustBigIntFromString("981830"),
+            "voluptatibus": shared.SimpleObject{
+                Any: "exercitationem",
+                Bigint: big.NewInt(862310),
+                BigintStr: types.MustBigIntFromString("148141"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(9850.33),
+                Decimal: sdk.Float64(7804.27),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumThird,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
@@ -970,67 +966,46 @@ func main() {
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            "ducimus": shared.SimpleObject{
-                Any: "alias",
-                Bigint: big.NewInt(639473),
-                BigintStr: types.MustBigIntFromString("269479"),
-                Bool: true,
-                BoolOpt: sdk.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(3685.84),
-                Enum: shared.EnumTwo,
-                Float32: 2.2222222,
-                Int: 999999,
-                Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumFirst,
-                IntOptNull: sdk.Int64(999999),
-                Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
-                Str: "example",
-                StrOpt: sdk.String("optional example"),
-            },
         },
-        Num: 4282.24,
+        Num: 4783.7,
         Obj: shared.SimpleObject{
-            Any: "possimus",
-            Bigint: big.NewInt(297842),
-            BigintStr: types.MustBigIntFromString("189848"),
+            Any: "eligendi",
+            Bigint: big.NewInt(497391),
+            BigintStr: types.MustBigIntFromString("4048"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: sdk.Float64(4011.32),
+            Decimal: sdk.Float64(6394.73),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumFirst,
+            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+            IntEnum: shared.SimpleObjectIntEnumSecond,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
             Str: "example",
             StrOpt: sdk.String("optional example"),
         },
-        Str: "dolor",
-        Type: sdk.String("maiores"),
+        Str: "ea",
+        Type: sdk.String("aspernatur"),
     }
     simpleObjParam := shared.SimpleObject{
-        Any: "quasi",
-        Bigint: big.NewInt(406120),
-        BigintStr: types.MustBigIntFromString("862192"),
+        Any: "vel",
+        Bigint: big.NewInt(822118),
+        BigintStr: types.MustBigIntFromString("297842"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(5692.11),
+        Decimal: sdk.Float64(1898.48),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
         IntEnum: shared.SimpleObjectIntEnumSecond,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
@@ -1088,9 +1063,9 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    headerParam := "sapiente"
-    pathParam := "quisquam"
-    queryStringParam := "saepe"
+    headerParam := "dicta"
+    pathParam := "dolor"
+    queryStringParam := "maiores"
 
     ctx := context.Background()
     res, err := s.Parameters.MixedParametersCamelCase(ctx, headerParam, pathParam, queryStringParam)
@@ -1142,9 +1117,9 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    headerParam := "ea"
-    pathParam := "impedit"
-    queryStringParam := "corporis"
+    headerParam := "quasi"
+    pathParam := "ex"
+    queryStringParam := "nulla"
 
     ctx := context.Background()
     res, err := s.Parameters.MixedParametersPrimitives(ctx, headerParam, pathParam, queryStringParam)
@@ -1199,19 +1174,19 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     deepObjectParam := shared.SimpleObject{
-        Any: "veniam",
-        Bigint: big.NewInt(399499),
-        BigintStr: types.MustBigIntFromString("81101"),
+        Any: "excepturi",
+        Bigint: big.NewInt(972920),
+        BigintStr: types.MustBigIntFromString("343605"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(3018.31),
+        Decimal: sdk.Float64(9608.35),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
@@ -1220,20 +1195,20 @@ func main() {
         StrOpt: sdk.String("optional example"),
     }
     formParam := shared.SimpleObject{
-        Any: "consectetur",
-        Bigint: big.NewInt(926213),
-        BigintStr: types.MustBigIntFromString("132487"),
+        Any: "ea",
+        Bigint: big.NewInt(774048),
+        BigintStr: types.MustBigIntFromString("359271"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(3253.1),
+        Decimal: sdk.Float64(3331.45),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumThird,
+        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        IntEnum: shared.SimpleObjectIntEnumFirst,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -1241,14 +1216,14 @@ func main() {
         StrOpt: sdk.String("optional example"),
     }
     jsonParam := shared.SimpleObject{
-        Any: "libero",
-        Bigint: big.NewInt(13948),
-        BigintStr: types.MustBigIntFromString("11427"),
+        Any: "magnam",
+        Bigint: big.NewInt(407241),
+        BigintStr: types.MustBigIntFromString("775220"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(5334.66),
+        Decimal: sdk.Float64(2322.34),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
@@ -1315,20 +1290,20 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     jsonObj := shared.SimpleObject{
-        Any: "fugit",
-        Bigint: big.NewInt(882860),
-        BigintStr: types.MustBigIntFromString("79522"),
+        Any: "minima",
+        Bigint: big.NewInt(53427),
+        BigintStr: types.MustBigIntFromString("952871"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(2506.22),
+        Decimal: sdk.Float64(7255.95),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumThird,
+        IntEnum: shared.SimpleObjectIntEnumFirst,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -1387,35 +1362,36 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     arrParam := []string{
-        "placeat",
-        "velit",
-        "eum",
+        "impedit",
+        "aliquam",
+        "fugit",
     }
     arrParamExploded := []int64{
-        752135,
-        557369,
+        79522,
+        250622,
+        89603,
+        677412,
     }
     mapParam := map[string]string{
-        "nulla": "voluptas",
-        "libero": "quasi",
-        "tempora": "numquam",
-        "explicabo": "provident",
+        "placeat": "velit",
+        "eum": "autem",
+        "nobis": "quas",
     }
     objParam := &shared.SimpleObject{
-        Any: "ipsa",
-        Bigint: big.NewInt(476477),
-        BigintStr: types.MustBigIntFromString("301598"),
+        Any: "assumenda",
+        Bigint: big.NewInt(860552),
+        BigintStr: types.MustBigIntFromString("379034"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(4879.35),
+        Decimal: sdk.Float64(7270.44),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        IntEnum: shared.SimpleObjectIntEnumFirst,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -1475,8 +1451,8 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     arrParam := []string{
-        "rem",
-        "fuga",
+        "explicabo",
+        "provident",
     }
 
     ctx := context.Background()
@@ -1528,12 +1504,11 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     mapParam := map[string]string{
-        "quidem": "fugiat",
-        "ut": "eum",
+        "molestiae": "magnam",
     }
     mapParamExploded := map[string]int64{
-        "assumenda": 181151,
-        "praesentium": 788546,
+        "eius": 458515,
+        "esse": 524593,
     }
 
     ctx := context.Background()
@@ -1588,20 +1563,20 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     objParam := shared.SimpleObject{
-        Any: "veritatis",
-        Bigint: big.NewInt(56848),
-        BigintStr: types.MustBigIntFromString("660040"),
+        Any: "fuga",
+        Bigint: big.NewInt(442015),
+        BigintStr: types.MustBigIntFromString("695626"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(6969.97),
+        Decimal: sdk.Float64(8526.35),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumThird,
+        IntEnum: shared.SimpleObjectIntEnumSecond,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -1609,20 +1584,20 @@ func main() {
         StrOpt: sdk.String("optional example"),
     }
     objParamExploded := shared.SimpleObject{
-        Any: "illum",
-        Bigint: big.NewInt(777408),
-        BigintStr: types.MustBigIntFromString("681359"),
+        Any: "suscipit",
+        Bigint: big.NewInt(826871),
+        BigintStr: types.MustBigIntFromString("181151"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(2594.22),
+        Decimal: sdk.Float64(5093.42),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+        IntEnum: shared.SimpleObjectIntEnumFirst,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -1680,9 +1655,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     boolParam := false
-    intParam := 69859
-    numParam := 5876
-    strParam := "consequatur"
+    intParam := 56848
+    numParam := 6600.4
+    strParam := "quidem"
 
     ctx := context.Background()
     res, err := s.Parameters.SimplePathParameterPrimitives(ctx, boolParam, intParam, numParam, strParam)

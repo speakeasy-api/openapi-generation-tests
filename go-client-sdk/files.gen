@@ -1,10 +1,13 @@
 auth.go
 authnew.go
+documentation.go
 errors.go
 first.go
 flattening.go
 generation.go
 globals.go
+nestfirst.go
+nest.go
 nestedfirst.go
 nestedsecond.go
 nested.go
@@ -68,6 +71,7 @@ pkg/models/operations/multiplesimpleoptionsauth.go
 pkg/models/operations/multiplesimpleschemeauth.go
 pkg/models/operations/oauth2authnew.go
 pkg/models/operations/openidconnectauthnew.go
+pkg/models/operations/getdocumentationperlanguage.go
 pkg/models/operations/connectionerrorget.go
 pkg/models/operations/statusgeterror.go
 pkg/models/operations/statusgetxspeakeasyerrors.go
@@ -93,6 +97,7 @@ pkg/models/operations/typedparametergenerationget.go
 pkg/models/operations/usageexamplepost.go
 pkg/models/operations/globalpathparameterget.go
 pkg/models/operations/globalsqueryparameterget.go
+pkg/models/operations/nestfirstget.go
 pkg/models/operations/nestedfirstget.go
 pkg/models/operations/nestedsecondget.go
 pkg/models/operations/nestedget.go
@@ -247,12 +252,15 @@ docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/models/operations/option.md
 docs/sdks/authnew/README.md
+docs/sdks/documentation/README.md
 docs/sdks/errors/README.md
 docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/types/date.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nest/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -315,6 +323,8 @@ docs/models/operations/oauth2authnewsecurity.md
 docs/models/operations/oauth2authnewresponse.md
 docs/models/operations/openidconnectauthnewsecurity.md
 docs/models/operations/openidconnectauthnewresponse.md
+docs/models/operations/getdocumentationperlanguagerequest.md
+docs/models/operations/getdocumentationperlanguageresponse.md
 docs/models/operations/connectionerrorgetresponse.md
 docs/models/operations/statusgeterrorrequest.md
 docs/models/operations/statusgeterrorresponse.md
@@ -383,6 +393,7 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestfirstgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
 docs/models/operations/nestedgetresponse.md

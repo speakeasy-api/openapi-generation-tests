@@ -1,11 +1,13 @@
 src/SDKConfiguration.php
 src/Auth.php
 src/AuthNew.php
+src/Documentation.php
 src/Errors.php
 src/First.php
 src/Flattening.php
 src/Generation.php
 src/Globals.php
+src/NestFirst.php
 src/Nested.php
 src/NestedFirst.php
 src/NestedSecond.php
@@ -98,6 +100,8 @@ src/Models/Operations/Oauth2AuthNewSecurity.php
 src/Models/Operations/Oauth2AuthNewResponse.php
 src/Models/Operations/OpenIdConnectAuthNewSecurity.php
 src/Models/Operations/OpenIdConnectAuthNewResponse.php
+src/Models/Operations/GetDocumentationPerLanguageRequest.php
+src/Models/Operations/GetDocumentationPerLanguageResponse.php
 src/Models/Operations/ConnectionErrorGetResponse.php
 src/Models/Operations/StatusGetErrorRequest.php
 src/Models/Operations/StatusGetErrorResponse.php
@@ -167,6 +171,7 @@ src/Models/Operations/GlobalsQueryParameterGetRequest.php
 src/Models/Operations/GlobalsQueryParameterGetResArgs.php
 src/Models/Operations/GlobalsQueryParameterGetRes.php
 src/Models/Operations/GlobalsQueryParameterGetResponse.php
+src/Models/Operations/NestFirstGetResponse.php
 src/Models/Operations/NestedGetResponse.php
 src/Models/Operations/NestedFirstGetResponse.php
 src/Models/Operations/NestedSecondGetResponse.php
@@ -478,11 +483,13 @@ src/Models/Callbacks/IgnoredGenerationGetNotIgnoredCallbackRequestBody.php
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
+docs/sdks/documentation/README.md
 docs/sdks/errors/README.md
 docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -545,6 +552,8 @@ docs/models/operations/Oauth2AuthNewSecurity.md
 docs/models/operations/Oauth2AuthNewResponse.md
 docs/models/operations/OpenIdConnectAuthNewSecurity.md
 docs/models/operations/OpenIdConnectAuthNewResponse.md
+docs/models/operations/GetDocumentationPerLanguageRequest.md
+docs/models/operations/GetDocumentationPerLanguageResponse.md
 docs/models/operations/ConnectionErrorGetResponse.md
 docs/models/operations/StatusGetErrorRequest.md
 docs/models/operations/StatusGetErrorResponse.md
@@ -614,6 +623,7 @@ docs/models/operations/GlobalsQueryParameterGetRequest.md
 docs/models/operations/GlobalsQueryParameterGetResArgs.md
 docs/models/operations/GlobalsQueryParameterGetRes.md
 docs/models/operations/GlobalsQueryParameterGetResponse.md
+docs/models/operations/NestFirstGetResponse.md
 docs/models/operations/NestedGetResponse.md
 docs/models/operations/NestedFirstGetResponse.md
 docs/models/operations/NestedSecondGetResponse.md

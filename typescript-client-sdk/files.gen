@@ -1,10 +1,13 @@
 src/sdk/auth.ts
 src/sdk/authnew.ts
+src/sdk/documentation.ts
 src/sdk/errors.ts
 src/sdk/first.ts
 src/sdk/flattening.ts
 src/sdk/generation.ts
 src/sdk/globals.ts
+src/sdk/nestfirst.ts
+src/sdk/nest.ts
 src/sdk/nestedfirst.ts
 src/sdk/nestedsecond.ts
 src/sdk/nested.ts
@@ -71,6 +74,7 @@ src/sdk/models/operations/multiplesimpleoptionsauth.ts
 src/sdk/models/operations/multiplesimpleschemeauth.ts
 src/sdk/models/operations/oauth2authnew.ts
 src/sdk/models/operations/openidconnectauthnew.ts
+src/sdk/models/operations/getdocumentationperlanguage.ts
 src/sdk/models/operations/connectionerrorget.ts
 src/sdk/models/operations/statusgeterror.ts
 src/sdk/models/operations/statusgetxspeakeasyerrors.ts
@@ -96,6 +100,7 @@ src/sdk/models/operations/typedparametergenerationget.ts
 src/sdk/models/operations/usageexamplepost.ts
 src/sdk/models/operations/globalpathparameterget.ts
 src/sdk/models/operations/globalsqueryparameterget.ts
+src/sdk/models/operations/nestfirstget.ts
 src/sdk/models/operations/nestedfirstget.ts
 src/sdk/models/operations/nestedsecondget.ts
 src/sdk/models/operations/nestedget.ts
@@ -248,12 +253,15 @@ src/sdk/models/callbacks/index.ts
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
+docs/sdks/documentation/README.md
 docs/sdks/errors/README.md
 docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/types/rfcdate.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nest/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -317,6 +325,8 @@ docs/models/operations/oauth2authnewsecurity.md
 docs/models/operations/oauth2authnewresponse.md
 docs/models/operations/openidconnectauthnewsecurity.md
 docs/models/operations/openidconnectauthnewresponse.md
+docs/models/operations/getdocumentationperlanguagerequest.md
+docs/models/operations/getdocumentationperlanguageresponse.md
 docs/models/operations/connectionerrorgetresponse.md
 docs/models/operations/statusgeterrorrequest.md
 docs/models/operations/statusgeterrorresponse.md
@@ -385,6 +395,7 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestfirstgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
 docs/models/operations/nestedgetresponse.md

@@ -107,8 +107,8 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeprecatedFieldInObject();
-    $request->deprecatedField = 'rerum';
-    $request->newField = 'dicta';
+    $request->deprecatedField = 'dicta';
+    $request->newField = 'magnam';
 
     $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
 
@@ -189,7 +189,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationNoCommentsGet('magnam');
+    $response = $sdk->generation->deprecatedOperationNoCommentsGet('cumque');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -235,7 +235,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationWithCommentsGet('cumque', 'facere');
+    $response = $sdk->generation->deprecatedOperationWithCommentsGet('facere', 'ea');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -420,10 +420,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'http://humming-police.org';
-    $requestBody->testProp = 'non';
+    $requestBody->callbackUrl = 'http://quizzical-synergy.biz';
+    $requestBody->testProp = 'occaecati';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'occaecati');
+    $response = $sdk->generation->ignoresPost($requestBody, 'enim');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -511,10 +511,10 @@ $sdk = SDK::builder()
 try {
     $obj = new TypedParameterGenerationGetObj();
     $obj->bool = false;
-    $obj->num = 3132.18;
-    $obj->str = 'accusamus';
+    $obj->num = 8817.36;
+    $obj->str = 'delectus';
 
-    $response = $sdk->generation->typedParameterGenerationGet(965417, DateTime::createFromFormat('Y-m-d', '2021-10-28'), 7252.55, $obj);
+    $response = $sdk->generation->typedParameterGenerationGet(692532, DateTime::createFromFormat('Y-m-d', '2021-07-20'), 6596.69, $obj);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -572,7 +572,7 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Jewell.Lesch64@yahoo.com';
+    $request->requestBody->email = 'Kacie64@yahoo.com';
     $request->requestBody->formatEmail = 'Henry.Mosciski@yahoo.com';
     $request->requestBody->formatUri = 'http://knotty-eligibility.net';
     $request->requestBody->formatUuid = 'a4469b6e-2141-4959-890a-fa563e2516fe';

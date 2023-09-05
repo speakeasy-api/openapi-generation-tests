@@ -62,7 +62,7 @@ s = sdk.SDK(
 )
 
 
-res = s.errors.status_get_error(status_code=428769)
+res = s.errors.status_get_error(status_code=878453)
 
 if res.status_code == 200:
     # handle response
@@ -97,7 +97,7 @@ s = sdk.SDK(
 )
 
 
-res = s.errors.status_get_x_speakeasy_errors(status_code=878453)
+res = s.errors.status_get_x_speakeasy_errors(status_code=135474)
 
 if res.status_code == 200:
     # handle response

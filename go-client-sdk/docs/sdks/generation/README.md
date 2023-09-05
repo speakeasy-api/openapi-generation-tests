@@ -140,8 +140,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{
-        DeprecatedField: sdk.String("iure"),
-        NewField: sdk.String("doloribus"),
+        DeprecatedField: sdk.String("doloribus"),
+        NewField: sdk.String("debitis"),
     })
     if err != nil {
         log.Fatal(err)
@@ -238,7 +238,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "debitis"
+    deprecatedParameter := "eius"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
@@ -292,8 +292,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "eius"
-    newParameter := "maxime"
+    deprecatedParameter := "maxime"
+    newParameter := "deleniti"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
@@ -538,10 +538,10 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := &operations.IgnoresPostApplicationJSON{
-        CallbackURL: sdk.String("https://rotating-identification.com"),
-        TestProp: sdk.String("architecto"),
+        CallbackURL: sdk.String("https://ironclad-bowler.com"),
+        TestProp: sdk.String("repudiandae"),
     }
-    testParam := "repudiandae"
+    testParam := "ullam"
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
@@ -646,13 +646,13 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    bigint := big.NewInt(352312)
-    date := types.MustDateFromString("2022-01-23")
-    decimal := 9988.48
+    bigint := big.NewInt(714242)
+    date := types.MustDateFromString("2022-01-01")
+    decimal := 8411.4
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
-        Num: 8411.4,
-        Str: "sed",
+        Num: 1494.48,
+        Str: "saepe",
     }
 
     ctx := context.Background()
@@ -718,37 +718,37 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Sanford50@hotmail.com"),
-            FormatEmail: sdk.String("Catalina_Casper86@yahoo.com"),
-            FormatURI: sdk.String("https://imaginary-mix.com"),
-            FormatUUID: sdk.String("601fb576-b0d5-4f0d-b0c5-fbb258705320"),
-            Hostname: sdk.String("deadly-shanty.info"),
-            Ipv4: sdk.String("57.223.88.241"),
-            Ipv6: sdk.String("e9b9:0c28:909b:3fe4:9a8d:9cbf:4863:3323"),
+            Email: sdk.String("Alia_Crooks@hotmail.com"),
+            FormatEmail: sdk.String("Bradford_Satterfield80@gmail.com"),
+            FormatURI: sdk.String("http://nimble-caution.info"),
+            FormatUUID: sdk.String("01fb576b-0d5f-40d3-8c5f-bb2587053202"),
+            Hostname: sdk.String("square-input.biz"),
+            Ipv4: sdk.String("223.88.241.237"),
+            Ipv6: sdk.String("9b90:c289:09b3:fe49:a8d9:cbf4:8633:323f"),
             SimpleObject: &shared.SimpleObject{
-                Any: "hic",
-                Bigint: big.NewInt(569574),
-                BigintStr: types.MustBigIntFromString("739551"),
+                Any: "excepturi",
+                Bigint: big.NewInt(739551),
+                BigintStr: types.MustBigIntFromString("452109"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(4521.09),
+                Decimal: sdk.Float64(4904.59),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+                IntEnum: shared.SimpleObjectIntEnumFirst,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
                 Str: "example",
                 StrOpt: sdk.String("optional example"),
             },
-            Unknown: sdk.String("amet"),
-            URI: sdk.String("https://expensive-bite.com"),
-            UUID: sdk.String("0674ebf6-9280-4d1b-a77a-89ebf737ae42"),
+            Unknown: sdk.String("dolorum"),
+            URI: sdk.String("http://both-background.com"),
+            UUID: sdk.String("674ebf69-280d-41ba-b7a8-9ebf737ae420"),
         },
         BigintParameter: big.NewInt(111111),
         BoolParameter: false,

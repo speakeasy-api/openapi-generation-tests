@@ -26,7 +26,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.global_path_parameter_get(global_path_param=229219)
+res = s.globals.global_path_parameter_get(global_path_param=758379)
 
 if res.res is not None:
     # handle response
@@ -61,7 +61,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.globals_query_parameter_get(global_query_param='optio')
+res = s.globals.globals_query_parameter_get(global_query_param='accusamus')
 
 if res.res is not None:
     # handle response

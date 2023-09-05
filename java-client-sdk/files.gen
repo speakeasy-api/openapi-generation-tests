@@ -1,11 +1,13 @@
 lib/src/main/java/org/openapis/openapi/SDKConfiguration.java
 lib/src/main/java/org/openapis/openapi/Auth.java
 lib/src/main/java/org/openapis/openapi/AuthNew.java
+lib/src/main/java/org/openapis/openapi/Documentation.java
 lib/src/main/java/org/openapis/openapi/Errors.java
 lib/src/main/java/org/openapis/openapi/First.java
 lib/src/main/java/org/openapis/openapi/Flattening.java
 lib/src/main/java/org/openapis/openapi/Generation.java
 lib/src/main/java/org/openapis/openapi/Globals.java
+lib/src/main/java/org/openapis/openapi/NestFirst.java
 lib/src/main/java/org/openapis/openapi/Nested.java
 lib/src/main/java/org/openapis/openapi/NestedFirst.java
 lib/src/main/java/org/openapis/openapi/NestedSecond.java
@@ -106,6 +108,8 @@ lib/src/main/java/org/openapis/openapi/models/operations/Oauth2AuthNewSecurity.j
 lib/src/main/java/org/openapis/openapi/models/operations/Oauth2AuthNewResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/OpenIdConnectAuthNewSecurity.java
 lib/src/main/java/org/openapis/openapi/models/operations/OpenIdConnectAuthNewResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/GetDocumentationPerLanguageRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/GetDocumentationPerLanguageResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ConnectionErrorGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/StatusGetErrorRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/StatusGetErrorResponse.java
@@ -175,6 +179,7 @@ lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGe
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetResArgs.java
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/NestFirstGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NestedGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NestedFirstGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NestedSecondGetResponse.java
@@ -486,11 +491,13 @@ lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetNotI
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
+docs/sdks/documentation/README.md
 docs/sdks/errors/README.md
 docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -553,6 +560,8 @@ docs/models/operations/Oauth2AuthNewSecurity.md
 docs/models/operations/Oauth2AuthNewResponse.md
 docs/models/operations/OpenIdConnectAuthNewSecurity.md
 docs/models/operations/OpenIdConnectAuthNewResponse.md
+docs/models/operations/GetDocumentationPerLanguageRequest.md
+docs/models/operations/GetDocumentationPerLanguageResponse.md
 docs/models/operations/ConnectionErrorGetResponse.md
 docs/models/operations/StatusGetErrorRequest.md
 docs/models/operations/StatusGetErrorResponse.md
@@ -622,6 +631,7 @@ docs/models/operations/GlobalsQueryParameterGetRequest.md
 docs/models/operations/GlobalsQueryParameterGetResArgs.md
 docs/models/operations/GlobalsQueryParameterGetRes.md
 docs/models/operations/GlobalsQueryParameterGetResponse.md
+docs/models/operations/NestFirstGetResponse.md
 docs/models/operations/NestedGetResponse.md
 docs/models/operations/NestedFirstGetResponse.md
 docs/models/operations/NestedSecondGetResponse.md

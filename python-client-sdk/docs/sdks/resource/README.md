@@ -26,8 +26,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='sint'.encode(),
-        file='nulla',
+        content='eum'.encode(),
+        file='vel',
     ),
 )
 
@@ -68,52 +68,41 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        4585.03,
-        3644.63,
-        4445.87,
+        3016.92,
+        3494.4,
+        704.1,
     ],
     array_of_string=[
-        'quis',
-        'sint',
-        'accusamus',
+        'autem',
+        'nobis',
+        'laboriosam',
+        'recusandae',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='hic',
-        ),
-        shared.ExampleResourceChocolates(
-            description='necessitatibus',
-        ),
-        shared.ExampleResourceChocolates(
-            description='asperiores',
-        ),
-        shared.ExampleResourceChocolates(
-            description='ex',
+            description='voluptatem',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-02-08T04:46:36.382Z'),
-    enum_number=shared.ExampleResourceEnumNumber.THREE,
-    enum_str=shared.ExampleResourceEnumStr.ONE,
-    id='caa3383c-2beb-4477-b73c-8d72f64d1db1',
+    created_at=dateutil.parser.isoparse('2022-02-08T01:44:39.255Z'),
+    enum_number=shared.ExampleResourceEnumNumber.ONE,
+    enum_str=shared.ExampleResourceEnumStr.TWO,
+    id='deab3fec-9578-4a64-9842-73a8418d1623',
     map_of_integer={
-        "quia": 782090,
-        "aliquam": 247045,
-        "illo": 36561,
-        "vel": 406922,
+        "cupiditate": 970732,
     },
     map_of_string={
-        "vero": 'excepturi',
+        "alias": 'omnis',
+        "eos": 'occaecati',
+        "iste": 'magni',
     },
-    name='Sheila Graham',
-    updated_at=dateutil.parser.isoparse('2022-03-25T02:57:12.529Z'),
-    vehicle=shared.ExampleCar(
-        created_at=dateutil.parser.isoparse('2021-02-19T05:31:39.522Z'),
-        make='alias',
-        model='nisi',
-        name='Jacob Pacocha',
-        type=shared.ExampleCarType.CAR,
-        updated_at=dateutil.parser.isoparse('2022-12-22T23:09:45.932Z'),
-        year=399.92,
+    name='Fannie Tillman',
+    updated_at=dateutil.parser.isoparse('2021-01-25T12:50:51.842Z'),
+    vehicle=shared.ExampleBoat(
+        created_at=dateutil.parser.isoparse('2021-05-25T00:50:01.296Z'),
+        length=3004.03,
+        name='Byron Johns',
+        type=shared.ExampleBoatType.BOAT,
+        updated_at=dateutil.parser.isoparse('2021-02-16T06:28:05.594Z'),
     ),
 )
 
@@ -152,7 +141,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='consequatur')
+res = s.resource.delete_resource(resource_id='modi')
 
 if res.status_code == 200:
     # handle response
@@ -187,7 +176,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='officia')
+res = s.resource.get_resource(resource_id='nam')
 
 if res.example_resource is not None:
     # handle response
@@ -222,7 +211,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='recusandae')
+res = s.resource.update_resource(resource_id='vero')
 
 if res.status_code == 200:
     # handle response

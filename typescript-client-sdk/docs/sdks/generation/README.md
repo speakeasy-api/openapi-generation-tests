@@ -109,8 +109,8 @@ const sdk = new SDK({
 });
 
 sdk.generation.deprecatedFieldInSchemaPost({
-  deprecatedField: "iure",
-  newField: "doloribus",
+  deprecatedField: "doloribus",
+  newField: "debitis",
 }).then((res: DeprecatedFieldInSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -186,7 +186,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "debitis";
+const deprecatedParameter: string = "eius";
 
 sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter).then((res: DeprecatedOperationNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -230,8 +230,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "eius";
-const newParameter: string = "maxime";
+const deprecatedParameter: string = "maxime";
+const newParameter: string = "deleniti";
 
 sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter).then((res: DeprecatedOperationWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -413,10 +413,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: IgnoresPostApplicationJSON = {
-  callbackUrl: "https://rotating-identification.com",
-  testProp: "architecto",
+  callbackUrl: "https://ironclad-bowler.com",
+  testProp: "repudiandae",
 };
-const testParam: string = "repudiandae";
+const testParam: string = "ullam";
 
 sdk.generation.ignoresPost(requestBody, testParam).then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
@@ -498,13 +498,13 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const bigint: number = 352312;
-const date: RFCDate = new RFCDate("2022-01-23");
-const decimal: number = 9988.48;
+const bigint: number = 714242;
+const date: RFCDate = new RFCDate("2022-01-01");
+const decimal: number = 8411.4;
 const obj: TypedParameterGenerationGetObj = {
   bool: false,
-  num: 8411.4,
-  str: "sed",
+  num: 1494.48,
+  str: "saepe",
 };
 
 sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj).then((res: TypedParameterGenerationGetResponse) => {
@@ -561,37 +561,37 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Sanford50@hotmail.com",
-    formatEmail: "Catalina_Casper86@yahoo.com",
-    formatUri: "https://imaginary-mix.com",
-    formatUuid: "601fb576-b0d5-4f0d-b0c5-fbb258705320",
-    hostname: "deadly-shanty.info",
-    ipv4: "57.223.88.241",
-    ipv6: "e9b9:0c28:909b:3fe4:9a8d:9cbf:4863:3323",
+    email: "Alia_Crooks@hotmail.com",
+    formatEmail: "Bradford_Satterfield80@gmail.com",
+    formatUri: "http://nimble-caution.info",
+    formatUuid: "01fb576b-0d5f-40d3-8c5f-bb2587053202",
+    hostname: "square-input.biz",
+    ipv4: "223.88.241.237",
+    ipv6: "9b90:c289:09b3:fe49:a8d9:cbf4:8633:323f",
     simpleObject: {
-      any: "hic",
-      bigint: 569574,
-      bigintStr: "cum",
+      any: "excepturi",
+      bigint: 739551,
+      bigintStr: "voluptate",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4521.09,
+      decimal: 4904.59,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Third,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "amet",
-    uri: "https://expensive-bite.com",
-    uuid: "0674ebf6-9280-4d1b-a77a-89ebf737ae42",
+    unknown: "dolorum",
+    uri: "http://both-background.com",
+    uuid: "674ebf69-280d-41ba-b7a8-9ebf737ae420",
   },
   bigintParameter: 111111,
   boolParameter: false,
