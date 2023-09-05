@@ -859,4 +859,34 @@ final class RequestBodiesTest extends TestCase
         $this->assertEquals(4, $response->readWriteObject->num3);
         $this->assertEquals(7, $response->readWriteObject->sum);
     }
+
+    public function testRequestBodyNullDictionary(): void
+    {
+        Helpers::recordTest('request-bodies-null-dictionary');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->requestBodies->requestBodyPostNullDictionary(null);
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertEmpty($response->requestBodyPostNullDictionary200ApplicationJSONObject->data);
+    }
+
+    public function testRequestBodyNullArray(): void
+    {
+        Helpers::recordTest('request-bodies-null-array');
+
+        $sdk = \OpenAPI\OpenAPI\SDK::builder()->build();
+
+        $this->assertInstanceOf(\OpenAPI\OpenAPI\SDK::class, $sdk);
+
+        $response = $sdk->requestBodies->requestBodyPostNullArray(null);
+
+        $this->assertNotNull($response);
+        $this->assertEquals(200, $response->statusCode);
+        $this->assertEmpty($response->requestBodyPostNullArray200ApplicationJSONObject->data);
+    }
 }

@@ -30,26 +30,27 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const simpleObject: SimpleObject = {
-  any: "nam",
-  bigint: 659669,
-  bigintStr: "blanditiis",
+  any: "aspernatur",
+  bigint: 102863,
+  bigintStr: "magnam",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 923.73,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
 };
-const str: string = "amet";
+const str: string = "provident";
 
 sdk.flattening.componentBodyAndParamConflict(simpleObject, str).then((res: ComponentBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
@@ -89,21 +90,22 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const paramStr: string = "deserunt";
+const paramStr: string = "quos";
 const simpleObject: SimpleObject = {
-  any: "nisi",
-  bigint: 423855,
-  bigintStr: "natus",
+  any: "sint",
+  bigint: 33625,
+  bigintStr: "mollitia",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 9689.62,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -147,8 +149,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const strPathParameter: string = "perferendis";
-const strQueryParameter: string = "nihil";
+const strPathParameter: string = "eum";
+const strQueryParameter: string = "dolor";
 
 sdk.flattening.conflictingParams(strPathParameter, strQueryParameter).then((res: ConflictingParamsResponse) => {
   if (res.statusCode == 200) {
@@ -191,9 +193,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: InlineBodyAndParamConflictRequestBody = {
-  str: "magnam",
+  str: "necessitatibus",
 };
-const str: string = "distinctio";
+const str: string = "odit";
 
 sdk.flattening.inlineBodyAndParamConflict(requestBody, str).then((res: InlineBodyAndParamConflictResponse) => {
   if (res.statusCode == 200) {
@@ -236,9 +238,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: InlineBodyAndParamNoConflictRequestBody = {
-  bodyStr: "id",
+  bodyStr: "nemo",
 };
-const paramStr: string = "labore";
+const paramStr: string = "quasi";
 
 sdk.flattening.inlineBodyAndParamNoConflict(requestBody, paramStr).then((res: InlineBodyAndParamNoConflictResponse) => {
   if (res.statusCode == 200) {

@@ -10,7 +10,9 @@ Endpoints for testing authentication.
 * [apiKeyAuthGlobal](#apikeyauthglobal)
 * [basicAuth](#basicauth)
 * [bearerAuth](#bearerauth)
+* [globalBearerAuth](#globalbearerauth)
 * [oauth2Auth](#oauth2auth)
+* [oauth2Override](#oauth2override)
 * [openIdConnectAuth](#openidconnectauth)
 
 ## apiKeyAuth
@@ -96,8 +98,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const passwd: string = "sequi";
-const user: string = "tenetur";
+const passwd: string = "tenetur";
+const user: string = "ipsam";
 const operationSecurity: BasicAuthSecurity = {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",
@@ -161,6 +163,41 @@ sdk.auth.bearerAuth(operationSecurity).then((res: BearerAuthResponse) => {
 **Promise<[operations.BearerAuthResponse](../../models/operations/bearerauthresponse.md)>**
 
 
+## globalBearerAuth
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { GlobalBearerAuthResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.auth.globalBearerAuth().then((res: GlobalBearerAuthResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md)>**
+
+
 ## oauth2Auth
 
 ### Example Usage
@@ -195,6 +232,42 @@ sdk.auth.oauth2Auth(operationSecurity).then((res: Oauth2AuthResponse) => {
 ### Response
 
 **Promise<[operations.Oauth2AuthResponse](../../models/operations/oauth2authresponse.md)>**
+
+
+## oauth2Override
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { Oauth2OverrideRequest, Oauth2OverrideResponse, Oauth2OverrideSecurity } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+const operationSecurity: Oauth2OverrideSecurity = {
+  oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+};
+
+sdk.auth.oauth2Override(operationSecurity).then((res: Oauth2OverrideResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `security`                                                                             | [operations.Oauth2OverrideSecurity](../../models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
+| `config`                                                                               | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                           | :heavy_minus_sign:                                                                     | Available config options for making requests.                                          |
+
+
+### Response
+
+**Promise<[operations.Oauth2OverrideResponse](../../models/operations/oauth2overrideresponse.md)>**
 
 
 ## openIdConnectAuth

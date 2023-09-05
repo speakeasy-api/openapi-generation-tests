@@ -18,16 +18,16 @@ import java.util.Map;
 import org.openapis.openapi.models.shared.DeepObject;
 import org.openapis.openapi.models.shared.Enum;
 import org.openapis.openapi.models.shared.SimpleObject;
-import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
-import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCase;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCaseInt32EnumVal;
 import org.openapis.openapi.models.shared.SimpleObjectCamelCaseIntEnumVal;
+import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
+import org.openapis.openapi.models.shared.SimpleObjectIntEnum;
 
 public class Helpers {
     public static SimpleObject createSimpleObject() {
         return new SimpleObject("any", true, LocalDate.parse("2020-01-01"),
-                OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1, Long.valueOf(1), 1,
+                OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, Long.valueOf(1), 1,
                 SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1, "test") {
             {
                 boolOpt = true;
@@ -40,8 +40,8 @@ public class Helpers {
 
     public static SimpleObjectCamelCase createSimpleObjectCamelCase() {
         return new SimpleObjectCamelCase("any", true, OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"),
-                LocalDate.parse("2020-01-01"), Enum.ONE, 1.1, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1,
-                 SimpleObjectCamelCaseIntEnumVal.Second, Long.valueOf(1), 1.1, "test") {
+                LocalDate.parse("2020-01-01"), Enum.ONE, 1.1f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1,
+                SimpleObjectCamelCaseIntEnumVal.Second, Long.valueOf(1), 1.1, "test") {
             {
                 boolOptVal = true;
                 intOptNullVal = null;
@@ -112,9 +112,9 @@ public class Helpers {
         assertEquals("2020-01-01", rAny.get("date"));
         assertEquals("2020-01-01T00:00:00.000000001Z", rAny.get("dateTime"));
         assertEquals(any.enum_.value, rAny.get("enum"));
-        assertEquals(any.float32, rAny.get("float32"));
+        assertEquals(any.float32, ((Double) rAny.get("float32")).floatValue());
         assertEquals(any.int32, rAny.get("int32"));
-        assertEquals(1, rAny.get("int"));
+        assertEquals(any.int_, (long) ((Integer) rAny.get("int")).intValue());
         assertEquals(any.num, rAny.get("num"));
         assertEquals(any.str, rAny.get("str"));
         assertEquals(any.strOpt, rAny.get("strOpt"));

@@ -32,7 +32,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    globalPathParam := 311796
+    globalPathParam := 229219
 
     ctx := context.Background()
     res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
@@ -82,7 +82,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    globalQueryParam := "accusamus"
+    globalQueryParam := "optio"
 
     ctx := context.Background()
     res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)

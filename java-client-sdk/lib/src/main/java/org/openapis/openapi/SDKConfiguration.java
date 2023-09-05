@@ -35,8 +35,8 @@ class SDKConfiguration {
 	}};
 	public String language = "java";
 	public String openapiDocVersion = "0.1.0";
-	public String sdkVersion = "1.31.2";
-	public String genVersion = "2.93.0";
+	public String sdkVersion = "1.31.3";
+	public String genVersion = "2.96.3";
 	public Map<String, Map<String, Map<String, Object>>> globals = new HashMap<String, Map<String, Map<String, Object>>>(){{
 		put("parameters", new HashMap<String, Map<String, Object>>());
 	}};

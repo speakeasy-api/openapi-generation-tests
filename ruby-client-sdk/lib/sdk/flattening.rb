@@ -21,6 +21,7 @@ module OpenApiSDK
     def component_body_and_param_conflict(simple_object, str_)
 
       request = Operations::ComponentBodyAndParamConflictRequest.new(
+        
         simple_object: simple_object,
         str_: str_
       )
@@ -66,6 +67,7 @@ module OpenApiSDK
     def component_body_and_param_no_conflict(param_str, simple_object)
 
       request = Operations::ComponentBodyAndParamNoConflictRequest.new(
+        
         param_str: param_str,
         simple_object: simple_object
       )
@@ -111,6 +113,7 @@ module OpenApiSDK
     def conflicting_params(str_path_parameter, str_query_parameter)
 
       request = Operations::ConflictingParamsRequest.new(
+        
         str_path_parameter: str_path_parameter,
         str_query_parameter: str_query_parameter
       )
@@ -152,6 +155,7 @@ module OpenApiSDK
     def inline_body_and_param_conflict(request_body, str_)
 
       request = Operations::InlineBodyAndParamConflictRequest.new(
+        
         request_body: request_body,
         str_: str_
       )
@@ -197,6 +201,7 @@ module OpenApiSDK
     def inline_body_and_param_no_conflict(request_body, param_str)
 
       request = Operations::InlineBodyAndParamNoConflictRequest.new(
+        
         request_body: request_body,
         param_str: param_str
       )

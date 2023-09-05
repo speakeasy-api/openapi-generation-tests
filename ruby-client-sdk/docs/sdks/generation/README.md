@@ -84,8 +84,8 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::DeprecatedFieldInObject.new(
   request=Shared::DeprecatedFieldInObject.new(
-    deprecated_field="ipsa",
-    new_field="iure",
+    deprecated_field="dolorum",
+    new_field="deleniti",
   ),
 )
     
@@ -149,7 +149,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::DeprecatedOperationNoCommentsGetRequest.new(
   query_params=Operations::DeprecatedOperationNoCommentsGetRequest.new(
-    deprecated_parameter="odio",
+    deprecated_parameter="omnis",
   ),
 )
     
@@ -190,8 +190,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::DeprecatedOperationWithCommentsGetRequest.new(
   query_params=Operations::DeprecatedOperationWithCommentsGetRequest.new(
-    deprecated_parameter="quaerat",
-    new_parameter="accusamus",
+    deprecated_parameter="necessitatibus",
+    new_parameter="distinctio",
   ),
 )
     
@@ -342,14 +342,14 @@ s = OpenApiSDK::SDK.new
 req = Operations::IgnoresPostRequest.new(
   query_params=Operations::IgnoresPostRequest.new(
     request_body=Operations::IgnoresPostApplicationJSON.new(
-      callback_url="https://witty-gastronomy.name",
-      test_prop="eos",
+      callback_url="https://knobby-crack.info",
+      test_prop="id",
     ),
-    test_param="atque",
+    test_param="saepe",
   ),
   request_body=Operations::IgnoresPostApplicationJSON.new(
-    callback_url="http://thoughtful-barracks.net",
-    test_prop="dolorum",
+    callback_url="http://concrete-alien.biz",
+    test_prop="optio",
   ),
 )
     
@@ -426,12 +426,13 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::TypedParameterGenerationGetRequest.new(
   query_params=Operations::TypedParameterGenerationGetRequest.new(
-    bigint=478596,
-    date=Date.parse("2022-04-28"),
+    bigint=881586,
+    date=Date.parse("2022-02-04"),
+    decimal=3834.64,
     obj=Operations::TypedParameterGenerationGetObj.new(
       bool=false,
-      num=5365.79,
-      str_="omnis",
+      num=6457.85,
+      str_="provident",
     ),
   ),
 )
@@ -450,6 +451,7 @@ end
 | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
 | `bigint`                                                                                                           | *T.nilable(Integer)*                                                                                               | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `date`                                                                                                             | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html)                                       | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| `decimal`                                                                                                          | *T.nilable(Float)*                                                                                                 | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 | `obj`                                                                                                              | [T.nilable(Operations::TypedParameterGenerationGetObj)](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
 
 
@@ -481,26 +483,27 @@ req = Operations::UsageExamplePostRequest.new(
   ),
   query_params=Operations::UsageExamplePostRequest.new(
     request_body=Operations::UsageExamplePostRequestBody.new(
-      email="Michaela.Zboncak@hotmail.com",
-      format_email="Makenzie13@yahoo.com",
-      format_uri="http://elementary-round.org",
-      format_uuid="5e6a95d8-a0d4-446c-a2af-7a73cf3be453",
-      hostname="well-lit-literature.info",
-      ipv4="6.182.53.39",
-      ipv6="6b5a:7342:9cdb:1a84:22bb:679d:2322:715b",
+      email="Rickie.Leannon@gmail.com",
+      format_email="Elvis_Goodwin@hotmail.com",
+      format_uri="https://dense-porcupine.org",
+      format_uuid="7a73cf3b-e453-4f87-8b32-6b5a73429cdb",
+      hostname="circular-polarisation.name",
+      ipv4="70.33.44.183",
+      ipv6="b679:d232:2715:bf0c:bb1e:31b8:b90f:3443",
       simple_object=Shared::SimpleObject.new(
-        any="hic",
-        bigint=30452,
-        bigint_str="cumque",
+        any="dolorum",
+        bigint=100294,
+        bigint_str="quae",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+        decimal=164.29,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
         int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
@@ -508,13 +511,15 @@ req = Operations::UsageExamplePostRequest.new(
         str_="example",
         str_opt="optional example",
       ),
-      unknown="et",
-      uri="https://each-biopsy.net",
-      uuid="8b90f344-3a11-408e-8adc-f4b921879fce",
+      unknown="consequatur",
+      uri="https://tall-self-control.org",
+      uuid="4b921879-fce9-453f-b3ef-7fbc7abd74dd",
     ),
+    bigint_parameter=111111,
     bool_parameter=false,
     date_parameter=Date.parse("2020-01-01"),
     date_time_parameter=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    decimal_parameter=1.1,
     double_parameter=2.2222222,
     enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE3,
     falsey_number_parameter=0,
@@ -523,29 +528,30 @@ req = Operations::UsageExamplePostRequest.new(
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
-    str_parameter="example 2",
+    str_parameter="example 1",
   ),
   request_body=Operations::UsageExamplePostRequestBody.new(
-    email="Cyrus.Willms@yahoo.com",
-    format_email="Ursula_Kulas79@hotmail.com",
-    format_uri="http://pleasing-pupil.org",
-    format_uuid="74dd39c0-f5d2-4cff-bc70-a45626d43681",
-    hostname="elaborate-wholesaler.com",
-    ipv4="103.220.145.249",
-    ipv6="5fce:6c55:6146:c3e2:50fb:008c:42e1:41aa",
+    email="Oma.Ankunding86@yahoo.com",
+    format_email="Osborne.Wunsch75@gmail.com",
+    format_uri="http://academic-path.biz",
+    format_uuid="5626d436-813f-416d-9f5f-ce6c556146c3",
+    hostname="venerated-carp.biz",
+    ipv4="13.243.185.3",
+    ipv6="08c4:2e14:1aac:366c:8dd6:b144:2907:4747",
     simple_object=Shared::SimpleObject.new(
-      any="placeat",
-      bigint=245367,
-      bigint_str="eum",
+      any="esse",
+      bigint=524593,
+      bigint_str="fuga",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      decimal=4420.15,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
       int_enum=Shared::SimpleObjectIntEnum::THIRD,
       int_opt_null=999999,
       num=1.1,
@@ -553,9 +559,9 @@ req = Operations::UsageExamplePostRequest.new(
       str_="example",
       str_opt="optional example",
     ),
-    unknown="quas",
-    uri="https://tiny-gauntlet.net",
-    uuid="14429074-7477-48a7-bd46-6d28c10ab3cd",
+    unknown="ut",
+    uri="http://heavy-sophomore.biz",
+    uuid="8c10ab3c-dca4-4251-904e-523c7e0bc717",
   ),
 )
     

@@ -47,6 +47,7 @@ module OpenApiSDK
     def status_get_error(status_code)
 
       request = Operations::StatusGetErrorRequest.new(
+        
         status_code: status_code
       )
       url, params = @sdk_configuration.get_server_details
@@ -81,6 +82,7 @@ module OpenApiSDK
     def status_get_x_speakeasy_errors(status_code, server_url = nil)
 
       request = Operations::StatusGetXSpeakeasyErrorsRequest.new(
+        
         status_code: status_code
       )
       base_url = Utils.template_url(Operations::STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS[0], {

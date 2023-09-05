@@ -24,6 +24,9 @@ export class TypedParameterGenerationGetRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=date" })
     date?: RFCDate;
 
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=decimal" })
+    decimal?: number;
+
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=obj" })
     obj?: TypedParameterGenerationGetObj;
 }

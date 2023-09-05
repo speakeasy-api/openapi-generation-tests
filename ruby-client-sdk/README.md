@@ -58,25 +58,28 @@ req = Operations::UsageExamplePostRequest.new(
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+        decimal=6667.67,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+        int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
         str_="example",
         str_opt="optional example",
       ),
-      unknown="laborum",
-      uri="http://doting-footage.com",
-      uuid="c5955907-aff1-4a3a-afa9-467739251aa5",
+      unknown="dolores",
+      uri="http://growing-cappelletti.net",
+      uuid="5955907a-ff1a-43a2-ba94-67739251aa52",
     ),
+    bigint_parameter=111111,
     bool_parameter=false,
     date_parameter=Date.parse("2020-01-01"),
     date_time_parameter=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    decimal_parameter=1.1,
     double_parameter=2.2222222,
     enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE3,
     falsey_number_parameter=0,
@@ -85,39 +88,40 @@ req = Operations::UsageExamplePostRequest.new(
     int64_parameter=111111,
     int_parameter=1,
     opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
-    str_parameter="example 1",
+    str_parameter="example 3",
   ),
   request_body=Operations::UsageExamplePostRequestBody.new(
-    email="Cleveland_Wiegand@hotmail.com",
-    format_email="Adrain_Boyer@hotmail.com",
-    format_uri="https://bubbly-waterbed.org",
-    format_uuid="e78f097b-0074-4f15-871b-5e6e13b99d48",
-    hostname="meaty-tortoise.com",
-    ipv4="235.147.21.237",
-    ipv6="450a:d2ab:d442:6980:2d50:2a94:bb4f:63c9",
+    email="Vada_Hills@gmail.com",
+    format_email="Avery_Mueller9@gmail.com",
+    format_uri="https://witty-swim.info",
+    format_uuid="8f097b00-74f1-4547-9b5e-6e13b99d488e",
+    hostname="bronze-trafficker.name",
+    ipv4="21.237.71.81",
+    ipv6="0ad2:abd4:4269:802d:502a:94bb:4f63:c969",
     simple_object=Shared::SimpleObject.new(
-      any="aliquid",
-      bigint=592042,
-      bigint_str="necessitatibus",
+      any="necessitatibus",
+      bigint=572252,
+      bigint_str="officia",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      decimal=2230.81,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
     ),
-    unknown="dolor",
-    uri="https://weepy-pork.info",
-    uuid="7dfb14cd-66ae-4395-afb9-ba88f3a66997",
+    unknown="dolorum",
+    uri="http://irritating-standardisation.org",
+    uuid="b14cd66a-e395-4efb-9ba8-8f3a66997074",
   ),
 )
     
@@ -144,12 +148,15 @@ end
 * [api_key_auth_global](docs/sdks/auth/README.md#api_key_auth_global)
 * [basic_auth](docs/sdks/auth/README.md#basic_auth)
 * [bearer_auth](docs/sdks/auth/README.md#bearer_auth)
+* [global_bearer_auth](docs/sdks/auth/README.md#global_bearer_auth)
 * [oauth2_auth](docs/sdks/auth/README.md#oauth2_auth)
+* [oauth2_override](docs/sdks/auth/README.md#oauth2_override)
 * [open_id_connect_auth](docs/sdks/auth/README.md#open_id_connect_auth)
 
 ### [auth_new](docs/sdks/authnew/README.md)
 
 * [api_key_auth_global_new](docs/sdks/authnew/README.md#api_key_auth_global_new)
+* [auth_global](docs/sdks/authnew/README.md#auth_global)
 * [basic_auth_new](docs/sdks/authnew/README.md#basic_auth_new)
 * [multiple_mixed_options_auth](docs/sdks/authnew/README.md#multiple_mixed_options_auth)
 * [multiple_mixed_scheme_auth](docs/sdks/authnew/README.md#multiple_mixed_scheme_auth)
@@ -285,6 +292,8 @@ end
 * [request_body_post_multiple_content_types_split_form](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_form)
 * [request_body_post_multiple_content_types_split_json](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_json)
 * [request_body_post_multiple_content_types_split_multipart](docs/sdks/requestbodies/README.md#request_body_post_multiple_content_types_split_multipart)
+* [request_body_post_null_array](docs/sdks/requestbodies/README.md#request_body_post_null_array)
+* [request_body_post_null_dictionary](docs/sdks/requestbodies/README.md#request_body_post_null_dictionary)
 * [request_body_put_bytes](docs/sdks/requestbodies/README.md#request_body_put_bytes)
 * [request_body_put_bytes_with_params](docs/sdks/requestbodies/README.md#request_body_put_bytes_with_params)
 * [request_body_put_multipart_deep](docs/sdks/requestbodies/README.md#request_body_put_multipart_deep)

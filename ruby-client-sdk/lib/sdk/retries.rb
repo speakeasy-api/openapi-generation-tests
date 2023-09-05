@@ -21,6 +21,7 @@ module OpenApiSDK
     def retries_get(request_id, num_retries = nil, server_url = nil)
 
       request = Operations::RetriesGetRequest.new(
+        
         request_id: request_id,
         num_retries: num_retries
       )

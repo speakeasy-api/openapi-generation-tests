@@ -13,8 +13,10 @@ import {
   MultipleOptionsWithSimpleSchemesAuthResponse,
   MultipleSimpleSchemeAuthResponse,
   Oauth2AuthNewResponse,
+  Oauth2OverrideSecurity,
   BearerAuthResponse,
 } from "../src/sdk/models/operations";
+import * as shared from "../src/sdk/models/shared";
 import { expect, test } from "@jest/globals";
 
 import { SDK } from "../src/sdk";
@@ -26,16 +28,16 @@ test("Test Basic Auth", async () => {
   const sdk = new SDK({});
 
   const res: BasicAuthNewResponse = await sdk.authNew.basicAuthNew(
-    {
-      basicAuth: {
+      {
+        basicAuth: {
+          username: "testUser",
+          password: "testPass",
+        },
+      },
+      {
         username: "testUser",
         password: "testPass",
-      },
-    },
-    {
-      username: "testUser",
-      password: "testPass",
-    }
+      }
   );
 
   expect(res.statusCode).toBeDefined();
@@ -52,14 +54,14 @@ test("Test API Key Auth Global", async () => {
   });
 
   const res: ApiKeyAuthGlobalNewResponse =
-    await sdk.authNew.apiKeyAuthGlobalNew({
-      headerAuth: [
-        {
-          headerName: "x-api-key",
-          expectedValue: "test_api_key",
-        },
-      ],
-    });
+      await sdk.authNew.apiKeyAuthGlobalNew({
+        headerAuth: [
+          {
+            headerName: "x-api-key",
+            expectedValue: "test_api_key",
+          },
+        ],
+      });
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -116,17 +118,17 @@ test("Test Oauth2 Auth", async () => {
   const sdk = new SDK({});
 
   const res: Oauth2AuthNewResponse = await sdk.authNew.oauth2AuthNew(
-    {
-      headerAuth: [
-        {
-          headerName: "Authorization",
-          expectedValue: "Bearer testToken",
-        },
-      ],
-    },
-    {
-      oauth2: "Bearer testToken",
-    }
+      {
+        headerAuth: [
+          {
+            headerName: "Authorization",
+            expectedValue: "Bearer testToken",
+          },
+        ],
+      },
+      {
+        oauth2: "Bearer testToken",
+      }
   );
 
   expect(res.statusCode).toBeDefined();
@@ -139,19 +141,19 @@ test("Test OpenID Connect Auth", async () => {
   const sdk = new SDK({});
 
   const res: ApiKeyAuthGlobalNewResponse =
-    await sdk.authNew.openIdConnectAuthNew(
-      {
-        headerAuth: [
+      await sdk.authNew.openIdConnectAuthNew(
           {
-            headerName: "Authorization",
-            expectedValue: "Bearer testToken",
+            headerAuth: [
+              {
+                headerName: "Authorization",
+                expectedValue: "Bearer testToken",
+              },
+            ],
           },
-        ],
-      },
-      {
-        openIdConnect: "Bearer testToken",
-      }
-    );
+          {
+            openIdConnect: "Bearer testToken",
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -163,24 +165,24 @@ test("Test Multiple Simple Scheme Auth", async () => {
   const sdk = new SDK({});
 
   const res: MultipleSimpleSchemeAuthResponse =
-    await sdk.authNew.multipleSimpleSchemeAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleSimpleSchemeAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+              {
+                headerName: "Authorization",
+                expectedValue: "Bearer testToken",
+              },
+            ],
           },
           {
-            headerName: "Authorization",
-            expectedValue: "Bearer testToken",
-          },
-        ],
-      },
-      {
-        apiKeyAuthNew: "test_api_key",
-        oauth2: "Bearer testToken",
-      }
-    );
+            apiKeyAuthNew: "test_api_key",
+            oauth2: "Bearer testToken",
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -192,27 +194,27 @@ test("Test Multiple Mixed Scheme Auth", async () => {
   const sdk = new SDK({});
 
   const res: MultipleMixedSchemeAuthResponse =
-    await sdk.authNew.multipleMixedSchemeAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleMixedSchemeAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+            ],
+            basicAuth: {
+              username: "testUser",
+              password: "testPass",
+            },
           },
-        ],
-        basicAuth: {
-          username: "testUser",
-          password: "testPass",
-        },
-      },
-      {
-        apiKeyAuthNew: "test_api_key",
-        basicAuth: {
-          username: "testUser",
-          password: "testPass",
-        },
-      }
-    );
+          {
+            apiKeyAuthNew: "test_api_key",
+            basicAuth: {
+              username: "testUser",
+              password: "testPass",
+            },
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -224,19 +226,19 @@ test("Test Multiple Simple Options Auth - First Option", async () => {
   const sdk = new SDK({});
 
   const res: MultipleSimpleOptionsAuthResponse =
-    await sdk.authNew.multipleSimpleOptionsAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleSimpleOptionsAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+            ],
           },
-        ],
-      },
-      {
-        apiKeyAuthNew: "test_api_key",
-      }
-    );
+          {
+            apiKeyAuthNew: "test_api_key",
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -248,19 +250,19 @@ test("Test Multiple Simple Options Auth - Second Option", async () => {
   const sdk = new SDK({});
 
   const res: MultipleSimpleOptionsAuthResponse =
-    await sdk.authNew.multipleSimpleOptionsAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleSimpleOptionsAuth(
           {
-            headerName: "Authorization",
-            expectedValue: "Bearer testToken",
+            headerAuth: [
+              {
+                headerName: "Authorization",
+                expectedValue: "Bearer testToken",
+              },
+            ],
           },
-        ],
-      },
-      {
-        oauth2: "Bearer testToken",
-      }
-    );
+          {
+            oauth2: "Bearer testToken",
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -272,19 +274,19 @@ test("Test Multiple Mixed Options Auth - First Option", async () => {
   const sdk = new SDK({});
 
   const res: MultipleMixedOptionsAuthResponse =
-    await sdk.authNew.multipleMixedOptionsAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleMixedOptionsAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+            ],
           },
-        ],
-      },
-      {
-        apiKeyAuthNew: "test_api_key",
-      }
-    );
+          {
+            apiKeyAuthNew: "test_api_key",
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -296,20 +298,20 @@ test("Test Multiple Mixed Options Auth - Second Option", async () => {
   const sdk = new SDK({});
 
   const res: MultipleMixedOptionsAuthResponse =
-    await sdk.authNew.multipleMixedOptionsAuth(
-      {
-        basicAuth: {
-          username: "testUser",
-          password: "testPass",
-        },
-      },
-      {
-        basicAuth: {
-          username: "testUser",
-          password: "testPass",
-        },
-      }
-    );
+      await sdk.authNew.multipleMixedOptionsAuth(
+          {
+            basicAuth: {
+              username: "testUser",
+              password: "testPass",
+            },
+          },
+          {
+            basicAuth: {
+              username: "testUser",
+              password: "testPass",
+            },
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -321,26 +323,26 @@ test("Test Multiple Options with Simple Schemes Auth - First Option", async () =
   const sdk = new SDK({});
 
   const res: MultipleOptionsWithSimpleSchemesAuthResponse =
-    await sdk.authNew.multipleOptionsWithSimpleSchemesAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleOptionsWithSimpleSchemesAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+              {
+                headerName: "Authorization",
+                expectedValue: "Bearer testToken",
+              },
+            ],
           },
           {
-            headerName: "Authorization",
-            expectedValue: "Bearer testToken",
-          },
-        ],
-      },
-      {
-        option1: {
-          apiKeyAuthNew: "test_api_key",
-          oauth2: "Bearer testToken",
-        },
-      }
-    );
+            option1: {
+              apiKeyAuthNew: "test_api_key",
+              oauth2: "Bearer testToken",
+            },
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -352,26 +354,26 @@ test("Test Multiple Options with Simple Schemes Auth - Second Option", async () 
   const sdk = new SDK({});
 
   const res: MultipleOptionsWithSimpleSchemesAuthResponse =
-    await sdk.authNew.multipleOptionsWithSimpleSchemesAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleOptionsWithSimpleSchemesAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+              {
+                headerName: "Authorization",
+                expectedValue: "Bearer testToken",
+              },
+            ],
           },
           {
-            headerName: "Authorization",
-            expectedValue: "Bearer testToken",
-          },
-        ],
-      },
-      {
-        option2: {
-          apiKeyAuthNew: "test_api_key",
-          openIdConnect: "Bearer testToken",
-        },
-      }
-    );
+            option2: {
+              apiKeyAuthNew: "test_api_key",
+              openIdConnect: "Bearer testToken",
+            },
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -383,26 +385,26 @@ test("Test Multiple Options with Mixed Schemes Auth - First Option", async () =>
   const sdk = new SDK({});
 
   const res: MultipleOptionsWithMixedSchemesAuthResponse =
-    await sdk.authNew.multipleOptionsWithMixedSchemesAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleOptionsWithMixedSchemesAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+              {
+                headerName: "Authorization",
+                expectedValue: "Bearer testToken",
+              },
+            ],
           },
           {
-            headerName: "Authorization",
-            expectedValue: "Bearer testToken",
-          },
-        ],
-      },
-      {
-        option1: {
-          apiKeyAuthNew: "test_api_key",
-          oauth2: "Bearer testToken",
-        },
-      }
-    );
+            option1: {
+              apiKeyAuthNew: "test_api_key",
+              oauth2: "Bearer testToken",
+            },
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
@@ -414,30 +416,92 @@ test("Test Multiple Options with Mixed Schemes Auth - Second Option", async () =
   const sdk = new SDK({});
 
   const res: MultipleOptionsWithMixedSchemesAuthResponse =
-    await sdk.authNew.multipleOptionsWithMixedSchemesAuth(
-      {
-        headerAuth: [
+      await sdk.authNew.multipleOptionsWithMixedSchemesAuth(
           {
-            headerName: "x-api-key",
-            expectedValue: "test_api_key",
+            headerAuth: [
+              {
+                headerName: "x-api-key",
+                expectedValue: "test_api_key",
+              },
+            ],
+            basicAuth: {
+              username: "testUser",
+              password: "testPass",
+            },
           },
-        ],
-        basicAuth: {
-          username: "testUser",
-          password: "testPass",
-        },
-      },
-      {
-        option2: {
-          apiKeyAuthNew: "test_api_key",
-          basicAuth: {
-            username: "testUser",
-            password: "testPass",
-          },
-        },
-      }
-    );
+          {
+            option2: {
+              apiKeyAuthNew: "test_api_key",
+              basicAuth: {
+                username: "testUser",
+                password: "testPass",
+              },
+            },
+          }
+      );
 
   expect(res.statusCode).toBeDefined();
   expect(res.statusCode).toBe(200);
+});
+
+test("function callbacks for oAuth support are invoked for global security", async () => {
+  recordTest("auth-function-callbacks-oauth-global-security");
+
+  const sdk = new SDK({
+    security: async (): Promise<shared.Security> => ({
+      oauth2: "Bearer global",
+    }),
+  });
+
+  const res =
+      await sdk.auth.globalBearerAuth();
+
+  expect(res.statusCode).toBeDefined();
+  expect(res.token?.token).toBe("global");
+})
+
+test("function callbacks for oAuth support are invoked, with operation level security overrides ", async () => {
+  recordTest("auth-function-callbacks-oauth-global-security-with-local-override");
+
+  const sdk = new SDK({
+    security: async (): Promise<shared.Security> => ({
+      oauth2: "Bearer global",
+    }),
+  });
+
+  const res =
+    await sdk.auth.oauth2Auth({
+      oauth2: "Bearer local"
+    });
+
+  expect(res.statusCode).toBeDefined();
+  expect(res.token?.token).toBe("local");
+});
+
+test("function callbacks for oAuth support are invoked, with param overrides", async () => {
+  recordTest("auth-function-callbacks-oauth-global-security-with-param-override");
+
+  const sdk = new SDK({
+    security: async (): Promise<shared.Security> => ({
+      oauth2: "Bearer global",
+    }),
+  });
+
+  let res: ApiKeyAuthResponse = await sdk.auth.oauth2Override(new Oauth2OverrideSecurity({
+    oauth2: "Bearer overrideHeaders",
+  }));
+
+  expect(res.statusCode).toBeDefined();
+  expect(res.statusCode).toBe(200); // asserts local is used
+  expect(res.token?.token).toBe("overrideHeaders");
+
+  res = await sdk.auth.oauth2Override(new Oauth2OverrideSecurity({
+    oauth2: "Bearer overrideHeaders",
+  }), {
+    headers: {"Authorization": "Bearer overrideAxios"},
+  });
+
+  expect(res.statusCode).toBeDefined();
+  expect(res.statusCode).toBe(200); // asserts local is used
+  expect(res.token?.token).toBe("overrideAxios");
 });

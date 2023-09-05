@@ -76,7 +76,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(9202.72d, "consequatur");
+            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(9391.61d, "reprehenderit");
 
             if (res.statusCode == 200) {
                 // handle response

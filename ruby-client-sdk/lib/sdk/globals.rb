@@ -21,6 +21,7 @@ module OpenApiSDK
     def global_path_parameter_get(global_path_param = nil)
 
       request = Operations::GlobalPathParameterGetRequest.new(
+        
         global_path_param: global_path_param
       )
       url, params = @sdk_configuration.get_server_details
@@ -59,6 +60,7 @@ module OpenApiSDK
     def globals_query_parameter_get(global_query_param = nil)
 
       request = Operations::GlobalsQueryParameterGetRequest.new(
+        
         global_query_param: global_query_param
       )
       url, params = @sdk_configuration.get_server_details

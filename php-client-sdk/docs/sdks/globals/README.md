@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalPathParameterGet(704415);
+    $response = $sdk->globals->globalPathParameterGet(267262);
 
     if ($response->res !== null) {
         // handle response
@@ -71,7 +71,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalsQueryParameterGet('perspiciatis');
+    $response = $sdk->globals->globalsQueryParameterGet('iste');
 
     if ($response->res !== null) {
         // handle response

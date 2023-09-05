@@ -61,7 +61,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const statusCode: number = 692532;
+const statusCode: number = 428769;
 
 sdk.errors.statusGetError(statusCode).then((res: StatusGetErrorResponse) => {
   if (res.statusCode == 200) {
@@ -98,7 +98,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const statusCode: number = 588465;
+const statusCode: number = 878453;
 
 sdk.errors.statusGetXSpeakeasyErrors(statusCode).then((res: StatusGetXSpeakeasyErrorsResponse) => {
   if (res.statusCode == 200) {

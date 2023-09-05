@@ -79,23 +79,26 @@ try {
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->requestBody->simpleObject->decimal = 6667.67;
     $request->requestBody->simpleObject->enum = Enum::Two;
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Second;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Third;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'laborum';
-    $request->requestBody->uri = 'http://doting-footage.com';
-    $request->requestBody->uuid = 'c5955907-aff1-4a3a-afa9-467739251aa5';
+    $request->requestBody->unknown = 'dolores';
+    $request->requestBody->uri = 'http://growing-cappelletti.net';
+    $request->requestBody->uuid = '5955907a-ff1a-43a2-ba94-67739251aa52';
+    $request->bigintParameter = 111111;
     $request->boolParameter = false;
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->decimalParameter = 1.1;
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
     $request->falseyNumberParameter = 0;
@@ -104,7 +107,7 @@ try {
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example 1';
+    $request->strParameter = 'example 3';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';
@@ -135,12 +138,15 @@ try {
 * [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
 * [basicAuth](docs/sdks/auth/README.md#basicauth)
 * [bearerAuth](docs/sdks/auth/README.md#bearerauth)
+* [globalBearerAuth](docs/sdks/auth/README.md#globalbearerauth)
 * [oauth2Auth](docs/sdks/auth/README.md#oauth2auth)
+* [oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
 ### [authNew](docs/sdks/authnew/README.md)
 
 * [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
+* [authGlobal](docs/sdks/authnew/README.md#authglobal)
 * [basicAuthNew](docs/sdks/authnew/README.md#basicauthnew)
 * [multipleMixedOptionsAuth](docs/sdks/authnew/README.md#multiplemixedoptionsauth)
 * [multipleMixedSchemeAuth](docs/sdks/authnew/README.md#multiplemixedschemeauth)
@@ -276,6 +282,8 @@ try {
 * [requestBodyPostMultipleContentTypesSplitForm](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitform)
 * [requestBodyPostMultipleContentTypesSplitJson](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitjson)
 * [requestBodyPostMultipleContentTypesSplitMultipart](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitmultipart)
+* [requestBodyPostNullArray](docs/sdks/requestbodies/README.md#requestbodypostnullarray)
+* [requestBodyPostNullDictionary](docs/sdks/requestbodies/README.md#requestbodypostnulldictionary)
 * [requestBodyPutBytes](docs/sdks/requestbodies/README.md#requestbodyputbytes)
 * [requestBodyPutBytesWithParams](docs/sdks/requestbodies/README.md#requestbodyputbyteswithparams)
 * [requestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)

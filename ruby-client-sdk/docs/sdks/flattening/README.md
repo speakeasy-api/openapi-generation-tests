@@ -26,18 +26,19 @@ s = OpenApiSDK::SDK.new
 req = Operations::ComponentBodyAndParamConflictRequest.new(
   query_params=Operations::ComponentBodyAndParamConflictRequest.new(
     simple_object=Shared::SimpleObject.new(
-      any="rerum",
-      bigint=237893,
-      bigint_str="asperiores",
+      any="quos",
+      bigint=398221,
+      bigint_str="dolorem",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      decimal=2098.43,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
       int_enum=Shared::SimpleObjectIntEnum::FIRST,
       int_opt_null=999999,
       num=1.1,
@@ -45,16 +46,17 @@ req = Operations::ComponentBodyAndParamConflictRequest.new(
       str_="example",
       str_opt="optional example",
     ),
-    str_="iste",
+    str_="ipsum",
   ),
   simple_object=Shared::SimpleObject.new(
-    any="dolorum",
-    bigint=535633,
-    bigint_str="pariatur",
+    any="hic",
+    bigint=569574,
+    bigint_str="cum",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    decimal=4521.09,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
@@ -103,21 +105,22 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ComponentBodyAndParamNoConflictRequest.new(
   query_params=Operations::ComponentBodyAndParamNoConflictRequest.new(
-    param_str="libero",
+    param_str="amet",
     simple_object=Shared::SimpleObject.new(
-      any="delectus",
-      bigint=311945,
-      bigint_str="quos",
+      any="dolorum",
+      bigint=254356,
+      bigint_str="veritatis",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      decimal=580.29,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -126,19 +129,20 @@ req = Operations::ComponentBodyAndParamNoConflictRequest.new(
     ),
   ),
   simple_object=Shared::SimpleObject.new(
-    any="dolorem",
-    bigint=222443,
-    bigint_str="qui",
+    any="odio",
+    bigint=311796,
+    bigint_str="accusamus",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    decimal=6963.44,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
+    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::SimpleObjectIntEnum::SECOND,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -181,12 +185,12 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ConflictingParamsRequest.new(
   path_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="excepturi",
-    str_query_parameter="cum",
+    str_path_parameter="natus",
+    str_query_parameter="eos",
   ),
   query_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="voluptate",
-    str_query_parameter="dignissimos",
+    str_path_parameter="atque",
+    str_query_parameter="sit",
   ),
 )
     
@@ -225,12 +229,12 @@ s = OpenApiSDK::SDK.new
 req = Operations::InlineBodyAndParamConflictRequest.new(
   query_params=Operations::InlineBodyAndParamConflictRequest.new(
     request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
-      str_="reiciendis",
+      str_="fugiat",
     ),
-    str_="amet",
+    str_="ab",
   ),
   request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
-    str_="dolorum",
+    str_="soluta",
   ),
 )
     
@@ -269,12 +273,12 @@ s = OpenApiSDK::SDK.new
 req = Operations::InlineBodyAndParamNoConflictRequest.new(
   query_params=Operations::InlineBodyAndParamNoConflictRequest.new(
     request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
-      body_str="numquam",
+      body_str="dolorum",
     ),
-    param_str="veritatis",
+    param_str="iusto",
   ),
   request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
-    body_str="ipsa",
+    body_str="voluptate",
   ),
 )
     

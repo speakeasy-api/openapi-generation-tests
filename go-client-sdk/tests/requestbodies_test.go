@@ -951,3 +951,29 @@ func TestRequestBodyReadAndWrite(t *testing.T) {
 	assert.Equal(t, int64(4), res.ReadWriteObject.Num3)
 	assert.Equal(t, int64(7), res.ReadWriteObject.Sum)
 }
+
+func TestRequestBodyNullDictionary(t *testing.T) {
+	recordTest("request-bodies-null-dictionary")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyPostNullDictionary(context.Background(), nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+
+	assert.Empty(t, res.RequestBodyPostNullDictionary200ApplicationJSONObject.Data)
+}
+
+func TestRequestBodyNullArray(t *testing.T) {
+	recordTest("request-bodies-null-array")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyPostNullArray(context.Background(), nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+
+	assert.Empty(t, res.RequestBodyPostNullArray200ApplicationJSONObject.Data)
+}

@@ -17,6 +17,9 @@ class TypedParameterGenerationGetRequest
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=date,dateTimeFormat=Y-m-d')]
     public ?\DateTime $date = null;
     
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimal')]
+    public ?float $decimal = null;
+    
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=obj')]
     public ?TypedParameterGenerationGetObj $obj = null;
     
@@ -24,6 +27,7 @@ class TypedParameterGenerationGetRequest
 	{
 		$this->bigint = null;
 		$this->date = null;
+		$this->decimal = null;
 		$this->obj = null;
 	}
 }

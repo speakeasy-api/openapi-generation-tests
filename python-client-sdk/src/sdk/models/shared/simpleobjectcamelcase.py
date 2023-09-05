@@ -59,6 +59,7 @@ class SimpleObjectCamelCase:
     bigint_val: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bigint_val'), 'exclude': lambda f: f is None }})
     bool_opt_val: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool_opt_val'), 'exclude': lambda f: f is None }})
     r"""An optional boolean property."""
+    decimal_val: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimal_val'), 'exclude': lambda f: f is None }})
     int_opt_null_val: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_opt_null_val'), 'exclude': lambda f: f is None }})
     r"""An optional integer property will be null for tests."""
     num_opt_null_val: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num_opt_null_val'), 'exclude': lambda f: f is None }})

@@ -21,6 +21,7 @@ module OpenApiSDK
     def telemetry_speakeasy_user_agent_get(user_agent)
 
       request = Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
+        
         user_agent: user_agent
       )
       url, params = @sdk_configuration.get_server_details

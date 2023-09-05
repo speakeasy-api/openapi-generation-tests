@@ -111,6 +111,16 @@ class SimpleObject
     #[SpeakeasyMetadata('multipartForm:name=dateTime,dateTimeFormat=Y-m-d\TH:i:s.up')]
     public \DateTime $dateTime;
     
+	#[\JMS\Serializer\Annotation\SerializedName('decimal')]
+    #[\JMS\Serializer\Annotation\Type('float')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    #[SpeakeasyMetadata('header:name=decimal')]
+    #[SpeakeasyMetadata('pathParam:name=decimal')]
+    #[SpeakeasyMetadata('queryParam:name=decimal')]
+    #[SpeakeasyMetadata('form:name=decimal')]
+    #[SpeakeasyMetadata('multipartForm:name=decimal')]
+    public ?float $decimal = null;
+    
     /**
      * A string based enum
      * 
@@ -277,6 +287,7 @@ class SimpleObject
 		$this->boolOpt = null;
 		$this->date = new \DateTime();
 		$this->dateTime = new \DateTime();
+		$this->decimal = null;
 		$this->enum = \OpenAPI\OpenAPI\Models\Shared\Enum::One;
 		$this->float32 = 0;
 		$this->int = 0;

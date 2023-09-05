@@ -145,6 +145,7 @@ module OpenApiSDK
       # 
       # @deprecated  method: This will be removed in a future release, please migrate away from it as soon as possible.
       request = Operations::DeprecatedOperationNoCommentsGetRequest.new(
+        
         deprecated_parameter: deprecated_parameter
       )
       url, params = @sdk_configuration.get_server_details
@@ -177,6 +178,7 @@ module OpenApiSDK
       # 
       # @deprecated  method: This operation is deprecated. Use simple_path_parameter_objects instead.
       request = Operations::DeprecatedOperationWithCommentsGetRequest.new(
+        
         deprecated_parameter: deprecated_parameter,
         new_parameter: new_parameter
       )
@@ -208,6 +210,7 @@ module OpenApiSDK
     def empty_object_get(empty_object)
 
       request = Operations::EmptyObjectGetRequest.new(
+        
         empty_object: empty_object
       )
       url, params = @sdk_configuration.get_server_details
@@ -326,6 +329,7 @@ module OpenApiSDK
     def ignores_post(request_body = nil, test_param = nil)
 
       request = Operations::IgnoresPostRequest.new(
+        
         request_body: request_body,
         test_param: test_param
       )
@@ -370,6 +374,7 @@ module OpenApiSDK
     def name_override(test_enum_query_param, test_query_param)
 
       request = Operations::NameOverrideGetRequest.new(
+        
         test_enum_query_param: test_enum_query_param,
         test_query_param: test_query_param
       )
@@ -401,12 +406,14 @@ module OpenApiSDK
       res
     end
 
-    sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).returns(Utils::FieldAugmented) }
-    def typed_parameter_generation_get(bigint = nil, date = nil, obj = nil)
+    sig { params(bigint: T.nilable(Integer), date: T.nilable(Date), decimal: T.nilable(Float), obj: T.nilable(Operations::TypedParameterGenerationGetObj)).returns(Utils::FieldAugmented) }
+    def typed_parameter_generation_get(bigint = nil, date = nil, decimal = nil, obj = nil)
 
       request = Operations::TypedParameterGenerationGetRequest.new(
+        
         bigint: bigint,
         date: date,
+        decimal: decimal,
         obj: obj
       )
       url, params = @sdk_configuration.get_server_details

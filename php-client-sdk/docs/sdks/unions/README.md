@@ -29,7 +29,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'non'
+292794
 
     $response = $sdk->unions->mixedTypeOneOfPost($request);
 
@@ -70,7 +70,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'beatae'
+1523.54
 
     $response = $sdk->unions->primitiveTypeOneOfPost($request);
 
@@ -112,25 +112,26 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObjectWithType();
-    $request->any = 'a';
-    $request->bigint = 891523;
-    $request->bigintStr = 'consectetur';
+    $request->any = 'commodi';
+    $request->bigint = 696077;
+    $request->bigintStr = 'explicabo';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->decimal = 3783.26;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
     $request->int32Enum = SimpleObjectWithTypeInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectWithTypeIntEnum::Third;
+    $request->intEnum = SimpleObjectWithTypeIntEnum::First;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
     $request->str = 'example';
     $request->strOpt = 'optional example';
-    $request->type = 'laboriosam';
+    $request->type = 'suscipit';
 
     $response = $sdk->unions->stronglyTypedOneOfPost($request);
 
@@ -171,9 +172,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new TypedObject1();
-    $request->type = TypedObject1Type::Obj1;
-    $request->value = 'voluptates';
+    $request = new TypedObject3();
+    $request->type = TypedObject3Type::Obj3;
+    $request->value = 'debitis';
 
     $response = $sdk->unions->typedObjectOneOfPost($request);
 
@@ -214,58 +215,26 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new DeepObject();
-    $request->any = new SimpleObject();
-    $request->any->any = 'accusamus';
-    $request->any->bigint = 631126;
-    $request->any->bigintStr = 'tempora';
-    $request->any->bool = true;
-    $request->any->boolOpt = true;
-    $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->any->enum = Enum::Two;
-    $request->any->float32 = 2.2222222;
-    $request->any->int = 999999;
-    $request->any->int32 = 1;
-    $request->any->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->any->intEnum = SimpleObjectIntEnum::Second;
-    $request->any->intOptNull = 999999;
-    $request->any->num = 1.1;
-    $request->any->numOptNull = 1.1;
-    $request->any->str = 'example';
-    $request->any->strOpt = 'optional example';
-    $request->arr = [
-        new SimpleObject(),
-        new SimpleObject(),
-    ];
-    $request->bool = false;
-    $request->int = 374296;
-    $request->map = [
-        'nobis' => new SimpleObject(),
-        'dolorum' => new SimpleObject(),
-    ];
-    $request->num = 2378.07;
-    $request->obj = new SimpleObject();
-    $request->obj->any = 'minus';
-    $request->obj->bigint = 171853;
-    $request->obj->bigintStr = 'blanditiis';
-    $request->obj->bool = true;
-    $request->obj->boolOpt = true;
-    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->enum = Enum::Two;
-    $request->obj->float32 = 2.2222222;
-    $request->obj->int = 999999;
-    $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->obj->intEnum = SimpleObjectIntEnum::First;
-    $request->obj->intOptNull = 999999;
-    $request->obj->num = 1.1;
-    $request->obj->numOptNull = 1.1;
-    $request->obj->str = 'example';
-    $request->obj->strOpt = 'optional example';
-    $request->str = 'aliquam';
-    $request->type = 'officiis';
+    $request = new SimpleObject();
+    $request->any = 'reiciendis';
+    $request->bigint = 19300;
+    $request->bigintStr = 'corrupti';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->decimal = 9795.74;
+    $request->enum = Enum::Two;
+    $request->float32 = 2.2222222;
+    $request->int = 999999;
+    $request->int32 = 1;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->intEnum = SimpleObjectIntEnum::First;
+    $request->intOptNull = 999999;
+    $request->num = 1.1;
+    $request->numOptNull = 1.1;
+    $request->str = 'example';
+    $request->strOpt = 'optional example';
 
     $response = $sdk->unions->weaklyTypedOneOfPost($request);
 

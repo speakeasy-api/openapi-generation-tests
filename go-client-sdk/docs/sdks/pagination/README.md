@@ -39,7 +39,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 696344,
+        Cursor: 881586,
     })
     if err != nil {
         log.Fatal(err)
@@ -88,7 +88,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    cursor := 976405
+    cursor := 320017
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
@@ -141,9 +141,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(377752),
-        Offset: sdk.Int64(617658),
-        Page: sdk.Int64(179603),
+        Limit: sdk.Int64(904425),
+        Offset: sdk.Int64(383464),
+        Page: sdk.Int64(645785),
     })
     if err != nil {
         log.Fatal(err)
@@ -192,8 +192,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    limit := 542499
-    offset := 24678
+    limit := 588317
+    offset := 324683
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
@@ -247,9 +247,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{
-        Limit: sdk.Int64(854614),
-        Offset: sdk.Int64(67249),
-        Page: sdk.Int64(743835),
+        Limit: sdk.Int64(831049),
+        Offset: sdk.Int64(519711),
+        Page: sdk.Int64(628982),
     })
     if err != nil {
         log.Fatal(err)
@@ -298,7 +298,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    page := 679393
+    page := 55
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)

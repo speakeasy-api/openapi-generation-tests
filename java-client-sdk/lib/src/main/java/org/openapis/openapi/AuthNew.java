@@ -22,6 +22,13 @@ public class AuthNew {
     };
 	
     /**
+	 * AUTH_GLOBAL_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] AUTH_GLOBAL_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
 	 * BASIC_AUTH_NEW_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] BASIC_AUTH_NEW_SERVERS = {
@@ -118,6 +125,43 @@ public class AuthNew {
         String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
 
         org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse res = new org.openapis.openapi.models.operations.ApiKeyAuthGlobalNewResponse(contentType, httpRes.statusCode()) {{
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200 || httpRes.statusCode() == 401) {
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.AuthGlobalResponse authGlobal(org.openapis.openapi.models.shared.AuthServiceRequestBody request) throws Exception {
+        return this.authGlobal(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.AuthGlobalResponse authGlobal(org.openapis.openapi.models.shared.AuthServiceRequestBody request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(AUTH_GLOBAL_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/auth#authGlobal");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "*/*");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.AuthGlobalResponse res = new org.openapis.openapi.models.operations.AuthGlobalResponse(contentType, httpRes.statusCode()) {{
         }};
         res.rawResponse = httpRes;
         

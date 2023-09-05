@@ -21,6 +21,7 @@ module OpenApiSDK
     def deep_object_query_params_map(map_param, map_arr_param = nil)
 
       request = Operations::DeepObjectQueryParamsMapRequest.new(
+        
         map_param: map_param,
         map_arr_param: map_arr_param
       )
@@ -56,6 +57,7 @@ module OpenApiSDK
     def deep_object_query_params_object(obj_param, obj_arr_param = nil)
 
       request = Operations::DeepObjectQueryParamsObjectRequest.new(
+        
         obj_param: obj_param,
         obj_arr_param: obj_arr_param
       )
@@ -91,6 +93,7 @@ module OpenApiSDK
     def duplicate_param(duplicate_param_request)
 
       request = Operations::DuplicateParamRequest.new(
+        
         duplicate_param_request: duplicate_param_request
       )
       url, params = @sdk_configuration.get_server_details
@@ -129,6 +132,7 @@ module OpenApiSDK
     def form_query_params_array(arr_param = nil, arr_param_exploded = nil)
 
       request = Operations::FormQueryParamsArrayRequest.new(
+        
         arr_param: arr_param,
         arr_param_exploded: arr_param_exploded
       )
@@ -164,6 +168,7 @@ module OpenApiSDK
     def form_query_params_map(map_param = nil, map_param_exploded = nil)
 
       request = Operations::FormQueryParamsMapRequest.new(
+        
         map_param: map_param,
         map_param_exploded: map_param_exploded
       )
@@ -199,6 +204,7 @@ module OpenApiSDK
     def form_query_params_object(obj_param_exploded, obj_param = nil)
 
       request = Operations::FormQueryParamsObjectRequest.new(
+        
         obj_param_exploded: obj_param_exploded,
         obj_param: obj_param
       )
@@ -234,6 +240,7 @@ module OpenApiSDK
     def form_query_params_primitive(bool_param, int_param, num_param, str_param)
 
       request = Operations::FormQueryParamsPrimitiveRequest.new(
+        
         bool_param: bool_param,
         int_param: int_param,
         num_param: num_param,
@@ -271,6 +278,7 @@ module OpenApiSDK
     def form_query_params_ref_param_object(ref_obj_param = nil, ref_obj_param_exploded = nil)
 
       request = Operations::FormQueryParamsRefParamObjectRequest.new(
+        
         ref_obj_param: ref_obj_param,
         ref_obj_param_exploded: ref_obj_param_exploded
       )
@@ -306,6 +314,7 @@ module OpenApiSDK
     def header_params_array(x_header_array)
 
       request = Operations::HeaderParamsArrayRequest.new(
+        
         x_header_array: x_header_array
       )
       url, params = @sdk_configuration.get_server_details
@@ -338,6 +347,7 @@ module OpenApiSDK
     def header_params_map(x_header_map, x_header_map_explode)
 
       request = Operations::HeaderParamsMapRequest.new(
+        
         x_header_map: x_header_map,
         x_header_map_explode: x_header_map_explode
       )
@@ -371,6 +381,7 @@ module OpenApiSDK
     def header_params_object(x_header_obj, x_header_obj_explode)
 
       request = Operations::HeaderParamsObjectRequest.new(
+        
         x_header_obj: x_header_obj,
         x_header_obj_explode: x_header_obj_explode
       )
@@ -404,6 +415,7 @@ module OpenApiSDK
     def header_params_primitive(x_header_boolean, x_header_integer, x_header_number, x_header_string)
 
       request = Operations::HeaderParamsPrimitiveRequest.new(
+        
         x_header_boolean: x_header_boolean,
         x_header_integer: x_header_integer,
         x_header_number: x_header_number,
@@ -439,6 +451,7 @@ module OpenApiSDK
     def json_query_params_object(deep_obj_param, simple_obj_param)
 
       request = Operations::JsonQueryParamsObjectRequest.new(
+        
         deep_obj_param: deep_obj_param,
         simple_obj_param: simple_obj_param
       )
@@ -474,6 +487,7 @@ module OpenApiSDK
     def mixed_parameters_camel_case(header_param, path_param, query_string_param)
 
       request = Operations::MixedParametersCamelCaseRequest.new(
+        
         header_param: header_param,
         path_param: path_param,
         query_string_param: query_string_param
@@ -516,6 +530,7 @@ module OpenApiSDK
     def mixed_parameters_primitives(header_param, path_param, query_string_param)
 
       request = Operations::MixedParametersPrimitivesRequest.new(
+        
         header_param: header_param,
         path_param: path_param,
         query_string_param: query_string_param
@@ -558,6 +573,7 @@ module OpenApiSDK
     def mixed_query_params(deep_object_param, form_param, json_param)
 
       request = Operations::MixedQueryParamsRequest.new(
+        
         deep_object_param: deep_object_param,
         form_param: form_param,
         json_param: json_param
@@ -594,6 +610,7 @@ module OpenApiSDK
     def path_parameter_json(json_obj)
 
       request = Operations::PathParameterJsonRequest.new(
+        
         json_obj: json_obj
       )
       url, params = @sdk_configuration.get_server_details
@@ -632,6 +649,7 @@ module OpenApiSDK
     def pipe_delimited_query_params_array(arr_param = nil, arr_param_exploded = nil, map_param = nil, obj_param = nil)
 
       request = Operations::PipeDelimitedQueryParamsArrayRequest.new(
+        
         arr_param: arr_param,
         arr_param_exploded: arr_param_exploded,
         map_param: map_param,
@@ -669,6 +687,7 @@ module OpenApiSDK
     def simple_path_parameter_arrays(arr_param)
 
       request = Operations::SimplePathParameterArraysRequest.new(
+        
         arr_param: arr_param
       )
       url, params = @sdk_configuration.get_server_details
@@ -707,6 +726,7 @@ module OpenApiSDK
     def simple_path_parameter_maps(map_param, map_param_exploded)
 
       request = Operations::SimplePathParameterMapsRequest.new(
+        
         map_param: map_param,
         map_param_exploded: map_param_exploded
       )
@@ -746,6 +766,7 @@ module OpenApiSDK
     def simple_path_parameter_objects(obj_param, obj_param_exploded)
 
       request = Operations::SimplePathParameterObjectsRequest.new(
+        
         obj_param: obj_param,
         obj_param_exploded: obj_param_exploded
       )
@@ -785,6 +806,7 @@ module OpenApiSDK
     def simple_path_parameter_primitives(bool_param, int_param, num_param, str_param)
 
       request = Operations::SimplePathParameterPrimitivesRequest.new(
+        
         bool_param: bool_param,
         int_param: int_param,
         num_param: num_param,

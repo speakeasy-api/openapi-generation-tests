@@ -745,7 +745,8 @@ def test_request_body_camel_case():
 
     obj = create_simple_object_camel_case()
 
-    res = s.request_bodies.request_body_post_application_json_simple_camel_case(request=obj)
+    res = s.request_bodies.request_body_post_application_json_simple_camel_case(
+        request=obj)
 
     assert res is not None
     assert res.status_code == 200
@@ -815,3 +816,29 @@ def test_request_body_read_and_write():
     assert res.read_write_object is not None
     assert res.read_write_object.num3 == 4
     assert res.read_write_object.sum == 7
+
+
+def test_request_body_null_dictionary():
+    record_test('request-bodies-null-dictionary')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_null_dictionary(None)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_null_dictionary_200_application_json_object.data == ""
+
+
+def test_request_body_null_array():
+    record_test('request-bodies-null-array')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_null_array(None)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_null_array_200_application_json_object.data == ""

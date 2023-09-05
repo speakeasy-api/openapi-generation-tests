@@ -12,6 +12,7 @@
 | `BoolOpt`          | **string*          | :heavy_minus_sign: | N/A                |
 | `Date`             | *string*           | :heavy_check_mark: | N/A                |
 | `DateTime`         | *string*           | :heavy_check_mark: | N/A                |
+| `Decimal`          | **string*          | :heavy_minus_sign: | N/A                |
 | `Enum`             | *string*           | :heavy_check_mark: | N/A                |
 | `Float32`          | *string*           | :heavy_check_mark: | N/A                |
 | `Int`              | *string*           | :heavy_check_mark: | N/A                |

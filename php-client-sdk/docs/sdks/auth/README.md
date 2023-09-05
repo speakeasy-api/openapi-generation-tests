@@ -10,7 +10,9 @@ Endpoints for testing authentication.
 * [apiKeyAuthGlobal](#apikeyauthglobal)
 * [basicAuth](#basicauth)
 * [bearerAuth](#bearerauth)
+* [globalBearerAuth](#globalbearerauth)
 * [oauth2Auth](#oauth2auth)
+* [oauth2Override](#oauth2override)
 * [openIdConnectAuth](#openidconnectauth)
 
 ## apiKeyAuth
@@ -114,7 +116,7 @@ try {
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
-    $response = $sdk->auth->basicAuth($requestSecurity, 'sequi', 'tenetur');
+    $response = $sdk->auth->basicAuth($requestSecurity, 'tenetur', 'ipsam');
 
     if ($response->user !== null) {
         // handle response
@@ -181,6 +183,39 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\BearerAuthResponse](../../models/operations/BearerAuthResponse.md)**
 
 
+## globalBearerAuth
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->auth->globalBearerAuth();
+
+    if ($response->token !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\GlobalBearerAuthResponse](../../models/operations/GlobalBearerAuthResponse.md)**
+
+
 ## oauth2Auth
 
 ### Example Usage
@@ -222,6 +257,52 @@ try {
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\Oauth2AuthResponse](../../models/operations/Oauth2AuthResponse.md)**
+
+
+## oauth2Override
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideRequest;
+use \OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+
+
+    $requestSecurity = new Oauth2OverrideSecurity();
+    $requestSecurity->oauth2 = 'Bearer YOUR_OAUTH2_TOKEN';
+
+    $response = $sdk->auth->oauth2Override($requestSecurity);
+
+    if ($response->token !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `security`                                                                                                     | [\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideSecurity](../../models/operations/Oauth2OverrideSecurity.md) | :heavy_check_mark:                                                                                             | The security requirements to use for the request.                                                              |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\Oauth2OverrideResponse](../../models/operations/Oauth2OverrideResponse.md)**
 
 
 ## openIdConnectAuth

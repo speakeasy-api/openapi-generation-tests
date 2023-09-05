@@ -10,7 +10,9 @@ Endpoints for testing authentication.
 * [APIKeyAuthGlobal](#apikeyauthglobal)
 * [BasicAuth](#basicauth)
 * [BearerAuth](#bearerauth)
+* [GlobalBearerAuth](#globalbearerauth)
 * [Oauth2Auth](#oauth2auth)
+* [Oauth2Override](#oauth2override)
 * [OpenIDConnectAuth](#openidconnectauth)
 
 ## APIKeyAuth
@@ -127,8 +129,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    passwd := "sequi"
-    user := "tenetur"
+    passwd := "tenetur"
+    user := "ipsam"
     operationSecurity := operations.BasicAuthSecurity{
             Password: "YOUR_PASSWORD",
             Username: "YOUR_USERNAME",
@@ -209,6 +211,53 @@ func main() {
 **[*operations.BearerAuthResponse](../../models/operations/bearerauthresponse.md), error**
 
 
+## GlobalBearerAuth
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Auth.GlobalBearerAuth(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Token != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.GlobalBearerAuthResponse](../../models/operations/globalbearerauthresponse.md), error**
+
+
 ## Oauth2Auth
 
 ### Example Usage
@@ -255,6 +304,54 @@ func main() {
 ### Response
 
 **[*operations.Oauth2AuthResponse](../../models/operations/oauth2authresponse.md), error**
+
+
+## Oauth2Override
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/operations"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+    operationSecurity := operations.Oauth2OverrideSecurity{
+            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
+        }
+
+    ctx := context.Background()
+    res, err := s.Auth.Oauth2Override(ctx, operationSecurity)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Token != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
+| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
+| `ctx`                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                  | :heavy_check_mark:                                                                     | The context to use for the request.                                                    |
+| `security`                                                                             | [operations.Oauth2OverrideSecurity](../../models/operations/oauth2overridesecurity.md) | :heavy_check_mark:                                                                     | The security requirements to use for the request.                                      |
+
+
+### Response
+
+**[*operations.Oauth2OverrideResponse](../../models/operations/oauth2overrideresponse.md), error**
 
 
 ## OpenIDConnectAuth

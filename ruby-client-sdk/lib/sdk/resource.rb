@@ -98,6 +98,7 @@ module OpenApiSDK
     def delete_resource(resource_id)
 
       request = Operations::DeleteResourceRequest.new(
+        
         resource_id: resource_id
       )
       url, params = @sdk_configuration.get_server_details
@@ -132,6 +133,7 @@ module OpenApiSDK
     def get_resource(resource_id)
 
       request = Operations::GetResourceRequest.new(
+        
         resource_id: resource_id
       )
       url, params = @sdk_configuration.get_server_details
@@ -170,6 +172,7 @@ module OpenApiSDK
     def update_resource(resource_id)
 
       request = Operations::UpdateResourceRequest.new(
+        
         resource_id: resource_id
       )
       url, params = @sdk_configuration.get_server_details

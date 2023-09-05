@@ -398,7 +398,9 @@ class Generation
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
-        $options = array_merge_recursive($options, $body);
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
@@ -470,18 +472,21 @@ class Generation
      * 
      * @param ?int $bigint
      * @param ?\DateTime $date
+     * @param ?float $decimal
      * @param ?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj $obj
      * @return \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
      */
 	public function typedParameterGenerationGet(
         ?int $bigint = null,
         ?\DateTime $date = null,
+        ?float $decimal = null,
         ?\OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetObj $obj = null,
     ): \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetResponse
     {
         $request = new \OpenAPI\OpenAPI\Models\Operations\TypedParameterGenerationGetRequest();
         $request->bigint = $bigint;
         $request->date = $date;
+        $request->decimal = $decimal;
         $request->obj = $obj;
         
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -519,7 +524,7 @@ class Generation
      * @see https://docs.example.com
      */
 	public function usageExamplePost(
-        \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest $request,
+        ?\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest $request,
         \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostSecurity $security,
     ): \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostResponse
     {
@@ -528,7 +533,9 @@ class Generation
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
-        $options = array_merge_recursive($options, $body);
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);

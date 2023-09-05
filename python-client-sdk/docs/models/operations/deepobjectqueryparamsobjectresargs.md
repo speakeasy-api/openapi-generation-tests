@@ -13,6 +13,7 @@
 | `obj_param_bool`       | *str*                  | :heavy_check_mark:     | N/A                    |
 | `obj_param_date_time`  | *str*                  | :heavy_check_mark:     | N/A                    |
 | `obj_param_date`       | *str*                  | :heavy_check_mark:     | N/A                    |
+| `obj_param_decimal`    | *Optional[str]*        | :heavy_minus_sign:     | N/A                    |
 | `obj_param_enum`       | *str*                  | :heavy_check_mark:     | N/A                    |
 | `obj_param_float32`    | *str*                  | :heavy_check_mark:     | N/A                    |
 | `obj_param_int32_enum` | *str*                  | :heavy_check_mark:     | N/A                    |

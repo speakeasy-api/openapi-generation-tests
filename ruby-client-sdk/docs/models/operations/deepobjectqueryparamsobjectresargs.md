@@ -13,6 +13,7 @@
 | `obj_param_bool`       | *String*               | :heavy_check_mark:     | N/A                    |
 | `obj_param_date_time`  | *String*               | :heavy_check_mark:     | N/A                    |
 | `obj_param_date`       | *String*               | :heavy_check_mark:     | N/A                    |
+| `obj_param_decimal`    | *T.nilable(String)*    | :heavy_minus_sign:     | N/A                    |
 | `obj_param_enum`       | *String*               | :heavy_check_mark:     | N/A                    |
 | `obj_param_float32`    | *String*               | :heavy_check_mark:     | N/A                    |
 | `obj_param_int32_enum` | *String*               | :heavy_check_mark:     | N/A                    |

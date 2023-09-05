@@ -22,6 +22,7 @@ class TypedParameterGenerationGetObj:
 class TypedParameterGenerationGetRequest:
     bigint: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigint', 'style': 'form', 'explode': True }})
     date_: Optional[date] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'date', 'style': 'form', 'explode': True }})
+    decimal: Optional[float] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'decimal', 'style': 'form', 'explode': True }})
     obj: Optional[TypedParameterGenerationGetObj] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'obj', 'style': 'form', 'explode': True }})
     
 

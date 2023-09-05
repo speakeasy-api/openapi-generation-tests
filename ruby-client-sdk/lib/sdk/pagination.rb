@@ -60,6 +60,7 @@ module OpenApiSDK
     def pagination_cursor_params(cursor, server_url = nil)
 
       request = Operations::PaginationCursorParamsRequest.new(
+        
         cursor: cursor
       )
       base_url = Utils.template_url(Operations::PAGINATION_CURSOR_PARAMS_SERVERS[0], {
@@ -134,6 +135,7 @@ module OpenApiSDK
     def pagination_limit_offset_offset_params(limit = nil, offset = nil, server_url = nil)
 
       request = Operations::PaginationLimitOffsetOffsetParamsRequest.new(
+        
         limit: limit,
         offset: offset
       )
@@ -209,6 +211,7 @@ module OpenApiSDK
     def pagination_limit_offset_page_params(page, server_url = nil)
 
       request = Operations::PaginationLimitOffsetPageParamsRequest.new(
+        
         page: page
       )
       base_url = Utils.template_url(Operations::PAGINATION_LIMIT_OFFSET_PAGE_PARAMS_SERVERS[0], {

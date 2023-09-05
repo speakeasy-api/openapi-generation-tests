@@ -42,6 +42,11 @@ class FormQueryParamsObjectResArgs
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $dateTime;
     
+	#[\JMS\Serializer\Annotation\SerializedName('decimal')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?string $decimal = null;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('enum')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $enum;
@@ -102,6 +107,7 @@ class FormQueryParamsObjectResArgs
 		$this->boolOpt = null;
 		$this->date = "";
 		$this->dateTime = "";
+		$this->decimal = null;
 		$this->enum = "";
 		$this->float32 = "";
 		$this->int = "";

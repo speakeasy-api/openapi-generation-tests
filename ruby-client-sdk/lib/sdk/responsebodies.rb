@@ -47,6 +47,7 @@ module OpenApiSDK
     def response_body_empty_with_headers(x_number_header, x_string_header)
 
       request = Operations::ResponseBodyEmptyWithHeadersRequest.new(
+        
         x_number_header: x_number_header,
         x_string_header: x_string_header
       )

@@ -53,7 +53,7 @@ class Pagination
      * @return \OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyResponse
      */
 	public function paginationCursorBody(
-        \OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyRequestBody $request,
+        ?\OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyRequestBody $request,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\PaginationCursorBodyResponse
     {
@@ -67,7 +67,9 @@ class Pagination
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        $options = array_merge_recursive($options, $body);
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -145,7 +147,7 @@ class Pagination
      * @return \OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetBodyResponse
      */
 	public function paginationLimitOffsetOffsetBody(
-        \OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig $request,
+        ?\OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig $request,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetBodyResponse
     {
@@ -159,7 +161,9 @@ class Pagination
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        $options = array_merge_recursive($options, $body);
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -240,7 +244,7 @@ class Pagination
      * @return \OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageBodyResponse
      */
 	public function paginationLimitOffsetPageBody(
-        \OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig $request,
+        ?\OpenAPI\OpenAPI\Models\Shared\LimitOffsetConfig $request,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageBodyResponse
     {
@@ -254,7 +258,9 @@ class Pagination
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        $options = array_merge_recursive($options, $body);
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         

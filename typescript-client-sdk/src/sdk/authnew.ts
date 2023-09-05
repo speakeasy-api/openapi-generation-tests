@@ -44,11 +44,16 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
-        const client: AxiosInstance =
-            this.sdkConfiguration.securityClient || this.sdkConfiguration.defaultClient;
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -94,6 +99,84 @@ export class AuthNew {
         return res;
     }
 
+    async authGlobal(
+        req: shared.AuthServiceRequestBody,
+        serverURL?: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.AuthGlobalResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.AuthServiceRequestBody(req);
+        }
+
+        let baseURL: string = utils.templateUrl(operations.AuthGlobalServerList[0], {});
+        if (serverURL) {
+            baseURL = serverURL;
+        }
+        const url: string = baseURL.replace(/\/$/, "") + "/auth#authGlobal";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        headers["Accept"] = "*/*";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.AuthGlobalResponse = new operations.AuthGlobalResponse({
+            statusCode: httpRes.status,
+            contentType: contentType,
+            rawResponse: httpRes,
+        });
+        switch (true) {
+            case httpRes?.status == 200:
+                break;
+            case httpRes?.status == 401 ||
+                (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
     async basicAuthNew(
         req: shared.AuthServiceRequestBody,
         security: operations.BasicAuthNewSecurity,
@@ -119,16 +202,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.BasicAuthNewSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -201,16 +293,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleMixedOptionsAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -284,16 +385,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleMixedSchemeAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -368,16 +478,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleOptionsWithMixedSchemesAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -452,16 +571,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleOptionsWithSimpleSchemesAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -535,16 +663,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleSimpleOptionsAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -618,16 +755,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.MultipleSimpleSchemeAuthSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -698,16 +844,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.Oauth2AuthNewSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
@@ -777,16 +932,25 @@ export class AuthNew {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
             }
         }
-
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let properties: utils.SecurityProperties;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        properties = utils.parseSecurityProperties(globalSecurity);
         if (!(security instanceof utils.SpeakeasyBase)) {
             security = new operations.OpenIdConnectAuthNewSecurity(security);
         }
-        const client: AxiosInstance = utils.createSecurityClient(
-            this.sdkConfiguration.defaultClient,
-            security
-        );
-
-        const headers = { ...reqBodyHeaders, ...config?.headers };
+        const localProperties = utils.parseSecurityProperties(security);
+        properties = {
+            params: { ...properties.params, ...localProperties.params },
+            headers: { ...properties.headers, ...localProperties.headers },
+        };
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         headers["Accept"] = "*/*";
 
         headers[
