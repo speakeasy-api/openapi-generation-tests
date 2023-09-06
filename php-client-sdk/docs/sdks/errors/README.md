@@ -69,7 +69,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->errors->statusGetError(270008);
+    $response = $sdk->errors->statusGetError(703737);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -111,7 +111,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->errors->statusGetXSpeakeasyErrors(703737);
+    $response = $sdk->errors->statusGetXSpeakeasyErrors(735194);
 
     if ($response->statusCode === 200) {
         // handle response

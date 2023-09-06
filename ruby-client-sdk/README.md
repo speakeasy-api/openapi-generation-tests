@@ -167,6 +167,10 @@ end
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
+### [documentation](docs/sdks/documentation/README.md)
+
+* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
+
 ### [errors](docs/sdks/errors/README.md)
 
 * [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
@@ -206,6 +210,10 @@ end
 
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
+
+### [nest_first](docs/sdks/nestfirst/README.md)
+
+* [get](docs/sdks/nestfirst/README.md#get)
 
 ### [nested](docs/sdks/nested/README.md)
 

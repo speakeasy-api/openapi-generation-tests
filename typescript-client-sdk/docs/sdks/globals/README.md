@@ -24,7 +24,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const globalPathParam: number = 229219;
+const globalPathParam: number = 758379;
 
 sdk.globals.globalPathParameterGet(globalPathParam).then((res: GlobalPathParameterGetResponse) => {
   if (res.statusCode == 200) {
@@ -61,7 +61,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const globalQueryParam: string = "optio";
+const globalQueryParam: string = "accusamus";
 
 sdk.globals.globalsQueryParameterGet(globalQueryParam).then((res: GlobalsQueryParameterGetResponse) => {
   if (res.statusCode == 200) {

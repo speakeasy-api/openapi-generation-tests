@@ -41,15 +41,15 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("pariatur", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                any = "praesentium";
-                bigint = 615560L;
-                bigintStr = "magni";
+            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("maxime", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                any = "natus";
+                bigint = 166847L;
+                bigintStr = "sunt";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                decimal = 1238.2d;
+                decimal = 7790.51d;
                 enum_ = Enum.TWO;
                 float32 = 2.2222222f;
                 int_ = 999999L;
@@ -61,7 +61,7 @@ public class Application {
                 numOptNull = 1.1d;
                 str = "example";
                 strOpt = "optional example";
-            }}, "excepturi");
+            }}, "odit");
 
             if (res.res != null) {
                 // handle response
@@ -115,20 +115,20 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("odit", new SimpleObject("voluptate", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                any = "ea";
-                bigint = 33222L;
-                bigintStr = "ab";
+            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("ea", new SimpleObject("autem", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                any = "accusantium";
+                bigint = 69167L;
+                bigintStr = "maiores";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                decimal = 9825.75d;
+                decimal = 6974.29d;
                 enum_ = Enum.TWO;
                 float32 = 2.2222222f;
                 int_ = 999999L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                 intEnum = SimpleObjectIntEnum.Second;
                 intOptNull = 999999L;
                 num = 1.1d;
@@ -183,7 +183,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ConflictingParamsResponse res = sdk.flattening.conflictingParams("eaque", "pariatur");
+            ConflictingParamsResponse res = sdk.flattening.conflictingParams("pariatur", "nemo");
 
             if (res.res != null) {
                 // handle response
@@ -232,9 +232,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("voluptatibus") {{
-                str = "nemo";
-            }}, "perferendis");
+            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("perferendis") {{
+                str = "voluptatibus";
+            }}, "fugiat");
 
             if (res.res != null) {
                 // handle response
@@ -283,9 +283,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("amet") {{
-                bodyStr = "fugiat";
-            }}, "aut");
+            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("aut") {{
+                bodyStr = "amet";
+            }}, "cumque");
 
             if (res.res != null) {
                 // handle response

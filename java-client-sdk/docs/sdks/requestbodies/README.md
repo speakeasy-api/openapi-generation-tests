@@ -86,15 +86,36 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("labore", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                    any = "totam";
-                    bigint = 853940L;
-                    bigintStr = "vel";
+                add(new SimpleObject("suscipit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                    any = "quod";
+                    bigint = 288398L;
+                    bigintStr = "ab";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 4976.78d;
+                    decimal = 2414.18d;
+                    enum_ = Enum.TWO;
+                    float32 = 2.2222222f;
+                    int_ = 999999L;
+                    int32 = 1;
+                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                    intEnum = SimpleObjectIntEnum.Second;
+                    intOptNull = 999999L;
+                    num = 1.1d;
+                    numOptNull = 1.1d;
+                    str = "example";
+                    strOpt = "optional example";
+                }}),
+                add(new SimpleObject("quos", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                    any = "est";
+                    bigint = 926880L;
+                    bigintStr = "totam";
+                    bool = true;
+                    boolOpt = true;
+                    date = LocalDate.parse("2020-01-01");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                    decimal = 8539.4d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
@@ -107,63 +128,42 @@ public class Application {
                     str = "example";
                     strOpt = "optional example";
                 }}),
-                add(new SimpleObject("nemo", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                    any = "cum";
-                    bigint = 414857L;
-                    bigintStr = "in";
+                add(new SimpleObject("reiciendis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                    any = "possimus";
+                    bigint = 706575L;
+                    bigintStr = "cum";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 3605.45d;
-                    enum_ = Enum.TWO;
-                    float32 = 2.2222222f;
-                    int_ = 999999L;
-                    int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                    intEnum = SimpleObjectIntEnum.Third;
-                    intOptNull = 999999L;
-                    num = 1.1d;
-                    numOptNull = 1.1d;
-                    str = "example";
-                    strOpt = "optional example";
-                }}),
-                add(new SimpleObject("facere", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                    any = "aperiam";
-                    bigint = 738683L;
-                    bigintStr = "consectetur";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 4490.83d;
+                    decimal = 4148.57d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
                     int32 = 1;
                     int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                    intEnum = SimpleObjectIntEnum.Third;
+                    intEnum = SimpleObjectIntEnum.Second;
                     intOptNull = 999999L;
                     num = 1.1d;
                     numOptNull = 1.1d;
                     str = "example";
                     strOpt = "optional example";
                 }}),
-                add(new SimpleObject("sunt", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                    any = "suscipit";
-                    bigint = 968972L;
-                    bigintStr = "quidem";
+                add(new SimpleObject("exercitationem", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                    any = "recusandae";
+                    bigint = 397533L;
+                    bigintStr = "aperiam";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 9049.49d;
+                    decimal = 7386.83d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                    intEnum = SimpleObjectIntEnum.First;
+                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    intEnum = SimpleObjectIntEnum.Second;
                     intOptNull = 999999L;
                     num = 1.1d;
                     numOptNull = 1.1d;
@@ -226,20 +226,41 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("corporis", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                    anyVal = "amet";
-                    bigintStrVal = "beatae";
-                    bigintVal = 489509L;
+                add(new SimpleObjectCamelCase("dolore", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                    anyVal = "doloribus";
+                    bigintStrVal = "suscipit";
+                    bigintVal = 968972L;
                     boolOptVal = true;
                     boolVal = true;
                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                     dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 9509.53d;
+                    decimalVal = 6971.42d;
                     enumVal = Enum.TWO;
                     float32Val = 2.2222222f;
                     int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intOptNullVal = 999999L;
+                    intVal = 999999L;
+                    numOptNullVal = 1.1d;
+                    numVal = 1.1d;
+                    strOptVal = "optional example";
+                    strVal = "example";
+                }}),
+                add(new SimpleObjectCamelCase("debitis", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                    anyVal = "adipisci";
+                    bigintStrVal = "non";
+                    bigintVal = 228263L;
+                    boolOptVal = true;
+                    boolVal = true;
+                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                    dateVal = LocalDate.parse("2020-01-01");
+                    decimalVal = 1059.06d;
+                    enumVal = Enum.TWO;
+                    float32Val = 2.2222222f;
+                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32Val = 1;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -303,21 +324,63 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("aspernatur", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                    any = "voluptates";
-                    bigint = 730709L;
-                    bigintStr = "vitae";
+                add(new SimpleObject("similique", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                    any = "laboriosam";
+                    bigint = 58356L;
+                    bigintStr = "voluptates";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 8817.21d;
+                    decimal = 7307.09d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                    intEnum = SimpleObjectIntEnum.First;
+                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    intEnum = SimpleObjectIntEnum.Third;
+                    intOptNull = 999999L;
+                    num = 1.1d;
+                    numOptNull = 1.1d;
+                    str = "example";
+                    strOpt = "optional example";
+                }}),
+                add(new SimpleObject("adipisci", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                    any = "voluptas";
+                    bigint = 374244L;
+                    bigintStr = "voluptas";
+                    bool = true;
+                    boolOpt = true;
+                    date = LocalDate.parse("2020-01-01");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                    decimal = 3244.05d;
+                    enum_ = Enum.TWO;
+                    float32 = 2.2222222f;
+                    int_ = 999999L;
+                    int32 = 1;
+                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                    intEnum = SimpleObjectIntEnum.Third;
+                    intOptNull = 999999L;
+                    num = 1.1d;
+                    numOptNull = 1.1d;
+                    str = "example";
+                    strOpt = "optional example";
+                }}),
+                add(new SimpleObject("ullam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                    any = "blanditiis";
+                    bigint = 449292L;
+                    bigintStr = "dolore";
+                    bool = true;
+                    boolOpt = true;
+                    date = LocalDate.parse("2020-01-01");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                    decimal = 3044.68d;
+                    enum_ = Enum.TWO;
+                    float32 = 2.2222222f;
+                    int_ = 999999L;
+                    int32 = 1;
+                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                    intEnum = SimpleObjectIntEnum.Third;
                     intOptNull = 999999L;
                     num = 1.1d;
                     numOptNull = 1.1d;
@@ -379,15 +442,36 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("blanditiis", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                    anyVal = "minima";
-                    bigintStrVal = "nobis";
-                    bigintVal = 680116L;
+                add(new SimpleObjectCamelCase("totam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                    anyVal = "quas";
+                    bigintStrVal = "hic";
+                    bigintVal = 201517L;
                     boolOptVal = true;
                     boolVal = true;
                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                     dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 2378.07d;
+                    decimalVal = 6339.98d;
+                    enumVal = Enum.TWO;
+                    float32Val = 2.2222222f;
+                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32Val = 1;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intOptNullVal = 999999L;
+                    intVal = 999999L;
+                    numOptNullVal = 1.1d;
+                    numVal = 1.1d;
+                    strOptVal = "optional example";
+                    strVal = "example";
+                }}),
+                add(new SimpleObjectCamelCase("asperiores", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                    anyVal = "nobis";
+                    bigintStrVal = "sit";
+                    bigintVal = 699575L;
+                    boolOptVal = true;
+                    boolVal = true;
+                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                    dateVal = LocalDate.parse("2020-01-01");
+                    decimalVal = 1488.29d;
                     enumVal = Enum.TWO;
                     float32Val = 2.2222222f;
                     int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
@@ -400,20 +484,20 @@ public class Application {
                     strOptVal = "optional example";
                     strVal = "example";
                 }}),
-                add(new SimpleObjectCamelCase("blanditiis", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                    anyVal = "aliquam";
-                    bigintStrVal = "officiis";
-                    bigintVal = 839189L;
+                add(new SimpleObjectCamelCase("in", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                    anyVal = "expedita";
+                    bigintStrVal = "ab";
+                    bigintVal = 611749L;
                     boolOptVal = true;
                     boolVal = true;
                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                     dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 3518.7d;
+                    decimalVal = 2927.94d;
                     enumVal = Enum.TWO;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
+                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -477,63 +561,42 @@ public class Application {
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObject[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("sit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        any = "corrupti";
-                        bigint = 867290L;
-                        bigintStr = "totam";
+                    add(new SimpleObject("reiciendis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "unde";
+                        bigint = 100032L;
+                        bigintStr = "suscipit";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 9402.1d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                        intEnum = SimpleObjectIntEnum.Third;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }}),
-                    add(new SimpleObject("ab", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        any = "reiciendis";
-                        bigint = 131852L;
-                        bigintStr = "asperiores";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 7079.18d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                        intEnum = SimpleObjectIntEnum.Third;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }}),
-                    add(new SimpleObject("voluptas", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        any = "laborum";
-                        bigint = 152354L;
-                        bigintStr = "in";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 4174.86d;
+                        decimal = 9602.57d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
                         int32 = 1;
                         int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
                         intEnum = SimpleObjectIntEnum.First;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                    add(new SimpleObject("ipsum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "maiores";
+                        bigint = 274823L;
+                        bigintStr = "sed";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 5922.31d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.Third;
                         intOptNull = 999999L;
                         num = 1.1d;
                         numOptNull = 1.1d;
@@ -598,20 +661,20 @@ public class Application {
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("incidunt", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                        anyVal = "debitis";
-                        bigintStrVal = "illo";
-                        bigintVal = 967795L;
+                    add(new SimpleObjectCamelCase("non", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "tempora";
+                        bigintStrVal = "tempora";
+                        bigintVal = 455444L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 193d;
+                        decimalVal = 9700.76d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -619,18 +682,18 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }}),
-                    add(new SimpleObjectCamelCase("voluptatibus", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "eius";
-                        bigintStrVal = "necessitatibus";
-                        bigintVal = 215529L;
+                    add(new SimpleObjectCamelCase("sit", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "facilis";
+                        bigintStrVal = "quaerat";
+                        bigintVal = 277773L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 4067.33d;
+                        decimalVal = 3730.35d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                         int32Val = 1;
                         intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
                         intOptNullVal = 999999L;
@@ -640,59 +703,15 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }}),
-                    add(new SimpleObjectCamelCase("praesentium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "voluptate";
-                        bigintStrVal = "reiciendis";
-                        bigintVal = 401713L;
+                    add(new SimpleObjectCamelCase("aperiam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "veniam";
+                        bigintStrVal = "minima";
+                        bigintVal = 924159L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 254.97d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("error", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "incidunt";
-                        bigintStrVal = "ipsam";
-                        bigintVal = 894864L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 5249.7d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                }}),
-                add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("veniam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "reiciendis";
-                        bigintStrVal = "nulla";
-                        bigintVal = 168576L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 486.9d;
+                        decimalVal = 9671.22d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
@@ -705,20 +724,43 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }}),
+                    add(new SimpleObjectCamelCase("praesentium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "veniam";
+                        bigintStrVal = "in";
+                        bigintVal = 889234L;
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        decimalVal = 1046.27d;
+                        enumVal = Enum.TWO;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32Val = 1;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                }}),
+                add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
                     add(new SimpleObjectCamelCase("dolorum", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                        anyVal = "beatae";
-                        bigintStrVal = "laudantium";
-                        bigintVal = 348476L;
+                        anyVal = "voluptatum";
+                        bigintStrVal = "error";
+                        bigintVal = 944708L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 5106.29d;
+                        decimalVal = 7105.29d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -726,18 +768,39 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }}),
-                    add(new SimpleObjectCamelCase("officia", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                        anyVal = "hic";
+                    add(new SimpleObjectCamelCase("ut", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "dolorum";
+                        bigintStrVal = "corrupti";
+                        bigintVal = 879235L;
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        decimalVal = 2726.83d;
+                        enumVal = Enum.TWO;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32Val = 1;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                    add(new SimpleObjectCamelCase("sit", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "culpa";
                         bigintStrVal = "expedita";
-                        bigintVal = 892863L;
+                        bigintVal = 299643L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 2049.23d;
+                        decimalVal = 78.84d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
                         int32Val = 1;
                         intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
                         intOptNullVal = 999999L;
@@ -747,18 +810,83 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }}),
-                    add(new SimpleObjectCamelCase("voluptatem", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "accusamus";
-                        bigintStrVal = "tempora";
-                        bigintVal = 543678L;
+                }}),
+                add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
+                    add(new SimpleObjectCamelCase("vel", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                        anyVal = "corporis";
+                        bigintStrVal = "et";
+                        bigintVal = 502710L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 1482.68d;
+                        decimalVal = 4059.42d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
+                        int32Val = 1;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                    add(new SimpleObjectCamelCase("dicta", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "error";
+                        bigintStrVal = "consequatur";
+                        bigintVal = 279068L;
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        decimalVal = 9688.65d;
+                        enumVal = Enum.TWO;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
+                        int32Val = 1;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                    add(new SimpleObjectCamelCase("laboriosam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "labore";
+                        bigintStrVal = "quidem";
+                        bigintVal = 539074L;
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        decimalVal = 6719.57d;
+                        enumVal = Enum.TWO;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        int32Val = 1;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                    add(new SimpleObjectCamelCase("delectus", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "deserunt";
+                        bigintStrVal = "voluptate";
+                        bigintVal = 600392L;
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        decimalVal = 9720.83d;
+                        enumVal = Enum.TWO;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
                         int32Val = 1;
                         intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
                         intOptNullVal = 999999L;
@@ -820,11 +948,20 @@ public class Application {
 
             org.openapis.openapi.models.. req = new String[][]{{
                 add(new String[]{{
-                    add("esse"),
+                    add("reprehenderit"),
+                    add("facere"),
+                    add("fuga"),
                 }}),
                 add(new String[]{{
-                    add("sit"),
-                    add("voluptatum"),
+                    add("mollitia"),
+                    add("veniam"),
+                    add("voluptatem"),
+                }}),
+                add(new String[]{{
+                    add("repudiandae"),
+                    add("quasi"),
+                    add("atque"),
+                    add("reprehenderit"),
                 }}),
             }}            
 
@@ -883,78 +1020,15 @@ public class Application {
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>[]{{
                 add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("corporis", new SimpleObject("nostrum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "et";
-                        bigint = 502710L;
-                        bigintStr = "ex";
+                    put("suscipit", new SimpleObject("ea", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "quidem";
+                        bigint = 806670L;
+                        bigintStr = "et";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 1536.27d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("consequatur", new SimpleObject("occaecati", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        any = "incidunt";
-                        bigint = 968865L;
-                        bigintStr = "dolorem";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 6908.94d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.First;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("atque", new SimpleObject("deserunt", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "laborum";
-                        bigint = 724148L;
-                        bigintStr = "tenetur";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 3888.67d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.First;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("reiciendis", new SimpleObject("quidem", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        any = "provident";
-                        bigint = 833819L;
-                        bigintStr = "delectus";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 9147.91d;
+                        decimal = 4610.07d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
@@ -967,73 +1041,27 @@ public class Application {
                         str = "example";
                         strOpt = "optional example";
                     }});
-                }}),
-                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("praesentium", new SimpleObject("atque", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        any = "mollitia";
-                        bigint = 333965L;
-                        bigintStr = "voluptatem";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 7908.4d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        intEnum = SimpleObjectIntEnum.First;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("totam", new SimpleObject("assumenda", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "suscipit";
-                        bigint = 693957L;
-                        bigintStr = "maxime";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 908.85d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                        intEnum = SimpleObjectIntEnum.First;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("error", new SimpleObject("ex", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                    put("officiis", new SimpleObject("maiores", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
                         any = "officiis";
-                        bigint = 886961L;
-                        bigintStr = "accusamus";
+                        bigint = 880107L;
+                        bigintStr = "natus";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 6188.26d;
+                        decimal = 3283.03d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
                         int32 = 1;
                         int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.First;
+                        intEnum = SimpleObjectIntEnum.Second;
                         intOptNull = 999999L;
                         num = 1.1d;
                         numOptNull = 1.1d;
                         str = "example";
                         strOpt = "optional example";
                     }});
-                }}),
-                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
                     put("error", new SimpleObject("recusandae", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
                         any = "blanditiis";
                         bigint = 379356L;
@@ -1055,15 +1083,17 @@ public class Application {
                         str = "example";
                         strOpt = "optional example";
                     }});
-                    put("labore", new SimpleObject("dolores", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "reiciendis";
-                        bigint = 42976L;
-                        bigintStr = "repudiandae";
+                }}),
+                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
+                    put("reiciendis", new SimpleObject("enim", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "doloremque";
+                        bigint = 919783L;
+                        bigintStr = "dicta";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 1160.98d;
+                        decimal = 360.33d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
@@ -1076,15 +1106,59 @@ public class Application {
                         str = "example";
                         strOpt = "optional example";
                     }});
-                    put("velit", new SimpleObject("officiis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "a";
-                        bigint = 562783L;
-                        bigintStr = "magnam";
+                    put("a", new SimpleObject("perspiciatis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "molestias";
+                        bigint = 300029L;
+                        bigintStr = "saepe";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 9063.55d;
+                        decimal = 1604.67d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }});
+                }}),
+                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
+                    put("occaecati", new SimpleObject("illo", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "consequuntur";
+                        bigint = 145870L;
+                        bigintStr = "id";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 3356.31d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                        intEnum = SimpleObjectIntEnum.Second;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }});
+                    put("eveniet", new SimpleObject("quae", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "non";
+                        bigint = 878493L;
+                        bigintStr = "doloremque";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 4341.56d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
@@ -1097,15 +1171,122 @@ public class Application {
                         str = "example";
                         strOpt = "optional example";
                     }});
-                    put("adipisci", new SimpleObject("reprehenderit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        any = "eveniet";
-                        bigint = 580887L;
-                        bigintStr = "consequuntur";
+                    put("qui", new SimpleObject("voluptatum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "cum";
+                        bigint = 434761L;
+                        bigintStr = "necessitatibus";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 1458.7d;
+                        decimal = 1875.52d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }});
+                    put("ad", new SimpleObject("voluptas", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "repellat";
+                        bigint = 3099L;
+                        bigintStr = "corporis";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 5973.03d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                        intEnum = SimpleObjectIntEnum.Second;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }});
+                }}),
+                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
+                    put("dolores", new SimpleObject("recusandae", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "id";
+                        bigint = 327988L;
+                        bigintStr = "dolore";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 6803.49d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.First;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }});
+                    put("molestiae", new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "ex";
+                        bigint = 284000L;
+                        bigintStr = "culpa";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 2384.13d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        intEnum = SimpleObjectIntEnum.Second;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }});
+                    put("esse", new SimpleObject("ullam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "provident";
+                        bigint = 337477L;
+                        bigintStr = "eum";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 9704.94d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                        intEnum = SimpleObjectIntEnum.First;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }});
+                    put("nostrum", new SimpleObject("accusantium", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "mollitia";
+                        bigint = 591027L;
+                        bigintStr = "possimus";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 6591.77d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
@@ -1176,39 +1357,18 @@ public class Application {
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]{{
                 add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                    put("eveniet", new SimpleObjectCamelCase("quae", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "non";
-                        bigintStrVal = "vero";
-                        bigintVal = 39615L;
+                    put("nam", new SimpleObjectCamelCase("molestias", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                        anyVal = "earum";
+                        bigintStrVal = "officia";
+                        bigintVal = 672041L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 4341.56d;
+                        decimalVal = 8130.54d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }});
-                    put("qui", new SimpleObjectCamelCase("voluptatum", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "cum";
-                        bigintStrVal = "iure";
-                        bigintVal = 898063L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 1875.52d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                         int32Val = 1;
                         intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
                         intOptNullVal = 999999L;
@@ -1218,38 +1378,15 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }});
-                    put("ad", new SimpleObjectCamelCase("voluptas", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "repellat";
-                        bigintStrVal = "alias";
-                        bigintVal = 362189L;
+                    put("cumque", new SimpleObjectCamelCase("cumque", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "vitae";
+                        bigintStrVal = "rerum";
+                        bigintVal = 272229L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 5973.03d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }});
-                }}),
-                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                    put("dolores", new SimpleObjectCamelCase("recusandae", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "id";
-                        bigintStrVal = "minima";
-                        bigintVal = 293144L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 6803.49d;
+                        decimalVal = 3354.98d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
@@ -1262,62 +1399,22 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }});
-                    put("molestiae", new SimpleObjectCamelCase("eum", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "ex";
-                        bigintStrVal = "ut";
-                        bigintVal = 633062L;
+                }}),
+                add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
+                    put("aspernatur", new SimpleObjectCamelCase("sapiente", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "eum";
+                        bigintStrVal = "eius";
+                        bigintVal = 521996L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 2384.13d;
+                        decimalVal = 8710.83d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }});
-                    put("esse", new SimpleObjectCamelCase("ullam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                        anyVal = "provident";
-                        bigintStrVal = "quis";
-                        bigintVal = 431785L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 9704.94d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
                         intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }});
-                    put("nostrum", new SimpleObjectCamelCase("accusantium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "mollitia";
-                        bigintStrVal = "provident";
-                        bigintVal = 821719L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 6591.77d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -1376,8 +1473,8 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new String[]{{
-                add("in"),
-                add("nam"),
+                add("beatae"),
+                add("cupiditate"),
             }}            
 
             RequestBodyPostApplicationJsonArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive(req);
@@ -1434,21 +1531,21 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("officia",                 new org.openapis.openapi.models.shared.SimpleObject[]{{
-                                add(new SimpleObject("cumque", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                    any = "placeat";
-                                    bigint = 266697L;
-                                    bigintStr = "voluptatibus";
+            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("earum",                 new org.openapis.openapi.models.shared.SimpleObject[]{{
+                                add(new SimpleObject("debitis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                                    any = "hic";
+                                    bigint = 848151L;
+                                    bigintStr = "eaque";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 5640.64d;
+                                    decimal = 9358.33d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
                                     int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                                     intEnum = SimpleObjectIntEnum.Third;
                                     intOptNull = 999999L;
                                     num = 1.1d;
@@ -1456,15 +1553,15 @@ public class Application {
                                     str = "example";
                                     strOpt = "optional example";
                                 }}),
-                                add(new SimpleObject("perferendis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                                    any = "tempora";
-                                    bigint = 335498L;
-                                    bigintStr = "inventore";
+                                add(new SimpleObject("animi", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                                    any = "suscipit";
+                                    bigint = 211534L;
+                                    bigintStr = "fugit";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 1476.85d;
+                                    decimal = 7649.95d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
@@ -1477,42 +1574,42 @@ public class Application {
                                     str = "example";
                                     strOpt = "optional example";
                                 }}),
-                                add(new SimpleObject("sapiente", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                                    any = "eum";
-                                    bigint = 260628L;
-                                    bigintStr = "rem";
+                                add(new SimpleObject("suscipit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                                    any = "consequatur";
+                                    bigint = 97258L;
+                                    bigintStr = "et";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 8710.83d;
+                                    decimal = 4977.77d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
                                     int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                                    intEnum = SimpleObjectIntEnum.First;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                                    intEnum = SimpleObjectIntEnum.Second;
                                     intOptNull = 999999L;
                                     num = 1.1d;
                                     numOptNull = 1.1d;
                                     str = "example";
                                     strOpt = "optional example";
                                 }}),
-                            }}, false, 325118L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                                put("cupiditate", new SimpleObject("earum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                    any = "provident";
-                                    bigint = 936469L;
-                                    bigintStr = "soluta";
+                            }}, false, 169025L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
+                                put("nulla", new SimpleObject("iusto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "necessitatibus";
+                                    bigint = 58534L;
+                                    bigintStr = "tempora";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 9407.82d;
+                                    decimal = 4706.21d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
                                     int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                                     intEnum = SimpleObjectIntEnum.First;
                                     intOptNull = 999999L;
                                     num = 1.1d;
@@ -1520,16 +1617,79 @@ public class Application {
                                     str = "example";
                                     strOpt = "optional example";
                                 }});
-                            }}, 8918.01d,                 new SimpleObject("aliquid", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                                bigint = 211534L;
-                                bigintStr = "fugit";
+                                put("maiores", new SimpleObject("odio", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "reiciendis";
+                                    bigint = 423706L;
+                                    bigintStr = "architecto";
+                                    bool = true;
+                                    boolOpt = true;
+                                    date = LocalDate.parse("2020-01-01");
+                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    decimal = 8571.25d;
+                                    enum_ = Enum.TWO;
+                                    float32 = 2.2222222f;
+                                    int_ = 999999L;
+                                    int32 = 1;
+                                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                                    intEnum = SimpleObjectIntEnum.First;
+                                    intOptNull = 999999L;
+                                    num = 1.1d;
+                                    numOptNull = 1.1d;
+                                    str = "example";
+                                    strOpt = "optional example";
+                                }});
+                                put("ex", new SimpleObject("fugiat", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "consectetur";
+                                    bigint = 399812L;
+                                    bigintStr = "ipsa";
+                                    bool = true;
+                                    boolOpt = true;
+                                    date = LocalDate.parse("2020-01-01");
+                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    decimal = 6713.84d;
+                                    enum_ = Enum.TWO;
+                                    float32 = 2.2222222f;
+                                    int_ = 999999L;
+                                    int32 = 1;
+                                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                                    intEnum = SimpleObjectIntEnum.Second;
+                                    intOptNull = 999999L;
+                                    num = 1.1d;
+                                    numOptNull = 1.1d;
+                                    str = "example";
+                                    strOpt = "optional example";
+                                }});
+                                put("officia", new SimpleObject("id", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "suscipit";
+                                    bigint = 399161L;
+                                    bigintStr = "perferendis";
+                                    bool = true;
+                                    boolOpt = true;
+                                    date = LocalDate.parse("2020-01-01");
+                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    decimal = 4317.6d;
+                                    enum_ = Enum.TWO;
+                                    float32 = 2.2222222f;
+                                    int_ = 999999L;
+                                    int32 = 1;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                                    intEnum = SimpleObjectIntEnum.Second;
+                                    intOptNull = 999999L;
+                                    num = 1.1d;
+                                    numOptNull = 1.1d;
+                                    str = "example";
+                                    strOpt = "optional example";
+                                }});
+                            }}, 8224.07d,                 new SimpleObject("voluptates", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                                bigint = 726343L;
+                                bigintStr = "ad";
                                 boolOpt = true;
-                                decimal = 7649.95d;
+                                decimal = 5369.23d;
                                 intOptNull = 999999L;
                                 numOptNull = 1.1d;
                                 strOpt = "optional example";
-                            }};, "fuga") {{
-                type = "ratione";
+                            }};, "enim") {{
+                type = "vitae";
             }};            
 
             RequestBodyPostApplicationJsonDeepResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeep(req);
@@ -1585,16 +1745,37 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObjectCamelCase req = new DeepObjectCamelCase("necessitatibus",                 new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                                add(new SimpleObjectCamelCase("suscipit", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                                    anyVal = "consequatur";
-                                    bigintStrVal = "quasi";
-                                    bigintVal = 90233L;
+            org.openapis.openapi.models.shared.DeepObjectCamelCase req = new DeepObjectCamelCase("ex",                 new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
+                                add(new SimpleObjectCamelCase("cum", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                                    anyVal = "ex";
+                                    bigintStrVal = "ut";
+                                    bigintVal = 321043L;
                                     boolOptVal = true;
                                     boolVal = true;
                                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                                     dateVal = LocalDate.parse("2020-01-01");
-                                    decimalVal = 4977.77d;
+                                    decimalVal = 7139.27d;
+                                    enumVal = Enum.TWO;
+                                    float32Val = 2.2222222f;
+                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
+                                    int32Val = 1;
+                                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
+                                    intOptNullVal = 999999L;
+                                    intVal = 999999L;
+                                    numOptNullVal = 1.1d;
+                                    numVal = 1.1d;
+                                    strOptVal = "optional example";
+                                    strVal = "example";
+                                }}),
+                                add(new SimpleObjectCamelCase("voluptatem", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                                    anyVal = "voluptatum";
+                                    bigintStrVal = "omnis";
+                                    bigintVal = 85233L;
+                                    boolOptVal = true;
+                                    boolVal = true;
+                                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    dateVal = LocalDate.parse("2020-01-01");
+                                    decimalVal = 7032.18d;
                                     enumVal = Enum.TWO;
                                     float32Val = 2.2222222f;
                                     int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
@@ -1607,15 +1788,15 @@ public class Application {
                                     strOptVal = "optional example";
                                     strVal = "example";
                                 }}),
-                                add(new SimpleObjectCamelCase("nihil", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                                    anyVal = "magni";
-                                    bigintStrVal = "doloribus";
-                                    bigintVal = 859581L;
+                                add(new SimpleObjectCamelCase("deleniti", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                                    anyVal = "architecto";
+                                    bigintStrVal = "fuga";
+                                    bigintVal = 867168L;
                                     boolOptVal = true;
                                     boolVal = true;
                                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                                     dateVal = LocalDate.parse("2020-01-01");
-                                    decimalVal = 8965.82d;
+                                    decimalVal = 8913.15d;
                                     enumVal = Enum.TWO;
                                     float32Val = 2.2222222f;
                                     int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
@@ -1628,39 +1809,18 @@ public class Application {
                                     strOptVal = "optional example";
                                     strVal = "example";
                                 }}),
-                                add(new SimpleObjectCamelCase("architecto", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                                    anyVal = "iusto";
-                                    bigintStrVal = "esse";
-                                    bigintVal = 508390L;
+                                add(new SimpleObjectCamelCase("ullam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                                    anyVal = "sapiente";
+                                    bigintStrVal = "rem";
+                                    bigintVal = 796320L;
                                     boolOptVal = true;
                                     boolVal = true;
                                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                                     dateVal = LocalDate.parse("2020-01-01");
-                                    decimalVal = 9799.63d;
+                                    decimalVal = 3651d;
                                     enumVal = Enum.TWO;
                                     float32Val = 2.2222222f;
                                     int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
-                                    int32Val = 1;
-                                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                                    intOptNullVal = 999999L;
-                                    intVal = 999999L;
-                                    numOptNullVal = 1.1d;
-                                    numVal = 1.1d;
-                                    strOptVal = "optional example";
-                                    strVal = "example";
-                                }}),
-                                add(new SimpleObjectCamelCase("aliquid", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                                    anyVal = "dicta";
-                                    bigintStrVal = "odio";
-                                    bigintVal = 271252L;
-                                    boolOptVal = true;
-                                    boolVal = true;
-                                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    dateVal = LocalDate.parse("2020-01-01");
-                                    decimalVal = 4582.59d;
-                                    enumVal = Enum.TWO;
-                                    float32Val = 2.2222222f;
-                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
                                     int32Val = 1;
                                     intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
                                     intOptNullVal = 999999L;
@@ -1670,19 +1830,19 @@ public class Application {
                                     strOptVal = "optional example";
                                     strVal = "example";
                                 }}),
-                            }}, false, 123844L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                                put("fugiat", new SimpleObjectCamelCase("eum", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                                    anyVal = "expedita";
-                                    bigintStrVal = "aliquid";
-                                    bigintVal = 639187L;
+                            }}, false, 518150L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
+                                put("quibusdam", new SimpleObjectCamelCase("deleniti", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                                    anyVal = "nam";
+                                    bigintStrVal = "ipsam";
+                                    bigintVal = 633415L;
                                     boolOptVal = true;
                                     boolVal = true;
                                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                                     dateVal = LocalDate.parse("2020-01-01");
-                                    decimalVal = 3813.97d;
+                                    decimalVal = 2228.64d;
                                     enumVal = Enum.TWO;
                                     float32Val = 2.2222222f;
-                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
                                     int32Val = 1;
                                     intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
                                     intOptNullVal = 999999L;
@@ -1692,18 +1852,39 @@ public class Application {
                                     strOptVal = "optional example";
                                     strVal = "example";
                                 }});
-                                put("id", new SimpleObjectCamelCase("libero", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                                    anyVal = "ab";
-                                    bigintStrVal = "error";
-                                    bigintVal = 822407L;
+                                put("dolor", new SimpleObjectCamelCase("laudantium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                                    anyVal = "consequatur";
+                                    bigintStrVal = "architecto";
+                                    bigintVal = 24944L;
                                     boolOptVal = true;
                                     boolVal = true;
                                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                                     dateVal = LocalDate.parse("2020-01-01");
-                                    decimalVal = 9139.92d;
+                                    decimalVal = 2650.39d;
                                     enumVal = Enum.TWO;
                                     float32Val = 2.2222222f;
-                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
+                                    int32Val = 1;
+                                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
+                                    intOptNullVal = 999999L;
+                                    intVal = 999999L;
+                                    numOptNullVal = 1.1d;
+                                    numVal = 1.1d;
+                                    strOptVal = "optional example";
+                                    strVal = "example";
+                                }});
+                                put("fugiat", new SimpleObjectCamelCase("officiis", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                                    anyVal = "ipsam";
+                                    bigintStrVal = "consequuntur";
+                                    bigintVal = 55107L;
+                                    boolOptVal = true;
+                                    boolVal = true;
+                                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    dateVal = LocalDate.parse("2020-01-01");
+                                    decimalVal = 5596.82d;
+                                    enumVal = Enum.TWO;
+                                    float32Val = 2.2222222f;
+                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                                     int32Val = 1;
                                     intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
                                     intOptNullVal = 999999L;
@@ -1713,16 +1894,37 @@ public class Application {
                                     strOptVal = "optional example";
                                     strVal = "example";
                                 }});
-                            }}, 3162.2d,                 new SimpleObjectCamelCase("vitae", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                                bigintStrVal = "quo";
-                                bigintVal = 405373L;
+                                put("sed", new SimpleObjectCamelCase("magnam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                                    anyVal = "veniam";
+                                    bigintStrVal = "nesciunt";
+                                    bigintVal = 712927L;
+                                    boolOptVal = true;
+                                    boolVal = true;
+                                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    dateVal = LocalDate.parse("2020-01-01");
+                                    decimalVal = 4329.84d;
+                                    enumVal = Enum.TWO;
+                                    float32Val = 2.2222222f;
+                                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                                    int32Val = 1;
+                                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
+                                    intOptNullVal = 999999L;
+                                    intVal = 999999L;
+                                    numOptNullVal = 1.1d;
+                                    numVal = 1.1d;
+                                    strOptVal = "optional example";
+                                    strVal = "example";
+                                }});
+                            }}, 7814.8d,                 new SimpleObjectCamelCase("autem", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                                bigintStrVal = "recusandae";
+                                bigintVal = 160393L;
                                 boolOptVal = true;
-                                decimalVal = 2811.53d;
+                                decimalVal = 289.52d;
                                 intOptNullVal = 999999L;
                                 numOptNullVal = 1.1d;
                                 strOptVal = "optional example";
-                            }};, "ad") {{
-                type = "expedita";
+                            }};, "exercitationem") {{
+                type = "necessitatibus";
             }};            
 
             RequestBodyPostApplicationJsonDeepCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(req);
@@ -1778,21 +1980,21 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                put("molestias", new SimpleObject("rerum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                    any = "cum";
-                    bigint = 399660L;
-                    bigintStr = "beatae";
+                put("nisi", new SimpleObject("repudiandae", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                    any = "at";
+                    bigint = 878373L;
+                    bigintStr = "est";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 5308.6d;
+                    decimal = 6907.85d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                    intEnum = SimpleObjectIntEnum.First;
+                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    intEnum = SimpleObjectIntEnum.Third;
                     intOptNull = 999999L;
                     num = 1.1d;
                     numOptNull = 1.1d;
@@ -1855,20 +2057,41 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                put("sapiente", new SimpleObjectCamelCase("alias", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                    anyVal = "officiis";
-                    bigintStrVal = "architecto";
-                    bigintVal = 682119L;
+                put("voluptate", new SimpleObjectCamelCase("eius", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                    anyVal = "blanditiis";
+                    bigintStrVal = "officia";
+                    bigintVal = 376389L;
                     boolOptVal = true;
                     boolVal = true;
                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                     dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 8671.68d;
+                    decimalVal = 2540.25d;
                     enumVal = Enum.TWO;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
+                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
+                    intOptNullVal = 999999L;
+                    intVal = 999999L;
+                    numOptNullVal = 1.1d;
+                    numVal = 1.1d;
+                    strOptVal = "optional example";
+                    strVal = "example";
+                }});
+                put("nesciunt", new SimpleObjectCamelCase("dicta", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                    anyVal = "fuga";
+                    bigintStrVal = "laudantium";
+                    bigintVal = 277340L;
+                    boolOptVal = true;
+                    boolVal = true;
+                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                    dateVal = LocalDate.parse("2020-01-01");
+                    decimalVal = 974.93d;
+                    enumVal = Enum.TWO;
+                    float32Val = 2.2222222f;
+                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32Val = 1;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -1932,41 +2155,20 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                put("sapiente", new SimpleObject("perferendis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                    any = "rem";
-                    bigint = 796320L;
-                    bigintStr = "nemo";
+                put("aperiam", new SimpleObject("occaecati", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                    any = "cupiditate";
+                    bigint = 970732L;
+                    bigintStr = "soluta";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 9920.74d;
+                    decimal = 38.6d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
-                    intOptNull = 999999L;
-                    num = 1.1d;
-                    numOptNull = 1.1d;
-                    str = "example";
-                    strOpt = "optional example";
-                }});
-                put("impedit", new SimpleObject("inventore", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                    any = "quibusdam";
-                    bigint = 720528L;
-                    bigintStr = "ipsam";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 6334.15d;
-                    enum_ = Enum.TWO;
-                    float32 = 2.2222222f;
-                    int_ = 999999L;
-                    int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                     intEnum = SimpleObjectIntEnum.First;
                     intOptNull = 999999L;
                     num = 1.1d;
@@ -2029,41 +2231,20 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                put("dolor", new SimpleObjectCamelCase("laudantium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                    anyVal = "consequatur";
-                    bigintStrVal = "architecto";
-                    bigintVal = 24944L;
+                put("fuga", new SimpleObjectCamelCase("praesentium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                    anyVal = "accusamus";
+                    bigintStrVal = "voluptatibus";
+                    bigintVal = 719620L;
                     boolOptVal = true;
                     boolVal = true;
                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                     dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 2650.39d;
-                    enumVal = Enum.TWO;
-                    float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
-                    int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
-                    intOptNullVal = 999999L;
-                    intVal = 999999L;
-                    numOptNullVal = 1.1d;
-                    numVal = 1.1d;
-                    strOptVal = "optional example";
-                    strVal = "example";
-                }});
-                put("fugiat", new SimpleObjectCamelCase("officiis", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                    anyVal = "ipsam";
-                    bigintStrVal = "consequuntur";
-                    bigintVal = 55107L;
-                    boolOptVal = true;
-                    boolVal = true;
-                    dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 5596.82d;
+                    decimalVal = 6085.93d;
                     enumVal = Enum.TWO;
                     float32Val = 2.2222222f;
                     int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -2126,22 +2307,196 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject[]>() {{
-                put("veniam", new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("ab", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "expedita";
-                        bigint = 432984L;
-                        bigintStr = "vel";
+                put("quos", new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject("vero", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "itaque";
+                        bigint = 415608L;
+                        bigintStr = "totam";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 5282.34d;
+                        decimal = 9366.18d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
                         int32 = 1;
                         int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                    add(new SimpleObject("sint", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "vel";
+                        bigint = 1383L;
+                        bigintStr = "quasi";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 2476.85d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        intEnum = SimpleObjectIntEnum.First;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                }});
+                put("esse", new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject("hic", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "reprehenderit";
+                        bigint = 667715L;
+                        bigintStr = "quis";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 5718.44d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                    add(new SimpleObject("fuga", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "ex";
+                        bigint = 376741L;
+                        bigintStr = "debitis";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 9661.48d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                }});
+                put("velit", new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject("dolore", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "ipsum";
+                        bigint = 773035L;
+                        bigintStr = "magni";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 7465.85d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                    add(new SimpleObject("iure", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "sequi";
+                        bigint = 493958L;
+                        bigintStr = "neque";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 7781.72d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                    add(new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "vel";
+                        bigint = 300824L;
+                        bigintStr = "quibusdam";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 789.69d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        intEnum = SimpleObjectIntEnum.Third;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                }});
+                put("porro", new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject("vero", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        any = "velit";
+                        bigint = 75359L;
+                        bigintStr = "accusantium";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 4246.63d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                        intEnum = SimpleObjectIntEnum.First;
+                        intOptNull = 999999L;
+                        num = 1.1d;
+                        numOptNull = 1.1d;
+                        str = "example";
+                        strOpt = "optional example";
+                    }}),
+                    add(new SimpleObject("voluptatibus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "velit";
+                        bigint = 284086L;
+                        bigintStr = "perspiciatis";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        decimal = 9353.02d;
+                        enum_ = Enum.TWO;
+                        float32 = 2.2222222f;
+                        int_ = 999999L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.Third;
                         intOptNull = 999999L;
                         num = 1.1d;
                         numOptNull = 1.1d;
@@ -2205,232 +2560,16 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase[]>() {{
-                put("laboriosam", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("at", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "consequuntur";
-                        bigintStrVal = "voluptatem";
-                        bigintVal = 350207L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 8956.92d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("nemo", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                        anyVal = "harum";
-                        bigintStrVal = "sequi";
-                        bigintVal = 987349L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 9180.92d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("aspernatur", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "officia";
-                        bigintStrVal = "voluptas";
-                        bigintVal = 254025L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 3649.12d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("dicta", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "fuga";
-                        bigintStrVal = "laudantium";
-                        bigintVal = 277340L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 974.93d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                }});
-                put("consectetur", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("occaecati", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "cupiditate";
-                        bigintStrVal = "reiciendis";
-                        bigintVal = 746837L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 38.6d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                }});
-                put("inventore", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("praesentium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "accusamus";
-                        bigintStrVal = "voluptatibus";
-                        bigintVal = 719620L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 6085.93d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("earum", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "temporibus";
-                        bigintStrVal = "quos";
-                        bigintVal = 415280L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 9308.19d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("non", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                        anyVal = "vero";
-                        bigintStrVal = "voluptatem";
-                        bigintVal = 371919L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 4259.46d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                }});
-                put("sint", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("sint", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "deserunt";
-                        bigintStrVal = "esse";
-                        bigintVal = 364463L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 4445.87d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("delectus", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "hic";
-                        bigintStrVal = "necessitatibus";
-                        bigintVal = 991891L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 4043.06d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }}),
-                    add(new SimpleObjectCamelCase("impedit", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "fuga";
+                put("nisi", new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
+                    add(new SimpleObjectCamelCase("doloremque", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "velit";
                         bigintStrVal = "laborum";
-                        bigintVal = 231070L;
+                        bigintVal = 250398L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 2448.89d;
+                        decimalVal = 2244.67d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
@@ -2443,20 +2582,62 @@ public class Application {
                         strOptVal = "optional example";
                         strVal = "example";
                     }}),
-                    add(new SimpleObjectCamelCase("dignissimos", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "repudiandae";
-                        bigintStrVal = "nam";
-                        bigintVal = 294076L;
+                    add(new SimpleObjectCamelCase("perspiciatis", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "recusandae";
+                        bigintStrVal = "ea";
+                        bigintVal = 693153L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 4828.92d;
+                        decimalVal = 3774.06d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                    add(new SimpleObjectCamelCase("impedit", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
+                        anyVal = "a";
+                        bigintStrVal = "voluptate";
+                        bigintVal = 351936L;
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        decimalVal = 6001.93d;
+                        enumVal = Enum.TWO;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        int32Val = 1;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
+                        intOptNullVal = 999999L;
+                        intVal = 999999L;
+                        numOptNullVal = 1.1d;
+                        numVal = 1.1d;
+                        strOptVal = "optional example";
+                        strVal = "example";
+                    }}),
+                    add(new SimpleObjectCamelCase("consectetur", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "est";
+                        bigintStrVal = "error";
+                        bigintVal = 456885L;
+                        boolOptVal = true;
+                        boolVal = true;
+                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                        dateVal = LocalDate.parse("2020-01-01");
+                        decimalVal = 2885.7d;
+                        enumVal = Enum.TWO;
+                        float32Val = 2.2222222f;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
+                        int32Val = 1;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -2521,173 +2702,22 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>>() {{
-                put("quibusdam", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("odit", new SimpleObject("libero", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        any = "voluptatibus";
-                        bigint = 426904L;
-                        bigintStr = "magnam";
+                put("ad", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
+                    put("iste", new SimpleObject("odio", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "ex";
+                        bigint = 367626L;
+                        bigintStr = "soluta";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 8428.55d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Third;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("quia", new SimpleObject("ea", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        any = "porro";
-                        bigint = 304198L;
-                        bigintStr = "velit";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 753.59d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                }});
-                put("excepturi", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("velit", new SimpleObject("iste", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        any = "ut";
-                        bigint = 596433L;
-                        bigintStr = "earum";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 1175.25d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        intEnum = SimpleObjectIntEnum.Third;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("nisi", new SimpleObject("sit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        any = "itaque";
-                        bigint = 242178L;
-                        bigintStr = "laborum";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 2503.98d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Second;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                }});
-                put("officia", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("ea", new SimpleObject("deleniti", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "quidem";
-                        bigint = 377406L;
-                        bigintStr = "facilis";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 8093.65d;
+                        decimal = 7262.27d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
                         int32 = 1;
                         int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                         intEnum = SimpleObjectIntEnum.Third;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("ullam", new SimpleObject("est", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "unde";
-                        bigint = 897543L;
-                        bigintStr = "animi";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 7699.67d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                        intEnum = SimpleObjectIntEnum.Second;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("labore", new SimpleObject("ad", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "veritatis";
-                        bigint = 874400L;
-                        bigintStr = "consectetur";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 1124.27d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.First;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                    put("ex", new SimpleObject("fugit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        any = "nemo";
-                        bigint = 745233L;
-                        bigintStr = "libero";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 5269.07d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        intEnum = SimpleObjectIntEnum.Second;
                         intOptNull = 999999L;
                         num = 1.1d;
                         numOptNull = 1.1d;
@@ -2751,44 +2781,21 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>>() {{
-                put("quae", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                    put("modi", new SimpleObjectCamelCase("nulla", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "neque";
-                        bigintStrVal = "exercitationem";
-                        bigintVal = 932394L;
+                put("vel", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
+                    put("quae", new SimpleObjectCamelCase("unde", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                        anyVal = "modi";
+                        bigintStrVal = "neque";
+                        bigintVal = 348357L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 882.48d;
+                        decimalVal = 9323.94d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
                         int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
                         int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
-                        intOptNullVal = 999999L;
-                        intVal = 999999L;
-                        numOptNullVal = 1.1d;
-                        numVal = 1.1d;
-                        strOptVal = "optional example";
-                        strVal = "example";
-                    }});
-                }});
-                put("quia", new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                    put("nostrum", new SimpleObjectCamelCase("officia", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                        anyVal = "omnis";
-                        bigintStrVal = "libero";
-                        bigintVal = 115661L;
-                        boolOptVal = true;
-                        boolVal = true;
-                        dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 6633.18d;
-                        enumVal = Enum.TWO;
-                        float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        int32Val = 1;
-                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                        intEnumVal = SimpleObjectCamelCaseIntEnumVal.First;
                         intOptNullVal = 999999L;
                         intVal = 999999L;
                         numOptNullVal = 1.1d;
@@ -2847,8 +2854,19 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, java.util.HashMap<String, String>>() {{
-                put("iusto", new java.util.HashMap<String, String>() {{
-                    put("voluptates", "inventore");
+                put("quia", new java.util.HashMap<String, String>() {{
+                    put("nostrum", "omnis");
+                }});
+                put("libero", new java.util.HashMap<String, String>() {{
+                    put("id", "libero");
+                }});
+                put("fugiat", new java.util.HashMap<String, String>() {{
+                    put("quos", "placeat");
+                    put("sit", "iusto");
+                    put("ipsa", "voluptates");
+                }});
+                put("inventore", new java.util.HashMap<String, String>() {{
+                    put("totam", "dolore");
                 }});
             }}            
 
@@ -2900,7 +2918,10 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("totam", "dolore");
+                put("distinctio", "voluptatem");
+                put("autem", "esse");
+                put("dolores", "assumenda");
+                put("beatae", "est");
             }}            
 
             RequestBodyPostApplicationJsonMapOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive(req);
@@ -2956,11 +2977,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("eligendi", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                bigint = 418109L;
-                bigintStr = "esse";
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("facere", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                bigint = 588812L;
+                bigintStr = "accusamus";
                 boolOpt = true;
-                decimal = 1729.51d;
+                decimal = 8964.8d;
                 intOptNull = 999999L;
                 numOptNull = 1.1d;
                 strOpt = "optional example";
@@ -3018,11 +3039,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("assumenda", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                bigint = 817339L;
-                bigintStr = "corrupti";
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("tempore", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                bigint = 421819L;
+                bigintStr = "ipsam";
                 boolOpt = true;
-                decimal = 4731.43d;
+                decimal = 7029.52d;
                 intOptNull = 999999L;
                 numOptNull = 1.1d;
                 strOpt = "optional example";
@@ -3080,11 +3101,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase("provident", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                bigintStrVal = "tempore";
-                bigintVal = 575078L;
+            org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase("laudantium", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                bigintStrVal = "voluptatibus";
+                bigintVal = 737279L;
                 boolOptVal = true;
-                decimalVal = 4097.26d;
+                decimalVal = 8723.03d;
                 intOptNullVal = 999999L;
                 numOptNullVal = 1.1d;
                 strOptVal = "optional example";
@@ -3197,20 +3218,20 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject(                new SimpleObject("cum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                                any = "ipsam";
-                                bigint = 702952L;
-                                bigintStr = "laudantium";
+            org.openapis.openapi.models.shared.DeepObject req = new DeepObject(                new SimpleObject("officiis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                                any = "quia";
+                                bigint = 694158L;
+                                bigintStr = "fuga";
                                 bool = true;
                                 boolOpt = true;
                                 date = LocalDate.parse("2020-01-01");
                                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                decimal = 3572.07d;
+                                decimal = 9195.08d;
                                 enum_ = Enum.TWO;
                                 float32 = 2.2222222f;
                                 int_ = 999999L;
                                 int32 = 1;
-                                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
                                 intEnum = SimpleObjectIntEnum.Third;
                                 intOptNull = 999999L;
                                 num = 1.1d;
@@ -3218,20 +3239,20 @@ public class Application {
                                 str = "example";
                                 strOpt = "optional example";
                             }},                 new org.openapis.openapi.models.shared.SimpleObject[]{{
-                                add(new SimpleObject("eos", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                                    any = "quidem";
-                                    bigint = 684126L;
-                                    bigintStr = "repudiandae";
+                                add(new SimpleObject("adipisci", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "praesentium";
+                                    bigint = 140316L;
+                                    bigintStr = "explicabo";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 340.7d;
+                                    decimal = 3589.95d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
                                     int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                                     intEnum = SimpleObjectIntEnum.Third;
                                     intOptNull = 999999L;
                                     num = 1.1d;
@@ -3239,16 +3260,37 @@ public class Application {
                                     str = "example";
                                     strOpt = "optional example";
                                 }}),
-                            }}, false, 510128L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                                put("explicabo", new SimpleObject("ut", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                                    any = "corporis";
-                                    bigint = 621473L;
-                                    bigintStr = "earum";
+                                add(new SimpleObject("delectus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                                    any = "ut";
+                                    bigint = 693746L;
+                                    bigintStr = "quis";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 2393.37d;
+                                    decimal = 1062.55d;
+                                    enum_ = Enum.TWO;
+                                    float32 = 2.2222222f;
+                                    int_ = 999999L;
+                                    int32 = 1;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                                    intEnum = SimpleObjectIntEnum.Second;
+                                    intOptNull = 999999L;
+                                    num = 1.1d;
+                                    numOptNull = 1.1d;
+                                    str = "example";
+                                    strOpt = "optional example";
+                                }}),
+                            }}, false, 253625L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
+                                put("nesciunt", new SimpleObject("qui", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "at";
+                                    bigint = 637856L;
+                                    bigintStr = "dignissimos";
+                                    bool = true;
+                                    boolOpt = true;
+                                    date = LocalDate.parse("2020-01-01");
+                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    decimal = 7607.44d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
@@ -3261,16 +3303,37 @@ public class Application {
                                     str = "example";
                                     strOpt = "optional example";
                                 }});
-                            }}, 1062.55d,                 new SimpleObject("unde", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                bigint = 585593L;
-                                bigintStr = "fugit";
+                                put("cupiditate", new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "minima";
+                                    bigint = 809594L;
+                                    bigintStr = "enim";
+                                    bool = true;
+                                    boolOpt = true;
+                                    date = LocalDate.parse("2020-01-01");
+                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                                    decimal = 2040.72d;
+                                    enum_ = Enum.TWO;
+                                    float32 = 2.2222222f;
+                                    int_ = 999999L;
+                                    int32 = 1;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                                    intEnum = SimpleObjectIntEnum.Third;
+                                    intOptNull = 999999L;
+                                    num = 1.1d;
+                                    numOptNull = 1.1d;
+                                    str = "example";
+                                    strOpt = "optional example";
+                                }});
+                            }}, 2982.64d,                 new SimpleObject("voluptates", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                                bigint = 46013L;
+                                bigintStr = "libero";
                                 boolOpt = true;
-                                decimal = 2536.25d;
+                                decimal = 1897.53d;
                                 intOptNull = 999999L;
                                 numOptNull = 1.1d;
                                 strOpt = "optional example";
-                            }};, "numquam") {{
-                type = "nesciunt";
+                            }};, "labore") {{
+                type = "totam";
             }};            
 
             RequestBodyPostFormDeepResponse res = sdk.requestBodies.requestBodyPostFormDeep(req);
@@ -3320,10 +3383,9 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("officia", "dignissimos");
-                put("optio", "necessitatibus");
-                put("corporis", "qui");
-                put("expedita", "voluptatum");
+                put("voluptas", "quo");
+                put("velit", "minus");
+                put("fuga", "nostrum");
             }}            
 
             RequestBodyPostFormMapPrimitiveResponse res = sdk.requestBodies.requestBodyPostFormMapPrimitive(req);
@@ -3378,11 +3440,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("cupiditate", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                bigint = 316542L;
-                bigintStr = "neque";
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("est", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                bigint = 735894L;
+                bigintStr = "vero";
                 boolOpt = true;
-                decimal = 4468.77d;
+                decimal = 1415.06d;
                 intOptNull = 999999L;
                 numOptNull = 1.1d;
                 strOpt = "optional example";
@@ -3440,11 +3502,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("minus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                bigint = 357347L;
-                bigintStr = "magnam";
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("repellat", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                bigint = 441321L;
+                bigintStr = "aperiam";
                 boolOpt = true;
-                decimal = 9149.71d;
+                decimal = 4864.1d;
                 intOptNull = 999999L;
                 numOptNull = 1.1d;
                 strOpt = "optional example";
@@ -3497,7 +3559,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON req = new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(false, 9781.73d, "tempore");            
+            RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON req = new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(false, 3252.97d, "in");            
 
             RequestBodyPostMultipleContentTypesInlineFilteredResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered(req);
 
@@ -3547,11 +3609,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(false, 1897.53d, "labore") {{
+            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(false, 1721.95d, "error") {{
                 bool3 = false;
-                num3 = 460.13d;
-                str3 = "libero";
-            }}, "totam");
+                num3 = 4969.15d;
+                str3 = "excepturi";
+            }}, "veritatis");
 
             if (res.res != null) {
                 // handle response
@@ -3600,11 +3662,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(false, 7791.8d, "velit") {{
+            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(false, 8667.89d, "itaque") {{
                 bool = false;
-                num = 5777.09d;
-                str = "voluptas";
-            }}, "minus");
+                num = 4981.8d;
+                str = "voluptate";
+            }}, "similique");
 
             if (res.res != null) {
                 // handle response
@@ -3653,11 +3715,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(false, 6692.37d, "impedit") {{
+            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(false, 3114.86d, "commodi") {{
                 bool2 = false;
-                num2 = 6845.53d;
-                str2 = "nostrum";
-            }}, "delectus");
+                num2 = 7631.65d;
+                str2 = "ex";
+            }}, "officiis");
 
             if (res.res != null) {
                 // handle response
@@ -3705,7 +3767,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded req = new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(false, 7358.94d, "vero");            
+            RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded req = new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(false, 8108.39d, "quidem");            
 
             RequestBodyPostMultipleContentTypesSplitFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm(req);
 
@@ -3754,7 +3816,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitApplicationJSON req = new RequestBodyPostMultipleContentTypesSplitApplicationJSON(false, 1415.06d, "repellat");            
+            RequestBodyPostMultipleContentTypesSplitApplicationJSON req = new RequestBodyPostMultipleContentTypesSplitApplicationJSON(false, 3481.92d, "quam");            
 
             RequestBodyPostMultipleContentTypesSplitJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson(req);
 
@@ -3803,7 +3865,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitMultipartFormData req = new RequestBodyPostMultipleContentTypesSplitMultipartFormData(false, 8659.46d, "nemo");            
+            RequestBodyPostMultipleContentTypesSplitMultipartFormData req = new RequestBodyPostMultipleContentTypesSplitMultipartFormData(false, 2114.55d, "modi");            
 
             RequestBodyPostMultipleContentTypesSplitMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart(req);
 
@@ -3852,8 +3914,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new String[]{{
-                add("aperiam"),
-                add("odio"),
+                add("sint"),
             }}            
 
             RequestBodyPostNullArrayResponse res = sdk.requestBodies.requestBodyPostNullArray(req);
@@ -3903,8 +3964,10 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("in", "ducimus");
-                put("excepturi", "dolores");
+                put("sequi", "repudiandae");
+                put("cum", "dicta");
+                put("earum", "veniam");
+                put("animi", "dolores");
             }}            
 
             RequestBodyPostNullDictionaryResponse res = sdk.requestBodies.requestBodyPostNullDictionary(req);
@@ -3953,7 +4016,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "error".getBytes()            
+            org.openapis.openapi.models.. req = "nam".getBytes()            
 
             RequestBodyPutBytesResponse res = sdk.requestBodies.requestBodyPutBytes(req);
 
@@ -4002,7 +4065,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies.requestBodyPutBytesWithParams("veritatis".getBytes(), "ducimus");
+            RequestBodyPutBytesWithParamsResponse res = sdk.requestBodies.requestBodyPutBytesWithParams("dicta".getBytes(), "consequuntur");
 
             if (res.res != null) {
                 // handle response
@@ -4056,100 +4119,38 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject(                new SimpleObject("commodi", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                any = "pariatur";
-                                bigint = 932666L;
-                                bigintStr = "similique";
-                                bool = true;
-                                boolOpt = true;
-                                date = LocalDate.parse("2020-01-01");
-                                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                decimal = 7631.65d;
-                                enum_ = Enum.TWO;
-                                float32 = 2.2222222f;
-                                int_ = 999999L;
-                                int32 = 1;
-                                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                                intEnum = SimpleObjectIntEnum.First;
-                                intOptNull = 999999L;
-                                num = 1.1d;
-                                numOptNull = 1.1d;
-                                str = "example";
-                                strOpt = "optional example";
-                            }},                 new org.openapis.openapi.models.shared.SimpleObject[]{{
-                                add(new SimpleObject("vero", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                    any = "exercitationem";
-                                    bigint = 463344L;
-                                    bigintStr = "dolorem";
+            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("nobis",                 new org.openapis.openapi.models.shared.SimpleObject[]{{
+                                add(new SimpleObject("libero", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "ducimus";
+                                    bigint = 980486L;
+                                    bigintStr = "veritatis";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 2646.19d;
-                                    enum_ = Enum.TWO;
-                                    float32 = 2.2222222f;
-                                    int_ = 999999L;
-                                    int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                                    intEnum = SimpleObjectIntEnum.Second;
-                                    intOptNull = 999999L;
-                                    num = 1.1d;
-                                    numOptNull = 1.1d;
-                                    str = "example";
-                                    strOpt = "optional example";
-                                }}),
-                                add(new SimpleObject("nam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                                    any = "cum";
-                                    bigint = 120120L;
-                                    bigintStr = "earum";
-                                    bool = true;
-                                    boolOpt = true;
-                                    date = LocalDate.parse("2020-01-01");
-                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 3344.74d;
+                                    decimal = 964.5d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
                                     int32 = 1;
                                     int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                                    intEnum = SimpleObjectIntEnum.First;
+                                    intEnum = SimpleObjectIntEnum.Third;
                                     intOptNull = 999999L;
                                     num = 1.1d;
                                     numOptNull = 1.1d;
                                     str = "example";
                                     strOpt = "optional example";
                                 }}),
-                                add(new SimpleObject("quasi", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                    any = "necessitatibus";
-                                    bigint = 748224L;
-                                    bigintStr = "ipsa";
+                            }}, false, 367917L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
+                                put("nostrum", new SimpleObject("quas", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                                    any = "doloribus";
+                                    bigint = 757364L;
+                                    bigintStr = "sint";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 4973.57d;
-                                    enum_ = Enum.TWO;
-                                    float32 = 2.2222222f;
-                                    int_ = 999999L;
-                                    int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                                    intEnum = SimpleObjectIntEnum.First;
-                                    intOptNull = 999999L;
-                                    num = 1.1d;
-                                    numOptNull = 1.1d;
-                                    str = "example";
-                                    strOpt = "optional example";
-                                }}),
-                            }}, false, 729448L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                                put("occaecati", new SimpleObject("enim", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                                    any = "nemo";
-                                    bigint = 306382L;
-                                    bigintStr = "nostrum";
-                                    bool = true;
-                                    boolOpt = true;
-                                    date = LocalDate.parse("2020-01-01");
-                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 9887.49d;
+                                    decimal = 3145.73d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
@@ -4162,41 +4163,20 @@ public class Application {
                                     str = "example";
                                     strOpt = "optional example";
                                 }});
-                                put("quas", new SimpleObject("quos", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                    any = "totam";
-                                    bigint = 564667L;
-                                    bigintStr = "odio";
+                                put("odio", new SimpleObject("tempore", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                                    any = "eaque";
+                                    bigint = 901163L;
+                                    bigintStr = "architecto";
                                     bool = true;
                                     boolOpt = true;
                                     date = LocalDate.parse("2020-01-01");
                                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 511.7d;
+                                    decimal = 5546.45d;
                                     enum_ = Enum.TWO;
                                     float32 = 2.2222222f;
                                     int_ = 999999L;
                                     int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                                    intEnum = SimpleObjectIntEnum.First;
-                                    intOptNull = 999999L;
-                                    num = 1.1d;
-                                    numOptNull = 1.1d;
-                                    str = "example";
-                                    strOpt = "optional example";
-                                }});
-                                put("tempore", new SimpleObject("ipsum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                    any = "libero";
-                                    bigint = 244032L;
-                                    bigintStr = "doloremque";
-                                    bool = true;
-                                    boolOpt = true;
-                                    date = LocalDate.parse("2020-01-01");
-                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 9639.76d;
-                                    enum_ = Enum.TWO;
-                                    float32 = 2.2222222f;
-                                    int_ = 999999L;
-                                    int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                                    int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                                     intEnum = SimpleObjectIntEnum.Third;
                                     intOptNull = 999999L;
                                     num = 1.1d;
@@ -4204,16 +4184,16 @@ public class Application {
                                     str = "example";
                                     strOpt = "optional example";
                                 }});
-                            }}, 6444.2d,                 new SimpleObject("doloremque", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                                bigint = 727481L;
-                                bigintStr = "architecto";
+                            }}, 385.57d,                 new SimpleObject("delectus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                                bigint = 216870L;
+                                bigintStr = "adipisci";
                                 boolOpt = true;
-                                decimal = 5845.93d;
+                                decimal = 9031.5d;
                                 intOptNull = 999999L;
                                 numOptNull = 1.1d;
                                 strOpt = "optional example";
-                            }};, "molestiae") {{
-                type = "eligendi";
+                            }};, "deserunt") {{
+                type = "doloremque";
             }};            
 
             RequestBodyPutMultipartDeepResponse res = sdk.requestBodies.requestBodyPutMultipartDeep(req);
@@ -4265,7 +4245,7 @@ public class Application {
                 .build();
 
             RequestBodyPutMultipartFileRequestBody req = new RequestBodyPutMultipartFileRequestBody() {{
-                file = new RequestBodyPutMultipartFileRequestBodyFile("possimus".getBytes(), "non");;
+                file = new RequestBodyPutMultipartFileRequestBodyFile("quis".getBytes(), "veniam");;
             }};            
 
             RequestBodyPutMultipartFileResponse res = sdk.requestBodies.requestBodyPutMultipartFile(req);
@@ -4320,11 +4300,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("magnam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                bigint = 993002L;
-                bigintStr = "veniam";
+            org.openapis.openapi.models.shared.SimpleObject req = new SimpleObject("libero", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                bigint = 475589L;
+                bigintStr = "eligendi";
                 boolOpt = true;
-                decimal = 1645.32d;
+                decimal = 8200.23d;
                 intOptNull = 999999L;
                 numOptNull = 1.1d;
                 strOpt = "optional example";
@@ -4376,7 +4356,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "facere"            
+            org.openapis.openapi.models.. req = "non"            
 
             RequestBodyPutStringResponse res = sdk.requestBodies.requestBodyPutString(req);
 
@@ -4425,7 +4405,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPutStringWithParamsResponse res = sdk.requestBodies.requestBodyPutStringWithParams("laudantium", "odit");
+            RequestBodyPutStringWithParamsResponse res = sdk.requestBodies.requestBodyPutStringWithParams("magnam", "itaque");
 
             if (res.res != null) {
                 // handle response
@@ -4473,7 +4453,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ReadWriteObjectInput req = new ReadWriteObjectInput(863477L, 227362L, 347698L);            
+            org.openapis.openapi.models.shared.ReadWriteObjectInput req = new ReadWriteObjectInput(150935L, 993002L, 330267L);            
 
             RequestBodyReadAndWriteResponse res = sdk.requestBodies.requestBodyReadAndWrite(req);
 
@@ -4573,7 +4553,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 688.52d, "velit");            
+            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 1645.32d, "facere");            
 
             RequestBodyWriteOnlyResponse res = sdk.requestBodies.requestBodyWriteOnly(req);
 
@@ -4623,7 +4603,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 7057.1d, "tempore");            
+            org.openapis.openapi.models.shared.WriteOnlyObject req = new WriteOnlyObject(false, 5129.05d, "odit");            
 
             RequestBodyWriteOnlyOutputResponse res = sdk.requestBodies.requestBodyWriteOnlyOutput(req);
 
