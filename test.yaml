@@ -2671,7 +2671,7 @@ paths:
                 required:
                   - data
                   - args
-  /anything/requestBodies/put/empty-object:
+  /anything/requestBodies/post/empty-object:
     post:
       operationId: requestBodyPostEmptyObject
       tags:
@@ -2748,6 +2748,95 @@ paths:
                     type: string
                 required:
                   - data
+  /anything/requestBodies/post/nullableRequiredProperty:
+    post:
+      operationId: nullableRequiredPropertyPost
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - NullableRequiredInt
+                - NullableRequiredArray
+                - NullableRequiredEnum
+              properties:
+                NullableOptionalInt:
+                  type: integer
+                  nullable: true
+                NullableRequiredInt:
+                  type:
+                    - integer
+                    - null
+                NullableRequiredArray:
+                  type: [array, null]
+                  items:
+                    type: number
+                NullableRequiredEnum:
+                  type: ['string', 'null']
+                  enum:
+                    - first
+                    - second
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /anything/requestBodies/post/nullableRequiredSharedObject:
+    post:
+      operationId: nullableRequiredSharedObjectPost
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - NullableRequiredObj
+              properties:
+                NullableOptionalObj:
+                  $ref: "#/components/schemas/nullableObject"
+                NullableRequiredObj:
+                  $ref: "#/components/schemas/nullableObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
+  /anything/requestBodies/post/nullableRequiredEmptyObject:
+    post:
+      operationId: nullableRequiredEmptyObjectPost
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - RequiredObj
+                - NullableRequiredObj
+              properties:
+                RequiredObj:
+                  type: ['object']
+                NullableOptionalObj:
+                  type: ['object', 'null']
+                NullableRequiredObj:
+                  type: ['object', 'null']
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: string
   /anything/flattening/inlineBodyAndParamNoConflict:
     post:
       operationId: inlineBodyAndParamNoConflict
@@ -4550,6 +4639,15 @@ components:
         nullableType:
           type: string
           nullable: true
+    nullableObject:
+      type: ['object', 'null']
+      required:
+        - required
+      properties:
+        required:
+          type: integer
+        optional:
+          type: string
     oneOfObjectOrArrayOfObjects:
       oneOf:
         - $ref: "components.yaml#/components/schemas/simpleObject"
