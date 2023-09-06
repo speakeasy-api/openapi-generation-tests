@@ -186,6 +186,108 @@ public class RequestBodies {
 		this.sdkConfiguration = sdkConfiguration;
 	}
 
+    public org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse nullableRequiredEmptyObjectPost(org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/nullableRequiredEmptyObject");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse res = new org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse(contentType, httpRes.statusCode()) {{
+            nullableRequiredEmptyObjectPost200ApplicationJSONString = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                String out = new String(httpRes.body(), StandardCharsets.UTF_8);
+                res.nullableRequiredEmptyObjectPost200ApplicationJSONString = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse nullableRequiredPropertyPost(org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBody request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/nullableRequiredProperty");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse res = new org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse(contentType, httpRes.statusCode()) {{
+            nullableRequiredPropertyPost200ApplicationJSONString = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                String out = new String(httpRes.body(), StandardCharsets.UTF_8);
+                res.nullableRequiredPropertyPost200ApplicationJSONString = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse nullableRequiredSharedObjectPost(org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostRequestBody request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/nullableRequiredSharedObject");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse res = new org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse(contentType, httpRes.statusCode()) {{
+            nullableRequiredSharedObjectPost200ApplicationJSONString = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                String out = new String(httpRes.body(), StandardCharsets.UTF_8);
+                res.nullableRequiredSharedObjectPost200ApplicationJSONString = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyPostApplicationJsonArrayResponse requestBodyPostApplicationJsonArray(org.openapis.openapi.models.shared.SimpleObject[] request) throws Exception {
         return this.requestBodyPostApplicationJsonArray(request, null);
     }
@@ -1212,7 +1314,7 @@ public class RequestBodies {
 
     public org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectResponse requestBodyPostEmptyObject(org.openapis.openapi.models.operations.RequestBodyPostEmptyObjectRequestBody request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
-        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/put/empty-object");
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/empty-object");
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("POST");

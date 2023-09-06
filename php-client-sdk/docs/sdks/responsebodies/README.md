@@ -66,7 +66,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(3990.25, 'quasi');
+    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(7313.98, 'adipisci');
 
     if ($response->statusCode === 200) {
         // handle response

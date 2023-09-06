@@ -132,6 +132,9 @@ src/sdk/models/operations/simplepathparameterarrays.ts
 src/sdk/models/operations/simplepathparametermaps.ts
 src/sdk/models/operations/simplepathparameterobjects.ts
 src/sdk/models/operations/simplepathparameterprimitives.ts
+src/sdk/models/operations/nullablerequiredemptyobjectpost.ts
+src/sdk/models/operations/nullablerequiredpropertypost.ts
+src/sdk/models/operations/nullablerequiredsharedobjectpost.ts
 src/sdk/models/operations/requestbodypostapplicationjsonarray.ts
 src/sdk/models/operations/requestbodypostapplicationjsonarraycamelcase.ts
 src/sdk/models/operations/requestbodypostapplicationjsonarrayobj.ts
@@ -227,6 +230,7 @@ src/sdk/models/shared/limitoffsetconfig.ts
 src/sdk/models/shared/refqueryparamobjexploded.ts
 src/sdk/models/shared/refqueryparamobj.ts
 src/sdk/models/shared/deepobject.ts
+src/sdk/models/shared/nullableobject.ts
 src/sdk/models/shared/simpleobjectcamelcase.ts
 src/sdk/models/shared/arrobjvalue.ts
 src/sdk/models/shared/arrobjvaluecamelcase.ts
@@ -500,6 +504,16 @@ docs/models/operations/simplepathparameterobjectsresponse.md
 docs/models/operations/simplepathparameterprimitivesrequest.md
 docs/models/operations/simplepathparameterprimitivesres.md
 docs/models/operations/simplepathparameterprimitivesresponse.md
+docs/models/operations/nullablerequiredemptyobjectpostrequestbodynullableoptionalobj.md
+docs/models/operations/nullablerequiredemptyobjectpostrequestbodynullablerequiredobj.md
+docs/models/operations/nullablerequiredemptyobjectpostrequestbodyrequiredobj.md
+docs/models/operations/nullablerequiredemptyobjectpostrequestbody.md
+docs/models/operations/nullablerequiredemptyobjectpostresponse.md
+docs/models/operations/nullablerequiredpropertypostrequestbodynullablerequiredenum.md
+docs/models/operations/nullablerequiredpropertypostrequestbody.md
+docs/models/operations/nullablerequiredpropertypostresponse.md
+docs/models/operations/nullablerequiredsharedobjectpostrequestbody.md
+docs/models/operations/nullablerequiredsharedobjectpostresponse.md
 docs/models/operations/requestbodypostapplicationjsonarrayresponse.md
 docs/models/operations/requestbodypostapplicationjsonarraycamelcaseresponse.md
 docs/models/operations/requestbodypostapplicationjsonarrayobjresponse.md
@@ -670,6 +684,7 @@ docs/models/shared/limitoffsetconfig.md
 docs/models/shared/refqueryparamobjexploded.md
 docs/models/shared/refqueryparamobj.md
 docs/models/shared/deepobject.md
+docs/models/shared/nullableobject.md
 docs/models/shared/simpleobjectcamelcaseint32enumval.md
 docs/models/shared/simpleobjectcamelcaseintenumval.md
 docs/models/shared/simpleobjectcamelcase.md

@@ -83,8 +83,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    xNumberHeader := 3581.07
-    xStringHeader := "harum"
+    xNumberHeader := 8970.71
+    xStringHeader := "dolore"
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyEmptyWithHeaders(ctx, xNumberHeader, xStringHeader)

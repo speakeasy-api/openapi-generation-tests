@@ -28,7 +28,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->retries->retriesGet('saepe', 426306);
+    $response = $sdk->retries->retriesGet('cumque', 160538);
 
     if ($response->retries !== null) {
         // handle response

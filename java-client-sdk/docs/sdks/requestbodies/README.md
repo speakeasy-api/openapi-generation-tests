@@ -6,6 +6,9 @@ Endpoints for testing request bodies.
 
 ### Available Operations
 
+* [nullableRequiredEmptyObjectPost](#nullablerequiredemptyobjectpost)
+* [nullableRequiredPropertyPost](#nullablerequiredpropertypost)
+* [nullableRequiredSharedObjectPost](#nullablerequiredsharedobjectpost)
 * [requestBodyPostApplicationJsonArray](#requestbodypostapplicationjsonarray)
 * [requestBodyPostApplicationJsonArrayCamelCase](#requestbodypostapplicationjsonarraycamelcase)
 * [requestBodyPostApplicationJsonArrayObj](#requestbodypostapplicationjsonarrayobj)
@@ -60,6 +63,170 @@ Endpoints for testing request bodies.
 * [requestBodyWriteOnlyOutput](#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](#requestbodywriteonlyunion)
 
+## nullableRequiredEmptyObjectPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody;
+import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj;
+import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj;
+import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj;
+import org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            NullableRequiredEmptyObjectPostRequestBody req = new NullableRequiredEmptyObjectPostRequestBody(                new NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj();,                 new NullableRequiredEmptyObjectPostRequestBodyRequiredObj();) {{
+                nullableOptionalObj = new NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj();;
+            }};            
+
+            NullableRequiredEmptyObjectPostResponse res = sdk.requestBodies.nullableRequiredEmptyObjectPost(req);
+
+            if (res.nullableRequiredEmptyObjectPost200ApplicationJSONString != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                  | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                                  | [org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody](../../models/operations/NullableRequiredEmptyObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                                                         | The request object to use for the request.                                                                                                                 |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse](../../models/operations/NullableRequiredEmptyObjectPostResponse.md)**
+
+
+## nullableRequiredPropertyPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBody;
+import org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum;
+import org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            NullableRequiredPropertyPostRequestBody req = new NullableRequiredPropertyPostRequestBody(                new Double[]{{
+                                add(3045.82d),
+                            }}, NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.FIRST, 882860L) {{
+                nullableOptionalInt = 79522L;
+            }};            
+
+            NullableRequiredPropertyPostResponse res = sdk.requestBodies.nullableRequiredPropertyPost(req);
+
+            if (res.nullableRequiredPropertyPost200ApplicationJSONString != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                            | Type                                                                                                                                                 | Required                                                                                                                                             | Description                                                                                                                                          |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                                            | [org.openapis.openapi.models.operations.NullableRequiredPropertyPostRequestBody](../../models/operations/NullableRequiredPropertyPostRequestBody.md) | :heavy_check_mark:                                                                                                                                   | The request object to use for the request.                                                                                                           |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NullableRequiredPropertyPostResponse](../../models/operations/NullableRequiredPropertyPostResponse.md)**
+
+
+## nullableRequiredSharedObjectPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostRequestBody;
+import org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse;
+import org.openapis.openapi.models.shared.NullableObject;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            NullableRequiredSharedObjectPostRequestBody req = new NullableRequiredSharedObjectPostRequestBody(                new NullableObject(250622L) {{
+                                optional = "et";
+                            }};) {{
+                nullableOptionalObj = new NullableObject(677412L) {{
+                    optional = "laborum";
+                }};;
+            }};            
+
+            NullableRequiredSharedObjectPostResponse res = sdk.requestBodies.nullableRequiredSharedObjectPost(req);
+
+            if (res.nullableRequiredSharedObjectPost200ApplicationJSONString != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                    | Type                                                                                                                                                         | Required                                                                                                                                                     | Description                                                                                                                                                  |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                                    | [org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostRequestBody](../../models/operations/NullableRequiredSharedObjectPostRequestBody.md) | :heavy_check_mark:                                                                                                                                           | The request object to use for the request.                                                                                                                   |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NullableRequiredSharedObjectPostResponse](../../models/operations/NullableRequiredSharedObjectPostResponse.md)**
+
+
 ## requestBodyPostApplicationJsonArray
 
 ### Example Usage
@@ -89,21 +256,21 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("dolorum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                    any = "aliquam";
-                    bigint = 146946L;
-                    bigintStr = "accusamus";
+                add(new SimpleObject("assumenda", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                    any = "placeat";
+                    bigint = 245367L;
+                    bigintStr = "eum";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 795.22d;
+                    decimal = 4205.39d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
                     int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.First;
+                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                    intEnum = SimpleObjectIntEnum.Second;
                     intOptNull = 999999L;
                     num = 1.1d;
                     numOptNull = 1.1d;
@@ -166,20 +333,20 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("nulla", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
-                    anyVal = "velit";
-                    bigintStrVal = "eum";
-                    bigintVal = 420539L;
+                add(new SimpleObjectCamelCase("ipsa", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                    anyVal = "libero";
+                    bigintStrVal = "quasi";
+                    bigintVal = 270328L;
                     boolOptVal = true;
                     boolVal = true;
                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                     dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 7521.35d;
+                    decimalVal = 2561.39d;
                     enumVal = Enum.TWO;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
                     int32Val = 1;
-                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
+                    intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
                     intOptNullVal = 999999L;
                     intVal = 999999L;
                     numOptNullVal = 1.1d;
@@ -243,21 +410,21 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                add(new SimpleObject("molestiae", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                    any = "quasi";
-                    bigint = 270328L;
-                    bigintStr = "numquam";
+                add(new SimpleObject("reprehenderit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                    any = "odio";
+                    bigint = 262118L;
+                    bigintStr = "esse";
                     bool = true;
                     boolOpt = true;
                     date = LocalDate.parse("2020-01-01");
                     dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 1314.82d;
+                    decimal = 4561.41d;
                     enum_ = Enum.TWO;
                     float32 = 2.2222222f;
                     int_ = 999999L;
                     int32 = 1;
                     int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                    intEnum = SimpleObjectIntEnum.First;
+                    intEnum = SimpleObjectIntEnum.Third;
                     intOptNull = 999999L;
                     num = 1.1d;
                     numOptNull = 1.1d;
@@ -319,18 +486,18 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                add(new SimpleObjectCamelCase("quidem", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
-                    anyVal = "eius";
-                    bigintStrVal = "esse";
-                    bigintVal = 456141L;
+                add(new SimpleObjectCamelCase("quisquam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                    anyVal = "ut";
+                    bigintStrVal = "eum";
+                    bigintVal = 379927L;
                     boolOptVal = true;
                     boolVal = true;
                     dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                     dateVal = LocalDate.parse("2020-01-01");
-                    decimalVal = 5245.93d;
+                    decimalVal = 8268.71d;
                     enumVal = Enum.TWO;
                     float32Val = 2.2222222f;
-                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
+                    int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
                     int32Val = 1;
                     intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
                     intOptNullVal = 999999L;
@@ -396,20 +563,20 @@ public class Application {
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObject[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("veritatis", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "eum";
-                        bigint = 379927L;
-                        bigintStr = "assumenda";
+                    add(new SimpleObject("fuga", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+                        any = "id";
+                        bigint = 696997L;
+                        bigintStr = "neque";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 1811.51d;
+                        decimal = 7786.96d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
                         intEnum = SimpleObjectIntEnum.Third;
                         intOptNull = 999999L;
                         num = 1.1d;
@@ -475,18 +642,18 @@ public class Application {
 
             org.openapis.openapi.models.. req = new org.openapis.openapi.models.shared.SimpleObjectCamelCase[][]{{
                 add(new org.openapis.openapi.models.shared.SimpleObjectCamelCase[]{{
-                    add(new SimpleObjectCamelCase("eius", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                        anyVal = "quidem";
-                        bigintStrVal = "neque";
-                        bigintVal = 778696L;
+                    add(new SimpleObjectCamelCase("ipsam", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.First, 999999L, 1.1d, "example") {{
+                        anyVal = "voluptas";
+                        bigintStrVal = "ab";
+                        bigintVal = 587600L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 8472.76d;
+                        decimalVal = 96.88d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
                         int32Val = 1;
                         intEnumVal = SimpleObjectCamelCaseIntEnumVal.Third;
                         intOptNullVal = 999999L;
@@ -548,7 +715,7 @@ public class Application {
 
             org.openapis.openapi.models.. req = new String[][]{{
                 add(new String[]{{
-                    add("ab"),
+                    add("quo"),
                 }}),
             }}            
 
@@ -607,20 +774,20 @@ public class Application {
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>[]{{
                 add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("cupiditate", new SimpleObject("quo", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        any = "consequatur";
-                        bigint = 272822L;
-                        bigintStr = "debitis";
+                    put("esse", new SimpleObject("nihil", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        any = "recusandae";
+                        bigint = 44612L;
+                        bigintStr = "distinctio";
                         bool = true;
                         boolOpt = true;
                         date = LocalDate.parse("2020-01-01");
                         dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 3708.53d;
+                        decimal = 7997.96d;
                         enum_ = Enum.TWO;
                         float32 = 2.2222222f;
                         int_ = 999999L;
                         int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
                         intEnum = SimpleObjectIntEnum.First;
                         intOptNull = 999999L;
                         num = 1.1d;
@@ -686,18 +853,18 @@ public class Application {
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>[]{{
                 add(new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObjectCamelCase>() {{
-                    put("aperiam", new SimpleObjectCamelCase("accusamus", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Second, 999999L, 1.1d, "example") {{
-                        anyVal = "distinctio";
-                        bigintStrVal = "quod";
-                        bigintVal = 490819L;
+                    put("aliquam", new SimpleObjectCamelCase("molestiae", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.TWO, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example") {{
+                        anyVal = "odio";
+                        bigintStrVal = "occaecati";
+                        bigintVal = 414567L;
                         boolOptVal = true;
                         boolVal = true;
                         dateTimeVal = OffsetDateTime.parse("2020-01-01T00:00:00Z");
                         dateVal = LocalDate.parse("2020-01-01");
-                        decimalVal = 769.56d;
+                        decimalVal = 9594.34d;
                         enumVal = Enum.TWO;
                         float32Val = 2.2222222f;
-                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE;
+                        int32EnumVal = SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE;
                         int32Val = 1;
                         intEnumVal = SimpleObjectCamelCaseIntEnumVal.Second;
                         intOptNullVal = 999999L;
@@ -758,7 +925,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new String[]{{
-                add("occaecati"),
+                add("eum"),
             }}            
 
             RequestBodyPostApplicationJsonArrayOfPrimitiveResponse res = sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive(req);
@@ -815,27 +982,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DeepObject req = new DeepObject(                new SimpleObject("eum", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                                any = "sapiente";
-                                bigint = 174112L;
-                                bigintStr = "deserunt";
-                                bool = true;
-                                boolOpt = true;
-                                date = LocalDate.parse("2020-01-01");
-                                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                decimal = 4752.89d;
-                                enum_ = Enum.TWO;
-                                float32 = 2.2222222f;
-                                int_ = 999999L;
-                                int32 = 1;
-                                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                                intEnum = SimpleObjectIntEnum.Third;
-                                intOptNull = 999999L;
-                                num = 1.1d;
-                                numOptNull = 1.1d;
-                                str = "example";
-                                strOpt = "optional example";
-                            }},                 new org.openapis.openapi.models.shared.SimpleObject[]{{
+            org.openapis.openapi.models.shared.DeepObject req = new DeepObject("praesentium",                 new org.openapis.openapi.models.shared.SimpleObject[]{{
                                 add(new SimpleObject("atque", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
                                     any = "consequuntur";
                                     bigint = 536178L;

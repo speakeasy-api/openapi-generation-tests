@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 86b390073dfd4d94c51922a09bbb677e
+  docChecksum: a946469a82fd7f8583ce0b596ee56078
   docVersion: 0.1.0
   speakeasyVersion: 1.78.9
   generationVersion: 2.96.9
@@ -26,7 +26,7 @@ features:
     nameOverrides: 2.81.1
     serverIDs: 2.81.1
 php:
-  version: 1.31.4
+  version: 1.31.5
   maxMethodParams: 5
   namespace: OpenAPI\OpenAPI
   packageName: openapi/openapi

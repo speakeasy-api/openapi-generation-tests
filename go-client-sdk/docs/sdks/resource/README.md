@@ -35,8 +35,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Resource.CreateFile(ctx, operations.CreateFileRequestBody{
         File: &operations.CreateFileRequestBodyFile{
-            Content: []byte("quod"),
-            File: "labore",
+            Content: []byte("quaerat"),
+            File: "consequuntur",
         },
     })
     if err != nil {
@@ -89,28 +89,28 @@ func main() {
     ctx := context.Background()
     res, err := s.Resource.CreateResource(ctx, shared.ExampleResource{
         ArrayOfNumber: []float64{
-            704.47,
+            8315.2,
         },
         ArrayOfString: []string{
-            "adipisci",
+            "officia",
         },
         Chocolates: []shared.ExampleResourceChocolates{
             shared.ExampleResourceChocolates{
-                Description: "fuga",
+                Description: "maxime",
             },
         },
-        CreatedAt: types.MustTimeFromString("2022-03-29T01:37:24.454Z"),
-        EnumNumber: shared.ExampleResourceEnumNumberOne.ToPointer(),
+        CreatedAt: types.MustTimeFromString("2022-05-12T09:23:17.883Z"),
+        EnumNumber: shared.ExampleResourceEnumNumberThree.ToPointer(),
         EnumStr: shared.ExampleResourceEnumStrTwo.ToPointer(),
-        ID: "ae8d6786-4dbb-4675-bd5e-60b375ed4f6f",
+        ID: "15cc413a-a63a-4ae8-9678-64dbb675fd5e",
         MapOfInteger: map[string]int64{
-            "quidem": 904949,
+            "aliquid": 46007,
         },
         MapOfString: map[string]string{
-            "necessitatibus": "dolore",
+            "cum": "consectetur",
         },
-        Name: "Ollie Flatley",
-        UpdatedAt: types.MustTimeFromString("2022-07-06T07:53:53.511Z"),
+        Name: "Annette Wehner",
+        UpdatedAt: types.MustTimeFromString("2021-11-08T23:21:08.200Z"),
         Vehicle: shared.ExampleVehicle{},
     })
     if err != nil {
@@ -159,7 +159,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "a"
+    resourceID := "reiciendis"
 
     ctx := context.Background()
     res, err := s.Resource.DeleteResource(ctx, resourceID)
@@ -209,7 +209,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "debitis"
+    resourceID := "quidem"
 
     ctx := context.Background()
     res, err := s.Resource.GetResource(ctx, resourceID)
@@ -259,7 +259,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "consectetur"
+    resourceID := "saepe"
 
     ctx := context.Background()
     res, err := s.Resource.UpdateResource(ctx, resourceID)

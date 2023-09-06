@@ -1,6 +1,6 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 86b390073dfd4d94c51922a09bbb677e
+  docChecksum: a946469a82fd7f8583ce0b596ee56078
   docVersion: 0.1.0
   speakeasyVersion: 1.78.9
   generationVersion: 2.96.9
@@ -30,7 +30,7 @@ features:
     serverIDs: 2.81.1
     unions: 2.81.2
 go:
-  version: 1.30.4
+  version: 1.30.5
   clientServerStatusCodesAsErrors: true
   maxMethodParams: 5
   packageName: openapi

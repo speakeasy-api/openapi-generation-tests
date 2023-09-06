@@ -263,6 +263,9 @@ end
 
 ### [request_bodies](docs/sdks/requestbodies/README.md)
 
+* [nullable_required_empty_object_post](docs/sdks/requestbodies/README.md#nullable_required_empty_object_post)
+* [nullable_required_property_post](docs/sdks/requestbodies/README.md#nullable_required_property_post)
+* [nullable_required_shared_object_post](docs/sdks/requestbodies/README.md#nullable_required_shared_object_post)
 * [request_body_post_application_json_array](docs/sdks/requestbodies/README.md#request_body_post_application_json_array)
 * [request_body_post_application_json_array_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_camel_case)
 * [request_body_post_application_json_array_obj](docs/sdks/requestbodies/README.md#request_body_post_application_json_array_obj)

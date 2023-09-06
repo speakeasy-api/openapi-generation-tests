@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('harum');
+    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('consequatur');
 
     if ($response->res !== null) {
         // handle response

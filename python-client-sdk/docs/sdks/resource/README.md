@@ -26,8 +26,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='commodi'.encode(),
-        file='in',
+        content='ab'.encode(),
+        file='adipisci',
     ),
 )
 
@@ -68,36 +68,34 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        3605.45,
+        6835.73,
     ],
     array_of_string=[
-        'reiciendis',
+        'id',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='assumenda',
+            description='suscipit',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-01-28T09:17:23.255Z'),
+    created_at=dateutil.parser.isoparse('2022-05-14T14:45:53.115Z'),
     enum_number=shared.ExampleResourceEnumNumber.TWO,
-    enum_str=shared.ExampleResourceEnumStr.ONE,
-    id='b375ed4f-6fbe-4e41-b333-17fe35b60eb1',
+    enum_str=shared.ExampleResourceEnumStr.THREE,
+    id='8d67864d-bb67-45fd-9e60-b375ed4f6fbe',
     map_of_integer={
-        "accusamus": 631126,
+        "necessitatibus": 296556,
     },
     map_of_string={
-        "tempora": 'aspernatur',
+        "sunt": 'asperiores',
     },
-    name='Melanie Hirthe',
-    updated_at=dateutil.parser.isoparse('2022-07-11T09:37:00.887Z'),
-    vehicle=shared.ExampleCar(
-        created_at=dateutil.parser.isoparse('2022-07-01T01:32:29.196Z'),
-        make='in',
-        model='dolore',
-        name='Rochelle Smitham',
-        type=shared.ExampleCarType.CAR,
-        updated_at=dateutil.parser.isoparse('2021-12-30T06:08:11.710Z'),
-        year=5553.61,
+    name='Ms. Ethel Farrell',
+    updated_at=dateutil.parser.isoparse('2022-04-20T09:42:55.692Z'),
+    vehicle=shared.ExampleBoat(
+        created_at=dateutil.parser.isoparse('2022-03-25T18:38:24.627Z'),
+        length=583.56,
+        name='Randolph Bruen',
+        type=shared.ExampleBoatType.BOAT,
+        updated_at=dateutil.parser.isoparse('2022-11-13T12:32:25.289Z'),
     ),
 )
 
@@ -136,7 +134,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='hic')
+res = s.resource.delete_resource(resource_id='voluptas')
 
 if res.status_code == 200:
     # handle response
@@ -171,7 +169,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='nesciunt')
+res = s.resource.get_resource(resource_id='voluptas')
 
 if res.example_resource is not None:
     # handle response
@@ -206,7 +204,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='culpa')
+res = s.resource.update_resource(resource_id='voluptas')
 
 if res.status_code == 200:
     # handle response

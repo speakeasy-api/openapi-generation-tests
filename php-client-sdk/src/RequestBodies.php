@@ -114,6 +114,123 @@ class RequestBodies
 	}
 	
     /**
+     * nullableRequiredEmptyObjectPost
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBody $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostResponse
+     */
+	public function nullableRequiredEmptyObjectPost(
+        ?\OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBody $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/nullableRequiredEmptyObject');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $response->nullableRequiredEmptyObjectPost200ApplicationJSONString = $httpResponse->getBody()->getContents();
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * nullableRequiredPropertyPost
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostRequestBody $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostResponse
+     */
+	public function nullableRequiredPropertyPost(
+        ?\OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostRequestBody $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/nullableRequiredProperty');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $response->nullableRequiredPropertyPost200ApplicationJSONString = $httpResponse->getBody()->getContents();
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * nullableRequiredSharedObjectPost
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostRequestBody $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostResponse
+     */
+	public function nullableRequiredSharedObjectPost(
+        ?\OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostRequestBody $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/nullableRequiredSharedObject');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $response->nullableRequiredSharedObjectPost200ApplicationJSONString = $httpResponse->getBody()->getContents();
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPostApplicationJsonArray
      * 
      * @param array<\OpenAPI\OpenAPI\Models\Shared\SimpleObject> $request
@@ -1243,7 +1360,7 @@ class RequestBodies
     ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
-        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/put/empty-object');
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/empty-object');
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
