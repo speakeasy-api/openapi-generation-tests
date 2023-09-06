@@ -61,6 +61,18 @@ components:
       oneOf:
         - $ref: "#/components/schemas/simpleObject"
         - $ref: "#/components/schemas/deepObject"
+    weaklyTypedOneOfReadOnlyObject:
+      oneOf:
+        - $ref: "#/components/schemas/simpleObject"
+        - $ref: "#/components/schemas/readOnlyObject"
+    weaklyTypedOneOfWriteOnlyObject:
+      oneOf:
+        - $ref: "#/components/schemas/simpleObject"
+        - $ref: "#/components/schemas/writeOnlyObject"
+    weaklyTypedOneOfReadWriteObject:
+      oneOf:
+        - $ref: "#/components/schemas/simpleObject"
+        - $ref: "#/components/schemas/readWriteObject"
     typedObjectOneOf:
       oneOf:
         - $ref: "#/components/schemas/typedObject1"

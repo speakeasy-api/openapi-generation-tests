@@ -1503,7 +1503,7 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/readOnlyObject"
-  /readonlyorwriteonly#writeOnlyOutput:
+  /writeonlyoutput#writeOnlyOutput:
     post:
       operationId: requestBodyWriteOnlyOutput
       servers:
@@ -1560,6 +1560,63 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/readWriteObject"
+  /readonlyorwriteonly#readOnlyUnion:
+    post:
+      operationId: requestBodyReadOnlyUnion
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/weaklyTypedOneOfReadOnlyObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/weaklyTypedOneOfReadOnlyObject"
+  /writeonlyoutput#writeOnlyUnion:
+    post:
+      operationId: requestBodyWriteOnlyUnion
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/weaklyTypedOneOfWriteOnlyObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/weaklyTypedOneOfWriteOnlyObject"
+  /readonlyandwriteonly#readWriteOnlyUnion:
+    post:
+      operationId: requestBodyReadWriteOnlyUnion
+      servers:
+        - url: http://localhost:35456
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/weaklyTypedOneOfReadWriteObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/weaklyTypedOneOfReadWriteObject"
   /anything/requestBodies/post/application/json/simple:
     post:
       operationId: requestBodyPostApplicationJsonSimple
