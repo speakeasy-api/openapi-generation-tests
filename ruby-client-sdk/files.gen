@@ -1,11 +1,13 @@
 lib/sdk/sdkconfiguration.rb
 lib/sdk/auth.rb
 lib/sdk/authnew.rb
+lib/sdk/documentation.rb
 lib/sdk/errors.rb
 lib/sdk/first.rb
 lib/sdk/flattening.rb
 lib/sdk/generation.rb
 lib/sdk/globals.rb
+lib/sdk/nest_first.rb
 lib/sdk/nested.rb
 lib/sdk/nested_first.rb
 lib/sdk/nested_second.rb
@@ -45,6 +47,7 @@ lib/sdk/models/operations/multiplesimpleoptionsauth.rb
 lib/sdk/models/operations/multiplesimpleschemeauth.rb
 lib/sdk/models/operations/oauth2authnew.rb
 lib/sdk/models/operations/openidconnectauthnew.rb
+lib/sdk/models/operations/getdocumentationperlanguage.rb
 lib/sdk/models/operations/connectionerrorget.rb
 lib/sdk/models/operations/statusgeterror.rb
 lib/sdk/models/operations/statusgetxspeakeasyerrors.rb
@@ -70,6 +73,7 @@ lib/sdk/models/operations/typedparametergenerationget.rb
 lib/sdk/models/operations/usageexamplepost.rb
 lib/sdk/models/operations/globalpathparameterget.rb
 lib/sdk/models/operations/globalsqueryparameterget.rb
+lib/sdk/models/operations/nestfirstget.rb
 lib/sdk/models/operations/nestedget.rb
 lib/sdk/models/operations/nestedfirstget.rb
 lib/sdk/models/operations/nestedsecondget.rb
@@ -149,8 +153,11 @@ lib/sdk/models/operations/requestbodyputstring.rb
 lib/sdk/models/operations/requestbodyputstringwithparams.rb
 lib/sdk/models/operations/requestbodyreadandwrite.rb
 lib/sdk/models/operations/requestbodyreadonlyinput.rb
+lib/sdk/models/operations/requestbodyreadonlyunion.rb
+lib/sdk/models/operations/requestbodyreadwriteonlyunion.rb
 lib/sdk/models/operations/requestbodywriteonly.rb
 lib/sdk/models/operations/requestbodywriteonlyoutput.rb
+lib/sdk/models/operations/requestbodywriteonlyunion.rb
 lib/sdk/models/operations/createfile.rb
 lib/sdk/models/operations/createresource.rb
 lib/sdk/models/operations/deleteresource.rb
@@ -218,11 +225,13 @@ lib/openapi.rb
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
+docs/sdks/documentation/README.md
 docs/sdks/errors/README.md
 docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -285,6 +294,8 @@ docs/models/operations/oauth2authnewsecurity.md
 docs/models/operations/oauth2authnewresponse.md
 docs/models/operations/openidconnectauthnewsecurity.md
 docs/models/operations/openidconnectauthnewresponse.md
+docs/models/operations/getdocumentationperlanguagerequest.md
+docs/models/operations/getdocumentationperlanguageresponse.md
 docs/models/operations/connectionerrorgetresponse.md
 docs/models/operations/statusgeterrorrequest.md
 docs/models/operations/statusgeterrorresponse.md
@@ -354,6 +365,7 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestfirstgetresponse.md
 docs/models/operations/nestedgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
@@ -554,8 +566,11 @@ docs/models/operations/requestbodyputstringwithparamsres.md
 docs/models/operations/requestbodyputstringwithparamsresponse.md
 docs/models/operations/requestbodyreadandwriteresponse.md
 docs/models/operations/requestbodyreadonlyinputresponse.md
+docs/models/operations/requestbodyreadonlyunionresponse.md
+docs/models/operations/requestbodyreadwriteonlyunionresponse.md
 docs/models/operations/requestbodywriteonlyresponse.md
 docs/models/operations/requestbodywriteonlyoutputresponse.md
+docs/models/operations/requestbodywriteonlyunionresponse.md
 docs/models/operations/createfilerequestbodyfile.md
 docs/models/operations/createfilerequestbody.md
 docs/models/operations/createfileresponse.md

@@ -49,20 +49,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "laborum",
-                HeaderName: "quasi",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "reiciendis",
-                HeaderName: "voluptatibus",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "vero",
-                HeaderName: "nihil",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "praesentium",
-                HeaderName: "voluptatibus",
+                ExpectedValue: "temporibus",
+                HeaderName: "laborum",
             },
         },
     })
@@ -116,17 +104,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.AuthGlobal(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "ipsa",
-            Username: "Lelah.Klein3",
+            Password: "quasi",
+            Username: "Wanda.Wolf50",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "ut",
-                HeaderName: "maiores",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "dicta",
-                HeaderName: "corporis",
+                ExpectedValue: "voluptatibus",
+                HeaderName: "ipsa",
             },
         },
     })
@@ -182,17 +166,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.BasicAuthNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "dolore",
-            Username: "Jayden.Carter88",
+            Password: "omnis",
+            Username: "Ivah3",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "repudiandae",
-                HeaderName: "quae",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "ipsum",
-                HeaderName: "quidem",
+                ExpectedValue: "reprehenderit",
+                HeaderName: "ut",
             },
         },
     }, operationSecurity)
@@ -248,21 +228,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "molestias",
-            Username: "Kenny50",
+            Password: "maiores",
+            Username: "Blanche48",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "voluptates",
-                HeaderName: "quasi",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "repudiandae",
-                HeaderName: "sint",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "veritatis",
-                HeaderName: "itaque",
+                ExpectedValue: "dicta",
+                HeaderName: "harum",
             },
         },
     }, operationSecurity)
@@ -322,21 +294,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "incidunt",
-            Username: "Emily_Altenwerth13",
+            Password: "enim",
+            Username: "Shania.Jerde21",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "distinctio",
-                HeaderName: "quibusdam",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "labore",
-                HeaderName: "modi",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "qui",
-                HeaderName: "aliquid",
+                ExpectedValue: "quidem",
+                HeaderName: "molestias",
             },
         },
     }, operationSecurity)
@@ -395,17 +359,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "cupiditate",
-            Username: "Kavon82",
+            Password: "excepturi",
+            Username: "Samantha_Gleason",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "alias",
-                HeaderName: "fugit",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "dolorum",
-                HeaderName: "excepturi",
+                ExpectedValue: "voluptates",
+                HeaderName: "quasi",
             },
         },
     }, operationSecurity)
@@ -464,17 +424,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "tempora",
-            Username: "Mckayla96",
+            Password: "repudiandae",
+            Username: "Kira.Boehm31",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "non",
-                HeaderName: "eligendi",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "sint",
-                HeaderName: "aliquid",
+                ExpectedValue: "consequatur",
+                HeaderName: "est",
             },
         },
     }, operationSecurity)
@@ -530,25 +486,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "provident",
-            Username: "Sonya.Marquardt",
+            Password: "quibusdam",
+            Username: "Brendon_OConnell28",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "a",
-                HeaderName: "dolorum",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "in",
-                HeaderName: "in",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "illum",
-                HeaderName: "maiores",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "rerum",
-                HeaderName: "dicta",
+                ExpectedValue: "modi",
+                HeaderName: "qui",
             },
         },
     }, operationSecurity)
@@ -605,21 +549,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "magnam",
-            Username: "Obie.Schulist",
+            Password: "aliquid",
+            Username: "Kyler16",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "accusamus",
-                HeaderName: "non",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "occaecati",
-                HeaderName: "enim",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "accusamus",
-                HeaderName: "delectus",
+                ExpectedValue: "assumenda",
+                HeaderName: "ipsam",
             },
         },
     }, operationSecurity)
@@ -675,21 +611,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "quidem",
-            Username: "Lafayette_Reinger",
+            Password: "alias",
+            Username: "Caden.Pagac",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "sapiente",
-                HeaderName: "amet",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "deserunt",
-                HeaderName: "nisi",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "vel",
-                HeaderName: "natus",
+                ExpectedValue: "facilis",
+                HeaderName: "tempore",
             },
         },
     }, operationSecurity)
@@ -745,21 +673,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "omnis",
-            Username: "Jarred.Aufderhar",
+            Password: "labore",
+            Username: "Vilma75",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "id",
-                HeaderName: "labore",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "labore",
-                HeaderName: "suscipit",
-            },
-            shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "natus",
-                HeaderName: "nobis",
+                ExpectedValue: "sint",
+                HeaderName: "aliquid",
             },
         },
     }, operationSecurity)

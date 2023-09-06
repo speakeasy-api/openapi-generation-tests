@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from sdk import utils
 from sdk.models import errors, operations, shared
-from typing import Optional
+from typing import Any, Optional
 
 class RequestBodies:
     r"""Endpoints for testing request bodies."""
@@ -1587,6 +1587,72 @@ class RequestBodies:
         return res
 
     
+    def request_body_read_only_union(self, request: Any, server_url: Optional[str] = None) -> operations.RequestBodyReadOnlyUnionResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_READ_ONLY_UNION_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/readonlyorwriteonly#readOnlyUnion'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyReadOnlyUnionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                res.weakly_typed_one_of_read_only_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_read_write_only_union(self, request: Any, server_url: Optional[str] = None) -> operations.RequestBodyReadWriteOnlyUnionResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/readonlyandwriteonly#readWriteOnlyUnion'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyReadWriteOnlyUnionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                res.weakly_typed_one_of_read_write_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def request_body_write_only(self, request: shared.WriteOnlyObject, server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_SERVERS[0], {
         })
@@ -1626,7 +1692,7 @@ class RequestBodies:
         if server_url is not None:
             base_url = server_url
         
-        url = base_url + '/readonlyorwriteonly#writeOnlyOutput'
+        url = base_url + '/writeonlyoutput#writeOnlyOutput'
         headers = {}
         req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
@@ -1645,6 +1711,39 @@ class RequestBodies:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[shared.WriteOnlyObjectOutput])
                 res.write_only_object = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def request_body_write_only_union(self, request: Any, server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyUnionResponse:
+        base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_UNION_SERVERS[0], {
+        })
+        if server_url is not None:
+            base_url = server_url
+        
+        url = base_url + '/writeonlyoutput#writeOnlyUnion'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.RequestBodyWriteOnlyUnionResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                res.weakly_typed_one_of_write_only_object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:

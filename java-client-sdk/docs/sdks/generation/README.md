@@ -127,8 +127,8 @@ public class Application {
 
             org.openapis.openapi.models.shared.DeprecatedFieldInObject req = new DeprecatedFieldInObject() {{
                 deprecatedEnum = DeprecatedFieldInObjectDeprecatedEnum.C;
-                deprecatedField = "corporis";
-                newField = "hic";
+                deprecatedField = "facere";
+                newField = "ea";
             }};            
 
             DeprecatedFieldInSchemaPostResponse res = sdk.generation.deprecatedFieldInSchemaPost(req);
@@ -220,7 +220,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("libero");
+            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("aliquid");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -271,7 +271,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("nobis", "dolores");
+            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("laborum", "accusamus");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -493,9 +493,9 @@ public class Application {
                 .build();
 
             IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostApplicationJSON() {{
-                callbackUrl = "http://mealy-kilometer.com";
-                testProp = "quis";
-            }}, "nesciunt");
+                callbackUrl = "http://oblong-epoxy.org";
+                testProp = "delectus";
+            }}, "quidem");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -594,10 +594,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(179490L, LocalDate.parse("2022-10-30"), 7936.98d, new TypedParameterGenerationGetObj(false, 8745.73d, "nostrum") {{
+            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(588465L, LocalDate.parse("2021-09-06"), 5013.24d, new TypedParameterGenerationGetObj(false, 2305.33d, "deserunt") {{
                 bool = false;
-                num = 4634.51d;
-                str = "dolor";
+                num = 5332.06d;
+                str = "sapiente";
             }});
 
             if (res.statusCode == 200) {
@@ -660,27 +660,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 3") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Leo.Purdy@hotmail.com";
-                    formatEmail = "Casimer.Kutch@hotmail.com";
-                    formatUri = "https://right-damage.org";
-                    formatUuid = "e49a8d9c-bf48-4633-b23f-9b77f3a41006";
-                    hostname = "likely-epauliere.org";
-                    ipv4 = "178.249.96.158";
-                    ipv6 = "280d:1ba7:7a89:ebf7:37ae:4203:ce5e:6a95";
-                    simpleObject = new SimpleObject("repellendus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        bigint = 55L;
-                        bigintStr = "at";
+                    email = "Libby.Moen@yahoo.com";
+                    formatEmail = "Elisha.Rau@yahoo.com";
+                    formatUri = "http://hideous-ottoman.net";
+                    formatUuid = "6e214195-9890-4afa-963e-2516fe4c8b71";
+                    hostname = "burly-trachoma.info";
+                    ipv4 = "182.120.255.215";
+                    ipv6 = "2ed0:2892:1cdd:c692:601f:b576:b0d5:f0d3";
+                    simpleObject = new SimpleObject("aut", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        bigint = 944124L;
+                        bigintStr = "libero";
                         boolOpt = true;
-                        decimal = 3118.6d;
+                        decimal = 7499.99d;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "tempora";
-                    uri = "http://stale-talk.biz";
-                    uuid = "af7a73cf-3be4-453f-870b-326b5a73429c";
+                    unknown = "dolores";
+                    uri = "http://mealy-kilometer.com";
+                    uuid = "53202c73-d5fe-49b9-8c28-909b3fe49a8d";
                 }};;
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            

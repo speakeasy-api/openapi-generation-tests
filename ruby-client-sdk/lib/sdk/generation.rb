@@ -440,7 +440,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::UsageExamplePostRequest, security: Operations::UsageExamplePostSecurity).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::UsageExamplePostRequest), security: Operations::UsageExamplePostSecurity).returns(Utils::FieldAugmented) }
     def usage_example_post(request, security)
       # usage_example_post - An operation used for testing usage examples
       # An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly

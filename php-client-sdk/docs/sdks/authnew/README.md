@@ -44,9 +44,6 @@ try {
     $request->basicAuth->username = 'Reid62';
     $request->headerAuth = [
         new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
     ];
 
     $response = $sdk->authNew->apiKeyAuthGlobalNew($request);
@@ -94,11 +91,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'laborum';
-    $request->basicAuth->username = 'Austyn_Witting46';
+    $request->basicAuth->password = 'temporibus';
+    $request->basicAuth->username = 'Margie_Boyer87';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 
@@ -148,8 +143,8 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'voluptatibus';
-    $request->basicAuth->username = 'Ana_Moen';
+    $request->basicAuth->password = 'nihil';
+    $request->basicAuth->username = 'John60';
     $request->headerAuth = [
         new AuthServiceRequestBodyHeaderAuth(),
     ];
@@ -206,10 +201,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'doloremque';
-    $request->basicAuth->username = 'Iliana.Grady35';
+    $request->basicAuth->password = 'voluptate';
+    $request->basicAuth->username = 'Myrtis44';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 
@@ -264,10 +258,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'iusto';
-    $request->basicAuth->username = 'Birdie88';
+    $request->basicAuth->password = 'ut';
+    $request->basicAuth->username = 'Wilfrid.Carter';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 
@@ -326,12 +319,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'repudiandae';
-    $request->basicAuth->username = 'Anissa_Emmerich56';
+    $request->basicAuth->password = 'iusto';
+    $request->basicAuth->username = 'Birdie88';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 
@@ -389,11 +379,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'modi';
-    $request->basicAuth->username = 'Johanna.Ledner92';
+    $request->basicAuth->password = 'commodi';
+    $request->basicAuth->username = 'Terrill69';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 
@@ -449,11 +437,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'veritatis';
-    $request->basicAuth->username = 'Tobin0';
+    $request->basicAuth->password = 'molestias';
+    $request->basicAuth->username = 'Kenny50';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 
@@ -507,10 +493,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'quibusdam';
-    $request->basicAuth->username = 'Brendon_OConnell28';
+    $request->basicAuth->password = 'rem';
+    $request->basicAuth->username = 'Terence_Botsford8';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 
@@ -565,8 +550,8 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'qui';
-    $request->basicAuth->username = 'Grant.McGlynn';
+    $request->basicAuth->password = 'itaque';
+    $request->basicAuth->username = 'Drew66';
     $request->headerAuth = [
         new AuthServiceRequestBodyHeaderAuth(),
     ];
@@ -621,11 +606,9 @@ $sdk = SDK::builder()
 try {
     $request = new AuthServiceRequestBody();
     $request->basicAuth = new AuthServiceRequestBodyBasicAuth();
-    $request->basicAuth->password = 'assumenda';
-    $request->basicAuth->username = 'Friedrich67';
+    $request->basicAuth->password = 'quibusdam';
+    $request->basicAuth->username = 'Brendon_OConnell28';
     $request->headerAuth = [
-        new AuthServiceRequestBodyHeaderAuth(),
-        new AuthServiceRequestBodyHeaderAuth(),
         new AuthServiceRequestBodyHeaderAuth(),
     ];
 

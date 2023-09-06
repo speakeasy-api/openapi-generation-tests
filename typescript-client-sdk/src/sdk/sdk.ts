@@ -5,6 +5,7 @@
 import * as utils from "../internal/utils";
 import { Auth } from "./auth";
 import { AuthNew } from "./authnew";
+import { Documentation } from "./documentation";
 import { Errors } from "./errors";
 import { First } from "./first";
 import { Flattening } from "./flattening";
@@ -13,6 +14,7 @@ import { Globals } from "./globals";
 import * as errors from "./models/errors";
 import * as operations from "./models/operations";
 import * as shared from "./models/shared";
+import { Nest } from "./nest";
 import { Nested } from "./nested";
 import { Pagination } from "./pagination";
 import { ParametersT } from "./parameters";
@@ -124,8 +126,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.32.0";
-    genVersion = "2.96.3";
+    sdkVersion = "1.32.1";
+    genVersion = "2.96.9";
     globals: any;
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -152,6 +154,10 @@ export class SDK {
      */
     public authNew: AuthNew;
     /**
+     * Testing for documentation extensions and tooling.
+     */
+    public documentation: Documentation;
+    /**
      * Endpoints for testing error responses.
      */
     public errors: Errors;
@@ -168,6 +174,7 @@ export class SDK {
      * Endpoints for testing global parameters.
      */
     public globals: Globals;
+    public nest: Nest;
     public nested: Nested;
     /**
      * Endpoints for testing the pagination extension
@@ -253,11 +260,13 @@ export class SDK {
 
         this.auth = new Auth(this.sdkConfiguration);
         this.authNew = new AuthNew(this.sdkConfiguration);
+        this.documentation = new Documentation(this.sdkConfiguration);
         this.errors = new Errors(this.sdkConfiguration);
         this.first = new First(this.sdkConfiguration);
         this.flattening = new Flattening(this.sdkConfiguration);
         this.generation = new Generation(this.sdkConfiguration);
         this.globals = new Globals(this.sdkConfiguration);
+        this.nest = new Nest(this.sdkConfiguration);
         this.nested = new Nested(this.sdkConfiguration);
         this.pagination = new Pagination(this.sdkConfiguration);
         this.parameters = new ParametersT(this.sdkConfiguration);

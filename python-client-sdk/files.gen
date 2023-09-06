@@ -1,11 +1,13 @@
 src/sdk/sdkconfiguration.py
 src/sdk/auth.py
 src/sdk/authnew.py
+src/sdk/documentation.py
 src/sdk/errors.py
 src/sdk/first.py
 src/sdk/flattening.py
 src/sdk/generation.py
 src/sdk/globals.py
+src/sdk/nest_first.py
 src/sdk/nested.py
 src/sdk/nested_first.py
 src/sdk/nested_second.py
@@ -61,6 +63,7 @@ src/sdk/models/operations/multiplesimpleoptionsauth.py
 src/sdk/models/operations/multiplesimpleschemeauth.py
 src/sdk/models/operations/oauth2authnew.py
 src/sdk/models/operations/openidconnectauthnew.py
+src/sdk/models/operations/getdocumentationperlanguage.py
 src/sdk/models/operations/connectionerrorget.py
 src/sdk/models/operations/statusgeterror.py
 src/sdk/models/operations/statusgetxspeakeasyerrors.py
@@ -86,6 +89,7 @@ src/sdk/models/operations/typedparametergenerationget.py
 src/sdk/models/operations/usageexamplepost.py
 src/sdk/models/operations/globalpathparameterget.py
 src/sdk/models/operations/globalsqueryparameterget.py
+src/sdk/models/operations/nestfirstget.py
 src/sdk/models/operations/nestedget.py
 src/sdk/models/operations/nestedfirstget.py
 src/sdk/models/operations/nestedsecondget.py
@@ -165,8 +169,11 @@ src/sdk/models/operations/requestbodyputstring.py
 src/sdk/models/operations/requestbodyputstringwithparams.py
 src/sdk/models/operations/requestbodyreadandwrite.py
 src/sdk/models/operations/requestbodyreadonlyinput.py
+src/sdk/models/operations/requestbodyreadonlyunion.py
+src/sdk/models/operations/requestbodyreadwriteonlyunion.py
 src/sdk/models/operations/requestbodywriteonly.py
 src/sdk/models/operations/requestbodywriteonlyoutput.py
+src/sdk/models/operations/requestbodywriteonlyunion.py
 src/sdk/models/operations/createfile.py
 src/sdk/models/operations/createresource.py
 src/sdk/models/operations/deleteresource.py
@@ -238,11 +245,13 @@ src/sdk/models/callbacks/__init__.py
 docs/sdks/sdk/README.md
 docs/sdks/auth/README.md
 docs/sdks/authnew/README.md
+docs/sdks/documentation/README.md
 docs/sdks/errors/README.md
 docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
 docs/sdks/nestedsecond/README.md
@@ -306,6 +315,8 @@ docs/models/operations/oauth2authnewsecurity.md
 docs/models/operations/oauth2authnewresponse.md
 docs/models/operations/openidconnectauthnewsecurity.md
 docs/models/operations/openidconnectauthnewresponse.md
+docs/models/operations/getdocumentationperlanguagerequest.md
+docs/models/operations/getdocumentationperlanguageresponse.md
 docs/models/operations/connectionerrorgetresponse.md
 docs/models/operations/statusgeterrorrequest.md
 docs/models/operations/statusgeterrorresponse.md
@@ -374,6 +385,7 @@ docs/models/operations/globalsqueryparametergetrequest.md
 docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
+docs/models/operations/nestfirstgetresponse.md
 docs/models/operations/nestedgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
@@ -574,8 +586,11 @@ docs/models/operations/requestbodyputstringwithparamsres.md
 docs/models/operations/requestbodyputstringwithparamsresponse.md
 docs/models/operations/requestbodyreadandwriteresponse.md
 docs/models/operations/requestbodyreadonlyinputresponse.md
+docs/models/operations/requestbodyreadonlyunionresponse.md
+docs/models/operations/requestbodyreadwriteonlyunionresponse.md
 docs/models/operations/requestbodywriteonlyresponse.md
 docs/models/operations/requestbodywriteonlyoutputresponse.md
+docs/models/operations/requestbodywriteonlyunionresponse.md
 docs/models/operations/createfilerequestbodyfile.md
 docs/models/operations/createfilerequestbody.md
 docs/models/operations/createfileresponse.md

@@ -83,11 +83,23 @@ class RequestBodies
 		'http://localhost:35456',
 	];
 	
+	public const REQUEST_BODY_READ_ONLY_UNION_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS = [
+		'http://localhost:35456',
+	];
+	
 	public const REQUEST_BODY_WRITE_ONLY_SERVERS = [
 		'http://localhost:35456',
 	];
 	
 	public const REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS = [
+		'http://localhost:35456',
+	];
+	
+	public const REQUEST_BODY_WRITE_ONLY_UNION_SERVERS = [
 		'http://localhost:35456',
 	];
 
@@ -2208,6 +2220,100 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyReadOnlyUnion
+     * 
+     * @param mixed $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyUnionResponse
+     */
+	public function requestBodyReadOnlyUnion(
+        mixed $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyUnionResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_READ_ONLY_UNION_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyorwriteonly#readOnlyUnion');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadOnlyUnionResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->weaklyTypedOneOfReadOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'mixed', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyReadWriteOnlyUnion
+     * 
+     * @param mixed $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadWriteOnlyUnionResponse
+     */
+	public function requestBodyReadWriteOnlyUnion(
+        mixed $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadWriteOnlyUnionResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyandwriteonly#readWriteOnlyUnion');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyReadWriteOnlyUnionResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->weaklyTypedOneOfReadWriteObject = $serializer->deserialize((string)$httpResponse->getBody(), 'mixed', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyWriteOnly
      * 
      * @param \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject $request
@@ -2272,7 +2378,7 @@ class RequestBodies
             $baseUrl = $serverURL;
         }
         
-        $url = Utils\Utils::generateUrl($baseUrl, '/readonlyorwriteonly#writeOnlyOutput');
+        $url = Utils\Utils::generateUrl($baseUrl, '/writeonlyoutput#writeOnlyOutput');
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
@@ -2295,6 +2401,53 @@ class RequestBodies
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->writeOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\WriteOnlyObjectOutput', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * requestBodyWriteOnlyUnion
+     * 
+     * @param mixed $request
+     * @param string $serverURL
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyUnionResponse
+     */
+	public function requestBodyWriteOnlyUnion(
+        mixed $request,
+        ?string $serverURL = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyUnionResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl(RequestBodies::REQUEST_BODY_WRITE_ONLY_UNION_SERVERS[0], array(
+        ));
+        if (!empty($serverURL)) {
+            $baseUrl = $serverURL;
+        }
+        
+        $url = Utils\Utils::generateUrl($baseUrl, '/writeonlyoutput#writeOnlyUnion');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyWriteOnlyUnionResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->weaklyTypedOneOfWriteOnlyObject = $serializer->deserialize((string)$httpResponse->getBody(), 'mixed', 'json');
             }
         }
 

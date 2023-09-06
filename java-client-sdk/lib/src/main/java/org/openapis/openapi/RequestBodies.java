@@ -146,6 +146,20 @@ public class RequestBodies {
     };
 	
     /**
+	 * REQUEST_BODY_READ_ONLY_UNION_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_READ_ONLY_UNION_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
 	 * REQUEST_BODY_WRITE_ONLY_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] REQUEST_BODY_WRITE_ONLY_SERVERS = {
@@ -156,6 +170,13 @@ public class RequestBodies {
 	 * REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS contains the list of server urls available to the SDK.
 	 */
     public static final String[] REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS = {
+        "http://localhost:35456",
+    };
+	
+    /**
+	 * REQUEST_BODY_WRITE_ONLY_UNION_SERVERS contains the list of server urls available to the SDK.
+	 */
+    public static final String[] REQUEST_BODY_WRITE_ONLY_UNION_SERVERS = {
         "http://localhost:35456",
     };
 	
@@ -2104,6 +2125,92 @@ public class RequestBodies {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.RequestBodyReadOnlyUnionResponse requestBodyReadOnlyUnion(Object request) throws Exception {
+        return this.requestBodyReadOnlyUnion(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyReadOnlyUnionResponse requestBodyReadOnlyUnion(Object request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_READ_ONLY_UNION_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/readonlyorwriteonly#readOnlyUnion");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyReadOnlyUnionResponse res = new org.openapis.openapi.models.operations.RequestBodyReadOnlyUnionResponse(contentType, httpRes.statusCode()) {{
+            weaklyTypedOneOfReadOnlyObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                Object out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), Object.class);
+                res.weaklyTypedOneOfReadOnlyObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyReadWriteOnlyUnionResponse requestBodyReadWriteOnlyUnion(Object request) throws Exception {
+        return this.requestBodyReadWriteOnlyUnion(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyReadWriteOnlyUnionResponse requestBodyReadWriteOnlyUnion(Object request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/readonlyandwriteonly#readWriteOnlyUnion");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyReadWriteOnlyUnionResponse res = new org.openapis.openapi.models.operations.RequestBodyReadWriteOnlyUnionResponse(contentType, httpRes.statusCode()) {{
+            weaklyTypedOneOfReadWriteObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                Object out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), Object.class);
+                res.weaklyTypedOneOfReadWriteObject = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.RequestBodyWriteOnlyResponse requestBodyWriteOnly(org.openapis.openapi.models.shared.WriteOnlyObject request) throws Exception {
         return this.requestBodyWriteOnly(request, null);
     }
@@ -2157,7 +2264,7 @@ public class RequestBodies {
             baseUrl = serverURL;
         }
         
-        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/readonlyorwriteonly#writeOnlyOutput");
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/writeonlyoutput#writeOnlyOutput");
         
         HTTPRequest req = new HTTPRequest();
         req.setMethod("POST");
@@ -2184,6 +2291,49 @@ public class RequestBodies {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.shared.WriteOnlyObjectOutput out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.WriteOnlyObjectOutput.class);
                 res.writeOnlyObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyWriteOnlyUnionResponse requestBodyWriteOnlyUnion(Object request) throws Exception {
+        return this.requestBodyWriteOnlyUnion(request, null);
+    }
+
+    public org.openapis.openapi.models.operations.RequestBodyWriteOnlyUnionResponse requestBodyWriteOnlyUnion(Object request, String serverURL) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(REQUEST_BODY_WRITE_ONLY_UNION_SERVERS[0], new java.util.HashMap<String, String>());
+        if (serverURL != null && !serverURL.isBlank()) {
+            baseUrl = serverURL;
+        }
+        
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/writeonlyoutput#writeOnlyUnion");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.RequestBodyWriteOnlyUnionResponse res = new org.openapis.openapi.models.operations.RequestBodyWriteOnlyUnionResponse(contentType, httpRes.statusCode()) {{
+            weaklyTypedOneOfWriteOnlyObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                Object out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), Object.class);
+                res.weaklyTypedOneOfWriteOnlyObject = out;
             }
         }
 

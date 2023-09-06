@@ -46,21 +46,9 @@ public class Application {
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
                 basicAuth = new AuthServiceRequestBodyBasicAuth("ipsam", "id");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("error", "temporibus") {{
-                        expectedValue = "aut";
-                        headerName = "quasi";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("reiciendis", "voluptatibus") {{
-                        expectedValue = "laborum";
-                        headerName = "quasi";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("praesentium", "voluptatibus") {{
-                        expectedValue = "vero";
-                        headerName = "nihil";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("voluptate", "cum") {{
-                        expectedValue = "ipsa";
-                        headerName = "omnis";
+                    add(new AuthServiceRequestBodyHeaderAuth("quasi", "error") {{
+                        expectedValue = "possimus";
+                        headerName = "aut";
                     }}),
                 }};
             }};            
@@ -116,15 +104,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("perferendis", "doloremque");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("temporibus", "laborum");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("dicta", "corporis") {{
-                        expectedValue = "ut";
-                        headerName = "maiores";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("dicta", "harum") {{
-                        expectedValue = "dolore";
-                        headerName = "iusto";
+                    add(new AuthServiceRequestBodyHeaderAuth("voluptatibus", "vero") {{
+                        expectedValue = "quasi";
+                        headerName = "reiciendis";
                     }}),
                 }};
             }};            
@@ -178,15 +162,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("enim", "accusamus");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("nihil", "praesentium");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("ipsum", "quidem") {{
-                        expectedValue = "repudiandae";
-                        headerName = "quae";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("pariatur", "modi") {{
-                        expectedValue = "molestias";
-                        headerName = "excepturi";
+                    add(new AuthServiceRequestBodyHeaderAuth("omnis", "voluptate") {{
+                        expectedValue = "voluptatibus";
+                        headerName = "ipsa";
                     }}),
                 }};
             }};            
@@ -245,23 +225,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("praesentium", "rem");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("cum", "perferendis");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("sint", "veritatis") {{
-                        expectedValue = "quasi";
-                        headerName = "repudiandae";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("enim", "consequatur") {{
-                        expectedValue = "itaque";
-                        headerName = "incidunt";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("explicabo", "deserunt") {{
-                        expectedValue = "est";
-                        headerName = "quibusdam";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("labore", "modi") {{
-                        expectedValue = "distinctio";
-                        headerName = "quibusdam";
+                    add(new AuthServiceRequestBodyHeaderAuth("ut", "maiores") {{
+                        expectedValue = "doloremque";
+                        headerName = "reprehenderit";
                     }}),
                 }};
             }};            
@@ -319,19 +287,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("qui", "aliquid");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("dicta", "corporis");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("magni", "assumenda") {{
-                        expectedValue = "quos";
-                        headerName = "perferendis";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("fugit", "dolorum") {{
-                        expectedValue = "ipsam";
-                        headerName = "alias";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("facilis", "tempore") {{
-                        expectedValue = "excepturi";
-                        headerName = "tempora";
+                    add(new AuthServiceRequestBodyHeaderAuth("dicta", "harum") {{
+                        expectedValue = "dolore";
+                        headerName = "iusto";
                     }}),
                 }};
             }};            
@@ -395,15 +355,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("labore", "delectus");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("enim", "accusamus");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("sint", "aliquid") {{
-                        expectedValue = "non";
-                        headerName = "eligendi";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("sint", "officia") {{
-                        expectedValue = "provident";
-                        headerName = "necessitatibus";
+                    add(new AuthServiceRequestBodyHeaderAuth("quae", "ipsum") {{
+                        expectedValue = "commodi";
+                        headerName = "repudiandae";
                     }}),
                 }};
             }};            
@@ -465,23 +421,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("dolor", "debitis");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("quidem", "molestias");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("in", "illum") {{
-                        expectedValue = "dolorum";
-                        headerName = "in";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("dicta", "magnam") {{
-                        expectedValue = "maiores";
-                        headerName = "rerum";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("ea", "aliquid") {{
-                        expectedValue = "cumque";
-                        headerName = "facere";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("non", "occaecati") {{
-                        expectedValue = "laborum";
-                        headerName = "accusamus";
+                    add(new AuthServiceRequestBodyHeaderAuth("modi", "praesentium") {{
+                        expectedValue = "excepturi";
+                        headerName = "pariatur";
                     }}),
                 }};
             }};            
@@ -541,23 +485,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("enim", "accusamus");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("rem", "voluptates");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("nam", "id") {{
-                        expectedValue = "quidem";
-                        headerName = "provident";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("sapiente", "amet") {{
-                        expectedValue = "blanditiis";
-                        headerName = "deleniti";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("vel", "natus") {{
-                        expectedValue = "deserunt";
-                        headerName = "nisi";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("perferendis", "nihil") {{
-                        expectedValue = "omnis";
-                        headerName = "molestiae";
+                    add(new AuthServiceRequestBodyHeaderAuth("sint", "veritatis") {{
+                        expectedValue = "quasi";
+                        headerName = "repudiandae";
                     }}),
                 }};
             }};            
@@ -614,19 +546,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("magnam", "distinctio");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("itaque", "incidunt");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("suscipit", "natus") {{
-                        expectedValue = "labore";
-                        headerName = "labore";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("vero", "aspernatur") {{
-                        expectedValue = "nobis";
-                        headerName = "eum";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("et", "excepturi") {{
-                        expectedValue = "architecto";
-                        headerName = "magnam";
+                    add(new AuthServiceRequestBodyHeaderAuth("est", "quibusdam") {{
+                        expectedValue = "enim";
+                        headerName = "consequatur";
                     }}),
                 }};
             }};            
@@ -684,19 +608,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("ullam", "provident");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("explicabo", "deserunt");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("mollitia", "reiciendis") {{
-                        expectedValue = "sint";
-                        headerName = "accusantium";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("eum", "dolor") {{
-                        expectedValue = "mollitia";
-                        headerName = "ad";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("nemo", "quasi") {{
-                        expectedValue = "necessitatibus";
-                        headerName = "odit";
+                    add(new AuthServiceRequestBodyHeaderAuth("labore", "modi") {{
+                        expectedValue = "distinctio";
+                        headerName = "quibusdam";
                     }}),
                 }};
             }};            
@@ -753,23 +669,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("iure", "doloribus");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("qui", "aliquid");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("deleniti", "facilis") {{
-                        expectedValue = "eius";
-                        headerName = "maxime";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("architecto", "repudiandae") {{
-                        expectedValue = "in";
-                        headerName = "architecto";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("nihil", "repellat") {{
-                        expectedValue = "ullam";
-                        headerName = "expedita";
-                    }}),
-                    add(new AuthServiceRequestBodyHeaderAuth("saepe", "pariatur") {{
-                        expectedValue = "quibusdam";
-                        headerName = "sed";
+                    add(new AuthServiceRequestBodyHeaderAuth("perferendis", "magni") {{
+                        expectedValue = "cupiditate";
+                        headerName = "quos";
                     }}),
                 }};
             }};            

@@ -38,19 +38,19 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     simpleObject := shared.SimpleObject{
-        Any: "aspernatur",
-        Bigint: big.NewInt(102863),
-        BigintStr: types.MustBigIntFromString("298282"),
+        Any: "officia",
+        Bigint: big.NewInt(223081),
+        BigintStr: types.MustBigIntFromString("891555"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(923.73),
+        Decimal: sdk.Float64(9527.49),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumSecond,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
@@ -58,7 +58,7 @@ func main() {
         Str: "example",
         StrOpt: sdk.String("optional example"),
     }
-    str := "provident"
+    str := "in"
 
     ctx := context.Background()
     res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, simpleObject, str)
@@ -111,22 +111,22 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    paramStr := "quos"
+    paramStr := "illum"
     simpleObject := shared.SimpleObject{
-        Any: "sint",
-        Bigint: big.NewInt(33625),
-        BigintStr: types.MustBigIntFromString("653201"),
+        Any: "maiores",
+        Bigint: big.NewInt(699479),
+        BigintStr: types.MustBigIntFromString("116202"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: sdk.Float64(9689.62),
+        Decimal: sdk.Float64(2974.37),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-        IntEnum: shared.SimpleObjectIntEnumFirst,
+        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+        IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -183,8 +183,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    strPathParameter := "eum"
-    strQueryParameter := "dolor"
+    strPathParameter := "ea"
+    strQueryParameter := "aliquid"
 
     ctx := context.Background()
     res, err := s.Flattening.ConflictingParams(ctx, strPathParameter, strQueryParameter)
@@ -236,9 +236,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
-        Str: "necessitatibus",
+        Str: "laborum",
     }
-    str := "odit"
+    str := "accusamus"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamConflict(ctx, requestBody, str)
@@ -290,9 +290,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
-        BodyStr: "nemo",
+        BodyStr: "non",
     }
-    paramStr := "quasi"
+    paramStr := "occaecati"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, requestBody, paramStr)

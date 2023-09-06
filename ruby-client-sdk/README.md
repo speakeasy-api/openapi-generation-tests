@@ -167,6 +167,10 @@ end
 * [oauth2_auth_new](docs/sdks/authnew/README.md#oauth2_auth_new)
 * [open_id_connect_auth_new](docs/sdks/authnew/README.md#open_id_connect_auth_new)
 
+### [documentation](docs/sdks/documentation/README.md)
+
+* [get_documentation_per_language](docs/sdks/documentation/README.md#get_documentation_per_language) - Gets documentation for some language, I guess.
+
 ### [errors](docs/sdks/errors/README.md)
 
 * [connection_error_get](docs/sdks/errors/README.md#connection_error_get)
@@ -206,6 +210,10 @@ end
 
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
+
+### [nest_first](docs/sdks/nestfirst/README.md)
+
+* [get](docs/sdks/nestfirst/README.md#get)
 
 ### [nested](docs/sdks/nested/README.md)
 
@@ -303,8 +311,11 @@ end
 * [request_body_put_string_with_params](docs/sdks/requestbodies/README.md#request_body_put_string_with_params)
 * [request_body_read_and_write](docs/sdks/requestbodies/README.md#request_body_read_and_write)
 * [request_body_read_only_input](docs/sdks/requestbodies/README.md#request_body_read_only_input)
+* [request_body_read_only_union](docs/sdks/requestbodies/README.md#request_body_read_only_union)
+* [request_body_read_write_only_union](docs/sdks/requestbodies/README.md#request_body_read_write_only_union)
 * [request_body_write_only](docs/sdks/requestbodies/README.md#request_body_write_only)
 * [request_body_write_only_output](docs/sdks/requestbodies/README.md#request_body_write_only_output)
+* [request_body_write_only_union](docs/sdks/requestbodies/README.md#request_body_write_only_union)
 
 ### [resource](docs/sdks/resource/README.md)
 

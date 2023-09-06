@@ -33,7 +33,7 @@ public class Application {
                 .build();
 
             CreateFileRequestBody req = new CreateFileRequestBody() {{
-                file = new CreateFileRequestBodyFile("nisi".getBytes(), "voluptatibus");;
+                file = new CreateFileRequestBodyFile("beatae".getBytes(), "laudantium");;
             }};            
 
             CreateFileResponse res = sdk.resource.createFile(req);
@@ -92,45 +92,34 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(                new org.openapis.openapi.models.shared.ExampleResourceChocolates[]{{
-                                add(new ExampleResourceChocolates("distinctio") {{
-                                    description = "blanditiis";
+                                add(new ExampleResourceChocolates("praesentium") {{
+                                    description = "exercitationem";
                                 }}),
-                                add(new ExampleResourceChocolates("quis") {{
-                                    description = "nisi";
-                                }}),
-                            }}, "nisi", "libero",                 new ExampleCar("nostrum", "neque", "iusto", ExampleCarType.CAR, 6649.65d) {{
-                                createdAt = OffsetDateTime.parse("2020-11-18T20:43:00.067Z");
-                                make = "ipsum";
-                                model = "ad";
-                                name = "Courtney Crooks";
+                            }}, "cum", "laboriosam",                 new ExampleCar("tempora", "atque", "fugit", ExampleCarType.CAR, 2826.99d) {{
+                                createdAt = OffsetDateTime.parse("2021-10-03T15:49:29.329Z");
+                                make = "hic";
+                                model = "expedita";
+                                name = "Tony Pagac";
                                 type = ExampleCarType.CAR;
-                                updatedAt = OffsetDateTime.parse("2022-08-22T17:59:10.804Z");
-                                year = 4407.77d;
+                                updatedAt = OffsetDateTime.parse("2021-11-26T16:42:33.328Z");
+                                year = 8792.35d;
                             }}) {{
                 arrayOfNumber = new Double[]{{
-                    add(7538.9d),
-                    add(8536.06d),
-                    add(6040.78d),
+                    add(8563.03d),
                 }};
                 arrayOfString = new String[]{{
-                    add("ducimus"),
-                    add("dolor"),
-                    add("dicta"),
-                    add("error"),
+                    add("voluptatem"),
                 }};
-                createdAt = OffsetDateTime.parse("2022-08-31T21:53:00.029Z");
-                enumNumber = ExampleResourceEnumNumber.TWO;
-                enumStr = ExampleResourceEnumStr.TWO;
+                createdAt = OffsetDateTime.parse("2021-07-31T10:53:55.286Z");
+                enumNumber = ExampleResourceEnumNumber.ONE;
+                enumStr = ExampleResourceEnumStr.ONE;
                 mapOfInteger = new java.util.HashMap<String, Long>() {{
-                    put("ad", 134818L);
-                    put("enim", 965090L);
-                    put("iusto", 491201L);
-                    put("libero", 72350L);
+                    put("esse", 372679L);
                 }};
                 mapOfString = new java.util.HashMap<String, String>() {{
-                    put("incidunt", "accusamus");
+                    put("sit", "voluptatum");
                 }};
-                updatedAt = OffsetDateTime.parse("2020-10-18T09:05:37.895Z");
+                updatedAt = OffsetDateTime.parse("2021-02-26T20:36:25.696Z");
             }};            
 
             CreateResourceResponse res = sdk.resource.createResource(req);
@@ -180,7 +169,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeleteResourceResponse res = sdk.resource.deleteResource("veniam");
+            DeleteResourceResponse res = sdk.resource.deleteResource("corporis");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -227,7 +216,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetResourceResponse res = sdk.resource.getResource("eos");
+            GetResourceResponse res = sdk.resource.getResource("et");
 
             if (res.exampleResource != null) {
                 // handle response
@@ -274,7 +263,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UpdateResourceResponse res = sdk.resource.updateResource("reiciendis");
+            UpdateResourceResponse res = sdk.resource.updateResource("blanditiis");
 
             if (res.statusCode == 200) {
                 // handle response

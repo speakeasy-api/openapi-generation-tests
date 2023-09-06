@@ -37,8 +37,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="architecto",
-        header_name="magnam",
+        expected_value="aspernatur",
+        header_name="architecto",
       ),
     ],
   ),
@@ -79,21 +79,13 @@ s = OpenApiSDK::SDK.new
 req = Shared::AuthServiceRequestBody.new(
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="et",
-      username="Kevon_Hermann",
+      password="magnam",
+      username="Audrey_Marks",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="accusantium",
-        header_name="mollitia",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="reiciendis",
-        header_name="mollitia",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="ad",
-        header_name="eum",
+        expected_value="quos",
+        header_name="sint",
       ),
     ],
   ),
@@ -138,17 +130,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="dolor",
-      username="Sophie.Connelly",
+      password="accusantium",
+      username="Madaline.Wisozk",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="doloribus",
-        header_name="debitis",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="eius",
-        header_name="maxime",
+        expected_value="eum",
+        header_name="dolor",
       ),
     ],
   ),
@@ -193,25 +181,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="deleniti",
-      username="Mckenna9",
+      password="necessitatibus",
+      username="Brown43",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="ullam",
-        header_name="expedita",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="nihil",
-        header_name="repellat",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="quibusdam",
-        header_name="sed",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="saepe",
-        header_name="pariatur",
+        expected_value="doloribus",
+        header_name="debitis",
       ),
     ],
   ),
@@ -260,13 +236,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="accusantium",
-      username="Carroll.Lang",
+      password="eius",
+      username="Rachel.Lind10",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="quo",
-        header_name="illum",
+        expected_value="architecto",
+        header_name="repudiandae",
       ),
     ],
   ),
@@ -314,17 +290,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="pariatur",
-      username="Raegan.Jenkins",
+      password="ullam",
+      username="Michael_Koss14",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="accusantium",
-        header_name="ab",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="maiores",
-        header_name="quidem",
+        expected_value="saepe",
+        header_name="pariatur",
       ),
     ],
   ),
@@ -372,17 +344,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="ipsam",
-      username="Jacey.Johnston86",
+      password="accusantium",
+      username="Carroll.Lang",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="voluptatibus",
-        header_name="perferendis",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="fugiat",
-        header_name="amet",
+        expected_value="sunt",
+        header_name="quo",
       ),
     ],
   ),
@@ -427,13 +395,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="aut",
-      username="Norwood_Hessel74",
+      password="illum",
+      username="Samantha_Schoen",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="quis",
-        header_name="totam",
+        expected_value="odit",
+        header_name="ea",
       ),
     ],
   ),
@@ -479,13 +447,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="dignissimos",
-      username="Amos17",
+      password="accusantium",
+      username="Annie.Wunsch45",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="dolores",
-        header_name="minus",
+        expected_value="autem",
+        header_name="nam",
       ),
     ],
   ),
@@ -530,25 +498,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="quam",
-      username="Damon_Swift",
+      password="eaque",
+      username="Sammy.Hickle85",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="omnis",
-        header_name="facilis",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="perspiciatis",
-        header_name="voluptatem",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="porro",
-        header_name="consequuntur",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="blanditiis",
-        header_name="error",
+        expected_value="amet",
+        header_name="aut",
       ),
     ],
   ),
@@ -593,25 +549,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="eaque",
-      username="Kitty99",
+      password="cumque",
+      username="Floyd_Welch17",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="modi",
-        header_name="iste",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="dolorum",
-        header_name="deleniti",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="pariatur",
-        header_name="provident",
-      ),
-      Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="nobis",
-        header_name="libero",
+        expected_value="quis",
+        header_name="totam",
       ),
     ],
   ),

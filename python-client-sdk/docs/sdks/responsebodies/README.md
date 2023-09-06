@@ -59,7 +59,7 @@ s = sdk.SDK(
 )
 
 
-res = s.response_bodies.response_body_empty_with_headers(x_number_header=4083.03, x_string_header='quidem')
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=5485.19, x_string_header='pariatur')
 
 if res.status_code == 200:
     # handle response

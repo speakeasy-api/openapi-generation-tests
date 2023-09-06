@@ -163,6 +163,10 @@ func main() {
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIDConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
+### [Documentation](docs/sdks/documentation/README.md)
+
+* [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
+
 ### [Errors](docs/sdks/errors/README.md)
 
 * [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
@@ -202,6 +206,11 @@ func main() {
 
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
+
+
+### [First](docs/sdks/nestfirst/README.md)
+
+* [Get](docs/sdks/nestfirst/README.md#get)
 
 ### [Nested](docs/sdks/nested/README.md)
 
@@ -299,8 +308,11 @@ func main() {
 * [RequestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
 * [RequestBodyReadAndWrite](docs/sdks/requestbodies/README.md#requestbodyreadandwrite)
 * [RequestBodyReadOnlyInput](docs/sdks/requestbodies/README.md#requestbodyreadonlyinput)
+* [RequestBodyReadOnlyUnion](docs/sdks/requestbodies/README.md#requestbodyreadonlyunion)
+* [RequestBodyReadWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodyreadwriteonlyunion)
 * [RequestBodyWriteOnly](docs/sdks/requestbodies/README.md#requestbodywriteonly)
 * [RequestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
+* [RequestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
 ### [Resource](docs/sdks/resource/README.md)
 

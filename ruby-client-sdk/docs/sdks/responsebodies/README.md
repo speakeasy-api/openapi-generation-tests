@@ -51,8 +51,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ResponseBodyEmptyWithHeadersRequest.new(
   query_params=Operations::ResponseBodyEmptyWithHeadersRequest.new(
-    x_number_header=4330.77,
-    x_string_header="modi",
+    x_number_header=5145.13,
+    x_string_header="eum",
   ),
 )
     

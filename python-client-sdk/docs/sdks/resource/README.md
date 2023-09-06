@@ -26,8 +26,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='sint'.encode(),
-        file='nulla',
+        content='commodi'.encode(),
+        file='in',
     ),
 )
 
@@ -68,52 +68,36 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        4585.03,
-        3644.63,
-        4445.87,
+        3605.45,
     ],
     array_of_string=[
-        'quis',
-        'sint',
-        'accusamus',
+        'reiciendis',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='hic',
-        ),
-        shared.ExampleResourceChocolates(
-            description='necessitatibus',
-        ),
-        shared.ExampleResourceChocolates(
-            description='asperiores',
-        ),
-        shared.ExampleResourceChocolates(
-            description='ex',
+            description='assumenda',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-02-08T04:46:36.382Z'),
-    enum_number=shared.ExampleResourceEnumNumber.THREE,
+    created_at=dateutil.parser.isoparse('2022-01-28T09:17:23.255Z'),
+    enum_number=shared.ExampleResourceEnumNumber.TWO,
     enum_str=shared.ExampleResourceEnumStr.ONE,
-    id='caa3383c-2beb-4477-b73c-8d72f64d1db1',
+    id='b375ed4f-6fbe-4e41-b333-17fe35b60eb1',
     map_of_integer={
-        "quia": 782090,
-        "aliquam": 247045,
-        "illo": 36561,
-        "vel": 406922,
+        "accusamus": 631126,
     },
     map_of_string={
-        "vero": 'excepturi',
+        "tempora": 'aspernatur',
     },
-    name='Sheila Graham',
-    updated_at=dateutil.parser.isoparse('2022-03-25T02:57:12.529Z'),
+    name='Melanie Hirthe',
+    updated_at=dateutil.parser.isoparse('2022-07-11T09:37:00.887Z'),
     vehicle=shared.ExampleCar(
-        created_at=dateutil.parser.isoparse('2021-02-19T05:31:39.522Z'),
-        make='alias',
-        model='nisi',
-        name='Jacob Pacocha',
+        created_at=dateutil.parser.isoparse('2022-07-01T01:32:29.196Z'),
+        make='in',
+        model='dolore',
+        name='Rochelle Smitham',
         type=shared.ExampleCarType.CAR,
-        updated_at=dateutil.parser.isoparse('2022-12-22T23:09:45.932Z'),
-        year=399.92,
+        updated_at=dateutil.parser.isoparse('2021-12-30T06:08:11.710Z'),
+        year=5553.61,
     ),
 )
 
@@ -152,7 +136,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='consequatur')
+res = s.resource.delete_resource(resource_id='hic')
 
 if res.status_code == 200:
     # handle response
@@ -187,7 +171,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='officia')
+res = s.resource.get_resource(resource_id='nesciunt')
 
 if res.example_resource is not None:
     # handle response
@@ -222,7 +206,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='recusandae')
+res = s.resource.update_resource(resource_id='culpa')
 
 if res.status_code == 200:
     # handle response

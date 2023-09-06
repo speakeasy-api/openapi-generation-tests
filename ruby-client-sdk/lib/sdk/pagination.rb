@@ -17,7 +17,7 @@ module OpenApiSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Operations::PaginationCursorBodyRequestBody, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::PaginationCursorBodyRequestBody), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def pagination_cursor_body(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::PAGINATION_CURSOR_BODY_SERVERS[0], {
@@ -92,7 +92,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::LimitOffsetConfig, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::LimitOffsetConfig), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def pagination_limit_offset_offset_body(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::PAGINATION_LIMIT_OFFSET_OFFSET_BODY_SERVERS[0], {
@@ -168,7 +168,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::LimitOffsetConfig, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::LimitOffsetConfig), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def pagination_limit_offset_page_body(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::PAGINATION_LIMIT_OFFSET_PAGE_BODY_SERVERS[0], {

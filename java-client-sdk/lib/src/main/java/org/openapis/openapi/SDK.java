@@ -58,6 +58,10 @@ public class SDK {
      */
     public AuthNew authNew;
     /**
+     * Testing for documentation extensions and tooling.
+     */
+    public Documentation documentation;
+    /**
      * Endpoints for testing error responses.
      */
     public Errors errors;
@@ -74,6 +78,7 @@ public class SDK {
      * Endpoints for testing global parameters.
      */
     public Globals globals;
+    public NestFirst nestFirst;
     public Nested nested;
     public NestedFirst nestedFirst;
     public NestedSecond nestedSecond;
@@ -331,6 +336,8 @@ public class SDK {
 		
 		this.authNew = new AuthNew(this.sdkConfiguration);
 		
+		this.documentation = new Documentation(this.sdkConfiguration);
+		
 		this.errors = new Errors(this.sdkConfiguration);
 		
 		this.first = new First(this.sdkConfiguration);
@@ -340,6 +347,8 @@ public class SDK {
 		this.generation = new Generation(this.sdkConfiguration);
 		
 		this.globals = new Globals(this.sdkConfiguration);
+		
+		this.nestFirst = new NestFirst(this.sdkConfiguration);
 		
 		this.nested = new Nested(this.sdkConfiguration);
 		

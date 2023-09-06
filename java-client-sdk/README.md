@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.31.3'
+implementation 'org.openapis.openapi:openapi:1.31.4'
 ```
 <!-- End SDK Installation -->
 
@@ -147,6 +147,10 @@ public class Application {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
+### [documentation](docs/sdks/documentation/README.md)
+
+* [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
+
 ### [errors](docs/sdks/errors/README.md)
 
 * [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
@@ -186,6 +190,10 @@ public class Application {
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
+
+### [nestFirst](docs/sdks/nestfirst/README.md)
+
+* [get](docs/sdks/nestfirst/README.md#get)
 
 ### [nested](docs/sdks/nested/README.md)
 
@@ -283,8 +291,11 @@ public class Application {
 * [requestBodyPutStringWithParams](docs/sdks/requestbodies/README.md#requestbodyputstringwithparams)
 * [requestBodyReadAndWrite](docs/sdks/requestbodies/README.md#requestbodyreadandwrite)
 * [requestBodyReadOnlyInput](docs/sdks/requestbodies/README.md#requestbodyreadonlyinput)
+* [requestBodyReadOnlyUnion](docs/sdks/requestbodies/README.md#requestbodyreadonlyunion)
+* [requestBodyReadWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodyreadwriteonlyunion)
 * [requestBodyWriteOnly](docs/sdks/requestbodies/README.md#requestbodywriteonly)
 * [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
+* [requestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
 ### [resource](docs/sdks/resource/README.md)
 

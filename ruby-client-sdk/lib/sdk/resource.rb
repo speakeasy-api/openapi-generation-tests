@@ -56,7 +56,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::ExampleResource).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::ExampleResource)).returns(Utils::FieldAugmented) }
     def create_resource(request)
 
       url, params = @sdk_configuration.get_server_details

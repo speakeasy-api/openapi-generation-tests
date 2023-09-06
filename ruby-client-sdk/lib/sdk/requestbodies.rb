@@ -17,7 +17,7 @@ module OpenApiSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: T::Array[Shared::SimpleObject], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[Shared::SimpleObject]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_SERVERS[0], {
@@ -56,7 +56,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[Shared::SimpleObjectCamelCase], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[Shared::SimpleObjectCamelCase]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_camel_case(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS[0], {
@@ -173,7 +173,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[T::Array[Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[T::Array[Shared::SimpleObject]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_array(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0], {
@@ -212,7 +212,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[T::Array[Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[T::Array[Shared::SimpleObjectCamelCase]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_array_camel_case(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
@@ -251,7 +251,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[T::Array[String]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[T::Array[String]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_array_of_primitive(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_OF_PRIMITIVE_SERVERS[0], {
@@ -290,7 +290,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[T::Hash[Symbol, Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[T::Hash[Symbol, Shared::SimpleObject]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_map(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS[0], {
@@ -329,7 +329,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[T::Hash[Symbol, Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[T::Hash[Symbol, Shared::SimpleObjectCamelCase]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_map_camel_case(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS[0], {
@@ -368,7 +368,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[String], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[String]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_array_of_primitive(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0], {
@@ -407,7 +407,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::DeepObject).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::DeepObject)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_deep(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -445,7 +445,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::DeepObjectCamelCase).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::DeepObjectCamelCase)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_deep_camel_case(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -483,7 +483,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, Shared::SimpleObject], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, Shared::SimpleObject]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0], {
@@ -522,7 +522,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, Shared::SimpleObjectCamelCase], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, Shared::SimpleObjectCamelCase]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_camel_case(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS[0], {
@@ -639,7 +639,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, T::Array[Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, T::Array[Shared::SimpleObject]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_array(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0], {
@@ -678,7 +678,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, T::Array[Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, T::Array[Shared::SimpleObjectCamelCase]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_array_camel_case(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
@@ -717,7 +717,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObject]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObject]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_map(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0], {
@@ -756,7 +756,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObjectCamelCase]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, T::Hash[Symbol, Shared::SimpleObjectCamelCase]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_map_camel_case(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS[0], {
@@ -795,7 +795,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, T::Hash[Symbol, String]], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, T::Hash[Symbol, String]]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_map_of_primitive(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS[0], {
@@ -834,7 +834,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, String], server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, String]), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_post_application_json_map_of_primitive(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS[0], {
@@ -990,7 +990,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Operations::RequestBodyPostEmptyObjectRequestBody).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Operations::RequestBodyPostEmptyObjectRequestBody)).returns(Utils::FieldAugmented) }
     def request_body_post_empty_object(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -1478,7 +1478,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Array[String]).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Array[String])).returns(Utils::FieldAugmented) }
     def request_body_post_null_array(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -1516,7 +1516,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T::Hash[Symbol, String]).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(T::Hash[Symbol, String])).returns(Utils::FieldAugmented) }
     def request_body_post_null_dictionary(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -1841,7 +1841,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::ReadWriteObjectInput, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::ReadWriteObjectInput), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_read_and_write(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_READ_AND_WRITE_SERVERS[0], {
@@ -1880,7 +1880,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::ReadOnlyObjectInput, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::ReadOnlyObjectInput), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_read_only_input(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_READ_ONLY_INPUT_SERVERS[0], {
@@ -1919,7 +1919,85 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::WriteOnlyObject, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Object), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_read_only_union(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_READ_ONLY_UNION_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/readonlyorwriteonly#readOnlyUnion"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyReadOnlyUnionResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Object)
+          res.weakly_typed_one_of_read_only_object = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Object), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_read_write_only_union(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/readonlyandwriteonly#readWriteOnlyUnion"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyReadWriteOnlyUnionResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Object)
+          res.weakly_typed_one_of_read_write_object = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Shared::WriteOnlyObject), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_write_only(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_WRITE_ONLY_SERVERS[0], {
@@ -1958,13 +2036,13 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: Shared::WriteOnlyObject, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: T.nilable(Shared::WriteOnlyObject), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def request_body_write_only_output(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::REQUEST_BODY_WRITE_ONLY_OUTPUT_SERVERS[0], {
       })
       base_url = server_url if !server_url.nil?
-      url = "#{base_url}/readonlyorwriteonly#writeOnlyOutput"
+      url = "#{base_url}/writeonlyoutput#writeOnlyOutput"
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
@@ -1992,6 +2070,45 @@ module OpenApiSDK
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Shared::WriteOnlyObjectOutput)
           res.write_only_object = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Object), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def request_body_write_only_union(request, server_url = nil)
+
+      base_url = Utils.template_url(Operations::REQUEST_BODY_WRITE_ONLY_UNION_SERVERS[0], {
+      })
+      base_url = server_url if !server_url.nil?
+      url = "#{base_url}/writeonlyoutput#writeOnlyUnion"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyWriteOnlyUnionResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Object)
+          res.weakly_typed_one_of_write_only_object = out
         end
       end
       res
