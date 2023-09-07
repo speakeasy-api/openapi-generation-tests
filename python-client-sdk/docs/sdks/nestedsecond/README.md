@@ -21,7 +21,7 @@ s = sdk.SDK(
 )
 
 
-res = s.nested_second.get()
+res = s.nested.second.get()
 
 if res.status_code == 200:
     # handle response

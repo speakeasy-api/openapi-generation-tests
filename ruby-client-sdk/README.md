@@ -76,10 +76,16 @@ req = Operations::UsageExamplePostRequest.new(
       uuid="5955907a-ff1a-43a2-ba94-67739251aa52",
     ),
     bigint_parameter=111111,
+    bigint_parameter_optional=111111,
+    bigint_str_parameter="111111",
+    bigint_str_parameter_optional="111111",
     bool_parameter=false,
     date_parameter=Date.parse("2020-01-01"),
     date_time_parameter=DateTime.iso8601('2020-01-01T00:00:00Z'),
     decimal_parameter=1.1,
+    decimal_parameter_optional=1.1,
+    decimal_str_parameter="1.1",
+    decimal_str_parameter_optional="1.1",
     double_parameter=2.2222222,
     enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE3,
     falsey_number_parameter=0,
@@ -291,6 +297,7 @@ end
 * [request_body_post_application_json_multiple_json_filtered](docs/sdks/requestbodies/README.md#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple)
 * [request_body_post_application_json_simple_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple_camel_case)
+* [request_body_post_complex_number_types](docs/sdks/requestbodies/README.md#request_body_post_complex_number_types)
 * [request_body_post_empty_object](docs/sdks/requestbodies/README.md#request_body_post_empty_object)
 * [request_body_post_form_deep](docs/sdks/requestbodies/README.md#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](docs/sdks/requestbodies/README.md#request_body_post_form_map_primitive)

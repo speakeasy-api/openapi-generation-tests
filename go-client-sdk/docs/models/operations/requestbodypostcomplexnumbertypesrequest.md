@@ -1,0 +1,16 @@
+# RequestBodyPostComplexNumberTypesRequest
+
+
+## Fields
+
+| Field                                                                   | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `ComplexNumberTypes`                                                    | [*shared.ComplexNumberTypes](../../models/shared/complexnumbertypes.md) | :heavy_minus_sign:                                                      | N/A                                                                     |
+| `PathBigInt`                                                            | [*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_check_mark:                                                      | N/A                                                                     |
+| `PathBigIntStr`                                                         | [types.BigInt](../../types/bigint.md)                                   | :heavy_check_mark:                                                      | N/A                                                                     |
+| `PathDecimal`                                                           | *float64*                                                               | :heavy_check_mark:                                                      | N/A                                                                     |
+| `PathDecimalStr`                                                        | *string*                                                                | :heavy_check_mark:                                                      | N/A                                                                     |
+| `QueryBigInt`                                                           | [*big.Int](https://pkg.go.dev/math/big#Int)                             | :heavy_check_mark:                                                      | N/A                                                                     |
+| `QueryBigIntStr`                                                        | [types.BigInt](../../types/bigint.md)                                   | :heavy_check_mark:                                                      | N/A                                                                     |
+| `QueryDecimal`                                                          | *float64*                                                               | :heavy_check_mark:                                                      | N/A                                                                     |
+| `QueryDecimalStr`                                                       | *string*                                                                | :heavy_check_mark:                                                      | N/A                                                                     |

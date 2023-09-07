@@ -8,9 +8,10 @@ src/sdk/flattening.py
 src/sdk/generation.py
 src/sdk/globals.py
 src/sdk/nest_first.py
-src/sdk/nested.py
+src/sdk/nest.py
 src/sdk/nested_first.py
 src/sdk/nested_second.py
+src/sdk/nested.py
 src/sdk/pagination.py
 src/sdk/parameters.py
 src/sdk/requestbodies.py
@@ -37,6 +38,7 @@ tests/test_auth.py
 tests/test_errors.py
 tests/test_flattening.py
 tests/test_globals.py
+tests/test_multi_level.py
 tests/test_pagination.py
 tests/test_parameters.py
 tests/test_request_bodies.py
@@ -90,9 +92,9 @@ src/sdk/models/operations/usageexamplepost.py
 src/sdk/models/operations/globalpathparameterget.py
 src/sdk/models/operations/globalsqueryparameterget.py
 src/sdk/models/operations/nestfirstget.py
-src/sdk/models/operations/nestedget.py
 src/sdk/models/operations/nestedfirstget.py
 src/sdk/models/operations/nestedsecondget.py
+src/sdk/models/operations/nestedget.py
 src/sdk/models/operations/paginationcursorbody.py
 src/sdk/models/operations/paginationcursorparams.py
 src/sdk/models/operations/paginationlimitoffsetoffsetbody.py
@@ -149,6 +151,7 @@ src/sdk/models/operations/requestbodypostapplicationjsonmapofprimitive.py
 src/sdk/models/operations/requestbodypostapplicationjsonmultiplejsonfiltered.py
 src/sdk/models/operations/requestbodypostapplicationjsonsimple.py
 src/sdk/models/operations/requestbodypostapplicationjsonsimplecamelcase.py
+src/sdk/models/operations/requestbodypostcomplexnumbertypes.py
 src/sdk/models/operations/requestbodypostemptyobject.py
 src/sdk/models/operations/requestbodypostformdeep.py
 src/sdk/models/operations/requestbodypostformmapprimitive.py
@@ -226,6 +229,7 @@ src/sdk/models/shared/arrobjvaluecamelcase.py
 src/sdk/models/shared/deepobjectcamelcase.py
 src/sdk/models/shared/mapobjvalue.py
 src/sdk/models/shared/mapobjvaluecamelcase.py
+src/sdk/models/shared/complexnumbertypes.py
 src/sdk/models/shared/readwriteobject.py
 src/sdk/models/shared/readonlyobject.py
 src/sdk/models/shared/writeonlyobject.py
@@ -255,6 +259,7 @@ docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nest/README.md
 docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
@@ -390,9 +395,9 @@ docs/models/operations/globalsqueryparametergetresargs.md
 docs/models/operations/globalsqueryparametergetres.md
 docs/models/operations/globalsqueryparametergetresponse.md
 docs/models/operations/nestfirstgetresponse.md
-docs/models/operations/nestedgetresponse.md
 docs/models/operations/nestedfirstgetresponse.md
 docs/models/operations/nestedsecondgetresponse.md
+docs/models/operations/nestedgetresponse.md
 docs/models/operations/paginationcursorbodyrequestbody.md
 docs/models/operations/paginationcursorbodyres.md
 docs/models/operations/paginationcursorbodyresponse.md
@@ -531,6 +536,9 @@ docs/models/operations/requestbodypostapplicationjsonsimpleres.md
 docs/models/operations/requestbodypostapplicationjsonsimpleresponse.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseres.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md
+docs/models/operations/requestbodypostcomplexnumbertypesrequest.md
+docs/models/operations/requestbodypostcomplexnumbertypes200applicationjson.md
+docs/models/operations/requestbodypostcomplexnumbertypesresponse.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyempty.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyemptywithemptyproperties.md
 docs/models/operations/requestbodypostemptyobjectrequestbody.md
@@ -680,6 +688,7 @@ docs/models/shared/arrobjvaluecamelcase.md
 docs/models/shared/deepobjectcamelcase.md
 docs/models/shared/mapobjvalue.md
 docs/models/shared/mapobjvaluecamelcase.md
+docs/models/shared/complexnumbertypes.md
 docs/models/shared/readwriteobjectinput.md
 docs/models/shared/readwriteobjectoutput.md
 docs/models/shared/readonlyobject.md

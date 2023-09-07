@@ -126,8 +126,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.32.2";
-    genVersion = "2.96.9";
+    sdkVersion = "1.32.3";
+    genVersion = "2.101.0";
     globals: any;
 
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -154,7 +154,7 @@ export class SDK {
      */
     public authNew: AuthNew;
     /**
-     * Testing for documentation extensions and tooling.
+     * Testing for documentation extensions in TypeScript.
      */
     public documentation: Documentation;
     /**

@@ -82,10 +82,16 @@ try {
     $request->requestBody->uri = 'http://growing-cappelletti.net';
     $request->requestBody->uuid = '5955907a-ff1a-43a2-ba94-67739251aa52';
     $request->bigintParameter = 111111;
+    $request->bigintParameterOptional = 111111;
+    $request->bigintStrParameter = '111111';
+    $request->bigintStrParameterOptional = '111111';
     $request->boolParameter = false;
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
     $request->decimalParameter = 1.1;
+    $request->decimalParameterOptional = 1.1;
+    $request->decimalStrParameter = '1.1';
+    $request->decimalStrParameterOptional = '1.1';
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
     $request->falseyNumberParameter = 0;

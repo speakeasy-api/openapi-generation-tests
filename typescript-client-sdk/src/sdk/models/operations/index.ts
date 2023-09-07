@@ -107,6 +107,7 @@ export * from "./requestbodypostapplicationjsonmapofprimitive";
 export * from "./requestbodypostapplicationjsonmultiplejsonfiltered";
 export * from "./requestbodypostapplicationjsonsimple";
 export * from "./requestbodypostapplicationjsonsimplecamelcase";
+export * from "./requestbodypostcomplexnumbertypes";
 export * from "./requestbodypostemptyobject";
 export * from "./requestbodypostformdeep";
 export * from "./requestbodypostformmapprimitive";

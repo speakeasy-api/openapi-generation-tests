@@ -5,7 +5,7 @@ from sdk import utils
 from sdk.models import errors, operations
 
 class Documentation:
-    r"""Testing for documentation extensions and tooling."""
+    r"""Testing for documentation extensions in Python."""
     sdk_configuration: SDKConfiguration
 
     def __init__(self, sdk_config: SDKConfiguration) -> None:
@@ -13,7 +13,7 @@ class Documentation:
         
     
     def get_documentation_per_language(self, language: str) -> operations.GetDocumentationPerLanguageResponse:
-        r"""Gets documentation for some language, I guess."""
+        r"""Get stuff in Python."""
         request = operations.GetDocumentationPerLanguageRequest(
             language=language,
         )

@@ -8,9 +8,10 @@ lib/src/main/java/org/openapis/openapi/Flattening.java
 lib/src/main/java/org/openapis/openapi/Generation.java
 lib/src/main/java/org/openapis/openapi/Globals.java
 lib/src/main/java/org/openapis/openapi/NestFirst.java
-lib/src/main/java/org/openapis/openapi/Nested.java
+lib/src/main/java/org/openapis/openapi/Nest.java
 lib/src/main/java/org/openapis/openapi/NestedFirst.java
 lib/src/main/java/org/openapis/openapi/NestedSecond.java
+lib/src/main/java/org/openapis/openapi/Nested.java
 lib/src/main/java/org/openapis/openapi/Pagination.java
 lib/src/main/java/org/openapis/openapi/Parameters.java
 lib/src/main/java/org/openapis/openapi/RequestBodies.java
@@ -55,6 +56,7 @@ lib/src/test/java/org/openapis/openapi/AuthTests.java
 lib/src/test/java/org/openapis/openapi/FlatteningTests.java
 lib/src/test/java/org/openapis/openapi/GlobalsTests.java
 lib/src/test/java/org/openapis/openapi/Helpers.java
+lib/src/test/java/org/openapis/openapi/MultilevelTests.java
 lib/src/test/java/org/openapis/openapi/ParameterTests.java
 lib/src/test/java/org/openapis/openapi/RequestBodiesTests.java
 lib/src/test/java/org/openapis/openapi/ResponseBodiesTests.java
@@ -180,9 +182,9 @@ lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGe
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/GlobalsQueryParameterGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NestFirstGetResponse.java
-lib/src/main/java/org/openapis/openapi/models/operations/NestedGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NestedFirstGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NestedSecondGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/NestedGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyRequestBody.java
 lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/PaginationCursorBodyResponse.java
@@ -321,6 +323,9 @@ lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostApplicat
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostApplicationJsonSimpleResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostComplexNumberTypesRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostComplexNumberTypes200ApplicationJSON.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostComplexNumberTypesResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostEmptyObjectRequestBodyEmpty.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostEmptyObjectRequestBody.java
@@ -471,6 +476,7 @@ lib/src/main/java/org/openapis/openapi/models/shared/ArrObjValueCamelCase.java
 lib/src/main/java/org/openapis/openapi/models/shared/DeepObjectCamelCase.java
 lib/src/main/java/org/openapis/openapi/models/shared/MapObjValue.java
 lib/src/main/java/org/openapis/openapi/models/shared/MapObjValueCamelCase.java
+lib/src/main/java/org/openapis/openapi/models/shared/ComplexNumberTypes.java
 lib/src/main/java/org/openapis/openapi/models/shared/ReadWriteObjectInput.java
 lib/src/main/java/org/openapis/openapi/models/shared/ReadWriteObjectOutput.java
 lib/src/main/java/org/openapis/openapi/models/shared/ReadOnlyObject.java
@@ -511,6 +517,7 @@ docs/sdks/first/README.md
 docs/sdks/flattening/README.md
 docs/sdks/generation/README.md
 docs/sdks/globals/README.md
+docs/sdks/nest/README.md
 docs/sdks/nestfirst/README.md
 docs/sdks/nested/README.md
 docs/sdks/nestedfirst/README.md
@@ -646,9 +653,9 @@ docs/models/operations/GlobalsQueryParameterGetResArgs.md
 docs/models/operations/GlobalsQueryParameterGetRes.md
 docs/models/operations/GlobalsQueryParameterGetResponse.md
 docs/models/operations/NestFirstGetResponse.md
-docs/models/operations/NestedGetResponse.md
 docs/models/operations/NestedFirstGetResponse.md
 docs/models/operations/NestedSecondGetResponse.md
+docs/models/operations/NestedGetResponse.md
 docs/models/operations/PaginationCursorBodyRequestBody.md
 docs/models/operations/PaginationCursorBodyRes.md
 docs/models/operations/PaginationCursorBodyResponse.md
@@ -787,6 +794,9 @@ docs/models/operations/RequestBodyPostApplicationJsonSimpleRes.md
 docs/models/operations/RequestBodyPostApplicationJsonSimpleResponse.md
 docs/models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseRes.md
 docs/models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md
+docs/models/operations/RequestBodyPostComplexNumberTypesRequest.md
+docs/models/operations/RequestBodyPostComplexNumberTypes200ApplicationJSON.md
+docs/models/operations/RequestBodyPostComplexNumberTypesResponse.md
 docs/models/operations/RequestBodyPostEmptyObjectRequestBodyEmpty.md
 docs/models/operations/RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.md
 docs/models/operations/RequestBodyPostEmptyObjectRequestBody.md
@@ -937,6 +947,7 @@ docs/models/shared/ArrObjValueCamelCase.md
 docs/models/shared/DeepObjectCamelCase.md
 docs/models/shared/MapObjValue.md
 docs/models/shared/MapObjValueCamelCase.md
+docs/models/shared/ComplexNumberTypes.md
 docs/models/shared/ReadWriteObjectInput.md
 docs/models/shared/ReadWriteObjectOutput.md
 docs/models/shared/ReadOnlyObject.md

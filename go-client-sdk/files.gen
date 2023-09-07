@@ -157,6 +157,7 @@ pkg/models/operations/requestbodypostapplicationjsonmapofprimitive.go
 pkg/models/operations/requestbodypostapplicationjsonmultiplejsonfiltered.go
 pkg/models/operations/requestbodypostapplicationjsonsimple.go
 pkg/models/operations/requestbodypostapplicationjsonsimplecamelcase.go
+pkg/models/operations/requestbodypostcomplexnumbertypes.go
 pkg/models/operations/requestbodypostemptyobject.go
 pkg/models/operations/requestbodypostformdeep.go
 pkg/models/operations/requestbodypostformmapprimitive.go
@@ -233,6 +234,7 @@ pkg/models/shared/arrobjvaluecamelcase.go
 pkg/models/shared/deepobjectcamelcase.go
 pkg/models/shared/mapobjvalue.go
 pkg/models/shared/mapobjvaluecamelcase.go
+pkg/models/shared/complexnumbertypes.go
 pkg/models/shared/readwriteobject.go
 pkg/models/shared/readonlyobject.go
 pkg/models/shared/weaklytypedoneofreadonlyobject.go
@@ -395,6 +397,7 @@ docs/models/operations/usageexamplepostsecurity.md
 docs/models/operations/usageexamplepostrequestbody.md
 docs/models/operations/usageexamplepostenumparameter.md
 docs/models/operations/usageexamplepostoptenumparameter.md
+docs/types/bigint.md
 docs/models/operations/usageexamplepostrequest.md
 docs/models/operations/usageexamplepost200applicationjsonjson.md
 docs/models/operations/usageexamplepost200applicationjson.md
@@ -548,6 +551,9 @@ docs/models/operations/requestbodypostapplicationjsonsimpleres.md
 docs/models/operations/requestbodypostapplicationjsonsimpleresponse.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseres.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md
+docs/models/operations/requestbodypostcomplexnumbertypesrequest.md
+docs/models/operations/requestbodypostcomplexnumbertypes200applicationjson.md
+docs/models/operations/requestbodypostcomplexnumbertypesresponse.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyempty.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyemptywithemptyproperties.md
 docs/models/operations/requestbodypostemptyobjectrequestbody.md
@@ -678,7 +684,6 @@ docs/models/shared/schemebasicauth.md
 docs/models/shared/security.md
 docs/models/shared/simpleobjectint32enum.md
 docs/models/shared/simpleobjectintenum.md
-docs/types/bigint.md
 docs/models/shared/simpleobject.md
 docs/models/shared/enum.md
 docs/models/shared/validcircularreferenceobject.md
@@ -701,6 +706,7 @@ docs/models/shared/arrobjvaluecamelcase.md
 docs/models/shared/deepobjectcamelcase.md
 docs/models/shared/mapobjvalue.md
 docs/models/shared/mapobjvaluecamelcase.md
+docs/models/shared/complexnumbertypes.md
 docs/models/shared/readonlyobject.md
 docs/models/shared/weaklytypedoneofreadonlyobject.md
 docs/models/shared/weaklytypedoneofreadonlyobjectinput.md

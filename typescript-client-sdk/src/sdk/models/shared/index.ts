@@ -6,6 +6,7 @@ export * from "./alloftoallof";
 export * from "./arrobjvalue";
 export * from "./arrobjvaluecamelcase";
 export * from "./authservicerequestbody";
+export * from "./complexnumbertypes";
 export * from "./deepobject";
 export * from "./deepobjectcamelcase";
 export * from "./deepobjectwithtype";

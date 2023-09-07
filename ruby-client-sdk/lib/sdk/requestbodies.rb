@@ -1095,6 +1095,52 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: T.nilable(Operations::RequestBodyPostComplexNumberTypesRequest)).returns(Utils::FieldAugmented) }
+    def request_body_post_complex_number_types(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = Utils.generate_url(
+        Operations::RequestBodyPostComplexNumberTypesRequest,
+        base_url,
+        '/anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types',
+        request,
+        @sdk_configuration.globals
+      )
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :complex_number_types, :json)
+      headers['content-type'] = req_content_type
+      query_params = Utils.get_query_params(Operations::RequestBodyPostComplexNumberTypesRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::RequestBodyPostComplexNumberTypesResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::RequestBodyPostComplexNumberTypes200ApplicationJSON)
+          res.request_body_post_complex_number_types_200_application_json_object = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T.nilable(Operations::RequestBodyPostEmptyObjectRequestBody)).returns(Utils::FieldAugmented) }
     def request_body_post_empty_object(request)
 

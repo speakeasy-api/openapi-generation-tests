@@ -9,10 +9,8 @@ from .first import First
 from .flattening import Flattening
 from .generation import Generation
 from .globals import Globals
-from .nest_first import NestFirst
+from .nest import Nest
 from .nested import Nested
-from .nested_first import NestedFirst
-from .nested_second import NestedSecond
 from .pagination import Pagination
 from .parameters import Parameters
 from .requestbodies import RequestBodies
@@ -39,7 +37,7 @@ class SDK:
     auth_new: AuthNew
     r"""Endpoints for testing authentication."""
     documentation: Documentation
-    r"""Testing for documentation extensions and tooling."""
+    r"""Testing for documentation extensions in Python."""
     errors: Errors
     r"""Endpoints for testing error responses."""
     first: First
@@ -49,10 +47,8 @@ class SDK:
     r"""Endpoints for purely testing valid generation behavior."""
     globals: Globals
     r"""Endpoints for testing global parameters."""
-    nest_first: NestFirst
+    nest: Nest
     nested: Nested
-    nested_first: NestedFirst
-    nested_second: NestedSecond
     pagination: Pagination
     r"""Endpoints for testing the pagination extension"""
     parameters: Parameters
@@ -161,10 +157,8 @@ class SDK:
         self.flattening = Flattening(self.sdk_configuration)
         self.generation = Generation(self.sdk_configuration)
         self.globals = Globals(self.sdk_configuration)
-        self.nest_first = NestFirst(self.sdk_configuration)
+        self.nest = Nest(self.sdk_configuration)
         self.nested = Nested(self.sdk_configuration)
-        self.nested_first = NestedFirst(self.sdk_configuration)
-        self.nested_second = NestedSecond(self.sdk_configuration)
         self.pagination = Pagination(self.sdk_configuration)
         self.parameters = Parameters(self.sdk_configuration)
         self.request_bodies = RequestBodies(self.sdk_configuration)

@@ -26,7 +26,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NestFirstGetResponse res = sdk.nestFirst.get();
+            NestFirstGetResponse res = sdk.nest.first.get();
 
             if (res.statusCode == 200) {
                 // handle response

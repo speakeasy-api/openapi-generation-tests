@@ -78,10 +78,8 @@ public class SDK {
      * Endpoints for testing global parameters.
      */
     public Globals globals;
-    public NestFirst nestFirst;
+    public Nest nest;
     public Nested nested;
-    public NestedFirst nestedFirst;
-    public NestedSecond nestedSecond;
     /**
      * Endpoints for testing the pagination extension
      */
@@ -348,13 +346,9 @@ public class SDK {
 		
 		this.globals = new Globals(this.sdkConfiguration);
 		
-		this.nestFirst = new NestFirst(this.sdkConfiguration);
+		this.nest = new Nest(this.sdkConfiguration);
 		
 		this.nested = new Nested(this.sdkConfiguration);
-		
-		this.nestedFirst = new NestedFirst(this.sdkConfiguration);
-		
-		this.nestedSecond = new NestedSecond(this.sdkConfiguration);
 		
 		this.pagination = new Pagination(this.sdkConfiguration);
 		

@@ -28,6 +28,30 @@ class UsageExamplePostRequest
     public int $bigintParameter;
     
     /**
+     * An bigint parameter
+     * 
+     * @var ?int $bigintParameterOptional
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=bigintParameterOptional')]
+    public ?int $bigintParameterOptional = null;
+    
+    /**
+     * An bigint parameter
+     * 
+     * @var string $bigintStrParameter
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=bigintStrParameter')]
+    public string $bigintStrParameter;
+    
+    /**
+     * An bigint parameter
+     * 
+     * @var ?string $bigintStrParameterOptional
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=bigintStrParameterOptional')]
+    public ?string $bigintStrParameterOptional = null;
+    
+    /**
      * A boolean parameter
      * 
      * @var bool $boolParameter
@@ -58,6 +82,30 @@ class UsageExamplePostRequest
      */
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimalParameter')]
     public float $decimalParameter;
+    
+    /**
+     * A decimal parameter
+     * 
+     * @var ?float $decimalParameterOptional
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimalParameterOptional')]
+    public ?float $decimalParameterOptional = null;
+    
+    /**
+     * A decimal parameter
+     * 
+     * @var string $decimalStrParameter
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimalStrParameter')]
+    public string $decimalStrParameter;
+    
+    /**
+     * A decimal parameter
+     * 
+     * @var ?string $decimalStrParameterOptional
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=decimalStrParameterOptional')]
+    public ?string $decimalStrParameterOptional = null;
     
     /**
      * A double parameter
@@ -135,10 +183,16 @@ class UsageExamplePostRequest
 	{
 		$this->requestBody = null;
 		$this->bigintParameter = 0;
+		$this->bigintParameterOptional = null;
+		$this->bigintStrParameter = "";
+		$this->bigintStrParameterOptional = null;
 		$this->boolParameter = false;
 		$this->dateParameter = new \DateTime();
 		$this->dateTimeParameter = new \DateTime();
 		$this->decimalParameter = 0;
+		$this->decimalParameterOptional = null;
+		$this->decimalStrParameter = "";
+		$this->decimalStrParameterOptional = null;
 		$this->doubleParameter = 0;
 		$this->enumParameter = \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostEnumParameter::Value1;
 		$this->falseyNumberParameter = 0;

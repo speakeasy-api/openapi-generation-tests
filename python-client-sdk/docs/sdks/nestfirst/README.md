@@ -21,7 +21,7 @@ s = sdk.SDK(
 )
 
 
-res = s.nest_first.get()
+res = s.nest.first.get()
 
 if res.status_code == 200:
     # handle response

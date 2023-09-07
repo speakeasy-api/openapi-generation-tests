@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('consequatur');
+    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('quia');
 
     if ($response->res !== null) {
         // handle response

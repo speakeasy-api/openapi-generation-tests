@@ -313,6 +313,9 @@ src/Models/Operations/RequestBodyPostApplicationJsonSimpleRes.php
 src/Models/Operations/RequestBodyPostApplicationJsonSimpleResponse.php
 src/Models/Operations/RequestBodyPostApplicationJsonSimpleCamelCaseRes.php
 src/Models/Operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.php
+src/Models/Operations/RequestBodyPostComplexNumberTypesRequest.php
+src/Models/Operations/RequestBodyPostComplexNumberTypes200ApplicationJSON.php
+src/Models/Operations/RequestBodyPostComplexNumberTypesResponse.php
 src/Models/Operations/RequestBodyPostEmptyObjectRequestBodyEmpty.php
 src/Models/Operations/RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.php
 src/Models/Operations/RequestBodyPostEmptyObjectRequestBody.php
@@ -463,6 +466,7 @@ src/Models/Shared/ArrObjValueCamelCase.php
 src/Models/Shared/DeepObjectCamelCase.php
 src/Models/Shared/MapObjValue.php
 src/Models/Shared/MapObjValueCamelCase.php
+src/Models/Shared/ComplexNumberTypes.php
 src/Models/Shared/ReadWriteObjectInput.php
 src/Models/Shared/ReadWriteObjectOutput.php
 src/Models/Shared/ReadOnlyObject.php
@@ -779,6 +783,9 @@ docs/models/operations/RequestBodyPostApplicationJsonSimpleRes.md
 docs/models/operations/RequestBodyPostApplicationJsonSimpleResponse.md
 docs/models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseRes.md
 docs/models/operations/RequestBodyPostApplicationJsonSimpleCamelCaseResponse.md
+docs/models/operations/RequestBodyPostComplexNumberTypesRequest.md
+docs/models/operations/RequestBodyPostComplexNumberTypes200ApplicationJSON.md
+docs/models/operations/RequestBodyPostComplexNumberTypesResponse.md
 docs/models/operations/RequestBodyPostEmptyObjectRequestBodyEmpty.md
 docs/models/operations/RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties.md
 docs/models/operations/RequestBodyPostEmptyObjectRequestBody.md
@@ -929,6 +936,7 @@ docs/models/shared/ArrObjValueCamelCase.md
 docs/models/shared/DeepObjectCamelCase.md
 docs/models/shared/MapObjValue.md
 docs/models/shared/MapObjValueCamelCase.md
+docs/models/shared/ComplexNumberTypes.md
 docs/models/shared/ReadWriteObjectInput.md
 docs/models/shared/ReadWriteObjectOutput.md
 docs/models/shared/ReadOnlyObject.md

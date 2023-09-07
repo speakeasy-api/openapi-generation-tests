@@ -79,10 +79,16 @@ req = operations.UsageExamplePostRequest(
         uuid='5955907a-ff1a-43a2-ba94-67739251aa52',
     ),
     bigint_parameter=111111,
+    bigint_parameter_optional=111111,
+    bigint_str_parameter='111111',
+    bigint_str_parameter_optional='111111',
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),
     date_time_parameter=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
     decimal_parameter=1.1,
+    decimal_parameter_optional=1.1,
+    decimal_str_parameter='1.1',
+    decimal_str_parameter_optional='1.1',
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,
@@ -181,6 +187,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
+
 ### [nest_first](docs/sdks/nestfirst/README.md)
 
 * [get](docs/sdks/nestfirst/README.md#get)
@@ -261,6 +268,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_post_application_json_multiple_json_filtered](docs/sdks/requestbodies/README.md#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple)
 * [request_body_post_application_json_simple_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple_camel_case)
+* [request_body_post_complex_number_types](docs/sdks/requestbodies/README.md#request_body_post_complex_number_types)
 * [request_body_post_empty_object](docs/sdks/requestbodies/README.md#request_body_post_empty_object)
 * [request_body_post_form_deep](docs/sdks/requestbodies/README.md#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](docs/sdks/requestbodies/README.md#request_body_post_form_map_primitive)
