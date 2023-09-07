@@ -2,7 +2,6 @@
 
 package shared
 
-// RefQueryParamObj
 type RefQueryParamObj struct {
 	Bool bool    `queryParam:"name=bool"`
 	Int  int64   `queryParam:"name=int"`

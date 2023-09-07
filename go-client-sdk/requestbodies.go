@@ -3650,7 +3650,7 @@ func (s *requestBodies) RequestBodyReadOnlyInput(ctx context.Context, request sh
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadOnlyObject, opts ...operations.Option) (*operations.RequestBodyReadOnlyUnionResponse, error) {
+func (s *requestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadOnlyObjectInput, opts ...operations.Option) (*operations.RequestBodyReadOnlyUnionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -3710,7 +3710,7 @@ func (s *requestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request sh
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.WeaklyTypedOneOfReadOnlyObject1
+			var out *shared.WeaklyTypedOneOfReadOnlyObject
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
@@ -3728,7 +3728,7 @@ func (s *requestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request sh
 	return res, nil
 }
 
-func (s *requestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadWriteObject, opts ...operations.Option) (*operations.RequestBodyReadWriteOnlyUnionResponse, error) {
+func (s *requestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, request shared.WeaklyTypedOneOfReadWriteObjectInput, opts ...operations.Option) (*operations.RequestBodyReadWriteOnlyUnionResponse, error) {
 	o := operations.Options{}
 	supportedOptions := []string{
 		operations.SupportedOptionServerURL,
@@ -3788,7 +3788,7 @@ func (s *requestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, reque
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.WeaklyTypedOneOfReadWriteObject1
+			var out *shared.WeaklyTypedOneOfReadWriteObjectOutput
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}
@@ -4022,7 +4022,7 @@ func (s *requestBodies) RequestBodyWriteOnlyUnion(ctx context.Context, request s
 	case httpRes.StatusCode == 200:
 		switch {
 		case utils.MatchContentType(contentType, `application/json`):
-			var out *shared.WeaklyTypedOneOfWriteOnlyObject1
+			var out *shared.WeaklyTypedOneOfWriteOnlyObjectOutput
 			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
 				return nil, err
 			}

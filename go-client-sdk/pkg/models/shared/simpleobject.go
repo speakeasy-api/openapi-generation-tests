@@ -73,6 +73,7 @@ func (e *SimpleObjectIntEnum) UnmarshalJSON(data []byte) error {
 }
 
 // SimpleObject - A simple object that uses all our supported primitive types and enums and has optional properties.
+//
 // https://docs.speakeasyapi.dev - A link to the external docs.
 type SimpleObject struct {
 	// An any property.

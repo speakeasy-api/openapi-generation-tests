@@ -7,9 +7,9 @@ import (
 )
 
 const (
-	// SelectServerWithIDServerValid - The default server.
+	// The default server.
 	SelectServerWithIDServerValid string = "valid"
-	// SelectServerWithIDServerBroken - A server url to a non-existent server.
+	// A server url to a non-existent server.
 	SelectServerWithIDServerBroken string = "broken"
 )
 

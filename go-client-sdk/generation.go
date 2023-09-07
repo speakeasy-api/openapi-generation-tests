@@ -787,6 +787,7 @@ func (s *generation) TypedParameterGenerationGet(ctx context.Context, bigint *bi
 
 // UsageExamplePost - An operation used for testing usage examples
 // An operation used for testing usage examples that includes a large array of parameters and input types to ensure that all are handled correctly
+//
 // https://docs.example.com - Usage example docs
 func (s *generation) UsageExamplePost(ctx context.Context, request operations.UsageExamplePostRequest, security operations.UsageExamplePostSecurity) (*operations.UsageExamplePostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())

@@ -8,7 +8,6 @@ import (
 	"openapi/pkg/types"
 )
 
-// TypedParameterGenerationGetObj
 type TypedParameterGenerationGetObj struct {
 	Bool bool    `queryParam:"name=bool"`
 	Num  float64 `queryParam:"name=num"`

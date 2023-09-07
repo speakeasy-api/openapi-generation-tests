@@ -43,15 +43,6 @@ func CreateWeaklyTypedOneOfWriteOnlyObjectWriteOnlyObject(writeOnlyObject WriteO
 func (u *WeaklyTypedOneOfWriteOnlyObject) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
 
-	simpleObject := new(SimpleObject)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&simpleObject); err == nil {
-		u.SimpleObject = simpleObject
-		u.Type = WeaklyTypedOneOfWriteOnlyObjectTypeSimpleObject
-		return nil
-	}
-
 	writeOnlyObject := new(WriteOnlyObject)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
@@ -61,16 +52,25 @@ func (u *WeaklyTypedOneOfWriteOnlyObject) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	simpleObject := new(SimpleObject)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&simpleObject); err == nil {
+		u.SimpleObject = simpleObject
+		u.Type = WeaklyTypedOneOfWriteOnlyObjectTypeSimpleObject
+		return nil
+	}
+
 	return errors.New("could not unmarshal into supported union types")
 }
 
 func (u WeaklyTypedOneOfWriteOnlyObject) MarshalJSON() ([]byte, error) {
-	if u.SimpleObject != nil {
-		return json.Marshal(u.SimpleObject)
-	}
-
 	if u.WriteOnlyObject != nil {
 		return json.Marshal(u.WriteOnlyObject)
+	}
+
+	if u.SimpleObject != nil {
+		return json.Marshal(u.SimpleObject)
 	}
 
 	return nil, nil

@@ -43,15 +43,6 @@ func CreateWeaklyTypedOneOfObjectDeepObject(deepObject DeepObject) WeaklyTypedOn
 func (u *WeaklyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
 
-	simpleObject := new(SimpleObject)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&simpleObject); err == nil {
-		u.SimpleObject = simpleObject
-		u.Type = WeaklyTypedOneOfObjectTypeSimpleObject
-		return nil
-	}
-
 	deepObject := new(DeepObject)
 	d = json.NewDecoder(bytes.NewReader(data))
 	d.DisallowUnknownFields()
@@ -61,16 +52,25 @@ func (u *WeaklyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 		return nil
 	}
 
+	simpleObject := new(SimpleObject)
+	d = json.NewDecoder(bytes.NewReader(data))
+	d.DisallowUnknownFields()
+	if err := d.Decode(&simpleObject); err == nil {
+		u.SimpleObject = simpleObject
+		u.Type = WeaklyTypedOneOfObjectTypeSimpleObject
+		return nil
+	}
+
 	return errors.New("could not unmarshal into supported union types")
 }
 
 func (u WeaklyTypedOneOfObject) MarshalJSON() ([]byte, error) {
-	if u.SimpleObject != nil {
-		return json.Marshal(u.SimpleObject)
-	}
-
 	if u.DeepObject != nil {
 		return json.Marshal(u.DeepObject)
+	}
+
+	if u.SimpleObject != nil {
+		return json.Marshal(u.SimpleObject)
 	}
 
 	return nil, nil

@@ -14,7 +14,7 @@ import (
 	"strings"
 )
 
-// documentation - Testing for documentation extensions and tooling.
+// documentation - Testing for documentation extensions in Go.
 type documentation struct {
 	sdkConfiguration sdkConfiguration
 }
@@ -25,7 +25,7 @@ func newDocumentation(sdkConfig sdkConfiguration) *documentation {
 	}
 }
 
-// GetDocumentationPerLanguage - Gets documentation for some language, I guess.
+// GetDocumentationPerLanguage - Get stuff in Golang.
 func (s *documentation) GetDocumentationPerLanguage(ctx context.Context, language string) (*operations.GetDocumentationPerLanguageResponse, error) {
 	request := operations.GetDocumentationPerLanguageRequest{
 		Language: language,

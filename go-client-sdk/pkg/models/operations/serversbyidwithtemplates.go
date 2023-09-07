@@ -11,6 +11,7 @@ const (
 )
 
 var ServersByIDWithTemplatesServerList = map[string]string{
+	// A server url to a non-existent server.
 	ServersByIDWithTemplatesServerMain: "http://{hostname}:{port}",
 }
 

@@ -16,7 +16,7 @@ type RequestBodyReadWriteOnlyUnionResponse struct {
 	StatusCode  int
 	RawResponse *http.Response
 	// OK
-	WeaklyTypedOneOfReadWriteObject *shared.WeaklyTypedOneOfReadWriteObject1
+	WeaklyTypedOneOfReadWriteObject *shared.WeaklyTypedOneOfReadWriteObjectOutput
 }
 
 func (o *RequestBodyReadWriteOnlyUnionResponse) GetContentType() string {
@@ -40,7 +40,7 @@ func (o *RequestBodyReadWriteOnlyUnionResponse) GetRawResponse() *http.Response 
 	return o.RawResponse
 }
 
-func (o *RequestBodyReadWriteOnlyUnionResponse) GetWeaklyTypedOneOfReadWriteObject() *shared.WeaklyTypedOneOfReadWriteObject1 {
+func (o *RequestBodyReadWriteOnlyUnionResponse) GetWeaklyTypedOneOfReadWriteObject() *shared.WeaklyTypedOneOfReadWriteObjectOutput {
 	if o == nil {
 		return nil
 	}

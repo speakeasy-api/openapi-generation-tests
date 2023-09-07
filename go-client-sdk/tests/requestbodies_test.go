@@ -977,3 +977,52 @@ func TestRequestBodyNullArray(t *testing.T) {
 
 	assert.Empty(t, res.RequestBodyPostNullArray200ApplicationJSONObject.Data)
 }
+
+func TestRequestBodyReadOnlyUnion(t *testing.T) {
+	recordTest("request-bodies-read-only-union")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyReadOnlyUnion(context.Background(),
+		shared.CreateWeaklyTypedOneOfReadOnlyObjectInputReadOnlyObjectInput(shared.ReadOnlyObjectInput{}))
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, 1.0, res.WeaklyTypedOneOfReadOnlyObject.ReadOnlyObject.Num)
+	assert.Equal(t, "hello", res.WeaklyTypedOneOfReadOnlyObject.ReadOnlyObject.String)
+	assert.Equal(t, true, res.WeaklyTypedOneOfReadOnlyObject.ReadOnlyObject.Bool)
+}
+
+func TestRequestBodyWriteOnlyUnion(t *testing.T) {
+	recordTest("request-bodies-write-only-union")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyWriteOnlyUnion(context.Background(),
+		shared.CreateWeaklyTypedOneOfWriteOnlyObjectWriteOnlyObject(shared.WriteOnlyObject{
+			Bool:   true,
+			Num:    1.0,
+			String: "hello",
+		}))
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, shared.WriteOnlyObjectOutput{}, *res.WeaklyTypedOneOfWriteOnlyObject.WriteOnlyObjectOutput)
+}
+
+func TestRequestBodyReadWriteOnlyUnion(t *testing.T) {
+	recordTest("request-bodies-read-write-only-union")
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyReadWriteOnlyUnion(context.Background(),
+		shared.CreateWeaklyTypedOneOfReadWriteObjectInputReadWriteObjectInput(shared.ReadWriteObjectInput{
+			Num1: 1,
+			Num2: 2,
+			Num3: 4,
+		}))
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, int64(4), res.WeaklyTypedOneOfReadWriteObject.ReadWriteObjectOutput.Num3)
+	assert.Equal(t, int64(7), res.WeaklyTypedOneOfReadWriteObject.ReadWriteObjectOutput.Sum)
+}

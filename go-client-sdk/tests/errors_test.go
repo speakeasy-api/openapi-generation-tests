@@ -121,6 +121,6 @@ func TestConnectionErrorGet(t *testing.T) {
 
 	res, err := s.Errors.ConnectionErrorGet(context.Background())
 	assert.Error(t, err)
-	assert.Contains(t, err.Error(), "error sending request: Get \"http://somebrokenapi.broken/anything/connectionError\": dial tcp: lookup somebrokenapi.broken")
+	assert.ErrorContains(t, err, "error sending request: Get \"http://somebrokenapi.broken/anything/connectionError\": dial tcp: lookup somebrokenapi.broken")
 	assert.Nil(t, res)
 }

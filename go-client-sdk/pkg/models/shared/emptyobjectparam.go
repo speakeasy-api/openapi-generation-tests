@@ -2,6 +2,5 @@
 
 package shared
 
-// EmptyObjectParam
 type EmptyObjectParam struct {
 }

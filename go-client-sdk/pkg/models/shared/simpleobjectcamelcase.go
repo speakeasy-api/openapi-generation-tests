@@ -73,6 +73,7 @@ func (e *SimpleObjectCamelCaseIntEnumVal) UnmarshalJSON(data []byte) error {
 }
 
 // SimpleObjectCamelCase - A simple object that uses all our supported primitive types and enums and has optional properties.
+//
 // https://docs.speakeasyapi.dev - A link to the external docs.
 type SimpleObjectCamelCase struct {
 	// An any property.

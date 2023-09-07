@@ -73,6 +73,7 @@ func (e *SimpleObjectWithTypeIntEnum) UnmarshalJSON(data []byte) error {
 }
 
 // SimpleObjectWithType - A simple object that uses all our supported primitive types and enums and has optional properties.
+//
 // https://docs.speakeasyapi.dev - A link to the external docs.
 type SimpleObjectWithType struct {
 	// An any property.

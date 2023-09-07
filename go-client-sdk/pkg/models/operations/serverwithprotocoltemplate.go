@@ -11,6 +11,7 @@ const (
 )
 
 var ServerWithProtocolTemplateServerList = map[string]string{
+	// A server url to a non-existent server.
 	ServerWithProtocolTemplateServerMain: "{protocol}://{hostname}:{port}",
 }
 

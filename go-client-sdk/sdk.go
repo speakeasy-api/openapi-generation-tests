@@ -79,42 +79,43 @@ func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
 // SDK - Test: Test Summary
 // Some test description.
 // About our test document.
+//
 // https://speakeasyapi.dev/docs/home - Speakeasy Docs
 type SDK struct {
-	// Auth - Endpoints for testing authentication.
+	// Endpoints for testing authentication.
 	Auth *auth
-	// AuthNew - Endpoints for testing authentication.
+	// Endpoints for testing authentication.
 	AuthNew *authNew
-	// Documentation - Testing for documentation extensions and tooling.
+	// Testing for documentation extensions in Go.
 	Documentation *documentation
-	// Errors - Endpoints for testing error responses.
+	// Endpoints for testing error responses.
 	Errors *errors
 	First  *first
-	// Flattening - Endpoints for testing flattening through request body and parameter combinations.
+	// Endpoints for testing flattening through request body and parameter combinations.
 	Flattening *flattening
-	// Generation - Endpoints for purely testing valid generation behavior.
+	// Endpoints for purely testing valid generation behavior.
 	Generation *generation
-	// Globals - Endpoints for testing global parameters.
+	// Endpoints for testing global parameters.
 	Globals *globals
 	Nest    *nest
 	Nested  *nested
-	// Pagination - Endpoints for testing the pagination extension
+	// Endpoints for testing the pagination extension
 	Pagination *pagination
-	// Parameters - Endpoints for testing parameters.
+	// Endpoints for testing parameters.
 	Parameters *parameters
-	// RequestBodies - Endpoints for testing request bodies.
+	// Endpoints for testing request bodies.
 	RequestBodies *requestBodies
 	Resource      *resource
-	// ResponseBodies - Endpoints for testing response bodies.
+	// Endpoints for testing response bodies.
 	ResponseBodies *responseBodies
-	// Retries - Endpoints for testing retries.
+	// Endpoints for testing retries.
 	Retries *retries
 	Second  *second
-	// Servers - Endpoints for testing servers.
+	// Endpoints for testing servers.
 	Servers *servers
-	// Telemetry - Endpoints for testing telemetry.
+	// Endpoints for testing telemetry.
 	Telemetry *telemetry
-	// Unions - Endpoints for testing union types.
+	// Endpoints for testing union types.
 	Unions *unions
 
 	sdkConfiguration sdkConfiguration
@@ -151,7 +152,7 @@ func WithServerIndex(serverIndex int) SDKOption {
 	}
 }
 
-// WithHostname allows setting the $name variable for url substitution
+// WithHostname allows setting the hostname variable for url substitution
 func WithHostname(hostname string) SDKOption {
 	return func(sdk *SDK) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -164,7 +165,7 @@ func WithHostname(hostname string) SDKOption {
 	}
 }
 
-// WithPort allows setting the $name variable for url substitution
+// WithPort allows setting the port variable for url substitution
 func WithPort(port string) SDKOption {
 	return func(sdk *SDK) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -177,7 +178,7 @@ func WithPort(port string) SDKOption {
 	}
 }
 
-// WithProtocol allows setting the $name variable for url substitution
+// WithProtocol allows setting the protocol variable for url substitution
 func WithProtocol(protocol string) SDKOption {
 	return func(sdk *SDK) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -221,7 +222,7 @@ func (e *ServerSomething) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// WithSomething allows setting the $name variable for url substitution
+// WithSomething allows setting the something variable for url substitution
 func WithSomething(something ServerSomething) SDKOption {
 	return func(sdk *SDK) {
 		for idx := range sdk.sdkConfiguration.ServerDefaults {
@@ -276,8 +277,8 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.30.5",
-			GenVersion:        "2.96.9",
+			SDKVersion:        "1.31.0",
+			GenVersion:        "2.101.0",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},

@@ -7,7 +7,6 @@ import (
 	"openapi/pkg/models/shared"
 )
 
-// DeepObjectQueryParamsObjectObjArrParam
 type DeepObjectQueryParamsObjectObjArrParam struct {
 	Arr []string `queryParam:"name=arr"`
 }
