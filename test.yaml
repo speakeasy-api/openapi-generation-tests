@@ -2837,6 +2837,80 @@ paths:
             application/json:
               schema:
                 type: string
+  /anything/requestBodies/post/{pathBigInt}/{pathBigIntStr}/{pathDecimal}/{pathDecimalStr}/complex-number-types:
+    post:
+      operationId: requestBodyPostComplexNumberTypes
+      tags:
+        - requestBodies
+      parameters:
+        - name: pathBigInt
+          in: path
+          schema:
+            type: integer
+            format: bigint
+          required: true
+        - name: pathBigIntStr
+          in: path
+          schema:
+            type: string
+            format: bigint
+          required: true
+        - name: pathDecimal
+          in: path
+          schema:
+            type: number
+            format: decimal
+          required: true
+        - name: pathDecimalStr
+          in: path
+          schema:
+            type: string
+            format: decimal
+          required: true
+        - name: queryBigInt
+          in: query
+          schema:
+            type: integer
+            format: bigint
+          required: true
+        - name: queryBigIntStr
+          in: query
+          schema:
+            type: string
+            format: bigint
+          required: true
+        - name: queryDecimal
+          in: query
+          schema:
+            type: number
+            format: decimal
+          required: true
+        - name: queryDecimalStr
+          in: query
+          schema:
+            type: string
+            format: decimal
+          required: true
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/complexNumberTypes"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/complexNumberTypes"
+                  url:
+                    type: string
+                required:
+                  - json
+                  - url
   /anything/flattening/inlineBodyAndParamNoConflict:
     post:
       operationId: inlineBodyAndParamNoConflict
@@ -3316,6 +3390,31 @@ paths:
             format: bigint
             description: An bigint type
             example: 111111
+        - name: bigintParameterOptional
+          in: query
+          description: An bigint parameter
+          schema:
+            type: integer
+            format: bigint
+            description: An bigint type
+            example: 111111
+        - name: bigintStrParameter
+          in: query
+          required: true
+          description: An bigint parameter
+          schema:
+            type: string
+            format: bigint
+            description: An bigint type
+            example: 111111
+        - name: bigintStrParameterOptional
+          in: query
+          description: An bigint parameter
+          schema:
+            type: string
+            format: bigint
+            description: An bigint type
+            example: 111111
         - name: floatParameter
           in: query
           required: true
@@ -3339,6 +3438,33 @@ paths:
           description: A decimal parameter
           schema:
             type: number
+            format: decimal
+            description: A decimal type
+            example: 1.1
+        - name: decimalParameterOptional
+          in: query
+          required: false
+          description: A decimal parameter
+          schema:
+            type: number
+            format: decimal
+            description: A decimal type
+            example: 1.1
+        - name: decimalStrParameter
+          in: query
+          required: true
+          description: A decimal parameter
+          schema:
+            type: string
+            format: decimal
+            description: A decimal type
+            example: 1.1
+        - name: decimalStrParameterOptional
+          in: query
+          required: false
+          description: A decimal parameter
+          schema:
+            type: string
             format: decimal
             description: A decimal type
             example: 1.1

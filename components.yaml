@@ -657,6 +657,26 @@ components:
         message:
           type: string
           x-speakeasy-error-message: true
+    complexNumberTypes:
+      type: object
+      properties:
+        bigintStr:
+          type: string
+          format: bigint
+        bigint:
+          type: integer
+          format: bigint
+        decimal:
+          type: number
+          format: decimal
+        decimalStr:
+          type: string
+          format: decimal
+      required:
+        - bigintStr
+        - bigint
+        - decimal
+        - decimalStr
   responses:
     tokenAuthResponse:
       description: Successful authentication.
