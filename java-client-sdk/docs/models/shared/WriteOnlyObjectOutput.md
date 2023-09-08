@@ -1,7 +1,5 @@
 # WriteOnlyObjectOutput
 
-OK
-
 
 ## Fields
 

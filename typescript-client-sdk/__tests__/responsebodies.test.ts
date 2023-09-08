@@ -110,8 +110,8 @@ test("Response Body Bytes Get", async () => {
   expect(res.bytes).toHaveLength(100);
 });
 
-test("Response Selectable by Accept Header Text Plain", async () => {
-  recordTest("response-selectable-by-accept-header-text-plain");
+test("Response Body Override Accept Header", async () => {
+  recordTest("response-bodies-override-accept-header");
   const s = new SDK({});
 
   const res = await s.responseBodies.responseBodyOptionalGet(
@@ -125,8 +125,8 @@ test("Response Selectable by Accept Header Text Plain", async () => {
   expect(res.responseBodyOptionalGet200TextPlainString).toEqual("Success");
 });
 
-test("Response Selectable by Accept Header No Override", async () => {
-  recordTest("response-selectable-by-accept-header-no-override");
+test("Response Body  Default Accept Header", async () => {
+  recordTest("response-bodies-default-accept-header");
   const s = new SDK({});
 
   const res = await s.responseBodies.responseBodyOptionalGet();

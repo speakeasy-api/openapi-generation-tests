@@ -2,7 +2,6 @@
 
 package shared
 
-// MapObjValue - OK
 type MapObjValue struct {
 	JSON     map[string]SimpleObject `json:"json,omitempty"`
 	Required interface{}             `json:"required,omitempty"`

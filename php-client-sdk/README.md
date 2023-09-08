@@ -95,10 +95,16 @@ try {
     $request->requestBody->uri = 'http://growing-cappelletti.net';
     $request->requestBody->uuid = '5955907a-ff1a-43a2-ba94-67739251aa52';
     $request->bigintParameter = 111111;
+    $request->bigintParameterOptional = 111111;
+    $request->bigintStrParameter = '111111';
+    $request->bigintStrParameterOptional = '111111';
     $request->boolParameter = false;
     $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
     $request->decimalParameter = 1.1;
+    $request->decimalParameterOptional = 1.1;
+    $request->decimalStrParameter = '1.1';
+    $request->decimalStrParameterOptional = '1.1';
     $request->doubleParameter = 2.2222222;
     $request->enumParameter = UsageExamplePostEnumParameter::Value3;
     $request->falseyNumberParameter = 0;
@@ -201,7 +207,7 @@ try {
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
-### [nestFirst](docs/sdks/nestfirst/README.md)
+### [Nest.First](docs/sdks/nestfirst/README.md)
 
 * [get](docs/sdks/nestfirst/README.md#get)
 
@@ -209,11 +215,11 @@ try {
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [nestedFirst](docs/sdks/nestedfirst/README.md)
+### [Nested.First](docs/sdks/nestedfirst/README.md)
 
 * [get](docs/sdks/nestedfirst/README.md#get)
 
-### [nestedSecond](docs/sdks/nestedsecond/README.md)
+### [Nested.Second](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
@@ -281,6 +287,7 @@ try {
 * [requestBodyPostApplicationJsonMultipleJsonFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [requestBodyPostApplicationJsonSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
 * [requestBodyPostApplicationJsonSimpleCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimplecamelcase)
+* [requestBodyPostComplexNumberTypes](docs/sdks/requestbodies/README.md#requestbodypostcomplexnumbertypes)
 * [requestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)

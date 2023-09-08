@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { SimpleObjectCamelCase } from "./simpleobjectcamelcase";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class ArrObjValueCamelCase extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: SimpleObjectCamelCase })
     @Expose({ name: "json" })

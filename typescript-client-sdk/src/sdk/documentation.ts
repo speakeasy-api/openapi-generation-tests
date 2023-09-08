@@ -10,7 +10,7 @@ import { SDKConfiguration } from "./sdk";
 import { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
 
 /**
- * Testing for documentation extensions and tooling.
+ * Testing for documentation extensions in TypeScript.
  */
 
 export class Documentation {
@@ -21,7 +21,7 @@ export class Documentation {
     }
 
     /**
-     * Gets documentation for some language, I guess.
+     * Get stuff in TypeScript.
      */
     async getDocumentationPerLanguage(
         language: string,

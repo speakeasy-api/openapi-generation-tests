@@ -33,7 +33,7 @@ public class Application {
                 .build();
 
             CreateFileRequestBody req = new CreateFileRequestBody() {{
-                file = new CreateFileRequestBodyFile("beatae".getBytes(), "laudantium");;
+                file = new CreateFileRequestBodyFile("error".getBytes(), "hic");;
             }};            
 
             CreateFileResponse res = sdk.resource.createFile(req);
@@ -92,34 +92,32 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(                new org.openapis.openapi.models.shared.ExampleResourceChocolates[]{{
-                                add(new ExampleResourceChocolates("praesentium") {{
-                                    description = "exercitationem";
+                                add(new ExampleResourceChocolates("debitis") {{
+                                    description = "expedita";
                                 }}),
-                            }}, "cum", "laboriosam",                 new ExampleCar("tempora", "atque", "fugit", ExampleCarType.CAR, 2826.99d) {{
-                                createdAt = OffsetDateTime.parse("2021-10-03T15:49:29.329Z");
-                                make = "hic";
-                                model = "expedita";
-                                name = "Tony Pagac";
-                                type = ExampleCarType.CAR;
-                                updatedAt = OffsetDateTime.parse("2021-11-26T16:42:33.328Z");
-                                year = 8792.35d;
+                            }}, "neque", "dolorum",                 new ExampleBoat(6350.57d, "expedita", ExampleBoatType.BOAT) {{
+                                createdAt = OffsetDateTime.parse("2021-08-25T08:13:54.077Z");
+                                length = 5483.61d;
+                                name = "Ricky Little";
+                                type = ExampleBoatType.BOAT;
+                                updatedAt = OffsetDateTime.parse("2022-11-28T21:25:01.550Z");
                             }}) {{
                 arrayOfNumber = new Double[]{{
-                    add(8563.03d),
+                    add(2996.43d),
                 }};
                 arrayOfString = new String[]{{
-                    add("voluptatem"),
+                    add("consequatur"),
                 }};
-                createdAt = OffsetDateTime.parse("2021-07-31T10:53:55.286Z");
+                createdAt = OffsetDateTime.parse("2022-08-17T23:19:52.079Z");
                 enumNumber = ExampleResourceEnumNumber.ONE;
-                enumStr = ExampleResourceEnumStr.ONE;
+                enumStr = ExampleResourceEnumStr.TWO;
                 mapOfInteger = new java.util.HashMap<String, Long>() {{
-                    put("esse", 372679L);
+                    put("quas", 922112L);
                 }};
                 mapOfString = new java.util.HashMap<String, String>() {{
-                    put("sit", "voluptatum");
+                    put("corporis", "et");
                 }};
-                updatedAt = OffsetDateTime.parse("2021-02-26T20:36:25.696Z");
+                updatedAt = OffsetDateTime.parse("2022-03-10T15:53:25.215Z");
             }};            
 
             CreateResourceResponse res = sdk.resource.createResource(req);
@@ -169,7 +167,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeleteResourceResponse res = sdk.resource.deleteResource("corporis");
+            DeleteResourceResponse res = sdk.resource.deleteResource("sed");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -216,7 +214,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetResourceResponse res = sdk.resource.getResource("et");
+            GetResourceResponse res = sdk.resource.getResource("sit");
 
             if (res.exampleResource != null) {
                 // handle response
@@ -263,7 +261,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UpdateResourceResponse res = sdk.resource.updateResource("blanditiis");
+            UpdateResourceResponse res = sdk.resource.updateResource("vel");
 
             if (res.statusCode == 200) {
                 // handle response

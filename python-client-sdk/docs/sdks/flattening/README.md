@@ -19,6 +19,7 @@ Endpoints for testing flattening through request body and parameter combinations
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -33,12 +34,12 @@ s = sdk.SDK(
 res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
     any='officia',
     bigint=223081,
-    bigint_str='debitis',
+    bigint_str=891555,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=9527.49,
+    decimal=Decimal('9527.49'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -76,6 +77,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -90,12 +92,12 @@ s = sdk.SDK(
 res = s.flattening.component_body_and_param_no_conflict(param_str='illum', simple_object=shared.SimpleObject(
     any='maiores',
     bigint=699479,
-    bigint_str='dicta',
+    bigint_str=116202,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=2974.37,
+    decimal=Decimal('2974.37'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,

@@ -34,7 +34,6 @@ class HTTPBinSimpleJSONObjectSlideshow:
 
 @dataclasses.dataclass
 class HTTPBinSimpleJSONObject:
-    r"""OK"""
     slideshow: HTTPBinSimpleJSONObjectSlideshow = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('slideshow') }})
     
 

@@ -1,7 +1,5 @@
 # ArrObjValueCamelCase
 
-OK
-
 
 ## Fields
 

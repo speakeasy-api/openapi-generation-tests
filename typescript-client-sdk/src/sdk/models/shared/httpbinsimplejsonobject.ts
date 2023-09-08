@@ -38,9 +38,6 @@ export class HttpBinSimpleJsonObjectSlideshow extends SpeakeasyBase {
     title: string;
 }
 
-/**
- * OK
- */
 export class HttpBinSimpleJsonObject extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "slideshow" })

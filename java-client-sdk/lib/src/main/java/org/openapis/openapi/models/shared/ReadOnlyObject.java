@@ -6,9 +6,6 @@ package org.openapis.openapi.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * ReadOnlyObject - OK
- */
 
 public class ReadOnlyObject {
     @JsonProperty("bool")

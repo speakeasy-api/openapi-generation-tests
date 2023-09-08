@@ -8,7 +8,7 @@ require 'faraday'
 
 module OpenApiSDK
   module Shared
-    # OK
+
     class ReadOnlyObject < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

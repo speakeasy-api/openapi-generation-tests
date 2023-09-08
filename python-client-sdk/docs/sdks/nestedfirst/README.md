@@ -1,4 +1,4 @@
-# nested_first
+# Nested.First
 
 ### Available Operations
 
@@ -21,7 +21,7 @@ s = sdk.SDK(
 )
 
 
-res = s.nested_first.get()
+res = s.nested.first.get()
 
 if res.status_code == 200:
     # handle response

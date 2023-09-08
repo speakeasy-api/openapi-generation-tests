@@ -76,10 +76,16 @@ req = Operations::UsageExamplePostRequest.new(
       uuid="5955907a-ff1a-43a2-ba94-67739251aa52",
     ),
     bigint_parameter=111111,
+    bigint_parameter_optional=111111,
+    bigint_str_parameter="111111",
+    bigint_str_parameter_optional="111111",
     bool_parameter=false,
     date_parameter=Date.parse("2020-01-01"),
     date_time_parameter=DateTime.iso8601('2020-01-01T00:00:00Z'),
     decimal_parameter=1.1,
+    decimal_parameter_optional=1.1,
+    decimal_str_parameter="1.1",
+    decimal_str_parameter_optional="1.1",
     double_parameter=2.2222222,
     enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE3,
     falsey_number_parameter=0,
@@ -211,7 +217,7 @@ end
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
-### [nest_first](docs/sdks/nestfirst/README.md)
+### [Nest.First](docs/sdks/nestfirst/README.md)
 
 * [get](docs/sdks/nestfirst/README.md#get)
 
@@ -219,11 +225,11 @@ end
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [nested_first](docs/sdks/nestedfirst/README.md)
+### [Nested.First](docs/sdks/nestedfirst/README.md)
 
 * [get](docs/sdks/nestedfirst/README.md#get)
 
-### [nested_second](docs/sdks/nestedsecond/README.md)
+### [Nested.Second](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
@@ -291,6 +297,7 @@ end
 * [request_body_post_application_json_multiple_json_filtered](docs/sdks/requestbodies/README.md#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple)
 * [request_body_post_application_json_simple_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple_camel_case)
+* [request_body_post_complex_number_types](docs/sdks/requestbodies/README.md#request_body_post_complex_number_types)
 * [request_body_post_empty_object](docs/sdks/requestbodies/README.md#request_body_post_empty_object)
 * [request_body_post_form_deep](docs/sdks/requestbodies/README.md#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](docs/sdks/requestbodies/README.md#request_body_post_form_map_primitive)

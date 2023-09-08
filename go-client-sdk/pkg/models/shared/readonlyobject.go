@@ -2,7 +2,6 @@
 
 package shared
 
-// ReadOnlyObject - OK
 type ReadOnlyObject struct {
 	Bool   bool    `json:"bool"`
 	Num    float64 `json:"num"`

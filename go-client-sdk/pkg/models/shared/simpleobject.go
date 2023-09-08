@@ -87,8 +87,8 @@ type SimpleObject struct {
 	// A date property.
 	Date types.Date `json:"date" header:"name=date" pathParam:"name=date" queryParam:"name=date" form:"name=date" multipartForm:"name=date"`
 	// A date-time property.
-	DateTime time.Time `json:"dateTime" header:"name=dateTime" pathParam:"name=dateTime" queryParam:"name=dateTime" form:"name=dateTime" multipartForm:"name=dateTime"`
-	Decimal  *float64  `json:"decimal,omitempty" header:"name=decimal" pathParam:"name=decimal" queryParam:"name=decimal" form:"name=decimal" multipartForm:"name=decimal"`
+	DateTime time.Time      `json:"dateTime" header:"name=dateTime" pathParam:"name=dateTime" queryParam:"name=dateTime" form:"name=dateTime" multipartForm:"name=dateTime"`
+	Decimal  *types.Decimal `json:"decimal,omitempty" header:"name=decimal" pathParam:"name=decimal" queryParam:"name=decimal" form:"name=decimal" multipartForm:"name=decimal"`
 	// A string based enum
 	Enum Enum `json:"enum" header:"name=enum" pathParam:"name=enum" queryParam:"name=enum" form:"name=enum" multipartForm:"name=enum"`
 	// A float32 property.
@@ -162,7 +162,7 @@ func (o *SimpleObject) GetDateTime() time.Time {
 	return o.DateTime
 }
 
-func (o *SimpleObject) GetDecimal() *float64 {
+func (o *SimpleObject) GetDecimal() *types.Decimal {
 	if o == nil {
 		return nil
 	}

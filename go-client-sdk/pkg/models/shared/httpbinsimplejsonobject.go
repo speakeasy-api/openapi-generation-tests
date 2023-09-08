@@ -64,7 +64,6 @@ func (o *HTTPBinSimpleJSONObjectSlideshow) GetTitle() string {
 	return o.Title
 }
 
-// HTTPBinSimpleJSONObject - OK
 type HTTPBinSimpleJSONObject struct {
 	Slideshow HTTPBinSimpleJSONObjectSlideshow `json:"slideshow"`
 }

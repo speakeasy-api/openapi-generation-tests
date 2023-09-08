@@ -428,6 +428,7 @@ if res.overridden_response is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -439,7 +440,7 @@ s = sdk.SDK(
 )
 
 
-res = s.generation.typed_parameter_generation_get(bigint=643990, date_=dateutil.parser.parse('2022-07-30').date(), decimal=6188.09, obj=operations.TypedParameterGenerationGetObj(
+res = s.generation.typed_parameter_generation_get(bigint=643990, date_=dateutil.parser.parse('2022-07-30').date(), decimal=Decimal('6188.09'), obj=operations.TypedParameterGenerationGetObj(
     bool=False,
     num=6063.93,
     str_='molestiae',
@@ -455,7 +456,7 @@ if res.status_code == 200:
 | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
 | `bigint`                                                                                                         | *Optional[int]*                                                                                                  | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 | `date_`                                                                                                          | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects)                                     | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
-| `decimal`                                                                                                        | *Optional[float]*                                                                                                | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
+| `decimal`                                                                                                        | *Optional[Decimal]*                                                                                              | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 | `obj`                                                                                                            | [Optional[operations.TypedParameterGenerationGetObj]](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                               | N/A                                                                                                              |
 
 
@@ -476,6 +477,7 @@ Usage example docs
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -495,12 +497,12 @@ req = operations.UsageExamplePostRequest(
         simple_object=shared.SimpleObject(
             any='dolores',
             bigint=339404,
-            bigint_str='totam',
+            bigint_str=521037,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=4895.49,
+            decimal=Decimal('4895.49'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -518,10 +520,16 @@ req = operations.UsageExamplePostRequest(
         uuid='73d5fe9b-90c2-4890-9b3f-e49a8d9cbf48',
     ),
     bigint_parameter=111111,
+    bigint_parameter_optional=111111,
+    bigint_str_parameter=111111,
+    bigint_str_parameter_optional=111111,
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),
     date_time_parameter=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal_parameter=1.1,
+    decimal_parameter=Decimal('1.1'),
+    decimal_parameter_optional=Decimal('1.1'),
+    decimal_str_parameter=Decimal('1.1'),
+    decimal_str_parameter_optional=Decimal('1.1'),
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,

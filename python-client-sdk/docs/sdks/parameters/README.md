@@ -78,6 +78,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -92,12 +93,12 @@ s = sdk.SDK(
 res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject(
     any='iure',
     bigint=487838,
-    bigint_str='quaerat',
+    bigint_str=311796,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=8810.05,
+    decimal=Decimal('8810.05'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -254,6 +255,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -268,12 +270,12 @@ s = sdk.SDK(
 res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObject(
     any='dolorum',
     bigint=478596,
-    bigint_str='voluptate',
+    bigint_str=453697,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=6770.82,
+    decimal=Decimal('6770.82'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -288,12 +290,12 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
 ), obj_param=shared.SimpleObject(
     any='necessitatibus',
     bigint=714697,
-    bigint_str='asperiores',
+    bigint_str=990339,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=4694.97,
+    decimal=Decimal('4694.97'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -492,6 +494,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -506,12 +509,12 @@ s = sdk.SDK(
 res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     any='repellendus',
     bigint=519711,
-    bigint_str='similique',
+    bigint_str=628982,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=0.55,
+    decimal=Decimal('0.55'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -526,12 +529,12 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
 ), x_header_obj_explode=shared.SimpleObject(
     any='tempora',
     bigint=425451,
-    bigint_str='quod',
+    bigint_str=798047,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=8853.38,
+    decimal=Decimal('8853.38'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -607,6 +610,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -622,12 +626,12 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
     any=shared.SimpleObject(
         any='ipsum',
         bigint=788740,
-        bigint_str='tenetur',
+        bigint_str=947371,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=2294.42,
+        decimal=Decimal('2294.42'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -644,12 +648,12 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
         shared.SimpleObject(
             any='numquam',
             bigint=313692,
-            bigint_str='dolorem',
+            bigint_str=213312,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=9574.51,
+            decimal=Decimal('9574.51'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -669,12 +673,12 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
         "expedita": shared.SimpleObject(
             any='neque',
             bigint=153694,
-            bigint_str='vel',
+            bigint_str=424685,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=7304.42,
+            decimal=Decimal('7304.42'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -692,12 +696,12 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
     obj=shared.SimpleObject(
         any='ipsum',
         bigint=277628,
-        bigint_str='qui',
+        bigint_str=186458,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=5867.84,
+        decimal=Decimal('5867.84'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -715,12 +719,12 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
 ), simple_obj_param=shared.SimpleObject(
     any='laborum',
     bigint=517379,
-    bigint_str='incidunt',
+    bigint_str=276894,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=1320.68,
+    decimal=Decimal('1320.68'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -832,6 +836,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -846,12 +851,12 @@ s = sdk.SDK(
 res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     any='neque',
     bigint=144847,
-    bigint_str='magni',
+    bigint_str=164959,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=4880.56,
+    decimal=Decimal('4880.56'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -866,12 +871,12 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
 ), form_param=shared.SimpleObject(
     any='nam',
     bigint=940432,
-    bigint_str='voluptatem',
+    bigint_str=30452,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=7653.26,
+    decimal=Decimal('7653.26'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -886,12 +891,12 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
 ), json_param=shared.SimpleObject(
     any='et',
     bigint=903720,
-    bigint_str='ipsum',
+    bigint_str=217450,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=834.22,
+    decimal=Decimal('834.22'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -930,6 +935,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -944,12 +950,12 @@ s = sdk.SDK(
 res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
     any='tempore',
     bigint=584476,
-    bigint_str='aperiam',
+    bigint_str=45614,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=9619.37,
+    decimal=Decimal('9619.37'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -986,6 +992,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -1006,12 +1013,12 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
 }, obj_param=shared.SimpleObject(
     any='quae',
     bigint=16429,
-    bigint_str='quas',
+    bigint_str=555649,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=9295.3,
+    decimal=Decimal('9295.3'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -1128,6 +1135,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -1142,12 +1150,12 @@ s = sdk.SDK(
 res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     any='cupiditate',
     bigint=181631,
-    bigint_str='quae',
+    bigint_str=63955,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=5123.93,
+    decimal=Decimal('5123.93'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -1162,12 +1170,12 @@ res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
 ), obj_param_exploded=shared.SimpleObject(
     any='voluptatibus',
     bigint=787542,
-    bigint_str='vero',
+    bigint_str=876506,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=6064.76,
+    decimal=Decimal('6064.76'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,

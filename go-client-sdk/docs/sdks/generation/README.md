@@ -648,7 +648,7 @@ func main() {
     )
     bigint := big.NewInt(643990)
     date := types.MustDateFromString("2022-07-30")
-    decimal := 6188.09
+    decimal := *types.MustNewDecimalFromString("6188.09")
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
         Num: 6063.93,
@@ -674,7 +674,7 @@ func main() {
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |
 | `bigint`                                                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                                                             | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 | `date`                                                                                                  | [*types.Date](../../types/date.md)                                                                      | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `decimal`                                                                                               | **float64*                                                                                              | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `decimal`                                                                                               | **types.Decimal*                                                                                        | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 | `obj`                                                                                                   | [*operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 
 
@@ -703,6 +703,7 @@ import(
 	"openapi/pkg/models/shared"
 	"math/big"
 	"openapi/pkg/types"
+	"github.com/ericlagergren/decimal"
 )
 
 func main() {
@@ -728,12 +729,12 @@ func main() {
             SimpleObject: &shared.SimpleObject{
                 Any: "dolores",
                 Bigint: big.NewInt(339404),
-                BigintStr: types.MustBigIntFromString("521037"),
+                BigintStr: types.MustNewBigIntFromString("521037"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(4895.49),
+                Decimal: types.MustNewDecimalFromString("4895.49"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
@@ -751,10 +752,16 @@ func main() {
             UUID: sdk.String("73d5fe9b-90c2-4890-9b3f-e49a8d9cbf48"),
         },
         BigintParameter: big.NewInt(111111),
+        BigintParameterOptional: big.NewInt(111111),
+        BigintStrParameter: *types.MustNewBigIntFromString("111111"),
+        BigintStrParameterOptional: types.MustNewBigIntFromString("111111"),
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        DecimalParameter: 1.1,
+        DecimalParameter: *types.MustNewDecimalFromString("1.1"),
+        DecimalParameterOptional: types.MustNewDecimalFromString("1.1"),
+        DecimalStrParameter: new(decimal.Big).SetFloat64(1.1),
+        DecimalStrParameterOptional: new(decimal.Big).SetFloat64(1.1),
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,

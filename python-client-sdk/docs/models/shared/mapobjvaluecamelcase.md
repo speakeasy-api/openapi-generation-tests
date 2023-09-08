@@ -1,7 +1,5 @@
 # MapObjValueCamelCase
 
-OK
-
 
 ## Fields
 

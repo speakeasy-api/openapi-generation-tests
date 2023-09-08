@@ -38,7 +38,7 @@ func (o *TypedParameterGenerationGetObj) GetStr() string {
 type TypedParameterGenerationGetRequest struct {
 	Bigint  *big.Int                        `queryParam:"style=form,explode=true,name=bigint"`
 	Date    *types.Date                     `queryParam:"style=form,explode=true,name=date"`
-	Decimal *float64                        `queryParam:"style=form,explode=true,name=decimal"`
+	Decimal *types.Decimal                  `queryParam:"style=form,explode=true,name=decimal"`
 	Obj     *TypedParameterGenerationGetObj `queryParam:"style=form,explode=true,name=obj"`
 }
 
@@ -56,7 +56,7 @@ func (o *TypedParameterGenerationGetRequest) GetDate() *types.Date {
 	return o.Date
 }
 
-func (o *TypedParameterGenerationGetRequest) GetDecimal() *float64 {
+func (o *TypedParameterGenerationGetRequest) GetDecimal() *types.Decimal {
 	if o == nil {
 		return nil
 	}

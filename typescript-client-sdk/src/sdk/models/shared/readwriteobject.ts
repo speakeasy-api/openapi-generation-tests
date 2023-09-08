@@ -19,9 +19,6 @@ export class ReadWriteObjectInput extends SpeakeasyBase {
     num3: number;
 }
 
-/**
- * OK
- */
 export class ReadWriteObjectOutput extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "num3" })

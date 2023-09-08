@@ -17,7 +17,7 @@ type NullableRequiredEmptyObjectPostRequestBodyRequiredObj struct {
 
 type NullableRequiredEmptyObjectPostRequestBody struct {
 	NullableOptionalObj *NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj `json:"NullableOptionalObj,omitempty"`
-	NullableRequiredObj NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj  `json:"NullableRequiredObj"`
+	NullableRequiredObj *NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj `json:"NullableRequiredObj"`
 	RequiredObj         NullableRequiredEmptyObjectPostRequestBodyRequiredObj          `json:"RequiredObj"`
 }
 
@@ -28,9 +28,9 @@ func (o *NullableRequiredEmptyObjectPostRequestBody) GetNullableOptionalObj() *N
 	return o.NullableOptionalObj
 }
 
-func (o *NullableRequiredEmptyObjectPostRequestBody) GetNullableRequiredObj() NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj {
+func (o *NullableRequiredEmptyObjectPostRequestBody) GetNullableRequiredObj() *NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj {
 	if o == nil {
-		return NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj{}
+		return nil
 	}
 	return o.NullableRequiredObj
 }

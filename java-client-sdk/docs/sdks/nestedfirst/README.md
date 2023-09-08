@@ -1,4 +1,4 @@
-# nestedFirst
+# Nested.First
 
 ### Available Operations
 
@@ -26,7 +26,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            NestedFirstGetResponse res = sdk.nestedFirst.get();
+            NestedFirstGetResponse res = sdk.nested.first.get();
 
             if (res.statusCode == 200) {
                 // handle response

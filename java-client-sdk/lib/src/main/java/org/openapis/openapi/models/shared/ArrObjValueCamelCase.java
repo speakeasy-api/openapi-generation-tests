@@ -8,9 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * ArrObjValueCamelCase - OK
- */
 
 public class ArrObjValueCamelCase {
     @JsonInclude(Include.NON_ABSENT)

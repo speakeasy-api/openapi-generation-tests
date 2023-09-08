@@ -5,9 +5,6 @@
 import { SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-/**
- * Internal Server Error
- */
 export class ErrorT extends Error {
     @SpeakeasyMetadata()
     @Expose({ name: "code" })

@@ -660,7 +660,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, "111111", false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, "1.1", 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     email = "Libby.Moen@yahoo.com";
                     formatEmail = "Elisha.Rau@yahoo.com";
@@ -682,6 +682,10 @@ public class Application {
                     uri = "http://mealy-kilometer.com";
                     uuid = "53202c73-d5fe-49b9-8c28-909b3fe49a8d";
                 }};;
+                bigintParameterOptional = 111111L;
+                bigintStrParameterOptional = "111111";
+                decimalParameterOptional = 1.1d;
+                decimalStrParameterOptional = "1.1";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 

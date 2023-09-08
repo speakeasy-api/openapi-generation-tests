@@ -2,7 +2,6 @@
 
 package shared
 
-// MapObjValueCamelCase - OK
 type MapObjValueCamelCase struct {
 	JSON     map[string]SimpleObjectCamelCase `json:"json,omitempty"`
 	Required interface{}                      `json:"required,omitempty"`

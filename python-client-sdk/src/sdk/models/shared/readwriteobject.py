@@ -21,7 +21,6 @@ class ReadWriteObjectInput:
 
 @dataclasses.dataclass
 class ReadWriteObjectOutput:
-    r"""OK"""
     num3: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num3') }})
     sum: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('sum') }})
     

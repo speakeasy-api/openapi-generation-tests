@@ -6,8 +6,8 @@ import dateutil.parser
 from ..shared import enum as shared_enum
 from dataclasses_json import Undefined, dataclass_json
 from datetime import date, datetime
+from decimal import Decimal
 from enum import Enum
-from marshmallow import fields
 from sdk import utils
 from typing import Any, Optional
 
@@ -35,9 +35,9 @@ class SimpleObjectCamelCase:
     r"""An any property."""
     bool_val: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool_val') }})
     r"""A boolean property."""
-    date_time_val: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date_time_val'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse, 'mm_field': fields.DateTime(format='iso') }})
+    date_time_val: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date_time_val'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     r"""A date-time property."""
-    date_val: date = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date_val'), 'encoder': utils.dateisoformat(False), 'decoder': utils.datefromisoformat, 'mm_field': fields.DateTime(format='iso') }})
+    date_val: date = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('date_val'), 'encoder': utils.dateisoformat(False), 'decoder': utils.datefromisoformat }})
     r"""A date property."""
     enum_val: shared_enum.EnumT = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('enum_val') }})
     r"""A string based enum"""
@@ -55,11 +55,11 @@ class SimpleObjectCamelCase:
     r"""A number property."""
     str_val: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('str_val') }})
     r"""A string property."""
-    bigint_str_val: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bigint_str_val'), 'exclude': lambda f: f is None }})
+    bigint_str_val: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bigint_str_val'), 'encoder': utils.bigintencoder(True), 'decoder': utils.bigintdecoder, 'exclude': lambda f: f is None }})
     bigint_val: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bigint_val'), 'exclude': lambda f: f is None }})
     bool_opt_val: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool_opt_val'), 'exclude': lambda f: f is None }})
     r"""An optional boolean property."""
-    decimal_val: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimal_val'), 'exclude': lambda f: f is None }})
+    decimal_val: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('decimal_val'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
     int_opt_null_val: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int_opt_null_val'), 'exclude': lambda f: f is None }})
     r"""An optional integer property will be null for tests."""
     num_opt_null_val: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num_opt_null_val'), 'exclude': lambda f: f is None }})

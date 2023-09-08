@@ -62,17 +62,22 @@ func (s *retries) RetriesGet(ctx context.Context, requestID string, numRetries *
 
 	client := s.sdkConfiguration.SecurityClient
 
+	globalRetryConfig := s.sdkConfiguration.RetryConfig
 	retryConfig := o.Retries
 	if retryConfig == nil {
-		retryConfig = &utils.RetryConfig{
-			Strategy: "backoff",
-			Backoff: &utils.BackoffStrategy{
-				InitialInterval: 10,
-				MaxInterval:     200,
-				Exponent:        1.5,
-				MaxElapsedTime:  1000,
-			},
-			RetryConnectionErrors: false,
+		if globalRetryConfig == nil {
+			retryConfig = &utils.RetryConfig{
+				Strategy: "backoff",
+				Backoff: &utils.BackoffStrategy{
+					InitialInterval: 10,
+					MaxInterval:     200,
+					Exponent:        1.5,
+					MaxElapsedTime:  1000,
+				},
+				RetryConnectionErrors: false,
+			}
+		} else {
+			retryConfig = globalRetryConfig
 		}
 	}
 

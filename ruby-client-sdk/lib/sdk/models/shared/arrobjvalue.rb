@@ -8,7 +8,7 @@ require 'faraday'
 
 module OpenApiSDK
   module Shared
-    # OK
+
     class ArrObjValue < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

@@ -133,6 +133,7 @@ lib/sdk/models/operations/requestbodypostapplicationjsonmapofprimitive.rb
 lib/sdk/models/operations/requestbodypostapplicationjsonmultiplejsonfiltered.rb
 lib/sdk/models/operations/requestbodypostapplicationjsonsimple.rb
 lib/sdk/models/operations/requestbodypostapplicationjsonsimplecamelcase.rb
+lib/sdk/models/operations/requestbodypostcomplexnumbertypes.rb
 lib/sdk/models/operations/requestbodypostemptyobject.rb
 lib/sdk/models/operations/requestbodypostformdeep.rb
 lib/sdk/models/operations/requestbodypostformmapprimitive.rb
@@ -210,6 +211,7 @@ lib/sdk/models/shared/arrobjvaluecamelcase.rb
 lib/sdk/models/shared/deepobjectcamelcase.rb
 lib/sdk/models/shared/mapobjvalue.rb
 lib/sdk/models/shared/mapobjvaluecamelcase.rb
+lib/sdk/models/shared/complexnumbertypes.rb
 lib/sdk/models/shared/readwriteobject.rb
 lib/sdk/models/shared/readonlyobject.rb
 lib/sdk/models/shared/writeonlyobject.rb
@@ -511,6 +513,9 @@ docs/models/operations/requestbodypostapplicationjsonsimpleres.md
 docs/models/operations/requestbodypostapplicationjsonsimpleresponse.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseres.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md
+docs/models/operations/requestbodypostcomplexnumbertypesrequest.md
+docs/models/operations/requestbodypostcomplexnumbertypes200applicationjson.md
+docs/models/operations/requestbodypostcomplexnumbertypesresponse.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyempty.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyemptywithemptyproperties.md
 docs/models/operations/requestbodypostemptyobjectrequestbody.md
@@ -661,6 +666,7 @@ docs/models/shared/arrobjvaluecamelcase.md
 docs/models/shared/deepobjectcamelcase.md
 docs/models/shared/mapobjvalue.md
 docs/models/shared/mapobjvaluecamelcase.md
+docs/models/shared/complexnumbertypes.md
 docs/models/shared/readwriteobjectinput.md
 docs/models/shared/readwriteobjectoutput.md
 docs/models/shared/readonlyobject.md
@@ -702,4 +708,5 @@ test/responsebodies_test.rb
 test/servers_test.rb
 test/telemetry_test.rb
 test/testdata/testUpload.json
+../../testprojects/ruby/Gemfile
 .gitattributes

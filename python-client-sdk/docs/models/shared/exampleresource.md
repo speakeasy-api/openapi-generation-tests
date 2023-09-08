@@ -1,7 +1,5 @@
 # ExampleResource
 
-OK
-
 
 ## Fields
 

@@ -51,8 +51,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ResponseBodyEmptyWithHeadersRequest.new(
   query_params=Operations::ResponseBodyEmptyWithHeadersRequest.new(
-    x_number_header=6523.09,
-    x_string_header="provident",
+    x_number_header=1794.1,
+    x_string_header="sapiente",
   ),
 )
     

@@ -66,6 +66,7 @@ type sdkConfiguration struct {
 	SDKVersion        string
 	GenVersion        string
 	Globals           map[string]map[string]map[string]interface{}
+	RetryConfig       *utils.RetryConfig
 }
 
 func (c *sdkConfiguration) GetServerDetails() (string, map[string]string) {
@@ -271,14 +272,20 @@ func WithGlobalQueryParam(globalQueryParam string) SDKOption {
 	}
 }
 
+func WithRetryConfig(retryConfig utils.RetryConfig) SDKOption {
+	return func(sdk *SDK) {
+		sdk.sdkConfiguration.RetryConfig = &retryConfig
+	}
+}
+
 // New creates a new instance of the SDK with the provided options
 func New(opts ...SDKOption) *SDK {
 	sdk := &SDK{
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.31.0",
-			GenVersion:        "2.101.0",
+			SDKVersion:        "1.32.0",
+			GenVersion:        "2.107.0",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},

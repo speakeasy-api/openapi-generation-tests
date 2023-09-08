@@ -2,7 +2,6 @@
 
 package shared
 
-// ArrObjValue - OK
 type ArrObjValue struct {
 	JSON     []SimpleObject `json:"json,omitempty"`
 	Required interface{}    `json:"required,omitempty"`

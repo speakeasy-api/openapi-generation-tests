@@ -36,10 +36,10 @@ func (e *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum) UnmarshalJ
 }
 
 type NullableRequiredPropertyPostRequestBody struct {
-	NullableOptionalInt   *int64                                                      `json:"NullableOptionalInt,omitempty"`
-	NullableRequiredArray []float64                                                   `json:"NullableRequiredArray"`
-	NullableRequiredEnum  NullableRequiredPropertyPostRequestBodyNullableRequiredEnum `json:"NullableRequiredEnum"`
-	NullableRequiredInt   int64                                                       `json:"NullableRequiredInt"`
+	NullableOptionalInt   *int64                                                       `json:"NullableOptionalInt,omitempty"`
+	NullableRequiredArray []float64                                                    `json:"NullableRequiredArray"`
+	NullableRequiredEnum  *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum `json:"NullableRequiredEnum"`
+	NullableRequiredInt   *int64                                                       `json:"NullableRequiredInt"`
 }
 
 func (o *NullableRequiredPropertyPostRequestBody) GetNullableOptionalInt() *int64 {
@@ -51,21 +51,21 @@ func (o *NullableRequiredPropertyPostRequestBody) GetNullableOptionalInt() *int6
 
 func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredArray() []float64 {
 	if o == nil {
-		return []float64{}
+		return nil
 	}
 	return o.NullableRequiredArray
 }
 
-func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredEnum() NullableRequiredPropertyPostRequestBodyNullableRequiredEnum {
+func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredEnum() *NullableRequiredPropertyPostRequestBodyNullableRequiredEnum {
 	if o == nil {
-		return NullableRequiredPropertyPostRequestBodyNullableRequiredEnum("")
+		return nil
 	}
 	return o.NullableRequiredEnum
 }
 
-func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredInt() int64 {
+func (o *NullableRequiredPropertyPostRequestBody) GetNullableRequiredInt() *int64 {
 	if o == nil {
-		return 0
+		return nil
 	}
 	return o.NullableRequiredInt
 }

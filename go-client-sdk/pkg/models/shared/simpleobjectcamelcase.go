@@ -87,8 +87,8 @@ type SimpleObjectCamelCase struct {
 	// A date-time property.
 	DateTimeVal time.Time `json:"date_time_val"`
 	// A date property.
-	DateVal    types.Date `json:"date_val"`
-	DecimalVal *float64   `json:"decimal_val,omitempty"`
+	DateVal    types.Date     `json:"date_val"`
+	DecimalVal *types.Decimal `json:"decimal_val,omitempty"`
 	// A string based enum
 	EnumVal Enum `json:"enum_val"`
 	// A float32 property.
@@ -162,7 +162,7 @@ func (o *SimpleObjectCamelCase) GetDateVal() types.Date {
 	return o.DateVal
 }
 
-func (o *SimpleObjectCamelCase) GetDecimalVal() *float64 {
+func (o *SimpleObjectCamelCase) GetDecimalVal() *types.Decimal {
 	if o == nil {
 		return nil
 	}

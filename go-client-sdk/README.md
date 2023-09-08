@@ -57,6 +57,7 @@ import(
 	"openapi/pkg/models/shared"
 	"math/big"
 	"openapi/pkg/types"
+	"github.com/ericlagergren/decimal"
 )
 
 func main() {
@@ -82,12 +83,12 @@ func main() {
             SimpleObject: &shared.SimpleObject{
                 Any: "architecto",
                 Bigint: big.NewInt(60225),
-                BigintStr: types.MustBigIntFromString("969810"),
+                BigintStr: types.MustNewBigIntFromString("969810"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: sdk.Float64(6667.67),
+                Decimal: types.MustNewDecimalFromString("6667.67"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
@@ -105,10 +106,16 @@ func main() {
             UUID: sdk.String("5955907a-ff1a-43a2-ba94-67739251aa52"),
         },
         BigintParameter: big.NewInt(111111),
+        BigintParameterOptional: big.NewInt(111111),
+        BigintStrParameter: *types.MustNewBigIntFromString("111111"),
+        BigintStrParameterOptional: types.MustNewBigIntFromString("111111"),
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        DecimalParameter: 1.1,
+        DecimalParameter: *types.MustNewDecimalFromString("1.1"),
+        DecimalParameterOptional: types.MustNewDecimalFromString("1.1"),
+        DecimalStrParameter: new(decimal.Big).SetFloat64(1.1),
+        DecimalStrParameterOptional: new(decimal.Big).SetFloat64(1.1),
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
@@ -208,7 +215,7 @@ func main() {
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
 
-### [First](docs/sdks/nestfirst/README.md)
+### [Nest.First](docs/sdks/nestfirst/README.md)
 
 * [Get](docs/sdks/nestfirst/README.md#get)
 
@@ -216,11 +223,11 @@ func main() {
 
 * [Get](docs/sdks/nested/README.md#get)
 
-### [First](docs/sdks/nestedfirst/README.md)
+### [Nested.First](docs/sdks/nestedfirst/README.md)
 
 * [Get](docs/sdks/nestedfirst/README.md#get)
 
-### [Second](docs/sdks/nestedsecond/README.md)
+### [Nested.Second](docs/sdks/nestedsecond/README.md)
 
 * [Get](docs/sdks/nestedsecond/README.md#get)
 
@@ -288,6 +295,7 @@ func main() {
 * [RequestBodyPostApplicationJSONMultipleJSONFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [RequestBodyPostApplicationJSONSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
 * [RequestBodyPostApplicationJSONSimpleCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimplecamelcase)
+* [RequestBodyPostComplexNumberTypes](docs/sdks/requestbodies/README.md#requestbodypostcomplexnumbertypes)
 * [RequestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [RequestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [RequestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)

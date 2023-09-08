@@ -34,6 +34,39 @@ public class UsageExamplePostRequest {
     }
     
     /**
+     * An bigint parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=bigintParameterOptional")
+    public Long bigintParameterOptional;
+
+    public UsageExamplePostRequest withBigintParameterOptional(Long bigintParameterOptional) {
+        this.bigintParameterOptional = bigintParameterOptional;
+        return this;
+    }
+    
+    /**
+     * An bigint parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=bigintStrParameter")
+    public String bigintStrParameter;
+
+    public UsageExamplePostRequest withBigintStrParameter(String bigintStrParameter) {
+        this.bigintStrParameter = bigintStrParameter;
+        return this;
+    }
+    
+    /**
+     * An bigint parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=bigintStrParameterOptional")
+    public String bigintStrParameterOptional;
+
+    public UsageExamplePostRequest withBigintStrParameterOptional(String bigintStrParameterOptional) {
+        this.bigintStrParameterOptional = bigintStrParameterOptional;
+        return this;
+    }
+    
+    /**
      * A boolean parameter
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=boolParameter")
@@ -74,6 +107,39 @@ public class UsageExamplePostRequest {
 
     public UsageExamplePostRequest withDecimalParameter(Double decimalParameter) {
         this.decimalParameter = decimalParameter;
+        return this;
+    }
+    
+    /**
+     * A decimal parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=decimalParameterOptional")
+    public Double decimalParameterOptional;
+
+    public UsageExamplePostRequest withDecimalParameterOptional(Double decimalParameterOptional) {
+        this.decimalParameterOptional = decimalParameterOptional;
+        return this;
+    }
+    
+    /**
+     * A decimal parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=decimalStrParameter")
+    public String decimalStrParameter;
+
+    public UsageExamplePostRequest withDecimalStrParameter(String decimalStrParameter) {
+        this.decimalStrParameter = decimalStrParameter;
+        return this;
+    }
+    
+    /**
+     * A decimal parameter
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=decimalStrParameterOptional")
+    public String decimalStrParameterOptional;
+
+    public UsageExamplePostRequest withDecimalStrParameterOptional(String decimalStrParameterOptional) {
+        this.decimalStrParameterOptional = decimalStrParameterOptional;
         return this;
     }
     
@@ -176,12 +242,14 @@ public class UsageExamplePostRequest {
         return this;
     }
     
-    public UsageExamplePostRequest(@JsonProperty("bigintParameter") Long bigintParameter, @JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("decimalParameter") Double decimalParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameter enumParameter, @JsonProperty("falseyNumberParameter") Double falseyNumberParameter, @JsonProperty("float32Parameter") Float float32Parameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
+    public UsageExamplePostRequest(@JsonProperty("bigintParameter") Long bigintParameter, @JsonProperty("bigintStrParameter") String bigintStrParameter, @JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("decimalParameter") Double decimalParameter, @JsonProperty("decimalStrParameter") String decimalStrParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameter enumParameter, @JsonProperty("falseyNumberParameter") Double falseyNumberParameter, @JsonProperty("float32Parameter") Float float32Parameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
         this.bigintParameter = bigintParameter;
+        this.bigintStrParameter = bigintStrParameter;
         this.boolParameter = boolParameter;
         this.dateParameter = dateParameter;
         this.dateTimeParameter = dateTimeParameter;
         this.decimalParameter = decimalParameter;
+        this.decimalStrParameter = decimalStrParameter;
         this.doubleParameter = doubleParameter;
         this.enumParameter = enumParameter;
         this.falseyNumberParameter = falseyNumberParameter;

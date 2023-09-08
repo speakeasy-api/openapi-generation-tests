@@ -6,9 +6,6 @@ import { objectToClass, SpeakeasyBase, SpeakeasyMetadata } from "../../../intern
 import { SimpleObject } from "./simpleobject";
 import { Expose, Transform } from "class-transformer";
 
-/**
- * OK
- */
 export class MapObjValue extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: SimpleObject })
     @Expose({ name: "json" })

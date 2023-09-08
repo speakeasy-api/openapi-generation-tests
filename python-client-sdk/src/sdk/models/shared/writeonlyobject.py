@@ -20,6 +20,4 @@ class WriteOnlyObject:
 
 @dataclasses.dataclass
 class WriteOnlyObjectOutput:
-    r"""OK"""
-    
-
+    pass

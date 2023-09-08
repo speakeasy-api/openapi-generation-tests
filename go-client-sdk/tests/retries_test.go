@@ -52,6 +52,59 @@ func TestRetriesTimeout(t *testing.T) {
 	assert.Equal(t, http.StatusServiceUnavailable, err.(*sdkerrors.SDKError).StatusCode)
 }
 
+func TestGlobalRetryConfigDisable(t *testing.T) {
+	recordTest("retries-global-config-disable")
+
+	s := sdk.New(sdk.WithRetryConfig(utils.RetryConfig{Strategy: ""}))
+
+	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(2))
+	assert.Error(t, err)
+	assert.Nil(t, res)
+	assert.Equal(t, http.StatusServiceUnavailable, err.(*sdkerrors.SDKError).StatusCode)
+}
+
+func TestGlobalRetryConfigSuccess(t *testing.T) {
+	recordTest("retries-global-config-success")
+
+	s := sdk.New(sdk.WithRetryConfig(utils.RetryConfig{
+		Strategy: "backoff",
+		Backoff: &utils.BackoffStrategy{
+			InitialInterval: 1,
+			MaxInterval:     50,
+			Exponent:        1.1,
+			MaxElapsedTime:  100,
+		},
+		RetryConnectionErrors: false,
+	}))
+
+	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(20))
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.NotNil(t, res.Retries)
+	assert.EqualValues(t, 20, res.Retries.Retries)
+}
+
+func TestGlobalRetryConfigTimeout(t *testing.T) {
+	recordTest("retries-global-config-timeout")
+
+	s := sdk.New(sdk.WithRetryConfig(utils.RetryConfig{
+		Strategy: "backoff",
+		Backoff: &utils.BackoffStrategy{
+			InitialInterval: 1,
+			MaxInterval:     50,
+			Exponent:        1.1,
+			MaxElapsedTime:  100,
+		},
+		RetryConnectionErrors: false,
+	}))
+
+	res, err := s.Retries.RetriesGet(context.Background(), pseudo_uuid(), sdk.Int64(30))
+	assert.Error(t, err)
+	assert.Nil(t, res)
+	assert.Equal(t, http.StatusServiceUnavailable, err.(*sdkerrors.SDKError).StatusCode)
+}
+
 func pseudo_uuid() string {
 	b := make([]byte, 16)
 	_, err := rand.Read(b)

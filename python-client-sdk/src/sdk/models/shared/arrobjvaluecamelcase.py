@@ -12,7 +12,6 @@ from typing import Any, Optional
 
 @dataclasses.dataclass
 class ArrObjValueCamelCase:
-    r"""OK"""
     json: Optional[list[shared_simpleobjectcamelcase.SimpleObjectCamelCase]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     required: Optional[Any] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('required'), 'exclude': lambda f: f is None }})
     

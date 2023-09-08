@@ -6,6 +6,7 @@ import requests as requests_http
 from ..shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from datetime import date, datetime
+from decimal import Decimal
 from enum import Enum
 from sdk import utils
 from typing import Optional
@@ -70,13 +71,17 @@ class UsageExamplePostOptEnumParameter(str, Enum):
 class UsageExamplePostRequest:
     bigint_parameter: int = dataclasses.field(metadata={'query_param': { 'field_name': 'bigintParameter', 'style': 'form', 'explode': True }})
     r"""An bigint parameter"""
+    bigint_str_parameter: int = dataclasses.field(metadata={'query_param': { 'field_name': 'bigintStrParameter', 'style': 'form', 'explode': True }})
+    r"""An bigint parameter"""
     bool_parameter: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'boolParameter', 'style': 'form', 'explode': True }})
     r"""A boolean parameter"""
     date_parameter: date = dataclasses.field(metadata={'query_param': { 'field_name': 'dateParameter', 'style': 'form', 'explode': True }})
     r"""A date parameter"""
     date_time_parameter: datetime = dataclasses.field(metadata={'query_param': { 'field_name': 'dateTimeParameter', 'style': 'form', 'explode': True }})
     r"""A date time parameter"""
-    decimal_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'decimalParameter', 'style': 'form', 'explode': True }})
+    decimal_parameter: Decimal = dataclasses.field(metadata={'query_param': { 'field_name': 'decimalParameter', 'style': 'form', 'explode': True }})
+    r"""A decimal parameter"""
+    decimal_str_parameter: Decimal = dataclasses.field(metadata={'query_param': { 'field_name': 'decimalStrParameter', 'style': 'form', 'explode': True }})
     r"""A decimal parameter"""
     double_parameter: float = dataclasses.field(metadata={'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': True }})
     r"""A double parameter"""
@@ -94,6 +99,14 @@ class UsageExamplePostRequest:
     r"""An integer parameter"""
     str_parameter: str = dataclasses.field(metadata={'query_param': { 'field_name': 'strParameter', 'style': 'form', 'explode': True }})
     r"""A string parameter"""
+    bigint_parameter_optional: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigintParameterOptional', 'style': 'form', 'explode': True }})
+    r"""An bigint parameter"""
+    bigint_str_parameter_optional: Optional[int] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'bigintStrParameterOptional', 'style': 'form', 'explode': True }})
+    r"""An bigint parameter"""
+    decimal_parameter_optional: Optional[Decimal] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'decimalParameterOptional', 'style': 'form', 'explode': True }})
+    r"""A decimal parameter"""
+    decimal_str_parameter_optional: Optional[Decimal] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'decimalStrParameterOptional', 'style': 'form', 'explode': True }})
+    r"""A decimal parameter"""
     opt_enum_parameter: Optional[UsageExamplePostOptEnumParameter] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': True }})
     r"""An enum parameter"""
     request_body: Optional[UsageExamplePostRequestBody] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})

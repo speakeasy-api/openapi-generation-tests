@@ -1,7 +1,5 @@
 # WeaklyTypedOneOfReadOnlyObject
 
-OK
-
 
 ## Supported Types
 

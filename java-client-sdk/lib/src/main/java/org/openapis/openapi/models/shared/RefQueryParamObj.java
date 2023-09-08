@@ -7,9 +7,6 @@ package org.openapis.openapi.models.shared;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
-/**
- * RefQueryParamObj
- */
 
 public class RefQueryParamObj {
     @SpeakeasyMetadata("queryParam:name=bool")

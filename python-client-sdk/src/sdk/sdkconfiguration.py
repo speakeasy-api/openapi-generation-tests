@@ -4,6 +4,8 @@ import requests
 from dataclasses import dataclass, field
 from typing import Any
 from enum import Enum
+from .utils.retries import RetryConfig
+
 
 SERVERS = [
     'http://localhost:35123',
@@ -36,8 +38,9 @@ class SDKConfiguration:
     globals: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
     language: str = 'python'
     openapi_doc_version: str = '0.1.0'
-    sdk_version: str = '1.31.5'
-    gen_version: str = '2.96.9'
+    sdk_version: str = '1.32.0'
+    gen_version: str = '2.107.0'
+    retry_config: RetryConfig = None
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:
         if self.server_url:

@@ -10,7 +10,6 @@ from sdk import utils
 
 @dataclasses.dataclass
 class ReadOnlyObject:
-    r"""OK"""
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     string: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('string') }})

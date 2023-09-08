@@ -6,9 +6,6 @@ package org.openapis.openapi.models.shared;
 
 
 
-/**
- * WriteOnlyObjectOutput - OK
- */
 
 public class WriteOnlyObjectOutput {
     public WriteOnlyObjectOutput(){}

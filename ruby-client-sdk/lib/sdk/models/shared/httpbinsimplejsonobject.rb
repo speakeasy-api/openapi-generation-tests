@@ -51,7 +51,7 @@ module OpenApiSDK
       end
     end
 
-    # OK
+
     class HttpBinSimpleJsonObject < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

@@ -1,7 +1,5 @@
 # FileResource
 
-OK
-
 
 ## Fields
 

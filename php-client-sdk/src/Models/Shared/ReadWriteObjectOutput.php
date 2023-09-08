@@ -9,12 +9,6 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-/**
- * ReadWriteObjectOutput - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Shared
- * @access public
- */
 class ReadWriteObjectOutput
 {
 	#[\JMS\Serializer\Annotation\SerializedName('num3')]

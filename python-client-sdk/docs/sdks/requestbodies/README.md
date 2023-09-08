@@ -34,6 +34,7 @@ Endpoints for testing request bodies.
 * [request_body_post_application_json_multiple_json_filtered](#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](#request_body_post_application_json_simple)
 * [request_body_post_application_json_simple_camel_case](#request_body_post_application_json_simple_camel_case)
+* [request_body_post_complex_number_types](#request_body_post_complex_number_types)
 * [request_body_post_empty_object](#request_body_post_empty_object)
 * [request_body_post_form_deep](#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](#request_body_post_form_map_primitive)
@@ -198,6 +199,7 @@ if res.nullable_required_shared_object_post_200_application_json_string is not N
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -212,12 +214,12 @@ req = [
     shared.SimpleObject(
         any='facilis',
         bigint=874288,
-        bigint_str='ducimus',
+        bigint_str=498140,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=2930.2,
+        decimal=Decimal('2930.2'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -258,6 +260,7 @@ if res.simple_objects is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -271,13 +274,13 @@ s = sdk.SDK(
 req = [
     shared.SimpleObjectCamelCase(
         any_val='sequi',
-        bigint_str_val='natus',
+        bigint_str_val=617877,
         bigint_val=773326,
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=132.36,
+        decimal_val=Decimal('132.36'),
         enum_val=shared.EnumT.TWO,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
@@ -318,6 +321,7 @@ if res.simple_object_camel_cases is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -332,12 +336,12 @@ req = [
     shared.SimpleObject(
         any='nulla',
         bigint=148141,
-        bigint_str='porro',
+        bigint_str=780427,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=9818.3,
+        decimal=Decimal('9818.3'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -377,6 +381,7 @@ if res.arr_obj_value is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -390,13 +395,13 @@ s = sdk.SDK(
 req = [
     shared.SimpleObjectCamelCase(
         any_val='eligendi',
-        bigint_str_val='ducimus',
+        bigint_str_val=497391,
         bigint_val=4048,
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=6394.73,
+        decimal_val=Decimal('6394.73'),
         enum_val=shared.EnumT.TWO,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
@@ -436,6 +441,7 @@ if res.arr_obj_value_camel_case is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -451,12 +457,12 @@ req = [
         shared.SimpleObject(
             any='ea',
             bigint=136900,
-            bigint_str='vel',
+            bigint_str=428224,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=8221.18,
+            decimal=Decimal('8221.18'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -498,6 +504,7 @@ if res.arrs is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -512,13 +519,13 @@ req = [
     [
         shared.SimpleObjectCamelCase(
             any_val='ex',
-            bigint_str_val='laudantium',
+            bigint_str_val=511319,
             bigint_val=120657,
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=2243.17,
+            decimal_val=Decimal('2243.17'),
             enum_val=shared.EnumT.TWO,
             float32_val=2.2222222,
             int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
@@ -601,6 +608,7 @@ if res.arrs is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -616,12 +624,12 @@ req = [
         "nulla": shared.SimpleObject(
             any='excepturi',
             bigint=972920,
-            bigint_str='nostrum',
+            bigint_str=343605,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=9608.35,
+            decimal=Decimal('9608.35'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -663,6 +671,7 @@ if res.maps is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -677,13 +686,13 @@ req = [
     {
         "ea": shared.SimpleObjectCamelCase(
             any_val='impedit',
-            bigint_str_val='corporis',
+            bigint_str_val=359271,
             bigint_val=333145,
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=3994.99,
+            decimal_val=Decimal('3994.99'),
             enum_val=shared.EnumT.TWO,
             float32_val=2.2222222,
             int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
@@ -764,6 +773,7 @@ if res.strings is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -780,12 +790,12 @@ req = shared.DeepObject(
         shared.SimpleObject(
             any='recusandae',
             bigint=132487,
-            bigint_str='minima',
+            bigint_str=325310,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=534.27,
+            decimal=Decimal('534.27'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -805,12 +815,12 @@ req = shared.DeepObject(
         "aut": shared.SimpleObject(
             any='deleniti',
             bigint=770581,
-            bigint_str='aliquam',
+            bigint_str=304582,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=1469.46,
+            decimal=Decimal('1469.46'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -828,12 +838,12 @@ req = shared.DeepObject(
     obj=shared.SimpleObject(
         any='et',
         bigint=677412,
-        bigint_str='laborum',
+        bigint_str=672048,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=8104.24,
+        decimal=Decimal('8104.24'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -875,6 +885,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -890,13 +901,13 @@ req = shared.DeepObjectCamelCase(
     arr_val=[
         shared.SimpleObjectCamelCase(
             any_val='nulla',
-            bigint_str_val='voluptas',
+            bigint_str_val=379034,
             bigint_val=727044,
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=965.49,
+            decimal_val=Decimal('965.49'),
             enum_val=shared.EnumT.TWO,
             float32_val=2.2222222,
             int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
@@ -915,13 +926,13 @@ req = shared.DeepObjectCamelCase(
     map_val={
         "provident": shared.SimpleObjectCamelCase(
             any_val='ipsa',
-            bigint_str_val='molestiae',
+            bigint_str_val=476477,
             bigint_val=301598,
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=4879.35,
+            decimal_val=Decimal('4879.35'),
             enum_val=shared.EnumT.TWO,
             float32_val=2.2222222,
             int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
@@ -938,13 +949,13 @@ req = shared.DeepObjectCamelCase(
     num_val=4561.41,
     obj_val=shared.SimpleObjectCamelCase(
         any_val='rem',
-        bigint_str_val='fuga',
+        bigint_str_val=683282,
         bigint_val=442015,
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=6956.26,
+        decimal_val=Decimal('6956.26'),
         enum_val=shared.EnumT.TWO,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
@@ -986,6 +997,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1000,12 +1012,12 @@ req = {
     "assumenda": shared.SimpleObject(
         any='eos',
         bigint=509342,
-        bigint_str='quisquam',
+        bigint_str=788546,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=863.77,
+        decimal=Decimal('863.77'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -1046,6 +1058,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1059,13 +1072,13 @@ s = sdk.SDK(
 req = {
     "quidem": shared.SimpleObjectCamelCase(
         any_val='neque',
-        bigint_str_val='quo',
+        bigint_str_val=778696,
         bigint_val=847276,
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=7774.08,
+        decimal_val=Decimal('7774.08'),
         enum_val=shared.EnumT.TWO,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
@@ -1106,6 +1119,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1120,12 +1134,12 @@ req = {
     "eos": shared.SimpleObject(
         any='voluptas',
         bigint=69859,
-        bigint_str='cupiditate',
+        bigint_str=587600,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=96.88,
+        decimal=Decimal('96.88'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -1165,6 +1179,7 @@ if res.map_obj_value is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1178,13 +1193,13 @@ s = sdk.SDK(
 req = {
     "ipsam": shared.SimpleObjectCamelCase(
         any_val='aspernatur',
-        bigint_str_val='sequi',
+        bigint_str_val=197054,
         bigint_val=779192,
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=4598.56,
+        decimal_val=Decimal('4598.56'),
         enum_val=shared.EnumT.TWO,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
@@ -1224,6 +1239,7 @@ if res.map_obj_value_camel_case is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1239,12 +1255,12 @@ req = {
         shared.SimpleObject(
             any='quod',
             bigint=490819,
-            bigint_str='inventore',
+            bigint_str=76956,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=4694.98,
+            decimal=Decimal('4694.98'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -1286,6 +1302,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1300,13 +1317,13 @@ req = {
     "aliquam": [
         shared.SimpleObjectCamelCase(
             any_val='odio',
-            bigint_str_val='occaecati',
+            bigint_str_val=577543,
             bigint_val=414567,
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=9594.34,
+            decimal_val=Decimal('9594.34'),
             enum_val=shared.EnumT.TWO,
             float32_val=2.2222222,
             int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
@@ -1348,6 +1365,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1363,12 +1381,12 @@ req = {
         "accusantium": shared.SimpleObject(
             any='porro',
             bigint=430402,
-            bigint_str='quas',
+            bigint_str=556429,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=5100.17,
+            decimal=Decimal('5100.17'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -1410,6 +1428,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1424,13 +1443,13 @@ req = {
     "fugit": {
         "fuga": shared.SimpleObjectCamelCase(
             any_val='mollitia',
-            bigint_str_val='incidunt',
+            bigint_str_val=277596,
             bigint_val=539224,
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=1288.6,
+            decimal_val=Decimal('1288.6'),
             enum_val=shared.EnumT.TWO,
             float32_val=2.2222222,
             int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
@@ -1552,6 +1571,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1565,12 +1585,12 @@ s = sdk.SDK(
 req = shared.SimpleObject(
     any='saepe',
     bigint=578922,
-    bigint_str='atque',
+    bigint_str=543806,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=922.6,
+    decimal=Decimal('922.6'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -1609,6 +1629,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1622,12 +1643,12 @@ s = sdk.SDK(
 req = shared.SimpleObject(
     any='accusamus',
     bigint=82971,
-    bigint_str='esse',
+    bigint_str=458604,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=8003.79,
+    decimal=Decimal('8003.79'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -1666,6 +1687,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1678,13 +1700,13 @@ s = sdk.SDK(
 
 req = shared.SimpleObjectCamelCase(
     any_val='aliquid',
-    bigint_str_val='quasi',
+    bigint_str_val=93459,
     bigint_val=904045,
     bool_opt_val=True,
     bool_val=True,
     date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
     date_val=dateutil.parser.parse('2020-01-01').date(),
-    decimal_val=4263.06,
+    decimal_val=Decimal('4263.06'),
     enum_val=shared.EnumT.TWO,
     float32_val=2.2222222,
     int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
@@ -1714,6 +1736,58 @@ if res.res is not None:
 ### Response
 
 **[operations.RequestBodyPostApplicationJSONSimpleCamelCaseResponse](../../models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md)**
+
+
+## request_body_post_complex_number_types
+
+### Example Usage
+
+```python
+import sdk
+from decimal import Decimal
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = operations.RequestBodyPostComplexNumberTypesRequest(
+    complex_number_types=shared.ComplexNumberTypes(
+        bigint=699622,
+        bigint_str=580197,
+        decimal=Decimal('3277.2'),
+        decimal_str=Decimal('7162.44'),
+    ),
+    path_big_int=756779,
+    path_big_int_str=27069,
+    path_decimal=Decimal('6360.61'),
+    path_decimal_str=Decimal('7313.98'),
+    query_big_int=240020,
+    query_big_int_str=766964,
+    query_decimal=Decimal('1605.38'),
+    query_decimal_str=Decimal('97.66'),
+)
+
+res = s.request_bodies.request_body_post_complex_number_types(req)
+
+if res.request_body_post_complex_number_types_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                  | Type                                                                                                                       | Required                                                                                                                   | Description                                                                                                                |
+| -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                  | [operations.RequestBodyPostComplexNumberTypesRequest](../../models/operations/requestbodypostcomplexnumbertypesrequest.md) | :heavy_check_mark:                                                                                                         | The request object to use for the request.                                                                                 |
+
+
+### Response
+
+**[operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/requestbodypostcomplexnumbertypesresponse.md)**
 
 
 ## request_body_post_empty_object
@@ -1762,6 +1836,7 @@ if res.request_body_post_empty_object_200_application_json_object is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1773,17 +1848,17 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any='occaecati',
+    any='quaerat',
     arr=[
         shared.SimpleObject(
-            any='minima',
-            bigint=716244,
-            bigint_str='eligendi',
+            any='sapiente',
+            bigint=232865,
+            bigint_str=458139,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=270.69,
+            decimal=Decimal('5034.27'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -1798,23 +1873,23 @@ req = shared.DeepObject(
         ),
     ],
     bool=False,
-    int=240020,
+    int=857723,
     map={
-        "cumque": shared.SimpleObject(
-            any='consequuntur',
-            bigint=9766,
-            bigint_str='minus',
+        "quas": shared.SimpleObject(
+            any='esse',
+            bigint=97468,
+            bigint_str=951875,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=3082.86,
+            decimal=Decimal('6216.79'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
@@ -1822,22 +1897,22 @@ req = shared.DeepObject(
             str_opt='optional example',
         ),
     },
-    num=4581.39,
+    num=8207.67,
     obj=shared.SimpleObject(
-        any='blanditiis',
-        bigint=590984,
-        bigint_str='a',
+        any='quia',
+        bigint=908844,
+        bigint_str=992430,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=8577.23,
+        decimal=Decimal('8155.24'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.FIRST,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -1845,7 +1920,7 @@ req = shared.DeepObject(
         str_opt='optional example',
     ),
     str_='quasi',
-    type='a',
+    type='similique',
 )
 
 res = s.request_bodies.request_body_post_form_deep(req)
@@ -1883,7 +1958,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "error": 'sint',
+    "culpa": 'aliquid',
 }
 
 res = s.request_bodies.request_body_post_form_map_primitive(req)
@@ -1911,6 +1986,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1922,20 +1998,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='pariatur',
-    bigint=820767,
-    bigint_str='quia',
+    any='tenetur',
+    bigint=62713,
+    bigint_str=936747,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=9088.44,
+    decimal=Decimal('4240.32'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
+    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnum.FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -1968,6 +2044,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -1979,20 +2056,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='veritatis',
-    bigint=159414,
-    bigint_str='quasi',
+    any='libero',
+    bigint=849039,
+    bigint_str=742238,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=6288.99,
+    decimal=Decimal('333.04'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.THIRD,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2036,8 +2113,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(
     bool=False,
-    num=9492.98,
-    str_='quae',
+    num=1197.71,
+    str_='ullam',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_inline_filtered(req)
@@ -2077,9 +2154,9 @@ s = sdk.SDK(
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_form(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(
     bool3=False,
-    num3=9367.47,
-    str3='vel',
-), param_str='in')
+    num3=4438.79,
+    str3='ullam',
+), param_str='nisi')
 
 if res.res is not None:
     # handle response
@@ -2117,9 +2194,9 @@ s = sdk.SDK(
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_json(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(
     bool=False,
-    num=2586.84,
-    str_='libero',
-), param_str='illum')
+    num=163.28,
+    str_='voluptatum',
+), param_str='qui')
 
 if res.res is not None:
     # handle response
@@ -2157,9 +2234,9 @@ s = sdk.SDK(
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_multipart(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(
     bool2=False,
-    num2=7422.38,
-    str2='accusantium',
-), param_str='aliquam')
+    num2=8453.58,
+    str2='ex',
+), param_str='deleniti')
 
 if res.res is not None:
     # handle response
@@ -2196,8 +2273,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(
     bool3=False,
-    num3=9589.83,
-    str3='dicta',
+    num3=9292.92,
+    str3='dolorum',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_form(req)
@@ -2236,8 +2313,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON(
     bool=False,
-    num=3553.69,
-    str_='reprehenderit',
+    num=996.15,
+    str_='omnis',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_json(req)
@@ -2276,8 +2353,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData(
     bool2=False,
-    num2=3567.07,
-    str2='nisi',
+    num2=9453.02,
+    str2='quasi',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_multipart(req)
@@ -2315,7 +2392,7 @@ s = sdk.SDK(
 )
 
 req = [
-    'aut',
+    'at',
 ]
 
 res = s.request_bodies.request_body_post_null_array(req)
@@ -2353,7 +2430,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "voluptatum": 'qui',
+    "et": 'voluptate',
 }
 
 res = s.request_bodies.request_body_post_null_dictionary(req)
@@ -2390,7 +2467,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'quibusdam'.encode()
+req = 'ipsa'.encode()
 
 res = s.request_bodies.request_body_put_bytes(req)
 
@@ -2427,7 +2504,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_bytes_with_params(request_body='ex'.encode(), query_string_param='deleniti')
+res = s.request_bodies.request_body_put_bytes_with_params(request_body='minima'.encode(), query_string_param='veritatis')
 
 if res.res is not None:
     # handle response
@@ -2453,6 +2530,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -2464,65 +2542,15 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any='dolorum',
-    arr=[
-        shared.SimpleObject(
-            any='architecto',
-            bigint=609178,
-            bigint_str='tenetur',
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=984.78,
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    ],
-    bool=False,
-    int=454162,
-    map={
-        "ipsa": shared.SimpleObject(
-            any='minima',
-            bigint=86532,
-            bigint_str='consectetur',
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=2371.73,
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    },
-    num=330.74,
-    obj=shared.SimpleObject(
-        any='rem',
-        bigint=15606,
-        bigint_str='laudantium',
+    any=shared.SimpleObject(
+        any='adipisci',
+        bigint=614465,
+        bigint_str=839513,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=4287.96,
+        decimal=Decimal('330.74'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -2535,8 +2563,78 @@ req = shared.DeepObject(
         str_='example',
         str_opt='optional example',
     ),
-    str_='corrupti',
-    type='non',
+    arr=[
+        shared.SimpleObject(
+            any='laudantium',
+            bigint=428796,
+            bigint_str=649832,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=Decimal('680.74'),
+            enum=shared.EnumT.TWO,
+            float32=2.2222222,
+            int=999999,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int_enum=shared.SimpleObjectIntEnum.FIRST,
+            int_opt_null=999999,
+            num=1.1,
+            num_opt_null=1.1,
+            str_='example',
+            str_opt='optional example',
+        ),
+    ],
+    bool=False,
+    int=32465,
+    map={
+        "dolor": shared.SimpleObject(
+            any='occaecati',
+            bigint=253191,
+            bigint_str=771089,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=Decimal('1310.55'),
+            enum=shared.EnumT.TWO,
+            float32=2.2222222,
+            int=999999,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int_enum=shared.SimpleObjectIntEnum.FIRST,
+            int_opt_null=999999,
+            num=1.1,
+            num_opt_null=1.1,
+            str_='example',
+            str_opt='optional example',
+        ),
+    },
+    num=4910.25,
+    obj=shared.SimpleObject(
+        any='dicta',
+        bigint=981640,
+        bigint_str=618480,
+        bool=True,
+        bool_opt=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+        decimal=Decimal('2446.51'),
+        enum=shared.EnumT.TWO,
+        float32=2.2222222,
+        int=999999,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int_opt_null=999999,
+        num=1.1,
+        num_opt_null=1.1,
+        str_='example',
+        str_opt='optional example',
+    ),
+    str_='asperiores',
+    type='aperiam',
 )
 
 res = s.request_bodies.request_body_put_multipart_deep(req)
@@ -2575,8 +2673,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPutMultipartFileRequestBody(
     file=operations.RequestBodyPutMultipartFileRequestBodyFile(
-        content='voluptatem'.encode(),
-        file='dolor',
+        content='ea'.encode(),
+        file='quaerat',
     ),
 )
 
@@ -2605,6 +2703,7 @@ if res.res is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -2616,20 +2715,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='occaecati',
-    bigint=253191,
-    bigint_str='impedit',
+    any='consequuntur',
+    bigint=831520,
+    bigint_str=638762,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=1310.55,
+    decimal=Decimal('8070.23'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.FIRST,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2671,7 +2770,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'dignissimos'
+req = 'asperiores'
 
 res = s.request_bodies.request_body_put_string(req)
 
@@ -2708,7 +2807,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_string_with_params(request_body='dicta', query_string_param='maiores')
+res = s.request_bodies.request_body_put_string_with_params(request_body='nemo', query_string_param='quae')
 
 if res.res is not None:
     # handle response
@@ -2744,9 +2843,9 @@ s = sdk.SDK(
 )
 
 req = shared.ReadWriteObjectInput(
-    num1=618480,
-    num2=244651,
-    num3=974257,
+    num1=312753,
+    num2=783235,
+    num3=801836,
 )
 
 res = s.request_bodies.request_body_read_and_write(req)
@@ -2812,6 +2911,7 @@ if res.read_only_object is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -2823,20 +2923,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='asperiores',
-    bigint=45659,
-    bigint_str='ea',
+    any='ab',
+    bigint=241418,
+    bigint_str=683573,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=3100.67,
+    decimal=Decimal('6625.05'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
+    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnum.FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2854,7 +2954,7 @@ if res.weakly_typed_one_of_read_only_object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Any](../../models//input.md)              | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -2870,6 +2970,7 @@ if res.weakly_typed_one_of_read_only_object is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -2881,9 +2982,9 @@ s = sdk.SDK(
 )
 
 req = shared.ReadWriteObjectInput(
-    num1=807023,
-    num2=490305,
-    num3=640024,
+    num1=665859,
+    num2=926880,
+    num3=517309,
 )
 
 res = s.request_bodies.request_body_read_write_only_union(req)
@@ -2896,7 +2997,7 @@ if res.weakly_typed_one_of_read_write_object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Any](../../models//input.md)              | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -2923,8 +3024,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=9894.1,
-    string='nemo',
+    num=8539.4,
+    string='vel',
 )
 
 res = s.request_bodies.request_body_write_only(req)
@@ -2964,8 +3065,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=653.04,
-    string='quaerat',
+    num=4976.78,
+    string='quos',
 )
 
 res = s.request_bodies.request_body_write_only_output(req)
@@ -2994,6 +3095,7 @@ if res.write_only_object is not None:
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -3004,10 +3106,26 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.WriteOnlyObject(
-    bool=False,
-    num=8018.36,
-    string='labore',
+req = shared.SimpleObject(
+    any='labore',
+    bigint=822560,
+    bigint_str=706575,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=Decimal('7382.27'),
+    enum=shared.EnumT.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
 )
 
 res = s.request_bodies.request_body_write_only_union(req)

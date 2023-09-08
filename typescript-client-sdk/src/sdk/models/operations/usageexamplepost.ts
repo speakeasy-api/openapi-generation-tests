@@ -131,6 +131,26 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
     bigintParameter: number;
 
     /**
+     * An bigint parameter
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=bigintParameterOptional" })
+    bigintParameterOptional?: number;
+
+    /**
+     * An bigint parameter
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=bigintStrParameter" })
+    bigintStrParameter: string;
+
+    /**
+     * An bigint parameter
+     */
+    @SpeakeasyMetadata({
+        data: "queryParam, style=form;explode=true;name=bigintStrParameterOptional",
+    })
+    bigintStrParameterOptional?: string;
+
+    /**
      * A boolean parameter
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=boolParameter" })
@@ -153,6 +173,28 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=decimalParameter" })
     decimalParameter: number;
+
+    /**
+     * A decimal parameter
+     */
+    @SpeakeasyMetadata({
+        data: "queryParam, style=form;explode=true;name=decimalParameterOptional",
+    })
+    decimalParameterOptional?: number;
+
+    /**
+     * A decimal parameter
+     */
+    @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=decimalStrParameter" })
+    decimalStrParameter: string;
+
+    /**
+     * A decimal parameter
+     */
+    @SpeakeasyMetadata({
+        data: "queryParam, style=form;explode=true;name=decimalStrParameterOptional",
+    })
+    decimalStrParameterOptional?: string;
 
     /**
      * A double parameter

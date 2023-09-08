@@ -1,7 +1,5 @@
 # ArrObjValue
 
-OK
-
 
 ## Fields
 

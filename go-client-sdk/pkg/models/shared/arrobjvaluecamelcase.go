@@ -2,7 +2,6 @@
 
 package shared
 
-// ArrObjValueCamelCase - OK
 type ArrObjValueCamelCase struct {
 	JSON     []SimpleObjectCamelCase `json:"json,omitempty"`
 	Required interface{}             `json:"required,omitempty"`

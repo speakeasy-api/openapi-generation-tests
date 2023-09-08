@@ -6,9 +6,6 @@ package org.openapis.openapi.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * FileResource - OK
- */
 
 public class FileResource {
     @JsonProperty("id")

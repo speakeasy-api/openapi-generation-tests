@@ -97,10 +97,16 @@ sdk.generation.usageExamplePost({
     uuid: "5955907a-ff1a-43a2-ba94-67739251aa52",
   },
   bigintParameter: 111111,
+  bigintParameterOptional: 111111,
+  bigintStrParameter: "111111",
+  bigintStrParameterOptional: "111111",
   boolParameter: false,
   dateParameter: new RFCDate("2020-01-01"),
   dateTimeParameter: new Date("2020-01-01T00:00:00Z"),
   decimalParameter: 1.1,
+  decimalParameterOptional: 1.1,
+  decimalStrParameter: "1.1",
+  decimalStrParameterOptional: "1.1",
   doubleParameter: 2.2222222,
   enumParameter: UsageExamplePostEnumParameter.Value3,
   falseyNumberParameter: 0,
@@ -196,7 +202,7 @@ sdk.generation.usageExamplePost({
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
 
-### [nestFirst](docs/sdks/nestfirst/README.md)
+### [Nest.First](docs/sdks/nestfirst/README.md)
 
 * [get](docs/sdks/nestfirst/README.md#get)
 
@@ -204,11 +210,11 @@ sdk.generation.usageExamplePost({
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [nestedFirst](docs/sdks/nestedfirst/README.md)
+### [Nested.First](docs/sdks/nestedfirst/README.md)
 
 * [get](docs/sdks/nestedfirst/README.md#get)
 
-### [nestedSecond](docs/sdks/nestedsecond/README.md)
+### [Nested.Second](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
@@ -276,6 +282,7 @@ sdk.generation.usageExamplePost({
 * [requestBodyPostApplicationJsonMultipleJsonFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [requestBodyPostApplicationJsonSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
 * [requestBodyPostApplicationJsonSimpleCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimplecamelcase)
+* [requestBodyPostComplexNumberTypes](docs/sdks/requestbodies/README.md#requestbodypostcomplexnumbertypes)
 * [requestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)

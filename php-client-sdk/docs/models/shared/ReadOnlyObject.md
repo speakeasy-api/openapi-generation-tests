@@ -1,7 +1,5 @@
 # ReadOnlyObject
 
-OK
-
 
 ## Fields
 

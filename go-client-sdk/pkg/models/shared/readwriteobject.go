@@ -29,7 +29,6 @@ func (o *ReadWriteObjectInput) GetNum3() int64 {
 	return o.Num3
 }
 
-// ReadWriteObjectOutput - OK
 type ReadWriteObjectOutput struct {
 	Num3 int64 `json:"num3"`
 	Sum  int64 `json:"sum"`

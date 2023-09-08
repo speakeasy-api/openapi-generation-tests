@@ -8,12 +8,18 @@ import java.net.http.HttpResponse;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
 
-public class Nested {
+public class Nested {    
+	public NestedFirst first;    
+	public NestedSecond second;
 	
 	private SDKConfiguration sdkConfiguration;
 
 	public Nested(SDKConfiguration sdkConfiguration) {
 		this.sdkConfiguration = sdkConfiguration;
+		
+		this.first = new NestedFirst(this.sdkConfiguration);
+		
+		this.second = new NestedSecond(this.sdkConfiguration);
 	}
 
     public org.openapis.openapi.models.operations.NestedGetResponse get() throws Exception {

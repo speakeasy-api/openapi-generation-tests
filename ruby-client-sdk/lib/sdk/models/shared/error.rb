@@ -8,7 +8,7 @@ require 'faraday'
 
 module OpenApiSDK
   module Shared
-    # Internal Server Error
+
     class Error < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.31.5'
+implementation 'org.openapis.openapi:openapi:1.31.6'
 ```
 <!-- End SDK Installation -->
 
@@ -73,7 +73,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, "111111", false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, "1.1", 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     email = "Micheal_Sporer@yahoo.com";
                     formatEmail = "Roselyn_Kassulke@yahoo.com";
@@ -95,6 +95,10 @@ public class Application {
                     uri = "http://growing-cappelletti.net";
                     uuid = "5955907a-ff1a-43a2-ba94-67739251aa52";
                 }};;
+                bigintParameterOptional = 111111L;
+                bigintStrParameterOptional = "111111";
+                decimalParameterOptional = 1.1d;
+                decimalStrParameterOptional = "1.1";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 
@@ -191,7 +195,8 @@ public class Application {
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
-### [nestFirst](docs/sdks/nestfirst/README.md)
+
+### [Nest.First](docs/sdks/nestfirst/README.md)
 
 * [get](docs/sdks/nestfirst/README.md#get)
 
@@ -199,11 +204,11 @@ public class Application {
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [nestedFirst](docs/sdks/nestedfirst/README.md)
+### [Nested.First](docs/sdks/nestedfirst/README.md)
 
 * [get](docs/sdks/nestedfirst/README.md#get)
 
-### [nestedSecond](docs/sdks/nestedsecond/README.md)
+### [Nested.Second](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
@@ -271,6 +276,7 @@ public class Application {
 * [requestBodyPostApplicationJsonMultipleJsonFiltered](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonmultiplejsonfiltered)
 * [requestBodyPostApplicationJsonSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
 * [requestBodyPostApplicationJsonSimpleCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimplecamelcase)
+* [requestBodyPostComplexNumberTypes](docs/sdks/requestbodies/README.md#requestbodypostcomplexnumbertypes)
 * [requestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)

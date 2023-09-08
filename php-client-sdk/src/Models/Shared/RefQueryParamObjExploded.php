@@ -9,12 +9,6 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
-/**
- * RefQueryParamObjExploded
- * 
- * @package OpenAPI\OpenAPI\Models\Shared
- * @access public
- */
 class RefQueryParamObjExploded
 {
 	#[SpeakeasyMetadata('queryParam:name=bool')]

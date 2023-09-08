@@ -87,8 +87,8 @@ type SimpleObjectWithType struct {
 	// A date property.
 	Date types.Date `json:"date"`
 	// A date-time property.
-	DateTime time.Time `json:"dateTime"`
-	Decimal  *float64  `json:"decimal,omitempty"`
+	DateTime time.Time      `json:"dateTime"`
+	Decimal  *types.Decimal `json:"decimal,omitempty"`
 	// A string based enum
 	Enum Enum `json:"enum"`
 	// A float32 property.
@@ -163,7 +163,7 @@ func (o *SimpleObjectWithType) GetDateTime() time.Time {
 	return o.DateTime
 }
 
-func (o *SimpleObjectWithType) GetDecimal() *float64 {
+func (o *SimpleObjectWithType) GetDecimal() *types.Decimal {
 	if o == nil {
 		return nil
 	}

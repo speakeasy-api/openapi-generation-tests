@@ -6,9 +6,6 @@ package org.openapis.openapi.models.shared;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * ReadWriteObjectOutput - OK
- */
 
 public class ReadWriteObjectOutput {
     @JsonProperty("num3")

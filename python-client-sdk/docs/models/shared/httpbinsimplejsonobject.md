@@ -1,7 +1,5 @@
 # HTTPBinSimpleJSONObject
 
-OK
-
 
 ## Fields
 

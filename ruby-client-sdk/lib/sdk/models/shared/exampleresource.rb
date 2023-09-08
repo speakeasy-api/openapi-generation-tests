@@ -42,7 +42,7 @@ module OpenApiSDK
     end
 
 
-    # OK
+
     class ExampleResource < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

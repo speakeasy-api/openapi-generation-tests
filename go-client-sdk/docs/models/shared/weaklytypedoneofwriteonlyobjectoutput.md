@@ -1,7 +1,5 @@
 # WeaklyTypedOneOfWriteOnlyObjectOutput
 
-OK
-
 
 ## Supported Types
 

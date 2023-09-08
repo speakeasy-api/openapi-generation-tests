@@ -2,7 +2,6 @@
 
 package shared
 
-// FileResource - OK
 type FileResource struct {
 	ID string `json:"id"`
 }

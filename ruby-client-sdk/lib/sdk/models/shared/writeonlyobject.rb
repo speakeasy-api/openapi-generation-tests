@@ -28,7 +28,7 @@ module OpenApiSDK
       end
     end
 
-    # OK
+
     class WriteOnlyObjectOutput < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

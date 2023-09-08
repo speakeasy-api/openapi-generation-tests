@@ -117,6 +117,10 @@ export type SDKProps = {
      * Allows overriding the default server URL used by the SDK
      */
     serverURL?: string;
+    /**
+     * Allows overriding the default retry config used by the SDK
+     */
+    retryConfig?: utils.RetryConfig;
 };
 
 export class SDKConfiguration {
@@ -126,10 +130,10 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.32.2";
-    genVersion = "2.96.9";
+    sdkVersion = "1.33.0";
+    genVersion = "2.107.0";
     globals: any;
-
+    retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
         Object.assign(this, init);
     }
@@ -154,7 +158,7 @@ export class SDK {
      */
     public authNew: AuthNew;
     /**
-     * Testing for documentation extensions and tooling.
+     * Testing for documentation extensions in TypeScript.
      */
     public documentation: Documentation;
     /**
@@ -256,6 +260,7 @@ export class SDK {
                     },
                 },
             },
+            retryConfig: props?.retryConfig,
         });
 
         this.auth = new Auth(this.sdkConfiguration);

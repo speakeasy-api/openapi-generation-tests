@@ -22,7 +22,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
   headers=Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-    user_agent="ex",
+    user_agent="minima",
   ),
 )
     

@@ -79,7 +79,6 @@ func (e *ExampleResourceEnumStr) UnmarshalJSON(data []byte) error {
 	}
 }
 
-// ExampleResource - OK
 type ExampleResource struct {
 	ArrayOfNumber []float64                   `json:"arrayOfNumber,omitempty"`
 	ArrayOfString []string                    `json:"arrayOfString,omitempty"`

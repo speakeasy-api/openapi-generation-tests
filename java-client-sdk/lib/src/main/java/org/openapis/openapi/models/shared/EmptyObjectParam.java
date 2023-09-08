@@ -6,9 +6,6 @@ package org.openapis.openapi.models.shared;
 
 
 
-/**
- * EmptyObjectParam
- */
 
 public class EmptyObjectParam {
     public EmptyObjectParam(){}

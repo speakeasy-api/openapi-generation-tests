@@ -1,7 +1,5 @@
 # ReadWriteObjectOutput
 
-OK
-
 
 ## Fields
 

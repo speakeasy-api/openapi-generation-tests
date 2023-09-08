@@ -23,9 +23,6 @@ export enum ExampleResourceEnumStr {
     Three = "three",
 }
 
-/**
- * OK
- */
 export class ExampleResource extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "arrayOfNumber" })

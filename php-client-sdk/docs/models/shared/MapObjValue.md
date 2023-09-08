@@ -1,7 +1,5 @@
 # MapObjValue
 
-OK
-
 
 ## Fields
 

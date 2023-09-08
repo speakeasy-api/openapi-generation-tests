@@ -5,6 +5,7 @@ package operations
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ericlagergren/decimal"
 	"math/big"
 	"net/http"
 	"openapi/pkg/models/shared"
@@ -201,6 +202,12 @@ type UsageExamplePostRequest struct {
 	RequestBody *UsageExamplePostRequestBody `request:"mediaType=application/json"`
 	// An bigint parameter
 	BigintParameter *big.Int `queryParam:"style=form,explode=true,name=bigintParameter"`
+	// An bigint parameter
+	BigintParameterOptional *big.Int `queryParam:"style=form,explode=true,name=bigintParameterOptional"`
+	// An bigint parameter
+	BigintStrParameter types.BigInt `queryParam:"style=form,explode=true,name=bigintStrParameter"`
+	// An bigint parameter
+	BigintStrParameterOptional *types.BigInt `queryParam:"style=form,explode=true,name=bigintStrParameterOptional"`
 	// A boolean parameter
 	BoolParameter bool `queryParam:"style=form,explode=true,name=boolParameter"`
 	// A date parameter
@@ -208,7 +215,13 @@ type UsageExamplePostRequest struct {
 	// A date time parameter
 	DateTimeParameter time.Time `queryParam:"style=form,explode=true,name=dateTimeParameter"`
 	// A decimal parameter
-	DecimalParameter float64 `queryParam:"style=form,explode=true,name=decimalParameter"`
+	DecimalParameter types.Decimal `queryParam:"style=form,explode=true,name=decimalParameter"`
+	// A decimal parameter
+	DecimalParameterOptional *types.Decimal `queryParam:"style=form,explode=true,name=decimalParameterOptional"`
+	// A decimal parameter
+	DecimalStrParameter *decimal.Big `queryParam:"style=form,explode=true,name=decimalStrParameter"`
+	// A decimal parameter
+	DecimalStrParameterOptional *decimal.Big `queryParam:"style=form,explode=true,name=decimalStrParameterOptional"`
 	// A double parameter
 	DoubleParameter float64 `queryParam:"style=form,explode=true,name=doubleParameter"`
 	// An enum parameter
@@ -243,6 +256,27 @@ func (o *UsageExamplePostRequest) GetBigintParameter() *big.Int {
 	return o.BigintParameter
 }
 
+func (o *UsageExamplePostRequest) GetBigintParameterOptional() *big.Int {
+	if o == nil {
+		return nil
+	}
+	return o.BigintParameterOptional
+}
+
+func (o *UsageExamplePostRequest) GetBigintStrParameter() types.BigInt {
+	if o == nil {
+		return types.BigInt{Int: *big.NewInt(0)}
+	}
+	return o.BigintStrParameter
+}
+
+func (o *UsageExamplePostRequest) GetBigintStrParameterOptional() *types.BigInt {
+	if o == nil {
+		return nil
+	}
+	return o.BigintStrParameterOptional
+}
+
 func (o *UsageExamplePostRequest) GetBoolParameter() bool {
 	if o == nil {
 		return false
@@ -264,11 +298,32 @@ func (o *UsageExamplePostRequest) GetDateTimeParameter() time.Time {
 	return o.DateTimeParameter
 }
 
-func (o *UsageExamplePostRequest) GetDecimalParameter() float64 {
+func (o *UsageExamplePostRequest) GetDecimalParameter() types.Decimal {
 	if o == nil {
-		return 0.0
+		return types.Decimal{Big: *(new(decimal.Big).SetFloat64(0.0))}
 	}
 	return o.DecimalParameter
+}
+
+func (o *UsageExamplePostRequest) GetDecimalParameterOptional() *types.Decimal {
+	if o == nil {
+		return nil
+	}
+	return o.DecimalParameterOptional
+}
+
+func (o *UsageExamplePostRequest) GetDecimalStrParameter() *decimal.Big {
+	if o == nil {
+		return new(decimal.Big).SetFloat64(0.0)
+	}
+	return o.DecimalStrParameter
+}
+
+func (o *UsageExamplePostRequest) GetDecimalStrParameterOptional() *decimal.Big {
+	if o == nil {
+		return nil
+	}
+	return o.DecimalStrParameterOptional
 }
 
 func (o *UsageExamplePostRequest) GetDoubleParameter() float64 {

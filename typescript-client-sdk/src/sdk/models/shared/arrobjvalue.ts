@@ -6,9 +6,6 @@ import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { SimpleObject } from "./simpleobject";
 import { Expose, Type } from "class-transformer";
 
-/**
- * OK
- */
 export class ArrObjValue extends SpeakeasyBase {
     @SpeakeasyMetadata({ elemType: SimpleObject })
     @Expose({ name: "json" })

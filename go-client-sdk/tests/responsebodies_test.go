@@ -93,8 +93,8 @@ func TestResponseBodyBytesGet(t *testing.T) {
 	assert.Len(t, res.Bytes, 100)
 }
 
-func TestResponseSelectableByAcceptHeaderTextPlain(t *testing.T) {
-	recordTest("response-selectable-by-accept-header-text-plain")
+func TestResponseBodyOverrideAcceptHeader(t *testing.T) {
+	recordTest("response-bodies-override-accept-header")
 	s := sdk.New()
 
 	res, err := s.ResponseBodies.ResponseBodyOptionalGet(context.Background(), operations.WithAcceptHeaderOverride(operations.AcceptHeaderEnumTextPlain))
@@ -105,8 +105,8 @@ func TestResponseSelectableByAcceptHeaderTextPlain(t *testing.T) {
 	assert.Equal(t, "Success", *res.GetResponseBodyOptionalGet200TextPlainString())
 }
 
-func TestResponseSelectableByAcceptHeaderNoOverride(t *testing.T) {
-	recordTest("response-selectable-by-accept-header-no-override")
+func TestResponseBodyDefaultAcceptHeader(t *testing.T) {
+	recordTest("response-bodies-default-accept-header")
 	s := sdk.New()
 
 	res, err := s.ResponseBodies.ResponseBodyOptionalGet(context.Background())

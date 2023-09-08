@@ -1,0 +1,16 @@
+# RequestBodyPostComplexNumberTypesRequest
+
+
+## Fields
+
+| Field                                                                  | Type                                                                   | Required                                                               | Description                                                            |
+| ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- | ---------------------------------------------------------------------- |
+| `complexNumberTypes`                                                   | [shared.ComplexNumberTypes](../../models/shared/complexnumbertypes.md) | :heavy_minus_sign:                                                     | N/A                                                                    |
+| `pathBigInt`                                                           | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `pathBigIntStr`                                                        | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `pathDecimal`                                                          | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `pathDecimalStr`                                                       | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `queryBigInt`                                                          | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `queryBigIntStr`                                                       | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `queryDecimal`                                                         | *number*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |
+| `queryDecimalStr`                                                      | *string*                                                               | :heavy_check_mark:                                                     | N/A                                                                    |

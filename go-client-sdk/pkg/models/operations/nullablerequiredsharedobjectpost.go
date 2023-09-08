@@ -9,7 +9,7 @@ import (
 
 type NullableRequiredSharedObjectPostRequestBody struct {
 	NullableOptionalObj *shared.NullableObject `json:"NullableOptionalObj,omitempty"`
-	NullableRequiredObj shared.NullableObject  `json:"NullableRequiredObj"`
+	NullableRequiredObj *shared.NullableObject `json:"NullableRequiredObj"`
 }
 
 func (o *NullableRequiredSharedObjectPostRequestBody) GetNullableOptionalObj() *shared.NullableObject {
@@ -19,9 +19,9 @@ func (o *NullableRequiredSharedObjectPostRequestBody) GetNullableOptionalObj() *
 	return o.NullableOptionalObj
 }
 
-func (o *NullableRequiredSharedObjectPostRequestBody) GetNullableRequiredObj() shared.NullableObject {
+func (o *NullableRequiredSharedObjectPostRequestBody) GetNullableRequiredObj() *shared.NullableObject {
 	if o == nil {
-		return shared.NullableObject{}
+		return nil
 	}
 	return o.NullableRequiredObj
 }

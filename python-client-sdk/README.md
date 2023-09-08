@@ -37,6 +37,7 @@ Do this second
 ```python
 import sdk
 import dateutil.parser
+from decimal import Decimal
 from sdk.models import operations, shared
 
 s = sdk.SDK(
@@ -56,12 +57,12 @@ req = operations.UsageExamplePostRequest(
         simple_object=shared.SimpleObject(
             any='architecto',
             bigint=60225,
-            bigint_str='reiciendis',
+            bigint_str=969810,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=6667.67,
+            decimal=Decimal('6667.67'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -79,10 +80,16 @@ req = operations.UsageExamplePostRequest(
         uuid='5955907a-ff1a-43a2-ba94-67739251aa52',
     ),
     bigint_parameter=111111,
+    bigint_parameter_optional=111111,
+    bigint_str_parameter=111111,
+    bigint_str_parameter_optional=111111,
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2020-01-01').date(),
     date_time_parameter=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal_parameter=1.1,
+    decimal_parameter=Decimal('1.1'),
+    decimal_parameter_optional=Decimal('1.1'),
+    decimal_str_parameter=Decimal('1.1'),
+    decimal_str_parameter_optional=Decimal('1.1'),
     double_parameter=2.2222222,
     enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
     falsey_number_parameter=0,
@@ -181,7 +188,8 @@ if res.usage_example_post_200_application_json_object is not None:
 * [global_path_parameter_get](docs/sdks/globals/README.md#global_path_parameter_get)
 * [globals_query_parameter_get](docs/sdks/globals/README.md#globals_query_parameter_get)
 
-### [nest_first](docs/sdks/nestfirst/README.md)
+
+### [Nest.First](docs/sdks/nestfirst/README.md)
 
 * [get](docs/sdks/nestfirst/README.md#get)
 
@@ -189,11 +197,11 @@ if res.usage_example_post_200_application_json_object is not None:
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [nested_first](docs/sdks/nestedfirst/README.md)
+### [Nested.First](docs/sdks/nestedfirst/README.md)
 
 * [get](docs/sdks/nestedfirst/README.md#get)
 
-### [nested_second](docs/sdks/nestedsecond/README.md)
+### [Nested.Second](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
@@ -261,6 +269,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_post_application_json_multiple_json_filtered](docs/sdks/requestbodies/README.md#request_body_post_application_json_multiple_json_filtered)
 * [request_body_post_application_json_simple](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple)
 * [request_body_post_application_json_simple_camel_case](docs/sdks/requestbodies/README.md#request_body_post_application_json_simple_camel_case)
+* [request_body_post_complex_number_types](docs/sdks/requestbodies/README.md#request_body_post_complex_number_types)
 * [request_body_post_empty_object](docs/sdks/requestbodies/README.md#request_body_post_empty_object)
 * [request_body_post_form_deep](docs/sdks/requestbodies/README.md#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](docs/sdks/requestbodies/README.md#request_body_post_form_map_primitive)

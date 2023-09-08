@@ -19,7 +19,4 @@ export class WriteOnlyObject extends SpeakeasyBase {
     string: string;
 }
 
-/**
- * OK
- */
 export class WriteOnlyObjectOutput extends SpeakeasyBase {}

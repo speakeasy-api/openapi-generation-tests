@@ -29,6 +29,5 @@ func (o *WriteOnlyObject) GetString() string {
 	return o.String
 }
 
-// WriteOnlyObjectOutput - OK
 type WriteOnlyObjectOutput struct {
 }

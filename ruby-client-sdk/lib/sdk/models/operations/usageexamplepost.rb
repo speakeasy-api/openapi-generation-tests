@@ -97,6 +97,8 @@ module OpenApiSDK
 
       # An bigint parameter
       field :bigint_parameter, Integer, { 'query_param': { 'field_name': 'bigintParameter', 'style': 'form', 'explode': true } }
+      # An bigint parameter
+      field :bigint_str_parameter, String, { 'query_param': { 'field_name': 'bigintStrParameter', 'style': 'form', 'explode': true } }
       # A boolean parameter
       field :bool_parameter, T::Boolean, { 'query_param': { 'field_name': 'boolParameter', 'style': 'form', 'explode': true } }
       # A date parameter
@@ -105,6 +107,8 @@ module OpenApiSDK
       field :date_time_parameter, DateTime, { 'query_param': { 'field_name': 'dateTimeParameter', 'style': 'form', 'explode': true } }
       # A decimal parameter
       field :decimal_parameter, Float, { 'query_param': { 'field_name': 'decimalParameter', 'style': 'form', 'explode': true } }
+      # A decimal parameter
+      field :decimal_str_parameter, String, { 'query_param': { 'field_name': 'decimalStrParameter', 'style': 'form', 'explode': true } }
       # A double parameter
       field :double_parameter, Float, { 'query_param': { 'field_name': 'doubleParameter', 'style': 'form', 'explode': true } }
       # An enum parameter
@@ -121,19 +125,29 @@ module OpenApiSDK
       field :int_parameter, Integer, { 'query_param': { 'field_name': 'intParameter', 'style': 'form', 'explode': true } }
       # A string parameter
       field :str_parameter, String, { 'query_param': { 'field_name': 'strParameter', 'style': 'form', 'explode': true } }
+      # An bigint parameter
+      field :bigint_parameter_optional, T.nilable(Integer), { 'query_param': { 'field_name': 'bigintParameterOptional', 'style': 'form', 'explode': true } }
+      # An bigint parameter
+      field :bigint_str_parameter_optional, T.nilable(String), { 'query_param': { 'field_name': 'bigintStrParameterOptional', 'style': 'form', 'explode': true } }
+      # A decimal parameter
+      field :decimal_parameter_optional, T.nilable(Float), { 'query_param': { 'field_name': 'decimalParameterOptional', 'style': 'form', 'explode': true } }
+      # A decimal parameter
+      field :decimal_str_parameter_optional, T.nilable(String), { 'query_param': { 'field_name': 'decimalStrParameterOptional', 'style': 'form', 'explode': true } }
       # An enum parameter
       field :opt_enum_parameter, T.nilable(Operations::UsageExamplePostOptEnumParameter), { 'query_param': { 'field_name': 'optEnumParameter', 'style': 'form', 'explode': true } }
       # A request body that contains fields with different formats for testing example generation
       field :request_body, T.nilable(Operations::UsageExamplePostRequestBody), { 'request': { 'media_type': 'application/json' } }
 
 
-      sig { params(bigint_parameter: Integer, bool_parameter: T::Boolean, date_parameter: Date, date_time_parameter: DateTime, decimal_parameter: Float, double_parameter: Float, enum_parameter: Operations::UsageExamplePostEnumParameter, falsey_number_parameter: Float, float32_parameter: Float, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, opt_enum_parameter: T.nilable(Operations::UsageExamplePostOptEnumParameter), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
-      def initialize(bigint_parameter: nil, bool_parameter: nil, date_parameter: nil, date_time_parameter: nil, decimal_parameter: nil, double_parameter: nil, enum_parameter: nil, falsey_number_parameter: nil, float32_parameter: nil, float_parameter: nil, int64_parameter: nil, int_parameter: nil, str_parameter: nil, opt_enum_parameter: nil, request_body: nil)
+      sig { params(bigint_parameter: Integer, bigint_str_parameter: String, bool_parameter: T::Boolean, date_parameter: Date, date_time_parameter: DateTime, decimal_parameter: Float, decimal_str_parameter: String, double_parameter: Float, enum_parameter: Operations::UsageExamplePostEnumParameter, falsey_number_parameter: Float, float32_parameter: Float, float_parameter: Float, int64_parameter: Integer, int_parameter: Integer, str_parameter: String, bigint_parameter_optional: T.nilable(Integer), bigint_str_parameter_optional: T.nilable(String), decimal_parameter_optional: T.nilable(Float), decimal_str_parameter_optional: T.nilable(String), opt_enum_parameter: T.nilable(Operations::UsageExamplePostOptEnumParameter), request_body: T.nilable(Operations::UsageExamplePostRequestBody)).void }
+      def initialize(bigint_parameter: nil, bigint_str_parameter: nil, bool_parameter: nil, date_parameter: nil, date_time_parameter: nil, decimal_parameter: nil, decimal_str_parameter: nil, double_parameter: nil, enum_parameter: nil, falsey_number_parameter: nil, float32_parameter: nil, float_parameter: nil, int64_parameter: nil, int_parameter: nil, str_parameter: nil, bigint_parameter_optional: nil, bigint_str_parameter_optional: nil, decimal_parameter_optional: nil, decimal_str_parameter_optional: nil, opt_enum_parameter: nil, request_body: nil)
         @bigint_parameter = bigint_parameter
+        @bigint_str_parameter = bigint_str_parameter
         @bool_parameter = bool_parameter
         @date_parameter = date_parameter
         @date_time_parameter = date_time_parameter
         @decimal_parameter = decimal_parameter
+        @decimal_str_parameter = decimal_str_parameter
         @double_parameter = double_parameter
         @enum_parameter = enum_parameter
         @falsey_number_parameter = falsey_number_parameter
@@ -142,6 +156,10 @@ module OpenApiSDK
         @int64_parameter = int64_parameter
         @int_parameter = int_parameter
         @str_parameter = str_parameter
+        @bigint_parameter_optional = bigint_parameter_optional
+        @bigint_str_parameter_optional = bigint_str_parameter_optional
+        @decimal_parameter_optional = decimal_parameter_optional
+        @decimal_str_parameter_optional = decimal_str_parameter_optional
         @opt_enum_parameter = opt_enum_parameter
         @request_body = request_body
       end

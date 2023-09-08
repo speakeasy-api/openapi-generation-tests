@@ -9,12 +9,6 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-/**
- * HttpBinSimpleJsonObject - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Shared
- * @access public
- */
 class HttpBinSimpleJsonObject
 {
 	#[\JMS\Serializer\Annotation\SerializedName('slideshow')]

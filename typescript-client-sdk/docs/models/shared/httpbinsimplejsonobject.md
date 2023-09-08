@@ -1,7 +1,5 @@
 # HttpBinSimpleJsonObject
 
-OK
-
 
 ## Fields
 

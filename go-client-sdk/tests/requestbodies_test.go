@@ -3,17 +3,22 @@
 package tests
 
 import (
+	"bytes"
 	"context"
+	"math/big"
 	"net/http"
 	"os"
 	"testing"
 
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/types"
+	"openapi/pkg/utils"
 
 	sdk "openapi"
 
 	"github.com/AlekSi/pointer"
+	"github.com/ericlagergren/decimal"
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
@@ -884,6 +889,165 @@ func TestRequestBodyEmptyObject(t *testing.T) {
 	assert.NotNil(t, res.RequestBodyPostEmptyObject200ApplicationJSONObject)
 }
 
+func TestRequestBodyPostNullableRequiredProperty(t *testing.T) {
+	recordTest("request-bodies-post-nullable-required-property")
+	tests := []struct {
+		name     string
+		arg      operations.NullableRequiredPropertyPostRequestBody
+		wantJson string
+	}{
+		{
+			name:     "Empty initializer",
+			arg:      operations.NullableRequiredPropertyPostRequestBody{},
+			wantJson: "{\"NullableRequiredArray\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null}\n",
+		},
+		{
+			name: "Required fields set to nil",
+			arg: operations.NullableRequiredPropertyPostRequestBody{
+				NullableOptionalInt:   nil,
+				NullableRequiredArray: nil,
+				NullableRequiredEnum:  nil,
+				NullableRequiredInt:   nil,
+			},
+			wantJson: "{\"NullableRequiredArray\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null}\n",
+		},
+		{
+			name: "Optional field set to non-null value",
+			arg: operations.NullableRequiredPropertyPostRequestBody{
+				NullableOptionalInt: pointer.ToInt64(0),
+			},
+			wantJson: "{\"NullableOptionalInt\":0,\"NullableRequiredArray\":null,\"NullableRequiredEnum\":null,\"NullableRequiredInt\":null}\n",
+		},
+		{
+			name: "All fields set to non-null value",
+			arg: operations.NullableRequiredPropertyPostRequestBody{
+				NullableOptionalInt:   pointer.ToInt64(0),
+				NullableRequiredArray: []float64{1, 2, 3},
+				NullableRequiredEnum:  operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnumSecond.ToPointer(),
+				NullableRequiredInt:   pointer.ToInt64(1),
+			},
+			wantJson: "{\"NullableOptionalInt\":0,\"NullableRequiredArray\":[1,2,3],\"NullableRequiredEnum\":\"second\",\"NullableRequiredInt\":1}\n",
+		},
+	}
+	s := sdk.New()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			reader, _, err := utils.SerializeRequestBody(context.Background(), tt.arg, "Request", "json")
+			require.NoError(t, err)
+			serializedBody := new(bytes.Buffer)
+			serializedBody.ReadFrom(reader)
+			assert.Equal(t, tt.wantJson, serializedBody.String())
+			res, err := s.RequestBodies.NullableRequiredPropertyPost(context.Background(), tt.arg)
+			require.NoError(t, err)
+			assert.Equal(t, http.StatusOK, res.StatusCode)
+		})
+	}
+}
+
+func TestRequestBodyPostNullableRequiredSharedObject(t *testing.T) {
+	recordTest("request-bodies-post-nullable-required-shared-object")
+	tests := []struct {
+		name     string
+		arg      operations.NullableRequiredSharedObjectPostRequestBody
+		wantJson string
+	}{
+		{
+			name:     "Empty initializer",
+			arg:      operations.NullableRequiredSharedObjectPostRequestBody{},
+			wantJson: "{\"NullableRequiredObj\":null}\n",
+		},
+		{
+			name: "All fields set to nil",
+			arg: operations.NullableRequiredSharedObjectPostRequestBody{
+				NullableOptionalObj: nil,
+				NullableRequiredObj: nil,
+			},
+			wantJson: "{\"NullableRequiredObj\":null}\n",
+		},
+		{
+			name: "Optional field set only",
+			arg: operations.NullableRequiredSharedObjectPostRequestBody{
+				NullableOptionalObj: &shared.NullableObject{Required: 1},
+			},
+			wantJson: "{\"NullableOptionalObj\":{\"required\":1},\"NullableRequiredObj\":null}\n",
+		},
+		{
+			name: "All fields set to non-null value",
+			arg: operations.NullableRequiredSharedObjectPostRequestBody{
+				NullableOptionalObj: &shared.NullableObject{Required: 1, Optional: pointer.ToString("test")},
+				NullableRequiredObj: &shared.NullableObject{Required: 2},
+			},
+			wantJson: "{\"NullableOptionalObj\":{\"optional\":\"test\",\"required\":1},\"NullableRequiredObj\":{\"required\":2}}\n",
+		},
+	}
+	s := sdk.New()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			reader, _, err := utils.SerializeRequestBody(context.Background(), tt.arg, "Request", "json")
+			require.NoError(t, err)
+			serializedBody := new(bytes.Buffer)
+			serializedBody.ReadFrom(reader)
+			assert.Equal(t, tt.wantJson, serializedBody.String())
+			res, err := s.RequestBodies.NullableRequiredSharedObjectPost(context.Background(), tt.arg)
+			require.NoError(t, err)
+			assert.Equal(t, http.StatusOK, res.StatusCode)
+		})
+	}
+}
+
+func TestRequestBodyPostNullableRequiredEmptyObject(t *testing.T) {
+	recordTest("request-bodies-post-nullable-required-empty-object")
+	tests := []struct {
+		name     string
+		arg      operations.NullableRequiredEmptyObjectPostRequestBody
+		wantJson string
+	}{
+		{
+			name:     "Empty initializer",
+			arg:      operations.NullableRequiredEmptyObjectPostRequestBody{},
+			wantJson: "{\"NullableRequiredObj\":null,\"RequiredObj\":{}}\n",
+		},
+		{
+			name: "Nullable fields set to null",
+			arg: operations.NullableRequiredEmptyObjectPostRequestBody{
+				RequiredObj:         operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj{},
+				NullableOptionalObj: nil,
+				NullableRequiredObj: nil,
+			},
+			wantJson: "{\"NullableRequiredObj\":null,\"RequiredObj\":{}}\n",
+		},
+		{
+			name: "Optional field set to non-null value",
+			arg: operations.NullableRequiredEmptyObjectPostRequestBody{
+				NullableOptionalObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj{},
+			},
+			wantJson: "{\"NullableOptionalObj\":{},\"NullableRequiredObj\":null,\"RequiredObj\":{}}\n",
+		},
+		{
+			name: "All fields set to non-null value",
+			arg: operations.NullableRequiredEmptyObjectPostRequestBody{
+				RequiredObj:         operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj{},
+				NullableOptionalObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj{},
+				NullableRequiredObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj{},
+			},
+			wantJson: "{\"NullableOptionalObj\":{},\"NullableRequiredObj\":{},\"RequiredObj\":{}}\n",
+		},
+	}
+	s := sdk.New()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			reader, _, err := utils.SerializeRequestBody(context.Background(), tt.arg, "Request", "json")
+			require.NoError(t, err)
+			serializedBody := new(bytes.Buffer)
+			serializedBody.ReadFrom(reader)
+			assert.Equal(t, tt.wantJson, serializedBody.String())
+			res, err := s.RequestBodies.NullableRequiredEmptyObjectPost(context.Background(), tt.arg)
+			require.NoError(t, err)
+			assert.Equal(t, http.StatusOK, res.StatusCode)
+		})
+	}
+}
+
 func TestRequestBodyReadOnlyInput(t *testing.T) {
 	recordTest("request-bodies-read-only-input")
 
@@ -1025,4 +1189,37 @@ func TestRequestBodyReadWriteOnlyUnion(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, int64(4), res.WeaklyTypedOneOfReadWriteObject.ReadWriteObjectOutput.Num3)
 	assert.Equal(t, int64(7), res.WeaklyTypedOneOfReadWriteObject.ReadWriteObjectOutput.Sum)
+}
+
+func TestRequestBodyPostComplexNumberTypes(t *testing.T) {
+	recordTest("request-bodies-complex-number-types")
+
+	s := sdk.New()
+
+	d, ok := new(decimal.Big).SetString("3.141592653589793238462643383279")
+	require.True(t, ok)
+
+	req := operations.RequestBodyPostComplexNumberTypesRequest{
+		ComplexNumberTypes: &shared.ComplexNumberTypes{
+			Bigint:     big.NewInt(9007199254740991),
+			BigintStr:  types.MustBigIntFromString("9223372036854775807"),
+			Decimal:    types.MustDecimalFromString("3.141592653589793"),
+			DecimalStr: d,
+		},
+		PathBigInt:      big.NewInt(9007199254740991),
+		PathBigIntStr:   types.MustBigIntFromString("9223372036854775807"),
+		PathDecimal:     types.MustDecimalFromString("3.141592653589793"),
+		PathDecimalStr:  d,
+		QueryBigInt:     big.NewInt(9007199254740991),
+		QueryBigIntStr:  types.MustBigIntFromString("9223372036854775807"),
+		QueryDecimal:    types.MustDecimalFromString("3.141592653589793"),
+		QueryDecimalStr: d,
+	}
+
+	res, err := s.RequestBodies.RequestBodyPostComplexNumberTypes(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, *req.ComplexNumberTypes, res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.JSON)
+	assert.Equal(t, "http://localhost:35123/anything/requestBodies/post/9007199254740991/9223372036854775807/3.141592653589793/3.141592653589793238462643383279/complex-number-types?queryBigInt=9007199254740991&queryBigIntStr=9223372036854775807&queryDecimal=3.141592653589793&queryDecimalStr=3.141592653589793238462643383279", res.RequestBodyPostComplexNumberTypes200ApplicationJSONObject.URL)
 }

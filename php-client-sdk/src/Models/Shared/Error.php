@@ -9,12 +9,6 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-/**
- * Error - Internal Server Error
- * 
- * @package OpenAPI\OpenAPI\Models\Shared
- * @access public
- */
 class Error
 {
 	#[\JMS\Serializer\Annotation\SerializedName('code')]

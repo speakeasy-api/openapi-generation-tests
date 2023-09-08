@@ -2,6 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from datetime import date
+from decimal import Decimal
 from sdk import utils
 from sdk.models import errors, operations, shared
 from typing import Optional
@@ -361,7 +362,7 @@ class Generation:
         return res
 
     
-    def typed_parameter_generation_get(self, bigint: Optional[int] = None, date_: Optional[date] = None, decimal: Optional[float] = None, obj: Optional[operations.TypedParameterGenerationGetObj] = None) -> operations.TypedParameterGenerationGetResponse:
+    def typed_parameter_generation_get(self, bigint: Optional[int] = None, date_: Optional[date] = None, decimal: Optional[Decimal] = None, obj: Optional[operations.TypedParameterGenerationGetObj] = None) -> operations.TypedParameterGenerationGetResponse:
         request = operations.TypedParameterGenerationGetRequest(
             bigint=bigint,
             date_=date_,

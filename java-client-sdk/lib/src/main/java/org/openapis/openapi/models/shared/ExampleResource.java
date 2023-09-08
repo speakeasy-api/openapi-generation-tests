@@ -13,9 +13,6 @@ import java.time.OffsetDateTime;
 import org.openapis.openapi.utils.DateTimeDeserializer;
 import org.openapis.openapi.utils.DateTimeSerializer;
 
-/**
- * ExampleResource - OK
- */
 
 public class ExampleResource {
     @JsonInclude(Include.NON_ABSENT)

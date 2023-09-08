@@ -55,6 +55,9 @@ __tests__/retries.test.ts
 __tests__/servers.test.ts
 __tests__/telemetry.test.ts
 __tests__/testdata/testUpload.json
+../../testprojects/typescript/.eslintrc.yml
+../../testprojects/typescript/package.json
+../../testprojects/typescript/tsconfig.json
 src/sdk/models/operations/apikeyauth.ts
 src/sdk/models/operations/apikeyauthglobal.ts
 src/sdk/models/operations/basicauth.ts
@@ -160,6 +163,7 @@ src/sdk/models/operations/requestbodypostapplicationjsonmapofprimitive.ts
 src/sdk/models/operations/requestbodypostapplicationjsonmultiplejsonfiltered.ts
 src/sdk/models/operations/requestbodypostapplicationjsonsimple.ts
 src/sdk/models/operations/requestbodypostapplicationjsonsimplecamelcase.ts
+src/sdk/models/operations/requestbodypostcomplexnumbertypes.ts
 src/sdk/models/operations/requestbodypostemptyobject.ts
 src/sdk/models/operations/requestbodypostformdeep.ts
 src/sdk/models/operations/requestbodypostformmapprimitive.ts
@@ -237,6 +241,7 @@ src/sdk/models/shared/arrobjvaluecamelcase.ts
 src/sdk/models/shared/deepobjectcamelcase.ts
 src/sdk/models/shared/mapobjvalue.ts
 src/sdk/models/shared/mapobjvaluecamelcase.ts
+src/sdk/models/shared/complexnumbertypes.ts
 src/sdk/models/shared/readwriteobject.ts
 src/sdk/models/shared/readonlyobject.ts
 src/sdk/models/shared/writeonlyobject.ts
@@ -544,6 +549,9 @@ docs/models/operations/requestbodypostapplicationjsonsimpleres.md
 docs/models/operations/requestbodypostapplicationjsonsimpleresponse.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseres.md
 docs/models/operations/requestbodypostapplicationjsonsimplecamelcaseresponse.md
+docs/models/operations/requestbodypostcomplexnumbertypesrequest.md
+docs/models/operations/requestbodypostcomplexnumbertypes200applicationjson.md
+docs/models/operations/requestbodypostcomplexnumbertypesresponse.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyempty.md
 docs/models/operations/requestbodypostemptyobjectrequestbodyemptywithemptyproperties.md
 docs/models/operations/requestbodypostemptyobjectrequestbody.md
@@ -693,6 +701,7 @@ docs/models/shared/arrobjvaluecamelcase.md
 docs/models/shared/deepobjectcamelcase.md
 docs/models/shared/mapobjvalue.md
 docs/models/shared/mapobjvaluecamelcase.md
+docs/models/shared/complexnumbertypes.md
 docs/models/shared/readwriteobjectinput.md
 docs/models/shared/readwriteobjectoutput.md
 docs/models/shared/readonlyobject.md

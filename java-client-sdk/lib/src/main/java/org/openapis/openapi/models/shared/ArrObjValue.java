@@ -8,9 +8,6 @@ import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * ArrObjValue - OK
- */
 
 public class ArrObjValue {
     @JsonInclude(Include.NON_ABSENT)

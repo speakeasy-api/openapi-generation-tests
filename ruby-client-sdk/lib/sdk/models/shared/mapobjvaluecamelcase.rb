@@ -8,7 +8,7 @@ require 'faraday'
 
 module OpenApiSDK
   module Shared
-    # OK
+
     class MapObjValueCamelCase < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

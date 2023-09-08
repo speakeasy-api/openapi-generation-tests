@@ -1,7 +1,5 @@
 # WeaklyTypedOneOfReadWriteObjectOutput
 
-OK
-
 
 ## Supported Types
 

@@ -9,12 +9,6 @@ declare(strict_types=1);
 namespace OpenAPI\OpenAPI\Models\Shared;
 
 
-/**
- * FileResource - OK
- * 
- * @package OpenAPI\OpenAPI\Models\Shared
- * @access public
- */
 class FileResource
 {
 	#[\JMS\Serializer\Annotation\SerializedName('id')]
