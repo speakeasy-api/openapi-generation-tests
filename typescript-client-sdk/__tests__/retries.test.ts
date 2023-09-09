@@ -49,7 +49,7 @@ test("Test Retries Timeout", async () => {
 test("TestGlobalRetryConfigDisable", async () => {
   recordTest("retries-global-config-disable")
 
-  const sdk = new SDK({retryConfig: {strategy: "", retryConnectionErrors: false}});
+  const sdk = new SDK({retryConfig: {strategy: "none", retryConnectionErrors: false}});
 
   expect.assertions(2);
   try {
