@@ -835,6 +835,7 @@ components:
       required: true
       schema:
         type: integer
+        example: 1
     numPathParam:
       name: numParam
       in: path
