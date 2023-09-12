@@ -35,7 +35,7 @@ class PaginationCursorBodyRes:
 
 @dataclasses.dataclass
 class PaginationCursorBodyResponse:
-    next: Callable[[], Optional[Undefined]] = dataclasses.field()
+    next: Callable[[], Optional[PaginationCursorBodyResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)

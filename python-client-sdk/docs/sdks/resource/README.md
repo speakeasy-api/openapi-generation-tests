@@ -26,8 +26,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='corporis'.encode(),
-        file='reiciendis',
+        content='reiciendis'.encode(),
+        file='assumenda',
     ),
 )
 
@@ -68,36 +68,34 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        8286.57,
+        3631.61,
     ],
     array_of_string=[
-        'nemo',
+        'recusandae',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='recusandae',
+            description='aliquid',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-12-15T04:58:32.488Z'),
-    enum_number=shared.ExampleResourceEnumNumber.THREE,
-    enum_str=shared.ExampleResourceEnumStr.ONE,
-    id='75ed4f6f-bee4-41f3-b317-fe35b60eb1ea',
+    created_at=dateutil.parser.isoparse('2022-04-06T09:08:23.430Z'),
+    enum_number=shared.ExampleResourceEnumNumber.ONE,
+    enum_str=shared.ExampleResourceEnumStr.TWO,
+    id='5ed4f6fb-ee41-4f33-b17f-e35b60eb1ea4',
     map_of_integer={
-        "tempora": 132815,
+        "aspernatur": 379057,
     },
     map_of_string={
         "voluptas": 'voluptas',
     },
-    name='Cathy Rohan',
-    updated_at=dateutil.parser.isoparse('2022-06-26T19:42:01.136Z'),
-    vehicle=shared.ExampleCar(
-        created_at=dateutil.parser.isoparse('2022-09-14T20:54:59.386Z'),
-        make='aliquam',
-        model='officiis',
+    name='Gayle Parisian',
+    updated_at=dateutil.parser.isoparse('2022-07-01T01:32:29.196Z'),
+    vehicle=shared.ExampleBoat(
+        created_at=dateutil.parser.isoparse('2022-09-11T20:51:23.700Z'),
+        length=8859.63,
         name='Dustin Ferry',
-        type=shared.ExampleCarType.CAR,
+        type=shared.ExampleBoatType.BOAT,
         updated_at=dateutil.parser.isoparse('2021-02-11T21:56:06.958Z'),
-        year=2015.17,
     ),
 )
 
@@ -136,7 +134,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='culpa')
+res = s.resource.delete_resource(resource_id='nesciunt')
 
 if res.status_code == 200:
     # handle response
@@ -171,7 +169,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='corrupti')
+res = s.resource.get_resource(resource_id='culpa')
 
 if res.example_resource is not None:
     # handle response
@@ -206,7 +204,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='pariatur')
+res = s.resource.update_resource(resource_id='corrupti')
 
 if res.status_code == 200:
     # handle response

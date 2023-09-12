@@ -35,7 +35,7 @@ class PaginationLimitOffsetOffsetParamsRes:
 
 @dataclasses.dataclass
 class PaginationLimitOffsetOffsetParamsResponse:
-    next: Callable[[], Optional[Undefined]] = dataclasses.field()
+    next: Callable[[], Optional[PaginationLimitOffsetOffsetParamsResponse]] = dataclasses.field()
     content_type: str = dataclasses.field()
     status_code: int = dataclasses.field()
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)

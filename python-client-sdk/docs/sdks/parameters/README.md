@@ -1223,7 +1223,7 @@ s = sdk.SDK(
 )
 
 
-res = s.parameters.simple_path_parameter_primitives(bool_param=False, int_param=961571, num_param=4551.69, str_param='consectetur')
+res = s.parameters.simple_path_parameter_primitives(bool_param=False, int_param=1, num_param=9615.71, str_param='voluptate')
 
 if res.res is not None:
     # handle response
@@ -1231,12 +1231,12 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bool_param`       | *bool*             | :heavy_check_mark: | N/A                |
-| `int_param`        | *int*              | :heavy_check_mark: | N/A                |
-| `num_param`        | *float*            | :heavy_check_mark: | N/A                |
-| `str_param`        | *str*              | :heavy_check_mark: | N/A                |
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `bool_param`       | *bool*             | :heavy_check_mark: | N/A                |                    |
+| `int_param`        | *int*              | :heavy_check_mark: | N/A                | 1                  |
+| `num_param`        | *float*            | :heavy_check_mark: | N/A                |                    |
+| `str_param`        | *str*              | :heavy_check_mark: | N/A                |                    |
 
 
 ### Response
