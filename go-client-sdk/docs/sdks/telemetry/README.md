@@ -32,7 +32,7 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    userAgent := "tempora"
+    userAgent := "minima"
 
     ctx := context.Background()
     res, err := s.Telemetry.TelemetrySpeakeasyUserAgentGet(ctx, userAgent)

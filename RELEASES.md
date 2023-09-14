@@ -590,3 +590,13 @@ Based on:
 - Speakeasy CLI 1.82.5 (2.108.3) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [python v1.32.1] python-client-sdk
+
+## 2023-09-14 00:11:36
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.83.2 (2.109.3) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [go v1.32.2] go-client-sdk
+### Releases
+- [Go v1.32.2] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.32.2 - go-client-sdk

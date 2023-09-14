@@ -1571,9 +1571,9 @@ func main() {
         sdk.WithGlobalQueryParam("some example global query param"),
     )
     boolParam := false
-    intParam := 961571
-    numParam := 4551.69
-    strParam := "consectetur"
+    intParam := 1
+    numParam := 9615.71
+    strParam := "voluptate"
 
     ctx := context.Background()
     res, err := s.Parameters.SimplePathParameterPrimitives(ctx, boolParam, intParam, numParam, strParam)
@@ -1589,13 +1589,13 @@ func main() {
 
 ### Parameters
 
-| Parameter                                             | Type                                                  | Required                                              | Description                                           |
-| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
-| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
-| `boolParam`                                           | *bool*                                                | :heavy_check_mark:                                    | N/A                                                   |
-| `intParam`                                            | *int64*                                               | :heavy_check_mark:                                    | N/A                                                   |
-| `numParam`                                            | *float64*                                             | :heavy_check_mark:                                    | N/A                                                   |
-| `strParam`                                            | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |
+| Parameter                                             | Type                                                  | Required                                              | Description                                           | Example                                               |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |                                                       |
+| `boolParam`                                           | *bool*                                                | :heavy_check_mark:                                    | N/A                                                   |                                                       |
+| `intParam`                                            | *int64*                                               | :heavy_check_mark:                                    | N/A                                                   | 1                                                     |
+| `numParam`                                            | *float64*                                             | :heavy_check_mark:                                    | N/A                                                   |                                                       |
+| `strParam`                                            | *string*                                              | :heavy_check_mark:                                    | N/A                                                   |                                                       |
 
 
 ### Response
