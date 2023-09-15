@@ -78,6 +78,18 @@ components:
         - $ref: "#/components/schemas/typedObject1"
         - $ref: "#/components/schemas/typedObject2"
         - $ref: "#/components/schemas/typedObject3"
+    typedObjectNullableOneOf:
+      oneOf:
+        - $ref: "#/components/schemas/typedObject1"
+        - $ref: "#/components/schemas/typedObject2"
+        - type: null
+    flattenedTypedObject1:
+      oneOf:
+        - $ref: "#/components/schemas/typedObject1"
+    nullableTypedObject1:
+      oneOf:
+        - $ref: "#/components/schemas/typedObject1"
+        - type: null
     typedObject1:
       type: object
       properties:

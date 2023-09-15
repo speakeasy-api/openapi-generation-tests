@@ -948,7 +948,6 @@ paths:
                 required:
                   - url
                   - args
-
   /anything/queryParams/form/array:
     get:
       operationId: formQueryParamsArray
@@ -2748,6 +2747,29 @@ paths:
                     type: string
                 required:
                   - data
+  /anything/requestBodies/post/nullableRequiredObject:
+    post:
+      operationId: nullableObjectPost
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/nullableObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "#/components/schemas/nullableObject"
+                required:
+                  - json
   /anything/requestBodies/post/nullableRequiredProperty:
     post:
       operationId: nullableRequiredPropertyPost
@@ -4065,6 +4087,152 @@ paths:
                     $ref: "components.yaml#/components/schemas/typedObjectOneOf"
                 required:
                   - json
+  /anything/typedObjectNullableOneOf:
+    post:
+      operationId: typedObjectNullableOneOfPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/typedObjectNullableOneOf"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/typedObjectNullableOneOf"
+                required:
+                  - json
+  /anything/flattenedTypedObject:
+
+    post:
+      operationId: flattenedTypedObjectPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/flattenedTypedObject1"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/flattenedTypedObject1"
+                required:
+                  - json
+  /anything/nullableTypedObject:
+    post:
+      operationId: nullableTypedObjectPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/nullableTypedObject1"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/nullableTypedObject1"
+                required:
+                  - json
+  /anything/nullableOneOfSchema:
+    post:
+      operationId: nullableOneOfSchemaPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - $ref: "components.yaml#/components/schemas/typedObject1"
+                - $ref: "components.yaml#/components/schemas/typedObject2"
+                - type: null
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - $ref: "components.yaml#/components/schemas/typedObject1"
+                      - $ref: "components.yaml#/components/schemas/typedObject2"
+                      - type: null
+                required:
+                  - json
+  /anything/nullableOneOfInObject:
+    post:
+      operationId: nullableOneOfTypeInObjectPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/nullableOneOfTypeInObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "#/components/schemas/nullableOneOfTypeInObject"
+                required:
+                  - json
+  /anything/nullableOneOfRefInObject:
+    post:
+      operationId: nullableOneOfRefInObjectPost
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/nullableOneOfRefInObject"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    $ref: "#/components/schemas/nullableOneOfRefInObject"
+                required:
+                  - json
   /anything/primitiveTypeOneOf:
     post:
       operationId: primitiveTypeOneOfPost
@@ -4780,6 +4948,44 @@ components:
         - type: "array"
           items:
             $ref: "components.yaml#/components/schemas/simpleObject"
+    nullableOneOfTypeInObject:
+      type: object
+      required:
+        - OneOfOne
+        - NullableOneOfOne
+        - NullableOneOfTwo
+      properties:
+        OneOfOne:
+          oneOf:
+            - type: boolean
+        NullableOneOfOne:
+          oneOf:
+            - type: boolean
+            - type: null
+        NullableOneOfTwo:
+          oneOf:
+            - type: boolean
+            - type: integer
+            - type: null
+    nullableOneOfRefInObject:
+      type: object
+      required:
+        - OneOfOne
+        - NullableOneOfOne
+        - NullableOneOfTwo
+      properties:
+        OneOfOne:
+          oneOf:
+            - $ref: "components.yaml#/components/schemas/typedObject1"
+        NullableOneOfOne:
+          oneOf:
+            - $ref: "components.yaml#/components/schemas/typedObject1"
+            - type: null
+        NullableOneOfTwo:
+          oneOf:
+            - $ref: "components.yaml#/components/schemas/typedObject1"
+            - $ref: "components.yaml#/components/schemas/typedObject2"
+            - type: null
     allOfToAllOf:
       x-speakeasy-include: true
       title: "allOf1"
