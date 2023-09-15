@@ -203,7 +203,7 @@ class Pagination:
             new_offset = offset + len(results[0])
 
             return self.pagination_limit_offset_offset_params(
-                limit,
+                limit=limit,
                 offset=new_offset,
                 server_url=server_url,
             )
