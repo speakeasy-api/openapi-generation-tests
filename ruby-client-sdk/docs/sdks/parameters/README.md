@@ -1292,9 +1292,9 @@ s = OpenApiSDK::SDK.new
 req = Operations::SimplePathParameterPrimitivesRequest.new(
   path_params=Operations::SimplePathParameterPrimitivesRequest.new(
     bool_param=false,
-    int_param=253191,
-    num_param=7710.89,
-    str_param="explicabo",
+    int_param=1,
+    num_param=2531.91,
+    str_param="impedit",
   ),
 )
     
@@ -1308,12 +1308,12 @@ end
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bool_param`       | *T::Boolean*       | :heavy_check_mark: | N/A                |
-| `int_param`        | *Integer*          | :heavy_check_mark: | N/A                |
-| `num_param`        | *Float*            | :heavy_check_mark: | N/A                |
-| `str_param`        | *String*           | :heavy_check_mark: | N/A                |
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `bool_param`       | *T::Boolean*       | :heavy_check_mark: | N/A                |                    |
+| `int_param`        | *Integer*          | :heavy_check_mark: | N/A                | 1                  |
+| `num_param`        | *Float*            | :heavy_check_mark: | N/A                |                    |
+| `str_param`        | *String*           | :heavy_check_mark: | N/A                |                    |
 
 
 ### Response

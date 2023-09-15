@@ -269,6 +269,7 @@ end
 
 ### [request_bodies](docs/sdks/requestbodies/README.md)
 
+* [nullable_object_post](docs/sdks/requestbodies/README.md#nullable_object_post)
 * [nullable_required_empty_object_post](docs/sdks/requestbodies/README.md#nullable_required_empty_object_post)
 * [nullable_required_property_post](docs/sdks/requestbodies/README.md#nullable_required_property_post)
 * [nullable_required_shared_object_post](docs/sdks/requestbodies/README.md#nullable_required_shared_object_post)
@@ -368,9 +369,15 @@ end
 
 ### [unions](docs/sdks/unions/README.md)
 
+* [flattened_typed_object_post](docs/sdks/unions/README.md#flattened_typed_object_post)
 * [mixed_type_one_of_post](docs/sdks/unions/README.md#mixed_type_one_of_post)
+* [nullable_one_of_ref_in_object_post](docs/sdks/unions/README.md#nullable_one_of_ref_in_object_post)
+* [nullable_one_of_schema_post](docs/sdks/unions/README.md#nullable_one_of_schema_post)
+* [nullable_one_of_type_in_object_post](docs/sdks/unions/README.md#nullable_one_of_type_in_object_post)
+* [nullable_typed_object_post](docs/sdks/unions/README.md#nullable_typed_object_post)
 * [primitive_type_one_of_post](docs/sdks/unions/README.md#primitive_type_one_of_post)
 * [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
+* [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
 * [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
 <!-- End SDK Available Operations -->

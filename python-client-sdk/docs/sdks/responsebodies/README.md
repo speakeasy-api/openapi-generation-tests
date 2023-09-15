@@ -59,7 +59,7 @@ s = sdk.SDK(
 )
 
 
-res = s.response_bodies.response_body_empty_with_headers(x_number_header=8672.9, x_string_header='totam')
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=6719.07, x_string_header='sed')
 
 if res.status_code == 200:
     # handle response

@@ -76,7 +76,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(3426.11d, "saepe");
+            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(3888.67d, "alias");
 
             if (res.statusCode == 200) {
                 // handle response

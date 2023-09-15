@@ -18,6 +18,45 @@ module OpenApiSDK
     end
 
     sig { params(request: Object).returns(Utils::FieldAugmented) }
+    def flattened_typed_object_post(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/flattenedTypedObject"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::FlattenedTypedObjectPostResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::FlattenedTypedObjectPostRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: Object).returns(Utils::FieldAugmented) }
     def mixed_type_one_of_post(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -50,6 +89,158 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Operations::MixedTypeOneOfPostRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Shared::NullableOneOfRefInObject)).returns(Utils::FieldAugmented) }
+    def nullable_one_of_ref_in_object_post(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/nullableOneOfRefInObject"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::NullableOneOfRefInObjectPostResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::NullableOneOfRefInObjectPostRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Object)).returns(Utils::FieldAugmented) }
+    def nullable_one_of_schema_post(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/nullableOneOfSchema"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::NullableOneOfSchemaPostResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::NullableOneOfSchemaPostRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Shared::NullableOneOfTypeInObject)).returns(Utils::FieldAugmented) }
+    def nullable_one_of_type_in_object_post(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/nullableOneOfInObject"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::NullableOneOfTypeInObjectPostResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::NullableOneOfTypeInObjectPostRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Object)).returns(Utils::FieldAugmented) }
+    def nullable_typed_object_post(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/nullableTypedObject"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::NullableTypedObjectPostResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::NullableTypedObjectPostRes)
           res.res = out
         end
       end
@@ -128,6 +319,44 @@ module OpenApiSDK
       if r.status == 200
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Operations::StronglyTypedOneOfPostRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
+    sig { params(request: T.nilable(Object)).returns(Utils::FieldAugmented) }
+    def typed_object_nullable_one_of_post(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/typedObjectNullableOneOf"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::TypedObjectNullableOneOfPostResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::TypedObjectNullableOneOfPostRes)
           res.res = out
         end
       end

@@ -32,7 +32,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry.telemetrySpeakeasyUserAgentGet("incidunt");
+            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry.telemetrySpeakeasyUserAgentGet("voluptate");
 
             if (res.res != null) {
                 // handle response

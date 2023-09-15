@@ -1331,7 +1331,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->parameters->simplePathParameterPrimitives(false, 748664, 925.96, 'saepe');
+    $response = $sdk->parameters->simplePathParameterPrimitives(false, 1, 7486.64, 'et');
 
     if ($response->res !== null) {
         // handle response
@@ -1343,12 +1343,12 @@ try {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `boolParam`        | *bool*             | :heavy_check_mark: | N/A                |
-| `intParam`         | *int*              | :heavy_check_mark: | N/A                |
-| `numParam`         | *float*            | :heavy_check_mark: | N/A                |
-| `strParam`         | *string*           | :heavy_check_mark: | N/A                |
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `boolParam`        | *bool*             | :heavy_check_mark: | N/A                |                    |
+| `intParam`         | *int*              | :heavy_check_mark: | N/A                | 1                  |
+| `numParam`         | *float*            | :heavy_check_mark: | N/A                |                    |
+| `strParam`         | *string*           | :heavy_check_mark: | N/A                |                    |
 
 
 ### Response

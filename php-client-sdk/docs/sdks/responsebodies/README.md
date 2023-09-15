@@ -66,7 +66,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(6216.79, 'sint');
+    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(8207.67, 'quia');
 
     if ($response->statusCode === 200) {
         // handle response

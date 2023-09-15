@@ -114,6 +114,46 @@ class RequestBodies
 	}
 	
     /**
+     * nullableObjectPost
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Shared\NullableObject $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\NullableObjectPostResponse
+     */
+	public function nullableObjectPost(
+        ?\OpenAPI\OpenAPI\Models\Shared\NullableObject $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\NullableObjectPostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/post/nullableRequiredObject');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body !== null) {
+            $options = array_merge_recursive($options, $body);
+        }
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\NullableObjectPostResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\NullableObjectPostRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * nullableRequiredEmptyObjectPost
      * 
      * @param \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBody $request

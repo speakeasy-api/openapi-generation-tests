@@ -186,6 +186,41 @@ public class RequestBodies {
 		this.sdkConfiguration = sdkConfiguration;
 	}
 
+    public org.openapis.openapi.models.operations.NullableObjectPostResponse nullableObjectPost(org.openapis.openapi.models.shared.NullableObject request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/nullableRequiredObject");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.NullableObjectPostResponse res = new org.openapis.openapi.models.operations.NullableObjectPostResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.NullableObjectPostRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.NullableObjectPostRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostResponse nullableRequiredEmptyObjectPost(org.openapis.openapi.models.operations.NullableRequiredEmptyObjectPostRequestBody request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/requestBodies/post/nullableRequiredEmptyObject");

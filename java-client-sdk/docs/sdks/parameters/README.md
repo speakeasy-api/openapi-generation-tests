@@ -1549,7 +1549,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            SimplePathParameterPrimitivesResponse res = sdk.parameters.simplePathParameterPrimitives(false, 11427L, 5334.66d, "impedit");
+            SimplePathParameterPrimitivesResponse res = sdk.parameters.simplePathParameterPrimitives(false, 1L, 114.27d, "deleniti");
 
             if (res.res != null) {
                 // handle response
@@ -1563,12 +1563,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter          | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `boolParam`        | *Boolean*          | :heavy_check_mark: | N/A                |
-| `intParam`         | *Long*             | :heavy_check_mark: | N/A                |
-| `numParam`         | *Double*           | :heavy_check_mark: | N/A                |
-| `strParam`         | *String*           | :heavy_check_mark: | N/A                |
+| Parameter          | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `boolParam`        | *Boolean*          | :heavy_check_mark: | N/A                |                    |
+| `intParam`         | *Long*             | :heavy_check_mark: | N/A                | 1                  |
+| `numParam`         | *Double*           | :heavy_check_mark: | N/A                |                    |
+| `strParam`         | *String*           | :heavy_check_mark: | N/A                |                    |
 
 
 ### Response

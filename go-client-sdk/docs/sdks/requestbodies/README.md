@@ -6,6 +6,7 @@ Endpoints for testing request bodies.
 
 ### Available Operations
 
+* [NullableObjectPost](#nullableobjectpost)
 * [NullableRequiredEmptyObjectPost](#nullablerequiredemptyobjectpost)
 * [NullableRequiredPropertyPost](#nullablerequiredpropertypost)
 * [NullableRequiredSharedObjectPost](#nullablerequiredsharedobjectpost)
@@ -63,6 +64,57 @@ Endpoints for testing request bodies.
 * [RequestBodyWriteOnly](#requestbodywriteonly)
 * [RequestBodyWriteOnlyOutput](#requestbodywriteonlyoutput)
 * [RequestBodyWriteOnlyUnion](#requestbodywriteonlyunion)
+
+## NullableObjectPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.NullableObjectPost(ctx, shared.NullableObject{
+        Optional: sdk.String("consectetur"),
+        Required: 878870,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
+| -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
+| `ctx`                                                          | [context.Context](https://pkg.go.dev/context#Context)          | :heavy_check_mark:                                             | The context to use for the request.                            |
+| `request`                                                      | [shared.NullableObject](../../models/shared/nullableobject.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+
+
+### Response
+
+**[*operations.NullableObjectPostResponse](../../models/operations/nullableobjectpostresponse.md), error**
+
 
 ## NullableRequiredEmptyObjectPost
 
@@ -143,12 +195,12 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredPropertyPost(ctx, operations.NullableRequiredPropertyPostRequestBody{
-        NullableOptionalInt: sdk.Int64(231701),
+        NullableOptionalInt: sdk.Int64(949319),
         NullableRequiredArray: []float64{
-            8788.7,
+            4922.68,
         },
         NullableRequiredEnum: operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnumSecond,
-        NullableRequiredInt: 492268,
+        NullableRequiredInt: 715561,
     })
     if err != nil {
         log.Fatal(err)
@@ -200,12 +252,12 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredSharedObjectPost(ctx, operations.NullableRequiredSharedObjectPostRequestBody{
         NullableOptionalObj: &shared.NullableObject{
-            Optional: sdk.String("hic"),
-            Required: 715561,
-        },
-        NullableRequiredObj: shared.NullableObject{
             Optional: sdk.String("quod"),
             Required: 486160,
+        },
+        NullableRequiredObj: shared.NullableObject{
+            Optional: sdk.String("similique"),
+            Required: 708548,
         },
     })
     if err != nil {
@@ -259,20 +311,20 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArray(ctx, []shared.SimpleObject{
         shared.SimpleObject{
-            Any: "similique",
-            Bigint: big.NewInt(708548),
-            BigintStr: types.MustNewBigIntFromString("874288"),
+            Any: "vero",
+            Bigint: big.NewInt(498140),
+            BigintStr: types.MustNewBigIntFromString("293020"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("4981.4"),
+            Decimal: types.MustNewDecimalFromString("8445.5"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumThird,
+            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+            IntEnum: shared.SimpleObjectIntEnumFirst,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
@@ -332,17 +384,17 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayCamelCase(ctx, []shared.SimpleObjectCamelCase{
         shared.SimpleObjectCamelCase{
-            AnyVal: "illum",
-            BigintStrVal: types.MustNewBigIntFromString("194342"),
-            BigintVal: big.NewInt(617877),
+            AnyVal: "natus",
+            BigintStrVal: types.MustNewBigIntFromString("773326"),
+            BigintVal: big.NewInt(13236),
             BoolOptVal: sdk.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
-            DecimalVal: types.MustNewDecimalFromString("7733.26"),
+            DecimalVal: types.MustNewDecimalFromString("9742.59"),
             EnumVal: shared.EnumTwo,
             Float32Val: 2.2222222,
-            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
+            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
             Int32Val: 1,
             IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
             IntOptNullVal: sdk.Int64(999999),
@@ -405,19 +457,19 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayObj(ctx, []shared.SimpleObject{
         shared.SimpleObject{
-            Any: "exercitationem",
-            Bigint: big.NewInt(862310),
-            BigintStr: types.MustNewBigIntFromString("148141"),
+            Any: "fugit",
+            Bigint: big.NewInt(780427),
+            BigintStr: types.MustNewBigIntFromString("981830"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("7804.27"),
+            Decimal: types.MustNewDecimalFromString("9850.33"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
             IntEnum: shared.SimpleObjectIntEnumThird,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
@@ -477,19 +529,19 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayObjCamelCase(ctx, []shared.SimpleObjectCamelCase{
         shared.SimpleObjectCamelCase{
-            AnyVal: "iusto",
-            BigintStrVal: types.MustNewBigIntFromString("753570"),
-            BigintVal: big.NewInt(497391),
+            AnyVal: "ducimus",
+            BigintStrVal: types.MustNewBigIntFromString("4048"),
+            BigintVal: big.NewInt(639473),
             BoolOptVal: sdk.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
-            DecimalVal: types.MustNewDecimalFromString("40.48"),
+            DecimalVal: types.MustNewDecimalFromString("2694.79"),
             EnumVal: shared.EnumTwo,
             Float32Val: 2.2222222,
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
+            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
             IntOptNullVal: sdk.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: sdk.Float64(1.1),
@@ -550,20 +602,20 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfArray(ctx, [][]shared.SimpleObject{
         []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "ipsam",
-                Bigint: big.NewInt(410492),
-                BigintStr: types.MustNewBigIntFromString("136900"),
+                Any: "aspernatur",
+                Bigint: big.NewInt(428224),
+                BigintStr: types.MustNewBigIntFromString("822118"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("4282.24"),
+                Decimal: types.MustNewDecimalFromString("2978.42"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-                IntEnum: shared.SimpleObjectIntEnumFirst,
+                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
@@ -625,19 +677,19 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx, [][]shared.SimpleObjectCamelCase{
         []shared.SimpleObjectCamelCase{
             shared.SimpleObjectCamelCase{
-                AnyVal: "ratione",
-                BigintStrVal: types.MustNewBigIntFromString("401132"),
-                BigintVal: big.NewInt(511319),
+                AnyVal: "laudantium",
+                BigintStrVal: types.MustNewBigIntFromString("120657"),
+                BigintVal: big.NewInt(224317),
                 BoolOptVal: sdk.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
-                DecimalVal: types.MustNewDecimalFromString("1206.57"),
+                DecimalVal: types.MustNewDecimalFromString("9807"),
                 EnumVal: shared.EnumTwo,
                 Float32Val: 2.2222222,
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
                 IntOptNullVal: sdk.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: sdk.Float64(1.1),
@@ -697,7 +749,7 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ctx, [][]string{
         []string{
-            "quasi",
+            "nulla",
         },
     })
     if err != nil {
@@ -752,21 +804,21 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMap(ctx, []map[string]shared.SimpleObject{
         map[string]shared.SimpleObject{
-            "ex": shared.SimpleObject{
-                Any: "nulla",
-                Bigint: big.NewInt(569211),
-                BigintStr: types.MustNewBigIntFromString("972920"),
+            "excepturi": shared.SimpleObject{
+                Any: "voluptatibus",
+                Bigint: big.NewInt(343605),
+                BigintStr: types.MustNewBigIntFromString("960835"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("3436.05"),
+                Decimal: types.MustNewDecimalFromString("7888.73"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
@@ -827,20 +879,20 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx, []map[string]shared.SimpleObjectCamelCase{
         map[string]shared.SimpleObjectCamelCase{
-            "saepe": shared.SimpleObjectCamelCase{
-                AnyVal: "ea",
-                BigintStrVal: types.MustNewBigIntFromString("774048"),
-                BigintVal: big.NewInt(359271),
+            "impedit": shared.SimpleObjectCamelCase{
+                AnyVal: "corporis",
+                BigintStrVal: types.MustNewBigIntFromString("333145"),
+                BigintVal: big.NewInt(399499),
                 BoolOptVal: sdk.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
-                DecimalVal: types.MustNewDecimalFromString("3331.45"),
+                DecimalVal: types.MustNewDecimalFromString("811.01"),
                 EnumVal: shared.EnumTwo,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
+                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
                 IntOptNullVal: sdk.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: sdk.Float64(1.1),
@@ -899,7 +951,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfPrimitive(ctx, []string{
-        "magnam",
+        "quo",
     })
     if err != nil {
         log.Fatal(err)
@@ -953,20 +1005,20 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONDeep(ctx, shared.DeepObject{
         Any: shared.SimpleObject{
-            Any: "quo",
-            Bigint: big.NewInt(232234),
-            BigintStr: types.MustNewBigIntFromString("926213"),
+            Any: "recusandae",
+            Bigint: big.NewInt(132487),
+            BigintStr: types.MustNewBigIntFromString("325310"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("1324.87"),
+            Decimal: types.MustNewDecimalFromString("534.27"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumFirst,
+            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+            IntEnum: shared.SimpleObjectIntEnumThird,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
@@ -975,20 +1027,20 @@ func main() {
         },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "a",
-                Bigint: big.NewInt(725595),
-                BigintStr: types.MustNewBigIntFromString("13948"),
+                Any: "aut",
+                Bigint: big.NewInt(11427),
+                BigintStr: types.MustNewBigIntFromString("533466"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("114.27"),
+                Decimal: types.MustNewDecimalFromString("7705.81"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectIntEnumFirst,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
@@ -997,23 +1049,23 @@ func main() {
             },
         },
         Bool: false,
-        Int: 304582,
+        Int: 882860,
         Map: map[string]shared.SimpleObject{
-            "fugit": shared.SimpleObject{
-                Any: "accusamus",
-                Bigint: big.NewInt(79522),
-                BigintStr: types.MustNewBigIntFromString("250622"),
+            "inventore": shared.SimpleObject{
+                Any: "non",
+                Bigint: big.NewInt(89603),
+                BigintStr: types.MustNewBigIntFromString("677412"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("896.03"),
+                Decimal: types.MustNewDecimalFromString("6720.48"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                IntEnum: shared.SimpleObjectIntEnumFirst,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
@@ -1021,30 +1073,30 @@ func main() {
                 StrOpt: sdk.String("optional example"),
             },
         },
-        Num: 8104.24,
+        Num: 4321.48,
         Obj: shared.SimpleObject{
-            Any: "velit",
-            Bigint: big.NewInt(432148),
-            BigintStr: types.MustNewBigIntFromString("420539"),
+            Any: "autem",
+            Bigint: big.NewInt(752135),
+            BigintStr: types.MustNewBigIntFromString("557369"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("7521.35"),
+            Decimal: types.MustNewDecimalFromString("8296.03"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumThird,
+            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+            IntEnum: shared.SimpleObjectIntEnumSecond,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
             Str: "example",
             StrOpt: sdk.String("optional example"),
         },
-        Str: "nulla",
-        Type: sdk.String("voluptas"),
+        Str: "libero",
+        Type: sdk.String("quasi"),
     })
     if err != nil {
         log.Fatal(err)
@@ -1096,22 +1148,42 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONDeepCamelCase(ctx, shared.DeepObjectCamelCase{
-        AnyVal: "quasi",
+        AnyVal: shared.SimpleObjectCamelCase{
+            AnyVal: "numquam",
+            BigintStrVal: types.MustNewBigIntFromString("131482"),
+            BigintVal: big.NewInt(591935),
+            BoolOptVal: sdk.Bool(true),
+            BoolVal: true,
+            DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+            DateVal: types.MustDateFromString("2020-01-01"),
+            DecimalVal: types.MustNewDecimalFromString("553.74"),
+            EnumVal: shared.EnumTwo,
+            Float32Val: 2.2222222,
+            Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
+            Int32Val: 1,
+            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
+            IntOptNullVal: sdk.Int64(999999),
+            IntVal: 999999,
+            NumOptNullVal: sdk.Float64(1.1),
+            NumVal: 1.1,
+            StrOptVal: sdk.String("optional example"),
+            StrVal: "example",
+        },
         ArrVal: []shared.SimpleObjectCamelCase{
             shared.SimpleObjectCamelCase{
-                AnyVal: "tempora",
-                BigintStrVal: types.MustNewBigIntFromString("256139"),
-                BigintVal: big.NewInt(131482),
+                AnyVal: "odio",
+                BigintStrVal: types.MustNewBigIntFromString("262118"),
+                BigintVal: big.NewInt(458515),
                 BoolOptVal: sdk.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
-                DecimalVal: types.MustNewDecimalFromString("5919.35"),
+                DecimalVal: types.MustNewDecimalFromString("4561.41"),
                 EnumVal: shared.EnumTwo,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
+                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
+                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
                 IntOptNullVal: sdk.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: sdk.Float64(1.1),
@@ -1121,22 +1193,22 @@ func main() {
             },
         },
         BoolVal: false,
-        IntVal: 301598,
+        IntVal: 442015,
         MapVal: map[string]shared.SimpleObjectCamelCase{
-            "odio": shared.SimpleObjectCamelCase{
-                AnyVal: "eius",
-                BigintStrVal: types.MustNewBigIntFromString("458515"),
-                BigintVal: big.NewInt(456141),
+            "quidem": shared.SimpleObjectCamelCase{
+                AnyVal: "fugiat",
+                BigintStrVal: types.MustNewBigIntFromString("283519"),
+                BigintVal: big.NewInt(433439),
                 BoolOptVal: sdk.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
-                DecimalVal: types.MustNewDecimalFromString("5245.93"),
+                DecimalVal: types.MustNewDecimalFromString("3799.27"),
                 EnumVal: shared.EnumTwo,
                 Float32Val: 2.2222222,
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
+                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
                 IntOptNullVal: sdk.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: sdk.Float64(1.1),
@@ -1145,16 +1217,16 @@ func main() {
                 StrVal: "example",
             },
         },
-        NumVal: 6956.26,
+        NumVal: 5093.42,
         ObjVal: shared.SimpleObjectCamelCase{
-            AnyVal: "fugiat",
-            BigintStrVal: types.MustNewBigIntFromString("283519"),
-            BigintVal: big.NewInt(433439),
+            AnyVal: "quisquam",
+            BigintStrVal: types.MustNewBigIntFromString("86377"),
+            BigintVal: big.NewInt(56848),
             BoolOptVal: sdk.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
-            DecimalVal: types.MustNewDecimalFromString("3799.27"),
+            DecimalVal: types.MustNewDecimalFromString("6600.4"),
             EnumVal: shared.EnumTwo,
             Float32Val: 2.2222222,
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
@@ -1167,8 +1239,8 @@ func main() {
             StrOptVal: sdk.String("optional example"),
             StrVal: "example",
         },
-        StrVal: "praesentium",
-        Type: sdk.String("quisquam"),
+        StrVal: "quo",
+        Type: sdk.String("illum"),
     })
     if err != nil {
         log.Fatal(err)
@@ -1220,21 +1292,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMap(ctx, map[string]shared.SimpleObject{
-        "veritatis": shared.SimpleObject{
-            Any: "ipsa",
-            Bigint: big.NewInt(660040),
-            BigintStr: types.MustNewBigIntFromString("696997"),
+        "quo": shared.SimpleObject{
+            Any: "fuga",
+            Bigint: big.NewInt(259422),
+            BigintStr: types.MustNewBigIntFromString("178367"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("2065.94"),
+            Decimal: types.MustNewDecimalFromString("3738.13"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-            IntEnum: shared.SimpleObjectIntEnumThird,
+            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+            IntEnum: shared.SimpleObjectIntEnumSecond,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
@@ -1293,20 +1365,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
-        "quo": shared.SimpleObjectCamelCase{
-            AnyVal: "fuga",
-            BigintStrVal: types.MustNewBigIntFromString("259422"),
-            BigintVal: big.NewInt(178367),
+        "consequatur": shared.SimpleObjectCamelCase{
+            AnyVal: "tempora",
+            BigintStrVal: types.MustNewBigIntFromString("892050"),
+            BigintVal: big.NewInt(370853),
             BoolOptVal: sdk.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
-            DecimalVal: types.MustNewDecimalFromString("3738.13"),
+            DecimalVal: types.MustNewDecimalFromString("1334.65"),
             EnumVal: shared.EnumTwo,
             Float32Val: 2.2222222,
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
+            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
             IntOptNullVal: sdk.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: sdk.Float64(1.1),
@@ -1366,21 +1438,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObj(ctx, map[string]shared.SimpleObject{
-        "consequatur": shared.SimpleObject{
-            Any: "tempora",
-            Bigint: big.NewInt(892050),
-            BigintStr: types.MustNewBigIntFromString("370853"),
+        "esse": shared.SimpleObject{
+            Any: "recusandae",
+            Bigint: big.NewInt(44612),
+            BigintStr: types.MustNewBigIntFromString("715179"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("1334.65"),
+            Decimal: types.MustNewDecimalFromString("7997.96"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumThird,
+            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+            IntEnum: shared.SimpleObjectIntEnumFirst,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
@@ -1438,20 +1510,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObjCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
-        "esse": shared.SimpleObjectCamelCase{
-            AnyVal: "recusandae",
-            BigintStrVal: types.MustNewBigIntFromString("44612"),
-            BigintVal: big.NewInt(715179),
+        "nihil": shared.SimpleObjectCamelCase{
+            AnyVal: "totam",
+            BigintStrVal: types.MustNewBigIntFromString("882710"),
+            BigintVal: big.NewInt(306810),
             BoolOptVal: sdk.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
-            DecimalVal: types.MustNewDecimalFromString("7997.96"),
+            DecimalVal: types.MustNewDecimalFromString("4884.1"),
             EnumVal: shared.EnumTwo,
             Float32Val: 2.2222222,
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
             Int32Val: 1,
-            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
+            IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
             IntOptNullVal: sdk.Int64(999999),
             IntVal: 999999,
             NumOptNullVal: sdk.Float64(1.1),
@@ -1510,21 +1582,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArray(ctx, map[string][]shared.SimpleObject{
-        "nihil": []shared.SimpleObject{
+        "sapiente": []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "totam",
-                Bigint: big.NewInt(882710),
-                BigintStr: types.MustNewBigIntFromString("306810"),
+                Any: "dolores",
+                Bigint: big.NewInt(645570),
+                BigintStr: types.MustNewBigIntFromString("475289"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("4884.1"),
+                Decimal: types.MustNewDecimalFromString("353.62"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
@@ -1585,16 +1657,16 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx, map[string][]shared.SimpleObjectCamelCase{
-        "sapiente": []shared.SimpleObjectCamelCase{
+        "quas": []shared.SimpleObjectCamelCase{
             shared.SimpleObjectCamelCase{
-                AnyVal: "dolores",
-                BigintStrVal: types.MustNewBigIntFromString("645570"),
-                BigintVal: big.NewInt(475289),
+                AnyVal: "praesentium",
+                BigintStrVal: types.MustNewBigIntFromString("159867"),
+                BigintVal: big.NewInt(536178),
                 BoolOptVal: sdk.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
-                DecimalVal: types.MustNewDecimalFromString("353.62"),
+                DecimalVal: types.MustNewDecimalFromString("1438.29"),
                 EnumVal: shared.EnumTwo,
                 Float32Val: 2.2222222,
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
@@ -1660,21 +1732,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMap(ctx, map[string]map[string]shared.SimpleObject{
-        "quas": map[string]shared.SimpleObject{
-            "praesentium": shared.SimpleObject{
-                Any: "consequuntur",
-                Bigint: big.NewInt(536178),
-                BigintStr: types.MustNewBigIntFromString("143829"),
+        "incidunt": map[string]shared.SimpleObject{
+            "atque": shared.SimpleObject{
+                Any: "explicabo",
+                Bigint: big.NewInt(325685),
+                BigintStr: types.MustNewBigIntFromString("392676"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("6813.93"),
+                Decimal: types.MustNewDecimalFromString("1470.14"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumFirst,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
@@ -1735,21 +1807,21 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx, map[string]map[string]shared.SimpleObjectCamelCase{
-        "atque": map[string]shared.SimpleObjectCamelCase{
+        "ratione": map[string]shared.SimpleObjectCamelCase{
             "explicabo": shared.SimpleObjectCamelCase{
-                AnyVal: "minima",
-                BigintStrVal: types.MustNewBigIntFromString("392676"),
-                BigintVal: big.NewInt(147014),
+                AnyVal: "saepe",
+                BigintStrVal: types.MustNewBigIntFromString("578922"),
+                BigintVal: big.NewInt(543806),
                 BoolOptVal: sdk.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
-                DecimalVal: types.MustNewDecimalFromString("9564.06"),
+                DecimalVal: types.MustNewDecimalFromString("922.6"),
                 EnumVal: shared.EnumTwo,
                 Float32Val: 2.2222222,
-                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
+                Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
                 Int32Val: 1,
-                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
+                IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
                 IntOptNullVal: sdk.Int64(999999),
                 IntVal: 999999,
                 NumOptNullVal: sdk.Float64(1.1),
@@ -1808,8 +1880,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx, map[string]map[string]string{
-        "explicabo": map[string]string{
-            "saepe": "occaecati",
+        "accusamus": map[string]string{
+            "veritatis": "esse",
         },
     })
     if err != nil {
@@ -1861,7 +1933,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfPrimitive(ctx, map[string]string{
-        "atque": "et",
+        "quod": "nam",
     })
     if err != nil {
         log.Fatal(err)
@@ -1914,14 +1986,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx, shared.SimpleObject{
-        Any: "esse",
-        Bigint: big.NewInt(910545),
-        BigintStr: types.MustNewBigIntFromString("882042"),
+        Any: "vero",
+        Bigint: big.NewInt(399025),
+        BigintStr: types.MustNewBigIntFromString("93459"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("829.71"),
+        Decimal: types.MustNewDecimalFromString("9040.45"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
@@ -1984,20 +2056,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONSimple(ctx, shared.SimpleObject{
-        Any: "nam",
-        Bigint: big.NewInt(877131),
-        BigintStr: types.MustNewBigIntFromString("399025"),
+        Any: "molestiae",
+        Bigint: big.NewInt(699622),
+        BigintStr: types.MustNewBigIntFromString("580197"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("934.59"),
+        Decimal: types.MustNewDecimalFromString("3277.2"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
+        IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -2054,19 +2126,19 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONSimpleCamelCase(ctx, shared.SimpleObjectCamelCase{
-        AnyVal: "harum",
-        BigintStrVal: types.MustNewBigIntFromString("473221"),
-        BigintVal: big.NewInt(699622),
+        AnyVal: "sit",
+        BigintStrVal: types.MustNewBigIntFromString("636061"),
+        BigintVal: big.NewInt(731398),
         BoolOptVal: sdk.Bool(true),
         BoolVal: true,
         DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         DateVal: types.MustDateFromString("2020-01-01"),
-        DecimalVal: types.MustNewDecimalFromString("5801.97"),
+        DecimalVal: types.MustNewDecimalFromString("2400.2"),
         EnumVal: shared.EnumTwo,
         Float32Val: 2.2222222,
-        Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
+        Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
         Int32Val: 1,
-        IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
+        IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
         IntOptNullVal: sdk.Int64(999999),
         IntVal: 999999,
         NumOptNullVal: sdk.Float64(1.1),
@@ -2126,19 +2198,19 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostComplexNumberTypes(ctx, operations.RequestBodyPostComplexNumberTypesRequest{
         ComplexNumberTypes: &shared.ComplexNumberTypes{
-            Bigint: big.NewInt(756779),
-            BigintStr: *types.MustNewBigIntFromString("27069"),
-            Decimal: *types.MustNewDecimalFromString("6360.61"),
-            DecimalStr: new(decimal.Big).SetFloat64(7313.98),
+            Bigint: big.NewInt(9766),
+            BigintStr: *types.MustNewBigIntFromString("796392"),
+            Decimal: *types.MustNewDecimalFromString("3082.86"),
+            DecimalStr: new(decimal.Big).SetFloat64(9591.67),
         },
-        PathBigInt: big.NewInt(240020),
-        PathBigIntStr: *types.MustNewBigIntFromString("766964"),
-        PathDecimal: *types.MustNewDecimalFromString("1605.38"),
-        PathDecimalStr: new(decimal.Big).SetFloat64(97.66),
-        QueryBigInt: big.NewInt(796392),
-        QueryBigIntStr: *types.MustNewBigIntFromString("308286"),
-        QueryDecimal: *types.MustNewDecimalFromString("9591.67"),
-        QueryDecimalStr: new(decimal.Big).SetFloat64(2328.65),
+        PathBigInt: big.NewInt(232865),
+        PathBigIntStr: *types.MustNewBigIntFromString("458139"),
+        PathDecimal: *types.MustNewDecimalFromString("5034.27"),
+        PathDecimalStr: new(decimal.Big).SetFloat64(5909.84),
+        QueryBigInt: big.NewInt(953722),
+        QueryBigIntStr: *types.MustNewBigIntFromString("857723"),
+        QueryDecimal: *types.MustNewDecimalFromString("5578.11"),
+        QueryDecimalStr: new(decimal.Big).SetFloat64(4572.23),
     })
     if err != nil {
         log.Fatal(err)
@@ -2243,20 +2315,20 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormDeep(ctx, shared.DeepObject{
         Any: shared.SimpleObject{
-            Any: "blanditiis",
-            Bigint: big.NewInt(590984),
-            BigintStr: types.MustNewBigIntFromString("953722"),
+            Any: "a",
+            Bigint: big.NewInt(621679),
+            BigintStr: types.MustNewBigIntFromString("575751"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("8577.23"),
+            Decimal: types.MustNewDecimalFromString("8630.23"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+            IntEnum: shared.SimpleObjectIntEnumFirst,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
@@ -2265,20 +2337,20 @@ func main() {
         },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "quasi",
-                Bigint: big.NewInt(951875),
-                BigintStr: types.MustNewBigIntFromString("621679"),
+                Any: "eveniet",
+                Bigint: big.NewInt(992430),
+                BigintStr: types.MustNewBigIntFromString("815524"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("5757.51"),
+                Decimal: types.MustNewDecimalFromString("850.01"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectIntEnumFirst,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
@@ -2287,22 +2359,22 @@ func main() {
             },
         },
         Bool: false,
-        Int: 157632,
+        Int: 628899,
         Map: map[string]shared.SimpleObject{
-            "eveniet": shared.SimpleObject{
-                Any: "asperiores",
-                Bigint: big.NewInt(815524),
-                BigintStr: types.MustNewBigIntFromString("85001"),
+            "culpa": shared.SimpleObject{
+                Any: "aliquid",
+                Bigint: big.NewInt(949298),
+                BigintStr: types.MustNewBigIntFromString("62713"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("1594.14"),
+                Decimal: types.MustNewDecimalFromString("9367.47"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
@@ -2311,30 +2383,30 @@ func main() {
                 StrOpt: sdk.String("optional example"),
             },
         },
-        Num: 6336.08,
+        Num: 2586.84,
         Obj: shared.SimpleObject{
-            Any: "aliquid",
-            Bigint: big.NewInt(949298),
-            BigintStr: types.MustNewBigIntFromString("62713"),
+            Any: "libero",
+            Bigint: big.NewInt(849039),
+            BigintStr: types.MustNewBigIntFromString("742238"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("9367.47"),
+            Decimal: types.MustNewDecimalFromString("333.04"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumSecond,
+            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+            IntEnum: shared.SimpleObjectIntEnumThird,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
             Str: "example",
             StrOpt: sdk.String("optional example"),
         },
-        Str: "eius",
-        Type: sdk.String("libero"),
+        Str: "dicta",
+        Type: sdk.String("ullam"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2384,7 +2456,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormMapPrimitive(ctx, map[string]string{
-        "illum": "soluta",
+        "reprehenderit": "ullam",
     })
     if err != nil {
         log.Fatal(err)
@@ -2436,19 +2508,19 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormSimple(ctx, shared.SimpleObject{
-        Any: "accusantium",
-        Bigint: big.NewInt(306986),
-        BigintStr: types.MustNewBigIntFromString("958983"),
+        Any: "nisi",
+        Bigint: big.NewInt(16328),
+        BigintStr: types.MustNewBigIntFromString("531849"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("1197.71"),
+        Decimal: types.MustNewDecimalFromString("1852.32"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumSecond,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
@@ -2506,19 +2578,19 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesComponentFiltered(ctx, shared.SimpleObject{
-        Any: "ullam",
-        Bigint: big.NewInt(391774),
-        BigintStr: types.MustNewBigIntFromString("16328"),
+        Any: "deleniti",
+        Bigint: big.NewInt(929292),
+        BigintStr: types.MustNewBigIntFromString("680270"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("5318.49"),
+        Decimal: types.MustNewDecimalFromString("996.15"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
         IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
@@ -2576,8 +2648,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(ctx, operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON{
         Bool: false,
-        Num: 4012.59,
-        Str: "deleniti",
+        Num: 984.78,
+        Str: "at",
     })
     if err != nil {
         log.Fatal(err)
@@ -2627,10 +2699,10 @@ func main() {
     )
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
         Bool3: false,
-        Num3: 9292.92,
-        Str3: "dolorum",
+        Num3: 920.27,
+        Str3: "voluptate",
     }
-    paramStr := "architecto"
+    paramStr := "ipsa"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamForm(ctx, requestBody, paramStr)
@@ -2683,10 +2755,10 @@ func main() {
     )
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
         Bool: false,
-        Num: 6091.78,
-        Str: "tenetur",
+        Num: 3267.01,
+        Str: "veritatis",
     }
-    paramStr := "quasi"
+    paramStr := "consectetur"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJSON(ctx, requestBody, paramStr)
@@ -2739,10 +2811,10 @@ func main() {
     )
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
         Bool2: false,
-        Num2: 8694.89,
-        Str2: "et",
+        Num2: 2371.73,
+        Str2: "iste",
     }
-    paramStr := "voluptate"
+    paramStr := "temporibus"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx, requestBody, paramStr)
@@ -2797,8 +2869,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitForm(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded{
         Bool3: false,
-        Num3: 559.65,
-        Str3: "minima",
+        Num3: 330.74,
+        Str3: "rem",
     })
     if err != nil {
         log.Fatal(err)
@@ -2850,8 +2922,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitJSON(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON{
         Bool: false,
-        Num: 865.32,
-        Str: "consectetur",
+        Num: 156.06,
+        Str: "laudantium",
     })
     if err != nil {
         log.Fatal(err)
@@ -2903,8 +2975,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipart(ctx, operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData{
         Bool2: false,
-        Num2: 2371.73,
-        Str2: "iste",
+        Num2: 4287.96,
+        Str2: "mollitia",
     })
     if err != nil {
         log.Fatal(err)
@@ -2954,7 +3026,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullArray(ctx, []string{
-        "temporibus",
+        "ab",
     })
     if err != nil {
         log.Fatal(err)
@@ -3004,7 +3076,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullDictionary(ctx, map[string]string{
-        "accusantium": "rem",
+        "corrupti": "non",
     })
     if err != nil {
         log.Fatal(err)
@@ -3053,7 +3125,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("aut"))
+    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("voluptatem"))
     if err != nil {
         log.Fatal(err)
     }
@@ -3100,8 +3172,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := []byte("laudantium")
-    queryStringParam := "eum"
+    requestBody := []byte("dolor")
+    queryStringParam := "occaecati"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutBytesWithParams(ctx, requestBody, queryStringParam)
@@ -3156,23 +3228,43 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartDeep(ctx, shared.DeepObject{
-        Any: "ab",
+        Any: shared.SimpleObject{
+            Any: "impedit",
+            Bigint: big.NewInt(131055),
+            BigintStr: types.MustNewBigIntFromString("376226"),
+            Bool: true,
+            BoolOpt: sdk.Bool(true),
+            Date: types.MustDateFromString("2020-01-01"),
+            DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+            Decimal: types.MustNewDecimalFromString("120.36"),
+            Enum: shared.EnumTwo,
+            Float32: 2.2222222,
+            Int: 999999,
+            Int32: 1,
+            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+            IntEnum: shared.SimpleObjectIntEnumFirst,
+            IntOptNull: sdk.Int64(999999),
+            Num: 1.1,
+            NumOptNull: sdk.Float64(1.1),
+            Str: "example",
+            StrOpt: sdk.String("optional example"),
+        },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "corrupti",
-                Bigint: big.NewInt(251941),
-                BigintStr: types.MustNewBigIntFromString("32465"),
+                Any: "maiores",
+                Bigint: big.NewInt(618480),
+                BigintStr: types.MustNewBigIntFromString("244651"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("2211.61"),
+                Decimal: types.MustNewDecimalFromString("9742.57"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumFirst,
+                IntEnum: shared.SimpleObjectIntEnumThird,
                 IntOptNull: sdk.Int64(999999),
                 Num: 1.1,
                 NumOptNull: sdk.Float64(1.1),
@@ -3181,17 +3273,17 @@ func main() {
             },
         },
         Bool: false,
-        Int: 771089,
+        Int: 45659,
         Map: map[string]shared.SimpleObject{
-            "explicabo": shared.SimpleObject{
-                Any: "voluptas",
-                Bigint: big.NewInt(12036),
-                BigintStr: types.MustNewBigIntFromString("491025"),
+            "ea": shared.SimpleObject{
+                Any: "quaerat",
+                Bigint: big.NewInt(162954),
+                BigintStr: types.MustNewBigIntFromString("831520"),
                 Bool: true,
                 BoolOpt: sdk.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("1154.84"),
+                Decimal: types.MustNewDecimalFromString("6387.62"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
@@ -3205,30 +3297,30 @@ func main() {
                 StrOpt: sdk.String("optional example"),
             },
         },
-        Num: 2446.51,
+        Num: 6400.24,
         Obj: shared.SimpleObject{
-            Any: "voluptatibus",
-            Bigint: big.NewInt(374323),
-            BigintStr: types.MustNewBigIntFromString("990345"),
+            Any: "asperiores",
+            Bigint: big.NewInt(368102),
+            BigintStr: types.MustNewBigIntFromString("65304"),
             Bool: true,
             BoolOpt: sdk.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("456.59"),
+            Decimal: types.MustNewDecimalFromString("3127.53"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumFirst,
+            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+            IntEnum: shared.SimpleObjectIntEnumThird,
             IntOptNull: sdk.Int64(999999),
             Num: 1.1,
             NumOptNull: sdk.Float64(1.1),
             Str: "example",
             StrOpt: sdk.String("optional example"),
         },
-        Str: "consequuntur",
-        Type: sdk.String("repellendus"),
+        Str: "labore",
+        Type: sdk.String("ab"),
     })
     if err != nil {
         log.Fatal(err)
@@ -3280,8 +3372,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
         File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
-            Content: []byte("officia"),
-            File: "maxime",
+            Content: []byte("adipisci"),
+            File: "fuga",
         },
     })
     if err != nil {
@@ -3334,20 +3426,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartSimple(ctx, shared.SimpleObject{
-        Any: "dignissimos",
-        Bigint: big.NewInt(640024),
-        BigintStr: types.MustNewBigIntFromString("989410"),
+        Any: "id",
+        Bigint: big.NewInt(380729),
+        BigintStr: types.MustNewBigIntFromString("246063"),
         Bool: true,
         BoolOpt: sdk.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("3681.02"),
+        Decimal: types.MustNewDecimalFromString("6339.31"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-        IntEnum: shared.SimpleObjectIntEnumFirst,
+        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        IntEnum: shared.SimpleObjectIntEnumThird,
         IntOptNull: sdk.Int64(999999),
         Num: 1.1,
         NumOptNull: sdk.Float64(1.1),
@@ -3401,7 +3493,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutString(ctx, "porro")
+    res, err := s.RequestBodies.RequestBodyPutString(ctx, "totam")
     if err != nil {
         log.Fatal(err)
     }
@@ -3448,8 +3540,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := "quod"
-    queryStringParam := "labore"
+    requestBody := "fugiat"
+    queryStringParam := "vel"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutStringWithParams(ctx, requestBody, queryStringParam)
@@ -3502,9 +3594,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyReadAndWrite(ctx, shared.ReadWriteObjectInput{
-        Num1: 70447,
-        Num2: 241418,
-        Num3: 683573,
+        Num1: 497678,
+        Num2: 554688,
+        Num3: 427834,
     })
     if err != nil {
         log.Fatal(err)
@@ -3707,8 +3799,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnly(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 6625.05,
-        String: "suscipit",
+        Num: 2870.51,
+        String: "possimus",
     })
     if err != nil {
         log.Fatal(err)
@@ -3760,8 +3852,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 2460.63,
-        String: "culpa",
+        Num: 7065.75,
+        String: "cum",
     })
     if err != nil {
         log.Fatal(err)

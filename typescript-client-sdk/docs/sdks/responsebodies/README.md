@@ -63,8 +63,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const xNumberHeader: number = 5196.43;
-const xStringHeader: string = "hic";
+const xNumberHeader: number = 6719.07;
+const xStringHeader: string = "sed";
 
 sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader).then((res: ResponseBodyEmptyWithHeadersResponse) => {
   if (res.statusCode == 200) {

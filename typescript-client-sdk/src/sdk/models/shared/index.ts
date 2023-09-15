@@ -23,6 +23,8 @@ export * from "./limitoffsetconfig";
 export * from "./mapobjvalue";
 export * from "./mapobjvaluecamelcase";
 export * from "./nullableobject";
+export * from "./nullableoneofrefinobject";
+export * from "./nullableoneoftypeinobject";
 export * from "./readonlyobject";
 export * from "./readwriteobject";
 export * from "./refqueryparamobj";

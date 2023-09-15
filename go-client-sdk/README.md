@@ -267,6 +267,7 @@ func main() {
 
 ### [RequestBodies](docs/sdks/requestbodies/README.md)
 
+* [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [NullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
 * [NullableRequiredPropertyPost](docs/sdks/requestbodies/README.md#nullablerequiredpropertypost)
 * [NullableRequiredSharedObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredsharedobjectpost)
@@ -366,9 +367,15 @@ func main() {
 
 ### [Unions](docs/sdks/unions/README.md)
 
+* [FlattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [MixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
+* [NullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
+* [NullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
+* [NullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
+* [NullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
 * [PrimitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
 * [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->

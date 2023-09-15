@@ -23,8 +23,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestId: string = "exercitationem";
-const numRetries: number = 750765;
+const requestId: string = "in";
+const numRetries: number = 417486;
 
 sdk.retries.retriesGet(requestId, numRetries).then((res: RetriesGetResponse) => {
   if (res.statusCode == 200) {

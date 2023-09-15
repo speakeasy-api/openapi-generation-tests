@@ -6,11 +6,70 @@ Endpoints for testing union types.
 
 ### Available Operations
 
+* [flattenedTypedObjectPost](#flattenedtypedobjectpost)
 * [mixedTypeOneOfPost](#mixedtypeoneofpost)
+* [nullableOneOfRefInObjectPost](#nullableoneofrefinobjectpost)
+* [nullableOneOfSchemaPost](#nullableoneofschemapost)
+* [nullableOneOfTypeInObjectPost](#nullableoneoftypeinobjectpost)
+* [nullableTypedObjectPost](#nullabletypedobjectpost)
 * [primitiveTypeOneOfPost](#primitivetypeoneofpost)
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
+* [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
 * [weaklyTypedOneOfPost](#weaklytypedoneofpost)
+
+## flattenedTypedObjectPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.TypedObject1;
+import org.openapis.openapi.models.shared.TypedObject1Type;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.. req = new TypedObject1(TypedObject1Type.OBJ1, "reiciendis") {{
+                type = TypedObject1Type.OBJ1;
+                value = "unde";
+            }}            
+
+            FlattenedTypedObjectPostResponse res = sdk.unions.flattenedTypedObjectPost(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse](../../models/operations/FlattenedTypedObjectPostResponse.md)**
+
 
 ## mixedTypeOneOfPost
 
@@ -40,27 +99,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObject("quidem", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                any = "dolorem";
-                bigint = 690894L;
-                bigintStr = "dicta";
-                bool = true;
-                boolOpt = true;
-                date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                decimal = 994.16d;
-                enum_ = Enum.TWO;
-                float32 = 2.2222222f;
-                int_ = 999999L;
-                int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                intEnum = SimpleObjectIntEnum.First;
-                intOptNull = 999999L;
-                num = 1.1d;
-                numOptNull = 1.1d;
-                str = "example";
-                strOpt = "optional example";
-            }}            
+            org.openapis.openapi.models.. req = 833819L            
 
             MixedTypeOneOfPostResponse res = sdk.unions.mixedTypeOneOfPost(req);
 
@@ -86,6 +125,216 @@ public class Application {
 **[org.openapis.openapi.models.operations.MixedTypeOneOfPostResponse](../../models/operations/MixedTypeOneOfPostResponse.md)**
 
 
+## nullableOneOfRefInObjectPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse;
+import org.openapis.openapi.models.shared.NullableOneOfRefInObject;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.TypedObject1;
+import org.openapis.openapi.models.shared.TypedObject1Type;
+import org.openapis.openapi.models.shared.TypedObject2;
+import org.openapis.openapi.models.shared.TypedObject2Type;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject("voluptates",                 new TypedObject1(TypedObject1Type.OBJ1, "quidem") {{
+                                type = TypedObject1Type.OBJ1;
+                                value = "est";
+                            }},                 new TypedObject1(TypedObject1Type.OBJ1, "facere") {{
+                                type = TypedObject1Type.OBJ1;
+                                value = "reprehenderit";
+                            }});            
+
+            NullableOneOfRefInObjectPostResponse res = sdk.unions.nullableOneOfRefInObjectPost(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                      | Type                                                                                                           | Required                                                                                                       | Description                                                                                                    |
+| -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                      | [org.openapis.openapi.models.shared.NullableOneOfRefInObject](../../models/shared/NullableOneOfRefInObject.md) | :heavy_check_mark:                                                                                             | The request object to use for the request.                                                                     |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NullableOneOfRefInObjectPostResponse](../../models/operations/NullableOneOfRefInObjectPostResponse.md)**
+
+
+## nullableOneOfSchemaPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.TypedObject1;
+import org.openapis.openapi.models.shared.TypedObject1Type;
+import org.openapis.openapi.models.shared.TypedObject2;
+import org.openapis.openapi.models.shared.TypedObject2Type;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.. req = "praesentium"            
+
+            NullableOneOfSchemaPostResponse res = sdk.unions.nullableOneOfSchemaPost(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NullableOneOfSchemaPostResponse](../../models/operations/NullableOneOfSchemaPostResponse.md)**
+
+
+## nullableOneOfTypeInObjectPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse;
+import org.openapis.openapi.models.shared.NullableOneOfTypeInObject;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.shared.NullableOneOfTypeInObject req = new NullableOneOfTypeInObject("veniam", false, false);            
+
+            NullableOneOfTypeInObjectPostResponse res = sdk.unions.nullableOneOfTypeInObjectPost(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                        | [org.openapis.openapi.models.shared.NullableOneOfTypeInObject](../../models/shared/NullableOneOfTypeInObject.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NullableOneOfTypeInObjectPostResponse](../../models/operations/NullableOneOfTypeInObjectPostResponse.md)**
+
+
+## nullableTypedObjectPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.NullableTypedObjectPostResponse;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.TypedObject1;
+import org.openapis.openapi.models.shared.TypedObject1Type;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.. req = "repudiandae"            
+
+            NullableTypedObjectPostResponse res = sdk.unions.nullableTypedObjectPost(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.NullableTypedObjectPostResponse](../../models/operations/NullableTypedObjectPostResponse.md)**
+
+
 ## primitiveTypeOneOfPost
 
 ### Example Usage
@@ -108,7 +357,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = 9488.61d            
+            org.openapis.openapi.models.. req = "atque"            
 
             PrimitiveTypeOneOfPostResponse res = sdk.unions.primitiveTypeOneOfPost(req);
 
@@ -166,27 +415,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new SimpleObjectWithType("repellendus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectWithTypeInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectWithTypeIntEnum.Third, 1.1d, "example", "perferendis") {{
-                any = "alias";
-                bigint = 227084L;
-                bigintStr = "deserunt";
+            org.openapis.openapi.models.. req = new SimpleObjectWithType("amet", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectWithTypeInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectWithTypeIntEnum.Second, 1.1d, "example", "atque") {{
+                any = "asperiores";
+                bigint = 519952L;
+                bigintStr = "suscipit";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                decimal = 4548.6d;
+                decimal = 6939.57d;
                 enum_ = Enum.TWO;
                 float32 = 2.2222222f;
                 int_ = 999999L;
                 int32 = 1;
-                int32Enum = SimpleObjectWithTypeInt32Enum.SIXTY_NINE;
-                intEnum = SimpleObjectWithTypeIntEnum.Third;
+                int32Enum = SimpleObjectWithTypeInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                intEnum = SimpleObjectWithTypeIntEnum.First;
                 intOptNull = 999999L;
                 num = 1.1d;
                 numOptNull = 1.1d;
                 str = "example";
                 strOpt = "optional example";
-                type = "provident";
+                type = "esse";
             }}            
 
             StronglyTypedOneOfPostResponse res = sdk.unions.stronglyTypedOneOfPost(req);
@@ -211,6 +460,61 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.StronglyTypedOneOfPostResponse](../../models/operations/StronglyTypedOneOfPostResponse.md)**
+
+
+## typedObjectNullableOneOfPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse;
+import org.openapis.openapi.models.shared.Security;
+import org.openapis.openapi.models.shared.TypedObject1;
+import org.openapis.openapi.models.shared.TypedObject1Type;
+import org.openapis.openapi.models.shared.TypedObject2;
+import org.openapis.openapi.models.shared.TypedObject2Type;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.. req = new TypedObject2(TypedObject2Type.OBJ2, "officiis") {{
+                type = TypedObject2Type.OBJ2;
+                value = "officiis";
+            }}            
+
+            TypedObjectNullableOneOfPostResponse res = sdk.unions.typedObjectNullableOneOfPost(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.TypedObjectNullableOneOfPostResponse](../../models/operations/TypedObjectNullableOneOfPostResponse.md)**
 
 
 ## typedObjectOneOfPost
@@ -241,9 +545,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new TypedObject3(TypedObject3Type.OBJ3, "reprehenderit") {{
+            org.openapis.openapi.models.. req = new TypedObject3(TypedObject3Type.OBJ3, "minima") {{
                 type = TypedObject3Type.OBJ3;
-                value = "quidem";
+                value = "natus";
             }}            
 
             TypedObjectOneOfPostResponse res = sdk.unions.typedObjectOneOfPost(req);
@@ -299,152 +603,26 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new DeepObject(                new SimpleObject("repellendus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                any = "repudiandae";
-                                bigint = 542129L;
-                                bigintStr = "atque";
-                                bool = true;
-                                boolOpt = true;
-                                date = LocalDate.parse("2020-01-01");
-                                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                decimal = 1209.19d;
-                                enum_ = Enum.TWO;
-                                float32 = 2.2222222f;
-                                int_ = 999999L;
-                                int32 = 1;
-                                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                                intEnum = SimpleObjectIntEnum.Third;
-                                intOptNull = 999999L;
-                                num = 1.1d;
-                                numOptNull = 1.1d;
-                                str = "example";
-                                strOpt = "optional example";
-                            }},                 new org.openapis.openapi.models.shared.SimpleObject[]{{
-                                add(new SimpleObject("enim", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                                    any = "doloremque";
-                                    bigint = 919783L;
-                                    bigintStr = "dicta";
-                                    bool = true;
-                                    boolOpt = true;
-                                    date = LocalDate.parse("2020-01-01");
-                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 360.33d;
-                                    enum_ = Enum.TWO;
-                                    float32 = 2.2222222f;
-                                    int_ = 999999L;
-                                    int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                                    intEnum = SimpleObjectIntEnum.First;
-                                    intOptNull = 999999L;
-                                    num = 1.1d;
-                                    numOptNull = 1.1d;
-                                    str = "example";
-                                    strOpt = "optional example";
-                                }}),
-                            }}, false, 952143L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                                put("molestias", new SimpleObject("in", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                                    any = "magnam";
-                                    bigint = 906355L;
-                                    bigintStr = "consequuntur";
-                                    bool = true;
-                                    boolOpt = true;
-                                    date = LocalDate.parse("2020-01-01");
-                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                                    decimal = 5801.07d;
-                                    enum_ = Enum.TWO;
-                                    float32 = 2.2222222f;
-                                    int_ = 999999L;
-                                    int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                                    intEnum = SimpleObjectIntEnum.Second;
-                                    intOptNull = 999999L;
-                                    num = 1.1d;
-                                    numOptNull = 1.1d;
-                                    str = "example";
-                                    strOpt = "optional example";
-                                }});
-                            }}, 5808.87d,                 new SimpleObject("consequuntur", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                                bigint = 335631L;
-                                bigintStr = "reprehenderit";
-                                boolOpt = true;
-                                decimal = 6255.28d;
-                                intOptNull = 999999L;
-                                numOptNull = 1.1d;
-                                strOpt = "optional example";
-                            }};, "illo") {{
-                any = "praesentium";
-                arr = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("atque", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        any = "mollitia";
-                        bigint = 333965L;
-                        bigintStr = "voluptatem";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 7908.4d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        intEnum = SimpleObjectIntEnum.First;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }}),
-                }};
-                bool = false;
-                int_ = 519952L;
-                map = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("suscipit", new SimpleObject("ea", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        any = "quidem";
-                        bigint = 806670L;
-                        bigintStr = "et";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                        decimal = 4610.07d;
-                        enum_ = Enum.TWO;
-                        float32 = 2.2222222f;
-                        int_ = 999999L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                        intEnum = SimpleObjectIntEnum.Third;
-                        intOptNull = 999999L;
-                        num = 1.1d;
-                        numOptNull = 1.1d;
-                        str = "example";
-                        strOpt = "optional example";
-                    }});
-                }};
-                num = 8872.65d;
-                obj = new SimpleObject("maiores", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                    any = "officiis";
-                    bigint = 880107L;
-                    bigintStr = "natus";
-                    bool = true;
-                    boolOpt = true;
-                    date = LocalDate.parse("2020-01-01");
-                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                    decimal = 3283.03d;
-                    enum_ = Enum.TWO;
-                    float32 = 2.2222222f;
-                    int_ = 999999L;
-                    int32 = 1;
-                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                    intEnum = SimpleObjectIntEnum.Second;
-                    intOptNull = 999999L;
-                    num = 1.1d;
-                    numOptNull = 1.1d;
-                    str = "example";
-                    strOpt = "optional example";
-                }};
-                str = "error";
-                type = "blanditiis";
+            org.openapis.openapi.models.. req = new SimpleObject("suscipit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                any = "ex";
+                bigint = 980581L;
+                bigintStr = "corrupti";
+                bool = true;
+                boolOpt = true;
+                date = LocalDate.parse("2020-01-01");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                decimal = 8717.86d;
+                enum_ = Enum.TWO;
+                float32 = 2.2222222f;
+                int_ = 999999L;
+                int32 = 1;
+                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                intEnum = SimpleObjectIntEnum.Second;
+                intOptNull = 999999L;
+                num = 1.1d;
+                numOptNull = 1.1d;
+                str = "example";
+                strOpt = "optional example";
             }}            
 
             WeaklyTypedOneOfPostResponse res = sdk.unions.weaklyTypedOneOfPost(req);

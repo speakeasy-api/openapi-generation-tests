@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.31.6'
+implementation 'org.openapis.openapi:openapi:1.31.7'
 ```
 <!-- End SDK Installation -->
 
@@ -248,6 +248,7 @@ public class Application {
 
 ### [requestBodies](docs/sdks/requestbodies/README.md)
 
+* [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [nullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
 * [nullableRequiredPropertyPost](docs/sdks/requestbodies/README.md#nullablerequiredpropertypost)
 * [nullableRequiredSharedObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredsharedobjectpost)
@@ -347,9 +348,15 @@ public class Application {
 
 ### [unions](docs/sdks/unions/README.md)
 
+* [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
+* [nullableOneOfRefInObjectPost](docs/sdks/unions/README.md#nullableoneofrefinobjectpost)
+* [nullableOneOfSchemaPost](docs/sdks/unions/README.md#nullableoneofschemapost)
+* [nullableOneOfTypeInObjectPost](docs/sdks/unions/README.md#nullableoneoftypeinobjectpost)
+* [nullableTypedObjectPost](docs/sdks/unions/README.md#nullabletypedobjectpost)
 * [primitiveTypeOneOfPost](docs/sdks/unions/README.md#primitivetypeoneofpost)
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
+* [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->

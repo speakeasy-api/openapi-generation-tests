@@ -1295,9 +1295,9 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const boolParam: boolean = false;
-const intParam: number = 961571;
-const numParam: number = 4551.69;
-const strParam: string = "consectetur";
+const intParam: number = 1;
+const numParam: number = 9615.71;
+const strParam: string = "voluptate";
 
 sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam).then((res: SimplePathParameterPrimitivesResponse) => {
   if (res.statusCode == 200) {
@@ -1308,13 +1308,13 @@ sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strP
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `boolParam`                                                  | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
-| `intParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `numParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `strParam`                                                   | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `boolParam`                                                  | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `intParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `numParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `strParam`                                                   | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
