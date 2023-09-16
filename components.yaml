@@ -689,6 +689,312 @@ components:
         - bigint
         - decimal
         - decimalStr
+    defaultsAndConsts:
+      type: object
+      properties:
+        normalField:
+          type: string
+        constStr:
+          type: string
+          const: "const"
+        constStrNull:
+          type: string
+          const: null
+          nullable: true
+        constInt:
+          type: integer
+          const: 123
+        constNum:
+          type: number
+          const: 123.456
+        constBool:
+          type: boolean
+          const: true
+        constDate:
+          type: string
+          format: date
+          const: "2020-01-01"
+        constDateTime:
+          type: string
+          format: date-time
+          const: "2020-01-01T00:00:00Z"
+        constEnumStr:
+          type: string
+          enum:
+            - "one"
+            - "two"
+            - "three"
+          const: "two"
+        constEnumInt:
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+          const: 2
+        constBigInt:
+          type: integer
+          format: bigint
+          const: 9007199254740991
+        constBigIntStr:
+          type: string
+          format: bigint
+          const: "9223372036854775807"
+        constDecimal:
+          type: number
+          format: decimal
+          const: 3.141592653589793
+        constDecimalStr:
+          type: string
+          format: decimal
+          const: "3.141592653589793238462643383279"
+        singleEnumConstStr:
+          type: string
+          enum:
+            - "one"
+        singleEnumConstBool:
+          type: boolean
+          enum:
+            - true
+        defaultStr:
+          type: string
+          default: "default"
+        defaultStrNullable:
+          type: string
+          default: null
+          nullable: true
+        defaultStrOptional:
+          type: string
+          default: "default"
+        defaultInt:
+          type: integer
+          default: 123
+        defaultNum:
+          type: number
+          default: 123.456
+        defaultBool:
+          type: boolean
+          default: true
+        defaultDate:
+          type: string
+          format: date
+          default: "2020-01-01"
+        defaultDateTime:
+          type: string
+          format: date-time
+          default: "2020-01-01T00:00:00Z"
+        defaultEnumStr:
+          type: string
+          enum:
+            - "one"
+            - "two"
+            - "three"
+          default: "two"
+        defaultEnumInt:
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+          default: 2
+        defaultBigInt:
+          type: integer
+          format: bigint
+          default: 9007199254740991
+        defaultBigIntStr:
+          type: string
+          format: bigint
+          default: "9223372036854775807"
+        defaultDecimal:
+          type: number
+          format: decimal
+          default: 3.141592653589793
+        defaultDecimalStr:
+          type: string
+          format: decimal
+          default: "3.141592653589793238462643383279"
+      required:
+        - normalField
+        - constStr
+        - constStrNull
+        - constInt
+        - constNum
+        - constBool
+        - constDate
+        - constDateTime
+        - constEnumStr
+        - constEnumInt
+        - constBigInt
+        - constBigIntStr
+        - constDecimal
+        - constDecimalStr
+        - singleEnumConstStr
+        - singleEnumConstBool
+        - defaultStr
+        - defaultStrNullable
+        - defaultInt
+        - defaultNum
+        - defaultBool
+        - defaultDate
+        - defaultDateTime
+        - defaultEnumStr
+        - defaultEnumInt
+        - defaultBigInt
+        - defaultBigIntStr
+        - defaultDecimal
+        - defaultDecimalStr
+    defaultsAndConstsOutput:
+      type: object
+      properties:
+        normalField:
+          type: string
+        constStr:
+          type: string
+        constStrNull:
+          type: string
+          nullable: true
+        constInt:
+          type: integer
+        constNum:
+          type: number
+        constBool:
+          type: boolean
+        constDate:
+          type: string
+          format: date
+        constDateTime:
+          type: string
+          format: date-time
+        constEnumStr:
+          type: string
+          enum:
+            - "one"
+            - "two"
+            - "three"
+        constEnumInt:
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+        constBigInt:
+          type: integer
+          format: bigint
+        constBigIntStr:
+          type: string
+          format: bigint
+        constDecimal:
+          type: number
+          format: decimal
+        constDecimalStr:
+          type: string
+          format: decimal
+        singleEnumConstStr:
+          type: string
+        singleEnumConstBool:
+          type: boolean
+        defaultStr:
+          type: string
+        defaultStrNullable:
+          type: string
+          nullable: true
+        defaultStrOptional:
+          type: string
+        defaultInt:
+          type: integer
+        defaultNum:
+          type: number
+        defaultBool:
+          type: boolean
+        defaultDate:
+          type: string
+          format: date
+        defaultDateTime:
+          type: string
+          format: date-time
+        defaultEnumStr:
+          type: string
+          enum:
+            - "one"
+            - "two"
+            - "three"
+        defaultEnumInt:
+          type: integer
+          enum:
+            - 1
+            - 2
+            - 3
+        defaultBigInt:
+          type: integer
+          format: bigint
+        defaultBigIntStr:
+          type: string
+          format: bigint
+        defaultDecimal:
+          type: number
+          format: decimal
+        defaultDecimalStr:
+          type: string
+          format: decimal
+      required:
+        - normalField
+        - constStr
+        - constStrNull
+        - constInt
+        - constNum
+        - constBool
+        - constDate
+        - constDateTime
+        - constEnumStr
+        - constEnumInt
+        - constBigInt
+        - constBigIntStr
+        - constDecimal
+        - constDecimalStr
+        - singleEnumConstStr
+        - singleEnumConstBool
+        - defaultStr
+        - defaultStrNullable
+        - defaultInt
+        - defaultNum
+        - defaultBool
+        - defaultDate
+        - defaultDateTime
+        - defaultEnumStr
+        - defaultEnumInt
+        - defaultBigInt
+        - defaultBigIntStr
+        - defaultDecimal
+        - defaultDecimalStr
+    objWithStringAdditionlProperties:
+      type: object
+      properties:
+        normalField:
+          type: string
+      additionalProperties:
+        type: string
+      required:
+        - normalField
+    objWithComplexNumbersAdditionlProperties:
+      type: object
+      properties:
+        normalField:
+          type: string
+      additionalProperties:
+        type: string
+        format: bigint
+      required:
+        - normalField
+    objWithDateAdditionlProperties:
+      type: object
+      properties:
+        normalField:
+          type: string
+      additionalProperties:
+        type: string
+        format: date
+      required:
+        - normalField
   responses:
     tokenAuthResponse:
       description: Successful authentication.
