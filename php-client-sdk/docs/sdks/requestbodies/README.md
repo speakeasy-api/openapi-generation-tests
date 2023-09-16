@@ -36,10 +36,29 @@ Endpoints for testing request bodies.
 * [requestBodyPostApplicationJsonSimple](#requestbodypostapplicationjsonsimple)
 * [requestBodyPostApplicationJsonSimpleCamelCase](#requestbodypostapplicationjsonsimplecamelcase)
 * [requestBodyPostComplexNumberTypes](#requestbodypostcomplexnumbertypes)
+* [requestBodyPostDefaultsAndConsts](#requestbodypostdefaultsandconsts)
 * [requestBodyPostEmptyObject](#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](#requestbodypostformmapprimitive)
 * [requestBodyPostFormSimple](#requestbodypostformsimple)
+* [requestBodyPostJsonDataTypesArrayBigInt](#requestbodypostjsondatatypesarraybigint)
+* [requestBodyPostJsonDataTypesArrayDate](#requestbodypostjsondatatypesarraydate)
+* [requestBodyPostJsonDataTypesArrayDecimalStr](#requestbodypostjsondatatypesarraydecimalstr)
+* [requestBodyPostJsonDataTypesBigInt](#requestbodypostjsondatatypesbigint)
+* [requestBodyPostJsonDataTypesBigIntStr](#requestbodypostjsondatatypesbigintstr)
+* [requestBodyPostJsonDataTypesBoolean](#requestbodypostjsondatatypesboolean)
+* [requestBodyPostJsonDataTypesDate](#requestbodypostjsondatatypesdate)
+* [requestBodyPostJsonDataTypesDateTime](#requestbodypostjsondatatypesdatetime)
+* [requestBodyPostJsonDataTypesDecimal](#requestbodypostjsondatatypesdecimal)
+* [requestBodyPostJsonDataTypesDecimalStr](#requestbodypostjsondatatypesdecimalstr)
+* [requestBodyPostJsonDataTypesFloat32](#requestbodypostjsondatatypesfloat32)
+* [requestBodyPostJsonDataTypesInt32](#requestbodypostjsondatatypesint32)
+* [requestBodyPostJsonDataTypesInteger](#requestbodypostjsondatatypesinteger)
+* [requestBodyPostJsonDataTypesMapBigIntStr](#requestbodypostjsondatatypesmapbigintstr)
+* [requestBodyPostJsonDataTypesMapDateTime](#requestbodypostjsondatatypesmapdatetime)
+* [requestBodyPostJsonDataTypesMapDecimal](#requestbodypostjsondatatypesmapdecimal)
+* [requestBodyPostJsonDataTypesNumber](#requestbodypostjsondatatypesnumber)
+* [requestBodyPostJsonDataTypesString](#requestbodypostjsondatatypesstring)
 * [requestBodyPostMultipleContentTypesComponentFiltered](#requestbodypostmultiplecontenttypescomponentfiltered)
 * [requestBodyPostMultipleContentTypesInlineFiltered](#requestbodypostmultiplecontenttypesinlinefiltered)
 * [requestBodyPostMultipleContentTypesSplitParamForm](#requestbodypostmultiplecontenttypessplitparamform)
@@ -1638,6 +1657,83 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostComplexNumberTypesResponse](../../models/operations/RequestBodyPostComplexNumberTypesResponse.md)**
 
 
+## requestBodyPostDefaultsAndConsts
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConsts;
+use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumInt;
+use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumStr;
+use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumInt;
+use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumStr;
+use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsSingleEnumConstStr;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = new DefaultsAndConsts();
+    $request->constBigInt = 960835;
+    $request->constBigIntStr = 'quisquam';
+    $request->constBool = false;
+    $request->constDate = DateTime::createFromFormat('Y-m-d', '2021-10-07');
+    $request->constDateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2021-12-03T14:20:49.127Z');
+    $request->constDecimal = 3331.45;
+    $request->constDecimalStr = 'aliquid';
+    $request->constEnumInt = DefaultsAndConstsConstEnumInt::One;
+    $request->constEnumStr = DefaultsAndConstsConstEnumStr::One;
+    $request->constInt = 407241;
+    $request->constNum = 7752.2;
+    $request->constStr = 'consectetur';
+    $request->constStrNull = 'recusandae';
+    $request->defaultBigInt = 132487;
+    $request->defaultBigIntStr = 'minima';
+    $request->defaultBool = false;
+    $request->defaultDate = DateTime::createFromFormat('Y-m-d', '2022-01-18');
+    $request->defaultDateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-12-21T19:37:25.645Z');
+    $request->defaultDecimal = 114.27;
+    $request->defaultDecimalStr = 'deleniti';
+    $request->defaultEnumInt = DefaultsAndConstsDefaultEnumInt::Three;
+    $request->defaultEnumStr = DefaultsAndConstsDefaultEnumStr::One;
+    $request->defaultInt = 146946;
+    $request->defaultNum = 8828.6;
+    $request->defaultStr = 'inventore';
+    $request->defaultStrNullable = 'non';
+    $request->defaultStrOptional = 'et';
+    $request->normalField = 'dolorum';
+    $request->singleEnumConstBool = false;
+    $request->singleEnumConstStr = DefaultsAndConstsSingleEnumConstStr::One;
+
+    $response = $sdk->requestBodies->requestBodyPostDefaultsAndConsts($request);
+
+    if ($response->requestBodyPostDefaultsAndConsts200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `$request`                                                                                   | [\OpenAPI\OpenAPI\Models\Shared\DefaultsAndConsts](../../models/shared/DefaultsAndConsts.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostDefaultsAndConstsResponse](../../models/operations/RequestBodyPostDefaultsAndConstsResponse.md)**
+
+
 ## requestBodyPostEmptyObject
 
 ### Example Usage
@@ -1707,38 +1803,38 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObject();
-    $request->any = 'quisquam';
+    $request->any = 'placeat';
     $request->arr = [
         new SimpleObject(),
     ];
     $request->bool = false;
-    $request->int = 906556;
+    $request->int = 245367;
     $request->map = [
-        'ea' => new SimpleObject(),
+        'eum' => new SimpleObject(),
     ];
-    $request->num = 7740.48;
+    $request->num = 4205.39;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'corporis';
-    $request->obj->bigint = 333145;
-    $request->obj->bigintStr = 'aliquid';
+    $request->obj->any = 'nobis';
+    $request->obj->bigint = 557369;
+    $request->obj->bigintStr = 'assumenda';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->decimal = 811.01;
+    $request->obj->decimal = 8605.52;
     $request->obj->enum = Enum::Two;
     $request->obj->float32 = 2.2222222;
     $request->obj->int = 999999;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->obj->intEnum = SimpleObjectIntEnum::Second;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->obj->intEnum = SimpleObjectIntEnum::Third;
     $request->obj->intOptNull = 999999;
     $request->obj->num = 1.1;
     $request->obj->numOptNull = 1.1;
     $request->obj->str = 'example';
     $request->obj->strOpt = 'optional example';
-    $request->str = 'quo';
-    $request->type = 'consectetur';
+    $request->str = 'quasi';
+    $request->type = 'tempora';
 
     $response = $sdk->requestBodies->requestBodyPostFormDeep($request);
 
@@ -1780,7 +1876,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'recusandae' => 'aspernatur',
+        'numquam' => 'explicabo',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostFormMapPrimitive($request);
@@ -1827,19 +1923,19 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'minima';
-    $request->bigint = 53427;
-    $request->bigintStr = 'a';
+    $request->any = 'provident';
+    $request->bigint = 55374;
+    $request->bigintStr = 'molestiae';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 7255.95;
+    $request->decimal = 3015.98;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $request->intEnum = SimpleObjectIntEnum::First;
     $request->intOptNull = 999999;
     $request->num = 1.1;
@@ -1869,6 +1965,756 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResponse](../../models/operations/RequestBodyPostFormSimpleResponse.md)**
 
 
+## requestBodyPostJsonDataTypesArrayBigInt
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = [
+        458515,
+    ]
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayBigInt($request);
+
+    if ($response->requestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesArrayBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayBigIntResponse.md)**
+
+
+## requestBodyPostJsonDataTypesArrayDate
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = [
+        DateTime::createFromFormat('Y-m-d', '2022-06-23'),
+    ]
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDate($request);
+
+    if ($response->requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesArrayDateResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDateResponse.md)**
+
+
+## requestBodyPostJsonDataTypesArrayDecimalStr
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = [
+        'fuga',
+    ]
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDecimalStr($request);
+
+    if ($response->requestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesArrayDecimalStrResponse.md)**
+
+
+## requestBodyPostJsonDataTypesBigInt
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+442015
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigInt($request);
+
+    if ($response->requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBigIntResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntResponse.md)**
+
+
+## requestBodyPostJsonDataTypesBigIntStr
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+'quidem'
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigIntStr($request);
+
+    if ($response->requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [string](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesBigIntStrResponse.md)**
+
+
+## requestBodyPostJsonDataTypesBoolean
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+false
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBoolean($request);
+
+    if ($response->requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [bool](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesBooleanResponse](../../models/operations/RequestBodyPostJsonDataTypesBooleanResponse.md)**
+
+
+## requestBodyPostJsonDataTypesDate
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+DateTime::createFromFormat('Y-m-d', '2022-02-24')
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDate($request);
+
+    if ($response->requestBodyPostJSONDataTypesDate200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [\DateTime](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDateResponse](../../models/operations/RequestBodyPostJsonDataTypesDateResponse.md)**
+
+
+## requestBodyPostJsonDataTypesDateTime
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-08-15T07:50:23.042Z')
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDateTime($request);
+
+    if ($response->requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [\DateTime](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesDateTimeResponse.md)**
+
+
+## requestBodyPostJsonDataTypesDecimal
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+8268.71
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimal($request);
+
+    if ($response->requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalResponse.md)**
+
+
+## requestBodyPostJsonDataTypesDecimalStr
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+'eos'
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimalStr($request);
+
+    if ($response->requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [string](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesDecimalStrResponse](../../models/operations/RequestBodyPostJsonDataTypesDecimalStrResponse.md)**
+
+
+## requestBodyPostJsonDataTypesFloat32
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+5093.42
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesFloat32($request);
+
+    if ($response->requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesFloat32Response](../../models/operations/RequestBodyPostJsonDataTypesFloat32Response.md)**
+
+
+## requestBodyPostJsonDataTypesInt32
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+788546
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesInt32($request);
+
+    if ($response->requestBodyPostJSONDataTypesInt32200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesInt32Response](../../models/operations/RequestBodyPostJsonDataTypesInt32Response.md)**
+
+
+## requestBodyPostJsonDataTypesInteger
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+86377
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesInteger($request);
+
+    if ($response->requestBodyPostJSONDataTypesInteger200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesIntegerResponse](../../models/operations/RequestBodyPostJsonDataTypesIntegerResponse.md)**
+
+
+## requestBodyPostJsonDataTypesMapBigIntStr
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = [
+        'ipsa' => 'id',
+    ]
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapBigIntStr($request);
+
+    if ($response->requestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../models/operations/RequestBodyPostJsonDataTypesMapBigIntStrResponse.md)**
+
+
+## requestBodyPostJsonDataTypesMapDateTime
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = [
+        'quidem' => DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-03-22T18:37:41.743Z'),
+    ]
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDateTime($request);
+
+    if ($response->requestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesMapDateTimeResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDateTimeResponse.md)**
+
+
+## requestBodyPostJsonDataTypesMapDecimal
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = [
+        'illum' => 7774.08,
+    ]
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDecimal($request);
+
+    if ($response->requestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [array](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesMapDecimalResponse](../../models/operations/RequestBodyPostJsonDataTypesMapDecimalResponse.md)**
+
+
+## requestBodyPostJsonDataTypesNumber
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+6813.59
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesNumber($request);
+
+    if ($response->requestBodyPostJSONDataTypesNumber200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesNumberResponse](../../models/operations/RequestBodyPostJsonDataTypesNumberResponse.md)**
+
+
+## requestBodyPostJsonDataTypesString
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+'eius'
+
+    $response = $sdk->requestBodies->requestBodyPostJsonDataTypesString($request);
+
+    if ($response->requestBodyPostJSONDataTypesString200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [string](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostJsonDataTypesStringResponse](../../models/operations/RequestBodyPostJsonDataTypesStringResponse.md)**
+
+
 ## requestBodyPostMultipleContentTypesComponentFiltered
 
 ### Example Usage
@@ -1891,19 +2737,19 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'deleniti';
-    $request->bigint = 770581;
-    $request->bigintStr = 'aliquam';
+    $request->any = 'eos';
+    $request->bigint = 373813;
+    $request->bigintStr = 'ab';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 1469.46;
+    $request->decimal = 5876;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $request->intEnum = SimpleObjectIntEnum::First;
     $request->intOptNull = 999999;
     $request->num = 1.1;
@@ -1953,8 +2799,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON();
     $request->bool = false;
-    $request->num = 2506.22;
-    $request->str = 'et';
+    $request->num = 8920.5;
+    $request->str = 'ipsam';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesInlineFiltered($request);
 
@@ -1999,10 +2845,10 @@ $sdk = SDK::builder()
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded();
     $requestBody->bool3 = false;
-    $requestBody->num3 = 6774.12;
-    $requestBody->str3 = 'laborum';
+    $requestBody->num3 = 1334.65;
+    $requestBody->str3 = 'sequi';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'placeat');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'quo');
 
     if ($response->res !== null) {
         // handle response
@@ -2046,10 +2892,10 @@ $sdk = SDK::builder()
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON();
     $requestBody->bool = false;
-    $requestBody->num = 2453.67;
-    $requestBody->str = 'eum';
+    $requestBody->num = 4598.56;
+    $requestBody->str = 'recusandae';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'autem');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'aperiam');
 
     if ($response->res !== null) {
         // handle response
@@ -2093,10 +2939,10 @@ $sdk = SDK::builder()
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData();
     $requestBody->bool2 = false;
-    $requestBody->num2 = 7521.35;
-    $requestBody->str2 = 'quas';
+    $requestBody->num2 = 7151.79;
+    $requestBody->str2 = 'quod';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'assumenda');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'dignissimos');
 
     if ($response->res !== null) {
         // handle response
@@ -2139,8 +2985,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded();
     $request->bool3 = false;
-    $request->num3 = 8605.52;
-    $request->str3 = 'voluptas';
+    $request->num3 = 769.56;
+    $request->str3 = 'nihil';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitForm($request);
 
@@ -2184,8 +3030,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitApplicationJSON();
     $request->bool = false;
-    $request->num = 7270.44;
-    $request->str = 'quasi';
+    $request->num = 5188.35;
+    $request->str = 'accusamus';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitJson($request);
 
@@ -2229,8 +3075,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitMultipartFormData();
     $request->bool2 = false;
-    $request->num2 = 2703.28;
-    $request->str2 = 'numquam';
+    $request->num2 = 3068.1;
+    $request->str2 = 'odio';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitMultipart($request);
 
@@ -2272,7 +3118,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'explicabo',
+        'occaecati',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostNullArray($request);
@@ -2315,7 +3161,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'provident' => 'ipsa',
+        'commodi' => 'sapiente',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostNullDictionary($request);
@@ -2357,7 +3203,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'molestiae'
+'dolores'
 
     $response = $sdk->requestBodies->requestBodyPutBytes($request);
 
@@ -2401,7 +3247,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->requestBodies->requestBodyPutBytesWithParams('magnam', 'odio');
+    $response = $sdk->requestBodies->requestBodyPutBytesWithParams('deserunt', 'molestiae');
 
     if ($response->res !== null) {
         // handle response
@@ -2448,20 +3294,20 @@ $sdk = SDK::builder()
 try {
     $request = new DeepObject();
     $request->any = new SimpleObject();
-    $request->any->any = 'esse';
-    $request->any->bigint = 456141;
-    $request->any->bigintStr = 'rem';
+    $request->any->any = 'porro';
+    $request->any->bigint = 430402;
+    $request->any->bigintStr = 'quas';
     $request->any->bool = true;
     $request->any->boolOpt = true;
     $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->any->decimal = 6832.82;
+    $request->any->decimal = 5100.17;
     $request->any->enum = Enum::Two;
     $request->any->float32 = 2.2222222;
     $request->any->int = 999999;
     $request->any->int32 = 1;
-    $request->any->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->any->intEnum = SimpleObjectIntEnum::Third;
+    $request->any->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->any->intEnum = SimpleObjectIntEnum::Second;
     $request->any->intOptNull = 999999;
     $request->any->num = 1.1;
     $request->any->numOptNull = 1.1;
@@ -2471,33 +3317,33 @@ try {
         new SimpleObject(),
     ];
     $request->bool = false;
-    $request->int = 852635;
+    $request->int = 143829;
     $request->map = [
-        'ut' => new SimpleObject(),
+        'fuga' => new SimpleObject(),
     ];
-    $request->num = 4334.39;
+    $request->num = 6494.63;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'suscipit';
-    $request->obj->bigint = 826871;
-    $request->obj->bigintStr = 'eos';
+    $request->obj->any = 'incidunt';
+    $request->obj->bigint = 539224;
+    $request->obj->bigintStr = 'explicabo';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->decimal = 5093.42;
+    $request->obj->decimal = 3256.85;
     $request->obj->enum = Enum::Two;
     $request->obj->float32 = 2.2222222;
     $request->obj->int = 999999;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $request->obj->intEnum = SimpleObjectIntEnum::First;
     $request->obj->intOptNull = 999999;
     $request->obj->num = 1.1;
     $request->obj->numOptNull = 1.1;
     $request->obj->str = 'example';
     $request->obj->strOpt = 'optional example';
-    $request->str = 'ipsa';
-    $request->type = 'id';
+    $request->str = 'sapiente';
+    $request->type = 'consequuntur';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDeep($request);
 
@@ -2542,8 +3388,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPutMultipartFileRequestBody();
     $request->file = new RequestBodyPutMultipartFileRequestBodyFile();
-    $request->file->content = 'quidem';
-    $request->file->file = 'neque';
+    $request->file->content = 'ratione';
+    $request->file->file = 'explicabo';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
 
@@ -2589,20 +3435,20 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'quo';
-    $request->bigint = 847276;
-    $request->bigintStr = 'quo';
+    $request->any = 'saepe';
+    $request->bigint = 578922;
+    $request->bigintStr = 'atque';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 6813.59;
+    $request->decimal = 922.6;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::First;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -2648,7 +3494,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'voluptas'
+'accusamus'
 
     $response = $sdk->requestBodies->requestBodyPutString($request);
 
@@ -2692,7 +3538,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->requestBodies->requestBodyPutStringWithParams('ab', 'cupiditate');
+    $response = $sdk->requestBodies->requestBodyPutStringWithParams('veritatis', 'esse');
 
     if ($response->res !== null) {
         // handle response
@@ -2734,9 +3580,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new ReadWriteObjectInput();
-    $request->num1 = 9688;
-    $request->num2 = 272822;
-    $request->num3 = 892050;
+    $request->num1 = 800379;
+    $request->num2 = 724168;
+    $request->num3 = 877131;
 
     $response = $sdk->requestBodies->requestBodyReadAndWrite($request);
 
@@ -2822,20 +3668,20 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'aspernatur';
-    $request->bigint = 197054;
-    $request->bigintStr = 'quo';
+    $request->any = 'quasi';
+    $request->bigint = 904045;
+    $request->bigintStr = 'vel';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 4598.56;
+    $request->decimal = 6900.25;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->intEnum = SimpleObjectIntEnum::First;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -2883,9 +3729,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new ReadWriteObjectInput();
-    $request->num1 = 799796;
-    $request->num2 = 490819;
-    $request->num3 = 76956;
+    $request->num1 = 327720;
+    $request->num2 = 716244;
+    $request->num3 = 756779;
 
     $response = $sdk->requestBodies->requestBodyReadWriteOnlyUnion($request);
 
@@ -2930,8 +3776,8 @@ $sdk = SDK::builder()
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
-    $request->num = 4694.98;
-    $request->string = 'totam';
+    $request->num = 270.69;
+    $request->string = 'culpa';
 
     $response = $sdk->requestBodies->requestBodyWriteOnly($request);
 
@@ -2976,8 +3822,8 @@ $sdk = SDK::builder()
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
-    $request->num = 8827.1;
-    $request->string = 'aliquam';
+    $request->num = 7313.98;
+    $request->string = 'adipisci';
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyOutput($request);
 
@@ -3019,26 +3865,10 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimpleObject();
-    $request->any = 'occaecati';
-    $request->bigint = 414567;
-    $request->bigintStr = 'sapiente';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 1741.12;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
-    $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectIntEnum::Second;
-    $request->intOptNull = 999999;
-    $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request = new WriteOnlyObject();
+    $request->bool = false;
+    $request->num = 1605.38;
+    $request->string = 'consequatur';
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyUnion($request);
 

@@ -31,12 +31,12 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :request_body, T.nilable(Operations::IgnoresPostApplicationJSON), { 'request': { 'media_type': 'application/json' } }
+      field :request_body, Operations::IgnoresPostApplicationJSON, { 'request': { 'media_type': 'application/json' } }
 
       field :test_param, T.nilable(String), { 'query_param': { 'field_name': 'testParam', 'style': 'form', 'explode': true } }
 
 
-      sig { params(request_body: T.nilable(Operations::IgnoresPostApplicationJSON), test_param: T.nilable(String)).void }
+      sig { params(request_body: Operations::IgnoresPostApplicationJSON, test_param: T.nilable(String)).void }
       def initialize(request_body: nil, test_param: nil)
         @request_body = request_body
         @test_param = test_param

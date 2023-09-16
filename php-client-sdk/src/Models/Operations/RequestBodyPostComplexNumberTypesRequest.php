@@ -12,7 +12,7 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class RequestBodyPostComplexNumberTypesRequest
 {
 	#[SpeakeasyMetadata('request:mediaType=application/json')]
-    public ?\OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes $complexNumberTypes = null;
+    public \OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes $complexNumberTypes;
     
 	#[SpeakeasyMetadata('pathParam:style=simple,explode=false,name=pathBigInt')]
     public int $pathBigInt;
@@ -40,7 +40,7 @@ class RequestBodyPostComplexNumberTypesRequest
     
 	public function __construct()
 	{
-		$this->complexNumberTypes = null;
+		$this->complexNumberTypes = new \OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes();
 		$this->pathBigInt = 0;
 		$this->pathBigIntStr = "";
 		$this->pathDecimal = 0;

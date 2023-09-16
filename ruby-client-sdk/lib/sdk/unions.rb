@@ -95,7 +95,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Shared::NullableOneOfRefInObject)).returns(Utils::FieldAugmented) }
+    sig { params(request: Shared::NullableOneOfRefInObject).returns(Utils::FieldAugmented) }
     def nullable_one_of_ref_in_object_post(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -104,6 +104,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -133,7 +134,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Object)).returns(Utils::FieldAugmented) }
+    sig { params(request: Object).returns(Utils::FieldAugmented) }
     def nullable_one_of_schema_post(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -142,6 +143,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -171,7 +173,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Shared::NullableOneOfTypeInObject)).returns(Utils::FieldAugmented) }
+    sig { params(request: Shared::NullableOneOfTypeInObject).returns(Utils::FieldAugmented) }
     def nullable_one_of_type_in_object_post(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -180,6 +182,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -209,7 +212,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Shared::TypedObject1)).returns(Utils::FieldAugmented) }
+    sig { params(request: Shared::TypedObject1).returns(Utils::FieldAugmented) }
     def nullable_typed_object_post(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -218,6 +221,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -325,7 +329,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Object)).returns(Utils::FieldAugmented) }
+    sig { params(request: Object).returns(Utils::FieldAugmented) }
     def typed_object_nullable_one_of_post(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -334,6 +338,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 

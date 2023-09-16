@@ -36,10 +36,29 @@ Endpoints for testing request bodies.
 * [request_body_post_application_json_simple](#request_body_post_application_json_simple)
 * [request_body_post_application_json_simple_camel_case](#request_body_post_application_json_simple_camel_case)
 * [request_body_post_complex_number_types](#request_body_post_complex_number_types)
+* [request_body_post_defaults_and_consts](#request_body_post_defaults_and_consts)
 * [request_body_post_empty_object](#request_body_post_empty_object)
 * [request_body_post_form_deep](#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](#request_body_post_form_map_primitive)
 * [request_body_post_form_simple](#request_body_post_form_simple)
+* [request_body_post_json_data_types_array_big_int](#request_body_post_json_data_types_array_big_int)
+* [request_body_post_json_data_types_array_date](#request_body_post_json_data_types_array_date)
+* [request_body_post_json_data_types_array_decimal_str](#request_body_post_json_data_types_array_decimal_str)
+* [request_body_post_json_data_types_big_int](#request_body_post_json_data_types_big_int)
+* [request_body_post_json_data_types_big_int_str](#request_body_post_json_data_types_big_int_str)
+* [request_body_post_json_data_types_boolean](#request_body_post_json_data_types_boolean)
+* [request_body_post_json_data_types_date](#request_body_post_json_data_types_date)
+* [request_body_post_json_data_types_date_time](#request_body_post_json_data_types_date_time)
+* [request_body_post_json_data_types_decimal](#request_body_post_json_data_types_decimal)
+* [request_body_post_json_data_types_decimal_str](#request_body_post_json_data_types_decimal_str)
+* [request_body_post_json_data_types_float32](#request_body_post_json_data_types_float32)
+* [request_body_post_json_data_types_int32](#request_body_post_json_data_types_int32)
+* [request_body_post_json_data_types_integer](#request_body_post_json_data_types_integer)
+* [request_body_post_json_data_types_map_big_int_str](#request_body_post_json_data_types_map_big_int_str)
+* [request_body_post_json_data_types_map_date_time](#request_body_post_json_data_types_map_date_time)
+* [request_body_post_json_data_types_map_decimal](#request_body_post_json_data_types_map_decimal)
+* [request_body_post_json_data_types_number](#request_body_post_json_data_types_number)
+* [request_body_post_json_data_types_string](#request_body_post_json_data_types_string)
 * [request_body_post_multiple_content_types_component_filtered](#request_body_post_multiple_content_types_component_filtered)
 * [request_body_post_multiple_content_types_inline_filtered](#request_body_post_multiple_content_types_inline_filtered)
 * [request_body_post_multiple_content_types_split_param_form](#request_body_post_multiple_content_types_split_param_form)
@@ -1779,6 +1798,72 @@ end
 **[T.nilable(Operations::RequestBodyPostComplexNumberTypesResponse)](../../models/operations/requestbodypostcomplexnumbertypesresponse.md)**
 
 
+## request_body_post_defaults_and_consts
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = Shared::DefaultsAndConsts.new(
+  request=Shared::DefaultsAndConsts.new(
+    const_big_int=558065,
+    const_big_int_str="repudiandae",
+    const_bool=false,
+    const_date=Date.parse("2022-11-29"),
+    const_date_time=DateTime.iso8601('2022-03-10T15:53:25.215Z'),
+    const_decimal=1536.27,
+    const_decimal_str="sit",
+    const_enum_int=Shared::DefaultsAndConstsConstEnumInt::TWO,
+    const_enum_str=Shared::DefaultsAndConstsConstEnumStr::TWO,
+    const_int=906172,
+    const_num=6222.31,
+    const_str="consequatur",
+    const_str_null="incidunt",
+    default_big_int=968865,
+    default_big_int_str="dolorem",
+    default_bool=false,
+    default_date=Date.parse("2022-10-08"),
+    default_date_time=DateTime.iso8601('2022-06-04T08:15:04.756Z'),
+    default_decimal=2897.76,
+    default_decimal_str="quidem",
+    default_enum_int=Shared::DefaultsAndConstsDefaultEnumInt::TWO,
+    default_enum_str=Shared::DefaultsAndConstsDefaultEnumStr::THREE,
+    default_int=724148,
+    default_num=9488.61,
+    default_str="laboriosam",
+    default_str_nullable="alias",
+    default_str_optional="amet",
+    normal_field="deserunt",
+    single_enum_const_bool=false,
+    single_enum_const_str=Shared::DefaultsAndConstsSingleEnumConstStr::ONE,
+  ),
+)
+    
+res = s.request_bodies.request_body_post_defaults_and_consts(req)
+
+if ! res.request_body_post_defaults_and_consts_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                             | Type                                                                  | Required                                                              | Description                                                           |
+| --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- | --------------------------------------------------------------------- |
+| `request`                                                             | [Shared::DefaultsAndConsts](../../models/shared/defaultsandconsts.md) | :heavy_check_mark:                                                    | The request object to use for the request.                            |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostDefaultsAndConstsResponse)](../../models/operations/requestbodypostdefaultsandconstsresponse.md)**
+
+
 ## request_body_post_empty_object
 
 ### Example Usage
@@ -1830,23 +1915,43 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
-    any="repudiandae",
+    any=Shared::SimpleObject.new(
+      any="unde",
+      bigint=972083,
+      bigint_str="provident",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      decimal=8338.19,
+      enum=Shared::Enum::TWO,
+      float32=2.2222222,
+      int=999999,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_opt_null=999999,
+      num=1.1,
+      num_opt_null=1.1,
+      str_="example",
+      str_opt="optional example",
+    ),
     arr=.new[
       Shared::SimpleObject.new(
-        any="corporis",
-        bigint=89494,
-        bigint_str="blanditiis",
+        any="perferendis",
+        bigint=667285,
+        bigint_str="quidem",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=4059.42,
+        decimal=4406.66,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -1855,23 +1960,23 @@ req = Shared::DeepObject.new(
       ),
     ],
     bool=false,
-    int=425508,
+    int=509807,
     map=.new{
-      "nostrum": Shared::SimpleObject.new(
-        any="saepe",
-        bigint=622231,
-        bigint_str="consequatur",
+      "mollitia": Shared::SimpleObject.new(
+        any="veniam",
+        bigint=29100,
+        bigint_str="quisquam",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=2790.68,
+        decimal=9195.32,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+        int_enum=Shared::SimpleObjectIntEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -1879,30 +1984,30 @@ req = Shared::DeepObject.new(
         str_opt="optional example",
       ),
     },
-    num=6908.94,
+    num=4420.36,
     obj=Shared::SimpleObject.new(
-      any="dicta",
-      bigint=99416,
-      bigint_str="occaecati",
+      any="asperiores",
+      bigint=519952,
+      bigint_str="suscipit",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=2897.76,
+      decimal=6939.57,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_enum=Shared::SimpleObjectIntEnum::FIRST,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
     ),
-    str_="laborum",
-    type="nam",
+    str_="esse",
+    type="amet",
   ),
 )
     
@@ -1939,7 +2044,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "tenetur": "laboriosam",
+    "assumenda": "ea",
   },
 )
     
@@ -1976,20 +2081,20 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="alias",
-    bigint=227084,
-    bigint_str="deserunt",
+    any="atque",
+    bigint=623295,
+    bigint_str="officiis",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=4548.6,
+    decimal=8869.61,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
+    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::SimpleObjectIntEnum::SECOND,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2018,6 +2123,648 @@ end
 **[T.nilable(Operations::RequestBodyPostFormSimpleResponse)](../../models/operations/requestbodypostformsimpleresponse.md)**
 
 
+## request_body_post_json_data_types_array_big_int
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=.new[
+    328303,
+  ],
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_array_big_int(req)
+
+if ! res.request_body_post_json_data_types_array_big_int_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [T::Array[Integer]](../../models//.md)     | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesArrayBigIntResponse)](../../models/operations/requestbodypostjsondatatypesarraybigintresponse.md)**
+
+
+## request_body_post_json_data_types_array_date
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=.new[
+    Date.parse("2022-08-06"),
+  ],
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_array_date(req)
+
+if ! res.request_body_post_json_data_types_array_date_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [T::Array[Date]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesArrayDateResponse)](../../models/operations/requestbodypostjsondatatypesarraydateresponse.md)**
+
+
+## request_body_post_json_data_types_array_decimal_str
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=.new[
+    "maiores",
+  ],
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_array_decimal_str(req)
+
+if ! res.request_body_post_json_data_types_array_decimal_str_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [T::Array[String]](../../models//.md)      | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesArrayDecimalStrResponse)](../../models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md)**
+
+
+## request_body_post_json_data_types_big_int
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=544647,
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_big_int(req)
+
+if ! res.request_body_post_json_data_types_big_int_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Integer](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesBigIntResponse)](../../models/operations/requestbodypostjsondatatypesbigintresponse.md)**
+
+
+## request_body_post_json_data_types_big_int_str
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request="at",
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_big_int_str(req)
+
+if ! res.request_body_post_json_data_types_big_int_str_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesBigIntStrResponse)](../../models/operations/requestbodypostjsondatatypesbigintstrresponse.md)**
+
+
+## request_body_post_json_data_types_boolean
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=false,
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_boolean(req)
+
+if ! res.request_body_post_json_data_types_boolean_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [T::Boolean](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesBooleanResponse)](../../models/operations/requestbodypostjsondatatypesbooleanresponse.md)**
+
+
+## request_body_post_json_data_types_date
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=Date.parse("2021-12-30"),
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_date(req)
+
+if ! res.request_body_post_json_data_types_date_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Date](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesDateResponse)](../../models/operations/requestbodypostjsondatatypesdateresponse.md)**
+
+
+## request_body_post_json_data_types_date_time
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=DateTime.iso8601('2022-01-29T08:13:54.022Z'),
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_date_time(req)
+
+if ! res.request_body_post_json_data_types_date_time_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [DateTime](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesDateTimeResponse)](../../models/operations/requestbodypostjsondatatypesdatetimeresponse.md)**
+
+
+## request_body_post_json_data_types_decimal
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=5421.29,
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_decimal(req)
+
+if ! res.request_body_post_json_data_types_decimal_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesDecimalResponse)](../../models/operations/requestbodypostjsondatatypesdecimalresponse.md)**
+
+
+## request_body_post_json_data_types_decimal_str
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request="atque",
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_decimal_str(req)
+
+if ! res.request_body_post_json_data_types_decimal_str_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesDecimalStrResponse)](../../models/operations/requestbodypostjsondatatypesdecimalstrresponse.md)**
+
+
+## request_body_post_json_data_types_float32
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=1209.19,
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_float32(req)
+
+if ! res.request_body_post_json_data_types_float32_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesFloat32Response)](../../models/operations/requestbodypostjsondatatypesfloat32response.md)**
+
+
+## request_body_post_json_data_types_int32
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=923306,
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_int32(req)
+
+if ! res.request_body_post_json_data_types_int32_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Integer](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesInt32Response)](../../models/operations/requestbodypostjsondatatypesint32response.md)**
+
+
+## request_body_post_json_data_types_integer
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=680697,
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_integer(req)
+
+if ! res.request_body_post_json_data_types_integer_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Integer](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesIntegerResponse)](../../models/operations/requestbodypostjsondatatypesintegerresponse.md)**
+
+
+## request_body_post_json_data_types_map_big_int_str
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=.new{
+    "repellendus": "labore",
+  },
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_map_big_int_str(req)
+
+if ! res.request_body_post_json_data_types_map_big_int_str_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                    | Type                                         | Required                                     | Description                                  |
+| -------------------------------------------- | -------------------------------------------- | -------------------------------------------- | -------------------------------------------- |
+| `request`                                    | [T::Hash[Symbol, String]](../../models//.md) | :heavy_check_mark:                           | The request object to use for the request.   |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesMapBigIntStrResponse)](../../models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md)**
+
+
+## request_body_post_json_data_types_map_date_time
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=.new{
+    "reiciendis": DateTime.iso8601('2022-01-30T06:42:09.189Z'),
+  },
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_map_date_time(req)
+
+if ! res.request_body_post_json_data_types_map_date_time_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                      | Type                                           | Required                                       | Description                                    |
+| ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
+| `request`                                      | [T::Hash[Symbol, DateTime]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesMapDateTimeResponse)](../../models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md)**
+
+
+## request_body_post_json_data_types_map_decimal
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=.new{
+    "dicta": 360.33,
+  },
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_map_decimal(req)
+
+if ! res.request_body_post_json_data_types_map_decimal_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                   | Type                                        | Required                                    | Description                                 |
+| ------------------------------------------- | ------------------------------------------- | ------------------------------------------- | ------------------------------------------- |
+| `request`                                   | [T::Hash[Symbol, Float]](../../models//.md) | :heavy_check_mark:                          | The request object to use for the request.  |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesMapDecimalResponse)](../../models/operations/requestbodypostjsondatatypesmapdecimalresponse.md)**
+
+
+## request_body_post_json_data_types_number
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request=1064.29,
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_number(req)
+
+if ! res.request_body_post_json_data_types_number_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesNumberResponse)](../../models/operations/requestbodypostjsondatatypesnumberresponse.md)**
+
+
+## request_body_post_json_data_types_string
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = ::.new(
+  request="dolores",
+)
+    
+res = s.request_bodies.request_body_post_json_data_types_string(req)
+
+if ! res.request_body_post_json_data_types_string_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [String](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::RequestBodyPostJsonDataTypesStringResponse)](../../models/operations/requestbodypostjsondatatypesstringresponse.md)**
+
+
 ## request_body_post_multiple_content_types_component_filtered
 
 ### Example Usage
@@ -2031,20 +2778,20 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="provident",
-    bigint=833819,
-    bigint_str="delectus",
+    any="enim",
+    bigint=389135,
+    bigint_str="velit",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=9147.91,
+    decimal=9521.43,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
+    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+    int_enum=Shared::SimpleObjectIntEnum::FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2087,8 +2834,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
   request=Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
     bool=false,
-    num=6964.83,
-    str_="reprehenderit",
+    num=9063.55,
+    str_="consequuntur",
   ),
 )
     
@@ -2127,15 +2874,15 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
       bool3=false,
-      num3=8136.79,
-      str3="fuga",
+      num3=5801.07,
+      str3="officiis",
     ),
-    param_str="praesentium",
+    param_str="perspiciatis",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
     bool3=false,
-    num3=6485.98,
-    str3="veniam",
+    num3=4463.94,
+    str3="adipisci",
   ),
 )
     
@@ -2175,15 +2922,15 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
       bool=false,
-      num=291,
-      str_="quisquam",
+      num=9078.76,
+      str_="occaecati",
     ),
-    param_str="repudiandae",
+    param_str="consequuntur",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
     bool=false,
-    num=972.43,
-    str_="atque",
+    num=1458.7,
+    str_="id",
   ),
 )
     
@@ -2223,15 +2970,15 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
       bool2=false,
-      num2=4420.36,
-      str2="asperiores",
+      num2=3356.31,
+      str2="reprehenderit",
     ),
-    param_str="totam",
+    param_str="error",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
     bool2=false,
-    num2=3831.03,
-    str2="quidem",
+    num2=764.86,
+    str2="corporis",
   ),
 )
     
@@ -2270,8 +3017,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
     bool3=false,
-    num3=8066.7,
-    str3="et",
+    num3=6964.63,
+    str3="eveniet",
   ),
 )
     
@@ -2309,8 +3056,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
     bool=false,
-    num=4610.07,
-    str_="amet",
+    num=2473.99,
+    str_="vero",
   ),
 )
     
@@ -2348,8 +3095,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
     bool2=false,
-    num2=8268.25,
-    str2="ea",
+    num2=396.15,
+    str2="iure",
   ),
 )
     
@@ -2386,7 +3133,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new[
-    "atque",
+    "ipsa",
   ],
 )
     
@@ -2423,7 +3170,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "error": "officiis",
+    "totam": "quae",
   },
 )
     
@@ -2459,7 +3206,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="officiis".encode(),
+  request="molestiae".encode(),
 )
     
 res = s.request_bodies.request_body_put_bytes(req)
@@ -2495,10 +3242,10 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::RequestBodyPutBytesWithParamsRequest.new(
   query_params=Operations::RequestBodyPutBytesWithParamsRequest.new(
-    request_body="accusamus".encode(),
-    query_string_param="natus",
+    request_body="eveniet".encode(),
+    query_string_param="qui",
   ),
-  request_body="minima".encode(),
+  request_body="cum".encode(),
 )
     
 res = s.request_bodies.request_body_put_bytes_with_params(req)
@@ -2536,14 +3283,14 @@ s = OpenApiSDK::SDK.new
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
     any=Shared::SimpleObject.new(
-      any="ex",
-      bigint=980581,
-      bigint_str="corrupti",
+      any="necessitatibus",
+      bigint=187552,
+      bigint_str="laborum",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=8717.86,
+      decimal=7152.08,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
@@ -2558,20 +3305,20 @@ req = Shared::DeepObject.new(
     ),
     arr=.new[
       Shared::SimpleObject.new(
-        any="suscipit",
-        bigint=922348,
-        bigint_str="atque",
+        any="aliquam",
+        bigint=320565,
+        bigint_str="repellat",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=5413.81,
+        decimal=30.99,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
+        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+        int_enum=Shared::SimpleObjectIntEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -2580,23 +3327,23 @@ req = Shared::DeepObject.new(
       ),
     ],
     bool=false,
-    int=680697,
+    int=470649,
     map=.new{
-      "repellendus": Shared::SimpleObject.new(
-        any="labore",
-        bigint=968287,
-        bigint_str="doloremque",
+      "mollitia": Shared::SimpleObject.new(
+        any="voluptas",
+        bigint=5189,
+        bigint_str="maiores",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=9197.83,
+        decimal=9702.22,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int_enum=Shared::SimpleObjectIntEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -2604,16 +3351,16 @@ req = Shared::DeepObject.new(
         str_opt="optional example",
       ),
     },
-    num=1064.29,
+    num=3279.88,
     obj=Shared::SimpleObject.new(
-      any="dolores",
-      bigint=316488,
-      bigint_str="laboriosam",
+      any="dolore",
+      bigint=680349,
+      bigint_str="nesciunt",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=2465.35,
+      decimal=632.07,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
@@ -2626,8 +3373,8 @@ req = Shared::DeepObject.new(
       str_="example",
       str_opt="optional example",
     ),
-    str_="magnam",
-    type="saepe",
+    str_="quaerat",
+    type="molestiae",
   ),
 )
     
@@ -2665,8 +3412,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPutMultipartFileRequestBody.new(
   request=Operations::RequestBodyPutMultipartFileRequestBody.new(
     file=Operations::RequestBodyPutMultipartFileRequestBodyFile.new(
-      content="consequuntur".encode(),
-      file="occaecati",
+      content="ex".encode(),
+      file="ut",
     ),
   ),
 )
@@ -2704,19 +3451,19 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="officiis",
-    bigint=597937,
-    bigint_str="in",
+    any="culpa",
+    bigint=238413,
+    bigint_str="debitis",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=2380.43,
+    decimal=5145.13,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
     int_enum=Shared::SimpleObjectIntEnum::SECOND,
     int_opt_null=999999,
     num=1.1,
@@ -2758,7 +3505,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="consequuntur",
+  request="recusandae",
 )
     
 res = s.request_bodies.request_body_put_string(req)
@@ -2794,8 +3541,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::RequestBodyPutStringWithParamsRequest.new(
   query_params=Operations::RequestBodyPutStringWithParamsRequest.new(
-    request_body="fugit",
-    query_string_param="id",
+    request_body="esse",
+    query_string_param="provident",
   ),
   request_body="quis",
 )
@@ -2834,9 +3581,9 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::ReadWriteObjectInput.new(
   request=Shared::ReadWriteObjectInput.new(
-    num1=440264,
-    num2=625528,
-    num3=76486,
+    num1=431785,
+    num2=970494,
+    num3=592780,
   ),
 )
     
@@ -2910,19 +3657,19 @@ s = OpenApiSDK::SDK.new
    
 req = ::Input.new(
   request=Shared::SimpleObject.new(
-    any="quidem",
-    bigint=910994,
-    bigint_str="non",
+    any="ullam",
+    bigint=96804,
+    bigint_str="animi",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=8784.93,
+    decimal=3433.92,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
     int_enum=Shared::SimpleObjectIntEnum::SECOND,
     int_opt_null=999999,
     num=1.1,
@@ -2965,26 +3712,10 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::Input.new(
-  request=Shared::SimpleObject.new(
-    any="totam",
-    bigint=61078,
-    bigint_str="molestiae",
-    bool=true,
-    bool_opt=true,
-    date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=9077.33,
-    enum=Shared::Enum::TWO,
-    float32=2.2222222,
-    int=999999,
-    int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
-    int_opt_null=999999,
-    num=1.1,
-    num_opt_null=1.1,
-    str_="example",
-    str_opt="optional example",
+  request=Shared::ReadWriteObjectInput.new(
+    num1=659177,
+    num2=402767,
+    num3=397257,
   ),
 )
     
@@ -3023,8 +3754,8 @@ s = OpenApiSDK::SDK.new
 req = Shared::WriteOnlyObject.new(
   request=Shared::WriteOnlyObject.new(
     bool=false,
-    num=4347.61,
-    string="necessitatibus",
+    num=375.65,
+    string="repellat",
   ),
 )
     
@@ -3063,8 +3794,8 @@ s = OpenApiSDK::SDK.new
 req = Shared::WriteOnlyObject.new(
   request=Shared::WriteOnlyObject.new(
     bool=false,
-    num=1875.52,
-    string="laborum",
+    num=9846.32,
+    string="ullam",
   ),
 )
     
@@ -3101,10 +3832,26 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::WriteOnlyObject.new(
-    bool=false,
-    num=5289.4,
-    string="rem",
+  request=Shared::SimpleObject.new(
+    any="nam",
+    bigint=937636,
+    bigint_str="officia",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    decimal=6720.41,
+    enum=Shared::Enum::TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::SimpleObjectIntEnum::FIRST,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_="example",
+    str_opt="optional example",
   ),
 )
     

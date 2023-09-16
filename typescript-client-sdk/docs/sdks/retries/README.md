@@ -24,7 +24,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestId: string = "in";
-const numRetries: number = 417486;
+const numRetries: number = 889234;
 
 sdk.retries.retriesGet(requestId, numRetries).then((res: RetriesGetResponse) => {
   if (res.statusCode == 200) {

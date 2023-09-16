@@ -380,12 +380,12 @@ class Generation
     /**
      * ignoresPost
      * 
-     * @param ?\OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON $requestBody
+     * @param \OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON $requestBody
      * @param ?string $testParam
      * @return \OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse
      */
 	public function ignoresPost(
-        ?\OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON $requestBody = null,
+        \OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON $requestBody,
         ?string $testParam = null,
     ): \OpenAPI\OpenAPI\Models\Operations\IgnoresPostResponse
     {
@@ -398,9 +398,10 @@ class Generation
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "requestBody", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\IgnoresPostRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);

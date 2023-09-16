@@ -73,7 +73,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse
      */
 	public function apiKeyAuthGlobalNew(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\ApiKeyAuthGlobalNewResponse
     {
@@ -87,9 +87,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -116,7 +117,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\AuthGlobalResponse
      */
 	public function authGlobal(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\AuthGlobalResponse
     {
@@ -130,9 +131,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -160,7 +162,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\BasicAuthNewResponse
      */
 	public function basicAuthNew(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\BasicAuthNewSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\BasicAuthNewResponse
@@ -175,9 +177,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -206,7 +209,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\MultipleMixedOptionsAuthResponse
      */
 	public function multipleMixedOptionsAuth(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\MultipleMixedOptionsAuthSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleMixedOptionsAuthResponse
@@ -221,9 +224,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -252,7 +256,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\MultipleMixedSchemeAuthResponse
      */
 	public function multipleMixedSchemeAuth(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\MultipleMixedSchemeAuthSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleMixedSchemeAuthResponse
@@ -267,9 +271,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -298,7 +303,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithMixedSchemesAuthResponse
      */
 	public function multipleOptionsWithMixedSchemesAuth(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithMixedSchemesAuthSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithMixedSchemesAuthResponse
@@ -313,9 +318,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -344,7 +350,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithSimpleSchemesAuthResponse
      */
 	public function multipleOptionsWithSimpleSchemesAuth(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithSimpleSchemesAuthSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleOptionsWithSimpleSchemesAuthResponse
@@ -359,9 +365,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -390,7 +397,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleOptionsAuthResponse
      */
 	public function multipleSimpleOptionsAuth(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleOptionsAuthSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleOptionsAuthResponse
@@ -405,9 +412,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -436,7 +444,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleSchemeAuthResponse
      */
 	public function multipleSimpleSchemeAuth(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleSchemeAuthSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\MultipleSimpleSchemeAuthResponse
@@ -451,9 +459,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -482,7 +491,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthNewResponse
      */
 	public function oauth2AuthNew(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthNewSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\Oauth2AuthNewResponse
@@ -497,9 +506,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -528,7 +538,7 @@ class AuthNew
      * @return \OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthNewResponse
      */
 	public function openIdConnectAuthNew(
-        ?\OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
+        \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody $request,
         \OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthNewSecurity $security,
         ?string $serverURL = null,
     ): \OpenAPI\OpenAPI\Models\Operations\OpenIdConnectAuthNewResponse
@@ -543,9 +553,10 @@ class AuthNew
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = '*/*';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         

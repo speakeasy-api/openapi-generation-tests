@@ -36,7 +36,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='explicabo',
+    value='laudantium',
 )
 
 res = s.unions.flattened_typed_object_post(req)
@@ -75,7 +75,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 604118
+req = 510629
 
 res = s.unions.mixed_type_one_of_post(req)
 
@@ -114,15 +114,15 @@ s = sdk.SDK(
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='architecto',
+        value='cum',
     ),
     nullable_one_of_two=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='sapiente',
+        value='dolorum',
     ),
     one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='debitis',
+        value='voluptatum',
     ),
 )
 
@@ -160,9 +160,9 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject1(
-    type=shared.TypedObject1Type.OBJ1,
-    value='reiciendis',
+req = shared.TypedObject2(
+    type=shared.TypedObject2Type.OBJ2,
+    value='hic',
 )
 
 res = s.unions.nullable_one_of_schema_post(req)
@@ -201,7 +201,7 @@ s = sdk.SDK(
 
 req = shared.NullableOneOfTypeInObject(
     nullable_one_of_one=False,
-    nullable_one_of_two=False,
+    nullable_one_of_two=892863,
     one_of_one=False,
 )
 
@@ -241,7 +241,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='corrupti',
+    value='neque',
 )
 
 res = s.unions.nullable_typed_object_post(req)
@@ -278,7 +278,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = False
+req = 3416.98
 
 res = s.unions.primitive_type_one_of_post(req)
 
@@ -316,27 +316,80 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.SimpleObjectWithType(
-    any='sed',
-    bigint=592231,
-    bigint_str=258702,
-    bool=True,
-    bool_opt=True,
-    date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('8967.62'),
-    enum=shared.EnumT.TWO,
-    float32=2.2222222,
-    int=999999,
-    int32=1,
-    int32_enum=shared.SimpleObjectWithTypeInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectWithTypeIntEnum.SECOND,
-    int_opt_null=999999,
-    num=1.1,
-    num_opt_null=1.1,
-    str_='example',
-    str_opt='optional example',
-    type='occaecati',
+req = shared.DeepObjectWithType(
+    any='corrupti',
+    arr=[
+        shared.SimpleObject(
+            any='accusamus',
+            bigint=272683,
+            bigint_str=543678,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=Decimal('1482.68'),
+            enum=shared.EnumT.TWO,
+            float32=2.2222222,
+            int=999999,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
+            int_opt_null=999999,
+            num=1.1,
+            num_opt_null=1.1,
+            str_='example',
+            str_opt='optional example',
+        ),
+    ],
+    bool=False,
+    int=30235,
+    map={
+        "culpa": shared.SimpleObject(
+            any='expedita',
+            bigint=299643,
+            bigint_str=7884,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=Decimal('4602.2'),
+            enum=shared.EnumT.TWO,
+            float32=2.2222222,
+            int=999999,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int_enum=shared.SimpleObjectIntEnum.FIRST,
+            int_opt_null=999999,
+            num=1.1,
+            num_opt_null=1.1,
+            str_='example',
+            str_opt='optional example',
+        ),
+    },
+    num=5305.37,
+    obj=shared.SimpleObject(
+        any='quas',
+        bigint=922112,
+        bigint_str=361151,
+        bool=True,
+        bool_opt=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+        decimal=Decimal('894.94'),
+        enum=shared.EnumT.TWO,
+        float32=2.2222222,
+        int=999999,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int_opt_null=999999,
+        num=1.1,
+        num_opt_null=1.1,
+        str_='example',
+        str_opt='optional example',
+    ),
+    str_='sed',
+    type='sit',
 )
 
 res = s.unions.strongly_typed_one_of_post(req)
@@ -373,9 +426,9 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject2(
-    type=shared.TypedObject2Type.OBJ2,
-    value='voluptatibus',
+req = shared.TypedObject1(
+    type=shared.TypedObject1Type.OBJ1,
+    value='nostrum',
 )
 
 res = s.unions.typed_object_nullable_one_of_post(req)
@@ -412,9 +465,9 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject1(
-    type=shared.TypedObject1Type.OBJ1,
-    value='tempora',
+req = shared.TypedObject3(
+    type=shared.TypedObject3Type.OBJ3,
+    value='error',
 )
 
 res = s.unions.typed_object_one_of_post(req)
@@ -454,20 +507,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='reiciendis',
-    bigint=401713,
-    bigint_str=25497,
+    any='incidunt',
+    bigint=968865,
+    bigint_str=209750,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('2484.13'),
+    decimal=Decimal('6908.94'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
