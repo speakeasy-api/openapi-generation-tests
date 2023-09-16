@@ -1,4 +1,4 @@
-# response_bodies
+# ResponseBodies
 
 ## Overview
 

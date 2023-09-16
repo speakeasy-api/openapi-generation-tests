@@ -21,9 +21,13 @@ export class Unions {
     }
 
     async flattenedTypedObjectPost(
-        req: any,
+        req: shared.TypedObject1,
         config?: AxiosRequestConfig
     ): Promise<operations.FlattenedTypedObjectPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.TypedObject1(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults
@@ -468,9 +472,13 @@ export class Unions {
     }
 
     async nullableTypedObjectPost(
-        req: any,
+        req: shared.TypedObject1,
         config?: AxiosRequestConfig
     ): Promise<operations.NullableTypedObjectPostResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.TypedObject1(req);
+        }
+
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults

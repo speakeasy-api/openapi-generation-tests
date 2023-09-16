@@ -3,12 +3,6 @@
 
 ## Supported Types
 
-### 
-
-```go
-nullableOneOfSchemaPostRequestBody := operations.CreateNullableOneOfSchemaPostRequestBodyAny(interface{}{/* values here */})
-```
-
 ### TypedObject1
 
 ```go

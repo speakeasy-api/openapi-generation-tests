@@ -5,6 +5,7 @@
 
 require 'sorbet-runtime'
 require 'faraday'
+require_relative '../shared/typedobject1'
 
 module OpenApiSDK
   module Operations
@@ -13,10 +14,10 @@ module OpenApiSDK
       extend T::Sig
 
 
-      field :json, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
+      field :json, Shared::TypedObject1, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json') } }
 
 
-      sig { params(json: Object).void }
+      sig { params(json: Shared::TypedObject1).void }
       def initialize(json: nil)
         @json = json
       end

@@ -9,12 +9,12 @@ import (
 
 // FlattenedTypedObjectPostRes - OK
 type FlattenedTypedObjectPostRes struct {
-	JSON shared.FlattenedTypedObject1 `json:"json"`
+	JSON shared.TypedObject1 `json:"json"`
 }
 
-func (o *FlattenedTypedObjectPostRes) GetJSON() shared.FlattenedTypedObject1 {
+func (o *FlattenedTypedObjectPostRes) GetJSON() shared.TypedObject1 {
 	if o == nil {
-		return shared.FlattenedTypedObject1{}
+		return shared.TypedObject1{}
 	}
 	return o.JSON
 }

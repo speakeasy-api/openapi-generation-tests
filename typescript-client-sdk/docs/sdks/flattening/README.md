@@ -1,4 +1,4 @@
-# flattening
+# Flattening
 
 ## Overview
 

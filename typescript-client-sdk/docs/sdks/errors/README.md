@@ -1,4 +1,4 @@
-# errors
+# Errors
 
 ## Overview
 

@@ -23,7 +23,7 @@ public class Unions {
 		this.sdkConfiguration = sdkConfiguration;
 	}
 
-    public org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse flattenedTypedObjectPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.FlattenedTypedObjectPostResponse flattenedTypedObjectPost(org.openapis.openapi.models.shared.TypedObject1 request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/flattenedTypedObject");
         
@@ -204,7 +204,7 @@ public class Unions {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.NullableTypedObjectPostResponse nullableTypedObjectPost(Object request) throws Exception {
+    public org.openapis.openapi.models.operations.NullableTypedObjectPostResponse nullableTypedObjectPost(org.openapis.openapi.models.shared.TypedObject1 request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/nullableTypedObject");
         

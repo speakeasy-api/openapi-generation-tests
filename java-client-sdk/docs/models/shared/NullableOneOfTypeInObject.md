@@ -5,6 +5,6 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `nullableOneOfOne` | *Object*           | :heavy_check_mark: | N/A                |
+| `nullableOneOfOne` | *Boolean*          | :heavy_check_mark: | N/A                |
 | `nullableOneOfTwo` | *Object*           | :heavy_check_mark: | N/A                |
-| `oneOfOne`         | *Object*           | :heavy_check_mark: | N/A                |
+| `oneOfOne`         | *Boolean*          | :heavy_check_mark: | N/A                |

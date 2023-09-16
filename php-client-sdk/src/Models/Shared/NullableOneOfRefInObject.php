@@ -12,21 +12,21 @@ namespace OpenAPI\OpenAPI\Models\Shared;
 class NullableOneOfRefInObject
 {
 	#[\JMS\Serializer\Annotation\SerializedName('NullableOneOfOne')]
-    #[\JMS\Serializer\Annotation\Type('mixed')]
-    public mixed $nullableOneOfOne;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\TypedObject1')]
+    public TypedObject1 $nullableOneOfOne;
     
 	#[\JMS\Serializer\Annotation\SerializedName('NullableOneOfTwo')]
     #[\JMS\Serializer\Annotation\Type('mixed')]
     public mixed $nullableOneOfTwo;
     
 	#[\JMS\Serializer\Annotation\SerializedName('OneOfOne')]
-    #[\JMS\Serializer\Annotation\Type('mixed')]
-    public mixed $oneOfOne;
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\TypedObject1')]
+    public TypedObject1 $oneOfOne;
     
 	public function __construct()
 	{
-		$this->nullableOneOfOne = null;
+		$this->nullableOneOfOne = new \OpenAPI\OpenAPI\Models\Shared\TypedObject1();
 		$this->nullableOneOfTwo = null;
-		$this->oneOfOne = null;
+		$this->oneOfOne = new \OpenAPI\OpenAPI\Models\Shared\TypedObject1();
 	}
 }

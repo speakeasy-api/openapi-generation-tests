@@ -1,4 +1,4 @@
-# unions
+# Unions
 
 ## Overview
 
@@ -30,6 +30,8 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
+use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
 $sdk = SDK::builder()
     ->build();
@@ -51,9 +53,9 @@ try {
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [mixed](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\TypedObject1](../../models/shared/TypedObject1.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 
 ### Response
@@ -115,19 +117,23 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\NullableOneOfRefInObject;
+use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
+use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
 $sdk = SDK::builder()
     ->build();
 
 try {
     $request = new NullableOneOfRefInObject();
-    $request->nullableOneOfOne = 'culpa';
+    $request->nullableOneOfOne = new TypedObject1();
+    $request->nullableOneOfOne->type = TypedObject1Type::Obj1;
+    $request->nullableOneOfOne->value = 'similique';
     $request->nullableOneOfTwo = new TypedObject2();
     $request->nullableOneOfTwo->type = TypedObject2Type::Obj2;
-    $request->nullableOneOfTwo->value = 'tenetur';
+    $request->nullableOneOfTwo->value = 'aliquid';
     $request->oneOfOne = new TypedObject1();
     $request->oneOfOne->type = TypedObject1Type::Obj1;
-    $request->oneOfOne->value = 'quae';
+    $request->oneOfOne->value = 'tenetur';
 
     $response = $sdk->unions->nullableOneOfRefInObjectPost($request);
 
@@ -168,7 +174,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'vel'
+    $request = new TypedObject1();
+    $request->type = TypedObject1Type::Obj1;
+    $request->value = 'earum';
 
     $response = $sdk->unions->nullableOneOfSchemaPost($request);
 
@@ -249,12 +257,16 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
+use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
 $sdk = SDK::builder()
     ->build();
 
 try {
-'illum'
+    $request = new TypedObject1();
+    $request->type = TypedObject1Type::Obj1;
+    $request->value = 'in';
 
     $response = $sdk->unions->nullableTypedObjectPost($request);
 
@@ -268,9 +280,9 @@ try {
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [mixed](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
+| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
+| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\TypedObject1](../../models/shared/TypedObject1.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
 
 
 ### Response
@@ -295,7 +307,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-333.04
+727697
 
     $response = $sdk->unions->primitiveTypeOneOfPost($request);
 
@@ -336,27 +348,39 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimpleObjectWithType();
-    $request->any = 'sapiente';
-    $request->bigint = 119771;
-    $request->bigintStr = 'ullam';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 4438.79;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
-    $request->int32 = 1;
-    $request->int32Enum = SimpleObjectWithTypeInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectWithTypeIntEnum::Second;
-    $request->intOptNull = 999999;
-    $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
-    $request->type = 'aut';
+    $request = new DeepObjectWithType();
+    $request->any = 'accusantium';
+    $request->arr = [
+        new SimpleObject(),
+    ];
+    $request->bool = false;
+    $request->int = 306986;
+    $request->map = [
+        'sapiente' => new SimpleObject(),
+    ];
+    $request->num = 1197.71;
+    $request->obj = new SimpleObject();
+    $request->obj->any = 'ullam';
+    $request->obj->bigint = 443879;
+    $request->obj->bigintStr = 'ullam';
+    $request->obj->bool = true;
+    $request->obj->boolOpt = true;
+    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->obj->decimal = 3917.74;
+    $request->obj->enum = Enum::Two;
+    $request->obj->float32 = 2.2222222;
+    $request->obj->int = 999999;
+    $request->obj->int32 = 1;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->obj->intEnum = SimpleObjectIntEnum::Second;
+    $request->obj->intOptNull = 999999;
+    $request->obj->num = 1.1;
+    $request->obj->numOptNull = 1.1;
+    $request->obj->str = 'example';
+    $request->obj->strOpt = 'optional example';
+    $request->str = 'qui';
+    $request->type = 'quibusdam';
 
     $response = $sdk->unions->stronglyTypedOneOfPost($request);
 
@@ -397,9 +421,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new TypedObject2();
-    $request->type = TypedObject2Type::Obj2;
-    $request->value = 'qui';
+    $request = new TypedObject1();
+    $request->type = TypedObject1Type::Obj1;
+    $request->value = 'deleniti';
 
     $response = $sdk->unions->typedObjectNullableOneOfPost($request);
 
@@ -442,7 +466,7 @@ $sdk = SDK::builder()
 try {
     $request = new TypedObject3();
     $request->type = TypedObject3Type::Obj3;
-    $request->value = 'ex';
+    $request->value = 'dolorum';
 
     $response = $sdk->unions->typedObjectOneOfPost($request);
 
@@ -483,39 +507,26 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new DeepObject();
-    $request->any = 'dolorum';
-    $request->arr = [
-        new SimpleObject(),
-    ];
-    $request->bool = false;
-    $request->int = 99615;
-    $request->map = [
-        'omnis' => new SimpleObject(),
-    ];
-    $request->num = 9453.02;
-    $request->obj = new SimpleObject();
-    $request->obj->any = 'quasi';
-    $request->obj->bigint = 869489;
-    $request->obj->bigintStr = 'et';
-    $request->obj->bool = true;
-    $request->obj->boolOpt = true;
-    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->decimal = 4541.62;
-    $request->obj->enum = Enum::Two;
-    $request->obj->float32 = 2.2222222;
-    $request->obj->int = 999999;
-    $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->obj->intEnum = SimpleObjectIntEnum::First;
-    $request->obj->intOptNull = 999999;
-    $request->obj->num = 1.1;
-    $request->obj->numOptNull = 1.1;
-    $request->obj->str = 'example';
-    $request->obj->strOpt = 'optional example';
-    $request->str = 'veritatis';
-    $request->type = 'consectetur';
+    $request = new SimpleObject();
+    $request->any = 'omnis';
+    $request->bigint = 945302;
+    $request->bigintStr = 'quasi';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->decimal = 8694.89;
+    $request->enum = Enum::Two;
+    $request->float32 = 2.2222222;
+    $request->int = 999999;
+    $request->int32 = 1;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->intOptNull = 999999;
+    $request->num = 1.1;
+    $request->numOptNull = 1.1;
+    $request->str = 'example';
+    $request->strOpt = 'optional example';
 
     $response = $sdk->unions->weaklyTypedOneOfPost($request);
 

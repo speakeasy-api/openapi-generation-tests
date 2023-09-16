@@ -11,8 +11,8 @@ from typing import Any
 
 @dataclasses.dataclass
 class NullableOneOfTypeInObject:
-    nullable_one_of_one: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
+    nullable_one_of_one: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
     nullable_one_of_two: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
-    one_of_one: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
+    one_of_one: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
     
 

@@ -9,9 +9,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NullableOneOfRefInObject {
     @JsonProperty("NullableOneOfOne")
-    public Object nullableOneOfOne;
+    public TypedObject1 nullableOneOfOne;
 
-    public NullableOneOfRefInObject withNullableOneOfOne(Object nullableOneOfOne) {
+    public NullableOneOfRefInObject withNullableOneOfOne(TypedObject1 nullableOneOfOne) {
         this.nullableOneOfOne = nullableOneOfOne;
         return this;
     }
@@ -25,14 +25,14 @@ public class NullableOneOfRefInObject {
     }
     
     @JsonProperty("OneOfOne")
-    public Object oneOfOne;
+    public TypedObject1 oneOfOne;
 
-    public NullableOneOfRefInObject withOneOfOne(Object oneOfOne) {
+    public NullableOneOfRefInObject withOneOfOne(TypedObject1 oneOfOne) {
         this.oneOfOne = oneOfOne;
         return this;
     }
     
-    public NullableOneOfRefInObject(@JsonProperty("NullableOneOfOne") Object nullableOneOfOne, @JsonProperty("NullableOneOfTwo") Object nullableOneOfTwo, @JsonProperty("OneOfOne") Object oneOfOne) {
+    public NullableOneOfRefInObject(@JsonProperty("NullableOneOfOne") TypedObject1 nullableOneOfOne, @JsonProperty("NullableOneOfTwo") Object nullableOneOfTwo, @JsonProperty("OneOfOne") TypedObject1 oneOfOne) {
         this.nullableOneOfOne = nullableOneOfOne;
         this.nullableOneOfTwo = nullableOneOfTwo;
         this.oneOfOne = oneOfOne;

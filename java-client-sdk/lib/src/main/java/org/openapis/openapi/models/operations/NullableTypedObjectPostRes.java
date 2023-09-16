@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class NullableTypedObjectPostRes {
     @JsonProperty("json")
-    public Object json;
+    public org.openapis.openapi.models.shared.TypedObject1 json;
 
-    public NullableTypedObjectPostRes withJson(Object json) {
+    public NullableTypedObjectPostRes withJson(org.openapis.openapi.models.shared.TypedObject1 json) {
         this.json = json;
         return this;
     }
     
-    public NullableTypedObjectPostRes(@JsonProperty("json") Object json) {
+    public NullableTypedObjectPostRes(@JsonProperty("json") org.openapis.openapi.models.shared.TypedObject1 json) {
         this.json = json;
   }
 }

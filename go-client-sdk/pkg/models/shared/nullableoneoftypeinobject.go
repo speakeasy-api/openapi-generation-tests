@@ -8,86 +8,16 @@ import (
 	"errors"
 )
 
-type NullableOneOfTypeInObjectNullableOneOfOneType string
-
-const (
-	NullableOneOfTypeInObjectNullableOneOfOneTypeBoolean NullableOneOfTypeInObjectNullableOneOfOneType = "boolean"
-	NullableOneOfTypeInObjectNullableOneOfOneTypeAny     NullableOneOfTypeInObjectNullableOneOfOneType = "any"
-)
-
-type NullableOneOfTypeInObjectNullableOneOfOne struct {
-	Boolean *bool
-	Any     interface{}
-
-	Type NullableOneOfTypeInObjectNullableOneOfOneType
-}
-
-func CreateNullableOneOfTypeInObjectNullableOneOfOneBoolean(boolean bool) NullableOneOfTypeInObjectNullableOneOfOne {
-	typ := NullableOneOfTypeInObjectNullableOneOfOneTypeBoolean
-
-	return NullableOneOfTypeInObjectNullableOneOfOne{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func CreateNullableOneOfTypeInObjectNullableOneOfOneAny(any interface{}) NullableOneOfTypeInObjectNullableOneOfOne {
-	typ := NullableOneOfTypeInObjectNullableOneOfOneTypeAny
-
-	return NullableOneOfTypeInObjectNullableOneOfOne{
-		Any:  &any,
-		Type: typ,
-	}
-}
-
-func (u *NullableOneOfTypeInObjectNullableOneOfOne) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	boolean := new(bool)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&boolean); err == nil {
-		u.Boolean = boolean
-		u.Type = NullableOneOfTypeInObjectNullableOneOfOneTypeBoolean
-		return nil
-	}
-
-	any := new(interface{})
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&any); err == nil {
-		u.Any = any
-		u.Type = NullableOneOfTypeInObjectNullableOneOfOneTypeAny
-		return nil
-	}
-
-	return errors.New("could not unmarshal into supported union types")
-}
-
-func (u NullableOneOfTypeInObjectNullableOneOfOne) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return json.Marshal(u.Boolean)
-	}
-
-	if u.Any != nil {
-		return json.Marshal(u.Any)
-	}
-
-	return nil, nil
-}
-
 type NullableOneOfTypeInObjectNullableOneOfTwoType string
 
 const (
 	NullableOneOfTypeInObjectNullableOneOfTwoTypeBoolean NullableOneOfTypeInObjectNullableOneOfTwoType = "boolean"
 	NullableOneOfTypeInObjectNullableOneOfTwoTypeInteger NullableOneOfTypeInObjectNullableOneOfTwoType = "integer"
-	NullableOneOfTypeInObjectNullableOneOfTwoTypeAny     NullableOneOfTypeInObjectNullableOneOfTwoType = "any"
 )
 
 type NullableOneOfTypeInObjectNullableOneOfTwo struct {
 	Boolean *bool
 	Integer *int64
-	Any     interface{}
 
 	Type NullableOneOfTypeInObjectNullableOneOfTwoType
 }
@@ -107,15 +37,6 @@ func CreateNullableOneOfTypeInObjectNullableOneOfTwoInteger(integer int64) Nulla
 	return NullableOneOfTypeInObjectNullableOneOfTwo{
 		Integer: &integer,
 		Type:    typ,
-	}
-}
-
-func CreateNullableOneOfTypeInObjectNullableOneOfTwoAny(any interface{}) NullableOneOfTypeInObjectNullableOneOfTwo {
-	typ := NullableOneOfTypeInObjectNullableOneOfTwoTypeAny
-
-	return NullableOneOfTypeInObjectNullableOneOfTwo{
-		Any:  &any,
-		Type: typ,
 	}
 }
 
@@ -140,15 +61,6 @@ func (u *NullableOneOfTypeInObjectNullableOneOfTwo) UnmarshalJSON(data []byte) e
 		return nil
 	}
 
-	any := new(interface{})
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&any); err == nil {
-		u.Any = any
-		u.Type = NullableOneOfTypeInObjectNullableOneOfTwoTypeAny
-		return nil
-	}
-
 	return errors.New("could not unmarshal into supported union types")
 }
 
@@ -161,80 +73,33 @@ func (u NullableOneOfTypeInObjectNullableOneOfTwo) MarshalJSON() ([]byte, error)
 		return json.Marshal(u.Integer)
 	}
 
-	if u.Any != nil {
-		return json.Marshal(u.Any)
-	}
+	return json.Marshal(nil)
 
-	return nil, nil
-}
-
-type NullableOneOfTypeInObjectOneOfOneType string
-
-const (
-	NullableOneOfTypeInObjectOneOfOneTypeBoolean NullableOneOfTypeInObjectOneOfOneType = "boolean"
-)
-
-type NullableOneOfTypeInObjectOneOfOne struct {
-	Boolean *bool
-
-	Type NullableOneOfTypeInObjectOneOfOneType
-}
-
-func CreateNullableOneOfTypeInObjectOneOfOneBoolean(boolean bool) NullableOneOfTypeInObjectOneOfOne {
-	typ := NullableOneOfTypeInObjectOneOfOneTypeBoolean
-
-	return NullableOneOfTypeInObjectOneOfOne{
-		Boolean: &boolean,
-		Type:    typ,
-	}
-}
-
-func (u *NullableOneOfTypeInObjectOneOfOne) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	boolean := new(bool)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&boolean); err == nil {
-		u.Boolean = boolean
-		u.Type = NullableOneOfTypeInObjectOneOfOneTypeBoolean
-		return nil
-	}
-
-	return errors.New("could not unmarshal into supported union types")
-}
-
-func (u NullableOneOfTypeInObjectOneOfOne) MarshalJSON() ([]byte, error) {
-	if u.Boolean != nil {
-		return json.Marshal(u.Boolean)
-	}
-
-	return nil, nil
 }
 
 type NullableOneOfTypeInObject struct {
-	NullableOneOfOne NullableOneOfTypeInObjectNullableOneOfOne `json:"NullableOneOfOne"`
-	NullableOneOfTwo NullableOneOfTypeInObjectNullableOneOfTwo `json:"NullableOneOfTwo"`
-	OneOfOne         NullableOneOfTypeInObjectOneOfOne         `json:"OneOfOne"`
+	NullableOneOfOne *bool                                      `json:"NullableOneOfOne"`
+	NullableOneOfTwo *NullableOneOfTypeInObjectNullableOneOfTwo `json:"NullableOneOfTwo"`
+	OneOfOne         bool                                       `json:"OneOfOne"`
 }
 
-func (o *NullableOneOfTypeInObject) GetNullableOneOfOne() NullableOneOfTypeInObjectNullableOneOfOne {
+func (o *NullableOneOfTypeInObject) GetNullableOneOfOne() *bool {
 	if o == nil {
-		return NullableOneOfTypeInObjectNullableOneOfOne{}
+		return nil
 	}
 	return o.NullableOneOfOne
 }
 
-func (o *NullableOneOfTypeInObject) GetNullableOneOfTwo() NullableOneOfTypeInObjectNullableOneOfTwo {
+func (o *NullableOneOfTypeInObject) GetNullableOneOfTwo() *NullableOneOfTypeInObjectNullableOneOfTwo {
 	if o == nil {
-		return NullableOneOfTypeInObjectNullableOneOfTwo{}
+		return nil
 	}
 	return o.NullableOneOfTwo
 }
 
-func (o *NullableOneOfTypeInObject) GetOneOfOne() NullableOneOfTypeInObjectOneOfOne {
+func (o *NullableOneOfTypeInObject) GetOneOfOne() bool {
 	if o == nil {
-		return NullableOneOfTypeInObjectOneOfOne{}
+		return false
 	}
 	return o.OneOfOne
 }

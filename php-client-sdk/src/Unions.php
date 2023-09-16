@@ -24,11 +24,11 @@ class Unions
     /**
      * flattenedTypedObjectPost
      * 
-     * @param mixed $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\TypedObject1 $request
      * @return \OpenAPI\OpenAPI\Models\Operations\FlattenedTypedObjectPostResponse
      */
 	public function flattenedTypedObjectPost(
-        mixed $request,
+        \OpenAPI\OpenAPI\Models\Shared\TypedObject1 $request,
     ): \OpenAPI\OpenAPI\Models\Operations\FlattenedTypedObjectPostResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -226,11 +226,11 @@ class Unions
     /**
      * nullableTypedObjectPost
      * 
-     * @param mixed $request
+     * @param \OpenAPI\OpenAPI\Models\Shared\TypedObject1 $request
      * @return \OpenAPI\OpenAPI\Models\Operations\NullableTypedObjectPostResponse
      */
 	public function nullableTypedObjectPost(
-        mixed $request,
+        ?\OpenAPI\OpenAPI\Models\Shared\TypedObject1 $request,
     ): \OpenAPI\OpenAPI\Models\Operations\NullableTypedObjectPostResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());

@@ -1,4 +1,4 @@
-# unions
+# Unions
 
 ## Overview
 
@@ -49,7 +49,7 @@ sdk.unions.flattenedTypedObjectPost({
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [shared.TypedObject1](../../models/shared/typedobject1.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
@@ -116,12 +116,15 @@ const sdk = new SDK({
 sdk.unions.nullableOneOfRefInObjectPost({
   nullableOneOfOne: {
     type: TypedObject1Type.Obj1,
-    value: "suscipit",
+    value: "architecto",
   },
-  nullableOneOfTwo: "debitis",
+  nullableOneOfTwo: {
+    type: TypedObject1Type.Obj1,
+    value: "sapiente",
+  },
   oneOfOne: {
     type: TypedObject1Type.Obj1,
-    value: "illo",
+    value: "debitis",
   },
 }).then((res: NullableOneOfRefInObjectPostResponse) => {
   if (res.statusCode == 200) {
@@ -160,7 +163,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.nullableOneOfSchemaPost("perferendis").then((res: NullableOneOfSchemaPostResponse) => {
+sdk.unions.nullableOneOfSchemaPost({
+  type: TypedObject1Type.Obj1,
+  value: "reiciendis",
+}).then((res: NullableOneOfSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -197,7 +203,7 @@ const sdk = new SDK({
 });
 
 sdk.unions.nullableOneOfTypeInObjectPost({
-  nullableOneOfOne: "maiores",
+  nullableOneOfOne: false,
   nullableOneOfTwo: false,
   oneOfOne: false,
 }).then((res: NullableOneOfTypeInObjectPostResponse) => {
@@ -239,7 +245,7 @@ const sdk = new SDK({
 
 sdk.unions.nullableTypedObjectPost({
   type: TypedObject1Type.Obj1,
-  value: "provident",
+  value: "corrupti",
 }).then((res: NullableTypedObjectPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -251,7 +257,7 @@ sdk.unions.nullableTypedObjectPost({
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [shared.TypedObject1](../../models/shared/typedobject1.md)   | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
 
 
@@ -276,7 +282,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.primitiveTypeOneOfPost(896762).then((res: PrimitiveTypeOneOfPostResponse) => {
+sdk.unions.primitiveTypeOneOfPost(false).then((res: PrimitiveTypeOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -321,26 +327,26 @@ const sdk = new SDK({
 });
 
 sdk.unions.stronglyTypedOneOfPost({
-  any: "ea",
-  bigint: 579912,
-  bigintStr: "quos",
+  any: "sed",
+  bigint: 592231,
+  bigintStr: "eius",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 9757.52,
+  decimal: 8967.62,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectWithTypeInt32Enum.FiftyFive,
-  intEnum: SimpleObjectWithTypeIntEnum.First,
+  intEnum: SimpleObjectWithTypeIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
   str: "example",
   strOpt: "optional example",
-  type: "voluptate",
+  type: "occaecati",
 }).then((res: StronglyTypedOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -378,7 +384,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.typedObjectNullableOneOfPost("ex").then((res: TypedObjectNullableOneOfPostResponse) => {
+sdk.unions.typedObjectNullableOneOfPost({
+  type: TypedObject2Type.Obj2,
+  value: "voluptatibus",
+}).then((res: TypedObjectNullableOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -417,7 +426,7 @@ const sdk = new SDK({
 
 sdk.unions.typedObjectOneOfPost({
   type: TypedObject1Type.Obj1,
-  value: "non",
+  value: "tempora",
 }).then((res: TypedObjectOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -457,79 +466,25 @@ const sdk = new SDK({
 });
 
 sdk.unions.weaklyTypedOneOfPost({
-  any: "facilis",
-  arr: [
-    {
-      any: "quaerat",
-      bigint: 277773,
-      bigintStr: "ipsam",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 8948.64,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  bool: false,
-  int: 750595,
-  map: {
-    "error": {
-      any: "veniam",
-      bigint: 329543,
-      bigintStr: "recusandae",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9671.22,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  },
-  num: 486.9,
-  obj: {
-    any: "saepe",
-    bigint: 253642,
-    bigintStr: "veniam",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 4461.35,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.First,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  str: "laudantium",
-  type: "exercitationem",
+  any: "reiciendis",
+  bigint: 401713,
+  bigintStr: "sit",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 2484.13,
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Second,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
 }).then((res: WeaklyTypedOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

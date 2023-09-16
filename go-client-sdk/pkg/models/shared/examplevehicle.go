@@ -73,5 +73,6 @@ func (u ExampleVehicle) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.ExampleCar)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
+
 }

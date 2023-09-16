@@ -1,4 +1,4 @@
-# parameters
+# Parameters
 
 ## Overview
 

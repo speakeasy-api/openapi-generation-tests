@@ -3,12 +3,14 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import { Expose } from "class-transformer";
+import { TypedObject1 } from "./typedobject1";
+import { Expose, Type } from "class-transformer";
 
 export class NullableOneOfRefInObject extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "NullableOneOfOne" })
-    nullableOneOfOne: any;
+    @Type(() => TypedObject1)
+    nullableOneOfOne: TypedObject1;
 
     @SpeakeasyMetadata()
     @Expose({ name: "NullableOneOfTwo" })
@@ -16,5 +18,6 @@ export class NullableOneOfRefInObject extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "OneOfOne" })
-    oneOfOne: any;
+    @Type(() => TypedObject1)
+    oneOfOne: TypedObject1;
 }

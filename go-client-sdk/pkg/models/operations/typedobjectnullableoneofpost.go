@@ -9,12 +9,12 @@ import (
 
 // TypedObjectNullableOneOfPostRes - OK
 type TypedObjectNullableOneOfPostRes struct {
-	JSON shared.TypedObjectNullableOneOf `json:"json"`
+	JSON *shared.TypedObjectNullableOneOf `json:"json"`
 }
 
-func (o *TypedObjectNullableOneOfPostRes) GetJSON() shared.TypedObjectNullableOneOf {
+func (o *TypedObjectNullableOneOfPostRes) GetJSON() *shared.TypedObjectNullableOneOf {
 	if o == nil {
-		return shared.TypedObjectNullableOneOf{}
+		return nil
 	}
 	return o.JSON
 }

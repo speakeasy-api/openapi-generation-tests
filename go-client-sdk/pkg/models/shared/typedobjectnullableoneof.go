@@ -13,13 +13,11 @@ type TypedObjectNullableOneOfType string
 const (
 	TypedObjectNullableOneOfTypeTypedObject1 TypedObjectNullableOneOfType = "typedObject1"
 	TypedObjectNullableOneOfTypeTypedObject2 TypedObjectNullableOneOfType = "typedObject2"
-	TypedObjectNullableOneOfTypeAny          TypedObjectNullableOneOfType = "any"
 )
 
 type TypedObjectNullableOneOf struct {
 	TypedObject1 *TypedObject1
 	TypedObject2 *TypedObject2
-	Any          interface{}
 
 	Type TypedObjectNullableOneOfType
 }
@@ -42,26 +40,8 @@ func CreateTypedObjectNullableOneOfTypedObject2(typedObject2 TypedObject2) Typed
 	}
 }
 
-func CreateTypedObjectNullableOneOfAny(any interface{}) TypedObjectNullableOneOf {
-	typ := TypedObjectNullableOneOfTypeAny
-
-	return TypedObjectNullableOneOf{
-		Any:  &any,
-		Type: typ,
-	}
-}
-
 func (u *TypedObjectNullableOneOf) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
-
-	any := new(interface{})
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&any); err == nil {
-		u.Any = any
-		u.Type = TypedObjectNullableOneOfTypeAny
-		return nil
-	}
 
 	typedObject1 := new(TypedObject1)
 	d = json.NewDecoder(bytes.NewReader(data))
@@ -85,10 +65,6 @@ func (u *TypedObjectNullableOneOf) UnmarshalJSON(data []byte) error {
 }
 
 func (u TypedObjectNullableOneOf) MarshalJSON() ([]byte, error) {
-	if u.Any != nil {
-		return json.Marshal(u.Any)
-	}
-
 	if u.TypedObject1 != nil {
 		return json.Marshal(u.TypedObject1)
 	}
@@ -97,5 +73,6 @@ func (u TypedObjectNullableOneOf) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.TypedObject2)
 	}
 
-	return nil, nil
+	return json.Marshal(nil)
+
 }

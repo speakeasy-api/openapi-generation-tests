@@ -26,7 +26,7 @@ func newUnions(sdkConfig sdkConfiguration) *unions {
 	}
 }
 
-func (s *unions) FlattenedTypedObjectPost(ctx context.Context, request shared.FlattenedTypedObject1) (*operations.FlattenedTypedObjectPostResponse, error) {
+func (s *unions) FlattenedTypedObjectPost(ctx context.Context, request shared.TypedObject1) (*operations.FlattenedTypedObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/flattenedTypedObject"
 
@@ -352,7 +352,7 @@ func (s *unions) NullableOneOfTypeInObjectPost(ctx context.Context, request shar
 	return res, nil
 }
 
-func (s *unions) NullableTypedObjectPost(ctx context.Context, request shared.NullableTypedObject1) (*operations.NullableTypedObjectPostResponse, error) {
+func (s *unions) NullableTypedObjectPost(ctx context.Context, request shared.TypedObject1) (*operations.NullableTypedObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/nullableTypedObject"
 

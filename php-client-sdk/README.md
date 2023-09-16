@@ -138,7 +138,7 @@ try {
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-### [auth](docs/sdks/auth/README.md)
+### [Auth](docs/sdks/auth/README.md)
 
 * [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
 * [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
@@ -149,7 +149,7 @@ try {
 * [oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
-### [authNew](docs/sdks/authnew/README.md)
+### [AuthNew](docs/sdks/authnew/README.md)
 
 * [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [authGlobal](docs/sdks/authnew/README.md#authglobal)
@@ -163,21 +163,21 @@ try {
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [documentation](docs/sdks/documentation/README.md)
+### [Documentation](docs/sdks/documentation/README.md)
 
 * [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
-### [errors](docs/sdks/errors/README.md)
+### [Errors](docs/sdks/errors/README.md)
 
 * [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
 * [statusGetError](docs/sdks/errors/README.md#statusgeterror)
 * [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
 
-### [first](docs/sdks/first/README.md)
+### [First](docs/sdks/first/README.md)
 
 * [get](docs/sdks/first/README.md#get)
 
-### [flattening](docs/sdks/flattening/README.md)
+### [Flattening](docs/sdks/flattening/README.md)
 
 * [componentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
 * [componentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
@@ -185,7 +185,7 @@ try {
 * [inlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
 * [inlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
 
-### [generation](docs/sdks/generation/README.md)
+### [Generation](docs/sdks/generation/README.md)
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
@@ -202,7 +202,7 @@ try {
 * [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [globals](docs/sdks/globals/README.md)
+### [Globals](docs/sdks/globals/README.md)
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
@@ -211,7 +211,7 @@ try {
 
 * [get](docs/sdks/nestfirst/README.md#get)
 
-### [nested](docs/sdks/nested/README.md)
+### [Nested](docs/sdks/nested/README.md)
 
 * [get](docs/sdks/nested/README.md#get)
 
@@ -223,7 +223,7 @@ try {
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
-### [pagination](docs/sdks/pagination/README.md)
+### [Pagination](docs/sdks/pagination/README.md)
 
 * [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
 * [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
@@ -232,7 +232,7 @@ try {
 * [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
 
-### [parameters](docs/sdks/parameters/README.md)
+### [Parameters](docs/sdks/parameters/README.md)
 
 * [deepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -257,7 +257,7 @@ try {
 * [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [simplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
-### [requestBodies](docs/sdks/requestbodies/README.md)
+### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [nullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -318,7 +318,7 @@ try {
 * [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-### [resource](docs/sdks/resource/README.md)
+### [Resource](docs/sdks/resource/README.md)
 
 * [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
@@ -326,7 +326,7 @@ try {
 * [getResource](docs/sdks/resource/README.md#getresource)
 * [updateResource](docs/sdks/resource/README.md#updateresource)
 
-### [responseBodies](docs/sdks/responsebodies/README.md)
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
 * [responseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
 * [responseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
@@ -335,15 +335,15 @@ try {
 * [responseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
 * [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 
-### [retries](docs/sdks/retries/README.md)
+### [Retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
 
-### [second](docs/sdks/second/README.md)
+### [Second](docs/sdks/second/README.md)
 
 * [get](docs/sdks/second/README.md#get)
 
-### [servers](docs/sdks/servers/README.md)
+### [Servers](docs/sdks/servers/README.md)
 
 * [selectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [selectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -352,12 +352,12 @@ try {
 * [serverWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-### [telemetry](docs/sdks/telemetry/README.md)
+### [Telemetry](docs/sdks/telemetry/README.md)
 
 * [telemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [telemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-### [unions](docs/sdks/unions/README.md)
+### [Unions](docs/sdks/unions/README.md)
 
 * [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)

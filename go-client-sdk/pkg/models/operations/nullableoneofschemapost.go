@@ -15,13 +15,11 @@ type NullableOneOfSchemaPostRequestBodyType string
 const (
 	NullableOneOfSchemaPostRequestBodyTypeTypedObject1 NullableOneOfSchemaPostRequestBodyType = "typedObject1"
 	NullableOneOfSchemaPostRequestBodyTypeTypedObject2 NullableOneOfSchemaPostRequestBodyType = "typedObject2"
-	NullableOneOfSchemaPostRequestBodyTypeAny          NullableOneOfSchemaPostRequestBodyType = "any"
 )
 
 type NullableOneOfSchemaPostRequestBody struct {
 	TypedObject1 *shared.TypedObject1
 	TypedObject2 *shared.TypedObject2
-	Any          interface{}
 
 	Type NullableOneOfSchemaPostRequestBodyType
 }
@@ -44,26 +42,8 @@ func CreateNullableOneOfSchemaPostRequestBodyTypedObject2(typedObject2 shared.Ty
 	}
 }
 
-func CreateNullableOneOfSchemaPostRequestBodyAny(any interface{}) NullableOneOfSchemaPostRequestBody {
-	typ := NullableOneOfSchemaPostRequestBodyTypeAny
-
-	return NullableOneOfSchemaPostRequestBody{
-		Any:  &any,
-		Type: typ,
-	}
-}
-
 func (u *NullableOneOfSchemaPostRequestBody) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
-
-	any := new(interface{})
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&any); err == nil {
-		u.Any = any
-		u.Type = NullableOneOfSchemaPostRequestBodyTypeAny
-		return nil
-	}
 
 	typedObject1 := new(shared.TypedObject1)
 	d = json.NewDecoder(bytes.NewReader(data))
@@ -87,10 +67,6 @@ func (u *NullableOneOfSchemaPostRequestBody) UnmarshalJSON(data []byte) error {
 }
 
 func (u NullableOneOfSchemaPostRequestBody) MarshalJSON() ([]byte, error) {
-	if u.Any != nil {
-		return json.Marshal(u.Any)
-	}
-
 	if u.TypedObject1 != nil {
 		return json.Marshal(u.TypedObject1)
 	}
@@ -99,7 +75,8 @@ func (u NullableOneOfSchemaPostRequestBody) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.TypedObject2)
 	}
 
-	return nil, nil
+	return json.Marshal(nil)
+
 }
 
 type NullableOneOfSchemaPostResJSONType string
@@ -107,13 +84,11 @@ type NullableOneOfSchemaPostResJSONType string
 const (
 	NullableOneOfSchemaPostResJSONTypeTypedObject1 NullableOneOfSchemaPostResJSONType = "typedObject1"
 	NullableOneOfSchemaPostResJSONTypeTypedObject2 NullableOneOfSchemaPostResJSONType = "typedObject2"
-	NullableOneOfSchemaPostResJSONTypeAny          NullableOneOfSchemaPostResJSONType = "any"
 )
 
 type NullableOneOfSchemaPostResJSON struct {
 	TypedObject1 *shared.TypedObject1
 	TypedObject2 *shared.TypedObject2
-	Any          interface{}
 
 	Type NullableOneOfSchemaPostResJSONType
 }
@@ -136,26 +111,8 @@ func CreateNullableOneOfSchemaPostResJSONTypedObject2(typedObject2 shared.TypedO
 	}
 }
 
-func CreateNullableOneOfSchemaPostResJSONAny(any interface{}) NullableOneOfSchemaPostResJSON {
-	typ := NullableOneOfSchemaPostResJSONTypeAny
-
-	return NullableOneOfSchemaPostResJSON{
-		Any:  &any,
-		Type: typ,
-	}
-}
-
 func (u *NullableOneOfSchemaPostResJSON) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
-
-	any := new(interface{})
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&any); err == nil {
-		u.Any = any
-		u.Type = NullableOneOfSchemaPostResJSONTypeAny
-		return nil
-	}
 
 	typedObject1 := new(shared.TypedObject1)
 	d = json.NewDecoder(bytes.NewReader(data))
@@ -179,10 +136,6 @@ func (u *NullableOneOfSchemaPostResJSON) UnmarshalJSON(data []byte) error {
 }
 
 func (u NullableOneOfSchemaPostResJSON) MarshalJSON() ([]byte, error) {
-	if u.Any != nil {
-		return json.Marshal(u.Any)
-	}
-
 	if u.TypedObject1 != nil {
 		return json.Marshal(u.TypedObject1)
 	}
@@ -191,17 +144,18 @@ func (u NullableOneOfSchemaPostResJSON) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.TypedObject2)
 	}
 
-	return nil, nil
+	return json.Marshal(nil)
+
 }
 
 // NullableOneOfSchemaPostRes - OK
 type NullableOneOfSchemaPostRes struct {
-	JSON NullableOneOfSchemaPostResJSON `json:"json"`
+	JSON *NullableOneOfSchemaPostResJSON `json:"json"`
 }
 
-func (o *NullableOneOfSchemaPostRes) GetJSON() NullableOneOfSchemaPostResJSON {
+func (o *NullableOneOfSchemaPostRes) GetJSON() *NullableOneOfSchemaPostResJSON {
 	if o == nil {
-		return NullableOneOfSchemaPostResJSON{}
+		return nil
 	}
 	return o.JSON
 }

@@ -3,12 +3,6 @@
 
 ## Supported Types
 
-### 
-
-```go
-nullableOneOfRefInObjectNullableOneOfTwo := shared.CreateNullableOneOfRefInObjectNullableOneOfTwoAny(interface{}{/* values here */})
-```
-
 ### TypedObject1
 
 ```go

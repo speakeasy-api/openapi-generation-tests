@@ -3,12 +3,6 @@
 
 ## Supported Types
 
-### 
-
-```go
-nullableOneOfSchemaPostResJSON := operations.CreateNullableOneOfSchemaPostResJSONAny(interface{}{/* values here */})
-```
-
 ### TypedObject1
 
 ```go

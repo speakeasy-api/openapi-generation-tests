@@ -122,7 +122,8 @@ func (u PrimitiveTypeOneOfPostRequestBody) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.Boolean)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
+
 }
 
 type PrimitiveTypeOneOfPostResJSONType string
@@ -238,7 +239,8 @@ func (u PrimitiveTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.Boolean)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
+
 }
 
 // PrimitiveTypeOneOfPostRes - OK

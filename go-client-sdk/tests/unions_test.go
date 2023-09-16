@@ -3,6 +3,7 @@
 package tests
 
 import (
+	"bytes"
 	"context"
 	"net/http"
 	"testing"
@@ -11,6 +12,7 @@ import (
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/types"
+	"openapi/pkg/utils"
 
 	sdk "openapi"
 
@@ -192,6 +194,267 @@ func TestTypedObjectOneOfPost_Obj3(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, shared.TypedObjectOneOfTypeTypedObject3, res.Res.JSON.Type)
 	assert.Equal(t, obj, *res.Res.JSON.TypedObject3)
+}
+
+func TestTypedObjectOneOfPost_Null(t *testing.T) {
+	recordTest("unions-typed-object-one-of-post-null")
+
+	s := sdk.New()
+
+	req := shared.TypedObjectOneOf{}
+	_, err := s.Unions.TypedObjectOneOfPost(context.Background(), req)
+	require.Error(t, err)
+	assert.Equal(t, err.Error(), "error serializing request body: json: error calling MarshalJSON for type shared.TypedObjectOneOf: could not marshal union type: all fields are null")
+}
+
+func TestTypedObjectNullableOneOfPost_Obj1(t *testing.T) {
+	recordTest("unions-typed-object-nullable-one-of-post-obj1")
+
+	s := sdk.New()
+
+	obj := shared.TypedObject1{
+		Type:  shared.TypedObject1TypeObj1,
+		Value: "one",
+	}
+
+	req := shared.CreateTypedObjectNullableOneOfTypedObject1(obj)
+
+	res, err := s.Unions.TypedObjectNullableOneOfPost(context.Background(), req)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, shared.TypedObjectNullableOneOfTypeTypedObject1, res.Res.JSON.Type)
+	assert.Equal(t, obj, *res.Res.JSON.TypedObject1)
+}
+
+func TestTypedObjectNullableOneOfPost_Obj2(t *testing.T) {
+	recordTest("unions-typed-object-nullable-one-of-post-obj2")
+
+	s := sdk.New()
+
+	obj := shared.TypedObject2{
+		Type:  shared.TypedObject2TypeObj2,
+		Value: "two",
+	}
+
+	req := shared.CreateTypedObjectNullableOneOfTypedObject2(obj)
+
+	res, err := s.Unions.TypedObjectNullableOneOfPost(context.Background(), req)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, shared.TypedObjectNullableOneOfTypeTypedObject2, res.Res.JSON.Type)
+	assert.Equal(t, obj, *res.Res.JSON.TypedObject2)
+}
+
+func TestTypedObjectNullableOneOfPost_Null(t *testing.T) {
+	recordTest("unions-typed-object-nullable-one-of-post-null")
+
+	s := sdk.New()
+
+	req := shared.TypedObjectNullableOneOf{}
+
+	res, err := s.Unions.TypedObjectNullableOneOfPost(context.Background(), req)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	require.Nil(t, res.Res.JSON)
+}
+
+func TestFlattenedTypedObject_Obj1(t *testing.T) {
+	recordTest("unions-flattened-typed-object-post-obj1")
+
+	s := sdk.New()
+
+	obj := shared.TypedObject1{
+		Type:  shared.TypedObject1TypeObj1,
+		Value: "one",
+	}
+
+	res, err := s.Unions.FlattenedTypedObjectPost(context.Background(), obj)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, obj, res.Res.JSON)
+}
+
+func TestNullableTypedObjectPost_Obj1(t *testing.T) {
+	recordTest("unions-nullable-typed-object-post-obj1")
+
+	s := sdk.New()
+
+	obj := shared.TypedObject1{
+		Type:  shared.TypedObject1TypeObj1,
+		Value: "one",
+	}
+
+	res, err := s.Unions.NullableTypedObjectPost(context.Background(), obj)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, obj, *res.Res.JSON)
+}
+
+func TestNullableTypedObjectPost_Null(t *testing.T) {
+	recordTest("unions-nullable-typed-object-post-null")
+
+	// TODO: see SPE-2102
+	// s := sdk.New()
+
+	// res, err := s.Unions.NullableTypedObjectPost(context.Background(), nil)
+	// require.NoError(t, err)
+	// assert.Equal(t, http.StatusOK, res.StatusCode)
+	// require.Nil(t, res.Res.JSON)
+}
+
+func TestNullableOneOfSchemaPost_Obj1(t *testing.T) {
+	recordTest("unions-nullable-oneof-schema-post-obj1")
+
+	s := sdk.New()
+
+	obj := shared.TypedObject1{
+		Type:  shared.TypedObject1TypeObj1,
+		Value: "one",
+	}
+
+	req := operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject1(obj)
+
+	res, err := s.Unions.NullableOneOfSchemaPost(context.Background(), req)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, operations.NullableOneOfSchemaPostResJSONTypeTypedObject1, res.Res.JSON.Type)
+	assert.Equal(t, obj, *res.Res.JSON.TypedObject1)
+}
+
+func TestNullableOneOfSchemaPost_Obj2(t *testing.T) {
+	recordTest("unions-nullable-oneof-schema-post-obj2")
+
+	s := sdk.New()
+
+	obj := shared.TypedObject2{
+		Type:  shared.TypedObject2TypeObj2,
+		Value: "two",
+	}
+
+	req := operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject2(obj)
+
+	res, err := s.Unions.NullableOneOfSchemaPost(context.Background(), req)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, operations.NullableOneOfSchemaPostResJSONTypeTypedObject2, res.Res.JSON.Type)
+	assert.Equal(t, obj, *res.Res.JSON.TypedObject2)
+}
+
+func TestNullableOneOfSchemaPost_Null(t *testing.T) {
+	recordTest("unions-nullable-oneof-schema-post-null")
+
+	s := sdk.New()
+
+	req := operations.NullableOneOfSchemaPostRequestBody{}
+
+	res, err := s.Unions.NullableOneOfSchemaPost(context.Background(), req)
+	require.NoError(t, err)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	require.Nil(t, res.Res.JSON)
+}
+
+func TestNullableOneOfTypeInObject(t *testing.T) {
+	recordTest("unions-nullable-oneof-type-in-object-post")
+
+	nullableOneOfTwoInt2 := shared.CreateNullableOneOfTypeInObjectNullableOneOfTwoInteger(2)
+
+	tests := []struct {
+		name     string
+		obj      shared.NullableOneOfTypeInObject
+		wantJson string
+	}{
+		{
+			name: "Non-nullable field set only",
+			obj: shared.NullableOneOfTypeInObject{
+				OneOfOne: true,
+			},
+			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":true}\n",
+		},
+		{
+			name: "Nullable fields set to null",
+			obj: shared.NullableOneOfTypeInObject{
+				NullableOneOfOne: nil,
+				NullableOneOfTwo: nil,
+				OneOfOne:         true,
+			},
+			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":true}\n",
+		},
+		{
+			name: "All fields set to non-null values",
+			obj: shared.NullableOneOfTypeInObject{
+				NullableOneOfOne: pointer.ToBool(true),
+				NullableOneOfTwo: &nullableOneOfTwoInt2,
+				OneOfOne:         true,
+			},
+			wantJson: "{\"NullableOneOfOne\":true,\"NullableOneOfTwo\":2,\"OneOfOne\":true}\n",
+		},
+	}
+	s := sdk.New()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			reader, _, err := utils.SerializeRequestBody(context.Background(), tt.obj, "Request", "json")
+			require.NoError(t, err)
+			serializedBody := new(bytes.Buffer)
+			serializedBody.ReadFrom(reader)
+			assert.Equal(t, tt.wantJson, serializedBody.String())
+			res, err := s.Unions.NullableOneOfTypeInObjectPost(context.Background(), tt.obj)
+			require.NoError(t, err)
+			assert.Equal(t, http.StatusOK, res.StatusCode)
+			assert.Equal(t, tt.obj, res.Res.JSON)
+		})
+	}
+}
+
+func TestNullableOneOfRefInObject(t *testing.T) {
+	recordTest("unions-nullable-oneof-ref-in-object-post")
+
+	nullableOneOfTwoObj2 := shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(shared.TypedObject2{Type: "obj2", Value: "two"})
+
+	tests := []struct {
+		name     string
+		obj      shared.NullableOneOfRefInObject
+		wantJson string
+	}{
+		{
+			name: "Non-nullable field set only",
+			obj: shared.NullableOneOfRefInObject{
+				OneOfOne: shared.TypedObject1{Type: "obj1", Value: "one"},
+			},
+			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}\n",
+		},
+		{
+			name: "Nullable fields set to null",
+			obj: shared.NullableOneOfRefInObject{
+				NullableOneOfOne: nil,
+				NullableOneOfTwo: nil,
+				OneOfOne:         shared.TypedObject1{Type: "obj1", Value: "one"},
+			},
+			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}\n",
+		},
+		{
+			name: "All fields set to non-null values",
+			obj: shared.NullableOneOfRefInObject{
+				NullableOneOfOne: &shared.TypedObject1{Type: "obj1", Value: "one"},
+				NullableOneOfTwo: &nullableOneOfTwoObj2,
+				OneOfOne:         shared.TypedObject1{Type: "obj1"},
+			},
+			wantJson: "{\"NullableOneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"},\"NullableOneOfTwo\":{\"type\":\"obj2\",\"value\":\"two\"},\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"\"}}\n",
+		},
+	}
+	s := sdk.New()
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			reader, _, err := utils.SerializeRequestBody(context.Background(), tt.obj, "Request", "json")
+			require.NoError(t, err)
+			serializedBody := new(bytes.Buffer)
+			serializedBody.ReadFrom(reader)
+			assert.Equal(t, tt.wantJson, serializedBody.String())
+			res, err := s.Unions.NullableOneOfRefInObjectPost(context.Background(), tt.obj)
+			require.NoError(t, err)
+			assert.Equal(t, http.StatusOK, res.StatusCode)
+			assert.Equal(t, tt.obj, res.Res.JSON)
+		})
+	}
 }
 
 func TestPrimitiveTypeOneOfPost_String(t *testing.T) {

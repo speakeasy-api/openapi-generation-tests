@@ -1,4 +1,4 @@
-# unions
+# Unions
 
 ## Overview
 
@@ -29,7 +29,7 @@ require_relative openapi
 s = OpenApiSDK::SDK.new
 
    
-req = ::.new(
+req = Shared::TypedObject1.new(
   request=Shared::TypedObject1.new(
     type=Shared::TypedObject1Type::OBJ1,
     value="quae",
@@ -46,9 +46,9 @@ end
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `request`                                                   | [Shared::TypedObject1](../../models/shared/typedobject1.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
 
 
 ### Response
@@ -106,15 +106,15 @@ req = Shared::NullableOneOfRefInObject.new(
   request=Shared::NullableOneOfRefInObject.new(
     nullable_one_of_one=Shared::TypedObject1.new(
       type=Shared::TypedObject1Type::OBJ1,
-      value="eum",
+      value="aspernatur",
     ),
     nullable_one_of_two=Shared::TypedObject1.new(
       type=Shared::TypedObject1Type::OBJ1,
-      value="rem",
+      value="eius",
     ),
     one_of_one=Shared::TypedObject1.new(
       type=Shared::TypedObject1Type::OBJ1,
-      value="at",
+      value="rem",
     ),
   ),
 )
@@ -151,7 +151,10 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="eos",
+  request=Shared::TypedObject2.new(
+    type=Shared::TypedObject2Type::OBJ2,
+    value="impedit",
+  ),
 )
     
 res = s.unions.nullable_one_of_schema_post(req)
@@ -187,7 +190,7 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::NullableOneOfTypeInObject.new(
   request=Shared::NullableOneOfTypeInObject.new(
-    nullable_one_of_one="eum",
+    nullable_one_of_one=false,
     nullable_one_of_two=false,
     one_of_one=false,
   ),
@@ -224,10 +227,10 @@ require_relative openapi
 s = OpenApiSDK::SDK.new
 
    
-req = ::.new(
+req = Shared::TypedObject1.new(
   request=Shared::TypedObject1.new(
     type=Shared::TypedObject1Type::OBJ1,
-    value="beatae",
+    value="sapiente",
   ),
 )
     
@@ -241,9 +244,9 @@ end
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
+| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
+| `request`                                                   | [Shared::TypedObject1](../../models/shared/typedobject1.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
 
 
 ### Response
@@ -263,7 +266,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=5896.95,
+  request=117320,
 )
     
 res = s.unions.primitive_type_one_of_post(req)
@@ -298,80 +301,27 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::DeepObjectWithType.new(
-    any="hic",
-    arr=.new[
-      Shared::SimpleObject.new(
-        any="illum",
-        bigint=52508,
-        bigint_str="earum",
-        bool=true,
-        bool_opt=true,
-        date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=5962.11,
-        enum=Shared::Enum::TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_="example",
-        str_opt="optional example",
-      ),
-    ],
-    bool=false,
-    int=399802,
-    map=.new{
-      "porro": Shared::SimpleObject.new(
-        any="suscipit",
-        bigint=211534,
-        bigint_str="fugit",
-        bool=true,
-        bool_opt=true,
-        date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=7649.95,
-        enum=Shared::Enum::TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_="example",
-        str_opt="optional example",
-      ),
-    },
-    num=6567.62,
-    obj=Shared::SimpleObject.new(
-      any="necessitatibus",
-      bigint=862063,
-      bigint_str="consequatur",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=972.58,
-      enum=Shared::Enum::TWO,
-      float32=2.2222222,
-      int=999999,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
-      int_opt_null=999999,
-      num=1.1,
-      num_opt_null=1.1,
-      str_="example",
-      str_opt="optional example",
-    ),
-    str_="natus",
-    type="occaecati",
+  request=Shared::SimpleObjectWithType.new(
+    any="beatae",
+    bigint=583404,
+    bigint_str="provident",
+    bool=true,
+    bool_opt=true,
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    decimal=9364.69,
+    enum=Shared::Enum::TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=Shared::SimpleObjectWithTypeInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::SimpleObjectWithTypeIntEnum::THIRD,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_="example",
+    str_opt="optional example",
+    type="illum",
   ),
 )
     
@@ -407,9 +357,9 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::TypedObject2.new(
-    type=Shared::TypedObject2Type::OBJ2,
-    value="adipisci",
+  request=Shared::TypedObject1.new(
+    type=Shared::TypedObject1Type::OBJ1,
+    value="earum",
   ),
 )
     
@@ -445,9 +395,9 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::TypedObject1.new(
-    type=Shared::TypedObject1Type::OBJ1,
-    value="magni",
+  request=Shared::TypedObject2.new(
+    type=Shared::TypedObject2Type::OBJ2,
+    value="maiores",
   ),
 )
     
@@ -484,23 +434,43 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=Shared::DeepObject.new(
-    any="necessitatibus",
+    any=Shared::SimpleObject.new(
+      any="porro",
+      bigint=380335,
+      bigint_str="dolorem",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      decimal=1478.08,
+      enum=Shared::Enum::TWO,
+      float32=2.2222222,
+      int=999999,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_opt_null=999999,
+      num=1.1,
+      num_opt_null=1.1,
+      str_="example",
+      str_opt="optional example",
+    ),
     arr=.new[
       Shared::SimpleObject.new(
-        any="ipsa",
-        bigint=271113,
-        bigint_str="nihil",
+        any="ratione",
+        bigint=656762,
+        bigint_str="necessitatibus",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=4731.9,
+        decimal=8620.63,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int_enum=Shared::SimpleObjectIntEnum::FIRST,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -509,22 +479,22 @@ req = ::.new(
       ),
     ],
     bool=false,
-    int=457059,
+    int=90233,
     map=.new{
-      "praesentium": Shared::SimpleObject.new(
-        any="maiores",
-        bigint=967260,
-        bigint_str="vel",
+      "ducimus": Shared::SimpleObject.new(
+        any="natus",
+        bigint=581082,
+        bigint_str="suscipit",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=999.58,
+        decimal=2415.57,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
         int_enum=Shared::SimpleObjectIntEnum::FIRST,
         int_opt_null=999999,
         num=1.1,
@@ -533,21 +503,21 @@ req = ::.new(
         str_opt="optional example",
       ),
     },
-    num=1173.15,
+    num=9849.34,
     obj=Shared::SimpleObject.new(
-      any="odio",
-      bigint=271252,
-      bigint_str="esse",
+      any="nulla",
+      bigint=896582,
+      bigint_str="ipsa",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=4037.93,
+      decimal=2711.13,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
       int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
@@ -555,8 +525,8 @@ req = ::.new(
       str_="example",
       str_opt="optional example",
     ),
-    str_="ipsa",
-    type="laborum",
+    str_="dicta",
+    type="iusto",
   ),
 )
     

@@ -1,4 +1,4 @@
-# documentation
+# Documentation
 
 ## Overview
 

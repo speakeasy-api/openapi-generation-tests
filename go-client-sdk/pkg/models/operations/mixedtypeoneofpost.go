@@ -99,7 +99,8 @@ func (u MixedTypeOneOfPostRequestBody) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.SimpleObject)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
+
 }
 
 type MixedTypeOneOfPostResJSONType string
@@ -191,7 +192,8 @@ func (u MixedTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
 		return json.Marshal(u.SimpleObject)
 	}
 
-	return nil, nil
+	return nil, errors.New("could not marshal union type: all fields are null")
+
 }
 
 // MixedTypeOneOfPostRes - OK

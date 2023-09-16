@@ -1,4 +1,4 @@
-# request_bodies
+# RequestBodies
 
 ## Overview
 

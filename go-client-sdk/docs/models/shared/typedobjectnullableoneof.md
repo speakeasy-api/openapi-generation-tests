@@ -3,12 +3,6 @@
 
 ## Supported Types
 
-### 
-
-```go
-typedObjectNullableOneOf := shared.CreateTypedObjectNullableOneOfAny(interface{}{/* values here */})
-```
-
 ### TypedObject1
 
 ```go

@@ -1,4 +1,4 @@
-# unions
+# Unions
 
 ## Overview
 
@@ -47,9 +47,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `request`                                                  | [shared.TypedObject1](../../models/shared/typedobject1.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 
 ### Response
@@ -114,12 +114,15 @@ s = sdk.SDK(
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='suscipit',
+        value='architecto',
     ),
-    nullable_one_of_two='debitis',
+    nullable_one_of_two=shared.TypedObject1(
+        type=shared.TypedObject1Type.OBJ1,
+        value='sapiente',
+    ),
     one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='illo',
+        value='debitis',
     ),
 )
 
@@ -157,7 +160,10 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'perferendis'
+req = shared.TypedObject1(
+    type=shared.TypedObject1Type.OBJ1,
+    value='reiciendis',
+)
 
 res = s.unions.nullable_one_of_schema_post(req)
 
@@ -194,7 +200,7 @@ s = sdk.SDK(
 )
 
 req = shared.NullableOneOfTypeInObject(
-    nullable_one_of_one='maiores',
+    nullable_one_of_one=False,
     nullable_one_of_two=False,
     one_of_one=False,
 )
@@ -235,7 +241,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='provident',
+    value='corrupti',
 )
 
 res = s.unions.nullable_typed_object_post(req)
@@ -246,9 +252,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
+| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
+| `request`                                                  | [shared.TypedObject1](../../models/shared/typedobject1.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
 
 
 ### Response
@@ -272,7 +278,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 896762
+req = False
 
 res = s.unions.primitive_type_one_of_post(req)
 
@@ -311,26 +317,26 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObjectWithType(
-    any='ea',
-    bigint=579912,
-    bigint_str=552078,
+    any='sed',
+    bigint=592231,
+    bigint_str=258702,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('9757.52'),
+    decimal=Decimal('8967.62'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
     int32_enum=shared.SimpleObjectWithTypeInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectWithTypeIntEnum.FIRST,
+    int_enum=shared.SimpleObjectWithTypeIntEnum.SECOND,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-    type='voluptate',
+    type='occaecati',
 )
 
 res = s.unions.strongly_typed_one_of_post(req)
@@ -367,7 +373,10 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'ex'
+req = shared.TypedObject2(
+    type=shared.TypedObject2Type.OBJ2,
+    value='voluptatibus',
+)
 
 res = s.unions.typed_object_nullable_one_of_post(req)
 
@@ -405,7 +414,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='non',
+    value='tempora',
 )
 
 res = s.unions.typed_object_one_of_post(req)
@@ -444,80 +453,26 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.DeepObject(
-    any='facilis',
-    arr=[
-        shared.SimpleObject(
-            any='quaerat',
-            bigint=277773,
-            bigint_str=373035,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('8948.64'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    ],
-    bool=False,
-    int=750595,
-    map={
-        "error": shared.SimpleObject(
-            any='veniam',
-            bigint=329543,
-            bigint_str=924159,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('9671.22'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    },
-    num=486.9,
-    obj=shared.SimpleObject(
-        any='saepe',
-        bigint=253642,
-        bigint_str=329935,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('4461.35'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    str_='laudantium',
-    type='exercitationem',
+req = shared.SimpleObject(
+    any='reiciendis',
+    bigint=401713,
+    bigint_str=25497,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=Decimal('2484.13'),
+    enum=shared.EnumT.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
 )
 
 res = s.unions.weakly_typed_one_of_post(req)

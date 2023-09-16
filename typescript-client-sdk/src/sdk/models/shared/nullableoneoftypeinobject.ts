@@ -8,7 +8,7 @@ import { Expose } from "class-transformer";
 export class NullableOneOfTypeInObject extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "NullableOneOfOne" })
-    nullableOneOfOne: any;
+    nullableOneOfOne: boolean;
 
     @SpeakeasyMetadata()
     @Expose({ name: "NullableOneOfTwo" })
@@ -16,5 +16,5 @@ export class NullableOneOfTypeInObject extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "OneOfOne" })
-    oneOfOne: any;
+    oneOfOne: boolean;
 }

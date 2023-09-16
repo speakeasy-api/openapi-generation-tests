@@ -15,9 +15,3 @@ nullableOneOfTypeInObjectNullableOneOfTwo := shared.CreateNullableOneOfTypeInObj
 nullableOneOfTypeInObjectNullableOneOfTwo := shared.CreateNullableOneOfTypeInObjectNullableOneOfTwoInteger(int64{/* values here */})
 ```
 
-### 
-
-```go
-nullableOneOfTypeInObjectNullableOneOfTwo := shared.CreateNullableOneOfTypeInObjectNullableOneOfTwoAny(interface{}{/* values here */})
-```
-

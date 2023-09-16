@@ -1,4 +1,4 @@
-# authNew
+# AuthNew
 
 ## Overview
 

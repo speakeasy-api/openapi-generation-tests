@@ -8,86 +8,16 @@ import (
 	"errors"
 )
 
-type NullableOneOfRefInObjectNullableOneOfOneType string
-
-const (
-	NullableOneOfRefInObjectNullableOneOfOneTypeTypedObject1 NullableOneOfRefInObjectNullableOneOfOneType = "typedObject1"
-	NullableOneOfRefInObjectNullableOneOfOneTypeAny          NullableOneOfRefInObjectNullableOneOfOneType = "any"
-)
-
-type NullableOneOfRefInObjectNullableOneOfOne struct {
-	TypedObject1 *TypedObject1
-	Any          interface{}
-
-	Type NullableOneOfRefInObjectNullableOneOfOneType
-}
-
-func CreateNullableOneOfRefInObjectNullableOneOfOneTypedObject1(typedObject1 TypedObject1) NullableOneOfRefInObjectNullableOneOfOne {
-	typ := NullableOneOfRefInObjectNullableOneOfOneTypeTypedObject1
-
-	return NullableOneOfRefInObjectNullableOneOfOne{
-		TypedObject1: &typedObject1,
-		Type:         typ,
-	}
-}
-
-func CreateNullableOneOfRefInObjectNullableOneOfOneAny(any interface{}) NullableOneOfRefInObjectNullableOneOfOne {
-	typ := NullableOneOfRefInObjectNullableOneOfOneTypeAny
-
-	return NullableOneOfRefInObjectNullableOneOfOne{
-		Any:  &any,
-		Type: typ,
-	}
-}
-
-func (u *NullableOneOfRefInObjectNullableOneOfOne) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	any := new(interface{})
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&any); err == nil {
-		u.Any = any
-		u.Type = NullableOneOfRefInObjectNullableOneOfOneTypeAny
-		return nil
-	}
-
-	typedObject1 := new(TypedObject1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject1); err == nil {
-		u.TypedObject1 = typedObject1
-		u.Type = NullableOneOfRefInObjectNullableOneOfOneTypeTypedObject1
-		return nil
-	}
-
-	return errors.New("could not unmarshal into supported union types")
-}
-
-func (u NullableOneOfRefInObjectNullableOneOfOne) MarshalJSON() ([]byte, error) {
-	if u.Any != nil {
-		return json.Marshal(u.Any)
-	}
-
-	if u.TypedObject1 != nil {
-		return json.Marshal(u.TypedObject1)
-	}
-
-	return nil, nil
-}
-
 type NullableOneOfRefInObjectNullableOneOfTwoType string
 
 const (
 	NullableOneOfRefInObjectNullableOneOfTwoTypeTypedObject1 NullableOneOfRefInObjectNullableOneOfTwoType = "typedObject1"
 	NullableOneOfRefInObjectNullableOneOfTwoTypeTypedObject2 NullableOneOfRefInObjectNullableOneOfTwoType = "typedObject2"
-	NullableOneOfRefInObjectNullableOneOfTwoTypeAny          NullableOneOfRefInObjectNullableOneOfTwoType = "any"
 )
 
 type NullableOneOfRefInObjectNullableOneOfTwo struct {
 	TypedObject1 *TypedObject1
 	TypedObject2 *TypedObject2
-	Any          interface{}
 
 	Type NullableOneOfRefInObjectNullableOneOfTwoType
 }
@@ -110,26 +40,8 @@ func CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(typedObject2 Typ
 	}
 }
 
-func CreateNullableOneOfRefInObjectNullableOneOfTwoAny(any interface{}) NullableOneOfRefInObjectNullableOneOfTwo {
-	typ := NullableOneOfRefInObjectNullableOneOfTwoTypeAny
-
-	return NullableOneOfRefInObjectNullableOneOfTwo{
-		Any:  &any,
-		Type: typ,
-	}
-}
-
 func (u *NullableOneOfRefInObjectNullableOneOfTwo) UnmarshalJSON(data []byte) error {
 	var d *json.Decoder
-
-	any := new(interface{})
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&any); err == nil {
-		u.Any = any
-		u.Type = NullableOneOfRefInObjectNullableOneOfTwoTypeAny
-		return nil
-	}
 
 	typedObject1 := new(TypedObject1)
 	d = json.NewDecoder(bytes.NewReader(data))
@@ -153,10 +65,6 @@ func (u *NullableOneOfRefInObjectNullableOneOfTwo) UnmarshalJSON(data []byte) er
 }
 
 func (u NullableOneOfRefInObjectNullableOneOfTwo) MarshalJSON() ([]byte, error) {
-	if u.Any != nil {
-		return json.Marshal(u.Any)
-	}
-
 	if u.TypedObject1 != nil {
 		return json.Marshal(u.TypedObject1)
 	}
@@ -165,76 +73,33 @@ func (u NullableOneOfRefInObjectNullableOneOfTwo) MarshalJSON() ([]byte, error) 
 		return json.Marshal(u.TypedObject2)
 	}
 
-	return nil, nil
-}
+	return json.Marshal(nil)
 
-type NullableOneOfRefInObjectOneOfOneType string
-
-const (
-	NullableOneOfRefInObjectOneOfOneTypeTypedObject1 NullableOneOfRefInObjectOneOfOneType = "typedObject1"
-)
-
-type NullableOneOfRefInObjectOneOfOne struct {
-	TypedObject1 *TypedObject1
-
-	Type NullableOneOfRefInObjectOneOfOneType
-}
-
-func CreateNullableOneOfRefInObjectOneOfOneTypedObject1(typedObject1 TypedObject1) NullableOneOfRefInObjectOneOfOne {
-	typ := NullableOneOfRefInObjectOneOfOneTypeTypedObject1
-
-	return NullableOneOfRefInObjectOneOfOne{
-		TypedObject1: &typedObject1,
-		Type:         typ,
-	}
-}
-
-func (u *NullableOneOfRefInObjectOneOfOne) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
-
-	typedObject1 := new(TypedObject1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject1); err == nil {
-		u.TypedObject1 = typedObject1
-		u.Type = NullableOneOfRefInObjectOneOfOneTypeTypedObject1
-		return nil
-	}
-
-	return errors.New("could not unmarshal into supported union types")
-}
-
-func (u NullableOneOfRefInObjectOneOfOne) MarshalJSON() ([]byte, error) {
-	if u.TypedObject1 != nil {
-		return json.Marshal(u.TypedObject1)
-	}
-
-	return nil, nil
 }
 
 type NullableOneOfRefInObject struct {
-	NullableOneOfOne NullableOneOfRefInObjectNullableOneOfOne `json:"NullableOneOfOne"`
-	NullableOneOfTwo NullableOneOfRefInObjectNullableOneOfTwo `json:"NullableOneOfTwo"`
-	OneOfOne         NullableOneOfRefInObjectOneOfOne         `json:"OneOfOne"`
+	NullableOneOfOne *TypedObject1                             `json:"NullableOneOfOne"`
+	NullableOneOfTwo *NullableOneOfRefInObjectNullableOneOfTwo `json:"NullableOneOfTwo"`
+	OneOfOne         TypedObject1                              `json:"OneOfOne"`
 }
 
-func (o *NullableOneOfRefInObject) GetNullableOneOfOne() NullableOneOfRefInObjectNullableOneOfOne {
+func (o *NullableOneOfRefInObject) GetNullableOneOfOne() *TypedObject1 {
 	if o == nil {
-		return NullableOneOfRefInObjectNullableOneOfOne{}
+		return nil
 	}
 	return o.NullableOneOfOne
 }
 
-func (o *NullableOneOfRefInObject) GetNullableOneOfTwo() NullableOneOfRefInObjectNullableOneOfTwo {
+func (o *NullableOneOfRefInObject) GetNullableOneOfTwo() *NullableOneOfRefInObjectNullableOneOfTwo {
 	if o == nil {
-		return NullableOneOfRefInObjectNullableOneOfTwo{}
+		return nil
 	}
 	return o.NullableOneOfTwo
 }
 
-func (o *NullableOneOfRefInObject) GetOneOfOne() NullableOneOfRefInObjectOneOfOne {
+func (o *NullableOneOfRefInObject) GetOneOfOne() TypedObject1 {
 	if o == nil {
-		return NullableOneOfRefInObjectOneOfOne{}
+		return TypedObject1{}
 	}
 	return o.OneOfOne
 }
