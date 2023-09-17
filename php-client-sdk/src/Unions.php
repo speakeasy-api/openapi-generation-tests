@@ -110,7 +110,7 @@ class Unions
      * @return \OpenAPI\OpenAPI\Models\Operations\NullableOneOfRefInObjectPostResponse
      */
 	public function nullableOneOfRefInObjectPost(
-        ?\OpenAPI\OpenAPI\Models\Shared\NullableOneOfRefInObject $request,
+        \OpenAPI\OpenAPI\Models\Shared\NullableOneOfRefInObject $request,
     ): \OpenAPI\OpenAPI\Models\Operations\NullableOneOfRefInObjectPostResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -118,9 +118,10 @@ class Unions
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -158,9 +159,10 @@ class Unions
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -190,7 +192,7 @@ class Unions
      * @return \OpenAPI\OpenAPI\Models\Operations\NullableOneOfTypeInObjectPostResponse
      */
 	public function nullableOneOfTypeInObjectPost(
-        ?\OpenAPI\OpenAPI\Models\Shared\NullableOneOfTypeInObject $request,
+        \OpenAPI\OpenAPI\Models\Shared\NullableOneOfTypeInObject $request,
     ): \OpenAPI\OpenAPI\Models\Operations\NullableOneOfTypeInObjectPostResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -198,9 +200,10 @@ class Unions
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -230,7 +233,7 @@ class Unions
      * @return \OpenAPI\OpenAPI\Models\Operations\NullableTypedObjectPostResponse
      */
 	public function nullableTypedObjectPost(
-        ?\OpenAPI\OpenAPI\Models\Shared\TypedObject1 $request,
+        \OpenAPI\OpenAPI\Models\Shared\TypedObject1 $request,
     ): \OpenAPI\OpenAPI\Models\Operations\NullableTypedObjectPostResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -238,9 +241,10 @@ class Unions
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         
@@ -360,9 +364,10 @@ class Unions
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "json");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         

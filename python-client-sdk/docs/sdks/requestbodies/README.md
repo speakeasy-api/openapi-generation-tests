@@ -36,10 +36,29 @@ Endpoints for testing request bodies.
 * [request_body_post_application_json_simple](#request_body_post_application_json_simple)
 * [request_body_post_application_json_simple_camel_case](#request_body_post_application_json_simple_camel_case)
 * [request_body_post_complex_number_types](#request_body_post_complex_number_types)
+* [request_body_post_defaults_and_consts](#request_body_post_defaults_and_consts)
 * [request_body_post_empty_object](#request_body_post_empty_object)
 * [request_body_post_form_deep](#request_body_post_form_deep)
 * [request_body_post_form_map_primitive](#request_body_post_form_map_primitive)
 * [request_body_post_form_simple](#request_body_post_form_simple)
+* [request_body_post_json_data_types_array_big_int](#request_body_post_json_data_types_array_big_int)
+* [request_body_post_json_data_types_array_date](#request_body_post_json_data_types_array_date)
+* [request_body_post_json_data_types_array_decimal_str](#request_body_post_json_data_types_array_decimal_str)
+* [request_body_post_json_data_types_big_int](#request_body_post_json_data_types_big_int)
+* [request_body_post_json_data_types_big_int_str](#request_body_post_json_data_types_big_int_str)
+* [request_body_post_json_data_types_boolean](#request_body_post_json_data_types_boolean)
+* [request_body_post_json_data_types_date](#request_body_post_json_data_types_date)
+* [request_body_post_json_data_types_date_time](#request_body_post_json_data_types_date_time)
+* [request_body_post_json_data_types_decimal](#request_body_post_json_data_types_decimal)
+* [request_body_post_json_data_types_decimal_str](#request_body_post_json_data_types_decimal_str)
+* [request_body_post_json_data_types_float32](#request_body_post_json_data_types_float32)
+* [request_body_post_json_data_types_int32](#request_body_post_json_data_types_int32)
+* [request_body_post_json_data_types_integer](#request_body_post_json_data_types_integer)
+* [request_body_post_json_data_types_map_big_int_str](#request_body_post_json_data_types_map_big_int_str)
+* [request_body_post_json_data_types_map_date_time](#request_body_post_json_data_types_map_date_time)
+* [request_body_post_json_data_types_map_decimal](#request_body_post_json_data_types_map_decimal)
+* [request_body_post_json_data_types_number](#request_body_post_json_data_types_number)
+* [request_body_post_json_data_types_string](#request_body_post_json_data_types_string)
 * [request_body_post_multiple_content_types_component_filtered](#request_body_post_multiple_content_types_component_filtered)
 * [request_body_post_multiple_content_types_inline_filtered](#request_body_post_multiple_content_types_inline_filtered)
 * [request_body_post_multiple_content_types_split_param_form](#request_body_post_multiple_content_types_split_param_form)
@@ -1870,6 +1889,75 @@ if res.request_body_post_complex_number_types_200_application_json_object is not
 **[operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/requestbodypostcomplexnumbertypesresponse.md)**
 
 
+## request_body_post_defaults_and_consts
+
+### Example Usage
+
+```python
+import sdk
+import dateutil.parser
+from decimal import Decimal
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.DefaultsAndConsts(
+    const_big_int=97468,
+    const_big_int_str=951875,
+    const_bool=False,
+    const_date=dateutil.parser.parse('2021-11-06').date(),
+    const_date_time=dateutil.parser.isoparse('2020-07-16T06:14:24.154Z'),
+    const_decimal=Decimal('1576.32'),
+    const_decimal_str=Decimal('9088.44'),
+    const_enum_int=shared.DefaultsAndConstsConstEnumInt.THREE,
+    const_enum_str=shared.DefaultsAndConstsConstEnumStr.THREE,
+    const_int=85001,
+    const_num=1594.14,
+    const_str='quasi',
+    const_str_null='similique',
+    default_big_int=633608,
+    default_big_int_str=398434,
+    default_bool=False,
+    default_date=dateutil.parser.parse('2022-10-24').date(),
+    default_date_time=dateutil.parser.isoparse('2021-09-23T16:25:56.144Z'),
+    default_decimal=Decimal('4473.78'),
+    default_decimal_str=Decimal('2586.84'),
+    default_enum_int=shared.DefaultsAndConstsDefaultEnumInt.THREE,
+    default_enum_str=shared.DefaultsAndConstsDefaultEnumStr.THREE,
+    default_int=742238,
+    default_num=333.04,
+    default_str='aliquam',
+    default_str_nullable='sapiente',
+    default_str_optional='dicta',
+    normal_field='ullam',
+    single_enum_const_bool=False,
+    single_enum_const_str=shared.DefaultsAndConstsSingleEnumConstStr.ONE,
+)
+
+res = s.request_bodies.request_body_post_defaults_and_consts(req)
+
+if res.request_body_post_defaults_and_consts_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `request`                                                            | [shared.DefaultsAndConsts](../../models/shared/defaultsandconsts.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+
+
+### Response
+
+**[operations.RequestBodyPostDefaultsAndConstsResponse](../../models/operations/requestbodypostdefaultsandconstsresponse.md)**
+
+
 ## request_body_post_empty_object
 
 ### Example Usage
@@ -1929,84 +2017,14 @@ s = sdk.SDK(
 
 req = shared.DeepObject(
     any=shared.SimpleObject(
-        any='a',
-        bigint=621679,
-        bigint_str=575751,
+        any='ullam',
+        bigint=391774,
+        bigint_str=16328,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('8630.23'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    arr=[
-        shared.SimpleObject(
-            any='eveniet',
-            bigint=992430,
-            bigint_str=815524,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('850.01'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    ],
-    bool=False,
-    int=628899,
-    map={
-        "culpa": shared.SimpleObject(
-            any='aliquid',
-            bigint=949298,
-            bigint_str=62713,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('9367.47'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    },
-    num=2586.84,
-    obj=shared.SimpleObject(
-        any='libero',
-        bigint=849039,
-        bigint_str=742238,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('333.04'),
+        decimal=Decimal('5318.49'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
@@ -2019,8 +2037,78 @@ req = shared.DeepObject(
         str_='example',
         str_opt='optional example',
     ),
-    str_='dicta',
-    type='ullam',
+    arr=[
+        shared.SimpleObject(
+            any='ex',
+            bigint=536275,
+            bigint_str=929292,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=Decimal('6802.7'),
+            enum=shared.EnumT.TWO,
+            float32=2.2222222,
+            int=999999,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int_opt_null=999999,
+            num=1.1,
+            num_opt_null=1.1,
+            str_='example',
+            str_opt='optional example',
+        ),
+    ],
+    bool=False,
+    int=945302,
+    map={
+        "quasi": shared.SimpleObject(
+            any='at',
+            bigint=92027,
+            bigint_str=454162,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+            decimal=Decimal('559.65'),
+            enum=shared.EnumT.TWO,
+            float32=2.2222222,
+            int=999999,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.FIRST,
+            int_opt_null=999999,
+            num=1.1,
+            num_opt_null=1.1,
+            str_='example',
+            str_opt='optional example',
+        ),
+    },
+    num=2327.44,
+    obj=shared.SimpleObject(
+        any='adipisci',
+        bigint=614465,
+        bigint_str=839513,
+        bool=True,
+        bool_opt=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+        decimal=Decimal('330.74'),
+        enum=shared.EnumT.TWO,
+        float32=2.2222222,
+        int=999999,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+        int_enum=shared.SimpleObjectIntEnum.FIRST,
+        int_opt_null=999999,
+        num=1.1,
+        num_opt_null=1.1,
+        str_='example',
+        str_opt='optional example',
+    ),
+    str_='laudantium',
+    type='eum',
 )
 
 res = s.request_bodies.request_body_post_form_deep(req)
@@ -2058,7 +2146,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "reprehenderit": 'ullam',
+    "mollitia": 'ab',
 }
 
 res = s.request_bodies.request_body_post_form_map_primitive(req)
@@ -2098,20 +2186,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='nisi',
-    bigint=16328,
-    bigint_str=531849,
+    any='corrupti',
+    bigint=251941,
+    bigint_str=32465,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('1852.32'),
+    decimal=Decimal('2211.61'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnum.FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2137,6 +2225,666 @@ if res.res is not None:
 **[operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md)**
 
 
+## request_body_post_json_data_types_array_big_int
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = [
+    771089,
+]
+
+res = s.request_bodies.request_body_post_json_data_types_array_big_int(req)
+
+if res.request_body_post_json_data_types_array_big_int_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [list[int]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesArrayBigIntResponse](../../models/operations/requestbodypostjsondatatypesarraybigintresponse.md)**
+
+
+## request_body_post_json_data_types_array_date
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = [
+    dateutil.parser.parse('2022-08-16').date(),
+]
+
+res = s.request_bodies.request_body_post_json_data_types_array_date(req)
+
+if res.request_body_post_json_data_types_array_date_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [list[date]](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesArrayDateResponse](../../models/operations/requestbodypostjsondatatypesarraydateresponse.md)**
+
+
+## request_body_post_json_data_types_array_decimal_str
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = [
+    Decimal('120.36'),
+]
+
+res = s.request_bodies.request_body_post_json_data_types_array_decimal_str(req)
+
+if res.request_body_post_json_data_types_array_decimal_str_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [list[Decimal]](../../models//.md)         | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md)**
+
+
+## request_body_post_json_data_types_big_int
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 491025
+
+res = s.request_bodies.request_body_post_json_data_types_big_int(req)
+
+if res.request_body_post_json_data_types_big_int_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesBigIntResponse](../../models/operations/requestbodypostjsondatatypesbigintresponse.md)**
+
+
+## request_body_post_json_data_types_big_int_str
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 115484
+
+res = s.request_bodies.request_body_post_json_data_types_big_int_str(req)
+
+if res.request_body_post_json_data_types_big_int_str_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesbigintstrresponse.md)**
+
+
+## request_body_post_json_data_types_boolean
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = False
+
+res = s.request_bodies.request_body_post_json_data_types_boolean(req)
+
+if res.request_body_post_json_data_types_boolean_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [bool](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesBooleanResponse](../../models/operations/requestbodypostjsondatatypesbooleanresponse.md)**
+
+
+## request_body_post_json_data_types_date
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = dateutil.parser.parse('2021-02-22').date()
+
+res = s.request_bodies.request_body_post_json_data_types_date(req)
+
+if res.request_body_post_json_data_types_date_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [date](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesDateResponse](../../models/operations/requestbodypostjsondatatypesdateresponse.md)**
+
+
+## request_body_post_json_data_types_date_time
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = dateutil.parser.isoparse('2022-01-10T09:30:55.914Z')
+
+res = s.request_bodies.request_body_post_json_data_types_date_time(req)
+
+if res.request_body_post_json_data_types_date_time_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [datetime](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesDateTimeResponse](../../models/operations/requestbodypostjsondatatypesdatetimeresponse.md)**
+
+
+## request_body_post_json_data_types_decimal
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = Decimal('3743.23')
+
+res = s.request_bodies.request_body_post_json_data_types_decimal(req)
+
+if res.request_body_post_json_data_types_decimal_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Decimal](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesDecimalResponse](../../models/operations/requestbodypostjsondatatypesdecimalresponse.md)**
+
+
+## request_body_post_json_data_types_decimal_str
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = Decimal('9903.45')
+
+res = s.request_bodies.request_body_post_json_data_types_decimal_str(req)
+
+if res.request_body_post_json_data_types_decimal_str_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Decimal](../../models//.md)               | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesdecimalstrresponse.md)**
+
+
+## request_body_post_json_data_types_float32
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 456.59
+
+res = s.request_bodies.request_body_post_json_data_types_float32(req)
+
+if res.request_body_post_json_data_types_float32_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesFloat32Response](../../models/operations/requestbodypostjsondatatypesfloat32response.md)**
+
+
+## request_body_post_json_data_types_int32
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 409054
+
+res = s.request_bodies.request_body_post_json_data_types_int32(req)
+
+if res.request_body_post_json_data_types_int32_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesInt32Response](../../models/operations/requestbodypostjsondatatypesint32response.md)**
+
+
+## request_body_post_json_data_types_integer
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 310067
+
+res = s.request_bodies.request_body_post_json_data_types_integer(req)
+
+if res.request_body_post_json_data_types_integer_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [int](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesIntegerResponse](../../models/operations/requestbodypostjsondatatypesintegerresponse.md)**
+
+
+## request_body_post_json_data_types_map_big_int_str
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = {
+    "consequuntur": 831520,
+}
+
+res = s.request_bodies.request_body_post_json_data_types_map_big_int_str(req)
+
+if res.request_body_post_json_data_types_map_big_int_str_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, int]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md)**
+
+
+## request_body_post_json_data_types_map_date_time
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = {
+    "officia": dateutil.parser.isoparse('2021-07-13T02:46:31.605Z'),
+}
+
+res = s.request_bodies.request_body_post_json_data_types_map_date_time(req)
+
+if res.request_body_post_json_data_types_map_date_time_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, datetime]](../../models//.md)   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesMapDateTimeResponse](../../models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md)**
+
+
+## request_body_post_json_data_types_map_decimal
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = {
+    "officia": Decimal('9894.1'),
+}
+
+res = s.request_bodies.request_body_post_json_data_types_map_decimal(req)
+
+if res.request_body_post_json_data_types_map_decimal_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [dict[str, Decimal]](../../models//.md)    | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesMapDecimalResponse](../../models/operations/requestbodypostjsondatatypesmapdecimalresponse.md)**
+
+
+## request_body_post_json_data_types_number
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 3681.02
+
+res = s.request_bodies.request_body_post_json_data_types_number(req)
+
+if res.request_body_post_json_data_types_number_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [float](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesNumberResponse](../../models/operations/requestbodypostjsondatatypesnumberresponse.md)**
+
+
+## request_body_post_json_data_types_string
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 'quae'
+
+res = s.request_bodies.request_body_post_json_data_types_string(req)
+
+if res.request_body_post_json_data_types_string_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostJSONDataTypesStringResponse](../../models/operations/requestbodypostjsondatatypesstringresponse.md)**
+
+
 ## request_body_post_multiple_content_types_component_filtered
 
 ### Example Usage
@@ -2156,20 +2904,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='deleniti',
-    bigint=929292,
-    bigint_str=680270,
+    any='quaerat',
+    bigint=783235,
+    bigint_str=801836,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('996.15'),
+    decimal=Decimal('2883.98'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2213,8 +2961,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(
     bool=False,
-    num=984.78,
-    str_='at',
+    num=6835.73,
+    str_='id',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_inline_filtered(req)
@@ -2254,9 +3002,9 @@ s = sdk.SDK(
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_form(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(
     bool3=False,
-    num3=920.27,
-    str3='voluptate',
-), param_str='ipsa')
+    num3=3807.29,
+    str3='velit',
+), param_str='culpa')
 
 if res.res is not None:
     # handle response
@@ -2294,9 +3042,9 @@ s = sdk.SDK(
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_json(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(
     bool=False,
-    num=3267.01,
-    str_='veritatis',
-), param_str='consectetur')
+    num=6658.59,
+    str_='recusandae',
+), param_str='totam')
 
 if res.res is not None:
     # handle response
@@ -2334,9 +3082,9 @@ s = sdk.SDK(
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_multipart(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(
     bool2=False,
-    num2=2371.73,
-    str2='iste',
-), param_str='temporibus')
+    num2=8539.4,
+    str2='vel',
+), param_str='ducimus')
 
 if res.res is not None:
     # handle response
@@ -2373,8 +3121,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(
     bool3=False,
-    num3=330.74,
-    str3='rem',
+    num3=5546.88,
+    str3='vel',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_form(req)
@@ -2413,8 +3161,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON(
     bool=False,
-    num=156.06,
-    str_='laudantium',
+    num=2870.51,
+    str_='possimus',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_json(req)
@@ -2453,8 +3201,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData(
     bool2=False,
-    num2=4287.96,
-    str2='mollitia',
+    num2=7065.75,
+    str2='cum',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_multipart(req)
@@ -2492,7 +3240,7 @@ s = sdk.SDK(
 )
 
 req = [
-    'ab',
+    'commodi',
 ]
 
 res = s.request_bodies.request_body_post_null_array(req)
@@ -2530,7 +3278,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "corrupti": 'non',
+    "in": 'corporis',
 }
 
 res = s.request_bodies.request_body_post_null_dictionary(req)
@@ -2567,7 +3315,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'voluptatem'.encode()
+req = 'reiciendis'.encode()
 
 res = s.request_bodies.request_body_put_bytes(req)
 
@@ -2604,7 +3352,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_bytes_with_params(request_body='dolor'.encode(), query_string_param='occaecati')
+res = s.request_bodies.request_body_put_bytes_with_params(request_body='assumenda'.encode(), query_string_param='nemo')
 
 if res.res is not None:
     # handle response
@@ -2642,37 +3390,17 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any=shared.SimpleObject(
-        any='impedit',
-        bigint=131055,
-        bigint_str=376226,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('120.36'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
+    any='aliquid',
     arr=[
         shared.SimpleObject(
-            any='maiores',
-            bigint=618480,
-            bigint_str=244651,
+            any='aperiam',
+            bigint=738683,
+            bigint_str=232627,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('9742.57'),
+            decimal=Decimal('4490.83'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
@@ -2687,23 +3415,23 @@ req = shared.DeepObject(
         ),
     ],
     bool=False,
-    int=45659,
+    int=814967,
     map={
-        "ea": shared.SimpleObject(
-            any='quaerat',
-            bigint=162954,
-            bigint_str=831520,
+        "numquam": shared.SimpleObject(
+            any='doloribus',
+            bigint=381760,
+            bigint_str=968972,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('6387.62'),
+            decimal=Decimal('6971.42'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
@@ -2711,30 +3439,30 @@ req = shared.DeepObject(
             str_opt='optional example',
         ),
     },
-    num=6400.24,
+    num=2965.56,
     obj=shared.SimpleObject(
-        any='asperiores',
-        bigint=368102,
-        bigint_str=65304,
+        any='sunt',
+        bigint=992012,
+        bigint_str=241545,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('3127.53'),
+        decimal=Decimal('2494.2'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnum.THIRD,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.FIRST,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
         str_='example',
         str_opt='optional example',
     ),
-    str_='labore',
-    type='ab',
+    str_='dignissimos',
+    type='a',
 )
 
 res = s.request_bodies.request_body_put_multipart_deep(req)
@@ -2773,8 +3501,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPutMultipartFileRequestBody(
     file=operations.RequestBodyPutMultipartFileRequestBodyFile(
-        content='adipisci'.encode(),
-        file='fuga',
+        content='debitis'.encode(),
+        file='consectetur',
     ),
 )
 
@@ -2815,19 +3543,19 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='id',
-    bigint=380729,
-    bigint_str=246063,
+    any='corporis',
+    bigint=689768,
+    bigint_str=385237,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('6339.31'),
+    decimal=Decimal('583.56'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
     int_enum=shared.SimpleObjectIntEnum.THIRD,
     int_opt_null=999999,
     num=1.1,
@@ -2870,7 +3598,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'totam'
+req = 'vitae'
 
 res = s.request_bodies.request_body_put_string(req)
 
@@ -2907,7 +3635,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_string_with_params(request_body='fugiat', query_string_param='vel')
+res = s.request_bodies.request_body_put_string_with_params(request_body='accusamus', query_string_param='similique')
 
 if res.res is not None:
     # handle response
@@ -2943,9 +3671,9 @@ s = sdk.SDK(
 )
 
 req = shared.ReadWriteObjectInput(
-    num1=497678,
-    num2=554688,
-    num3=427834,
+    num1=272437,
+    num2=132815,
+    num3=379057,
 )
 
 res = s.request_bodies.request_body_read_and_write(req)
@@ -3023,20 +3751,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='possimus',
-    bigint=706575,
-    bigint_str=738227,
+    any='voluptas',
+    bigint=324405,
+    bigint_str=748789,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('4148.57'),
+    decimal=Decimal('6801.16'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.THIRD,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -3081,10 +3809,26 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.ReadWriteObjectInput(
-    num1=828657,
-    num2=363161,
-    num3=924967,
+req = shared.SimpleObject(
+    any='blanditiis',
+    bigint=449292,
+    bigint_str=296242,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=Decimal('3044.68'),
+    enum=shared.EnumT.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=shared.SimpleObjectIntEnum.THIRD,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
 )
 
 res = s.request_bodies.request_body_read_write_only_union(req)
@@ -3124,8 +3868,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=3975.33,
-    string='aperiam',
+    num=3518.7,
+    string='adipisci',
 )
 
 res = s.request_bodies.request_body_write_only(req)
@@ -3165,8 +3909,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=7386.83,
-    string='consectetur',
+    num=7383.91,
+    string='blanditiis',
 )
 
 res = s.request_bodies.request_body_write_only_output(req)
@@ -3206,26 +3950,10 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.SimpleObject(
-    any='exercitationem',
-    bigint=937285,
-    bigint_str=814967,
-    bool=True,
-    bool_opt=True,
-    date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('2572.33'),
-    enum=shared.EnumT.TWO,
-    float32=2.2222222,
-    int=999999,
-    int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
-    int_opt_null=999999,
-    num=1.1,
-    num_opt_null=1.1,
-    str_='example',
-    str_opt='optional example',
+req = shared.WriteOnlyObject(
+    bool=False,
+    num=9425.84,
+    string='nesciunt',
 )
 
 res = s.request_bodies.request_body_write_only_union(req)

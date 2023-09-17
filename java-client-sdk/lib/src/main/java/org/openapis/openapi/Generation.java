@@ -405,21 +405,12 @@ public class Generation {
         return res;
     }
 
-    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost() throws Exception {
-        return this.ignoresPost(null, null);
-    }
-
-    public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(String testParam) throws Exception {
-        return this.ignoresPost(null, testParam);
-    }
-
     public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostApplicationJSON requestBody) throws Exception {
         return this.ignoresPost(requestBody, null);
     }
 
     public org.openapis.openapi.models.operations.IgnoresPostResponse ignoresPost(org.openapis.openapi.models.operations.IgnoresPostApplicationJSON requestBody, String testParam) throws Exception {
-        org.openapis.openapi.models.operations.IgnoresPostRequest request = new org.openapis.openapi.models.operations.IgnoresPostRequest();
-        request.requestBody=requestBody;
+        org.openapis.openapi.models.operations.IgnoresPostRequest request = new org.openapis.openapi.models.operations.IgnoresPostRequest(requestBody);
         request.testParam=testParam;
         
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
@@ -429,6 +420,9 @@ public class Generation {
         req.setMethod("POST");
         req.setURL(url);
         SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "requestBody", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");

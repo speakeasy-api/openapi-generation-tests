@@ -56,7 +56,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Shared::ExampleResource)).returns(Utils::FieldAugmented) }
+    sig { params(request: Shared::ExampleResource).returns(Utils::FieldAugmented) }
     def create_resource(request)
 
       url, params = @sdk_configuration.get_server_details
@@ -65,6 +65,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 

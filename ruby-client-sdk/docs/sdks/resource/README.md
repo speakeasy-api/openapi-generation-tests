@@ -22,8 +22,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::CreateFileRequestBody.new(
   request=Operations::CreateFileRequestBody.new(
     file=Operations::CreateFileRequestBodyFile.new(
-      content="aliquam".encode(),
-      file="ad",
+      content="voluptatibus".encode(),
+      file="molestias",
     ),
   ),
 )
@@ -62,36 +62,34 @@ s = OpenApiSDK::SDK.new
 req = Shared::ExampleResource.new(
   request=Shared::ExampleResource.new(
     array_of_number=.new[
-      9979.63,
+      8897.94,
     ],
     array_of_string=.new[
-      "alias",
+      "sapiente",
     ],
     chocolates=.new[
       Shared::ExampleResourceChocolates.new(
-        description="corporis",
+        description="cumque",
       ),
     ],
-    created_at=DateTime.iso8601('2022-01-22T10:13:48.972Z'),
-    enum_number=Shared::ExampleResourceEnumNumber::TWO,
+    created_at=DateTime.iso8601('2022-04-21T03:20:35.575Z'),
+    enum_number=Shared::ExampleResourceEnumNumber::ONE,
     enum_str=Shared::ExampleResourceEnumStr::TWO,
-    id="0ff2a54a-31e9-4476-8a3e-865e7956f925",
+    id="12c10326-48dc-42f6-9519-9ebfd0e9fe6c",
     map_of_integer=.new{
-      "quasi": 657020,
+      "suscipit": 211534,
     },
     map_of_string=.new{
-      "nostrum": "mollitia",
+      "fugit": "cumque",
     },
-    name="Rufus Okuneva",
-    updated_at=DateTime.iso8601('2022-01-01T06:19:29.377Z'),
-    vehicle=Shared::ExampleCar.new(
-      created_at=DateTime.iso8601('2022-07-21T10:16:07.152Z'),
-      make="nam",
-      model="earum",
-      name="Neal Schulist",
-      type=Shared::ExampleCarType::CAR,
-      updated_at=DateTime.iso8601('2021-03-22T10:48:54.502Z'),
-      year=9569.33,
+    name="Philip O'Kon",
+    updated_at=DateTime.iso8601('2022-11-26T12:01:10.841Z'),
+    vehicle=Shared::ExampleBoat.new(
+      created_at=DateTime.iso8601('2022-05-19T23:57:30.950Z'),
+      length=5810.82,
+      name="Josephine Boyer",
+      type=Shared::ExampleBoatType::BOAT,
+      updated_at=DateTime.iso8601('2020-04-24T05:50:40.136Z'),
     ),
   ),
 )
@@ -129,7 +127,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::DeleteResourceRequest.new(
   path_params=Operations::DeleteResourceRequest.new(
-    resource_id="cumque",
+    resource_id="ipsa",
   ),
 )
     
@@ -166,7 +164,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::GetResourceRequest.new(
   path_params=Operations::GetResourceRequest.new(
-    resource_id="vitae",
+    resource_id="tempora",
   ),
 )
     
@@ -203,7 +201,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::UpdateResourceRequest.new(
   path_params=Operations::UpdateResourceRequest.new(
-    resource_id="rerum",
+    resource_id="nihil",
   ),
 )
     

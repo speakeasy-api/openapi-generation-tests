@@ -13,6 +13,7 @@ from typing import Optional
 
 @dataclasses.dataclass
 class RequestBodyPostComplexNumberTypesRequest:
+    complex_number_types: shared_complexnumbertypes.ComplexNumberTypes = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     path_big_int: int = dataclasses.field(metadata={'path_param': { 'field_name': 'pathBigInt', 'style': 'simple', 'explode': False }})
     path_big_int_str: int = dataclasses.field(metadata={'path_param': { 'field_name': 'pathBigIntStr', 'style': 'simple', 'explode': False }})
     path_decimal: Decimal = dataclasses.field(metadata={'path_param': { 'field_name': 'pathDecimal', 'style': 'simple', 'explode': False }})
@@ -21,7 +22,6 @@ class RequestBodyPostComplexNumberTypesRequest:
     query_big_int_str: int = dataclasses.field(metadata={'query_param': { 'field_name': 'queryBigIntStr', 'style': 'form', 'explode': True }})
     query_decimal: Decimal = dataclasses.field(metadata={'query_param': { 'field_name': 'queryDecimal', 'style': 'form', 'explode': True }})
     query_decimal_str: Decimal = dataclasses.field(metadata={'query_param': { 'field_name': 'queryDecimalStr', 'style': 'form', 'explode': True }})
-    complex_number_types: Optional[shared_complexnumbertypes.ComplexNumberTypes] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
     
 
 
