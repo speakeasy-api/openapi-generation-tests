@@ -6,12 +6,165 @@ Endpoints for testing response bodies.
 
 ### Available Operations
 
+* [ResponseBodyAdditionalPropertiesComplexNumbersPost](#responsebodyadditionalpropertiescomplexnumberspost)
+* [ResponseBodyAdditionalPropertiesDatePost](#responsebodyadditionalpropertiesdatepost)
+* [ResponseBodyAdditionalPropertiesPost](#responsebodyadditionalpropertiespost)
 * [ResponseBodyBytesGet](#responsebodybytesget)
 * [ResponseBodyEmptyWithHeaders](#responsebodyemptywithheaders)
 * [ResponseBodyOptionalGet](#responsebodyoptionalget)
 * [ResponseBodyReadOnly](#responsebodyreadonly)
 * [ResponseBodyStringGet](#responsebodystringget)
 * [ResponseBodyXMLGet](#responsebodyxmlget)
+
+## ResponseBodyAdditionalPropertiesComplexNumbersPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx, map[string]types.BigInt{
+        "provident": *types.MustNewBigIntFromString("258702"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [map[string]types.BigInt](../../models//.md)          | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md), error**
+
+
+## ResponseBodyAdditionalPropertiesDatePost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(ctx, map[string]types.Date{
+        "necessitatibus": types.MustDateFromString("2022-08-05"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [map[string]types.Date](../../models//.md)            | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/responsebodyadditionalpropertiesdatepostresponse.md), error**
+
+
+## ResponseBodyAdditionalPropertiesPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := sdk.New(
+        sdk.WithSecurity(shared.Security{
+            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+        }),
+        sdk.WithGlobalPathParam(100),
+        sdk.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(ctx, map[string]string{
+        "occaecati": "quos",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ResponseBodyAdditionalPropertiesPost200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [map[string]string](../../models//.md)                | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/responsebodyadditionalpropertiespostresponse.md), error**
+
 
 ## ResponseBodyBytesGet
 
@@ -83,8 +236,8 @@ func main() {
         sdk.WithGlobalPathParam(100),
         sdk.WithGlobalQueryParam("some example global query param"),
     )
-    xNumberHeader := 4492.92
-    xStringHeader := "dolore"
+    xNumberHeader := 9757.52
+    xStringHeader := "tempora"
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyEmptyWithHeaders(ctx, xNumberHeader, xStringHeader)

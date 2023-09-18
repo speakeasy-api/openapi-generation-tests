@@ -589,7 +589,7 @@ func (s *generation) IgnoredGenerationGet(ctx context.Context) (*operations.Igno
 	return res, nil
 }
 
-func (s *generation) IgnoresPost(ctx context.Context, requestBody *operations.IgnoresPostApplicationJSON, testParam *string) (*operations.IgnoresPostResponse, error) {
+func (s *generation) IgnoresPost(ctx context.Context, requestBody operations.IgnoresPostApplicationJSON, testParam *string) (*operations.IgnoresPostResponse, error) {
 	request := operations.IgnoresPostRequest{
 		RequestBody: requestBody,
 		TestParam:   testParam,
@@ -601,6 +601,9 @@ func (s *generation) IgnoresPost(ctx context.Context, requestBody *operations.Ig
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "RequestBody", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)

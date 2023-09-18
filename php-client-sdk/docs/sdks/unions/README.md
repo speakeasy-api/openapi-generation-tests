@@ -39,7 +39,7 @@ $sdk = SDK::builder()
 try {
     $request = new TypedObject1();
     $request->type = TypedObject1Type::Obj1;
-    $request->value = 'veritatis';
+    $request->value = 'impedit';
 
     $response = $sdk->unions->flattenedTypedObjectPost($request);
 
@@ -80,7 +80,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'quasi'
+'voluptas'
 
     $response = $sdk->unions->mixedTypeOneOfPost($request);
 
@@ -127,13 +127,13 @@ try {
     $request = new NullableOneOfRefInObject();
     $request->nullableOneOfOne = new TypedObject1();
     $request->nullableOneOfOne->type = TypedObject1Type::Obj1;
-    $request->nullableOneOfOne->value = 'similique';
-    $request->nullableOneOfTwo = new TypedObject2();
-    $request->nullableOneOfTwo->type = TypedObject2Type::Obj2;
-    $request->nullableOneOfTwo->value = 'aliquid';
+    $request->nullableOneOfOne->value = 'aut';
+    $request->nullableOneOfTwo = new TypedObject1();
+    $request->nullableOneOfTwo->type = TypedObject1Type::Obj1;
+    $request->nullableOneOfTwo->value = 'dicta';
     $request->oneOfOne = new TypedObject1();
     $request->oneOfOne->type = TypedObject1Type::Obj1;
-    $request->oneOfOne->value = 'tenetur';
+    $request->oneOfOne->value = 'maiores';
 
     $response = $sdk->unions->nullableOneOfRefInObjectPost($request);
 
@@ -174,9 +174,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new TypedObject1();
-    $request->type = TypedObject1Type::Obj1;
-    $request->value = 'earum';
+    $request = new TypedObject2();
+    $request->type = TypedObject2Type::Obj2;
+    $request->value = 'velit';
 
     $response = $sdk->unions->nullableOneOfSchemaPost($request);
 
@@ -220,7 +220,7 @@ $sdk = SDK::builder()
 try {
     $request = new NullableOneOfTypeInObject();
     $request->nullableOneOfOne = false;
-    $request->nullableOneOfTwo = false;
+    $request->nullableOneOfTwo = 374323;
     $request->oneOfOne = false;
 
     $response = $sdk->unions->nullableOneOfTypeInObjectPost($request);
@@ -266,7 +266,7 @@ $sdk = SDK::builder()
 try {
     $request = new TypedObject1();
     $request->type = TypedObject1Type::Obj1;
-    $request->value = 'in';
+    $request->value = 'asperiores';
 
     $response = $sdk->unions->nullableTypedObjectPost($request);
 
@@ -307,7 +307,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-727697
+'ea'
 
     $response = $sdk->unions->primitiveTypeOneOfPost($request);
 
@@ -348,39 +348,27 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new DeepObjectWithType();
-    $request->any = 'accusantium';
-    $request->arr = [
-        new SimpleObject(),
-    ];
-    $request->bool = false;
-    $request->int = 306986;
-    $request->map = [
-        'sapiente' => new SimpleObject(),
-    ];
-    $request->num = 1197.71;
-    $request->obj = new SimpleObject();
-    $request->obj->any = 'ullam';
-    $request->obj->bigint = 443879;
-    $request->obj->bigintStr = 'ullam';
-    $request->obj->bool = true;
-    $request->obj->boolOpt = true;
-    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->decimal = 3917.74;
-    $request->obj->enum = Enum::Two;
-    $request->obj->float32 = 2.2222222;
-    $request->obj->int = 999999;
-    $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->obj->intEnum = SimpleObjectIntEnum::Second;
-    $request->obj->intOptNull = 999999;
-    $request->obj->num = 1.1;
-    $request->obj->numOptNull = 1.1;
-    $request->obj->str = 'example';
-    $request->obj->strOpt = 'optional example';
-    $request->str = 'qui';
-    $request->type = 'quibusdam';
+    $request = new SimpleObjectWithType();
+    $request->any = 'consequuntur';
+    $request->bigint = 831520;
+    $request->bigintStr = 'officia';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->decimal = 8070.23;
+    $request->enum = Enum::Two;
+    $request->float32 = 2.2222222;
+    $request->int = 999999;
+    $request->int32 = 1;
+    $request->int32Enum = SimpleObjectWithTypeInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectWithTypeIntEnum::Second;
+    $request->intOptNull = 999999;
+    $request->num = 1.1;
+    $request->numOptNull = 1.1;
+    $request->str = 'example';
+    $request->strOpt = 'optional example';
+    $request->type = 'asperiores';
 
     $response = $sdk->unions->stronglyTypedOneOfPost($request);
 
@@ -423,7 +411,7 @@ $sdk = SDK::builder()
 try {
     $request = new TypedObject1();
     $request->type = TypedObject1Type::Obj1;
-    $request->value = 'deleniti';
+    $request->value = 'quae';
 
     $response = $sdk->unions->typedObjectNullableOneOfPost($request);
 
@@ -464,9 +452,9 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new TypedObject3();
-    $request->type = TypedObject3Type::Obj3;
-    $request->value = 'dolorum';
+    $request = new TypedObject1();
+    $request->type = TypedObject1Type::Obj1;
+    $request->value = 'porro';
 
     $response = $sdk->unions->typedObjectOneOfPost($request);
 
@@ -507,26 +495,58 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimpleObject();
-    $request->any = 'omnis';
-    $request->bigint = 945302;
-    $request->bigintStr = 'quasi';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 8694.89;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
-    $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::Second;
-    $request->intOptNull = 999999;
-    $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request = new DeepObject();
+    $request->any = new SimpleObject();
+    $request->any->any = 'ab';
+    $request->any->bigint = 241418;
+    $request->any->bigintStr = 'fuga';
+    $request->any->bool = true;
+    $request->any->boolOpt = true;
+    $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->any->decimal = 6625.05;
+    $request->any->enum = Enum::Two;
+    $request->any->float32 = 2.2222222;
+    $request->any->int = 999999;
+    $request->any->int32 = 1;
+    $request->any->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->any->intEnum = SimpleObjectIntEnum::First;
+    $request->any->intOptNull = 999999;
+    $request->any->num = 1.1;
+    $request->any->numOptNull = 1.1;
+    $request->any->str = 'example';
+    $request->any->strOpt = 'optional example';
+    $request->arr = [
+        new SimpleObject(),
+    ];
+    $request->bool = false;
+    $request->int = 633931;
+    $request->map = [
+        'est' => new SimpleObject(),
+    ];
+    $request->num = 9268.8;
+    $request->obj = new SimpleObject();
+    $request->obj->any = 'totam';
+    $request->obj->bigint = 853940;
+    $request->obj->bigintStr = 'vel';
+    $request->obj->bool = true;
+    $request->obj->boolOpt = true;
+    $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->obj->decimal = 4976.78;
+    $request->obj->enum = Enum::Two;
+    $request->obj->float32 = 2.2222222;
+    $request->obj->int = 999999;
+    $request->obj->int32 = 1;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->obj->intEnum = SimpleObjectIntEnum::Second;
+    $request->obj->intOptNull = 999999;
+    $request->obj->num = 1.1;
+    $request->obj->numOptNull = 1.1;
+    $request->obj->str = 'example';
+    $request->obj->strOpt = 'optional example';
+    $request->str = 'labore';
+    $request->type = 'possimus';
 
     $response = $sdk->unions->weaklyTypedOneOfPost($request);
 

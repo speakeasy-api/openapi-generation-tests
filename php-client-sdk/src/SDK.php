@@ -224,7 +224,7 @@ class SDK
      * @return \OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponse
      */
 	public function putAnythingIgnoredGeneration(
-        ?string $request,
+        string $request,
     ): \OpenAPI\OpenAPI\Models\Operations\PutAnythingIgnoredGenerationResponse
     {
         $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
@@ -232,9 +232,10 @@ class SDK
         
         $options = ['http_errors' => false];
         $body = Utils\Utils::serializeRequestBody($request, "request", "string");
-        if ($body !== null) {
-            $options = array_merge_recursive($options, $body);
+        if ($body === null) {
+            throw new \Exception('Request body is required');
         }
+        $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
         $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
         

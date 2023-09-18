@@ -49,6 +49,9 @@ func (s *pagination) PaginationCursorBody(ctx context.Context, request operation
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
 	if err != nil {
@@ -280,6 +283,9 @@ func (s *pagination) PaginationLimitOffsetOffsetBody(ctx context.Context, reques
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)
 	if err != nil {
@@ -510,6 +516,9 @@ func (s *pagination) PaginationLimitOffsetPageBody(ctx context.Context, request 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)

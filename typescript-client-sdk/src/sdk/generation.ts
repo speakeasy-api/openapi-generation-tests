@@ -756,7 +756,7 @@ export class Generation {
     }
 
     async ignoresPost(
-        requestBody?: operations.IgnoresPostApplicationJSON,
+        requestBody: operations.IgnoresPostApplicationJSON,
         testParam?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.IgnoresPostResponse> {
@@ -790,6 +790,8 @@ export class Generation {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[

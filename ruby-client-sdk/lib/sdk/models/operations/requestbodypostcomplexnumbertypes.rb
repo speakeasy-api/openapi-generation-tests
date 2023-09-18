@@ -14,6 +14,8 @@ module OpenApiSDK
       extend T::Sig
 
 
+      field :complex_number_types, Shared::ComplexNumberTypes, { 'request': { 'media_type': 'application/json' } }
+
       field :path_big_int, Integer, { 'path_param': { 'field_name': 'pathBigInt', 'style': 'simple', 'explode': false } }
 
       field :path_big_int_str, String, { 'path_param': { 'field_name': 'pathBigIntStr', 'style': 'simple', 'explode': false } }
@@ -30,11 +32,10 @@ module OpenApiSDK
 
       field :query_decimal_str, String, { 'query_param': { 'field_name': 'queryDecimalStr', 'style': 'form', 'explode': true } }
 
-      field :complex_number_types, T.nilable(Shared::ComplexNumberTypes), { 'request': { 'media_type': 'application/json' } }
 
-
-      sig { params(path_big_int: Integer, path_big_int_str: String, path_decimal: Float, path_decimal_str: String, query_big_int: Integer, query_big_int_str: String, query_decimal: Float, query_decimal_str: String, complex_number_types: T.nilable(Shared::ComplexNumberTypes)).void }
-      def initialize(path_big_int: nil, path_big_int_str: nil, path_decimal: nil, path_decimal_str: nil, query_big_int: nil, query_big_int_str: nil, query_decimal: nil, query_decimal_str: nil, complex_number_types: nil)
+      sig { params(complex_number_types: Shared::ComplexNumberTypes, path_big_int: Integer, path_big_int_str: String, path_decimal: Float, path_decimal_str: String, query_big_int: Integer, query_big_int_str: String, query_decimal: Float, query_decimal_str: String).void }
+      def initialize(complex_number_types: nil, path_big_int: nil, path_big_int_str: nil, path_decimal: nil, path_decimal_str: nil, query_big_int: nil, query_big_int_str: nil, query_decimal: nil, query_decimal_str: nil)
+        @complex_number_types = complex_number_types
         @path_big_int = path_big_int
         @path_big_int_str = path_big_int_str
         @path_decimal = path_decimal
@@ -43,7 +44,6 @@ module OpenApiSDK
         @query_big_int_str = query_big_int_str
         @query_decimal = query_decimal
         @query_decimal_str = query_decimal_str
-        @complex_number_types = complex_number_types
       end
     end
 

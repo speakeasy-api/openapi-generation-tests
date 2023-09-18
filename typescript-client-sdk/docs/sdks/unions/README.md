@@ -37,7 +37,7 @@ const sdk = new SDK({
 
 sdk.unions.flattenedTypedObjectPost({
   type: TypedObject1Type.Obj1,
-  value: "explicabo",
+  value: "laudantium",
 }).then((res: FlattenedTypedObjectPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -76,7 +76,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.mixedTypeOneOfPost(604118).then((res: MixedTypeOneOfPostResponse) => {
+sdk.unions.mixedTypeOneOfPost(510629).then((res: MixedTypeOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -116,15 +116,15 @@ const sdk = new SDK({
 sdk.unions.nullableOneOfRefInObjectPost({
   nullableOneOfOne: {
     type: TypedObject1Type.Obj1,
-    value: "architecto",
+    value: "cum",
   },
   nullableOneOfTwo: {
     type: TypedObject1Type.Obj1,
-    value: "sapiente",
+    value: "dolorum",
   },
   oneOfOne: {
     type: TypedObject1Type.Obj1,
-    value: "debitis",
+    value: "voluptatum",
   },
 }).then((res: NullableOneOfRefInObjectPostResponse) => {
   if (res.statusCode == 200) {
@@ -164,8 +164,8 @@ const sdk = new SDK({
 });
 
 sdk.unions.nullableOneOfSchemaPost({
-  type: TypedObject1Type.Obj1,
-  value: "reiciendis",
+  type: TypedObject2Type.Obj2,
+  value: "hic",
 }).then((res: NullableOneOfSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -204,7 +204,7 @@ const sdk = new SDK({
 
 sdk.unions.nullableOneOfTypeInObjectPost({
   nullableOneOfOne: false,
-  nullableOneOfTwo: false,
+  nullableOneOfTwo: 892863,
   oneOfOne: false,
 }).then((res: NullableOneOfTypeInObjectPostResponse) => {
   if (res.statusCode == 200) {
@@ -245,7 +245,7 @@ const sdk = new SDK({
 
 sdk.unions.nullableTypedObjectPost({
   type: TypedObject1Type.Obj1,
-  value: "corrupti",
+  value: "neque",
 }).then((res: NullableTypedObjectPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -282,7 +282,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.primitiveTypeOneOfPost(false).then((res: PrimitiveTypeOneOfPostResponse) => {
+sdk.unions.primitiveTypeOneOfPost(3416.98).then((res: PrimitiveTypeOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -327,26 +327,79 @@ const sdk = new SDK({
 });
 
 sdk.unions.stronglyTypedOneOfPost({
-  any: "sed",
-  bigint: 592231,
-  bigintStr: "eius",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 8967.62,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectWithTypeInt32Enum.FiftyFive,
-  intEnum: SimpleObjectWithTypeIntEnum.Second,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-  type: "occaecati",
+  any: "corrupti",
+  arr: [
+    {
+      any: "accusamus",
+      bigint: 272683,
+      bigintStr: "atque",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 1482.68,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Third,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  ],
+  bool: false,
+  int: 30235,
+  map: {
+    "culpa": {
+      any: "expedita",
+      bigint: 299643,
+      bigintStr: "consequatur",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 4602.2,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  },
+  num: 5305.37,
+  obj: {
+    any: "quas",
+    bigint: 922112,
+    bigintStr: "corporis",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 894.94,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    intEnum: SimpleObjectIntEnum.Second,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  str: "sed",
+  type: "sit",
 }).then((res: StronglyTypedOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -385,8 +438,8 @@ const sdk = new SDK({
 });
 
 sdk.unions.typedObjectNullableOneOfPost({
-  type: TypedObject2Type.Obj2,
-  value: "voluptatibus",
+  type: TypedObject1Type.Obj1,
+  value: "nostrum",
 }).then((res: TypedObjectNullableOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -425,8 +478,8 @@ const sdk = new SDK({
 });
 
 sdk.unions.typedObjectOneOfPost({
-  type: TypedObject1Type.Obj1,
-  value: "tempora",
+  type: TypedObject3Type.Obj3,
+  value: "error",
 }).then((res: TypedObjectOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -466,20 +519,20 @@ const sdk = new SDK({
 });
 
 sdk.unions.weaklyTypedOneOfPost({
-  any: "reiciendis",
-  bigint: 401713,
-  bigintStr: "sit",
+  any: "incidunt",
+  bigint: 968865,
+  bigintStr: "dolorem",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 2484.13,
+  decimal: 6908.94,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,

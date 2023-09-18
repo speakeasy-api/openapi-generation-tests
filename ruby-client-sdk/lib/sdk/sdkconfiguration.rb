@@ -53,7 +53,7 @@ module OpenApiSDK
       @globals = globals.nil? ? {} : globals
       @language = 'ruby'
       @openapi_doc_version = '0.1.0'
-      @sdk_version = '1.31.8'
+      @sdk_version = '1.31.9'
       @gen_version = '2.115.2'
     end
 

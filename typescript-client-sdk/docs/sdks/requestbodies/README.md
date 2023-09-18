@@ -36,10 +36,29 @@ Endpoints for testing request bodies.
 * [requestBodyPostApplicationJsonSimple](#requestbodypostapplicationjsonsimple)
 * [requestBodyPostApplicationJsonSimpleCamelCase](#requestbodypostapplicationjsonsimplecamelcase)
 * [requestBodyPostComplexNumberTypes](#requestbodypostcomplexnumbertypes)
+* [requestBodyPostDefaultsAndConsts](#requestbodypostdefaultsandconsts)
 * [requestBodyPostEmptyObject](#requestbodypostemptyobject)
 * [requestBodyPostFormDeep](#requestbodypostformdeep)
 * [requestBodyPostFormMapPrimitive](#requestbodypostformmapprimitive)
 * [requestBodyPostFormSimple](#requestbodypostformsimple)
+* [requestBodyPostJsonDataTypesArrayBigInt](#requestbodypostjsondatatypesarraybigint)
+* [requestBodyPostJsonDataTypesArrayDate](#requestbodypostjsondatatypesarraydate)
+* [requestBodyPostJsonDataTypesArrayDecimalStr](#requestbodypostjsondatatypesarraydecimalstr)
+* [requestBodyPostJsonDataTypesBigInt](#requestbodypostjsondatatypesbigint)
+* [requestBodyPostJsonDataTypesBigIntStr](#requestbodypostjsondatatypesbigintstr)
+* [requestBodyPostJsonDataTypesBoolean](#requestbodypostjsondatatypesboolean)
+* [requestBodyPostJsonDataTypesDate](#requestbodypostjsondatatypesdate)
+* [requestBodyPostJsonDataTypesDateTime](#requestbodypostjsondatatypesdatetime)
+* [requestBodyPostJsonDataTypesDecimal](#requestbodypostjsondatatypesdecimal)
+* [requestBodyPostJsonDataTypesDecimalStr](#requestbodypostjsondatatypesdecimalstr)
+* [requestBodyPostJsonDataTypesFloat32](#requestbodypostjsondatatypesfloat32)
+* [requestBodyPostJsonDataTypesInt32](#requestbodypostjsondatatypesint32)
+* [requestBodyPostJsonDataTypesInteger](#requestbodypostjsondatatypesinteger)
+* [requestBodyPostJsonDataTypesMapBigIntStr](#requestbodypostjsondatatypesmapbigintstr)
+* [requestBodyPostJsonDataTypesMapDateTime](#requestbodypostjsondatatypesmapdatetime)
+* [requestBodyPostJsonDataTypesMapDecimal](#requestbodypostjsondatatypesmapdecimal)
+* [requestBodyPostJsonDataTypesNumber](#requestbodypostjsondatatypesnumber)
+* [requestBodyPostJsonDataTypesString](#requestbodypostjsondatatypesstring)
 * [requestBodyPostMultipleContentTypesComponentFiltered](#requestbodypostmultiplecontenttypescomponentfiltered)
 * [requestBodyPostMultipleContentTypesInlineFiltered](#requestbodypostmultiplecontenttypesinlinefiltered)
 * [requestBodyPostMultipleContentTypesSplitParamForm](#requestbodypostmultiplecontenttypessplitparamform)
@@ -1872,6 +1891,81 @@ sdk.requestBodies.requestBodyPostComplexNumberTypes({
 **Promise<[operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/requestbodypostcomplexnumbertypesresponse.md)>**
 
 
+## requestBodyPostDefaultsAndConsts
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostDefaultsAndConstsResponse } from "openapi/dist/sdk/models/operations";
+import {
+  DefaultsAndConstsConstEnumInt,
+  DefaultsAndConstsConstEnumStr,
+  DefaultsAndConstsDefaultEnumInt,
+  DefaultsAndConstsDefaultEnumStr,
+  DefaultsAndConstsSingleEnumConstStr,
+} from "openapi/dist/sdk/models/shared";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostDefaultsAndConsts({
+  constBigInt: 97468,
+  constBigIntStr: "a",
+  constBool: false,
+  constDate: new RFCDate("2021-11-06"),
+  constDateTime: new Date("2020-07-16T06:14:24.154Z"),
+  constDecimal: 1576.32,
+  constDecimalStr: "eveniet",
+  constEnumInt: DefaultsAndConstsConstEnumInt.Three,
+  constEnumStr: DefaultsAndConstsConstEnumStr.Three,
+  constInt: 85001,
+  constNum: 1594.14,
+  constStr: "quasi",
+  constStrNull: "similique",
+  defaultBigInt: 633608,
+  defaultBigIntStr: "aliquid",
+  defaultBool: false,
+  defaultDate: new RFCDate("2022-10-24"),
+  defaultDateTime: new Date("2021-09-23T16:25:56.144Z"),
+  defaultDecimal: 4473.78,
+  defaultDecimalStr: "eius",
+  defaultEnumInt: DefaultsAndConstsDefaultEnumInt.Three,
+  defaultEnumStr: DefaultsAndConstsDefaultEnumStr.Three,
+  defaultInt: 742238,
+  defaultNum: 333.04,
+  defaultStr: "aliquam",
+  defaultStrNullable: "sapiente",
+  defaultStrOptional: "dicta",
+  normalField: "ullam",
+  singleEnumConstBool: false,
+  singleEnumConstStr: DefaultsAndConstsSingleEnumConstStr.One,
+}).then((res: RequestBodyPostDefaultsAndConstsResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `request`                                                            | [shared.DefaultsAndConsts](../../models/shared/defaultsandconsts.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+| `config`                                                             | [AxiosRequestConfig](https://axios-http.com/docs/req_config)         | :heavy_minus_sign:                                                   | Available config options for making requests.                        |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostDefaultsAndConstsResponse](../../models/operations/requestbodypostdefaultsandconstsresponse.md)>**
+
+
 ## requestBodyPostEmptyObject
 
 ### Example Usage
@@ -1931,84 +2025,14 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostFormDeep({
   any: {
-    any: "a",
-    bigint: 621679,
-    bigintStr: "sint",
+    any: "ullam",
+    bigint: 391774,
+    bigintStr: "aut",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 8630.23,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.First,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  arr: [
-    {
-      any: "eveniet",
-      bigint: 992430,
-      bigintStr: "facere",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 850.01,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  bool: false,
-  int: 628899,
-  map: {
-    "culpa": {
-      any: "aliquid",
-      bigint: 949298,
-      bigintStr: "quae",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9367.47,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  },
-  num: 2586.84,
-  obj: {
-    any: "libero",
-    bigint: 849039,
-    bigintStr: "soluta",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 333.04,
+    decimal: 5318.49,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
@@ -2021,8 +2045,78 @@ sdk.requestBodies.requestBodyPostFormDeep({
     str: "example",
     strOpt: "optional example",
   },
-  str: "dicta",
-  type: "ullam",
+  arr: [
+    {
+      any: "ex",
+      bigint: 536275,
+      bigintStr: "itaque",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 6802.7,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  ],
+  bool: false,
+  int: 945302,
+  map: {
+    "quasi": {
+      any: "at",
+      bigint: 92027,
+      bigintStr: "voluptate",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00Z"),
+      decimal: 559.65,
+      enum: Enum.Two,
+      float32: 2.2222222,
+      int: 999999,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 999999,
+      num: 1.1,
+      numOptNull: 1.1,
+      str: "example",
+      strOpt: "optional example",
+    },
+  },
+  num: 2327.44,
+  obj: {
+    any: "adipisci",
+    bigint: 614465,
+    bigintStr: "temporibus",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+    decimal: 330.74,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.SixtyNine,
+    intEnum: SimpleObjectIntEnum.First,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
+  str: "laudantium",
+  type: "eum",
 }).then((res: RequestBodyPostFormDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2060,7 +2154,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostFormMapPrimitive({
-  "reprehenderit": "ullam",
+  "mollitia": "ab",
 }).then((res: RequestBodyPostFormMapPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2100,20 +2194,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostFormSimple({
-  any: "nisi",
-  bigint: 16328,
-  bigintStr: "voluptatum",
+  any: "corrupti",
+  bigint: 251941,
+  bigintStr: "voluptatem",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 1852.32,
+  decimal: 2211.61,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -2139,6 +2233,666 @@ sdk.requestBodies.requestBodyPostFormSimple({
 **Promise<[operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md)>**
 
 
+## requestBodyPostJsonDataTypesArrayBigInt
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesArrayBigIntResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt([
+  771089,
+]).then((res: RequestBodyPostJsonDataTypesArrayBigIntResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [number[]](../../models//.md)                                | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesArrayBigIntResponse](../../models/operations/requestbodypostjsondatatypesarraybigintresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesArrayDate
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesArrayDateResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate([
+  new RFCDate("2022-08-16"),
+]).then((res: RequestBodyPostJsonDataTypesArrayDateResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [RFCDate[]](../../models//.md)                               | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesArrayDateResponse](../../models/operations/requestbodypostjsondatatypesarraydateresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesArrayDecimalStr
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesArrayDecimalStrResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr([
+  "aut",
+]).then((res: RequestBodyPostJsonDataTypesArrayDecimalStrResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string[]](../../models//.md)                                | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesBigInt
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesBigIntResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(491025).then((res: RequestBodyPostJsonDataTypesBigIntResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [number](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesBigIntResponse](../../models/operations/requestbodypostjsondatatypesbigintresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesBigIntStr
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesBigIntStrResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("dicta").then((res: RequestBodyPostJsonDataTypesBigIntStrResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesbigintstrresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesBoolean
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesBooleanResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(false).then((res: RequestBodyPostJsonDataTypesBooleanResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [boolean](../../models//.md)                                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesBooleanResponse](../../models/operations/requestbodypostjsondatatypesbooleanresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesDate
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesDateResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2021-02-22")).then((res: RequestBodyPostJsonDataTypesDateResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [RFCDate](../../models//.md)                                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesDateResponse](../../models/operations/requestbodypostjsondatatypesdateresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesDateTime
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesDateTimeResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2022-01-10T09:30:55.914Z")).then((res: RequestBodyPostJsonDataTypesDateTimeResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Date](../../models//.md)                                    | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesDateTimeResponse](../../models/operations/requestbodypostjsondatatypesdatetimeresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesDecimal
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesDecimalResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(3743.23).then((res: RequestBodyPostJsonDataTypesDecimalResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [number](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesDecimalResponse](../../models/operations/requestbodypostjsondatatypesdecimalresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesDecimalStr
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesDecimalStrResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("asperiores").then((res: RequestBodyPostJsonDataTypesDecimalStrResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesdecimalstrresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesFloat32
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesFloat32Response } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(456.59).then((res: RequestBodyPostJsonDataTypesFloat32Response) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [number](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesFloat32Response](../../models/operations/requestbodypostjsondatatypesfloat32response.md)>**
+
+
+## requestBodyPostJsonDataTypesInt32
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesInt32Response } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesInt32(409054).then((res: RequestBodyPostJsonDataTypesInt32Response) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [number](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesInt32Response](../../models/operations/requestbodypostjsondatatypesint32response.md)>**
+
+
+## requestBodyPostJsonDataTypesInteger
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesIntegerResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesInteger(310067).then((res: RequestBodyPostJsonDataTypesIntegerResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [number](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesIntegerResponse](../../models/operations/requestbodypostjsondatatypesintegerresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesMapBigIntStr
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesMapBigIntStrResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr({
+  "consequuntur": "repellendus",
+}).then((res: RequestBodyPostJsonDataTypesMapBigIntStrResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesMapDateTime
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesMapDateTimeResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime({
+  "officia": new Date("2021-07-13T02:46:31.605Z"),
+}).then((res: RequestBodyPostJsonDataTypesMapDateTimeResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, Date>](../../models//.md)                    | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesMapDateTimeResponse](../../models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesMapDecimal
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesMapDecimalResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal({
+  "officia": 9894.1,
+}).then((res: RequestBodyPostJsonDataTypesMapDecimalResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, number>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesMapDecimalResponse](../../models/operations/requestbodypostjsondatatypesmapdecimalresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesNumber
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesNumberResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesNumber(3681.02).then((res: RequestBodyPostJsonDataTypesNumberResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [number](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesNumberResponse](../../models/operations/requestbodypostjsondatatypesnumberresponse.md)>**
+
+
+## requestBodyPostJsonDataTypesString
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostJsonDataTypesStringResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostJsonDataTypesString("quae").then((res: RequestBodyPostJsonDataTypesStringResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostJsonDataTypesStringResponse](../../models/operations/requestbodypostjsondatatypesstringresponse.md)>**
+
+
 ## requestBodyPostMultipleContentTypesComponentFiltered
 
 ### Example Usage
@@ -2158,20 +2912,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered({
-  any: "deleniti",
-  bigint: 929292,
-  bigintStr: "dolorum",
+  any: "quaerat",
+  bigint: 783235,
+  bigintStr: "quod",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 996.15,
+  decimal: 2883.98,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -2215,8 +2969,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
   bool: false,
-  num: 984.78,
-  str: "at",
+  num: 6835.73,
+  str: "id",
 }).then((res: RequestBodyPostMultipleContentTypesInlineFilteredResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2258,10 +3012,10 @@ const sdk = new SDK({
 });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
   bool3: false,
-  num3: 920.27,
-  str3: "voluptate",
+  num3: 3807.29,
+  str3: "velit",
 };
-const paramStr: string = "ipsa";
+const paramStr: string = "culpa";
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamFormResponse) => {
   if (res.statusCode == 200) {
@@ -2305,10 +3059,10 @@ const sdk = new SDK({
 });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
   bool: false,
-  num: 3267.01,
-  str: "veritatis",
+  num: 6658.59,
+  str: "recusandae",
 };
-const paramStr: string = "consectetur";
+const paramStr: string = "totam";
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamJsonResponse) => {
   if (res.statusCode == 200) {
@@ -2352,10 +3106,10 @@ const sdk = new SDK({
 });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
   bool2: false,
-  num2: 2371.73,
-  str2: "iste",
+  num2: 8539.4,
+  str2: "vel",
 };
-const paramStr: string = "temporibus";
+const paramStr: string = "ducimus";
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) => {
   if (res.statusCode == 200) {
@@ -2396,8 +3150,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
   bool3: false,
-  num3: 330.74,
-  str3: "rem",
+  num3: 5546.88,
+  str3: "vel",
 }).then((res: RequestBodyPostMultipleContentTypesSplitFormResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2436,8 +3190,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
   bool: false,
-  num: 156.06,
-  str: "laudantium",
+  num: 2870.51,
+  str: "possimus",
 }).then((res: RequestBodyPostMultipleContentTypesSplitJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2476,8 +3230,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
   bool2: false,
-  num2: 4287.96,
-  str2: "mollitia",
+  num2: 7065.75,
+  str2: "cum",
 }).then((res: RequestBodyPostMultipleContentTypesSplitMultipartResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2515,7 +3269,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostNullArray([
-  "ab",
+  "commodi",
 ]).then((res: RequestBodyPostNullArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2553,7 +3307,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostNullDictionary({
-  "corrupti": "non",
+  "in": "corporis",
 }).then((res: RequestBodyPostNullDictionaryResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2590,7 +3344,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPutBytes("voluptatem".encode()).then((res: RequestBodyPutBytesResponse) => {
+sdk.requestBodies.requestBodyPutBytes("reiciendis".encode()).then((res: RequestBodyPutBytesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2625,8 +3379,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestBody: Uint8Array = "dolor".encode();
-const queryStringParam: string = "occaecati";
+const requestBody: Uint8Array = "assumenda".encode();
+const queryStringParam: string = "nemo";
 
 sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam).then((res: RequestBodyPutBytesWithParamsResponse) => {
   if (res.statusCode == 200) {
@@ -2668,37 +3422,17 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPutMultipartDeep({
-  any: {
-    any: "impedit",
-    bigint: 131055,
-    bigintStr: "voluptas",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 120.36,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.First,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
+  any: "aliquid",
   arr: [
     {
-      any: "maiores",
-      bigint: 618480,
-      bigintStr: "velit",
+      any: "aperiam",
+      bigint: 738683,
+      bigintStr: "consectetur",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9742.57,
+      decimal: 4490.83,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
@@ -2713,23 +3447,23 @@ sdk.requestBodies.requestBodyPutMultipartDeep({
     },
   ],
   bool: false,
-  int: 45659,
+  int: 814967,
   map: {
-    "ea": {
-      any: "quaerat",
-      bigint: 162954,
-      bigintStr: "repellendus",
+    "numquam": {
+      any: "doloribus",
+      bigint: 381760,
+      bigintStr: "reiciendis",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 6387.62,
+      decimal: 6971.42,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Second,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -2737,30 +3471,30 @@ sdk.requestBodies.requestBodyPutMultipartDeep({
       strOpt: "optional example",
     },
   },
-  num: 6400.24,
+  num: 2965.56,
   obj: {
-    any: "asperiores",
-    bigint: 368102,
-    bigintStr: "quae",
+    any: "sunt",
+    bigint: 992012,
+    bigintStr: "adipisci",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 3127.53,
+    decimal: 2494.2,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Third,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
     str: "example",
     strOpt: "optional example",
   },
-  str: "labore",
-  type: "ab",
+  str: "dignissimos",
+  type: "a",
 }).then((res: RequestBodyPutMultipartDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2799,8 +3533,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPutMultipartFile({
   file: {
-    content: "adipisci".encode(),
-    file: "fuga",
+    content: "debitis".encode(),
+    file: "consectetur",
   },
 }).then((res: RequestBodyPutMultipartFileResponse) => {
   if (res.statusCode == 200) {
@@ -2841,19 +3575,19 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPutMultipartSimple({
-  any: "id",
-  bigint: 380729,
-  bigintStr: "velit",
+  any: "corporis",
+  bigint: 689768,
+  bigintStr: "laboriosam",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 6339.31,
+  decimal: 583.56,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
   intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
@@ -2896,7 +3630,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPutString("totam").then((res: RequestBodyPutStringResponse) => {
+sdk.requestBodies.requestBodyPutString("vitae").then((res: RequestBodyPutStringResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2931,8 +3665,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestBody: string = "fugiat";
-const queryStringParam: string = "vel";
+const requestBody: string = "accusamus";
+const queryStringParam: string = "similique";
 
 sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam).then((res: RequestBodyPutStringWithParamsResponse) => {
   if (res.statusCode == 200) {
@@ -2972,9 +3706,9 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadAndWrite({
-  num1: 497678,
-  num2: 554688,
-  num3: 427834,
+  num1: 272437,
+  num2: 132815,
+  num3: 379057,
 }).then((res: RequestBodyReadAndWriteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3052,20 +3786,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadOnlyUnion({
-  any: "possimus",
-  bigint: 706575,
-  bigintStr: "cum",
+  any: "voluptas",
+  bigint: 324405,
+  bigintStr: "nobis",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 4148.57,
+  decimal: 6801.16,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -3111,9 +3845,25 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadWriteOnlyUnion({
-  num1: 828657,
-  num2: 363161,
-  num3: 924967,
+  any: "blanditiis",
+  bigint: 449292,
+  bigintStr: "dolore",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 3044.68,
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.Third,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
 }).then((res: RequestBodyReadWriteOnlyUnionResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3153,8 +3903,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnly({
   bool: false,
-  num: 3975.33,
-  string: "aperiam",
+  num: 3518.7,
+  string: "adipisci",
 }).then((res: RequestBodyWriteOnlyResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3194,8 +3944,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnlyOutput({
   bool: false,
-  num: 7386.83,
-  string: "consectetur",
+  num: 7383.91,
+  string: "blanditiis",
 }).then((res: RequestBodyWriteOnlyOutputResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3236,25 +3986,9 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyWriteOnlyUnion({
-  any: "exercitationem",
-  bigint: 937285,
-  bigintStr: "facere",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 2572.33,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  bool: false,
+  num: 9425.84,
+  string: "nesciunt",
 }).then((res: RequestBodyWriteOnlyUnionResponse) => {
   if (res.statusCode == 200) {
     // handle response

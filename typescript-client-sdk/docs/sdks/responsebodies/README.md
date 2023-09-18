@@ -6,12 +6,129 @@ Endpoints for testing response bodies.
 
 ### Available Operations
 
+* [responseBodyAdditionalPropertiesComplexNumbersPost](#responsebodyadditionalpropertiescomplexnumberspost)
+* [responseBodyAdditionalPropertiesDatePost](#responsebodyadditionalpropertiesdatepost)
+* [responseBodyAdditionalPropertiesPost](#responsebodyadditionalpropertiespost)
 * [responseBodyBytesGet](#responsebodybytesget)
 * [responseBodyEmptyWithHeaders](#responsebodyemptywithheaders)
 * [responseBodyOptionalGet](#responsebodyoptionalget)
 * [responseBodyReadOnly](#responsebodyreadonly)
 * [responseBodyStringGet](#responsebodystringget)
 * [responseBodyXmlGet](#responsebodyxmlget)
+
+## responseBodyAdditionalPropertiesComplexNumbersPost
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { ResponseBodyAdditionalPropertiesComplexNumbersPostResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost({
+  "minima": "recusandae",
+}).then((res: ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse](../../models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md)>**
+
+
+## responseBodyAdditionalPropertiesDatePost
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { ResponseBodyAdditionalPropertiesDatePostResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.responseBodies.responseBodyAdditionalPropertiesDatePost({
+  "reiciendis": new RFCDate("2022-06-30"),
+}).then((res: ResponseBodyAdditionalPropertiesDatePostResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, RFCDate>](../../models//.md)                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/responsebodyadditionalpropertiesdatepostresponse.md)>**
+
+
+## responseBodyAdditionalPropertiesPost
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { ResponseBodyAdditionalPropertiesPostResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.responseBodies.responseBodyAdditionalPropertiesPost({
+  "aperiam": "saepe",
+}).then((res: ResponseBodyAdditionalPropertiesPostResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Record<string, string>](../../models//.md)                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.ResponseBodyAdditionalPropertiesPostResponse](../../models/operations/responsebodyadditionalpropertiespostresponse.md)>**
+
 
 ## responseBodyBytesGet
 
@@ -63,8 +180,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const xNumberHeader: number = 6719.07;
-const xStringHeader: string = "sed";
+const xNumberHeader: number = 2536.42;
+const xStringHeader: string = "veniam";
 
 sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader).then((res: ResponseBodyEmptyWithHeadersResponse) => {
   if (res.statusCode == 200) {
