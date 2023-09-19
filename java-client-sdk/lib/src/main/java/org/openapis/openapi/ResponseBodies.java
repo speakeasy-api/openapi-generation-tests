@@ -7,12 +7,14 @@ package org.openapis.openapi;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
+import java.time.LocalDate;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 import org.apache.http.NameValuePair;
 import org.openapis.openapi.utils.HTTPClient;
 import org.openapis.openapi.utils.HTTPRequest;
 import org.openapis.openapi.utils.JSON;
+import org.openapis.openapi.utils.SerializedBody;
 
 /**
  * Endpoints for testing response bodies.
@@ -38,6 +40,120 @@ public class ResponseBodies {
 	public ResponseBodies(SDKConfiguration sdkConfiguration) {
 		this.sdkConfiguration = sdkConfiguration;
 	}
+
+    public org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse responseBodyAdditionalPropertiesComplexNumbersPost(java.util.Map<String, String> request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/responseBodies/additionalPropertiesComplexNumbers");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = new org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPostResponse(contentType, httpRes.statusCode()) {{
+            responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON.class);
+                res.responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse responseBodyAdditionalPropertiesDatePost(java.util.Map<String, LocalDate> request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/responseBodies/additionalPropertiesDate");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse res = new org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePostResponse(contentType, httpRes.statusCode()) {{
+            responseBodyAdditionalPropertiesDatePost200ApplicationJSONObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON.class);
+                res.responseBodyAdditionalPropertiesDatePost200ApplicationJSONObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse responseBodyAdditionalPropertiesPost(java.util.Map<String, String> request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/responseBodies/additionalProperties");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse res = new org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPostResponse(contentType, httpRes.statusCode()) {{
+            responseBodyAdditionalPropertiesPost200ApplicationJSONObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPost200ApplicationJSON out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.ResponseBodyAdditionalPropertiesPost200ApplicationJSON.class);
+                res.responseBodyAdditionalPropertiesPost200ApplicationJSONObject = out;
+            }
+        }
+
+        return res;
+    }
 
     public org.openapis.openapi.models.operations.ResponseBodyBytesGetResponse responseBodyBytesGet() throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());

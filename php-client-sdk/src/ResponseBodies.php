@@ -30,6 +30,129 @@ class ResponseBodies
 	}
 	
     /**
+     * responseBodyAdditionalPropertiesComplexNumbersPost
+     * 
+     * @param array<string, string> $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse
+     */
+	public function responseBodyAdditionalPropertiesComplexNumbersPost(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesComplexNumbers');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPostResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->responseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * responseBodyAdditionalPropertiesDatePost
+     * 
+     * @param array<string, \DateTime> $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse
+     */
+	public function responseBodyAdditionalPropertiesDatePost(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalPropertiesDate');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePostResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->responseBodyAdditionalPropertiesDatePost200ApplicationJSONObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * responseBodyAdditionalPropertiesPost
+     * 
+     * @param array<string, string> $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse
+     */
+	public function responseBodyAdditionalPropertiesPost(
+        array $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/responseBodies/additionalProperties');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPostResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->responseBodyAdditionalPropertiesPost200ApplicationJSONObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\ResponseBodyAdditionalPropertiesPost200ApplicationJSON', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * responseBodyBytesGet
      * 
      * @return \OpenAPI\OpenAPI\Models\Operations\ResponseBodyBytesGetResponse

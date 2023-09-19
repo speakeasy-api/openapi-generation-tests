@@ -81,7 +81,8 @@ public class RequestBodyPostComplexNumberTypesRequest {
         return this;
     }
     
-    public RequestBodyPostComplexNumberTypesRequest(@JsonProperty("pathBigInt") Long pathBigInt, @JsonProperty("pathBigIntStr") String pathBigIntStr, @JsonProperty("pathDecimal") Double pathDecimal, @JsonProperty("pathDecimalStr") String pathDecimalStr, @JsonProperty("queryBigInt") Long queryBigInt, @JsonProperty("queryBigIntStr") String queryBigIntStr, @JsonProperty("queryDecimal") Double queryDecimal, @JsonProperty("queryDecimalStr") String queryDecimalStr) {
+    public RequestBodyPostComplexNumberTypesRequest(@JsonProperty("complexNumberTypes") org.openapis.openapi.models.shared.ComplexNumberTypes complexNumberTypes, @JsonProperty("pathBigInt") Long pathBigInt, @JsonProperty("pathBigIntStr") String pathBigIntStr, @JsonProperty("pathDecimal") Double pathDecimal, @JsonProperty("pathDecimalStr") String pathDecimalStr, @JsonProperty("queryBigInt") Long queryBigInt, @JsonProperty("queryBigIntStr") String queryBigIntStr, @JsonProperty("queryDecimal") Double queryDecimal, @JsonProperty("queryDecimalStr") String queryDecimalStr) {
+        this.complexNumberTypes = complexNumberTypes;
         this.pathBigInt = pathBigInt;
         this.pathBigIntStr = pathBigIntStr;
         this.pathDecimal = pathDecimal;

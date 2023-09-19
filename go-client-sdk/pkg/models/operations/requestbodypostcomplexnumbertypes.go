@@ -11,20 +11,20 @@ import (
 )
 
 type RequestBodyPostComplexNumberTypesRequest struct {
-	ComplexNumberTypes *shared.ComplexNumberTypes `request:"mediaType=application/json"`
-	PathBigInt         *big.Int                   `pathParam:"style=simple,explode=false,name=pathBigInt"`
-	PathBigIntStr      types.BigInt               `pathParam:"style=simple,explode=false,name=pathBigIntStr"`
-	PathDecimal        types.Decimal              `pathParam:"style=simple,explode=false,name=pathDecimal"`
-	PathDecimalStr     *decimal.Big               `pathParam:"style=simple,explode=false,name=pathDecimalStr"`
-	QueryBigInt        *big.Int                   `queryParam:"style=form,explode=true,name=queryBigInt"`
-	QueryBigIntStr     types.BigInt               `queryParam:"style=form,explode=true,name=queryBigIntStr"`
-	QueryDecimal       types.Decimal              `queryParam:"style=form,explode=true,name=queryDecimal"`
-	QueryDecimalStr    *decimal.Big               `queryParam:"style=form,explode=true,name=queryDecimalStr"`
+	ComplexNumberTypes shared.ComplexNumberTypes `request:"mediaType=application/json"`
+	PathBigInt         *big.Int                  `pathParam:"style=simple,explode=false,name=pathBigInt"`
+	PathBigIntStr      types.BigInt              `pathParam:"style=simple,explode=false,name=pathBigIntStr"`
+	PathDecimal        types.Decimal             `pathParam:"style=simple,explode=false,name=pathDecimal"`
+	PathDecimalStr     *decimal.Big              `pathParam:"style=simple,explode=false,name=pathDecimalStr"`
+	QueryBigInt        *big.Int                  `queryParam:"style=form,explode=true,name=queryBigInt"`
+	QueryBigIntStr     types.BigInt              `queryParam:"style=form,explode=true,name=queryBigIntStr"`
+	QueryDecimal       types.Decimal             `queryParam:"style=form,explode=true,name=queryDecimal"`
+	QueryDecimalStr    *decimal.Big              `queryParam:"style=form,explode=true,name=queryDecimalStr"`
 }
 
-func (o *RequestBodyPostComplexNumberTypesRequest) GetComplexNumberTypes() *shared.ComplexNumberTypes {
+func (o *RequestBodyPostComplexNumberTypesRequest) GetComplexNumberTypes() shared.ComplexNumberTypes {
 	if o == nil {
-		return nil
+		return shared.ComplexNumberTypes{}
 	}
 	return o.ComplexNumberTypes
 }

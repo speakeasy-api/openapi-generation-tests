@@ -48,6 +48,9 @@ func (s *authNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthSe
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -116,6 +119,9 @@ func (s *authNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequ
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -186,6 +192,9 @@ func (s *authNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRe
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -254,6 +263,9 @@ func (s *authNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.A
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -324,6 +336,9 @@ func (s *authNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.Au
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -392,6 +407,9 @@ func (s *authNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, reque
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -462,6 +480,9 @@ func (s *authNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, requ
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -530,6 +551,9 @@ func (s *authNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -600,6 +624,9 @@ func (s *authNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.A
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -669,6 +696,9 @@ func (s *authNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceR
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -737,6 +767,9 @@ func (s *authNew) OpenIDConnectAuthNew(ctx context.Context, request shared.AuthS
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)

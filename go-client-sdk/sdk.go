@@ -284,8 +284,8 @@ func New(opts ...SDKOption) *SDK {
 		sdkConfiguration: sdkConfiguration{
 			Language:          "go",
 			OpenAPIDocVersion: "0.1.0",
-			SDKVersion:        "1.33.0",
-			GenVersion:        "2.115.2",
+			SDKVersion:        "1.33.1",
+			GenVersion:        "2.116.0",
 			Globals: map[string]map[string]map[string]interface{}{
 				"parameters": {},
 			},
@@ -373,6 +373,9 @@ func (s *SDK) PutAnythingIgnoredGeneration(ctx context.Context, request string) 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "string")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "PUT", url, bodyReader)

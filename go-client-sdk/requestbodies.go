@@ -6,11 +6,14 @@ import (
 	"bytes"
 	"context"
 	"fmt"
+	"github.com/ericlagergren/decimal"
 	"io"
+	"math/big"
 	"net/http"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/sdkerrors"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/types"
 	"openapi/pkg/utils"
 	"strings"
 )
@@ -33,6 +36,9 @@ func (s *requestBodies) NullableObjectPost(ctx context.Context, request shared.N
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -98,6 +104,9 @@ func (s *requestBodies) NullableRequiredEmptyObjectPost(ctx context.Context, req
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -158,6 +167,9 @@ func (s *requestBodies) NullableRequiredPropertyPost(ctx context.Context, reques
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -217,6 +229,9 @@ func (s *requestBodies) NullableRequiredSharedObjectPost(ctx context.Context, re
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -291,6 +306,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArray(ctx context.Context,
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -369,6 +387,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayCamelCase(ctx context
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -582,6 +603,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArray(ctx context.C
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -659,6 +683,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayCamelCase(ctx 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -738,6 +765,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ct
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -815,6 +845,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMap(ctx context.Con
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -894,6 +927,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx co
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -972,6 +1008,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONArrayOfPrimitive(ctx conte
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -1036,6 +1075,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONDeep(ctx context.Context, 
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -1099,6 +1141,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONDeepCamelCase(ctx context.
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -1178,6 +1223,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMap(ctx context.Context, r
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -1255,6 +1303,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapCamelCase(ctx context.C
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -1468,6 +1519,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfArray(ctx context.Con
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -1545,6 +1599,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx co
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -1624,6 +1681,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMap(ctx context.Conte
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -1701,6 +1761,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx cont
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -1780,6 +1843,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx co
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -1857,6 +1923,9 @@ func (s *requestBodies) RequestBodyPostApplicationJSONMapOfPrimitive(ctx context
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -2126,6 +2195,9 @@ func (s *requestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, r
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -2186,6 +2258,73 @@ func (s *requestBodies) RequestBodyPostComplexNumberTypes(ctx context.Context, r
 	return res, nil
 }
 
+func (s *requestBodies) RequestBodyPostDefaultsAndConsts(ctx context.Context, request shared.DefaultsAndConsts) (*operations.RequestBodyPostDefaultsAndConstsResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/defaultsAndConsts"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostDefaultsAndConstsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostDefaultsAndConsts200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
 func (s *requestBodies) RequestBodyPostEmptyObject(ctx context.Context, request operations.RequestBodyPostEmptyObjectRequestBody) (*operations.RequestBodyPostEmptyObjectResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/empty-object"
@@ -2193,6 +2332,9 @@ func (s *requestBodies) RequestBodyPostEmptyObject(ctx context.Context, request 
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -2439,6 +2581,1212 @@ func (s *requestBodies) RequestBodyPostFormSimple(ctx context.Context, request s
 			}
 
 			res.Res = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesArrayBigInt(ctx context.Context, request []*big.Int) (*operations.RequestBodyPostJSONDataTypesArrayBigIntResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/bigInt"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesArrayBigIntResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDate(ctx context.Context, request []types.Date) (*operations.RequestBodyPostJSONDataTypesArrayDateResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/date"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesArrayDateResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesArrayDecimalStr(ctx context.Context, request []*decimal.Big) (*operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/array/decimalStr"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesBigInt(ctx context.Context, request *big.Int) (*operations.RequestBodyPostJSONDataTypesBigIntResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/bigint"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesBigIntResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesBigInt200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesBigIntStr(ctx context.Context, request types.BigInt) (*operations.RequestBodyPostJSONDataTypesBigIntStrResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/bigintStr"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesBigIntStrResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesBoolean(ctx context.Context, request bool) (*operations.RequestBodyPostJSONDataTypesBooleanResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/boolean"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesBooleanResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesBoolean200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesBoolean200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesDate(ctx context.Context, request types.Date) (*operations.RequestBodyPostJSONDataTypesDateResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/date"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesDateResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesDate200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesDate200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesDateTime(ctx context.Context, request time.Time) (*operations.RequestBodyPostJSONDataTypesDateTimeResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/dateTime"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesDateTimeResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesDateTime200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesDecimal(ctx context.Context, request types.Decimal) (*operations.RequestBodyPostJSONDataTypesDecimalResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/decimal"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesDecimalResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesDecimal200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesDecimal200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesDecimalStr(ctx context.Context, request *decimal.Big) (*operations.RequestBodyPostJSONDataTypesDecimalStrResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/decimalStr"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesDecimalStrResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesFloat32(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesFloat32Response, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/float32"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesFloat32Response{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesFloat32200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesInt32(ctx context.Context, request int) (*operations.RequestBodyPostJSONDataTypesInt32Response, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/int32"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesInt32Response{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesInt32200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesInt32200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesInteger(ctx context.Context, request int64) (*operations.RequestBodyPostJSONDataTypesIntegerResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/integer"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesIntegerResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesInteger200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesInteger200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesMapBigIntStr(ctx context.Context, request map[string]types.BigInt) (*operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/bigIntStr"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesMapDateTime(ctx context.Context, request map[string]time.Time) (*operations.RequestBodyPostJSONDataTypesMapDateTimeResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/dateTime"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesMapDateTimeResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesMapDecimal(ctx context.Context, request map[string]types.Decimal) (*operations.RequestBodyPostJSONDataTypesMapDecimalResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/map/decimal"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesMapDecimalResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesNumber(ctx context.Context, request float64) (*operations.RequestBodyPostJSONDataTypesNumberResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/number"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesNumberResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesNumber200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesNumber200ApplicationJSONObject = out
+		default:
+			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
+		}
+	case httpRes.StatusCode >= 400 && httpRes.StatusCode < 500:
+		fallthrough
+	case httpRes.StatusCode >= 500 && httpRes.StatusCode < 600:
+		return nil, sdkerrors.NewSDKError("API error occurred", httpRes.StatusCode, string(rawBody), httpRes)
+	}
+
+	return res, nil
+}
+
+func (s *requestBodies) RequestBodyPostJSONDataTypesString(ctx context.Context, request string) (*operations.RequestBodyPostJSONDataTypesStringResponse, error) {
+	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
+	url := strings.TrimSuffix(baseURL, "/") + "/anything/requestBodies/post/jsonDataTypes/string"
+
+	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "string")
+	if err != nil {
+		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
+
+	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
+	if err != nil {
+		return nil, fmt.Errorf("error creating request: %w", err)
+	}
+	req.Header.Set("Accept", "application/json")
+	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+
+	req.Header.Set("Content-Type", reqContentType)
+
+	client := s.sdkConfiguration.SecurityClient
+
+	httpRes, err := client.Do(req)
+	if err != nil {
+		return nil, fmt.Errorf("error sending request: %w", err)
+	}
+	if httpRes == nil {
+		return nil, fmt.Errorf("error sending request: no response")
+	}
+
+	rawBody, err := io.ReadAll(httpRes.Body)
+	if err != nil {
+		return nil, fmt.Errorf("error reading response body: %w", err)
+	}
+	httpRes.Body.Close()
+	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.RequestBodyPostJSONDataTypesStringResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+	switch {
+	case httpRes.StatusCode == 200:
+		switch {
+		case utils.MatchContentType(contentType, `application/json`):
+			var out *operations.RequestBodyPostJSONDataTypesString200ApplicationJSON
+			if err := utils.UnmarshalJsonFromResponseBody(bytes.NewBuffer(rawBody), &out); err != nil {
+				return nil, err
+			}
+
+			res.RequestBodyPostJSONDataTypesString200ApplicationJSONObject = out
 		default:
 			return nil, sdkerrors.NewSDKError(fmt.Sprintf("unknown content-type received: %s", contentType), httpRes.StatusCode, string(rawBody), httpRes)
 		}
@@ -3022,6 +4370,9 @@ func (s *requestBodies) RequestBodyPostNullArray(ctx context.Context, request []
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -3085,6 +4436,9 @@ func (s *requestBodies) RequestBodyPostNullDictionary(ctx context.Context, reque
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -3651,6 +5005,9 @@ func (s *requestBodies) RequestBodyReadAndWrite(ctx context.Context, request sha
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -3728,6 +5085,9 @@ func (s *requestBodies) RequestBodyReadOnlyInput(ctx context.Context, request sh
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -3807,6 +5167,9 @@ func (s *requestBodies) RequestBodyReadOnlyUnion(ctx context.Context, request sh
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -3884,6 +5247,9 @@ func (s *requestBodies) RequestBodyReadWriteOnlyUnion(ctx context.Context, reque
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
@@ -3963,6 +5329,9 @@ func (s *requestBodies) RequestBodyWriteOnly(ctx context.Context, request shared
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -4041,6 +5410,9 @@ func (s *requestBodies) RequestBodyWriteOnlyOutput(ctx context.Context, request 
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
 	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
+	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)
 	if err != nil {
@@ -4118,6 +5490,9 @@ func (s *requestBodies) RequestBodyWriteOnlyUnion(ctx context.Context, request s
 	bodyReader, reqContentType, err := utils.SerializeRequestBody(ctx, request, "Request", "json")
 	if err != nil {
 		return nil, fmt.Errorf("error serializing request body: %w", err)
+	}
+	if bodyReader == nil {
+		return nil, fmt.Errorf("request body is required")
 	}
 
 	req, err := http.NewRequestWithContext(ctx, "POST", url, bodyReader)

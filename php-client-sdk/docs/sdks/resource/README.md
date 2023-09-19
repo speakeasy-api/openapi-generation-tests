@@ -29,8 +29,8 @@ $sdk = SDK::builder()
 try {
     $request = new CreateFileRequestBody();
     $request->file = new CreateFileRequestBodyFile();
-    $request->file->content = 'accusantium';
-    $request->file->file = 'porro';
+    $request->file->content = 'minus';
+    $request->file->file = 'quaerat';
 
     $response = $sdk->resource->createFile($request);
 
@@ -77,34 +77,34 @@ $sdk = SDK::builder()
 try {
     $request = new ExampleResource();
     $request->arrayOfNumber = [
-        4304.02,
+        9591.67,
     ];
     $request->arrayOfString = [
-        'quas',
+        'consectetur',
     ];
     $request->chocolates = [
         new ExampleResourceChocolates(),
     ];
-    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-09-06T07:07:42.754Z');
+    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-07-01T05:58:32.179Z');
     $request->enumNumber = ExampleResourceEnumNumber::Two;
-    $request->enumStr = ExampleResourceEnumStr::One;
-    $request->id = 'aa482562-f222-4e98-97ee-17cbe61e6b7b';
+    $request->enumStr = ExampleResourceEnumStr::Three;
+    $request->id = 'd871f99d-d2ef-4d12-9aa6-f1e674bdb04f';
     $request->mapOfInteger = [
-        'occaecati' => 327720,
+        'dicta' => 355369,
     ];
     $request->mapOfString = [
-        'distinctio' => 'eligendi',
+        'reprehenderit' => 'ullam',
     ];
-    $request->name = 'Kristi Renner';
-    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-12-28T10:26:44.811Z');
+    $request->name = 'Margaret Lemke';
+    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-06-19T06:14:05.723Z');
     $request->vehicle = new ExampleCar();
-    $request->vehicle->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-01-15T21:42:01.969Z');
-    $request->vehicle->make = 'consectetur';
-    $request->vehicle->model = 'esse';
-    $request->vehicle->name = 'Eduardo Wilkinson';
+    $request->vehicle->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-10-20T06:44:46.478Z');
+    $request->vehicle->make = 'omnis';
+    $request->vehicle->model = 'tenetur';
+    $request->vehicle->name = 'Lynette Bosco II';
     $request->vehicle->type = ExampleCarType::Car;
-    $request->vehicle->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-11-26T10:10:26.600Z');
-    $request->vehicle->year = 9518.75;
+    $request->vehicle->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-10-08T01:09:40.281Z');
+    $request->vehicle->year = 2371.73;
 
     $response = $sdk->resource->createResource($request);
 
@@ -148,7 +148,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->deleteResource('error');
+    $response = $sdk->resource->deleteResource('iste');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -190,7 +190,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->getResource('sint');
+    $response = $sdk->resource->getResource('temporibus');
 
     if ($response->exampleResource !== null) {
         // handle response
@@ -232,7 +232,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->updateResource('pariatur');
+    $response = $sdk->resource->updateResource('accusantium');
 
     if ($response->statusCode === 200) {
         // handle response

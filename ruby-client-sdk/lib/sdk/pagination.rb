@@ -17,7 +17,7 @@ module OpenApiSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: T.nilable(Operations::PaginationCursorBodyRequestBody), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: Operations::PaginationCursorBodyRequestBody, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def pagination_cursor_body(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::PAGINATION_CURSOR_BODY_SERVERS[0], {
@@ -27,6 +27,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -92,7 +93,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Shared::LimitOffsetConfig), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: Shared::LimitOffsetConfig, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def pagination_limit_offset_offset_body(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::PAGINATION_LIMIT_OFFSET_OFFSET_BODY_SERVERS[0], {
@@ -102,6 +103,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 
@@ -168,7 +170,7 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request: T.nilable(Shared::LimitOffsetConfig), server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: Shared::LimitOffsetConfig, server_url: T.nilable(String)).returns(Utils::FieldAugmented) }
     def pagination_limit_offset_page_body(request, server_url = nil)
 
       base_url = Utils.template_url(Operations::PAGINATION_LIMIT_OFFSET_PAGE_BODY_SERVERS[0], {
@@ -178,6 +180,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 

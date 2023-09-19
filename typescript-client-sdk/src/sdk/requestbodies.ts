@@ -54,6 +54,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -146,6 +148,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -235,6 +239,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -325,6 +331,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -413,6 +421,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -507,6 +517,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -783,6 +795,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -877,6 +891,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -971,6 +987,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1059,6 +1077,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1153,6 +1173,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1247,6 +1269,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1336,6 +1360,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1429,6 +1455,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1520,6 +1548,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1614,6 +1644,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1890,6 +1922,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1984,6 +2018,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -2078,6 +2114,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -2172,6 +2210,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -2266,6 +2306,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -2354,6 +2396,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -2735,6 +2779,8 @@ export class RequestBodies {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -2794,6 +2840,101 @@ export class RequestBodies {
         return res;
     }
 
+    async requestBodyPostDefaultsAndConsts(
+        req: shared.DefaultsAndConsts,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostDefaultsAndConstsResponse> {
+        if (!(req instanceof utils.SpeakeasyBase)) {
+            req = new shared.DefaultsAndConsts(req);
+        }
+
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/defaultsAndConsts";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostDefaultsAndConstsResponse =
+            new operations.RequestBodyPostDefaultsAndConstsResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostDefaultsAndConsts200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostDefaultsAndConsts200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
     async requestBodyPostEmptyObject(
         req: operations.RequestBodyPostEmptyObjectRequestBody,
         config?: AxiosRequestConfig
@@ -2828,6 +2969,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -3140,6 +3283,1645 @@ export class RequestBodies {
                         JSON.parse(decodedRes),
                         operations.RequestBodyPostFormSimpleRes
                     );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesArrayBigInt(
+        req: number[],
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesArrayBigIntResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/array/bigInt";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesArrayBigIntResponse =
+            new operations.RequestBodyPostJsonDataTypesArrayBigIntResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesArrayDate(
+        req: RFCDate[],
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesArrayDateResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/array/date";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesArrayDateResponse =
+            new operations.RequestBodyPostJsonDataTypesArrayDateResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesArrayDecimalStr(
+        req: string[],
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") +
+            "/anything/requestBodies/post/jsonDataTypes/array/decimalStr";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse =
+            new operations.RequestBodyPostJsonDataTypesArrayDecimalStrResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesBigInt(
+        req: number,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesBigIntResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/bigint";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesBigIntResponse =
+            new operations.RequestBodyPostJsonDataTypesBigIntResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesBigInt200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesBigInt200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesBigIntStr(
+        req: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesBigIntStrResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/bigintStr";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "string");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesBigIntStrResponse =
+            new operations.RequestBodyPostJsonDataTypesBigIntStrResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesBoolean(
+        req: boolean,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesBooleanResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/boolean";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesBooleanResponse =
+            new operations.RequestBodyPostJsonDataTypesBooleanResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesBoolean200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesBoolean200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesDate(
+        req: RFCDate,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesDateResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/date";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesDateResponse =
+            new operations.RequestBodyPostJsonDataTypesDateResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesDate200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesDate200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesDateTime(
+        req: Date,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesDateTimeResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/dateTime";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesDateTimeResponse =
+            new operations.RequestBodyPostJsonDataTypesDateTimeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesDateTime200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesDateTime200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesDecimal(
+        req: number,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesDecimalResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/decimal";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesDecimalResponse =
+            new operations.RequestBodyPostJsonDataTypesDecimalResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesDecimal200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesDecimal200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesDecimalStr(
+        req: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesDecimalStrResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/decimalStr";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "string");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesDecimalStrResponse =
+            new operations.RequestBodyPostJsonDataTypesDecimalStrResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesFloat32(
+        req: number,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesFloat32Response> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/float32";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesFloat32Response =
+            new operations.RequestBodyPostJsonDataTypesFloat32Response({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesFloat32200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesFloat32200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesInt32(
+        req: number,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesInt32Response> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/int32";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesInt32Response =
+            new operations.RequestBodyPostJsonDataTypesInt32Response({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesInt32200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesInt32200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesInteger(
+        req: number,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesIntegerResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/integer";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesIntegerResponse =
+            new operations.RequestBodyPostJsonDataTypesIntegerResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesInteger200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesInteger200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesMapBigIntStr(
+        req: Record<string, string>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/map/bigIntStr";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse =
+            new operations.RequestBodyPostJsonDataTypesMapBigIntStrResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesMapDateTime(
+        req: Record<string, Date>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesMapDateTimeResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/map/dateTime";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesMapDateTimeResponse =
+            new operations.RequestBodyPostJsonDataTypesMapDateTimeResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesMapDecimal(
+        req: Record<string, number>,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesMapDecimalResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/map/decimal";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesMapDecimalResponse =
+            new operations.RequestBodyPostJsonDataTypesMapDecimalResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesNumber(
+        req: number,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesNumberResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/number";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesNumberResponse =
+            new operations.RequestBodyPostJsonDataTypesNumberResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesNumber200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesNumber200ApplicationJSON
+                        );
+                } else {
+                    throw new errors.SDKError(
+                        "unknown content-type received: " + contentType,
+                        httpRes.status,
+                        decodedRes,
+                        httpRes
+                    );
+                }
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    decodedRes,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async requestBodyPostJsonDataTypesString(
+        req: string,
+        config?: AxiosRequestConfig
+    ): Promise<operations.RequestBodyPostJsonDataTypesStringResponse> {
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string =
+            baseURL.replace(/\/$/, "") + "/anything/requestBodies/post/jsonDataTypes/string";
+
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+
+        try {
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "string");
+        } catch (e: unknown) {
+            if (e instanceof Error) {
+                throw new Error(`Error serializing request body, cause: ${e.message}`);
+            }
+        }
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
+        headers["Accept"] = "application/json";
+
+        headers[
+            "x-speakeasy-user-agent"
+        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url,
+            method: "post",
+            headers: headers,
+            responseType: "arraybuffer",
+            data: reqBody,
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.RequestBodyPostJsonDataTypesStringResponse =
+            new operations.RequestBodyPostJsonDataTypesStringResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        const decodedRes = new TextDecoder().decode(httpRes?.data);
+        switch (true) {
+            case httpRes?.status == 200:
+                if (utils.matchContentType(contentType, `application/json`)) {
+                    res.requestBodyPostJSONDataTypesString200ApplicationJSONObject =
+                        utils.objectToClass(
+                            JSON.parse(decodedRes),
+                            operations.RequestBodyPostJSONDataTypesString200ApplicationJSON
+                        );
                 } else {
                     throw new errors.SDKError(
                         "unknown content-type received: " + contentType,
@@ -3959,6 +5741,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -4047,6 +5831,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -4794,6 +6580,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -4889,6 +6677,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -4980,6 +6770,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -5068,6 +6860,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -5157,6 +6951,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -5252,6 +7048,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -5343,6 +7141,8 @@ export class RequestBodies {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[

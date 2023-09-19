@@ -130,8 +130,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.33.3";
-    genVersion = "2.115.2";
+    sdkVersion = "1.33.4";
+    genVersion = "2.116.0";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -314,6 +314,8 @@ export class SDK {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null || Object.keys(reqBody).length === 0)
+            throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
