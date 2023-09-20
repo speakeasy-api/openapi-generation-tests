@@ -30,19 +30,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     simpleObject := shared.SimpleObject{
         Any: "officia",
         Bigint: big.NewInt(223081),
-        BigintStr: types.MustNewBigIntFromString("891555"),
+        BigintStr: big.NewInt(891555),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("9527.49"),
@@ -52,11 +52,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
     str := "in"
 
@@ -104,20 +104,20 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     paramStr := "illum"
     simpleObject := shared.SimpleObject{
         Any: "maiores",
         Bigint: big.NewInt(699479),
-        BigintStr: types.MustNewBigIntFromString("116202"),
+        BigintStr: big.NewInt(116202),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("2974.37"),
@@ -127,11 +127,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -176,12 +176,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     strPathParameter := "ea"
     strQueryParameter := "aliquid"
@@ -228,12 +228,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
         Str: "laborum",
@@ -282,12 +282,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
         BodyStr: "non",

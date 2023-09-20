@@ -820,32 +820,6 @@ def test_request_body_read_and_write():
     assert res.read_write_object.sum == 7
 
 
-def test_request_body_null_dictionary():
-    record_test('request-bodies-null-dictionary')
-
-    s = SDK()
-    assert s is not None
-
-    res = s.request_bodies.request_body_post_null_dictionary(None)
-
-    assert res is not None
-    assert res.status_code == 200
-    assert res.request_body_post_null_dictionary_200_application_json_object.data == ""
-
-
-def test_request_body_null_array():
-    record_test('request-bodies-null-array')
-
-    s = SDK()
-    assert s is not None
-
-    res = s.request_bodies.request_body_post_null_array(None)
-
-    assert res is not None
-    assert res.status_code == 200
-    assert res.request_body_post_null_array_200_application_json_object.data == ""
-
-
 def test_request_body_post_complex_number_types():
     record_test('request-bodies-complex-number-types')
 

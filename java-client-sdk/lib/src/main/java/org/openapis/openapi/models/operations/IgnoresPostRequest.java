@@ -4,6 +4,7 @@
 
 package org.openapis.openapi.models.operations;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import org.openapis.openapi.utils.SpeakeasyMetadata;
 
 
@@ -24,5 +25,7 @@ public class IgnoresPostRequest {
         return this;
     }
     
-    public IgnoresPostRequest(){}
+    public IgnoresPostRequest(@JsonProperty("RequestBody") IgnoresPostApplicationJSON requestBody) {
+        this.requestBody = requestBody;
+  }
 }

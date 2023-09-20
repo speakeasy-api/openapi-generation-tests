@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"openapi/pkg/utils"
 )
 
 type WeaklyTypedOneOfWriteOnlyObjectOutputType string
@@ -41,21 +40,16 @@ func CreateWeaklyTypedOneOfWriteOnlyObjectOutputWriteOnlyObjectOutput(writeOnlyO
 }
 
 func (u *WeaklyTypedOneOfWriteOnlyObjectOutput) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	writeOnlyObjectOutput := new(WriteOnlyObjectOutput)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&writeOnlyObjectOutput); err == nil {
+	if err := utils.UnmarshalJSON(data, &writeOnlyObjectOutput, "", true, true); err == nil {
 		u.WriteOnlyObjectOutput = writeOnlyObjectOutput
 		u.Type = WeaklyTypedOneOfWriteOnlyObjectOutputTypeWriteOnlyObjectOutput
 		return nil
 	}
 
 	simpleObject := new(SimpleObject)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&simpleObject); err == nil {
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = simpleObject
 		u.Type = WeaklyTypedOneOfWriteOnlyObjectOutputTypeSimpleObject
 		return nil
@@ -66,13 +60,12 @@ func (u *WeaklyTypedOneOfWriteOnlyObjectOutput) UnmarshalJSON(data []byte) error
 
 func (u WeaklyTypedOneOfWriteOnlyObjectOutput) MarshalJSON() ([]byte, error) {
 	if u.WriteOnlyObjectOutput != nil {
-		return json.Marshal(u.WriteOnlyObjectOutput)
+		return utils.MarshalJSON(u.WriteOnlyObjectOutput, "", true)
 	}
 
 	if u.SimpleObject != nil {
-		return json.Marshal(u.SimpleObject)
+		return utils.MarshalJSON(u.SimpleObject, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }

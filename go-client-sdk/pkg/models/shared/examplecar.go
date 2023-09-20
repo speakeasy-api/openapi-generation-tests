@@ -3,43 +3,29 @@
 package shared
 
 import (
-	"encoding/json"
-	"fmt"
+	"openapi/pkg/utils"
 	"time"
 )
 
-type ExampleCarType string
-
-const (
-	ExampleCarTypeCar ExampleCarType = "car"
-)
-
-func (e ExampleCarType) ToPointer() *ExampleCarType {
-	return &e
+type ExampleCar struct {
+	CreatedAt *time.Time `json:"createdAt,omitempty"`
+	Make      string     `json:"make"`
+	Model     string     `json:"model"`
+	Name      string     `json:"name"`
+	type_     string     `const:"car" json:"type"`
+	UpdatedAt *time.Time `json:"updatedAt,omitempty"`
+	Year      float64    `json:"year"`
 }
 
-func (e *ExampleCarType) UnmarshalJSON(data []byte) error {
-	var v string
-	if err := json.Unmarshal(data, &v); err != nil {
+func (e ExampleCar) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ExampleCar) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, true); err != nil {
 		return err
 	}
-	switch v {
-	case "car":
-		*e = ExampleCarType(v)
-		return nil
-	default:
-		return fmt.Errorf("invalid value for ExampleCarType: %v", v)
-	}
-}
-
-type ExampleCar struct {
-	CreatedAt *time.Time     `json:"createdAt,omitempty"`
-	Make      string         `json:"make"`
-	Model     string         `json:"model"`
-	Name      string         `json:"name"`
-	Type      ExampleCarType `json:"type"`
-	UpdatedAt *time.Time     `json:"updatedAt,omitempty"`
-	Year      float64        `json:"year"`
+	return nil
 }
 
 func (o *ExampleCar) GetCreatedAt() *time.Time {
@@ -70,11 +56,8 @@ func (o *ExampleCar) GetName() string {
 	return o.Name
 }
 
-func (o *ExampleCar) GetType() ExampleCarType {
-	if o == nil {
-		return ExampleCarType("")
-	}
-	return o.Type
+func (o *ExampleCar) GetType() string {
+	return "car"
 }
 
 func (o *ExampleCar) GetUpdatedAt() *time.Time {

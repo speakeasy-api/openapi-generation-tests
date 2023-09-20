@@ -30,9 +30,9 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     operationSecurity := operations.APIKeyAuthSecurity{
             APIKeyAuth: "Token YOUR_API_KEY",
@@ -78,12 +78,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -125,9 +125,9 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     passwd := "tenetur"
     user := "ipsam"
@@ -178,9 +178,9 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     operationSecurity := operations.BearerAuthSecurity{
             BearerAuth: "YOUR_JWT",
@@ -226,12 +226,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -273,9 +273,9 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     operationSecurity := operations.Oauth2AuthSecurity{
             Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
@@ -321,9 +321,9 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     operationSecurity := operations.Oauth2OverrideSecurity{
             Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
@@ -369,9 +369,9 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     operationSecurity := operations.OpenIDConnectAuthSecurity{
             OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",

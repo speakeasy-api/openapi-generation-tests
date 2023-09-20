@@ -5,8 +5,10 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ericlagergren/decimal"
 	"math/big"
 	"openapi/pkg/types"
+	"openapi/pkg/utils"
 	"time"
 )
 
@@ -77,9 +79,9 @@ func (e *SimpleObjectIntEnum) UnmarshalJSON(data []byte) error {
 // https://docs.speakeasyapi.dev - A link to the external docs.
 type SimpleObject struct {
 	// An any property.
-	Any       interface{}   `json:"any" header:"name=any" pathParam:"name=any" queryParam:"name=any" form:"name=any" multipartForm:"name=any"`
-	Bigint    *big.Int      `json:"bigint,omitempty" header:"name=bigint" pathParam:"name=bigint" queryParam:"name=bigint" form:"name=bigint" multipartForm:"name=bigint"`
-	BigintStr *types.BigInt `json:"bigintStr,omitempty" header:"name=bigintStr" pathParam:"name=bigintStr" queryParam:"name=bigintStr" form:"name=bigintStr" multipartForm:"name=bigintStr"`
+	Any       interface{} `json:"any" header:"name=any" pathParam:"name=any" queryParam:"name=any" form:"name=any" multipartForm:"name=any"`
+	Bigint    *big.Int    `json:"bigint,omitempty" header:"name=bigint" pathParam:"name=bigint" queryParam:"name=bigint" form:"name=bigint" multipartForm:"name=bigint"`
+	BigintStr *big.Int    `bigint:"string" json:"bigintStr,omitempty" header:"name=bigintStr" pathParam:"name=bigintStr" queryParam:"name=bigintStr" form:"name=bigintStr" multipartForm:"name=bigintStr"`
 	// A boolean property.
 	Bool bool `json:"bool" header:"name=bool" pathParam:"name=bool" queryParam:"name=bool" form:"name=bool" multipartForm:"name=bool"`
 	// An optional boolean property.
@@ -87,8 +89,8 @@ type SimpleObject struct {
 	// A date property.
 	Date types.Date `json:"date" header:"name=date" pathParam:"name=date" queryParam:"name=date" form:"name=date" multipartForm:"name=date"`
 	// A date-time property.
-	DateTime time.Time      `json:"dateTime" header:"name=dateTime" pathParam:"name=dateTime" queryParam:"name=dateTime" form:"name=dateTime" multipartForm:"name=dateTime"`
-	Decimal  *types.Decimal `json:"decimal,omitempty" header:"name=decimal" pathParam:"name=decimal" queryParam:"name=decimal" form:"name=decimal" multipartForm:"name=decimal"`
+	DateTime time.Time    `json:"dateTime" header:"name=dateTime" pathParam:"name=dateTime" queryParam:"name=dateTime" form:"name=dateTime" multipartForm:"name=dateTime"`
+	Decimal  *decimal.Big `decimal:"number" json:"decimal,omitempty" header:"name=decimal" pathParam:"name=decimal" queryParam:"name=decimal" form:"name=decimal" multipartForm:"name=decimal"`
 	// A string based enum
 	Enum Enum `json:"enum" header:"name=enum" pathParam:"name=enum" queryParam:"name=enum" form:"name=enum" multipartForm:"name=enum"`
 	// A float32 property.
@@ -113,6 +115,17 @@ type SimpleObject struct {
 	StrOpt *string `json:"strOpt,omitempty" header:"name=strOpt" pathParam:"name=strOpt" queryParam:"name=strOpt" form:"name=strOpt" multipartForm:"name=strOpt"`
 }
 
+func (s SimpleObject) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SimpleObject) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *SimpleObject) GetAny() interface{} {
 	if o == nil {
 		return nil
@@ -127,7 +140,7 @@ func (o *SimpleObject) GetBigint() *big.Int {
 	return o.Bigint
 }
 
-func (o *SimpleObject) GetBigintStr() *types.BigInt {
+func (o *SimpleObject) GetBigintStr() *big.Int {
 	if o == nil {
 		return nil
 	}
@@ -162,7 +175,7 @@ func (o *SimpleObject) GetDateTime() time.Time {
 	return o.DateTime
 }
 
-func (o *SimpleObject) GetDecimal() *types.Decimal {
+func (o *SimpleObject) GetDecimal() *decimal.Big {
 	if o == nil {
 		return nil
 	}

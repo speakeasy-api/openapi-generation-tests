@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"openapi/pkg/utils"
 )
 
 type WeaklyTypedOneOfReadOnlyObjectType string
@@ -41,21 +40,16 @@ func CreateWeaklyTypedOneOfReadOnlyObjectReadOnlyObject(readOnlyObject ReadOnlyO
 }
 
 func (u *WeaklyTypedOneOfReadOnlyObject) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	readOnlyObject := new(ReadOnlyObject)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&readOnlyObject); err == nil {
+	if err := utils.UnmarshalJSON(data, &readOnlyObject, "", true, true); err == nil {
 		u.ReadOnlyObject = readOnlyObject
 		u.Type = WeaklyTypedOneOfReadOnlyObjectTypeReadOnlyObject
 		return nil
 	}
 
 	simpleObject := new(SimpleObject)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&simpleObject); err == nil {
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = simpleObject
 		u.Type = WeaklyTypedOneOfReadOnlyObjectTypeSimpleObject
 		return nil
@@ -66,13 +60,12 @@ func (u *WeaklyTypedOneOfReadOnlyObject) UnmarshalJSON(data []byte) error {
 
 func (u WeaklyTypedOneOfReadOnlyObject) MarshalJSON() ([]byte, error) {
 	if u.ReadOnlyObject != nil {
-		return json.Marshal(u.ReadOnlyObject)
+		return utils.MarshalJSON(u.ReadOnlyObject, "", true)
 	}
 
 	if u.SimpleObject != nil {
-		return json.Marshal(u.SimpleObject)
+		return utils.MarshalJSON(u.SimpleObject, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }

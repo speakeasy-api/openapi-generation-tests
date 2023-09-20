@@ -325,8 +325,8 @@ module OpenApiSDK
       res
     end
 
-    sig { params(request_body: T.nilable(Operations::IgnoresPostApplicationJSON), test_param: T.nilable(String)).returns(Utils::FieldAugmented) }
-    def ignores_post(request_body = nil, test_param = nil)
+    sig { params(request_body: Operations::IgnoresPostApplicationJSON, test_param: T.nilable(String)).returns(Utils::FieldAugmented) }
+    def ignores_post(request_body, test_param = nil)
 
       request = Operations::IgnoresPostRequest.new(
         
@@ -339,6 +339,7 @@ module OpenApiSDK
       headers = {}
       req_content_type, data, form = Utils.serialize_request_body(request, :request_body, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       query_params = Utils.get_query_params(Operations::IgnoresPostRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"

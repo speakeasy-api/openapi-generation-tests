@@ -24,15 +24,15 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestID := "aliquam"
-    numRetries := 885963
+    requestID := "facilis"
+    numRetries := 310381
 
     ctx := context.Background()
     res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)

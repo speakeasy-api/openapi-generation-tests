@@ -2,16 +2,28 @@
 
 package shared
 
+import (
+	"openapi/pkg/utils"
+)
+
 type UnsupportedEnums struct {
-	BooleanEnum bool    `json:"booleanEnum"`
+	booleanEnum bool    `const:"false" json:"booleanEnum"`
 	NumberEnum  float64 `json:"numberEnum"`
 }
 
-func (o *UnsupportedEnums) GetBooleanEnum() bool {
-	if o == nil {
-		return false
+func (u UnsupportedEnums) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UnsupportedEnums) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
 	}
-	return o.BooleanEnum
+	return nil
+}
+
+func (o *UnsupportedEnums) GetBooleanEnum() bool {
+	return false
 }
 
 func (o *UnsupportedEnums) GetNumberEnum() float64 {

@@ -3,9 +3,11 @@
 package operations
 
 import (
+	"github.com/ericlagergren/decimal"
 	"math/big"
 	"net/http"
 	"openapi/pkg/types"
+	"openapi/pkg/utils"
 )
 
 type TypedParameterGenerationGetObj struct {
@@ -38,8 +40,19 @@ func (o *TypedParameterGenerationGetObj) GetStr() string {
 type TypedParameterGenerationGetRequest struct {
 	Bigint  *big.Int                        `queryParam:"style=form,explode=true,name=bigint"`
 	Date    *types.Date                     `queryParam:"style=form,explode=true,name=date"`
-	Decimal *types.Decimal                  `queryParam:"style=form,explode=true,name=decimal"`
+	Decimal *decimal.Big                    `decimal:"number" queryParam:"style=form,explode=true,name=decimal"`
 	Obj     *TypedParameterGenerationGetObj `queryParam:"style=form,explode=true,name=obj"`
+}
+
+func (t TypedParameterGenerationGetRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(t, "", false)
+}
+
+func (t *TypedParameterGenerationGetRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &t, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *TypedParameterGenerationGetRequest) GetBigint() *big.Int {
@@ -56,7 +69,7 @@ func (o *TypedParameterGenerationGetRequest) GetDate() *types.Date {
 	return o.Date
 }
 
-func (o *TypedParameterGenerationGetRequest) GetDecimal() *types.Decimal {
+func (o *TypedParameterGenerationGetRequest) GetDecimal() *decimal.Big {
 	if o == nil {
 		return nil
 	}

@@ -6,7 +6,6 @@ package org.openapis.openapi;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
@@ -914,35 +913,5 @@ public class RequestBodiesTests {
         assertNotNull(res.readWriteObject);
         assertEquals(4l, res.readWriteObject.num3);
         assertEquals(7l, res.readWriteObject.sum);
-    }
-
-    @Test
-    void testRequestBodyNullDictionary() throws Exception {
-        Helpers.recordTest("request-bodies-null-dictionary");
-
-        SDK s = SDK.builder().build();
-        assertNotNull(s);
-
-        RequestBodyPostNullDictionaryResponse res = s.requestBodies
-                .requestBodyPostNullDictionary(null);
-
-        assertNotNull(res);
-        assertEquals(200, res.statusCode);
-        assertTrue(res.requestBodyPostNullDictionary200ApplicationJSONObject.data.isEmpty());
-    }
-
-    @Test
-    void testRequestBodyNullArray() throws Exception {
-        Helpers.recordTest("request-bodies-null-array");
-
-        SDK s = SDK.builder().build();
-        assertNotNull(s);
-
-        RequestBodyPostNullArrayResponse res = s.requestBodies
-                .requestBodyPostNullArray(null);
-
-        assertNotNull(res);
-        assertEquals(200, res.statusCode);
-        assertTrue(res.requestBodyPostNullArray200ApplicationJSONObject.data.isEmpty());
     }
 }

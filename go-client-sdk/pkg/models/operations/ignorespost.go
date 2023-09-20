@@ -27,13 +27,13 @@ func (o *IgnoresPostApplicationJSON) GetTestProp() *string {
 }
 
 type IgnoresPostRequest struct {
-	RequestBody *IgnoresPostApplicationJSON `request:"mediaType=application/json"`
-	TestParam   *string                     `queryParam:"style=form,explode=true,name=testParam"`
+	RequestBody IgnoresPostApplicationJSON `request:"mediaType=application/json"`
+	TestParam   *string                    `queryParam:"style=form,explode=true,name=testParam"`
 }
 
-func (o *IgnoresPostRequest) GetRequestBody() *IgnoresPostApplicationJSON {
+func (o *IgnoresPostRequest) GetRequestBody() IgnoresPostApplicationJSON {
 	if o == nil {
-		return nil
+		return IgnoresPostApplicationJSON{}
 	}
 	return o.RequestBody
 }

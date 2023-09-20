@@ -36,10 +36,29 @@ Endpoints for testing request bodies.
 * [RequestBodyPostApplicationJSONSimple](#requestbodypostapplicationjsonsimple)
 * [RequestBodyPostApplicationJSONSimpleCamelCase](#requestbodypostapplicationjsonsimplecamelcase)
 * [RequestBodyPostComplexNumberTypes](#requestbodypostcomplexnumbertypes)
+* [RequestBodyPostDefaultsAndConsts](#requestbodypostdefaultsandconsts)
 * [RequestBodyPostEmptyObject](#requestbodypostemptyobject)
 * [RequestBodyPostFormDeep](#requestbodypostformdeep)
 * [RequestBodyPostFormMapPrimitive](#requestbodypostformmapprimitive)
 * [RequestBodyPostFormSimple](#requestbodypostformsimple)
+* [RequestBodyPostJSONDataTypesArrayBigInt](#requestbodypostjsondatatypesarraybigint)
+* [RequestBodyPostJSONDataTypesArrayDate](#requestbodypostjsondatatypesarraydate)
+* [RequestBodyPostJSONDataTypesArrayDecimalStr](#requestbodypostjsondatatypesarraydecimalstr)
+* [RequestBodyPostJSONDataTypesBigInt](#requestbodypostjsondatatypesbigint)
+* [RequestBodyPostJSONDataTypesBigIntStr](#requestbodypostjsondatatypesbigintstr)
+* [RequestBodyPostJSONDataTypesBoolean](#requestbodypostjsondatatypesboolean)
+* [RequestBodyPostJSONDataTypesDate](#requestbodypostjsondatatypesdate)
+* [RequestBodyPostJSONDataTypesDateTime](#requestbodypostjsondatatypesdatetime)
+* [RequestBodyPostJSONDataTypesDecimal](#requestbodypostjsondatatypesdecimal)
+* [RequestBodyPostJSONDataTypesDecimalStr](#requestbodypostjsondatatypesdecimalstr)
+* [RequestBodyPostJSONDataTypesFloat32](#requestbodypostjsondatatypesfloat32)
+* [RequestBodyPostJSONDataTypesInt32](#requestbodypostjsondatatypesint32)
+* [RequestBodyPostJSONDataTypesInteger](#requestbodypostjsondatatypesinteger)
+* [RequestBodyPostJSONDataTypesMapBigIntStr](#requestbodypostjsondatatypesmapbigintstr)
+* [RequestBodyPostJSONDataTypesMapDateTime](#requestbodypostjsondatatypesmapdatetime)
+* [RequestBodyPostJSONDataTypesMapDecimal](#requestbodypostjsondatatypesmapdecimal)
+* [RequestBodyPostJSONDataTypesNumber](#requestbodypostjsondatatypesnumber)
+* [RequestBodyPostJSONDataTypesString](#requestbodypostjsondatatypesstring)
 * [RequestBodyPostMultipleContentTypesComponentFiltered](#requestbodypostmultiplecontenttypescomponentfiltered)
 * [RequestBodyPostMultipleContentTypesInlineFiltered](#requestbodypostmultiplecontenttypesinlinefiltered)
 * [RequestBodyPostMultipleContentTypesSplitParamForm](#requestbodypostmultiplecontenttypessplitparamform)
@@ -80,17 +99,17 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableObjectPost(ctx, shared.NullableObject{
-        Optional: sdk.String("consectetur"),
+        Optional: openapi.String("consectetur"),
         Required: 878870,
     })
     if err != nil {
@@ -132,18 +151,18 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredEmptyObjectPost(ctx, operations.NullableRequiredEmptyObjectPostRequestBody{
         NullableOptionalObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj{},
-        NullableRequiredObj: operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj{},
+        NullableRequiredObj: &operations.NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj{},
         RequiredObj: operations.NullableRequiredEmptyObjectPostRequestBodyRequiredObj{},
     })
     if err != nil {
@@ -185,17 +204,17 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredPropertyPost(ctx, operations.NullableRequiredPropertyPostRequestBody{
-        NullableOptionalInt: sdk.Int64(949319),
+        NullableOptionalInt: openapi.Int64(949319),
         NullableRequiredArray: []float64{
             4922.68,
         },
@@ -241,22 +260,22 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.NullableRequiredSharedObjectPost(ctx, operations.NullableRequiredSharedObjectPostRequestBody{
         NullableOptionalObj: &shared.NullableObject{
-            Optional: sdk.String("quod"),
+            Optional: openapi.String("quod"),
             Required: 486160,
         },
-        NullableRequiredObj: shared.NullableObject{
-            Optional: sdk.String("similique"),
+        NullableRequiredObj: &shared.NullableObject{
+            Optional: openapi.String("similique"),
             Required: 708548,
         },
     })
@@ -300,12 +319,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -313,9 +332,9 @@ func main() {
         shared.SimpleObject{
             Any: "vero",
             Bigint: big.NewInt(498140),
-            BigintStr: types.MustNewBigIntFromString("293020"),
+            BigintStr: big.NewInt(293020),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("8445.5"),
@@ -325,11 +344,11 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
             IntEnum: shared.SimpleObjectIntEnumFirst,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
     })
     if err != nil {
@@ -373,21 +392,21 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayCamelCase(ctx, []shared.SimpleObjectCamelCase{
         shared.SimpleObjectCamelCase{
             AnyVal: "natus",
-            BigintStrVal: types.MustNewBigIntFromString("773326"),
+            BigintStrVal: big.NewInt(773326),
             BigintVal: big.NewInt(13236),
-            BoolOptVal: sdk.Bool(true),
+            BoolOptVal: openapi.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
@@ -397,11 +416,11 @@ func main() {
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
             Int32Val: 1,
             IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
-            IntOptNullVal: sdk.Int64(999999),
+            IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
-            NumOptNullVal: sdk.Float64(1.1),
+            NumOptNullVal: openapi.Float64(1.1),
             NumVal: 1.1,
-            StrOptVal: sdk.String("optional example"),
+            StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
     })
@@ -446,12 +465,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -459,9 +478,9 @@ func main() {
         shared.SimpleObject{
             Any: "fugit",
             Bigint: big.NewInt(780427),
-            BigintStr: types.MustNewBigIntFromString("981830"),
+            BigintStr: big.NewInt(981830),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("9850.33"),
@@ -471,11 +490,11 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
             IntEnum: shared.SimpleObjectIntEnumThird,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
     })
     if err != nil {
@@ -518,21 +537,21 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayObjCamelCase(ctx, []shared.SimpleObjectCamelCase{
         shared.SimpleObjectCamelCase{
             AnyVal: "ducimus",
-            BigintStrVal: types.MustNewBigIntFromString("4048"),
+            BigintStrVal: big.NewInt(4048),
             BigintVal: big.NewInt(639473),
-            BoolOptVal: sdk.Bool(true),
+            BoolOptVal: openapi.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
@@ -542,11 +561,11 @@ func main() {
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
             Int32Val: 1,
             IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
-            IntOptNullVal: sdk.Int64(999999),
+            IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
-            NumOptNullVal: sdk.Float64(1.1),
+            NumOptNullVal: openapi.Float64(1.1),
             NumVal: 1.1,
-            StrOptVal: sdk.String("optional example"),
+            StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
     })
@@ -590,12 +609,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -604,9 +623,9 @@ func main() {
             shared.SimpleObject{
                 Any: "aspernatur",
                 Bigint: big.NewInt(428224),
-                BigintStr: types.MustNewBigIntFromString("822118"),
+                BigintStr: big.NewInt(822118),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("2978.42"),
@@ -616,11 +635,11 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
     })
@@ -665,12 +684,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -678,9 +697,9 @@ func main() {
         []shared.SimpleObjectCamelCase{
             shared.SimpleObjectCamelCase{
                 AnyVal: "laudantium",
-                BigintStrVal: types.MustNewBigIntFromString("120657"),
+                BigintStrVal: big.NewInt(120657),
                 BigintVal: big.NewInt(224317),
-                BoolOptVal: sdk.Bool(true),
+                BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
@@ -690,11 +709,11 @@ func main() {
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
                 Int32Val: 1,
                 IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
-                IntOptNullVal: sdk.Int64(999999),
+                IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
-                NumOptNullVal: sdk.Float64(1.1),
+                NumOptNullVal: openapi.Float64(1.1),
                 NumVal: 1.1,
-                StrOptVal: sdk.String("optional example"),
+                StrOptVal: openapi.String("optional example"),
                 StrVal: "example",
             },
         },
@@ -738,12 +757,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -793,12 +812,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -807,9 +826,9 @@ func main() {
             "excepturi": shared.SimpleObject{
                 Any: "voluptatibus",
                 Bigint: big.NewInt(343605),
-                BigintStr: types.MustNewBigIntFromString("960835"),
+                BigintStr: big.NewInt(960835),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("7888.73"),
@@ -819,11 +838,11 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
     })
@@ -868,12 +887,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -881,9 +900,9 @@ func main() {
         map[string]shared.SimpleObjectCamelCase{
             "impedit": shared.SimpleObjectCamelCase{
                 AnyVal: "corporis",
-                BigintStrVal: types.MustNewBigIntFromString("333145"),
+                BigintStrVal: big.NewInt(333145),
                 BigintVal: big.NewInt(399499),
-                BoolOptVal: sdk.Bool(true),
+                BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
@@ -893,11 +912,11 @@ func main() {
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
                 Int32Val: 1,
                 IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
-                IntOptNullVal: sdk.Int64(999999),
+                IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
-                NumOptNullVal: sdk.Float64(1.1),
+                NumOptNullVal: openapi.Float64(1.1),
                 NumVal: 1.1,
-                StrOptVal: sdk.String("optional example"),
+                StrOptVal: openapi.String("optional example"),
                 StrVal: "example",
             },
         },
@@ -941,12 +960,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -994,12 +1013,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1007,9 +1026,9 @@ func main() {
         Any: shared.SimpleObject{
             Any: "recusandae",
             Bigint: big.NewInt(132487),
-            BigintStr: types.MustNewBigIntFromString("325310"),
+            BigintStr: big.NewInt(325310),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("534.27"),
@@ -1019,19 +1038,19 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
             IntEnum: shared.SimpleObjectIntEnumThird,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
                 Any: "aut",
                 Bigint: big.NewInt(11427),
-                BigintStr: types.MustNewBigIntFromString("533466"),
+                BigintStr: big.NewInt(533466),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("7705.81"),
@@ -1041,11 +1060,11 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
                 IntEnum: shared.SimpleObjectIntEnumFirst,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
         Bool: false,
@@ -1054,9 +1073,9 @@ func main() {
             "inventore": shared.SimpleObject{
                 Any: "non",
                 Bigint: big.NewInt(89603),
-                BigintStr: types.MustNewBigIntFromString("677412"),
+                BigintStr: big.NewInt(677412),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("6720.48"),
@@ -1066,20 +1085,20 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumFirst,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
         Num: 4321.48,
         Obj: shared.SimpleObject{
             Any: "autem",
             Bigint: big.NewInt(752135),
-            BigintStr: types.MustNewBigIntFromString("557369"),
+            BigintStr: big.NewInt(557369),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("8296.03"),
@@ -1089,14 +1108,14 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
             IntEnum: shared.SimpleObjectIntEnumSecond,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
         Str: "libero",
-        Type: sdk.String("quasi"),
+        Type: openapi.String("quasi"),
     })
     if err != nil {
         log.Fatal(err)
@@ -1138,21 +1157,21 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONDeepCamelCase(ctx, shared.DeepObjectCamelCase{
         AnyVal: shared.SimpleObjectCamelCase{
             AnyVal: "numquam",
-            BigintStrVal: types.MustNewBigIntFromString("131482"),
+            BigintStrVal: big.NewInt(131482),
             BigintVal: big.NewInt(591935),
-            BoolOptVal: sdk.Bool(true),
+            BoolOptVal: openapi.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
@@ -1162,19 +1181,19 @@ func main() {
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
             Int32Val: 1,
             IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
-            IntOptNullVal: sdk.Int64(999999),
+            IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
-            NumOptNullVal: sdk.Float64(1.1),
+            NumOptNullVal: openapi.Float64(1.1),
             NumVal: 1.1,
-            StrOptVal: sdk.String("optional example"),
+            StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
         ArrVal: []shared.SimpleObjectCamelCase{
             shared.SimpleObjectCamelCase{
                 AnyVal: "odio",
-                BigintStrVal: types.MustNewBigIntFromString("262118"),
+                BigintStrVal: big.NewInt(262118),
                 BigintVal: big.NewInt(458515),
-                BoolOptVal: sdk.Bool(true),
+                BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
@@ -1184,11 +1203,11 @@ func main() {
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
                 Int32Val: 1,
                 IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
-                IntOptNullVal: sdk.Int64(999999),
+                IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
-                NumOptNullVal: sdk.Float64(1.1),
+                NumOptNullVal: openapi.Float64(1.1),
                 NumVal: 1.1,
-                StrOptVal: sdk.String("optional example"),
+                StrOptVal: openapi.String("optional example"),
                 StrVal: "example",
             },
         },
@@ -1197,9 +1216,9 @@ func main() {
         MapVal: map[string]shared.SimpleObjectCamelCase{
             "quidem": shared.SimpleObjectCamelCase{
                 AnyVal: "fugiat",
-                BigintStrVal: types.MustNewBigIntFromString("283519"),
+                BigintStrVal: big.NewInt(283519),
                 BigintVal: big.NewInt(433439),
-                BoolOptVal: sdk.Bool(true),
+                BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
@@ -1209,20 +1228,20 @@ func main() {
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
                 Int32Val: 1,
                 IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
-                IntOptNullVal: sdk.Int64(999999),
+                IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
-                NumOptNullVal: sdk.Float64(1.1),
+                NumOptNullVal: openapi.Float64(1.1),
                 NumVal: 1.1,
-                StrOptVal: sdk.String("optional example"),
+                StrOptVal: openapi.String("optional example"),
                 StrVal: "example",
             },
         },
         NumVal: 5093.42,
         ObjVal: shared.SimpleObjectCamelCase{
             AnyVal: "quisquam",
-            BigintStrVal: types.MustNewBigIntFromString("86377"),
+            BigintStrVal: big.NewInt(86377),
             BigintVal: big.NewInt(56848),
-            BoolOptVal: sdk.Bool(true),
+            BoolOptVal: openapi.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
@@ -1232,15 +1251,15 @@ func main() {
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
             Int32Val: 1,
             IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
-            IntOptNullVal: sdk.Int64(999999),
+            IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
-            NumOptNullVal: sdk.Float64(1.1),
+            NumOptNullVal: openapi.Float64(1.1),
             NumVal: 1.1,
-            StrOptVal: sdk.String("optional example"),
+            StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
         StrVal: "quo",
-        Type: sdk.String("illum"),
+        Type: openapi.String("illum"),
     })
     if err != nil {
         log.Fatal(err)
@@ -1282,12 +1301,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1295,9 +1314,9 @@ func main() {
         "quo": shared.SimpleObject{
             Any: "fuga",
             Bigint: big.NewInt(259422),
-            BigintStr: types.MustNewBigIntFromString("178367"),
+            BigintStr: big.NewInt(178367),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("3738.13"),
@@ -1307,11 +1326,11 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
             IntEnum: shared.SimpleObjectIntEnumSecond,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
     })
     if err != nil {
@@ -1355,21 +1374,21 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
         "consequatur": shared.SimpleObjectCamelCase{
             AnyVal: "tempora",
-            BigintStrVal: types.MustNewBigIntFromString("892050"),
+            BigintStrVal: big.NewInt(892050),
             BigintVal: big.NewInt(370853),
-            BoolOptVal: sdk.Bool(true),
+            BoolOptVal: openapi.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
@@ -1379,11 +1398,11 @@ func main() {
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValFiftyFive,
             Int32Val: 1,
             IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
-            IntOptNullVal: sdk.Int64(999999),
+            IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
-            NumOptNullVal: sdk.Float64(1.1),
+            NumOptNullVal: openapi.Float64(1.1),
             NumVal: 1.1,
-            StrOptVal: sdk.String("optional example"),
+            StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
     })
@@ -1428,12 +1447,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1441,9 +1460,9 @@ func main() {
         "esse": shared.SimpleObject{
             Any: "recusandae",
             Bigint: big.NewInt(44612),
-            BigintStr: types.MustNewBigIntFromString("715179"),
+            BigintStr: big.NewInt(715179),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("7997.96"),
@@ -1453,11 +1472,11 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
             IntEnum: shared.SimpleObjectIntEnumFirst,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
     })
     if err != nil {
@@ -1500,21 +1519,21 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObjCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
         "nihil": shared.SimpleObjectCamelCase{
             AnyVal: "totam",
-            BigintStrVal: types.MustNewBigIntFromString("882710"),
+            BigintStrVal: big.NewInt(882710),
             BigintVal: big.NewInt(306810),
-            BoolOptVal: sdk.Bool(true),
+            BoolOptVal: openapi.Bool(true),
             BoolVal: true,
             DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             DateVal: types.MustDateFromString("2020-01-01"),
@@ -1524,11 +1543,11 @@ func main() {
             Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
             Int32Val: 1,
             IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
-            IntOptNullVal: sdk.Int64(999999),
+            IntOptNullVal: openapi.Int64(999999),
             IntVal: 999999,
-            NumOptNullVal: sdk.Float64(1.1),
+            NumOptNullVal: openapi.Float64(1.1),
             NumVal: 1.1,
-            StrOptVal: sdk.String("optional example"),
+            StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
     })
@@ -1572,12 +1591,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1586,9 +1605,9 @@ func main() {
             shared.SimpleObject{
                 Any: "dolores",
                 Bigint: big.NewInt(645570),
-                BigintStr: types.MustNewBigIntFromString("475289"),
+                BigintStr: big.NewInt(475289),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("353.62"),
@@ -1598,11 +1617,11 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
     })
@@ -1647,12 +1666,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1660,9 +1679,9 @@ func main() {
         "quas": []shared.SimpleObjectCamelCase{
             shared.SimpleObjectCamelCase{
                 AnyVal: "praesentium",
-                BigintStrVal: types.MustNewBigIntFromString("159867"),
+                BigintStrVal: big.NewInt(159867),
                 BigintVal: big.NewInt(536178),
-                BoolOptVal: sdk.Bool(true),
+                BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
@@ -1672,11 +1691,11 @@ func main() {
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
                 Int32Val: 1,
                 IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValSecond,
-                IntOptNullVal: sdk.Int64(999999),
+                IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
-                NumOptNullVal: sdk.Float64(1.1),
+                NumOptNullVal: openapi.Float64(1.1),
                 NumVal: 1.1,
-                StrOptVal: sdk.String("optional example"),
+                StrOptVal: openapi.String("optional example"),
                 StrVal: "example",
             },
         },
@@ -1722,12 +1741,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1736,9 +1755,9 @@ func main() {
             "atque": shared.SimpleObject{
                 Any: "explicabo",
                 Bigint: big.NewInt(325685),
-                BigintStr: types.MustNewBigIntFromString("392676"),
+                BigintStr: big.NewInt(392676),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("1470.14"),
@@ -1748,11 +1767,11 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumFirst,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
     })
@@ -1797,12 +1816,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1810,9 +1829,9 @@ func main() {
         "ratione": map[string]shared.SimpleObjectCamelCase{
             "explicabo": shared.SimpleObjectCamelCase{
                 AnyVal: "saepe",
-                BigintStrVal: types.MustNewBigIntFromString("578922"),
+                BigintStrVal: big.NewInt(578922),
                 BigintVal: big.NewInt(543806),
-                BoolOptVal: sdk.Bool(true),
+                BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
                 DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 DateVal: types.MustDateFromString("2020-01-01"),
@@ -1822,11 +1841,11 @@ func main() {
                 Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValSixtyNine,
                 Int32Val: 1,
                 IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValThird,
-                IntOptNullVal: sdk.Int64(999999),
+                IntOptNullVal: openapi.Int64(999999),
                 IntVal: 999999,
-                NumOptNullVal: sdk.Float64(1.1),
+                NumOptNullVal: openapi.Float64(1.1),
                 NumVal: 1.1,
-                StrOptVal: sdk.String("optional example"),
+                StrOptVal: openapi.String("optional example"),
                 StrVal: "example",
             },
         },
@@ -1870,12 +1889,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1923,12 +1942,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -1976,21 +1995,21 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMultipleJSONFiltered(ctx, shared.SimpleObject{
         Any: "vero",
         Bigint: big.NewInt(399025),
-        BigintStr: types.MustNewBigIntFromString("93459"),
+        BigintStr: big.NewInt(93459),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("9040.45"),
@@ -2000,11 +2019,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2046,21 +2065,21 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONSimple(ctx, shared.SimpleObject{
         Any: "molestiae",
         Bigint: big.NewInt(699622),
-        BigintStr: types.MustNewBigIntFromString("580197"),
+        BigintStr: big.NewInt(580197),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("3277.2"),
@@ -2070,11 +2089,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2116,20 +2135,20 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONSimpleCamelCase(ctx, shared.SimpleObjectCamelCase{
         AnyVal: "sit",
-        BigintStrVal: types.MustNewBigIntFromString("636061"),
+        BigintStrVal: big.NewInt(636061),
         BigintVal: big.NewInt(731398),
-        BoolOptVal: sdk.Bool(true),
+        BoolOptVal: openapi.Bool(true),
         BoolVal: true,
         DateTimeVal: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         DateVal: types.MustDateFromString("2020-01-01"),
@@ -2139,11 +2158,11 @@ func main() {
         Int32EnumVal: shared.SimpleObjectCamelCaseInt32EnumValOneHundredAndEightyOne,
         Int32Val: 1,
         IntEnumVal: shared.SimpleObjectCamelCaseIntEnumValFirst,
-        IntOptNullVal: sdk.Int64(999999),
+        IntOptNullVal: openapi.Int64(999999),
         IntVal: 999999,
-        NumOptNullVal: sdk.Float64(1.1),
+        NumOptNullVal: openapi.Float64(1.1),
         NumVal: 1.1,
-        StrOptVal: sdk.String("optional example"),
+        StrOptVal: openapi.String("optional example"),
         StrVal: "example",
     })
     if err != nil {
@@ -2183,34 +2202,34 @@ import(
 	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
 	"math/big"
-	"github.com/ericlagergren/decimal"
+	"openapi/pkg/types"
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostComplexNumberTypes(ctx, operations.RequestBodyPostComplexNumberTypesRequest{
-        ComplexNumberTypes: &shared.ComplexNumberTypes{
+        ComplexNumberTypes: shared.ComplexNumberTypes{
             Bigint: big.NewInt(9766),
-            BigintStr: *types.MustNewBigIntFromString("796392"),
-            Decimal: *types.MustNewDecimalFromString("3082.86"),
-            DecimalStr: new(decimal.Big).SetFloat64(9591.67),
+            BigintStr: big.NewInt(796392),
+            Decimal: types.MustNewDecimalFromString("3082.86"),
+            DecimalStr: types.MustNewDecimalFromString("9591.67"),
         },
         PathBigInt: big.NewInt(232865),
-        PathBigIntStr: *types.MustNewBigIntFromString("458139"),
-        PathDecimal: *types.MustNewDecimalFromString("5034.27"),
-        PathDecimalStr: new(decimal.Big).SetFloat64(5909.84),
+        PathBigIntStr: big.NewInt(458139),
+        PathDecimal: types.MustNewDecimalFromString("5034.27"),
+        PathDecimalStr: types.MustNewDecimalFromString("5909.84"),
         QueryBigInt: big.NewInt(953722),
-        QueryBigIntStr: *types.MustNewBigIntFromString("857723"),
-        QueryDecimal: *types.MustNewDecimalFromString("5578.11"),
-        QueryDecimalStr: new(decimal.Big).SetFloat64(4572.23),
+        QueryBigIntStr: big.NewInt(857723),
+        QueryDecimal: types.MustNewDecimalFromString("5578.11"),
+        QueryDecimalStr: types.MustNewDecimalFromString("4572.23"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2235,6 +2254,87 @@ func main() {
 **[*operations.RequestBodyPostComplexNumberTypesResponse](../../models/operations/requestbodypostcomplexnumbertypesresponse.md), error**
 
 
+## RequestBodyPostDefaultsAndConsts
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"math/big"
+	"openapi/pkg/types"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostDefaultsAndConsts(ctx, shared.DefaultsAndConsts{
+        ConstBigInt: big.NewInt(97468),
+        ConstBigIntStr: big.NewInt(951875),
+        ConstBool: false,
+        ConstDate: types.MustDateFromString("2021-11-06"),
+        ConstDateTime: types.MustTimeFromString("2020-07-16T06:14:24.154Z"),
+        ConstDecimal: types.MustNewDecimalFromString("1576.32"),
+        ConstDecimalStr: types.MustNewDecimalFromString("9088.44"),
+        ConstEnumInt: shared.DefaultsAndConstsConstEnumIntThree,
+        ConstEnumStr: shared.DefaultsAndConstsConstEnumStrThree,
+        ConstInt: 85001,
+        ConstNum: 1594.14,
+        ConstStr: "quasi",
+        ConstStrNull: "similique",
+        DefaultBigInt: big.NewInt(633608),
+        DefaultBigIntStr: big.NewInt(398434),
+        DefaultBool: openapi.Bool(false),
+        DefaultDate: types.MustDateFromString("2022-10-24"),
+        DefaultDateTime: types.MustTimeFromString("2021-09-23T16:25:56.144Z"),
+        DefaultDecimal: types.MustNewDecimalFromString("4473.78"),
+        DefaultDecimalStr: types.MustNewDecimalFromString("2586.84"),
+        DefaultEnumInt: shared.DefaultsAndConstsDefaultEnumIntThree.ToPointer(),
+        DefaultEnumStr: shared.DefaultsAndConstsDefaultEnumStrThree.ToPointer(),
+        DefaultInt: openapi.Int64(742238),
+        DefaultNum: openapi.Float64(333.04),
+        DefaultStr: openapi.String("aliquam"),
+        DefaultStrNullable: openapi.String("sapiente"),
+        DefaultStrOptional: openapi.String("dicta"),
+        NormalField: "ullam",
+        SingleEnumConstBool: false,
+        SingleEnumConstStr: "reprehenderit",
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `ctx`                                                                | [context.Context](https://pkg.go.dev/context#Context)                | :heavy_check_mark:                                                   | The context to use for the request.                                  |
+| `request`                                                            | [shared.DefaultsAndConsts](../../models/shared/defaultsandconsts.md) | :heavy_check_mark:                                                   | The request object to use for the request.                           |
+
+
+### Response
+
+**[*operations.RequestBodyPostDefaultsAndConstsResponse](../../models/operations/requestbodypostdefaultsandconstsresponse.md), error**
+
+
 ## RequestBodyPostEmptyObject
 
 ### Example Usage
@@ -2251,12 +2351,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -2304,109 +2404,109 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormDeep(ctx, shared.DeepObject{
         Any: shared.SimpleObject{
-            Any: "a",
-            Bigint: big.NewInt(621679),
-            BigintStr: types.MustNewBigIntFromString("575751"),
+            Any: "nisi",
+            Bigint: big.NewInt(16328),
+            BigintStr: big.NewInt(531849),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("8630.23"),
+            Decimal: types.MustNewDecimalFromString("1852.32"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-            IntEnum: shared.SimpleObjectIntEnumFirst,
-            IntOptNull: sdk.Int64(999999),
+            IntEnum: shared.SimpleObjectIntEnumSecond,
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "eveniet",
-                Bigint: big.NewInt(992430),
-                BigintStr: types.MustNewBigIntFromString("815524"),
+                Any: "deleniti",
+                Bigint: big.NewInt(929292),
+                BigintStr: big.NewInt(680270),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("850.01"),
+                Decimal: types.MustNewDecimalFromString("996.15"),
+                Enum: shared.EnumTwo,
+                Float32: 2.2222222,
+                Int: 999999,
+                Int32: 1,
+                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+                IntEnum: shared.SimpleObjectIntEnumThird,
+                IntOptNull: openapi.Int64(999999),
+                Num: 1.1,
+                NumOptNull: openapi.Float64(1.1),
+                Str: "example",
+                StrOpt: openapi.String("optional example"),
+            },
+        },
+        Bool: false,
+        Int: 98478,
+        Map: map[string]shared.SimpleObject{
+            "at": shared.SimpleObject{
+                Any: "et",
+                Bigint: big.NewInt(454162),
+                BigintStr: big.NewInt(55965),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                Decimal: types.MustNewDecimalFromString("3267.01"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
                 IntEnum: shared.SimpleObjectIntEnumFirst,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
-        Bool: false,
-        Int: 628899,
-        Map: map[string]shared.SimpleObject{
-            "culpa": shared.SimpleObject{
-                Any: "aliquid",
-                Bigint: big.NewInt(949298),
-                BigintStr: types.MustNewBigIntFromString("62713"),
-                Bool: true,
-                BoolOpt: sdk.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("9367.47"),
-                Enum: shared.EnumTwo,
-                Float32: 2.2222222,
-                Int: 999999,
-                Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
-                Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
-                Str: "example",
-                StrOpt: sdk.String("optional example"),
-            },
-        },
-        Num: 2586.84,
+        Num: 2371.73,
         Obj: shared.SimpleObject{
-            Any: "libero",
-            Bigint: big.NewInt(849039),
-            BigintStr: types.MustNewBigIntFromString("742238"),
+            Any: "iste",
+            Bigint: big.NewInt(839513),
+            BigintStr: big.NewInt(33074),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("333.04"),
+            Decimal: types.MustNewDecimalFromString("5223.71"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-            IntEnum: shared.SimpleObjectIntEnumThird,
-            IntOptNull: sdk.Int64(999999),
+            IntEnum: shared.SimpleObjectIntEnumSecond,
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
-        Str: "dicta",
-        Type: sdk.String("ullam"),
+        Str: "eum",
+        Type: openapi.String("mollitia"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2446,17 +2546,17 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormMapPrimitive(ctx, map[string]string{
-        "reprehenderit": "ullam",
+        "ab": "corrupti",
     })
     if err != nil {
         log.Fatal(err)
@@ -2498,35 +2598,35 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormSimple(ctx, shared.SimpleObject{
-        Any: "nisi",
-        Bigint: big.NewInt(16328),
-        BigintStr: types.MustNewBigIntFromString("531849"),
+        Any: "non",
+        Bigint: big.NewInt(32465),
+        BigintStr: big.NewInt(221161),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("1852.32"),
+        Decimal: types.MustNewDecimalFromString("5801.52"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-        IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: sdk.Int64(999999),
+        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+        IntEnum: shared.SimpleObjectIntEnumThird,
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2551,6 +2651,882 @@ func main() {
 **[*operations.RequestBodyPostFormSimpleResponse](../../models/operations/requestbodypostformsimpleresponse.md), error**
 
 
+## RequestBodyPostJSONDataTypesArrayBigInt
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesArrayBigInt(ctx, []*big.Int{
+        big.NewInt(131055),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [[]*big.Int](../../models//.md)                       | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesArrayBigIntResponse](../../models/operations/requestbodypostjsondatatypesarraybigintresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesArrayDate
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesArrayDate(ctx, []types.Date{
+        types.MustDateFromString("2022-12-27"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesArrayDate200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [[]types.Date](../../models//.md)                     | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesArrayDateResponse](../../models/operations/requestbodypostjsondatatypesarraydateresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesArrayDecimalStr
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesArrayDecimalStr(ctx, []*decimal.Big{
+        types.MustNewDecimalFromString("4910.25"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [[]*decimal.Big](../../models//.md)                   | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesarraydecimalstrresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesBigInt
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBigInt(ctx, big.NewInt(115484))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesBigInt200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [*big.Int](../../models//.md)                         | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesBigIntResponse](../../models/operations/requestbodypostjsondatatypesbigintresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesBigIntStr
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBigIntStr(ctx, big.NewInt(981640))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [*big.Int](../../models//.md)                         | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesbigintstrresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesBoolean
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesBoolean(ctx, false)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesBoolean200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [bool](../../models//.md)                             | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesBooleanResponse](../../models/operations/requestbodypostjsondatatypesbooleanresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesDate
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDate(ctx, types.MustDateFromString("2022-07-06"))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesDate200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [types.Date](../../models//.md)                       | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesDateResponse](../../models/operations/requestbodypostjsondatatypesdateresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesDateTime
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDateTime(ctx, types.MustTimeFromString("2021-11-17T02:47:10.534Z"))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [time.Time](../../models//.md)                        | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesDateTimeResponse](../../models/operations/requestbodypostjsondatatypesdatetimeresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesDecimal
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDecimal(ctx, types.MustNewDecimalFromString("9903.45"))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesDecimal200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [*decimal.Big](../../models//.md)                     | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesDecimalResponse](../../models/operations/requestbodypostjsondatatypesdecimalresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesDecimalStr
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesDecimalStr(ctx, types.MustNewDecimalFromString("456.59"))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesDecimalStr200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [*decimal.Big](../../models//.md)                     | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesDecimalStrResponse](../../models/operations/requestbodypostjsondatatypesdecimalstrresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesFloat32
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesFloat32(ctx, 4090.54)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesFloat32200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [float64](../../models//.md)                          | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesFloat32Response](../../models/operations/requestbodypostjsondatatypesfloat32response.md), error**
+
+
+## RequestBodyPostJSONDataTypesInt32
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesInt32(ctx, 310067)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesInt32200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [int](../../models//.md)                              | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesInt32Response](../../models/operations/requestbodypostjsondatatypesint32response.md), error**
+
+
+## RequestBodyPostJSONDataTypesInteger
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesInteger(ctx, 162954)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesInteger200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [int64](../../models//.md)                            | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesIntegerResponse](../../models/operations/requestbodypostjsondatatypesintegerresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesMapBigIntStr
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapBigIntStr(ctx, map[string]*big.Int{
+        "repellendus": big.NewInt(638762),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [map[string]*big.Int](../../models//.md)              | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse](../../models/operations/requestbodypostjsondatatypesmapbigintstrresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesMapDateTime
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapDateTime(ctx, map[string]time.Time{
+        "maxime": types.MustTimeFromString("2022-05-12T09:23:17.883Z"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [map[string]time.Time](../../models//.md)             | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesMapDateTimeResponse](../../models/operations/requestbodypostjsondatatypesmapdatetimeresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesMapDecimal
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapDecimal(ctx, map[string]*decimal.Big{
+        "asperiores": types.MustNewDecimalFromString("3681.02"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [map[string]*decimal.Big](../../models//.md)          | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesMapDecimalResponse](../../models/operations/requestbodypostjsondatatypesmapdecimalresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesNumber
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesNumber(ctx, 653.04)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesNumber200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [float64](../../models//.md)                          | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesNumberResponse](../../models/operations/requestbodypostjsondatatypesnumberresponse.md), error**
+
+
+## RequestBodyPostJSONDataTypesString
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesString(ctx, "quaerat")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostJSONDataTypesString200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [string](../../models//.md)                           | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostJSONDataTypesStringResponse](../../models/operations/requestbodypostjsondatatypesstringresponse.md), error**
+
+
 ## RequestBodyPostMultipleContentTypesComponentFiltered
 
 ### Example Usage
@@ -2568,35 +3544,35 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesComponentFiltered(ctx, shared.SimpleObject{
-        Any: "deleniti",
-        Bigint: big.NewInt(929292),
-        BigintStr: types.MustNewBigIntFromString("680270"),
+        Any: "porro",
+        Bigint: big.NewInt(801836),
+        BigintStr: big.NewInt(288398),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("996.15"),
+        Decimal: types.MustNewDecimalFromString("704.47"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     })
     if err != nil {
         log.Fatal(err)
@@ -2637,19 +3613,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(ctx, operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON{
         Bool: false,
-        Num: 984.78,
-        Str: "at",
+        Num: 6625.05,
+        Str: "suscipit",
     })
     if err != nil {
         log.Fatal(err)
@@ -2690,19 +3666,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
         Bool3: false,
-        Num3: 920.27,
-        Str3: "voluptate",
+        Num3: 2460.63,
+        Str3: "culpa",
     }
-    paramStr := "ipsa"
+    paramStr := "est"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamForm(ctx, requestBody, paramStr)
@@ -2746,19 +3722,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
         Bool: false,
-        Num: 3267.01,
-        Str: "veritatis",
+        Num: 9268.8,
+        Str: "totam",
     }
-    paramStr := "consectetur"
+    paramStr := "fugiat"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJSON(ctx, requestBody, paramStr)
@@ -2802,19 +3778,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
         Bool2: false,
-        Num2: 2371.73,
-        Str2: "iste",
+        Num2: 4240.89,
+        Str2: "ducimus",
     }
-    paramStr := "temporibus"
+    paramStr := "quos"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx, requestBody, paramStr)
@@ -2858,19 +3834,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitForm(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded{
         Bool3: false,
-        Num3: 330.74,
-        Str3: "rem",
+        Num3: 4278.34,
+        Str3: "labore",
     })
     if err != nil {
         log.Fatal(err)
@@ -2911,19 +3887,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitJSON(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON{
         Bool: false,
-        Num: 156.06,
-        Str: "laudantium",
+        Num: 8225.6,
+        Str: "facilis",
     })
     if err != nil {
         log.Fatal(err)
@@ -2964,19 +3940,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipart(ctx, operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData{
         Bool2: false,
-        Num2: 4287.96,
-        Str2: "mollitia",
+        Num2: 7382.27,
+        Str2: "commodi",
     })
     if err != nil {
         log.Fatal(err)
@@ -3016,17 +3992,17 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullArray(ctx, []string{
-        "ab",
+        "in",
     })
     if err != nil {
         log.Fatal(err)
@@ -3066,17 +4042,17 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullDictionary(ctx, map[string]string{
-        "corrupti": "non",
+        "corporis": "reiciendis",
     })
     if err != nil {
         log.Fatal(err)
@@ -3116,16 +4092,16 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("voluptatem"))
+    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("assumenda"))
     if err != nil {
         log.Fatal(err)
     }
@@ -3165,15 +4141,15 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := []byte("dolor")
-    queryStringParam := "occaecati"
+    requestBody := []byte("nemo")
+    queryStringParam := "recusandae"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutBytesWithParams(ctx, requestBody, queryStringParam)
@@ -3218,109 +4194,109 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartDeep(ctx, shared.DeepObject{
         Any: shared.SimpleObject{
-            Any: "impedit",
-            Bigint: big.NewInt(131055),
-            BigintStr: types.MustNewBigIntFromString("376226"),
+            Any: "aperiam",
+            Bigint: big.NewInt(738683),
+            BigintStr: big.NewInt(232627),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("120.36"),
+            Decimal: types.MustNewDecimalFromString("4490.83"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-            IntEnum: shared.SimpleObjectIntEnumFirst,
-            IntOptNull: sdk.Int64(999999),
+            IntEnum: shared.SimpleObjectIntEnumThird,
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "maiores",
-                Bigint: big.NewInt(618480),
-                BigintStr: types.MustNewBigIntFromString("244651"),
+                Any: "facere",
+                Bigint: big.NewInt(257233),
+                BigintStr: big.NewInt(985492),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("9742.57"),
-                Enum: shared.EnumTwo,
-                Float32: 2.2222222,
-                Int: 999999,
-                Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumThird,
-                IntOptNull: sdk.Int64(999999),
-                Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
-                Str: "example",
-                StrOpt: sdk.String("optional example"),
-            },
-        },
-        Bool: false,
-        Int: 45659,
-        Map: map[string]shared.SimpleObject{
-            "ea": shared.SimpleObject{
-                Any: "quaerat",
-                Bigint: big.NewInt(162954),
-                BigintStr: types.MustNewBigIntFromString("831520"),
-                Bool: true,
-                BoolOpt: sdk.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("6387.62"),
+                Decimal: types.MustNewDecimalFromString("3817.6"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
+                IntEnum: shared.SimpleObjectIntEnumThird,
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
-        Num: 6400.24,
+        Bool: false,
+        Int: 904949,
+        Map: map[string]shared.SimpleObject{
+            "necessitatibus": shared.SimpleObject{
+                Any: "dolore",
+                Bigint: big.NewInt(121059),
+                BigintStr: big.NewInt(992012),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+                Decimal: types.MustNewDecimalFromString("2415.45"),
+                Enum: shared.EnumTwo,
+                Float32: 2.2222222,
+                Int: 999999,
+                Int32: 1,
+                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectIntEnumFirst,
+                IntOptNull: openapi.Int64(999999),
+                Num: 1.1,
+                NumOptNull: openapi.Float64(1.1),
+                Str: "example",
+                StrOpt: openapi.String("optional example"),
+            },
+        },
+        Num: 1059.06,
         Obj: shared.SimpleObject{
-            Any: "asperiores",
-            Bigint: big.NewInt(368102),
-            BigintStr: types.MustNewBigIntFromString("65304"),
+            Any: "dignissimos",
+            Bigint: big.NewInt(950953),
+            BigintStr: big.NewInt(891523),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("3127.53"),
+            Decimal: types.MustNewDecimalFromString("2334.2"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
             Int32: 1,
-            Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+            Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
             IntEnum: shared.SimpleObjectIntEnumThird,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
-        Str: "labore",
-        Type: sdk.String("ab"),
+        Str: "laboriosam",
+        Type: openapi.String("ipsa"),
     })
     if err != nil {
         log.Fatal(err)
@@ -3361,19 +4337,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
         File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
-            Content: []byte("adipisci"),
-            File: "fuga",
+            Content: []byte("voluptates"),
+            File: "libero",
         },
     })
     if err != nil {
@@ -3416,35 +4392,35 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartSimple(ctx, shared.SimpleObject{
-        Any: "id",
-        Bigint: big.NewInt(380729),
-        BigintStr: types.MustNewBigIntFromString("246063"),
+        Any: "vitae",
+        Bigint: big.NewInt(881721),
+        BigintStr: big.NewInt(631126),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("6339.31"),
+        Decimal: types.MustNewDecimalFromString("2724.37"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-        IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+        IntEnum: shared.SimpleObjectIntEnumSecond,
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     })
     if err != nil {
         log.Fatal(err)
@@ -3484,16 +4460,16 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutString(ctx, "totam")
+    res, err := s.RequestBodies.RequestBodyPutString(ctx, "voluptas")
     if err != nil {
         log.Fatal(err)
     }
@@ -3533,15 +4509,15 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := "fugiat"
-    queryStringParam := "vel"
+    requestBody := "voluptas"
+    queryStringParam := "minima"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutStringWithParams(ctx, requestBody, queryStringParam)
@@ -3584,19 +4560,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyReadAndWrite(ctx, shared.ReadWriteObjectInput{
-        Num1: 497678,
-        Num2: 554688,
-        Num3: 427834,
+        Num1: 748789,
+        Num2: 680116,
+        Num3: 237807,
     })
     if err != nil {
         log.Fatal(err)
@@ -3637,12 +4613,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -3688,12 +4664,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -3739,12 +4715,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -3788,19 +4764,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnly(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 2870.51,
-        String: "possimus",
+        Num: 7955.35,
+        String: "dolores",
     })
     if err != nil {
         log.Fatal(err)
@@ -3841,19 +4817,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 7065.75,
-        String: "cum",
+        Num: 5039.34,
+        String: "in",
     })
     if err != nil {
         log.Fatal(err)
@@ -3896,12 +4872,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()

@@ -3,10 +3,10 @@
 package shared
 
 import (
-	"bytes"
 	"encoding/json"
 	"errors"
 	"fmt"
+	"openapi/pkg/utils"
 )
 
 type StronglyTypedOneOfObjectType string
@@ -46,7 +46,6 @@ func CreateStronglyTypedOneOfObjectDeepObjectWithType(deepObjectWithType DeepObj
 }
 
 func (u *StronglyTypedOneOfObject) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	type discriminator struct {
 		Type string
@@ -59,9 +58,8 @@ func (u *StronglyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 
 	switch dis.Type {
 	case "simpleObjectWithType":
-		d = json.NewDecoder(bytes.NewReader(data))
 		simpleObjectWithType := new(SimpleObjectWithType)
-		if err := d.Decode(&simpleObjectWithType); err != nil {
+		if err := utils.UnmarshalJSON(data, &simpleObjectWithType, "", true, true); err != nil {
 			return fmt.Errorf("could not unmarshal expected type: %w", err)
 		}
 
@@ -69,9 +67,8 @@ func (u *StronglyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 		u.Type = StronglyTypedOneOfObjectTypeSimpleObjectWithType
 		return nil
 	case "deepObjectWithType":
-		d = json.NewDecoder(bytes.NewReader(data))
 		deepObjectWithType := new(DeepObjectWithType)
-		if err := d.Decode(&deepObjectWithType); err != nil {
+		if err := utils.UnmarshalJSON(data, &deepObjectWithType, "", true, true); err != nil {
 			return fmt.Errorf("could not unmarshal expected type: %w", err)
 		}
 
@@ -85,13 +82,12 @@ func (u *StronglyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 
 func (u StronglyTypedOneOfObject) MarshalJSON() ([]byte, error) {
 	if u.SimpleObjectWithType != nil {
-		return json.Marshal(u.SimpleObjectWithType)
+		return utils.MarshalJSON(u.SimpleObjectWithType, "", true)
 	}
 
 	if u.DeepObjectWithType != nil {
-		return json.Marshal(u.DeepObjectWithType)
+		return utils.MarshalJSON(u.DeepObjectWithType, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }

@@ -145,15 +145,16 @@ module OpenApiSDK
     end
 
     
-    sig { params(request: T.nilable(String)).returns(Utils::FieldAugmented) }
+    sig { params(request: String).returns(Utils::FieldAugmented) }
     def put_anything_ignored_generation(request)
 
       url, params = @sdk_configuration.get_server_details
       base_url = Utils.template_url(url, params)
       url = "#{base_url}/anything/ignoredGeneration"
       headers = {}
-      req_content_type, data, form = Utils.serialize_request_body(request, :request, :string)
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
       headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = 'application/json'
       headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
 

@@ -3,11 +3,10 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"net/http"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/utils"
 )
 
 type NullableOneOfSchemaPostRequestBodyType string
@@ -43,21 +42,16 @@ func CreateNullableOneOfSchemaPostRequestBodyTypedObject2(typedObject2 shared.Ty
 }
 
 func (u *NullableOneOfSchemaPostRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	typedObject1 := new(shared.TypedObject1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject1); err == nil {
+	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
 		u.TypedObject1 = typedObject1
 		u.Type = NullableOneOfSchemaPostRequestBodyTypeTypedObject1
 		return nil
 	}
 
 	typedObject2 := new(shared.TypedObject2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject2); err == nil {
+	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
 		u.TypedObject2 = typedObject2
 		u.Type = NullableOneOfSchemaPostRequestBodyTypeTypedObject2
 		return nil
@@ -68,15 +62,14 @@ func (u *NullableOneOfSchemaPostRequestBody) UnmarshalJSON(data []byte) error {
 
 func (u NullableOneOfSchemaPostRequestBody) MarshalJSON() ([]byte, error) {
 	if u.TypedObject1 != nil {
-		return json.Marshal(u.TypedObject1)
+		return utils.MarshalJSON(u.TypedObject1, "", true)
 	}
 
 	if u.TypedObject2 != nil {
-		return json.Marshal(u.TypedObject2)
+		return utils.MarshalJSON(u.TypedObject2, "", true)
 	}
 
-	return json.Marshal(nil)
-
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type NullableOneOfSchemaPostResJSONType string
@@ -112,21 +105,16 @@ func CreateNullableOneOfSchemaPostResJSONTypedObject2(typedObject2 shared.TypedO
 }
 
 func (u *NullableOneOfSchemaPostResJSON) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	typedObject1 := new(shared.TypedObject1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject1); err == nil {
+	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
 		u.TypedObject1 = typedObject1
 		u.Type = NullableOneOfSchemaPostResJSONTypeTypedObject1
 		return nil
 	}
 
 	typedObject2 := new(shared.TypedObject2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject2); err == nil {
+	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
 		u.TypedObject2 = typedObject2
 		u.Type = NullableOneOfSchemaPostResJSONTypeTypedObject2
 		return nil
@@ -137,15 +125,14 @@ func (u *NullableOneOfSchemaPostResJSON) UnmarshalJSON(data []byte) error {
 
 func (u NullableOneOfSchemaPostResJSON) MarshalJSON() ([]byte, error) {
 	if u.TypedObject1 != nil {
-		return json.Marshal(u.TypedObject1)
+		return utils.MarshalJSON(u.TypedObject1, "", true)
 	}
 
 	if u.TypedObject2 != nil {
-		return json.Marshal(u.TypedObject2)
+		return utils.MarshalJSON(u.TypedObject2, "", true)
 	}
 
-	return json.Marshal(nil)
-
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 // NullableOneOfSchemaPostRes - OK

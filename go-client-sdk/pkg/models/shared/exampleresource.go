@@ -5,6 +5,7 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"openapi/pkg/utils"
 	"time"
 )
 
@@ -92,6 +93,17 @@ type ExampleResource struct {
 	Name          string                      `json:"name"`
 	UpdatedAt     *time.Time                  `json:"updatedAt,omitempty"`
 	Vehicle       ExampleVehicle              `json:"vehicle"`
+}
+
+func (e ExampleResource) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(e, "", false)
+}
+
+func (e *ExampleResource) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &e, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ExampleResource) GetArrayOfNumber() []float64 {

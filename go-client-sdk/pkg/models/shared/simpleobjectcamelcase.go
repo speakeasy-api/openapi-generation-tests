@@ -5,8 +5,10 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ericlagergren/decimal"
 	"math/big"
 	"openapi/pkg/types"
+	"openapi/pkg/utils"
 	"time"
 )
 
@@ -77,9 +79,9 @@ func (e *SimpleObjectCamelCaseIntEnumVal) UnmarshalJSON(data []byte) error {
 // https://docs.speakeasyapi.dev - A link to the external docs.
 type SimpleObjectCamelCase struct {
 	// An any property.
-	AnyVal       interface{}   `json:"any_val"`
-	BigintStrVal *types.BigInt `json:"bigint_str_val,omitempty"`
-	BigintVal    *big.Int      `json:"bigint_val,omitempty"`
+	AnyVal       interface{} `json:"any_val"`
+	BigintStrVal *big.Int    `bigint:"string" json:"bigint_str_val,omitempty"`
+	BigintVal    *big.Int    `json:"bigint_val,omitempty"`
 	// An optional boolean property.
 	BoolOptVal *bool `json:"bool_opt_val,omitempty"`
 	// A boolean property.
@@ -87,8 +89,8 @@ type SimpleObjectCamelCase struct {
 	// A date-time property.
 	DateTimeVal time.Time `json:"date_time_val"`
 	// A date property.
-	DateVal    types.Date     `json:"date_val"`
-	DecimalVal *types.Decimal `json:"decimal_val,omitempty"`
+	DateVal    types.Date   `json:"date_val"`
+	DecimalVal *decimal.Big `decimal:"number" json:"decimal_val,omitempty"`
 	// A string based enum
 	EnumVal Enum `json:"enum_val"`
 	// A float32 property.
@@ -113,6 +115,17 @@ type SimpleObjectCamelCase struct {
 	StrVal string `json:"str_val"`
 }
 
+func (s SimpleObjectCamelCase) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SimpleObjectCamelCase) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *SimpleObjectCamelCase) GetAnyVal() interface{} {
 	if o == nil {
 		return nil
@@ -120,7 +133,7 @@ func (o *SimpleObjectCamelCase) GetAnyVal() interface{} {
 	return o.AnyVal
 }
 
-func (o *SimpleObjectCamelCase) GetBigintStrVal() *types.BigInt {
+func (o *SimpleObjectCamelCase) GetBigintStrVal() *big.Int {
 	if o == nil {
 		return nil
 	}
@@ -162,7 +175,7 @@ func (o *SimpleObjectCamelCase) GetDateVal() types.Date {
 	return o.DateVal
 }
 
-func (o *SimpleObjectCamelCase) GetDecimalVal() *types.Decimal {
+func (o *SimpleObjectCamelCase) GetDecimalVal() *decimal.Big {
 	if o == nil {
 		return nil
 	}

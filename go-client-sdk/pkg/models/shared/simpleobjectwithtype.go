@@ -5,8 +5,10 @@ package shared
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/ericlagergren/decimal"
 	"math/big"
 	"openapi/pkg/types"
+	"openapi/pkg/utils"
 	"time"
 )
 
@@ -77,9 +79,9 @@ func (e *SimpleObjectWithTypeIntEnum) UnmarshalJSON(data []byte) error {
 // https://docs.speakeasyapi.dev - A link to the external docs.
 type SimpleObjectWithType struct {
 	// An any property.
-	Any       interface{}   `json:"any"`
-	Bigint    *big.Int      `json:"bigint,omitempty"`
-	BigintStr *types.BigInt `json:"bigintStr,omitempty"`
+	Any       interface{} `json:"any"`
+	Bigint    *big.Int    `json:"bigint,omitempty"`
+	BigintStr *big.Int    `bigint:"string" json:"bigintStr,omitempty"`
 	// A boolean property.
 	Bool bool `json:"bool"`
 	// An optional boolean property.
@@ -87,8 +89,8 @@ type SimpleObjectWithType struct {
 	// A date property.
 	Date types.Date `json:"date"`
 	// A date-time property.
-	DateTime time.Time      `json:"dateTime"`
-	Decimal  *types.Decimal `json:"decimal,omitempty"`
+	DateTime time.Time    `json:"dateTime"`
+	Decimal  *decimal.Big `decimal:"number" json:"decimal,omitempty"`
 	// A string based enum
 	Enum Enum `json:"enum"`
 	// A float32 property.
@@ -114,6 +116,17 @@ type SimpleObjectWithType struct {
 	Type   string  `json:"type"`
 }
 
+func (s SimpleObjectWithType) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(s, "", false)
+}
+
+func (s *SimpleObjectWithType) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &s, "", false, true); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *SimpleObjectWithType) GetAny() interface{} {
 	if o == nil {
 		return nil
@@ -128,7 +141,7 @@ func (o *SimpleObjectWithType) GetBigint() *big.Int {
 	return o.Bigint
 }
 
-func (o *SimpleObjectWithType) GetBigintStr() *types.BigInt {
+func (o *SimpleObjectWithType) GetBigintStr() *big.Int {
 	if o == nil {
 		return nil
 	}
@@ -163,7 +176,7 @@ func (o *SimpleObjectWithType) GetDateTime() time.Time {
 	return o.DateTime
 }
 
-func (o *SimpleObjectWithType) GetDecimal() *types.Decimal {
+func (o *SimpleObjectWithType) GetDecimal() *decimal.Big {
 	if o == nil {
 		return nil
 	}

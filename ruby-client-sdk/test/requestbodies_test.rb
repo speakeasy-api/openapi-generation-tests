@@ -677,24 +677,5 @@ module OpenApiSDK
       assert_equal(4, res.read_write_object.num3)
       assert_equal(7, res.read_write_object.sum)
     end
-
-    def test_request_body_null_dictionary
-      record_test('request-bodies-null-dictionary')
-  
-      res = @sdk.request_bodies.request_body_post_null_dictionary(nil)
-  
-      refute_nil(res)
-      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      assert_equal("", res.request_body_post_null_dictionary_200_application_json_object.data)
-    end
-  
-    def test_request_body_null_array
-      record_test('request-bodies-null-array')
-      res = @sdk.request_bodies.request_body_post_null_array(nil)
-  
-      refute_nil(res)
-      assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      assert_equal("", res.request_body_post_null_array_200_application_json_object.data)
-    end
   end
 end

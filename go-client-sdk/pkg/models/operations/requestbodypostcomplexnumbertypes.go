@@ -7,24 +7,35 @@ import (
 	"math/big"
 	"net/http"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
+	"openapi/pkg/utils"
 )
 
 type RequestBodyPostComplexNumberTypesRequest struct {
-	ComplexNumberTypes *shared.ComplexNumberTypes `request:"mediaType=application/json"`
-	PathBigInt         *big.Int                   `pathParam:"style=simple,explode=false,name=pathBigInt"`
-	PathBigIntStr      types.BigInt               `pathParam:"style=simple,explode=false,name=pathBigIntStr"`
-	PathDecimal        types.Decimal              `pathParam:"style=simple,explode=false,name=pathDecimal"`
-	PathDecimalStr     *decimal.Big               `pathParam:"style=simple,explode=false,name=pathDecimalStr"`
-	QueryBigInt        *big.Int                   `queryParam:"style=form,explode=true,name=queryBigInt"`
-	QueryBigIntStr     types.BigInt               `queryParam:"style=form,explode=true,name=queryBigIntStr"`
-	QueryDecimal       types.Decimal              `queryParam:"style=form,explode=true,name=queryDecimal"`
-	QueryDecimalStr    *decimal.Big               `queryParam:"style=form,explode=true,name=queryDecimalStr"`
+	ComplexNumberTypes shared.ComplexNumberTypes `request:"mediaType=application/json"`
+	PathBigInt         *big.Int                  `pathParam:"style=simple,explode=false,name=pathBigInt"`
+	PathBigIntStr      *big.Int                  `bigint:"string" pathParam:"style=simple,explode=false,name=pathBigIntStr"`
+	PathDecimal        *decimal.Big              `decimal:"number" pathParam:"style=simple,explode=false,name=pathDecimal"`
+	PathDecimalStr     *decimal.Big              `pathParam:"style=simple,explode=false,name=pathDecimalStr"`
+	QueryBigInt        *big.Int                  `queryParam:"style=form,explode=true,name=queryBigInt"`
+	QueryBigIntStr     *big.Int                  `bigint:"string" queryParam:"style=form,explode=true,name=queryBigIntStr"`
+	QueryDecimal       *decimal.Big              `decimal:"number" queryParam:"style=form,explode=true,name=queryDecimal"`
+	QueryDecimalStr    *decimal.Big              `queryParam:"style=form,explode=true,name=queryDecimalStr"`
 }
 
-func (o *RequestBodyPostComplexNumberTypesRequest) GetComplexNumberTypes() *shared.ComplexNumberTypes {
+func (r RequestBodyPostComplexNumberTypesRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(r, "", false)
+}
+
+func (r *RequestBodyPostComplexNumberTypesRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &r, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
+func (o *RequestBodyPostComplexNumberTypesRequest) GetComplexNumberTypes() shared.ComplexNumberTypes {
 	if o == nil {
-		return nil
+		return shared.ComplexNumberTypes{}
 	}
 	return o.ComplexNumberTypes
 }
@@ -36,16 +47,16 @@ func (o *RequestBodyPostComplexNumberTypesRequest) GetPathBigInt() *big.Int {
 	return o.PathBigInt
 }
 
-func (o *RequestBodyPostComplexNumberTypesRequest) GetPathBigIntStr() types.BigInt {
+func (o *RequestBodyPostComplexNumberTypesRequest) GetPathBigIntStr() *big.Int {
 	if o == nil {
-		return types.BigInt{Int: *big.NewInt(0)}
+		return big.NewInt(0)
 	}
 	return o.PathBigIntStr
 }
 
-func (o *RequestBodyPostComplexNumberTypesRequest) GetPathDecimal() types.Decimal {
+func (o *RequestBodyPostComplexNumberTypesRequest) GetPathDecimal() *decimal.Big {
 	if o == nil {
-		return types.Decimal{Big: *(new(decimal.Big).SetFloat64(0.0))}
+		return new(decimal.Big).SetFloat64(0.0)
 	}
 	return o.PathDecimal
 }
@@ -64,16 +75,16 @@ func (o *RequestBodyPostComplexNumberTypesRequest) GetQueryBigInt() *big.Int {
 	return o.QueryBigInt
 }
 
-func (o *RequestBodyPostComplexNumberTypesRequest) GetQueryBigIntStr() types.BigInt {
+func (o *RequestBodyPostComplexNumberTypesRequest) GetQueryBigIntStr() *big.Int {
 	if o == nil {
-		return types.BigInt{Int: *big.NewInt(0)}
+		return big.NewInt(0)
 	}
 	return o.QueryBigIntStr
 }
 
-func (o *RequestBodyPostComplexNumberTypesRequest) GetQueryDecimal() types.Decimal {
+func (o *RequestBodyPostComplexNumberTypesRequest) GetQueryDecimal() *decimal.Big {
 	if o == nil {
-		return types.Decimal{Big: *(new(decimal.Big).SetFloat64(0.0))}
+		return new(decimal.Big).SetFloat64(0.0)
 	}
 	return o.QueryDecimal
 }

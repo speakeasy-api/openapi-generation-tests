@@ -36,7 +36,7 @@ export class Flattening {
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/componentBodyAndParamConflict";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "simpleObject", "json");
@@ -56,8 +56,7 @@ export class Flattening {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -132,7 +131,7 @@ export class Flattening {
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/componentBodyAndParamNoConflict";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "simpleObject", "json");
@@ -152,8 +151,7 @@ export class Flattening {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -314,7 +312,7 @@ export class Flattening {
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/inlineBodyAndParamConflict";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
@@ -334,8 +332,7 @@ export class Flattening {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -410,7 +407,7 @@ export class Flattening {
         const url: string =
             baseURL.replace(/\/$/, "") + "/anything/flattening/inlineBodyAndParamNoConflict";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
@@ -430,8 +427,7 @@ export class Flattening {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[

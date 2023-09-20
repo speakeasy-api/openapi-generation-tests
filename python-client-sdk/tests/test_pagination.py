@@ -126,10 +126,8 @@ def test_pagination_cursor_params():
     assert s is not None
     limit = 15
 
-    res = s.pagination.pagination_cursor_body(
-        request=PaginationCursorBodyRequestBody(
-            cursor=-1,
-        )
+    res = s.pagination.pagination_cursor_params(
+        cursor=-1
     )
 
     assert res is not None
@@ -153,6 +151,7 @@ def test_pagination_cursor_params():
     assert null_res is None
 
 
+
 def test_pagination_cursor_body():
     record_test("pagination-cursor-body")
 
@@ -160,8 +159,10 @@ def test_pagination_cursor_body():
     assert s is not None
     limit = 15
 
-    res = s.pagination.pagination_cursor_params(
-        cursor=-1
+    res = s.pagination.pagination_cursor_body(
+        request=PaginationCursorBodyRequestBody(
+            cursor=-1,
+        )
     )
 
     assert res is not None

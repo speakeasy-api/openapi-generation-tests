@@ -36,12 +36,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -83,12 +83,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -130,18 +130,18 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{
-        DeprecatedField: sdk.String("enim"),
-        NewField: sdk.String("accusamus"),
+        DeprecatedField: openapi.String("enim"),
+        NewField: openapi.String("accusamus"),
     })
     if err != nil {
         log.Fatal(err)
@@ -181,12 +181,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -231,12 +231,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     deprecatedParameter := "delectus"
 
@@ -285,12 +285,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     deprecatedParameter := "quidem"
     newParameter := "provident"
@@ -337,12 +337,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     emptyObject := shared.EmptyObjectParam{}
 
@@ -386,12 +386,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -433,12 +433,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -482,12 +482,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -530,16 +530,16 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := &operations.IgnoresPostApplicationJSON{
-        CallbackURL: sdk.String("https://pungent-latter.name"),
-        TestProp: sdk.String("sapiente"),
+    requestBody := operations.IgnoresPostApplicationJSON{
+        CallbackURL: openapi.String("https://pungent-latter.name"),
+        TestProp: openapi.String("sapiente"),
     }
     testParam := "amet"
 
@@ -557,11 +557,11 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
-| ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                           | [context.Context](https://pkg.go.dev/context#Context)                                           | :heavy_check_mark:                                                                              | The context to use for the request.                                                             |
-| `requestBody`                                                                                   | [*operations.IgnoresPostApplicationJSON](../../models/operations/ignorespostapplicationjson.md) | :heavy_minus_sign:                                                                              | N/A                                                                                             |
-| `testParam`                                                                                     | **string*                                                                                       | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `requestBody`                                                                                  | [operations.IgnoresPostApplicationJSON](../../models/operations/ignorespostapplicationjson.md) | :heavy_check_mark:                                                                             | N/A                                                                                            |
+| `testParam`                                                                                    | **string*                                                                                      | :heavy_minus_sign:                                                                             | N/A                                                                                            |
 
 
 ### Response
@@ -585,12 +585,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     testEnumQueryParam := operations.NameOverrideGetEnumNameOverrideValue3
     testQueryParam := "example"
@@ -639,16 +639,16 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     bigint := big.NewInt(643990)
     date := types.MustDateFromString("2022-07-30")
-    decimal := *types.MustNewDecimalFromString("6188.09")
+    decimal := types.MustNewDecimalFromString("6188.09")
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
         Num: 6063.93,
@@ -674,7 +674,7 @@ func main() {
 | `ctx`                                                                                                   | [context.Context](https://pkg.go.dev/context#Context)                                                   | :heavy_check_mark:                                                                                      | The context to use for the request.                                                                     |
 | `bigint`                                                                                                | [*big.Int](https://pkg.go.dev/math/big#Int)                                                             | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 | `date`                                                                                                  | [*types.Date](../../types/date.md)                                                                      | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
-| `decimal`                                                                                               | **types.Decimal*                                                                                        | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `decimal`                                                                                               | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big)                                 | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 | `obj`                                                                                                   | [*operations.TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 
 
@@ -703,13 +703,12 @@ import(
 	"openapi/pkg/models/shared"
 	"math/big"
 	"openapi/pkg/types"
-	"github.com/ericlagergren/decimal"
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     operationSecurity := operations.UsageExamplePostSecurity{
             Password: "YOUR_PASSWORD",
@@ -719,19 +718,19 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Janice_Gutkowski28@gmail.com"),
-            FormatEmail: sdk.String("Geraldine.Mosciski87@gmail.com"),
-            FormatURI: sdk.String("http://buzzing-efficiency.com"),
-            FormatUUID: sdk.String("959890af-a563-4e25-96fe-4c8b711e5b7f"),
-            Hostname: sdk.String("tempting-charlatan.org"),
-            Ipv4: sdk.String("222.9.41.130"),
-            Ipv6: sdk.String("921c:ddc6:9260:1fb5:76b0:d5f0:d30c:5fbb"),
+            Email: openapi.String("Janice_Gutkowski28@gmail.com"),
+            FormatEmail: openapi.String("Geraldine.Mosciski87@gmail.com"),
+            FormatURI: openapi.String("http://buzzing-efficiency.com"),
+            FormatUUID: openapi.String("959890af-a563-4e25-96fe-4c8b711e5b7f"),
+            Hostname: openapi.String("tempting-charlatan.org"),
+            Ipv4: openapi.String("222.9.41.130"),
+            Ipv6: openapi.String("921c:ddc6:9260:1fb5:76b0:d5f0:d30c:5fbb"),
             SimpleObject: &shared.SimpleObject{
                 Any: "dolores",
                 Bigint: big.NewInt(339404),
-                BigintStr: types.MustNewBigIntFromString("521037"),
+                BigintStr: big.NewInt(521037),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("4895.49"),
@@ -741,27 +740,27 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
-            Unknown: sdk.String("nesciunt"),
-            URI: sdk.String("http://aggravating-clogs.net"),
-            UUID: sdk.String("73d5fe9b-90c2-4890-9b3f-e49a8d9cbf48"),
+            Unknown: openapi.String("nesciunt"),
+            URI: openapi.String("http://aggravating-clogs.net"),
+            UUID: openapi.String("73d5fe9b-90c2-4890-9b3f-e49a8d9cbf48"),
         },
         BigintParameter: big.NewInt(111111),
         BigintParameterOptional: big.NewInt(111111),
-        BigintStrParameter: *types.MustNewBigIntFromString("111111"),
-        BigintStrParameterOptional: types.MustNewBigIntFromString("111111"),
+        BigintStrParameter: big.NewInt(111111),
+        BigintStrParameterOptional: big.NewInt(111111),
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        DecimalParameter: *types.MustNewDecimalFromString("1.1"),
+        DecimalParameter: types.MustNewDecimalFromString("1.1"),
         DecimalParameterOptional: types.MustNewDecimalFromString("1.1"),
-        DecimalStrParameter: new(decimal.Big).SetFloat64(1.1),
-        DecimalStrParameterOptional: new(decimal.Big).SetFloat64(1.1),
+        DecimalStrParameter: types.MustNewDecimalFromString("1.1"),
+        DecimalStrParameterOptional: types.MustNewDecimalFromString("1.1"),
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,

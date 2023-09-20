@@ -19,7 +19,7 @@ export class IgnoresPostApplicationJSON extends SpeakeasyBase {
 
 export class IgnoresPostRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    requestBody?: IgnoresPostApplicationJSON;
+    requestBody: IgnoresPostApplicationJSON;
 
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=testParam" })
     testParam?: string;

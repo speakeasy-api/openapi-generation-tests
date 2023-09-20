@@ -10,6 +10,7 @@ import (
 	"net/http"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/types"
+	"openapi/pkg/utils"
 	"time"
 )
 
@@ -205,9 +206,9 @@ type UsageExamplePostRequest struct {
 	// An bigint parameter
 	BigintParameterOptional *big.Int `queryParam:"style=form,explode=true,name=bigintParameterOptional"`
 	// An bigint parameter
-	BigintStrParameter types.BigInt `queryParam:"style=form,explode=true,name=bigintStrParameter"`
+	BigintStrParameter *big.Int `bigint:"string" queryParam:"style=form,explode=true,name=bigintStrParameter"`
 	// An bigint parameter
-	BigintStrParameterOptional *types.BigInt `queryParam:"style=form,explode=true,name=bigintStrParameterOptional"`
+	BigintStrParameterOptional *big.Int `bigint:"string" queryParam:"style=form,explode=true,name=bigintStrParameterOptional"`
 	// A boolean parameter
 	BoolParameter bool `queryParam:"style=form,explode=true,name=boolParameter"`
 	// A date parameter
@@ -215,9 +216,9 @@ type UsageExamplePostRequest struct {
 	// A date time parameter
 	DateTimeParameter time.Time `queryParam:"style=form,explode=true,name=dateTimeParameter"`
 	// A decimal parameter
-	DecimalParameter types.Decimal `queryParam:"style=form,explode=true,name=decimalParameter"`
+	DecimalParameter *decimal.Big `decimal:"number" queryParam:"style=form,explode=true,name=decimalParameter"`
 	// A decimal parameter
-	DecimalParameterOptional *types.Decimal `queryParam:"style=form,explode=true,name=decimalParameterOptional"`
+	DecimalParameterOptional *decimal.Big `decimal:"number" queryParam:"style=form,explode=true,name=decimalParameterOptional"`
 	// A decimal parameter
 	DecimalStrParameter *decimal.Big `queryParam:"style=form,explode=true,name=decimalStrParameter"`
 	// A decimal parameter
@@ -242,6 +243,17 @@ type UsageExamplePostRequest struct {
 	StrParameter string `queryParam:"style=form,explode=true,name=strParameter"`
 }
 
+func (u UsageExamplePostRequest) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(u, "", false)
+}
+
+func (u *UsageExamplePostRequest) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &u, "", false, false); err != nil {
+		return err
+	}
+	return nil
+}
+
 func (o *UsageExamplePostRequest) GetRequestBody() *UsageExamplePostRequestBody {
 	if o == nil {
 		return nil
@@ -263,14 +275,14 @@ func (o *UsageExamplePostRequest) GetBigintParameterOptional() *big.Int {
 	return o.BigintParameterOptional
 }
 
-func (o *UsageExamplePostRequest) GetBigintStrParameter() types.BigInt {
+func (o *UsageExamplePostRequest) GetBigintStrParameter() *big.Int {
 	if o == nil {
-		return types.BigInt{Int: *big.NewInt(0)}
+		return big.NewInt(0)
 	}
 	return o.BigintStrParameter
 }
 
-func (o *UsageExamplePostRequest) GetBigintStrParameterOptional() *types.BigInt {
+func (o *UsageExamplePostRequest) GetBigintStrParameterOptional() *big.Int {
 	if o == nil {
 		return nil
 	}
@@ -298,14 +310,14 @@ func (o *UsageExamplePostRequest) GetDateTimeParameter() time.Time {
 	return o.DateTimeParameter
 }
 
-func (o *UsageExamplePostRequest) GetDecimalParameter() types.Decimal {
+func (o *UsageExamplePostRequest) GetDecimalParameter() *decimal.Big {
 	if o == nil {
-		return types.Decimal{Big: *(new(decimal.Big).SetFloat64(0.0))}
+		return new(decimal.Big).SetFloat64(0.0)
 	}
 	return o.DecimalParameter
 }
 
-func (o *UsageExamplePostRequest) GetDecimalParameterOptional() *types.Decimal {
+func (o *UsageExamplePostRequest) GetDecimalParameterOptional() *decimal.Big {
 	if o == nil {
 		return nil
 	}

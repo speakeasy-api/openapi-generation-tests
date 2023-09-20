@@ -45,12 +45,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     mapParam := map[string]string{
         "numquam": "veritatis",
@@ -105,19 +105,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     objParam := shared.SimpleObject{
         Any: "iure",
         Bigint: big.NewInt(487838),
-        BigintStr: types.MustNewBigIntFromString("311796"),
+        BigintStr: big.NewInt(311796),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("8810.05"),
@@ -127,11 +127,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
     objArrParam := &operations.DeepObjectQueryParamsObjectObjArrParam{
         Arr: []string{
@@ -181,12 +181,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     duplicateParamRequest := "natus"
 
@@ -231,12 +231,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     arrParam := []string{
         "eos",
@@ -287,12 +287,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     mapParam := map[string]string{
         "sit": "fugiat",
@@ -345,19 +345,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     objParamExploded := shared.SimpleObject{
         Any: "dolorum",
         Bigint: big.NewInt(478596),
-        BigintStr: types.MustNewBigIntFromString("453697"),
+        BigintStr: big.NewInt(453697),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("6770.82"),
@@ -367,18 +367,18 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
         IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
     objParam := &shared.SimpleObject{
         Any: "necessitatibus",
         Bigint: big.NewInt(714697),
-        BigintStr: types.MustNewBigIntFromString("990339"),
+        BigintStr: big.NewInt(990339),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("4694.97"),
@@ -388,11 +388,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -437,12 +437,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     boolParam := false
     intParam := 663078
@@ -493,12 +493,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     refObjParam := &shared.RefQueryParamObj{
         Bool: false,
@@ -555,12 +555,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderArray := []string{
         "saepe",
@@ -607,12 +607,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderMap := map[string]string{
         "suscipit": "deserunt",
@@ -665,19 +665,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderObj := shared.SimpleObject{
         Any: "repellendus",
         Bigint: big.NewInt(519711),
-        BigintStr: types.MustNewBigIntFromString("628982"),
+        BigintStr: big.NewInt(628982),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("0.55"),
@@ -687,18 +687,18 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumFirst,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
     xHeaderObjExplode := shared.SimpleObject{
         Any: "tempora",
         Bigint: big.NewInt(425451),
-        BigintStr: types.MustNewBigIntFromString("798047"),
+        BigintStr: big.NewInt(798047),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("8853.38"),
@@ -708,11 +708,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -757,12 +757,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     xHeaderBoolean := false
     xHeaderInteger := 952792
@@ -815,20 +815,20 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     deepObjParam := shared.DeepObject{
         Any: shared.SimpleObject{
             Any: "ipsum",
             Bigint: big.NewInt(788740),
-            BigintStr: types.MustNewBigIntFromString("947371"),
+            BigintStr: big.NewInt(947371),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("2294.42"),
@@ -838,19 +838,19 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
             IntEnum: shared.SimpleObjectIntEnumThird,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
                 Any: "numquam",
                 Bigint: big.NewInt(313692),
-                BigintStr: types.MustNewBigIntFromString("213312"),
+                BigintStr: big.NewInt(213312),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("9574.51"),
@@ -860,11 +860,11 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
         Bool: false,
@@ -873,9 +873,9 @@ func main() {
             "expedita": shared.SimpleObject{
                 Any: "neque",
                 Bigint: big.NewInt(153694),
-                BigintStr: types.MustNewBigIntFromString("424685"),
+                BigintStr: big.NewInt(424685),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("7304.42"),
@@ -885,20 +885,20 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
                 IntEnum: shared.SimpleObjectIntEnumSecond,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
         },
         Num: 4635.75,
         Obj: shared.SimpleObject{
             Any: "ipsum",
             Bigint: big.NewInt(277628),
-            BigintStr: types.MustNewBigIntFromString("186458"),
+            BigintStr: big.NewInt(186458),
             Bool: true,
-            BoolOpt: sdk.Bool(true),
+            BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
             Decimal: types.MustNewDecimalFromString("5867.84"),
@@ -908,21 +908,21 @@ func main() {
             Int32: 1,
             Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
             IntEnum: shared.SimpleObjectIntEnumThird,
-            IntOptNull: sdk.Int64(999999),
+            IntOptNull: openapi.Int64(999999),
             Num: 1.1,
-            NumOptNull: sdk.Float64(1.1),
+            NumOptNull: openapi.Float64(1.1),
             Str: "example",
-            StrOpt: sdk.String("optional example"),
+            StrOpt: openapi.String("optional example"),
         },
         Str: "soluta",
-        Type: sdk.String("dicta"),
+        Type: openapi.String("dicta"),
     }
     simpleObjParam := shared.SimpleObject{
         Any: "laborum",
         Bigint: big.NewInt(517379),
-        BigintStr: types.MustNewBigIntFromString("276894"),
+        BigintStr: big.NewInt(276894),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("1320.68"),
@@ -932,11 +932,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -981,12 +981,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     headerParam := "facilis"
     pathParam := "aliquid"
@@ -1035,12 +1035,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     headerParam := "molestias"
     pathParam := "temporibus"
@@ -1091,19 +1091,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     deepObjectParam := shared.SimpleObject{
         Any: "neque",
         Bigint: big.NewInt(144847),
-        BigintStr: types.MustNewBigIntFromString("164959"),
+        BigintStr: big.NewInt(164959),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("4880.56"),
@@ -1113,18 +1113,18 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
     formParam := shared.SimpleObject{
         Any: "nam",
         Bigint: big.NewInt(940432),
-        BigintStr: types.MustNewBigIntFromString("30452"),
+        BigintStr: big.NewInt(30452),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("7653.26"),
@@ -1134,18 +1134,18 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
     jsonParam := shared.SimpleObject{
         Any: "et",
         Bigint: big.NewInt(903720),
-        BigintStr: types.MustNewBigIntFromString("217450"),
+        BigintStr: big.NewInt(217450),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("834.22"),
@@ -1155,11 +1155,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
         IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -1207,19 +1207,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     jsonObj := shared.SimpleObject{
         Any: "tempore",
         Bigint: big.NewInt(584476),
-        BigintStr: types.MustNewBigIntFromString("45614"),
+        BigintStr: big.NewInt(45614),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("9619.37"),
@@ -1229,11 +1229,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumFirst,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -1279,12 +1279,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     arrParam := []string{
         "labore",
@@ -1298,9 +1298,9 @@ func main() {
     objParam := &shared.SimpleObject{
         Any: "quae",
         Bigint: big.NewInt(16429),
-        BigintStr: types.MustNewBigIntFromString("555649"),
+        BigintStr: big.NewInt(555649),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("9295.3"),
@@ -1310,11 +1310,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -1361,12 +1361,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     arrParam := []string{
         "repellendus",
@@ -1413,12 +1413,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     mapParam := map[string]string{
         "porro": "doloribus",
@@ -1471,19 +1471,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     objParam := shared.SimpleObject{
         Any: "cupiditate",
         Bigint: big.NewInt(181631),
-        BigintStr: types.MustNewBigIntFromString("63955"),
+        BigintStr: big.NewInt(63955),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("5123.93"),
@@ -1493,18 +1493,18 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
         IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
     objParamExploded := shared.SimpleObject{
         Any: "voluptatibus",
         Bigint: big.NewInt(787542),
-        BigintStr: types.MustNewBigIntFromString("876506"),
+        BigintStr: big.NewInt(876506),
         Bool: true,
-        BoolOpt: sdk.Bool(true),
+        BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
         Decimal: types.MustNewDecimalFromString("6064.76"),
@@ -1514,11 +1514,11 @@ func main() {
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
         IntEnum: shared.SimpleObjectIntEnumFirst,
-        IntOptNull: sdk.Int64(999999),
+        IntOptNull: openapi.Int64(999999),
         Num: 1.1,
-        NumOptNull: sdk.Float64(1.1),
+        NumOptNull: openapi.Float64(1.1),
         Str: "example",
-        StrOpt: sdk.String("optional example"),
+        StrOpt: openapi.String("optional example"),
     }
 
     ctx := context.Background()
@@ -1563,12 +1563,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     boolParam := false
     intParam := 1

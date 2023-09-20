@@ -3,11 +3,10 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"net/http"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/utils"
 )
 
 type MixedTypeOneOfPostRequestBodyType string
@@ -54,30 +53,23 @@ func CreateMixedTypeOneOfPostRequestBodySimpleObject(simpleObject shared.SimpleO
 }
 
 func (u *MixedTypeOneOfPostRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = MixedTypeOneOfPostRequestBodyTypeStr
 		return nil
 	}
 
 	integer := new(int64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integer); err == nil {
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = integer
 		u.Type = MixedTypeOneOfPostRequestBodyTypeInteger
 		return nil
 	}
 
 	simpleObject := new(shared.SimpleObject)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&simpleObject); err == nil {
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = simpleObject
 		u.Type = MixedTypeOneOfPostRequestBodyTypeSimpleObject
 		return nil
@@ -88,19 +80,18 @@ func (u *MixedTypeOneOfPostRequestBody) UnmarshalJSON(data []byte) error {
 
 func (u MixedTypeOneOfPostRequestBody) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.Integer != nil {
-		return json.Marshal(u.Integer)
+		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
 	if u.SimpleObject != nil {
-		return json.Marshal(u.SimpleObject)
+		return utils.MarshalJSON(u.SimpleObject, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 type MixedTypeOneOfPostResJSONType string
@@ -147,30 +138,23 @@ func CreateMixedTypeOneOfPostResJSONSimpleObject(simpleObject shared.SimpleObjec
 }
 
 func (u *MixedTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = MixedTypeOneOfPostResJSONTypeStr
 		return nil
 	}
 
 	integer := new(int64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integer); err == nil {
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = integer
 		u.Type = MixedTypeOneOfPostResJSONTypeInteger
 		return nil
 	}
 
 	simpleObject := new(shared.SimpleObject)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&simpleObject); err == nil {
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
 		u.SimpleObject = simpleObject
 		u.Type = MixedTypeOneOfPostResJSONTypeSimpleObject
 		return nil
@@ -181,19 +165,18 @@ func (u *MixedTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
 
 func (u MixedTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.Integer != nil {
-		return json.Marshal(u.Integer)
+		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
 	if u.SimpleObject != nil {
-		return json.Marshal(u.SimpleObject)
+		return utils.MarshalJSON(u.SimpleObject, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 // MixedTypeOneOfPostRes - OK

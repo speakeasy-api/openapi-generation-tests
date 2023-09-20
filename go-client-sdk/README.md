@@ -23,12 +23,12 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
@@ -57,13 +57,12 @@ import(
 	"openapi/pkg/models/shared"
 	"math/big"
 	"openapi/pkg/types"
-	"github.com/ericlagergren/decimal"
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+    s := openapi.New(
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
     operationSecurity := operations.UsageExamplePostSecurity{
             Password: "YOUR_PASSWORD",
@@ -73,19 +72,19 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: sdk.String("Larue_Rau85@yahoo.com"),
-            FormatEmail: sdk.String("Roselyn_Kassulke@yahoo.com"),
-            FormatURI: sdk.String("http://innocent-effect.org"),
-            FormatUUID: sdk.String("0f467cc8-796e-4d15-9a05-dfc2ddf7cc78"),
-            Hostname: sdk.String("soulful-poppy.com"),
-            Ipv4: sdk.String("184.163.148.36"),
-            Ipv6: sdk.String("8fc8:1674:2cb7:3920:5929:396f:ea75:96eb"),
+            Email: openapi.String("Larue_Rau85@yahoo.com"),
+            FormatEmail: openapi.String("Roselyn_Kassulke@yahoo.com"),
+            FormatURI: openapi.String("http://innocent-effect.org"),
+            FormatUUID: openapi.String("0f467cc8-796e-4d15-9a05-dfc2ddf7cc78"),
+            Hostname: openapi.String("soulful-poppy.com"),
+            Ipv4: openapi.String("184.163.148.36"),
+            Ipv6: openapi.String("8fc8:1674:2cb7:3920:5929:396f:ea75:96eb"),
             SimpleObject: &shared.SimpleObject{
                 Any: "architecto",
                 Bigint: big.NewInt(60225),
-                BigintStr: types.MustNewBigIntFromString("969810"),
+                BigintStr: big.NewInt(969810),
                 Bool: true,
-                BoolOpt: sdk.Bool(true),
+                BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
                 Decimal: types.MustNewDecimalFromString("6667.67"),
@@ -95,27 +94,27 @@ func main() {
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
                 IntEnum: shared.SimpleObjectIntEnumThird,
-                IntOptNull: sdk.Int64(999999),
+                IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
-                NumOptNull: sdk.Float64(1.1),
+                NumOptNull: openapi.Float64(1.1),
                 Str: "example",
-                StrOpt: sdk.String("optional example"),
+                StrOpt: openapi.String("optional example"),
             },
-            Unknown: sdk.String("dolores"),
-            URI: sdk.String("http://growing-cappelletti.net"),
-            UUID: sdk.String("5955907a-ff1a-43a2-ba94-67739251aa52"),
+            Unknown: openapi.String("dolores"),
+            URI: openapi.String("http://growing-cappelletti.net"),
+            UUID: openapi.String("5955907a-ff1a-43a2-ba94-67739251aa52"),
         },
         BigintParameter: big.NewInt(111111),
         BigintParameterOptional: big.NewInt(111111),
-        BigintStrParameter: *types.MustNewBigIntFromString("111111"),
-        BigintStrParameterOptional: types.MustNewBigIntFromString("111111"),
+        BigintStrParameter: big.NewInt(111111),
+        BigintStrParameterOptional: big.NewInt(111111),
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2020-01-01"),
         DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        DecimalParameter: *types.MustNewDecimalFromString("1.1"),
+        DecimalParameter: types.MustNewDecimalFromString("1.1"),
         DecimalParameterOptional: types.MustNewDecimalFromString("1.1"),
-        DecimalStrParameter: new(decimal.Big).SetFloat64(1.1),
-        DecimalStrParameterOptional: new(decimal.Big).SetFloat64(1.1),
+        DecimalStrParameter: types.MustNewDecimalFromString("1.1"),
+        DecimalStrParameterOptional: types.MustNewDecimalFromString("1.1"),
         DoubleParameter: 2.2222222,
         EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
@@ -297,10 +296,29 @@ func main() {
 * [RequestBodyPostApplicationJSONSimple](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimple)
 * [RequestBodyPostApplicationJSONSimpleCamelCase](docs/sdks/requestbodies/README.md#requestbodypostapplicationjsonsimplecamelcase)
 * [RequestBodyPostComplexNumberTypes](docs/sdks/requestbodies/README.md#requestbodypostcomplexnumbertypes)
+* [RequestBodyPostDefaultsAndConsts](docs/sdks/requestbodies/README.md#requestbodypostdefaultsandconsts)
 * [RequestBodyPostEmptyObject](docs/sdks/requestbodies/README.md#requestbodypostemptyobject)
 * [RequestBodyPostFormDeep](docs/sdks/requestbodies/README.md#requestbodypostformdeep)
 * [RequestBodyPostFormMapPrimitive](docs/sdks/requestbodies/README.md#requestbodypostformmapprimitive)
 * [RequestBodyPostFormSimple](docs/sdks/requestbodies/README.md#requestbodypostformsimple)
+* [RequestBodyPostJSONDataTypesArrayBigInt](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesarraybigint)
+* [RequestBodyPostJSONDataTypesArrayDate](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesarraydate)
+* [RequestBodyPostJSONDataTypesArrayDecimalStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesarraydecimalstr)
+* [RequestBodyPostJSONDataTypesBigInt](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigint)
+* [RequestBodyPostJSONDataTypesBigIntStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesbigintstr)
+* [RequestBodyPostJSONDataTypesBoolean](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesboolean)
+* [RequestBodyPostJSONDataTypesDate](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdate)
+* [RequestBodyPostJSONDataTypesDateTime](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdatetime)
+* [RequestBodyPostJSONDataTypesDecimal](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdecimal)
+* [RequestBodyPostJSONDataTypesDecimalStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesdecimalstr)
+* [RequestBodyPostJSONDataTypesFloat32](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesfloat32)
+* [RequestBodyPostJSONDataTypesInt32](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesint32)
+* [RequestBodyPostJSONDataTypesInteger](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesinteger)
+* [RequestBodyPostJSONDataTypesMapBigIntStr](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesmapbigintstr)
+* [RequestBodyPostJSONDataTypesMapDateTime](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesmapdatetime)
+* [RequestBodyPostJSONDataTypesMapDecimal](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesmapdecimal)
+* [RequestBodyPostJSONDataTypesNumber](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesnumber)
+* [RequestBodyPostJSONDataTypesString](docs/sdks/requestbodies/README.md#requestbodypostjsondatatypesstring)
 * [RequestBodyPostMultipleContentTypesComponentFiltered](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypescomponentfiltered)
 * [RequestBodyPostMultipleContentTypesInlineFiltered](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypesinlinefiltered)
 * [RequestBodyPostMultipleContentTypesSplitParamForm](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitparamform)
@@ -336,6 +354,9 @@ func main() {
 
 ### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
+* [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
+* [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
+* [ResponseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
 * [ResponseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
 * [ResponseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
 * [ResponseBodyOptionalGet](docs/sdks/responsebodies/README.md#responsebodyoptionalget)

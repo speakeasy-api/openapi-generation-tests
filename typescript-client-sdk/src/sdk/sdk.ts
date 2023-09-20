@@ -130,8 +130,8 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.33.3";
-    genVersion = "2.115.2";
+    sdkVersion = "1.33.4";
+    genVersion = "2.118.1";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -295,10 +295,10 @@ export class SDK {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/ignoredGeneration";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
-            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "string");
+            [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
         } catch (e: unknown) {
             if (e instanceof Error) {
                 throw new Error(`Error serializing request body, cause: ${e.message}`);
@@ -314,6 +314,7 @@ export class SDK {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[

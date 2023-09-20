@@ -9,7 +9,7 @@ import { Expose, Type } from "class-transformer";
 
 export class RequestBodyPostComplexNumberTypesRequest extends SpeakeasyBase {
     @SpeakeasyMetadata({ data: "request, media_type=application/json" })
-    complexNumberTypes?: shared.ComplexNumberTypes;
+    complexNumberTypes: shared.ComplexNumberTypes;
 
     @SpeakeasyMetadata({ data: "pathParam, style=simple;explode=false;name=pathBigInt" })
     pathBigInt: number;

@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"openapi/pkg/utils"
 )
 
 type PrimitiveTypeUnionType string
@@ -85,57 +84,44 @@ func CreatePrimitiveTypeUnionBoolean(boolean bool) PrimitiveTypeUnion {
 }
 
 func (u *PrimitiveTypeUnion) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = PrimitiveTypeUnionTypeStr
 		return nil
 	}
 
 	integer := new(int64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integer); err == nil {
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = integer
 		u.Type = PrimitiveTypeUnionTypeInteger
 		return nil
 	}
 
 	int32Var := new(int)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&int32Var); err == nil {
+	if err := utils.UnmarshalJSON(data, &int32Var, "", true, true); err == nil {
 		u.Int32 = int32Var
 		u.Type = PrimitiveTypeUnionTypeInt32
 		return nil
 	}
 
 	number := new(float64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&number); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = number
 		u.Type = PrimitiveTypeUnionTypeNumber
 		return nil
 	}
 
 	float32Var := new(float32)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&float32Var); err == nil {
+	if err := utils.UnmarshalJSON(data, &float32Var, "", true, true); err == nil {
 		u.Float32 = float32Var
 		u.Type = PrimitiveTypeUnionTypeFloat32
 		return nil
 	}
 
 	boolean := new(bool)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&boolean); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
 		u.Boolean = boolean
 		u.Type = PrimitiveTypeUnionTypeBoolean
 		return nil
@@ -146,29 +132,28 @@ func (u *PrimitiveTypeUnion) UnmarshalJSON(data []byte) error {
 
 func (u PrimitiveTypeUnion) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.Integer != nil {
-		return json.Marshal(u.Integer)
+		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
 	if u.Int32 != nil {
-		return json.Marshal(u.Int32)
+		return utils.MarshalJSON(u.Int32, "", true)
 	}
 
 	if u.Number != nil {
-		return json.Marshal(u.Number)
+		return utils.MarshalJSON(u.Number, "", true)
 	}
 
 	if u.Float32 != nil {
-		return json.Marshal(u.Float32)
+		return utils.MarshalJSON(u.Float32, "", true)
 	}
 
 	if u.Boolean != nil {
-		return json.Marshal(u.Boolean)
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }

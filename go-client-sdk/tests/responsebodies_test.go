@@ -5,11 +5,13 @@ package tests
 import (
 	"context"
 	"io"
+	"math/big"
 	"net/http"
 	"testing"
 
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
+	"openapi/pkg/types"
 
 	sdk "openapi"
 
@@ -114,7 +116,7 @@ func TestResponseBodyDefaultAcceptHeader(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.GetTypedObject1)
-	assert.Equal(t, shared.TypedObject1TypeObj1, res.GetTypedObject1().GetType())
+	assert.Equal(t, "obj1", res.GetTypedObject1().GetType())
 }
 
 func TestResponseBodyReadOnly(t *testing.T) {
@@ -130,4 +132,61 @@ func TestResponseBodyReadOnly(t *testing.T) {
 	assert.Equal(t, true, res.ReadOnlyObject.Bool)
 	assert.Equal(t, 1.0, res.ReadOnlyObject.Num)
 	assert.Equal(t, "hello", res.ReadOnlyObject.String)
+}
+
+func TestResponseBodyAdditionalPropertiesPost(t *testing.T) {
+	recordTest("response-bodies-additional-properties")
+
+	s := sdk.New()
+
+	req := shared.ObjWithStringAdditionlProperties{
+		NormalField: "normal",
+		AdditionalProperties: map[string]string{
+			"key1": "value1",
+		},
+	}
+
+	res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesPost200ApplicationJSONObject.JSON)
+}
+
+func TestResponseBodyAdditionalPropertiesComplexNumbersPost(t *testing.T) {
+	recordTest("response-bodies-additional-properties-complex-numbers")
+
+	s := sdk.New()
+
+	req := shared.ObjWithComplexNumbersAdditionlProperties{
+		NormalField: "normal",
+		AdditionalProperties: map[string]*big.Int{
+			"key1": big.NewInt(1),
+		},
+	}
+
+	res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject.JSON)
+}
+
+func TestResponseBodyAdditionalPropertiesDatePost(t *testing.T) {
+	recordTest("response-bodies-additional-properties-date")
+
+	s := sdk.New()
+
+	req := shared.ObjWithDateAdditionlProperties{
+		NormalField: "normal",
+		AdditionalProperties: map[string]types.Date{
+			"key1": types.MustDateFromString("2020-01-01"),
+		},
+	}
+
+	res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSONObject.JSON)
 }

@@ -35,7 +35,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#apiKeyAuthGlobal";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -54,6 +54,7 @@ export class AuthNew {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -114,7 +115,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#authGlobal";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -133,6 +134,7 @@ export class AuthNew {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -193,7 +195,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#basicAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -221,6 +223,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -284,7 +287,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleMixedOptionsAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -312,6 +315,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -376,7 +380,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleMixedSchemeAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -404,6 +408,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -469,7 +474,7 @@ export class AuthNew {
         const url: string =
             baseURL.replace(/\/$/, "") + "/auth#multipleOptionsWithMixedSchemesAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -497,6 +502,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -562,7 +568,7 @@ export class AuthNew {
         const url: string =
             baseURL.replace(/\/$/, "") + "/auth#multipleOptionsWithSimpleSchemesAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -590,6 +596,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -654,7 +661,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleSimpleOptionsAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -682,6 +689,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -746,7 +754,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#multipleSimpleSchemeAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -774,6 +782,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -835,7 +844,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#oauth2Auth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -863,6 +872,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -923,7 +933,7 @@ export class AuthNew {
         }
         const url: string = baseURL.replace(/\/$/, "") + "/auth#openIdConnectAuth";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -951,6 +961,7 @@ export class AuthNew {
             headers: { ...properties.headers, ...localProperties.headers },
         };
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[

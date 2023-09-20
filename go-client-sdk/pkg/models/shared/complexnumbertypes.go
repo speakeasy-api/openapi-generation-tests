@@ -5,14 +5,25 @@ package shared
 import (
 	"github.com/ericlagergren/decimal"
 	"math/big"
-	"openapi/pkg/types"
+	"openapi/pkg/utils"
 )
 
 type ComplexNumberTypes struct {
-	Bigint     *big.Int      `json:"bigint"`
-	BigintStr  types.BigInt  `json:"bigintStr"`
-	Decimal    types.Decimal `json:"decimal"`
-	DecimalStr *decimal.Big  `json:"decimalStr"`
+	Bigint     *big.Int     `json:"bigint"`
+	BigintStr  *big.Int     `bigint:"string" json:"bigintStr"`
+	Decimal    *decimal.Big `decimal:"number" json:"decimal"`
+	DecimalStr *decimal.Big `json:"decimalStr"`
+}
+
+func (c ComplexNumberTypes) MarshalJSON() ([]byte, error) {
+	return utils.MarshalJSON(c, "", false)
+}
+
+func (c *ComplexNumberTypes) UnmarshalJSON(data []byte) error {
+	if err := utils.UnmarshalJSON(data, &c, "", false, false); err != nil {
+		return err
+	}
+	return nil
 }
 
 func (o *ComplexNumberTypes) GetBigint() *big.Int {
@@ -22,16 +33,16 @@ func (o *ComplexNumberTypes) GetBigint() *big.Int {
 	return o.Bigint
 }
 
-func (o *ComplexNumberTypes) GetBigintStr() types.BigInt {
+func (o *ComplexNumberTypes) GetBigintStr() *big.Int {
 	if o == nil {
-		return types.BigInt{Int: *big.NewInt(0)}
+		return big.NewInt(0)
 	}
 	return o.BigintStr
 }
 
-func (o *ComplexNumberTypes) GetDecimal() types.Decimal {
+func (o *ComplexNumberTypes) GetDecimal() *decimal.Big {
 	if o == nil {
-		return types.Decimal{Big: *(new(decimal.Big).SetFloat64(0.0))}
+		return new(decimal.Big).SetFloat64(0.0)
 	}
 	return o.Decimal
 }

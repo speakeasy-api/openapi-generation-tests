@@ -182,7 +182,7 @@ export class Generation {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/deprecatedFieldInSchema";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "request", "json");
@@ -201,8 +201,7 @@ export class Generation {
         }
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
-        if (reqBody == null || Object.keys(reqBody).length === 0)
-            throw new Error("request body is required");
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "*/*";
 
         headers[
@@ -756,7 +755,7 @@ export class Generation {
     }
 
     async ignoresPost(
-        requestBody?: operations.IgnoresPostApplicationJSON,
+        requestBody: operations.IgnoresPostApplicationJSON,
         testParam?: string,
         config?: AxiosRequestConfig
     ): Promise<operations.IgnoresPostResponse> {
@@ -770,7 +769,7 @@ export class Generation {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/ignores";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");
@@ -790,6 +789,7 @@ export class Generation {
         const properties = utils.parseSecurityProperties(globalSecurity);
         const headers = { ...reqBodyHeaders, ...config?.headers, ...properties.headers };
         const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
         headers[
@@ -1023,7 +1023,7 @@ export class Generation {
         );
         const url: string = baseURL.replace(/\/$/, "") + "/anything/usageExample";
 
-        let [reqBodyHeaders, reqBody]: [object, any] = [{}, {}];
+        let [reqBodyHeaders, reqBody]: [object, any] = [{}, null];
 
         try {
             [reqBodyHeaders, reqBody] = utils.serializeRequestBody(req, "requestBody", "json");

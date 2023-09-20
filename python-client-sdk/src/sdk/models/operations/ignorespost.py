@@ -22,7 +22,7 @@ class IgnoresPostApplicationJSON:
 
 @dataclasses.dataclass
 class IgnoresPostRequest:
-    request_body: Optional[IgnoresPostApplicationJSON] = dataclasses.field(default=None, metadata={'request': { 'media_type': 'application/json' }})
+    request_body: IgnoresPostApplicationJSON = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     test_param: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'testParam', 'style': 'form', 'explode': True }})
     
 

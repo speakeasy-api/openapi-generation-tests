@@ -10,6 +10,8 @@ export * from "./complexnumbertypes";
 export * from "./deepobject";
 export * from "./deepobjectcamelcase";
 export * from "./deepobjectwithtype";
+export * from "./defaultsandconsts";
+export * from "./defaultsandconstsoutput";
 export * from "./deprecatedfieldinobject";
 export * from "./deprecatedobject";
 export * from "./emptyobjectparam";

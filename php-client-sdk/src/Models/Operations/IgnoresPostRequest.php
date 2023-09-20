@@ -12,14 +12,14 @@ use \OpenAPI\OpenAPI\Utils\SpeakeasyMetadata;
 class IgnoresPostRequest
 {
 	#[SpeakeasyMetadata('request:mediaType=application/json')]
-    public ?IgnoresPostApplicationJSON $requestBody = null;
+    public IgnoresPostApplicationJSON $requestBody;
     
 	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=testParam')]
     public ?string $testParam = null;
     
 	public function __construct()
 	{
-		$this->requestBody = null;
+		$this->requestBody = new \OpenAPI\OpenAPI\Models\Operations\IgnoresPostApplicationJSON();
 		$this->testParam = null;
 	}
 }

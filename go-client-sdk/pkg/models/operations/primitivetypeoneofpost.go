@@ -3,10 +3,9 @@
 package operations
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
 	"net/http"
+	"openapi/pkg/utils"
 )
 
 type PrimitiveTypeOneOfPostRequestBodyType string
@@ -64,39 +63,30 @@ func CreatePrimitiveTypeOneOfPostRequestBodyBoolean(boolean bool) PrimitiveTypeO
 }
 
 func (u *PrimitiveTypeOneOfPostRequestBody) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeStr
 		return nil
 	}
 
 	integer := new(int64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integer); err == nil {
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = integer
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeInteger
 		return nil
 	}
 
 	number := new(float64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&number); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = number
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeNumber
 		return nil
 	}
 
 	boolean := new(bool)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&boolean); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
 		u.Boolean = boolean
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeBoolean
 		return nil
@@ -107,23 +97,22 @@ func (u *PrimitiveTypeOneOfPostRequestBody) UnmarshalJSON(data []byte) error {
 
 func (u PrimitiveTypeOneOfPostRequestBody) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.Integer != nil {
-		return json.Marshal(u.Integer)
+		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
 	if u.Number != nil {
-		return json.Marshal(u.Number)
+		return utils.MarshalJSON(u.Number, "", true)
 	}
 
 	if u.Boolean != nil {
-		return json.Marshal(u.Boolean)
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 type PrimitiveTypeOneOfPostResJSONType string
@@ -181,39 +170,30 @@ func CreatePrimitiveTypeOneOfPostResJSONBoolean(boolean bool) PrimitiveTypeOneOf
 }
 
 func (u *PrimitiveTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	str := new(string)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&str); err == nil {
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeStr
 		return nil
 	}
 
 	integer := new(int64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&integer); err == nil {
+	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = integer
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeInteger
 		return nil
 	}
 
 	number := new(float64)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&number); err == nil {
+	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
 		u.Number = number
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeNumber
 		return nil
 	}
 
 	boolean := new(bool)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&boolean); err == nil {
+	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
 		u.Boolean = boolean
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeBoolean
 		return nil
@@ -224,23 +204,22 @@ func (u *PrimitiveTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
 
 func (u PrimitiveTypeOneOfPostResJSON) MarshalJSON() ([]byte, error) {
 	if u.Str != nil {
-		return json.Marshal(u.Str)
+		return utils.MarshalJSON(u.Str, "", true)
 	}
 
 	if u.Integer != nil {
-		return json.Marshal(u.Integer)
+		return utils.MarshalJSON(u.Integer, "", true)
 	}
 
 	if u.Number != nil {
-		return json.Marshal(u.Number)
+		return utils.MarshalJSON(u.Number, "", true)
 	}
 
 	if u.Boolean != nil {
-		return json.Marshal(u.Boolean)
+		return utils.MarshalJSON(u.Boolean, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }
 
 // PrimitiveTypeOneOfPostRes - OK

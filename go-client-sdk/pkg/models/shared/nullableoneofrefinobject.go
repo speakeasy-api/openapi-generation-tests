@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"openapi/pkg/utils"
 )
 
 type NullableOneOfRefInObjectNullableOneOfTwoType string
@@ -41,21 +40,16 @@ func CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(typedObject2 Typ
 }
 
 func (u *NullableOneOfRefInObjectNullableOneOfTwo) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	typedObject1 := new(TypedObject1)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject1); err == nil {
+	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
 		u.TypedObject1 = typedObject1
 		u.Type = NullableOneOfRefInObjectNullableOneOfTwoTypeTypedObject1
 		return nil
 	}
 
 	typedObject2 := new(TypedObject2)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&typedObject2); err == nil {
+	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
 		u.TypedObject2 = typedObject2
 		u.Type = NullableOneOfRefInObjectNullableOneOfTwoTypeTypedObject2
 		return nil
@@ -66,15 +60,14 @@ func (u *NullableOneOfRefInObjectNullableOneOfTwo) UnmarshalJSON(data []byte) er
 
 func (u NullableOneOfRefInObjectNullableOneOfTwo) MarshalJSON() ([]byte, error) {
 	if u.TypedObject1 != nil {
-		return json.Marshal(u.TypedObject1)
+		return utils.MarshalJSON(u.TypedObject1, "", true)
 	}
 
 	if u.TypedObject2 != nil {
-		return json.Marshal(u.TypedObject2)
+		return utils.MarshalJSON(u.TypedObject2, "", true)
 	}
 
-	return json.Marshal(nil)
-
+	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
 type NullableOneOfRefInObject struct {

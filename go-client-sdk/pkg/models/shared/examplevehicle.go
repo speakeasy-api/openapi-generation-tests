@@ -3,9 +3,8 @@
 package shared
 
 import (
-	"bytes"
-	"encoding/json"
 	"errors"
+	"openapi/pkg/utils"
 )
 
 type ExampleVehicleType string
@@ -41,21 +40,16 @@ func CreateExampleVehicleExampleCar(exampleCar ExampleCar) ExampleVehicle {
 }
 
 func (u *ExampleVehicle) UnmarshalJSON(data []byte) error {
-	var d *json.Decoder
 
 	exampleBoat := new(ExampleBoat)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&exampleBoat); err == nil {
+	if err := utils.UnmarshalJSON(data, &exampleBoat, "", true, true); err == nil {
 		u.ExampleBoat = exampleBoat
 		u.Type = ExampleVehicleTypeExampleBoat
 		return nil
 	}
 
 	exampleCar := new(ExampleCar)
-	d = json.NewDecoder(bytes.NewReader(data))
-	d.DisallowUnknownFields()
-	if err := d.Decode(&exampleCar); err == nil {
+	if err := utils.UnmarshalJSON(data, &exampleCar, "", true, true); err == nil {
 		u.ExampleCar = exampleCar
 		u.Type = ExampleVehicleTypeExampleCar
 		return nil
@@ -66,13 +60,12 @@ func (u *ExampleVehicle) UnmarshalJSON(data []byte) error {
 
 func (u ExampleVehicle) MarshalJSON() ([]byte, error) {
 	if u.ExampleBoat != nil {
-		return json.Marshal(u.ExampleBoat)
+		return utils.MarshalJSON(u.ExampleBoat, "", true)
 	}
 
 	if u.ExampleCar != nil {
-		return json.Marshal(u.ExampleCar)
+		return utils.MarshalJSON(u.ExampleCar, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")
-
 }

@@ -26,8 +26,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='reiciendis'.encode(),
-        file='quidem',
+        content='culpa'.encode(),
+        file='corrupti',
     ),
 )
 
@@ -68,36 +68,34 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        9049.49,
+        8672.9,
     ],
     array_of_string=[
-        'necessitatibus',
+        'totam',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='dolore',
+            description='hic',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-01-03T21:58:53.395Z'),
+    created_at=dateutil.parser.isoparse('2022-04-01T23:17:58.998Z'),
     enum_number=shared.ExampleResourceEnumNumber.ONE,
-    enum_str=shared.ExampleResourceEnumStr.ONE,
-    id='317fe35b-60eb-41ea-8265-55ba3c28744e',
+    enum_str=shared.ExampleResourceEnumStr.THREE,
+    id='2f2fb7b1-94a2-476b-a691-6fe1f08f4294',
     map_of_integer={
-        "temporibus": 351870,
+        "necessitatibus": 215529,
     },
     map_of_string={
-        "adipisci": 'cum',
+        "ea": 'occaecati',
     },
-    name='Morris Weissnat',
-    updated_at=dateutil.parser.isoparse('2021-04-07T21:05:22.480Z'),
-    vehicle=shared.ExampleCar(
-        created_at=dateutil.parser.isoparse('2021-12-15T01:59:29.520Z'),
-        make='nobis',
-        model='sit',
-        name='Louis Wisoky',
-        type=shared.ExampleCarType.CAR,
-        updated_at=dateutil.parser.isoparse('2022-02-05T04:05:02.351Z'),
-        year=7090.72,
+    name='Courtney Goldner',
+    updated_at=dateutil.parser.isoparse('2021-10-18T02:58:04.604Z'),
+    vehicle=shared.ExampleBoat(
+        created_at=dateutil.parser.isoparse('2022-02-10T20:44:13.580Z'),
+        length=5058.66,
+        name='Alex Gottlieb',
+        type=shared.ExampleBoatType.BOAT,
+        updated_at=dateutil.parser.isoparse('2022-12-12T15:19:28.678Z'),
     ),
 )
 
@@ -136,7 +134,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='ab')
+res = s.resource.delete_resource(resource_id='nobis')
 
 if res.status_code == 200:
     # handle response
@@ -171,7 +169,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='iste')
+res = s.resource.get_resource(resource_id='error')
 
 if res.example_resource is not None:
     # handle response
@@ -206,7 +204,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='dolore')
+res = s.resource.update_resource(resource_id='veniam')
 
 if res.status_code == 200:
     # handle response

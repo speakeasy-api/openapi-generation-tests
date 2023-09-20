@@ -24,19 +24,19 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.Resource.CreateFile(ctx, operations.CreateFileRequestBody{
         File: &operations.CreateFileRequestBodyFile{
-            Content: []byte("commodi"),
-            File: "in",
+            Content: []byte("dolore"),
+            File: "aliquam",
         },
     })
     if err != nil {
@@ -78,39 +78,39 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
 
     ctx := context.Background()
     res, err := s.Resource.CreateResource(ctx, shared.ExampleResource{
         ArrayOfNumber: []float64{
-            3605.45,
+            8859.63,
         },
         ArrayOfString: []string{
-            "reiciendis",
+            "temporibus",
         },
         Chocolates: []shared.ExampleResourceChocolates{
             shared.ExampleResourceChocolates{
-                Description: "assumenda",
+                Description: "ullam",
             },
         },
-        CreatedAt: types.MustTimeFromString("2022-01-28T09:17:23.255Z"),
+        CreatedAt: types.MustTimeFromString("2022-04-06T11:42:02.049Z"),
         EnumNumber: shared.ExampleResourceEnumNumberTwo.ToPointer(),
-        EnumStr: shared.ExampleResourceEnumStrOne.ToPointer(),
-        ID: "b375ed4f-6fbe-4e41-b333-17fe35b60eb1",
+        EnumStr: shared.ExampleResourceEnumStrTwo.ToPointer(),
+        ID: "f3a8d8f5-c0b2-4f2f-b7b1-94a276b26916",
         MapOfInteger: map[string]int64{
-            "accusamus": 631126,
+            "sapiente": 895386,
         },
         MapOfString: map[string]string{
-            "tempora": "aspernatur",
+            "illo": "reiciendis",
         },
-        Name: "Melanie Hirthe",
-        UpdatedAt: types.MustTimeFromString("2022-07-11T09:37:00.887Z"),
+        Name: "Naomi Wuckert",
+        UpdatedAt: types.MustTimeFromString("2022-06-26T03:32:06.720Z"),
         Vehicle: shared.ExampleVehicle{},
     })
     if err != nil {
@@ -152,14 +152,14 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "minus"
+    resourceID := "necessitatibus"
 
     ctx := context.Background()
     res, err := s.Resource.DeleteResource(ctx, resourceID)
@@ -202,14 +202,14 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "dolores"
+    resourceID := "ipsum"
 
     ctx := context.Background()
     res, err := s.Resource.GetResource(ctx, resourceID)
@@ -252,14 +252,14 @@ import(
 )
 
 func main() {
-    s := sdk.New(
-        sdk.WithSecurity(shared.Security{
-            APIKeyAuth: sdk.String("Token YOUR_API_KEY"),
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
         }),
-        sdk.WithGlobalPathParam(100),
-        sdk.WithGlobalQueryParam("some example global query param"),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "blanditiis"
+    resourceID := "ea"
 
     ctx := context.Background()
     res, err := s.Resource.UpdateResource(ctx, resourceID)
