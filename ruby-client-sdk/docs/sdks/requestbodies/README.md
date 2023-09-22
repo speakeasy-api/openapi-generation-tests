@@ -97,8 +97,8 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::NullableObject.new(
   request=Shared::NullableObject.new(
-    optional="explicabo",
-    required=376226,
+    optional="delectus",
+    required=914791,
   ),
 )
     
@@ -174,12 +174,12 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::NullableRequiredPropertyPostRequestBody.new(
   request=Operations::NullableRequiredPropertyPostRequestBody.new(
-    nullable_optional_int=12036,
+    nullable_optional_int=16871,
     nullable_required_array=.new[
-      4910.25,
+      6672.85,
     ],
-    nullable_required_enum=Operations::NullableRequiredPropertyPostRequestBodyNullableRequiredEnum::FIRST,
-    nullable_required_int=981640,
+    nullable_required_enum=Operations::NullableRequiredPropertyPostRequestBodyNullableRequiredEnum::SECOND,
+    nullable_required_int=440666,
   ),
 )
     
@@ -217,12 +217,12 @@ s = OpenApiSDK::SDK.new
 req = Operations::NullableRequiredSharedObjectPostRequestBody.new(
   request=Operations::NullableRequiredSharedObjectPostRequestBody.new(
     nullable_optional_obj=Shared::NullableObject.new(
-      optional="natus",
-      required=244651,
+      optional="facere",
+      required=685092,
     ),
     nullable_required_obj=Shared::NullableObject.new(
-      optional="voluptatibus",
-      required=374323,
+      optional="praesentium",
+      required=648598,
     ),
   ),
 )
@@ -261,20 +261,20 @@ s = OpenApiSDK::SDK.new
 req = ::.new(
   request=.new[
     Shared::SimpleObject.new(
-      any="asperiores",
-      bigint=45659,
-      bigint_str="ea",
+      any="veniam",
+      bigint=29100,
+      bigint_str="quisquam",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=3100.67,
+      decimal=9195.32,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -319,19 +319,19 @@ s = OpenApiSDK::SDK.new
 req = ::.new(
   request=.new[
     Shared::SimpleObjectCamelCase.new(
-      any_val="officia",
-      bigint_str_val="maxime",
-      bigint_val=490305,
+      any_val="reprehenderit",
+      bigint_str_val="asperiores",
+      bigint_val=519952,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=6400.24,
+      decimal_val=3831.03,
       enum_val=Shared::Enum::TWO,
       float32_val=2.2222222,
       int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -377,20 +377,20 @@ s = OpenApiSDK::SDK.new
 req = ::.new(
   request=.new[
     Shared::SimpleObject.new(
-      any="quae",
-      bigint=312753,
-      bigint_str="porro",
+      any="et",
+      bigint=461007,
+      bigint_str="amet",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=8018.36,
+      decimal=8268.25,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -434,19 +434,19 @@ s = OpenApiSDK::SDK.new
 req = ::.new(
   request=.new[
     Shared::SimpleObjectCamelCase.new(
-      any_val="adipisci",
-      bigint_str_val="fuga",
-      bigint_val=662505,
+      any_val="error",
+      bigint_str_val="officiis",
+      bigint_val=886961,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=3807.29,
+      decimal_val=8801.07,
       enum_val=Shared::Enum::TWO,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -492,19 +492,19 @@ req = ::.new(
   request=.new[
     .new[
       Shared::SimpleObject.new(
-        any="est",
-        bigint=926880,
-        bigint_str="totam",
+        any="aspernatur",
+        bigint=404425,
+        bigint_str="maiores",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=8539.4,
+        decimal=5446.47,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
         int_enum=Shared::SimpleObjectIntEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
@@ -552,19 +552,19 @@ req = ::.new(
   request=.new[
     .new[
       Shared::SimpleObjectCamelCase.new(
-        any_val="quos",
-        bigint_str_val="vel",
-        bigint_val=287051,
+        any_val="blanditiis",
+        bigint_str_val="suscipit",
+        bigint_val=922348,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=8225.6,
+        decimal_val=5421.29,
         enum_val=Shared::Enum::TWO,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -611,7 +611,7 @@ s = OpenApiSDK::SDK.new
 req = ::.new(
   request=.new[
     .new[
-      "commodi",
+      "recusandae",
     ],
   ],
 )
@@ -651,21 +651,21 @@ s = OpenApiSDK::SDK.new
 req = ::.new(
   request=.new[
     .new{
-      "in": Shared::SimpleObject.new(
-        any="corporis",
-        bigint=968904,
-        bigint_str="assumenda",
+      "dolorum": Shared::SimpleObject.new(
+        any="repellendus",
+        bigint=287119,
+        bigint_str="reiciendis",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=3631.61,
+        decimal=429.76,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int_enum=Shared::SimpleObjectIntEnum::FIRST,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -711,18 +711,18 @@ s = OpenApiSDK::SDK.new
 req = ::.new(
   request=.new[
     .new{
-      "aperiam": Shared::SimpleObjectCamelCase.new(
-        any_val="cum",
-        bigint_str_val="consectetur",
-        bigint_val=449083,
+      "accusantium": Shared::SimpleObjectCamelCase.new(
+        any_val="beatae",
+        bigint_str_val="dolores",
+        bigint_val=316488,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=3485.19,
+        decimal_val=3891.35,
         enum_val=Shared::Enum::TWO,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
         int32_val=1,
         int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
         int_opt_null_val=999999,
@@ -770,7 +770,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new[
-    "numquam",
+    "molestias",
   ],
 )
     
@@ -808,23 +808,43 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
-    any="suscipit",
+    any=Shared::SimpleObject.new(
+      any="saepe",
+      bigint=160467,
+      bigint_str="occaecati",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+      decimal=8863.05,
+      enum=Shared::Enum::TWO,
+      float32=2.2222222,
+      int=999999,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=999999,
+      num=1.1,
+      num_opt_null=1.1,
+      str_="example",
+      str_opt="optional example",
+    ),
     arr=.new[
       Shared::SimpleObject.new(
-        any="reiciendis",
-        bigint=697142,
-        bigint_str="saepe",
+        any="adipisci",
+        bigint=907876,
+        bigint_str="occaecati",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=8970.71,
+        decimal=1602.3,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int_enum=Shared::SimpleObjectIntEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -833,23 +853,23 @@ req = Shared::DeepObject.new(
       ),
     ],
     bool=false,
-    int=992012,
+    int=335631,
     map=.new{
-      "adipisci": Shared::SimpleObject.new(
-        any="non",
-        bigint=228263,
-        bigint_str="beatae",
+      "reprehenderit": Shared::SimpleObject.new(
+        any="error",
+        bigint=76486,
+        bigint_str="corporis",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=4895.09,
+        decimal=6964.63,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
+        int_enum=Shared::SimpleObjectIntEnum::FIRST,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -857,30 +877,30 @@ req = Shared::DeepObject.new(
         str_opt="optional example",
       ),
     },
-    num=2334.2,
+    num=8784.93,
     obj=Shared::SimpleObject.new(
-      any="corporis",
-      bigint=689768,
-      bigint_str="laboriosam",
+      any="doloremque",
+      bigint=434156,
+      bigint_str="ipsa",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=583.56,
+      decimal=5176.12,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
     ),
-    str_="vitae",
-    type="accusamus",
+    str_="eveniet",
+    type="qui",
   ),
 )
     
@@ -917,22 +937,22 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::DeepObjectCamelCase.new(
   request=Shared::DeepObjectCamelCase.new(
-    any_val="tempora",
+    any_val="iure",
     arr_val=.new[
       Shared::SimpleObjectCamelCase.new(
-        any_val="aspernatur",
-        bigint_str_val="voluptas",
-        bigint_val=374244,
+        any_val="necessitatibus",
+        bigint_str_val="ratione",
+        bigint_val=672582,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=3742.96,
+        decimal_val=7152.08,
         enum_val=Shared::Enum::TWO,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -942,22 +962,22 @@ req = Shared::DeepObjectCamelCase.new(
       ),
     ],
     bool_val=false,
-    int_val=680116,
+    int_val=304446,
     map_val=.new{
-      "adipisci": Shared::SimpleObjectCamelCase.new(
-        any_val="minus",
-        bigint_str_val="dolores",
-        bigint_val=503934,
+      "ad": Shared::SimpleObjectCamelCase.new(
+        any_val="repellat",
+        bigint_str_val="alias",
+        bigint_val=362189,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=4492.92,
+        decimal_val=5973.03,
         enum_val=Shared::Enum::TWO,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -966,21 +986,21 @@ req = Shared::DeepObjectCamelCase.new(
         str_val="example",
       ),
     },
-    num_val=8859.63,
+    num_val=3782.45,
     obj_val=Shared::SimpleObjectCamelCase.new(
-      any_val="temporibus",
-      bigint_str_val="ullam",
-      bigint_val=237742,
+      any_val="alias",
+      bigint_str_val="maiores",
+      bigint_val=970222,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=7383.91,
+      decimal_val=1746.58,
       enum_val=Shared::Enum::TWO,
       float32_val=2.2222222,
       int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -988,8 +1008,8 @@ req = Shared::DeepObjectCamelCase.new(
       str_opt_val="optional example",
       str_val="example",
     ),
-    str_val="hic",
-    type="nesciunt",
+    str_val="dolore",
+    type="dolorum",
   ),
 )
     
@@ -1026,21 +1046,21 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "culpa": Shared::SimpleObject.new(
-      any="corrupti",
-      bigint=867290,
-      bigint_str="totam",
+    "nesciunt": Shared::SimpleObject.new(
+      any="quae",
+      bigint=925703,
+      bigint_str="omnis",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=9402.1,
+      decimal=3092.51,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -1084,20 +1104,20 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "sit": Shared::SimpleObjectCamelCase.new(
-      any_val="rerum",
-      bigint_str_val="sed",
-      bigint_val=967966,
+    "ut": Shared::SimpleObjectCamelCase.new(
+      any_val="culpa",
+      bigint_str_val="adipisci",
+      bigint_val=890653,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=1318.52,
+      decimal_val=5145.13,
       enum_val=Shared::Enum::TWO,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1142,21 +1162,21 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "voluptate": Shared::SimpleObject.new(
-      any="expedita",
-      bigint=70869,
-      bigint_str="iste",
+    "recusandae": Shared::SimpleObject.new(
+      any="esse",
+      bigint=592081,
+      bigint_str="quis",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=2927.94,
+      decimal=4317.85,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -1199,20 +1219,20 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "in": Shared::SimpleObjectCamelCase.new(
-      any_val="commodi",
-      bigint_str_val="quidem",
-      bigint_val=131289,
+    "aspernatur": Shared::SimpleObjectCamelCase.new(
+      any_val="ullam",
+      bigint_str_val="quasi",
+      bigint_val=657020,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=3783.26,
+      decimal_val=3433.92,
       enum_val=Shared::Enum::TWO,
       float32_val=2.2222222,
       int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1256,22 +1276,22 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "suscipit": .new[
+    "possimus": .new[
       Shared::SimpleObject.new(
-        any="sapiente",
-        bigint=895386,
-        bigint_str="illo",
+        any="animi",
+        bigint=402767,
+        bigint_str="aliquid",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=9677.95,
+        decimal=375.65,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -1316,21 +1336,21 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "maiores": .new[
+    "ullam": .new[
       Shared::SimpleObjectCamelCase.new(
-        any_val="incidunt",
-        bigint_str_val="sed",
-        bigint_val=592231,
+        any_val="in",
+        bigint_str_val="nam",
+        bigint_val=937636,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=2587.02,
+        decimal_val=6375.83,
         enum_val=Shared::Enum::TWO,
         float32_val=2.2222222,
         int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1376,21 +1396,21 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "ea": .new{
-      "occaecati": Shared::SimpleObject.new(
-        any="quos",
-        bigint=975752,
-        bigint_str="tempora",
+    "modi": .new{
+      "voluptatibus": Shared::SimpleObject.new(
+        any="molestias",
+        bigint=889794,
+        bigint_str="sapiente",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=2730.09,
+        decimal=7645.62,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
         int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
@@ -1436,16 +1456,16 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "ex": .new{
-      "sit": Shared::SimpleObjectCamelCase.new(
-        any_val="non",
-        bigint_str_val="officiis",
-        bigint_val=505866,
+    "tempora": .new{
+      "quis": Shared::SimpleObjectCamelCase.new(
+        any_val="inventore",
+        bigint_str_val="fugit",
+        bigint_val=765271,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=7086.09,
+        decimal_val=626.36,
         enum_val=Shared::Enum::TWO,
         float32_val=2.2222222,
         int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
@@ -1496,8 +1516,8 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "ipsam": .new{
-      "debitis": "rem",
+    "aspernatur": .new{
+      "eum": "eius",
     },
   },
 )
@@ -1536,7 +1556,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "sit": "nobis",
+    "rem": "at",
   },
 )
     
@@ -1574,20 +1594,20 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="error",
-    bigint=333507,
-    bigint_str="minima",
+    any="impedit",
+    bigint=179410,
+    bigint_str="sapiente",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=9241.59,
+    decimal=4332.79,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
+    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+    int_enum=Shared::SimpleObjectIntEnum::FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -1629,20 +1649,20 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="magni",
-    bigint=48690,
-    bigint_str="saepe",
+    any="beatae",
+    bigint=583404,
+    bigint_str="provident",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=2536.42,
+    decimal=9364.69,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::SimpleObjectIntEnum::THIRD,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -1684,17 +1704,17 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObjectCamelCase.new(
   request=Shared::SimpleObjectCamelCase.new(
-    any_val="officiis",
-    bigint_str_val="beatae",
-    bigint_val=512452,
+    any_val="illum",
+    bigint_str_val="eaque",
+    bigint_val=935833,
     bool_opt_val=true,
     bool_val=true,
     date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
     date_val=Date.parse("2020-01-01"),
-    decimal_val=3484.76,
+    decimal_val=5962.11,
     enum_val=Shared::Enum::TWO,
     float32_val=2.2222222,
-    int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
+    int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
     int32_val=1,
     int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
     int_opt_null_val=999999,
@@ -1740,41 +1760,41 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostComplexNumberTypesRequest.new(
   path_params=Operations::RequestBodyPostComplexNumberTypesRequest.new(
     complex_number_types=Shared::ComplexNumberTypes.new(
-      bigint=386827,
-      bigint_str="dolorum",
-      decimal=5300.89,
-      decimal_str="error",
+      bigint=399802,
+      bigint_str="porro",
+      decimal=3803.35,
+      decimal_str="dolorem",
     ),
-    path_big_int=944708,
-    path_big_int_str="expedita",
-    path_decimal=8928.63,
-    path_decimal_str="neque",
-    query_big_int=677115,
-    query_big_int_str="nostrum",
-    query_decimal=6390.28,
-    query_decimal_str="dolorum",
+    path_big_int=147808,
+    path_big_int_str="cumque",
+    path_decimal=6849.35,
+    path_decimal_str="ratione",
+    query_big_int=656762,
+    query_big_int_str="necessitatibus",
+    query_decimal=8620.63,
+    query_decimal_str="consequatur",
   ),
   query_params=Operations::RequestBodyPostComplexNumberTypesRequest.new(
     complex_number_types=Shared::ComplexNumberTypes.new(
-      bigint=548361,
-      bigint_str="accusamus",
-      decimal=2726.83,
-      decimal_str="atque",
+      bigint=97258,
+      bigint_str="et",
+      decimal=4977.77,
+      decimal_str="natus",
     ),
-    path_big_int=148268,
-    path_big_int_str="ut",
-    path_decimal=8563.03,
-    path_decimal_str="voluptatem",
-    query_big_int=635057,
-    query_big_int_str="expedita",
-    query_decimal=2996.43,
-    query_decimal_str="consequatur",
+    path_big_int=581082,
+    path_big_int_str="suscipit",
+    path_decimal=2415.57,
+    path_decimal_str="quasi",
+    query_big_int=169025,
+    query_big_int_str="doloribus",
+    query_decimal=8595.81,
+    query_decimal_str="necessitatibus",
   ),
   complex_number_types=Shared::ComplexNumberTypes.new(
-    bigint=460220,
-    bigint_str="ipsam",
-    decimal=245.27,
-    decimal_str="voluptatum",
+    bigint=58534,
+    bigint_str="tempora",
+    decimal=4706.21,
+    decimal_str="molestiae",
   ),
 )
     
@@ -1811,34 +1831,34 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::DefaultsAndConsts.new(
   request=Shared::DefaultsAndConsts.new(
-    const_big_int=558065,
-    const_big_int_str="repudiandae",
+    const_big_int=115834,
+    const_big_int_str="iusto",
     const_bool=false,
-    const_date=Date.parse("2022-11-29"),
-    const_date_time=DateTime.iso8601('2022-03-10T15:53:25.215Z'),
-    const_decimal=1536.27,
-    const_decimal_str="sit",
-    const_enum_int=Shared::DefaultsAndConstsConstEnumInt::TWO,
-    const_enum_str=Shared::DefaultsAndConstsConstEnumStr::TWO,
-    const_int=906172,
-    const_num=6222.31,
-    const_str="consequatur",
-    const_str_null="incidunt",
-    default_big_int=968865,
-    default_big_int_str="dolorem",
+    const_date=Date.parse("2022-06-29"),
+    const_date_time=DateTime.iso8601('2020-02-06T20:25:31.567Z'),
+    const_decimal=4237.06,
+    const_decimal_str="architecto",
+    const_enum_int=Shared::DefaultsAndConstsConstEnumInt::THREE,
+    const_enum_str=Shared::DefaultsAndConstsConstEnumStr::ONE,
+    const_int=117315,
+    const_num=4837.06,
+    const_str="tempora",
+    const_str_null="esse",
+    default_big_int=403793,
+    default_big_int_str="consectetur",
     default_bool=false,
-    default_date=Date.parse("2022-10-08"),
-    default_date_time=DateTime.iso8601('2022-06-04T08:15:04.756Z'),
-    default_decimal=2897.76,
-    default_decimal_str="quidem",
-    default_enum_int=Shared::DefaultsAndConstsDefaultEnumInt::TWO,
-    default_enum_str=Shared::DefaultsAndConstsDefaultEnumStr::THREE,
-    default_int=724148,
-    default_num=9488.61,
-    default_str="laboriosam",
-    default_str_nullable="alias",
-    default_str_optional="amet",
-    normal_field="deserunt",
+    default_date=Date.parse("2022-12-10"),
+    default_date_time=DateTime.iso8601('2022-10-02T14:14:43.935Z'),
+    default_decimal=3447.18,
+    default_decimal_str="fugiat",
+    default_enum_int=Shared::DefaultsAndConstsDefaultEnumInt::THREE,
+    default_enum_str=Shared::DefaultsAndConstsDefaultEnumStr::TWO,
+    default_int=639187,
+    default_num=3813.97,
+    default_str="aliquid",
+    default_str_nullable="perferendis",
+    default_str_optional="eum",
+    normal_field="voluptas",
     single_enum_const_bool=false,
     single_enum_const_str=Shared::DefaultsAndConstsSingleEnumConstStr::ONE,
   ),
@@ -1915,42 +1935,22 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
-    any=Shared::SimpleObject.new(
-      any="unde",
-      bigint=972083,
-      bigint_str="provident",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=8338.19,
-      enum=Shared::Enum::TWO,
-      float32=2.2222222,
-      int=999999,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=999999,
-      num=1.1,
-      num_opt_null=1.1,
-      str_="example",
-      str_opt="optional example",
-    ),
+    any="id",
     arr=.new[
       Shared::SimpleObject.new(
-        any="perferendis",
-        bigint=667285,
-        bigint_str="quidem",
+        any="ab",
+        bigint=625358,
+        bigint_str="possimus",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=4406.66,
+        decimal=9139.92,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
         int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
@@ -1960,23 +1960,23 @@ req = Shared::DeepObject.new(
       ),
     ],
     bool=false,
-    int=509807,
+    int=726343,
     map=.new{
-      "mollitia": Shared::SimpleObject.new(
-        any="veniam",
-        bigint=29100,
-        bigint_str="quisquam",
+      "ad": Shared::SimpleObject.new(
+        any="deleniti",
+        bigint=316220,
+        bigint_str="vitae",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=9195.32,
+        decimal=8333.16,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+        int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -1984,30 +1984,30 @@ req = Shared::DeepObject.new(
         str_opt="optional example",
       ),
     },
-    num=4420.36,
+    num=4053.73,
     obj=Shared::SimpleObject.new(
-      any="asperiores",
-      bigint=519952,
-      bigint_str="suscipit",
+      any="ut",
+      bigint=321043,
+      bigint_str="expedita",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=6939.57,
+      decimal=299.5,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
       str_="example",
       str_opt="optional example",
     ),
-    str_="esse",
-    type="amet",
+    str_="aliquid",
+    type="beatae",
   ),
 )
     
@@ -2044,7 +2044,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "assumenda": "ea",
+    "voluptatum": "omnis",
   },
 )
     
@@ -2081,20 +2081,20 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="atque",
-    bigint=623295,
-    bigint_str="officiis",
+    any="veritatis",
+    bigint=703218,
+    bigint_str="est",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=8869.61,
+    decimal=6347.86,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+    int_enum=Shared::SimpleObjectIntEnum::THIRD,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -2136,7 +2136,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new[
-    328303,
+    889288,
   ],
 )
     
@@ -2173,7 +2173,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new[
-    Date.parse("2022-08-06"),
+    Date.parse("2022-04-27"),
   ],
 )
     
@@ -2210,7 +2210,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new[
-    "maiores",
+    "pariatur",
   ],
 )
     
@@ -2246,7 +2246,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=544647,
+  request=891315,
 )
     
 res = s.request_bodies.request_body_post_json_data_types_big_int(req)
@@ -2281,7 +2281,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="at",
+  request="voluptatem",
 )
     
 res = s.request_bodies.request_body_post_json_data_types_big_int_str(req)
@@ -2351,7 +2351,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Date.parse("2021-12-30"),
+  request=Date.parse("2022-06-19"),
 )
     
 res = s.request_bodies.request_body_post_json_data_types_date(req)
@@ -2386,7 +2386,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=DateTime.iso8601('2022-01-29T08:13:54.022Z'),
+  request=DateTime.iso8601('2021-10-15T08:28:39.499Z'),
 )
     
 res = s.request_bodies.request_body_post_json_data_types_date_time(req)
@@ -2421,7 +2421,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=5421.29,
+  request=9583.08,
 )
     
 res = s.request_bodies.request_body_post_json_data_types_decimal(req)
@@ -2456,7 +2456,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="atque",
+  request="rem",
 )
     
 res = s.request_bodies.request_body_post_json_data_types_decimal_str(req)
@@ -2491,7 +2491,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=1209.19,
+  request=7963.2,
 )
     
 res = s.request_bodies.request_body_post_json_data_types_float32(req)
@@ -2526,7 +2526,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=923306,
+  request=365100,
 )
     
 res = s.request_bodies.request_body_post_json_data_types_int32(req)
@@ -2561,7 +2561,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=680697,
+  request=992074,
 )
     
 res = s.request_bodies.request_body_post_json_data_types_integer(req)
@@ -2597,7 +2597,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "repellendus": "labore",
+    "ratione": "ullam",
   },
 )
     
@@ -2634,7 +2634,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "reiciendis": DateTime.iso8601('2022-01-30T06:42:09.189Z'),
+    "perferendis": DateTime.iso8601('2021-06-12T15:01:22.390Z'),
   },
 )
     
@@ -2671,7 +2671,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "dicta": 360.33,
+    "impedit": 8427.77,
   },
 )
     
@@ -2707,7 +2707,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=1064.29,
+  request=7205.28,
 )
     
 res = s.request_bodies.request_body_post_json_data_types_number(req)
@@ -2742,7 +2742,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="dolores",
+  request="ipsam",
 )
     
 res = s.request_bodies.request_body_post_json_data_types_string(req)
@@ -2778,14 +2778,14 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="enim",
-    bigint=389135,
-    bigint_str="velit",
+    any="culpa",
+    bigint=222864,
+    bigint_str="aliquam",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=9521.43,
+    decimal=805.32,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
@@ -2834,8 +2834,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
   request=Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
     bool=false,
-    num=9063.55,
-    str_="consequuntur",
+    num=2745.75,
+    str_="dolor",
   ),
 )
     
@@ -2874,15 +2874,15 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
       bool3=false,
-      num3=5801.07,
-      str3="officiis",
+      num3=86.89,
+      str3="architecto",
     ),
-    param_str="perspiciatis",
+    param_str="sit",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
     bool3=false,
-    num3=4463.94,
-    str3="adipisci",
+    num3=2650.39,
+    str3="fugit",
   ),
 )
     
@@ -2922,15 +2922,15 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
       bool=false,
-      num=9078.76,
-      str_="occaecati",
+      num=661.49,
+      str_="laudantium",
     ),
-    param_str="consequuntur",
+    param_str="quae",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
     bool=false,
-    num=1458.7,
-    str_="id",
+    num=2226.58,
+    str_="fugiat",
   ),
 )
     
@@ -2970,15 +2970,15 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.
   query_params=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
       bool2=false,
-      num2=3356.31,
-      str2="reprehenderit",
+      num2=3694.9,
+      str2="consequuntur",
     ),
-    param_str="error",
+    param_str="ipsa",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
     bool2=false,
-    num2=764.86,
-    str2="corporis",
+    num2=5596.82,
+    str2="eveniet",
   ),
 )
     
@@ -3017,8 +3017,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
     bool3=false,
-    num3=6964.63,
-    str3="eveniet",
+    num3=7734.56,
+    str3="officiis",
   ),
 )
     
@@ -3056,8 +3056,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
     bool=false,
-    num=2473.99,
-    str_="vero",
+    num=4564.1,
+    str_="necessitatibus",
   ),
 )
     
@@ -3095,8 +3095,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
     bool2=false,
-    num2=396.15,
-    str2="iure",
+    num2=1533.69,
+    str2="veniam",
   ),
 )
     
@@ -3133,7 +3133,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new[
-    "ipsa",
+    "nesciunt",
   ],
 )
     
@@ -3170,7 +3170,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "totam": "quae",
+    "expedita": "eum",
   },
 )
     
@@ -3206,7 +3206,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="molestiae".encode(),
+  request="vel".encode(),
 )
     
 res = s.request_bodies.request_body_put_bytes(req)
@@ -3242,10 +3242,10 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::RequestBodyPutBytesWithParamsRequest.new(
   query_params=Operations::RequestBodyPutBytesWithParamsRequest.new(
-    request_body="eveniet".encode(),
-    query_string_param="qui",
+    request_body="voluptatum".encode(),
+    query_string_param="magnam",
   ),
-  request_body="cum".encode(),
+  request_body="exercitationem".encode(),
 )
     
 res = s.request_bodies.request_body_put_bytes_with_params(req)
@@ -3283,20 +3283,20 @@ s = OpenApiSDK::SDK.new
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
     any=Shared::SimpleObject.new(
-      any="necessitatibus",
-      bigint=187552,
-      bigint_str="laborum",
+      any="porro",
+      bigint=421844,
+      bigint_str="nobis",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=7152.08,
+      decimal=3883.19,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnum::FIRST,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -3305,20 +3305,20 @@ req = Shared::DeepObject.new(
     ),
     arr=.new[
       Shared::SimpleObject.new(
-        any="aliquam",
-        bigint=320565,
-        bigint_str="repellat",
+        any="voluptatem",
+        bigint=350207,
+        bigint_str="necessitatibus",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=30.99,
+        decimal=956.19,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int_enum=Shared::SimpleObjectIntEnum::THIRD,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
@@ -3327,22 +3327,22 @@ req = Shared::DeepObject.new(
       ),
     ],
     bool=false,
-    int=470649,
+    int=878373,
     map=.new{
-      "mollitia": Shared::SimpleObject.new(
-        any="voluptas",
-        bigint=5189,
-        bigint_str="maiores",
+      "est": Shared::SimpleObject.new(
+        any="harum",
+        bigint=192718,
+        bigint_str="doloribus",
         bool=true,
         bool_opt=true,
         date=Date.parse("2020-01-01"),
         date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        decimal=9702.22,
+        decimal=9180.92,
         enum=Shared::Enum::TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
         int_enum=Shared::SimpleObjectIntEnum::SECOND,
         int_opt_null=999999,
         num=1.1,
@@ -3351,21 +3351,21 @@ req = Shared::DeepObject.new(
         str_opt="optional example",
       ),
     },
-    num=3279.88,
+    num=3645.44,
     obj=Shared::SimpleObject.new(
-      any="dolore",
-      bigint=680349,
-      bigint_str="nesciunt",
+      any="voluptate",
+      bigint=501063,
+      bigint_str="officia",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-      decimal=632.07,
+      decimal=3763.89,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
       int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
@@ -3373,8 +3373,8 @@ req = Shared::DeepObject.new(
       str_="example",
       str_opt="optional example",
     ),
-    str_="quaerat",
-    type="molestiae",
+    str_="quos",
+    type="eius",
   ),
 )
     
@@ -3412,8 +3412,8 @@ s = OpenApiSDK::SDK.new
 req = Operations::RequestBodyPutMultipartFileRequestBody.new(
   request=Operations::RequestBodyPutMultipartFileRequestBody.new(
     file=Operations::RequestBodyPutMultipartFileRequestBodyFile.new(
-      content="ex".encode(),
-      file="ut",
+      content="aspernatur".encode(),
+      file="ducimus",
     ),
   ),
 )
@@ -3451,19 +3451,19 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="culpa",
-    bigint=238413,
-    bigint_str="debitis",
+    any="nesciunt",
+    bigint=681740,
+    bigint_str="laudantium",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=5145.13,
+    decimal=2773.4,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
     int_enum=Shared::SimpleObjectIntEnum::SECOND,
     int_opt_null=999999,
     num=1.1,
@@ -3505,7 +3505,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="recusandae",
+  request="fugiat",
 )
     
 res = s.request_bodies.request_body_put_string(req)
@@ -3541,10 +3541,10 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::RequestBodyPutStringWithParamsRequest.new(
   query_params=Operations::RequestBodyPutStringWithParamsRequest.new(
-    request_body="esse",
-    query_string_param="provident",
+    request_body="dicta",
+    query_string_param="nisi",
   ),
-  request_body="quis",
+  request_body="consequuntur",
 )
     
 res = s.request_bodies.request_body_put_string_with_params(req)
@@ -3581,9 +3581,9 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::ReadWriteObjectInput.new(
   request=Shared::ReadWriteObjectInput.new(
-    num1=431785,
-    num2=970494,
-    num3=592780,
+    num1=233078,
+    num2=46806,
+    num3=585432,
   ),
 )
     
@@ -3656,27 +3656,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::Input.new(
-  request=Shared::SimpleObject.new(
-    any="ullam",
-    bigint=96804,
-    bigint_str="animi",
-    bool=true,
-    bool_opt=true,
-    date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=3433.92,
-    enum=Shared::Enum::TWO,
-    float32=2.2222222,
-    int=999999,
-    int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
-    int_opt_null=999999,
-    num=1.1,
-    num_opt_null=1.1,
-    str_="example",
-    str_opt="optional example",
-  ),
+  request=Shared::ReadOnlyObjectInput.new(),
 )
     
 res = s.request_bodies.request_body_read_only_union(req)
@@ -3713,9 +3693,9 @@ s = OpenApiSDK::SDK.new
    
 req = ::Input.new(
   request=Shared::ReadWriteObjectInput.new(
-    num1=659177,
-    num2=402767,
-    num3=397257,
+    num1=3860,
+    num2=608989,
+    num3=178580,
   ),
 )
     
@@ -3754,8 +3734,8 @@ s = OpenApiSDK::SDK.new
 req = Shared::WriteOnlyObject.new(
   request=Shared::WriteOnlyObject.new(
     bool=false,
-    num=375.65,
-    string="repellat",
+    num=5790.11,
+    string="iste",
   ),
 )
     
@@ -3794,8 +3774,8 @@ s = OpenApiSDK::SDK.new
 req = Shared::WriteOnlyObject.new(
   request=Shared::WriteOnlyObject.new(
     bool=false,
-    num=9846.32,
-    string="ullam",
+    num=1700.99,
+    string="inventore",
   ),
 )
     
@@ -3832,26 +3812,10 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::SimpleObject.new(
-    any="nam",
-    bigint=937636,
-    bigint_str="officia",
-    bool=true,
-    bool_opt=true,
-    date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=6720.41,
-    enum=Shared::Enum::TWO,
-    float32=2.2222222,
-    int=999999,
-    int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=Shared::SimpleObjectIntEnum::FIRST,
-    int_opt_null=999999,
-    num=1.1,
-    num_opt_null=1.1,
-    str_="example",
-    str_opt="optional example",
+  request=Shared::WriteOnlyObject.new(
+    bool=false,
+    num=8818.97,
+    string="voluptatibus",
   ),
 )
     

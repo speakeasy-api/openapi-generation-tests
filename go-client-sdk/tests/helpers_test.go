@@ -19,7 +19,6 @@ import (
 	"openapi/pkg/types"
 
 	"github.com/AlekSi/pointer"
-	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 )
 
@@ -71,7 +70,7 @@ func createSimpleObjectCamelCase() shared.SimpleObjectCamelCase {
 
 func createDeepObject() shared.DeepObject {
 	return shared.DeepObject{
-		Any: createSimpleObject(),
+		Any: shared.CreateDeepObjectAnySimpleObject(createSimpleObject()),
 		Arr: []shared.SimpleObject{
 			createSimpleObject(), createSimpleObject(),
 		},
@@ -88,7 +87,7 @@ func createDeepObject() shared.DeepObject {
 
 func createDeepObjectCamelCase() shared.DeepObjectCamelCase {
 	return shared.DeepObjectCamelCase{
-		AnyVal: createSimpleObjectCamelCase(),
+		AnyVal: shared.CreateDeepObjectCamelCaseAnyValSimpleObjectCamelCase(createSimpleObjectCamelCase()),
 		ArrVal: []shared.SimpleObjectCamelCase{
 			createSimpleObjectCamelCase(), createSimpleObjectCamelCase(),
 		},
@@ -101,46 +100,6 @@ func createDeepObjectCamelCase() shared.DeepObjectCamelCase {
 		ObjVal: createSimpleObjectCamelCase(),
 		StrVal: "test",
 	}
-}
-
-func compareDeepObject(t *testing.T, expected shared.DeepObject, got shared.DeepObject) {
-	resAny := got.Any.(map[string]interface{})
-	got.Any = nil
-	expected.Any = nil
-
-	assert.Equal(t, expected, got)
-	assert.Equal(t, "any", resAny["any"])
-	assert.Equal(t, true, resAny["bool"])
-	assert.Equal(t, true, resAny["boolOpt"])
-	assert.Equal(t, "2020-01-01", resAny["date"])
-	assert.Equal(t, "2020-01-01T00:00:00.000000001Z", resAny["dateTime"])
-	assert.Equal(t, "one", resAny["enum"])
-	assert.Equal(t, 1.1, resAny["float32"])
-	assert.Equal(t, float64(1), resAny["int"])
-	assert.Equal(t, float64(1), resAny["int32"])
-	assert.Equal(t, 1.1, resAny["num"])
-	assert.Equal(t, "test", resAny["str"])
-	assert.Equal(t, "testOptional", resAny["strOpt"])
-}
-
-func compareDeepObjectCamelCase(t *testing.T, expected shared.DeepObjectCamelCase, got shared.DeepObjectCamelCase) {
-	resAny := got.AnyVal.(map[string]interface{})
-	got.AnyVal = nil
-	expected.AnyVal = nil
-
-	assert.Equal(t, expected, got)
-	assert.Equal(t, "any", resAny["any_val"])
-	assert.Equal(t, true, resAny["bool_val"])
-	assert.Equal(t, true, resAny["bool_opt_val"])
-	assert.Equal(t, "2020-01-01", resAny["date_val"])
-	assert.Equal(t, "2020-01-01T00:00:00.000000001Z", resAny["date_time_val"])
-	assert.Equal(t, "one", resAny["enum_val"])
-	assert.Equal(t, 1.1, resAny["float32_val"])
-	assert.Equal(t, float64(1), resAny["int_val"])
-	assert.Equal(t, float64(1), resAny["int32_val"])
-	assert.Equal(t, 1.1, resAny["num_val"])
-	assert.Equal(t, "test", resAny["str_val"])
-	assert.Equal(t, "testOptional", resAny["str_opt_val"])
 }
 
 func sortSerializedMaps(input, regex string, delim string) string {

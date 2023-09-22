@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('numquam');
+    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('explicabo');
 
     if ($response->res !== null) {
         // handle response

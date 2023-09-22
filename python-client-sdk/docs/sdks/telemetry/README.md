@@ -26,7 +26,7 @@ s = sdk.SDK(
 )
 
 
-res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='beatae')
+res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='dolorum')
 
 if res.res is not None:
     # handle response

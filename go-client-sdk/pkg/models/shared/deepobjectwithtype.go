@@ -2,8 +2,76 @@
 
 package shared
 
+import (
+	"errors"
+	"openapi/pkg/utils"
+)
+
+type DeepObjectWithTypeAnyType string
+
+const (
+	DeepObjectWithTypeAnyTypeSimpleObject DeepObjectWithTypeAnyType = "simpleObject"
+	DeepObjectWithTypeAnyTypeStr          DeepObjectWithTypeAnyType = "str"
+)
+
+type DeepObjectWithTypeAny struct {
+	SimpleObject *SimpleObject
+	Str          *string
+
+	Type DeepObjectWithTypeAnyType
+}
+
+func CreateDeepObjectWithTypeAnySimpleObject(simpleObject SimpleObject) DeepObjectWithTypeAny {
+	typ := DeepObjectWithTypeAnyTypeSimpleObject
+
+	return DeepObjectWithTypeAny{
+		SimpleObject: &simpleObject,
+		Type:         typ,
+	}
+}
+
+func CreateDeepObjectWithTypeAnyStr(str string) DeepObjectWithTypeAny {
+	typ := DeepObjectWithTypeAnyTypeStr
+
+	return DeepObjectWithTypeAny{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *DeepObjectWithTypeAny) UnmarshalJSON(data []byte) error {
+
+	simpleObject := new(SimpleObject)
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
+		u.SimpleObject = simpleObject
+		u.Type = DeepObjectWithTypeAnyTypeSimpleObject
+		return nil
+	}
+
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = DeepObjectWithTypeAnyTypeStr
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u DeepObjectWithTypeAny) MarshalJSON() ([]byte, error) {
+	if u.SimpleObject != nil {
+		return utils.MarshalJSON(u.SimpleObject, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type DeepObjectWithType struct {
-	Any  interface{}             `json:"any"`
+	Any  DeepObjectWithTypeAny   `json:"any"`
 	Arr  []SimpleObject          `json:"arr"`
 	Bool bool                    `json:"bool"`
 	Int  int64                   `json:"int"`
@@ -15,9 +83,9 @@ type DeepObjectWithType struct {
 	Type *string      `json:"type,omitempty"`
 }
 
-func (o *DeepObjectWithType) GetAny() interface{} {
+func (o *DeepObjectWithType) GetAny() DeepObjectWithTypeAny {
 	if o == nil {
-		return nil
+		return DeepObjectWithTypeAny{}
 	}
 	return o.Any
 }

@@ -66,8 +66,7 @@ func TestRequestBodyPostApplicationJSONDeep(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Res)
-
-	compareDeepObject(t, obj, *res.Res.JSON)
+	assert.Equal(t, obj, *res.Res.JSON)
 }
 
 func TestRequestBodyPostApplicationJSONDeepCamelCase(t *testing.T) {
@@ -82,8 +81,7 @@ func TestRequestBodyPostApplicationJSONDeepCamelCase(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Res)
-
-	compareDeepObjectCamelCase(t, obj, *res.Res.JSON)
+	assert.Equal(t, obj, *res.Res.JSON)
 }
 
 func TestRequestBodyPostApplicationJSONMultipleJSONFiltered(t *testing.T) {

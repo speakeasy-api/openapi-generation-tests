@@ -59,12 +59,12 @@ func (u *WeaklyTypedOneOfReadWriteObjectInput) UnmarshalJSON(data []byte) error 
 }
 
 func (u WeaklyTypedOneOfReadWriteObjectInput) MarshalJSON() ([]byte, error) {
-	if u.ReadWriteObjectInput != nil {
-		return utils.MarshalJSON(u.ReadWriteObjectInput, "", true)
-	}
-
 	if u.SimpleObject != nil {
 		return utils.MarshalJSON(u.SimpleObject, "", true)
+	}
+
+	if u.ReadWriteObjectInput != nil {
+		return utils.MarshalJSON(u.ReadWriteObjectInput, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")

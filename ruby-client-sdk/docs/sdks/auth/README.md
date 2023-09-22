@@ -88,8 +88,8 @@ req = Operations::BasicAuthRequest.new(
     username="YOUR_USERNAME",
   ),
   path_params=Operations::BasicAuthRequest.new(
-    passwd="id",
-    user="labore",
+    passwd="nobis",
+    user="quos",
   ),
 )
     

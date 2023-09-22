@@ -24,7 +24,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const globalPathParam: number = 212390;
+const globalPathParam: number = 903720;
 
 sdk.globals.globalPathParameterGet(globalPathParam).then((res: GlobalPathParameterGetResponse) => {
   if (res.statusCode == 200) {
@@ -61,7 +61,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const globalQueryParam: string = "dolorem";
+const globalQueryParam: string = "ipsum";
 
 sdk.globals.globalsQueryParameterGet(globalQueryParam).then((res: GlobalsQueryParameterGetResponse) => {
   if (res.statusCode == 200) {

@@ -2,8 +2,76 @@
 
 package shared
 
+import (
+	"errors"
+	"openapi/pkg/utils"
+)
+
+type DeepObjectAnyType string
+
+const (
+	DeepObjectAnyTypeSimpleObject DeepObjectAnyType = "simpleObject"
+	DeepObjectAnyTypeStr          DeepObjectAnyType = "str"
+)
+
+type DeepObjectAny struct {
+	SimpleObject *SimpleObject
+	Str          *string
+
+	Type DeepObjectAnyType
+}
+
+func CreateDeepObjectAnySimpleObject(simpleObject SimpleObject) DeepObjectAny {
+	typ := DeepObjectAnyTypeSimpleObject
+
+	return DeepObjectAny{
+		SimpleObject: &simpleObject,
+		Type:         typ,
+	}
+}
+
+func CreateDeepObjectAnyStr(str string) DeepObjectAny {
+	typ := DeepObjectAnyTypeStr
+
+	return DeepObjectAny{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *DeepObjectAny) UnmarshalJSON(data []byte) error {
+
+	simpleObject := new(SimpleObject)
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
+		u.SimpleObject = simpleObject
+		u.Type = DeepObjectAnyTypeSimpleObject
+		return nil
+	}
+
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = DeepObjectAnyTypeStr
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u DeepObjectAny) MarshalJSON() ([]byte, error) {
+	if u.SimpleObject != nil {
+		return utils.MarshalJSON(u.SimpleObject, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type DeepObject struct {
-	Any  interface{}             `json:"any" form:"name=any,json" multipartForm:"name=any,json"`
+	Any  DeepObjectAny           `json:"any" form:"name=any" multipartForm:"name=any"`
 	Arr  []SimpleObject          `json:"arr" form:"name=arr,json" multipartForm:"name=arr,json"`
 	Bool bool                    `json:"bool" form:"name=bool" multipartForm:"name=bool"`
 	Int  int64                   `json:"int" form:"name=int" multipartForm:"name=int"`
@@ -15,9 +83,9 @@ type DeepObject struct {
 	Type *string      `json:"type,omitempty" form:"name=type" multipartForm:"name=type"`
 }
 
-func (o *DeepObject) GetAny() interface{} {
+func (o *DeepObject) GetAny() DeepObjectAny {
 	if o == nil {
-		return nil
+		return DeepObjectAny{}
 	}
 	return o.Any
 }

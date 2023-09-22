@@ -24,7 +24,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="distinctio",
+  request="veritatis",
 )
     
 res = s.sdk.put_anything_ignored_generation(req)

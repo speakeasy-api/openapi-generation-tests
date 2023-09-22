@@ -29,7 +29,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'sequi'
+'id'
 
     $response = $sdk->sdk->putAnythingIgnoredGeneration($request);
 

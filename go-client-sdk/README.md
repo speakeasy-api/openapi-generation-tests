@@ -10,8 +10,6 @@ go get github.com/speakeasy-api/openapi-generation-tests/go-client-sdk
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```go
 package main
 
@@ -72,27 +70,27 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: openapi.String("Larue_Rau85@yahoo.com"),
-            FormatEmail: openapi.String("Roselyn_Kassulke@yahoo.com"),
-            FormatURI: openapi.String("http://innocent-effect.org"),
-            FormatUUID: openapi.String("0f467cc8-796e-4d15-9a05-dfc2ddf7cc78"),
-            Hostname: openapi.String("soulful-poppy.com"),
-            Ipv4: openapi.String("184.163.148.36"),
-            Ipv6: openapi.String("8fc8:1674:2cb7:3920:5929:396f:ea75:96eb"),
+            Email: openapi.String("Vada_Hills@gmail.com"),
+            FormatEmail: openapi.String("Avery_Mueller9@gmail.com"),
+            FormatURI: openapi.String("https://witty-swim.info"),
+            FormatUUID: openapi.String("8f097b00-74f1-4547-9b5e-6e13b99d488e"),
+            Hostname: openapi.String("bronze-trafficker.name"),
+            Ipv4: openapi.String("21.237.71.81"),
+            Ipv6: openapi.String("0ad2:abd4:4269:802d:502a:94bb:4f63:c969"),
             SimpleObject: &shared.SimpleObject{
-                Any: "architecto",
-                Bigint: big.NewInt(60225),
-                BigintStr: big.NewInt(969810),
+                Any: "necessitatibus",
+                Bigint: big.NewInt(572252),
+                BigintStr: big.NewInt(638921),
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("6667.67"),
+                Decimal: types.MustNewDecimalFromString("2230.81"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
                 IntEnum: shared.SimpleObjectIntEnumThird,
                 IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
@@ -100,9 +98,9 @@ func main() {
                 Str: "example",
                 StrOpt: openapi.String("optional example"),
             },
-            Unknown: openapi.String("dolores"),
-            URI: openapi.String("http://growing-cappelletti.net"),
-            UUID: openapi.String("5955907a-ff1a-43a2-ba94-67739251aa52"),
+            Unknown: openapi.String("dolorum"),
+            URI: openapi.String("http://irritating-standardisation.org"),
+            UUID: openapi.String("b14cd66a-e395-4efb-9ba8-8f3a66997074"),
         },
         BigintParameter: big.NewInt(111111),
         BigintParameterOptional: big.NewInt(111111),
@@ -400,6 +398,102 @@ func main() {
 * [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `nil`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+
+
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
+        Cursor: 97243,
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+         for {
+            // handle items
+
+            res = res.Next()
+            if res == nil {
+                break
+            }
+        }
+
+    }
+}
+```
+<!-- End Pagination -->
+
+
+
+<!-- Start Go Types -->
+# Special Types
+
+This SDK defines the following custom types to assist with marshalling and unmarshalling data.
+
+## Date
+
+`types.Date` is a wrapper around time.Time that allows for JSON marshaling a date string formatted as "2006-01-02".
+
+### Usage
+
+```go
+d1 := types.NewDate(time.Now()) // returns *types.Date
+
+d2 := types.DateFromTime(time.Now()) // returns types.Date
+
+d3, err := types.NewDateFromString("2019-01-01") // returns *types.Date, error
+
+d4, err := types.DateFromString("2019-01-01") // returns types.Date, error
+
+d5 := types.MustNewDateFromString("2019-01-01") // returns *types.Date and panics on error
+
+d6 := types.MustDateFromString("2019-01-01") // returns types.Date and panics on error
+```
+<!-- End Go Types -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

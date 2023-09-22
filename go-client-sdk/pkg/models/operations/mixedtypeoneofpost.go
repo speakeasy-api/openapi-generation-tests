@@ -54,6 +54,13 @@ func CreateMixedTypeOneOfPostRequestBodySimpleObject(simpleObject shared.SimpleO
 
 func (u *MixedTypeOneOfPostRequestBody) UnmarshalJSON(data []byte) error {
 
+	simpleObject := new(shared.SimpleObject)
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
+		u.SimpleObject = simpleObject
+		u.Type = MixedTypeOneOfPostRequestBodyTypeSimpleObject
+		return nil
+	}
+
 	str := new(string)
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
@@ -65,13 +72,6 @@ func (u *MixedTypeOneOfPostRequestBody) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = integer
 		u.Type = MixedTypeOneOfPostRequestBodyTypeInteger
-		return nil
-	}
-
-	simpleObject := new(shared.SimpleObject)
-	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
-		u.Type = MixedTypeOneOfPostRequestBodyTypeSimpleObject
 		return nil
 	}
 
@@ -139,6 +139,13 @@ func CreateMixedTypeOneOfPostResJSONSimpleObject(simpleObject shared.SimpleObjec
 
 func (u *MixedTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
 
+	simpleObject := new(shared.SimpleObject)
+	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
+		u.SimpleObject = simpleObject
+		u.Type = MixedTypeOneOfPostResJSONTypeSimpleObject
+		return nil
+	}
+
 	str := new(string)
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
 		u.Str = str
@@ -150,13 +157,6 @@ func (u *MixedTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
 		u.Integer = integer
 		u.Type = MixedTypeOneOfPostResJSONTypeInteger
-		return nil
-	}
-
-	simpleObject := new(shared.SimpleObject)
-	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
-		u.Type = MixedTypeOneOfPostResJSONTypeSimpleObject
 		return nil
 	}
 

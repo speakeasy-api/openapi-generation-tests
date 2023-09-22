@@ -2,8 +2,76 @@
 
 package shared
 
+import (
+	"errors"
+	"openapi/pkg/utils"
+)
+
+type DeepObjectCamelCaseAnyValType string
+
+const (
+	DeepObjectCamelCaseAnyValTypeSimpleObjectCamelCase DeepObjectCamelCaseAnyValType = "simpleObjectCamelCase"
+	DeepObjectCamelCaseAnyValTypeStr                   DeepObjectCamelCaseAnyValType = "str"
+)
+
+type DeepObjectCamelCaseAnyVal struct {
+	SimpleObjectCamelCase *SimpleObjectCamelCase
+	Str                   *string
+
+	Type DeepObjectCamelCaseAnyValType
+}
+
+func CreateDeepObjectCamelCaseAnyValSimpleObjectCamelCase(simpleObjectCamelCase SimpleObjectCamelCase) DeepObjectCamelCaseAnyVal {
+	typ := DeepObjectCamelCaseAnyValTypeSimpleObjectCamelCase
+
+	return DeepObjectCamelCaseAnyVal{
+		SimpleObjectCamelCase: &simpleObjectCamelCase,
+		Type:                  typ,
+	}
+}
+
+func CreateDeepObjectCamelCaseAnyValStr(str string) DeepObjectCamelCaseAnyVal {
+	typ := DeepObjectCamelCaseAnyValTypeStr
+
+	return DeepObjectCamelCaseAnyVal{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func (u *DeepObjectCamelCaseAnyVal) UnmarshalJSON(data []byte) error {
+
+	simpleObjectCamelCase := new(SimpleObjectCamelCase)
+	if err := utils.UnmarshalJSON(data, &simpleObjectCamelCase, "", true, true); err == nil {
+		u.SimpleObjectCamelCase = simpleObjectCamelCase
+		u.Type = DeepObjectCamelCaseAnyValTypeSimpleObjectCamelCase
+		return nil
+	}
+
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = DeepObjectCamelCaseAnyValTypeStr
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u DeepObjectCamelCaseAnyVal) MarshalJSON() ([]byte, error) {
+	if u.SimpleObjectCamelCase != nil {
+		return utils.MarshalJSON(u.SimpleObjectCamelCase, "", true)
+	}
+
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type DeepObjectCamelCase struct {
-	AnyVal  interface{}                      `json:"any_val"`
+	AnyVal  DeepObjectCamelCaseAnyVal        `json:"any_val"`
 	ArrVal  []SimpleObjectCamelCase          `json:"arr_val"`
 	BoolVal bool                             `json:"bool_val"`
 	IntVal  int64                            `json:"int_val"`
@@ -15,9 +83,9 @@ type DeepObjectCamelCase struct {
 	Type   *string               `json:"type,omitempty"`
 }
 
-func (o *DeepObjectCamelCase) GetAnyVal() interface{} {
+func (o *DeepObjectCamelCase) GetAnyVal() DeepObjectCamelCaseAnyVal {
 	if o == nil {
-		return nil
+		return DeepObjectCamelCaseAnyVal{}
 	}
 	return o.AnyVal
 }

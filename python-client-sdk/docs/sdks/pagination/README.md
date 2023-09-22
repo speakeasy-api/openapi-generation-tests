@@ -30,13 +30,19 @@ s = sdk.SDK(
 )
 
 req = operations.PaginationCursorBodyRequestBody(
-    cursor=222443,
+    cursor=83422,
 )
 
 res = s.pagination.pagination_cursor_body(req)
 
 if res.res is not None:
-    # handle response
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 ### Parameters
@@ -69,10 +75,16 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_cursor_params(cursor=186193)
+res = s.pagination.pagination_cursor_params(cursor=749255)
 
 if res.res is not None:
-    # handle response
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 ### Parameters
@@ -105,15 +117,21 @@ s = sdk.SDK(
 )
 
 req = shared.LimitOffsetConfig(
-    limit=218749,
-    offset=944373,
-    page=569574,
+    limit=552193,
+    offset=731694,
+    page=584476,
 )
 
 res = s.pagination.pagination_limit_offset_offset_body(req)
 
 if res.res is not None:
-    # handle response
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 ### Parameters
@@ -146,10 +164,16 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_limit_offset_offset_params(limit=739551, offset=452109)
+res = s.pagination.pagination_limit_offset_offset_params(limit=45614, offset=961937)
 
 if res.res is not None:
-    # handle response
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 ### Parameters
@@ -183,15 +207,21 @@ s = sdk.SDK(
 )
 
 req = shared.LimitOffsetConfig(
-    limit=490459,
-    offset=970237,
-    page=227414,
+    limit=209157,
+    offset=292147,
+    page=286915,
 )
 
 res = s.pagination.pagination_limit_offset_page_body(req)
 
 if res.res is not None:
-    # handle response
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 ### Parameters
@@ -224,10 +254,16 @@ s = sdk.SDK(
 )
 
 
-res = s.pagination.pagination_limit_offset_page_params(page=680545)
+res = s.pagination.pagination_limit_offset_page_params(page=240829)
 
 if res.res is not None:
-    # handle response
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
 ```
 
 ### Parameters

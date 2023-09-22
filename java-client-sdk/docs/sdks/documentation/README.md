@@ -33,7 +33,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetDocumentationPerLanguageResponse res = sdk.documentation.getDocumentationPerLanguage("assumenda");
+            GetDocumentationPerLanguageResponse res = sdk.documentation.getDocumentationPerLanguage("nam");
 
             if (res.statusCode == 200) {
                 // handle response

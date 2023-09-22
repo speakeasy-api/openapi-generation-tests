@@ -39,14 +39,22 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 222443,
+        Cursor: 83422,
     })
     if err != nil {
         log.Fatal(err)
     }
 
     if res.Res != nil {
-        // handle response
+         for {
+            // handle items
+
+            res = res.Next()
+            if res == nil {
+                break
+            }
+        }
+
     }
 }
 ```
@@ -88,7 +96,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    cursor := 186193
+    cursor := 749255
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
@@ -97,7 +105,15 @@ func main() {
     }
 
     if res.Res != nil {
-        // handle response
+         for {
+            // handle items
+
+            res = res.Next()
+            if res == nil {
+                break
+            }
+        }
+
     }
 }
 ```
@@ -141,16 +157,24 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{
-        Limit: openapi.Int64(218749),
-        Offset: openapi.Int64(944373),
-        Page: openapi.Int64(569574),
+        Limit: openapi.Int64(552193),
+        Offset: openapi.Int64(731694),
+        Page: openapi.Int64(584476),
     })
     if err != nil {
         log.Fatal(err)
     }
 
     if res.Res != nil {
-        // handle response
+         for {
+            // handle items
+
+            res = res.Next()
+            if res == nil {
+                break
+            }
+        }
+
     }
 }
 ```
@@ -192,8 +216,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    limit := 739551
-    offset := 452109
+    limit := 45614
+    offset := 961937
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
@@ -202,7 +226,15 @@ func main() {
     }
 
     if res.Res != nil {
-        // handle response
+         for {
+            // handle items
+
+            res = res.Next()
+            if res == nil {
+                break
+            }
+        }
+
     }
 }
 ```
@@ -247,16 +279,24 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{
-        Limit: openapi.Int64(490459),
-        Offset: openapi.Int64(970237),
-        Page: openapi.Int64(227414),
+        Limit: openapi.Int64(209157),
+        Offset: openapi.Int64(292147),
+        Page: openapi.Int64(286915),
     })
     if err != nil {
         log.Fatal(err)
     }
 
     if res.Res != nil {
-        // handle response
+         for {
+            // handle items
+
+            res = res.Next()
+            if res == nil {
+                break
+            }
+        }
+
     }
 }
 ```
@@ -298,7 +338,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    page := 680545
+    page := 240829
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)
@@ -307,7 +347,15 @@ func main() {
     }
 
     if res.Res != nil {
-        // handle response
+         for {
+            // handle items
+
+            res = res.Next()
+            if res == nil {
+                break
+            }
+        }
+
     }
 }
 ```

@@ -26,8 +26,8 @@ const sdk = new SDK({
 
 sdk.resource.createFile({
   file: {
-    content: "culpa".encode(),
-    file: "corrupti",
+    content: "blanditiis".encode(),
+    file: "ex",
   },
 }).then((res: CreateFileResponse) => {
   if (res.statusCode == 200) {
@@ -73,34 +73,36 @@ const sdk = new SDK({
 
 sdk.resource.createResource({
   arrayOfNumber: [
-    8672.9,
+    1536.27,
   ],
   arrayOfString: [
-    "totam",
+    "sit",
   ],
   chocolates: [
     {
-      description: "hic",
+      description: "vel",
     },
   ],
-  createdAt: new Date("2022-04-01T23:17:58.998Z"),
-  enumNumber: ExampleResourceEnumNumber.One,
-  enumStr: ExampleResourceEnumStr.Three,
-  id: "2f2fb7b1-94a2-476b-a691-6fe1f08f4294",
+  createdAt: new Date("2022-02-04T05:56:04.733Z"),
+  enumNumber: ExampleResourceEnumNumber.Two,
+  enumStr: ExampleResourceEnumStr.One,
+  id: "4f3b1194-b8ab-4f60-ba79-f9dfe0ab7da8",
   mapOfInteger: {
-    "necessitatibus": 215529,
+    "mollitia": 333965,
   },
   mapOfString: {
-    "ea": "occaecati",
+    "voluptatem": "quisquam",
   },
-  name: "Courtney Goldner",
-  updatedAt: new Date("2021-10-18T02:58:04.604Z"),
+  name: "Ryan Littel",
+  updatedAt: new Date("2022-03-27T08:02:14.031Z"),
   vehicle: {
-    createdAt: new Date("2022-02-10T20:44:13.580Z"),
-    length: 5058.66,
-    name: "Alex Gottlieb",
-    type: ExampleBoatType.Boat,
-    updatedAt: new Date("2022-12-12T15:19:28.678Z"),
+    createdAt: new Date("2022-09-23T11:31:21.970Z"),
+    make: "esse",
+    model: "amet",
+    name: "Nathaniel Lindgren",
+    type: ExampleCarType.Car,
+    updatedAt: new Date("2020-05-12T06:47:29.798Z"),
+    year: 6188.26,
   },
 }).then((res: CreateResourceResponse) => {
   if (res.statusCode == 200) {
@@ -137,7 +139,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "nobis";
+const resourceId: string = "minima";
 
 sdk.resource.deleteResource(resourceId).then((res: DeleteResourceResponse) => {
   if (res.statusCode == 200) {
@@ -174,7 +176,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "error";
+const resourceId: string = "aspernatur";
 
 sdk.resource.getResource(resourceId).then((res: GetResourceResponse) => {
   if (res.statusCode == 200) {
@@ -211,7 +213,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const resourceId: string = "veniam";
+const resourceId: string = "ex";
 
 sdk.resource.updateResource(resourceId).then((res: UpdateResourceResponse) => {
   if (res.statusCode == 200) {

@@ -63,7 +63,7 @@ func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
 	s := sdk.New()
 
 	obj := shared.DeepObjectWithType{
-		Any: createSimpleObject(),
+		Any: shared.CreateDeepObjectWithTypeAnySimpleObject(createSimpleObject()),
 		Arr: []shared.SimpleObject{
 			createSimpleObject(), createSimpleObject(),
 		},
@@ -72,9 +72,10 @@ func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
 		Map: map[string]shared.SimpleObject{
 			"key": createSimpleObject(),
 		},
-		Num: 1.1,
-		Obj: createSimpleObject(),
-		Str: "test",
+		Num:  1.1,
+		Obj:  createSimpleObject(),
+		Str:  "test",
+		Type: pointer.ToString("deepObjectWithType"),
 	}
 
 	req := shared.CreateStronglyTypedOneOfObjectDeepObjectWithType(obj)
@@ -84,25 +85,7 @@ func TestStronglyTypedOneOfPost_Deep(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, shared.StronglyTypedOneOfObjectTypeDeepObjectWithType, res.Res.JSON.Type)
-
-	resAny := res.Res.JSON.DeepObjectWithType.Any.(map[string]interface{})
-	res.Res.JSON.DeepObjectWithType.Any = nil
-	obj.Any = nil
-	obj.Type = pointer.ToString("deepObjectWithType")
-
 	assert.Equal(t, obj, *res.Res.JSON.DeepObjectWithType)
-	assert.Equal(t, "any", resAny["any"])
-	assert.Equal(t, true, resAny["bool"])
-	assert.Equal(t, true, resAny["boolOpt"])
-	assert.Equal(t, "2020-01-01", resAny["date"])
-	assert.Equal(t, "2020-01-01T00:00:00.000000001Z", resAny["dateTime"])
-	assert.Equal(t, "one", resAny["enum"])
-	assert.Equal(t, 1.1, resAny["float32"])
-	assert.Equal(t, float64(1), resAny["int"])
-	assert.Equal(t, float64(1), resAny["int32"])
-	assert.Equal(t, 1.1, resAny["num"])
-	assert.Equal(t, "test", resAny["str"])
-	assert.Equal(t, "testOptional", resAny["strOpt"])
 }
 
 func TestWeaklyTypedOneOfPost_Basic(t *testing.T) {
@@ -136,7 +119,7 @@ func TestWeaklyTypedOneOfPost_Deep(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, shared.WeaklyTypedOneOfObjectTypeDeepObject, res.Res.JSON.Type)
-	compareDeepObject(t, obj, *res.Res.JSON.DeepObject)
+	assert.Equal(t, obj, *res.Res.JSON.DeepObject)
 }
 
 func TestTypedObjectOneOfPost_Obj1(t *testing.T) {

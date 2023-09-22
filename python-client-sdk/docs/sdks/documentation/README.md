@@ -27,7 +27,7 @@ s = sdk.SDK(
 )
 
 
-res = s.documentation.get_documentation_per_language(language='provident')
+res = s.documentation.get_documentation_per_language(language='dignissimos')
 
 if res.status_code == 200:
     # handle response

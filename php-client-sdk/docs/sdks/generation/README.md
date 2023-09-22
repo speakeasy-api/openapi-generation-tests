@@ -107,8 +107,8 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeprecatedFieldInObject();
-    $request->deprecatedField = 'provident';
-    $request->newField = 'necessitatibus';
+    $request->deprecatedField = 'dolores';
+    $request->newField = 'quis';
 
     $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
 
@@ -189,7 +189,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationNoCommentsGet('sint');
+    $response = $sdk->generation->deprecatedOperationNoCommentsGet('totam');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -235,7 +235,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationWithCommentsGet('officia', 'dolor');
+    $response = $sdk->generation->deprecatedOperationWithCommentsGet('dignissimos', 'eaque');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -420,10 +420,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'https://weepy-pork.info';
-    $requestBody->testProp = 'in';
+    $requestBody->callbackUrl = 'http://disfigured-collapse.com';
+    $requestBody->testProp = 'dolores';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'illum');
+    $response = $sdk->generation->ignoresPost($requestBody, 'minus');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -511,10 +511,10 @@ $sdk = SDK::builder()
 try {
     $obj = new TypedParameterGenerationGetObj();
     $obj->bool = false;
-    $obj->num = 9785.71;
-    $obj->str = 'rerum';
+    $obj->num = 4634.51;
+    $obj->str = 'dolor';
 
-    $response = $sdk->generation->typedParameterGenerationGet(116202, DateTime::createFromFormat('Y-m-d', '2022-03-27'), 8137.98, $obj);
+    $response = $sdk->generation->typedParameterGenerationGet(874573, DateTime::createFromFormat('Y-m-d', '2022-01-21'), 9280.82, $obj);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -572,36 +572,36 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Gracie.Padberg58@yahoo.com';
-    $request->requestBody->formatEmail = 'Shannon_Wintheiser72@gmail.com';
-    $request->requestBody->formatUri = 'https://lost-mailman.org';
-    $request->requestBody->formatUuid = '3a669970-74ba-4446-9b6e-2141959890af';
-    $request->requestBody->hostname = 'private-examiner.info';
-    $request->requestBody->ipv4 = '56.229.36.94';
-    $request->requestBody->ipv6 = '16fe:4c8b:711e:5b7f:d2ed:0289:21cd:dc69';
+    $request->requestBody->email = 'Mckenzie78@yahoo.com';
+    $request->requestBody->formatEmail = 'Jett57@gmail.com';
+    $request->requestBody->formatUri = 'https://enraged-wrench.org';
+    $request->requestBody->formatUuid = '49a8d9cb-f486-4333-a3f9-b77f3a410067';
+    $request->requestBody->hostname = 'frightening-synergy.net';
+    $request->requestBody->ipv4 = '249.96.158.45';
+    $request->requestBody->ipv6 = '80d1:ba77:a89e:bf73:7ae4:203c:e5e6:a95d';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'odit';
-    $request->requestBody->simpleObject->bigint = 407183;
-    $request->requestBody->simpleObject->bigintStr = 'accusantium';
+    $request->requestBody->simpleObject->any = 'totam';
+    $request->requestBody->simpleObject->bigint = 628982;
+    $request->requestBody->simpleObject->bigintStr = 'alias';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->requestBody->simpleObject->decimal = 691.67;
+    $request->requestBody->simpleObject->decimal = 8726.51;
     $request->requestBody->simpleObject->enum = Enum::Two;
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Third;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::First;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'ipsam';
-    $request->requestBody->uri = 'http://impolite-rat.com';
-    $request->requestBody->uuid = 'd5f0d30c-5fbb-4258-b053-202c73d5fe9b';
+    $request->requestBody->unknown = 'vel';
+    $request->requestBody->uri = 'https://uneven-commitment.net';
+    $request->requestBody->uuid = 'f7a73cf3-be45-43f8-b0b3-26b5a73429cd';
     $request->bigintParameter = 111111;
     $request->bigintParameterOptional = 111111;
     $request->bigintStrParameter = '111111';
@@ -621,7 +621,7 @@ try {
     $request->int64Parameter = 111111;
     $request->intParameter = 1;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example 2';
+    $request->strParameter = 'example 3';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';

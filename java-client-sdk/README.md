@@ -6,14 +6,12 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.31.9'
+implementation 'org.openapis.openapi:openapi:1.32.0'
 ```
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```java
 package hello.world;
 
@@ -73,27 +71,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, "111111", false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, "1.1", 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 2") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, "111111", false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, "1.1", 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 3") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Micheal_Sporer@yahoo.com";
-                    formatEmail = "Roselyn_Kassulke@yahoo.com";
-                    formatUri = "http://innocent-effect.org";
-                    formatUuid = "0f467cc8-796e-4d15-9a05-dfc2ddf7cc78";
-                    hostname = "soulful-poppy.com";
-                    ipv4 = "184.163.148.36";
-                    ipv6 = "8fc8:1674:2cb7:3920:5929:396f:ea75:96eb";
-                    simpleObject = new SimpleObject("architecto", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
-                        bigint = 666767L;
-                        bigintStr = "mollitia";
+                    email = "Vada_Hills@gmail.com";
+                    formatEmail = "Avery_Mueller9@gmail.com";
+                    formatUri = "https://witty-swim.info";
+                    formatUuid = "8f097b00-74f1-4547-9b5e-6e13b99d488e";
+                    hostname = "bronze-trafficker.name";
+                    ipv4 = "21.237.71.81";
+                    ipv6 = "0ad2:abd4:4269:802d:502a:94bb:4f63:c969";
+                    simpleObject = new SimpleObject("necessitatibus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        bigint = 223081L;
+                        bigintStr = "debitis";
                         boolOpt = true;
-                        decimal = 6706.38d;
+                        decimal = 9527.49d;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "dolores";
-                    uri = "http://growing-cappelletti.net";
-                    uuid = "5955907a-ff1a-43a2-ba94-67739251aa52";
+                    unknown = "dolorum";
+                    uri = "http://irritating-standardisation.org";
+                    uuid = "b14cd66a-e395-4efb-9ba8-8f3a66997074";
                 }};;
                 bigintParameterOptional = 111111L;
                 bigintStrParameterOptional = "111111";
@@ -382,6 +380,18 @@ public class Application {
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

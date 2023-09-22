@@ -116,7 +116,7 @@ try {
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
-    $response = $sdk->auth->basicAuth($requestSecurity, 'tenetur', 'ipsam');
+    $response = $sdk->auth->basicAuth($requestSecurity, 'labore', 'labore');
 
     if ($response->user !== null) {
         // handle response

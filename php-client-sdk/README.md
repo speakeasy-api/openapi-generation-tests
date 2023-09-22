@@ -12,8 +12,6 @@ composer require "openapi/openapi"
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```php
 <?php
 
@@ -64,36 +62,36 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Larue_Rau85@yahoo.com';
-    $request->requestBody->formatEmail = 'Roselyn_Kassulke@yahoo.com';
-    $request->requestBody->formatUri = 'http://innocent-effect.org';
-    $request->requestBody->formatUuid = '0f467cc8-796e-4d15-9a05-dfc2ddf7cc78';
-    $request->requestBody->hostname = 'soulful-poppy.com';
-    $request->requestBody->ipv4 = '184.163.148.36';
-    $request->requestBody->ipv6 = '8fc8:1674:2cb7:3920:5929:396f:ea75:96eb';
+    $request->requestBody->email = 'Vada_Hills@gmail.com';
+    $request->requestBody->formatEmail = 'Avery_Mueller9@gmail.com';
+    $request->requestBody->formatUri = 'https://witty-swim.info';
+    $request->requestBody->formatUuid = '8f097b00-74f1-4547-9b5e-6e13b99d488e';
+    $request->requestBody->hostname = 'bronze-trafficker.name';
+    $request->requestBody->ipv4 = '21.237.71.81';
+    $request->requestBody->ipv6 = '0ad2:abd4:4269:802d:502a:94bb:4f63:c969';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'architecto';
-    $request->requestBody->simpleObject->bigint = 60225;
-    $request->requestBody->simpleObject->bigintStr = 'reiciendis';
+    $request->requestBody->simpleObject->any = 'necessitatibus';
+    $request->requestBody->simpleObject->bigint = 572252;
+    $request->requestBody->simpleObject->bigintStr = 'officia';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->requestBody->simpleObject->decimal = 6667.67;
+    $request->requestBody->simpleObject->decimal = 2230.81;
     $request->requestBody->simpleObject->enum = Enum::Two;
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
     $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Third;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'dolores';
-    $request->requestBody->uri = 'http://growing-cappelletti.net';
-    $request->requestBody->uuid = '5955907a-ff1a-43a2-ba94-67739251aa52';
+    $request->requestBody->unknown = 'dolorum';
+    $request->requestBody->uri = 'http://irritating-standardisation.org';
+    $request->requestBody->uuid = 'b14cd66a-e395-4efb-9ba8-8f3a66997074';
     $request->bigintParameter = 111111;
     $request->bigintParameterOptional = 111111;
     $request->bigintStrParameter = '111111';
@@ -393,6 +391,18 @@ try {
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

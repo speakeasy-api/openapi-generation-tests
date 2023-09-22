@@ -125,7 +125,7 @@ public class Application {
             BasicAuthResponse res = sdk.auth.basicAuth(new BasicAuthSecurity("YOUR_PASSWORD", "YOUR_USERNAME") {{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
-            }}, "sequi", "tenetur");
+            }}, "id", "labore");
 
             if (res.user != null) {
                 // handle response

@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalPathParameterGet(31838);
+    $response = $sdk->globals->globalPathParameterGet(117531);
 
     if ($response->res !== null) {
         // handle response
@@ -71,7 +71,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalsQueryParameterGet('porro');
+    $response = $sdk->globals->globalsQueryParameterGet('laborum');
 
     if ($response->res !== null) {
         // handle response

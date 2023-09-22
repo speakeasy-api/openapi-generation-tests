@@ -59,12 +59,12 @@ func (u *WeaklyTypedOneOfReadOnlyObject) UnmarshalJSON(data []byte) error {
 }
 
 func (u WeaklyTypedOneOfReadOnlyObject) MarshalJSON() ([]byte, error) {
-	if u.ReadOnlyObject != nil {
-		return utils.MarshalJSON(u.ReadOnlyObject, "", true)
-	}
-
 	if u.SimpleObject != nil {
 		return utils.MarshalJSON(u.SimpleObject, "", true)
+	}
+
+	if u.ReadOnlyObject != nil {
+		return utils.MarshalJSON(u.ReadOnlyObject, "", true)
 	}
 
 	return nil, errors.New("could not marshal union type: all fields are null")

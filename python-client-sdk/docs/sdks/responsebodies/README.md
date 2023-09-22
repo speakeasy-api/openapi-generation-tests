@@ -33,7 +33,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "minima": 924159,
+    "maiores": 544647,
 }
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
@@ -71,7 +71,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "reiciendis": dateutil.parser.parse('2022-06-30').date(),
+    "at": dateutil.parser.parse('2021-12-30').date(),
 }
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
@@ -109,7 +109,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "aperiam": 'saepe',
+    "suscipit": 'repudiandae',
 }
 
 res = s.response_bodies.response_body_additional_properties_post(req)
@@ -176,7 +176,7 @@ s = sdk.SDK(
 )
 
 
-res = s.response_bodies.response_body_empty_with_headers(x_number_header=2536.42, x_string_header='veniam')
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=5421.29, x_string_header='atque')
 
 if res.status_code == 200:
     # handle response

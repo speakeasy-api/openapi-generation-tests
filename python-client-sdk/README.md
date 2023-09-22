@@ -10,8 +10,6 @@ pip install git+https://github.com/speakeasy-api/openapi-generation-tests.git#su
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```python
 import sdk
 from sdk.models import shared
@@ -47,27 +45,27 @@ s = sdk.SDK(
 
 req = operations.UsageExamplePostRequest(
     request_body=operations.UsageExamplePostRequestBody(
-        email='Larue_Rau85@yahoo.com',
-        format_email='Roselyn_Kassulke@yahoo.com',
-        format_uri='http://innocent-effect.org',
-        format_uuid='0f467cc8-796e-4d15-9a05-dfc2ddf7cc78',
-        hostname='soulful-poppy.com',
-        ipv4='184.163.148.36',
-        ipv6='8fc8:1674:2cb7:3920:5929:396f:ea75:96eb',
+        email='Vada_Hills@gmail.com',
+        format_email='Avery_Mueller9@gmail.com',
+        format_uri='https://witty-swim.info',
+        format_uuid='8f097b00-74f1-4547-9b5e-6e13b99d488e',
+        hostname='bronze-trafficker.name',
+        ipv4='21.237.71.81',
+        ipv6='0ad2:abd4:4269:802d:502a:94bb:4f63:c969',
         simple_object=shared.SimpleObject(
-            any='architecto',
-            bigint=60225,
-            bigint_str=969810,
+            any='necessitatibus',
+            bigint=572252,
+            bigint_str=638921,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('6667.67'),
+            decimal=Decimal('2230.81'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
             int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
@@ -75,9 +73,9 @@ req = operations.UsageExamplePostRequest(
             str_='example',
             str_opt='optional example',
         ),
-        unknown='dolores',
-        uri='http://growing-cappelletti.net',
-        uuid='5955907a-ff1a-43a2-ba94-67739251aa52',
+        unknown='dolorum',
+        uri='http://irritating-standardisation.org',
+        uuid='b14cd66a-e395-4efb-9ba8-8f3a66997074',
     ),
     bigint_parameter=111111,
     bigint_parameter_optional=111111,
@@ -375,6 +373,60 @@ if res.usage_example_post_200_application_json_object is not None:
 * [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
 * [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `Next` method that can be called to pull down the next group of results. If the
+return value of `Next` is `None`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+
+
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = operations.PaginationCursorBodyRequestBody(
+    cursor=477646,
+)
+
+res = s.pagination_cursor_body(req)
+
+if res.res is not None:
+    while True:
+        # handle items
+
+        res = res.Next()
+        if res is None:
+            break
+
+```
+<!-- End Pagination -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

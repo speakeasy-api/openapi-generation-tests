@@ -36,13 +36,13 @@ const sdk = new SDK({
 
 sdk.authNew.apiKeyAuthGlobalNew({
   basicAuth: {
-    password: "id",
-    username: "Reid62",
+    password: "suscipit",
+    username: "Liana_Rohan",
   },
   headerAuth: [
     {
-      expectedValue: "temporibus",
-      headerName: "laborum",
+      expectedValue: "aspernatur",
+      headerName: "architecto",
     },
   ],
 }).then((res: ApiKeyAuthGlobalNewResponse) => {
@@ -84,13 +84,13 @@ const sdk = new SDK({
 
 sdk.authNew.authGlobal({
   basicAuth: {
-    password: "quasi",
-    username: "Wanda.Wolf50",
+    password: "magnam",
+    username: "Audrey_Marks",
   },
   headerAuth: [
     {
-      expectedValue: "voluptatibus",
-      headerName: "ipsa",
+      expectedValue: "quos",
+      headerName: "sint",
     },
   ],
 }).then((res: AuthGlobalResponse) => {
@@ -133,13 +133,13 @@ const operationSecurity: BasicAuthNewSecurity = {
 
 sdk.authNew.basicAuthNew({
   basicAuth: {
-    password: "omnis",
-    username: "Ivah3",
+    password: "accusantium",
+    username: "Madaline.Wisozk",
   },
   headerAuth: [
     {
-      expectedValue: "reprehenderit",
-      headerName: "ut",
+      expectedValue: "eum",
+      headerName: "dolor",
     },
   ],
 }, operationSecurity).then((res: BasicAuthNewResponse) => {
@@ -182,13 +182,13 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
 
 sdk.authNew.multipleMixedOptionsAuth({
   basicAuth: {
-    password: "maiores",
-    username: "Blanche48",
+    password: "necessitatibus",
+    username: "Brown43",
   },
   headerAuth: [
     {
-      expectedValue: "dicta",
-      headerName: "harum",
+      expectedValue: "doloribus",
+      headerName: "debitis",
     },
   ],
 }, operationSecurity).then((res: MultipleMixedOptionsAuthResponse) => {
@@ -235,13 +235,13 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
 
 sdk.authNew.multipleMixedSchemeAuth({
   basicAuth: {
-    password: "enim",
-    username: "Shania.Jerde21",
+    password: "eius",
+    username: "Rachel.Lind10",
   },
   headerAuth: [
     {
-      expectedValue: "quidem",
-      headerName: "molestias",
+      expectedValue: "architecto",
+      headerName: "repudiandae",
     },
   ],
 }, operationSecurity).then((res: MultipleMixedSchemeAuthResponse) => {
@@ -290,13 +290,13 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
 
 sdk.authNew.multipleOptionsWithMixedSchemesAuth({
   basicAuth: {
-    password: "excepturi",
-    username: "Samantha_Gleason",
+    password: "ullam",
+    username: "Michael_Koss14",
   },
   headerAuth: [
     {
-      expectedValue: "voluptates",
-      headerName: "quasi",
+      expectedValue: "saepe",
+      headerName: "pariatur",
     },
   ],
 }, operationSecurity).then((res: MultipleOptionsWithMixedSchemesAuthResponse) => {
@@ -345,13 +345,13 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
 
 sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
   basicAuth: {
-    password: "repudiandae",
-    username: "Kira.Boehm31",
+    password: "accusantium",
+    username: "Carroll.Lang",
   },
   headerAuth: [
     {
-      expectedValue: "consequatur",
-      headerName: "est",
+      expectedValue: "sunt",
+      headerName: "quo",
     },
   ],
 }, operationSecurity).then((res: MultipleOptionsWithSimpleSchemesAuthResponse) => {
@@ -394,13 +394,13 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
 
 sdk.authNew.multipleSimpleOptionsAuth({
   basicAuth: {
-    password: "quibusdam",
-    username: "Brendon_OConnell28",
+    password: "illum",
+    username: "Samantha_Schoen",
   },
   headerAuth: [
     {
-      expectedValue: "modi",
-      headerName: "qui",
+      expectedValue: "odit",
+      headerName: "ea",
     },
   ],
 }, operationSecurity).then((res: MultipleSimpleOptionsAuthResponse) => {
@@ -444,13 +444,13 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
 
 sdk.authNew.multipleSimpleSchemeAuth({
   basicAuth: {
-    password: "aliquid",
-    username: "Kyler16",
+    password: "accusantium",
+    username: "Annie.Wunsch45",
   },
   headerAuth: [
     {
-      expectedValue: "assumenda",
-      headerName: "ipsam",
+      expectedValue: "autem",
+      headerName: "nam",
     },
   ],
 }, operationSecurity).then((res: MultipleSimpleSchemeAuthResponse) => {
@@ -493,13 +493,13 @@ const operationSecurity: Oauth2AuthNewSecurity = {
 
 sdk.authNew.oauth2AuthNew({
   basicAuth: {
-    password: "alias",
-    username: "Caden.Pagac",
+    password: "eaque",
+    username: "Sammy.Hickle85",
   },
   headerAuth: [
     {
-      expectedValue: "facilis",
-      headerName: "tempore",
+      expectedValue: "amet",
+      headerName: "aut",
     },
   ],
 }, operationSecurity).then((res: Oauth2AuthNewResponse) => {
@@ -542,13 +542,13 @@ const operationSecurity: OpenIdConnectAuthNewSecurity = {
 
 sdk.authNew.openIdConnectAuthNew({
   basicAuth: {
-    password: "labore",
-    username: "Vilma75",
+    password: "cumque",
+    username: "Floyd_Welch17",
   },
   headerAuth: [
     {
-      expectedValue: "sint",
-      headerName: "aliquid",
+      expectedValue: "quis",
+      headerName: "totam",
     },
   ],
 }, operationSecurity).then((res: OpenIdConnectAuthNewResponse) => {

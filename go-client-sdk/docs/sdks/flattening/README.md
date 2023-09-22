@@ -38,14 +38,14 @@ func main() {
         openapi.WithGlobalQueryParam("some example global query param"),
     )
     simpleObject := shared.SimpleObject{
-        Any: "officia",
-        Bigint: big.NewInt(223081),
-        BigintStr: big.NewInt(891555),
+        Any: "nesciunt",
+        Bigint: big.NewInt(179490),
+        BigintStr: big.NewInt(18521),
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("9527.49"),
+        Decimal: types.MustNewDecimalFromString("1709.86"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
@@ -58,7 +58,7 @@ func main() {
         Str: "example",
         StrOpt: openapi.String("optional example"),
     }
-    str := "in"
+    str := "dolor"
 
     ctx := context.Background()
     res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, simpleObject, str)
@@ -111,22 +111,22 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    paramStr := "illum"
+    paramStr := "vero"
     simpleObject := shared.SimpleObject{
-        Any: "maiores",
-        Bigint: big.NewInt(699479),
-        BigintStr: big.NewInt(116202),
+        Any: "nostrum",
+        Bigint: big.NewInt(944120),
+        BigintStr: big.NewInt(928082),
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("2974.37"),
+        Decimal: types.MustNewDecimalFromString("6082.53"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
         Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-        IntEnum: shared.SimpleObjectIntEnumThird,
+        IntEnum: shared.SimpleObjectIntEnumSecond,
         IntOptNull: openapi.Int64(999999),
         Num: 1.1,
         NumOptNull: openapi.Float64(1.1),
@@ -183,8 +183,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    strPathParameter := "ea"
-    strQueryParameter := "aliquid"
+    strPathParameter := "voluptatem"
+    strQueryParameter := "porro"
 
     ctx := context.Background()
     res, err := s.Flattening.ConflictingParams(ctx, strPathParameter, strQueryParameter)
@@ -236,9 +236,9 @@ func main() {
         openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
-        Str: "laborum",
+        Str: "consequuntur",
     }
-    str := "accusamus"
+    str := "blanditiis"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamConflict(ctx, requestBody, str)
@@ -290,9 +290,9 @@ func main() {
         openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
-        BodyStr: "non",
+        BodyStr: "error",
     }
-    paramStr := "occaecati"
+    paramStr := "eaque"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, requestBody, paramStr)

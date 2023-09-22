@@ -140,8 +140,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{
-        DeprecatedField: openapi.String("enim"),
-        NewField: openapi.String("accusamus"),
+        DeprecatedField: openapi.String("occaecati"),
+        NewField: openapi.String("rerum"),
     })
     if err != nil {
         log.Fatal(err)
@@ -238,7 +238,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "delectus"
+    deprecatedParameter := "adipisci"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
@@ -292,8 +292,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "quidem"
-    newParameter := "provident"
+    deprecatedParameter := "asperiores"
+    newParameter := "earum"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
@@ -538,10 +538,10 @@ func main() {
         openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.IgnoresPostApplicationJSON{
-        CallbackURL: openapi.String("https://pungent-latter.name"),
-        TestProp: openapi.String("sapiente"),
+        CallbackURL: openapi.String("http://peaceful-popularity.name"),
+        TestProp: openapi.String("pariatur"),
     }
-    testParam := "amet"
+    testParam := "provident"
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
@@ -646,13 +646,13 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    bigint := big.NewInt(643990)
-    date := types.MustDateFromString("2022-07-30")
-    decimal := types.MustNewDecimalFromString("6188.09")
+    bigint := big.NewInt(750844)
+    date := types.MustDateFromString("2021-01-26")
+    decimal := types.MustNewDecimalFromString("3119.45")
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
-        Num: 6063.93,
-        Str: "molestiae",
+        Num: 5542.42,
+        Str: "aliquid",
     }
 
     ctx := context.Background()
@@ -718,22 +718,22 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: openapi.String("Janice_Gutkowski28@gmail.com"),
-            FormatEmail: openapi.String("Geraldine.Mosciski87@gmail.com"),
-            FormatURI: openapi.String("http://buzzing-efficiency.com"),
-            FormatUUID: openapi.String("959890af-a563-4e25-96fe-4c8b711e5b7f"),
-            Hostname: openapi.String("tempting-charlatan.org"),
-            Ipv4: openapi.String("222.9.41.130"),
-            Ipv6: openapi.String("921c:ddc6:9260:1fb5:76b0:d5f0:d30c:5fbb"),
+            Email: openapi.String("Cornelius21@gmail.com"),
+            FormatEmail: openapi.String("Kevin.Ritchie@hotmail.com"),
+            FormatURI: openapi.String("https://electric-porter.biz"),
+            FormatUUID: openapi.String("100674eb-f692-480d-9ba7-7a89ebf737ae"),
+            Hostname: openapi.String("fake-cat.com"),
+            Ipv4: openapi.String("58.194.225.81"),
+            Ipv6: openapi.String("e6a9:5d8a:0d44:6ce2:af7a:73cf:3be4:53f8"),
             SimpleObject: &shared.SimpleObject{
-                Any: "dolores",
-                Bigint: big.NewInt(339404),
-                BigintStr: big.NewInt(521037),
+                Any: "nihil",
+                Bigint: big.NewInt(25662),
+                BigintStr: big.NewInt(711584),
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("4895.49"),
+                Decimal: types.MustNewDecimalFromString("2074.7"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
@@ -746,9 +746,9 @@ func main() {
                 Str: "example",
                 StrOpt: openapi.String("optional example"),
             },
-            Unknown: openapi.String("nesciunt"),
-            URI: openapi.String("http://aggravating-clogs.net"),
-            UUID: openapi.String("73d5fe9b-90c2-4890-9b3f-e49a8d9cbf48"),
+            Unknown: openapi.String("libero"),
+            URI: openapi.String("http://prestigious-inquiry.biz"),
+            UUID: openapi.String("429cdb1a-8422-4bb6-b9d2-322715bf0cbb"),
         },
         BigintParameter: big.NewInt(111111),
         BigintParameterOptional: big.NewInt(111111),
@@ -769,7 +769,7 @@ func main() {
         Int64Parameter: 111111,
         IntParameter: 1,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example 2",
+        StrParameter: "example 1",
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)

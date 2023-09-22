@@ -28,7 +28,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->retries->retriesGet('dolor', 580152);
+    $response = $sdk->retries->retriesGet('sed', 967966);
 
     if ($response->retries !== null) {
         // handle response

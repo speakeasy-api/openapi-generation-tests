@@ -35,19 +35,19 @@ $sdk = SDK::builder()
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'cupiditate';
-    $simpleObject->bigint = 552822;
-    $simpleObject->bigintStr = 'perferendis';
+    $simpleObject->any = 'ab';
+    $simpleObject->bigint = 982575;
+    $simpleObject->bigintStr = 'quidem';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $simpleObject->decimal = 1649.4;
+    $simpleObject->decimal = 3732.91;
     $simpleObject->enum = Enum::Two;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $simpleObject->intEnum = SimpleObjectIntEnum::Second;
     $simpleObject->intOptNull = 999999;
     $simpleObject->num = 1.1;
@@ -55,7 +55,7 @@ try {
     $simpleObject->str = 'example';
     $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'alias');
+    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'nam');
 
     if ($response->res !== null) {
         // handle response
@@ -101,19 +101,19 @@ $sdk = SDK::builder()
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'fugit';
-    $simpleObject->bigint = 677817;
-    $simpleObject->bigintStr = 'excepturi';
+    $simpleObject->any = 'eaque';
+    $simpleObject->bigint = 866383;
+    $simpleObject->bigintStr = 'nemo';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $simpleObject->decimal = 2700.08;
+    $simpleObject->decimal = 9755.22;
     $simpleObject->enum = Enum::Two;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $simpleObject->intEnum = SimpleObjectIntEnum::Third;
     $simpleObject->intOptNull = 999999;
     $simpleObject->num = 1.1;
@@ -121,7 +121,7 @@ try {
     $simpleObject->str = 'example';
     $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamNoConflict('labore', $simpleObject);
+    $response = $sdk->flattening->componentBodyAndParamNoConflict('amet', $simpleObject);
 
     if ($response->res !== null) {
         // handle response
@@ -164,7 +164,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->flattening->conflictingParams('delectus', 'eum');
+    $response = $sdk->flattening->conflictingParams('aut', 'cumque');
 
     if ($response->res !== null) {
         // handle response
@@ -207,9 +207,9 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new InlineBodyAndParamConflictRequestBody();
-    $requestBody->str = 'non';
+    $requestBody->str = 'corporis';
 
-    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'eligendi');
+    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'hic');
 
     if ($response->res !== null) {
         // handle response
@@ -252,9 +252,9 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new InlineBodyAndParamNoConflictRequestBody();
-    $requestBody->bodyStr = 'sint';
+    $requestBody->bodyStr = 'libero';
 
-    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'aliquid');
+    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'nobis');
 
     if ($response->res !== null) {
         // handle response

@@ -34,7 +34,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'rem' => 'aut',
+        'culpa' => 'corrupti',
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesComplexNumbersPost($request);
@@ -77,7 +77,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'laudantium' => DateTime::createFromFormat('Y-m-d', '2022-05-08'),
+        'pariatur' => DateTime::createFromFormat('Y-m-d', '2021-02-13'),
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesDatePost($request);
@@ -120,7 +120,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'ab' => 'corrupti',
+        'exercitationem' => 'nobis',
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesPost($request);
@@ -198,7 +198,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(2519.41, 'voluptatem');
+    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(246.19, 'rerum');
 
     if ($response->statusCode === 200) {
         // handle response

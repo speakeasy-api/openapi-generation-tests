@@ -18,8 +18,6 @@ yarn add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```typescript
 import { SDK } from "openapi";
 import { GetGlobalNameOverrideResponse } from "openapi/dist/sdk/models/operations";
@@ -64,27 +62,27 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Larue_Rau85@yahoo.com",
-    formatEmail: "Roselyn_Kassulke@yahoo.com",
-    formatUri: "http://innocent-effect.org",
-    formatUuid: "0f467cc8-796e-4d15-9a05-dfc2ddf7cc78",
-    hostname: "soulful-poppy.com",
-    ipv4: "184.163.148.36",
-    ipv6: "8fc8:1674:2cb7:3920:5929:396f:ea75:96eb",
+    email: "Vada_Hills@gmail.com",
+    formatEmail: "Avery_Mueller9@gmail.com",
+    formatUri: "https://witty-swim.info",
+    formatUuid: "8f097b00-74f1-4547-9b5e-6e13b99d488e",
+    hostname: "bronze-trafficker.name",
+    ipv4: "21.237.71.81",
+    ipv6: "0ad2:abd4:4269:802d:502a:94bb:4f63:c969",
     simpleObject: {
-      any: "architecto",
-      bigint: 60225,
-      bigintStr: "reiciendis",
+      any: "necessitatibus",
+      bigint: 572252,
+      bigintStr: "officia",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 6667.67,
+      decimal: 2230.81,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
       intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
@@ -92,9 +90,9 @@ sdk.generation.usageExamplePost({
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "dolores",
-    uri: "http://growing-cappelletti.net",
-    uuid: "5955907a-ff1a-43a2-ba94-67739251aa52",
+    unknown: "dolorum",
+    uri: "http://irritating-standardisation.org",
+    uuid: "b14cd66a-e395-4efb-9ba8-8f3a66997074",
   },
   bigintParameter: 111111,
   bigintParameterOptional: 111111,
@@ -388,6 +386,57 @@ sdk.generation.usageExamplePost({
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->
+
+
+
+<!-- Start Dev Containers -->
+
+
+
+<!-- End Dev Containers -->
+
+
+
+<!-- Start Pagination -->
+# Pagination
+
+Some of the endpoints in this SDK support pagination. To use pagination, you make your SDK calls as usual, but the
+returned response object will have a `next` method that can be called to pull down the next group of results. If the
+return value of `next` is `null`, then there are no more pages to be fetched.
+
+Here's an example of one such pagination call:
+
+
+
+```typescript
+import { SDK } from "openapi";
+import { PaginationCursorBodyResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.paginationCursorBody({
+  cursor: 477646,
+}).then((res: PaginationCursorBodyResponse) => {
+  if (res.statusCode == 200) {
+    do {
+      // handle items
+
+      res = res.next();
+    } while (res);
+  }
+});
+```
+<!-- End Pagination -->
+
+<!-- Placeholder for Future Speakeasy SDK Sections -->
+
+
 
 ### Maturity
 

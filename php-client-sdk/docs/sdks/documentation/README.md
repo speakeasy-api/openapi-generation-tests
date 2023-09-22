@@ -30,7 +30,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->documentation->getDocumentationPerLanguage('modi');
+    $response = $sdk->documentation->getDocumentationPerLanguage('odit');
 
     if ($response->statusCode === 200) {
         // handle response

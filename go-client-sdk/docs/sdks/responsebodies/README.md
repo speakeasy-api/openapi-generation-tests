@@ -43,9 +43,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx, shared.ObjWithComplexNumbersAdditionlProperties{
         AdditionalProperties: map[string]*big.Int{
-            "occaecati": big.NewInt(552078),
+            "laboriosam": big.NewInt(2703),
         },
-        NormalField: "voluptatibus",
+        NormalField: "amet",
     })
     if err != nil {
         log.Fatal(err)
@@ -97,7 +97,7 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(ctx, shared.ObjWithDateAdditionlProperties{
         AdditionalProperties: map[string]types.Date{
-            "tempora": types.MustDateFromString("2022-07-18"),
+            "deserunt": types.MustDateFromString("2022-05-26"),
         },
         NormalField: "reiciendis",
     })
@@ -150,9 +150,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(ctx, shared.ObjWithStringAdditionlProperties{
         AdditionalProperties: map[string]string{
-            "ex": "sit",
+            "provident": "repellendus",
         },
-        NormalField: "non",
+        NormalField: "delectus",
     })
     if err != nil {
         log.Fatal(err)
@@ -247,8 +247,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    xNumberHeader := 8880.44
-    xStringHeader := "praesentium"
+    xNumberHeader := 9147.91
+    xStringHeader := "perferendis"
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyEmptyWithHeaders(ctx, xNumberHeader, xStringHeader)

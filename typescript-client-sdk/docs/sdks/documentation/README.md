@@ -25,7 +25,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const language: string = "provident";
+const language: string = "dignissimos";
 
 sdk.documentation.getDocumentationPerLanguage(language).then((res: GetDocumentationPerLanguageResponse) => {
   if (res.statusCode == 200) {

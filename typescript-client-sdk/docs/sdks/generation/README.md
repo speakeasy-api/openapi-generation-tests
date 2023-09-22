@@ -109,8 +109,8 @@ const sdk = new SDK({
 });
 
 sdk.generation.deprecatedFieldInSchemaPost({
-  deprecatedField: "enim",
-  newField: "accusamus",
+  deprecatedField: "occaecati",
+  newField: "rerum",
 }).then((res: DeprecatedFieldInSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -186,7 +186,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "delectus";
+const deprecatedParameter: string = "adipisci";
 
 sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter).then((res: DeprecatedOperationNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -230,8 +230,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "quidem";
-const newParameter: string = "provident";
+const deprecatedParameter: string = "asperiores";
+const newParameter: string = "earum";
 
 sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter).then((res: DeprecatedOperationWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -413,10 +413,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: IgnoresPostApplicationJSON = {
-  callbackUrl: "https://pungent-latter.name",
-  testProp: "sapiente",
+  callbackUrl: "http://peaceful-popularity.name",
+  testProp: "pariatur",
 };
-const testParam: string = "amet";
+const testParam: string = "provident";
 
 sdk.generation.ignoresPost(requestBody, testParam).then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
@@ -498,13 +498,13 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const bigint: number = 643990;
-const date: RFCDate = new RFCDate("2022-07-30");
-const decimal: number = 6188.09;
+const bigint: number = 750844;
+const date: RFCDate = new RFCDate("2021-01-26");
+const decimal: number = 3119.45;
 const obj: TypedParameterGenerationGetObj = {
   bool: false,
-  num: 6063.93,
-  str: "molestiae",
+  num: 5542.42,
+  str: "aliquid",
 };
 
 sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj).then((res: TypedParameterGenerationGetResponse) => {
@@ -561,22 +561,22 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Janice_Gutkowski28@gmail.com",
-    formatEmail: "Geraldine.Mosciski87@gmail.com",
-    formatUri: "http://buzzing-efficiency.com",
-    formatUuid: "959890af-a563-4e25-96fe-4c8b711e5b7f",
-    hostname: "tempting-charlatan.org",
-    ipv4: "222.9.41.130",
-    ipv6: "921c:ddc6:9260:1fb5:76b0:d5f0:d30c:5fbb",
+    email: "Cornelius21@gmail.com",
+    formatEmail: "Kevin.Ritchie@hotmail.com",
+    formatUri: "https://electric-porter.biz",
+    formatUuid: "100674eb-f692-480d-9ba7-7a89ebf737ae",
+    hostname: "fake-cat.com",
+    ipv4: "58.194.225.81",
+    ipv6: "e6a9:5d8a:0d44:6ce2:af7a:73cf:3be4:53f8",
     simpleObject: {
-      any: "dolores",
-      bigint: 339404,
-      bigintStr: "totam",
+      any: "nihil",
+      bigint: 25662,
+      bigintStr: "expedita",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4895.49,
+      decimal: 2074.7,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
@@ -589,9 +589,9 @@ sdk.generation.usageExamplePost({
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "nesciunt",
-    uri: "http://aggravating-clogs.net",
-    uuid: "73d5fe9b-90c2-4890-9b3f-e49a8d9cbf48",
+    unknown: "libero",
+    uri: "http://prestigious-inquiry.biz",
+    uuid: "429cdb1a-8422-4bb6-b9d2-322715bf0cbb",
   },
   bigintParameter: 111111,
   bigintParameterOptional: 111111,
@@ -612,7 +612,7 @@ sdk.generation.usageExamplePost({
   int64Parameter: 111111,
   intParameter: 1,
   optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
-  strParameter: "example 2",
+  strParameter: "example 1",
 }, operationSecurity).then((res: UsageExamplePostResponse) => {
   if (res.statusCode == 200) {
     // handle response
