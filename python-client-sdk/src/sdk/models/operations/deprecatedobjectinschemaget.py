@@ -24,9 +24,12 @@ class DeprecatedObjectInSchemaGet200ApplicationJSON:
 @dataclasses.dataclass
 class DeprecatedObjectInSchemaGetResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     deprecated_object_in_schema_get_200_application_json_object: Optional[DeprecatedObjectInSchemaGet200ApplicationJSON] = dataclasses.field(default=None)
     r"""A successful response that contains a deprecatedObject sent in the request body"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     
 

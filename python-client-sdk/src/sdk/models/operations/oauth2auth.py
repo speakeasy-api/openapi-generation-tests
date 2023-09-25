@@ -31,8 +31,11 @@ class Oauth2AuthToken:
 @dataclasses.dataclass
 class Oauth2AuthResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     token: Optional[Oauth2AuthToken] = dataclasses.field(default=None)
     r"""Successful authentication."""
     

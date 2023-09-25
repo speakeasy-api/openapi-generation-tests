@@ -15,11 +15,11 @@ module OpenApiSDK
     class RequestBodyReadWriteOnlyUnionResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :weakly_typed_one_of_read_write_object, T.nilable(Object)

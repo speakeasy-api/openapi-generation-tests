@@ -26,13 +26,13 @@ module OpenApiSDK
     class PutAnythingIgnoredGenerationResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :put_anything_ignored_generation_200_application_json_object, T.nilable(Operations::PutAnythingIgnoredGeneration200ApplicationJSON)
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 

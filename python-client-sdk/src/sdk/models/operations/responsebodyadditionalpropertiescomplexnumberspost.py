@@ -22,8 +22,11 @@ class ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON:
 @dataclasses.dataclass
 class ResponseBodyAdditionalPropertiesComplexNumbersPostResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     response_body_additional_properties_complex_numbers_post_200_application_json_object: Optional[ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""
     

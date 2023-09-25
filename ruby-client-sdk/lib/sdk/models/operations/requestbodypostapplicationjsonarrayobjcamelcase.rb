@@ -13,13 +13,13 @@ module OpenApiSDK
     class RequestBodyPostApplicationJsonArrayObjCamelCaseResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :arr_obj_value_camel_case, T.nilable(Shared::ArrObjValueCamelCase)
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 

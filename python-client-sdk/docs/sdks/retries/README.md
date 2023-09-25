@@ -25,7 +25,7 @@ s = sdk.SDK(
 )
 
 
-res = s.retries.retries_get(request_id='sunt', num_retries=923306)
+res = s.retries.retries_get(request_id='labore', num_retries=968287)
 
 if res.retries is not None:
     # handle response

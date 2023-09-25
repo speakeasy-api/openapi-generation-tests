@@ -325,8 +325,11 @@ func main() {
 * [RequestBodyPostMultipleContentTypesSplitForm](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitform)
 * [RequestBodyPostMultipleContentTypesSplitJSON](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitjson)
 * [RequestBodyPostMultipleContentTypesSplitMultipart](docs/sdks/requestbodies/README.md#requestbodypostmultiplecontenttypessplitmultipart)
+* [RequestBodyPostNotNullableNotRequiredStringBody](docs/sdks/requestbodies/README.md#requestbodypostnotnullablenotrequiredstringbody)
 * [RequestBodyPostNullArray](docs/sdks/requestbodies/README.md#requestbodypostnullarray)
 * [RequestBodyPostNullDictionary](docs/sdks/requestbodies/README.md#requestbodypostnulldictionary)
+* [RequestBodyPostNullableNotRequiredStringBody](docs/sdks/requestbodies/README.md#requestbodypostnullablenotrequiredstringbody)
+* [RequestBodyPostNullableRequiredStringBody](docs/sdks/requestbodies/README.md#requestbodypostnullablerequiredstringbody)
 * [RequestBodyPutBytes](docs/sdks/requestbodies/README.md#requestbodyputbytes)
 * [RequestBodyPutBytesWithParams](docs/sdks/requestbodies/README.md#requestbodyputbyteswithparams)
 * [RequestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
@@ -403,8 +406,6 @@ func main() {
 
 <!-- Start Dev Containers -->
 
-
-
 <!-- End Dev Containers -->
 
 
@@ -442,7 +443,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 97243,
+        Cursor: 991142,
     })
     if err != nil {
         log.Fatal(err)

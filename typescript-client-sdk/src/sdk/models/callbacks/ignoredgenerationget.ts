@@ -7,12 +7,21 @@ import { AxiosResponse } from "axios";
 import { Expose } from "class-transformer";
 
 export class IgnoredGenerationGetSingledIgnoredCallbackOperationResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 }
@@ -24,12 +33,21 @@ export class IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody exte
 }
 
 export class IgnoredGenerationGetNotIgnoredCallbackResponse extends SpeakeasyBase {
+    /**
+     * HTTP response content type for this operation
+     */
     @SpeakeasyMetadata()
     contentType: string;
 
+    /**
+     * HTTP response status code for this operation
+     */
     @SpeakeasyMetadata()
     statusCode: number;
 
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     rawResponse?: AxiosResponse;
 }

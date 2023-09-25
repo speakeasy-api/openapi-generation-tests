@@ -9,6 +9,7 @@ import (
 
 // StatusGetXSpeakeasyErrors501ApplicationJSON - Not Implemented
 type StatusGetXSpeakeasyErrors501ApplicationJSON struct {
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response `json:"-"`
 	Code        *string        `json:"code,omitempty"`
 	Message     *string        `json:"message,omitempty"`

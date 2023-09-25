@@ -27,13 +27,13 @@ module OpenApiSDK
     class DeprecatedObjectInSchemaGetResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains a deprecatedObject sent in the request body
       field :deprecated_object_in_schema_get_200_application_json_object, T.nilable(Operations::DeprecatedObjectInSchemaGet200ApplicationJSON)
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 

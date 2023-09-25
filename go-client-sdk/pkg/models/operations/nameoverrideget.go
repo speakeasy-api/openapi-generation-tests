@@ -74,8 +74,11 @@ func (o *OverriddenResponse) GetJSON() *shared.SimpleObject {
 }
 
 type NameOverrideGetResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains the simpleObject sent in the request body
 	OverriddenResponse *OverriddenResponse

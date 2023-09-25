@@ -67,8 +67,11 @@ Endpoints for testing request bodies.
 * [requestBodyPostMultipleContentTypesSplitForm](#requestbodypostmultiplecontenttypessplitform)
 * [requestBodyPostMultipleContentTypesSplitJson](#requestbodypostmultiplecontenttypessplitjson)
 * [requestBodyPostMultipleContentTypesSplitMultipart](#requestbodypostmultiplecontenttypessplitmultipart)
+* [requestBodyPostNotNullableNotRequiredStringBody](#requestbodypostnotnullablenotrequiredstringbody)
 * [requestBodyPostNullArray](#requestbodypostnullarray)
 * [requestBodyPostNullDictionary](#requestbodypostnulldictionary)
+* [requestBodyPostNullableNotRequiredStringBody](#requestbodypostnullablenotrequiredstringbody)
+* [requestBodyPostNullableRequiredStringBody](#requestbodypostnullablerequiredstringbody)
 * [requestBodyPutBytes](#requestbodyputbytes)
 * [requestBodyPutBytesWithParams](#requestbodyputbyteswithparams)
 * [requestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
@@ -3212,6 +3215,42 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
 **Promise<[operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md)>**
 
 
+## requestBodyPostNotNullableNotRequiredStringBody
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostNotNullableNotRequiredStringBodyResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("sit").then((res: RequestBodyPostNotNullableNotRequiredStringBodyResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnotnullablenotrequiredstringbodyresponse.md)>**
+
+
 ## requestBodyPostNullArray
 
 ### Example Usage
@@ -3229,7 +3268,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostNullArray([
-  "sit",
+  "non",
 ]).then((res: RequestBodyPostNullArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3267,7 +3306,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostNullDictionary({
-  "non": "officiis",
+  "officiis": "praesentium",
 }).then((res: RequestBodyPostNullDictionaryResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3288,6 +3327,78 @@ sdk.requestBodies.requestBodyPostNullDictionary({
 **Promise<[operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md)>**
 
 
+## requestBodyPostNullableNotRequiredStringBody
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostNullableNotRequiredStringBodyResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("facilis").then((res: RequestBodyPostNullableNotRequiredStringBodyResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnullablenotrequiredstringbodyresponse.md)>**
+
+
+## requestBodyPostNullableRequiredStringBody
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { RequestBodyPostNullableRequiredStringBodyResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.requestBodies.requestBodyPostNullableRequiredStringBody("quaerat").then((res: RequestBodyPostNullableRequiredStringBodyResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [string](../../models//.md)                                  | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/requestbodypostnullablerequiredstringbodyresponse.md)>**
+
+
 ## requestBodyPutBytes
 
 ### Example Usage
@@ -3304,7 +3415,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPutBytes("praesentium".encode()).then((res: RequestBodyPutBytesResponse) => {
+sdk.requestBodies.requestBodyPutBytes("incidunt".encode()).then((res: RequestBodyPutBytesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3339,8 +3450,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestBody: Uint8Array = "facilis".encode();
-const queryStringParam: string = "quaerat";
+const requestBody: Uint8Array = "ipsam".encode();
+const queryStringParam: string = "debitis";
 
 sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam).then((res: RequestBodyPutBytesWithParamsResponse) => {
   if (res.statusCode == 200) {
@@ -3382,43 +3493,23 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPutMultipartDeep({
-  any: {
-    any: "ipsam",
-    bigint: 894864,
-    bigintStr: "rem",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 265.22,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
+  any: "sit",
   arr: [
     {
-      any: "veniam",
-      bigint: 329543,
-      bigintStr: "recusandae",
+      any: "nobis",
+      bigint: 625637,
+      bigintStr: "veniam",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 9671.22,
+      decimal: 3295.43,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -3427,23 +3518,23 @@ sdk.requestBodies.requestBodyPutMultipartDeep({
     },
   ],
   bool: false,
-  int: 48690,
+  int: 862319,
   map: {
-    "saepe": {
-      any: "numquam",
-      bigint: 329935,
-      bigintStr: "in",
+    "magni": {
+      any: "aperiam",
+      bigint: 901483,
+      bigintStr: "numquam",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
       dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 8892.34,
+      decimal: 3299.35,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -3451,30 +3542,30 @@ sdk.requestBodies.requestBodyPutMultipartDeep({
       strOpt: "optional example",
     },
   },
-  num: 3484.76,
+  num: 1046.27,
   obj: {
-    any: "praesentium",
-    bigint: 740098,
-    bigintStr: "laboriosam",
+    any: "laudantium",
+    bigint: 348476,
+    bigintStr: "praesentium",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 6805.15,
+    decimal: 7400.98,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
     int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.Second,
+    intEnum: SimpleObjectIntEnum.Third,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
     str: "example",
     strOpt: "optional example",
   },
-  str: "hic",
-  type: "expedita",
+  str: "voluptatum",
+  type: "error",
 }).then((res: RequestBodyPutMultipartDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3513,8 +3604,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPutMultipartFile({
   file: {
-    content: "debitis".encode(),
-    file: "neque",
+    content: "hic".encode(),
+    file: "expedita",
   },
 }).then((res: RequestBodyPutMultipartFileResponse) => {
   if (res.statusCode == 200) {
@@ -3555,14 +3646,14 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPutMultipartSimple({
-  any: "dolorum",
-  bigint: 341698,
-  bigintStr: "officia",
+  any: "debitis",
+  bigint: 204923,
+  bigintStr: "dolorum",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 6762.43,
+  decimal: 3416.98,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
@@ -3610,7 +3701,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPutString("tempora").then((res: RequestBodyPutStringResponse) => {
+sdk.requestBodies.requestBodyPutString("corrupti").then((res: RequestBodyPutStringResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3645,8 +3736,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestBody: string = "atque";
-const queryStringParam: string = "fugit";
+const requestBody: string = "accusamus";
+const queryStringParam: string = "tempora";
 
 sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam).then((res: RequestBodyPutStringWithParamsResponse) => {
   if (res.statusCode == 200) {
@@ -3686,9 +3777,9 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadAndWrite({
-  num1: 282699,
-  num2: 856303,
-  num3: 30235,
+  num1: 543678,
+  num2: 148268,
+  num3: 282699,
 }).then((res: RequestBodyReadAndWriteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3805,9 +3896,25 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadWriteOnlyUnion({
-  num1: 299643,
-  num2: 7884,
-  num3: 460220,
+  any: "culpa",
+  bigint: 710337,
+  bigintStr: "magnam",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 78.84,
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Second,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
 }).then((res: RequestBodyReadWriteOnlyUnionResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3847,8 +3954,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnly({
   bool: false,
-  num: 3726.79,
-  string: "sit",
+  num: 245.27,
+  string: "voluptatum",
 }).then((res: RequestBodyWriteOnlyResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3888,8 +3995,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnlyOutput({
   bool: false,
-  num: 5305.37,
-  string: "quas",
+  num: 5580.65,
+  string: "repudiandae",
 }).then((res: RequestBodyWriteOnlyOutputResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3930,9 +4037,25 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyWriteOnlyUnion({
-  bool: false,
-  num: 3611.51,
-  string: "et",
+  any: "et",
+  bigint: 502710,
+  bigintStr: "ex",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 1536.27,
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
 }).then((res: RequestBodyWriteOnlyUnionResponse) => {
   if (res.statusCode == 200) {
     // handle response

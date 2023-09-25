@@ -15,4 +15,5 @@ enum Enum: string
     case One = 'one';
     case Two = 'two';
     case Three = 'three';
+    case FourAndMore = 'four_and_more';
 }

@@ -29,7 +29,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "voluptatibus": "vel",
+    "inventore": "facere",
   },
 )
     
@@ -66,7 +66,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "magnam": Date.parse("2022-10-06"),
+    "libero": Date.parse("2022-01-09"),
   },
 )
     
@@ -103,7 +103,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "facere": "libero",
+    "quia": "porro",
   },
 )
     
@@ -165,8 +165,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ResponseBodyEmptyWithHeadersRequest.new(
   query_params=Operations::ResponseBodyEmptyWithHeadersRequest.new(
-    x_number_header=1024.13,
-    x_string_header="voluptatibus",
+    x_number_header=3041.98,
+    x_string_header="velit",
   ),
 )
     

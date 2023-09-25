@@ -10,6 +10,9 @@ import { classToPlain, Exclude, Expose } from "class-transformer";
  * Not Implemented
  */
 export class StatusGetXSpeakeasyErrors501ApplicationJSON extends Error {
+    /**
+     * Raw HTTP response; suitable for custom response parsing
+     */
     @SpeakeasyMetadata()
     @Exclude()
     rawResponse?: AxiosResponse;

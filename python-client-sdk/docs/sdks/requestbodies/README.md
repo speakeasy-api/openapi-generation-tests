@@ -67,8 +67,11 @@ Endpoints for testing request bodies.
 * [request_body_post_multiple_content_types_split_form](#request_body_post_multiple_content_types_split_form)
 * [request_body_post_multiple_content_types_split_json](#request_body_post_multiple_content_types_split_json)
 * [request_body_post_multiple_content_types_split_multipart](#request_body_post_multiple_content_types_split_multipart)
+* [request_body_post_not_nullable_not_required_string_body](#request_body_post_not_nullable_not_required_string_body)
 * [request_body_post_null_array](#request_body_post_null_array)
 * [request_body_post_null_dictionary](#request_body_post_null_dictionary)
+* [request_body_post_nullable_not_required_string_body](#request_body_post_nullable_not_required_string_body)
+* [request_body_post_nullable_required_string_body](#request_body_post_nullable_required_string_body)
 * [request_body_put_bytes](#request_body_put_bytes)
 * [request_body_put_bytes_with_params](#request_body_put_bytes_with_params)
 * [request_body_put_multipart_deep](#request_body_put_multipart_deep)
@@ -3183,6 +3186,42 @@ if res.res is not None:
 **[operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md)**
 
 
+## request_body_post_not_nullable_not_required_string_body
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 'sit'
+
+res = s.request_bodies.request_body_post_not_nullable_not_required_string_body(req)
+
+if res.request_body_post_not_nullable_not_required_string_body_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnotnullablenotrequiredstringbodyresponse.md)**
+
+
 ## request_body_post_null_array
 
 ### Example Usage
@@ -3200,7 +3239,7 @@ s = sdk.SDK(
 )
 
 req = [
-    'sit',
+    'non',
 ]
 
 res = s.request_bodies.request_body_post_null_array(req)
@@ -3238,7 +3277,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "non": 'officiis',
+    "officiis": 'praesentium',
 }
 
 res = s.request_bodies.request_body_post_null_dictionary(req)
@@ -3259,6 +3298,78 @@ if res.request_body_post_null_dictionary_200_application_json_object is not None
 **[operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md)**
 
 
+## request_body_post_nullable_not_required_string_body
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 'facilis'
+
+res = s.request_bodies.request_body_post_nullable_not_required_string_body(req)
+
+if res.request_body_post_nullable_not_required_string_body_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnullablenotrequiredstringbodyresponse.md)**
+
+
+## request_body_post_nullable_required_string_body
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = 'quaerat'
+
+res = s.request_bodies.request_body_post_nullable_required_string_body(req)
+
+if res.request_body_post_nullable_required_string_body_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [str](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/requestbodypostnullablerequiredstringbodyresponse.md)**
+
+
 ## request_body_put_bytes
 
 ### Example Usage
@@ -3275,7 +3386,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'praesentium'.encode()
+req = 'incidunt'.encode()
 
 res = s.request_bodies.request_body_put_bytes(req)
 
@@ -3312,7 +3423,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_bytes_with_params(request_body='facilis'.encode(), query_string_param='quaerat')
+res = s.request_bodies.request_body_put_bytes_with_params(request_body='ipsam'.encode(), query_string_param='debitis')
 
 if res.res is not None:
     # handle response
@@ -3350,43 +3461,23 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any=shared.SimpleObject(
-        any='ipsam',
-        bigint=894864,
-        bigint_str=524970,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('265.22'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
+    any='sit',
     arr=[
         shared.SimpleObject(
-            any='veniam',
-            bigint=329543,
-            bigint_str=924159,
+            any='nobis',
+            bigint=625637,
+            bigint_str=333507,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('9671.22'),
+            decimal=Decimal('3295.43'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
@@ -3395,23 +3486,23 @@ req = shared.DeepObject(
         ),
     ],
     bool=False,
-    int=48690,
+    int=862319,
     map={
-        "saepe": shared.SimpleObject(
-            any='numquam',
-            bigint=329935,
-            bigint_str=446135,
+        "magni": shared.SimpleObject(
+            any='aperiam',
+            bigint=901483,
+            bigint_str=253642,
             bool=True,
             bool_opt=True,
             date_=dateutil.parser.parse('2020-01-01').date(),
             date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('8892.34'),
+            decimal=Decimal('3299.35'),
             enum=shared.EnumT.TWO,
             float32=2.2222222,
             int=999999,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+            int_enum=shared.SimpleObjectIntEnum.THIRD,
             int_opt_null=999999,
             num=1.1,
             num_opt_null=1.1,
@@ -3419,30 +3510,30 @@ req = shared.DeepObject(
             str_opt='optional example',
         ),
     },
-    num=3484.76,
+    num=1046.27,
     obj=shared.SimpleObject(
-        any='praesentium',
-        bigint=740098,
-        bigint_str=386827,
+        any='laudantium',
+        bigint=348476,
+        bigint_str=510629,
         bool=True,
         bool_opt=True,
         date_=dateutil.parser.parse('2020-01-01').date(),
         date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('6805.15'),
+        decimal=Decimal('7400.98'),
         enum=shared.EnumT.TWO,
         float32=2.2222222,
         int=999999,
         int32=1,
         int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int_enum=shared.SimpleObjectIntEnum.THIRD,
         int_opt_null=999999,
         num=1.1,
         num_opt_null=1.1,
         str_='example',
         str_opt='optional example',
     ),
-    str_='hic',
-    type='expedita',
+    str_='voluptatum',
+    type='error',
 )
 
 res = s.request_bodies.request_body_put_multipart_deep(req)
@@ -3481,8 +3572,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPutMultipartFileRequestBody(
     file=operations.RequestBodyPutMultipartFileRequestBodyFile(
-        content='debitis'.encode(),
-        file='neque',
+        content='hic'.encode(),
+        file='expedita',
     ),
 )
 
@@ -3523,14 +3614,14 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='dolorum',
-    bigint=341698,
-    bigint_str=639028,
+    any='debitis',
+    bigint=204923,
+    bigint_str=677115,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('6762.43'),
+    decimal=Decimal('3416.98'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -3578,7 +3669,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'tempora'
+req = 'corrupti'
 
 res = s.request_bodies.request_body_put_string(req)
 
@@ -3615,7 +3706,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_string_with_params(request_body='atque', query_string_param='fugit')
+res = s.request_bodies.request_body_put_string_with_params(request_body='accusamus', query_string_param='tempora')
 
 if res.res is not None:
     # handle response
@@ -3651,9 +3742,9 @@ s = sdk.SDK(
 )
 
 req = shared.ReadWriteObjectInput(
-    num1=282699,
-    num2=856303,
-    num3=30235,
+    num1=543678,
+    num2=148268,
+    num3=282699,
 )
 
 res = s.request_bodies.request_body_read_and_write(req)
@@ -3769,10 +3860,26 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.ReadWriteObjectInput(
-    num1=299643,
-    num2=7884,
-    num3=460220,
+req = shared.SimpleObject(
+    any='culpa',
+    bigint=710337,
+    bigint_str=299643,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=Decimal('78.84'),
+    enum=shared.EnumT.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
 )
 
 res = s.request_bodies.request_body_read_write_only_union(req)
@@ -3812,8 +3919,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=3726.79,
-    string='sit',
+    num=245.27,
+    string='voluptatum',
 )
 
 res = s.request_bodies.request_body_write_only(req)
@@ -3853,8 +3960,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=5305.37,
-    string='quas',
+    num=5580.65,
+    string='repudiandae',
 )
 
 res = s.request_bodies.request_body_write_only_output(req)
@@ -3894,10 +4001,26 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.WriteOnlyObject(
-    bool=False,
-    num=3611.51,
-    string='et',
+req = shared.SimpleObject(
+    any='et',
+    bigint=502710,
+    bigint_str=405942,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=Decimal('1536.27'),
+    enum=shared.EnumT.TWO,
+    float32=2.2222222,
+    int=999999,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int_opt_null=999999,
+    num=1.1,
+    num_opt_null=1.1,
+    str_='example',
+    str_opt='optional example',
 )
 
 res = s.request_bodies.request_body_write_only_union(req)

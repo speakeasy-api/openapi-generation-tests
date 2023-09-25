@@ -39,7 +39,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("soluta", "hic");
+                put("earum", "soluta");
             }}            
 
             ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost(req);
@@ -89,7 +89,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, LocalDate>() {{
-                put("illum", LocalDate.parse("2022-01-24"));
+                put("hic", LocalDate.parse("2022-11-04"));
             }}            
 
             ResponseBodyAdditionalPropertiesDatePostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesDatePost(req);
@@ -139,7 +139,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("perspiciatis", "maiores");
+                put("earum", "perspiciatis");
             }}            
 
             ResponseBodyAdditionalPropertiesPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesPost(req);
@@ -229,7 +229,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(8918.01d, "aliquid");
+            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(9834.27d, "debitis");
 
             if (res.statusCode == 200) {
                 // handle response

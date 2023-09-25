@@ -14,6 +14,7 @@ module OpenApiSDK
         ONE = new('one')
         TWO = new('two')
         THREE = new('three')
+        FOUR_AND_MORE = new('four_and_more')
       end
     end
 

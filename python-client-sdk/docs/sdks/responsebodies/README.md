@@ -33,7 +33,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "maiores": 544647,
+    "blanditiis": 379356,
 }
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
@@ -71,7 +71,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "at": dateutil.parser.parse('2021-12-30').date(),
+    "repudiandae": dateutil.parser.parse('2021-12-01').date(),
 }
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
@@ -109,7 +109,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "suscipit": 'repudiandae',
+    "sunt": 'recusandae',
 }
 
 res = s.response_bodies.response_body_additional_properties_post(req)
@@ -176,7 +176,7 @@ s = sdk.SDK(
 )
 
 
-res = s.response_bodies.response_body_empty_with_headers(x_number_header=5421.29, x_string_header='atque')
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=6806.97, x_string_header='repellendus')
 
 if res.status_code == 200:
     # handle response

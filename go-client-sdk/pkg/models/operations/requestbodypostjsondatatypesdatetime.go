@@ -32,8 +32,11 @@ func (o *RequestBodyPostJSONDataTypesDateTime200ApplicationJSON) GetJSON() time.
 }
 
 type RequestBodyPostJSONDataTypesDateTimeResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
 	RequestBodyPostJSONDataTypesDateTime200ApplicationJSONObject *RequestBodyPostJSONDataTypesDateTime200ApplicationJSON

@@ -13,13 +13,13 @@ module OpenApiSDK
     class ResponseBodyJsonGetResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
       # OK
       field :http_bin_simple_json_object, T.nilable(Shared::HttpBinSimpleJsonObject)
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 

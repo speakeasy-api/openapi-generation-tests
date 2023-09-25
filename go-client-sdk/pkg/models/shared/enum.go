@@ -11,9 +11,10 @@ import (
 type Enum string
 
 const (
-	EnumOne   Enum = "one"
-	EnumTwo   Enum = "two"
-	EnumThree Enum = "three"
+	EnumOne         Enum = "one"
+	EnumTwo         Enum = "two"
+	EnumThree       Enum = "three"
+	EnumFourAndMore Enum = "four_and_more"
 )
 
 func (e Enum) ToPointer() *Enum {
@@ -31,6 +32,8 @@ func (e *Enum) UnmarshalJSON(data []byte) error {
 	case "two":
 		fallthrough
 	case "three":
+		fallthrough
+	case "four_and_more":
 		*e = Enum(v)
 		return nil
 	default:

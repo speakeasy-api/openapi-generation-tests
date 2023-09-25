@@ -1,15 +1,15 @@
 configVersion: 1.0.0
 management:
-  docChecksum: ebdf0dd1b2c5f2084b9cd5abce868da7
+  docChecksum: 47dde54ccef553ff7be0c4b419056ebd
   docVersion: 0.1.0
-  speakeasyVersion: 1.89.0
-  generationVersion: 2.125.1
+  speakeasyVersion: 1.91.0
+  generationVersion: 2.129.1
 generation:
   sdkClassName: SDK
   singleTagPerOp: false
 features:
   java:
-    core: 2.85.4
+    core: 2.86.0
     deprecations: 2.81.1
     enums: 2.81.1
     examples: 2.81.2
@@ -26,7 +26,7 @@ features:
     nameOverrides: 2.81.1
     serverIDs: 2.81.1
 java:
-  version: 1.32.0
+  version: 1.33.0
   artifactID: openapi
   companyEmail: info@mycompany.com
   companyName: My Company

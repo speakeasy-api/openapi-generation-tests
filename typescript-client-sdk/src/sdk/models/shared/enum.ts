@@ -9,4 +9,5 @@ export enum Enum {
     One = "one",
     Two = "two",
     Three = "three",
+    FourAndMore = "four_and_more",
 }

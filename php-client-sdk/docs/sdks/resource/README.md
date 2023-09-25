@@ -29,8 +29,8 @@ $sdk = SDK::builder()
 try {
     $request = new CreateFileRequestBody();
     $request->file = new CreateFileRequestBodyFile();
-    $request->file->content = 'corporis';
-    $request->file->file = 'reiciendis';
+    $request->file->content = 'commodi';
+    $request->file->file = 'in';
 
     $response = $sdk->resource->createFile($request);
 
@@ -77,32 +77,32 @@ $sdk = SDK::builder()
 try {
     $request = new ExampleResource();
     $request->arrayOfNumber = [
-        8286.57,
+        3605.45,
     ];
     $request->arrayOfString = [
-        'nemo',
+        'reiciendis',
     ];
     $request->chocolates = [
         new ExampleResourceChocolates(),
     ];
-    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2021-10-22T16:49:10.196Z');
-    $request->enumNumber = ExampleResourceEnumNumber::One;
-    $request->enumStr = ExampleResourceEnumStr::Three;
-    $request->id = '375ed4f6-fbee-441f-b331-7fe35b60eb1e';
+    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2021-11-29T08:07:19.623Z');
+    $request->enumNumber = ExampleResourceEnumNumber::Three;
+    $request->enumStr = ExampleResourceEnumStr::Two;
+    $request->id = '0b375ed4-f6fb-4ee4-9f33-317fe35b60eb';
     $request->mapOfInteger = [
-        'similique' => 272437,
+        'vitae' => 881721,
     ];
     $request->mapOfString = [
-        'aspernatur' => 'voluptas',
+        'similique' => 'tempora',
     ];
-    $request->name = 'Melanie Hane';
-    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-03-16T15:06:56.015Z');
+    $request->name = 'Yolanda Hirthe';
+    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2021-08-22T12:22:32.426Z');
     $request->vehicle = new ExampleBoat();
-    $request->vehicle->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-02-07T00:24:36.620Z');
-    $request->vehicle->length = 2962.42;
-    $request->vehicle->name = 'Rochelle Smitham';
+    $request->vehicle->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-06-26T19:42:01.136Z');
+    $request->vehicle->length = 5039.34;
+    $request->vehicle->name = 'Valerie Haag';
     $request->vehicle->type = ExampleBoatType::Boat;
-    $request->vehicle->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2021-12-30T06:08:11.710Z');
+    $request->vehicle->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-10-06T05:22:53.091Z');
 
     $response = $sdk->resource->createResource($request);
 
@@ -146,7 +146,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->deleteResource('quas');
+    $response = $sdk->resource->deleteResource('cum');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -188,7 +188,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->getResource('hic');
+    $response = $sdk->resource->getResource('blanditiis');
 
     if ($response->exampleResource !== null) {
         // handle response
@@ -230,7 +230,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->resource->updateResource('nesciunt');
+    $response = $sdk->resource->updateResource('quas');
 
     if ($response->statusCode === 200) {
         // handle response

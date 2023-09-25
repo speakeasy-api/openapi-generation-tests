@@ -22,8 +22,11 @@ class RequestBodyPostFormMapPrimitiveRes:
 @dataclasses.dataclass
 class RequestBodyPostFormMapPrimitiveResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     res: Optional[RequestBodyPostFormMapPrimitiveRes] = dataclasses.field(default=None)
     r"""OK"""
     

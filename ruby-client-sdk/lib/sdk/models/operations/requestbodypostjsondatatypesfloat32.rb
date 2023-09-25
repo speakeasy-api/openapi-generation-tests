@@ -26,11 +26,11 @@ module OpenApiSDK
     class RequestBodyPostJsonDataTypesFloat32Response < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # OK
       field :request_body_post_json_data_types_float32_200_application_json_object, T.nilable(Operations::RequestBodyPostJSONDataTypesFloat32200ApplicationJSON)

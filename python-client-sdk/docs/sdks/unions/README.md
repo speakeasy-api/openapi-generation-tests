@@ -36,7 +36,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='repellendus',
+    value='repudiandae',
 )
 
 res = s.unions.flattened_typed_object_post(req)
@@ -75,7 +75,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'reiciendis'
+req = 'accusantium'
 
 res = s.unions.mixed_type_one_of_post(req)
 
@@ -114,15 +114,15 @@ s = sdk.SDK(
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='doloremque',
+        value='beatae',
     ),
-    nullable_one_of_two=shared.TypedObject2(
-        type=shared.TypedObject2Type.OBJ2,
-        value='dicta',
+    nullable_one_of_two=shared.TypedObject1(
+        type=shared.TypedObject1Type.OBJ1,
+        value='enim',
     ),
     one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='accusantium',
+        value='laboriosam',
     ),
 )
 
@@ -162,7 +162,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='dolores',
+    value='a',
 )
 
 res = s.unions.nullable_one_of_schema_post(req)
@@ -201,7 +201,7 @@ s = sdk.SDK(
 
 req = shared.NullableOneOfTypeInObject(
     nullable_one_of_one=False,
-    nullable_one_of_two=False,
+    nullable_one_of_two=300029,
     one_of_one=False,
 )
 
@@ -241,7 +241,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='laboriosam',
+    value='saepe',
 )
 
 res = s.unions.nullable_typed_object_post(req)
@@ -278,7 +278,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'a'
+req = 'occaecati'
 
 res = s.unions.primitive_type_one_of_post(req)
 
@@ -317,27 +317,7 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObjectWithType(
-    any=shared.SimpleObject(
-        any='saepe',
-        bigint=160467,
-        bigint_str=580107,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('8863.05'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
+    any='in',
     arr=[
         shared.SimpleObject(
             any='adipisci',

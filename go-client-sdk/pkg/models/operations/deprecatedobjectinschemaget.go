@@ -21,8 +21,11 @@ func (o *DeprecatedObjectInSchemaGet200ApplicationJSON) GetJSON() *shared.Deprec
 }
 
 type DeprecatedObjectInSchemaGetResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
-	StatusCode  int
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// A successful response that contains a deprecatedObject sent in the request body
 	DeprecatedObjectInSchemaGet200ApplicationJSONObject *DeprecatedObjectInSchemaGet200ApplicationJSON

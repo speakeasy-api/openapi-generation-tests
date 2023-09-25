@@ -67,8 +67,11 @@ Endpoints for testing request bodies.
 * [requestBodyPostMultipleContentTypesSplitForm](#requestbodypostmultiplecontenttypessplitform)
 * [requestBodyPostMultipleContentTypesSplitJson](#requestbodypostmultiplecontenttypessplitjson)
 * [requestBodyPostMultipleContentTypesSplitMultipart](#requestbodypostmultiplecontenttypessplitmultipart)
+* [requestBodyPostNotNullableNotRequiredStringBody](#requestbodypostnotnullablenotrequiredstringbody)
 * [requestBodyPostNullArray](#requestbodypostnullarray)
 * [requestBodyPostNullDictionary](#requestbodypostnulldictionary)
+* [requestBodyPostNullableNotRequiredStringBody](#requestbodypostnullablenotrequiredstringbody)
+* [requestBodyPostNullableRequiredStringBody](#requestbodypostnullablerequiredstringbody)
 * [requestBodyPutBytes](#requestbodyputbytes)
 * [requestBodyPutBytesWithParams](#requestbodyputbyteswithparams)
 * [requestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
@@ -3119,6 +3122,47 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/RequestBodyPostMultipleContentTypesSplitMultipartResponse.md)**
 
 
+## requestBodyPostNotNullableNotRequiredStringBody
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+'corrupti'
+
+    $response = $sdk->requestBodies->requestBodyPostNotNullableNotRequiredStringBody($request);
+
+    if ($response->requestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [string](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNotNullableNotRequiredStringBodyResponse.md)**
+
+
 ## requestBodyPostNullArray
 
 ### Example Usage
@@ -3137,7 +3181,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'corrupti',
+        'non',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostNullArray($request);
@@ -3180,7 +3224,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'non' => 'voluptatem',
+        'voluptatem' => 'dolor',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostNullDictionary($request);
@@ -3205,6 +3249,88 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullDictionaryResponse](../../models/operations/RequestBodyPostNullDictionaryResponse.md)**
 
 
+## requestBodyPostNullableNotRequiredStringBody
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+'occaecati'
+
+    $response = $sdk->requestBodies->requestBodyPostNullableNotRequiredStringBody($request);
+
+    if ($response->requestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [string](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableNotRequiredStringBodyResponse.md)**
+
+
+## requestBodyPostNullableRequiredStringBody
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+'numquam'
+
+    $response = $sdk->requestBodies->requestBodyPostNullableRequiredStringBody($request);
+
+    if ($response->requestBodyPostNullableRequiredStringBody200ApplicationJSONObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [string](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/RequestBodyPostNullableRequiredStringBodyResponse.md)**
+
+
 ## requestBodyPutBytes
 
 ### Example Usage
@@ -3222,7 +3348,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'dolor'
+'impedit'
 
     $response = $sdk->requestBodies->requestBodyPutBytes($request);
 
@@ -3266,7 +3392,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->requestBodies->requestBodyPutBytesWithParams('occaecati', 'numquam');
+    $response = $sdk->requestBodies->requestBodyPutBytesWithParams('explicabo', 'voluptas');
 
     if ($response->res !== null) {
         // handle response
@@ -3312,38 +3438,57 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObject();
-    $request->any = 'explicabo';
+    $request->any = new SimpleObject();
+    $request->any->any = 'dignissimos';
+    $request->any->bigint = 115484;
+    $request->any->bigintStr = 'maiores';
+    $request->any->bool = true;
+    $request->any->boolOpt = true;
+    $request->any->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->any->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
+    $request->any->decimal = 6184.8;
+    $request->any->enum = Enum::Two;
+    $request->any->float32 = 2.2222222;
+    $request->any->int = 999999;
+    $request->any->int32 = 1;
+    $request->any->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->any->intEnum = SimpleObjectIntEnum::Third;
+    $request->any->intOptNull = 999999;
+    $request->any->num = 1.1;
+    $request->any->numOptNull = 1.1;
+    $request->any->str = 'example';
+    $request->any->strOpt = 'optional example';
     $request->arr = [
         new SimpleObject(),
     ];
     $request->bool = false;
-    $request->int = 376226;
+    $request->int = 374323;
     $request->map = [
-        'aut' => new SimpleObject(),
+        'asperiores' => new SimpleObject(),
     ];
-    $request->num = 4910.25;
+    $request->num = 456.59;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'dicta';
-    $request->obj->bigint = 981640;
-    $request->obj->bigintStr = 'natus';
+    $request->obj->any = 'ea';
+    $request->obj->bigint = 310067;
+    $request->obj->bigintStr = 'consequuntur';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->obj->decimal = 2446.51;
+    $request->obj->decimal = 8315.2;
     $request->obj->enum = Enum::Two;
     $request->obj->float32 = 2.2222222;
     $request->obj->int = 999999;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->obj->intEnum = SimpleObjectIntEnum::Second;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->obj->intEnum = SimpleObjectIntEnum::Third;
     $request->obj->intOptNull = 999999;
     $request->obj->num = 1.1;
     $request->obj->numOptNull = 1.1;
     $request->obj->str = 'example';
     $request->obj->strOpt = 'optional example';
-    $request->str = 'asperiores';
-    $request->type = 'aperiam';
+    $request->str = 'dignissimos';
+    $request->type = 'officia';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDeep($request);
 
@@ -3388,8 +3533,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPutMultipartFileRequestBody();
     $request->file = new RequestBodyPutMultipartFileRequestBodyFile();
-    $request->file->content = 'ea';
-    $request->file->file = 'quaerat';
+    $request->file->content = 'asperiores';
+    $request->file->file = 'nemo';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
 
@@ -3435,20 +3580,20 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'consequuntur';
-    $request->bigint = 831520;
-    $request->bigintStr = 'officia';
+    $request->any = 'quae';
+    $request->bigint = 312753;
+    $request->bigintStr = 'porro';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 8070.23;
+    $request->decimal = 8018.36;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->intEnum = SimpleObjectIntEnum::First;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -3494,7 +3639,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'asperiores'
+'adipisci'
 
     $response = $sdk->requestBodies->requestBodyPutString($request);
 
@@ -3538,7 +3683,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->requestBodies->requestBodyPutStringWithParams('nemo', 'quae');
+    $response = $sdk->requestBodies->requestBodyPutStringWithParams('fuga', 'id');
 
     if ($response->res !== null) {
         // handle response
@@ -3580,9 +3725,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new ReadWriteObjectInput();
-    $request->num1 = 312753;
-    $request->num2 = 783235;
-    $request->num3 = 801836;
+    $request->num1 = 380729;
+    $request->num2 = 246063;
+    $request->num3 = 633931;
 
     $response = $sdk->requestBodies->requestBodyReadAndWrite($request);
 
@@ -3667,26 +3812,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimpleObject();
-    $request->any = 'ab';
-    $request->bigint = 241418;
-    $request->bigintStr = 'fuga';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 6625.05;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
-    $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectIntEnum::First;
-    $request->intOptNull = 999999;
-    $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request = new ReadOnlyObjectInput();
 
     $response = $sdk->requestBodies->requestBodyReadOnlyUnion($request);
 
@@ -3729,9 +3855,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new ReadWriteObjectInput();
-    $request->num1 = 665859;
-    $request->num2 = 926880;
-    $request->num3 = 517309;
+    $request->num1 = 517309;
+    $request->num2 = 853940;
+    $request->num3 = 424089;
 
     $response = $sdk->requestBodies->requestBodyReadWriteOnlyUnion($request);
 
@@ -3776,8 +3902,8 @@ $sdk = SDK::builder()
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
-    $request->num = 8539.4;
-    $request->string = 'vel';
+    $request->num = 4976.78;
+    $request->string = 'quos';
 
     $response = $sdk->requestBodies->requestBodyWriteOnly($request);
 
@@ -3822,8 +3948,8 @@ $sdk = SDK::builder()
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
-    $request->num = 4976.78;
-    $request->string = 'quos';
+    $request->num = 4278.34;
+    $request->string = 'labore';
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyOutput($request);
 
@@ -3865,26 +3991,10 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimpleObject();
-    $request->any = 'labore';
-    $request->bigint = 822560;
-    $request->bigintStr = 'facilis';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 7382.27;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
-    $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectIntEnum::Second;
-    $request->intOptNull = 999999;
-    $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request = new WriteOnlyObject();
+    $request->bool = false;
+    $request->num = 7065.75;
+    $request->string = 'cum';
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyUnion($request);
 

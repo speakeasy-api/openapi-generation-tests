@@ -15,8 +15,11 @@ REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS = [
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONArrayCamelCaseResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     simple_object_camel_cases: Optional[list[shared_simpleobjectcamelcase.SimpleObjectCamelCase]] = dataclasses.field(default=None)
     r"""OK"""
     

@@ -14,8 +14,11 @@ REQUEST_BODY_WRITE_ONLY_UNION_SERVERS = [
 @dataclasses.dataclass
 class RequestBodyWriteOnlyUnionResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     weakly_typed_one_of_write_only_object: Optional[Any] = dataclasses.field(default=None)
     r"""OK"""
     

@@ -8,3 +8,4 @@ class EnumT(str, Enum):
     ONE = 'one'
     TWO = 'two'
     THREE = 'three'
+    FOUR_AND_MORE = 'four_and_more'

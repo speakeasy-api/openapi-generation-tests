@@ -28,13 +28,13 @@ module OpenApiSDK
     class GetGlobalNameOverrideResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
       # A successful response that contains the simpleObject sent in the request body
       field :get_global_name_override_200_application_json_object, T.nilable(Operations::GetGlobalNameOverride200ApplicationJSON)
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
 
 

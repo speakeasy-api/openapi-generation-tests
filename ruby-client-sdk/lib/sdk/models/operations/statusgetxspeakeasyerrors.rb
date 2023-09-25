@@ -47,13 +47,13 @@ module OpenApiSDK
     class StatusGetXSpeakeasyErrorsResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
       # Internal Server Error
       field :error, T.nilable(Shared::Error)
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # Not Implemented
       field :status_get_x_speakeasy_errors_501_application_json_object, T.nilable(Operations::StatusGetXSpeakeasyErrors501ApplicationJSON)

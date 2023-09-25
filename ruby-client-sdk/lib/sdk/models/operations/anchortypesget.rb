@@ -28,11 +28,11 @@ module OpenApiSDK
     class AnchorTypesGetResponse < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-
+      # HTTP response content type for this operation
       field :content_type, String
-
+      # HTTP response status code for this operation
       field :status_code, Integer
-
+      # Raw HTTP response; suitable for custom response parsing
       field :raw_response, T.nilable(Faraday::Response)
       # A successful response that contains the simpleObject sent in the request body
       field :type_from_anchor, T.nilable(Operations::TypeFromAnchor)

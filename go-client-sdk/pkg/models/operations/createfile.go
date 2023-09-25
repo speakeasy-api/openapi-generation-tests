@@ -38,11 +38,14 @@ func (o *CreateFileRequestBody) GetFile() *CreateFileRequestBodyFile {
 }
 
 type CreateFileResponse struct {
+	// HTTP response content type for this operation
 	ContentType string
 	// OK
 	FileResource *shared.FileResource
-	StatusCode   int
-	RawResponse  *http.Response
+	// HTTP response status code for this operation
+	StatusCode int
+	// Raw HTTP response; suitable for custom response parsing
+	RawResponse *http.Response
 }
 
 func (o *CreateFileResponse) GetContentType() string {

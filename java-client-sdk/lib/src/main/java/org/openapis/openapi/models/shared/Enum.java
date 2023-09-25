@@ -12,7 +12,8 @@ import com.fasterxml.jackson.annotation.JsonValue;
 public enum Enum {
     ONE("one"),
     TWO("two"),
-    THREE("three");
+    THREE("three"),
+    FOUR_AND_MORE("four_and_more");
 
     @JsonValue
     public final String value;

@@ -67,8 +67,11 @@ Endpoints for testing request bodies.
 * [RequestBodyPostMultipleContentTypesSplitForm](#requestbodypostmultiplecontenttypessplitform)
 * [RequestBodyPostMultipleContentTypesSplitJSON](#requestbodypostmultiplecontenttypessplitjson)
 * [RequestBodyPostMultipleContentTypesSplitMultipart](#requestbodypostmultiplecontenttypessplitmultipart)
+* [RequestBodyPostNotNullableNotRequiredStringBody](#requestbodypostnotnullablenotrequiredstringbody)
 * [RequestBodyPostNullArray](#requestbodypostnullarray)
 * [RequestBodyPostNullDictionary](#requestbodypostnulldictionary)
+* [RequestBodyPostNullableNotRequiredStringBody](#requestbodypostnullablenotrequiredstringbody)
+* [RequestBodyPostNullableRequiredStringBody](#requestbodypostnullablerequiredstringbody)
 * [RequestBodyPutBytes](#requestbodyputbytes)
 * [RequestBodyPutBytesWithParams](#requestbodyputbyteswithparams)
 * [RequestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
@@ -3917,6 +3920,54 @@ func main() {
 **[*operations.RequestBodyPostMultipleContentTypesSplitMultipartResponse](../../models/operations/requestbodypostmultiplecontenttypessplitmultipartresponse.md), error**
 
 
+## RequestBodyPostNotNullableNotRequiredStringBody
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBody(ctx, "corrupti")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [string](../../models//.md)                           | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostNotNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnotnullablenotrequiredstringbodyresponse.md), error**
+
+
 ## RequestBodyPostNullArray
 
 ### Example Usage
@@ -3942,7 +3993,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullArray(ctx, []string{
-        "corrupti",
+        "maiores",
     })
     if err != nil {
         log.Fatal(err)
@@ -3992,7 +4043,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullDictionary(ctx, map[string]string{
-        "maiores": "incidunt",
+        "incidunt": "sed",
     })
     if err != nil {
         log.Fatal(err)
@@ -4015,6 +4066,102 @@ func main() {
 ### Response
 
 **[*operations.RequestBodyPostNullDictionaryResponse](../../models/operations/requestbodypostnulldictionaryresponse.md), error**
+
+
+## RequestBodyPostNullableNotRequiredStringBody
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostNullableNotRequiredStringBody(ctx, "provident")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [string](../../models//.md)                           | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostNullableNotRequiredStringBodyResponse](../../models/operations/requestbodypostnullablenotrequiredstringbodyresponse.md), error**
+
+
+## RequestBodyPostNullableRequiredStringBody
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPostNullableRequiredStringBody(ctx, "eius")
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.RequestBodyPostNullableRequiredStringBody200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [string](../../models//.md)                           | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.RequestBodyPostNullableRequiredStringBodyResponse](../../models/operations/requestbodypostnullablerequiredstringbodyresponse.md), error**
 
 
 ## RequestBodyPutBytes
@@ -4041,7 +4188,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("sed"))
+    res, err := s.RequestBodies.RequestBodyPutBytes(ctx, []byte("necessitatibus"))
     if err != nil {
         log.Fatal(err)
     }
@@ -4088,8 +4235,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := []byte("provident")
-    queryStringParam := "eius"
+    requestBody := []byte("ipsum")
+    queryStringParam := "ea"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutBytesWithParams(ctx, requestBody, queryStringParam)
@@ -4147,20 +4294,20 @@ func main() {
         Any: shared.DeepObjectAny{},
         Arr: []shared.SimpleObject{
             shared.SimpleObject{
-                Any: "necessitatibus",
-                Bigint: big.NewInt(215529),
-                BigintStr: big.NewInt(406733),
+                Any: "occaecati",
+                Bigint: big.NewInt(552078),
+                BigintStr: big.NewInt(975752),
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("5799.12"),
+                Decimal: types.MustNewDecimalFromString("2716.53"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
                 IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
                 NumOptNull: openapi.Float64(1.1),
@@ -4169,23 +4316,23 @@ func main() {
             },
         },
         Bool: false,
-        Int: 271653,
+        Int: 970076,
         Map: map[string]shared.SimpleObject{
-            "tempora": shared.SimpleObject{
-                Any: "voluptate",
-                Bigint: big.NewInt(970076),
-                BigintStr: big.NewInt(401713),
+            "ex": shared.SimpleObject{
+                Any: "sit",
+                Bigint: big.NewInt(248413),
+                BigintStr: big.NewInt(888044),
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
                 DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("254.97"),
+                Decimal: types.MustNewDecimalFromString("5058.66"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumThird,
+                Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
+                IntEnum: shared.SimpleObjectIntEnumFirst,
                 IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
                 NumOptNull: openapi.Float64(1.1),
@@ -4193,16 +4340,16 @@ func main() {
                 StrOpt: openapi.String("optional example"),
             },
         },
-        Num: 5058.66,
+        Num: 2777.73,
         Obj: shared.SimpleObject{
-            Any: "facilis",
-            Bigint: big.NewInt(310381),
-            BigintStr: big.NewInt(277773),
+            Any: "ipsam",
+            Bigint: big.NewInt(894864),
+            BigintStr: big.NewInt(524970),
             Bool: true,
             BoolOpt: openapi.Bool(true),
             Date: types.MustDateFromString("2020-01-01"),
             DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-            Decimal: types.MustNewDecimalFromString("3730.35"),
+            Decimal: types.MustNewDecimalFromString("265.22"),
             Enum: shared.EnumTwo,
             Float32: 2.2222222,
             Int: 999999,
@@ -4215,8 +4362,8 @@ func main() {
             Str: "example",
             StrOpt: openapi.String("optional example"),
         },
-        Str: "sit",
-        Type: openapi.String("nobis"),
+        Str: "veniam",
+        Type: openapi.String("minima"),
     })
     if err != nil {
         log.Fatal(err)
@@ -4268,8 +4415,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
         File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
-            Content: []byte("error"),
-            File: "veniam",
+            Content: []byte("recusandae"),
+            File: "reiciendis",
         },
     })
     if err != nil {
@@ -4322,14 +4469,14 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartSimple(ctx, shared.SimpleObject{
-        Any: "minima",
-        Bigint: big.NewInt(924159),
-        BigintStr: big.NewInt(967122),
+        Any: "nulla",
+        Bigint: big.NewInt(168576),
+        BigintStr: big.NewInt(48690),
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("8623.19"),
+        Decimal: types.MustNewDecimalFromString("9014.83"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
@@ -4389,7 +4536,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutString(ctx, "saepe")
+    res, err := s.RequestBodies.RequestBodyPutString(ctx, "in")
     if err != nil {
         log.Fatal(err)
     }
@@ -4436,8 +4583,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := "numquam"
-    queryStringParam := "veniam"
+    requestBody := "officiis"
+    queryStringParam := "beatae"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutStringWithParams(ctx, requestBody, queryStringParam)
@@ -4490,9 +4637,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyReadAndWrite(ctx, shared.ReadWriteObjectInput{
-        Num1: 446135,
-        Num2: 889234,
-        Num3: 104627,
+        Num1: 512452,
+        Num2: 348476,
+        Num3: 510629,
     })
     if err != nil {
         log.Fatal(err)
@@ -4695,8 +4842,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnly(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 5124.52,
-        String: "exercitationem",
+        Num: 7400.98,
+        String: "laboriosam",
     })
     if err != nil {
         log.Fatal(err)
@@ -4748,8 +4895,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 5106.29,
-        String: "cum",
+        Num: 6805.15,
+        String: "voluptatum",
     })
     if err != nil {
         log.Fatal(err)

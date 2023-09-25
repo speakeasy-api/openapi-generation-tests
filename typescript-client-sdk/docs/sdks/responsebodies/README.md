@@ -33,7 +33,7 @@ const sdk = new SDK({
 });
 
 sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost({
-  "maiores": "corrupti",
+  "blanditiis": "suscipit",
 }).then((res: ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -71,7 +71,7 @@ const sdk = new SDK({
 });
 
 sdk.responseBodies.responseBodyAdditionalPropertiesDatePost({
-  "at": new RFCDate("2021-12-30"),
+  "repudiandae": new RFCDate("2021-12-01"),
 }).then((res: ResponseBodyAdditionalPropertiesDatePostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -109,7 +109,7 @@ const sdk = new SDK({
 });
 
 sdk.responseBodies.responseBodyAdditionalPropertiesPost({
-  "suscipit": "repudiandae",
+  "sunt": "recusandae",
 }).then((res: ResponseBodyAdditionalPropertiesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -180,8 +180,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const xNumberHeader: number = 5421.29;
-const xStringHeader: string = "atque";
+const xNumberHeader: number = 6806.97;
+const xStringHeader: string = "repellendus";
 
 sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader).then((res: ResponseBodyEmptyWithHeadersResponse) => {
   if (res.statusCode == 200) {

@@ -57,8 +57,11 @@ class RequestBodyPostEmptyObject200ApplicationJSON:
 @dataclasses.dataclass
 class RequestBodyPostEmptyObjectResponse:
     content_type: str = dataclasses.field()
+    r"""HTTP response content type for this operation"""
     status_code: int = dataclasses.field()
+    r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
+    r"""Raw HTTP response; suitable for custom response parsing"""
     request_body_post_empty_object_200_application_json_object: Optional[RequestBodyPostEmptyObject200ApplicationJSON] = dataclasses.field(default=None)
     r"""OK"""
     

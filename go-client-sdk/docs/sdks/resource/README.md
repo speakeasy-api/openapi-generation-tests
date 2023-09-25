@@ -35,8 +35,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Resource.CreateFile(ctx, operations.CreateFileRequestBody{
         File: &operations.CreateFileRequestBodyFile{
-            Content: []byte("laboriosam"),
-            File: "dolorum",
+            Content: []byte("error"),
+            File: "hic",
         },
     })
     if err != nil {
@@ -89,28 +89,28 @@ func main() {
     ctx := context.Background()
     res, err := s.Resource.CreateResource(ctx, shared.ExampleResource{
         ArrayOfNumber: []float64{
-            5300.89,
+            7105.29,
         },
         ArrayOfString: []string{
-            "error",
+            "debitis",
         },
         Chocolates: []shared.ExampleResourceChocolates{
             shared.ExampleResourceChocolates{
-                Description: "hic",
+                Description: "neque",
             },
         },
-        CreatedAt: types.MustTimeFromString("2021-03-20T05:03:12.319Z"),
-        EnumNumber: shared.ExampleResourceEnumNumberOne.ToPointer(),
+        CreatedAt: types.MustTimeFromString("2022-04-26T13:26:55.921Z"),
+        EnumNumber: shared.ExampleResourceEnumNumberTwo.ToPointer(),
         EnumStr: shared.ExampleResourceEnumStrThree.ToPointer(),
-        ID: "5aa8e482-4d0a-4b40-b508-8e51862065e9",
+        ID: "8e4824d0-ab40-4750-88e5-1862065e904f",
         MapOfInteger: map[string]int64{
-            "consequatur": 279068,
+            "dolorem": 690894,
         },
         MapOfString: map[string]string{
-            "reiciendis": "dolorem",
+            "dicta": "architecto",
         },
-        Name: "Gerald Bradtke",
-        UpdatedAt: types.MustTimeFromString("2021-12-03T11:25:52.746Z"),
+        Name: "Francisco Powlowski",
+        UpdatedAt: types.MustTimeFromString("2021-02-07T07:57:17.421Z"),
         Vehicle: shared.ExampleVehicle{},
     })
     if err != nil {
@@ -159,7 +159,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "laborum"
+    resourceID := "laboriosam"
 
     ctx := context.Background()
     res, err := s.Resource.DeleteResource(ctx, resourceID)
@@ -209,7 +209,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "nam"
+    resourceID := "alias"
 
     ctx := context.Background()
     res, err := s.Resource.GetResource(ctx, resourceID)
@@ -259,7 +259,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "tenetur"
+    resourceID := "amet"
 
     ctx := context.Background()
     res, err := s.Resource.UpdateResource(ctx, resourceID)
