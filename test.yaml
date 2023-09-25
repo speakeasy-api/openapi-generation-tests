@@ -3466,6 +3466,78 @@ paths:
                       format: decimal
                 required:
                   - json
+  /anything/requestBodies/post/nullable/required/string:
+    post:
+      operationId: requestBodyPostNullableRequiredStringBody
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              nullable: true
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type:
+                      - string
+                required:
+                  - data
+  /anything/requestBodies/post/nullable/notrequired/string:
+    post:
+      operationId: requestBodyPostNullableNotRequiredStringBody
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+              nullable: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type:
+                      - string
+                required:
+                  - data
+  /anything/requestBodies/post/notnullable/notrequired/string:
+    post:
+      operationId: requestBodyPostNotNullableNotRequiredStringBody
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  data:
+                    type:
+                      - string
+                required:
+                  - data
   /anything/flattening/inlineBodyAndParamNoConflict:
     post:
       operationId: inlineBodyAndParamNoConflict
