@@ -168,6 +168,7 @@ components:
         - "one"
         - "two"
         - "three"
+        - "four_and_more"
       example: "two"
     simpleObject:
       description: "A simple object that uses all our supported primitive types and enums and has optional properties."
