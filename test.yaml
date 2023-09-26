@@ -3886,6 +3886,29 @@ paths:
                     $ref: "components.yaml#/components/schemas/objWithComplexNumbersAdditionlProperties"
                 required:
                   - json
+  /anything/responseBodies/zeroValueComplexTypePtrs:
+    post:
+      operationId: responseBodyZeroValueComplexTypePtrsPost
+      tags:
+        - responseBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objWithZeroValueComplexTypePtrs"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objWithZeroValueComplexTypePtrs"
+                required:
+                  - json
   /anything/responseBodies/additionalPropertiesDate:
     post:
       operationId: responseBodyAdditionalPropertiesDatePost
