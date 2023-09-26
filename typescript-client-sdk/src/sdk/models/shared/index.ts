@@ -27,6 +27,7 @@ export * from "./mapobjvaluecamelcase";
 export * from "./nullableobject";
 export * from "./nullableoneofrefinobject";
 export * from "./nullableoneoftypeinobject";
+export * from "./objwithzerovaluecomplextypeptrs";
 export * from "./readonlyobject";
 export * from "./readwriteobject";
 export * from "./refqueryparamobj";

@@ -1,4 +1,5 @@
 # Retries
+(*retries*)
 
 ## Overview
 
@@ -31,7 +32,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RetriesGetResponse res = sdk.retries.retriesGet("aliquid", 780931L);
+            RetriesGetResponse res = sdk.retries.retriesGet("dolorem", 147808L);
 
             if (res.retries != null) {
                 // handle response

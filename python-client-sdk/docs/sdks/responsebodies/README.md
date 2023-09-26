@@ -1,4 +1,5 @@
 # ResponseBodies
+(*response_bodies*)
 
 ## Overview
 
@@ -15,6 +16,7 @@ Endpoints for testing response bodies.
 * [response_body_read_only](#response_body_read_only)
 * [response_body_string_get](#response_body_string_get)
 * [response_body_xml_get](#response_body_xml_get)
+* [response_body_zero_value_complex_type_ptrs_post](#response_body_zero_value_complex_type_ptrs_post)
 
 ## response_body_additional_properties_complex_numbers_post
 
@@ -321,4 +323,48 @@ if res.xml is not None:
 ### Response
 
 **[operations.ResponseBodyXMLGetResponse](../../models/operations/responsebodyxmlgetresponse.md)**
+
+
+## response_body_zero_value_complex_type_ptrs_post
+
+### Example Usage
+
+```python
+import sdk
+import dateutil.parser
+from decimal import Decimal
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.ObjWithZeroValueComplexTypePtrs(
+    bigint=287119,
+    bigint_str=968287,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+    decimal=Decimal('429.76'),
+)
+
+res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)
+
+if res.response_body_zero_value_complex_type_ptrs_post_200_application_json_object is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [shared.ObjWithZeroValueComplexTypePtrs](../../models/shared/objwithzerovaluecomplextypeptrs.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+
+
+### Response
+
+**[operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md)**
 

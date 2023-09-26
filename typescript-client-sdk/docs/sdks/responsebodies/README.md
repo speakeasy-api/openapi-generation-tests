@@ -1,4 +1,5 @@
 # ResponseBodies
+(*responseBodies*)
 
 ## Overview
 
@@ -15,6 +16,7 @@ Endpoints for testing response bodies.
 * [responseBodyReadOnly](#responsebodyreadonly)
 * [responseBodyStringGet](#responsebodystringget)
 * [responseBodyXmlGet](#responsebodyxmlget)
+* [responseBodyZeroValueComplexTypePtrsPost](#responsebodyzerovaluecomplextypeptrspost)
 
 ## responseBodyAdditionalPropertiesComplexNumbersPost
 
@@ -344,4 +346,47 @@ sdk.responseBodies.responseBodyXmlGet().then((res: ResponseBodyXmlGetResponse) =
 ### Response
 
 **Promise<[operations.ResponseBodyXmlGetResponse](../../models/operations/responsebodyxmlgetresponse.md)>**
+
+
+## responseBodyZeroValueComplexTypePtrsPost
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { ResponseBodyZeroValueComplexTypePtrsPostResponse } from "openapi/dist/sdk/models/operations";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost({
+  bigint: 287119,
+  bigintStr: "reiciendis",
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00Z"),
+  decimal: 429.76,
+}).then((res: ResponseBodyZeroValueComplexTypePtrsPostResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [shared.ObjWithZeroValueComplexTypePtrs](../../models/shared/objwithzerovaluecomplextypeptrs.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+| `config`                                                                                         | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                     | :heavy_minus_sign:                                                                               | Available config options for making requests.                                                    |
+
+
+### Response
+
+**Promise<[operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md)>**
 

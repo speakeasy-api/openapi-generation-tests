@@ -1,4 +1,5 @@
 # Retries
+(*retries*)
 
 ## Overview
 
@@ -28,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->retries->retriesGet('sit', 699575);
+    $response = $sdk->retries->retriesGet('reiciendis', 131852);
 
     if ($response->retries !== null) {
         // handle response

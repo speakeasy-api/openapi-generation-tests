@@ -1,4 +1,5 @@
 # Retries
+(*retries*)
 
 ## Overview
 
@@ -21,8 +22,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::RetriesGetRequest.new(
   query_params=Operations::RetriesGetRequest.new(
-    request_id="illo",
-    num_retries=36561,
+    request_id="ea",
+    num_retries=107617,
   ),
 )
     

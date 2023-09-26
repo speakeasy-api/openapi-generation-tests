@@ -1,4 +1,5 @@
 # ResponseBodies
+(*ResponseBodies*)
 
 ## Overview
 
@@ -15,6 +16,7 @@ Endpoints for testing response bodies.
 * [ResponseBodyReadOnly](#responsebodyreadonly)
 * [ResponseBodyStringGet](#responsebodystringget)
 * [ResponseBodyXMLGet](#responsebodyxmlget)
+* [ResponseBodyZeroValueComplexTypePtrsPost](#responsebodyzerovaluecomplextypeptrspost)
 
 ## ResponseBodyAdditionalPropertiesComplexNumbersPost
 
@@ -464,4 +466,60 @@ func main() {
 ### Response
 
 **[*operations.ResponseBodyXMLGetResponse](../../models/operations/responsebodyxmlgetresponse.md), error**
+
+
+## ResponseBodyZeroValueComplexTypePtrsPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"math/big"
+	"openapi/pkg/types"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPost(ctx, shared.ObjWithZeroValueComplexTypePtrs{
+        Bigint: big.NewInt(813679),
+        BigintStr: big.NewInt(685092),
+        Date: types.MustDateFromString("2020-01-01"),
+        DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
+        Decimal: types.MustNewDecimalFromString("5098.07"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [shared.ObjWithZeroValueComplexTypePtrs](../../models/shared/objwithzerovaluecomplextypeptrs.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
+
+
+### Response
+
+**[*operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md), error**
 

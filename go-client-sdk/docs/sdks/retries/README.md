@@ -1,4 +1,5 @@
 # Retries
+(*Retries*)
 
 ## Overview
 
@@ -31,8 +32,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestID := "facere"
-    numRetries := 685092
+    requestID := "mollitia"
+    numRetries := 333965
 
     ctx := context.Background()
     res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)

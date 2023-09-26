@@ -461,6 +461,8 @@ src/Models/Operations/ResponseBodyOptionalGetResponse.php
 src/Models/Operations/ResponseBodyReadOnlyResponse.php
 src/Models/Operations/ResponseBodyStringGetResponse.php
 src/Models/Operations/ResponseBodyXmlGetResponse.php
+src/Models/Operations/ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON.php
+src/Models/Operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.php
 src/Models/Operations/RetriesGetRequest.php
 src/Models/Operations/RetriesGetRetries.php
 src/Models/Operations/RetriesGetResponse.php
@@ -561,6 +563,7 @@ src/Models/Shared/ExampleCarType.php
 src/Models/Shared/ExampleCar.php
 src/Models/Shared/TypedObject1Type.php
 src/Models/Shared/TypedObject1.php
+src/Models/Shared/ObjWithZeroValueComplexTypePtrs.php
 src/Models/Shared/NullableOneOfRefInObject.php
 src/Models/Shared/TypedObject2Type.php
 src/Models/Shared/TypedObject2.php
@@ -985,6 +988,8 @@ docs/models/operations/ResponseBodyOptionalGetResponse.md
 docs/models/operations/ResponseBodyReadOnlyResponse.md
 docs/models/operations/ResponseBodyStringGetResponse.md
 docs/models/operations/ResponseBodyXmlGetResponse.md
+docs/models/operations/ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON.md
+docs/models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md
 docs/models/operations/RetriesGetRequest.md
 docs/models/operations/RetriesGetRetries.md
 docs/models/operations/RetriesGetResponse.md
@@ -1085,6 +1090,7 @@ docs/models/shared/ExampleCarType.md
 docs/models/shared/ExampleCar.md
 docs/models/shared/TypedObject1Type.md
 docs/models/shared/TypedObject1.md
+docs/models/shared/ObjWithZeroValueComplexTypePtrs.md
 docs/models/shared/NullableOneOfRefInObject.md
 docs/models/shared/TypedObject2Type.md
 docs/models/shared/TypedObject2.md

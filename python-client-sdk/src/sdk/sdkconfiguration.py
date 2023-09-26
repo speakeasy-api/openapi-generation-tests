@@ -38,8 +38,8 @@ class SDKConfiguration:
     globals: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
     language: str = 'python'
     openapi_doc_version: str = '0.1.0'
-    sdk_version: str = '1.34.0'
-    gen_version: str = '2.129.1'
+    sdk_version: str = '1.34.1'
+    gen_version: str = '2.130.1'
     retry_config: RetryConfig = None
 
     def get_server_details(self) -> tuple[str, dict[str, str]]:

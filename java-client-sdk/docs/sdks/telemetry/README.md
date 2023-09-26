@@ -1,4 +1,5 @@
 # Telemetry
+(*telemetry*)
 
 ## Overview
 
@@ -32,7 +33,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry.telemetrySpeakeasyUserAgentGet("suscipit");
+            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry.telemetrySpeakeasyUserAgentGet("cumque");
 
             if (res.res != null) {
                 // handle response

@@ -1,4 +1,5 @@
 # Resource
+(*resource*)
 
 ### Available Operations
 

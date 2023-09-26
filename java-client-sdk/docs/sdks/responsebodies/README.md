@@ -1,4 +1,5 @@
 # ResponseBodies
+(*responseBodies*)
 
 ## Overview
 
@@ -15,6 +16,7 @@ Endpoints for testing response bodies.
 * [responseBodyReadOnly](#responsebodyreadonly)
 * [responseBodyStringGet](#responsebodystringget)
 * [responseBodyXmlGet](#responsebodyxmlget)
+* [responseBodyZeroValueComplexTypePtrsPost](#responsebodyzerovaluecomplextypeptrspost)
 
 ## responseBodyAdditionalPropertiesComplexNumbersPost
 
@@ -424,4 +426,61 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.ResponseBodyXmlGetResponse](../../models/operations/ResponseBodyXmlGetResponse.md)**
+
+
+## responseBodyZeroValueComplexTypePtrsPost
+
+### Example Usage
+
+```java
+package hello.world;
+
+import java.time.LocalDate;
+import java.time.OffsetDateTime;
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse;
+import org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs() {{
+                bigint = 399802L;
+                bigintStr = "porro";
+                date = LocalDate.parse("2020-01-01");
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
+                decimal = 3803.35d;
+            }};            
+
+            ResponseBodyZeroValueComplexTypePtrsPostResponse res = sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost(req);
+
+            if (res.responseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                    | Type                                                                                                                         | Required                                                                                                                     | Description                                                                                                                  |
+| ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                                    | [org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs](../../models/shared/ObjWithZeroValueComplexTypePtrs.md) | :heavy_check_mark:                                                                                                           | The request object to use for the request.                                                                                   |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.ResponseBodyZeroValueComplexTypePtrsPostResponse](../../models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md)**
 

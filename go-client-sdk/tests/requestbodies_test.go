@@ -1497,3 +1497,39 @@ func TestRequestBodyPostJSONDataTypesArrayDecimalStr(t *testing.T) {
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, req, res.RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSONObject.JSON)
 }
+
+func TestRequestBodyPostNullableRequiredStringBody(t *testing.T) {
+	recordTest("request-bodies-post-nullable-required-string-body")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyPostNullableRequiredStringBody(context.Background(), nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, "null", res.RequestBodyPostNullableRequiredStringBody200ApplicationJSONObject.Data)
+}
+
+func TestRequestBodyPostNullableNotRequiredStringBody(t *testing.T) {
+	recordTest("request-bodies-post-nullable-not-required-string-body")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyPostNullableNotRequiredStringBody(context.Background(), nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, "null", res.RequestBodyPostNullableNotRequiredStringBody200ApplicationJSONObject.Data)
+}
+
+func TestRequestBodyPostNotNullableNotRequiredStringBody(t *testing.T) {
+	recordTest("request-bodies-post-not-nullable-not-required-string-body")
+
+	s := sdk.New()
+
+	res, err := s.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBody(context.Background(), nil)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, "", res.RequestBodyPostNotNullableNotRequiredStringBody200ApplicationJSONObject.Data)
+}

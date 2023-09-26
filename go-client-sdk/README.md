@@ -364,6 +364,7 @@ func main() {
 * [ResponseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
 * [ResponseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
 * [ResponseBodyXMLGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
+* [ResponseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
 ### [Retries](docs/sdks/retries/README.md)
 
@@ -443,7 +444,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 991142,
+        Cursor: 693957,
     })
     if err != nil {
         log.Fatal(err)

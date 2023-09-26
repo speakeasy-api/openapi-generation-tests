@@ -228,6 +228,7 @@ pkg/models/operations/responsebodyoptionalget.go
 pkg/models/operations/responsebodyreadonly.go
 pkg/models/operations/responsebodystringget.go
 pkg/models/operations/responsebodyxmlget.go
+pkg/models/operations/responsebodyzerovaluecomplextypeptrspost.go
 pkg/models/operations/retriesget.go
 pkg/models/operations/groupsecondget.go
 pkg/models/operations/selectglobalserver.go
@@ -292,6 +293,7 @@ pkg/models/shared/objwithcomplexnumbersadditionlproperties.go
 pkg/models/shared/objwithdateadditionlproperties.go
 pkg/models/shared/objwithstringadditionlproperties.go
 pkg/models/shared/typedobject1.go
+pkg/models/shared/objwithzerovaluecomplextypeptrs.go
 pkg/models/shared/nullableoneofrefinobject.go
 pkg/models/shared/typedobject2.go
 pkg/models/shared/nullableoneoftypeinobject.go
@@ -716,6 +718,8 @@ docs/models/operations/responsebodyoptionalgetresponse.md
 docs/models/operations/responsebodyreadonlyresponse.md
 docs/models/operations/responsebodystringgetresponse.md
 docs/models/operations/responsebodyxmlgetresponse.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspost200applicationjson.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md
 docs/models/operations/retriesgetrequest.md
 docs/models/operations/retriesgetretries.md
 docs/models/operations/retriesgetresponse.md
@@ -829,6 +833,7 @@ docs/models/shared/objwithcomplexnumbersadditionlproperties.md
 docs/models/shared/objwithdateadditionlproperties.md
 docs/models/shared/objwithstringadditionlproperties.md
 docs/models/shared/typedobject1.md
+docs/models/shared/objwithzerovaluecomplextypeptrs.md
 docs/models/shared/nullableoneofrefinobjectnullableoneoftwo.md
 docs/models/shared/nullableoneofrefinobject.md
 docs/models/shared/typedobject2.md

@@ -229,6 +229,7 @@ src/sdk/models/operations/responsebodyoptionalget.ts
 src/sdk/models/operations/responsebodyreadonly.ts
 src/sdk/models/operations/responsebodystringget.ts
 src/sdk/models/operations/responsebodyxmlget.ts
+src/sdk/models/operations/responsebodyzerovaluecomplextypeptrspost.ts
 src/sdk/models/operations/retriesget.ts
 src/sdk/models/operations/groupsecondget.ts
 src/sdk/models/operations/selectglobalserver.ts
@@ -284,6 +285,7 @@ src/sdk/models/shared/exampleresource.ts
 src/sdk/models/shared/exampleboat.ts
 src/sdk/models/shared/examplecar.ts
 src/sdk/models/shared/typedobject1.ts
+src/sdk/models/shared/objwithzerovaluecomplextypeptrs.ts
 src/sdk/models/shared/nullableoneofrefinobject.ts
 src/sdk/models/shared/typedobject2.ts
 src/sdk/models/shared/nullableoneoftypeinobject.ts
@@ -706,6 +708,8 @@ docs/models/operations/responsebodyoptionalgetresponse.md
 docs/models/operations/responsebodyreadonlyresponse.md
 docs/models/operations/responsebodystringgetresponse.md
 docs/models/operations/responsebodyxmlgetresponse.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspost200applicationjson.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md
 docs/models/operations/retriesgetrequest.md
 docs/models/operations/retriesgetretries.md
 docs/models/operations/retriesgetresponse.md
@@ -805,6 +809,7 @@ docs/models/shared/examplecartype.md
 docs/models/shared/examplecar.md
 docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
+docs/models/shared/objwithzerovaluecomplextypeptrs.md
 docs/models/shared/nullableoneofrefinobject.md
 docs/models/shared/typedobject2type.md
 docs/models/shared/typedobject2.md

@@ -1,4 +1,5 @@
 # Telemetry
+(*telemetry*)
 
 ## Overview
 
@@ -29,7 +30,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('sed');
+    $response = $sdk->telemetry->telemetrySpeakeasyUserAgentGet('asperiores');
 
     if ($response->res !== null) {
         // handle response

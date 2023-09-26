@@ -477,6 +477,8 @@ lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyOptionalGet
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyReadOnlyResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyStringGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyXmlGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RetriesGetRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/RetriesGetRetries.java
 lib/src/main/java/org/openapis/openapi/models/operations/RetriesGetResponse.java
@@ -577,6 +579,7 @@ lib/src/main/java/org/openapis/openapi/models/shared/ExampleCarType.java
 lib/src/main/java/org/openapis/openapi/models/shared/ExampleCar.java
 lib/src/main/java/org/openapis/openapi/models/shared/TypedObject1Type.java
 lib/src/main/java/org/openapis/openapi/models/shared/TypedObject1.java
+lib/src/main/java/org/openapis/openapi/models/shared/ObjWithZeroValueComplexTypePtrs.java
 lib/src/main/java/org/openapis/openapi/models/shared/NullableOneOfRefInObject.java
 lib/src/main/java/org/openapis/openapi/models/shared/TypedObject2Type.java
 lib/src/main/java/org/openapis/openapi/models/shared/TypedObject2.java
@@ -1001,6 +1004,8 @@ docs/models/operations/ResponseBodyOptionalGetResponse.md
 docs/models/operations/ResponseBodyReadOnlyResponse.md
 docs/models/operations/ResponseBodyStringGetResponse.md
 docs/models/operations/ResponseBodyXmlGetResponse.md
+docs/models/operations/ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSON.md
+docs/models/operations/ResponseBodyZeroValueComplexTypePtrsPostResponse.md
 docs/models/operations/RetriesGetRequest.md
 docs/models/operations/RetriesGetRetries.md
 docs/models/operations/RetriesGetResponse.md
@@ -1101,6 +1106,7 @@ docs/models/shared/ExampleCarType.md
 docs/models/shared/ExampleCar.md
 docs/models/shared/TypedObject1Type.md
 docs/models/shared/TypedObject1.md
+docs/models/shared/ObjWithZeroValueComplexTypePtrs.md
 docs/models/shared/NullableOneOfRefInObject.md
 docs/models/shared/TypedObject2Type.md
 docs/models/shared/TypedObject2.md

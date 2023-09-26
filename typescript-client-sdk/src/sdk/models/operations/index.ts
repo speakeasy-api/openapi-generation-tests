@@ -174,6 +174,7 @@ export * from "./responsebodyoptionalget";
 export * from "./responsebodyreadonly";
 export * from "./responsebodystringget";
 export * from "./responsebodyxmlget";
+export * from "./responsebodyzerovaluecomplextypeptrspost";
 export * from "./retriesget";
 export * from "./selectglobalserver";
 export * from "./selectserverwithid";

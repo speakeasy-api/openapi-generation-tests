@@ -199,6 +199,7 @@ lib/sdk/models/operations/responsebodyoptionalget.rb
 lib/sdk/models/operations/responsebodyreadonly.rb
 lib/sdk/models/operations/responsebodystringget.rb
 lib/sdk/models/operations/responsebodyxmlget.rb
+lib/sdk/models/operations/responsebodyzerovaluecomplextypeptrspost.rb
 lib/sdk/models/operations/retriesget.rb
 lib/sdk/models/operations/groupsecondget.rb
 lib/sdk/models/operations/selectglobalserver.rb
@@ -254,6 +255,7 @@ lib/sdk/models/shared/exampleresource.rb
 lib/sdk/models/shared/exampleboat.rb
 lib/sdk/models/shared/examplecar.rb
 lib/sdk/models/shared/typedobject1.rb
+lib/sdk/models/shared/objwithzerovaluecomplextypeptrs.rb
 lib/sdk/models/shared/nullableoneofrefinobject.rb
 lib/sdk/models/shared/typedobject2.rb
 lib/sdk/models/shared/nullableoneoftypeinobject.rb
@@ -672,6 +674,8 @@ docs/models/operations/responsebodyoptionalgetresponse.md
 docs/models/operations/responsebodyreadonlyresponse.md
 docs/models/operations/responsebodystringgetresponse.md
 docs/models/operations/responsebodyxmlgetresponse.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspost200applicationjson.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md
 docs/models/operations/retriesgetrequest.md
 docs/models/operations/retriesgetretries.md
 docs/models/operations/retriesgetresponse.md
@@ -772,6 +776,7 @@ docs/models/shared/examplecartype.md
 docs/models/shared/examplecar.md
 docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
+docs/models/shared/objwithzerovaluecomplextypeptrs.md
 docs/models/shared/nullableoneofrefinobject.md
 docs/models/shared/typedobject2type.md
 docs/models/shared/typedobject2.md

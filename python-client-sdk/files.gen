@@ -219,6 +219,7 @@ src/sdk/models/operations/responsebodyoptionalget.py
 src/sdk/models/operations/responsebodyreadonly.py
 src/sdk/models/operations/responsebodystringget.py
 src/sdk/models/operations/responsebodyxmlget.py
+src/sdk/models/operations/responsebodyzerovaluecomplextypeptrspost.py
 src/sdk/models/operations/retriesget.py
 src/sdk/models/operations/groupsecondget.py
 src/sdk/models/operations/selectglobalserver.py
@@ -274,6 +275,7 @@ src/sdk/models/shared/exampleresource.py
 src/sdk/models/shared/exampleboat.py
 src/sdk/models/shared/examplecar.py
 src/sdk/models/shared/typedobject1.py
+src/sdk/models/shared/objwithzerovaluecomplextypeptrs.py
 src/sdk/models/shared/nullableoneofrefinobject.py
 src/sdk/models/shared/typedobject2.py
 src/sdk/models/shared/nullableoneoftypeinobject.py
@@ -695,6 +697,8 @@ docs/models/operations/responsebodyoptionalgetresponse.md
 docs/models/operations/responsebodyreadonlyresponse.md
 docs/models/operations/responsebodystringgetresponse.md
 docs/models/operations/responsebodyxmlgetresponse.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspost200applicationjson.md
+docs/models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md
 docs/models/operations/retriesgetrequest.md
 docs/models/operations/retriesgetretries.md
 docs/models/operations/retriesgetresponse.md
@@ -794,6 +798,7 @@ docs/models/shared/examplecartype.md
 docs/models/shared/examplecar.md
 docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
+docs/models/shared/objwithzerovaluecomplextypeptrs.md
 docs/models/shared/nullableoneofrefinobject.md
 docs/models/shared/typedobject2type.md
 docs/models/shared/typedobject2.md

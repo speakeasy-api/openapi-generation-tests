@@ -1,4 +1,5 @@
 # ResponseBodies
+(*response_bodies*)
 
 ## Overview
 
@@ -15,6 +16,7 @@ Endpoints for testing response bodies.
 * [response_body_read_only](#response_body_read_only)
 * [response_body_string_get](#response_body_string_get)
 * [response_body_xml_get](#response_body_xml_get)
+* [response_body_zero_value_complex_type_ptrs_post](#response_body_zero_value_complex_type_ptrs_post)
 
 ## response_body_additional_properties_complex_numbers_post
 
@@ -301,4 +303,45 @@ end
 ### Response
 
 **[T.nilable(Operations::ResponseBodyXmlGetResponse)](../../models/operations/responsebodyxmlgetresponse.md)**
+
+
+## response_body_zero_value_complex_type_ptrs_post
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+   
+req = Shared::ObjWithZeroValueComplexTypePtrs.new(
+  request=Shared::ObjWithZeroValueComplexTypePtrs.new(
+    bigint=75359,
+    bigint_str="accusantium",
+    date=Date.parse("2020-01-01"),
+    date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
+    decimal=4246.63,
+  ),
+)
+    
+res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)
+
+if ! res.response_body_zero_value_complex_type_ptrs_post_200_application_json_object.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                         | Type                                                                                              | Required                                                                                          | Description                                                                                       |
+| ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------- |
+| `request`                                                                                         | [Shared::ObjWithZeroValueComplexTypePtrs](../../models/shared/objwithzerovaluecomplextypeptrs.md) | :heavy_check_mark:                                                                                | The request object to use for the request.                                                        |
+
+
+### Response
+
+**[T.nilable(Operations::ResponseBodyZeroValueComplexTypePtrsPostResponse)](../../models/operations/responsebodyzerovaluecomplextypeptrspostresponse.md)**
 

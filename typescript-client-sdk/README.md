@@ -130,7 +130,7 @@ sdk.generation.usageExamplePost({
 * [putAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [responseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-### [Auth](docs/sdks/auth/README.md)
+### [auth](docs/sdks/auth/README.md)
 
 * [apiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
 * [apiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
@@ -141,7 +141,7 @@ sdk.generation.usageExamplePost({
 * [oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [openIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
-### [AuthNew](docs/sdks/authnew/README.md)
+### [authNew](docs/sdks/authnew/README.md)
 
 * [apiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [authGlobal](docs/sdks/authnew/README.md#authglobal)
@@ -155,21 +155,21 @@ sdk.generation.usageExamplePost({
 * [oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [openIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-### [Documentation](docs/sdks/documentation/README.md)
+### [documentation](docs/sdks/documentation/README.md)
 
 * [getDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
-### [Errors](docs/sdks/errors/README.md)
+### [errors](docs/sdks/errors/README.md)
 
 * [connectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
 * [statusGetError](docs/sdks/errors/README.md#statusgeterror)
 * [statusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
 
-### [First](docs/sdks/first/README.md)
+### [first](docs/sdks/first/README.md)
 
 * [get](docs/sdks/first/README.md#get)
 
-### [Flattening](docs/sdks/flattening/README.md)
+### [flattening](docs/sdks/flattening/README.md)
 
 * [componentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
 * [componentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
@@ -177,7 +177,7 @@ sdk.generation.usageExamplePost({
 * [inlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
 * [inlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
 
-### [Generation](docs/sdks/generation/README.md)
+### [generation](docs/sdks/generation/README.md)
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
@@ -194,29 +194,29 @@ sdk.generation.usageExamplePost({
 * [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-### [Globals](docs/sdks/globals/README.md)
+### [globals](docs/sdks/globals/README.md)
 
 * [globalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [globalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
 
-### [Nest.First](docs/sdks/nestfirst/README.md)
+### [nest.first](docs/sdks/nestfirst/README.md)
 
 * [get](docs/sdks/nestfirst/README.md#get)
 
-### [Nested](docs/sdks/nested/README.md)
+### [nested](docs/sdks/nested/README.md)
 
 * [get](docs/sdks/nested/README.md#get)
 
-### [Nested.First](docs/sdks/nestedfirst/README.md)
+### [nested.first](docs/sdks/nestedfirst/README.md)
 
 * [get](docs/sdks/nestedfirst/README.md#get)
 
-### [Nested.Second](docs/sdks/nestedsecond/README.md)
+### [nested.second](docs/sdks/nestedsecond/README.md)
 
 * [get](docs/sdks/nestedsecond/README.md#get)
 
-### [Pagination](docs/sdks/pagination/README.md)
+### [pagination](docs/sdks/pagination/README.md)
 
 * [paginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
 * [paginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
@@ -225,7 +225,7 @@ sdk.generation.usageExamplePost({
 * [paginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [paginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
 
-### [ParametersT](docs/sdks/parameters/README.md)
+### [parameters](docs/sdks/parameters/README.md)
 
 * [deepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -250,7 +250,7 @@ sdk.generation.usageExamplePost({
 * [simplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [simplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
-### [RequestBodies](docs/sdks/requestbodies/README.md)
+### [requestBodies](docs/sdks/requestbodies/README.md)
 
 * [nullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [nullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -333,7 +333,7 @@ sdk.generation.usageExamplePost({
 * [requestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [requestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-### [Resource](docs/sdks/resource/README.md)
+### [resource](docs/sdks/resource/README.md)
 
 * [createFile](docs/sdks/resource/README.md#createfile)
 * [createResource](docs/sdks/resource/README.md#createresource)
@@ -341,7 +341,7 @@ sdk.generation.usageExamplePost({
 * [getResource](docs/sdks/resource/README.md#getresource)
 * [updateResource](docs/sdks/resource/README.md#updateresource)
 
-### [ResponseBodies](docs/sdks/responsebodies/README.md)
+### [responseBodies](docs/sdks/responsebodies/README.md)
 
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
@@ -352,16 +352,17 @@ sdk.generation.usageExamplePost({
 * [responseBodyReadOnly](docs/sdks/responsebodies/README.md#responsebodyreadonly)
 * [responseBodyStringGet](docs/sdks/responsebodies/README.md#responsebodystringget)
 * [responseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
+* [responseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
-### [Retries](docs/sdks/retries/README.md)
+### [retries](docs/sdks/retries/README.md)
 
 * [retriesGet](docs/sdks/retries/README.md#retriesget)
 
-### [Second](docs/sdks/second/README.md)
+### [second](docs/sdks/second/README.md)
 
 * [get](docs/sdks/second/README.md#get)
 
-### [Servers](docs/sdks/servers/README.md)
+### [servers](docs/sdks/servers/README.md)
 
 * [selectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [selectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -370,12 +371,12 @@ sdk.generation.usageExamplePost({
 * [serverWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [serversByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-### [Telemetry](docs/sdks/telemetry/README.md)
+### [telemetry](docs/sdks/telemetry/README.md)
 
 * [telemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [telemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-### [Unions](docs/sdks/unions/README.md)
+### [unions](docs/sdks/unions/README.md)
 
 * [flattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [mixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
@@ -422,7 +423,7 @@ const sdk = new SDK({
 });
 
 sdk.paginationCursorBody({
-  cursor: 477646,
+  cursor: 592081,
 }).then((res: PaginationCursorBodyResponse) => {
   if (res.statusCode == 200) {
     do {
