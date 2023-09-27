@@ -11,6 +11,10 @@ import { Expose } from "class-transformer";
  */
 export class RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON extends SpeakeasyBase {
     @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    data: string;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "json" })
     json: Record<string, number>;
 }

@@ -10,6 +10,7 @@ import (
 
 // RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON - OK
 type RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON struct {
+	Data string         `json:"data"`
 	JSON []*decimal.Big `json:"json"`
 }
 
@@ -22,6 +23,13 @@ func (r *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON) Unmarsha
 		return err
 	}
 	return nil
+}
+
+func (o *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
 }
 
 func (o *RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON) GetJSON() []*decimal.Big {

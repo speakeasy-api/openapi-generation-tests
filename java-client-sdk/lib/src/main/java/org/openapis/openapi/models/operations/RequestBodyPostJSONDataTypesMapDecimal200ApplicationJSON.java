@@ -11,6 +11,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  */
 
 public class RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON {
+    @JsonProperty("data")
+    public String data;
+
+    public RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON withData(String data) {
+        this.data = data;
+        return this;
+    }
+    
     @JsonProperty("json")
     public java.util.Map<String, Double> json;
 
@@ -19,7 +27,8 @@ public class RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON {
         return this;
     }
     
-    public RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON(@JsonProperty("json") java.util.Map<String, Double> json) {
+    public RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON(@JsonProperty("data") String data, @JsonProperty("json") java.util.Map<String, Double> json) {
+        this.data = data;
         this.json = json;
   }
 }

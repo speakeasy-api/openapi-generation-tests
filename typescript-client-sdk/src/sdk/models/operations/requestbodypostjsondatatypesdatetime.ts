@@ -11,6 +11,10 @@ import { Expose, Transform } from "class-transformer";
  */
 export class RequestBodyPostJSONDataTypesDateTime200ApplicationJSON extends SpeakeasyBase {
     @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    data: string;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "json" })
     @Transform(({ value }) => new Date(value), { toClassOnly: true })
     json: Date;

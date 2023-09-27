@@ -5,14 +5,20 @@ import dataclasses
 from ..shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional, Union
+
+
+
+@dataclasses.dataclass
+class DeepObjectWithTypeAny:
+    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class DeepObjectWithType:
-    any: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
+    any: Union[shared_simpleobject.SimpleObject, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     arr: list[shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr') }})
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int') }})

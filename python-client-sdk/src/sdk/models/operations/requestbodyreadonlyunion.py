@@ -3,7 +3,9 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
-from typing import Any, Optional
+from ..shared import readonlyobject as shared_readonlyobject
+from ..shared import simpleobject as shared_simpleobject
+from typing import Optional, Union
 
 REQUEST_BODY_READ_ONLY_UNION_SERVERS = [
 	"http://localhost:35456",
@@ -19,7 +21,7 @@ class RequestBodyReadOnlyUnionResponse:
     r"""HTTP response status code for this operation"""
     raw_response: Optional[requests_http.Response] = dataclasses.field(default=None)
     r"""Raw HTTP response; suitable for custom response parsing"""
-    weakly_typed_one_of_read_only_object: Optional[Any] = dataclasses.field(default=None)
+    weakly_typed_one_of_read_only_object: Optional[Union[shared_simpleobject.SimpleObject, shared_readonlyobject.ReadOnlyObject]] = dataclasses.field(default=None)
     r"""OK"""
     
 

@@ -12,6 +12,14 @@ import java.time.LocalDate;
  */
 
 public class RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON {
+    @JsonProperty("data")
+    public String data;
+
+    public RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON withData(String data) {
+        this.data = data;
+        return this;
+    }
+    
     @JsonProperty("json")
     public LocalDate[] json;
 
@@ -20,7 +28,8 @@ public class RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON {
         return this;
     }
     
-    public RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON(@JsonProperty("json") LocalDate[] json) {
+    public RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON(@JsonProperty("data") String data, @JsonProperty("json") LocalDate[] json) {
+        this.data = data;
         this.json = json;
   }
 }

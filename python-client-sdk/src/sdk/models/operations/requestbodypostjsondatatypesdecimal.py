@@ -14,6 +14,7 @@ from typing import Optional
 @dataclasses.dataclass
 class RequestBodyPostJSONDataTypesDecimal200ApplicationJSON:
     r"""OK"""
+    data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     json: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
     
 

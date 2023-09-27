@@ -16,6 +16,14 @@ import org.openapis.openapi.utils.DateTimeSerializer;
  */
 
 public class RequestBodyPostJSONDataTypesDateTime200ApplicationJSON {
+    @JsonProperty("data")
+    public String data;
+
+    public RequestBodyPostJSONDataTypesDateTime200ApplicationJSON withData(String data) {
+        this.data = data;
+        return this;
+    }
+    
     @JsonSerialize(using = DateTimeSerializer.class)
     @JsonDeserialize(using = DateTimeDeserializer.class)
     @JsonProperty("json")
@@ -26,7 +34,8 @@ public class RequestBodyPostJSONDataTypesDateTime200ApplicationJSON {
         return this;
     }
     
-    public RequestBodyPostJSONDataTypesDateTime200ApplicationJSON(@JsonProperty("json") OffsetDateTime json) {
+    public RequestBodyPostJSONDataTypesDateTime200ApplicationJSON(@JsonProperty("data") String data, @JsonProperty("json") OffsetDateTime json) {
+        this.data = data;
         this.json = json;
   }
 }

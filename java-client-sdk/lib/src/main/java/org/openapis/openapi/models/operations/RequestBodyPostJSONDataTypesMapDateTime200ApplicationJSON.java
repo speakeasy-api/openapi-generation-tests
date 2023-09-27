@@ -12,6 +12,14 @@ import java.time.OffsetDateTime;
  */
 
 public class RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON {
+    @JsonProperty("data")
+    public String data;
+
+    public RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON withData(String data) {
+        this.data = data;
+        return this;
+    }
+    
     @JsonProperty("json")
     public java.util.Map<String, OffsetDateTime> json;
 
@@ -20,7 +28,8 @@ public class RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON {
         return this;
     }
     
-    public RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON(@JsonProperty("json") java.util.Map<String, OffsetDateTime> json) {
+    public RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON(@JsonProperty("data") String data, @JsonProperty("json") java.util.Map<String, OffsetDateTime> json) {
+        this.data = data;
         this.json = json;
   }
 }

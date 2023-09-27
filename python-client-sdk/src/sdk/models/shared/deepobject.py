@@ -5,14 +5,20 @@ import dataclasses
 from ..shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional, Union
+
+
+
+@dataclasses.dataclass
+class DeepObjectAny:
+    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class DeepObject:
-    any: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }, 'form': { 'field_name': 'any', 'json': True }, 'multipart_form': { 'field_name': 'any', 'json': True }})
+    any: Union[shared_simpleobject.SimpleObject, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }, 'form': { 'field_name': 'any' }, 'multipart_form': { 'field_name': 'any' }})
     arr: list[shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arr') }, 'form': { 'field_name': 'arr', 'json': True }, 'multipart_form': { 'field_name': 'arr', 'json': True }})
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }, 'form': { 'field_name': 'bool' }, 'multipart_form': { 'field_name': 'bool' }})
     int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('int') }, 'form': { 'field_name': 'int' }, 'multipart_form': { 'field_name': 'int' }})

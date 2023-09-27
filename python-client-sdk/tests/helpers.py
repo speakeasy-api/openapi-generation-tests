@@ -26,6 +26,26 @@ def create_simple_object():
         str_opt="testOptional",
     )
 
+def create_simple_object_with_type():
+    return shared.SimpleObjectWithType(
+        any="any",
+        bool=True,
+        bool_opt=True,
+        date_=date(2020, 1, 1),
+        date_time=datetime(2020, 1, 1, 0, 0, 0, 1, tzutc()),
+        enum=shared.EnumT.ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        int_opt_null=None,
+        num=1.1,
+        num_opt_null=None,
+        str_="test",
+        str_opt="testOptional",
+        type="SimpleObjectWithType"
+    )
 
 def create_simple_object_camel_case():
     return shared.SimpleObjectCamelCase(
@@ -60,6 +80,18 @@ def create_deep_object():
         str_="test",
     )
 
+def create_deep_object_with_type():
+    return shared.DeepObjectWithType(
+        any=create_simple_object(),
+        arr=[create_simple_object(), create_simple_object()],
+        bool=True,
+        int=1,
+        map={"key": create_simple_object()},
+        num=1.1,
+        obj=create_simple_object(),
+        str_="test",
+        type="DeepObjectWithType"
+    )
 
 def compare_simple_object(obj1: shared.SimpleObject, obj2: shared.SimpleObject):
     assert obj1.any == obj2.any
@@ -76,6 +108,23 @@ def compare_simple_object(obj1: shared.SimpleObject, obj2: shared.SimpleObject):
     assert obj1.num_opt_null == obj2.num_opt_null
     assert obj1.str_ == obj2.str_
     assert obj1.str_opt == obj2.str_opt
+
+def compare_simple_object_with_type(obj1: shared.SimpleObjectWithType, obj2: shared.SimpleObjectWithType):
+    assert obj1.any == obj2.any
+    assert obj1.bool == obj2.bool
+    assert obj1.bool_opt == obj2.bool_opt
+    assert obj1.date_ == obj2.date_
+    assert obj1.date_time == obj2.date_time
+    assert obj1.enum == obj2.enum
+    assert obj1.float32 == obj2.float32
+    assert obj1.int == obj2.int
+    assert obj1.int32 == obj2.int32
+    assert obj1.int_opt_null == obj2.int_opt_null
+    assert obj1.num == obj2.num
+    assert obj1.num_opt_null == obj2.num_opt_null
+    assert obj1.str_ == obj2.str_
+    assert obj1.str_opt == obj2.str_opt
+    assert obj1.type == obj2.type
 
 
 def compare_simple_object_camel_case(actual: shared.SimpleObjectCamelCase):
@@ -108,6 +157,20 @@ def compare_deep_object(obj1: shared.DeepObject, obj2: shared.DeepObject):
     assert obj1.num == obj2.num
     compare_simple_object(obj1.obj, obj2.obj)
     assert obj1.str_ == obj2.str_
+
+def compare_deep_object_with_type(obj1: shared.DeepObject, obj2: shared.DeepObject):
+    assert len(obj1.arr) == len(obj2.arr)
+    for i in range(len(obj1.arr)):
+        compare_simple_object(obj1.arr[i], obj2.arr[i])
+    assert obj1.bool == obj2.bool
+    assert obj1.int == obj2.int
+    assert len(obj1.map) == len(obj2.map)
+    for key in obj1.map:
+        compare_simple_object(obj1.map[key], obj2.map[key])
+    assert obj1.num == obj2.num
+    compare_simple_object(obj1.obj, obj2.obj)
+    assert obj1.str_ == obj2.str_
+    assert obj1.type == obj2.type
 
 
 def record_test(test_id: str):

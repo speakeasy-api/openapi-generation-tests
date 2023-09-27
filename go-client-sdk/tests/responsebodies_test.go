@@ -8,6 +8,7 @@ import (
 	"math/big"
 	"net/http"
 	"testing"
+	"time"
 
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
@@ -170,6 +171,25 @@ func TestResponseBodyAdditionalPropertiesComplexNumbersPost(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSONObject.JSON)
+}
+
+func TestResponseBodyZeroValueComplexTypePtrsPost(t *testing.T) {
+	recordTest("response-bodies-zero-value-complex-type-ptrs")
+
+	s := sdk.New()
+
+	req := shared.ObjWithZeroValueComplexTypePtrs{
+		Bigint:    &big.Int{},
+		BigintStr: &big.Int{},
+		Date:      &types.Date{},
+		DateTime:  &time.Time{},
+	}
+
+	res, err := s.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPost(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, req, res.ResponseBodyZeroValueComplexTypePtrsPost200ApplicationJSONObject.JSON)
 }
 
 func TestResponseBodyAdditionalPropertiesDatePost(t *testing.T) {

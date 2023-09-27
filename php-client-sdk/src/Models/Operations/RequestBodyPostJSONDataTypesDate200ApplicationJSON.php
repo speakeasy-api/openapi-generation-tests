@@ -17,12 +17,17 @@ namespace OpenAPI\OpenAPI\Models\Operations;
  */
 class RequestBodyPostJSONDataTypesDate200ApplicationJSON
 {
+	#[\JMS\Serializer\Annotation\SerializedName('data')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $data;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type("DateTime<'Y-m-d', '', '|Y-m-d'>")]
     public \DateTime $json;
     
 	public function __construct()
 	{
+		$this->data = "";
 		$this->json = new \DateTime();
 	}
 }

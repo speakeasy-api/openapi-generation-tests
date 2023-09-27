@@ -10,6 +10,7 @@ import (
 
 // RequestBodyPostJSONDataTypesDateTime200ApplicationJSON - OK
 type RequestBodyPostJSONDataTypesDateTime200ApplicationJSON struct {
+	Data string    `json:"data"`
 	JSON time.Time `json:"json"`
 }
 
@@ -22,6 +23,13 @@ func (r *RequestBodyPostJSONDataTypesDateTime200ApplicationJSON) UnmarshalJSON(d
 		return err
 	}
 	return nil
+}
+
+func (o *RequestBodyPostJSONDataTypesDateTime200ApplicationJSON) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
 }
 
 func (o *RequestBodyPostJSONDataTypesDateTime200ApplicationJSON) GetJSON() time.Time {

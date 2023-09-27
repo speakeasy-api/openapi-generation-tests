@@ -4,6 +4,7 @@ from decimal import Decimal
 
 from sdk import SDK
 from sdk.models.operations import *
+from sdk.models.shared import simpleobject as shared_simpleobject
 from sdk.utils import *
 
 from .helpers import *
@@ -298,22 +299,7 @@ def test_request_body_post_application_json_deep():
     obj.any = None
 
     compare_deep_object(res.res.json, obj)
-    assert any == {
-        'any': 'any',
-        'bool': True,
-        'boolOpt': True,
-        'date': '2020-01-01',
-        'dateTime': '2020-01-01T00:00:00.000001Z',
-        'enum': 'one',
-        'float32': 1.1,
-        'int': 1,
-        'int32': 1,
-        'int32Enum': 55,
-        'intEnum': 2,
-        'num': 1.1,
-        'str': 'test',
-        'strOpt': 'testOptional'
-    }
+    compare_simple_object(any, create_simple_object())
 
 
 def test_request_body_post_application_json_multiple_json_filtered():

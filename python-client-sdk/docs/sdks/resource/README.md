@@ -27,8 +27,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='nostrum'.encode(),
-        file='saepe',
+        content='voluptatum'.encode(),
+        file='error',
     ),
 )
 
@@ -69,35 +69,29 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        6222.31,
+        9447.08,
     ],
     array_of_string=[
-        'consequatur',
+        'expedita',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='incidunt',
+            description='debitis',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-05-16T07:46:15.799Z'),
-    enum_number=shared.ExampleResourceEnumNumber.THREE,
-    enum_str=shared.ExampleResourceEnumStr.ONE,
-    id='194b8abf-603a-479f-9dfe-0ab7da8a50ce',
+    created_at=dateutil.parser.isoparse('2022-04-28T20:28:39.956Z'),
+    enum_number=shared.ExampleResourceEnumNumber.TWO,
+    enum_str=shared.ExampleResourceEnumStr.TWO,
+    id='a8e4824d-0ab4-4075-888e-51862065e904',
     map_of_integer={
-        "quasi": 542457,
+        "reiciendis": 209750,
     },
     map_of_string={
-        "reprehenderit": 'asperiores',
+        "harum": 'dicta',
     },
-    name='Sam Powlowski IV',
-    updated_at=dateutil.parser.isoparse('2022-03-05T05:01:11.294Z'),
-    vehicle=shared.ExampleBoat(
-        created_at=dateutil.parser.isoparse('2021-10-02T23:52:38.012Z'),
-        length=8872.65,
-        name='Tomas Mosciski',
-        type=shared.ExampleBoatType.BOAT,
-        updated_at=dateutil.parser.isoparse('2022-01-08T02:07:04.894Z'),
-    ),
+    name='Violet Greenfelder',
+    updated_at=dateutil.parser.isoparse('2021-07-21T08:55:46.635Z'),
+    vehicle=[],
 )
 
 res = s.resource.create_resource(req)
@@ -135,7 +129,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='corrupti')
+res = s.resource.delete_resource(resource_id='tenetur')
 
 if res.status_code == 200:
     # handle response
@@ -170,7 +164,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='at')
+res = s.resource.get_resource(resource_id='laboriosam')
 
 if res.example_resource is not None:
     # handle response
@@ -205,7 +199,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='error')
+res = s.resource.update_resource(resource_id='alias')
 
 if res.status_code == 200:
     # handle response

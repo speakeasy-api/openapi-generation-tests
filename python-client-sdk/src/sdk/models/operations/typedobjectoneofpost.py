@@ -3,9 +3,12 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import typedobject1 as shared_typedobject1
+from ..shared import typedobject2 as shared_typedobject2
+from ..shared import typedobject3 as shared_typedobject3
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -13,7 +16,7 @@ from typing import Any, Optional
 @dataclasses.dataclass
 class TypedObjectOneOfPostRes:
     r"""OK"""
-    json: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: Union[shared_typedobject1.TypedObject1, shared_typedobject2.TypedObject2, shared_typedobject3.TypedObject3] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 

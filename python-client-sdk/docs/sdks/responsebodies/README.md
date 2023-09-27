@@ -35,7 +35,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "blanditiis": 379356,
+    "amet": 647197,
 }
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
@@ -73,7 +73,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "repudiandae": dateutil.parser.parse('2021-12-01').date(),
+    "voluptate": dateutil.parser.parse('2021-01-21').date(),
 }
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
@@ -111,7 +111,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "sunt": 'recusandae',
+    "provident": 'repellendus',
 }
 
 res = s.response_bodies.response_body_additional_properties_post(req)
@@ -178,7 +178,7 @@ s = sdk.SDK(
 )
 
 
-res = s.response_bodies.response_body_empty_with_headers(x_number_header=6806.97, x_string_header='repellendus')
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=9627.71, x_string_header='voluptates')
 
 if res.status_code == 200:
     # handle response
@@ -344,11 +344,11 @@ s = sdk.SDK(
 )
 
 req = shared.ObjWithZeroValueComplexTypePtrs(
-    bigint=287119,
-    bigint_str=968287,
+    bigint=16871,
+    bigint_str=667285,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('429.76'),
+    decimal=Decimal('6964.83'),
 )
 
 res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)

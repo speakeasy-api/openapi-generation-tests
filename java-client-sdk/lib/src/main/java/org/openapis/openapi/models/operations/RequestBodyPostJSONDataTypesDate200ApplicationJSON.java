@@ -13,6 +13,14 @@ import java.time.LocalDate;
  */
 
 public class RequestBodyPostJSONDataTypesDate200ApplicationJSON {
+    @JsonProperty("data")
+    public String data;
+
+    public RequestBodyPostJSONDataTypesDate200ApplicationJSON withData(String data) {
+        this.data = data;
+        return this;
+    }
+    
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @JsonProperty("json")
     public LocalDate json;
@@ -22,7 +30,8 @@ public class RequestBodyPostJSONDataTypesDate200ApplicationJSON {
         return this;
     }
     
-    public RequestBodyPostJSONDataTypesDate200ApplicationJSON(@JsonProperty("json") LocalDate json) {
+    public RequestBodyPostJSONDataTypesDate200ApplicationJSON(@JsonProperty("data") String data, @JsonProperty("json") LocalDate json) {
+        this.data = data;
         this.json = json;
   }
 }

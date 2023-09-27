@@ -10,6 +10,7 @@ import (
 
 // RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON - OK
 type RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON struct {
+	Data string   `json:"data"`
 	JSON *big.Int `bigint:"string" json:"json"`
 }
 
@@ -22,6 +23,13 @@ func (r *RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON) UnmarshalJSON(
 		return err
 	}
 	return nil
+}
+
+func (o *RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
 }
 
 func (o *RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON) GetJSON() *big.Int {

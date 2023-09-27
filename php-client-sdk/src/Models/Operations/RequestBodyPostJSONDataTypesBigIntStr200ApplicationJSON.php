@@ -17,12 +17,17 @@ namespace OpenAPI\OpenAPI\Models\Operations;
  */
 class RequestBodyPostJSONDataTypesBigIntStr200ApplicationJSON
 {
+	#[\JMS\Serializer\Annotation\SerializedName('data')]
+    #[\JMS\Serializer\Annotation\Type('string')]
+    public string $data;
+    
 	#[\JMS\Serializer\Annotation\SerializedName('json')]
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $json;
     
 	public function __construct()
 	{
+		$this->data = "";
 		$this->json = "";
 	}
 }

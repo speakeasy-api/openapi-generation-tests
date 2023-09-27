@@ -3,9 +3,22 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional, Union
+
+
+
+@dataclasses.dataclass
+class MixedTypeOneOfPostRequestBody:
+    pass
+
+
+
+@dataclasses.dataclass
+class MixedTypeOneOfPostResJSON:
+    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -13,7 +26,7 @@ from typing import Any, Optional
 @dataclasses.dataclass
 class MixedTypeOneOfPostRes:
     r"""OK"""
-    json: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: Union[str, int, shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 

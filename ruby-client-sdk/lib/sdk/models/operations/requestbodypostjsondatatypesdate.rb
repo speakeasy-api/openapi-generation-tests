@@ -13,11 +13,14 @@ module OpenApiSDK
       extend T::Sig
 
 
+      field :data, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('data') } }
+
       field :json, Date, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('json'), 'decoder': Utils.date_from_iso_format(false) } }
 
 
-      sig { params(json: Date).void }
-      def initialize(json: nil)
+      sig { params(data: String, json: Date).void }
+      def initialize(data: nil, json: nil)
+        @data = data
         @json = json
       end
     end

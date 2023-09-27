@@ -12,6 +12,10 @@ import { Expose } from "class-transformer";
  */
 export class RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON extends SpeakeasyBase {
     @SpeakeasyMetadata()
+    @Expose({ name: "data" })
+    data: string;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "json" })
     json: RFCDate[];
 }

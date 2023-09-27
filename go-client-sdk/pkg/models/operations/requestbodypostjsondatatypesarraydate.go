@@ -10,6 +10,7 @@ import (
 
 // RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON - OK
 type RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON struct {
+	Data string       `json:"data"`
 	JSON []types.Date `json:"json"`
 }
 
@@ -22,6 +23,13 @@ func (r *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON) UnmarshalJSON(
 		return err
 	}
 	return nil
+}
+
+func (o *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON) GetData() string {
+	if o == nil {
+		return ""
+	}
+	return o.Data
 }
 
 func (o *RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON) GetJSON() []types.Date {

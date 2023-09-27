@@ -15,6 +15,7 @@ from typing import Optional
 @dataclasses.dataclass
 class RequestBodyPostJSONDataTypesDateTime200ApplicationJSON:
     r"""OK"""
+    data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     json: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
     
 

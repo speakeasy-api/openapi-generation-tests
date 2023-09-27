@@ -13,6 +13,7 @@ from typing import Optional
 @dataclasses.dataclass
 class RequestBodyPostJSONDataTypesMapBigIntStr200ApplicationJSON:
     r"""OK"""
+    data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     json: dict[str, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 

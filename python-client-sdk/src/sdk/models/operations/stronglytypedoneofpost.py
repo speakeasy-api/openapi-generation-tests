@@ -3,9 +3,11 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import deepobjectwithtype as shared_deepobjectwithtype
+from ..shared import simpleobjectwithtype as shared_simpleobjectwithtype
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -13,7 +15,7 @@ from typing import Any, Optional
 @dataclasses.dataclass
 class StronglyTypedOneOfPostRes:
     r"""OK"""
-    json: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: Union[shared_simpleobjectwithtype.SimpleObjectWithType, shared_deepobjectwithtype.DeepObjectWithType] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'decoder': utils.decoder_with_discriminator('type') }})
     
 
 

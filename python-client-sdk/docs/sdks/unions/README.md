@@ -37,7 +37,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='beatae',
+    value='praesentium',
 )
 
 res = s.unions.flattened_typed_object_post(req)
@@ -76,7 +76,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'enim'
+req = []
 
 res = s.unions.mixed_type_one_of_post(req)
 
@@ -86,9 +86,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `request`                                                                                        | [Union[str, int, shared.SimpleObject]](../../models/operations/mixedtypeoneofpostrequestbody.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 
 
 ### Response
@@ -115,15 +115,12 @@ s = sdk.SDK(
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='laboriosam',
+        value='mollitia',
     ),
-    nullable_one_of_two=shared.TypedObject1(
-        type=shared.TypedObject1Type.OBJ1,
-        value='a',
-    ),
+    nullable_one_of_two=[],
     one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='molestias',
+        value='veniam',
     ),
 )
 
@@ -161,10 +158,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject1(
-    type=shared.TypedObject1Type.OBJ1,
-    value='saepe',
-)
+req = []
 
 res = s.unions.nullable_one_of_schema_post(req)
 
@@ -174,9 +168,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                        | [Union[shared.TypedObject1, shared.TypedObject2]](../../models/operations/nullableoneofschemapostrequestbody.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 
 
 ### Response
@@ -202,7 +196,7 @@ s = sdk.SDK(
 
 req = shared.NullableOneOfTypeInObject(
     nullable_one_of_one=False,
-    nullable_one_of_two=False,
+    nullable_one_of_two=[],
     one_of_one=False,
 )
 
@@ -242,7 +236,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='occaecati',
+    value='voluptatem',
 )
 
 res = s.unions.nullable_typed_object_post(req)
@@ -279,7 +273,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = False
+req = []
 
 res = s.unions.primitive_type_one_of_post(req)
 
@@ -289,9 +283,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                    | Type                                                                                         | Required                                                                                     | Description                                                                                  |
+| -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| `request`                                                                                    | [Union[str, int, float, bool]](../../models/operations/primitivetypeoneofpostrequestbody.md) | :heavy_check_mark:                                                                           | The request object to use for the request.                                                   |
 
 
 ### Response
@@ -317,101 +311,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.DeepObjectWithType(
-    any=shared.SimpleObject(
-        any='adipisci',
-        bigint=907876,
-        bigint_str=580887,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('1602.3'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    arr=[
-        shared.SimpleObject(
-            any='quis',
-            bigint=440264,
-            bigint_str=625528,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('764.86'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    ],
-    bool=False,
-    int=910994,
-    map={
-        "non": shared.SimpleObject(
-            any='vero',
-            bigint=39615,
-            bigint_str=434156,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('599.44'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    },
-    num=4746.68,
-    obj=shared.SimpleObject(
-        any='eveniet',
-        bigint=184362,
-        bigint_str=739884,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('4347.61'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    str_='laborum',
-    type='distinctio',
-)
+req = []
 
 res = s.unions.strongly_typed_one_of_post(req)
 
@@ -421,9 +321,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                                        | Type                                                                                                             | Required                                                                                                         | Description                                                                                                      |
+| ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                        | [Union[shared.SimpleObjectWithType, shared.DeepObjectWithType]](../../models/shared/stronglytypedoneofobject.md) | :heavy_check_mark:                                                                                               | The request object to use for the request.                                                                       |
 
 
 ### Response
@@ -447,10 +347,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject2(
-    type=shared.TypedObject2Type.OBJ2,
-    value='rem',
-)
+req = []
 
 res = s.unions.typed_object_nullable_one_of_post(req)
 
@@ -460,9 +357,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [Union[shared.TypedObject1, shared.TypedObject2]](../../models/shared/typedobjectnullableoneof.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 
 
 ### Response
@@ -486,10 +383,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject1(
-    type=shared.TypedObject1Type.OBJ1,
-    value='ad',
-)
+req = []
 
 res = s.unions.typed_object_one_of_post(req)
 
@@ -499,9 +393,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                                       | Type                                                                                                            | Required                                                                                                        | Description                                                                                                     |
+| --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| `request`                                                                                                       | [Union[shared.TypedObject1, shared.TypedObject2, shared.TypedObject3]](../../models/shared/typedobjectoneof.md) | :heavy_check_mark:                                                                                              | The request object to use for the request.                                                                      |
 
 
 ### Response
@@ -527,101 +421,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.DeepObject(
-    any=shared.SimpleObject(
-        any='corporis',
-        bigint=597303,
-        bigint_str=470649,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('6490.78'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    arr=[
-        shared.SimpleObject(
-            any='maiores',
-            bigint=970222,
-            bigint_str=174658,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('6638.66'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    ],
-    bool=False,
-    int=680349,
-    map={
-        "nesciunt": shared.SimpleObject(
-            any='quae',
-            bigint=925703,
-            bigint_str=607249,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-            decimal=Decimal('3092.51'),
-            enum=shared.EnumT.TWO,
-            float32=2.2222222,
-            int=999999,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
-            int_opt_null=999999,
-            num=1.1,
-            num_opt_null=1.1,
-            str_='example',
-            str_opt='optional example',
-        ),
-    },
-    num=2840,
-    obj=shared.SimpleObject(
-        any='culpa',
-        bigint=238413,
-        bigint_str=890653,
-        bool=True,
-        bool_opt=True,
-        date_=dateutil.parser.parse('2020-01-01').date(),
-        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-        decimal=Decimal('5145.13'),
-        enum=shared.EnumT.TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_='example',
-        str_opt='optional example',
-    ),
-    str_='recusandae',
-    type='esse',
-)
+req = []
 
 res = s.unions.weakly_typed_one_of_post(req)
 
@@ -631,9 +431,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [Any](../../models//.md)                   | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [Union[shared.SimpleObject, shared.DeepObject]](../../models/shared/weaklytypedoneofobject.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 
 
 ### Response

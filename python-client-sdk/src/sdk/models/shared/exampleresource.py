@@ -3,11 +3,13 @@
 from __future__ import annotations
 import dataclasses
 import dateutil.parser
+from ..shared import exampleboat as shared_exampleboat
+from ..shared import examplecar as shared_examplecar
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
 from enum import Enum
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -36,7 +38,7 @@ class ExampleResource:
     chocolates: list[ExampleResourceChocolates] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('chocolates') }})
     id: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('id') }})
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    vehicle: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vehicle') }})
+    vehicle: Union[shared_exampleboat.ExampleBoat, shared_examplecar.ExampleCar] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('vehicle') }})
     array_of_number: Optional[list[float]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrayOfNumber'), 'exclude': lambda f: f is None }})
     array_of_string: Optional[list[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrayOfString'), 'exclude': lambda f: f is None }})
     created_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})

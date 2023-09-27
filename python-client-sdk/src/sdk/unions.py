@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from sdk import utils
 from sdk.models import errors, operations, shared
-from typing import Any, Optional
+from typing import Optional, Union
 
 class Unions:
     r"""Endpoints for testing union types."""
@@ -45,7 +45,7 @@ class Unions:
         return res
 
     
-    def mixed_type_one_of_post(self, request: Any) -> operations.MixedTypeOneOfPostResponse:
+    def mixed_type_one_of_post(self, request: Union[str, int, shared.SimpleObject]) -> operations.MixedTypeOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/mixedTypeOneOf'
@@ -109,7 +109,7 @@ class Unions:
         return res
 
     
-    def nullable_one_of_schema_post(self, request: Any) -> operations.NullableOneOfSchemaPostResponse:
+    def nullable_one_of_schema_post(self, request: Union[shared.TypedObject1, shared.TypedObject2]) -> operations.NullableOneOfSchemaPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/nullableOneOfSchema'
@@ -205,7 +205,7 @@ class Unions:
         return res
 
     
-    def primitive_type_one_of_post(self, request: Any) -> operations.PrimitiveTypeOneOfPostResponse:
+    def primitive_type_one_of_post(self, request: Union[str, int, float, bool]) -> operations.PrimitiveTypeOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/primitiveTypeOneOf'
@@ -237,7 +237,7 @@ class Unions:
         return res
 
     
-    def strongly_typed_one_of_post(self, request: Any) -> operations.StronglyTypedOneOfPostResponse:
+    def strongly_typed_one_of_post(self, request: Union[shared.SimpleObjectWithType, shared.DeepObjectWithType]) -> operations.StronglyTypedOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/stronglyTypedOneOf'
@@ -269,7 +269,7 @@ class Unions:
         return res
 
     
-    def typed_object_nullable_one_of_post(self, request: Any) -> operations.TypedObjectNullableOneOfPostResponse:
+    def typed_object_nullable_one_of_post(self, request: Union[shared.TypedObject1, shared.TypedObject2]) -> operations.TypedObjectNullableOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/typedObjectNullableOneOf'
@@ -301,7 +301,7 @@ class Unions:
         return res
 
     
-    def typed_object_one_of_post(self, request: Any) -> operations.TypedObjectOneOfPostResponse:
+    def typed_object_one_of_post(self, request: Union[shared.TypedObject1, shared.TypedObject2, shared.TypedObject3]) -> operations.TypedObjectOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/typedObjectOneOf'
@@ -333,7 +333,7 @@ class Unions:
         return res
 
     
-    def weakly_typed_one_of_post(self, request: Any) -> operations.WeaklyTypedOneOfPostResponse:
+    def weakly_typed_one_of_post(self, request: Union[shared.SimpleObject, shared.DeepObject]) -> operations.WeaklyTypedOneOfPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/weaklyTypedOneOf'

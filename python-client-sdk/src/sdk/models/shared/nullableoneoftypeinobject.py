@@ -4,7 +4,13 @@ from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any
+from typing import Union
+
+
+
+@dataclasses.dataclass
+class NullableOneOfTypeInObjectNullableOneOfTwo:
+    pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -12,7 +18,7 @@ from typing import Any
 @dataclasses.dataclass
 class NullableOneOfTypeInObject:
     nullable_one_of_one: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
-    nullable_one_of_two: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
+    nullable_one_of_two: Union[bool, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
     one_of_one: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
     
 

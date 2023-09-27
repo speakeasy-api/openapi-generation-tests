@@ -5,7 +5,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from sdk import utils
 from sdk.models import errors, operations, shared
-from typing import Any, Optional
+from typing import Optional, Union
 
 class RequestBodies:
     r"""Endpoints for testing request bodies."""
@@ -2493,7 +2493,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_read_only_union(self, request: Any, server_url: Optional[str] = None) -> operations.RequestBodyReadOnlyUnionResponse:
+    def request_body_read_only_union(self, request: Union[shared.SimpleObject, shared.ReadOnlyObjectInput], server_url: Optional[str] = None) -> operations.RequestBodyReadOnlyUnionResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_ONLY_UNION_SERVERS[0], {
         })
         if server_url is not None:
@@ -2518,7 +2518,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.SimpleObject, shared.ReadOnlyObject]])
                 res.weakly_typed_one_of_read_only_object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -2528,7 +2528,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_read_write_only_union(self, request: Any, server_url: Optional[str] = None) -> operations.RequestBodyReadWriteOnlyUnionResponse:
+    def request_body_read_write_only_union(self, request: Union[shared.SimpleObject, shared.ReadWriteObjectInput], server_url: Optional[str] = None) -> operations.RequestBodyReadWriteOnlyUnionResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_READ_WRITE_ONLY_UNION_SERVERS[0], {
         })
         if server_url is not None:
@@ -2553,7 +2553,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.SimpleObject, shared.ReadWriteObjectOutput]])
                 res.weakly_typed_one_of_read_write_object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -2633,7 +2633,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_write_only_union(self, request: Any, server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyUnionResponse:
+    def request_body_write_only_union(self, request: Union[shared.SimpleObject, shared.WriteOnlyObject], server_url: Optional[str] = None) -> operations.RequestBodyWriteOnlyUnionResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_WRITE_ONLY_UNION_SERVERS[0], {
         })
         if server_url is not None:
@@ -2658,7 +2658,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[Any])
+                out = utils.unmarshal_json(http_res.text, Optional[Union[shared.SimpleObject, shared.WriteOnlyObjectOutput]])
                 res.weakly_typed_one_of_write_only_object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
