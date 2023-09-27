@@ -3094,8 +3094,11 @@ paths:
                   json:
                     type: integer
                     format: bigint
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/bigintStr:
     post:
       operationId: requestBodyPostJsonDataTypesBigIntStr
@@ -3119,8 +3122,11 @@ paths:
                   json:
                     type: string
                     format: bigint
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/number:
     post:
       operationId: requestBodyPostJsonDataTypesNumber
@@ -3192,8 +3198,11 @@ paths:
                   json:
                     type: number
                     format: decimal
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/decimalStr:
     post:
       operationId: requestBodyPostJsonDataTypesDecimalStr
@@ -3217,8 +3226,11 @@ paths:
                   json:
                     type: string
                     format: decimal
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/boolean:
     post:
       operationId: requestBodyPostJsonDataTypesBoolean
@@ -3265,8 +3277,11 @@ paths:
                   json:
                     type: string
                     format: date
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/dateTime:
     post:
       operationId: requestBodyPostJsonDataTypesDateTime
@@ -3290,8 +3305,11 @@ paths:
                   json:
                     type: string
                     format: date-time
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/map/dateTime:
     post:
       operationId: requestBodyPostJsonDataTypesMapDateTime
@@ -3319,8 +3337,11 @@ paths:
                     additionalProperties:
                       type: string
                       format: date-time
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/map/bigIntStr:
     post:
       operationId: requestBodyPostJsonDataTypesMapBigIntStr
@@ -3348,8 +3369,11 @@ paths:
                     additionalProperties:
                       type: string
                       format: bigint
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/map/decimal:
     post:
       operationId: requestBodyPostJsonDataTypesMapDecimal
@@ -3377,8 +3401,11 @@ paths:
                     additionalProperties:
                       type: number
                       format: decimal
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/array/date:
     post:
       operationId: requestBodyPostJsonDataTypesArrayDate
@@ -3406,8 +3433,11 @@ paths:
                     items:
                       type: string
                       format: date
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/array/bigInt:
     post:
       operationId: requestBodyPostJsonDataTypesArrayBigInt
@@ -3435,8 +3465,11 @@ paths:
                     items:
                       type: integer
                       format: bigint
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/jsonDataTypes/array/decimalStr:
     post:
       operationId: requestBodyPostJsonDataTypesArrayDecimalStr
@@ -3464,8 +3497,11 @@ paths:
                     items:
                       type: string
                       format: decimal
+                  data:
+                    type: string
                 required:
                   - json
+                  - data
   /anything/requestBodies/post/nullable/required/string:
     post:
       operationId: requestBodyPostNullableRequiredStringBody
