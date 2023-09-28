@@ -3079,6 +3079,47 @@ class RequestBodies
     }
 	
     /**
+     * requestBodyPutMultipartDifferentFileName
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBody $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameResponse
+     */
+	public function requestBodyPutMultipartDifferentFileName(
+        \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBody $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/requestBodies/put/multipart/differentFileName');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "multipart");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('PUT', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * requestBodyPutMultipartFile
      * 
      * @param \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileRequestBody $request

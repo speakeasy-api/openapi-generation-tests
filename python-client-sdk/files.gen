@@ -195,6 +195,7 @@ src/sdk/models/operations/requestbodypostnullablerequiredstringbody.py
 src/sdk/models/operations/requestbodyputbytes.py
 src/sdk/models/operations/requestbodyputbyteswithparams.py
 src/sdk/models/operations/requestbodyputmultipartdeep.py
+src/sdk/models/operations/requestbodyputmultipartdifferentfilename.py
 src/sdk/models/operations/requestbodyputmultipartfile.py
 src/sdk/models/operations/requestbodyputmultipartsimple.py
 src/sdk/models/operations/requestbodyputstring.py
@@ -657,6 +658,10 @@ docs/models/operations/requestbodyputbyteswithparamsresponse.md
 docs/models/operations/requestbodyputmultipartdeepresform.md
 docs/models/operations/requestbodyputmultipartdeepres.md
 docs/models/operations/requestbodyputmultipartdeepresponse.md
+docs/models/operations/requestbodyputmultipartdifferentfilenamerequestbodydifferentfilename.md
+docs/models/operations/requestbodyputmultipartdifferentfilenamerequestbody.md
+docs/models/operations/requestbodyputmultipartdifferentfilenameres.md
+docs/models/operations/requestbodyputmultipartdifferentfilenameresponse.md
 docs/models/operations/requestbodyputmultipartfilerequestbodyfile.md
 docs/models/operations/requestbodyputmultipartfilerequestbody.md
 docs/models/operations/requestbodyputmultipartfileres.md

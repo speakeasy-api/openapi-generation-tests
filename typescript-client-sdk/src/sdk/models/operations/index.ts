@@ -153,6 +153,7 @@ export * from "./requestbodypostnulldictionary";
 export * from "./requestbodyputbytes";
 export * from "./requestbodyputbyteswithparams";
 export * from "./requestbodyputmultipartdeep";
+export * from "./requestbodyputmultipartdifferentfilename";
 export * from "./requestbodyputmultipartfile";
 export * from "./requestbodyputmultipartsimple";
 export * from "./requestbodyputstring";

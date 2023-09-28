@@ -38,7 +38,7 @@ class SDKConfiguration:
     globals: dict[str, dict[str, dict[str, Any]]] = field(default_factory=dict)
     language: str = 'python'
     openapi_doc_version: str = '0.1.0'
-    sdk_version: str = '1.34.3'
+    sdk_version: str = '1.34.4'
     gen_version: str = '2.131.1'
     retry_config: RetryConfig = None
 

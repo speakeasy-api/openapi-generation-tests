@@ -76,6 +76,7 @@ Endpoints for testing request bodies.
 * [request_body_put_bytes](#request_body_put_bytes)
 * [request_body_put_bytes_with_params](#request_body_put_bytes_with_params)
 * [request_body_put_multipart_deep](#request_body_put_multipart_deep)
+* [request_body_put_multipart_different_file_name](#request_body_put_multipart_different_file_name)
 * [request_body_put_multipart_file](#request_body_put_multipart_file)
 * [request_body_put_multipart_simple](#request_body_put_multipart_simple)
 * [request_body_put_string](#request_body_put_string)
@@ -3535,6 +3536,47 @@ if res.res is not None:
 **[operations.RequestBodyPutMultipartDeepResponse](../../models/operations/requestbodyputmultipartdeepresponse.md)**
 
 
+## request_body_put_multipart_different_file_name
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = operations.RequestBodyPutMultipartDifferentFileNameRequestBody(
+    different_file_name=operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName(
+        content='itaque'.encode(),
+        different_file_name='similique',
+    ),
+)
+
+res = s.request_bodies.request_body_put_multipart_different_file_name(req)
+
+if res.res is not None:
+    # handle response
+```
+
+### Parameters
+
+| Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                                                        | [operations.RequestBodyPutMultipartDifferentFileNameRequestBody](../../models/operations/requestbodyputmultipartdifferentfilenamerequestbody.md) | :heavy_check_mark:                                                                                                                               | The request object to use for the request.                                                                                                       |
+
+
+### Response
+
+**[operations.RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/requestbodyputmultipartdifferentfilenameresponse.md)**
+
+
 ## request_body_put_multipart_file
 
 ### Example Usage
@@ -3553,8 +3595,8 @@ s = sdk.SDK(
 
 req = operations.RequestBodyPutMultipartFileRequestBody(
     file=operations.RequestBodyPutMultipartFileRequestBodyFile(
-        content='itaque'.encode(),
-        file='similique',
+        content='optio'.encode(),
+        file='ex',
     ),
 )
 
@@ -3595,20 +3637,20 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='optio',
-    bigint=401428,
-    bigint_str=311486,
+    any='quaerat',
+    bigint=416692,
+    bigint_str=888616,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000Z'),
-    decimal=Decimal('4166.92'),
+    decimal=Decimal('8108.39'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -3650,7 +3692,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'quidem'
+req = 'quam'
 
 res = s.request_bodies.request_body_put_string(req)
 
@@ -3687,7 +3729,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_string_with_params(request_body='exercitationem', query_string_param='quam')
+res = s.request_bodies.request_body_put_string_with_params(request_body='dolorem', query_string_param='modi')
 
 if res.res is not None:
     # handle response
@@ -3723,9 +3765,9 @@ s = sdk.SDK(
 )
 
 req = shared.ReadWriteObjectInput(
-    num1=211455,
-    num2=264619,
-    num3=59383,
+    num1=59383,
+    num2=575534,
+    num3=876027,
 )
 
 res = s.request_bodies.request_body_read_and_write(req)
@@ -3880,8 +3922,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=5755.34,
-    string='vero',
+    num=1949.01,
+    string='repudiandae',
 )
 
 res = s.request_bodies.request_body_write_only(req)
@@ -3921,8 +3963,8 @@ s = sdk.SDK(
 
 req = shared.WriteOnlyObject(
     bool=False,
-    num=1949.01,
-    string='repudiandae',
+    num=7412.32,
+    string='dicta',
 )
 
 res = s.request_bodies.request_body_write_only_output(req)

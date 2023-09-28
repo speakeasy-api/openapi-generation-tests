@@ -398,6 +398,7 @@ func main() {
 * [RequestBodyPutBytes](docs/sdks/requestbodies/README.md#requestbodyputbytes)
 * [RequestBodyPutBytesWithParams](docs/sdks/requestbodies/README.md#requestbodyputbyteswithparams)
 * [RequestBodyPutMultipartDeep](docs/sdks/requestbodies/README.md#requestbodyputmultipartdeep)
+* [RequestBodyPutMultipartDifferentFileName](docs/sdks/requestbodies/README.md#requestbodyputmultipartdifferentfilename)
 * [RequestBodyPutMultipartFile](docs/sdks/requestbodies/README.md#requestbodyputmultipartfile)
 * [RequestBodyPutMultipartSimple](docs/sdks/requestbodies/README.md#requestbodyputmultipartsimple)
 * [RequestBodyPutString](docs/sdks/requestbodies/README.md#requestbodyputstring)
@@ -509,7 +510,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 718627,
+        Cursor: 391933,
     })
     if err != nil {
         log.Fatal(err)

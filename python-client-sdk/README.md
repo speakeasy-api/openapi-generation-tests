@@ -373,6 +373,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [request_body_put_bytes](docs/sdks/requestbodies/README.md#request_body_put_bytes)
 * [request_body_put_bytes_with_params](docs/sdks/requestbodies/README.md#request_body_put_bytes_with_params)
 * [request_body_put_multipart_deep](docs/sdks/requestbodies/README.md#request_body_put_multipart_deep)
+* [request_body_put_multipart_different_file_name](docs/sdks/requestbodies/README.md#request_body_put_multipart_different_file_name)
 * [request_body_put_multipart_file](docs/sdks/requestbodies/README.md#request_body_put_multipart_file)
 * [request_body_put_multipart_simple](docs/sdks/requestbodies/README.md#request_body_put_multipart_simple)
 * [request_body_put_string](docs/sdks/requestbodies/README.md#request_body_put_string)
@@ -475,7 +476,7 @@ s = sdk.SDK(
 )
 
 req = operations.PaginationCursorBodyRequestBody(
-    cursor=68852,
+    cursor=705710,
 )
 
 res = s.pagination_cursor_body(req)

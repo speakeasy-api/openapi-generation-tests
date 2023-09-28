@@ -434,6 +434,10 @@ lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutBytesWith
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartDeepResForm.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartDeepRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartDeepResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartDifferentFileNameRequestBody.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartDifferentFileNameRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartDifferentFileNameResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileRequestBodyFile.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileRequestBody.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileRes.java
@@ -963,6 +967,10 @@ docs/models/operations/RequestBodyPutBytesWithParamsResponse.md
 docs/models/operations/RequestBodyPutMultipartDeepResForm.md
 docs/models/operations/RequestBodyPutMultipartDeepRes.md
 docs/models/operations/RequestBodyPutMultipartDeepResponse.md
+docs/models/operations/RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName.md
+docs/models/operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md
+docs/models/operations/RequestBodyPutMultipartDifferentFileNameRes.md
+docs/models/operations/RequestBodyPutMultipartDifferentFileNameResponse.md
 docs/models/operations/RequestBodyPutMultipartFileRequestBodyFile.md
 docs/models/operations/RequestBodyPutMultipartFileRequestBody.md
 docs/models/operations/RequestBodyPutMultipartFileRes.md

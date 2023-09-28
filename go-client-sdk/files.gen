@@ -203,6 +203,7 @@ pkg/models/operations/requestbodypostnullablerequiredstringbody.go
 pkg/models/operations/requestbodyputbytes.go
 pkg/models/operations/requestbodyputbyteswithparams.go
 pkg/models/operations/requestbodyputmultipartdeep.go
+pkg/models/operations/requestbodyputmultipartdifferentfilename.go
 pkg/models/operations/requestbodyputmultipartfile.go
 pkg/models/operations/requestbodyputmultipartsimple.go
 pkg/models/operations/requestbodyputstring.go
@@ -677,6 +678,10 @@ docs/models/operations/requestbodyputbyteswithparamsresponse.md
 docs/models/operations/requestbodyputmultipartdeepresform.md
 docs/models/operations/requestbodyputmultipartdeepres.md
 docs/models/operations/requestbodyputmultipartdeepresponse.md
+docs/models/operations/requestbodyputmultipartdifferentfilenamerequestbodydifferentfilename.md
+docs/models/operations/requestbodyputmultipartdifferentfilenamerequestbody.md
+docs/models/operations/requestbodyputmultipartdifferentfilenameres.md
+docs/models/operations/requestbodyputmultipartdifferentfilenameresponse.md
 docs/models/operations/requestbodyputmultipartfilerequestbodyfile.md
 docs/models/operations/requestbodyputmultipartfilerequestbody.md
 docs/models/operations/requestbodyputmultipartfileres.md

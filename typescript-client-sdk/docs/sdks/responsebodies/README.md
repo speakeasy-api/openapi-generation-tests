@@ -35,7 +35,7 @@ const sdk = new SDK({
 });
 
 sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost({
-  "dicta": "error",
+  "ducimus": "dolor",
 }).then((res: ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -73,7 +73,7 @@ const sdk = new SDK({
 });
 
 sdk.responseBodies.responseBodyAdditionalPropertiesDatePost({
-  "porro": new RFCDate("2022-07-05"),
+  "dicta": new RFCDate("2021-06-07"),
 }).then((res: ResponseBodyAdditionalPropertiesDatePostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -111,7 +111,7 @@ const sdk = new SDK({
 });
 
 sdk.responseBodies.responseBodyAdditionalPropertiesPost({
-  "esse": "fugiat",
+  "vitae": "dignissimos",
 }).then((res: ResponseBodyAdditionalPropertiesPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -182,8 +182,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const xNumberHeader: number = 3223.33;
-const xStringHeader: string = "aspernatur";
+const xNumberHeader: number = 4589.7;
+const xStringHeader: string = "fugiat";
 
 sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader).then((res: ResponseBodyEmptyWithHeadersResponse) => {
   if (res.statusCode == 200) {
@@ -366,11 +366,11 @@ const sdk = new SDK({
 });
 
 sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost({
-  bigint: 316501,
-  bigintStr: "delectus",
+  bigint: 322333,
+  bigintStr: "aspernatur",
   date: new RFCDate("2020-01-01"),
   dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 4825.84,
+  decimal: 3165.01,
 }).then((res: ResponseBodyZeroValueComplexTypePtrsPostResponse) => {
   if (res.statusCode == 200) {
     // handle response

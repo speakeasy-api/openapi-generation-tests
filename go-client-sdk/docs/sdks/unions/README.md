@@ -44,8 +44,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.TypedObject1{
-        Type: "ab",
-        Value: "velit",
+        Type: "tempore",
+        Value: "nisi",
     })
     if err != nil {
         log.Fatal(err)
@@ -147,13 +147,13 @@ func main() {
     ctx := context.Background()
     res, err := s.Unions.NullableOneOfRefInObjectPost(ctx, shared.NullableOneOfRefInObject{
         NullableOneOfOne: &shared.TypedObject1{
-            Type: "facilis",
-            Value: "tempore",
+            Type: "voluptatibus",
+            Value: "quaerat",
         },
         NullableOneOfTwo: &shared.NullableOneOfRefInObjectNullableOneOfTwo{},
         OneOfOne: shared.TypedObject1{
-            Type: "nisi",
-            Value: "voluptatibus",
+            Type: "blanditiis",
+            Value: "distinctio",
         },
     })
     if err != nil {
@@ -305,8 +305,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Unions.NullableTypedObjectPost(ctx, shared.TypedObject1{
-        Type: "quaerat",
-        Value: "blanditiis",
+        Type: "nisi",
+        Value: "quis",
     })
     if err != nil {
         log.Fatal(err)

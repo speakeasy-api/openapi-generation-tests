@@ -76,6 +76,7 @@ Endpoints for testing request bodies.
 * [RequestBodyPutBytes](#requestbodyputbytes)
 * [RequestBodyPutBytesWithParams](#requestbodyputbyteswithparams)
 * [RequestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
+* [RequestBodyPutMultipartDifferentFileName](#requestbodyputmultipartdifferentfilename)
 * [RequestBodyPutMultipartFile](#requestbodyputmultipartfile)
 * [RequestBodyPutMultipartSimple](#requestbodyputmultipartsimple)
 * [RequestBodyPutString](#requestbodyputstring)
@@ -4389,6 +4390,60 @@ func main() {
 **[*operations.RequestBodyPutMultipartDeepResponse](../../models/operations/requestbodyputmultipartdeepresponse.md), error**
 
 
+## RequestBodyPutMultipartDifferentFileName
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.RequestBodies.RequestBodyPutMultipartDifferentFileName(ctx, operations.RequestBodyPutMultipartDifferentFileNameRequestBody{
+        DifferentFileName: &operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName{
+            Content: []byte("similique"),
+            DifferentFileName: "optio",
+        },
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                        | Type                                                                                                                                             | Required                                                                                                                                         | Description                                                                                                                                      |
+| ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                                                                            | :heavy_check_mark:                                                                                                                               | The context to use for the request.                                                                                                              |
+| `request`                                                                                                                                        | [operations.RequestBodyPutMultipartDifferentFileNameRequestBody](../../models/operations/requestbodyputmultipartdifferentfilenamerequestbody.md) | :heavy_check_mark:                                                                                                                               | The request object to use for the request.                                                                                                       |
+
+
+### Response
+
+**[*operations.RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/requestbodyputmultipartdifferentfilenameresponse.md), error**
+
+
 ## RequestBodyPutMultipartFile
 
 ### Example Usage
@@ -4416,8 +4471,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
         File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
-            Content: []byte("similique"),
-            File: "optio",
+            Content: []byte("ex"),
+            File: "quaerat",
         },
     })
     if err != nil {
@@ -4470,20 +4525,20 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutMultipartSimple(ctx, shared.SimpleObject{
-        Any: "ex",
-        Bigint: big.NewInt(311486),
-        BigintStr: big.NewInt(416692),
+        Any: "commodi",
+        Bigint: big.NewInt(888616),
+        BigintStr: big.NewInt(810839),
         Bool: true,
         BoolOpt: openapi.Bool(true),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000Z"),
-        Decimal: types.MustNewDecimalFromString("8886.16"),
+        Decimal: types.MustNewDecimalFromString("6972.74"),
         Enum: shared.EnumTwo,
         Float32: 2.2222222,
         Int: 999999,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-        IntEnum: shared.SimpleObjectIntEnumThird,
+        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        IntEnum: shared.SimpleObjectIntEnumSecond,
         IntOptNull: openapi.Int64(999999),
         Num: 1.1,
         NumOptNull: openapi.Float64(1.1),
@@ -4537,7 +4592,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutString(ctx, "exercitationem")
+    res, err := s.RequestBodies.RequestBodyPutString(ctx, "dolorem")
     if err != nil {
         log.Fatal(err)
     }
@@ -4584,8 +4639,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := "quam"
-    queryStringParam := "dolorem"
+    requestBody := "modi"
+    queryStringParam := "ipsa"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutStringWithParams(ctx, requestBody, queryStringParam)
@@ -4638,9 +4693,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyReadAndWrite(ctx, shared.ReadWriteObjectInput{
-        Num1: 264619,
-        Num2: 59383,
-        Num3: 575534,
+        Num1: 575534,
+        Num2: 876027,
+        Num3: 194901,
     })
     if err != nil {
         log.Fatal(err)
@@ -4843,8 +4898,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnly(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 8760.27,
-        String: "sequi",
+        Num: 9185.47,
+        String: "cum",
     })
     if err != nil {
         log.Fatal(err)
@@ -4896,8 +4951,8 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(ctx, shared.WriteOnlyObject{
         Bool: false,
-        Num: 9185.47,
-        String: "cum",
+        Num: 1201.2,
+        String: "earum",
     })
     if err != nil {
         log.Fatal(err)

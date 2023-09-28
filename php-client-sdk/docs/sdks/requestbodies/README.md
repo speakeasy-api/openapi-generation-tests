@@ -76,6 +76,7 @@ Endpoints for testing request bodies.
 * [requestBodyPutBytes](#requestbodyputbytes)
 * [requestBodyPutBytesWithParams](#requestbodyputbyteswithparams)
 * [requestBodyPutMultipartDeep](#requestbodyputmultipartdeep)
+* [requestBodyPutMultipartDifferentFileName](#requestbodyputmultipartdifferentfilename)
 * [requestBodyPutMultipartFile](#requestbodyputmultipartfile)
 * [requestBodyPutMultipartSimple](#requestbodyputmultipartsimple)
 * [requestBodyPutString](#requestbodyputstring)
@@ -3475,6 +3476,52 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDeepResponse](../../models/operations/RequestBodyPutMultipartDeepResponse.md)**
 
 
+## requestBodyPutMultipartDifferentFileName
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBody;
+use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $request = new RequestBodyPutMultipartDifferentFileNameRequestBody();
+    $request->differentFileName = new RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName();
+    $request->differentFileName->content = 'quae';
+    $request->differentFileName->differentFileName = 'modi';
+
+    $response = $sdk->requestBodies->requestBodyPutMultipartDifferentFileName($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                                | Type                                                                                                                                                                     | Required                                                                                                                                                                 | Description                                                                                                                                                              |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$request`                                                                                                                                                               | [\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBody](../../models/operations/RequestBodyPutMultipartDifferentFileNameRequestBody.md) | :heavy_check_mark:                                                                                                                                                       | The request object to use for the request.                                                                                                                               |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameResponse](../../models/operations/RequestBodyPutMultipartDifferentFileNameResponse.md)**
+
+
 ## requestBodyPutMultipartFile
 
 ### Example Usage
@@ -3496,8 +3543,8 @@ $sdk = SDK::builder()
 try {
     $request = new RequestBodyPutMultipartFileRequestBody();
     $request->file = new RequestBodyPutMultipartFileRequestBodyFile();
-    $request->file->content = 'quae';
-    $request->file->file = 'modi';
+    $request->file->content = 'neque';
+    $request->file->file = 'exercitationem';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
 
@@ -3543,20 +3590,20 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'neque';
-    $request->bigint = 348357;
-    $request->bigintStr = 'itaque';
+    $request->any = 'itaque';
+    $request->bigint = 88248;
+    $request->bigintStr = 'ipsum';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 882.48;
+    $request->decimal = 6022.29;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;
@@ -3602,7 +3649,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'nulla'
+'maxime'
 
     $response = $sdk->requestBodies->requestBodyPutString($request);
 
@@ -3646,7 +3693,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->requestBodies->requestBodyPutStringWithParams('distinctio', 'maxime');
+    $response = $sdk->requestBodies->requestBodyPutStringWithParams('quia', 'quia');
 
     if ($response->res !== null) {
         // handle response
@@ -3688,9 +3735,9 @@ $sdk = SDK::builder()
 
 try {
     $request = new ReadWriteObjectInput();
-    $request->num1 = 157222;
-    $request->num2 = 159146;
-    $request->num3 = 342137;
+    $request->num1 = 342137;
+    $request->num2 = 605712;
+    $request->num3 = 727250;
 
     $response = $sdk->requestBodies->requestBodyReadAndWrite($request);
 
@@ -3775,7 +3822,26 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new ReadOnlyObjectInput();
+    $request = new SimpleObject();
+    $request->any = 'id';
+    $request->bigint = 727888;
+    $request->bigintStr = 'fugiat';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
+    $request->decimal = 6374.62;
+    $request->enum = Enum::Two;
+    $request->float32 = 2.2222222;
+    $request->int = 999999;
+    $request->int32 = 1;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::Third;
+    $request->intOptNull = 999999;
+    $request->num = 1.1;
+    $request->numOptNull = 1.1;
+    $request->str = 'example';
+    $request->strOpt = 'optional example';
 
     $response = $sdk->requestBodies->requestBodyReadOnlyUnion($request);
 
@@ -3817,10 +3883,26 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new ReadWriteObjectInput();
-    $request->num1 = 115661;
-    $request->num2 = 663318;
-    $request->num3 = 727888;
+    $request = new SimpleObject();
+    $request->any = 'iusto';
+    $request->bigint = 57320;
+    $request->bigintStr = 'voluptates';
+    $request->bool = true;
+    $request->boolOpt = true;
+    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
+    $request->decimal = 800.61;
+    $request->enum = Enum::Two;
+    $request->float32 = 2.2222222;
+    $request->int = 999999;
+    $request->int32 = 1;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->intOptNull = 999999;
+    $request->num = 1.1;
+    $request->numOptNull = 1.1;
+    $request->str = 'example';
+    $request->strOpt = 'optional example';
 
     $response = $sdk->requestBodies->requestBodyReadWriteOnlyUnion($request);
 
@@ -3865,8 +3947,8 @@ $sdk = SDK::builder()
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
-    $request->num = 8544.6;
-    $request->string = 'officia';
+    $request->num = 2928.88;
+    $request->string = 'eligendi';
 
     $response = $sdk->requestBodies->requestBodyWriteOnly($request);
 
@@ -3911,8 +3993,8 @@ $sdk = SDK::builder()
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
-    $request->num = 5546.03;
-    $request->string = 'placeat';
+    $request->num = 7150.53;
+    $request->string = 'voluptatem';
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyOutput($request);
 
@@ -3955,20 +4037,20 @@ $sdk = SDK::builder()
 
 try {
     $request = new SimpleObject();
-    $request->any = 'iusto';
-    $request->bigint = 57320;
-    $request->bigintStr = 'voluptates';
+    $request->any = 'esse';
+    $request->bigint = 172951;
+    $request->bigintStr = 'assumenda';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 800.61;
+    $request->decimal = 1072.1;
     $request->enum = Enum::Two;
     $request->float32 = 2.2222222;
     $request->int = 999999;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->intEnum = SimpleObjectIntEnum::Third;
     $request->intOptNull = 999999;
     $request->num = 1.1;
     $request->numOptNull = 1.1;

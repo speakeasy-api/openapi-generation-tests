@@ -204,6 +204,7 @@ src/sdk/models/operations/requestbodypostnullablerequiredstringbody.ts
 src/sdk/models/operations/requestbodyputbytes.ts
 src/sdk/models/operations/requestbodyputbyteswithparams.ts
 src/sdk/models/operations/requestbodyputmultipartdeep.ts
+src/sdk/models/operations/requestbodyputmultipartdifferentfilename.ts
 src/sdk/models/operations/requestbodyputmultipartfile.ts
 src/sdk/models/operations/requestbodyputmultipartsimple.ts
 src/sdk/models/operations/requestbodyputstring.ts
@@ -667,6 +668,10 @@ docs/models/operations/requestbodyputbyteswithparamsresponse.md
 docs/models/operations/requestbodyputmultipartdeepresform.md
 docs/models/operations/requestbodyputmultipartdeepres.md
 docs/models/operations/requestbodyputmultipartdeepresponse.md
+docs/models/operations/requestbodyputmultipartdifferentfilenamerequestbodydifferentfilename.md
+docs/models/operations/requestbodyputmultipartdifferentfilenamerequestbody.md
+docs/models/operations/requestbodyputmultipartdifferentfilenameres.md
+docs/models/operations/requestbodyputmultipartdifferentfilenameresponse.md
 docs/models/operations/requestbodyputmultipartfilerequestbodyfile.md
 docs/models/operations/requestbodyputmultipartfilerequestbody.md
 docs/models/operations/requestbodyputmultipartfileres.md

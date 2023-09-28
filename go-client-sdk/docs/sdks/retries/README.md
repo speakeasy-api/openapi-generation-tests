@@ -32,8 +32,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestID := "pariatur"
-    numRetries := 227362
+    requestID := "ab"
+    numRetries := 242637
 
     ctx := context.Background()
     res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)

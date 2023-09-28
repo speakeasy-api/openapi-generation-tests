@@ -27,8 +27,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='cum'.encode(),
-        file='dicta',
+        content='earum'.encode(),
+        file='veniam',
     ),
 )
 
@@ -69,28 +69,28 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        9369.28,
+        6592.68,
     ],
     array_of_string=[
-        'veniam',
+        'dolores',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='animi',
+            description='nam',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-04-11T09:03:05.973Z'),
-    enum_number=shared.ExampleResourceEnumNumber.ONE,
-    enum_str=shared.ExampleResourceEnumStr.ONE,
-    id='eb07f116-db99-4545-bc95-fa88970e189d',
+    created_at=dateutil.parser.isoparse('2022-11-01T23:04:52.664Z'),
+    enum_number=shared.ExampleResourceEnumNumber.THREE,
+    enum_str=shared.ExampleResourceEnumStr.THREE,
+    id='07f116db-9954-45fc-95fa-88970e189dbb',
     map_of_integer={
-        "tempore": 725574,
+        "velit": 38557,
     },
     map_of_string={
-        "velit": 'doloremque',
+        "delectus": 'impedit',
     },
-    name='Edmund Robel',
-    updated_at=dateutil.parser.isoparse('2021-01-25T08:38:05.276Z'),
+    name='Dale Ferry',
+    updated_at=dateutil.parser.isoparse('2022-08-29T23:44:02.065Z'),
     vehicle=[],
 )
 
@@ -129,7 +129,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='doloremque')
+res = s.resource.delete_resource(resource_id='veniam')
 
 if res.status_code == 200:
     # handle response
@@ -164,7 +164,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='quis')
+res = s.resource.get_resource(resource_id='libero')
 
 if res.example_resource is not None:
     # handle response
@@ -199,7 +199,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='veniam')
+res = s.resource.update_resource(resource_id='architecto')
 
 if res.status_code == 200:
     # handle response
