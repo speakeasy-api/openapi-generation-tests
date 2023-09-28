@@ -2524,6 +2524,36 @@ paths:
                       type: string
                 required:
                   - files
+  /anything/requestBodies/put/multipart/differentFileName:
+    put:
+      operationId: requestBodyPutMultipartDifferentFileName
+      tags:
+        - requestBodies
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: object
+              properties:
+                differentFileName:
+                  type: string
+                  format: binary
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  files:
+                    type: object
+                    additionalProperties:
+                      type: string
+                required:
+                  - files
   /anything/requestBodies/post/form/simple:
     post:
       operationId: requestBodyPostFormSimple
