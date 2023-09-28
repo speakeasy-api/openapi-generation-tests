@@ -4127,7 +4127,6 @@ paths:
             type: integer
             format: int32
             description: An int32 type
-            example: 1
         - name: int64Parameter
           in: query
           required: true
@@ -4136,7 +4135,6 @@ paths:
             type: integer
             format: int64
             description: An int64 type
-            example: 111111
         - name: bigintParameter
           in: query
           required: true
@@ -4145,7 +4143,6 @@ paths:
             type: integer
             format: bigint
             description: An bigint type
-            example: 111111
         - name: bigintParameterOptional
           in: query
           description: An bigint parameter
@@ -4153,7 +4150,6 @@ paths:
             type: integer
             format: bigint
             description: An bigint type
-            example: 111111
         - name: bigintStrParameter
           in: query
           required: true
@@ -4162,7 +4158,6 @@ paths:
             type: string
             format: bigint
             description: An bigint type
-            example: 111111
         - name: bigintStrParameterOptional
           in: query
           description: An bigint parameter
@@ -4170,7 +4165,6 @@ paths:
             type: string
             format: bigint
             description: An bigint type
-            example: 111111
         - name: floatParameter
           in: query
           required: true
@@ -4178,7 +4172,6 @@ paths:
           schema:
             type: number
             description: A float type
-            example: 1.1
         - name: float32Parameter
           in: query
           required: true
@@ -4187,7 +4180,6 @@ paths:
             type: number
             format: float
             description: A float32 type
-            example: 1.1
         - name: decimalParameter
           in: query
           required: true
@@ -4196,7 +4188,6 @@ paths:
             type: number
             format: decimal
             description: A decimal type
-            example: 1.1
         - name: decimalParameterOptional
           in: query
           required: false
@@ -4205,7 +4196,6 @@ paths:
             type: number
             format: decimal
             description: A decimal type
-            example: 1.1
         - name: decimalStrParameter
           in: query
           required: true
@@ -4214,7 +4204,6 @@ paths:
             type: string
             format: decimal
             description: A decimal type
-            example: 1.1
         - name: decimalStrParameterOptional
           in: query
           required: false
@@ -4223,7 +4212,6 @@ paths:
             type: string
             format: decimal
             description: A decimal type
-            example: 1.1
         - name: doubleParameter
           in: query
           required: true
@@ -4232,7 +4220,6 @@ paths:
             type: number
             format: double
             description: A double type
-            example: 2.2222222
         - name: boolParameter
           in: query
           required: true
@@ -4240,7 +4227,6 @@ paths:
           schema:
             type: boolean
             description: A boolean type
-            example: false
         - name: dateParameter
           in: query
           required: true
@@ -4249,7 +4235,6 @@ paths:
             type: string
             format: date
             description: A date type
-            example: "2020-01-01"
         - name: dateTimeParameter
           in: query
           required: true
@@ -4258,7 +4243,6 @@ paths:
             type: string
             format: date-time
             description: A date time type
-            example: "2020-01-01T00:00:00Z"
         - name: enumParameter
           in: query
           required: true
@@ -4270,7 +4254,6 @@ paths:
               - "value1"
               - "value2"
               - "value3"
-            example: "value3"
         - name: optEnumParameter
           in: query
           description: An enum parameter
@@ -4299,43 +4282,10 @@ paths:
               properties:
                 simpleObject:
                   $ref: "components.yaml#/components/schemas/simpleObject"
-                formatEmail:
-                  type: string
-                  format: email
-                  description: A field formatted as an email that will have emails generated as examples
-                email:
-                  type: string
-                  description: A field called email that will have emails generated as examples
-                formatUuid:
-                  type: string
-                  format: uuid
-                  description: A field formatted as a uuid that will have uuids generated as examples
-                uuid:
-                  type: string
-                  description: A field called uuid that will have uuids generated as examples
-                formatUri:
-                  type: string
-                  format: uri
-                  description: A field formatted as a uri that will have uris generated as examples
-                uri:
-                  type: string
-                  description: A field called uri that will have uris generated as examples
-                hostname:
-                  type: string
-                  format: hostname
-                  description: A field formatted as a hostname that will have hostnames generated as examples
-                ipv4:
-                  type: string
-                  format: ipv4
-                  description: A field formatted as an ipv4 that will have ipv4s generated as examples
-                ipv6:
-                  type: string
-                  format: ipv6
-                  description: A field formatted as an ipv6 that will have ipv6s generated as examples
-                unknown:
-                  type: string
-                  format: unknown
-                  description: A field formatted as an unknown that will have random strings generated as examples
+                fakerStrings:
+                  $ref: "components.yaml#/components/schemas/fakerStrings"
+                fakerFormattedStrings:
+                  $ref: "components.yaml#/components/schemas/fakerFormattedStrings"
       responses:
         "200":
           description: A successful response that contains the simpleObject sent in the request body
@@ -4350,43 +4300,10 @@ paths:
                     properties:
                       simpleObject:
                         $ref: "components.yaml#/components/schemas/simpleObject"
-                      formatEmail:
-                        type: string
-                        format: email
-                        description: A field formatted as an email that will have emails generated as examples
-                      email:
-                        type: string
-                        description: A field called email that will have emails generated as examples
-                      formatUuid:
-                        type: string
-                        format: uuid
-                        description: A field formatted as a uuid that will have uuids generated as examples
-                      uuid:
-                        type: string
-                        description: A field called uuid that will have uuids generated as examples
-                      formatUri:
-                        type: string
-                        format: uri
-                        description: A field formatted as a uri that will have uris generated as examples
-                      uri:
-                        type: string
-                        description: A field called uri that will have uris generated as examples
-                      hostname:
-                        type: string
-                        format: hostname
-                        description: A field formatted as a hostname that will have hostnames generated as examples
-                      ipv4:
-                        type: string
-                        format: ipv4
-                        description: A field formatted as an ipv4 that will have ipv4s generated as examples
-                      ipv6:
-                        type: string
-                        format: ipv6
-                        description: A field formatted as an ipv6 that will have ipv6s generated as examples
-                      unknown:
-                        type: string
-                        format: unknown
-                        description: A field formatted as an unknown that will have random strings generated as examples
+                      fakerStrings:
+                        $ref: "components.yaml#/components/schemas/fakerStrings"
+                      fakerFormattedStrings:
+                        $ref: "components.yaml#/components/schemas/fakerFormattedStrings"
                 required:
                   - json
   /anything/anchorTypes:
