@@ -5,6 +5,8 @@
 
 require 'sorbet-runtime'
 require 'faraday'
+require_relative '../shared/fakerformattedstrings'
+require_relative '../shared/fakerstrings'
 require_relative '../shared/simpleobject'
 
 module OpenApiSDK
@@ -30,44 +32,20 @@ module OpenApiSDK
     class UsageExamplePostRequestBody < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # A field called email that will have emails generated as examples
-      field :email, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('email') } }
-      # A field formatted as an email that will have emails generated as examples
-      field :format_email, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('formatEmail') } }
-      # A field formatted as a uri that will have uris generated as examples
-      field :format_uri, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('formatUri') } }
-      # A field formatted as a uuid that will have uuids generated as examples
-      field :format_uuid, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('formatUuid') } }
-      # A field formatted as a hostname that will have hostnames generated as examples
-      field :hostname, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('hostname') } }
-      # A field formatted as an ipv4 that will have ipv4s generated as examples
-      field :ipv4, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('ipv4') } }
-      # A field formatted as an ipv6 that will have ipv6s generated as examples
-      field :ipv6, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('ipv6') } }
+      # A set of strings with format values that lead to relevant examples being generated for them
+      field :faker_formatted_strings, T.nilable(Shared::FakerFormattedStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerFormattedStrings') } }
+      # A set of strings with fieldnames that lead to relevant examples being generated for them
+      field :faker_strings, T.nilable(Shared::FakerStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerStrings') } }
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       # https://docs.speakeasyapi.dev - A link to the external docs.
       field :simple_object, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('simpleObject') } }
-      # A field formatted as an unknown that will have random strings generated as examples
-      field :unknown, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('unknown') } }
-      # A field called uri that will have uris generated as examples
-      field :uri, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('uri') } }
-      # A field called uuid that will have uuids generated as examples
-      field :uuid, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('uuid') } }
 
 
-      sig { params(email: T.nilable(String), format_email: T.nilable(String), format_uri: T.nilable(String), format_uuid: T.nilable(String), hostname: T.nilable(String), ipv4: T.nilable(String), ipv6: T.nilable(String), simple_object: T.nilable(Shared::SimpleObject), unknown: T.nilable(String), uri: T.nilable(String), uuid: T.nilable(String)).void }
-      def initialize(email: nil, format_email: nil, format_uri: nil, format_uuid: nil, hostname: nil, ipv4: nil, ipv6: nil, simple_object: nil, unknown: nil, uri: nil, uuid: nil)
-        @email = email
-        @format_email = format_email
-        @format_uri = format_uri
-        @format_uuid = format_uuid
-        @hostname = hostname
-        @ipv4 = ipv4
-        @ipv6 = ipv6
+      sig { params(faker_formatted_strings: T.nilable(Shared::FakerFormattedStrings), faker_strings: T.nilable(Shared::FakerStrings), simple_object: T.nilable(Shared::SimpleObject)).void }
+      def initialize(faker_formatted_strings: nil, faker_strings: nil, simple_object: nil)
+        @faker_formatted_strings = faker_formatted_strings
+        @faker_strings = faker_strings
         @simple_object = simple_object
-        @unknown = unknown
-        @uri = uri
-        @uuid = uuid
       end
     end
 
@@ -169,44 +147,20 @@ module OpenApiSDK
     class UsageExamplePost200ApplicationJSONJSON < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
-      # A field called email that will have emails generated as examples
-      field :email, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('email') } }
-      # A field formatted as an email that will have emails generated as examples
-      field :format_email, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('formatEmail') } }
-      # A field formatted as a uri that will have uris generated as examples
-      field :format_uri, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('formatUri') } }
-      # A field formatted as a uuid that will have uuids generated as examples
-      field :format_uuid, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('formatUuid') } }
-      # A field formatted as a hostname that will have hostnames generated as examples
-      field :hostname, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('hostname') } }
-      # A field formatted as an ipv4 that will have ipv4s generated as examples
-      field :ipv4, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('ipv4') } }
-      # A field formatted as an ipv6 that will have ipv6s generated as examples
-      field :ipv6, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('ipv6') } }
+      # A set of strings with format values that lead to relevant examples being generated for them
+      field :faker_formatted_strings, T.nilable(Shared::FakerFormattedStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerFormattedStrings') } }
+      # A set of strings with fieldnames that lead to relevant examples being generated for them
+      field :faker_strings, T.nilable(Shared::FakerStrings), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('fakerStrings') } }
       # A simple object that uses all our supported primitive types and enums and has optional properties.
       # https://docs.speakeasyapi.dev - A link to the external docs.
       field :simple_object, T.nilable(Shared::SimpleObject), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('simpleObject') } }
-      # A field formatted as an unknown that will have random strings generated as examples
-      field :unknown, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('unknown') } }
-      # A field called uri that will have uris generated as examples
-      field :uri, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('uri') } }
-      # A field called uuid that will have uuids generated as examples
-      field :uuid, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('uuid') } }
 
 
-      sig { params(email: T.nilable(String), format_email: T.nilable(String), format_uri: T.nilable(String), format_uuid: T.nilable(String), hostname: T.nilable(String), ipv4: T.nilable(String), ipv6: T.nilable(String), simple_object: T.nilable(Shared::SimpleObject), unknown: T.nilable(String), uri: T.nilable(String), uuid: T.nilable(String)).void }
-      def initialize(email: nil, format_email: nil, format_uri: nil, format_uuid: nil, hostname: nil, ipv4: nil, ipv6: nil, simple_object: nil, unknown: nil, uri: nil, uuid: nil)
-        @email = email
-        @format_email = format_email
-        @format_uri = format_uri
-        @format_uuid = format_uuid
-        @hostname = hostname
-        @ipv4 = ipv4
-        @ipv6 = ipv6
+      sig { params(faker_formatted_strings: T.nilable(Shared::FakerFormattedStrings), faker_strings: T.nilable(Shared::FakerStrings), simple_object: T.nilable(Shared::SimpleObject)).void }
+      def initialize(faker_formatted_strings: nil, faker_strings: nil, simple_object: nil)
+        @faker_formatted_strings = faker_formatted_strings
+        @faker_strings = faker_strings
         @simple_object = simple_object
-        @unknown = unknown
-        @uri = uri
-        @uuid = uuid
       end
     end
 

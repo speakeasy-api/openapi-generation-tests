@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->retries->retriesGet('reiciendis', 131852);
+    $response = $sdk->retries->retriesGet('eum', 266408);
 
     if ($response->retries !== null) {
         // handle response

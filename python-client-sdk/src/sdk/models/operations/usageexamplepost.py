@@ -3,6 +3,8 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import fakerformattedstrings as shared_fakerformattedstrings
+from ..shared import fakerstrings as shared_fakerstrings
 from ..shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from datetime import date, datetime
@@ -26,30 +28,14 @@ class UsageExamplePostSecurity:
 @dataclasses.dataclass
 class UsageExamplePostRequestBody:
     r"""A request body that contains fields with different formats for testing example generation"""
-    email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
-    r"""A field called email that will have emails generated as examples"""
-    format_email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatEmail'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an email that will have emails generated as examples"""
-    format_uri: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatUri'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as a uri that will have uris generated as examples"""
-    format_uuid: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatUuid'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as a uuid that will have uuids generated as examples"""
-    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hostname'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as a hostname that will have hostnames generated as examples"""
-    ipv4: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ipv4'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an ipv4 that will have ipv4s generated as examples"""
-    ipv6: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ipv6'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an ipv6 that will have ipv6s generated as examples"""
+    faker_formatted_strings: Optional[shared_fakerformattedstrings.FakerFormattedStrings] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fakerFormattedStrings'), 'exclude': lambda f: f is None }})
+    r"""A set of strings with format values that lead to relevant examples being generated for them"""
+    faker_strings: Optional[shared_fakerstrings.FakerStrings] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fakerStrings'), 'exclude': lambda f: f is None }})
+    r"""A set of strings with fieldnames that lead to relevant examples being generated for them"""
     simple_object: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('simpleObject'), 'exclude': lambda f: f is None }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
-    unknown: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unknown'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an unknown that will have random strings generated as examples"""
-    uri: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri'), 'exclude': lambda f: f is None }})
-    r"""A field called uri that will have uris generated as examples"""
-    uuid: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uuid'), 'exclude': lambda f: f is None }})
-    r"""A field called uuid that will have uuids generated as examples"""
     
 
 
@@ -119,30 +105,14 @@ class UsageExamplePostRequest:
 
 @dataclasses.dataclass
 class UsageExamplePost200ApplicationJSONJSON:
-    email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('email'), 'exclude': lambda f: f is None }})
-    r"""A field called email that will have emails generated as examples"""
-    format_email: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatEmail'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an email that will have emails generated as examples"""
-    format_uri: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatUri'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as a uri that will have uris generated as examples"""
-    format_uuid: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('formatUuid'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as a uuid that will have uuids generated as examples"""
-    hostname: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('hostname'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as a hostname that will have hostnames generated as examples"""
-    ipv4: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ipv4'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an ipv4 that will have ipv4s generated as examples"""
-    ipv6: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('ipv6'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an ipv6 that will have ipv6s generated as examples"""
+    faker_formatted_strings: Optional[shared_fakerformattedstrings.FakerFormattedStrings] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fakerFormattedStrings'), 'exclude': lambda f: f is None }})
+    r"""A set of strings with format values that lead to relevant examples being generated for them"""
+    faker_strings: Optional[shared_fakerstrings.FakerStrings] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fakerStrings'), 'exclude': lambda f: f is None }})
+    r"""A set of strings with fieldnames that lead to relevant examples being generated for them"""
     simple_object: Optional[shared_simpleobject.SimpleObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('simpleObject'), 'exclude': lambda f: f is None }})
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
-    unknown: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('unknown'), 'exclude': lambda f: f is None }})
-    r"""A field formatted as an unknown that will have random strings generated as examples"""
-    uri: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uri'), 'exclude': lambda f: f is None }})
-    r"""A field called uri that will have uris generated as examples"""
-    uuid: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('uuid'), 'exclude': lambda f: f is None }})
-    r"""A field called uuid that will have uuids generated as examples"""
     
 
 

@@ -30,7 +30,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-'id'
+'tenetur'
 
     $response = $sdk->sdk->putAnythingIgnoredGeneration($request);
 

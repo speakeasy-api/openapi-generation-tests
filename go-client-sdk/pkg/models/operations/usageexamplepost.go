@@ -35,77 +35,26 @@ func (o *UsageExamplePostSecurity) GetUsername() string {
 
 // UsageExamplePostRequestBody - A request body that contains fields with different formats for testing example generation
 type UsageExamplePostRequestBody struct {
-	// A field called email that will have emails generated as examples
-	Email *string `json:"email,omitempty"`
-	// A field formatted as an email that will have emails generated as examples
-	FormatEmail *string `json:"formatEmail,omitempty"`
-	// A field formatted as a uri that will have uris generated as examples
-	FormatURI *string `json:"formatUri,omitempty"`
-	// A field formatted as a uuid that will have uuids generated as examples
-	FormatUUID *string `json:"formatUuid,omitempty"`
-	// A field formatted as a hostname that will have hostnames generated as examples
-	Hostname *string `json:"hostname,omitempty"`
-	// A field formatted as an ipv4 that will have ipv4s generated as examples
-	Ipv4 *string `json:"ipv4,omitempty"`
-	// A field formatted as an ipv6 that will have ipv6s generated as examples
-	Ipv6 *string `json:"ipv6,omitempty"`
+	// A set of strings with format values that lead to relevant examples being generated for them
+	FakerFormattedStrings *shared.FakerFormattedStrings `json:"fakerFormattedStrings,omitempty"`
+	// A set of strings with fieldnames that lead to relevant examples being generated for them
+	FakerStrings *shared.FakerStrings `json:"fakerStrings,omitempty"`
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	SimpleObject *shared.SimpleObject `json:"simpleObject,omitempty"`
-	// A field formatted as an unknown that will have random strings generated as examples
-	Unknown *string `json:"unknown,omitempty"`
-	// A field called uri that will have uris generated as examples
-	URI *string `json:"uri,omitempty"`
-	// A field called uuid that will have uuids generated as examples
-	UUID *string `json:"uuid,omitempty"`
 }
 
-func (o *UsageExamplePostRequestBody) GetEmail() *string {
+func (o *UsageExamplePostRequestBody) GetFakerFormattedStrings() *shared.FakerFormattedStrings {
 	if o == nil {
 		return nil
 	}
-	return o.Email
+	return o.FakerFormattedStrings
 }
 
-func (o *UsageExamplePostRequestBody) GetFormatEmail() *string {
+func (o *UsageExamplePostRequestBody) GetFakerStrings() *shared.FakerStrings {
 	if o == nil {
 		return nil
 	}
-	return o.FormatEmail
-}
-
-func (o *UsageExamplePostRequestBody) GetFormatURI() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FormatURI
-}
-
-func (o *UsageExamplePostRequestBody) GetFormatUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FormatUUID
-}
-
-func (o *UsageExamplePostRequestBody) GetHostname() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Hostname
-}
-
-func (o *UsageExamplePostRequestBody) GetIpv4() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ipv4
-}
-
-func (o *UsageExamplePostRequestBody) GetIpv6() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ipv6
+	return o.FakerStrings
 }
 
 func (o *UsageExamplePostRequestBody) GetSimpleObject() *shared.SimpleObject {
@@ -113,27 +62,6 @@ func (o *UsageExamplePostRequestBody) GetSimpleObject() *shared.SimpleObject {
 		return nil
 	}
 	return o.SimpleObject
-}
-
-func (o *UsageExamplePostRequestBody) GetUnknown() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Unknown
-}
-
-func (o *UsageExamplePostRequestBody) GetURI() *string {
-	if o == nil {
-		return nil
-	}
-	return o.URI
-}
-
-func (o *UsageExamplePostRequestBody) GetUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.UUID
 }
 
 // UsageExamplePostEnumParameter - An enum type
@@ -402,77 +330,26 @@ func (o *UsageExamplePostRequest) GetStrParameter() string {
 }
 
 type UsageExamplePost200ApplicationJSONJSON struct {
-	// A field called email that will have emails generated as examples
-	Email *string `json:"email,omitempty"`
-	// A field formatted as an email that will have emails generated as examples
-	FormatEmail *string `json:"formatEmail,omitempty"`
-	// A field formatted as a uri that will have uris generated as examples
-	FormatURI *string `json:"formatUri,omitempty"`
-	// A field formatted as a uuid that will have uuids generated as examples
-	FormatUUID *string `json:"formatUuid,omitempty"`
-	// A field formatted as a hostname that will have hostnames generated as examples
-	Hostname *string `json:"hostname,omitempty"`
-	// A field formatted as an ipv4 that will have ipv4s generated as examples
-	Ipv4 *string `json:"ipv4,omitempty"`
-	// A field formatted as an ipv6 that will have ipv6s generated as examples
-	Ipv6 *string `json:"ipv6,omitempty"`
+	// A set of strings with format values that lead to relevant examples being generated for them
+	FakerFormattedStrings *shared.FakerFormattedStrings `json:"fakerFormattedStrings,omitempty"`
+	// A set of strings with fieldnames that lead to relevant examples being generated for them
+	FakerStrings *shared.FakerStrings `json:"fakerStrings,omitempty"`
 	// A simple object that uses all our supported primitive types and enums and has optional properties.
 	SimpleObject *shared.SimpleObject `json:"simpleObject,omitempty"`
-	// A field formatted as an unknown that will have random strings generated as examples
-	Unknown *string `json:"unknown,omitempty"`
-	// A field called uri that will have uris generated as examples
-	URI *string `json:"uri,omitempty"`
-	// A field called uuid that will have uuids generated as examples
-	UUID *string `json:"uuid,omitempty"`
 }
 
-func (o *UsageExamplePost200ApplicationJSONJSON) GetEmail() *string {
+func (o *UsageExamplePost200ApplicationJSONJSON) GetFakerFormattedStrings() *shared.FakerFormattedStrings {
 	if o == nil {
 		return nil
 	}
-	return o.Email
+	return o.FakerFormattedStrings
 }
 
-func (o *UsageExamplePost200ApplicationJSONJSON) GetFormatEmail() *string {
+func (o *UsageExamplePost200ApplicationJSONJSON) GetFakerStrings() *shared.FakerStrings {
 	if o == nil {
 		return nil
 	}
-	return o.FormatEmail
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetFormatURI() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FormatURI
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetFormatUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.FormatUUID
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetHostname() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Hostname
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetIpv4() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ipv4
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetIpv6() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Ipv6
+	return o.FakerStrings
 }
 
 func (o *UsageExamplePost200ApplicationJSONJSON) GetSimpleObject() *shared.SimpleObject {
@@ -480,27 +357,6 @@ func (o *UsageExamplePost200ApplicationJSONJSON) GetSimpleObject() *shared.Simpl
 		return nil
 	}
 	return o.SimpleObject
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetUnknown() *string {
-	if o == nil {
-		return nil
-	}
-	return o.Unknown
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetURI() *string {
-	if o == nil {
-		return nil
-	}
-	return o.URI
-}
-
-func (o *UsageExamplePost200ApplicationJSONJSON) GetUUID() *string {
-	if o == nil {
-		return nil
-	}
-	return o.UUID
 }
 
 // UsageExamplePost200ApplicationJSON - A response body that contains the simpleObject sent in the request body

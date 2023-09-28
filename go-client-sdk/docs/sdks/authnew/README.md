@@ -45,13 +45,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.APIKeyAuthGlobalNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "suscipit",
-            Username: "Liana_Rohan",
+            Password: "vel",
+            Username: "Isai_Gerlach74",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "aspernatur",
-                HeaderName: "architecto",
+                ExpectedValue: "accusantium",
+                HeaderName: "aliquam",
             },
         },
     })
@@ -105,13 +105,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.AuthGlobal(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "magnam",
-            Username: "Audrey_Marks",
+            Password: "sapiente",
+            Username: "Blake.Hermiston",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "quos",
-                HeaderName: "sint",
+                ExpectedValue: "nisi",
+                HeaderName: "aut",
             },
         },
     })
@@ -167,13 +167,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.BasicAuthNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "accusantium",
-            Username: "Madaline.Wisozk",
+            Password: "voluptatum",
+            Username: "Christop_Sporer",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "eum",
-                HeaderName: "dolor",
+                ExpectedValue: "itaque",
+                HeaderName: "dolorum",
             },
         },
     }, operationSecurity)
@@ -229,13 +229,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedOptionsAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "necessitatibus",
-            Username: "Brown43",
+            Password: "architecto",
+            Username: "Leonard86",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "doloribus",
-                HeaderName: "debitis",
+                ExpectedValue: "et",
+                HeaderName: "voluptate",
             },
         },
     }, operationSecurity)
@@ -295,13 +295,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleMixedSchemeAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "eius",
-            Username: "Rachel.Lind10",
+            Password: "ipsa",
+            Username: "Erick23",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "architecto",
-                HeaderName: "repudiandae",
+                ExpectedValue: "iste",
+                HeaderName: "temporibus",
             },
         },
     }, operationSecurity)
@@ -360,13 +360,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithMixedSchemesAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "ullam",
-            Username: "Michael_Koss14",
+            Password: "accusantium",
+            Username: "Joyce.Armstrong",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "saepe",
-                HeaderName: "pariatur",
+                ExpectedValue: "mollitia",
+                HeaderName: "ab",
             },
         },
     }, operationSecurity)
@@ -425,13 +425,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleOptionsWithSimpleSchemesAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "accusantium",
-            Username: "Carroll.Lang",
+            Password: "corrupti",
+            Username: "Demond58",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "sunt",
-                HeaderName: "quo",
+                ExpectedValue: "numquam",
+                HeaderName: "impedit",
             },
         },
     }, operationSecurity)
@@ -487,13 +487,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleOptionsAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "illum",
-            Username: "Samantha_Schoen",
+            Password: "explicabo",
+            Username: "Garrison.Anderson",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "odit",
-                HeaderName: "ea",
+                ExpectedValue: "maiores",
+                HeaderName: "natus",
             },
         },
     }, operationSecurity)
@@ -550,13 +550,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.MultipleSimpleSchemeAuth(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "accusantium",
-            Username: "Annie.Wunsch45",
+            Password: "velit",
+            Username: "Webster.Hirthe40",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "autem",
-                HeaderName: "nam",
+                ExpectedValue: "quaerat",
+                HeaderName: "consequuntur",
             },
         },
     }, operationSecurity)
@@ -612,13 +612,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "eaque",
-            Username: "Sammy.Hickle85",
+            Password: "repellendus",
+            Username: "Loyce_Schoen",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "amet",
-                HeaderName: "aut",
+                ExpectedValue: "asperiores",
+                HeaderName: "nemo",
             },
         },
     }, operationSecurity)
@@ -674,13 +674,13 @@ func main() {
     ctx := context.Background()
     res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{
         BasicAuth: &shared.AuthServiceRequestBodyBasicAuth{
-            Password: "cumque",
-            Username: "Floyd_Welch17",
+            Password: "quae",
+            Username: "Elwyn.Sawayn7",
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "quis",
-                HeaderName: "totam",
+                ExpectedValue: "adipisci",
+                HeaderName: "fuga",
             },
         },
     }, operationSecurity)

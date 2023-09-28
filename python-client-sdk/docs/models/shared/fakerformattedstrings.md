@@ -1,0 +1,27 @@
+# FakerFormattedStrings
+
+A set of strings with format values that lead to relevant examples being generated for them
+
+
+## Fields
+
+| Field                                                        | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `address_format`                                             | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have an address generated as example       |
+| `directory_format`                                           | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a directory path generated as example |
+| `domain_format`                                              | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a domain name generated as example    |
+| `email_format`                                               | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have an email address generated as example |
+| `filename_format`                                            | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a filename generated as example       |
+| `filepath_format`                                            | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a file path generated as example      |
+| `image_format`                                               | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a image url generated as example      |
+| `ipv4_format`                                                | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have an IPv4 address generated as example  |
+| `ipv6_format`                                                | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have an IPv6 address generated as example  |
+| `json_format`                                                | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a JSON generated as example           |
+| `mac_format`                                                 | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a MAC address generated as example    |
+| `password_format`                                            | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a fake password generated as example  |
+| `phone_format`                                               | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a phone number generated as example   |
+| `timezone_format`                                            | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a timezone generated as example       |
+| `unknown_format`                                             | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have random words generated as example     |
+| `url_format`                                                 | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a URL generated as example            |
+| `uuid_format`                                                | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a UUID generated as example           |
+| `zipcode_format`                                             | *Optional[str]*                                              | :heavy_minus_sign:                                           | A field that will have a postal code generated as example    |

@@ -108,8 +108,8 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeprecatedFieldInObject();
-    $request->deprecatedField = 'dolores';
-    $request->newField = 'quis';
+    $request->deprecatedField = 'suscipit';
+    $request->newField = 'velit';
 
     $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
 
@@ -190,7 +190,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationNoCommentsGet('totam');
+    $response = $sdk->generation->deprecatedOperationNoCommentsGet('culpa');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -236,7 +236,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationWithCommentsGet('dignissimos', 'eaque');
+    $response = $sdk->generation->deprecatedOperationWithCommentsGet('est', 'recusandae');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -421,10 +421,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'http://disfigured-collapse.com';
-    $requestBody->testProp = 'dolores';
+    $requestBody->callbackUrl = 'https://those-helo.info';
+    $requestBody->testProp = 'quos';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'minus');
+    $response = $sdk->generation->ignoresPost($requestBody, 'vel');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -512,10 +512,10 @@ $sdk = SDK::builder()
 try {
     $obj = new TypedParameterGenerationGetObj();
     $obj->bool = false;
-    $obj->num = 4634.51;
-    $obj->str = 'dolor';
+    $obj->num = 2870.51;
+    $obj->str = 'possimus';
 
-    $response = $sdk->generation->typedParameterGenerationGet(874573, DateTime::createFromFormat('Y-m-d', '2022-01-21'), 9280.82, $obj);
+    $response = $sdk->generation->typedParameterGenerationGet(706575, DateTime::createFromFormat('Y-m-d', '2022-03-04'), 4471.44, $obj);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -559,6 +559,8 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequest;
 use \OpenAPI\OpenAPI\Models\Operations\UsageExamplePostRequestBody;
+use \OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings;
+use \OpenAPI\OpenAPI\Models\Shared\FakerStrings;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObject;
 use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
@@ -573,22 +575,88 @@ $sdk = SDK::builder()
 try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
-    $request->requestBody->email = 'Mckenzie78@yahoo.com';
-    $request->requestBody->formatEmail = 'Jett57@gmail.com';
-    $request->requestBody->formatUri = 'https://enraged-wrench.org';
-    $request->requestBody->formatUuid = '49a8d9cb-f486-4333-a3f9-b77f3a410067';
-    $request->requestBody->hostname = 'frightening-synergy.net';
-    $request->requestBody->ipv4 = '249.96.158.45';
-    $request->requestBody->ipv6 = '80d1:ba77:a89e:bf73:7ae4:203c:e5e6:a95d';
+    $request->requestBody->fakerFormattedStrings = new FakerFormattedStrings();
+    $request->requestBody->fakerFormattedStrings->addressFormat = '9839 Alvis Road';
+    $request->requestBody->fakerFormattedStrings->directoryFormat = 'consectetur';
+    $request->requestBody->fakerFormattedStrings->domainFormat = 'in';
+    $request->requestBody->fakerFormattedStrings->emailFormat = 'Tressa98@yahoo.com';
+    $request->requestBody->fakerFormattedStrings->filenameFormat = 'suscipit';
+    $request->requestBody->fakerFormattedStrings->filepathFormat = 'reiciendis';
+    $request->requestBody->fakerFormattedStrings->imageFormat = 'quidem';
+    $request->requestBody->fakerFormattedStrings->ipv4Format = '231.229.75.30';
+    $request->requestBody->fakerFormattedStrings->ipv6Format = 'f333:17fe:35b6:0eb1:ea42:6555:ba3c:2874';
+    $request->requestBody->fakerFormattedStrings->jsonFormat = '{"foo":88596,"bar":"A7eOTx3[Tq","bike":"xAf#b.{-}b","a":70907,"b":61174,"name":67190,"prop":44751}';
+    $request->requestBody->fakerFormattedStrings->macFormat = 'commodi';
+    $request->requestBody->fakerFormattedStrings->passwordFormat = 'quidem';
+    $request->requestBody->fakerFormattedStrings->phoneFormat = '1-561-598-0905';
+    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'maiores';
+    $request->requestBody->fakerFormattedStrings->unknownFormat = 'incidunt';
+    $request->requestBody->fakerFormattedStrings->urlFormat = 'sed';
+    $request->requestBody->fakerFormattedStrings->uuidFormat = '94e3698f-447f-4603-a8b4-45e80ca55efd';
+    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09234';
+    $request->requestBody->fakerStrings = new FakerStrings();
+    $request->requestBody->fakerStrings->city = 'Bozeman';
+    $request->requestBody->fakerStrings->iban = 'laudantium';
+    $request->requestBody->fakerStrings->id = '58b6a89f-be3a-45aa-8e48-24d0ab407508';
+    $request->requestBody->fakerStrings->iPv4 = '142.236.92.22';
+    $request->requestBody->fakerStrings->iPv6 = '8620:65e9:04f3:b119:4b8a:bf60:3a79:f9df';
+    $request->requestBody->fakerStrings->account = 'voluptates';
+    $request->requestBody->fakerStrings->address = '66486 O'Connell Green';
+    $request->requestBody->fakerStrings->amount = 'voluptatem';
+    $request->requestBody->fakerStrings->avatar = 'quisquam';
+    $request->requestBody->fakerStrings->color = 'repudiandae';
+    $request->requestBody->fakerStrings->comment = 'quasi';
+    $request->requestBody->fakerStrings->company = 'Kihn - Zboncak';
+    $request->requestBody->fakerStrings->country = 'Macao';
+    $request->requestBody->fakerStrings->countryCode = 'HM';
+    $request->requestBody->fakerStrings->currency = 'quidem';
+    $request->requestBody->fakerStrings->datatype = 'maxime';
+    $request->requestBody->fakerStrings->default = 'et';
+    $request->requestBody->fakerStrings->description = 'esse';
+    $request->requestBody->fakerStrings->directory = 'amet';
+    $request->requestBody->fakerStrings->domainName = 'assumenda';
+    $request->requestBody->fakerStrings->emailAddr = 'ea';
+    $request->requestBody->fakerStrings->extension = 'atque';
+    $request->requestBody->fakerStrings->filename = 'error';
+    $request->requestBody->fakerStrings->filepath = 'officiis';
+    $request->requestBody->fakerStrings->filetype = 'officiis';
+    $request->requestBody->fakerStrings->firstName = 'Shanelle';
+    $request->requestBody->fakerStrings->fullName = 'natus';
+    $request->requestBody->fakerStrings->gender = 'female';
+    $request->requestBody->fakerStrings->job = 'aspernatur';
+    $request->requestBody->fakerStrings->json = '{"foo":98058,"bar":"rZODvSS,v`","bike":";{$v+$*1>E","a":95214,"b":"<u/VsXJ7uW","name":14587,"prop":"@I[(Bau8r$"}';
+    $request->requestBody->fakerStrings->key = 'iure';
+    $request->requestBody->fakerStrings->lastName = 'Beier';
+    $request->requestBody->fakerStrings->latitude = 'totam';
+    $request->requestBody->fakerStrings->locale = 'quae';
+    $request->requestBody->fakerStrings->longitude = 'molestiae';
+    $request->requestBody->fakerStrings->mac = 'eveniet';
+    $request->requestBody->fakerStrings->manufacturer = 'qui';
+    $request->requestBody->fakerStrings->material = 'cum';
+    $request->requestBody->fakerStrings->middleName = 'iure';
+    $request->requestBody->fakerStrings->model = 'necessitatibus';
+    $request->requestBody->fakerStrings->password = 'ratione';
+    $request->requestBody->fakerStrings->phone = '1-755-439-0354 x6309';
+    $request->requestBody->fakerStrings->pin = 'reiciendis';
+    $request->requestBody->fakerStrings->postalCode = '63262';
+    $request->requestBody->fakerStrings->price = 'quae';
+    $request->requestBody->fakerStrings->product = 'recusandae';
+    $request->requestBody->fakerStrings->sex = 'male';
+    $request->requestBody->fakerStrings->street = '44262 Larkin Keys';
+    $request->requestBody->fakerStrings->timezone = 'nemo';
+    $request->requestBody->fakerStrings->unit = 'recusandae';
+    $request->requestBody->fakerStrings->url = 'esse';
+    $request->requestBody->fakerStrings->username = 'Laron_Hauck';
+    $request->requestBody->fakerStrings->uuid = '9251a5a9-da66-40ff-97bf-aad4f9efc1b4';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'totam';
-    $request->requestBody->simpleObject->bigint = 628982;
-    $request->requestBody->simpleObject->bigintStr = 'alias';
+    $request->requestBody->simpleObject->any = 'quis';
+    $request->requestBody->simpleObject->bigint = 82057;
+    $request->requestBody->simpleObject->bigintStr = 'fugit';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->requestBody->simpleObject->decimal = 8726.51;
+    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
+    $request->requestBody->simpleObject->decimal = 7652.71;
     $request->requestBody->simpleObject->enum = Enum::Two;
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
@@ -600,27 +668,24 @@ try {
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->requestBody->unknown = 'vel';
-    $request->requestBody->uri = 'https://uneven-commitment.net';
-    $request->requestBody->uuid = 'f7a73cf3-be45-43f8-b0b3-26b5a73429cd';
-    $request->bigintParameter = 111111;
-    $request->bigintParameterOptional = 111111;
-    $request->bigintStrParameter = '111111';
-    $request->bigintStrParameterOptional = '111111';
+    $request->bigintParameter = 241901;
+    $request->bigintParameterOptional = 137251;
+    $request->bigintStrParameter = 'eum';
+    $request->bigintStrParameterOptional = 'eius';
     $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimalParameter = 1.1;
-    $request->decimalParameterOptional = 1.1;
-    $request->decimalStrParameter = '1.1';
-    $request->decimalStrParameterOptional = '1.1';
-    $request->doubleParameter = 2.2222222;
-    $request->enumParameter = UsageExamplePostEnumParameter::Value3;
+    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2021-04-05');
+    $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-06-18T13:06:11.480Z');
+    $request->decimalParameter = 9587.41;
+    $request->decimalParameterOptional = 4332.79;
+    $request->decimalStrParameter = 'dicta';
+    $request->decimalStrParameterOptional = 'minima';
+    $request->doubleParameter = 1070.04;
+    $request->enumParameter = UsageExamplePostEnumParameter::Value2;
     $request->falseyNumberParameter = 0;
-    $request->float32Parameter = 1.1;
-    $request->floatParameter = 1.1;
-    $request->int64Parameter = 111111;
-    $request->intParameter = 1;
+    $request->float32Parameter = 5896.95;
+    $request->floatParameter = 9364.69;
+    $request->int64Parameter = 745398;
+    $request->intParameter = 940782;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
     $request->strParameter = 'example 3';
 

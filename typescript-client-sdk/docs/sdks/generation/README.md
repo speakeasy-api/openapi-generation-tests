@@ -110,8 +110,8 @@ const sdk = new SDK({
 });
 
 sdk.generation.deprecatedFieldInSchemaPost({
-  deprecatedField: "occaecati",
-  newField: "rerum",
+  deprecatedField: "aliquid",
+  newField: "aperiam",
 }).then((res: DeprecatedFieldInSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -187,7 +187,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "adipisci";
+const deprecatedParameter: string = "cum";
 
 sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter).then((res: DeprecatedOperationNoCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -231,8 +231,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const deprecatedParameter: string = "asperiores";
-const newParameter: string = "earum";
+const deprecatedParameter: string = "consectetur";
+const newParameter: string = "in";
 
 sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter).then((res: DeprecatedOperationWithCommentsGetResponse) => {
   if (res.statusCode == 200) {
@@ -414,10 +414,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const requestBody: IgnoresPostApplicationJSON = {
-  callbackUrl: "http://peaceful-popularity.name",
-  testProp: "pariatur",
+  callbackUrl: "http://vivacious-slider.biz",
+  testProp: "doloribus",
 };
-const testParam: string = "provident";
+const testParam: string = "suscipit";
 
 sdk.generation.ignoresPost(requestBody, testParam).then((res: IgnoresPostResponse) => {
   if (res.statusCode == 200) {
@@ -499,13 +499,13 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const bigint: number = 750844;
-const date: RFCDate = new RFCDate("2021-01-26");
-const decimal: number = 3119.45;
+const bigint: number = 968972;
+const date: RFCDate = new RFCDate("2021-03-11");
+const decimal: number = 8970.71;
 const obj: TypedParameterGenerationGetObj = {
   bool: false,
-  num: 5542.42,
-  str: "aliquid",
+  num: 2965.56,
+  str: "sunt",
 };
 
 sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj).then((res: TypedParameterGenerationGetResponse) => {
@@ -562,58 +562,123 @@ const operationSecurity: UsageExamplePostSecurity = {
 
 sdk.generation.usageExamplePost({
   requestBody: {
-    email: "Cornelius21@gmail.com",
-    formatEmail: "Kevin.Ritchie@hotmail.com",
-    formatUri: "https://electric-porter.biz",
-    formatUuid: "100674eb-f692-480d-9ba7-7a89ebf737ae",
-    hostname: "fake-cat.com",
-    ipv4: "58.194.225.81",
-    ipv6: "e6a9:5d8a:0d44:6ce2:af7a:73cf:3be4:53f8",
+    fakerFormattedStrings: {
+      addressFormat: "222 Jena Villages",
+      directoryFormat: "debitis",
+      domainFormat: "consectetur",
+      emailFormat: "Mary91@yahoo.com",
+      filenameFormat: "libero",
+      filepathFormat: "vitae",
+      imageFormat: "accusamus",
+      ipv4Format: "161.69.34.97",
+      ipv6Format: "555b:a3c2:8744:ed53:b88f:3a8d:8f5c:0b2f",
+      jsonFormat: "{"foo":99440,"bar":"Kb'Y<_/JGa","bike":37832,"a":"*Dzt'{\"S|:","b":59223,"name":89676,"prop":40673}",
+      macFormat: "occaecati",
+      passwordFormat: "quos",
+      phoneFormat: "424.940.2857 x32385",
+      timezoneFormat: "sit",
+      unknownFormat: "nobis",
+      urlFormat: "error",
+      uuidFormat: "55efd20e-457e-4185-8b6a-89fbe3a5aa8e",
+      zipcodeFormat: "51280",
+    },
+    fakerStrings: {
+      city: "Quitzonboro",
+      iban: "consequatur",
+      id: "75088e51-8620-465e-904f-3b1194b8abf6",
+      iPv4: "0.58.165.116",
+      iPv6: "9f9d:fe0a:b7da:8a50:ce18:7f86:bc17:3d68",
+      account: "error",
+      address: "886 Bret Island",
+      amount: "maiores",
+      avatar: "corrupti",
+      color: "at",
+      comment: "error",
+      company: "Hoeger - Walker",
+      country: "Mali",
+      countryCode: "LV",
+      currency: "sunt",
+      datatype: "recusandae",
+      default: "dolorum",
+      description: "repellendus",
+      directory: "labore",
+      domainName: "reiciendis",
+      emailAddr: "doloremque",
+      extension: "repudiandae",
+      filename: "dicta",
+      filepath: "accusantium",
+      filetype: "beatae",
+      firstName: "Chandler",
+      fullName: "enim",
+      gender: "female",
+      job: "velit",
+      json: "{"foo":"U<u/VsXJ7u","bar":"/.^@I[(Bau","bike":87849,"a":43415,"b":51761,"name":47466,"prop":"2eIt2_cRQ="}",
+      key: "ad",
+      lastName: "Zulauf",
+      latitude: "alias",
+      locale: "corporis",
+      longitude: "perspiciatis",
+      mac: "nihil",
+      manufacturer: "mollitia",
+      material: "voluptas",
+      middleName: "alias",
+      model: "maiores",
+      password: "reiciendis",
+      phone: "1-732-720-9634",
+      pin: "ex",
+      postalCode: "62854",
+      price: "nemo",
+      product: "recusandae",
+      sex: "female",
+      street: "3495 Filiberto Cliffs",
+      timezone: "animi",
+      unit: "nostrum",
+      url: "mollitia",
+      username: "Lane.Schuster",
+      uuid: "60ff57bf-aad4-4f9e-bc1b-4512c1032648",
+    },
     simpleObject: {
-      any: "nihil",
-      bigint: 25662,
-      bigintStr: "expedita",
+      any: "at",
+      bigint: 773084,
+      bigintStr: "eos",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2074.7,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 9587.41,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
       str: "example",
       strOpt: "optional example",
     },
-    unknown: "libero",
-    uri: "http://prestigious-inquiry.biz",
-    uuid: "429cdb1a-8422-4bb6-b9d2-322715bf0cbb",
   },
-  bigintParameter: 111111,
-  bigintParameterOptional: 111111,
-  bigintStrParameter: "111111",
-  bigintStrParameterOptional: "111111",
+  bigintParameter: 325118,
+  bigintParameterOptional: 107004,
+  bigintStrParameter: "cupiditate",
+  bigintStrParameterOptional: "provident",
   boolParameter: false,
-  dateParameter: new RFCDate("2020-01-01"),
-  dateTimeParameter: new Date("2020-01-01T00:00:00Z"),
-  decimalParameter: 1.1,
-  decimalParameterOptional: 1.1,
-  decimalStrParameter: "1.1",
-  decimalStrParameterOptional: "1.1",
-  doubleParameter: 2.2222222,
-  enumParameter: UsageExamplePostEnumParameter.Value3,
+  dateParameter: new RFCDate("2020-10-06"),
+  dateTimeParameter: new Date("2020-06-16T06:36:28.349Z"),
+  decimalParameter: 525.08,
+  decimalParameterOptional: 9358.33,
+  decimalStrParameter: "perspiciatis",
+  decimalStrParameterOptional: "maiores",
+  doubleParameter: 8918.01,
+  enumParameter: UsageExamplePostEnumParameter.Value2,
   falseyNumberParameter: 0,
-  float32Parameter: 1.1,
-  floatParameter: 1.1,
-  int64Parameter: 111111,
-  intParameter: 1,
+  float32Parameter: 7809.31,
+  floatParameter: 3803.35,
+  int64Parameter: 211534,
+  intParameter: 147808,
   optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
-  strParameter: "example 1",
+  strParameter: "example 3",
 }, operationSecurity).then((res: UsageExamplePostResponse) => {
   if (res.statusCode == 200) {
     // handle response

@@ -537,6 +537,8 @@ lib/src/main/java/org/openapis/openapi/models/shared/EmptyObjectParam.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObjectSlideshow.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObject.java
+lib/src/main/java/org/openapis/openapi/models/shared/FakerStrings.java
+lib/src/main/java/org/openapis/openapi/models/shared/FakerFormattedStrings.java
 lib/src/main/java/org/openapis/openapi/models/shared/LimitOffsetConfig.java
 lib/src/main/java/org/openapis/openapi/models/shared/RefQueryParamObjExploded.java
 lib/src/main/java/org/openapis/openapi/models/shared/RefQueryParamObj.java
@@ -1064,6 +1066,8 @@ docs/models/shared/EmptyObjectParam.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshow.md
 docs/models/shared/HttpBinSimpleJsonObject.md
+docs/models/shared/FakerStrings.md
+docs/models/shared/FakerFormattedStrings.md
 docs/models/shared/LimitOffsetConfig.md
 docs/models/shared/RefQueryParamObjExploded.md
 docs/models/shared/RefQueryParamObj.md

@@ -141,8 +141,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{
-        DeprecatedField: openapi.String("occaecati"),
-        NewField: openapi.String("rerum"),
+        DeprecatedField: openapi.String("aliquid"),
+        NewField: openapi.String("aperiam"),
     })
     if err != nil {
         log.Fatal(err)
@@ -239,7 +239,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "adipisci"
+    deprecatedParameter := "cum"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
@@ -293,8 +293,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "asperiores"
-    newParameter := "earum"
+    deprecatedParameter := "consectetur"
+    newParameter := "in"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
@@ -539,10 +539,10 @@ func main() {
         openapi.WithGlobalQueryParam("some example global query param"),
     )
     requestBody := operations.IgnoresPostApplicationJSON{
-        CallbackURL: openapi.String("http://peaceful-popularity.name"),
-        TestProp: openapi.String("pariatur"),
+        CallbackURL: openapi.String("http://vivacious-slider.biz"),
+        TestProp: openapi.String("doloribus"),
     }
-    testParam := "provident"
+    testParam := "suscipit"
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
@@ -647,13 +647,13 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    bigint := big.NewInt(750844)
-    date := types.MustDateFromString("2021-01-26")
-    decimal := types.MustNewDecimalFromString("3119.45")
+    bigint := big.NewInt(968972)
+    date := types.MustDateFromString("2021-03-11")
+    decimal := types.MustNewDecimalFromString("8970.71")
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
-        Num: 5542.42,
-        Str: "aliquid",
+        Num: 2965.56,
+        Str: "sunt",
     }
 
     ctx := context.Background()
@@ -719,58 +719,123 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            Email: openapi.String("Cornelius21@gmail.com"),
-            FormatEmail: openapi.String("Kevin.Ritchie@hotmail.com"),
-            FormatURI: openapi.String("https://electric-porter.biz"),
-            FormatUUID: openapi.String("100674eb-f692-480d-9ba7-7a89ebf737ae"),
-            Hostname: openapi.String("fake-cat.com"),
-            Ipv4: openapi.String("58.194.225.81"),
-            Ipv6: openapi.String("e6a9:5d8a:0d44:6ce2:af7a:73cf:3be4:53f8"),
+            FakerFormattedStrings: &shared.FakerFormattedStrings{
+                AddressFormat: openapi.String("222 Jena Villages"),
+                DirectoryFormat: openapi.String("debitis"),
+                DomainFormat: openapi.String("consectetur"),
+                EmailFormat: openapi.String("Mary91@yahoo.com"),
+                FilenameFormat: openapi.String("libero"),
+                FilepathFormat: openapi.String("vitae"),
+                ImageFormat: openapi.String("accusamus"),
+                Ipv4Format: openapi.String("161.69.34.97"),
+                Ipv6Format: openapi.String("555b:a3c2:8744:ed53:b88f:3a8d:8f5c:0b2f"),
+                JSONFormat: openapi.String("{"foo":99440,"bar":"Kb'Y<_/JGa","bike":37832,"a":"*Dzt'{\"S|:","b":59223,"name":89676,"prop":40673}"),
+                MacFormat: openapi.String("occaecati"),
+                PasswordFormat: openapi.String("quos"),
+                PhoneFormat: openapi.String("424.940.2857 x32385"),
+                TimezoneFormat: openapi.String("sit"),
+                UnknownFormat: openapi.String("nobis"),
+                URLFormat: openapi.String("error"),
+                UUIDFormat: openapi.String("55efd20e-457e-4185-8b6a-89fbe3a5aa8e"),
+                ZipcodeFormat: openapi.String("51280"),
+            },
+            FakerStrings: &shared.FakerStrings{
+                City: openapi.String("Quitzonboro"),
+                Iban: openapi.String("consequatur"),
+                ID: openapi.String("75088e51-8620-465e-904f-3b1194b8abf6"),
+                IPv4: openapi.String("0.58.165.116"),
+                IPv6: openapi.String("9f9d:fe0a:b7da:8a50:ce18:7f86:bc17:3d68"),
+                Account: openapi.String("error"),
+                Address: openapi.String("886 Bret Island"),
+                Amount: openapi.String("maiores"),
+                Avatar: openapi.String("corrupti"),
+                Color: openapi.String("at"),
+                Comment: openapi.String("error"),
+                Company: openapi.String("Hoeger - Walker"),
+                Country: openapi.String("Mali"),
+                CountryCode: openapi.String("LV"),
+                Currency: openapi.String("sunt"),
+                Datatype: openapi.String("recusandae"),
+                Default: openapi.String("dolorum"),
+                Description: openapi.String("repellendus"),
+                Directory: openapi.String("labore"),
+                DomainName: openapi.String("reiciendis"),
+                EmailAddr: openapi.String("doloremque"),
+                Extension: openapi.String("repudiandae"),
+                Filename: openapi.String("dicta"),
+                Filepath: openapi.String("accusantium"),
+                Filetype: openapi.String("beatae"),
+                FirstName: openapi.String("Chandler"),
+                FullName: openapi.String("enim"),
+                Gender: openapi.String("female"),
+                Job: openapi.String("velit"),
+                JSON: openapi.String("{"foo":"U<u/VsXJ7u","bar":"/.^@I[(Bau","bike":87849,"a":43415,"b":51761,"name":47466,"prop":"2eIt2_cRQ="}"),
+                Key: openapi.String("ad"),
+                LastName: openapi.String("Zulauf"),
+                Latitude: openapi.String("alias"),
+                Locale: openapi.String("corporis"),
+                Longitude: openapi.String("perspiciatis"),
+                Mac: openapi.String("nihil"),
+                Manufacturer: openapi.String("mollitia"),
+                Material: openapi.String("voluptas"),
+                MiddleName: openapi.String("alias"),
+                Model: openapi.String("maiores"),
+                Password: openapi.String("reiciendis"),
+                Phone: openapi.String("1-732-720-9634"),
+                Pin: openapi.String("ex"),
+                PostalCode: openapi.String("62854"),
+                Price: openapi.String("nemo"),
+                Product: openapi.String("recusandae"),
+                Sex: openapi.String("female"),
+                Street: openapi.String("3495 Filiberto Cliffs"),
+                Timezone: openapi.String("animi"),
+                Unit: openapi.String("nostrum"),
+                URL: openapi.String("mollitia"),
+                Username: openapi.String("Lane.Schuster"),
+                UUID: openapi.String("60ff57bf-aad4-4f9e-bc1b-4512c1032648"),
+            },
             SimpleObject: &shared.SimpleObject{
-                Any: "nihil",
-                Bigint: big.NewInt(25662),
-                BigintStr: big.NewInt(711584),
+                Any: "at",
+                Bigint: big.NewInt(773084),
+                BigintStr: big.NewInt(179410),
                 Bool: true,
                 BoolOpt: openapi.Bool(true),
                 Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-                Decimal: types.MustNewDecimalFromString("2074.7"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000Z"),
+                Decimal: types.MustNewDecimalFromString("9587.41"),
                 Enum: shared.EnumTwo,
                 Float32: 2.2222222,
                 Int: 999999,
                 Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+                IntEnum: shared.SimpleObjectIntEnumFirst,
                 IntOptNull: openapi.Int64(999999),
                 Num: 1.1,
                 NumOptNull: openapi.Float64(1.1),
                 Str: "example",
                 StrOpt: openapi.String("optional example"),
             },
-            Unknown: openapi.String("libero"),
-            URI: openapi.String("http://prestigious-inquiry.biz"),
-            UUID: openapi.String("429cdb1a-8422-4bb6-b9d2-322715bf0cbb"),
         },
-        BigintParameter: big.NewInt(111111),
-        BigintParameterOptional: big.NewInt(111111),
-        BigintStrParameter: big.NewInt(111111),
-        BigintStrParameterOptional: big.NewInt(111111),
+        BigintParameter: big.NewInt(325118),
+        BigintParameterOptional: big.NewInt(107004),
+        BigintStrParameter: big.NewInt(583404),
+        BigintStrParameterOptional: big.NewInt(589695),
         BoolParameter: false,
-        DateParameter: types.MustDateFromString("2020-01-01"),
-        DateTimeParameter: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        DecimalParameter: types.MustNewDecimalFromString("1.1"),
-        DecimalParameterOptional: types.MustNewDecimalFromString("1.1"),
-        DecimalStrParameter: types.MustNewDecimalFromString("1.1"),
-        DecimalStrParameterOptional: types.MustNewDecimalFromString("1.1"),
-        DoubleParameter: 2.2222222,
-        EnumParameter: operations.UsageExamplePostEnumParameterValue3,
+        DateParameter: types.MustDateFromString("2020-10-06"),
+        DateTimeParameter: types.MustTimeFromString("2020-06-16T06:36:28.349Z"),
+        DecimalParameter: types.MustNewDecimalFromString("525.08"),
+        DecimalParameterOptional: types.MustNewDecimalFromString("9358.33"),
+        DecimalStrParameter: types.MustNewDecimalFromString("5962.11"),
+        DecimalStrParameterOptional: types.MustNewDecimalFromString("9834.27"),
+        DoubleParameter: 8918.01,
+        EnumParameter: operations.UsageExamplePostEnumParameterValue2,
         FalseyNumberParameter: 0,
-        Float32Parameter: 1.1,
-        FloatParameter: 1.1,
-        Int64Parameter: 111111,
-        IntParameter: 1,
+        Float32Parameter: 7809.31,
+        FloatParameter: 3803.35,
+        Int64Parameter: 211534,
+        IntParameter: 147808,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example 1",
+        StrParameter: "example 3",
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)

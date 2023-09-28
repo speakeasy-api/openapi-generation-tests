@@ -33,14 +33,14 @@ s = sdk.SDK(
 
 
 res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
-    any='nesciunt',
-    bigint=179490,
-    bigint_str=18521,
+    any='culpa',
+    bigint=665859,
+    bigint_str=926880,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('1709.86'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000Z'),
+    decimal=Decimal('5173.09'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -52,7 +52,7 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), str_='dolor')
+), str_='ducimus')
 
 if res.res is not None:
     # handle response
@@ -90,15 +90,15 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict(param_str='vero', simple_object=shared.SimpleObject(
-    any='nostrum',
-    bigint=944120,
-    bigint_str=928082,
+res = s.flattening.component_body_and_param_no_conflict(param_str='quos', simple_object=shared.SimpleObject(
+    any='vel',
+    bigint=287051,
+    bigint_str=822560,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('6082.53'),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000Z'),
+    decimal=Decimal('7065.75'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
@@ -146,7 +146,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.conflicting_params(str_path_parameter='voluptatem', str_query_parameter='porro')
+res = s.flattening.conflicting_params(str_path_parameter='in', str_query_parameter='corporis')
 
 if res.res is not None:
     # handle response
@@ -183,8 +183,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
-    str_='consequuntur',
-), str_='blanditiis')
+    str_='reiciendis',
+), str_='assumenda')
 
 if res.res is not None:
     # handle response
@@ -221,8 +221,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='error',
-), param_str='eaque')
+    body_str='nemo',
+), param_str='recusandae')
 
 if res.res is not None:
     # handle response

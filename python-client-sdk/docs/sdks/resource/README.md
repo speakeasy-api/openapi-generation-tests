@@ -27,8 +27,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='voluptatum'.encode(),
-        file='error',
+        content='cum'.encode(),
+        file='dicta',
     ),
 )
 
@@ -69,28 +69,28 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        9447.08,
+        9369.28,
     ],
     array_of_string=[
-        'expedita',
+        'veniam',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='debitis',
+            description='animi',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-04-28T20:28:39.956Z'),
-    enum_number=shared.ExampleResourceEnumNumber.TWO,
-    enum_str=shared.ExampleResourceEnumStr.TWO,
-    id='a8e4824d-0ab4-4075-888e-51862065e904',
+    created_at=dateutil.parser.isoparse('2022-04-11T09:03:05.973Z'),
+    enum_number=shared.ExampleResourceEnumNumber.ONE,
+    enum_str=shared.ExampleResourceEnumStr.ONE,
+    id='eb07f116-db99-4545-bc95-fa88970e189d',
     map_of_integer={
-        "reiciendis": 209750,
+        "tempore": 725574,
     },
     map_of_string={
-        "harum": 'dicta',
+        "velit": 'doloremque',
     },
-    name='Violet Greenfelder',
-    updated_at=dateutil.parser.isoparse('2021-07-21T08:55:46.635Z'),
+    name='Edmund Robel',
+    updated_at=dateutil.parser.isoparse('2021-01-25T08:38:05.276Z'),
     vehicle=[],
 )
 
@@ -129,7 +129,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='tenetur')
+res = s.resource.delete_resource(resource_id='doloremque')
 
 if res.status_code == 200:
     # handle response
@@ -164,7 +164,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='laboriosam')
+res = s.resource.get_resource(resource_id='quis')
 
 if res.example_resource is not None:
     # handle response
@@ -199,7 +199,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='alias')
+res = s.resource.update_resource(resource_id='veniam')
 
 if res.status_code == 200:
     # handle response

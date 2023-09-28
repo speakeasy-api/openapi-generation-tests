@@ -18,74 +18,24 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class UsageExamplePostRequestBody
 {
     /**
-     * A field called email that will have emails generated as examples
+     * A set of strings with format values that lead to relevant examples being generated for them
      * 
-     * @var ?string $email
+     * @var ?\OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings $fakerFormattedStrings
      */
-	#[\JMS\Serializer\Annotation\SerializedName('email')]
-    #[\JMS\Serializer\Annotation\Type('string')]
+	#[\JMS\Serializer\Annotation\SerializedName('fakerFormattedStrings')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $email = null;
+    public ?\OpenAPI\OpenAPI\Models\Shared\FakerFormattedStrings $fakerFormattedStrings = null;
     
     /**
-     * A field formatted as an email that will have emails generated as examples
+     * A set of strings with fieldnames that lead to relevant examples being generated for them
      * 
-     * @var ?string $formatEmail
+     * @var ?\OpenAPI\OpenAPI\Models\Shared\FakerStrings $fakerStrings
      */
-	#[\JMS\Serializer\Annotation\SerializedName('formatEmail')]
-    #[\JMS\Serializer\Annotation\Type('string')]
+	#[\JMS\Serializer\Annotation\SerializedName('fakerStrings')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\FakerStrings')]
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $formatEmail = null;
-    
-    /**
-     * A field formatted as a uri that will have uris generated as examples
-     * 
-     * @var ?string $formatUri
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('formatUri')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $formatUri = null;
-    
-    /**
-     * A field formatted as a uuid that will have uuids generated as examples
-     * 
-     * @var ?string $formatUuid
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('formatUuid')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $formatUuid = null;
-    
-    /**
-     * A field formatted as a hostname that will have hostnames generated as examples
-     * 
-     * @var ?string $hostname
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('hostname')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $hostname = null;
-    
-    /**
-     * A field formatted as an ipv4 that will have ipv4s generated as examples
-     * 
-     * @var ?string $ipv4
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('ipv4')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $ipv4 = null;
-    
-    /**
-     * A field formatted as an ipv6 that will have ipv6s generated as examples
-     * 
-     * @var ?string $ipv6
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('ipv6')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $ipv6 = null;
+    public ?\OpenAPI\OpenAPI\Models\Shared\FakerStrings $fakerStrings = null;
     
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -97,48 +47,10 @@ class UsageExamplePostRequestBody
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?\OpenAPI\OpenAPI\Models\Shared\SimpleObject $simpleObject = null;
     
-    /**
-     * A field formatted as an unknown that will have random strings generated as examples
-     * 
-     * @var ?string $unknown
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('unknown')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $unknown = null;
-    
-    /**
-     * A field called uri that will have uris generated as examples
-     * 
-     * @var ?string $uri
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('uri')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $uri = null;
-    
-    /**
-     * A field called uuid that will have uuids generated as examples
-     * 
-     * @var ?string $uuid
-     */
-	#[\JMS\Serializer\Annotation\SerializedName('uuid')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
-    public ?string $uuid = null;
-    
 	public function __construct()
 	{
-		$this->email = null;
-		$this->formatEmail = null;
-		$this->formatUri = null;
-		$this->formatUuid = null;
-		$this->hostname = null;
-		$this->ipv4 = null;
-		$this->ipv6 = null;
+		$this->fakerFormattedStrings = null;
+		$this->fakerStrings = null;
 		$this->simpleObject = null;
-		$this->unknown = null;
-		$this->uri = null;
-		$this->uuid = null;
 	}
 }

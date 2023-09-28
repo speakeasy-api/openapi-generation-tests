@@ -41,7 +41,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("earum", "soluta");
+                put("doloremque", "nisi");
             }}            
 
             ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost(req);
@@ -91,7 +91,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, LocalDate>() {{
-                put("hic", LocalDate.parse("2022-11-04"));
+                put("rerum", LocalDate.parse("2020-04-05"));
             }}            
 
             ResponseBodyAdditionalPropertiesDatePostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesDatePost(req);
@@ -141,7 +141,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("earum", "perspiciatis");
+                put("non", "rem");
             }}            
 
             ResponseBodyAdditionalPropertiesPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesPost(req);
@@ -231,7 +231,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(9834.27d, "debitis");
+            ResponseBodyEmptyWithHeadersResponse res = sdk.responseBodies.responseBodyEmptyWithHeaders(1578.84d, "ullam");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -454,11 +454,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs() {{
-                bigint = 399802L;
-                bigintStr = "porro";
+                bigint = 786860L;
+                bigintStr = "dicta";
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                decimal = 3803.35d;
+                decimal = 9730.17d;
             }};            
 
             ResponseBodyZeroValueComplexTypePtrsPostResponse res = sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost(req);

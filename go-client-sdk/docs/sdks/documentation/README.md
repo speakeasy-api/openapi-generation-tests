@@ -34,7 +34,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    language := "dignissimos"
+    language := "id"
 
     ctx := context.Background()
     res, err := s.Documentation.GetDocumentationPerLanguage(ctx, language)

@@ -45,9 +45,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx, shared.ObjWithComplexNumbersAdditionlProperties{
         AdditionalProperties: map[string]*big.Int{
-            "deserunt": big.NewInt(454860),
+            "architecto": big.NewInt(584593),
         },
-        NormalField: "unde",
+        NormalField: "molestiae",
     })
     if err != nil {
         log.Fatal(err)
@@ -99,9 +99,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(ctx, shared.ObjWithDateAdditionlProperties{
         AdditionalProperties: map[string]types.Date{
-            "reiciendis": types.MustDateFromString("2021-05-02"),
+            "eligendi": types.MustDateFromString("2022-03-31"),
         },
-        NormalField: "delectus",
+        NormalField: "magnam",
     })
     if err != nil {
         log.Fatal(err)
@@ -152,9 +152,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(ctx, shared.ObjWithStringAdditionlProperties{
         AdditionalProperties: map[string]string{
-            "voluptates": "perferendis",
+            "itaque": "sed",
         },
-        NormalField: "est",
+        NormalField: "asperiores",
     })
     if err != nil {
         log.Fatal(err)
@@ -249,8 +249,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    xNumberHeader := 6964.83
-    xStringHeader := "reprehenderit"
+    xNumberHeader := 3302.67
+    xStringHeader := "consequuntur"
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyEmptyWithHeaders(ctx, xNumberHeader, xStringHeader)
@@ -495,11 +495,11 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPost(ctx, shared.ObjWithZeroValueComplexTypePtrs{
-        Bigint: big.NewInt(813679),
-        BigintStr: big.NewInt(685092),
+        Bigint: big.NewInt(813880),
+        BigintStr: big.NewInt(512905),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("5098.07"),
+        Decimal: types.MustNewDecimalFromString("1403.84"),
     })
     if err != nil {
         log.Fatal(err)

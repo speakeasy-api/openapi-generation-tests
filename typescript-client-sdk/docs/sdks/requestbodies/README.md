@@ -105,8 +105,8 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.nullableObjectPost({
-  optional: "ab",
-  required: 587600,
+  optional: "voluptate",
+  required: 501063,
 }).then((res: NullableObjectPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -187,12 +187,12 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.nullableRequiredPropertyPost({
-  nullableOptionalInt: 9688,
+  nullableOptionalInt: 642352,
   nullableRequiredArray: [
-    2728.22,
+    3763.89,
   ],
-  nullableRequiredEnum: NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.Second,
-  nullableRequiredInt: 370853,
+  nullableRequiredEnum: NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.First,
+  nullableRequiredInt: 364912,
 }).then((res: NullableRequiredPropertyPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -231,12 +231,12 @@ const sdk = new SDK({
 
 sdk.requestBodies.nullableRequiredSharedObjectPost({
   nullableOptionalObj: {
-    optional: "aspernatur",
-    required: 197054,
+    optional: "quos",
+    required: 260904,
   },
   nullableRequiredObj: {
-    optional: "quo",
-    required: 459856,
+    optional: "aspernatur",
+    required: 495970,
   },
 }).then((res: NullableRequiredSharedObjectPostResponse) => {
   if (res.statusCode == 200) {
@@ -278,20 +278,20 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArray([
   {
-    any: "recusandae",
-    bigint: 44612,
-    bigintStr: "distinctio",
+    any: "nesciunt",
+    bigint: 681740,
+    bigintStr: "laudantium",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 7997.96,
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 2773.4,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.First,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
@@ -339,19 +339,19 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase([
   {
-    anyVal: "nihil",
-    bigintStrVal: "totam",
-    bigintVal: 882710,
+    anyVal: "fugiat",
+    bigintStrVal: "dicta",
+    bigintVal: 395544,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 3068.1,
+    decimalVal: 1598.45,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
     int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
     intOptNullVal: 999999,
     intVal: 999999,
     numOptNullVal: 1.1,
@@ -400,14 +400,14 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayObj([
   {
-    any: "commodi",
-    bigint: 959434,
-    bigintStr: "dolores",
+    any: "cupiditate",
+    bigint: 970732,
+    bigintStr: "soluta",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 6455.7,
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 38.6,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
@@ -460,19 +460,19 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase([
   {
-    anyVal: "porro",
-    bigintStrVal: "eum",
-    bigintVal: 556429,
+    anyVal: "occaecati",
+    bigintStrVal: "iste",
+    bigintVal: 170099,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 5100.17,
+    decimalVal: 813.69,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
     int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
     intOptNullVal: 999999,
     intVal: 999999,
     numOptNullVal: 1.1,
@@ -521,20 +521,20 @@ const sdk = new SDK({
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray([
   [
     {
-      any: "fugit",
-      bigint: 681393,
-      bigintStr: "mollitia",
+      any: "voluptatibus",
+      bigint: 719620,
+      bigintStr: "omnis",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2775.96,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 9663.9,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -584,19 +584,19 @@ const sdk = new SDK({
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase([
   [
     {
-      anyVal: "minima",
-      bigintStrVal: "nisi",
-      bigintVal: 147014,
+      anyVal: "maxime",
+      bigintStrVal: "magnam",
+      bigintVal: 836364,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 9564.06,
+      decimalVal: 5495.01,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -644,7 +644,7 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive([
   [
-    "explicabo",
+    "commodi",
   ],
 ]).then((res: RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -687,21 +687,21 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
   {
-    "saepe": {
-      any: "occaecati",
-      bigint: 543806,
-      bigintStr: "et",
+    "totam": {
+      any: "earum",
+      bigint: 267207,
+      bigintStr: "nam",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 4569.11,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 8773.99,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -750,20 +750,20 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
   {
-    "veritatis": {
-      anyVal: "esse",
-      bigintStrVal: "quod",
-      bigintVal: 724168,
+    "vel": {
+      anyVal: "alias",
+      bigintStrVal: "quasi",
+      bigintVal: 247685,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 8771.31,
+      decimalVal: 9785.48,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -810,7 +810,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive([
-  "saepe",
+  "nulla",
 ]).then((res: RequestBodyPostApplicationJsonArrayOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -851,42 +851,22 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonDeep({
-  any: {
-    any: "harum",
-    bigint: 473221,
-    bigintStr: "rerum",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 5801.97,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
+  any: "esse",
   arr: [
     {
-      any: "eligendi",
-      bigint: 27069,
-      bigintStr: "culpa",
+      any: "nemo",
+      bigint: 444587,
+      bigintStr: "est",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 7313.98,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 3361.02,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
       intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
@@ -896,23 +876,23 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeep({
     },
   ],
   bool: false,
-  int: 160538,
+  int: 774684,
   map: {
-    "consequatur": {
-      any: "minus",
-      bigint: 308286,
-      bigintStr: "sapiente",
+    "hic": {
+      any: "necessitatibus",
+      bigint: 991891,
+      bigintStr: "ex",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2328.65,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 3767.41,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -920,30 +900,30 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeep({
       strOpt: "optional example",
     },
   },
-  num: 5909.84,
+  num: 650.82,
   obj: {
-    any: "a",
-    bigint: 857723,
-    bigintStr: "quas",
+    any: "minus",
+    bigint: 685478,
+    bigintStr: "laborum",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 4572.23,
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 2310.7,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
     int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Third,
+    intEnum: SimpleObjectIntEnum.Second,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
     str: "example",
     strOpt: "optional example",
   },
-  str: "error",
-  type: "sint",
+  str: "ipsum",
+  type: "impedit",
 }).then((res: RequestBodyPostApplicationJsonDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -983,22 +963,42 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
-  anyVal: "possimus",
+  anyVal: {
+    anyVal: "soluta",
+    bigintStrVal: "repudiandae",
+    bigintVal: 721430,
+    boolOptVal: true,
+    boolVal: true,
+    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+    dateVal: new RFCDate("2020-01-01"),
+    decimalVal: 2940.76,
+    enumVal: Enum.Two,
+    float32Val: 2.2222222,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+    int32Val: 1,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+    intOptNullVal: 999999,
+    intVal: 999999,
+    numOptNullVal: 1.1,
+    numVal: 1.1,
+    strOptVal: "optional example",
+    strVal: "example",
+  },
   arrVal: [
     {
-      anyVal: "quia",
-      bigintStrVal: "eveniet",
-      bigintVal: 992430,
+      anyVal: "sequi",
+      bigintStrVal: "dignissimos",
+      bigintVal: 205566,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 8155.24,
+      decimalVal: 7781.72,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -1008,22 +1008,22 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
     },
   ],
   boolVal: false,
-  intVal: 94458,
+  intVal: 437814,
   mapVal: {
-    "similique": {
-      anyVal: "culpa",
-      bigintStrVal: "aliquid",
-      bigintVal: 949298,
+    "odit": {
+      anyVal: "voluptatibus",
+      bigintStrVal: "vel",
+      bigintVal: 300824,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 627.13,
+      decimalVal: 8428.55,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -1032,16 +1032,16 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
       strVal: "example",
     },
   },
-  numVal: 4473.78,
+  numVal: 7268.78,
   objVal: {
-    anyVal: "eius",
-    bigintStrVal: "libero",
-    bigintVal: 849039,
+    anyVal: "architecto",
+    bigintStrVal: "voluptatibus",
+    bigintVal: 156383,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 7422.38,
+    decimalVal: 7820.9,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
     int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
@@ -1054,8 +1054,8 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
     strOptVal: "optional example",
     strVal: "example",
   },
-  strVal: "sapiente",
-  type: "dicta",
+  strVal: "illo",
+  type: "accusantium",
 }).then((res: RequestBodyPostApplicationJsonDeepCamelCaseResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1095,15 +1095,15 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMap({
-  "ullam": {
-    any: "reprehenderit",
-    bigint: 356707,
-    bigintStr: "nisi",
+  "vel": {
+    any: "ea",
+    bigint: 107617,
+    bigintStr: "vero",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 163.28,
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 5682.18,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
@@ -1156,18 +1156,18 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
-  "quibusdam": {
-    anyVal: "ex",
-    bigintStrVal: "deleniti",
-    bigintVal: 929292,
+  "ut": {
+    anyVal: "perspiciatis",
+    bigintStrVal: "earum",
+    bigintVal: 117525,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 6802.7,
+    decimalVal: 7722.66,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
     int32Val: 1,
     intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
     intOptNullVal: 999999,
@@ -1217,20 +1217,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapObj({
-  "tenetur": {
-    any: "quasi",
-    bigint: 869489,
-    bigintStr: "et",
+  "itaque": {
+    any: "alias",
+    bigint: 391797,
+    bigintStr: "itaque",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 4541.62,
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 2421.78,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
     intEnum: SimpleObjectIntEnum.First,
     intOptNull: 999999,
     num: 1.1,
@@ -1277,20 +1277,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
-  "veritatis": {
-    anyVal: "consectetur",
-    bigintStrVal: "adipisci",
-    bigintVal: 614465,
+  "dolor": {
+    anyVal: "iusto",
+    bigintStrVal: "sit",
+    bigintVal: 39992,
     boolOptVal: true,
     boolVal: true,
     dateTimeVal: new Date("2020-01-01T00:00:00Z"),
     dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 8395.13,
+    decimalVal: 74.68,
     enumVal: Enum.Two,
     float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
     int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
     intOptNullVal: 999999,
     intVal: 999999,
     numOptNullVal: 1.1,
@@ -1337,22 +1337,22 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray({
-  "aut": [
+  "ea": [
     {
-      any: "laudantium",
-      bigint: 428796,
-      bigintStr: "mollitia",
+      any: "quidem",
+      bigint: 377406,
+      bigintStr: "facilis",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 680.74,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 8093.65,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -1400,19 +1400,19 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
-  "voluptatem": [
+  "deleniti": [
     {
-      anyVal: "dolor",
-      bigintStrVal: "occaecati",
-      bigintVal: 253191,
+      anyVal: "a",
+      bigintStrVal: "voluptate",
+      bigintVal: 351936,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 7710.89,
+      decimalVal: 6001.93,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
       int32Val: 1,
       intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
       intOptNullVal: 999999,
@@ -1463,22 +1463,22 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap({
-  "aut": {
-    "dignissimos": {
-      any: "dicta",
-      bigint: 981640,
-      bigintStr: "natus",
+  "impedit": {
+    "ipsam": {
+      any: "corporis",
+      bigint: 668234,
+      bigintStr: "error",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2446.51,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 4568.85,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.First,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -1526,21 +1526,21 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
-  "asperiores": {
-    "aperiam": {
-      anyVal: "ea",
-      bigintStrVal: "quaerat",
-      bigintVal: 162954,
+  "vero": {
+    "consectetur": {
+      anyVal: "vitae",
+      bigintStrVal: "inventore",
+      bigintVal: 212434,
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 8315.2,
+      decimalVal: 3220.17,
       enumVal: Enum.Two,
       float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -1587,8 +1587,8 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive({
-  "dignissimos": {
-    "officia": "asperiores",
+  "ex": {
+    "nemo": "soluta",
   },
 }).then((res: RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -1628,7 +1628,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive({
-  "nemo": "quae",
+  "libero": "rem",
 }).then((res: RequestBodyPostApplicationJsonMapOfPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1669,20 +1669,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered({
-  any: "quaerat",
-  bigint: 783235,
-  bigintStr: "quod",
+  any: "dolorum",
+  bigint: 487676,
+  bigintStr: "fugit",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 2883.98,
+  dateTime: new Date("2020-01-01T00:00:00.000Z"),
+  decimal: 5.45,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
+  intEnum: SimpleObjectIntEnum.Second,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -1727,20 +1727,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonSimple({
-  any: "fuga",
-  bigint: 662505,
-  bigintStr: "suscipit",
+  any: "quae",
+  bigint: 63553,
+  bigintStr: "modi",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 2460.63,
+  dateTime: new Date("2020-01-01T00:00:00.000Z"),
+  decimal: 2082.53,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -1785,19 +1785,19 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase({
-  anyVal: "recusandae",
-  bigintStrVal: "totam",
-  bigintVal: 853940,
+  anyVal: "et",
+  bigintStrVal: "ipsum",
+  bigintVal: 602229,
   boolOptVal: true,
   boolVal: true,
   dateTimeVal: new Date("2020-01-01T00:00:00Z"),
   dateVal: new RFCDate("2020-01-01"),
-  decimalVal: 4240.89,
+  decimalVal: 8583.38,
   enumVal: Enum.Two,
   float32Val: 2.2222222,
-  int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+  int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
   int32Val: 1,
-  intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
+  intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
   intOptNullVal: 999999,
   intVal: 999999,
   numOptNullVal: 1.1,
@@ -1842,19 +1842,19 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostComplexNumberTypes({
   complexNumberTypes: {
-    bigint: 427834,
-    bigintStr: "labore",
-    decimal: 8225.6,
-    decimalStr: "facilis",
+    bigint: 157222,
+    bigintStr: "quia",
+    decimal: 3421.37,
+    decimalStr: "omnis",
   },
-  pathBigInt: 738227,
-  pathBigIntStr: "commodi",
-  pathDecimal: 4471.44,
-  pathDecimalStr: "corporis",
-  queryBigInt: 968904,
-  queryBigIntStr: "assumenda",
-  queryDecimal: 3631.61,
-  queryDecimalStr: "recusandae",
+  pathBigInt: 727250,
+  pathBigIntStr: "dicta",
+  pathDecimal: 6633.18,
+  pathDecimalStr: "libero",
+  queryBigInt: 854460,
+  queryBigIntStr: "officia",
+  queryDecimal: 5546.03,
+  queryDecimalStr: "placeat",
 }).then((res: RequestBodyPostComplexNumberTypesResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -1900,34 +1900,34 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostDefaultsAndConsts({
-  constBigInt: 397533,
-  constBigIntStr: "aperiam",
+  constBigInt: 25756,
+  constBigIntStr: "iusto",
   constBool: false,
-  constDate: new RFCDate("2022-07-15"),
-  constDateTime: new Date("2022-08-26T18:58:12.703Z"),
-  constDecimal: 9372.85,
-  constDecimalStr: "facere",
-  constEnumInt: DefaultsAndConstsConstEnumInt.One,
+  constDate: new RFCDate("2022-02-01"),
+  constDateTime: new Date("2022-12-13T23:42:10.683Z"),
+  constDecimal: 5171.37,
+  constDecimalStr: "dolore",
+  constEnumInt: DefaultsAndConstsConstEnumInt.Three,
   constEnumStr: DefaultsAndConstsConstEnumStr.Three,
-  constInt: 381760,
-  constNum: 9689.72,
-  constStr: "quidem",
-  constStrNull: "saepe",
-  defaultBigInt: 897071,
-  defaultBigIntStr: "dolore",
+  constInt: 32273,
+  constNum: 4181.09,
+  constStr: "esse",
+  constStrNull: "dolores",
+  defaultBigInt: 824798,
+  defaultBigIntStr: "beatae",
   defaultBool: false,
-  defaultDate: new RFCDate("2022-01-03"),
-  defaultDateTime: new Date("2022-10-01T23:04:48.771Z"),
-  defaultDecimal: 2282.63,
-  defaultDecimalStr: "beatae",
-  defaultEnumInt: DefaultsAndConstsDefaultEnumInt.Two,
+  defaultDate: new RFCDate("2021-05-14"),
+  defaultDateTime: new Date("2022-01-20T14:32:05.606Z"),
+  defaultDecimal: 5888.12,
+  defaultDecimalStr: "accusamus",
+  defaultEnumInt: DefaultsAndConstsDefaultEnumInt.Three,
   defaultEnumStr: DefaultsAndConstsDefaultEnumStr.Three,
-  defaultInt: 891523,
-  defaultNum: 2334.2,
-  defaultStr: "corporis",
-  defaultStrNullable: "harum",
-  defaultStrOptional: "laboriosam",
-  normalField: "ipsa",
+  defaultInt: 575078,
+  defaultNum: 4097.26,
+  defaultStr: "autem",
+  defaultStrNullable: "ipsam",
+  defaultStrOptional: "rerum",
+  normalField: "laudantium",
   singleEnumConstBool: false,
   singleEnumConstStr: DefaultsAndConstsSingleEnumConstStr.One,
 }).then((res: RequestBodyPostDefaultsAndConstsResponse) => {
@@ -2008,23 +2008,43 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostFormDeep({
-  any: "libero",
+  any: {
+    any: "officiis",
+    bigint: 972912,
+    bigintStr: "cum",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 8723.03,
+    enum: Enum.Two,
+    float32: 2.2222222,
+    int: 999999,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.First,
+    intOptNull: 999999,
+    num: 1.1,
+    numOptNull: 1.1,
+    str: "example",
+    strOpt: "optional example",
+  },
   arr: [
     {
-      any: "vitae",
-      bigint: 881721,
-      bigintStr: "similique",
+      any: "quidem",
+      bigint: 684126,
+      bigintStr: "repudiandae",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2724.37,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 340.7,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.Third,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -2033,23 +2053,23 @@ sdk.requestBodies.requestBodyPostFormDeep({
     },
   ],
   bool: false,
-  int: 374244,
+  int: 177005,
   map: {
-    "voluptas": {
-      any: "minima",
-      bigint: 748789,
-      bigintStr: "dolorum",
+    "quibusdam": {
+      any: "odio",
+      bigint: 510128,
+      bigintStr: "odit",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 2378.07,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 1276.88,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
+      int32Enum: SimpleObjectInt32Enum.SixtyNine,
+      intEnum: SimpleObjectIntEnum.Second,
       intOptNull: 999999,
       num: 1.1,
       numOptNull: 1.1,
@@ -2057,16 +2077,16 @@ sdk.requestBodies.requestBodyPostFormDeep({
       strOpt: "optional example",
     },
   },
-  num: 5039.34,
+  num: 9371.17,
   obj: {
-    any: "in",
-    bigint: 296242,
-    bigintStr: "aliquam",
+    any: "adipisci",
+    bigint: 923306,
+    bigintStr: "similique",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 8859.63,
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 2828.37,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
@@ -2079,8 +2099,8 @@ sdk.requestBodies.requestBodyPostFormDeep({
     str: "example",
     strOpt: "optional example",
   },
-  str: "adipisci",
-  type: "cum",
+  str: "beatae",
+  type: "unde",
 }).then((res: RequestBodyPostFormDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2118,7 +2138,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostFormMapPrimitive({
-  "blanditiis": "quas",
+  "molestiae": "delectus",
 }).then((res: RequestBodyPostFormMapPrimitiveResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2158,20 +2178,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostFormSimple({
-  any: "hic",
-  bigint: 201517,
-  bigintStr: "culpa",
+  any: "cupiditate",
+  bigint: 147801,
+  bigintStr: "numquam",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 5485.19,
+  dateTime: new Date("2020-01-01T00:00:00.000Z"),
+  decimal: 2569.16,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -2214,7 +2234,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt([
-  940210,
+  637856,
 ]).then((res: RequestBodyPostJsonDataTypesArrayBigIntResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2252,7 +2272,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate([
-  new RFCDate("2022-04-01"),
+  new RFCDate("2022-03-29"),
 ]).then((res: RequestBodyPostJsonDataTypesArrayDateResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2290,7 +2310,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr([
-  "sit",
+  "necessitatibus",
 ]).then((res: RequestBodyPostJsonDataTypesArrayDecimalStrResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2327,7 +2347,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(699575).then((res: RequestBodyPostJsonDataTypesBigIntResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(359111).then((res: RequestBodyPostJsonDataTypesBigIntResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2363,7 +2383,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("sed").then((res: RequestBodyPostJsonDataTypesBigIntStrResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("qui").then((res: RequestBodyPostJsonDataTypesBigIntStrResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2435,7 +2455,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2022-08-09")).then((res: RequestBodyPostJsonDataTypesDateResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2021-12-08")).then((res: RequestBodyPostJsonDataTypesDateResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2471,7 +2491,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2020-11-16T19:55:44.497Z")).then((res: RequestBodyPostJsonDataTypesDateTimeResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2022-05-07T19:45:21.246Z")).then((res: RequestBodyPostJsonDataTypesDateTimeResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2507,7 +2527,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(4518.22).then((res: RequestBodyPostJsonDataTypesDecimalResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(8095.94).then((res: RequestBodyPostJsonDataTypesDecimalResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2543,7 +2563,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("expedita").then((res: RequestBodyPostJsonDataTypesDecimalStrResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("enim").then((res: RequestBodyPostJsonDataTypesDecimalStrResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2579,7 +2599,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(708.69).then((res: RequestBodyPostJsonDataTypesFloat32Response) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(2040.72).then((res: RequestBodyPostJsonDataTypesFloat32Response) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2615,7 +2635,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesInt32(611749).then((res: RequestBodyPostJsonDataTypesInt32Response) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesInt32(446877).then((res: RequestBodyPostJsonDataTypesInt32Response) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2651,7 +2671,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesInteger(292794).then((res: RequestBodyPostJsonDataTypesIntegerResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesInteger(796397).then((res: RequestBodyPostJsonDataTypesIntegerResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2688,7 +2708,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr({
-  "laborum": "sed",
+  "eum": "modi",
 }).then((res: RequestBodyPostJsonDataTypesMapBigIntStrResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2726,7 +2746,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime({
-  "in": new Date("2022-04-21T22:21:50.112Z"),
+  "corporis": new Date("2022-02-01T00:51:21.880Z"),
 }).then((res: RequestBodyPostJsonDataTypesMapDateTimeResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2764,7 +2784,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal({
-  "explicabo": 3783.26,
+  "maiores": 7317.44,
 }).then((res: RequestBodyPostJsonDataTypesMapDecimalResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2801,7 +2821,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesNumber(6041.18).then((res: RequestBodyPostJsonDataTypesNumberResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesNumber(460.13).then((res: RequestBodyPostJsonDataTypesNumberResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2837,7 +2857,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesString("architecto").then((res: RequestBodyPostJsonDataTypesStringResponse) => {
+sdk.requestBodies.requestBodyPostJsonDataTypesString("libero").then((res: RequestBodyPostJsonDataTypesStringResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2876,20 +2896,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered({
-  any: "suscipit",
-  bigint: 960257,
-  bigintStr: "debitis",
+  any: "ratione",
+  bigint: 289913,
+  bigintStr: "totam",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 724.34,
+  dateTime: new Date("2020-01-01T00:00:00.000Z"),
+  decimal: 5777.09,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.First,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Third,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -2933,8 +2953,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
   bool: false,
-  num: 5468.85,
-  str: "maiores",
+  num: 2420.99,
+  str: "minus",
 }).then((res: RequestBodyPostMultipleContentTypesInlineFilteredResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -2976,10 +2996,10 @@ const sdk = new SDK({
 });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
   bool3: false,
-  num3: 2748.23,
-  str3: "sed",
+  num3: 6845.53,
+  str3: "nostrum",
 };
-const paramStr: string = "provident";
+const paramStr: string = "est";
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamFormResponse) => {
   if (res.statusCode == 200) {
@@ -3023,10 +3043,10 @@ const sdk = new SDK({
 });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
   bool: false,
-  num: 2587.02,
-  str: "necessitatibus",
+  num: 7708.73,
+  str: "delectus",
 };
-const paramStr: string = "ipsum";
+const paramStr: string = "tempore";
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamJsonResponse) => {
   if (res.statusCode == 200) {
@@ -3070,10 +3090,10 @@ const sdk = new SDK({
 });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
   bool2: false,
-  num2: 4067.33,
-  str2: "occaecati",
+  num2: 8786.01,
+  str2: "odit",
 };
-const paramStr: string = "quos";
+const paramStr: string = "repellat";
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) => {
   if (res.statusCode == 200) {
@@ -3114,8 +3134,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
   bool3: false,
-  num3: 9757.52,
-  str3: "tempora",
+  num3: 8659.46,
+  str3: "nemo",
 }).then((res: RequestBodyPostMultipleContentTypesSplitFormResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3154,8 +3174,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
   bool: false,
-  num: 2730.09,
-  str: "voluptate",
+  num: 4413.21,
+  str: "aperiam",
 }).then((res: RequestBodyPostMultipleContentTypesSplitJsonResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3194,8 +3214,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
   bool2: false,
-  num2: 9700.76,
-  str2: "ex",
+  num2: 4864.1,
+  str2: "minima",
 }).then((res: RequestBodyPostMultipleContentTypesSplitMultipartResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3232,7 +3252,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("sit").then((res: RequestBodyPostNotNullableNotRequiredStringBodyResponse) => {
+sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("in").then((res: RequestBodyPostNotNullableNotRequiredStringBodyResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3269,7 +3289,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostNullArray([
-  "non",
+  "ducimus",
 ]).then((res: RequestBodyPostNullArrayResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3307,7 +3327,7 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPostNullDictionary({
-  "officiis": "praesentium",
+  "excepturi": "dolores",
 }).then((res: RequestBodyPostNullDictionaryResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3344,7 +3364,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("facilis").then((res: RequestBodyPostNullableNotRequiredStringBodyResponse) => {
+sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("error").then((res: RequestBodyPostNullableNotRequiredStringBodyResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3380,7 +3400,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPostNullableRequiredStringBody("quaerat").then((res: RequestBodyPostNullableRequiredStringBodyResponse) => {
+sdk.requestBodies.requestBodyPostNullableRequiredStringBody("veritatis").then((res: RequestBodyPostNullableRequiredStringBodyResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3416,7 +3436,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPutBytes("incidunt".encode()).then((res: RequestBodyPutBytesResponse) => {
+sdk.requestBodies.requestBodyPutBytes("ducimus".encode()).then((res: RequestBodyPutBytesResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3451,8 +3471,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestBody: Uint8Array = "ipsam".encode();
-const queryStringParam: string = "debitis";
+const requestBody: Uint8Array = "voluptate".encode();
+const queryStringParam: string = "pariatur";
 
 sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam).then((res: RequestBodyPutBytesWithParamsResponse) => {
   if (res.statusCode == 200) {
@@ -3494,17 +3514,17 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPutMultipartDeep({
-  any: "sit",
+  any: "similique",
   arr: [
     {
-      any: "nobis",
-      bigint: 625637,
-      bigintStr: "veniam",
+      any: "optio",
+      bigint: 401428,
+      bigintStr: "quaerat",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 3295.43,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 4166.92,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
@@ -3519,17 +3539,17 @@ sdk.requestBodies.requestBodyPutMultipartDeep({
     },
   ],
   bool: false,
-  int: 862319,
+  int: 697274,
   map: {
-    "magni": {
-      any: "aperiam",
-      bigint: 901483,
-      bigintStr: "numquam",
+    "exercitationem": {
+      any: "quam",
+      bigint: 211455,
+      bigintStr: "modi",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00Z"),
-      decimal: 3299.35,
+      dateTime: new Date("2020-01-01T00:00:00.000Z"),
+      decimal: 593.83,
       enum: Enum.Two,
       float32: 2.2222222,
       int: 999999,
@@ -3543,30 +3563,30 @@ sdk.requestBodies.requestBodyPutMultipartDeep({
       strOpt: "optional example",
     },
   },
-  num: 1046.27,
+  num: 1949.01,
   obj: {
-    any: "laudantium",
-    bigint: 348476,
-    bigintStr: "praesentium",
+    any: "repudiandae",
+    bigint: 741232,
+    bigintStr: "dicta",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00Z"),
-    decimal: 7400.98,
+    dateTime: new Date("2020-01-01T00:00:00.000Z"),
+    decimal: 9369.28,
     enum: Enum.Two,
     float32: 2.2222222,
     int: 999999,
     int32: 1,
     int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.Third,
+    intEnum: SimpleObjectIntEnum.Second,
     intOptNull: 999999,
     num: 1.1,
     numOptNull: 1.1,
     str: "example",
     strOpt: "optional example",
   },
-  str: "voluptatum",
-  type: "error",
+  str: "dolores",
+  type: "nam",
 }).then((res: RequestBodyPutMultipartDeepResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3605,8 +3625,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyPutMultipartFile({
   file: {
-    content: "hic".encode(),
-    file: "expedita",
+    content: "dicta".encode(),
+    file: "consequuntur",
   },
 }).then((res: RequestBodyPutMultipartFileResponse) => {
   if (res.statusCode == 200) {
@@ -3647,20 +3667,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyPutMultipartSimple({
-  any: "debitis",
-  bigint: 204923,
-  bigintStr: "dolorum",
+  any: "necessitatibus",
+  bigint: 748224,
+  bigintStr: "ipsa",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 3416.98,
+  dateTime: new Date("2020-01-01T00:00:00.000Z"),
+  decimal: 4973.57,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,
@@ -3702,7 +3722,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyPutString("corrupti").then((res: RequestBodyPutStringResponse) => {
+sdk.requestBodies.requestBodyPutString("quasi").then((res: RequestBodyPutStringResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3737,8 +3757,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const requestBody: string = "accusamus";
-const queryStringParam: string = "tempora";
+const requestBody: string = "laboriosam";
+const queryStringParam: string = "pariatur";
 
 sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam).then((res: RequestBodyPutStringWithParamsResponse) => {
   if (res.statusCode == 200) {
@@ -3778,9 +3798,9 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadAndWrite({
-  num1: 543678,
-  num2: 148268,
-  num3: 282699,
+  num1: 729448,
+  num2: 566506,
+  num3: 578210,
 }).then((res: RequestBodyReadAndWriteResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3857,7 +3877,27 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.requestBodies.requestBodyReadOnlyUnion({}).then((res: RequestBodyReadOnlyUnionResponse) => {
+sdk.requestBodies.requestBodyReadOnlyUnion({
+  any: "aliquam",
+  bigint: 342342,
+  bigintStr: "doloribus",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00.000Z"),
+  decimal: 7573.64,
+  enum: Enum.Two,
+  float32: 2.2222222,
+  int: 999999,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
+  intOptNull: 999999,
+  num: 1.1,
+  numOptNull: 1.1,
+  str: "example",
+  strOpt: "optional example",
+}).then((res: RequestBodyReadOnlyUnionResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3897,25 +3937,9 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyReadWriteOnlyUnion({
-  any: "culpa",
-  bigint: 710337,
-  bigintStr: "magnam",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 78.84,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  num1: 657319,
+  num2: 559774,
+  num3: 517326,
 }).then((res: RequestBodyReadWriteOnlyUnionResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3955,8 +3979,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnly({
   bool: false,
-  num: 245.27,
-  string: "voluptatum",
+  num: 5646.67,
+  string: "odio",
 }).then((res: RequestBodyWriteOnlyResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -3996,8 +4020,8 @@ const sdk = new SDK({
 
 sdk.requestBodies.requestBodyWriteOnlyOutput({
   bool: false,
-  num: 5580.65,
-  string: "repudiandae",
+  num: 511.7,
+  string: "saepe",
 }).then((res: RequestBodyWriteOnlyOutputResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -4038,20 +4062,20 @@ const sdk = new SDK({
 });
 
 sdk.requestBodies.requestBodyWriteOnlyUnion({
-  any: "et",
-  bigint: 502710,
-  bigintStr: "ex",
+  any: "quos",
+  bigint: 614438,
+  bigintStr: "assumenda",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 1536.27,
+  dateTime: new Date("2020-01-01T00:00:00.000Z"),
+  decimal: 7316.34,
   enum: Enum.Two,
   float32: 2.2222222,
   int: 999999,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
+  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+  intEnum: SimpleObjectIntEnum.First,
   intOptNull: 999999,
   num: 1.1,
   numOptNull: 1.1,

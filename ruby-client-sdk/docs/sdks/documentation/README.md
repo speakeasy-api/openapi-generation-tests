@@ -24,7 +24,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::GetDocumentationPerLanguageRequest.new(
   query_params=Operations::GetDocumentationPerLanguageRequest.new(
-    language="voluptatibus",
+    language="necessitatibus",
   ),
 )
     

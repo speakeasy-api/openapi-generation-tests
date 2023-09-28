@@ -128,8 +128,8 @@ public class Application {
 
             org.openapis.openapi.models.shared.DeprecatedFieldInObject req = new DeprecatedFieldInObject() {{
                 deprecatedEnum = DeprecatedFieldInObjectDeprecatedEnum.B;
-                deprecatedField = "facilis";
-                newField = "perspiciatis";
+                deprecatedField = "dolore";
+                newField = "laborum";
             }};            
 
             DeprecatedFieldInSchemaPostResponse res = sdk.generation.deprecatedFieldInSchemaPost(req);
@@ -221,7 +221,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("voluptatem");
+            DeprecatedOperationNoCommentsGetResponse res = sdk.generation.deprecatedOperationNoCommentsGet("sed");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -272,7 +272,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("porro", "consequuntur");
+            DeprecatedOperationWithCommentsGetResponse res = sdk.generation.deprecatedOperationWithCommentsGet("in", "commodi");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -494,9 +494,9 @@ public class Application {
                 .build();
 
             IgnoresPostResponse res = sdk.generation.ignoresPost(new IgnoresPostApplicationJSON() {{
-                callbackUrl = "https://petty-atom.name";
-                testProp = "rerum";
-            }}, "adipisci");
+                callbackUrl = "https://common-gather.name";
+                testProp = "architecto";
+            }}, "suscipit");
 
             if (res.httpBinSimpleJsonObject != null) {
                 // handle response
@@ -595,10 +595,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(992397L, LocalDate.parse("2022-03-14"), 6139.66d, new TypedParameterGenerationGetObj(false, 8642.82d, "provident") {{
+            TypedParameterGenerationGetResponse res = sdk.generation.typedParameterGenerationGet(960257L, LocalDate.parse("2022-10-13"), 9677.95d, new TypedParameterGenerationGetObj(false, 9795.74d, "incidunt") {{
                 bool = false;
-                num = 6790.91d;
-                str = "deleniti";
+                num = 193d;
+                str = "corrupti";
             }});
 
             if (res.statusCode == 200) {
@@ -648,6 +648,8 @@ import org.openapis.openapi.models.operations.UsageExamplePostRequestBody;
 import org.openapis.openapi.models.operations.UsageExamplePostResponse;
 import org.openapis.openapi.models.operations.UsageExamplePostSecurity;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.FakerFormattedStrings;
+import org.openapis.openapi.models.shared.FakerStrings;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
@@ -661,32 +663,97 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, "111111", false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, "1.1", 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 3") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(148478L, "provident", false, LocalDate.parse("2022-02-07"), OffsetDateTime.parse("2022-08-05T13:00:56.741Z"), 5799.12d, "quos", 9757.52d, UsageExamplePostEnumParameter.VALUE1, 0d, 2730.09f, 4554.44d, 970076L, 401713, "example 1") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Violet.Hahn@hotmail.com";
-                    formatEmail = "Cornelius21@gmail.com";
-                    formatUri = "https://nimble-reporter.info";
-                    formatUuid = "7f3a4100-674e-4bf6-9280-d1ba77a89ebf";
-                    hostname = "knobby-crack.info";
-                    ipv4 = "169.232.67.35";
-                    ipv6 = "03ce:5e6a:95d8:a0d4:46ce:2af7:a73c:f3be";
-                    simpleObject = new SimpleObject("numquam", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "example") {{
-                        bigint = 957451L;
-                        bigintStr = "totam";
+                    fakerFormattedStrings = new FakerFormattedStrings() {{
+                        addressFormat = "85732 Solon Meadow";
+                        directoryFormat = "sit";
+                        domainFormat = "nobis";
+                        emailFormat = "Estell_Harber86@yahoo.com";
+                        filenameFormat = "magni";
+                        filepathFormat = "aperiam";
+                        imageFormat = "saepe";
+                        ipv4Format = "64.84.114.227";
+                        ipv6Format = "1858:b6a8:9fbe:3a5a:a8e4:824d:0ab4:0750";
+                        jsonFormat = "{"foo":"TvB)OF/#H@","bar":"Z!:{4a+*V;","bike":"S_dyE!6]KX","a":"Wnzv\"_aIl`","b":"]@#jv*SJ}Q","name":69395,"prop":")K6mGSZssr"}";
+                        macFormat = "natus";
+                        passwordFormat = "minima";
+                        phoneFormat = "1-595-865-3955";
+                        timezoneFormat = "sunt";
+                        unknownFormat = "recusandae";
+                        urlFormat = "dolorum";
+                        uuidFormat = "d4f0e101-2563-4f94-a29e-973e922a57a1";
+                        zipcodeFormat = "69280";
+                    }};;
+                    fakerStrings = new FakerStrings() {{
+                        city = "Andymouth";
+                        iban = "quae";
+                        id = "7e2b6e3a-b884-45f0-997a-60ff2a54a31e";
+                        iPv4 = "155.79.122.103";
+                        iPv6 = "4a3e:865e:7956:f925:1a5a:9da6:60ff:57bf";
+                        account = "officia";
+                        address = "829 Towne Ville";
+                        amount = "cumque";
+                        avatar = "vitae";
+                        color = "rerum";
+                        comment = "tempora";
+                        company = "Bode - Corkery";
+                        country = "Saint Pierre and Miquelon";
+                        countryCode = "AZ";
+                        currency = "perferendis";
+                        datatype = "velit";
+                        default_ = "aspernatur";
+                        description = "eum";
+                        directory = "eius";
+                        domainName = "rem";
+                        emailAddr = "at";
+                        extension = "impedit";
+                        filename = "eos";
+                        filepath = "sapiente";
+                        filetype = "eum";
+                        firstName = "Bianka";
+                        fullName = "minima";
+                        gender = "female";
+                        job = "cupiditate";
+                        json = "{"foo":"xfxo%xX|sF","bar":"D4.h`2^tq!","bike":9023,"a":61918,"b":"D7)0|pt&:L","name":11583,"prop":45705}";
+                        key = "praesentium";
+                        lastName = "Wuckert";
+                        latitude = "reiciendis";
+                        locale = "vel";
+                        longitude = "architecto";
+                        mac = "fugiat";
+                        manufacturer = "doloremque";
+                        material = "dicta";
+                        middleName = "odio";
+                        model = "tempora";
+                        password = "esse";
+                        phone = "1-330-713-8736 x330";
+                        pin = "eum";
+                        postalCode = "66068";
+                        price = "voluptates";
+                        product = "mollitia";
+                        sex = "male";
+                        street = "353 Robb Island";
+                        timezone = "quo";
+                        unit = "ex";
+                        url = "ut";
+                        username = "Emmie56";
+                        uuid = "b61891ba-a0fe-41ad-a008-e6f8c5f350d8";
+                    }};;
+                    simpleObject = new SimpleObject("impedit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "example") {{
+                        bigint = 373216L;
+                        bigintStr = "culpa";
                         boolOpt = true;
-                        decimal = 4717.52d;
+                        decimal = 2228.64d;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "sit";
-                    uri = "https://distinct-cheque.info";
-                    uuid = "b5a73429-cdb1-4a84-a2bb-679d2322715b";
                 }};;
-                bigintParameterOptional = 111111L;
-                bigintStrParameterOptional = "111111";
-                decimalParameterOptional = 1.1d;
-                decimalStrParameterOptional = "1.1";
+                bigintParameterOptional = 307376L;
+                bigintStrParameterOptional = "inventore";
+                decimalParameterOptional = 5372.79d;
+                decimalStrParameterOptional = "veritatis";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 

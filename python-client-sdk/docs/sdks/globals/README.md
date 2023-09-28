@@ -27,7 +27,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.global_path_parameter_get(global_path_param=903720)
+res = s.globals.global_path_parameter_get(global_path_param=684935)
 
 if res.res is not None:
     # handle response
@@ -62,7 +62,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.globals_query_parameter_get(global_query_param='ipsum')
+res = s.globals.globals_query_parameter_get(global_query_param='ratione')
 
 if res.res is not None:
     # handle response

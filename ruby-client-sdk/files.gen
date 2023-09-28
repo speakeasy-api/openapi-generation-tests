@@ -233,6 +233,8 @@ lib/sdk/models/shared/deprecatedfieldinobject.rb
 lib/sdk/models/shared/deprecatedobject.rb
 lib/sdk/models/shared/emptyobjectparam.rb
 lib/sdk/models/shared/httpbinsimplejsonobject.rb
+lib/sdk/models/shared/fakerstrings.rb
+lib/sdk/models/shared/fakerformattedstrings.rb
 lib/sdk/models/shared/limitoffsetconfig.rb
 lib/sdk/models/shared/refqueryparamobjexploded.rb
 lib/sdk/models/shared/refqueryparamobj.rb
@@ -734,6 +736,8 @@ docs/models/shared/emptyobjectparam.md
 docs/models/shared/httpbinsimplejsonobjectslideshowslides.md
 docs/models/shared/httpbinsimplejsonobjectslideshow.md
 docs/models/shared/httpbinsimplejsonobject.md
+docs/models/shared/fakerstrings.md
+docs/models/shared/fakerformattedstrings.md
 docs/models/shared/limitoffsetconfig.md
 docs/models/shared/refqueryparamobjexploded.md
 docs/models/shared/refqueryparamobj.md

@@ -40,7 +40,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 83422,
+        Cursor: 656762,
     })
     if err != nil {
         log.Fatal(err)
@@ -97,7 +97,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    cursor := 749255
+    cursor := 898760
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
@@ -158,9 +158,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{
-        Limit: openapi.Int64(552193),
-        Offset: openapi.Int64(731694),
-        Page: openapi.Int64(584476),
+        Limit: openapi.Int64(862063),
+        Offset: openapi.Int64(8931),
+        Page: openapi.Int64(97258),
     })
     if err != nil {
         log.Fatal(err)
@@ -217,8 +217,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    limit := 45614
-    offset := 961937
+    limit := 90233
+    offset := 497777
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
@@ -280,9 +280,9 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{
-        Limit: openapi.Int64(209157),
-        Offset: openapi.Int64(292147),
-        Page: openapi.Int64(286915),
+        Limit: openapi.Int64(619183),
+        Offset: openapi.Int64(581082),
+        Page: openapi.Int64(382440),
     })
     if err != nil {
         log.Fatal(err)
@@ -339,7 +339,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    page := 240829
+    page := 241557
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)

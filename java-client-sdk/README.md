@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.33.2'
+implementation 'org.openapis.openapi:openapi:1.33.3'
 ```
 <!-- End SDK Installation -->
 
@@ -58,6 +58,8 @@ import org.openapis.openapi.models.operations.UsageExamplePostRequestBody;
 import org.openapis.openapi.models.operations.UsageExamplePostResponse;
 import org.openapis.openapi.models.operations.UsageExamplePostSecurity;
 import org.openapis.openapi.models.shared.Enum;
+import org.openapis.openapi.models.shared.FakerFormattedStrings;
+import org.openapis.openapi.models.shared.FakerStrings;
 import org.openapis.openapi.models.shared.Security;
 import org.openapis.openapi.models.shared.SimpleObject;
 import org.openapis.openapi.models.shared.SimpleObjectInt32Enum;
@@ -71,32 +73,97 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(111111L, "111111", false, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), 1.1d, "1.1", 2.2222222d, UsageExamplePostEnumParameter.VALUE3, 0d, 1.1f, 1.1d, 111111L, 1, "example 3") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(854614L, "ab", false, LocalDate.parse("2021-08-23"), OffsetDateTime.parse("2022-07-19T09:36:55.923Z"), 6770.82d, "deleniti", 6070.45d, UsageExamplePostEnumParameter.VALUE3, 0d, 7146.97f, 9903.39d, 469497L, 216897, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
-                    email = "Vada_Hills@gmail.com";
-                    formatEmail = "Avery_Mueller9@gmail.com";
-                    formatUri = "https://witty-swim.info";
-                    formatUuid = "8f097b00-74f1-4547-9b5e-6e13b99d488e";
-                    hostname = "bronze-trafficker.name";
-                    ipv4 = "21.237.71.81";
-                    ipv6 = "0ad2:abd4:4269:802d:502a:94bb:4f63:c969";
-                    simpleObject = new SimpleObject("necessitatibus", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        bigint = 223081L;
-                        bigintStr = "debitis";
+                    fakerFormattedStrings = new FakerFormattedStrings() {{
+                        addressFormat = "9210 Nils Trafficway";
+                        directoryFormat = "ad";
+                        domainFormat = "saepe";
+                        emailFormat = "Luna83@yahoo.com";
+                        filenameFormat = "totam";
+                        filepathFormat = "similique";
+                        imageFormat = "alias";
+                        ipv4Format = "223.79.70.108";
+                        ipv6Format = "ce2a:f7a7:3cf3:be45:3f87:0b32:6b5a:7342";
+                        jsonFormat = "{"foo":"lqf+_Q:-1c","bar":"ELUo24.0N,","bike":72208,"a":"#hff)u5(fT","b":"W%z4<;7_*&","name":55564,"prop":"!_nj|;bW1&"}";
+                        macFormat = "laudantium";
+                        passwordFormat = "odio";
+                        phoneFormat = "(978) 632-9428 x9497";
+                        timezoneFormat = "quod";
+                        unknownFormat = "odio";
+                        urlFormat = "similique";
+                        uuidFormat = "bd74dd39-c0f5-4d2c-bf7c-70a45626d436";
+                        zipcodeFormat = "12904-8593";
+                    }};;
+                    fakerStrings = new FakerStrings() {{
+                        city = "San Leandro";
+                        iban = "saepe";
+                        id = "6c556146-c3e2-450f-b008-c42e141aac36";
+                        iPv4 = "107.192.142.212";
+                        iPv6 = "d6b1:4429:0747:4778:a7bd:466d:28c1:0ab3";
+                        account = "quo";
+                        address = "762 Garfield Center";
+                        amount = "cupiditate";
+                        avatar = "consequatur";
+                        color = "tempora";
+                        comment = "debitis";
+                        company = "Collier - Donnelly";
+                        country = "Sao Tome and Principe";
+                        countryCode = "KE";
+                        currency = "recusandae";
+                        datatype = "aperiam";
+                        default_ = "distinctio";
+                        description = "quod";
+                        directory = "dignissimos";
+                        domainName = "inventore";
+                        emailAddr = "nihil";
+                        extension = "totam";
+                        filename = "accusamus";
+                        filepath = "aliquam";
+                        filetype = "odio";
+                        firstName = "Kobe";
+                        fullName = "commodi";
+                        gender = "male";
+                        job = "dolores";
+                        json = "{"foo":"M$iITP/R.`","bar":":S,?E.y/2-","bike":"VS)Kus(Kkd","a":"F)uHaMbV?c","b":"#\\e7h/!k=z","name":45813,"prop":"WypTK*yZVq"}";
+                        key = "possimus";
+                        lastName = "Crona";
+                        latitude = "eveniet";
+                        locale = "asperiores";
+                        longitude = "facere";
+                        mac = "veritatis";
+                        manufacturer = "consequuntur";
+                        material = "quasi";
+                        middleName = "similique";
+                        model = "culpa";
+                        password = "aliquid";
+                        phone = "294.527.8703 x91343";
+                        pin = "nisi";
+                        postalCode = "51845";
+                        price = "itaque";
+                        product = "dolorum";
+                        sex = "female";
+                        street = "9080 Anabel Glen";
+                        timezone = "veritatis";
+                        unit = "consectetur";
+                        url = "adipisci";
+                        username = "Leta52";
+                        uuid = "086a1840-394c-4260-b1f9-3f5f0642dac7";
+                    }};;
+                    simpleObject = new SimpleObject("officia", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        bigint = 65304L;
+                        bigintStr = "quaerat";
                         boolOpt = true;
-                        decimal = 9527.49d;
+                        decimal = 7832.35d;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
-                    unknown = "dolorum";
-                    uri = "http://irritating-standardisation.org";
-                    uuid = "b14cd66a-e395-4efb-9ba8-8f3a66997074";
                 }};;
-                bigintParameterOptional = 111111L;
-                bigintStrParameterOptional = "111111";
-                decimalParameterOptional = 1.1d;
-                decimalStrParameterOptional = "1.1";
+                bigintParameterOptional = 801836L;
+                bigintStrParameterOptional = "labore";
+                decimalParameterOptional = 704.47d;
+                decimalStrParameterOptional = "adipisci";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 

@@ -19,6 +19,8 @@ export * from "./enum";
 export * from "./exampleboat";
 export * from "./examplecar";
 export * from "./exampleresource";
+export * from "./fakerformattedstrings";
+export * from "./fakerstrings";
 export * from "./fileresource";
 export * from "./httpbinsimplejsonobject";
 export * from "./limitoffsetconfig";

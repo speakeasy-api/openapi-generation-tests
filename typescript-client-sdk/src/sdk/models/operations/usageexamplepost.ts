@@ -21,53 +21,20 @@ export class UsageExamplePostSecurity extends SpeakeasyBase {
  */
 export class UsageExamplePostRequestBody extends SpeakeasyBase {
     /**
-     * A field called email that will have emails generated as examples
+     * A set of strings with format values that lead to relevant examples being generated for them
      */
     @SpeakeasyMetadata()
-    @Expose({ name: "email" })
-    email?: string;
+    @Expose({ name: "fakerFormattedStrings" })
+    @Type(() => shared.FakerFormattedStrings)
+    fakerFormattedStrings?: shared.FakerFormattedStrings;
 
     /**
-     * A field formatted as an email that will have emails generated as examples
+     * A set of strings with fieldnames that lead to relevant examples being generated for them
      */
     @SpeakeasyMetadata()
-    @Expose({ name: "formatEmail" })
-    formatEmail?: string;
-
-    /**
-     * A field formatted as a uri that will have uris generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "formatUri" })
-    formatUri?: string;
-
-    /**
-     * A field formatted as a uuid that will have uuids generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "formatUuid" })
-    formatUuid?: string;
-
-    /**
-     * A field formatted as a hostname that will have hostnames generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "hostname" })
-    hostname?: string;
-
-    /**
-     * A field formatted as an ipv4 that will have ipv4s generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "ipv4" })
-    ipv4?: string;
-
-    /**
-     * A field formatted as an ipv6 that will have ipv6s generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "ipv6" })
-    ipv6?: string;
+    @Expose({ name: "fakerStrings" })
+    @Type(() => shared.FakerStrings)
+    fakerStrings?: shared.FakerStrings;
 
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -76,27 +43,6 @@ export class UsageExamplePostRequestBody extends SpeakeasyBase {
     @Expose({ name: "simpleObject" })
     @Type(() => shared.SimpleObject)
     simpleObject?: shared.SimpleObject;
-
-    /**
-     * A field formatted as an unknown that will have random strings generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "unknown" })
-    unknown?: string;
-
-    /**
-     * A field called uri that will have uris generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "uri" })
-    uri?: string;
-
-    /**
-     * A field called uuid that will have uuids generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "uuid" })
-    uuid?: string;
 }
 
 /**
@@ -253,53 +199,20 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
 
 export class UsageExamplePost200ApplicationJSONJSON extends SpeakeasyBase {
     /**
-     * A field called email that will have emails generated as examples
+     * A set of strings with format values that lead to relevant examples being generated for them
      */
     @SpeakeasyMetadata()
-    @Expose({ name: "email" })
-    email?: string;
+    @Expose({ name: "fakerFormattedStrings" })
+    @Type(() => shared.FakerFormattedStrings)
+    fakerFormattedStrings?: shared.FakerFormattedStrings;
 
     /**
-     * A field formatted as an email that will have emails generated as examples
+     * A set of strings with fieldnames that lead to relevant examples being generated for them
      */
     @SpeakeasyMetadata()
-    @Expose({ name: "formatEmail" })
-    formatEmail?: string;
-
-    /**
-     * A field formatted as a uri that will have uris generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "formatUri" })
-    formatUri?: string;
-
-    /**
-     * A field formatted as a uuid that will have uuids generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "formatUuid" })
-    formatUuid?: string;
-
-    /**
-     * A field formatted as a hostname that will have hostnames generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "hostname" })
-    hostname?: string;
-
-    /**
-     * A field formatted as an ipv4 that will have ipv4s generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "ipv4" })
-    ipv4?: string;
-
-    /**
-     * A field formatted as an ipv6 that will have ipv6s generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "ipv6" })
-    ipv6?: string;
+    @Expose({ name: "fakerStrings" })
+    @Type(() => shared.FakerStrings)
+    fakerStrings?: shared.FakerStrings;
 
     /**
      * A simple object that uses all our supported primitive types and enums and has optional properties.
@@ -308,27 +221,6 @@ export class UsageExamplePost200ApplicationJSONJSON extends SpeakeasyBase {
     @Expose({ name: "simpleObject" })
     @Type(() => shared.SimpleObject)
     simpleObject?: shared.SimpleObject;
-
-    /**
-     * A field formatted as an unknown that will have random strings generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "unknown" })
-    unknown?: string;
-
-    /**
-     * A field called uri that will have uris generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "uri" })
-    uri?: string;
-
-    /**
-     * A field called uuid that will have uuids generated as examples
-     */
-    @SpeakeasyMetadata()
-    @Expose({ name: "uuid" })
-    uuid?: string;
 }
 
 /**

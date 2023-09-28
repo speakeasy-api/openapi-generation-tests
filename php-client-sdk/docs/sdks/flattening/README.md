@@ -36,19 +36,19 @@ $sdk = SDK::builder()
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'ab';
-    $simpleObject->bigint = 982575;
-    $simpleObject->bigintStr = 'quidem';
+    $simpleObject->any = 'aperiam';
+    $simpleObject->bigint = 409054;
+    $simpleObject->bigintStr = 'quaerat';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $simpleObject->decimal = 3732.91;
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
+    $simpleObject->decimal = 1629.54;
     $simpleObject->enum = Enum::Two;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
     $simpleObject->intEnum = SimpleObjectIntEnum::Second;
     $simpleObject->intOptNull = 999999;
     $simpleObject->num = 1.1;
@@ -56,7 +56,7 @@ try {
     $simpleObject->str = 'example';
     $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'nam');
+    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'maxime');
 
     if ($response->res !== null) {
         // handle response
@@ -102,27 +102,27 @@ $sdk = SDK::builder()
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'eaque';
-    $simpleObject->bigint = 866383;
-    $simpleObject->bigintStr = 'nemo';
+    $simpleObject->any = 'dignissimos';
+    $simpleObject->bigint = 640024;
+    $simpleObject->bigintStr = 'asperiores';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $simpleObject->decimal = 9755.22;
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
+    $simpleObject->decimal = 3681.02;
     $simpleObject->enum = Enum::Two;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
     $simpleObject->int32 = 1;
     $simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $simpleObject->intEnum = SimpleObjectIntEnum::Third;
+    $simpleObject->intEnum = SimpleObjectIntEnum::First;
     $simpleObject->intOptNull = 999999;
     $simpleObject->num = 1.1;
     $simpleObject->numOptNull = 1.1;
     $simpleObject->str = 'example';
     $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamNoConflict('amet', $simpleObject);
+    $response = $sdk->flattening->componentBodyAndParamNoConflict('porro', $simpleObject);
 
     if ($response->res !== null) {
         // handle response
@@ -165,7 +165,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->flattening->conflictingParams('aut', 'cumque');
+    $response = $sdk->flattening->conflictingParams('quod', 'labore');
 
     if ($response->res !== null) {
         // handle response
@@ -208,9 +208,9 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new InlineBodyAndParamConflictRequestBody();
-    $requestBody->str = 'corporis';
+    $requestBody->str = 'ab';
 
-    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'hic');
+    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'adipisci');
 
     if ($response->res !== null) {
         // handle response
@@ -253,9 +253,9 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new InlineBodyAndParamNoConflictRequestBody();
-    $requestBody->bodyStr = 'libero';
+    $requestBody->bodyStr = 'fuga';
 
-    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'nobis');
+    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'id');
 
     if ($response->res !== null) {
         // handle response

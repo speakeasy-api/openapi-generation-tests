@@ -31,7 +31,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->documentation->getDocumentationPerLanguage('odit');
+    $response = $sdk->documentation->getDocumentationPerLanguage('voluptatibus');
 
     if ($response->statusCode === 200) {
         // handle response

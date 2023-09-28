@@ -14,86 +14,26 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class UsageExamplePostRequestBody {
     /**
-     * A field called email that will have emails generated as examples
+     * A set of strings with format values that lead to relevant examples being generated for them
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("email")
-    public String email;
+    @JsonProperty("fakerFormattedStrings")
+    public org.openapis.openapi.models.shared.FakerFormattedStrings fakerFormattedStrings;
 
-    public UsageExamplePostRequestBody withEmail(String email) {
-        this.email = email;
+    public UsageExamplePostRequestBody withFakerFormattedStrings(org.openapis.openapi.models.shared.FakerFormattedStrings fakerFormattedStrings) {
+        this.fakerFormattedStrings = fakerFormattedStrings;
         return this;
     }
     
     /**
-     * A field formatted as an email that will have emails generated as examples
+     * A set of strings with fieldnames that lead to relevant examples being generated for them
      */
     @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("formatEmail")
-    public String formatEmail;
+    @JsonProperty("fakerStrings")
+    public org.openapis.openapi.models.shared.FakerStrings fakerStrings;
 
-    public UsageExamplePostRequestBody withFormatEmail(String formatEmail) {
-        this.formatEmail = formatEmail;
-        return this;
-    }
-    
-    /**
-     * A field formatted as a uri that will have uris generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("formatUri")
-    public String formatUri;
-
-    public UsageExamplePostRequestBody withFormatUri(String formatUri) {
-        this.formatUri = formatUri;
-        return this;
-    }
-    
-    /**
-     * A field formatted as a uuid that will have uuids generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("formatUuid")
-    public String formatUuid;
-
-    public UsageExamplePostRequestBody withFormatUuid(String formatUuid) {
-        this.formatUuid = formatUuid;
-        return this;
-    }
-    
-    /**
-     * A field formatted as a hostname that will have hostnames generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("hostname")
-    public String hostname;
-
-    public UsageExamplePostRequestBody withHostname(String hostname) {
-        this.hostname = hostname;
-        return this;
-    }
-    
-    /**
-     * A field formatted as an ipv4 that will have ipv4s generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ipv4")
-    public String ipv4;
-
-    public UsageExamplePostRequestBody withIpv4(String ipv4) {
-        this.ipv4 = ipv4;
-        return this;
-    }
-    
-    /**
-     * A field formatted as an ipv6 that will have ipv6s generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("ipv6")
-    public String ipv6;
-
-    public UsageExamplePostRequestBody withIpv6(String ipv6) {
-        this.ipv6 = ipv6;
+    public UsageExamplePostRequestBody withFakerStrings(org.openapis.openapi.models.shared.FakerStrings fakerStrings) {
+        this.fakerStrings = fakerStrings;
         return this;
     }
     
@@ -107,42 +47,6 @@ public class UsageExamplePostRequestBody {
 
     public UsageExamplePostRequestBody withSimpleObject(org.openapis.openapi.models.shared.SimpleObject simpleObject) {
         this.simpleObject = simpleObject;
-        return this;
-    }
-    
-    /**
-     * A field formatted as an unknown that will have random strings generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("unknown")
-    public String unknown;
-
-    public UsageExamplePostRequestBody withUnknown(String unknown) {
-        this.unknown = unknown;
-        return this;
-    }
-    
-    /**
-     * A field called uri that will have uris generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("uri")
-    public String uri;
-
-    public UsageExamplePostRequestBody withUri(String uri) {
-        this.uri = uri;
-        return this;
-    }
-    
-    /**
-     * A field called uuid that will have uuids generated as examples
-     */
-    @JsonInclude(Include.NON_ABSENT)
-    @JsonProperty("uuid")
-    public String uuid;
-
-    public UsageExamplePostRequestBody withUuid(String uuid) {
-        this.uuid = uuid;
         return this;
     }
     

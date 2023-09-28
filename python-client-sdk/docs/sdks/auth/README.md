@@ -96,7 +96,7 @@ s = sdk.SDK(
 res = s.auth.basic_auth(operations.BasicAuthSecurity(
     password="YOUR_PASSWORD",
     username="YOUR_USERNAME",
-), passwd='labore', user='labore')
+), passwd='quae', user='earum')
 
 if res.user is not None:
     # handle response

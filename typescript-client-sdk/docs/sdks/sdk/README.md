@@ -29,7 +29,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.sdk.putAnythingIgnoredGeneration("id").then((res: PutAnythingIgnoredGenerationResponse) => {
+sdk.sdk.putAnythingIgnoredGeneration("tenetur").then((res: PutAnythingIgnoredGenerationResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

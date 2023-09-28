@@ -254,6 +254,8 @@ src/sdk/models/shared/deprecatedfieldinobject.py
 src/sdk/models/shared/deprecatedobject.py
 src/sdk/models/shared/emptyobjectparam.py
 src/sdk/models/shared/httpbinsimplejsonobject.py
+src/sdk/models/shared/fakerstrings.py
+src/sdk/models/shared/fakerformattedstrings.py
 src/sdk/models/shared/limitoffsetconfig.py
 src/sdk/models/shared/refqueryparamobjexploded.py
 src/sdk/models/shared/refqueryparamobj.py
@@ -763,6 +765,8 @@ docs/models/shared/emptyobjectparam.md
 docs/models/shared/httpbinsimplejsonobjectslideshowslides.md
 docs/models/shared/httpbinsimplejsonobjectslideshow.md
 docs/models/shared/httpbinsimplejsonobject.md
+docs/models/shared/fakerstrings.md
+docs/models/shared/fakerformattedstrings.md
 docs/models/shared/limitoffsetconfig.md
 docs/models/shared/refqueryparamobjexploded.md
 docs/models/shared/refqueryparamobj.md

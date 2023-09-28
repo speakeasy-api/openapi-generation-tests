@@ -521,6 +521,8 @@ src/Models/Shared/EmptyObjectParam.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshowSlides.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshow.php
 src/Models/Shared/HttpBinSimpleJsonObject.php
+src/Models/Shared/FakerStrings.php
+src/Models/Shared/FakerFormattedStrings.php
 src/Models/Shared/LimitOffsetConfig.php
 src/Models/Shared/RefQueryParamObjExploded.php
 src/Models/Shared/RefQueryParamObj.php
@@ -1048,6 +1050,8 @@ docs/models/shared/EmptyObjectParam.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshow.md
 docs/models/shared/HttpBinSimpleJsonObject.md
+docs/models/shared/FakerStrings.md
+docs/models/shared/FakerFormattedStrings.md
 docs/models/shared/LimitOffsetConfig.md
 docs/models/shared/RefQueryParamObjExploded.md
 docs/models/shared/RefQueryParamObj.md
