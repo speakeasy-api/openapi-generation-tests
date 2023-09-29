@@ -4020,6 +4020,44 @@ paths:
             application/json:
               schema:
                 $ref: "components.yaml#/components/schemas/validCircularReferenceObject"
+  /anything/arrayCircularReference:
+    get:
+      operationId: arrayCircularReferenceGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/arrayCircularReferenceObject"
+  /anything/objectCircularReference:
+    get:
+      x-my-ignore: swift
+      operationId: objectCircularReferenceGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/objectCircularReferenceObject"
+  /anything/oneOfCircularReference:
+    get:
+      x-my-ignore: swift
+      operationId: oneOfCircularReferenceGet
+      tags:
+        - generation
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "components.yaml#/components/schemas/oneOfCircularReferenceObject"
   /anything/emptyResponseObjectWithComment:
     get:
       operationId: emptyResponseObjectWithCommentGet

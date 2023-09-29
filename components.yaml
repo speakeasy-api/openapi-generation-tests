@@ -818,6 +818,31 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/validCircularReferenceObject"
+    arrayCircularReferenceObject:
+      type: array
+      items:
+        type: object
+        properties:
+          circular:
+            $ref: "#/components/schemas/arrayCircularReferenceObject"
+        required:
+          - circular
+    objectCircularReferenceObject:
+      x-my-ignore: swift
+      type: object
+      properties:
+        circular:
+          $ref: "#/components/schemas/objectCircularReferenceObject"
+    oneOfCircularReferenceObject:
+      x-my-ignore: swift
+      type: object
+      properties:
+        child:
+          oneOf:
+            - $ref: "#/components/schemas/oneOfCircularReferenceObject"
+            - $ref: "#/components/schemas/simpleObject"
+      required:
+        - child
     deprecatedObject:
       type: object
       deprecated: true
