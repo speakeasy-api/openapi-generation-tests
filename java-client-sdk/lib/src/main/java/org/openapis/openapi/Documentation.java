@@ -37,7 +37,7 @@ public class Documentation {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.GetDocumentationPerLanguageRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {

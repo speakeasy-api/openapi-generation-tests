@@ -108,8 +108,8 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeprecatedFieldInObject();
-    $request->deprecatedField = 'suscipit';
-    $request->newField = 'velit';
+    $request->deprecatedField = 'Bike Avon';
+    $request->newField = 'Rubber Santa';
 
     $response = $sdk->generation->deprecatedFieldInSchemaPost($request);
 
@@ -190,7 +190,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationNoCommentsGet('culpa');
+    $response = $sdk->generation->deprecatedOperationNoCommentsGet('Account');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -236,7 +236,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->generation->deprecatedOperationWithCommentsGet('est', 'recusandae');
+    $response = $sdk->generation->deprecatedOperationWithCommentsGet('Account', 'actuating');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -421,10 +421,10 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new IgnoresPostApplicationJSON();
-    $requestBody->callbackUrl = 'https://those-helo.info';
-    $requestBody->testProp = 'quos';
+    $requestBody->callbackUrl = 'http://diligent-activist.biz';
+    $requestBody->testProp = 'solid Branding Maserati';
 
-    $response = $sdk->generation->ignoresPost($requestBody, 'vel');
+    $response = $sdk->generation->ignoresPost($requestBody, 'Maserati');
 
     if ($response->httpBinSimpleJsonObject !== null) {
         // handle response
@@ -512,10 +512,10 @@ $sdk = SDK::builder()
 try {
     $obj = new TypedParameterGenerationGetObj();
     $obj->bool = false;
-    $obj->num = 2870.51;
-    $obj->str = 'possimus';
+    $obj->num = 8792.75;
+    $obj->str = 'innocently Orchestrator program';
 
-    $response = $sdk->generation->typedParameterGenerationGet(706575, DateTime::createFromFormat('Y-m-d', '2022-03-04'), 4471.44, $obj);
+    $response = $sdk->generation->typedParameterGenerationGet(302424, DateTime::createFromFormat('Y-m-d', '2021-10-23'), 1913.6, $obj);
 
     if ($response->statusCode === 200) {
         // handle response
@@ -576,118 +576,118 @@ try {
     $request = new UsageExamplePostRequest();
     $request->requestBody = new UsageExamplePostRequestBody();
     $request->requestBody->fakerFormattedStrings = new FakerFormattedStrings();
-    $request->requestBody->fakerFormattedStrings->addressFormat = '9839 Alvis Road';
-    $request->requestBody->fakerFormattedStrings->directoryFormat = 'consectetur';
-    $request->requestBody->fakerFormattedStrings->domainFormat = 'in';
-    $request->requestBody->fakerFormattedStrings->emailFormat = 'Tressa98@yahoo.com';
-    $request->requestBody->fakerFormattedStrings->filenameFormat = 'suscipit';
-    $request->requestBody->fakerFormattedStrings->filepathFormat = 'reiciendis';
-    $request->requestBody->fakerFormattedStrings->imageFormat = 'quidem';
-    $request->requestBody->fakerFormattedStrings->ipv4Format = '231.229.75.30';
-    $request->requestBody->fakerFormattedStrings->ipv6Format = 'f333:17fe:35b6:0eb1:ea42:6555:ba3c:2874';
-    $request->requestBody->fakerFormattedStrings->jsonFormat = '{"foo":88596,"bar":"A7eOTx3[Tq","bike":"xAf#b.{-}b","a":70907,"b":61174,"name":67190,"prop":44751}';
-    $request->requestBody->fakerFormattedStrings->macFormat = 'commodi';
-    $request->requestBody->fakerFormattedStrings->passwordFormat = 'quidem';
-    $request->requestBody->fakerFormattedStrings->phoneFormat = '1-561-598-0905';
-    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'maiores';
-    $request->requestBody->fakerFormattedStrings->unknownFormat = 'incidunt';
-    $request->requestBody->fakerFormattedStrings->urlFormat = 'sed';
-    $request->requestBody->fakerFormattedStrings->uuidFormat = '94e3698f-447f-4603-a8b4-45e80ca55efd';
-    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '09234';
+    $request->requestBody->fakerFormattedStrings->addressFormat = '48525 Maude Fall';
+    $request->requestBody->fakerFormattedStrings->directoryFormat = '/etc/defaults';
+    $request->requestBody->fakerFormattedStrings->domainFormat = 'next-conflict.name';
+    $request->requestBody->fakerFormattedStrings->emailFormat = 'Fermin_Koelpin@gmail.com';
+    $request->requestBody->fakerFormattedStrings->filenameFormat = 'northeast.wav';
+    $request->requestBody->fakerFormattedStrings->filepathFormat = '/lib/pizza_integrated.hbs';
+    $request->requestBody->fakerFormattedStrings->imageFormat = 'https://loremflickr.com/640/480';
+    $request->requestBody->fakerFormattedStrings->ipv4Format = '75.42.25.241';
+    $request->requestBody->fakerFormattedStrings->ipv6Format = '36a9:c057:a71b:b73a:c9ee:2348:d76c:3164';
+    $request->requestBody->fakerFormattedStrings->jsonFormat = '{plane: 14910, fringe: null, lightning: "Roentgenium UTF8"}';
+    $request->requestBody->fakerFormattedStrings->macFormat = '13:58:66:7d:ac:95';
+    $request->requestBody->fakerFormattedStrings->passwordFormat = 'b6eWzdveK0sHokC';
+    $request->requestBody->fakerFormattedStrings->phoneFormat = '832-504-6221 x221';
+    $request->requestBody->fakerFormattedStrings->timezoneFormat = 'Asia/Krasnoyarsk';
+    $request->requestBody->fakerFormattedStrings->unknownFormat = 'Principal at';
+    $request->requestBody->fakerFormattedStrings->urlFormat = 'http://understated-balcony.org';
+    $request->requestBody->fakerFormattedStrings->uuidFormat = '62de2e2d-47a9-4bf1-80f7-53b9b364b6b4';
+    $request->requestBody->fakerFormattedStrings->zipcodeFormat = '25687-7266';
     $request->requestBody->fakerStrings = new FakerStrings();
-    $request->requestBody->fakerStrings->city = 'Bozeman';
-    $request->requestBody->fakerStrings->iban = 'laudantium';
-    $request->requestBody->fakerStrings->id = '58b6a89f-be3a-45aa-8e48-24d0ab407508';
-    $request->requestBody->fakerStrings->iPv4 = '142.236.92.22';
-    $request->requestBody->fakerStrings->iPv6 = '8620:65e9:04f3:b119:4b8a:bf60:3a79:f9df';
-    $request->requestBody->fakerStrings->account = 'voluptates';
-    $request->requestBody->fakerStrings->address = '66486 O'Connell Green';
-    $request->requestBody->fakerStrings->amount = 'voluptatem';
-    $request->requestBody->fakerStrings->avatar = 'quisquam';
-    $request->requestBody->fakerStrings->color = 'repudiandae';
-    $request->requestBody->fakerStrings->comment = 'quasi';
-    $request->requestBody->fakerStrings->company = 'Kihn - Zboncak';
-    $request->requestBody->fakerStrings->country = 'Macao';
-    $request->requestBody->fakerStrings->countryCode = 'HM';
-    $request->requestBody->fakerStrings->currency = 'quidem';
-    $request->requestBody->fakerStrings->datatype = 'maxime';
-    $request->requestBody->fakerStrings->default = 'et';
-    $request->requestBody->fakerStrings->description = 'esse';
-    $request->requestBody->fakerStrings->directory = 'amet';
-    $request->requestBody->fakerStrings->domainName = 'assumenda';
-    $request->requestBody->fakerStrings->emailAddr = 'ea';
-    $request->requestBody->fakerStrings->extension = 'atque';
-    $request->requestBody->fakerStrings->filename = 'error';
-    $request->requestBody->fakerStrings->filepath = 'officiis';
-    $request->requestBody->fakerStrings->filetype = 'officiis';
-    $request->requestBody->fakerStrings->firstName = 'Shanelle';
-    $request->requestBody->fakerStrings->fullName = 'natus';
-    $request->requestBody->fakerStrings->gender = 'female';
-    $request->requestBody->fakerStrings->job = 'aspernatur';
-    $request->requestBody->fakerStrings->json = '{"foo":98058,"bar":"rZODvSS,v`","bike":";{$v+$*1>E","a":95214,"b":"<u/VsXJ7uW","name":14587,"prop":"@I[(Bau8r$"}';
-    $request->requestBody->fakerStrings->key = 'iure';
-    $request->requestBody->fakerStrings->lastName = 'Beier';
-    $request->requestBody->fakerStrings->latitude = 'totam';
-    $request->requestBody->fakerStrings->locale = 'quae';
-    $request->requestBody->fakerStrings->longitude = 'molestiae';
-    $request->requestBody->fakerStrings->mac = 'eveniet';
-    $request->requestBody->fakerStrings->manufacturer = 'qui';
-    $request->requestBody->fakerStrings->material = 'cum';
-    $request->requestBody->fakerStrings->middleName = 'iure';
-    $request->requestBody->fakerStrings->model = 'necessitatibus';
-    $request->requestBody->fakerStrings->password = 'ratione';
-    $request->requestBody->fakerStrings->phone = '1-755-439-0354 x6309';
-    $request->requestBody->fakerStrings->pin = 'reiciendis';
-    $request->requestBody->fakerStrings->postalCode = '63262';
-    $request->requestBody->fakerStrings->price = 'quae';
-    $request->requestBody->fakerStrings->product = 'recusandae';
-    $request->requestBody->fakerStrings->sex = 'male';
-    $request->requestBody->fakerStrings->street = '44262 Larkin Keys';
-    $request->requestBody->fakerStrings->timezone = 'nemo';
-    $request->requestBody->fakerStrings->unit = 'recusandae';
-    $request->requestBody->fakerStrings->url = 'esse';
-    $request->requestBody->fakerStrings->username = 'Laron_Hauck';
-    $request->requestBody->fakerStrings->uuid = '9251a5a9-da66-40ff-97bf-aad4f9efc1b4';
+    $request->requestBody->fakerStrings->city = 'Port Carli';
+    $request->requestBody->fakerStrings->iban = 'TN8700576009897281100717';
+    $request->requestBody->fakerStrings->id = '<ID>';
+    $request->requestBody->fakerStrings->iPv4 = '141.21.132.133';
+    $request->requestBody->fakerStrings->iPv6 = '308b:b979:0237:4ea8:ee39:8480:0301:1d98';
+    $request->requestBody->fakerStrings->account = '81966519';
+    $request->requestBody->fakerStrings->address = '418 Maybelle Brooks';
+    $request->requestBody->fakerStrings->amount = '27.55';
+    $request->requestBody->fakerStrings->avatar = 'https://loremflickr.com/640/480';
+    $request->requestBody->fakerStrings->color = 'turquoise';
+    $request->requestBody->fakerStrings->comment = 'The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality';
+    $request->requestBody->fakerStrings->company = 'Murazik, Kozey and Hirthe';
+    $request->requestBody->fakerStrings->country = 'Equatorial Guinea';
+    $request->requestBody->fakerStrings->countryCode = 'LU';
+    $request->requestBody->fakerStrings->currency = 'Congolese Franc';
+    $request->requestBody->fakerStrings->datatype = 'bigint';
+    $request->requestBody->fakerStrings->default = 'Dalasi';
+    $request->requestBody->fakerStrings->description = 'Up-sized explicit frame';
+    $request->requestBody->fakerStrings->directory = '/home';
+    $request->requestBody->fakerStrings->domainName = 'warmhearted-buying.biz';
+    $request->requestBody->fakerStrings->emailAddr = 'Beulah.Franecki24@gmail.com';
+    $request->requestBody->fakerStrings->extension = 'pdf';
+    $request->requestBody->fakerStrings->filename = 'recovery.pdf';
+    $request->requestBody->fakerStrings->filepath = '/usr/share/powerfully.less';
+    $request->requestBody->fakerStrings->filetype = 'application';
+    $request->requestBody->fakerStrings->firstName = 'Geovany';
+    $request->requestBody->fakerStrings->fullName = 'Roy Gottlieb';
+    $request->requestBody->fakerStrings->gender = 'Cis';
+    $request->requestBody->fakerStrings->job = 'International Metrics Administrator';
+    $request->requestBody->fakerStrings->json = '{trachoma: 6397, nick: null, android: "Plastic Recumbent"}';
+    $request->requestBody->fakerStrings->key = '<key>';
+    $request->requestBody->fakerStrings->lastName = 'Kshlerin';
+    $request->requestBody->fakerStrings->latitude = '65.3520';
+    $request->requestBody->fakerStrings->locale = 'zh_CN';
+    $request->requestBody->fakerStrings->longitude = '16.8742';
+    $request->requestBody->fakerStrings->mac = 'fd:b6:ff:35:99:05';
+    $request->requestBody->fakerStrings->manufacturer = 'Mazda';
+    $request->requestBody->fakerStrings->material = 'Frozen';
+    $request->requestBody->fakerStrings->middleName = 'Emerson';
+    $request->requestBody->fakerStrings->model = 'Mustang';
+    $request->requestBody->fakerStrings->password = '71wIwgEZJMTCRYg';
+    $request->requestBody->fakerStrings->phone = '1-466-307-0476';
+    $request->requestBody->fakerStrings->pin = '0584';
+    $request->requestBody->fakerStrings->postalCode = '07886';
+    $request->requestBody->fakerStrings->price = '452.00';
+    $request->requestBody->fakerStrings->product = 'Small Steel Salad';
+    $request->requestBody->fakerStrings->sex = 'female';
+    $request->requestBody->fakerStrings->street = 'Christy Dam';
+    $request->requestBody->fakerStrings->timezone = 'America/Regina';
+    $request->requestBody->fakerStrings->unit = 'sievert';
+    $request->requestBody->fakerStrings->url = 'http://repentant-haunt.name';
+    $request->requestBody->fakerStrings->username = 'Heather_Mills48';
+    $request->requestBody->fakerStrings->uuid = '29e9f1c7-ed92-481f-955b-6ca1625b4c3a';
     $request->requestBody->simpleObject = new SimpleObject();
-    $request->requestBody->simpleObject->any = 'quis';
-    $request->requestBody->simpleObject->bigint = 82057;
-    $request->requestBody->simpleObject->bigintStr = 'fugit';
+    $request->requestBody->simpleObject->any = 'wireless';
+    $request->requestBody->simpleObject->bigint = 151132;
+    $request->requestBody->simpleObject->bigintStr = 'Azerbaijan granular green';
     $request->requestBody->simpleObject->bool = true;
     $request->requestBody->simpleObject->boolOpt = true;
     $request->requestBody->simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
-    $request->requestBody->simpleObject->decimal = 7652.71;
+    $request->requestBody->simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
+    $request->requestBody->simpleObject->decimal = 5070.32;
     $request->requestBody->simpleObject->enum = Enum::Two;
     $request->requestBody->simpleObject->float32 = 2.2222222;
     $request->requestBody->simpleObject->int = 999999;
     $request->requestBody->simpleObject->int32 = 1;
-    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::First;
+    $request->requestBody->simpleObject->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->requestBody->simpleObject->intEnum = SimpleObjectIntEnum::Second;
     $request->requestBody->simpleObject->intOptNull = 999999;
     $request->requestBody->simpleObject->num = 1.1;
     $request->requestBody->simpleObject->numOptNull = 1.1;
     $request->requestBody->simpleObject->str = 'example';
     $request->requestBody->simpleObject->strOpt = 'optional example';
-    $request->bigintParameter = 241901;
-    $request->bigintParameterOptional = 137251;
-    $request->bigintStrParameter = 'eum';
-    $request->bigintStrParameterOptional = 'eius';
+    $request->bigintParameter = 351575;
+    $request->bigintParameterOptional = 589897;
+    $request->bigintStrParameter = 'Compatible partially';
+    $request->bigintStrParameterOptional = 'navigating';
     $request->boolParameter = false;
-    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2021-04-05');
-    $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2022-06-18T13:06:11.480Z');
-    $request->decimalParameter = 9587.41;
-    $request->decimalParameterOptional = 4332.79;
-    $request->decimalStrParameter = 'dicta';
-    $request->decimalStrParameterOptional = 'minima';
-    $request->doubleParameter = 1070.04;
-    $request->enumParameter = UsageExamplePostEnumParameter::Value2;
+    $request->dateParameter = DateTime::createFromFormat('Y-m-d', '2023-01-09');
+    $request->dateTimeParameter = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-10-13T13:41:39.213Z');
+    $request->decimalParameter = 9788.14;
+    $request->decimalParameterOptional = 5376.2;
+    $request->decimalStrParameter = 'South Erbium Pickup';
+    $request->decimalStrParameterOptional = 'laudantium online Alabama';
+    $request->doubleParameter = 5072.07;
+    $request->enumParameter = UsageExamplePostEnumParameter::Value1;
     $request->falseyNumberParameter = 0;
-    $request->float32Parameter = 5896.95;
-    $request->floatParameter = 9364.69;
-    $request->int64Parameter = 745398;
-    $request->intParameter = 940782;
+    $request->float32Parameter = 9726.72;
+    $request->floatParameter = 9185.57;
+    $request->int64Parameter = 536301;
+    $request->intParameter = 491608;
     $request->optEnumParameter = UsageExamplePostOptEnumParameter::Value3;
-    $request->strParameter = 'example 3';
+    $request->strParameter = 'example 2';
 
     $requestSecurity = new UsageExamplePostSecurity();
     $requestSecurity->password = 'YOUR_PASSWORD';

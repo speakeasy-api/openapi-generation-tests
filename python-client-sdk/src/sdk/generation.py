@@ -21,7 +21,7 @@ class Generation:
         url = base_url + '/anything/anchorTypes'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -48,7 +48,7 @@ class Generation:
         url = base_url + '/anything/circularReference'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -74,13 +74,13 @@ class Generation:
         
         url = base_url + '/anything/deprecatedFieldInSchema'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -103,7 +103,7 @@ class Generation:
         url = base_url + '/anything/deprecatedObjectInSchema'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -136,7 +136,7 @@ class Generation:
         headers = {}
         query_params = utils.get_query_params(operations.DeprecatedOperationNoCommentsGetRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -169,7 +169,7 @@ class Generation:
         headers = {}
         query_params = utils.get_query_params(operations.DeprecatedOperationWithCommentsGetRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -196,7 +196,7 @@ class Generation:
         url = utils.generate_url(operations.EmptyObjectGetRequest, base_url, '/anything/{emptyObject}', request, self.sdk_configuration.globals)
         headers = {}
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -219,7 +219,7 @@ class Generation:
         url = base_url + '/anything/emptyResponseObjectWithComment'
         headers = {}
         headers['Accept'] = 'application/octet-stream'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -245,7 +245,7 @@ class Generation:
         url = base_url + '/anything/globalNameOverride'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -272,7 +272,7 @@ class Generation:
         url = base_url + '/anything/ignoredGeneration'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -303,14 +303,14 @@ class Generation:
         
         url = base_url + '/anything/ignores'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.IgnoresPostRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -343,7 +343,7 @@ class Generation:
         headers = {}
         query_params = utils.get_query_params(operations.NameOverrideGetRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -378,7 +378,7 @@ class Generation:
         headers = {}
         query_params = utils.get_query_params(operations.TypedParameterGenerationGetRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -404,12 +404,12 @@ class Generation:
         
         url = base_url + '/anything/usageExample'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, True, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         query_params = utils.get_query_params(operations.UsageExamplePostRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         

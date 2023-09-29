@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `page`             | *int*              | :heavy_check_mark: | N/A                |
+| `page`             | *Optional[int]*    | :heavy_check_mark: | N/A                |

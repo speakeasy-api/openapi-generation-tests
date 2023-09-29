@@ -57,7 +57,7 @@ func (s *authNew) APIKeyAuthGlobalNew(ctx context.Context, request shared.AuthSe
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -129,7 +129,7 @@ func (s *authNew) AuthGlobal(ctx context.Context, request shared.AuthServiceRequ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
@@ -201,11 +201,11 @@ func (s *authNew) BasicAuthNew(ctx context.Context, request shared.AuthServiceRe
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -273,11 +273,11 @@ func (s *authNew) MultipleMixedOptionsAuth(ctx context.Context, request shared.A
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -345,11 +345,11 @@ func (s *authNew) MultipleMixedSchemeAuth(ctx context.Context, request shared.Au
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -417,11 +417,11 @@ func (s *authNew) MultipleOptionsWithMixedSchemesAuth(ctx context.Context, reque
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -489,11 +489,11 @@ func (s *authNew) MultipleOptionsWithSimpleSchemesAuth(ctx context.Context, requ
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -561,11 +561,11 @@ func (s *authNew) MultipleSimpleOptionsAuth(ctx context.Context, request shared.
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -633,11 +633,11 @@ func (s *authNew) MultipleSimpleSchemeAuth(ctx context.Context, request shared.A
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -705,11 +705,11 @@ func (s *authNew) Oauth2AuthNew(ctx context.Context, request shared.AuthServiceR
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {
@@ -777,11 +777,11 @@ func (s *authNew) OpenIDConnectAuthNew(ctx context.Context, request shared.AuthS
 		return nil, fmt.Errorf("error creating request: %w", err)
 	}
 	req.Header.Set("Accept", "*/*")
-	req.Header.Set("x-speakeasy-user-agent", fmt.Sprintf("speakeasy-sdk/%s %s %s %s", s.sdkConfiguration.Language, s.sdkConfiguration.SDKVersion, s.sdkConfiguration.GenVersion, s.sdkConfiguration.OpenAPIDocVersion))
+	req.Header.Set("x-speakeasy-user-agent", s.sdkConfiguration.UserAgent)
 
 	req.Header.Set("Content-Type", reqContentType)
 
-	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, security)
+	client := utils.ConfigureSecurityClient(s.sdkConfiguration.DefaultClient, withSecurity(security))
 
 	httpRes, err := client.Do(req)
 	if err != nil {

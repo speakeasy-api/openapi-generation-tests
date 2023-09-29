@@ -708,6 +708,28 @@ test("Request Body Put Multipart File", async () => {
   });
 });
 
+test("Request Body Put Multipart Different File Name", async () => {
+  recordTest("request-bodies-put-different-file-name");
+
+  const s = new SDK({});
+
+  const filePath = path.resolve(__dirname, "./testdata/testUpload.json");
+  const data = fs.readFileSync(filePath);
+
+  const res = await s.requestBodies.requestBodyPutMultipartDifferentFileName({
+    differentFileName: {
+      content: data,
+      differentFileName: "testUpload.json",
+    },
+  });
+
+  expect(res.statusCode).toBe(200);
+  expect(res.res).toBeDefined();
+  expect(res.res?.files).toEqual({
+    differentFileName: data.toString(),
+  });
+});
+
 test("Request Body Post Form Simple", async () => {
   recordTest("request-bodies-post-form-simple");
 

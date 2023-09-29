@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `json`             | *float*            | :heavy_check_mark: | N/A                |
+| `json`             | *Optional[float]*  | :heavy_check_mark: | N/A                |

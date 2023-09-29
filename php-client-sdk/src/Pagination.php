@@ -72,7 +72,7 @@ class Pagination
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
         $httpResponse = $this->sdkConfiguration->securityClient->request('PUT', $url, $options);
         
@@ -119,7 +119,7 @@ class Pagination
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\PaginationCursorParamsRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
@@ -167,7 +167,7 @@ class Pagination
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
         $httpResponse = $this->sdkConfiguration->securityClient->request('PUT', $url, $options);
         
@@ -217,7 +217,7 @@ class Pagination
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetOffsetParamsRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         
@@ -265,7 +265,7 @@ class Pagination
         }
         $options = array_merge_recursive($options, $body);
         $options['headers']['Accept'] = 'application/json';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
         $httpResponse = $this->sdkConfiguration->securityClient->request('PUT', $url, $options);
         
@@ -312,7 +312,7 @@ class Pagination
         $options = ['http_errors' => false];
         $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\PaginationLimitOffsetPageParamsRequest::class, $request, $this->sdkConfiguration->globals));
         $options['headers']['Accept'] = 'application/json';
-        $options['headers']['x-speakeasy-user-agent'] = sprintf('speakeasy-sdk/%s %s %s %s', $this->sdkConfiguration->language, $this->sdkConfiguration->sdkVersion, $this->sdkConfiguration->genVersion, $this->sdkConfiguration->openapiDocVersion);
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
         
         $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
         

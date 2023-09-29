@@ -30,9 +30,9 @@ class NullableRequiredEmptyObjectPostRequestBodyRequiredObj:
 
 @dataclasses.dataclass
 class NullableRequiredEmptyObjectPostRequestBody:
-    nullable_required_obj: NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
+    nullable_required_obj: Optional[NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
     required_obj: NullableRequiredEmptyObjectPostRequestBodyRequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RequiredObj') }})
-    nullable_optional_obj: Optional[NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj'), 'exclude': lambda f: f is None }})
+    nullable_optional_obj: Optional[NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
     
 
 

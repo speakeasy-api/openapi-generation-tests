@@ -580,6 +580,30 @@ def test_request_body_put_multipart_file():
     }
 
 
+def test_request_body_put_multipart_different_file_name():
+    record_test('request-bodies-put-different-file-name')
+
+    s = SDK()
+    assert s is not None
+
+    f = open('./tests/testUpload.json')
+    data = f.read()
+
+    res = s.request_bodies.request_body_put_multipart_different_file_name(request=RequestBodyPutMultipartDifferentFileNameRequestBody(
+        different_file_name=RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName(
+            content=data,
+            different_file_name='testUpload.json'
+        )
+    ))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.res is not None
+    assert res.res.files == {
+        'differentFileName': data
+    }
+
+
 def test_request_body_post_form_simple():
     record_test('request-bodies-post-form-simple')
 
@@ -835,3 +859,374 @@ def test_request_body_post_complex_number_types():
     assert res.status_code == 200
     assert res.request_body_post_complex_number_types_200_application_json_object.json == req.complex_number_types
     assert res.request_body_post_complex_number_types_200_application_json_object.url == 'http://localhost:35123/anything/requestBodies/post/9007199254740991/9223372036854775807/3.141592653589793/3.141592653589793238462643383279/complex-number-types?queryBigInt=9007199254740991&queryBigIntStr=9223372036854775807&queryDecimal=3.141592653589793&queryDecimalStr=3.141592653589793238462643383279'
+
+
+def test_request_body_post_defaults_and_consts():
+    record_test('request-bodies-defaults-and-consts')
+
+    s = SDK()
+    assert s is not None
+
+    req = shared.DefaultsAndConsts(
+        normal_field='normal',
+        default_str='not default',
+    )
+
+    res = s.request_bodies.request_body_post_defaults_and_consts(req)
+
+    assert res is not None
+    assert res.status_code == 200
+
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.normal_field == 'normal'
+
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_big_int == 9007199254740991
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_big_int_str == 9223372036854775807
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_bool == True
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_date == date(
+        2020, 1, 1)
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_date_time == datetime(
+        2020, 1, 1, 0, 0, 0, 0, tzutc())
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_decimal == Decimal(
+        '3.141592653589793')
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_decimal_str == Decimal(
+        '3.141592653589793238462643383279')
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_enum_int == shared.DefaultsAndConstsConstEnumInt.TWO
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_enum_str == shared.DefaultsAndConstsConstEnumStr.TWO
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_int == 123
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_num == 123.456
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_str == 'const'
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.const_str_null is None
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.single_enum_const_bool == True
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.single_enum_const_str == 'one'
+
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_big_int == 9007199254740991
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_big_int_str == 9223372036854775807
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_bool == True
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_date == date(
+        2020, 1, 1)
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_date_time == datetime(
+        2020, 1, 1, 0, 0, 0, 0, tzutc())
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_decimal == Decimal(
+        '3.141592653589793')
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_decimal_str == Decimal(
+        '3.141592653589793238462643383279')
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_enum_int == shared.DefaultsAndConstsDefaultEnumInt.TWO
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_enum_str == shared.DefaultsAndConstsDefaultEnumStr.TWO
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_int == 123
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_num == 123.456
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_str == 'not default'
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_str_nullable is None
+    assert res.request_body_post_defaults_and_consts_200_application_json_object.json.default_str_optional == 'default'
+
+
+def test_request_body_post_json_data_types_string():
+    record_test('request-bodies-post-json-data-types-string')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_string('test')
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_string_200_application_json_object.json == 'test'
+
+
+def test_request_body_post_json_data_types_integer():
+    record_test('request-bodies-post-json-data-types-integer')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_integer(1)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_integer_200_application_json_object.json == 1
+
+
+def test_request_body_post_json_data_types_int32():
+    record_test('request-bodies-post-json-data-types-int32')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_int32(1)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_int32_200_application_json_object.json == 1
+
+
+def test_request_body_post_json_data_types_big_int():
+    record_test('request-bodies-post-json-data-types-bigint')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_big_int(
+        1)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_big_int_200_application_json_object.json == 1
+    assert res.request_body_post_json_data_types_big_int_200_application_json_object.data == '1'
+
+
+def test_request_body_post_json_data_types_big_int_str():
+    record_test('request-bodies-post-json-data-types-bigint-str')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_big_int_str(
+        1)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_big_int_str_200_application_json_object.json == 1
+    assert res.request_body_post_json_data_types_big_int_str_200_application_json_object.data == '"1"'
+
+
+def test_request_body_post_json_data_types_number():
+    record_test('request-bodies-post-json-data-types-number')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_number(
+        1.1)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_number_200_application_json_object.json == 1.1
+
+
+def test_request_body_post_json_data_types_float32():
+    record_test('request-bodies-post-json-data-types-float32')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_float32(
+        1.1)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_float32_200_application_json_object.json == 1.1
+
+
+def test_request_body_post_json_data_types_decimal():
+    record_test('request-bodies-post-json-data-types-decimal')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_decimal(
+        Decimal('1.1'))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_decimal_200_application_json_object.json == Decimal(
+        '1.1')
+
+
+def test_request_body_post_json_data_types_decimal_str():
+    record_test('request-bodies-post-json-data-types-decimal-str')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_decimal_str(
+        Decimal('1.1'))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_decimal_str_200_application_json_object.json == Decimal(
+        '1.1')
+    assert res.request_body_post_json_data_types_decimal_str_200_application_json_object.data == '"1.1"'
+
+
+def test_request_body_post_json_data_types_boolean():
+    record_test('request-bodies-post-json-data-types-boolean')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_boolean(True)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_boolean_200_application_json_object.json == True
+
+
+def test_request_body_post_json_data_types_date():
+    record_test('request-bodies-post-json-data-types-date')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_date(
+        date(2020, 1, 1))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_date_200_application_json_object.json == date(
+        2020, 1, 1)
+
+
+def test_request_body_post_json_data_types_date_time():
+    record_test('request-bodies-post-json-data-types-date-time')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_json_data_types_date_time(
+        datetime(2020, 1, 1, 0, 0, 0, 0, tzutc()))
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_date_time_200_application_json_object.json == datetime(
+        2020, 1, 1, 0, 0, 0, 0, tzutc())
+
+
+def test_request_body_post_json_data_types_map_date_time():
+    record_test('request-bodies-post-json-data-types-map-date-time')
+
+    s = SDK()
+    assert s is not None
+
+    req = {'test': datetime(2020, 1, 1, 0, 0, 0, 1, tzutc())}
+
+    res = s.request_bodies.request_body_post_json_data_types_map_date_time(req)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_map_date_time_200_application_json_object.json == req
+    assert res.request_body_post_json_data_types_map_date_time_200_application_json_object.data == '{"test": "2020-01-01T00:00:00.000001Z"}'
+
+
+def test_request_body_post_json_data_types_map_big_int_str():
+    record_test('request-bodies-post-json-data-types-map-bigint-str')
+
+    s = SDK()
+    assert s is not None
+
+    req = {'test': 1}
+
+    res = s.request_bodies.request_body_post_json_data_types_map_big_int_str(
+        req)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_map_big_int_str_200_application_json_object.json == req
+    assert res.request_body_post_json_data_types_map_big_int_str_200_application_json_object.data == '{"test": "1"}'
+
+
+def test_request_body_post_json_data_types_map_decimal():
+    record_test('request-bodies-post-json-data-types-map-decimal')
+
+    s = SDK()
+    assert s is not None
+
+    req = {'test': Decimal('1.1')}
+
+    res = s.request_bodies.request_body_post_json_data_types_map_decimal(
+        req)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_map_decimal_200_application_json_object.json == req
+    assert res.request_body_post_json_data_types_map_decimal_200_application_json_object.data == '{"test": 1.1}'
+
+
+def test_request_body_post_json_data_types_array_date():
+    record_test('request-bodies-post-json-data-types-array-date')
+
+    s = SDK()
+    assert s is not None
+
+    req = [date(2020, 1, 1)]
+
+    res = s.request_bodies.request_body_post_json_data_types_array_date(req)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_array_date_200_application_json_object.json == req
+    assert res.request_body_post_json_data_types_array_date_200_application_json_object.data == '["2020-01-01"]'
+
+
+def test_request_body_post_json_data_types_array_big_int():
+    record_test('request-bodies-post-json-data-types-array-bigint')
+
+    s = SDK()
+    assert s is not None
+
+    req = [1]
+
+    res = s.request_bodies.request_body_post_json_data_types_array_big_int(
+        req)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_array_big_int_200_application_json_object.json == req
+    assert res.request_body_post_json_data_types_array_big_int_200_application_json_object.data == '[1]'
+
+
+def test_request_body_post_json_data_types_array_decimal_str():
+    record_test('request-bodies-post-json-data-types-array-decimal-str')
+
+    s = SDK()
+    assert s is not None
+
+    req = [Decimal('3.141592653589793438462643383279')]
+
+    res = s.request_bodies.request_body_post_json_data_types_array_decimal_str(
+        req)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_json_data_types_array_decimal_str_200_application_json_object.json == req
+    assert res.request_body_post_json_data_types_array_decimal_str_200_application_json_object.data == '["3.141592653589793438462643383279"]'
+
+
+def test_request_body_post_nullable_required_string_body():
+    record_test('request-bodies-post-nullable-required-string-body')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_nullable_required_string_body(
+        None)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_nullable_required_string_body_200_application_json_object.data == 'null'
+
+
+def test_request_body_post_nullable_not_required_string_body():
+    record_test('request-bodies-post-nullable-not-required-string-body')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_nullable_not_required_string_body(
+        None)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_nullable_not_required_string_body_200_application_json_object.data == 'null'
+
+
+def test_request_body_post_not_nullable_not_required_string_body():
+    record_test('request-bodies-post-not-nullable-not-required-string-body')
+
+    s = SDK()
+    assert s is not None
+
+    res = s.request_bodies.request_body_post_not_nullable_not_required_string_body(
+        None)
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.request_body_post_not_nullable_not_required_string_body_200_application_json_object.data == ''

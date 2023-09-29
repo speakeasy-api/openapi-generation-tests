@@ -17,7 +17,7 @@ class First:
         url = base_url + '/group/first'
         headers = {}
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         

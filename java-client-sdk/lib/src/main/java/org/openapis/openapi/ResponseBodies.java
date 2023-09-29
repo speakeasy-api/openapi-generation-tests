@@ -55,7 +55,7 @@ public class ResponseBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -93,7 +93,7 @@ public class ResponseBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -131,7 +131,7 @@ public class ResponseBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -164,7 +164,7 @@ public class ResponseBodies {
         req.setURL(url);
 
         req.addHeader("Accept", "application/octet-stream");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -198,7 +198,7 @@ public class ResponseBodies {
         req.setURL(url);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.ResponseBodyEmptyWithHeadersRequest.class, request, this.sdkConfiguration.globals);
         if (queryParams != null) {
             for (NameValuePair queryParam : queryParams) {
@@ -241,7 +241,7 @@ public class ResponseBodies {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json;q=1, text/plain;q=0");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -287,7 +287,7 @@ public class ResponseBodies {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -320,7 +320,7 @@ public class ResponseBodies {
         req.setURL(url);
 
         req.addHeader("Accept", "text/html");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -352,7 +352,7 @@ public class ResponseBodies {
         req.setURL(url);
 
         req.addHeader("Accept", "application/xml");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -389,7 +389,7 @@ public class ResponseBodies {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         

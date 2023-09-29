@@ -31,7 +31,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->documentation->getDocumentationPerLanguage('voluptatibus');
+    $response = $sdk->documentation->getDocumentationPerLanguage('hack');
 
     if ($response->statusCode === 200) {
         // handle response

@@ -24,13 +24,13 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/additionalPropertiesComplexNumbers'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.map_encoder(False, utils.bigintencoder(False)))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -56,13 +56,13 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/additionalPropertiesDate'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.map_encoder(False, utils.dateisoformat(False)))
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -88,13 +88,13 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/additionalProperties'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -121,7 +121,7 @@ class ResponseBodies:
         url = base_url + '/bytes/100'
         headers = {}
         headers['Accept'] = 'application/octet-stream'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -132,7 +132,7 @@ class ResponseBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/octet-stream'):
-                res.bytes = http_res.content
+                res.bytes = http_res
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
         elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
@@ -153,7 +153,7 @@ class ResponseBodies:
         headers = {}
         query_params = utils.get_query_params(operations.ResponseBodyEmptyWithHeadersRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -183,7 +183,7 @@ class ResponseBodies:
             headers['Accept'] = accept_header_override.value
         else:
             headers['Accept'] = 'application/json;q=1, text/plain;q=0'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -215,7 +215,7 @@ class ResponseBodies:
         url = base_url + '/readonlyorwriteonly#readOnly'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -242,7 +242,7 @@ class ResponseBodies:
         url = base_url + '/html'
         headers = {}
         headers['Accept'] = 'text/html'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -268,7 +268,7 @@ class ResponseBodies:
         url = base_url + '/xml'
         headers = {}
         headers['Accept'] = 'application/xml'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -293,13 +293,13 @@ class ResponseBodies:
         
         url = base_url + '/anything/responseBodies/zeroValueComplexTypePtrs'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         

@@ -33,7 +33,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    globalPathParam := 684935
+    globalPathParam := 719830
 
     ctx := context.Background()
     res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
@@ -83,7 +83,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    globalQueryParam := "ratione"
+    globalQueryParam := "Tricycle"
 
     ctx := context.Background()
     res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)

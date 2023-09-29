@@ -80,7 +80,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusGetErrorResponse res = sdk.errors.statusGetError(503934L);
+            StatusGetErrorResponse res = sdk.errors.statusGetError(458364L);
 
             if (res.statusCode == 200) {
                 // handle response
@@ -127,7 +127,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            StatusGetXSpeakeasyErrorsResponse res = sdk.errors.statusGetXSpeakeasyErrors(449292L);
+            StatusGetXSpeakeasyErrorsResponse res = sdk.errors.statusGetXSpeakeasyErrors(385913L);
 
             if (res.statusCode == 200) {
                 // handle response

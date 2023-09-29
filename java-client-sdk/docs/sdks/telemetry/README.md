@@ -33,7 +33,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry.telemetrySpeakeasyUserAgentGet("architecto");
+            TelemetrySpeakeasyUserAgentGetResponse res = sdk.telemetry.telemetrySpeakeasyUserAgentGet("Bentley");
 
             if (res.res != null) {
                 // handle response

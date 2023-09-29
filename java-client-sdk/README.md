@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.33.4'
+implementation 'org.openapis.openapi:openapi:1.34.0'
 ```
 <!-- End SDK Installation -->
 
@@ -73,97 +73,97 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(854614L, "ab", false, LocalDate.parse("2021-08-23"), OffsetDateTime.parse("2022-07-19T09:36:55.923Z"), 6770.82d, "deleniti", 6070.45d, UsageExamplePostEnumParameter.VALUE3, 0d, 7146.97f, 9903.39d, 469497L, 216897, "example 2") {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "Gasoline Sleek", false, LocalDate.parse("2021-04-23"), OffsetDateTime.parse("2022-09-13T20:44:04.193Z"), 1952.32d, "Shoes Brockton", 1062.86d, UsageExamplePostEnumParameter.VALUE1, 0d, 2346.82f, 5954.85d, 215216L, 834441, "example 2") {{
                 requestBody = new UsageExamplePostRequestBody() {{
                     fakerFormattedStrings = new FakerFormattedStrings() {{
-                        addressFormat = "9210 Nils Trafficway";
-                        directoryFormat = "ad";
-                        domainFormat = "saepe";
-                        emailFormat = "Luna83@yahoo.com";
-                        filenameFormat = "totam";
-                        filepathFormat = "similique";
-                        imageFormat = "alias";
-                        ipv4Format = "223.79.70.108";
-                        ipv6Format = "ce2a:f7a7:3cf3:be45:3f87:0b32:6b5a:7342";
-                        jsonFormat = "{"foo":"lqf+_Q:-1c","bar":"ELUo24.0N,","bike":72208,"a":"#hff)u5(fT","b":"W%z4<;7_*&","name":55564,"prop":"!_nj|;bW1&"}";
-                        macFormat = "laudantium";
-                        passwordFormat = "odio";
-                        phoneFormat = "(978) 632-9428 x9497";
-                        timezoneFormat = "quod";
-                        unknownFormat = "odio";
-                        urlFormat = "similique";
-                        uuidFormat = "bd74dd39-c0f5-4d2c-bf7c-70a45626d436";
-                        zipcodeFormat = "12904-8593";
+                        addressFormat = "279 Cassandra Club";
+                        directoryFormat = "/var/mail";
+                        domainFormat = "dizzy-geology.net";
+                        emailFormat = "Pierre49@yahoo.com";
+                        filenameFormat = "deposit_male_dram.mpg4";
+                        filepathFormat = "/srv/deeply_gloves_program.st";
+                        imageFormat = "https://loremflickr.com/640/480";
+                        ipv4Format = "101.207.63.27";
+                        ipv6Format = "64a2:58be:7e13:5866:7dac:95a0:1523:5912";
+                        jsonFormat = "{rate: 57509, underwire: null, cent: \"male Iodine\"}";
+                        macFormat = "02:f2:2d:15:6d:c5";
+                        passwordFormat = "9nF4NLa49gS71tG";
+                        phoneFormat = "1-891-918-2466";
+                        timezoneFormat = "Asia/Jakarta";
+                        unknownFormat = "Northeast Uzbekistan HDD";
+                        urlFormat = "http://sane-network.net";
+                        uuidFormat = "364b6b4a-48ad-4bb3-b96c-2e388ca7107f";
+                        zipcodeFormat = "87997-8268";
                     }};;
                     fakerStrings = new FakerStrings() {{
-                        city = "San Leandro";
-                        iban = "saepe";
-                        id = "6c556146-c3e2-450f-b008-c42e141aac36";
-                        iPv4 = "107.192.142.212";
-                        iPv6 = "d6b1:4429:0747:4778:a7bd:466d:28c1:0ab3";
-                        account = "quo";
-                        address = "762 Garfield Center";
-                        amount = "cupiditate";
-                        avatar = "consequatur";
-                        color = "tempora";
-                        comment = "debitis";
-                        company = "Collier - Donnelly";
-                        country = "Sao Tome and Principe";
-                        countryCode = "KE";
-                        currency = "recusandae";
-                        datatype = "aperiam";
-                        default_ = "distinctio";
-                        description = "quod";
-                        directory = "dignissimos";
-                        domainName = "inventore";
-                        emailAddr = "nihil";
-                        extension = "totam";
-                        filename = "accusamus";
-                        filepath = "aliquam";
-                        filetype = "odio";
-                        firstName = "Kobe";
-                        fullName = "commodi";
-                        gender = "male";
-                        job = "dolores";
-                        json = "{"foo":"M$iITP/R.`","bar":":S,?E.y/2-","bike":"VS)Kus(Kkd","a":"F)uHaMbV?c","b":"#\\e7h/!k=z","name":45813,"prop":"WypTK*yZVq"}";
-                        key = "possimus";
-                        lastName = "Crona";
-                        latitude = "eveniet";
-                        locale = "asperiores";
-                        longitude = "facere";
-                        mac = "veritatis";
-                        manufacturer = "consequuntur";
-                        material = "quasi";
-                        middleName = "similique";
-                        model = "culpa";
-                        password = "aliquid";
-                        phone = "294.527.8703 x91343";
-                        pin = "nisi";
-                        postalCode = "51845";
-                        price = "itaque";
-                        product = "dolorum";
-                        sex = "female";
-                        street = "9080 Anabel Glen";
-                        timezone = "veritatis";
-                        unit = "consectetur";
-                        url = "adipisci";
-                        username = "Leta52";
-                        uuid = "086a1840-394c-4260-b1f9-3f5f0642dac7";
+                        city = "Carolinafort";
+                        iban = "CY35007005052574022Q9F55000Q";
+                        id = "<ID>";
+                        iPv4 = "128.213.29.233";
+                        iPv6 = "aa92:fb62:d7b0:075d:a754:8270:74e6:53f1";
+                        account = "10128020";
+                        address = "97181 Metz Trafficway";
+                        amount = "896.58";
+                        avatar = "https://loremflickr.com/640/480";
+                        color = "grey";
+                        comment = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit";
+                        company = "Gottlieb Inc";
+                        country = "Nicaragua";
+                        countryCode = "BO";
+                        currency = "Seychelles Rupee";
+                        datatype = "point";
+                        default_ = "as Rock";
+                        description = "Extended encompassing framework";
+                        directory = "/Users";
+                        domainName = "lumpy-sand.name";
+                        emailAddr = "Jayde_Stracke94@gmail.com";
+                        extension = "m1v";
+                        filename = "oof_plastic.gif";
+                        filepath = "/srv/yum.mrcx";
+                        filetype = "audio";
+                        firstName = "Lula";
+                        fullName = "Bonnie Nitzsche";
+                        gender = "Transmasculine";
+                        job = "Legacy Markets Orchestrator";
+                        json = "{housing: 65187, wine: null, planter: \"Lafayette array\"}";
+                        key = "<key>";
+                        lastName = "Leannon";
+                        latitude = "-38.3898";
+                        locale = "ko";
+                        longitude = "179.7448";
+                        mac = "99:b2:4a:a3:1c:16";
+                        manufacturer = "Nissan";
+                        material = "Rubber";
+                        middleName = "Austin";
+                        model = "Model Y";
+                        password = "qIlrvZKw0C22gKb";
+                        phone = "1-646-984-1595 x907";
+                        pin = "4985";
+                        postalCode = "51983";
+                        price = "356.00";
+                        product = "Handcrafted Plastic Cheese";
+                        sex = "male";
+                        street = "Humberto Court";
+                        timezone = "Europe/Ljubljana";
+                        unit = "gray";
+                        url = "http://striped-cutlet.net";
+                        username = "Jeanette82";
+                        uuid = "004523e8-6559-4551-a938-6a9f8f4b14b9";
                     }};;
-                    simpleObject = new SimpleObject("officia", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        bigint = 65304L;
-                        bigintStr = "quaerat";
+                    simpleObject = new SimpleObject("Pickup", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+                        bigint = 513927L;
+                        bigintStr = "CLI South";
                         boolOpt = true;
-                        decimal = 7832.35d;
+                        decimal = 2056.71d;
                         intOptNull = 999999L;
                         numOptNull = 1.1d;
                         strOpt = "optional example";
                     }};;
                 }};;
-                bigintParameterOptional = 801836L;
-                bigintStrParameterOptional = "labore";
-                decimalParameterOptional = 704.47d;
-                decimalStrParameterOptional = "adipisci";
+                bigintParameterOptional = 972672L;
+                bigintStrParameterOptional = "sensor Trans Luxurious";
+                decimalParameterOptional = 651.74d;
+                decimalStrParameterOptional = "Thorium Planner Southwest";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 

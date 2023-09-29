@@ -7,5 +7,5 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `data`             | *str*              | :heavy_check_mark: | N/A                |
-| `json`             | *int*              | :heavy_check_mark: | N/A                |
+| `data`             | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `json`             | *Optional[int]*    | :heavy_check_mark: | N/A                |

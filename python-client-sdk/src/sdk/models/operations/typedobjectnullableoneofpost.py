@@ -15,7 +15,7 @@ from typing import Optional, Union
 @dataclasses.dataclass
 class TypedObjectNullableOneOfPostRes:
     r"""OK"""
-    json: Union[shared_typedobject1.TypedObject1, shared_typedobject2.TypedObject2] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: Optional[Union[shared_typedobject1.TypedObject1, shared_typedobject2.TypedObject2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 

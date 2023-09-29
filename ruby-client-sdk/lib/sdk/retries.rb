@@ -32,7 +32,7 @@ module OpenApiSDK
       headers = {}
       query_params = Utils.get_query_params(Operations::RetriesGetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers

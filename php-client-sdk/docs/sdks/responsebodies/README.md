@@ -36,7 +36,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'modi' => 'corporis',
+        'nihil' => 'stitch',
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesComplexNumbersPost($request);
@@ -79,7 +79,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'magnam' => DateTime::createFromFormat('Y-m-d', '2020-01-25'),
+        'ab' => DateTime::createFromFormat('Y-m-d', '2021-08-06'),
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesDatePost($request);
@@ -122,7 +122,7 @@ $sdk = SDK::builder()
 
 try {
     $request = [
-        'tempore' => 'aperiam',
+        'exercitationem' => 'Bronze',
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesPost($request);
@@ -200,7 +200,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(7275.47, 'ratione');
+    $response = $sdk->responseBodies->responseBodyEmptyWithHeaders(1751.8, 'Tigard');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -386,11 +386,11 @@ $sdk = SDK::builder()
 
 try {
     $request = new ObjWithZeroValueComplexTypePtrs();
-    $request->bigint = 289913;
-    $request->bigintStr = 'totam';
+    $request->bigint = 438531;
+    $request->bigintStr = 'concrete input';
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00Z');
-    $request->decimal = 5777.09;
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
+    $request->decimal = 6267.89;
 
     $response = $sdk->responseBodies->responseBodyZeroValueComplexTypePtrsPost($request);
 

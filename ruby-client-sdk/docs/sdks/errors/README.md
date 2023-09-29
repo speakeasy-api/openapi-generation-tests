@@ -55,7 +55,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::StatusGetErrorRequest.new(
   path_params=Operations::StatusGetErrorRequest.new(
-    status_code=733289,
+    status_code=458364,
   ),
 )
     
@@ -92,7 +92,7 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::StatusGetXSpeakeasyErrorsRequest.new(
   path_params=Operations::StatusGetXSpeakeasyErrorsRequest.new(
-    status_code=575078,
+    status_code=385913,
   ),
 )
     

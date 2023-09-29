@@ -27,8 +27,8 @@ s = sdk.SDK(
 
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
-        content='earum'.encode(),
-        file='veniam',
+        content='`\'$Z`(L/RH'.encode(),
+        file='Rap National',
     ),
 )
 
@@ -69,28 +69,28 @@ s = sdk.SDK(
 
 req = shared.ExampleResource(
     array_of_number=[
-        6592.68,
+        1867.47,
     ],
     array_of_string=[
-        'dolores',
+        'Sodium',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='nam',
+            description='Cross-group didactic system engine',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-11-01T23:04:52.664Z'),
-    enum_number=shared.ExampleResourceEnumNumber.THREE,
-    enum_str=shared.ExampleResourceEnumStr.THREE,
-    id='07f116db-9954-45fc-95fa-88970e189dbb',
+    created_at=dateutil.parser.isoparse('2022-04-19T19:55:28.761Z'),
+    enum_number=shared.ExampleResourceEnumNumber.ONE,
+    enum_str=shared.ExampleResourceEnumStr.ONE,
+    id='<ID>',
     map_of_integer={
-        "velit": 38557,
+        "reiciendis": 154578,
     },
     map_of_string={
-        "delectus": 'impedit',
+        "quasi": 'utilize',
     },
-    name='Dale Ferry',
-    updated_at=dateutil.parser.isoparse('2022-08-29T23:44:02.065Z'),
+    name='online',
+    updated_at=dateutil.parser.isoparse('2021-12-27T00:23:19.559Z'),
     vehicle=[],
 )
 
@@ -129,7 +129,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='veniam')
+res = s.resource.delete_resource(resource_id='Reggae')
 
 if res.status_code == 200:
     # handle response
@@ -164,7 +164,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='libero')
+res = s.resource.get_resource(resource_id='Home')
 
 if res.example_resource is not None:
     # handle response
@@ -199,7 +199,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='architecto')
+res = s.resource.update_resource(resource_id='International')
 
 if res.status_code == 200:
     # handle response

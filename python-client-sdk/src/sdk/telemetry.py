@@ -23,7 +23,7 @@ class Telemetry:
         url = base_url + '/anything/telemetry/speakeasy-user-agent'
         headers = utils.get_headers(request)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -50,7 +50,7 @@ class Telemetry:
         url = base_url + '/anything/telemetry/user-agent'
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         

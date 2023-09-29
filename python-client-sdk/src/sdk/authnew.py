@@ -21,13 +21,13 @@ class AuthNew:
         
         url = base_url + '/auth#apiKeyAuthGlobal'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -52,13 +52,13 @@ class AuthNew:
         
         url = base_url + '/auth#authGlobal'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -83,13 +83,13 @@ class AuthNew:
         
         url = base_url + '/auth#basicAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -114,13 +114,13 @@ class AuthNew:
         
         url = base_url + '/auth#multipleMixedOptionsAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -145,13 +145,13 @@ class AuthNew:
         
         url = base_url + '/auth#multipleMixedSchemeAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -176,13 +176,13 @@ class AuthNew:
         
         url = base_url + '/auth#multipleOptionsWithMixedSchemesAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -207,13 +207,13 @@ class AuthNew:
         
         url = base_url + '/auth#multipleOptionsWithSimpleSchemesAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -238,13 +238,13 @@ class AuthNew:
         
         url = base_url + '/auth#multipleSimpleOptionsAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -269,13 +269,13 @@ class AuthNew:
         
         url = base_url + '/auth#multipleSimpleSchemeAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -300,13 +300,13 @@ class AuthNew:
         
         url = base_url + '/auth#oauth2Auth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         
@@ -331,13 +331,13 @@ class AuthNew:
         
         url = base_url + '/auth#openIdConnectAuth'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = utils.configure_security_client(self.sdk_configuration.client, security)
         

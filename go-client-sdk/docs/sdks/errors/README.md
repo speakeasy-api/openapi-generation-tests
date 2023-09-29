@@ -82,7 +82,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    statusCode := 380729
+    statusCode := 458364
 
     ctx := context.Background()
     res, err := s.Errors.StatusGetError(ctx, statusCode)
@@ -132,7 +132,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    statusCode := 246063
+    statusCode := 385913
 
     ctx := context.Background()
     res, err := s.Errors.StatusGetXSpeakeasyErrors(ctx, statusCode)

@@ -14,7 +14,7 @@ from typing import Optional
 @dataclasses.dataclass
 class ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON:
     r"""OK"""
-    json: dict[str, date] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: dict[str, date] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.map_encoder(False, utils.dateisoformat(False)), 'decoder': utils.map_decoder(utils.datefromisoformat) }})
     
 
 

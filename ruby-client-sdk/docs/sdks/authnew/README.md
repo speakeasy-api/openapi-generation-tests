@@ -33,13 +33,13 @@ s = OpenApiSDK::SDK.new
 req = Shared::AuthServiceRequestBody.new(
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="a",
-      username="Jackson_Herman",
+      password="owsGgP4_AhRPMSJ",
+      username="Devonte_Bins",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="animi",
-        header_name="impedit",
+        expected_value="Highway",
+        header_name="deliver payment",
       ),
     ],
   ),
@@ -80,13 +80,13 @@ s = OpenApiSDK::SDK.new
 req = Shared::AuthServiceRequestBody.new(
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="ipsam",
-      username="Florence.Ortiz",
+      password="xvJcf9GiJNr7T2x",
+      username="Cory33",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="labore",
-        header_name="veritatis",
+        expected_value="idolized",
+        header_name="female Virginia primary",
       ),
     ],
   ),
@@ -131,13 +131,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="vero",
-      username="Daron21",
+      password="Z2OStPksFyrcGeu",
+      username="Ashton.Steuber27",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="ad",
-        header_name="qui",
+        expected_value="integrate",
+        header_name="bandwidth uselessly",
       ),
     ],
   ),
@@ -182,13 +182,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="iste",
-      username="Gudrun_Hilll52",
+      password="Iq1JSzG1wqLDz4v",
+      username="Ismael.Emmerich",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="dolorum",
-        header_name="odio",
+        expected_value="thong Scandium worse",
+        header_name="Durham Tesla",
       ),
     ],
   ),
@@ -237,13 +237,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="fugit",
-      username="Aaron.Cummings",
+      password="OcWVV5608IiaWJQ",
+      username="Kameron42",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="quae",
-        header_name="modi",
+        expected_value="services indigo",
+        header_name="Wooden Jewelery",
       ),
     ],
   ),
@@ -291,13 +291,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="neque",
-      username="Fatima21",
+      password="fpwNE90MyqKIrXk",
+      username="Caroline_Walsh",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="unde",
-        header_name="nulla",
+        expected_value="Gourde",
+        header_name="Van Granite East",
       ),
     ],
   ),
@@ -345,13 +345,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="distinctio",
-      username="Providenci34",
+      password="pibxDTiJSijK04Y",
+      username="Selena76",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="omnis",
-        header_name="libero",
+        expected_value="compressing",
+        header_name="sievert Diesel",
       ),
     ],
   ),
@@ -396,13 +396,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="dicta",
-      username="Malachi_Rempel55",
+      password="pzdKQgSGZSrUGNs",
+      username="Eryn51",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="placeat",
-        header_name="sit",
+        expected_value="payment Usability sievert",
+        header_name="yum Northwest metrics",
       ),
     ],
   ),
@@ -448,13 +448,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="iusto",
-      username="Anastacio4",
+      password="UrAsw466AAaYtr1",
+      username="Kenya.Baumbach",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="totam",
-        header_name="dolore",
+        expected_value="microchip Southeast",
+        header_name="Future Corners Electronic",
       ),
     ],
   ),
@@ -499,13 +499,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="eligendi",
-      username="Michale.Bartoletti",
+      password="V02sHy2onRTMRgS",
+      username="Polly.Aufderhar78",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="dolores",
-        header_name="assumenda",
+        expected_value="Sunrise",
+        header_name="male",
       ),
     ],
   ),
@@ -550,13 +550,13 @@ req = Shared::AuthServiceRequestBody.new(
   ),
   request=Shared::AuthServiceRequestBody.new(
     basic_auth=Shared::AuthServiceRequestBodyBasicAuth.new(
-      password="beatae",
-      username="Marcella.Schumm",
+      password="1_B3hNdr8HC3AeS",
+      username="Floy_Heller",
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="provident",
-        header_name="accusamus",
+        expected_value="bypassing furthermore",
+        header_name="bypass brilliant tesla",
       ),
     ],
   ),

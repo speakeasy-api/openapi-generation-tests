@@ -31,7 +31,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "voluptate": "eius",
+    "nihil": "stitch",
   },
 )
     
@@ -68,7 +68,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "expedita": Date.parse("2022-01-31"),
+    "ab": Date.parse("2021-08-06"),
   },
 )
     
@@ -105,7 +105,7 @@ s = OpenApiSDK::SDK.new
    
 req = ::.new(
   request=.new{
-    "possimus": "fugit",
+    "exercitationem": "Bronze",
   },
 )
     
@@ -167,8 +167,8 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ResponseBodyEmptyWithHeadersRequest.new(
   query_params=Operations::ResponseBodyEmptyWithHeadersRequest.new(
-    x_number_header=279.46,
-    x_string_header="repudiandae",
+    x_number_header=1751.8,
+    x_string_header="tensely",
   ),
 )
     
@@ -318,11 +318,11 @@ s = OpenApiSDK::SDK.new
    
 req = Shared::ObjWithZeroValueComplexTypePtrs.new(
   request=Shared::ObjWithZeroValueComplexTypePtrs.new(
-    bigint=360635,
-    bigint_str="ea",
+    bigint=438531,
+    bigint_str="concrete input",
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=1799.06,
+    decimal=6267.89,
   ),
 )
     

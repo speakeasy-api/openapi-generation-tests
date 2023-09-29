@@ -30,7 +30,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalPathParameterGet(52508);
+    $response = $sdk->globals->globalPathParameterGet(719830);
 
     if ($response->res !== null) {
         // handle response
@@ -72,7 +72,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->globals->globalsQueryParameterGet('earum');
+    $response = $sdk->globals->globalsQueryParameterGet('Tricycle');
 
     if ($response->res !== null) {
         // handle response

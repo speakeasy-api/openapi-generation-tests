@@ -45,11 +45,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("velit", "culpa");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("Southwest", "which");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("totam", "fugiat") {{
-                        expectedValue = "est";
-                        headerName = "recusandae";
+                    add(new AuthServiceRequestBodyHeaderAuth("indexing", "protocol") {{
+                        expectedValue = "hertz overriding";
+                        headerName = "deliverables card";
                     }}),
                 }};
             }};            
@@ -105,11 +105,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("vel", "ducimus");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("inasmuch", "meanwhile");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("labore", "possimus") {{
-                        expectedValue = "quos";
-                        headerName = "vel";
+                    add(new AuthServiceRequestBodyHeaderAuth("Bespoke", "Automotive") {{
+                        expectedValue = "Lithium Frozen HDD";
+                        headerName = "Internal";
                     }}),
                 }};
             }};            
@@ -163,11 +163,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("facilis", "cum");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("Androgynous", "utilize");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("corporis", "reiciendis") {{
-                        expectedValue = "commodi";
-                        headerName = "in";
+                    add(new AuthServiceRequestBodyHeaderAuth("humiliating", "phooey") {{
+                        expectedValue = "Northwest";
+                        headerName = "loose orange";
                     }}),
                 }};
             }};            
@@ -226,11 +226,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("assumenda", "nemo");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("Berkshire", "Crew");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("aperiam", "cum") {{
-                        expectedValue = "recusandae";
-                        headerName = "aliquid";
+                    add(new AuthServiceRequestBodyHeaderAuth("within", "Frieda") {{
+                        expectedValue = "Sol Southwest Markets";
+                        headerName = "Tuna";
                     }}),
                 }};
             }};            
@@ -288,11 +288,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("consectetur", "in");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("wireless", "molestias");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("facere", "numquam") {{
-                        expectedValue = "exercitationem";
-                        headerName = "earum";
+                    add(new AuthServiceRequestBodyHeaderAuth("Bicycle", "Rand") {{
+                        expectedValue = "Bike woman";
+                        headerName = "Michigan";
                     }}),
                 }};
             }};            
@@ -356,11 +356,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("doloribus", "suscipit");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("Fluorine", "Spain");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("saepe", "necessitatibus") {{
-                        expectedValue = "reiciendis";
-                        headerName = "quidem";
+                    add(new AuthServiceRequestBodyHeaderAuth("gee", "Associate") {{
+                        expectedValue = "Bronze VGA Wagon";
+                        headerName = "Man Stage";
                     }}),
                 }};
             }};            
@@ -422,11 +422,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("dolore", "sunt");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("besides", "Dakota");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("non", "amet") {{
-                        expectedValue = "asperiores";
-                        headerName = "adipisci";
+                    add(new AuthServiceRequestBodyHeaderAuth("Cisgender", "Blues") {{
+                        expectedValue = "innovative Agent background";
+                        headerName = "matrix Tandem";
                     }}),
                 }};
             }};            
@@ -486,11 +486,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("beatae", "dignissimos");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("Wagon", "Handcrafted");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("consectetur", "corporis") {{
-                        expectedValue = "a";
-                        headerName = "debitis";
+                    add(new AuthServiceRequestBodyHeaderAuth("payment", "Usability") {{
+                        expectedValue = "interface woman index";
+                        headerName = "giving quantifying";
                     }}),
                 }};
             }};            
@@ -547,11 +547,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("harum", "laboriosam");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("extensible", "astrologer");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("libero", "vitae") {{
-                        expectedValue = "ipsa";
-                        headerName = "voluptates";
+                    add(new AuthServiceRequestBodyHeaderAuth("Convertible", "aperiam") {{
+                        expectedValue = "Borders Synergized";
+                        headerName = "Bike Fantastic Blues";
                     }}),
                 }};
             }};            
@@ -609,11 +609,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("accusamus", "similique");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("mesh", "Plaza");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("voluptas", "voluptas") {{
-                        expectedValue = "tempora";
-                        headerName = "aspernatur";
+                    add(new AuthServiceRequestBodyHeaderAuth("Gasoline", "connect") {{
+                        expectedValue = "Home";
+                        headerName = "Afghanistan reinvent Mazda";
                     }}),
                 }};
             }};            
@@ -670,11 +670,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody() {{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("voluptas", "minima");;
+                basicAuth = new AuthServiceRequestBodyBasicAuth("lavender", "National");;
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("adipisci", "minus") {{
-                        expectedValue = "nobis";
-                        headerName = "dolorum";
+                    add(new AuthServiceRequestBodyHeaderAuth("Frozen", "Kansas") {{
+                        expectedValue = "coulomb";
+                        headerName = "male";
                     }}),
                 }};
             }};            

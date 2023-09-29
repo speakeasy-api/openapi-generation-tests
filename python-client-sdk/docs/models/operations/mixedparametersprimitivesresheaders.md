@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `headerparam`      | *str*              | :heavy_check_mark: | N/A                |
+| `headerparam`      | *Optional[str]*    | :heavy_check_mark: | N/A                |

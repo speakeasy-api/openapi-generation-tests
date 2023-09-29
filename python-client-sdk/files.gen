@@ -797,7 +797,6 @@ docs/models/shared/defaultsandconstsconstenumint.md
 docs/models/shared/defaultsandconstsconstenumstr.md
 docs/models/shared/defaultsandconstsdefaultenumint.md
 docs/models/shared/defaultsandconstsdefaultenumstr.md
-docs/models/shared/defaultsandconstssingleenumconststr.md
 docs/models/shared/defaultsandconsts.md
 docs/models/shared/readwriteobjectinput.md
 docs/models/shared/readwriteobjectoutput.md
@@ -817,16 +816,12 @@ docs/models/shared/exampleresourceenumnumber.md
 docs/models/shared/exampleresourceenumstr.md
 docs/models/shared/exampleresource.md
 docs/models/shared/examplevehicle.md
-docs/models/shared/exampleboattype.md
 docs/models/shared/exampleboat.md
-docs/models/shared/examplecartype.md
 docs/models/shared/examplecar.md
-docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
 docs/models/shared/objwithzerovaluecomplextypeptrs.md
 docs/models/shared/nullableoneofrefinobjectnullableoneoftwo.md
 docs/models/shared/nullableoneofrefinobject.md
-docs/models/shared/typedobject2type.md
 docs/models/shared/typedobject2.md
 docs/models/shared/nullableoneoftypeinobjectnullableoneoftwo.md
 docs/models/shared/nullableoneoftypeinobject.md
@@ -838,7 +833,6 @@ docs/models/shared/deepobjectwithtypeany.md
 docs/models/shared/deepobjectwithtype.md
 docs/models/shared/typedobjectnullableoneof.md
 docs/models/shared/typedobjectoneof.md
-docs/models/shared/typedobject3type.md
 docs/models/shared/typedobject3.md
 docs/models/shared/weaklytypedoneofobject.md
 docs/models/shared/alloftoallof.md

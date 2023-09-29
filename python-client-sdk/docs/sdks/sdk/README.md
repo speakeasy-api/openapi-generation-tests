@@ -29,7 +29,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'tenetur'
+req = 'bus'
 
 res = s.sdk.put_anything_ignored_generation(req)
 

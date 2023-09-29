@@ -36,19 +36,19 @@ $sdk = SDK::builder()
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'aperiam';
-    $simpleObject->bigint = 409054;
-    $simpleObject->bigintStr = 'quaerat';
+    $simpleObject->any = 'Minivan';
+    $simpleObject->bigint = 843322;
+    $simpleObject->bigintStr = 'South Coupe Saudi';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
-    $simpleObject->decimal = 1629.54;
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
+    $simpleObject->decimal = 7421.36;
     $simpleObject->enum = Enum::Two;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $simpleObject->intEnum = SimpleObjectIntEnum::Second;
     $simpleObject->intOptNull = 999999;
     $simpleObject->num = 1.1;
@@ -56,7 +56,7 @@ try {
     $simpleObject->str = 'example';
     $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'maxime');
+    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'Luxurious');
 
     if ($response->res !== null) {
         // handle response
@@ -102,14 +102,14 @@ $sdk = SDK::builder()
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'dignissimos';
-    $simpleObject->bigint = 640024;
-    $simpleObject->bigintStr = 'asperiores';
+    $simpleObject->any = 'ick';
+    $simpleObject->bigint = 758827;
+    $simpleObject->bigintStr = 'laboriosam';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:sP', '2020-01-01T00:00:00.000Z');
-    $simpleObject->decimal = 3681.02;
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
+    $simpleObject->decimal = 8361.57;
     $simpleObject->enum = Enum::Two;
     $simpleObject->float32 = 2.2222222;
     $simpleObject->int = 999999;
@@ -122,7 +122,7 @@ try {
     $simpleObject->str = 'example';
     $simpleObject->strOpt = 'optional example';
 
-    $response = $sdk->flattening->componentBodyAndParamNoConflict('porro', $simpleObject);
+    $response = $sdk->flattening->componentBodyAndParamNoConflict('yowza', $simpleObject);
 
     if ($response->res !== null) {
         // handle response
@@ -165,7 +165,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->flattening->conflictingParams('quod', 'labore');
+    $response = $sdk->flattening->conflictingParams('kilogram', 'Cloned');
 
     if ($response->res !== null) {
         // handle response
@@ -208,9 +208,9 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new InlineBodyAndParamConflictRequestBody();
-    $requestBody->str = 'ab';
+    $requestBody->str = 'Progressive';
 
-    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'adipisci');
+    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'until');
 
     if ($response->res !== null) {
         // handle response
@@ -253,9 +253,9 @@ $sdk = SDK::builder()
 
 try {
     $requestBody = new InlineBodyAndParamNoConflictRequestBody();
-    $requestBody->bodyStr = 'fuga';
+    $requestBody->bodyStr = 'dynamic expedite';
 
-    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'id');
+    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'Forward');
 
     if ($response->res !== null) {
         // handle response

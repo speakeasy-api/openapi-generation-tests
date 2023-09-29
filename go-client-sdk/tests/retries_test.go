@@ -72,7 +72,7 @@ func TestGlobalRetryConfigSuccess(t *testing.T) {
 			InitialInterval: 1,
 			MaxInterval:     50,
 			Exponent:        1.1,
-			MaxElapsedTime:  100,
+			MaxElapsedTime:  1000,
 		},
 		RetryConnectionErrors: false,
 	}))

@@ -23,14 +23,14 @@ class Flattening:
         
         url = base_url + '/anything/flattening/componentBodyAndParamConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "simple_object", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "simple_object", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.ComponentBodyAndParamConflictRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -61,14 +61,14 @@ class Flattening:
         
         url = base_url + '/anything/flattening/componentBodyAndParamNoConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "simple_object", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "simple_object", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.ComponentBodyAndParamNoConflictRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -101,7 +101,7 @@ class Flattening:
         headers = {}
         query_params = utils.get_query_params(operations.ConflictingParamsRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -132,14 +132,14 @@ class Flattening:
         
         url = base_url + '/anything/flattening/inlineBodyAndParamConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.InlineBodyAndParamConflictRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -170,14 +170,14 @@ class Flattening:
         
         url = base_url + '/anything/flattening/inlineBodyAndParamNoConflict'
         headers = {}
-        req_content_type, data, form = utils.serialize_request_body(request, "request_body", 'json')
+        req_content_type, data, form = utils.serialize_request_body(request, "request_body", False, False, 'json')
         if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
             headers['content-type'] = req_content_type
         if data is None and form is None:
             raise Exception('request body is required')
         query_params = utils.get_query_params(operations.InlineBodyAndParamNoConflictRequest, request, self.sdk_configuration.globals)
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         

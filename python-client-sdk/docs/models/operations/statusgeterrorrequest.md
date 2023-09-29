@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `status_code`      | *int*              | :heavy_check_mark: | N/A                |
+| `status_code`      | *Optional[int]*    | :heavy_check_mark: | N/A                |

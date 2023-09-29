@@ -5,4 +5,4 @@
 
 | Field                     | Type                      | Required                  | Description               |
 | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `duplicate_param_request` | *str*                     | :heavy_check_mark:        | N/A                       |
+| `duplicate_param_request` | *Optional[str]*           | :heavy_check_mark:        | N/A                       |

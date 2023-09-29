@@ -22,7 +22,7 @@ class Errors:
         url = base_url + '/anything/connectionError'
         headers = {}
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -49,7 +49,7 @@ class Errors:
         url = utils.generate_url(operations.StatusGetErrorRequest, base_url, '/status/{statusCode}', request, self.sdk_configuration.globals)
         headers = {}
         headers['Accept'] = '*/*'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         
@@ -79,7 +79,7 @@ class Errors:
         url = utils.generate_url(operations.StatusGetXSpeakeasyErrorsRequest, base_url, '/errors/{statusCode}', request, self.sdk_configuration.globals)
         headers = {}
         headers['Accept'] = 'application/json'
-        headers['x-speakeasy-user-agent'] = f'speakeasy-sdk/{self.sdk_configuration.language} {self.sdk_configuration.sdk_version} {self.sdk_configuration.gen_version} {self.sdk_configuration.openapi_doc_version}'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
         
         client = self.sdk_configuration.security_client
         

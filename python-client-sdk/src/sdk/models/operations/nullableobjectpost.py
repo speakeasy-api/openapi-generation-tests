@@ -14,7 +14,7 @@ from typing import Optional
 @dataclasses.dataclass
 class NullableObjectPostRes:
     r"""OK"""
-    json: shared_nullableobject.NullableObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: Optional[shared_nullableobject.NullableObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 

@@ -33,7 +33,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    userAgent := "facilis"
+    userAgent := "Bentley"
 
     ctx := context.Background()
     res, err := s.Telemetry.TelemetrySpeakeasyUserAgentGet(ctx, userAgent)

@@ -99,8 +99,8 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const passwd: string = "quae";
-const user: string = "earum";
+const passwd: string = "minus";
+const user: string = "Architect";
 const operationSecurity: BasicAuthSecurity = {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",

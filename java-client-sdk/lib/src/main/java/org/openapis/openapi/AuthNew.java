@@ -119,7 +119,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -159,7 +159,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -199,7 +199,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -239,7 +239,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -279,7 +279,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -319,7 +319,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -359,7 +359,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -399,7 +399,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -439,7 +439,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -479,7 +479,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         
@@ -519,7 +519,7 @@ public class AuthNew {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "*/*");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = org.openapis.openapi.utils.Utils.configureSecurityClient(this.sdkConfiguration.defaultClient, security);
         

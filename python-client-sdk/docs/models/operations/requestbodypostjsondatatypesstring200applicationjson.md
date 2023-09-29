@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `json`             | *str*              | :heavy_check_mark: | N/A                |
+| `json`             | *Optional[str]*    | :heavy_check_mark: | N/A                |

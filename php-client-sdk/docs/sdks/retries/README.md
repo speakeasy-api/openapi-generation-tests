@@ -29,7 +29,7 @@ $sdk = SDK::builder()
 try {
 
 
-    $response = $sdk->retries->retriesGet('voluptas', 779180);
+    $response = $sdk->retries->retriesGet('Cambridgeshire', 496130);
 
     if ($response->retries !== null) {
         // handle response

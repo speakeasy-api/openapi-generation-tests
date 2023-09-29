@@ -62,9 +62,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -159,9 +157,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -253,9 +249,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -348,9 +342,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -441,9 +433,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -540,9 +530,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -637,9 +625,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -731,9 +717,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -827,9 +811,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -926,9 +908,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1025,9 +1005,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1118,9 +1096,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1217,9 +1193,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1316,9 +1290,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1410,9 +1382,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1508,9 +1478,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1604,9 +1572,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1703,9 +1669,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1800,9 +1764,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1894,9 +1856,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -1990,9 +1950,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2089,9 +2047,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2188,9 +2144,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2287,9 +2241,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2386,9 +2338,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2479,9 +2429,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2574,9 +2522,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2671,9 +2617,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2768,9 +2712,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2874,9 +2816,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -2972,9 +2912,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3070,9 +3008,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3166,9 +3102,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3259,9 +3193,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3355,9 +3287,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3448,9 +3378,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3542,9 +3470,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3637,9 +3563,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3731,9 +3655,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3825,9 +3747,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -3919,9 +3839,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4013,9 +3931,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4107,9 +4023,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4201,9 +4115,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4295,9 +4207,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4389,9 +4299,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4483,9 +4391,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4577,9 +4483,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4671,9 +4575,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4765,9 +4667,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4859,9 +4759,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -4953,9 +4851,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5047,9 +4943,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5146,9 +5040,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5246,9 +5138,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5346,9 +5236,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5446,9 +5334,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5546,9 +5432,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5646,9 +5530,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5743,9 +5625,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5840,9 +5720,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -5933,9 +5811,7 @@ export class RequestBodies {
         };
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6026,9 +5902,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6119,9 +5993,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6211,9 +6083,7 @@ export class RequestBodies {
         };
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6305,9 +6175,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6398,9 +6266,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6497,9 +6363,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6594,9 +6458,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6691,9 +6553,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6788,9 +6648,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6885,9 +6743,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -6977,9 +6833,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7076,9 +6930,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7176,9 +7028,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7276,9 +7126,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7372,9 +7220,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7465,9 +7311,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7559,9 +7403,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7659,9 +7501,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -7755,9 +7595,7 @@ export class RequestBodies {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

@@ -15,7 +15,7 @@ from typing import Optional
 class RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON:
     r"""OK"""
     data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
-    json: list[date] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: list[date] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.list_encoder(False, utils.dateisoformat(False)), 'decoder': utils.list_decoder(utils.datefromisoformat) }})
     
 
 

@@ -36,8 +36,8 @@ s = sdk.SDK(
 )
 
 req = shared.TypedObject1(
-    type=shared.TypedObject1Type.OBJ1,
-    value='amet',
+    type='farad Rustic',
+    value='cuckold',
 )
 
 res = s.unions.flattened_typed_object_post(req)
@@ -114,13 +114,13 @@ s = sdk.SDK(
 
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
-        type=shared.TypedObject1Type.OBJ1,
-        value='exercitationem',
+        type='Global Alexandria administration',
+        value='Trenton',
     ),
     nullable_one_of_two=[],
     one_of_one=shared.TypedObject1(
-        type=shared.TypedObject1Type.OBJ1,
-        value='ab',
+        type='bypassing invoice',
+        value='West',
     ),
 )
 
@@ -235,8 +235,8 @@ s = sdk.SDK(
 )
 
 req = shared.TypedObject1(
-    type=shared.TypedObject1Type.OBJ1,
-    value='velit',
+    type='Bike',
+    value='violet brand',
 )
 
 res = s.unions.nullable_typed_object_post(req)

@@ -37,7 +37,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.SDK.PutAnythingIgnoredGeneration(ctx, "tenetur")
+    res, err := s.SDK.PutAnythingIgnoredGeneration(ctx, "bus")
     if err != nil {
         log.Fatal(err)
     }

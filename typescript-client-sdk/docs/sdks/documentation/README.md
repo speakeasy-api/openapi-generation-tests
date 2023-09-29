@@ -26,7 +26,7 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const language: string = "id";
+const language: string = "hack";
 
 sdk.documentation.getDocumentationPerLanguage(language).then((res: GetDocumentationPerLanguageResponse) => {
   if (res.statusCode == 200) {

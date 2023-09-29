@@ -4,13 +4,14 @@ from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
+from typing import Final
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class UnsupportedEnums:
-    boolean_enum: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('booleanEnum') }})
     number_enum: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numberEnum') }})
+    BOOLEAN_ENUM: Final[bool] = dataclasses.field(default=False, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('booleanEnum') }})
     
 

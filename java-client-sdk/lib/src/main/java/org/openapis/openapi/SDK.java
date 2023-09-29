@@ -385,7 +385,7 @@ public class SDK {
         req.setBody(serializedRequestBody);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         
@@ -418,7 +418,7 @@ public class SDK {
         req.setURL(url);
 
         req.addHeader("Accept", "application/json");
-        req.addHeader("x-speakeasy-user-agent", String.format("speakeasy-sdk/%s %s %s %s", this.sdkConfiguration.language, this.sdkConfiguration.sdkVersion, this.sdkConfiguration.genVersion, this.sdkConfiguration.openapiDocVersion));
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
         
         HTTPClient client = this.sdkConfiguration.securityClient;
         

@@ -330,13 +330,6 @@ func TestNullableOneOfTypeInObject(t *testing.T) {
 		wantJson string
 	}{
 		{
-			name: "Non-nullable field set only",
-			obj: shared.NullableOneOfTypeInObject{
-				OneOfOne: true,
-			},
-			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":true}",
-		},
-		{
 			name: "Nullable fields set to null",
 			obj: shared.NullableOneOfTypeInObject{
 				NullableOneOfOne: nil,
@@ -381,13 +374,6 @@ func TestNullableOneOfRefInObject(t *testing.T) {
 		obj      shared.NullableOneOfRefInObject
 		wantJson string
 	}{
-		{
-			name: "Non-nullable field set only",
-			obj: shared.NullableOneOfRefInObject{
-				OneOfOne: shared.TypedObject1{Value: "one"},
-			},
-			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}",
-		},
 		{
 			name: "Nullable fields set to null",
 			obj: shared.NullableOneOfRefInObject{

@@ -70,7 +70,8 @@ def test_response_body_bytes_get():
 
     assert res is not None
     assert res.status_code == 200
-    assert len(res.bytes) == 100
+    calculated_content = bytes().join(res.bytes.iter_content())
+    assert len(calculated_content) == 100
 
 
 def test_response_body_read_only():

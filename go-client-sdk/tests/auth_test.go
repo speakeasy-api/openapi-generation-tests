@@ -384,3 +384,56 @@ func TestMultipleOptionsWithMixedSchemesAuth_SecondOption(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 }
+
+func TestFunctionCallbacksForOAuthSupport_GlobalSecurity(t *testing.T) {
+	recordTest("auth-function-callbacks-oauth-global-security")
+
+	s := sdk.New(sdk.WithSecuritySource(func(ctx context.Context) (shared.Security, error) {
+		return shared.Security{
+			Oauth2: sdk.String("Bearer global"),
+		}, nil
+	}))
+
+	res, err := s.Auth.GlobalBearerAuth(context.Background())
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	require.NotNil(t, res.Token)
+	assert.Equal(t, "global", res.Token.Token)
+}
+
+func TestFunctionCallbacksForOAuthSupport_OperationLevelSecurityOverrides(t *testing.T) {
+	recordTest("auth-function-callbacks-oauth-global-security-with-local-override")
+
+	s := sdk.New(sdk.WithSecuritySource(func(ctx context.Context) (shared.Security, error) {
+		return shared.Security{
+			Oauth2: sdk.String("Bearer global"),
+		}, nil
+	}))
+
+	res, err := s.Auth.Oauth2Auth(context.Background(), operations.Oauth2AuthSecurity{
+		Oauth2: "Bearer local",
+	})
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	require.NotNil(t, res.Token)
+	assert.Equal(t, "local", res.Token.Token)
+}
+
+func TestFunctionCallbacksForOAuthSupport_ParamOverrides(t *testing.T) {
+	recordTest("auth-function-callbacks-oauth-global-security-with-param-override")
+
+	s := sdk.New(sdk.WithSecuritySource(func(ctx context.Context) (shared.Security, error) {
+		return shared.Security{
+			Oauth2: sdk.String("Bearer global"),
+		}, nil
+	}))
+
+	res, err := s.Auth.Oauth2Override(context.Background(), operations.Oauth2OverrideSecurity{
+		Oauth2: "Bearer overrideHeaders",
+	})
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	require.NotNil(t, res.Token)
+	assert.Equal(t, "overrideHeaders", res.Token.Token)
+}

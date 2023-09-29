@@ -25,7 +25,7 @@ module OpenApiSDK
       url = "#{base_url}/anything/anchorTypes"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -54,7 +54,7 @@ module OpenApiSDK
       url = "#{base_url}/anything/circularReference"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -86,7 +86,7 @@ module OpenApiSDK
       headers['content-type'] = req_content_type
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
@@ -118,7 +118,7 @@ module OpenApiSDK
       url = "#{base_url}/anything/deprecatedObjectInSchema"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -154,7 +154,7 @@ module OpenApiSDK
       headers = {}
       query_params = Utils.get_query_params(Operations::DeprecatedOperationNoCommentsGetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -188,7 +188,7 @@ module OpenApiSDK
       headers = {}
       query_params = Utils.get_query_params(Operations::DeprecatedOperationWithCommentsGetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -224,7 +224,7 @@ module OpenApiSDK
       )
       headers = {}
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -249,7 +249,7 @@ module OpenApiSDK
       url = "#{base_url}/anything/emptyResponseObjectWithComment"
       headers = {}
       headers['Accept'] = 'application/octet-stream'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -275,7 +275,7 @@ module OpenApiSDK
       url = "#{base_url}/anything/globalNameOverride"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -304,7 +304,7 @@ module OpenApiSDK
       url = "#{base_url}/anything/ignoredGeneration"
       headers = {}
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -342,7 +342,7 @@ module OpenApiSDK
       raise StandardError, 'request body is required' if data.nil? && form.nil?
       query_params = Utils.get_query_params(Operations::IgnoresPostRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers
@@ -385,7 +385,7 @@ module OpenApiSDK
       headers = {}
       query_params = Utils.get_query_params(Operations::NameOverrideGetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -423,7 +423,7 @@ module OpenApiSDK
       headers = {}
       query_params = Utils.get_query_params(Operations::TypedParameterGenerationGetRequest, request, @sdk_configuration.globals)
       headers['Accept'] = '*/*'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.get(url) do |req|
         req.headers = headers
@@ -454,7 +454,7 @@ module OpenApiSDK
       headers['content-type'] = req_content_type
       query_params = Utils.get_query_params(Operations::UsageExamplePostRequest, request, @sdk_configuration.globals)
       headers['Accept'] = 'application/json'
-      headers['x-speakeasy-user-agent'] = "speakeasy-sdk/#{@sdk_configuration.language} #{@sdk_configuration.sdk_version} #{@sdk_configuration.gen_version} #{@sdk_configuration.openapi_doc_version}"
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
 
       r = @sdk_configuration.client.post(url) do |req|
         req.headers = headers

@@ -35,7 +35,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "cupiditate": 475589,
+    "nihil": 109357,
 }
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
@@ -73,7 +73,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "eligendi": dateutil.parser.parse('2022-03-31').date(),
+    "ab": dateutil.parser.parse('2021-08-06').date(),
 }
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
@@ -111,7 +111,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "magnam": 'itaque',
+    "exercitationem": 'Bronze',
 }
 
 res = s.response_bodies.response_body_additional_properties_post(req)
@@ -178,7 +178,7 @@ s = sdk.SDK(
 )
 
 
-res = s.response_bodies.response_body_empty_with_headers(x_number_header=1509.35, x_string_header='asperiores')
+res = s.response_bodies.response_body_empty_with_headers(x_number_header=1751.8, x_string_header='Tigard')
 
 if res.status_code == 200:
     # handle response
@@ -344,11 +344,11 @@ s = sdk.SDK(
 )
 
 req = shared.ObjWithZeroValueComplexTypePtrs(
-    bigint=330267,
-    bigint_str=164532,
+    bigint=438531,
+    bigint_str=484338,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('8138.8'),
+    decimal=Decimal('8697.02'),
 )
 
 res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)

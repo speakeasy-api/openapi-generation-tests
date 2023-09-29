@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+import dateutil.parser
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
@@ -15,7 +16,7 @@ from typing import Optional
 class RequestBodyPostJSONDataTypesMapDateTime200ApplicationJSON:
     r"""OK"""
     data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
-    json: dict[str, datetime] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: dict[str, datetime] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.map_encoder(False, utils.datetimeisoformat(False)), 'decoder': utils.map_decoder(dateutil.parser.isoparse) }})
     
 
 

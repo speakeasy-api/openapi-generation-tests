@@ -25,7 +25,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="perspiciatis",
+  request="Passenger Canadian",
 )
     
 res = s.sdk.put_anything_ignored_generation(req)

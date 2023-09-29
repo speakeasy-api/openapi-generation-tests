@@ -5,12 +5,8 @@ import dataclasses
 import dateutil.parser
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
-from enum import Enum
 from sdk import utils
-from typing import Optional
-
-class ExampleCarType(str, Enum):
-    CAR = 'car'
+from typing import Final, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -20,8 +16,8 @@ class ExampleCar:
     make: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('make') }})
     model: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('model') }})
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    type: ExampleCarType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     year: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('year') }})
+    TYPE: Final[str] = dataclasses.field(default='car', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     created_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
     updated_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
     

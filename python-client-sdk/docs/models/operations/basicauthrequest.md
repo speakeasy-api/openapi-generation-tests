@@ -5,5 +5,5 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `passwd`           | *str*              | :heavy_check_mark: | N/A                |
-| `user`             | *str*              | :heavy_check_mark: | N/A                |
+| `passwd`           | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `user`             | *Optional[str]*    | :heavy_check_mark: | N/A                |

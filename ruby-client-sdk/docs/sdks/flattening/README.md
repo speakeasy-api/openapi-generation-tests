@@ -27,19 +27,19 @@ s = OpenApiSDK::SDK.new
 req = Operations::ComponentBodyAndParamConflictRequest.new(
   query_params=Operations::ComponentBodyAndParamConflictRequest.new(
     simple_object=Shared::SimpleObject.new(
-      any="ea",
-      bigint=421819,
-      bigint_str="ipsam",
+      any="Minivan",
+      bigint=843322,
+      bigint_str="South Coupe Saudi",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-      decimal=7029.52,
+      decimal=7421.36,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
       int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
@@ -47,22 +47,22 @@ req = Operations::ComponentBodyAndParamConflictRequest.new(
       str_="example",
       str_opt="optional example",
     ),
-    str_="officiis",
+    str_="virtuous",
   ),
   simple_object=Shared::SimpleObject.new(
-    any="voluptatibus",
-    bigint=737279,
-    bigint_str="at",
+    any="Dollar",
+    bigint=514321,
+    bigint_str="Cotton Allen Congo",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-    decimal=51.52,
+    decimal=5838.86,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
     int_enum=Shared::SimpleObjectIntEnum::THIRD,
     int_opt_null=999999,
     num=1.1,
@@ -106,22 +106,22 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ComponentBodyAndParamNoConflictRequest.new(
   query_params=Operations::ComponentBodyAndParamNoConflictRequest.new(
-    param_str="fuga",
+    param_str="router salmon vertical",
     simple_object=Shared::SimpleObject.new(
-      any="repudiandae",
-      bigint=34070,
-      bigint_str="expedita",
+      any="yowza",
+      bigint=2841,
+      bigint_str="redound Coordinator Northwest",
       bool=true,
       bool_opt=true,
       date=Date.parse("2020-01-01"),
       date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-      decimal=8852.08,
+      decimal=3993.04,
       enum=Shared::Enum::TWO,
       float32=2.2222222,
       int=999999,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
       int_opt_null=999999,
       num=1.1,
       num_opt_null=1.1,
@@ -130,20 +130,20 @@ req = Operations::ComponentBodyAndParamNoConflictRequest.new(
     ),
   ),
   simple_object=Shared::SimpleObject.new(
-    any="odio",
-    bigint=510128,
-    bigint_str="odit",
+    any="silver",
+    bigint=956734,
+    bigint_str="Chicken",
     bool=true,
     bool_opt=true,
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-    decimal=1276.88,
+    decimal=5559.2,
     enum=Shared::Enum::TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+    int_enum=Shared::SimpleObjectIntEnum::THIRD,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -186,12 +186,12 @@ s = OpenApiSDK::SDK.new
    
 req = Operations::ConflictingParamsRequest.new(
   path_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="earum",
-    str_query_parameter="adipisci",
+    str_path_parameter="Fantastic Southwest hunch",
+    str_query_parameter="strategic till",
   ),
   query_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="recusandae",
-    str_query_parameter="similique",
+    str_path_parameter="Olathe Legacy",
+    str_query_parameter="Buckinghamshire",
   ),
 )
     
@@ -230,12 +230,12 @@ s = OpenApiSDK::SDK.new
 req = Operations::InlineBodyAndParamConflictRequest.new(
   query_params=Operations::InlineBodyAndParamConflictRequest.new(
     request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
-      str_="ut",
+      str_="Progressive",
     ),
-    str_="quidem",
+    str_="female Southwest back",
   ),
   request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
-    str_="quis",
+    str_="Rustic",
   ),
 )
     
@@ -274,12 +274,12 @@ s = OpenApiSDK::SDK.new
 req = Operations::InlineBodyAndParamNoConflictRequest.new(
   query_params=Operations::InlineBodyAndParamNoConflictRequest.new(
     request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
-      body_str="beatae",
+      body_str="dynamic expedite",
     ),
-    param_str="unde",
+    param_str="monitoring Bicycle Fall",
   ),
   request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
-    body_str="molestiae",
+    body_str="instead through",
   ),
 )
     

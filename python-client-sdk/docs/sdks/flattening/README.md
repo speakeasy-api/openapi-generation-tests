@@ -33,26 +33,26 @@ s = sdk.SDK(
 
 
 res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
-    any='culpa',
-    bigint=665859,
-    bigint_str=926880,
+    any='Minivan',
+    bigint=843322,
+    bigint_str=712606,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000Z'),
-    decimal=Decimal('5173.09'),
+    decimal=Decimal('7.8'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int_enum=shared.SimpleObjectIntEnum.THIRD,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
     str_='example',
     str_opt='optional example',
-), str_='ducimus')
+), str_='Cotton')
 
 if res.res is not None:
     # handle response
@@ -90,21 +90,21 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict(param_str='quos', simple_object=shared.SimpleObject(
-    any='vel',
-    bigint=287051,
-    bigint_str=822560,
+res = s.flattening.component_body_and_param_no_conflict(param_str='ick', simple_object=shared.SimpleObject(
+    any='kelvin',
+    bigint=575433,
+    bigint_str=389581,
     bool=True,
     bool_opt=True,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000Z'),
-    decimal=Decimal('7065.75'),
+    decimal=Decimal('8361.57'),
     enum=shared.EnumT.TWO,
     float32=2.2222222,
     int=999999,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.FIRST,
     int_opt_null=999999,
     num=1.1,
     num_opt_null=1.1,
@@ -146,7 +146,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.conflicting_params(str_path_parameter='in', str_query_parameter='corporis')
+res = s.flattening.conflicting_params(str_path_parameter='kilogram', str_query_parameter='Cloned')
 
 if res.res is not None:
     # handle response
@@ -183,8 +183,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
-    str_='reiciendis',
-), str_='assumenda')
+    str_='Progressive',
+), str_='until')
 
 if res.res is not None:
     # handle response
@@ -221,8 +221,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='nemo',
-), param_str='recusandae')
+    body_str='dynamic expedite',
+), param_str='Forward')
 
 if res.res is not None:
     # handle response

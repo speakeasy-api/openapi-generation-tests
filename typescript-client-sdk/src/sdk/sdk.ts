@@ -130,8 +130,9 @@ export class SDKConfiguration {
     serverDefaults: any;
     language = "typescript";
     openapiDocVersion = "0.1.0";
-    sdkVersion = "1.35.4";
-    genVersion = "2.131.1";
+    sdkVersion = "1.36.0";
+    genVersion = "2.139.1";
+    userAgent = "speakeasy-sdk/typescript 1.36.0 2.139.1 0.1.0 openapi";
     globals: any;
     retryConfig?: utils.RetryConfig;
     public constructor(init?: Partial<SDKConfiguration>) {
@@ -321,9 +322,7 @@ export class SDK {
         if (reqBody == null) throw new Error("request body is required");
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,
@@ -397,9 +396,7 @@ export class SDK {
         const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
         headers["Accept"] = "application/json";
 
-        headers[
-            "x-speakeasy-user-agent"
-        ] = `speakeasy-sdk/${this.sdkConfiguration.language} ${this.sdkConfiguration.sdkVersion} ${this.sdkConfiguration.genVersion} ${this.sdkConfiguration.openapiDocVersion}`;
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
 
         const httpRes: AxiosResponse = await client.request({
             validateStatus: () => true,

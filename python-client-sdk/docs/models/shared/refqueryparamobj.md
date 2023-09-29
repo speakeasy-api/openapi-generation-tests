@@ -5,7 +5,7 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `bool`             | *bool*             | :heavy_check_mark: | N/A                |
-| `int`              | *int*              | :heavy_check_mark: | N/A                |
-| `num`              | *float*            | :heavy_check_mark: | N/A                |
-| `str_`             | *str*              | :heavy_check_mark: | N/A                |
+| `bool`             | *Optional[bool]*   | :heavy_check_mark: | N/A                |
+| `int`              | *Optional[int]*    | :heavy_check_mark: | N/A                |
+| `num`              | *Optional[float]*  | :heavy_check_mark: | N/A                |
+| `str_`             | *Optional[str]*    | :heavy_check_mark: | N/A                |

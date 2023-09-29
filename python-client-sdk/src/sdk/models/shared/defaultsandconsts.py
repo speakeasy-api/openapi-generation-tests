@@ -8,7 +8,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from enum import Enum
 from sdk import utils
-from typing import Optional
+from typing import Final, Optional
 
 class DefaultsAndConstsConstEnumInt(int, Enum):
     ONE = 1
@@ -30,43 +30,40 @@ class DefaultsAndConstsDefaultEnumStr(str, Enum):
     TWO = 'two'
     THREE = 'three'
 
-class DefaultsAndConstsSingleEnumConstStr(str, Enum):
-    ONE = 'one'
-
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class DefaultsAndConsts:
-    const_big_int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constBigInt') }})
-    const_big_int_str: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constBigIntStr'), 'encoder': utils.bigintencoder(False), 'decoder': utils.bigintdecoder }})
-    const_bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constBool') }})
-    const_date: date = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDate'), 'encoder': utils.dateisoformat(False), 'decoder': utils.datefromisoformat }})
-    const_date_time: datetime = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDateTime'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
-    const_decimal: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDecimal'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
-    const_decimal_str: Decimal = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDecimalStr'), 'encoder': utils.decimalencoder(False, True), 'decoder': utils.decimaldecoder }})
-    const_enum_int: DefaultsAndConstsConstEnumInt = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constEnumInt') }})
-    const_enum_str: DefaultsAndConstsConstEnumStr = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constEnumStr') }})
-    const_int: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constInt') }})
-    const_num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constNum') }})
-    const_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStr') }})
-    const_str_null: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStrNull') }})
     normal_field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('normalField') }})
-    single_enum_const_bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstBool') }})
-    single_enum_const_str: DefaultsAndConstsSingleEnumConstStr = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstStr') }})
-    default_big_int: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigInt'), 'exclude': lambda f: f is None }})
-    default_big_int_str: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigIntStr'), 'encoder': utils.bigintencoder(True), 'decoder': utils.bigintdecoder, 'exclude': lambda f: f is None }})
-    default_bool: Optional[bool] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBool'), 'exclude': lambda f: f is None }})
-    default_date: Optional[date] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDate'), 'encoder': utils.dateisoformat(True), 'decoder': utils.datefromisoformat, 'exclude': lambda f: f is None }})
-    default_date_time: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDateTime'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
-    default_decimal: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDecimal'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    default_decimal_str: Optional[Decimal] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDecimalStr'), 'encoder': utils.decimalencoder(True, True), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
-    default_enum_int: Optional[DefaultsAndConstsDefaultEnumInt] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultEnumInt'), 'exclude': lambda f: f is None }})
-    default_enum_str: Optional[DefaultsAndConstsDefaultEnumStr] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultEnumStr'), 'exclude': lambda f: f is None }})
-    default_int: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultInt'), 'exclude': lambda f: f is None }})
-    default_num: Optional[float] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultNum'), 'exclude': lambda f: f is None }})
-    default_str: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStr'), 'exclude': lambda f: f is None }})
-    default_str_nullable: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrNullable'), 'exclude': lambda f: f is None }})
-    default_str_optional: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrOptional'), 'exclude': lambda f: f is None }})
+    CONST_BIG_INT: Final[int] = dataclasses.field(default=9007199254740991, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constBigInt') }})
+    CONST_BIG_INT_STR: Final[int] = dataclasses.field(default=9223372036854775807, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constBigIntStr'), 'encoder': utils.bigintencoder(False), 'decoder': utils.bigintdecoder }})
+    CONST_BOOL: Final[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constBool') }})
+    CONST_DATE: Final[date] = dataclasses.field(default=dateutil.parser.parse('2020-01-01').date(), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDate'), 'encoder': utils.dateisoformat(False), 'decoder': utils.datefromisoformat }})
+    CONST_DATE_TIME: Final[datetime] = dataclasses.field(default=dateutil.parser.isoparse('2020-01-01T00:00:00Z'), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDateTime'), 'encoder': utils.datetimeisoformat(False), 'decoder': dateutil.parser.isoparse }})
+    CONST_DECIMAL: Final[Decimal] = dataclasses.field(default=Decimal('3.141592653589793'), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDecimal'), 'encoder': utils.decimalencoder(False, False), 'decoder': utils.decimaldecoder }})
+    CONST_DECIMAL_STR: Final[Decimal] = dataclasses.field(default=Decimal('3.141592653589793238462643383279'), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constDecimalStr'), 'encoder': utils.decimalencoder(False, True), 'decoder': utils.decimaldecoder }})
+    CONST_ENUM_INT: Final[DefaultsAndConstsConstEnumInt] = dataclasses.field(default=DefaultsAndConstsConstEnumInt.TWO, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constEnumInt') }})
+    CONST_ENUM_STR: Final[DefaultsAndConstsConstEnumStr] = dataclasses.field(default=DefaultsAndConstsConstEnumStr.TWO, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constEnumStr') }})
+    CONST_INT: Final[int] = dataclasses.field(default=123, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constInt') }})
+    CONST_NUM: Final[float] = dataclasses.field(default=123.456, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constNum') }})
+    CONST_STR: Final[str] = dataclasses.field(default='const', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStr') }})
+    CONST_STR_NULL: Final[Optional[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStrNull') }})
+    SINGLE_ENUM_CONST_BOOL: Final[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstBool') }})
+    SINGLE_ENUM_CONST_STR: Final[str] = dataclasses.field(default='one', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstStr') }})
+    default_big_int: Optional[int] = dataclasses.field(default=9007199254740991, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigInt'), 'exclude': lambda f: f is None }})
+    default_big_int_str: Optional[int] = dataclasses.field(default=9223372036854775807, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigIntStr'), 'encoder': utils.bigintencoder(True), 'decoder': utils.bigintdecoder, 'exclude': lambda f: f is None }})
+    default_bool: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBool'), 'exclude': lambda f: f is None }})
+    default_date: Optional[date] = dataclasses.field(default=dateutil.parser.parse('2020-01-01').date(), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDate'), 'encoder': utils.dateisoformat(True), 'decoder': utils.datefromisoformat, 'exclude': lambda f: f is None }})
+    default_date_time: Optional[datetime] = dataclasses.field(default=dateutil.parser.isoparse('2020-01-01T00:00:00Z'), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDateTime'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
+    default_decimal: Optional[Decimal] = dataclasses.field(default=Decimal('3.141592653589793'), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDecimal'), 'encoder': utils.decimalencoder(True, False), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    default_decimal_str: Optional[Decimal] = dataclasses.field(default=Decimal('3.141592653589793238462643383279'), metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultDecimalStr'), 'encoder': utils.decimalencoder(True, True), 'decoder': utils.decimaldecoder, 'exclude': lambda f: f is None }})
+    default_enum_int: Optional[DefaultsAndConstsDefaultEnumInt] = dataclasses.field(default=DefaultsAndConstsDefaultEnumInt.TWO, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultEnumInt'), 'exclude': lambda f: f is None }})
+    default_enum_str: Optional[DefaultsAndConstsDefaultEnumStr] = dataclasses.field(default=DefaultsAndConstsDefaultEnumStr.TWO, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultEnumStr'), 'exclude': lambda f: f is None }})
+    default_int: Optional[int] = dataclasses.field(default=123, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultInt'), 'exclude': lambda f: f is None }})
+    default_num: Optional[float] = dataclasses.field(default=123.456, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultNum'), 'exclude': lambda f: f is None }})
+    default_str: Optional[str] = dataclasses.field(default='default', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStr'), 'exclude': lambda f: f is None }})
+    default_str_nullable: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrNullable') }})
+    default_str_optional: Optional[str] = dataclasses.field(default='default', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrOptional'), 'exclude': lambda f: f is None }})
     
 

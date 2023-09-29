@@ -27,7 +27,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.global_path_parameter_get(global_path_param=684935)
+res = s.globals.global_path_parameter_get(global_path_param=719830)
 
 if res.res is not None:
     # handle response
@@ -62,7 +62,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.globals_query_parameter_get(global_query_param='ratione')
+res = s.globals.globals_query_parameter_get(global_query_param='Tricycle')
 
 if res.res is not None:
     # handle response

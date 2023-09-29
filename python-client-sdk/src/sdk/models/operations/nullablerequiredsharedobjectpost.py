@@ -13,8 +13,8 @@ from typing import Optional
 
 @dataclasses.dataclass
 class NullableRequiredSharedObjectPostRequestBody:
-    nullable_required_obj: shared_nullableobject.NullableObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
-    nullable_optional_obj: Optional[shared_nullableobject.NullableObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj'), 'exclude': lambda f: f is None }})
+    nullable_required_obj: Optional[shared_nullableobject.NullableObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
+    nullable_optional_obj: Optional[shared_nullableobject.NullableObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
     
 
 
