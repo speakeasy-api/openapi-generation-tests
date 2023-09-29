@@ -4858,7 +4858,7 @@ paths:
               oneOf:
                 - $ref: "components.yaml#/components/schemas/typedObject1"
                 - $ref: "components.yaml#/components/schemas/typedObject2"
-                - type: null
+                - type: "null"
         required: true
       responses:
         "200":
@@ -4873,7 +4873,7 @@ paths:
                     oneOf:
                       - $ref: "components.yaml#/components/schemas/typedObject1"
                       - $ref: "components.yaml#/components/schemas/typedObject2"
-                      - type: null
+                      - type: "null"
                 required:
                   - json
   /anything/nullableOneOfInObject:
@@ -5656,12 +5656,12 @@ components:
         NullableOneOfOne:
           oneOf:
             - type: boolean
-            - type: null
+            - type: "null"
         NullableOneOfTwo:
           oneOf:
             - type: boolean
             - type: integer
-            - type: null
+            - type: "null"
     nullableOneOfRefInObject:
       type: object
       required:
@@ -5675,12 +5675,12 @@ components:
         NullableOneOfOne:
           oneOf:
             - $ref: "components.yaml#/components/schemas/typedObject1"
-            - type: null
+            - type: "null"
         NullableOneOfTwo:
           oneOf:
             - $ref: "components.yaml#/components/schemas/typedObject1"
             - $ref: "components.yaml#/components/schemas/typedObject2"
-            - type: null
+            - type: "null"
     allOfToAllOf:
       x-speakeasy-include: true
       title: "allOf1"
@@ -5716,6 +5716,29 @@ components:
       required:
         - booleanEnum
         - numberEnum
+    oneOfGenerationStressTest:
+      x-speakeasy-include: true
+      type: object
+      properties:
+        oneOfSameType:
+          oneOf:
+            - type: string
+              minLength: 40
+              maxLength: 40
+            - type: string
+              enum:
+                - latest
+            - type: "null"
+        oneOfFromArrayOfTypes:
+          type: [string, integer, "null"]
+        nullableAny:
+          type: "null"
+        any: {}
+      required:
+        - oneOfSameType
+        - oneOfFromArrayOfTypes
+        - nullableAny
+        - any
   securitySchemes:
     basicAuth:
       type: http
