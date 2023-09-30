@@ -4034,7 +4034,6 @@ paths:
                 $ref: "components.yaml#/components/schemas/arrayCircularReferenceObject"
   /anything/objectCircularReference:
     get:
-      x-my-ignore: swift
       operationId: objectCircularReferenceGet
       tags:
         - generation
@@ -4047,7 +4046,6 @@ paths:
                 $ref: "components.yaml#/components/schemas/objectCircularReferenceObject"
   /anything/oneOfCircularReference:
     get:
-      x-my-ignore: swift
       operationId: oneOfCircularReferenceGet
       tags:
         - generation

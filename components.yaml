@@ -828,13 +828,11 @@ components:
         required:
           - circular
     objectCircularReferenceObject:
-      x-my-ignore: swift
       type: object
       properties:
         circular:
           $ref: "#/components/schemas/objectCircularReferenceObject"
     oneOfCircularReferenceObject:
-      x-my-ignore: swift
       type: object
       properties:
         child:
