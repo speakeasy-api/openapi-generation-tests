@@ -18,6 +18,5 @@ export class NullableOneOfRefInObject extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "OneOfOne" })
-    @Type(() => TypedObject1)
-    oneOfOne: TypedObject1;
+    oneOfOne: any;
 }

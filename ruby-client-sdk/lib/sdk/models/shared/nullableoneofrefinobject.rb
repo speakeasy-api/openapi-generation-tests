@@ -18,10 +18,10 @@ module OpenApiSDK
 
       field :nullable_one_of_two, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('NullableOneOfTwo') } }
 
-      field :one_of_one, Shared::TypedObject1, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('OneOfOne') } }
+      field :one_of_one, Object, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('OneOfOne') } }
 
 
-      sig { params(nullable_one_of_one: Shared::TypedObject1, nullable_one_of_two: Object, one_of_one: Shared::TypedObject1).void }
+      sig { params(nullable_one_of_one: Shared::TypedObject1, nullable_one_of_two: Object, one_of_one: Object).void }
       def initialize(nullable_one_of_one: nil, nullable_one_of_two: nil, one_of_one: nil)
         @nullable_one_of_one = nullable_one_of_one
         @nullable_one_of_two = nullable_one_of_two

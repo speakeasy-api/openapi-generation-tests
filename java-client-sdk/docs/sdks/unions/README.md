@@ -43,7 +43,10 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.TypedObject1 req = new TypedObject1(TypedObject1Type.OBJ1, "Legacy");            
+            org.openapis.openapi.models.. req = new TypedObject1(TypedObject1Type.OBJ1, "Frozen") {{
+                type = TypedObject1Type.OBJ1;
+                value = "farad Rustic";
+            }}            
 
             FlattenedTypedObjectPostResponse res = sdk.unions.flattenedTypedObjectPost(req);
 
@@ -59,9 +62,9 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                              | Type                                                                                   | Required                                                                               | Description                                                                            |
-| -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------- |
-| `request`                                                                              | [org.openapis.openapi.models.shared.TypedObject1](../../models/shared/TypedObject1.md) | :heavy_check_mark:                                                                     | The request object to use for the request.                                             |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -153,7 +156,10 @@ public class Application {
             org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject(                new TypedObject1(TypedObject1Type.OBJ1, "bah");,                 new TypedObject2(TypedObject2Type.OBJ2, "Pickup") {{
                                 type = TypedObject2Type.OBJ2;
                                 value = "West";
-                            }},                 new TypedObject1(TypedObject1Type.OBJ1, "backing"););            
+                            }},                 new TypedObject1(TypedObject1Type.OBJ1, "Berkshire") {{
+                                type = TypedObject1Type.OBJ1;
+                                value = "Arbor PCI";
+                            }});            
 
             NullableOneOfRefInObjectPostResponse res = sdk.unions.nullableOneOfRefInObjectPost(req);
 

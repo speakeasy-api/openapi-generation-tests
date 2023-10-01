@@ -13,7 +13,7 @@ class Unions:
         self.sdk_configuration = sdk_config
         
     
-    def flattened_typed_object_post(self, request: shared.TypedObject1) -> operations.FlattenedTypedObjectPostResponse:
+    def flattened_typed_object_post(self, request: Union[shared.TypedObject1]) -> operations.FlattenedTypedObjectPostResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/flattenedTypedObject'

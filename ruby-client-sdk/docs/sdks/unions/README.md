@@ -30,7 +30,7 @@ require_relative openapi
 s = OpenApiSDK::SDK.new
 
    
-req = Shared::TypedObject1.new(
+req = ::.new(
   request=Shared::TypedObject1.new(
     type=Shared::TypedObject1Type::OBJ1,
     value="farad Rustic",
@@ -47,9 +47,9 @@ end
 
 ### Parameters
 
-| Parameter                                                   | Type                                                        | Required                                                    | Description                                                 |
-| ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- | ----------------------------------------------------------- |
-| `request`                                                   | [Shared::TypedObject1](../../models/shared/typedobject1.md) | :heavy_check_mark:                                          | The request object to use for the request.                  |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response

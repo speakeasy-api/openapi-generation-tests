@@ -47,6 +47,35 @@ module OpenApiSDK
     end
 
     sig { returns(Utils::FieldAugmented) }
+    def array_circular_reference_get
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/arrayCircularReference"
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::ArrayCircularReferenceGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, T::Array[Shared::ArrayCircularReferenceObject])
+          res.array_circular_reference_object = out
+        end
+      end
+      res
+    end
+
+    sig { returns(Utils::FieldAugmented) }
     def circular_reference_get
 
       url, params = @sdk_configuration.get_server_details
@@ -402,6 +431,64 @@ module OpenApiSDK
         if Utils.match_content_type(content_type, 'application/json')
           out = Utils.unmarshal_complex(r.env.response_body, Operations::OverriddenResponse)
           res.overridden_response = out
+        end
+      end
+      res
+    end
+
+    sig { returns(Utils::FieldAugmented) }
+    def object_circular_reference_get
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/objectCircularReference"
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::ObjectCircularReferenceGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::ObjectCircularReferenceObject)
+          res.object_circular_reference_object = out
+        end
+      end
+      res
+    end
+
+    sig { returns(Utils::FieldAugmented) }
+    def one_of_circular_reference_get
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/oneOfCircularReference"
+      headers = {}
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::OneOfCircularReferenceGetResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Shared::OneOfCircularReferenceObject)
+          res.one_of_circular_reference_object = out
         end
       end
       res

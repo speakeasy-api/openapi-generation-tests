@@ -20,13 +20,13 @@ class NullableOneOfRefInObject
     public mixed $nullableOneOfTwo;
     
 	#[\JMS\Serializer\Annotation\SerializedName('OneOfOne')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\TypedObject1')]
-    public TypedObject1 $oneOfOne;
+    #[\JMS\Serializer\Annotation\Type('mixed')]
+    public mixed $oneOfOne;
     
 	public function __construct()
 	{
 		$this->nullableOneOfOne = new \OpenAPI\OpenAPI\Models\Shared\TypedObject1();
 		$this->nullableOneOfTwo = null;
-		$this->oneOfOne = new \OpenAPI\OpenAPI\Models\Shared\TypedObject1();
+		$this->oneOfOne = null;
 	}
 }

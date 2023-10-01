@@ -8,6 +8,7 @@ Endpoints for purely testing valid generation behavior.
 ### Available Operations
 
 * [anchor_types_get](#anchor_types_get)
+* [array_circular_reference_get](#array_circular_reference_get)
 * [circular_reference_get](#circular_reference_get)
 * [deprecated_field_in_schema_post](#deprecated_field_in_schema_post)
 * [deprecated_object_in_schema_get](#deprecated_object_in_schema_get)
@@ -19,6 +20,8 @@ Endpoints for purely testing valid generation behavior.
 * [ignored_generation_get](#ignored_generation_get)
 * [ignores_post](#ignores_post)
 * [name_override](#name_override)
+* [object_circular_reference_get](#object_circular_reference_get)
+* [one_of_circular_reference_get](#one_of_circular_reference_get)
 * [typed_parameter_generation_get](#typed_parameter_generation_get)
 * [usage_example_post](#usage_example_post) - An operation used for testing usage examples
 
@@ -45,6 +48,31 @@ end
 ### Response
 
 **[T.nilable(Operations::AnchorTypesGetResponse)](../../models/operations/anchortypesgetresponse.md)**
+
+
+## array_circular_reference_get
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+    
+res = s.generation.array_circular_reference_get()
+
+if ! res.array_circular_reference_object.nil?
+  # handle response
+end
+
+```
+
+
+### Response
+
+**[T.nilable(Operations::ArrayCircularReferenceGetResponse)](../../models/operations/arraycircularreferencegetresponse.md)**
 
 
 ## circular_reference_get
@@ -412,6 +440,56 @@ end
 ### Response
 
 **[T.nilable(Operations::NameOverrideGetResponse)](../../models/operations/nameoverridegetresponse.md)**
+
+
+## object_circular_reference_get
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+    
+res = s.generation.object_circular_reference_get()
+
+if ! res.object_circular_reference_object.nil?
+  # handle response
+end
+
+```
+
+
+### Response
+
+**[T.nilable(Operations::ObjectCircularReferenceGetResponse)](../../models/operations/objectcircularreferencegetresponse.md)**
+
+
+## one_of_circular_reference_get
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+
+    
+res = s.generation.one_of_circular_reference_get()
+
+if ! res.one_of_circular_reference_object.nil?
+  # handle response
+end
+
+```
+
+
+### Response
+
+**[T.nilable(Operations::OneOfCircularReferenceGetResponse)](../../models/operations/oneofcircularreferencegetresponse.md)**
 
 
 ## typed_parameter_generation_get

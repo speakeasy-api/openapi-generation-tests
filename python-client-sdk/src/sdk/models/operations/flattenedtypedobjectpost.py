@@ -6,7 +6,7 @@ import requests as requests_http
 from ..shared import typedobject1 as shared_typedobject1
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
+from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -14,7 +14,7 @@ from typing import Optional
 @dataclasses.dataclass
 class FlattenedTypedObjectPostRes:
     r"""OK"""
-    json: shared_typedobject1.TypedObject1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: Union[shared_typedobject1.TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
 
 

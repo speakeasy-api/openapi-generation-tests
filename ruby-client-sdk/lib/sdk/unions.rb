@@ -17,7 +17,7 @@ module OpenApiSDK
       @sdk_configuration = sdk_config
     end
 
-    sig { params(request: Shared::TypedObject1).returns(Utils::FieldAugmented) }
+    sig { params(request: Object).returns(Utils::FieldAugmented) }
     def flattened_typed_object_post(request)
 
       url, params = @sdk_configuration.get_server_details

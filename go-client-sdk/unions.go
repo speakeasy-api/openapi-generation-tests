@@ -26,7 +26,7 @@ func newUnions(sdkConfig sdkConfiguration) *unions {
 	}
 }
 
-func (s *unions) FlattenedTypedObjectPost(ctx context.Context, request shared.TypedObject1) (*operations.FlattenedTypedObjectPostResponse, error) {
+func (s *unions) FlattenedTypedObjectPost(ctx context.Context, request shared.FlattenedTypedObject1) (*operations.FlattenedTypedObjectPostResponse, error) {
 	baseURL := utils.ReplaceParameters(s.sdkConfiguration.GetServerDetails())
 	url := strings.TrimSuffix(baseURL, "/") + "/anything/flattenedTypedObject"
 

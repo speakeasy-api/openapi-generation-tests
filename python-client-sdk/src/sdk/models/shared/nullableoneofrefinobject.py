@@ -15,12 +15,18 @@ class NullableOneOfRefInObjectNullableOneOfTwo:
     pass
 
 
+
+@dataclasses.dataclass
+class NullableOneOfRefInObjectOneOfOne:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class NullableOneOfRefInObject:
     nullable_one_of_one: Optional[shared_typedobject1.TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})
     nullable_one_of_two: Optional[Union[shared_typedobject1.TypedObject1, shared_typedobject2.TypedObject2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfTwo') }})
-    one_of_one: shared_typedobject1.TypedObject1 = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
+    one_of_one: Union[shared_typedobject1.TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('OneOfOne') }})
     
 

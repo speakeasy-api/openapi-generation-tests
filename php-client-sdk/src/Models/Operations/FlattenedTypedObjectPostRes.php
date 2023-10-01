@@ -18,11 +18,11 @@ namespace OpenAPI\OpenAPI\Models\Operations;
 class FlattenedTypedObjectPostRes
 {
 	#[\JMS\Serializer\Annotation\SerializedName('json')]
-    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Shared\TypedObject1')]
-    public \OpenAPI\OpenAPI\Models\Shared\TypedObject1 $json;
+    #[\JMS\Serializer\Annotation\Type('mixed')]
+    public mixed $json;
     
 	public function __construct()
 	{
-		$this->json = new \OpenAPI\OpenAPI\Models\Shared\TypedObject1();
+		$this->json = null;
 	}
 }

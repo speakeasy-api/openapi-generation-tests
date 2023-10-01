@@ -12,14 +12,14 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class FlattenedTypedObjectPostRes {
     @JsonProperty("json")
-    public org.openapis.openapi.models.shared.TypedObject1 json;
+    public Object json;
 
-    public FlattenedTypedObjectPostRes withJson(org.openapis.openapi.models.shared.TypedObject1 json) {
+    public FlattenedTypedObjectPostRes withJson(Object json) {
         this.json = json;
         return this;
     }
     
-    public FlattenedTypedObjectPostRes(@JsonProperty("json") org.openapis.openapi.models.shared.TypedObject1 json) {
+    public FlattenedTypedObjectPostRes(@JsonProperty("json") Object json) {
         this.json = json;
   }
 }

@@ -3,9 +3,8 @@
  */
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
-import * as shared from "../shared";
 import { AxiosResponse } from "axios";
-import { Expose, Type } from "class-transformer";
+import { Expose } from "class-transformer";
 
 /**
  * OK
@@ -13,8 +12,7 @@ import { Expose, Type } from "class-transformer";
 export class FlattenedTypedObjectPostRes extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
-    @Type(() => shared.TypedObject1)
-    json: shared.TypedObject1;
+    json: any;
 }
 
 export class FlattenedTypedObjectPostResponse extends SpeakeasyBase {

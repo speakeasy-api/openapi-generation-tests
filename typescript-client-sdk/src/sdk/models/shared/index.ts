@@ -3,6 +3,7 @@
  */
 
 export * from "./alloftoallof";
+export * from "./arraycircularreferenceobject";
 export * from "./arrobjvalue";
 export * from "./arrobjvaluecamelcase";
 export * from "./authservicerequestbody";
@@ -29,7 +30,10 @@ export * from "./mapobjvaluecamelcase";
 export * from "./nullableobject";
 export * from "./nullableoneofrefinobject";
 export * from "./nullableoneoftypeinobject";
+export * from "./objectcircularreferenceobject";
 export * from "./objwithzerovaluecomplextypeptrs";
+export * from "./oneofcircularreferenceobject";
+export * from "./oneofgenerationstresstest";
 export * from "./readonlyobject";
 export * from "./readwriteobject";
 export * from "./refqueryparamobj";

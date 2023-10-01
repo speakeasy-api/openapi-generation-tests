@@ -43,10 +43,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.TypedObject1{
-        Type: "farad Rustic",
-        Value: "cuckold",
-    })
+    res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.FlattenedTypedObject1{})
     if err != nil {
         log.Fatal(err)
     }
@@ -59,10 +56,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `ctx`                                                      | [context.Context](https://pkg.go.dev/context#Context)      | :heavy_check_mark:                                         | The context to use for the request.                        |
-| `request`                                                  | [shared.TypedObject1](../../models/shared/typedobject1.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `ctx`                                                                        | [context.Context](https://pkg.go.dev/context#Context)                        | :heavy_check_mark:                                                           | The context to use for the request.                                          |
+| `request`                                                                    | [shared.FlattenedTypedObject1](../../models/shared/flattenedtypedobject1.md) | :heavy_check_mark:                                                           | The request object to use for the request.                                   |
 
 
 ### Response
@@ -151,10 +148,7 @@ func main() {
             Value: "Trenton",
         },
         NullableOneOfTwo: &shared.NullableOneOfRefInObjectNullableOneOfTwo{},
-        OneOfOne: shared.TypedObject1{
-            Type: "bypassing invoice",
-            Value: "West",
-        },
+        OneOfOne: shared.NullableOneOfRefInObjectOneOfOne{},
     })
     if err != nil {
         log.Fatal(err)

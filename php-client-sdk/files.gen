@@ -132,6 +132,7 @@ src/Models/Operations/InlineBodyAndParamNoConflictRes.php
 src/Models/Operations/InlineBodyAndParamNoConflictResponse.php
 src/Models/Operations/TypeFromAnchor.php
 src/Models/Operations/AnchorTypesGetResponse.php
+src/Models/Operations/ArrayCircularReferenceGetResponse.php
 src/Models/Operations/CircularReferenceGetResponse.php
 src/Models/Operations/DeprecatedFieldInSchemaPostResponse.php
 src/Models/Operations/DeprecatedObjectInSchemaGet200ApplicationJSON.php
@@ -155,6 +156,8 @@ src/Models/Operations/NameOverrideGetEnumNameOverride.php
 src/Models/Operations/NameOverrideGetRequest.php
 src/Models/Operations/OverriddenResponse.php
 src/Models/Operations/NameOverrideGetResponse.php
+src/Models/Operations/ObjectCircularReferenceGetResponse.php
+src/Models/Operations/OneOfCircularReferenceGetResponse.php
 src/Models/Operations/TypedParameterGenerationGetObj.php
 src/Models/Operations/TypedParameterGenerationGetRequest.php
 src/Models/Operations/TypedParameterGenerationGetResponse.php
@@ -517,6 +520,7 @@ src/Models/Shared/SimpleObjectInt32Enum.php
 src/Models/Shared/SimpleObjectIntEnum.php
 src/Models/Shared/SimpleObject.php
 src/Models/Shared/Enum.php
+src/Models/Shared/ArrayCircularReferenceObject.php
 src/Models/Shared/ValidCircularReferenceObject.php
 src/Models/Shared/DeprecatedFieldInObjectDeprecatedEnum.php
 src/Models/Shared/DeprecatedFieldInObject.php
@@ -525,6 +529,8 @@ src/Models/Shared/EmptyObjectParam.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshowSlides.php
 src/Models/Shared/HttpBinSimpleJsonObjectSlideshow.php
 src/Models/Shared/HttpBinSimpleJsonObject.php
+src/Models/Shared/ObjectCircularReferenceObject.php
+src/Models/Shared/OneOfCircularReferenceObject.php
 src/Models/Shared/FakerStrings.php
 src/Models/Shared/FakerFormattedStrings.php
 src/Models/Shared/LimitOffsetConfig.php
@@ -581,6 +587,8 @@ src/Models/Shared/DeepObjectWithType.php
 src/Models/Shared/TypedObject3Type.php
 src/Models/Shared/TypedObject3.php
 src/Models/Shared/AllOfToAllOf.php
+src/Models/Shared/OneOfGenerationStressTestOneOfSameType2.php
+src/Models/Shared/OneOfGenerationStressTest.php
 src/Models/Shared/UnsupportedEnums.php
 src/Models/Callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationResponse.php
 src/Models/Callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.php
@@ -665,6 +673,7 @@ docs/models/operations/InlineBodyAndParamNoConflictRes.md
 docs/models/operations/InlineBodyAndParamNoConflictResponse.md
 docs/models/operations/TypeFromAnchor.md
 docs/models/operations/AnchorTypesGetResponse.md
+docs/models/operations/ArrayCircularReferenceGetResponse.md
 docs/models/operations/CircularReferenceGetResponse.md
 docs/models/operations/DeprecatedFieldInSchemaPostResponse.md
 docs/models/operations/DeprecatedObjectInSchemaGet200ApplicationJSON.md
@@ -688,6 +697,8 @@ docs/models/operations/NameOverrideGetEnumNameOverride.md
 docs/models/operations/NameOverrideGetRequest.md
 docs/models/operations/OverriddenResponse.md
 docs/models/operations/NameOverrideGetResponse.md
+docs/models/operations/ObjectCircularReferenceGetResponse.md
+docs/models/operations/OneOfCircularReferenceGetResponse.md
 docs/models/operations/TypedParameterGenerationGetObj.md
 docs/models/operations/TypedParameterGenerationGetRequest.md
 docs/models/operations/TypedParameterGenerationGetResponse.md
@@ -1050,6 +1061,7 @@ docs/models/shared/SimpleObjectInt32Enum.md
 docs/models/shared/SimpleObjectIntEnum.md
 docs/models/shared/SimpleObject.md
 docs/models/shared/Enum.md
+docs/models/shared/ArrayCircularReferenceObject.md
 docs/models/shared/ValidCircularReferenceObject.md
 docs/models/shared/DeprecatedFieldInObjectDeprecatedEnum.md
 docs/models/shared/DeprecatedFieldInObject.md
@@ -1058,6 +1070,8 @@ docs/models/shared/EmptyObjectParam.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshow.md
 docs/models/shared/HttpBinSimpleJsonObject.md
+docs/models/shared/ObjectCircularReferenceObject.md
+docs/models/shared/OneOfCircularReferenceObject.md
 docs/models/shared/FakerStrings.md
 docs/models/shared/FakerFormattedStrings.md
 docs/models/shared/LimitOffsetConfig.md
@@ -1114,6 +1128,8 @@ docs/models/shared/DeepObjectWithType.md
 docs/models/shared/TypedObject3Type.md
 docs/models/shared/TypedObject3.md
 docs/models/shared/AllOfToAllOf.md
+docs/models/shared/OneOfGenerationStressTestOneOfSameType2.md
+docs/models/shared/OneOfGenerationStressTest.md
 docs/models/shared/UnsupportedEnums.md
 docs/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationResponse.md
 docs/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.md

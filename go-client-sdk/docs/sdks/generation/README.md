@@ -8,6 +8,7 @@ Endpoints for purely testing valid generation behavior.
 ### Available Operations
 
 * [AnchorTypesGet](#anchortypesget)
+* [ArrayCircularReferenceGet](#arraycircularreferenceget)
 * [CircularReferenceGet](#circularreferenceget)
 * [DeprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [DeprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
@@ -19,6 +20,8 @@ Endpoints for purely testing valid generation behavior.
 * [IgnoredGenerationGet](#ignoredgenerationget)
 * [IgnoresPost](#ignorespost)
 * [NameOverride](#nameoverride)
+* [ObjectCircularReferenceGet](#objectcircularreferenceget)
+* [OneOfCircularReferenceGet](#oneofcircularreferenceget)
 * [TypedParameterGenerationGet](#typedparametergenerationget)
 * [UsageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
@@ -67,6 +70,53 @@ func main() {
 ### Response
 
 **[*operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md), error**
+
+
+## ArrayCircularReferenceGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.ArrayCircularReferenceGet(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ArrayCircularReferenceObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md), error**
 
 
 ## CircularReferenceGet
@@ -620,6 +670,100 @@ func main() {
 ### Response
 
 **[*operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md), error**
+
+
+## ObjectCircularReferenceGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.ObjectCircularReferenceGet(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ObjectCircularReferenceObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md), error**
+
+
+## OneOfCircularReferenceGet
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Generation.OneOfCircularReferenceGet(ctx)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.OneOfCircularReferenceObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+
+
+### Response
+
+**[*operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md), error**
 
 
 ## TypedParameterGenerationGet

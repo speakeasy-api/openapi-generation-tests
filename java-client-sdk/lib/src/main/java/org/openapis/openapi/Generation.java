@@ -58,6 +58,39 @@ public class Generation {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse arrayCircularReferenceGet() throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/arrayCircularReference");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse res = new org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse(contentType, httpRes.statusCode()) {{
+            arrayCircularReferenceObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.ArrayCircularReferenceObject[] out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ArrayCircularReferenceObject[].class);
+                res.arrayCircularReferenceObject = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.CircularReferenceGetResponse circularReferenceGet() throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/circularReference");
@@ -491,6 +524,72 @@ public class Generation {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.operations.OverriddenResponse out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.OverriddenResponse.class);
                 res.overriddenResponse = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse objectCircularReferenceGet() throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/objectCircularReference");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse res = new org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse(contentType, httpRes.statusCode()) {{
+            objectCircularReferenceObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.ObjectCircularReferenceObject out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.ObjectCircularReferenceObject.class);
+                res.objectCircularReferenceObject = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse oneOfCircularReferenceGet() throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/oneOfCircularReference");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse res = new org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse(contentType, httpRes.statusCode()) {{
+            oneOfCircularReferenceObject = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.shared.OneOfCircularReferenceObject out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.shared.OneOfCircularReferenceObject.class);
+                res.oneOfCircularReferenceObject = out;
             }
         }
 

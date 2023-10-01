@@ -8,6 +8,7 @@ Endpoints for purely testing valid generation behavior.
 ### Available Operations
 
 * [anchorTypesGet](#anchortypesget)
+* [arrayCircularReferenceGet](#arraycircularreferenceget)
 * [circularReferenceGet](#circularreferenceget)
 * [deprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
@@ -19,6 +20,8 @@ Endpoints for purely testing valid generation behavior.
 * [ignoredGenerationGet](#ignoredgenerationget)
 * [ignoresPost](#ignorespost)
 * [nameOverride](#nameoverride)
+* [objectCircularReferenceGet](#objectcircularreferenceget)
+* [oneOfCircularReferenceGet](#oneofcircularreferenceget)
 * [typedParameterGenerationGet](#typedparametergenerationget)
 * [usageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
@@ -55,6 +58,41 @@ sdk.generation.anchorTypesGet().then((res: AnchorTypesGetResponse) => {
 ### Response
 
 **Promise<[operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md)>**
+
+
+## arrayCircularReferenceGet
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { ArrayCircularReferenceGetResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.arrayCircularReferenceGet().then((res: ArrayCircularReferenceGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md)>**
 
 
 ## circularReferenceGet
@@ -477,6 +515,76 @@ sdk.generation.nameOverride(testEnumQueryParam, testQueryParam).then((res: NameO
 ### Response
 
 **Promise<[operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md)>**
+
+
+## objectCircularReferenceGet
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { ObjectCircularReferenceGetResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.objectCircularReferenceGet().then((res: ObjectCircularReferenceGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md)>**
+
+
+## oneOfCircularReferenceGet
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { OneOfCircularReferenceGetResponse } from "openapi/dist/sdk/models/operations";
+
+const sdk = new SDK({
+  security: {
+    apiKeyAuth: "Token YOUR_API_KEY",
+  },
+  globalPathParam: 100,
+  globalQueryParam: "some example global query param",
+});
+
+sdk.generation.oneOfCircularReferenceGet().then((res: OneOfCircularReferenceGetResponse) => {
+  if (res.statusCode == 200) {
+    // handle response
+  }
+});
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md)>**
 
 
 ## typedParameterGenerationGet

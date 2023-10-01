@@ -257,6 +257,7 @@ func main() {
 ### [Generation](docs/sdks/generation/README.md)
 
 * [AnchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
+* [ArrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
 * [CircularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
 * [DeprecatedFieldInSchemaPost](docs/sdks/generation/README.md#deprecatedfieldinschemapost)
 * [DeprecatedObjectInSchemaGet](docs/sdks/generation/README.md#deprecatedobjectinschemaget)
@@ -268,6 +269,8 @@ func main() {
 * [IgnoredGenerationGet](docs/sdks/generation/README.md#ignoredgenerationget)
 * [IgnoresPost](docs/sdks/generation/README.md#ignorespost)
 * [NameOverride](docs/sdks/generation/README.md#nameoverride)
+* [ObjectCircularReferenceGet](docs/sdks/generation/README.md#objectcircularreferenceget)
+* [OneOfCircularReferenceGet](docs/sdks/generation/README.md#oneofcircularreferenceget)
 * [TypedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [UsageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 

@@ -21,13 +21,9 @@ export class Unions {
     }
 
     async flattenedTypedObjectPost(
-        req: shared.TypedObject1,
+        req: any,
         config?: AxiosRequestConfig
     ): Promise<operations.FlattenedTypedObjectPostResponse> {
-        if (!(req instanceof utils.SpeakeasyBase)) {
-            req = new shared.TypedObject1(req);
-        }
-
         const baseURL: string = utils.templateUrl(
             this.sdkConfiguration.serverURL,
             this.sdkConfiguration.serverDefaults

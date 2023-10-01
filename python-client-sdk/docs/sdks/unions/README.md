@@ -35,10 +35,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.TypedObject1(
-    type='farad Rustic',
-    value='cuckold',
-)
+req = []
 
 res = s.unions.flattened_typed_object_post(req)
 
@@ -48,9 +45,9 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                  | Type                                                       | Required                                                   | Description                                                |
-| ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- | ---------------------------------------------------------- |
-| `request`                                                  | [shared.TypedObject1](../../models/shared/typedobject1.md) | :heavy_check_mark:                                         | The request object to use for the request.                 |
+| Parameter                                                                  | Type                                                                       | Required                                                                   | Description                                                                |
+| -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| `request`                                                                  | [Union[shared.TypedObject1]](../../models/shared/flattenedtypedobject1.md) | :heavy_check_mark:                                                         | The request object to use for the request.                                 |
 
 
 ### Response
@@ -118,10 +115,7 @@ req = shared.NullableOneOfRefInObject(
         value='Trenton',
     ),
     nullable_one_of_two=[],
-    one_of_one=shared.TypedObject1(
-        type='bypassing invoice',
-        value='West',
-    ),
+    one_of_one=[],
 )
 
 res = s.unions.nullable_one_of_ref_in_object_post(req)

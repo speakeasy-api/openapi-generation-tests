@@ -251,6 +251,7 @@ try {
 ### [generation](docs/sdks/generation/README.md)
 
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
+* [arrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
 * [deprecatedFieldInSchemaPost](docs/sdks/generation/README.md#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](docs/sdks/generation/README.md#deprecatedobjectinschemaget)
@@ -262,6 +263,8 @@ try {
 * [ignoredGenerationGet](docs/sdks/generation/README.md#ignoredgenerationget)
 * [ignoresPost](docs/sdks/generation/README.md#ignorespost)
 * [nameOverride](docs/sdks/generation/README.md#nameoverride)
+* [objectCircularReferenceGet](docs/sdks/generation/README.md#objectcircularreferenceget)
+* [oneOfCircularReferenceGet](docs/sdks/generation/README.md#oneofcircularreferenceget)
 * [typedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [usageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 

@@ -56,6 +56,40 @@ class Generation
     }
 	
     /**
+     * arrayCircularReferenceGet
+     * 
+     * @return \OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse
+     */
+	public function arrayCircularReferenceGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/arrayCircularReference');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->arrayCircularReferenceObject = $serializer->deserialize((string)$httpResponse->getBody(), 'array<OpenAPI\OpenAPI\Models\Shared\ArrayCircularReferenceObject>', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * circularReferenceGet
      * 
      * @return \OpenAPI\OpenAPI\Models\Operations\CircularReferenceGetResponse
@@ -462,6 +496,74 @@ class Generation
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->overriddenResponse = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\OverriddenResponse', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * objectCircularReferenceGet
+     * 
+     * @return \OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse
+     */
+	public function objectCircularReferenceGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/objectCircularReference');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->objectCircularReferenceObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\ObjectCircularReferenceObject', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * oneOfCircularReferenceGet
+     * 
+     * @return \OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse
+     */
+	public function oneOfCircularReferenceGet(
+    ): \OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/oneOfCircularReference');
+        
+        $options = ['http_errors' => false];
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->oneOfCircularReferenceObject = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Shared\OneOfCircularReferenceObject', 'json');
             }
         }
 

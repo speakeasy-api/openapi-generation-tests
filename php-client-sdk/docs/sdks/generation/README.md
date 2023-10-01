@@ -8,6 +8,7 @@ Endpoints for purely testing valid generation behavior.
 ### Available Operations
 
 * [anchorTypesGet](#anchortypesget)
+* [arrayCircularReferenceGet](#arraycircularreferenceget)
 * [circularReferenceGet](#circularreferenceget)
 * [deprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
@@ -19,6 +20,8 @@ Endpoints for purely testing valid generation behavior.
 * [ignoredGenerationGet](#ignoredgenerationget)
 * [ignoresPost](#ignorespost)
 * [nameOverride](#nameoverride)
+* [objectCircularReferenceGet](#objectcircularreferenceget)
+* [oneOfCircularReferenceGet](#oneofcircularreferenceget)
 * [typedParameterGenerationGet](#typedparametergenerationget)
 * [usageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
@@ -53,6 +56,39 @@ try {
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\AnchorTypesGetResponse](../../models/operations/AnchorTypesGetResponse.md)**
+
+
+## arrayCircularReferenceGet
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->generation->arrayCircularReferenceGet();
+
+    if ($response->arrayCircularReferenceObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\ArrayCircularReferenceGetResponse](../../models/operations/ArrayCircularReferenceGetResponse.md)**
 
 
 ## circularReferenceGet
@@ -489,6 +525,72 @@ try {
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\NameOverrideGetResponse](../../models/operations/NameOverrideGetResponse.md)**
+
+
+## objectCircularReferenceGet
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->generation->objectCircularReferenceGet();
+
+    if ($response->objectCircularReferenceObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\ObjectCircularReferenceGetResponse](../../models/operations/ObjectCircularReferenceGetResponse.md)**
+
+
+## oneOfCircularReferenceGet
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$sdk = SDK::builder()
+    ->build();
+
+try {
+    $response = $sdk->generation->oneOfCircularReferenceGet();
+
+    if ($response->oneOfCircularReferenceObject !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\OneOfCircularReferenceGetResponse](../../models/operations/OneOfCircularReferenceGetResponse.md)**
 
 
 ## typedParameterGenerationGet

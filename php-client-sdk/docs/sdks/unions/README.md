@@ -31,8 +31,6 @@ require_once 'vendor/autoload.php';
 
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
-use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
-use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
 $sdk = SDK::builder()
     ->build();
@@ -54,9 +52,9 @@ try {
 
 ### Parameters
 
-| Parameter                                                                          | Type                                                                               | Required                                                                           | Description                                                                        |
-| ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- |
-| `$request`                                                                         | [\OpenAPI\OpenAPI\Models\Shared\TypedObject1](../../models/shared/TypedObject1.md) | :heavy_check_mark:                                                                 | The request object to use for the request.                                         |
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [mixed](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response

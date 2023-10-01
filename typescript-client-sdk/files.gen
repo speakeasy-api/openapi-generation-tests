@@ -88,6 +88,7 @@ src/sdk/models/operations/conflictingparams.ts
 src/sdk/models/operations/inlinebodyandparamconflict.ts
 src/sdk/models/operations/inlinebodyandparamnoconflict.ts
 src/sdk/models/operations/anchortypesget.ts
+src/sdk/models/operations/arraycircularreferenceget.ts
 src/sdk/models/operations/circularreferenceget.ts
 src/sdk/models/operations/deprecatedfieldinschemapost.ts
 src/sdk/models/operations/deprecatedobjectinschemaget.ts
@@ -99,6 +100,8 @@ src/sdk/models/operations/getglobalnameoverride.ts
 src/sdk/models/operations/ignoredgenerationget.ts
 src/sdk/models/operations/ignorespost.ts
 src/sdk/models/operations/nameoverrideget.ts
+src/sdk/models/operations/objectcircularreferenceget.ts
+src/sdk/models/operations/oneofcircularreferenceget.ts
 src/sdk/models/operations/typedparametergenerationget.ts
 src/sdk/models/operations/usageexamplepost.ts
 src/sdk/models/operations/globalpathparameterget.ts
@@ -259,11 +262,14 @@ src/sdk/models/shared/authservicerequestbody.ts
 src/sdk/models/shared/security.ts
 src/sdk/models/shared/simpleobject.ts
 src/sdk/models/shared/enum.ts
+src/sdk/models/shared/arraycircularreferenceobject.ts
 src/sdk/models/shared/validcircularreferenceobject.ts
 src/sdk/models/shared/deprecatedfieldinobject.ts
 src/sdk/models/shared/deprecatedobject.ts
 src/sdk/models/shared/emptyobjectparam.ts
 src/sdk/models/shared/httpbinsimplejsonobject.ts
+src/sdk/models/shared/objectcircularreferenceobject.ts
+src/sdk/models/shared/oneofcircularreferenceobject.ts
 src/sdk/models/shared/fakerstrings.ts
 src/sdk/models/shared/fakerformattedstrings.ts
 src/sdk/models/shared/limitoffsetconfig.ts
@@ -296,6 +302,7 @@ src/sdk/models/shared/simpleobjectwithtype.ts
 src/sdk/models/shared/deepobjectwithtype.ts
 src/sdk/models/shared/typedobject3.ts
 src/sdk/models/shared/alloftoallof.ts
+src/sdk/models/shared/oneofgenerationstresstest.ts
 src/sdk/models/shared/unsupportedenums.ts
 src/sdk/models/shared/index.ts
 src/sdk/models/errors/error.ts
@@ -381,6 +388,7 @@ docs/models/operations/inlinebodyandparamnoconflictres.md
 docs/models/operations/inlinebodyandparamnoconflictresponse.md
 docs/models/operations/typefromanchor.md
 docs/models/operations/anchortypesgetresponse.md
+docs/models/operations/arraycircularreferencegetresponse.md
 docs/models/operations/circularreferencegetresponse.md
 docs/models/operations/deprecatedfieldinschemapostresponse.md
 docs/models/operations/deprecatedobjectinschemaget200applicationjson.md
@@ -404,6 +412,8 @@ docs/models/operations/nameoverridegetenumnameoverride.md
 docs/models/operations/nameoverridegetrequest.md
 docs/models/operations/overriddenresponse.md
 docs/models/operations/nameoverridegetresponse.md
+docs/models/operations/objectcircularreferencegetresponse.md
+docs/models/operations/oneofcircularreferencegetresponse.md
 docs/models/operations/typedparametergenerationgetobj.md
 docs/types/rfcdate.md
 docs/models/operations/typedparametergenerationgetrequest.md
@@ -766,6 +776,7 @@ docs/models/shared/simpleobjectint32enum.md
 docs/models/shared/simpleobjectintenum.md
 docs/models/shared/simpleobject.md
 docs/models/shared/enum.md
+docs/models/shared/arraycircularreferenceobject.md
 docs/models/shared/validcircularreferenceobject.md
 docs/models/shared/deprecatedfieldinobjectdeprecatedenum.md
 docs/models/shared/deprecatedfieldinobject.md
@@ -774,6 +785,8 @@ docs/models/shared/emptyobjectparam.md
 docs/models/shared/httpbinsimplejsonobjectslideshowslides.md
 docs/models/shared/httpbinsimplejsonobjectslideshow.md
 docs/models/shared/httpbinsimplejsonobject.md
+docs/models/shared/objectcircularreferenceobject.md
+docs/models/shared/oneofcircularreferenceobject.md
 docs/models/shared/fakerstrings.md
 docs/models/shared/fakerformattedstrings.md
 docs/models/shared/limitoffsetconfig.md
@@ -830,6 +843,8 @@ docs/models/shared/deepobjectwithtype.md
 docs/models/shared/typedobject3type.md
 docs/models/shared/typedobject3.md
 docs/models/shared/alloftoallof.md
+docs/models/shared/oneofgenerationstresstestoneofsametype2.md
+docs/models/shared/oneofgenerationstresstest.md
 docs/models/shared/unsupportedenums.md
 docs/models/errors/errort.md
 docs/models/errors/statusgetxspeakeasyerrors501applicationjson.md

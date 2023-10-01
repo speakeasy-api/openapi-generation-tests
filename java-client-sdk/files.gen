@@ -148,6 +148,7 @@ lib/src/main/java/org/openapis/openapi/models/operations/InlineBodyAndParamNoCon
 lib/src/main/java/org/openapis/openapi/models/operations/InlineBodyAndParamNoConflictResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypeFromAnchor.java
 lib/src/main/java/org/openapis/openapi/models/operations/AnchorTypesGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/ArrayCircularReferenceGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/CircularReferenceGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeprecatedFieldInSchemaPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeprecatedObjectInSchemaGet200ApplicationJSON.java
@@ -171,6 +172,8 @@ lib/src/main/java/org/openapis/openapi/models/operations/NameOverrideGetEnumName
 lib/src/main/java/org/openapis/openapi/models/operations/NameOverrideGetRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/OverriddenResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/NameOverrideGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/ObjectCircularReferenceGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/OneOfCircularReferenceGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypedParameterGenerationGetObj.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypedParameterGenerationGetRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypedParameterGenerationGetResponse.java
@@ -533,6 +536,7 @@ lib/src/main/java/org/openapis/openapi/models/shared/SimpleObjectInt32Enum.java
 lib/src/main/java/org/openapis/openapi/models/shared/SimpleObjectIntEnum.java
 lib/src/main/java/org/openapis/openapi/models/shared/SimpleObject.java
 lib/src/main/java/org/openapis/openapi/models/shared/Enum.java
+lib/src/main/java/org/openapis/openapi/models/shared/ArrayCircularReferenceObject.java
 lib/src/main/java/org/openapis/openapi/models/shared/ValidCircularReferenceObject.java
 lib/src/main/java/org/openapis/openapi/models/shared/DeprecatedFieldInObjectDeprecatedEnum.java
 lib/src/main/java/org/openapis/openapi/models/shared/DeprecatedFieldInObject.java
@@ -541,6 +545,8 @@ lib/src/main/java/org/openapis/openapi/models/shared/EmptyObjectParam.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObjectSlideshow.java
 lib/src/main/java/org/openapis/openapi/models/shared/HttpBinSimpleJsonObject.java
+lib/src/main/java/org/openapis/openapi/models/shared/ObjectCircularReferenceObject.java
+lib/src/main/java/org/openapis/openapi/models/shared/OneOfCircularReferenceObject.java
 lib/src/main/java/org/openapis/openapi/models/shared/FakerStrings.java
 lib/src/main/java/org/openapis/openapi/models/shared/FakerFormattedStrings.java
 lib/src/main/java/org/openapis/openapi/models/shared/LimitOffsetConfig.java
@@ -597,6 +603,8 @@ lib/src/main/java/org/openapis/openapi/models/shared/DeepObjectWithType.java
 lib/src/main/java/org/openapis/openapi/models/shared/TypedObject3Type.java
 lib/src/main/java/org/openapis/openapi/models/shared/TypedObject3.java
 lib/src/main/java/org/openapis/openapi/models/shared/AllOfToAllOf.java
+lib/src/main/java/org/openapis/openapi/models/shared/OneOfGenerationStressTestOneOfSameType2.java
+lib/src/main/java/org/openapis/openapi/models/shared/OneOfGenerationStressTest.java
 lib/src/main/java/org/openapis/openapi/models/shared/UnsupportedEnums.java
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationResponse.java
 lib/src/main/java/org/openapis/openapi/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.java
@@ -681,6 +689,7 @@ docs/models/operations/InlineBodyAndParamNoConflictRes.md
 docs/models/operations/InlineBodyAndParamNoConflictResponse.md
 docs/models/operations/TypeFromAnchor.md
 docs/models/operations/AnchorTypesGetResponse.md
+docs/models/operations/ArrayCircularReferenceGetResponse.md
 docs/models/operations/CircularReferenceGetResponse.md
 docs/models/operations/DeprecatedFieldInSchemaPostResponse.md
 docs/models/operations/DeprecatedObjectInSchemaGet200ApplicationJSON.md
@@ -704,6 +713,8 @@ docs/models/operations/NameOverrideGetEnumNameOverride.md
 docs/models/operations/NameOverrideGetRequest.md
 docs/models/operations/OverriddenResponse.md
 docs/models/operations/NameOverrideGetResponse.md
+docs/models/operations/ObjectCircularReferenceGetResponse.md
+docs/models/operations/OneOfCircularReferenceGetResponse.md
 docs/models/operations/TypedParameterGenerationGetObj.md
 docs/models/operations/TypedParameterGenerationGetRequest.md
 docs/models/operations/TypedParameterGenerationGetResponse.md
@@ -1066,6 +1077,7 @@ docs/models/shared/SimpleObjectInt32Enum.md
 docs/models/shared/SimpleObjectIntEnum.md
 docs/models/shared/SimpleObject.md
 docs/models/shared/Enum.md
+docs/models/shared/ArrayCircularReferenceObject.md
 docs/models/shared/ValidCircularReferenceObject.md
 docs/models/shared/DeprecatedFieldInObjectDeprecatedEnum.md
 docs/models/shared/DeprecatedFieldInObject.md
@@ -1074,6 +1086,8 @@ docs/models/shared/EmptyObjectParam.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshowSlides.md
 docs/models/shared/HttpBinSimpleJsonObjectSlideshow.md
 docs/models/shared/HttpBinSimpleJsonObject.md
+docs/models/shared/ObjectCircularReferenceObject.md
+docs/models/shared/OneOfCircularReferenceObject.md
 docs/models/shared/FakerStrings.md
 docs/models/shared/FakerFormattedStrings.md
 docs/models/shared/LimitOffsetConfig.md
@@ -1130,6 +1144,8 @@ docs/models/shared/DeepObjectWithType.md
 docs/models/shared/TypedObject3Type.md
 docs/models/shared/TypedObject3.md
 docs/models/shared/AllOfToAllOf.md
+docs/models/shared/OneOfGenerationStressTestOneOfSameType2.md
+docs/models/shared/OneOfGenerationStressTest.md
 docs/models/shared/UnsupportedEnums.md
 docs/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationResponse.md
 docs/models/callbacks/IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody.md

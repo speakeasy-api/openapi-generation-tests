@@ -8,6 +8,7 @@ Endpoints for purely testing valid generation behavior.
 ### Available Operations
 
 * [anchorTypesGet](#anchortypesget)
+* [arrayCircularReferenceGet](#arraycircularreferenceget)
 * [circularReferenceGet](#circularreferenceget)
 * [deprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
@@ -19,6 +20,8 @@ Endpoints for purely testing valid generation behavior.
 * [ignoredGenerationGet](#ignoredgenerationget)
 * [ignoresPost](#ignorespost)
 * [nameOverride](#nameoverride)
+* [objectCircularReferenceGet](#objectcircularreferenceget)
+* [oneOfCircularReferenceGet](#oneofcircularreferenceget)
 * [typedParameterGenerationGet](#typedparametergenerationget)
 * [usageExamplePost](#usageexamplepost) - An operation used for testing usage examples
 
@@ -60,6 +63,46 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.AnchorTypesGetResponse](../../models/operations/AnchorTypesGetResponse.md)**
+
+
+## arrayCircularReferenceGet
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            ArrayCircularReferenceGetResponse res = sdk.generation.arrayCircularReferenceGet();
+
+            if (res.arrayCircularReferenceObject != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.ArrayCircularReferenceGetResponse](../../models/operations/ArrayCircularReferenceGetResponse.md)**
 
 
 ## circularReferenceGet
@@ -568,6 +611,86 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.NameOverrideGetResponse](../../models/operations/NameOverrideGetResponse.md)**
+
+
+## objectCircularReferenceGet
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            ObjectCircularReferenceGetResponse res = sdk.generation.objectCircularReferenceGet();
+
+            if (res.objectCircularReferenceObject != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.ObjectCircularReferenceGetResponse](../../models/operations/ObjectCircularReferenceGetResponse.md)**
+
+
+## oneOfCircularReferenceGet
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security() {{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            OneOfCircularReferenceGetResponse res = sdk.generation.oneOfCircularReferenceGet();
+
+            if (res.oneOfCircularReferenceObject != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.OneOfCircularReferenceGetResponse](../../models/operations/OneOfCircularReferenceGetResponse.md)**
 
 
 ## typedParameterGenerationGet

@@ -8,6 +8,7 @@ Endpoints for purely testing valid generation behavior.
 ### Available Operations
 
 * [anchor_types_get](#anchor_types_get)
+* [array_circular_reference_get](#array_circular_reference_get)
 * [circular_reference_get](#circular_reference_get)
 * [deprecated_field_in_schema_post](#deprecated_field_in_schema_post)
 * [deprecated_object_in_schema_get](#deprecated_object_in_schema_get)
@@ -19,6 +20,8 @@ Endpoints for purely testing valid generation behavior.
 * [ignored_generation_get](#ignored_generation_get)
 * [ignores_post](#ignores_post)
 * [name_override](#name_override)
+* [object_circular_reference_get](#object_circular_reference_get)
+* [one_of_circular_reference_get](#one_of_circular_reference_get)
 * [typed_parameter_generation_get](#typed_parameter_generation_get)
 * [usage_example_post](#usage_example_post) - An operation used for testing usage examples
 
@@ -49,6 +52,35 @@ if res.type_from_anchor is not None:
 ### Response
 
 **[operations.AnchorTypesGetResponse](../../models/operations/anchortypesgetresponse.md)**
+
+
+## array_circular_reference_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.array_circular_reference_get()
+
+if res.array_circular_reference_object is not None:
+    # handle response
+```
+
+
+### Response
+
+**[operations.ArrayCircularReferenceGetResponse](../../models/operations/arraycircularreferencegetresponse.md)**
 
 
 ## circular_reference_get
@@ -420,6 +452,64 @@ if res.overridden_response is not None:
 ### Response
 
 **[operations.NameOverrideGetResponse](../../models/operations/nameoverridegetresponse.md)**
+
+
+## object_circular_reference_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.object_circular_reference_get()
+
+if res.object_circular_reference_object is not None:
+    # handle response
+```
+
+
+### Response
+
+**[operations.ObjectCircularReferenceGetResponse](../../models/operations/objectcircularreferencegetresponse.md)**
+
+
+## one_of_circular_reference_get
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.one_of_circular_reference_get()
+
+if res.one_of_circular_reference_object is not None:
+    # handle response
+```
+
+
+### Response
+
+**[operations.OneOfCircularReferenceGetResponse](../../models/operations/oneofcircularreferencegetresponse.md)**
 
 
 ## typed_parameter_generation_get

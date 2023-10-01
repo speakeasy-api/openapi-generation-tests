@@ -236,9 +236,9 @@ func TestFlattenedTypedObject_Obj1(t *testing.T) {
 
 	s := sdk.New()
 
-	obj := shared.TypedObject1{
+	obj := shared.CreateFlattenedTypedObject1TypedObject1(shared.TypedObject1{
 		Value: "one",
-	}
+	})
 
 	res, err := s.Unions.FlattenedTypedObjectPost(context.Background(), obj)
 	require.NoError(t, err)
@@ -379,7 +379,7 @@ func TestNullableOneOfRefInObject(t *testing.T) {
 			obj: shared.NullableOneOfRefInObject{
 				NullableOneOfOne: nil,
 				NullableOneOfTwo: nil,
-				OneOfOne:         shared.TypedObject1{Value: "one"},
+				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Value: "one"}),
 			},
 			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}",
 		},
@@ -388,7 +388,7 @@ func TestNullableOneOfRefInObject(t *testing.T) {
 			obj: shared.NullableOneOfRefInObject{
 				NullableOneOfOne: &shared.TypedObject1{Value: "one"},
 				NullableOneOfTwo: &nullableOneOfTwoObj2,
-				OneOfOne:         shared.TypedObject1{},
+				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{}),
 			},
 			wantJson: "{\"NullableOneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"},\"NullableOneOfTwo\":{\"type\":\"obj2\",\"value\":\"two\"},\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"\"}}",
 		},

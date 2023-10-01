@@ -70,10 +70,51 @@ func (u NullableOneOfRefInObjectNullableOneOfTwo) MarshalJSON() ([]byte, error) 
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
+type NullableOneOfRefInObjectOneOfOneType string
+
+const (
+	NullableOneOfRefInObjectOneOfOneTypeTypedObject1 NullableOneOfRefInObjectOneOfOneType = "typedObject1"
+)
+
+type NullableOneOfRefInObjectOneOfOne struct {
+	TypedObject1 *TypedObject1
+
+	Type NullableOneOfRefInObjectOneOfOneType
+}
+
+func CreateNullableOneOfRefInObjectOneOfOneTypedObject1(typedObject1 TypedObject1) NullableOneOfRefInObjectOneOfOne {
+	typ := NullableOneOfRefInObjectOneOfOneTypeTypedObject1
+
+	return NullableOneOfRefInObjectOneOfOne{
+		TypedObject1: &typedObject1,
+		Type:         typ,
+	}
+}
+
+func (u *NullableOneOfRefInObjectOneOfOne) UnmarshalJSON(data []byte) error {
+
+	typedObject1 := new(TypedObject1)
+	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
+		u.TypedObject1 = typedObject1
+		u.Type = NullableOneOfRefInObjectOneOfOneTypeTypedObject1
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u NullableOneOfRefInObjectOneOfOne) MarshalJSON() ([]byte, error) {
+	if u.TypedObject1 != nil {
+		return utils.MarshalJSON(u.TypedObject1, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type NullableOneOfRefInObject struct {
 	NullableOneOfOne *TypedObject1                             `json:"NullableOneOfOne"`
 	NullableOneOfTwo *NullableOneOfRefInObjectNullableOneOfTwo `json:"NullableOneOfTwo"`
-	OneOfOne         TypedObject1                              `json:"OneOfOne"`
+	OneOfOne         NullableOneOfRefInObjectOneOfOne          `json:"OneOfOne"`
 }
 
 func (o *NullableOneOfRefInObject) GetNullableOneOfOne() *TypedObject1 {
@@ -90,9 +131,9 @@ func (o *NullableOneOfRefInObject) GetNullableOneOfTwo() *NullableOneOfRefInObje
 	return o.NullableOneOfTwo
 }
 
-func (o *NullableOneOfRefInObject) GetOneOfOne() TypedObject1 {
+func (o *NullableOneOfRefInObject) GetOneOfOne() NullableOneOfRefInObjectOneOfOne {
 	if o == nil {
-		return TypedObject1{}
+		return NullableOneOfRefInObjectOneOfOne{}
 	}
 	return o.OneOfOne
 }

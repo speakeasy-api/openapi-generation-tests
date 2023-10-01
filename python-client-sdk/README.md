@@ -232,6 +232,7 @@ if res.usage_example_post_200_application_json_object is not None:
 ### [generation](docs/sdks/generation/README.md)
 
 * [anchor_types_get](docs/sdks/generation/README.md#anchor_types_get)
+* [array_circular_reference_get](docs/sdks/generation/README.md#array_circular_reference_get)
 * [circular_reference_get](docs/sdks/generation/README.md#circular_reference_get)
 * [deprecated_field_in_schema_post](docs/sdks/generation/README.md#deprecated_field_in_schema_post)
 * [deprecated_object_in_schema_get](docs/sdks/generation/README.md#deprecated_object_in_schema_get)
@@ -243,6 +244,8 @@ if res.usage_example_post_200_application_json_object is not None:
 * [ignored_generation_get](docs/sdks/generation/README.md#ignored_generation_get)
 * [ignores_post](docs/sdks/generation/README.md#ignores_post)
 * [name_override](docs/sdks/generation/README.md#name_override)
+* [object_circular_reference_get](docs/sdks/generation/README.md#object_circular_reference_get)
+* [one_of_circular_reference_get](docs/sdks/generation/README.md#one_of_circular_reference_get)
 * [typed_parameter_generation_get](docs/sdks/generation/README.md#typed_parameter_generation_get)
 * [usage_example_post](docs/sdks/generation/README.md#usage_example_post) - An operation used for testing usage examples
 
