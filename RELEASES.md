@@ -793,3 +793,15 @@ Based on:
 - [python v1.36.1] python-client-sdk
 - [ruby v1.35.1] ruby-client-sdk
 - [typescript v1.37.1] typescript-client-sdk
+
+## 2023-10-03 00:12:04
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.93.1 (2.144.7) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [java v1.35.2] java-client-sdk
+- [php v1.35.2] php-client-sdk
+- [python v1.36.2] python-client-sdk
+- [ruby v1.35.2] ruby-client-sdk
+- [typescript v1.37.2] typescript-client-sdk

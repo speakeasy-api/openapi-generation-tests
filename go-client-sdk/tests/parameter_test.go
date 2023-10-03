@@ -19,7 +19,11 @@ import (
 func TestMixedParameterPrimitives(t *testing.T) {
 	recordTest("parameters-mixed-primitives")
 
-	s := sdk.New()
+	s := sdk.New(
+		sdk.WithSecurity(shared.Security{
+			APIKeyAuth: sdk.String("test"),
+		}),
+	)
 
 	res, err := s.Parameters.MixedParametersPrimitives(context.Background(), "headerValue", "pathValue", "queryValue")
 	require.NoError(t, err)

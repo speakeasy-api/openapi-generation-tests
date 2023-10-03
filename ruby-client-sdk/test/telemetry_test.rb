@@ -15,7 +15,7 @@ module OpenApiSDK
 
     	refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
-      assert_equal('speakeasy-sdk/ruby 1.35.1 2.143.2 0.1.0 openapi', res.res.headers['X-Speakeasy-User-Agent'])
+      assert_equal('speakeasy-sdk/ruby 1.35.2 2.144.7 0.1.0 openapi', res.res.headers['X-Speakeasy-User-Agent'])
 
     end
 
@@ -29,7 +29,7 @@ module OpenApiSDK
     	refute_nil(res)
       assert_equal(Rack::Utils.status_code(:ok), res.status_code)
       assert_equal(user_agent, res.res.headers['User-Agent'])
-      assert_equal('speakeasy-sdk/ruby 1.35.1 2.143.2 0.1.0 openapi', res.res.headers['X-Speakeasy-User-Agent'])
+      assert_equal('speakeasy-sdk/ruby 1.35.2 2.144.7 0.1.0 openapi', res.res.headers['X-Speakeasy-User-Agent'])
 
     end
   end
