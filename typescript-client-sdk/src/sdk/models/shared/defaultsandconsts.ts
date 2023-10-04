@@ -30,10 +30,6 @@ export enum DefaultsAndConstsDefaultEnumStr {
     Three = "three",
 }
 
-export enum DefaultsAndConstsSingleEnumConstStr {
-    One = "one",
-}
-
 export class DefaultsAndConsts extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "constBigInt" })
@@ -150,12 +146,4 @@ export class DefaultsAndConsts extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "normalField" })
     normalField: string;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "singleEnumConstBool" })
-    singleEnumConstBool: boolean;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "singleEnumConstStr" })
-    singleEnumConstStr: DefaultsAndConstsSingleEnumConstStr;
 }

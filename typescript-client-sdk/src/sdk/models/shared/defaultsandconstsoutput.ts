@@ -146,12 +146,4 @@ export class DefaultsAndConstsOutput extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "normalField" })
     normalField: string;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "singleEnumConstBool" })
-    singleEnumConstBool: boolean;
-
-    @SpeakeasyMetadata()
-    @Expose({ name: "singleEnumConstStr" })
-    singleEnumConstStr: string;
 }

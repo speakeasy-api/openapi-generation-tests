@@ -1888,7 +1888,6 @@ import {
   DefaultsAndConstsConstEnumStr,
   DefaultsAndConstsDefaultEnumInt,
   DefaultsAndConstsDefaultEnumStr,
-  DefaultsAndConstsSingleEnumConstStr,
 } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
@@ -1929,8 +1928,6 @@ sdk.requestBodies.requestBodyPostDefaultsAndConsts({
   defaultStrNullable: "silver Central",
   defaultStrOptional: "Gasoline Pines boo",
   normalField: "free",
-  singleEnumConstBool: false,
-  singleEnumConstStr: DefaultsAndConstsSingleEnumConstStr.One,
 }).then((res: RequestBodyPostDefaultsAndConstsResponse) => {
   if (res.statusCode == 200) {
     // handle response
