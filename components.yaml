@@ -958,14 +958,6 @@ components:
           type: string
           format: decimal
           const: "3.141592653589793238462643383279"
-        singleEnumConstStr:
-          type: string
-          enum:
-            - "one"
-        singleEnumConstBool:
-          type: boolean
-          enum:
-            - true
         defaultStr:
           type: string
           default: "default"
@@ -1038,8 +1030,6 @@ components:
         - constBigIntStr
         - constDecimal
         - constDecimalStr
-        - singleEnumConstStr
-        - singleEnumConstBool
         - defaultStr
         - defaultStrNullable
         - defaultInt
@@ -1099,10 +1089,6 @@ components:
         constDecimalStr:
           type: string
           format: decimal
-        singleEnumConstStr:
-          type: string
-        singleEnumConstBool:
-          type: boolean
         defaultStr:
           type: string
         defaultStrNullable:
@@ -1161,8 +1147,6 @@ components:
         - constBigIntStr
         - constDecimal
         - constDecimalStr
-        - singleEnumConstStr
-        - singleEnumConstBool
         - defaultStr
         - defaultStrNullable
         - defaultInt
