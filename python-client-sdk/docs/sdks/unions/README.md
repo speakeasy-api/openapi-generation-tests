@@ -111,8 +111,8 @@ s = sdk.SDK(
 
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
-        type='Global Alexandria administration',
-        value='Trenton',
+        type=shared.TypedObject1Type.OBJ1,
+        value='Global Alexandria administration',
     ),
     nullable_one_of_two=[],
     one_of_one=[],
@@ -229,8 +229,8 @@ s = sdk.SDK(
 )
 
 req = shared.TypedObject1(
-    type='Bike',
-    value='violet brand',
+    type=shared.TypedObject1Type.OBJ1,
+    value='Bike',
 )
 
 res = s.unions.nullable_typed_object_post(req)

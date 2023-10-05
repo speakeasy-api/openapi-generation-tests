@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RFCDate } from "../../types";
 import { Enum } from "./enum";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * An int32 enum property.
@@ -77,6 +77,7 @@ export class SimpleObject extends SpeakeasyBase {
         data: "header, name=date, pathParam, name=date, queryParam, name=date, form, name=date, multipart_form, name=date",
     })
     @Expose({ name: "date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     date: RFCDate;
 

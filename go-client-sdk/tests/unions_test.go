@@ -127,7 +127,9 @@ func TestTypedObjectOneOfPost_Obj1(t *testing.T) {
 
 	s := sdk.New()
 
-	obj := shared.TypedObject1{}
+	obj := shared.TypedObject1{
+		Type: shared.TypedObject1TypeObj1,
+	}
 
 	req := shared.CreateTypedObjectOneOfTypedObject1(obj)
 
@@ -144,7 +146,9 @@ func TestTypedObjectOneOfPost_Obj2(t *testing.T) {
 
 	s := sdk.New()
 
-	obj := shared.TypedObject2{}
+	obj := shared.TypedObject2{
+		Type: shared.TypedObject2TypeObj2,
+	}
 
 	req := shared.CreateTypedObjectOneOfTypedObject2(obj)
 
@@ -161,7 +165,9 @@ func TestTypedObjectOneOfPost_Obj3(t *testing.T) {
 
 	s := sdk.New()
 
-	obj := shared.TypedObject3{}
+	obj := shared.TypedObject3{
+		Type: shared.TypedObject3TypeObj3,
+	}
 
 	req := shared.CreateTypedObjectOneOfTypedObject3(obj)
 
@@ -191,6 +197,7 @@ func TestTypedObjectNullableOneOfPost_Obj1(t *testing.T) {
 
 	obj := shared.TypedObject1{
 		Value: "one",
+		Type:  shared.TypedObject1TypeObj1,
 	}
 
 	req := shared.CreateTypedObjectNullableOneOfTypedObject1(obj)
@@ -209,6 +216,7 @@ func TestTypedObjectNullableOneOfPost_Obj2(t *testing.T) {
 
 	obj := shared.TypedObject2{
 		Value: "two",
+		Type:  shared.TypedObject2TypeObj2,
 	}
 
 	req := shared.CreateTypedObjectNullableOneOfTypedObject2(obj)
@@ -238,6 +246,7 @@ func TestFlattenedTypedObject_Obj1(t *testing.T) {
 
 	obj := shared.CreateFlattenedTypedObject1TypedObject1(shared.TypedObject1{
 		Value: "one",
+		Type:  shared.TypedObject1TypeObj1,
 	})
 
 	res, err := s.Unions.FlattenedTypedObjectPost(context.Background(), obj)
@@ -253,6 +262,7 @@ func TestNullableTypedObjectPost_Obj1(t *testing.T) {
 
 	obj := shared.TypedObject1{
 		Value: "one",
+		Type:  shared.TypedObject1TypeObj1,
 	}
 
 	res, err := s.Unions.NullableTypedObjectPost(context.Background(), &obj)
@@ -279,6 +289,7 @@ func TestNullableOneOfSchemaPost_Obj1(t *testing.T) {
 
 	obj := shared.TypedObject1{
 		Value: "one",
+		Type:  shared.TypedObject1TypeObj1,
 	}
 
 	req := operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject1(obj)
@@ -297,6 +308,7 @@ func TestNullableOneOfSchemaPost_Obj2(t *testing.T) {
 
 	obj := shared.TypedObject2{
 		Value: "two",
+		Type:  shared.TypedObject2TypeObj2,
 	}
 
 	req := operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject2(obj)
@@ -329,6 +341,13 @@ func TestNullableOneOfTypeInObject(t *testing.T) {
 		obj      shared.NullableOneOfTypeInObject
 		wantJson string
 	}{
+		{
+			name: "Non-nullable field set only",
+			obj: shared.NullableOneOfTypeInObject{
+				OneOfOne: true,
+			},
+			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":true}",
+		},
 		{
 			name: "Nullable fields set to null",
 			obj: shared.NullableOneOfTypeInObject{
@@ -367,7 +386,7 @@ func TestNullableOneOfTypeInObject(t *testing.T) {
 func TestNullableOneOfRefInObject(t *testing.T) {
 	recordTest("unions-nullable-oneof-ref-in-object-post")
 
-	nullableOneOfTwoObj2 := shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(shared.TypedObject2{Value: "two"})
+	nullableOneOfTwoObj2 := shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(shared.TypedObject2{Value: "two", Type: shared.TypedObject2TypeObj2})
 
 	tests := []struct {
 		name     string
@@ -375,20 +394,27 @@ func TestNullableOneOfRefInObject(t *testing.T) {
 		wantJson string
 	}{
 		{
+			name: "Non-nullable field set only",
+			obj: shared.NullableOneOfRefInObject{
+				OneOfOne: shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1}),
+			},
+			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}",
+		},
+		{
 			name: "Nullable fields set to null",
 			obj: shared.NullableOneOfRefInObject{
 				NullableOneOfOne: nil,
 				NullableOneOfTwo: nil,
-				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Value: "one"}),
+				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1}),
 			},
 			wantJson: "{\"NullableOneOfOne\":null,\"NullableOneOfTwo\":null,\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"}}",
 		},
 		{
 			name: "All fields set to non-null values",
 			obj: shared.NullableOneOfRefInObject{
-				NullableOneOfOne: &shared.TypedObject1{Value: "one"},
+				NullableOneOfOne: &shared.TypedObject1{Value: "one", Type: shared.TypedObject1TypeObj1},
 				NullableOneOfTwo: &nullableOneOfTwoObj2,
-				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{}),
+				OneOfOne:         shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(shared.TypedObject1{Type: shared.TypedObject1TypeObj1}),
 			},
 			wantJson: "{\"NullableOneOfOne\":{\"type\":\"obj1\",\"value\":\"one\"},\"NullableOneOfTwo\":{\"type\":\"obj2\",\"value\":\"two\"},\"OneOfOne\":{\"type\":\"obj1\",\"value\":\"\"}}",
 		},

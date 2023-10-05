@@ -25,7 +25,6 @@ type StronglyTypedOneOfObject struct {
 
 func CreateStronglyTypedOneOfObjectSimpleObjectWithType(simpleObjectWithType SimpleObjectWithType) StronglyTypedOneOfObject {
 	typ := StronglyTypedOneOfObjectTypeSimpleObjectWithType
-
 	typStr := string(typ)
 	simpleObjectWithType.Type = typStr
 
@@ -37,7 +36,6 @@ func CreateStronglyTypedOneOfObjectSimpleObjectWithType(simpleObjectWithType Sim
 
 func CreateStronglyTypedOneOfObjectDeepObjectWithType(deepObjectWithType DeepObjectWithType) StronglyTypedOneOfObject {
 	typ := StronglyTypedOneOfObjectTypeDeepObjectWithType
-
 	typStr := string(typ)
 	deepObjectWithType.Type = &typStr
 

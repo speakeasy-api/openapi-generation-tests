@@ -62,8 +62,6 @@ class DefaultsAndConstsOutput:
     default_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStr') }})
     default_str_nullable: Optional[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrNullable') }})
     normal_field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('normalField') }})
-    single_enum_const_bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstBool') }})
-    single_enum_const_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstStr') }})
     default_str_optional: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultStrOptional'), 'exclude': lambda f: f is None }})
     
 

@@ -49,8 +49,6 @@ class DefaultsAndConsts:
     CONST_NUM: Final[float] = dataclasses.field(default=123.456, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constNum') }})
     CONST_STR: Final[str] = dataclasses.field(default='const', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStr') }})
     CONST_STR_NULL: Final[Optional[str]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('constStrNull') }})
-    SINGLE_ENUM_CONST_BOOL: Final[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstBool') }})
-    SINGLE_ENUM_CONST_STR: Final[str] = dataclasses.field(default='one', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('singleEnumConstStr') }})
     default_big_int: Optional[int] = dataclasses.field(default=9007199254740991, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigInt'), 'exclude': lambda f: f is None }})
     default_big_int_str: Optional[int] = dataclasses.field(default=9223372036854775807, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBigIntStr'), 'encoder': utils.bigintencoder(True), 'decoder': utils.bigintdecoder, 'exclude': lambda f: f is None }})
     default_bool: Optional[bool] = dataclasses.field(default=True, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('defaultBool'), 'exclude': lambda f: f is None }})

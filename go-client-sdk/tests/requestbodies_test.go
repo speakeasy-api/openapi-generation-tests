@@ -1242,8 +1242,6 @@ func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
 	assert.Equal(t, float64(123.456), req.GetConstNum())
 	assert.Equal(t, "const", req.GetConstStr())
 	assert.Equal(t, (*string)(nil), req.GetConstStrNull())
-	assert.Equal(t, true, req.GetSingleEnumConstBool())
-	assert.Equal(t, "one", req.GetSingleEnumConstStr())
 
 	res, err := s.RequestBodies.RequestBodyPostDefaultsAndConsts(context.Background(), req)
 	require.NoError(t, err)
@@ -1264,8 +1262,6 @@ func TestRequestBodyPostDefaultsAndConsts(t *testing.T) {
 	assert.Equal(t, float64(123.456), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstNum)
 	assert.Equal(t, "const", res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstStr)
 	assert.Equal(t, (*string)(nil), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.ConstStrNull)
-	assert.Equal(t, true, res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.SingleEnumConstBool)
-	assert.Equal(t, "one", res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.SingleEnumConstStr)
 
 	assert.Equal(t, types.MustNewBigIntFromString("9007199254740991"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultBigInt)
 	assert.Equal(t, types.MustNewBigIntFromString("9223372036854775807"), res.RequestBodyPostDefaultsAndConsts200ApplicationJSONObject.JSON.DefaultBigIntStr)

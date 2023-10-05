@@ -133,36 +133,34 @@ func (e *DefaultsAndConstsDefaultEnumStr) UnmarshalJSON(data []byte) error {
 }
 
 type DefaultsAndConsts struct {
-	constBigInt         *big.Int                         `const:"9007199254740991" json:"constBigInt"`
-	constBigIntStr      *big.Int                         `const:"9223372036854775807" bigint:"string" json:"constBigIntStr"`
-	constBool           bool                             `const:"true" json:"constBool"`
-	constDate           types.Date                       `const:"2020-01-01" json:"constDate"`
-	constDateTime       time.Time                        `const:"2020-01-01T00:00:00Z" json:"constDateTime"`
-	constDecimal        *decimal.Big                     `const:"3.141592653589793" decimal:"number" json:"constDecimal"`
-	constDecimalStr     *decimal.Big                     `const:"3.141592653589793238462643383279" json:"constDecimalStr"`
-	constEnumInt        DefaultsAndConstsConstEnumInt    `const:"2" json:"constEnumInt"`
-	constEnumStr        DefaultsAndConstsConstEnumStr    `const:"two" json:"constEnumStr"`
-	constInt            int64                            `const:"123" json:"constInt"`
-	constNum            float64                          `const:"123.456" json:"constNum"`
-	constStr            string                           `const:"const" json:"constStr"`
-	constStrNull        *string                          `const:"null" json:"constStrNull"`
-	DefaultBigInt       *big.Int                         `default:"9007199254740991" json:"defaultBigInt"`
-	DefaultBigIntStr    *big.Int                         `default:"9223372036854775807" bigint:"string" json:"defaultBigIntStr"`
-	DefaultBool         *bool                            `default:"true" json:"defaultBool"`
-	DefaultDate         *types.Date                      `default:"2020-01-01" json:"defaultDate"`
-	DefaultDateTime     *time.Time                       `default:"2020-01-01T00:00:00Z" json:"defaultDateTime"`
-	DefaultDecimal      *decimal.Big                     `default:"3.141592653589793" decimal:"number" json:"defaultDecimal"`
-	DefaultDecimalStr   *decimal.Big                     `default:"3.141592653589793238462643383279" json:"defaultDecimalStr"`
-	DefaultEnumInt      *DefaultsAndConstsDefaultEnumInt `default:"2" json:"defaultEnumInt"`
-	DefaultEnumStr      *DefaultsAndConstsDefaultEnumStr `default:"two" json:"defaultEnumStr"`
-	DefaultInt          *int64                           `default:"123" json:"defaultInt"`
-	DefaultNum          *float64                         `default:"123.456" json:"defaultNum"`
-	DefaultStr          *string                          `default:"default" json:"defaultStr"`
-	DefaultStrNullable  *string                          `default:"null" json:"defaultStrNullable"`
-	DefaultStrOptional  *string                          `default:"default" json:"defaultStrOptional"`
-	NormalField         string                           `json:"normalField"`
-	singleEnumConstBool bool                             `const:"true" json:"singleEnumConstBool"`
-	singleEnumConstStr  string                           `const:"one" json:"singleEnumConstStr"`
+	constBigInt        *big.Int                         `const:"9007199254740991" json:"constBigInt"`
+	constBigIntStr     *big.Int                         `const:"9223372036854775807" bigint:"string" json:"constBigIntStr"`
+	constBool          bool                             `const:"true" json:"constBool"`
+	constDate          types.Date                       `const:"2020-01-01" json:"constDate"`
+	constDateTime      time.Time                        `const:"2020-01-01T00:00:00Z" json:"constDateTime"`
+	constDecimal       *decimal.Big                     `const:"3.141592653589793" decimal:"number" json:"constDecimal"`
+	constDecimalStr    *decimal.Big                     `const:"3.141592653589793238462643383279" json:"constDecimalStr"`
+	constEnumInt       DefaultsAndConstsConstEnumInt    `const:"2" json:"constEnumInt"`
+	constEnumStr       DefaultsAndConstsConstEnumStr    `const:"two" json:"constEnumStr"`
+	constInt           int64                            `const:"123" json:"constInt"`
+	constNum           float64                          `const:"123.456" json:"constNum"`
+	constStr           string                           `const:"const" json:"constStr"`
+	constStrNull       *string                          `const:"null" json:"constStrNull"`
+	DefaultBigInt      *big.Int                         `default:"9007199254740991" json:"defaultBigInt"`
+	DefaultBigIntStr   *big.Int                         `default:"9223372036854775807" bigint:"string" json:"defaultBigIntStr"`
+	DefaultBool        *bool                            `default:"true" json:"defaultBool"`
+	DefaultDate        *types.Date                      `default:"2020-01-01" json:"defaultDate"`
+	DefaultDateTime    *time.Time                       `default:"2020-01-01T00:00:00Z" json:"defaultDateTime"`
+	DefaultDecimal     *decimal.Big                     `default:"3.141592653589793" decimal:"number" json:"defaultDecimal"`
+	DefaultDecimalStr  *decimal.Big                     `default:"3.141592653589793238462643383279" json:"defaultDecimalStr"`
+	DefaultEnumInt     *DefaultsAndConstsDefaultEnumInt `default:"2" json:"defaultEnumInt"`
+	DefaultEnumStr     *DefaultsAndConstsDefaultEnumStr `default:"two" json:"defaultEnumStr"`
+	DefaultInt         *int64                           `default:"123" json:"defaultInt"`
+	DefaultNum         *float64                         `default:"123.456" json:"defaultNum"`
+	DefaultStr         *string                          `default:"default" json:"defaultStr"`
+	DefaultStrNullable *string                          `default:"null" json:"defaultStrNullable"`
+	DefaultStrOptional *string                          `default:"default" json:"defaultStrOptional"`
+	NormalField        string                           `json:"normalField"`
 }
 
 func (d DefaultsAndConsts) MarshalJSON() ([]byte, error) {
@@ -331,12 +329,4 @@ func (o *DefaultsAndConsts) GetNormalField() string {
 		return ""
 	}
 	return o.NormalField
-}
-
-func (o *DefaultsAndConsts) GetSingleEnumConstBool() bool {
-	return true
-}
-
-func (o *DefaultsAndConsts) GetSingleEnumConstStr() string {
-	return "one"
 }

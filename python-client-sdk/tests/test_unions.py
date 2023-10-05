@@ -61,52 +61,49 @@ def test_weakly_typed_one_of_post_deep():
     assert res.status_code == 200
     assert type(res.res.json) == shared.DeepObject
 
-############################################################
-# The following 7 tests are disable because python currently
-# does not support discrimination on const enum fields.
-############################################################
-# def test_typed_object_one_of_post_obj1():
-#     record_test("unions-typed-object-one-of-post-obj1")
-#     s = SDK()
-#     assert s is not None
 
-#     obj = shared.TypedObject1(value="obj1")
+def test_typed_object_one_of_post_obj1():
+    record_test("unions-typed-object-one-of-post-obj1")
+    s = SDK()
+    assert s is not None
 
-#     res = s.unions.typed_object_one_of_post(request=obj)
-#     assert res is not None
-#     assert res.status_code == 200
-#     assert type(res.res.json) == shared.TypedObject1
-#     assert res.res.json.value == "obj1"
+    obj = shared.TypedObject1(value="obj1", type=shared.TypedObject1Type.OBJ1)
+
+    res = s.unions.typed_object_one_of_post(request=obj)
+    assert res is not None
+    assert res.status_code == 200
+    assert type(res.res.json) == shared.TypedObject1
+    assert res.res.json.value == "obj1"
 
 
-# def test_typed_object_one_of_post_obj2():
-#     record_test("unions-typed-object-one-of-post-obj2")
-#     s = SDK()
-#     assert s is not None
+def test_typed_object_one_of_post_obj2():
+    record_test("unions-typed-object-one-of-post-obj2")
+    s = SDK()
+    assert s is not None
 
-#     obj = shared.TypedObject2(value="obj2")
+    obj = shared.TypedObject2(value="obj2", type=shared.TypedObject2Type.OBJ2)
 
-#     res = s.unions.typed_object_one_of_post(request=obj)
-#     assert res is not None
-#     assert res.status_code == 200
-#     assert type(res.res.json) == shared.TypedObject2
-#     assert res.res.json.value == "obj2"
-
-
-# def test_typed_object_one_of_post_obj3():
-#     record_test("unions-typed-object-one-of-post-obj3")
-#     s = SDK()
-#     assert s is not None
-
-#     obj = shared.TypedObject3(value="obj3")
-
-#     res = s.unions.typed_object_one_of_post(request=obj)
-#     assert res is not None
-#     assert res.status_code == 200
-#     assert type(res.res.json) == shared.TypedObject3
-#     assert res.res.json.value == "obj3"
+    res = s.unions.typed_object_one_of_post(request=obj)
+    assert res is not None
+    assert res.status_code == 200
+    assert type(res.res.json) == shared.TypedObject2
+    assert res.res.json.value == "obj2"
 
 
+def test_typed_object_one_of_post_obj3():
+    record_test("unions-typed-object-one-of-post-obj3")
+    s = SDK()
+    assert s is not None
+
+    obj = shared.TypedObject3(value="obj3", type=shared.TypedObject3Type.OBJ3)
+
+    res = s.unions.typed_object_one_of_post(request=obj)
+    assert res is not None
+    assert res.status_code == 200
+    assert type(res.res.json) == shared.TypedObject3
+    assert res.res.json.value == "obj3"
+
+# TODO
 # def test_typed_object_one_of_post_null():
 #     record_test("unions-typed-object-one-of-post-null")
 
@@ -116,41 +113,44 @@ def test_weakly_typed_one_of_post_deep():
 # 	require.Error(t, err)
 # 	assert.Equal(t, err.Error(), "error serializing request body: json: error calling MarshalJSON for type shared.TypedObjectOneOf: could not marshal union type: all fields are null")
 
-# def test_typed_object_nullable_one_of_post_obj1():
-#     record_test("unions-typed-object-nullable-one-of-post-obj1")
 
-#     s = SDK()
+def test_typed_object_nullable_one_of_post_obj1():
+    record_test("unions-typed-object-nullable-one-of-post-obj1")
 
-#     obj = shared.TypedObject1(value="one")
+    s = SDK()
 
-#     res = s.unions.typed_object_nullable_one_of_post(request=obj)
-#     assert res is not None
-#     assert res.status_code == 200
-#     assert type(res.res.json) == shared.TypedObject1
-#     assert res.res.json.value == "one"
+    obj = shared.TypedObject1(value="one", type=shared.TypedObject1Type.OBJ1)
+
+    res = s.unions.typed_object_nullable_one_of_post(request=obj)
+    assert res is not None
+    assert res.status_code == 200
+    assert type(res.res.json) == shared.TypedObject1
+    assert res.res.json.value == "one"
 
 
-# def test_typed_object_nullable_one_of_post_obj2():
-#     record_test("unions-typed-object-nullable-one-of-post-obj2")
+def test_typed_object_nullable_one_of_post_obj2():
+    record_test("unions-typed-object-nullable-one-of-post-obj2")
 
-#     s = SDK()
+    s = SDK()
 
-#     obj = shared.TypedObject1(value="two")
+    obj = shared.TypedObject1(value="two", type=shared.TypedObject1Type.OBJ1)
 
-#     res = s.unions.typed_object_nullable_one_of_post(request=obj)
-#     assert res is not None
-#     assert res.status_code == 200
-#     assert type(res.res.json) == shared.TypedObject2
-#     assert res.res.json.value == "two"
+    res = s.unions.typed_object_nullable_one_of_post(request=obj)
+    assert res is not None
+    assert res.status_code == 200
+    assert type(res.res.json) == shared.TypedObject2
+    assert res.res.json.value == "two"
 
-# def test_typed_object_nullable_one_of_post_obj2():
-#     record_test("unions-typed-object-nullable-one-of-post-null")
 
-#     s = SDK()
+def test_typed_object_nullable_one_of_post_obj2():
+    record_test("unions-typed-object-nullable-one-of-post-null")
 
-#     res = s.unions.typed_object_nullable_one_of_post()
-#     assert res is not None
-#     assert res.status_code == 200
+    s = SDK()
+
+    res = s.unions.typed_object_nullable_one_of_post(None)
+    assert res is not None
+    assert res.status_code == 200
+    assert res.res.json is None
 
 
 def test_flattened_typed_object_post_obj1():
@@ -158,7 +158,7 @@ def test_flattened_typed_object_post_obj1():
 
     s = SDK()
 
-    obj = shared.TypedObject1(value="one")
+    obj = shared.TypedObject1(value="one", type=shared.TypedObject1Type.OBJ1)
 
     res = s.unions.flattened_typed_object_post(request=obj)
     assert res is not None
@@ -171,7 +171,7 @@ def test_unions_nullable_typed_object_post_obj1():
 
     s = SDK()
 
-    obj = shared.TypedObject1(value="one")
+    obj = shared.TypedObject1(value="one", type=shared.TypedObject1Type.OBJ1)
 
     res = s.unions.nullable_typed_object_post(request=obj)
     assert res is not None
@@ -187,6 +187,7 @@ def test_unions_nullable_typed_object_post_null():
     res = s.unions.nullable_typed_object_post(request=None)
     assert res is not None
     assert res.status_code == 200
+    assert res.res.json is None
 
 
 def test_nullable_one_of_schema_post_obj1():
@@ -194,7 +195,7 @@ def test_nullable_one_of_schema_post_obj1():
 
     s = SDK()
 
-    obj = shared.TypedObject1(value="one")
+    obj = shared.TypedObject1(value="one", type=shared.TypedObject1Type.OBJ1)
 
     res = s.unions.nullable_one_of_schema_post(request=obj)
     assert res is not None
@@ -207,7 +208,7 @@ def test_nullable_one_of_schema_post_obj2():
 
     s = SDK()
 
-    obj = shared.TypedObject2(value="two")
+    obj = shared.TypedObject2(value="two", type=shared.TypedObject2Type.OBJ2)
 
     res = s.unions.nullable_one_of_schema_post(request=obj)
     assert res is not None
@@ -223,7 +224,7 @@ def test_nullable_one_of_schema_post_null():
     res = s.unions.nullable_one_of_schema_post(request=None)
     assert res is not None
     assert res.status_code == 200
-    assert res.res.json == None
+    assert res.res.json is None
 
 
 class MicroMock(object):

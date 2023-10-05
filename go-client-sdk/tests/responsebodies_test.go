@@ -117,7 +117,7 @@ func TestResponseBodyDefaultAcceptHeader(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.GetTypedObject1)
-	assert.Equal(t, "obj1", res.GetTypedObject1().GetType())
+	assert.Equal(t, shared.TypedObject1TypeObj1, res.GetTypedObject1().GetType())
 }
 
 func TestResponseBodyReadOnly(t *testing.T) {

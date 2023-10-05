@@ -3,6 +3,7 @@
 from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
+from enum import Enum
 from sdk import utils
 from typing import Any, Optional, Union
 
@@ -10,6 +11,15 @@ from typing import Any, Optional, Union
 
 @dataclasses.dataclass
 class OneOfGenerationStressTestOneOfFromArrayOfTypes:
+    pass
+
+class OneOfGenerationStressTestOneOfSameType2(str, Enum):
+    LATEST = 'latest'
+
+
+
+@dataclasses.dataclass
+class OneOfGenerationStressTestOneOfSameType:
     pass
 
 
@@ -20,6 +30,6 @@ class OneOfGenerationStressTest:
     any: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
     nullable_any: Optional[Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('nullableAny') }})
     one_of_from_array_of_types: Optional[Union[str, int]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfFromArrayOfTypes') }})
-    one_of_same_type: Optional[Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfSameType') }})
+    one_of_same_type: Optional[Union[str, OneOfGenerationStressTestOneOfSameType2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('oneOfSameType') }})
     
 

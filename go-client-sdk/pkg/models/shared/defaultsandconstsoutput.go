@@ -133,36 +133,34 @@ func (e *DefaultsAndConstsOutputDefaultEnumStr) UnmarshalJSON(data []byte) error
 }
 
 type DefaultsAndConstsOutput struct {
-	ConstBigInt         *big.Int                              `json:"constBigInt"`
-	ConstBigIntStr      *big.Int                              `bigint:"string" json:"constBigIntStr"`
-	ConstBool           bool                                  `json:"constBool"`
-	ConstDate           types.Date                            `json:"constDate"`
-	ConstDateTime       time.Time                             `json:"constDateTime"`
-	ConstDecimal        *decimal.Big                          `decimal:"number" json:"constDecimal"`
-	ConstDecimalStr     *decimal.Big                          `json:"constDecimalStr"`
-	ConstEnumInt        DefaultsAndConstsOutputConstEnumInt   `json:"constEnumInt"`
-	ConstEnumStr        DefaultsAndConstsOutputConstEnumStr   `json:"constEnumStr"`
-	ConstInt            int64                                 `json:"constInt"`
-	ConstNum            float64                               `json:"constNum"`
-	ConstStr            string                                `json:"constStr"`
-	ConstStrNull        *string                               `json:"constStrNull"`
-	DefaultBigInt       *big.Int                              `json:"defaultBigInt"`
-	DefaultBigIntStr    *big.Int                              `bigint:"string" json:"defaultBigIntStr"`
-	DefaultBool         bool                                  `json:"defaultBool"`
-	DefaultDate         types.Date                            `json:"defaultDate"`
-	DefaultDateTime     time.Time                             `json:"defaultDateTime"`
-	DefaultDecimal      *decimal.Big                          `decimal:"number" json:"defaultDecimal"`
-	DefaultDecimalStr   *decimal.Big                          `json:"defaultDecimalStr"`
-	DefaultEnumInt      DefaultsAndConstsOutputDefaultEnumInt `json:"defaultEnumInt"`
-	DefaultEnumStr      DefaultsAndConstsOutputDefaultEnumStr `json:"defaultEnumStr"`
-	DefaultInt          int64                                 `json:"defaultInt"`
-	DefaultNum          float64                               `json:"defaultNum"`
-	DefaultStr          string                                `json:"defaultStr"`
-	DefaultStrNullable  *string                               `json:"defaultStrNullable"`
-	DefaultStrOptional  *string                               `json:"defaultStrOptional,omitempty"`
-	NormalField         string                                `json:"normalField"`
-	SingleEnumConstBool bool                                  `json:"singleEnumConstBool"`
-	SingleEnumConstStr  string                                `json:"singleEnumConstStr"`
+	ConstBigInt        *big.Int                              `json:"constBigInt"`
+	ConstBigIntStr     *big.Int                              `bigint:"string" json:"constBigIntStr"`
+	ConstBool          bool                                  `json:"constBool"`
+	ConstDate          types.Date                            `json:"constDate"`
+	ConstDateTime      time.Time                             `json:"constDateTime"`
+	ConstDecimal       *decimal.Big                          `decimal:"number" json:"constDecimal"`
+	ConstDecimalStr    *decimal.Big                          `json:"constDecimalStr"`
+	ConstEnumInt       DefaultsAndConstsOutputConstEnumInt   `json:"constEnumInt"`
+	ConstEnumStr       DefaultsAndConstsOutputConstEnumStr   `json:"constEnumStr"`
+	ConstInt           int64                                 `json:"constInt"`
+	ConstNum           float64                               `json:"constNum"`
+	ConstStr           string                                `json:"constStr"`
+	ConstStrNull       *string                               `json:"constStrNull"`
+	DefaultBigInt      *big.Int                              `json:"defaultBigInt"`
+	DefaultBigIntStr   *big.Int                              `bigint:"string" json:"defaultBigIntStr"`
+	DefaultBool        bool                                  `json:"defaultBool"`
+	DefaultDate        types.Date                            `json:"defaultDate"`
+	DefaultDateTime    time.Time                             `json:"defaultDateTime"`
+	DefaultDecimal     *decimal.Big                          `decimal:"number" json:"defaultDecimal"`
+	DefaultDecimalStr  *decimal.Big                          `json:"defaultDecimalStr"`
+	DefaultEnumInt     DefaultsAndConstsOutputDefaultEnumInt `json:"defaultEnumInt"`
+	DefaultEnumStr     DefaultsAndConstsOutputDefaultEnumStr `json:"defaultEnumStr"`
+	DefaultInt         int64                                 `json:"defaultInt"`
+	DefaultNum         float64                               `json:"defaultNum"`
+	DefaultStr         string                                `json:"defaultStr"`
+	DefaultStrNullable *string                               `json:"defaultStrNullable"`
+	DefaultStrOptional *string                               `json:"defaultStrOptional,omitempty"`
+	NormalField        string                                `json:"normalField"`
 }
 
 func (d DefaultsAndConstsOutput) MarshalJSON() ([]byte, error) {
@@ -370,18 +368,4 @@ func (o *DefaultsAndConstsOutput) GetNormalField() string {
 		return ""
 	}
 	return o.NormalField
-}
-
-func (o *DefaultsAndConstsOutput) GetSingleEnumConstBool() bool {
-	if o == nil {
-		return false
-	}
-	return o.SingleEnumConstBool
-}
-
-func (o *DefaultsAndConstsOutput) GetSingleEnumConstStr() string {
-	if o == nil {
-		return ""
-	}
-	return o.SingleEnumConstStr
 }

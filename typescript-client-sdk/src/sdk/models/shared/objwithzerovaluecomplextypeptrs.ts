@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RFCDate } from "../../types";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export class ObjWithZeroValueComplexTypePtrs extends SpeakeasyBase {
     @SpeakeasyMetadata()
@@ -20,6 +20,7 @@ export class ObjWithZeroValueComplexTypePtrs extends SpeakeasyBase {
      */
     @SpeakeasyMetadata()
     @Expose({ name: "date" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     date?: RFCDate;
 

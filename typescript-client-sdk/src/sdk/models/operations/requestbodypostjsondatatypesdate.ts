@@ -5,7 +5,7 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RFCDate } from "../../types";
 import { AxiosResponse } from "axios";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 /**
  * OK
@@ -17,6 +17,7 @@ export class RequestBodyPostJSONDataTypesDate200ApplicationJSON extends Speakeas
 
     @SpeakeasyMetadata()
     @Expose({ name: "json" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     json: RFCDate;
 }

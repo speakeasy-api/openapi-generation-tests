@@ -3,7 +3,9 @@
 package shared
 
 import (
+	"encoding/json"
 	"errors"
+	"fmt"
 	"openapi/pkg/utils"
 )
 
@@ -70,11 +72,98 @@ func (u OneOfGenerationStressTestOneOfFromArrayOfTypes) MarshalJSON() ([]byte, e
 	return nil, errors.New("could not marshal union type: all fields are null")
 }
 
+type OneOfGenerationStressTestOneOfSameType2 string
+
+const (
+	OneOfGenerationStressTestOneOfSameType2Latest OneOfGenerationStressTestOneOfSameType2 = "latest"
+)
+
+func (e OneOfGenerationStressTestOneOfSameType2) ToPointer() *OneOfGenerationStressTestOneOfSameType2 {
+	return &e
+}
+
+func (e *OneOfGenerationStressTestOneOfSameType2) UnmarshalJSON(data []byte) error {
+	var v string
+	if err := json.Unmarshal(data, &v); err != nil {
+		return err
+	}
+	switch v {
+	case "latest":
+		*e = OneOfGenerationStressTestOneOfSameType2(v)
+		return nil
+	default:
+		return fmt.Errorf("invalid value for OneOfGenerationStressTestOneOfSameType2: %v", v)
+	}
+}
+
+type OneOfGenerationStressTestOneOfSameTypeType string
+
+const (
+	OneOfGenerationStressTestOneOfSameTypeTypeStr                                     OneOfGenerationStressTestOneOfSameTypeType = "str"
+	OneOfGenerationStressTestOneOfSameTypeTypeOneOfGenerationStressTestOneOfSameType2 OneOfGenerationStressTestOneOfSameTypeType = "oneOfGenerationStressTest_oneOfSameType_2"
+)
+
+type OneOfGenerationStressTestOneOfSameType struct {
+	Str                                     *string
+	OneOfGenerationStressTestOneOfSameType2 *OneOfGenerationStressTestOneOfSameType2
+
+	Type OneOfGenerationStressTestOneOfSameTypeType
+}
+
+func CreateOneOfGenerationStressTestOneOfSameTypeStr(str string) OneOfGenerationStressTestOneOfSameType {
+	typ := OneOfGenerationStressTestOneOfSameTypeTypeStr
+
+	return OneOfGenerationStressTestOneOfSameType{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateOneOfGenerationStressTestOneOfSameTypeOneOfGenerationStressTestOneOfSameType2(oneOfGenerationStressTestOneOfSameType2 OneOfGenerationStressTestOneOfSameType2) OneOfGenerationStressTestOneOfSameType {
+	typ := OneOfGenerationStressTestOneOfSameTypeTypeOneOfGenerationStressTestOneOfSameType2
+
+	return OneOfGenerationStressTestOneOfSameType{
+		OneOfGenerationStressTestOneOfSameType2: &oneOfGenerationStressTestOneOfSameType2,
+		Type:                                    typ,
+	}
+}
+
+func (u *OneOfGenerationStressTestOneOfSameType) UnmarshalJSON(data []byte) error {
+
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = OneOfGenerationStressTestOneOfSameTypeTypeStr
+		return nil
+	}
+
+	oneOfGenerationStressTestOneOfSameType2 := new(OneOfGenerationStressTestOneOfSameType2)
+	if err := utils.UnmarshalJSON(data, &oneOfGenerationStressTestOneOfSameType2, "", true, true); err == nil {
+		u.OneOfGenerationStressTestOneOfSameType2 = oneOfGenerationStressTestOneOfSameType2
+		u.Type = OneOfGenerationStressTestOneOfSameTypeTypeOneOfGenerationStressTestOneOfSameType2
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u OneOfGenerationStressTestOneOfSameType) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.OneOfGenerationStressTestOneOfSameType2 != nil {
+		return utils.MarshalJSON(u.OneOfGenerationStressTestOneOfSameType2, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
 type OneOfGenerationStressTest struct {
 	Any                   interface{}                                     `json:"any"`
 	NullableAny           interface{}                                     `json:"nullableAny"`
 	OneOfFromArrayOfTypes *OneOfGenerationStressTestOneOfFromArrayOfTypes `json:"oneOfFromArrayOfTypes"`
-	OneOfSameType         interface{}                                     `json:"oneOfSameType"`
+	OneOfSameType         *OneOfGenerationStressTestOneOfSameType         `json:"oneOfSameType"`
 }
 
 func (o *OneOfGenerationStressTest) GetAny() interface{} {
@@ -98,7 +187,7 @@ func (o *OneOfGenerationStressTest) GetOneOfFromArrayOfTypes() *OneOfGenerationS
 	return o.OneOfFromArrayOfTypes
 }
 
-func (o *OneOfGenerationStressTest) GetOneOfSameType() interface{} {
+func (o *OneOfGenerationStressTest) GetOneOfSameType() *OneOfGenerationStressTestOneOfSameType {
 	if o == nil {
 		return nil
 	}

@@ -20,6 +20,7 @@ import {
 import { expect, test } from "@jest/globals";
 
 import { SDK } from "../src";
+import {RFCDate} from "../src/sdk/types";
 
 test("Request Body Post Application JSON Simple", async () => {
   recordTest("request-bodies-post-application-json-simple");
@@ -41,6 +42,45 @@ test("Request Body Post Application JSON Simple Camel Case", async () => {
 
   expect(res.statusCode).toBe(200);
   expect(res.res).toBeDefined();
+  const rawResponseData = JSON.parse(new TextDecoder().decode(res.rawResponse?.data))
+  expect(rawResponseData?.data).toMatchInlineSnapshot(`"{"any_val":"any","bool_opt_val":true,"bool_val":true,"date_time_val":"2020-01-01T00:00:00.001Z","date_val":"2020-01-01","enum_val":"one","float32_val":1.1,"int32_enum_val":55,"int32_val":1,"int_enum_val":2,"int_val":1,"num_val":1.1,"str_opt_val":"testOptional","str_val":"test"}"`)
+  expect(rawResponseData?.json).toMatchInlineSnapshot(`
+{
+  "any_val": "any",
+  "bool_opt_val": true,
+  "bool_val": true,
+  "date_time_val": "2020-01-01T00:00:00.001Z",
+  "date_val": "2020-01-01",
+  "enum_val": "one",
+  "float32_val": 1.1,
+  "int32_enum_val": 55,
+  "int32_val": 1,
+  "int_enum_val": 2,
+  "int_val": 1,
+  "num_val": 1.1,
+  "str_opt_val": "testOptional",
+  "str_val": "test",
+}
+`)
+  expect(res.res?.json).toMatchInlineSnapshot(`
+SimpleObjectCamelCase {
+  "anyVal": "any",
+  "boolOptVal": true,
+  "boolVal": true,
+  "dateTimeVal": 2020-01-01T00:00:00.001Z,
+  "dateVal": "2020-01-01",
+  "enumVal": "one",
+  "float32Val": 1.1,
+  "int32EnumVal": 55,
+  "int32Val": 1,
+  "intEnumVal": 2,
+  "intVal": 1,
+  "numVal": 1.1,
+  "strOptVal": "testOptional",
+  "strVal": "test",
+}
+`)
+  expect(res.res?.json?.dateVal).toBeInstanceOf(RFCDate);
   expect(res.res?.json).toEqual(obj);
 });
 

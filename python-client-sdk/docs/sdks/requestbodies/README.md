@@ -1901,8 +1901,6 @@ req = shared.DefaultsAndConsts(
     default_str_nullable='Southwest',
     default_str_optional='cultivate',
     normal_field='Southwest',
-    single_enum_const_bool=False,
-    single_enum_const_str='Borders',
 )
 
 res = s.request_bodies.request_body_post_defaults_and_consts(req)

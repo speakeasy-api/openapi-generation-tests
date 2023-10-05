@@ -144,8 +144,8 @@ func main() {
     ctx := context.Background()
     res, err := s.Unions.NullableOneOfRefInObjectPost(ctx, shared.NullableOneOfRefInObject{
         NullableOneOfOne: &shared.TypedObject1{
-            Type: "Global Alexandria administration",
-            Value: "Trenton",
+            Type: shared.TypedObject1TypeObj1,
+            Value: "Global Alexandria administration",
         },
         NullableOneOfTwo: &shared.NullableOneOfRefInObjectNullableOneOfTwo{},
         OneOfOne: shared.NullableOneOfRefInObjectOneOfOne{},
@@ -299,8 +299,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.Unions.NullableTypedObjectPost(ctx, shared.TypedObject1{
-        Type: "Bike",
-        Value: "violet brand",
+        Type: shared.TypedObject1TypeObj1,
+        Value: "Bike",
     })
     if err != nil {
         log.Fatal(err)

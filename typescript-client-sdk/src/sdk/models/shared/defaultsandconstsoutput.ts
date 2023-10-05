@@ -4,7 +4,7 @@
 
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { RFCDate } from "../../types";
-import { Expose, Transform } from "class-transformer";
+import { Expose, Transform, Type } from "class-transformer";
 
 export enum DefaultsAndConstsOutputConstEnumInt {
     One = 1,
@@ -45,6 +45,7 @@ export class DefaultsAndConstsOutput extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "constDate" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     constDate: RFCDate;
 
@@ -99,6 +100,7 @@ export class DefaultsAndConstsOutput extends SpeakeasyBase {
 
     @SpeakeasyMetadata()
     @Expose({ name: "defaultDate" })
+    @Type(() => String)
     @Transform(({ value }) => new RFCDate(value), { toClassOnly: true })
     defaultDate: RFCDate;
 

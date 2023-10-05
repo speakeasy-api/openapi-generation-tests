@@ -2274,8 +2274,6 @@ func main() {
         DefaultStrNullable: openapi.String("Southwest"),
         DefaultStrOptional: openapi.String("cultivate"),
         NormalField: "Southwest",
-        SingleEnumConstBool: false,
-        SingleEnumConstStr: "Borders",
     })
     if err != nil {
         log.Fatal(err)

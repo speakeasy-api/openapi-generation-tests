@@ -5,8 +5,12 @@ import dataclasses
 import dateutil.parser
 from dataclasses_json import Undefined, dataclass_json
 from datetime import datetime
+from enum import Enum
 from sdk import utils
-from typing import Final, Optional
+from typing import Optional
+
+class ExampleBoatType(str, Enum):
+    BOAT = 'boat'
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
@@ -15,7 +19,7 @@ from typing import Final, Optional
 class ExampleBoat:
     length: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('length') }})
     name: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('name') }})
-    TYPE: Final[str] = dataclasses.field(default='boat', metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
+    type: ExampleBoatType = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type') }})
     created_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('createdAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
     updated_at: Optional[datetime] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('updatedAt'), 'encoder': utils.datetimeisoformat(True), 'decoder': dateutil.parser.isoparse, 'exclude': lambda f: f is None }})
     
