@@ -169,7 +169,7 @@ components:
         - "two"
         - "three"
         - "four_and_more"
-      example: "two"
+      example: "one"
     simpleObject:
       description: "A simple object that uses all our supported primitive types and enums and has optional properties."
       externalDocs:
@@ -180,7 +180,7 @@ components:
         str:
           type: string
           description: "A string property."
-          example: "example"
+          example: "test"
         bool:
           type: boolean
           description: "A boolean property."
@@ -188,7 +188,7 @@ components:
         int:
           type: integer
           description: "An integer property."
-          example: 999999
+          example: 1
         int32:
           type: integer
           format: int32
@@ -202,7 +202,7 @@ components:
           type: number
           format: float
           description: "A float32 property."
-          example: 2.2222222
+          example: 1.1
         enum:
           $ref: "#/components/schemas/enum"
         date:
@@ -214,14 +214,14 @@ components:
           type: string
           format: date-time
           description: "A date-time property."
-          example: "2020-01-01T00:00:00.000Z"
+          example: "2020-01-01T00:00:00.000000001Z"
         any:
           description: "An any property."
-          example: "any example"
+          example: "any"
         strOpt:
           type: string
           description: "An optional string property."
-          example: "optional example"
+          example: "testOptional"
         boolOpt:
           type: boolean
           description: "An optional boolean property."
@@ -229,11 +229,9 @@ components:
         intOptNull:
           type: integer
           description: "An optional integer property will be null for tests."
-          example: 999999
         numOptNull:
           type: number
           description: "An optional number property will be null for tests."
-          example: 1.1
         intEnum:
           type: integer
           description: "An integer enum property."
@@ -241,7 +239,7 @@ components:
             - 1
             - 2
             - 3
-          example: 3
+          example: 2
           x-speakeasy-enums:
             - First
             - Second
@@ -254,16 +252,23 @@ components:
             - 55
             - 69
             - 181
-          example: 69
+          example: 55
         bigint:
           type: integer
           format: bigint
+          example: 8821239038968084
         bigintStr:
           type: string
           format: bigint
+          example: "9223372036854775808"
         decimal:
           type: number
           format: decimal
+          example: 3.141592653589793
+        decimalStr:
+          type: string
+          format: decimal
+          example: "3.14159265358979344719667586"
       required:
         - str
         - bool
@@ -398,26 +403,33 @@ components:
       properties:
         str:
           type: string
+          example: "test"
         bool:
           type: boolean
+          example: true
         int:
           type: integer
+          example: 1
         num:
           type: number
+          example: 1.1
         obj:
           $ref: "#/components/schemas/simpleObject"
         map:
           type: object
           additionalProperties:
             $ref: "#/components/schemas/simpleObject"
+          example: { "key": "...", "key2": "..." }
         arr:
           type: array
           items:
             $ref: "#/components/schemas/simpleObject"
+          example: ["...", "..."]
         any:
           anyOf:
             - $ref: "#/components/schemas/simpleObject"
             - type: string
+          example: "anyOf[0]"
         type:
           type: string
       required:
@@ -1227,18 +1239,6 @@ components:
             required:
               - authenticated
               - token
-    pathParamsUrlResponse:
-      description: OK
-      content:
-        application/json:
-          schema:
-            title: res
-            type: object
-            properties:
-              url:
-                type: string
-            required:
-              - url
     simpleObjectFormResponse:
       description: OK
       content:
@@ -1357,12 +1357,14 @@ components:
       required: true
       schema:
         type: string
+        example: test
     boolPathParam:
       name: boolParam
       in: path
       required: true
       schema:
         type: boolean
+        example: true
     intPathParam:
       name: intParam
       in: path
@@ -1376,6 +1378,7 @@ components:
       required: true
       schema:
         type: number
+        example: 1.1
     refQueryParamObjExploded:
       name: refObjParamExploded
       in: query
@@ -1385,12 +1388,16 @@ components:
         properties:
           str:
             type: string
+            example: test
           bool:
             type: boolean
+            example: true
           int:
             type: integer
+            example: 1
           num:
             type: number
+            example: 1.1
         required:
           - str
           - bool
@@ -1405,12 +1412,16 @@ components:
         properties:
           str:
             type: string
+            example: test
           bool:
             type: boolean
+            example: true
           int:
             type: integer
+            example: 1
           num:
             type: number
+            example: 1.1
         required:
           - str
           - bool
