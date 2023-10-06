@@ -81,9 +81,11 @@ module OpenApiSDK
 
       field :obj_param_decimal, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[decimal]') } }
 
+      field :obj_param_decimal_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('objParam[decimalStr]') } }
 
-      sig { params(obj_arr_param_arr: T::Array[String], obj_param_any: String, obj_param_bool: String, obj_param_bool_opt: String, obj_param_date: String, obj_param_date_time: String, obj_param_enum: String, obj_param_float32: String, obj_param_int: String, obj_param_int32: String, obj_param_int32_enum: String, obj_param_int_enum: String, obj_param_num: String, obj_param_str: String, obj_param_str_opt: String, obj_param_bigint: T.nilable(String), obj_param_bigint_str: T.nilable(String), obj_param_decimal: T.nilable(String)).void }
-      def initialize(obj_arr_param_arr: nil, obj_param_any: nil, obj_param_bool: nil, obj_param_bool_opt: nil, obj_param_date: nil, obj_param_date_time: nil, obj_param_enum: nil, obj_param_float32: nil, obj_param_int: nil, obj_param_int32: nil, obj_param_int32_enum: nil, obj_param_int_enum: nil, obj_param_num: nil, obj_param_str: nil, obj_param_str_opt: nil, obj_param_bigint: nil, obj_param_bigint_str: nil, obj_param_decimal: nil)
+
+      sig { params(obj_arr_param_arr: T::Array[String], obj_param_any: String, obj_param_bool: String, obj_param_bool_opt: String, obj_param_date: String, obj_param_date_time: String, obj_param_enum: String, obj_param_float32: String, obj_param_int: String, obj_param_int32: String, obj_param_int32_enum: String, obj_param_int_enum: String, obj_param_num: String, obj_param_str: String, obj_param_str_opt: String, obj_param_bigint: T.nilable(String), obj_param_bigint_str: T.nilable(String), obj_param_decimal: T.nilable(String), obj_param_decimal_str: T.nilable(String)).void }
+      def initialize(obj_arr_param_arr: nil, obj_param_any: nil, obj_param_bool: nil, obj_param_bool_opt: nil, obj_param_date: nil, obj_param_date_time: nil, obj_param_enum: nil, obj_param_float32: nil, obj_param_int: nil, obj_param_int32: nil, obj_param_int32_enum: nil, obj_param_int_enum: nil, obj_param_num: nil, obj_param_str: nil, obj_param_str_opt: nil, obj_param_bigint: nil, obj_param_bigint_str: nil, obj_param_decimal: nil, obj_param_decimal_str: nil)
         @obj_arr_param_arr = obj_arr_param_arr
         @obj_param_any = obj_param_any
         @obj_param_bool = obj_param_bool
@@ -102,6 +104,7 @@ module OpenApiSDK
         @obj_param_bigint = obj_param_bigint
         @obj_param_bigint_str = obj_param_bigint_str
         @obj_param_decimal = obj_param_decimal
+        @obj_param_decimal_str = obj_param_decimal_str
       end
     end
 

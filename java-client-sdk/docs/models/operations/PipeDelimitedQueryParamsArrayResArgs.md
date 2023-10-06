@@ -3,7 +3,7 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `arrParam`         | *String*           | :heavy_check_mark: | N/A                |
-| `arrParamExploded` | List<*String*>     | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `arrParam`         | *String*           | :heavy_check_mark: | N/A                | test\|test2        |
+| `arrParamExploded` | List<*String*>     | :heavy_check_mark: | N/A                |                    |

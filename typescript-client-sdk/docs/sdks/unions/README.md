@@ -26,7 +26,6 @@ Endpoints for testing union types.
 ```typescript
 import { SDK } from "openapi";
 import { FlattenedTypedObjectPostResponse } from "openapi/dist/sdk/models/operations";
-import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -36,10 +35,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.flattenedTypedObjectPost({
-  type: TypedObject1Type.Obj1,
-  value: "farad Rustic",
-}).then((res: FlattenedTypedObjectPostResponse) => {
+sdk.unions.flattenedTypedObjectPost("Legacy").then((res: FlattenedTypedObjectPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -66,8 +62,6 @@ sdk.unions.flattenedTypedObjectPost({
 ```typescript
 import { SDK } from "openapi";
 import { MixedTypeOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
   security: {
@@ -77,7 +71,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.mixedTypeOneOfPost(618017).then((res: MixedTypeOneOfPostResponse) => {
+sdk.unions.mixedTypeOneOfPost("SAS").then((res: MixedTypeOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -104,7 +98,7 @@ sdk.unions.mixedTypeOneOfPost(618017).then((res: MixedTypeOneOfPostResponse) => 
 ```typescript
 import { SDK } from "openapi";
 import { NullableOneOfRefInObjectPostResponse } from "openapi/dist/sdk/models/operations";
-import { TypedObject1Type, TypedObject2Type } from "openapi/dist/sdk/models/shared";
+import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -119,14 +113,8 @@ sdk.unions.nullableOneOfRefInObjectPost({
     type: TypedObject1Type.Obj1,
     value: "Global Alexandria administration",
   },
-  nullableOneOfTwo: {
-    type: TypedObject1Type.Obj1,
-    value: "nor",
-  },
-  oneOfOne: {
-    type: TypedObject1Type.Obj1,
-    value: "Berkshire after",
-  },
+  nullableOneOfTwo: "Arbor",
+  oneOfOne: "PCI",
 }).then((res: NullableOneOfRefInObjectPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
@@ -154,7 +142,6 @@ sdk.unions.nullableOneOfRefInObjectPost({
 ```typescript
 import { SDK } from "openapi";
 import { NullableOneOfSchemaPostResponse } from "openapi/dist/sdk/models/operations";
-import { TypedObject1Type, TypedObject2Type } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -164,10 +151,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.nullableOneOfSchemaPost({
-  type: TypedObject2Type.Obj2,
-  value: "sob",
-}).then((res: NullableOneOfSchemaPostResponse) => {
+sdk.unions.nullableOneOfSchemaPost("deliquesce").then((res: NullableOneOfSchemaPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -205,7 +189,7 @@ const sdk = new SDK({
 
 sdk.unions.nullableOneOfTypeInObjectPost({
   nullableOneOfOne: false,
-  nullableOneOfTwo: 873677,
+  nullableOneOfTwo: "Smart",
   oneOfOne: false,
 }).then((res: NullableOneOfTypeInObjectPostResponse) => {
   if (res.statusCode == 200) {
@@ -283,7 +267,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.primitiveTypeOneOfPost("Account").then((res: PrimitiveTypeOneOfPostResponse) => {
+sdk.unions.primitiveTypeOneOfPost("Grocery").then((res: PrimitiveTypeOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -310,14 +294,6 @@ sdk.unions.primitiveTypeOneOfPost("Account").then((res: PrimitiveTypeOneOfPostRe
 ```typescript
 import { SDK } from "openapi";
 import { StronglyTypedOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import {
-  Enum,
-  SimpleObjectInt32Enum,
-  SimpleObjectIntEnum,
-  SimpleObjectWithTypeInt32Enum,
-  SimpleObjectWithTypeIntEnum,
-} from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
   security: {
@@ -327,81 +303,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.stronglyTypedOneOfPost({
-  any: "maroon array libero",
-  arr: [
-    {
-      any: "oof",
-      bigint: 701118,
-      bigintStr: "port dicta",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000Z"),
-      decimal: 1943.43,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  ],
-  bool: false,
-  int: 955349,
-  map: {
-    "deserunt": {
-      any: "Pontiac",
-      bigint: 825809,
-      bigintStr: "Music",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000Z"),
-      decimal: 2144.81,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 999999,
-      num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
-    },
-  },
-  num: 4004.44,
-  obj: {
-    any: "Representative",
-    bigint: 296251,
-    bigintStr: "Southwest excepting",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000Z"),
-    decimal: 7507.75,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 999999,
-    num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
-  },
-  str: "1080p withdrawal",
-  type: "consequuntur Shoes",
-}).then((res: StronglyTypedOneOfPostResponse) => {
+sdk.unions.stronglyTypedOneOfPost("spicy").then((res: StronglyTypedOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -428,7 +330,6 @@ sdk.unions.stronglyTypedOneOfPost({
 ```typescript
 import { SDK } from "openapi";
 import { TypedObjectNullableOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import { TypedObject1Type, TypedObject2Type } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -438,10 +339,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.typedObjectNullableOneOfPost({
-  type: TypedObject2Type.Obj2,
-  value: "DRAM",
-}).then((res: TypedObjectNullableOneOfPostResponse) => {
+sdk.unions.typedObjectNullableOneOfPost("Agender").then((res: TypedObjectNullableOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -468,7 +366,6 @@ sdk.unions.typedObjectNullableOneOfPost({
 ```typescript
 import { SDK } from "openapi";
 import { TypedObjectOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import { TypedObject1Type, TypedObject2Type, TypedObject3Type } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -478,10 +375,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.typedObjectOneOfPost({
-  type: TypedObject3Type.Obj3,
-  value: "Buckinghamshire illo Automotive",
-}).then((res: TypedObjectOneOfPostResponse) => {
+sdk.unions.typedObjectOneOfPost("shrivel").then((res: TypedObjectOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }
@@ -508,8 +402,6 @@ sdk.unions.typedObjectOneOfPost({
 ```typescript
 import { SDK } from "openapi";
 import { WeaklyTypedOneOfPostResponse } from "openapi/dist/sdk/models/operations";
-import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
-import { RFCDate } from "openapi/dist/sdk/types";
 
 const sdk = new SDK({
   security: {
@@ -519,27 +411,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 
-sdk.unions.weaklyTypedOneOfPost({
-  any: "set",
-  bigint: 764311,
-  bigintStr: "likewise transition helplessly",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 3805.33,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-}).then((res: WeaklyTypedOneOfPostResponse) => {
+sdk.unions.weaklyTypedOneOfPost("Unbranded").then((res: WeaklyTypedOneOfPostResponse) => {
   if (res.statusCode == 200) {
     // handle response
   }

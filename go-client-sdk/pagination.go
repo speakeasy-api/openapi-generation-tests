@@ -72,58 +72,57 @@ func (s *pagination) PaginationCursorBody(ctx context.Context, request operation
 		return nil, fmt.Errorf("error sending request: no response")
 	}
 
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.PaginationCursorBodyResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	nextFunc := func() (*operations.PaginationCursorBodyResponse, error) {
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
-		}
-		nC, err := ajson.Eval(b, "$.resultArray[(@.length-1)]")
-		if err != nil {
-			return nil, err
-		}
-		var nCVal int64
-
-		if nC.IsNumeric() {
-			numVal, err := nC.GetNumeric()
+	res.Next =
+		func() (*operations.PaginationCursorBodyResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
 			if err != nil {
 				return nil, err
 			}
-			nCVal = int64(numVal)
-		} else {
-			val, err := nC.Value()
+			nC, err := ajson.Eval(b, "$.resultArray[(@.length-1)]")
 			if err != nil {
 				return nil, err
 			}
-			if val == nil {
-				return nil, nil
+			var nCVal int64
+
+			if nC.IsNumeric() {
+				numVal, err := nC.GetNumeric()
+				if err != nil {
+					return nil, err
+				}
+				nCVal = int64(numVal)
+			} else {
+				val, err := nC.Value()
+				if err != nil {
+					return nil, err
+				}
+				if val == nil {
+					return nil, nil
+				}
+				nCVal = val.(int64)
 			}
-			nCVal = val.(int64)
+
+			return s.PaginationCursorBody(
+				ctx,
+				operations.PaginationCursorBodyRequestBody{
+					Cursor: nCVal,
+				},
+				opts...,
+			)
 		}
-
-		return s.PaginationCursorBody(
-			ctx,
-			operations.PaginationCursorBodyRequestBody{
-				Cursor: nCVal,
-			},
-			opts...,
-		)
-	}
-
-	res := &operations.PaginationCursorBodyResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-		Next:        nextFunc,
-	}
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -189,56 +188,55 @@ func (s *pagination) PaginationCursorParams(ctx context.Context, cursor int64, o
 		return nil, fmt.Errorf("error sending request: no response")
 	}
 
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.PaginationCursorParamsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
-
-	contentType := httpRes.Header.Get("Content-Type")
-
-	nextFunc := func() (*operations.PaginationCursorParamsResponse, error) {
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
-		}
-		nC, err := ajson.Eval(b, "$.resultArray[(@.length-1)]")
-		if err != nil {
-			return nil, err
-		}
-		var nCVal int64
-
-		if nC.IsNumeric() {
-			numVal, err := nC.GetNumeric()
+	res.Next =
+		func() (*operations.PaginationCursorParamsResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
 			if err != nil {
 				return nil, err
 			}
-			nCVal = int64(numVal)
-		} else {
-			val, err := nC.Value()
+			nC, err := ajson.Eval(b, "$.resultArray[(@.length-1)]")
 			if err != nil {
 				return nil, err
 			}
-			if val == nil {
-				return nil, nil
+			var nCVal int64
+
+			if nC.IsNumeric() {
+				numVal, err := nC.GetNumeric()
+				if err != nil {
+					return nil, err
+				}
+				nCVal = int64(numVal)
+			} else {
+				val, err := nC.Value()
+				if err != nil {
+					return nil, err
+				}
+				if val == nil {
+					return nil, nil
+				}
+				nCVal = val.(int64)
 			}
-			nCVal = val.(int64)
+
+			return s.PaginationCursorParams(
+				ctx,
+				nCVal,
+				opts...,
+			)
 		}
-
-		return s.PaginationCursorParams(
-			ctx,
-			nCVal,
-			opts...,
-		)
-	}
-
-	res := &operations.PaginationCursorParamsResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-		Next:        nextFunc,
-	}
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -306,58 +304,57 @@ func (s *pagination) PaginationLimitOffsetOffsetBody(ctx context.Context, reques
 		return nil, fmt.Errorf("error sending request: no response")
 	}
 
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.PaginationLimitOffsetOffsetBodyResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.PaginationLimitOffsetOffsetBodyResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			oS := int(*request.Offset)
+			r, err := ajson.Eval(b, "$.resultArray")
+			if err != nil {
+				return nil, err
+			}
+			if !r.IsArray() {
+				return nil, nil
+			}
+			arr, err := r.GetArray()
+			if err != nil {
+				return nil, err
+			}
+			if len(arr) == 0 {
+				return nil, nil
+			}
+			l := int(*request.Limit)
+			if len(arr) < l {
+				return nil, nil
+			}
+			nOS := int64(oS + len(arr))
 
-	contentType := httpRes.Header.Get("Content-Type")
-
-	nextFunc := func() (*operations.PaginationLimitOffsetOffsetBodyResponse, error) {
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
+			return s.PaginationLimitOffsetOffsetBody(
+				ctx,
+				shared.LimitOffsetConfig{
+					Limit:  request.Limit,
+					Offset: &nOS,
+					Page:   request.Page,
+				},
+				opts...,
+			)
 		}
-		oS := int(*request.Offset)
-		r, err := ajson.Eval(b, "$.resultArray")
-		if err != nil {
-			return nil, err
-		}
-		if !r.IsArray() {
-			return nil, nil
-		}
-		arr, err := r.GetArray()
-		if err != nil {
-			return nil, err
-		}
-		if len(arr) == 0 {
-			return nil, nil
-		}
-		l := int(*request.Limit)
-		if len(arr) < l {
-			return nil, nil
-		}
-		nOS := int64(oS + len(arr))
-
-		return s.PaginationLimitOffsetOffsetBody(
-			ctx,
-			shared.LimitOffsetConfig{
-				Limit:  request.Limit,
-				Offset: &nOS,
-				Page:   request.Page,
-			},
-			opts...,
-		)
-	}
-
-	res := &operations.PaginationLimitOffsetOffsetBodyResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-		Next:        nextFunc,
-	}
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -424,55 +421,54 @@ func (s *pagination) PaginationLimitOffsetOffsetParams(ctx context.Context, limi
 		return nil, fmt.Errorf("error sending request: no response")
 	}
 
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.PaginationLimitOffsetOffsetParamsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.PaginationLimitOffsetOffsetParamsResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			oS := int(*offset)
+			r, err := ajson.Eval(b, "$.resultArray")
+			if err != nil {
+				return nil, err
+			}
+			if !r.IsArray() {
+				return nil, nil
+			}
+			arr, err := r.GetArray()
+			if err != nil {
+				return nil, err
+			}
+			if len(arr) == 0 {
+				return nil, nil
+			}
+			l := int(*limit)
+			if len(arr) < l {
+				return nil, nil
+			}
+			nOS := int64(oS + len(arr))
 
-	contentType := httpRes.Header.Get("Content-Type")
-
-	nextFunc := func() (*operations.PaginationLimitOffsetOffsetParamsResponse, error) {
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
+			return s.PaginationLimitOffsetOffsetParams(
+				ctx,
+				limit,
+				&nOS,
+				opts...,
+			)
 		}
-		oS := int(*offset)
-		r, err := ajson.Eval(b, "$.resultArray")
-		if err != nil {
-			return nil, err
-		}
-		if !r.IsArray() {
-			return nil, nil
-		}
-		arr, err := r.GetArray()
-		if err != nil {
-			return nil, err
-		}
-		if len(arr) == 0 {
-			return nil, nil
-		}
-		l := int(*limit)
-		if len(arr) < l {
-			return nil, nil
-		}
-		nOS := int64(oS + len(arr))
-
-		return s.PaginationLimitOffsetOffsetParams(
-			ctx,
-			limit,
-			&nOS,
-			opts...,
-		)
-	}
-
-	res := &operations.PaginationLimitOffsetOffsetParamsResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-		Next:        nextFunc,
-	}
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -540,56 +536,55 @@ func (s *pagination) PaginationLimitOffsetPageBody(ctx context.Context, request 
 		return nil, fmt.Errorf("error sending request: no response")
 	}
 
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.PaginationLimitOffsetPageBodyResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.PaginationLimitOffsetPageBodyResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			p := *request.Page
+			nP := int64(p + 1)
+			nPs, err := ajson.Eval(b, "$.numPages")
+			if err != nil {
+				return nil, err
+			}
+			if !nPs.IsNumeric() {
+				return nil, nil
+			}
 
-	contentType := httpRes.Header.Get("Content-Type")
+			nPsVal, err := nPs.GetNumeric()
+			if err != nil {
+				return nil, err
+			}
+			// GetNumeric returns as float64
+			if int(nPsVal) <= int(p) {
+				return nil, nil
+			}
 
-	nextFunc := func() (*operations.PaginationLimitOffsetPageBodyResponse, error) {
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
+			return s.PaginationLimitOffsetPageBody(
+				ctx,
+				shared.LimitOffsetConfig{
+					Limit:  request.Limit,
+					Offset: request.Offset,
+					Page:   &nP,
+				},
+				opts...,
+			)
 		}
-		p := *request.Page
-		nP := int64(p + 1)
-		nPs, err := ajson.Eval(b, "$.numPages")
-		if err != nil {
-			return nil, err
-		}
-		if !nPs.IsNumeric() {
-			return nil, nil
-		}
-
-		nPsVal, err := nPs.GetNumeric()
-		if err != nil {
-			return nil, err
-		}
-		// GetNumeric returns as float64
-		if int(nPsVal) <= int(p) {
-			return nil, nil
-		}
-
-		return s.PaginationLimitOffsetPageBody(
-			ctx,
-			shared.LimitOffsetConfig{
-				Limit:  request.Limit,
-				Offset: request.Offset,
-				Page:   &nP,
-			},
-			opts...,
-		)
-	}
-
-	res := &operations.PaginationLimitOffsetPageBodyResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-		Next:        nextFunc,
-	}
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {
@@ -655,50 +650,49 @@ func (s *pagination) PaginationLimitOffsetPageParams(ctx context.Context, page i
 		return nil, fmt.Errorf("error sending request: no response")
 	}
 
+	contentType := httpRes.Header.Get("Content-Type")
+
+	res := &operations.PaginationLimitOffsetPageParamsResponse{
+		StatusCode:  httpRes.StatusCode,
+		ContentType: contentType,
+		RawResponse: httpRes,
+	}
+
 	rawBody, err := io.ReadAll(httpRes.Body)
 	if err != nil {
 		return nil, fmt.Errorf("error reading response body: %w", err)
 	}
 	httpRes.Body.Close()
 	httpRes.Body = io.NopCloser(bytes.NewBuffer(rawBody))
+	res.Next =
+		func() (*operations.PaginationLimitOffsetPageParamsResponse, error) {
+			b, err := ajson.Unmarshal(rawBody)
+			if err != nil {
+				return nil, err
+			}
+			p := page
+			nP := int64(p + 1)
+			r, err := ajson.Eval(b, "$.resultArray")
+			if err != nil {
+				return nil, err
+			}
+			if !r.IsArray() {
+				return nil, nil
+			}
+			arr, err := r.GetArray()
+			if err != nil {
+				return nil, err
+			}
+			if len(arr) == 0 {
+				return nil, nil
+			}
 
-	contentType := httpRes.Header.Get("Content-Type")
-
-	nextFunc := func() (*operations.PaginationLimitOffsetPageParamsResponse, error) {
-		b, err := ajson.Unmarshal(rawBody)
-		if err != nil {
-			return nil, err
+			return s.PaginationLimitOffsetPageParams(
+				ctx,
+				nP,
+				opts...,
+			)
 		}
-		p := page
-		nP := int64(p + 1)
-		r, err := ajson.Eval(b, "$.resultArray")
-		if err != nil {
-			return nil, err
-		}
-		if !r.IsArray() {
-			return nil, nil
-		}
-		arr, err := r.GetArray()
-		if err != nil {
-			return nil, err
-		}
-		if len(arr) == 0 {
-			return nil, nil
-		}
-
-		return s.PaginationLimitOffsetPageParams(
-			ctx,
-			nP,
-			opts...,
-		)
-	}
-
-	res := &operations.PaginationLimitOffsetPageParamsResponse{
-		StatusCode:  httpRes.StatusCode,
-		ContentType: contentType,
-		RawResponse: httpRes,
-		Next:        nextFunc,
-	}
 	switch {
 	case httpRes.StatusCode == 200:
 		switch {

@@ -37,26 +37,27 @@ $sdk = SDK::builder()
 try {
     $simpleObject = new SimpleObject();
     $simpleObject->any = 'Minivan';
-    $simpleObject->bigint = 843322;
-    $simpleObject->bigintStr = 'South Coupe Saudi';
+    $simpleObject->bigint = 8821239038968084;
+    $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $simpleObject->decimal = 7421.36;
-    $simpleObject->enum = Enum::Two;
-    $simpleObject->float32 = 2.2222222;
-    $simpleObject->int = 999999;
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObject->decimal = 3.141592653589793;
+    $simpleObject->decimalStr = '3.14159265358979344719667586';
+    $simpleObject->enum = Enum::One;
+    $simpleObject->float32 = 1.1;
+    $simpleObject->int = 1;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $simpleObject->intEnum = SimpleObjectIntEnum::Second;
-    $simpleObject->intOptNull = 999999;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $simpleObject->intEnum = SimpleObjectIntEnum::Third;
+    $simpleObject->intOptNull = 780;
     $simpleObject->num = 1.1;
-    $simpleObject->numOptNull = 1.1;
-    $simpleObject->str = 'example';
-    $simpleObject->strOpt = 'optional example';
+    $simpleObject->numOptNull = 5419.15;
+    $simpleObject->str = 'test';
+    $simpleObject->strOpt = 'testOptional';
 
-    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'Luxurious');
+    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'Coupe');
 
     if ($response->res !== null) {
         // handle response
@@ -103,26 +104,27 @@ $sdk = SDK::builder()
 try {
     $simpleObject = new SimpleObject();
     $simpleObject->any = 'ick';
-    $simpleObject->bigint = 758827;
-    $simpleObject->bigintStr = 'laboriosam';
+    $simpleObject->bigint = 8821239038968084;
+    $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
     $simpleObject->boolOpt = true;
     $simpleObject->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $simpleObject->decimal = 8361.57;
-    $simpleObject->enum = Enum::Two;
-    $simpleObject->float32 = 2.2222222;
-    $simpleObject->int = 999999;
+    $simpleObject->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $simpleObject->decimal = 3.141592653589793;
+    $simpleObject->decimalStr = '3.14159265358979344719667586';
+    $simpleObject->enum = Enum::One;
+    $simpleObject->float32 = 1.1;
+    $simpleObject->int = 1;
     $simpleObject->int32 = 1;
-    $simpleObject->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
     $simpleObject->intEnum = SimpleObjectIntEnum::First;
-    $simpleObject->intOptNull = 999999;
+    $simpleObject->intOptNull = 575433;
     $simpleObject->num = 1.1;
-    $simpleObject->numOptNull = 1.1;
-    $simpleObject->str = 'example';
-    $simpleObject->strOpt = 'optional example';
+    $simpleObject->numOptNull = 3895.81;
+    $simpleObject->str = 'test';
+    $simpleObject->strOpt = 'testOptional';
 
-    $response = $sdk->flattening->componentBodyAndParamNoConflict('yowza', $simpleObject);
+    $response = $sdk->flattening->componentBodyAndParamNoConflict('Ferrari', $simpleObject);
 
     if ($response->res !== null) {
         // handle response

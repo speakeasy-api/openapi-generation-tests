@@ -3,9 +3,9 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `XHeaderBoolean`   | *string*           | :heavy_check_mark: | N/A                |
-| `XHeaderInteger`   | *string*           | :heavy_check_mark: | N/A                |
-| `XHeaderNumber`    | *string*           | :heavy_check_mark: | N/A                |
-| `XHeaderString`    | *string*           | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `XHeaderBoolean`   | *string*           | :heavy_check_mark: | N/A                | true               |
+| `XHeaderInteger`   | *string*           | :heavy_check_mark: | N/A                | 1                  |
+| `XHeaderNumber`    | *string*           | :heavy_check_mark: | N/A                | 1.1                |
+| `XHeaderString`    | *string*           | :heavy_check_mark: | N/A                | test               |

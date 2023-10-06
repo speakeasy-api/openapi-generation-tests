@@ -31,10 +31,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::TypedObject1.new(
-    type=Shared::TypedObject1Type::OBJ1,
-    value="farad Rustic",
-  ),
+  request="Legacy",
 )
     
 res = s.unions.flattened_typed_object_post(req)
@@ -69,7 +66,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=618017,
+  request="SAS",
 )
     
 res = s.unions.mixed_type_one_of_post(req)
@@ -109,14 +106,8 @@ req = Shared::NullableOneOfRefInObject.new(
       type=Shared::TypedObject1Type::OBJ1,
       value="Global Alexandria administration",
     ),
-    nullable_one_of_two=Shared::TypedObject1.new(
-      type=Shared::TypedObject1Type::OBJ1,
-      value="nor",
-    ),
-    one_of_one=Shared::TypedObject1.new(
-      type=Shared::TypedObject1Type::OBJ1,
-      value="Berkshire after",
-    ),
+    nullable_one_of_two="Arbor",
+    one_of_one="PCI",
   ),
 )
     
@@ -152,10 +143,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::TypedObject2.new(
-    type=Shared::TypedObject2Type::OBJ2,
-    value="sob",
-  ),
+  request="deliquesce",
 )
     
 res = s.unions.nullable_one_of_schema_post(req)
@@ -192,7 +180,7 @@ s = OpenApiSDK::SDK.new
 req = Shared::NullableOneOfTypeInObject.new(
   request=Shared::NullableOneOfTypeInObject.new(
     nullable_one_of_one=false,
-    nullable_one_of_two=873677,
+    nullable_one_of_two="Smart",
     one_of_one=false,
   ),
 )
@@ -267,7 +255,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request="Sausages aha",
+  request="Grocery",
 )
     
 res = s.unions.primitive_type_one_of_post(req)
@@ -302,81 +290,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::DeepObjectWithType.new(
-    any="maroon array libero",
-    arr=.new[
-      Shared::SimpleObject.new(
-        any="oof",
-        bigint=701118,
-        bigint_str="port dicta",
-        bool=true,
-        bool_opt=true,
-        date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-        decimal=1943.43,
-        enum=Shared::Enum::TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_="example",
-        str_opt="optional example",
-      ),
-    ],
-    bool=false,
-    int=955349,
-    map=.new{
-      "deserunt": Shared::SimpleObject.new(
-        any="Pontiac",
-        bigint=825809,
-        bigint_str="Music",
-        bool=true,
-        bool_opt=true,
-        date=Date.parse("2020-01-01"),
-        date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-        decimal=2144.81,
-        enum=Shared::Enum::TWO,
-        float32=2.2222222,
-        int=999999,
-        int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
-        int_opt_null=999999,
-        num=1.1,
-        num_opt_null=1.1,
-        str_="example",
-        str_opt="optional example",
-      ),
-    },
-    num=4004.44,
-    obj=Shared::SimpleObject.new(
-      any="Representative",
-      bigint=296251,
-      bigint_str="Southwest excepting",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-      decimal=7507.75,
-      enum=Shared::Enum::TWO,
-      float32=2.2222222,
-      int=999999,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
-      int_opt_null=999999,
-      num=1.1,
-      num_opt_null=1.1,
-      str_="example",
-      str_opt="optional example",
-    ),
-    str_="1080p withdrawal",
-    type="consequuntur Shoes",
-  ),
+  request="spicy",
 )
     
 res = s.unions.strongly_typed_one_of_post(req)
@@ -411,10 +325,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::TypedObject2.new(
-    type=Shared::TypedObject2Type::OBJ2,
-    value="DRAM",
-  ),
+  request="Agender",
 )
     
 res = s.unions.typed_object_nullable_one_of_post(req)
@@ -449,10 +360,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::TypedObject3.new(
-    type=Shared::TypedObject3Type::OBJ3,
-    value="Buckinghamshire illo Automotive",
-  ),
+  request="shrivel",
 )
     
 res = s.unions.typed_object_one_of_post(req)
@@ -487,27 +395,7 @@ s = OpenApiSDK::SDK.new
 
    
 req = ::.new(
-  request=Shared::SimpleObject.new(
-    any="set",
-    bigint=764311,
-    bigint_str="likewise transition helplessly",
-    bool=true,
-    bool_opt=true,
-    date=Date.parse("2020-01-01"),
-    date_time=DateTime.iso8601('2020-01-01T00:00:00.000Z'),
-    decimal=3805.33,
-    enum=Shared::Enum::TWO,
-    float32=2.2222222,
-    int=999999,
-    int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::SECOND,
-    int_opt_null=999999,
-    num=1.1,
-    num_opt_null=1.1,
-    str_="example",
-    str_opt="optional example",
-  ),
+  request="Unbranded",
 )
     
 res = s.unions.weakly_typed_one_of_post(req)

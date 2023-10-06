@@ -93,7 +93,11 @@ func TestResponseBodyBytesGet(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.NotNil(t, res.Bytes)
-	assert.Len(t, res.Bytes, 100)
+
+	defer res.Bytes.Close()
+	bs, err := io.ReadAll(res.Bytes)
+	require.NoError(t, err)
+	assert.Len(t, bs, 100)
 }
 
 func TestResponseBodyOverrideAcceptHeader(t *testing.T) {

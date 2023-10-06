@@ -98,28 +98,29 @@ const sdk = new SDK({
 });
 const objParam: SimpleObject = {
   any: "Jazz",
-  bigint: 303001,
-  bigintStr: "Belarusian male",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 3356,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
+  intOptNull: 425315,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 1324.77,
+  str: "test",
+  strOpt: "testOptional",
 };
 const objArrParam: DeepObjectQueryParamsObjectObjArrParam = {
   arr: [
-    "violet",
+    "test",
   ],
 };
 
@@ -197,10 +198,10 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const arrParam: string[] = [
-  "Oaks",
+  "test",
 ];
 const arrParamExploded: number[] = [
-  728133,
+  2,
 ];
 
 sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded).then((res: FormQueryParamsArrayResponse) => {
@@ -286,45 +287,47 @@ const sdk = new SDK({
 });
 const objParamExploded: SimpleObject = {
   any: "Web",
-  bigint: 35155,
-  bigintStr: "North Associate Toyota",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 5470.98,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Third,
+  intOptNull: 87354,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 883.91,
+  str: "test",
+  strOpt: "testOptional",
 };
 const objParam: SimpleObject = {
-  any: "neatly",
-  bigint: 624987,
-  bigintStr: "querulous Concrete",
+  any: "Associate",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 7062.62,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
   intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 999999,
+  intOptNull: 547098,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 5763.58,
+  str: "test",
+  strOpt: "testOptional",
 };
 
 sdk.parameters.formQueryParamsObject(objParamExploded, objParam).then((res: FormQueryParamsObjectResponse) => {
@@ -363,10 +366,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const boolParam: boolean = false;
-const intParam: number = 661357;
-const numParam: number = 671.1;
-const strParam: string = "North";
+const boolParam: boolean = true;
+const intParam: number = 1;
+const numParam: number = 1.1;
+const strParam: string = "test";
 
 sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam).then((res: FormQueryParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -377,13 +380,13 @@ sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam)
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `boolParam`                                                  | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
-| `intParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `numParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `strParam`                                                   | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `boolParam`                                                  | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          | true                                                         |
+| `intParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `numParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1.1                                                          |
+| `strParam`                                                   | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | test                                                         |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -408,16 +411,16 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const refObjParam: RefQueryParamObj = {
-  bool: false,
-  int: 75015,
-  num: 9356.72,
-  str: "XML South",
+  bool: true,
+  int: 1,
+  num: 1.1,
+  str: "test",
 };
 const refObjParamExploded: RefQueryParamObjExploded = {
-  bool: false,
-  int: 465755,
-  num: 9065.16,
-  str: "Account",
+  bool: true,
+  int: 1,
+  num: 1.1,
+  str: "test",
 };
 
 sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded).then((res: FormQueryParamsRefParamObjectResponse) => {
@@ -457,7 +460,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const xHeaderArray: string[] = [
-  "Baby",
+  "test1",
 ];
 
 sdk.parameters.headerParamsArray(xHeaderArray).then((res: HeaderParamsArrayResponse) => {
@@ -542,45 +545,47 @@ const sdk = new SDK({
 });
 const xHeaderObj: SimpleObject = {
   any: "tolerance",
-  bigint: 14468,
-  bigintStr: "Rock",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 6940.18,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-};
-const xHeaderObjExplode: SimpleObject = {
-  any: "Fritsch",
-  bigint: 484677,
-  bigintStr: "programming Mexico",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 7898.24,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
+  intOptNull: 598385,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 543.44,
+  str: "test",
+  strOpt: "testOptional",
+};
+const xHeaderObjExplode: SimpleObject = {
+  any: "Representative",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.First,
+  intOptNull: 533235,
+  num: 1.1,
+  numOptNull: 2526.18,
+  str: "test",
+  strOpt: "testOptional",
 };
 
 sdk.parameters.headerParamsObject(xHeaderObj, xHeaderObjExplode).then((res: HeaderParamsObjectResponse) => {
@@ -619,10 +624,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const xHeaderBoolean: boolean = false;
-const xHeaderInteger: number = 765506;
-const xHeaderNumber: number = 7113.46;
-const xHeaderString: string = "Manat";
+const xHeaderBoolean: boolean = true;
+const xHeaderInteger: number = 1;
+const xHeaderNumber: number = 1.1;
+const xHeaderString: string = "test";
 
 sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString).then((res: HeaderParamsPrimitiveResponse) => {
   if (res.statusCode == 200) {
@@ -633,13 +638,13 @@ sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumb
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `xHeaderBoolean`                                             | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |
-| `xHeaderInteger`                                             | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `xHeaderNumber`                                              | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `xHeaderString`                                              | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `xHeaderBoolean`                                             | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          | true                                                         |
+| `xHeaderInteger`                                             | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
+| `xHeaderNumber`                                              | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1.1                                                          |
+| `xHeaderString`                                              | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | test                                                         |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -665,100 +670,104 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const deepObjParam: DeepObject = {
-  any: "weber damp Concrete",
+  any: "Hybrid",
   arr: [
     {
-      any: "Toyota",
-      bigint: 723719,
-      bigintStr: "Account synthesize without",
+      any: "weber",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000Z"),
-      decimal: 4204.62,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 999999,
+      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      intEnum: SimpleObjectIntEnum.First,
+      intOptNull: 240276,
       num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
+      numOptNull: 3309.36,
+      str: "test",
+      strOpt: "testOptional",
     },
   ],
-  bool: false,
-  int: 962090,
+  bool: true,
+  int: 1,
   map: {
-    "dolorem": {
-      any: "Autumn",
-      bigint: 208521,
-      bigintStr: "transmitter",
+    "repellendus": {
+      any: "until",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
       bool: true,
       boolOpt: true,
       date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000Z"),
-      decimal: 2816.2,
-      enum: Enum.Two,
-      float32: 2.2222222,
-      int: 999999,
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
       int32: 1,
       int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
       intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 999999,
+      intOptNull: 852586,
       num: 1.1,
-      numOptNull: 1.1,
-      str: "example",
-      strOpt: "optional example",
+      numOptNull: 6861.45,
+      str: "test",
+      strOpt: "testOptional",
     },
   },
-  num: 3108.18,
+  num: 1.1,
   obj: {
-    any: "Malawi",
-    bigint: 715426,
-    bigintStr: "bypass Solomon Interactions",
+    any: "synthesize",
+    bigint: 8821239038968084,
+    bigintStr: "9223372036854775808",
     bool: true,
     boolOpt: true,
     date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000Z"),
-    decimal: 9847.77,
-    enum: Enum.Two,
-    float32: 2.2222222,
-    int: 999999,
+    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    decimal: 3.141592653589793,
+    decimalStr: "3.14159265358979344719667586",
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 999999,
+    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+    intEnum: SimpleObjectIntEnum.Third,
+    intOptNull: 420462,
     num: 1.1,
-    numOptNull: 1.1,
-    str: "example",
-    strOpt: "optional example",
+    numOptNull: 5102.58,
+    str: "test",
+    strOpt: "testOptional",
   },
-  str: "Soft violet",
-  type: "Program Electric flexibility",
+  str: "test",
+  type: "aside Autumn Ball",
 };
 const simpleObjParam: SimpleObject = {
-  any: "next",
-  bigint: 916337,
-  bigintStr: "iterate male",
+  any: "transmitter",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 4183.6,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 999999,
+  intOptNull: 626466,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 3108.18,
+  str: "test",
+  strOpt: "testOptional",
 };
 
 sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam).then((res: JsonQueryParamsObjectResponse) => {
@@ -797,9 +806,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const headerParam: string = "monetize";
-const pathParam: string = "Uzbekistan";
-const queryStringParam: string = "Directives";
+const headerParam: string = "headerValue";
+const pathParam: string = "pathValue";
+const queryStringParam: string = "queryValue";
 
 sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam).then((res: MixedParametersCamelCaseResponse) => {
   if (res.statusCode == 200) {
@@ -810,12 +819,12 @@ sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `headerParam`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `pathParam`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `headerParam`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | headerValue                                                  |
+| `pathParam`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | pathValue                                                    |
+| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | queryValue                                                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -838,9 +847,9 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const headerParam: string = "Coordinator";
-const pathParam: string = "pixel";
-const queryStringParam: string = "Volkswagen";
+const headerParam: string = "headerValue";
+const pathParam: string = "pathValue";
+const queryStringParam: string = "queryValue";
 
 sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringParam).then((res: MixedParametersPrimitivesResponse) => {
   if (res.statusCode == 200) {
@@ -851,12 +860,12 @@ sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringPara
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `headerParam`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `pathParam`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `headerParam`                                                | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | headerValue                                                  |
+| `pathParam`                                                  | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | pathValue                                                    |
+| `queryStringParam`                                           | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | queryValue                                                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -883,66 +892,69 @@ const sdk = new SDK({
 });
 const deepObjectParam: SimpleObject = {
   any: "female",
-  bigint: 89281,
-  bigintStr: "Northwest",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 2181,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
+  intOptNull: 108812,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 4161.9,
+  str: "test",
+  strOpt: "testOptional",
 };
 const formParam: SimpleObject = {
-  any: "female",
-  bigint: 564193,
-  bigintStr: "evenly revolutionary busily",
+  any: "Chair",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 5689.72,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
-  num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
-};
-const jsonParam: SimpleObject = {
-  any: "lavender",
-  bigint: 105802,
-  bigintStr: "warren",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 1795.62,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
+  intEnum: SimpleObjectIntEnum.Third,
+  intOptNull: 387493,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 5641.93,
+  str: "test",
+  strOpt: "testOptional",
+};
+const jsonParam: SimpleObject = {
+  any: "weber",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.First,
+  intOptNull: 82918,
+  num: 1.1,
+  numOptNull: 8839.4,
+  str: "test",
+  strOpt: "testOptional",
 };
 
 sdk.parameters.mixedQueryParams(deepObjectParam, formParam, jsonParam).then((res: MixedQueryParamsResponse) => {
@@ -986,24 +998,25 @@ const sdk = new SDK({
 });
 const jsonObj: SimpleObject = {
   any: "bluetooth",
-  bigint: 355762,
-  bigintStr: "Indiana Pop",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 5151.45,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 999999,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Second,
+  intOptNull: 121334,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 2775.09,
+  str: "test",
+  strOpt: "testOptional",
 };
 
 sdk.parameters.pathParameterJson(jsonObj).then((res: PathParameterJsonResponse) => {
@@ -1044,34 +1057,35 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const arrParam: string[] = [
-  "FTM",
+  "test2",
 ];
 const arrParamExploded: number[] = [
-  110513,
+  1,
 ];
 const mapParam: Record<string, string> = {
-  "magni": "Gasoline",
+  "vitae": "gold",
 };
 const objParam: SimpleObject = {
-  any: "blue",
-  bigint: 84957,
-  bigintStr: "Gloves",
+  any: "Corporate",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 7903.07,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 999999,
+  intOptNull: 790307,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 4843.4,
+  str: "test",
+  strOpt: "testOptional",
 };
 
 sdk.parameters.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapParam, objParam).then((res: PipeDelimitedQueryParamsArrayResponse) => {
@@ -1113,7 +1127,7 @@ const sdk = new SDK({
   globalQueryParam: "some example global query param",
 });
 const arrParam: string[] = [
-  "SSL",
+  "test",
 ];
 
 sdk.parameters.simplePathParameterArrays(arrParam).then((res: SimplePathParameterArraysResponse) => {
@@ -1198,45 +1212,47 @@ const sdk = new SDK({
 });
 const objParam: SimpleObject = {
   any: "Ville",
-  bigint: 553078,
-  bigintStr: "Folk Research grow",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 8786.58,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
+  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  intEnum: SimpleObjectIntEnum.Third,
+  intOptNull: 586554,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 2558,
+  str: "test",
+  strOpt: "testOptional",
 };
 const objParamExploded: SimpleObject = {
-  any: "beckon",
-  bigint: 606303,
-  bigintStr: "Lutetium",
+  any: "Research",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
   bool: true,
   boolOpt: true,
   date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000Z"),
-  decimal: 1650.69,
-  enum: Enum.Two,
-  float32: 2.2222222,
-  int: 999999,
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 999999,
+  intOptNull: 878658,
   num: 1.1,
-  numOptNull: 1.1,
-  str: "example",
-  strOpt: "optional example",
+  numOptNull: 6926.2,
+  str: "test",
+  strOpt: "testOptional",
 };
 
 sdk.parameters.simplePathParameterObjects(objParam, objParamExploded).then((res: SimplePathParameterObjectsResponse) => {
@@ -1275,10 +1291,10 @@ const sdk = new SDK({
   globalPathParam: 100,
   globalQueryParam: "some example global query param",
 });
-const boolParam: boolean = false;
+const boolParam: boolean = true;
 const intParam: number = 1;
-const numParam: number = 9926.55;
-const strParam: string = "Gloves";
+const numParam: number = 1.1;
+const strParam: string = "test";
 
 sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam).then((res: SimplePathParameterPrimitivesResponse) => {
   if (res.statusCode == 200) {
@@ -1291,10 +1307,10 @@ sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strP
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `boolParam`                                                  | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `boolParam`                                                  | *boolean*                                                    | :heavy_check_mark:                                           | N/A                                                          | true                                                         |
 | `intParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1                                                            |
-| `numParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
-| `strParam`                                                   | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          |                                                              |
+| `numParam`                                                   | *number*                                                     | :heavy_check_mark:                                           | N/A                                                          | 1.1                                                          |
+| `strParam`                                                   | *string*                                                     | :heavy_check_mark:                                           | N/A                                                          | test                                                         |
 | `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 

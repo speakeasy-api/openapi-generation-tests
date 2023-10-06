@@ -863,20 +863,21 @@ public class Application {
                         username = "Jeanette82";
                         uuid = "004523e8-6559-4551-a938-6a9f8f4b14b9";
                     }};;
-                    simpleObject = new SimpleObject("Pickup", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
-                        bigint = 513927L;
-                        bigintStr = "CLI South";
+                    simpleObject = new SimpleObject("Pickup", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
                         boolOpt = true;
-                        decimal = 2056.71d;
-                        intOptNull = 999999L;
-                        numOptNull = 1.1d;
-                        strOpt = "optional example";
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        intOptNull = 513927L;
+                        numOptNull = 4837.7d;
+                        strOpt = "testOptional";
                     }};;
                 }};;
-                bigintParameterOptional = 972672L;
-                bigintStrParameterOptional = "sensor Trans Luxurious";
-                decimalParameterOptional = 651.74d;
-                decimalStrParameterOptional = "Thorium Planner Southwest";
+                bigintParameterOptional = 460571L;
+                bigintStrParameterOptional = "South";
+                decimalParameterOptional = 2056.71d;
+                decimalStrParameterOptional = "provided blue Luxurious";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 

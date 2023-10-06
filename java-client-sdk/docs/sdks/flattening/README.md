@@ -42,27 +42,28 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("Luxurious", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "example") {{
+            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("Coupe", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
                 any = "Minivan";
-                bigint = 843322L;
-                bigintStr = "South Coupe Saudi";
+                bigint = 8821239038968084L;
+                bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000Z");
-                decimal = 7421.36d;
-                enum_ = Enum.TWO;
-                float32 = 2.2222222f;
-                int_ = 999999L;
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                decimal = 3.141592653589793d;
+                decimalStr = "3.14159265358979344719667586";
+                enum_ = Enum.ONE;
+                float32 = 1.1f;
+                int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Second;
-                intOptNull = 999999L;
+                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
+                intEnum = SimpleObjectIntEnum.Third;
+                intOptNull = 780L;
                 num = 1.1d;
-                numOptNull = 1.1d;
-                str = "example";
-                strOpt = "optional example";
-            }}, "douse");
+                numOptNull = 5419.15d;
+                str = "test";
+                strOpt = "testOptional";
+            }}, "South");
 
             if (res.res != null) {
                 // handle response
@@ -116,26 +117,27 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("ick", new SimpleObject("male", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000Z"), Enum.TWO, 2.2222222f, 999999L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "example") {{
+            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("ick", new SimpleObject("United", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
                 any = "kelvin";
-                bigint = 575433L;
-                bigintStr = "Ferrari United";
+                bigint = 8821239038968084L;
+                bigintStr = "9223372036854775808";
                 bool = true;
                 boolOpt = true;
                 date = LocalDate.parse("2020-01-01");
-                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000Z");
-                decimal = 28.41d;
-                enum_ = Enum.TWO;
-                float32 = 2.2222222f;
-                int_ = 999999L;
+                dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                decimal = 3.141592653589793d;
+                decimalStr = "3.14159265358979344719667586";
+                enum_ = Enum.ONE;
+                float32 = 1.1f;
+                int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                intEnum = SimpleObjectIntEnum.Third;
-                intOptNull = 999999L;
+                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                intEnum = SimpleObjectIntEnum.Second;
+                intOptNull = 836157L;
                 num = 1.1d;
-                numOptNull = 1.1d;
-                str = "example";
-                strOpt = "optional example";
+                numOptNull = 2914.21d;
+                str = "test";
+                strOpt = "testOptional";
             }});
 
             if (res.res != null) {

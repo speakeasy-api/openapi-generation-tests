@@ -248,23 +248,7 @@ public class DefaultsAndConstsOutput {
         return this;
     }
     
-    @JsonProperty("singleEnumConstBool")
-    public Boolean singleEnumConstBool;
-
-    public DefaultsAndConstsOutput withSingleEnumConstBool(Boolean singleEnumConstBool) {
-        this.singleEnumConstBool = singleEnumConstBool;
-        return this;
-    }
-    
-    @JsonProperty("singleEnumConstStr")
-    public String singleEnumConstStr;
-
-    public DefaultsAndConstsOutput withSingleEnumConstStr(String singleEnumConstStr) {
-        this.singleEnumConstStr = singleEnumConstStr;
-        return this;
-    }
-    
-    public DefaultsAndConstsOutput(@JsonProperty("constBigInt") Long constBigInt, @JsonProperty("constBigIntStr") String constBigIntStr, @JsonProperty("constBool") Boolean constBool, @JsonProperty("constDate") LocalDate constDate, @JsonProperty("constDateTime") OffsetDateTime constDateTime, @JsonProperty("constDecimal") Double constDecimal, @JsonProperty("constDecimalStr") String constDecimalStr, @JsonProperty("constEnumInt") DefaultsAndConstsOutputConstEnumInt constEnumInt, @JsonProperty("constEnumStr") DefaultsAndConstsOutputConstEnumStr constEnumStr, @JsonProperty("constInt") Long constInt, @JsonProperty("constNum") Double constNum, @JsonProperty("constStr") String constStr, @JsonProperty("constStrNull") String constStrNull, @JsonProperty("defaultBigInt") Long defaultBigInt, @JsonProperty("defaultBigIntStr") String defaultBigIntStr, @JsonProperty("defaultBool") Boolean defaultBool, @JsonProperty("defaultDate") LocalDate defaultDate, @JsonProperty("defaultDateTime") OffsetDateTime defaultDateTime, @JsonProperty("defaultDecimal") Double defaultDecimal, @JsonProperty("defaultDecimalStr") String defaultDecimalStr, @JsonProperty("defaultEnumInt") DefaultsAndConstsOutputDefaultEnumInt defaultEnumInt, @JsonProperty("defaultEnumStr") DefaultsAndConstsOutputDefaultEnumStr defaultEnumStr, @JsonProperty("defaultInt") Long defaultInt, @JsonProperty("defaultNum") Double defaultNum, @JsonProperty("defaultStr") String defaultStr, @JsonProperty("defaultStrNullable") String defaultStrNullable, @JsonProperty("normalField") String normalField, @JsonProperty("singleEnumConstBool") Boolean singleEnumConstBool, @JsonProperty("singleEnumConstStr") String singleEnumConstStr) {
+    public DefaultsAndConstsOutput(@JsonProperty("constBigInt") Long constBigInt, @JsonProperty("constBigIntStr") String constBigIntStr, @JsonProperty("constBool") Boolean constBool, @JsonProperty("constDate") LocalDate constDate, @JsonProperty("constDateTime") OffsetDateTime constDateTime, @JsonProperty("constDecimal") Double constDecimal, @JsonProperty("constDecimalStr") String constDecimalStr, @JsonProperty("constEnumInt") DefaultsAndConstsOutputConstEnumInt constEnumInt, @JsonProperty("constEnumStr") DefaultsAndConstsOutputConstEnumStr constEnumStr, @JsonProperty("constInt") Long constInt, @JsonProperty("constNum") Double constNum, @JsonProperty("constStr") String constStr, @JsonProperty("constStrNull") String constStrNull, @JsonProperty("defaultBigInt") Long defaultBigInt, @JsonProperty("defaultBigIntStr") String defaultBigIntStr, @JsonProperty("defaultBool") Boolean defaultBool, @JsonProperty("defaultDate") LocalDate defaultDate, @JsonProperty("defaultDateTime") OffsetDateTime defaultDateTime, @JsonProperty("defaultDecimal") Double defaultDecimal, @JsonProperty("defaultDecimalStr") String defaultDecimalStr, @JsonProperty("defaultEnumInt") DefaultsAndConstsOutputDefaultEnumInt defaultEnumInt, @JsonProperty("defaultEnumStr") DefaultsAndConstsOutputDefaultEnumStr defaultEnumStr, @JsonProperty("defaultInt") Long defaultInt, @JsonProperty("defaultNum") Double defaultNum, @JsonProperty("defaultStr") String defaultStr, @JsonProperty("defaultStrNullable") String defaultStrNullable, @JsonProperty("normalField") String normalField) {
         this.constBigInt = constBigInt;
         this.constBigIntStr = constBigIntStr;
         this.constBool = constBool;
@@ -292,7 +276,5 @@ public class DefaultsAndConstsOutput {
         this.defaultStr = defaultStr;
         this.defaultStrNullable = defaultStrNullable;
         this.normalField = normalField;
-        this.singleEnumConstBool = singleEnumConstBool;
-        this.singleEnumConstStr = singleEnumConstStr;
   }
 }

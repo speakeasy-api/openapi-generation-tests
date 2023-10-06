@@ -137,14 +137,6 @@ class DefaultsAndConsts
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $normalField;
     
-	#[\JMS\Serializer\Annotation\SerializedName('singleEnumConstBool')]
-    #[\JMS\Serializer\Annotation\Type('bool')]
-    public bool $singleEnumConstBool;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('singleEnumConstStr')]
-    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsSingleEnumConstStr>')]
-    public DefaultsAndConstsSingleEnumConstStr $singleEnumConstStr;
-    
 	public function __construct()
 	{
 		$this->constBigInt = 0;
@@ -175,7 +167,5 @@ class DefaultsAndConsts
 		$this->defaultStrNullable = null;
 		$this->defaultStrOptional = null;
 		$this->normalField = "";
-		$this->singleEnumConstBool = false;
-		$this->singleEnumConstStr = \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsSingleEnumConstStr::One;
 	}
 }

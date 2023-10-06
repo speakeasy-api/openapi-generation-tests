@@ -3,9 +3,9 @@
 
 ## Fields
 
-| Field              | Type               | Required           | Description        |
-| ------------------ | ------------------ | ------------------ | ------------------ |
-| `bool`             | *Boolean*          | :heavy_check_mark: | N/A                |
-| `int_`             | *Long*             | :heavy_check_mark: | N/A                |
-| `num`              | *Double*           | :heavy_check_mark: | N/A                |
-| `str`              | *String*           | :heavy_check_mark: | N/A                |
+| Field              | Type               | Required           | Description        | Example            |
+| ------------------ | ------------------ | ------------------ | ------------------ | ------------------ |
+| `bool`             | *Boolean*          | :heavy_check_mark: | N/A                | true               |
+| `int_`             | *Long*             | :heavy_check_mark: | N/A                | 1                  |
+| `num`              | *Double*           | :heavy_check_mark: | N/A                | 1.1                |
+| `str`              | *String*           | :heavy_check_mark: | N/A                | test               |

@@ -116,6 +116,16 @@ public class SimpleObject {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("decimalStr")
+    @SpeakeasyMetadata("header:name=decimalStr pathParam:name=decimalStr queryParam:name=decimalStr form:name=decimalStr multipartForm:name=decimalStr")
+    public String decimalStr;
+
+    public SimpleObject withDecimalStr(String decimalStr) {
+        this.decimalStr = decimalStr;
+        return this;
+    }
+    
     /**
      * A string based enum
      */

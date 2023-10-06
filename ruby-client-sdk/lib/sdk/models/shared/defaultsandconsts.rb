@@ -49,14 +49,6 @@ module OpenApiSDK
 
 
 
-    class DefaultsAndConstsSingleEnumConstStr < T::Enum
-      enums do
-        ONE = new('one')
-      end
-    end
-
-
-
     class DefaultsAndConsts < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 
@@ -89,10 +81,6 @@ module OpenApiSDK
 
       field :normal_field, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('normalField') } }
 
-      field :single_enum_const_bool, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('singleEnumConstBool') } }
-
-      field :single_enum_const_str, Shared::DefaultsAndConstsSingleEnumConstStr, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('singleEnumConstStr'), 'decoder': Utils.enum_from_string(Shared::DefaultsAndConstsSingleEnumConstStr, false) } }
-
       field :default_big_int, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultBigInt') } }
 
       field :default_big_int_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultBigIntStr') } }
@@ -122,8 +110,8 @@ module OpenApiSDK
       field :default_str_optional, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultStrOptional') } }
 
 
-      sig { params(const_big_int: Integer, const_big_int_str: String, const_bool: T::Boolean, const_date: Date, const_date_time: DateTime, const_decimal: Float, const_decimal_str: String, const_enum_int: Shared::DefaultsAndConstsConstEnumInt, const_enum_str: Shared::DefaultsAndConstsConstEnumStr, const_int: Integer, const_num: Float, const_str: String, const_str_null: String, normal_field: String, single_enum_const_bool: T::Boolean, single_enum_const_str: Shared::DefaultsAndConstsSingleEnumConstStr, default_big_int: T.nilable(Integer), default_big_int_str: T.nilable(String), default_bool: T.nilable(T::Boolean), default_date: T.nilable(Date), default_date_time: T.nilable(DateTime), default_decimal: T.nilable(Float), default_decimal_str: T.nilable(String), default_enum_int: T.nilable(Shared::DefaultsAndConstsDefaultEnumInt), default_enum_str: T.nilable(Shared::DefaultsAndConstsDefaultEnumStr), default_int: T.nilable(Integer), default_num: T.nilable(Float), default_str: T.nilable(String), default_str_nullable: T.nilable(String), default_str_optional: T.nilable(String)).void }
-      def initialize(const_big_int: nil, const_big_int_str: nil, const_bool: nil, const_date: nil, const_date_time: nil, const_decimal: nil, const_decimal_str: nil, const_enum_int: nil, const_enum_str: nil, const_int: nil, const_num: nil, const_str: nil, const_str_null: nil, normal_field: nil, single_enum_const_bool: nil, single_enum_const_str: nil, default_big_int: nil, default_big_int_str: nil, default_bool: nil, default_date: nil, default_date_time: nil, default_decimal: nil, default_decimal_str: nil, default_enum_int: nil, default_enum_str: nil, default_int: nil, default_num: nil, default_str: nil, default_str_nullable: nil, default_str_optional: nil)
+      sig { params(const_big_int: Integer, const_big_int_str: String, const_bool: T::Boolean, const_date: Date, const_date_time: DateTime, const_decimal: Float, const_decimal_str: String, const_enum_int: Shared::DefaultsAndConstsConstEnumInt, const_enum_str: Shared::DefaultsAndConstsConstEnumStr, const_int: Integer, const_num: Float, const_str: String, const_str_null: String, normal_field: String, default_big_int: T.nilable(Integer), default_big_int_str: T.nilable(String), default_bool: T.nilable(T::Boolean), default_date: T.nilable(Date), default_date_time: T.nilable(DateTime), default_decimal: T.nilable(Float), default_decimal_str: T.nilable(String), default_enum_int: T.nilable(Shared::DefaultsAndConstsDefaultEnumInt), default_enum_str: T.nilable(Shared::DefaultsAndConstsDefaultEnumStr), default_int: T.nilable(Integer), default_num: T.nilable(Float), default_str: T.nilable(String), default_str_nullable: T.nilable(String), default_str_optional: T.nilable(String)).void }
+      def initialize(const_big_int: nil, const_big_int_str: nil, const_bool: nil, const_date: nil, const_date_time: nil, const_decimal: nil, const_decimal_str: nil, const_enum_int: nil, const_enum_str: nil, const_int: nil, const_num: nil, const_str: nil, const_str_null: nil, normal_field: nil, default_big_int: nil, default_big_int_str: nil, default_bool: nil, default_date: nil, default_date_time: nil, default_decimal: nil, default_decimal_str: nil, default_enum_int: nil, default_enum_str: nil, default_int: nil, default_num: nil, default_str: nil, default_str_nullable: nil, default_str_optional: nil)
         @const_big_int = const_big_int
         @const_big_int_str = const_big_int_str
         @const_bool = const_bool
@@ -138,8 +126,6 @@ module OpenApiSDK
         @const_str = const_str
         @const_str_null = const_str_null
         @normal_field = normal_field
-        @single_enum_const_bool = single_enum_const_bool
-        @single_enum_const_str = single_enum_const_str
         @default_big_int = default_big_int
         @default_big_int_str = default_big_int_str
         @default_bool = default_bool

@@ -9,14 +9,6 @@ require 'faraday'
 module OpenApiSDK
   module Shared
 
-    class OneOfGenerationStressTestOneOfSameType2 < T::Enum
-      enums do
-        LATEST = new('latest')
-      end
-    end
-
-
-
     class OneOfGenerationStressTest < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
 

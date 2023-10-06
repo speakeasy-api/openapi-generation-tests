@@ -97,6 +97,12 @@ export class SimpleObject extends SpeakeasyBase {
     @Expose({ name: "decimal" })
     decimal?: number;
 
+    @SpeakeasyMetadata({
+        data: "header, name=decimalStr, pathParam, name=decimalStr, queryParam, name=decimalStr, form, name=decimalStr, multipart_form, name=decimalStr",
+    })
+    @Expose({ name: "decimalStr" })
+    decimalStr?: string;
+
     /**
      * A string based enum
      */

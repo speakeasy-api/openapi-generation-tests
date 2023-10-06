@@ -66,6 +66,8 @@ module OpenApiSDK
       field :bool_opt, T.nilable(T::Boolean), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('boolOpt') }, 'header': { 'field_name': 'boolOpt' }, 'path_param': { 'field_name': 'boolOpt' }, 'query_param': { 'field_name': 'boolOpt' }, 'form': { 'field_name': 'boolOpt' }, 'multipart_form': { 'field_name': 'boolOpt' } }
 
       field :decimal, T.nilable(Float), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimal') }, 'header': { 'field_name': 'decimal' }, 'path_param': { 'field_name': 'decimal' }, 'query_param': { 'field_name': 'decimal' }, 'form': { 'field_name': 'decimal' }, 'multipart_form': { 'field_name': 'decimal' } }
+
+      field :decimal_str, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('decimalStr') }, 'header': { 'field_name': 'decimalStr' }, 'path_param': { 'field_name': 'decimalStr' }, 'query_param': { 'field_name': 'decimalStr' }, 'form': { 'field_name': 'decimalStr' }, 'multipart_form': { 'field_name': 'decimalStr' } }
       # An optional integer property will be null for tests.
       field :int_opt_null, T.nilable(Integer), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('intOptNull') }, 'header': { 'field_name': 'intOptNull' }, 'path_param': { 'field_name': 'intOptNull' }, 'query_param': { 'field_name': 'intOptNull' }, 'form': { 'field_name': 'intOptNull' }, 'multipart_form': { 'field_name': 'intOptNull' } }
       # An optional number property will be null for tests.
@@ -74,8 +76,8 @@ module OpenApiSDK
       field :str_opt, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('strOpt') }, 'header': { 'field_name': 'strOpt' }, 'path_param': { 'field_name': 'strOpt' }, 'query_param': { 'field_name': 'strOpt' }, 'form': { 'field_name': 'strOpt' }, 'multipart_form': { 'field_name': 'strOpt' } }
 
 
-      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::Enum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::SimpleObjectInt32Enum, int_enum: Shared::SimpleObjectIntEnum, num: Float, str_: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), decimal: T.nilable(Float), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
-      def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, str_: nil, bigint: nil, bigint_str: nil, bool_opt: nil, decimal: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
+      sig { params(any: Object, bool: T::Boolean, date: Date, date_time: DateTime, enum: Shared::Enum, float32: Float, int: Integer, int32: Integer, int32_enum: Shared::SimpleObjectInt32Enum, int_enum: Shared::SimpleObjectIntEnum, num: Float, str_: String, bigint: T.nilable(Integer), bigint_str: T.nilable(String), bool_opt: T.nilable(T::Boolean), decimal: T.nilable(Float), decimal_str: T.nilable(String), int_opt_null: T.nilable(Integer), num_opt_null: T.nilable(Float), str_opt: T.nilable(String)).void }
+      def initialize(any: nil, bool: nil, date: nil, date_time: nil, enum: nil, float32: nil, int: nil, int32: nil, int32_enum: nil, int_enum: nil, num: nil, str_: nil, bigint: nil, bigint_str: nil, bool_opt: nil, decimal: nil, decimal_str: nil, int_opt_null: nil, num_opt_null: nil, str_opt: nil)
         @any = any
         @bool = bool
         @date = date
@@ -92,6 +94,7 @@ module OpenApiSDK
         @bigint_str = bigint_str
         @bool_opt = bool_opt
         @decimal = decimal
+        @decimal_str = decimal_str
         @int_opt_null = int_opt_null
         @num_opt_null = num_opt_null
         @str_opt = str_opt

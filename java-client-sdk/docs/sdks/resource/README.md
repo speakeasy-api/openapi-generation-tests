@@ -71,10 +71,6 @@ package hello.world;
 import java.time.OffsetDateTime;
 import org.openapis.openapi.SDK;
 import org.openapis.openapi.models.operations.CreateResourceResponse;
-import org.openapis.openapi.models.shared.ExampleBoat;
-import org.openapis.openapi.models.shared.ExampleBoatType;
-import org.openapis.openapi.models.shared.ExampleCar;
-import org.openapis.openapi.models.shared.ExampleCarType;
 import org.openapis.openapi.models.shared.ExampleResource;
 import org.openapis.openapi.models.shared.ExampleResourceChocolates;
 import org.openapis.openapi.models.shared.ExampleResourceEnumNumber;
@@ -96,31 +92,23 @@ public class Application {
                                 add(new ExampleResourceChocolates("Northwest") {{
                                     description = "Digitized optimal archive";
                                 }}),
-                            }}, "woot", "Florida",                 new ExampleCar("South", "Quality", "system", ExampleCarType.CAR, 6882.36d) {{
-                                createdAt = OffsetDateTime.parse("2021-06-19T06:19:12.041Z");
-                                make = "utilize";
-                                model = "Corvette";
-                                name = "withdrawal oh";
-                                type = ExampleCarType.CAR;
-                                updatedAt = OffsetDateTime.parse("2023-05-07T22:50:25.892Z");
-                                year = 1368.23d;
-                            }}) {{
+                            }}, "woot", "Florida", "an") {{
                 arrayOfNumber = new Double[]{{
-                    add(474.93d),
+                    add(951.5d),
                 }};
                 arrayOfString = new String[]{{
-                    add("Savannah"),
+                    add("utilize"),
                 }};
-                createdAt = OffsetDateTime.parse("2023-04-11T10:30:46.838Z");
+                createdAt = OffsetDateTime.parse("2021-09-27T19:55:47.964Z");
                 enumNumber = ExampleResourceEnumNumber.TWO;
-                enumStr = ExampleResourceEnumStr.ONE;
+                enumStr = ExampleResourceEnumStr.TWO;
                 mapOfInteger = new java.util.HashMap<String, Long>() {{
-                    put("dolore", 992607L);
+                    put("minima", 926254L);
                 }};
                 mapOfString = new java.util.HashMap<String, String>() {{
-                    put("eveniet", "Southeast");
+                    put("voluptatem", "purple");
                 }};
-                updatedAt = OffsetDateTime.parse("2022-03-20T00:36:16.040Z");
+                updatedAt = OffsetDateTime.parse("2021-03-31T08:04:20.471Z");
             }};            
 
             CreateResourceResponse res = sdk.resource.createResource(req);

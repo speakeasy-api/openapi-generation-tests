@@ -37,6 +37,7 @@ type FormQueryParamsObjectResArgs struct {
 	Date       string  `json:"date"`
 	DateTime   string  `json:"dateTime"`
 	Decimal    *string `json:"decimal,omitempty"`
+	DecimalStr *string `json:"decimalStr,omitempty"`
 	Enum       string  `json:"enum"`
 	Float32    string  `json:"float32"`
 	Int        string  `json:"int"`
@@ -105,6 +106,13 @@ func (o *FormQueryParamsObjectResArgs) GetDecimal() *string {
 		return nil
 	}
 	return o.Decimal
+}
+
+func (o *FormQueryParamsObjectResArgs) GetDecimalStr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.DecimalStr
 }
 
 func (o *FormQueryParamsObjectResArgs) GetEnum() string {

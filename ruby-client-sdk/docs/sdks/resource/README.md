@@ -85,15 +85,7 @@ req = Shared::ExampleResource.new(
     },
     name="online",
     updated_at=DateTime.iso8601('2021-12-27T00:23:19.559Z'),
-    vehicle=Shared::ExampleCar.new(
-      created_at=DateTime.iso8601('2021-02-02T11:47:59.271Z'),
-      make="California expedite Designer",
-      model="PT Cruiser",
-      name="Anguilla Hybrid rich",
-      type=Shared::ExampleCarType::CAR,
-      updated_at=DateTime.iso8601('2023-09-26T13:04:50.198Z'),
-      year=919.87,
-    ),
+    vehicle="oh",
   ),
 )
     

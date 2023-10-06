@@ -98,12 +98,7 @@ try {
     ];
     $request->name = 'utilize';
     $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-09-27T19:55:47.964Z');
-    $request->vehicle = new ExampleBoat();
-    $request->vehicle->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-05-14T19:13:24.084Z');
-    $request->vehicle->length = 3287.82;
-    $request->vehicle->name = 'San South Quality';
-    $request->vehicle->type = ExampleBoatType::Boat;
-    $request->vehicle->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-08-07T19:15:43.501Z');
+    $request->vehicle = 'online';
 
     $response = $sdk->resource->createResource($request);
 

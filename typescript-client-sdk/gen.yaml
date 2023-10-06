@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 09f66eb85627e03a8cf855efeda04a31
+  docChecksum: d6c132f7bde6e79f0552a47119432f96
   docVersion: 0.1.0
-  speakeasyVersion: 1.94.0
-  generationVersion: 2.147.0
+  speakeasyVersion: 1.95.0
+  generationVersion: 2.148.0
 generation:
   sdkClassName: SDK
   singleTagPerOp: false
@@ -31,7 +31,7 @@ features:
     retries: 2.82.1
     serverIDs: 2.81.1
 typescript:
-  version: 1.37.4
+  version: 1.37.5
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   maxMethodParams: 5

@@ -5,10 +5,6 @@
 import { SpeakeasyBase, SpeakeasyMetadata } from "../../../internal/utils";
 import { Expose } from "class-transformer";
 
-export enum OneOfGenerationStressTestOneOfSameType2 {
-    Latest = "latest",
-}
-
 export class OneOfGenerationStressTest extends SpeakeasyBase {
     @SpeakeasyMetadata()
     @Expose({ name: "any" })

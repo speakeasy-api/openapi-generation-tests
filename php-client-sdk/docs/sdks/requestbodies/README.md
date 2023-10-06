@@ -782,38 +782,39 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObject();
-    $request->any = 'deliverables Diesel';
+    $request->any = 'medium';
     $request->arr = [
         new SimpleObject(),
     ];
-    $request->bool = false;
-    $request->int = 69866;
+    $request->bool = true;
+    $request->int = 1;
     $request->map = [
-        'repellat' => new SimpleObject(),
+        'veniam' => new SimpleObject(),
     ];
-    $request->num = 9915.06;
+    $request->num = 1.1;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'Colon';
-    $request->obj->bigint = 724689;
-    $request->obj->bigintStr = 'Central Maine grey';
+    $request->obj->any = 'Berkelium';
+    $request->obj->bigint = 8821239038968084;
+    $request->obj->bigintStr = '9223372036854775808';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->obj->decimal = 8875.82;
-    $request->obj->enum = Enum::Two;
-    $request->obj->float32 = 2.2222222;
-    $request->obj->int = 999999;
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->decimal = 3.141592653589793;
+    $request->obj->decimalStr = '3.14159265358979344719667586';
+    $request->obj->enum = Enum::One;
+    $request->obj->float32 = 1.1;
+    $request->obj->int = 1;
     $request->obj->int32 = 1;
     $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->obj->intEnum = SimpleObjectIntEnum::Second;
-    $request->obj->intOptNull = 999999;
+    $request->obj->intEnum = SimpleObjectIntEnum::First;
+    $request->obj->intOptNull = 998971;
     $request->obj->num = 1.1;
-    $request->obj->numOptNull = 1.1;
-    $request->obj->str = 'example';
-    $request->obj->strOpt = 'optional example';
-    $request->str = 'fluid Neptunium';
-    $request->type = 'Androgynous Nissan';
+    $request->obj->numOptNull = 9915.06;
+    $request->obj->str = 'test';
+    $request->obj->strOpt = 'testOptional';
+    $request->str = 'test';
+    $request->type = 'gray Oganesson';
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeep($request);
 
@@ -860,57 +861,38 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObjectCamelCase();
-    $request->anyVal = new SimpleObjectCamelCase();
-    $request->anyVal->anyVal = 'as';
-    $request->anyVal->bigintStrVal = 'catamaran Diesel';
-    $request->anyVal->bigintVal = 105266;
-    $request->anyVal->boolOptVal = true;
-    $request->anyVal->boolVal = true;
-    $request->anyVal->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
-    $request->anyVal->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->anyVal->decimalVal = 4268.81;
-    $request->anyVal->enumVal = Enum::Two;
-    $request->anyVal->float32Val = 2.2222222;
-    $request->anyVal->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::FiftyFive;
-    $request->anyVal->int32Val = 1;
-    $request->anyVal->intEnumVal = SimpleObjectCamelCaseIntEnumVal::First;
-    $request->anyVal->intOptNullVal = 999999;
-    $request->anyVal->intVal = 999999;
-    $request->anyVal->numOptNullVal = 1.1;
-    $request->anyVal->numVal = 1.1;
-    $request->anyVal->strOptVal = 'optional example';
-    $request->anyVal->strVal = 'example';
+    $request->anyVal = 'Cambridgeshire';
     $request->arrVal = [
         new SimpleObjectCamelCase(),
     ];
     $request->boolVal = false;
-    $request->intVal = 484195;
+    $request->intVal = 206440;
     $request->mapVal = [
-        'repudiandae' => new SimpleObjectCamelCase(),
+        'vel' => new SimpleObjectCamelCase(),
     ];
-    $request->numVal = 3547.55;
+    $request->numVal = 9420.92;
     $request->objVal = new SimpleObjectCamelCase();
-    $request->objVal->anyVal = 'Ghana';
-    $request->objVal->bigintStrVal = 'Qatar heuristic';
-    $request->objVal->bigintVal = 180903;
+    $request->objVal->anyVal = 'South';
+    $request->objVal->bigintStrVal = 'Djibouti';
+    $request->objVal->bigintVal = 484195;
     $request->objVal->boolOptVal = true;
     $request->objVal->boolVal = true;
     $request->objVal->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
     $request->objVal->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objVal->decimalVal = 4135.31;
-    $request->objVal->enumVal = Enum::Two;
+    $request->objVal->decimalVal = 9223.07;
+    $request->objVal->enumVal = Enum::One;
     $request->objVal->float32Val = 2.2222222;
-    $request->objVal->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::FiftyFive;
+    $request->objVal->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::SixtyNine;
     $request->objVal->int32Val = 1;
-    $request->objVal->intEnumVal = SimpleObjectCamelCaseIntEnumVal::Third;
+    $request->objVal->intEnumVal = SimpleObjectCamelCaseIntEnumVal::First;
     $request->objVal->intOptNullVal = 999999;
     $request->objVal->intVal = 999999;
     $request->objVal->numOptNullVal = 1.1;
     $request->objVal->numVal = 1.1;
     $request->objVal->strOptVal = 'optional example';
     $request->objVal->strVal = 'example';
-    $request->strVal = 'invoice';
-    $request->type = 'olive Chrysler';
+    $request->strVal = 'analyzer';
+    $request->type = 'heuristic Grocery Pizza';
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeepCamelCase($request);
 
@@ -1437,24 +1419,25 @@ $sdk = SDK::builder()
 try {
     $request = new SimpleObject();
     $request->any = 'hack';
-    $request->bigint = 680661;
-    $request->bigintStr = 'Fish Customer 24/365';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 5108.69;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::First;
-    $request->intOptNull = 999999;
+    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->intEnum = SimpleObjectIntEnum::Third;
+    $request->intOptNull = 279112;
     $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request->numOptNull = 7372.56;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMultipleJsonFiltered($request);
 
@@ -1501,24 +1484,25 @@ $sdk = SDK::builder()
 try {
     $request = new SimpleObject();
     $request->any = 'Hampton';
-    $request->bigint = 387512;
-    $request->bigintStr = 'female oof in';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 1452.57;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
     $request->int32 = 1;
     $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectIntEnum::Second;
-    $request->intOptNull = 999999;
+    $request->intEnum = SimpleObjectIntEnum::Third;
+    $request->intOptNull = 708824;
     $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request->numOptNull = 2273.77;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonSimple($request);
 
@@ -1572,7 +1556,7 @@ try {
     $request->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
     $request->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->decimalVal = 6907.97;
-    $request->enumVal = Enum::Two;
+    $request->enumVal = Enum::One;
     $request->float32Val = 2.2222222;
     $request->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::SixtyNine;
     $request->int32Val = 1;
@@ -1679,7 +1663,6 @@ use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumInt;
 use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumStr;
 use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumInt;
 use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumStr;
-use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsSingleEnumConstStr;
 
 $sdk = SDK::builder()
     ->build();
@@ -1714,8 +1697,6 @@ try {
     $request->defaultStrNullable = 'silver Central';
     $request->defaultStrOptional = 'Gasoline Pines boo';
     $request->normalField = 'free';
-    $request->singleEnumConstBool = false;
-    $request->singleEnumConstStr = DefaultsAndConstsSingleEnumConstStr::One;
 
     $response = $sdk->requestBodies->requestBodyPostDefaultsAndConsts($request);
 
@@ -1808,38 +1789,39 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObject();
-    $request->any = 'South';
+    $request->any = 'and';
     $request->arr = [
         new SimpleObject(),
     ];
-    $request->bool = false;
-    $request->int = 769249;
+    $request->bool = true;
+    $request->int = 1;
     $request->map = [
-        'aperiam' => new SimpleObject(),
+        'aut' => new SimpleObject(),
     ];
-    $request->num = 4861.56;
+    $request->num = 1.1;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'Berkshire';
-    $request->obj->bigint = 863312;
-    $request->obj->bigintStr = 'overriding Ytterbium';
+    $request->obj->any = 'Forward';
+    $request->obj->bigint = 8821239038968084;
+    $request->obj->bigintStr = '9223372036854775808';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->obj->decimal = 1141.09;
-    $request->obj->enum = Enum::Two;
-    $request->obj->float32 = 2.2222222;
-    $request->obj->int = 999999;
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->decimal = 3.141592653589793;
+    $request->obj->decimalStr = '3.14159265358979344719667586';
+    $request->obj->enum = Enum::One;
+    $request->obj->float32 = 1.1;
+    $request->obj->int = 1;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $request->obj->intEnum = SimpleObjectIntEnum::Third;
-    $request->obj->intOptNull = 999999;
+    $request->obj->intOptNull = 480884;
     $request->obj->num = 1.1;
-    $request->obj->numOptNull = 1.1;
-    $request->obj->str = 'example';
-    $request->obj->strOpt = 'optional example';
-    $request->str = 'South placeat';
-    $request->type = 'female South input';
+    $request->obj->numOptNull = 5037.57;
+    $request->obj->str = 'test';
+    $request->obj->strOpt = 'testOptional';
+    $request->str = 'test';
+    $request->type = 'Ytterbium';
 
     $response = $sdk->requestBodies->requestBodyPostFormDeep($request);
 
@@ -1929,24 +1911,25 @@ $sdk = SDK::builder()
 try {
     $request = new SimpleObject();
     $request->any = 'Product';
-    $request->bigint = 5565;
-    $request->bigintStr = 'Manager regarding Horizontal';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 7763.15;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->intEnum = SimpleObjectIntEnum::Second;
-    $request->intOptNull = 999999;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->intEnum = SimpleObjectIntEnum::Third;
+    $request->intOptNull = 693294;
     $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request->numOptNull = 2022.98;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
 
     $response = $sdk->requestBodies->requestBodyPostFormSimple($request);
 
@@ -2743,24 +2726,25 @@ $sdk = SDK::builder()
 try {
     $request = new SimpleObject();
     $request->any = 'Unbranded';
-    $request->bigint = 587803;
-    $request->bigintStr = 'Account Applications oscillate';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 9808.66;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $request->intEnum = SimpleObjectIntEnum::Third;
-    $request->intOptNull = 999999;
+    $request->intOptNull = 414559;
     $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request->numOptNull = 462.04;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesComponentFiltered($request);
 
@@ -3421,38 +3405,39 @@ $sdk = SDK::builder()
 
 try {
     $request = new DeepObject();
-    $request->any = 'noodles';
+    $request->any = 'Chevrolet';
     $request->arr = [
         new SimpleObject(),
     ];
-    $request->bool = false;
-    $request->int = 731372;
+    $request->bool = true;
+    $request->int = 1;
     $request->map = [
-        'vero' => new SimpleObject(),
+        'a' => new SimpleObject(),
     ];
-    $request->num = 5096.76;
+    $request->num = 1.1;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'Operative';
-    $request->obj->bigint = 630502;
-    $request->obj->bigintStr = 'copying';
+    $request->obj->any = 'Reggae';
+    $request->obj->bigint = 8821239038968084;
+    $request->obj->bigintStr = '9223372036854775808';
     $request->obj->bool = true;
     $request->obj->boolOpt = true;
     $request->obj->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->obj->decimal = 7795.52;
-    $request->obj->enum = Enum::Two;
-    $request->obj->float32 = 2.2222222;
-    $request->obj->int = 999999;
+    $request->obj->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->obj->decimal = 3.141592653589793;
+    $request->obj->decimalStr = '3.14159265358979344719667586';
+    $request->obj->enum = Enum::One;
+    $request->obj->float32 = 1.1;
+    $request->obj->int = 1;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->obj->intEnum = SimpleObjectIntEnum::First;
-    $request->obj->intOptNull = 999999;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $request->obj->intEnum = SimpleObjectIntEnum::Second;
+    $request->obj->intOptNull = 345956;
     $request->obj->num = 1.1;
-    $request->obj->numOptNull = 1.1;
-    $request->obj->str = 'example';
-    $request->obj->strOpt = 'optional example';
-    $request->str = 'whoever yaw';
-    $request->type = 'Technetium while Androgynous';
+    $request->obj->numOptNull = 5397.13;
+    $request->obj->str = 'test';
+    $request->obj->strOpt = 'testOptional';
+    $request->str = 'test';
+    $request->type = 'Robust digital';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDeep($request);
 
@@ -3591,24 +3576,25 @@ $sdk = SDK::builder()
 try {
     $request = new SimpleObject();
     $request->any = 'customized';
-    $request->bigint = 544005;
-    $request->bigintStr = 'Consultant Rock dolorum';
+    $request->bigint = 8821239038968084;
+    $request->bigintStr = '9223372036854775808';
     $request->bool = true;
     $request->boolOpt = true;
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 7523.64;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
+    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000000001Z');
+    $request->decimal = 3.141592653589793;
+    $request->decimalStr = '3.14159265358979344719667586';
+    $request->enum = Enum::One;
+    $request->float32 = 1.1;
+    $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::First;
-    $request->intOptNull = 999999;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::Third;
+    $request->intOptNull = 689661;
     $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+    $request->numOptNull = 7932.12;
+    $request->str = 'test';
+    $request->strOpt = 'testOptional';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartSimple($request);
 
@@ -3822,26 +3808,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new SimpleObject();
-    $request->any = 'Rap';
-    $request->bigint = 517447;
-    $request->bigintStr = 'till';
-    $request->bool = true;
-    $request->boolOpt = true;
-    $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00.000Z');
-    $request->decimal = 4007.63;
-    $request->enum = Enum::Two;
-    $request->float32 = 2.2222222;
-    $request->int = 999999;
-    $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->intEnum = SimpleObjectIntEnum::First;
-    $request->intOptNull = 999999;
-    $request->num = 1.1;
-    $request->numOptNull = 1.1;
-    $request->str = 'example';
-    $request->strOpt = 'optional example';
+'Kids'
 
     $response = $sdk->requestBodies->requestBodyReadOnlyUnion($request);
 
@@ -3857,7 +3824,7 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [mixed](../../models//Input.md)            | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [mixed](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
 | `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -3883,10 +3850,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new ReadWriteObjectInput();
-    $request->num1 = 817251;
-    $request->num2 = 891192;
-    $request->num3 = 743101;
+'thoughtfully'
 
     $response = $sdk->requestBodies->requestBodyReadWriteOnlyUnion($request);
 
@@ -3902,7 +3866,7 @@ try {
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `$request`                                 | [mixed](../../models//Input.md)            | :heavy_check_mark:                         | The request object to use for the request. |
+| `$request`                                 | [mixed](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
 | `$serverURL`                               | *string*                                   | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -4020,10 +3984,7 @@ $sdk = SDK::builder()
     ->build();
 
 try {
-    $request = new WriteOnlyObject();
-    $request->bool = false;
-    $request->num = 3823.36;
-    $request->string = 'Internal';
+'Fitness'
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyUnion($request);
 

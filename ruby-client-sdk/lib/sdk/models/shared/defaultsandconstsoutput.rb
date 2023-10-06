@@ -107,15 +107,11 @@ module OpenApiSDK
 
       field :normal_field, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('normalField') } }
 
-      field :single_enum_const_bool, T::Boolean, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('singleEnumConstBool') } }
-
-      field :single_enum_const_str, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('singleEnumConstStr') } }
-
       field :default_str_optional, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('defaultStrOptional') } }
 
 
-      sig { params(const_big_int: Integer, const_big_int_str: String, const_bool: T::Boolean, const_date: Date, const_date_time: DateTime, const_decimal: Float, const_decimal_str: String, const_enum_int: Shared::DefaultsAndConstsOutputConstEnumInt, const_enum_str: Shared::DefaultsAndConstsOutputConstEnumStr, const_int: Integer, const_num: Float, const_str: String, const_str_null: String, default_big_int: Integer, default_big_int_str: String, default_bool: T::Boolean, default_date: Date, default_date_time: DateTime, default_decimal: Float, default_decimal_str: String, default_enum_int: Shared::DefaultsAndConstsOutputDefaultEnumInt, default_enum_str: Shared::DefaultsAndConstsOutputDefaultEnumStr, default_int: Integer, default_num: Float, default_str: String, default_str_nullable: String, normal_field: String, single_enum_const_bool: T::Boolean, single_enum_const_str: String, default_str_optional: T.nilable(String)).void }
-      def initialize(const_big_int: nil, const_big_int_str: nil, const_bool: nil, const_date: nil, const_date_time: nil, const_decimal: nil, const_decimal_str: nil, const_enum_int: nil, const_enum_str: nil, const_int: nil, const_num: nil, const_str: nil, const_str_null: nil, default_big_int: nil, default_big_int_str: nil, default_bool: nil, default_date: nil, default_date_time: nil, default_decimal: nil, default_decimal_str: nil, default_enum_int: nil, default_enum_str: nil, default_int: nil, default_num: nil, default_str: nil, default_str_nullable: nil, normal_field: nil, single_enum_const_bool: nil, single_enum_const_str: nil, default_str_optional: nil)
+      sig { params(const_big_int: Integer, const_big_int_str: String, const_bool: T::Boolean, const_date: Date, const_date_time: DateTime, const_decimal: Float, const_decimal_str: String, const_enum_int: Shared::DefaultsAndConstsOutputConstEnumInt, const_enum_str: Shared::DefaultsAndConstsOutputConstEnumStr, const_int: Integer, const_num: Float, const_str: String, const_str_null: String, default_big_int: Integer, default_big_int_str: String, default_bool: T::Boolean, default_date: Date, default_date_time: DateTime, default_decimal: Float, default_decimal_str: String, default_enum_int: Shared::DefaultsAndConstsOutputDefaultEnumInt, default_enum_str: Shared::DefaultsAndConstsOutputDefaultEnumStr, default_int: Integer, default_num: Float, default_str: String, default_str_nullable: String, normal_field: String, default_str_optional: T.nilable(String)).void }
+      def initialize(const_big_int: nil, const_big_int_str: nil, const_bool: nil, const_date: nil, const_date_time: nil, const_decimal: nil, const_decimal_str: nil, const_enum_int: nil, const_enum_str: nil, const_int: nil, const_num: nil, const_str: nil, const_str_null: nil, default_big_int: nil, default_big_int_str: nil, default_bool: nil, default_date: nil, default_date_time: nil, default_decimal: nil, default_decimal_str: nil, default_enum_int: nil, default_enum_str: nil, default_int: nil, default_num: nil, default_str: nil, default_str_nullable: nil, normal_field: nil, default_str_optional: nil)
         @const_big_int = const_big_int
         @const_big_int_str = const_big_int_str
         @const_bool = const_bool
@@ -143,8 +139,6 @@ module OpenApiSDK
         @default_str = default_str
         @default_str_nullable = default_str_nullable
         @normal_field = normal_field
-        @single_enum_const_bool = single_enum_const_bool
-        @single_enum_const_str = single_enum_const_str
         @default_str_optional = default_str_optional
       end
     end

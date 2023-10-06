@@ -57,6 +57,10 @@ export class DeepObjectQueryParamsObjectResArgs extends SpeakeasyBase {
     objParamDate: string;
 
     @SpeakeasyMetadata()
+    @Expose({ name: "objParam[decimalStr]" })
+    objParamDecimalStr?: string;
+
+    @SpeakeasyMetadata()
     @Expose({ name: "objParam[decimal]" })
     objParamDecimal?: string;
 

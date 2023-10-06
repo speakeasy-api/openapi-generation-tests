@@ -39,24 +39,25 @@ func (o *DeepObjectQueryParamsObjectRequest) GetObjArrParam() *DeepObjectQueryPa
 }
 
 type DeepObjectQueryParamsObjectResArgs struct {
-	ObjArrParamArr    []string `json:"objArrParam[arr]"`
-	ObjParamAny       string   `json:"objParam[any]"`
-	ObjParamBigintStr *string  `json:"objParam[bigintStr],omitempty"`
-	ObjParamBigint    *string  `json:"objParam[bigint],omitempty"`
-	ObjParamBoolOpt   string   `json:"objParam[boolOpt]"`
-	ObjParamBool      string   `json:"objParam[bool]"`
-	ObjParamDateTime  string   `json:"objParam[dateTime]"`
-	ObjParamDate      string   `json:"objParam[date]"`
-	ObjParamDecimal   *string  `json:"objParam[decimal],omitempty"`
-	ObjParamEnum      string   `json:"objParam[enum]"`
-	ObjParamFloat32   string   `json:"objParam[float32]"`
-	ObjParamInt32Enum string   `json:"objParam[int32Enum]"`
-	ObjParamInt32     string   `json:"objParam[int32]"`
-	ObjParamIntEnum   string   `json:"objParam[intEnum]"`
-	ObjParamInt       string   `json:"objParam[int]"`
-	ObjParamNum       string   `json:"objParam[num]"`
-	ObjParamStrOpt    string   `json:"objParam[strOpt]"`
-	ObjParamStr       string   `json:"objParam[str]"`
+	ObjArrParamArr     []string `json:"objArrParam[arr]"`
+	ObjParamAny        string   `json:"objParam[any]"`
+	ObjParamBigintStr  *string  `json:"objParam[bigintStr],omitempty"`
+	ObjParamBigint     *string  `json:"objParam[bigint],omitempty"`
+	ObjParamBoolOpt    string   `json:"objParam[boolOpt]"`
+	ObjParamBool       string   `json:"objParam[bool]"`
+	ObjParamDateTime   string   `json:"objParam[dateTime]"`
+	ObjParamDate       string   `json:"objParam[date]"`
+	ObjParamDecimalStr *string  `json:"objParam[decimalStr],omitempty"`
+	ObjParamDecimal    *string  `json:"objParam[decimal],omitempty"`
+	ObjParamEnum       string   `json:"objParam[enum]"`
+	ObjParamFloat32    string   `json:"objParam[float32]"`
+	ObjParamInt32Enum  string   `json:"objParam[int32Enum]"`
+	ObjParamInt32      string   `json:"objParam[int32]"`
+	ObjParamIntEnum    string   `json:"objParam[intEnum]"`
+	ObjParamInt        string   `json:"objParam[int]"`
+	ObjParamNum        string   `json:"objParam[num]"`
+	ObjParamStrOpt     string   `json:"objParam[strOpt]"`
+	ObjParamStr        string   `json:"objParam[str]"`
 }
 
 func (o *DeepObjectQueryParamsObjectResArgs) GetObjArrParamArr() []string {
@@ -113,6 +114,13 @@ func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDate() string {
 		return ""
 	}
 	return o.ObjParamDate
+}
+
+func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDecimalStr() *string {
+	if o == nil {
+		return nil
+	}
+	return o.ObjParamDecimalStr
 }
 
 func (o *DeepObjectQueryParamsObjectResArgs) GetObjParamDecimal() *string {

@@ -124,14 +124,6 @@ class DefaultsAndConstsOutput
     #[\JMS\Serializer\Annotation\Type('string')]
     public string $normalField;
     
-	#[\JMS\Serializer\Annotation\SerializedName('singleEnumConstBool')]
-    #[\JMS\Serializer\Annotation\Type('bool')]
-    public bool $singleEnumConstBool;
-    
-	#[\JMS\Serializer\Annotation\SerializedName('singleEnumConstStr')]
-    #[\JMS\Serializer\Annotation\Type('string')]
-    public string $singleEnumConstStr;
-    
 	public function __construct()
 	{
 		$this->constBigInt = 0;
@@ -162,7 +154,5 @@ class DefaultsAndConstsOutput
 		$this->defaultStrNullable = "";
 		$this->defaultStrOptional = null;
 		$this->normalField = "";
-		$this->singleEnumConstBool = false;
-		$this->singleEnumConstStr = "";
 	}
 }

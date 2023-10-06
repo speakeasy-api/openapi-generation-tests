@@ -3,6 +3,7 @@
 package operations
 
 import (
+	"io"
 	"net/http"
 )
 
@@ -14,7 +15,8 @@ type ResponseBodyBytesGetResponse struct {
 	// Raw HTTP response; suitable for custom response parsing
 	RawResponse *http.Response
 	// OK
-	Bytes []byte
+	// The Close method must be called on this field, even if it is not used, to prevent resource leaks.
+	Bytes io.ReadCloser
 }
 
 func (o *ResponseBodyBytesGetResponse) GetContentType() string {
@@ -38,7 +40,7 @@ func (o *ResponseBodyBytesGetResponse) GetRawResponse() *http.Response {
 	return o.RawResponse
 }
 
-func (o *ResponseBodyBytesGetResponse) GetBytes() []byte {
+func (o *ResponseBodyBytesGetResponse) GetBytes() io.ReadCloser {
 	if o == nil {
 		return nil
 	}

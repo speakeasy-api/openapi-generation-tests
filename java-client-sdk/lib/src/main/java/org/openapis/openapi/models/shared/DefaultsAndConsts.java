@@ -261,23 +261,7 @@ public class DefaultsAndConsts {
         return this;
     }
     
-    @JsonProperty("singleEnumConstBool")
-    public Boolean singleEnumConstBool;
-
-    public DefaultsAndConsts withSingleEnumConstBool(Boolean singleEnumConstBool) {
-        this.singleEnumConstBool = singleEnumConstBool;
-        return this;
-    }
-    
-    @JsonProperty("singleEnumConstStr")
-    public DefaultsAndConstsSingleEnumConstStr singleEnumConstStr;
-
-    public DefaultsAndConsts withSingleEnumConstStr(DefaultsAndConstsSingleEnumConstStr singleEnumConstStr) {
-        this.singleEnumConstStr = singleEnumConstStr;
-        return this;
-    }
-    
-    public DefaultsAndConsts(@JsonProperty("constBigInt") Long constBigInt, @JsonProperty("constBigIntStr") String constBigIntStr, @JsonProperty("constBool") Boolean constBool, @JsonProperty("constDate") LocalDate constDate, @JsonProperty("constDateTime") OffsetDateTime constDateTime, @JsonProperty("constDecimal") Double constDecimal, @JsonProperty("constDecimalStr") String constDecimalStr, @JsonProperty("constEnumInt") DefaultsAndConstsConstEnumInt constEnumInt, @JsonProperty("constEnumStr") DefaultsAndConstsConstEnumStr constEnumStr, @JsonProperty("constInt") Long constInt, @JsonProperty("constNum") Double constNum, @JsonProperty("constStr") String constStr, @JsonProperty("constStrNull") String constStrNull, @JsonProperty("normalField") String normalField, @JsonProperty("singleEnumConstBool") Boolean singleEnumConstBool, @JsonProperty("singleEnumConstStr") DefaultsAndConstsSingleEnumConstStr singleEnumConstStr) {
+    public DefaultsAndConsts(@JsonProperty("constBigInt") Long constBigInt, @JsonProperty("constBigIntStr") String constBigIntStr, @JsonProperty("constBool") Boolean constBool, @JsonProperty("constDate") LocalDate constDate, @JsonProperty("constDateTime") OffsetDateTime constDateTime, @JsonProperty("constDecimal") Double constDecimal, @JsonProperty("constDecimalStr") String constDecimalStr, @JsonProperty("constEnumInt") DefaultsAndConstsConstEnumInt constEnumInt, @JsonProperty("constEnumStr") DefaultsAndConstsConstEnumStr constEnumStr, @JsonProperty("constInt") Long constInt, @JsonProperty("constNum") Double constNum, @JsonProperty("constStr") String constStr, @JsonProperty("constStrNull") String constStrNull, @JsonProperty("normalField") String normalField) {
         this.constBigInt = constBigInt;
         this.constBigIntStr = constBigIntStr;
         this.constBool = constBool;
@@ -292,7 +276,5 @@ public class DefaultsAndConsts {
         this.constStr = constStr;
         this.constStrNull = constStrNull;
         this.normalField = normalField;
-        this.singleEnumConstBool = singleEnumConstBool;
-        this.singleEnumConstStr = singleEnumConstStr;
   }
 }

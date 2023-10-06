@@ -57,12 +57,7 @@ sdk.resource.createFile({
 ```typescript
 import { SDK } from "openapi";
 import { CreateResourceResponse } from "openapi/dist/sdk/models/operations";
-import {
-  ExampleBoatType,
-  ExampleCarType,
-  ExampleResourceEnumNumber,
-  ExampleResourceEnumStr,
-} from "openapi/dist/sdk/models/shared";
+import { ExampleResourceEnumNumber, ExampleResourceEnumStr } from "openapi/dist/sdk/models/shared";
 
 const sdk = new SDK({
   security: {
@@ -96,15 +91,7 @@ sdk.resource.createResource({
   },
   name: "online",
   updatedAt: new Date("2021-12-27T00:23:19.559Z"),
-  vehicle: {
-    createdAt: new Date("2021-02-02T11:47:59.271Z"),
-    make: "California expedite Designer",
-    model: "PT Cruiser",
-    name: "Anguilla Hybrid rich",
-    type: ExampleCarType.Car,
-    updatedAt: new Date("2023-09-26T13:04:50.198Z"),
-    year: 919.87,
-  },
+  vehicle: "oh",
 }).then((res: CreateResourceResponse) => {
   if (res.statusCode == 200) {
     // handle response
