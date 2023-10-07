@@ -117,11 +117,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.LimitOffsetConfig(
-    limit=189971,
-    offset=995974,
-    page=329413,
-)
+req = shared.LimitOffsetConfig()
 
 res = s.pagination.pagination_limit_offset_offset_body(req)
 
@@ -207,11 +203,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = shared.LimitOffsetConfig(
-    limit=479052,
-    offset=716379,
-    page=911806,
-)
+req = shared.LimitOffsetConfig()
 
 res = s.pagination.pagination_limit_offset_page_body(req)
 

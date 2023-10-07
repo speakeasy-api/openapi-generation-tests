@@ -11,21 +11,22 @@
 
 ```typescript
 import { SDK } from "openapi";
-import { GroupSecondGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.second.get().then((res: GroupSecondGetResponse) => {
+  const res = await sdk.second.get();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

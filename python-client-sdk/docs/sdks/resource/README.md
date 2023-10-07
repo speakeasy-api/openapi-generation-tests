@@ -79,19 +79,19 @@ req = shared.ExampleResource(
             description='Cross-group didactic system engine',
         ),
     ],
-    created_at=dateutil.parser.isoparse('2022-04-19T19:55:28.761Z'),
-    enum_number=shared.ExampleResourceEnumNumber.ONE,
-    enum_str=shared.ExampleResourceEnumStr.ONE,
     id='<ID>',
     map_of_integer={
-        "reiciendis": 154578,
+        "Pula": 173199,
     },
     map_of_string={
-        "quasi": 'utilize',
+        "an": 'South',
     },
-    name='online',
-    updated_at=dateutil.parser.isoparse('2021-12-27T00:23:19.559Z'),
-    vehicle=[],
+    name='Cotton',
+    shared.ExampleBoat(
+        length=3287.82,
+        name='San South Quality',
+        type=shared.ExampleBoatType.BOAT,
+    ),
 )
 
 res = s.resource.create_resource(req)

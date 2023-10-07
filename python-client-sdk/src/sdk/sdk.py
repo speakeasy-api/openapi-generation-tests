@@ -71,7 +71,7 @@ class SDK:
     sdk_configuration: SDKConfiguration
 
     def __init__(self,
-                 security: shared.Security = None,
+                 api_key_auth: str,
                  global_path_param: int = None,
                  global_query_param: str = None,
                  hostname: str = None,
@@ -86,8 +86,8 @@ class SDK:
                  ) -> None:
         """Instantiates the SDK configuring it with the provided parameters.
         
-        :param security: The security details required for authentication
-        :type security: shared.Security
+        :param api_key_auth: The api_key_auth required for authentication
+        :type api_key_auth: str
         :param global_path_param: Configures the global_path_param parameter for all supported operations
         :type global_path_param: int
         :param global_query_param: Configures the global_query_param parameter for all supported operations
@@ -114,7 +114,9 @@ class SDK:
         if client is None:
             client = requests_http.Session()
         
+        
         security_client = utils.configure_security_client(client, security)
+        
         
         if server_url is not None:
             if url_params is not None:

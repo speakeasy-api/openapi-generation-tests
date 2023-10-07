@@ -22,7 +22,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -33,7 +32,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    globalPathParam := 719830
+    var globalPathParam *int64 = 719830
 
     ctx := context.Background()
     res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
@@ -72,7 +71,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -83,7 +81,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    globalQueryParam := "Tricycle"
+    var globalQueryParam *string = "Tricycle"
 
     ctx := context.Background()
     res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)

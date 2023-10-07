@@ -25,21 +25,22 @@ Endpoints for testing union types.
 
 ```typescript
 import { SDK } from "openapi";
-import { FlattenedTypedObjectPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.flattenedTypedObjectPost("Legacy").then((res: FlattenedTypedObjectPostResponse) => {
+  const res = await sdk.unions.flattenedTypedObjectPost("Legacy");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -61,21 +62,22 @@ sdk.unions.flattenedTypedObjectPost("Legacy").then((res: FlattenedTypedObjectPos
 
 ```typescript
 import { SDK } from "openapi";
-import { MixedTypeOneOfPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.mixedTypeOneOfPost("SAS").then((res: MixedTypeOneOfPostResponse) => {
+  const res = await sdk.unions.mixedTypeOneOfPost("SAS");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -97,29 +99,30 @@ sdk.unions.mixedTypeOneOfPost("SAS").then((res: MixedTypeOneOfPostResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableOneOfRefInObjectPostResponse } from "openapi/dist/sdk/models/operations";
 import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.nullableOneOfRefInObjectPost({
-  nullableOneOfOne: {
-    type: TypedObject1Type.Obj1,
-    value: "Global Alexandria administration",
-  },
-  nullableOneOfTwo: "Arbor",
-  oneOfOne: "PCI",
-}).then((res: NullableOneOfRefInObjectPostResponse) => {
+  const res = await sdk.unions.nullableOneOfRefInObjectPost({
+    nullableOneOfOne: {
+      type: TypedObject1Type.Obj1,
+      value: "Global Alexandria administration",
+    },
+    nullableOneOfTwo: "Arbor",
+    oneOfOne: "PCI",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -141,21 +144,22 @@ sdk.unions.nullableOneOfRefInObjectPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableOneOfSchemaPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.nullableOneOfSchemaPost("deliquesce").then((res: NullableOneOfSchemaPostResponse) => {
+  const res = await sdk.unions.nullableOneOfSchemaPost("deliquesce");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -177,25 +181,26 @@ sdk.unions.nullableOneOfSchemaPost("deliquesce").then((res: NullableOneOfSchemaP
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableOneOfTypeInObjectPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.nullableOneOfTypeInObjectPost({
-  nullableOneOfOne: false,
-  nullableOneOfTwo: "Smart",
-  oneOfOne: false,
-}).then((res: NullableOneOfTypeInObjectPostResponse) => {
+  const res = await sdk.unions.nullableOneOfTypeInObjectPost({
+    nullableOneOfOne: false,
+    nullableOneOfTwo: "Smart",
+    oneOfOne: false,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -217,25 +222,26 @@ sdk.unions.nullableOneOfTypeInObjectPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableTypedObjectPostResponse } from "openapi/dist/sdk/models/operations";
 import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.nullableTypedObjectPost({
-  type: TypedObject1Type.Obj1,
-  value: "Bike",
-}).then((res: NullableTypedObjectPostResponse) => {
+  const res = await sdk.unions.nullableTypedObjectPost({
+    type: TypedObject1Type.Obj1,
+    value: "Bike",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -257,21 +263,22 @@ sdk.unions.nullableTypedObjectPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { PrimitiveTypeOneOfPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.primitiveTypeOneOfPost("Grocery").then((res: PrimitiveTypeOneOfPostResponse) => {
+  const res = await sdk.unions.primitiveTypeOneOfPost("Grocery");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -293,21 +300,22 @@ sdk.unions.primitiveTypeOneOfPost("Grocery").then((res: PrimitiveTypeOneOfPostRe
 
 ```typescript
 import { SDK } from "openapi";
-import { StronglyTypedOneOfPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.stronglyTypedOneOfPost("spicy").then((res: StronglyTypedOneOfPostResponse) => {
+  const res = await sdk.unions.stronglyTypedOneOfPost("spicy");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -329,21 +337,22 @@ sdk.unions.stronglyTypedOneOfPost("spicy").then((res: StronglyTypedOneOfPostResp
 
 ```typescript
 import { SDK } from "openapi";
-import { TypedObjectNullableOneOfPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.typedObjectNullableOneOfPost("Agender").then((res: TypedObjectNullableOneOfPostResponse) => {
+  const res = await sdk.unions.typedObjectNullableOneOfPost("Agender");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -365,21 +374,22 @@ sdk.unions.typedObjectNullableOneOfPost("Agender").then((res: TypedObjectNullabl
 
 ```typescript
 import { SDK } from "openapi";
-import { TypedObjectOneOfPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.typedObjectOneOfPost("shrivel").then((res: TypedObjectOneOfPostResponse) => {
+  const res = await sdk.unions.typedObjectOneOfPost("shrivel");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -401,21 +411,22 @@ sdk.unions.typedObjectOneOfPost("shrivel").then((res: TypedObjectOneOfPostRespon
 
 ```typescript
 import { SDK } from "openapi";
-import { WeaklyTypedOneOfPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.unions.weaklyTypedOneOfPost("Unbranded").then((res: WeaklyTypedOneOfPostResponse) => {
+  const res = await sdk.unions.weaklyTypedOneOfPost("Unbranded");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -25,7 +25,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -39,7 +38,7 @@ func main() {
         openapi.WithGlobalQueryParam("some example global query param"),
     )
     simpleObject := shared.SimpleObject{
-        Any: "Minivan",
+        Any: "any",
         Bigint: big.NewInt(8821239038968084),
         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
         Bool: true,
@@ -52,15 +51,13 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumOneHundredAndEightyOne,
-        IntEnum: shared.SimpleObjectIntEnumThird,
-        IntOptNull: openapi.Int64(780),
+        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+        IntEnum: shared.SimpleObjectIntEnumSecond,
         Num: 1.1,
-        NumOptNull: openapi.Float64(5419.15),
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
-    str := "Coupe"
+    var str string = "Minivan"
 
     ctx := context.Background()
     res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, simpleObject, str)
@@ -100,7 +97,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 	"math/big"
 	"openapi/pkg/types"
 )
@@ -113,9 +109,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    paramStr := "ick"
+    var paramStr string = "ick"
     simpleObject := shared.SimpleObject{
-        Any: "kelvin",
+        Any: "any",
         Bigint: big.NewInt(8821239038968084),
         BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
         Bool: true,
@@ -128,11 +124,9 @@ func main() {
         Float32: 1.1,
         Int: 1,
         Int32: 1,
-        Int32Enum: shared.SimpleObjectInt32EnumSixtyNine,
+        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
         IntEnum: shared.SimpleObjectIntEnumSecond,
-        IntOptNull: openapi.Int64(836157),
         Num: 1.1,
-        NumOptNull: openapi.Float64(2914.21),
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
@@ -175,7 +169,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -186,8 +179,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    strPathParameter := "kilogram"
-    strQueryParameter := "Cloned"
+    var strPathParameter string = "kilogram"
+    var strQueryParameter string = "Cloned"
 
     ctx := context.Background()
     res, err := s.Flattening.ConflictingParams(ctx, strPathParameter, strQueryParameter)
@@ -241,7 +234,7 @@ func main() {
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
         Str: "Progressive",
     }
-    str := "until"
+    var str string = "until"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamConflict(ctx, requestBody, str)
@@ -295,7 +288,7 @@ func main() {
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
         BodyStr: "dynamic expedite",
     }
-    paramStr := "Forward"
+    var paramStr string = "Forward"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, requestBody, paramStr)

@@ -106,8 +106,7 @@ s = sdk.SDK(
 )
 
 req = shared.NullableObject(
-    optional='Ergonomic',
-    required=463086,
+    required=302382,
 )
 
 res = s.request_bodies.nullable_object_post(req)
@@ -185,12 +184,11 @@ s = sdk.SDK(
 )
 
 req = operations.NullableRequiredPropertyPostRequestBody(
-    nullable_optional_int=235517,
     nullable_required_array=[
-        6917.41,
+        2355.17,
     ],
-    nullable_required_enum=operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.FIRST,
-    nullable_required_int=282026,
+    nullable_required_enum=operations.NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.SECOND,
+    nullable_required_int=50266,
 )
 
 res = s.request_bodies.nullable_required_property_post(req)
@@ -229,12 +227,10 @@ s = sdk.SDK(
 
 req = operations.NullableRequiredSharedObjectPostRequestBody(
     nullable_optional_obj=shared.NullableObject(
-        optional='plus',
-        required=831837,
+        required=86533,
     ),
     nullable_required_obj=shared.NullableObject(
-        optional='Electronic Northwest Northeast',
-        required=5767,
+        required=964394,
     ),
 )
 
@@ -276,7 +272,7 @@ s = sdk.SDK(
 
 req = [
     shared.SimpleObject(
-        any='yowza',
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -289,11 +285,9 @@ req = [
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=shared.SimpleObjectIntEnum.THIRD,
-        int_opt_null=729893,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         num=1.1,
-        num_opt_null=9069.2,
         str_='test',
         str_opt='testOptional',
     ),
@@ -338,19 +332,16 @@ s = sdk.SDK(
 
 req = [
     shared.SimpleObjectCamelCase(
-        any_val='Mercedes',
-        bigint_str_val=414619,
-        bigint_val=659657,
+        any_val='any example',
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=Decimal('9053.2'),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.FIRST,
+        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -399,7 +390,7 @@ s = sdk.SDK(
 
 req = [
     shared.SimpleObject(
-        any='compress',
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -412,11 +403,9 @@ req = [
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.THIRD,
-        int_opt_null=171819,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         num=1.1,
-        num_opt_null=8537.6,
         str_='test',
         str_opt='testOptional',
     ),
@@ -460,19 +449,16 @@ s = sdk.SDK(
 
 req = [
     shared.SimpleObjectCamelCase(
-        any_val='haptic',
-        bigint_str_val=240159,
-        bigint_val=344780,
+        any_val='any example',
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=Decimal('2947.57'),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.FIRST,
+        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -521,7 +507,7 @@ s = sdk.SDK(
 req = [
     [
         shared.SimpleObject(
-            any='Non',
+            any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
             bool=True,
@@ -534,11 +520,9 @@ req = [
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=920444,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
             num=1.1,
-            num_opt_null=2040.72,
             str_='test',
             str_opt='testOptional',
         ),
@@ -585,19 +569,16 @@ s = sdk.SDK(
 req = [
     [
         shared.SimpleObjectCamelCase(
-            any_val='seize',
-            bigint_str_val=997133,
-            bigint_val=182093,
+            any_val='any example',
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=Decimal('3871.54'),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
+            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.SECOND,
+            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -688,8 +669,8 @@ s = sdk.SDK(
 
 req = [
     {
-        "quasi": shared.SimpleObject(
-            any='Volvo',
+        "Southeast": shared.SimpleObject(
+            any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
             bool=True,
@@ -704,9 +685,7 @@ req = [
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
             int_enum=shared.SimpleObjectIntEnum.SECOND,
-            int_opt_null=779622,
             num=1.1,
-            num_opt_null=1652.31,
             str_='test',
             str_opt='testOptional',
         ),
@@ -752,20 +731,17 @@ s = sdk.SDK(
 
 req = [
     {
-        "occaecati": shared.SimpleObjectCamelCase(
-            any_val='Implementation',
-            bigint_str_val=378816,
-            bigint_val=304190,
+        "culpa": shared.SimpleObjectCamelCase(
+            any_val='any example',
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=Decimal('6274.44'),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
+            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.SECOND,
+            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -853,10 +829,29 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any=[],
+    shared.SimpleObject(
+        any='any',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool=True,
+        bool_opt=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        enum=shared.EnumT.ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        num=1.1,
+        str_='test',
+        str_opt='testOptional',
+    ),
     arr=[
         shared.SimpleObject(
-            any='medium',
+            any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
             bool=True,
@@ -870,19 +865,13 @@ req = shared.DeepObject(
             int=1,
             int32=1,
             int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=817678,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
             num=1.1,
-            num_opt_null=2099.66,
             str_='test',
             str_opt='testOptional',
         ),
-    ],
-    bool=True,
-    int=1,
-    map={
-        "ab": shared.SimpleObject(
-            any='woo',
+        shared.SimpleObject(
+            any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
             bool=True,
@@ -895,18 +884,60 @@ req = shared.DeepObject(
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=691595,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
             num=1.1,
-            num_opt_null=7246.89,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    ],
+    bool=True,
+    int=1,
+    map={
+        "key": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        "key2": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
             str_='test',
             str_opt='testOptional',
         ),
     },
     num=1.1,
     obj=shared.SimpleObject(
-        any='primp',
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -919,16 +950,13 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=367327,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         num=1.1,
-        num_opt_null=7980.49,
         str_='test',
         str_opt='testOptional',
     ),
     str_='test',
-    type='energetically Global',
 )
 
 res = s.request_bodies.request_body_post_application_json_deep(req)
@@ -968,20 +996,34 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObjectCamelCase(
-    any_val=[],
+    shared.SimpleObjectCamelCase(
+        any_val='any example',
+        bool_opt_val=True,
+        bool_val=True,
+        date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
+        date_val=dateutil.parser.parse('2020-01-01').date(),
+        enum_val=shared.EnumT.ONE,
+        float32_val=2.2222222,
+        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
+        int32_val=1,
+        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
+        int_opt_null_val=999999,
+        int_val=999999,
+        num_opt_null_val=1.1,
+        num_val=1.1,
+        str_opt_val='optional example',
+        str_val='example',
+    ),
     arr_val=[
         shared.SimpleObjectCamelCase(
-            any_val='Cambridgeshire',
-            bigint_str_val=206440,
-            bigint_val=424140,
+            any_val='any example',
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=Decimal('9420.92'),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
+            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
             int32_val=1,
             int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
             int_opt_null_val=999999,
@@ -993,22 +1035,19 @@ req = shared.DeepObjectCamelCase(
         ),
     ],
     bool_val=False,
-    int_val=190035,
+    int_val=962909,
     map_val={
-        "beatae": shared.SimpleObjectCamelCase(
-            any_val='Djibouti',
-            bigint_str_val=484195,
-            bigint_val=922307,
+        "Table": shared.SimpleObjectCamelCase(
+            any_val='any example',
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=Decimal('3547.55'),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
+            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.FIRST,
+            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -1017,21 +1056,18 @@ req = shared.DeepObjectCamelCase(
             str_val='example',
         ),
     },
-    num_val=3965.41,
+    num_val=9420.92,
     obj_val=shared.SimpleObjectCamelCase(
-        any_val='Qatar',
-        bigint_str_val=372083,
-        bigint_val=448742,
+        any_val='any example',
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=Decimal('1809.03'),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
         int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.FIRST,
+        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1039,8 +1075,7 @@ req = shared.DeepObjectCamelCase(
         str_opt_val='optional example',
         str_val='example',
     ),
-    str_val='empower withdrawal off',
-    type='Functionality',
+    str_val='Diesel',
 )
 
 res = s.request_bodies.request_body_post_application_json_deep_camel_case(req)
@@ -1080,8 +1115,8 @@ s = sdk.SDK(
 )
 
 req = {
-    "nisi": shared.SimpleObject(
-        any='soap',
+    "Bentley": shared.SimpleObject(
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -1095,10 +1130,8 @@ req = {
         int=1,
         int32=1,
         int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.THIRD,
-        int_opt_null=901357,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         num=1.1,
-        num_opt_null=8215.81,
         str_='test',
         str_opt='testOptional',
     ),
@@ -1142,18 +1175,15 @@ s = sdk.SDK(
 )
 
 req = {
-    "aliquid": shared.SimpleObjectCamelCase(
-        any_val='Southwest',
-        bigint_str_val=338878,
-        bigint_val=380400,
+    "archive": shared.SimpleObjectCamelCase(
+        any_val='any example',
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=Decimal('1146.85'),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
+        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
         int32_val=1,
         int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
         int_opt_null_val=999999,
@@ -1203,8 +1233,8 @@ s = sdk.SDK(
 )
 
 req = {
-    "hic": shared.SimpleObject(
-        any='redundant',
+    "larder": shared.SimpleObject(
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -1217,11 +1247,9 @@ req = {
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=744657,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         num=1.1,
-        num_opt_null=5700.86,
         str_='test',
         str_opt='testOptional',
     ),
@@ -1264,20 +1292,17 @@ s = sdk.SDK(
 )
 
 req = {
-    "distinctio": shared.SimpleObjectCamelCase(
-        any_val='optimal',
-        bigint_str_val=987897,
-        bigint_val=232291,
+    "female": shared.SimpleObjectCamelCase(
+        any_val='any example',
         bool_opt_val=True,
         bool_val=True,
         date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
         date_val=dateutil.parser.parse('2020-01-01').date(),
-        decimal_val=Decimal('4193.11'),
         enum_val=shared.EnumT.ONE,
         float32_val=2.2222222,
-        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.FIFTY_FIVE,
+        int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
         int32_val=1,
-        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.SECOND,
+        int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1324,9 +1349,9 @@ s = sdk.SDK(
 )
 
 req = {
-    "aliquid": [
+    "Loan": [
         shared.SimpleObject(
-            any='Division',
+            any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
             bool=True,
@@ -1339,11 +1364,9 @@ req = {
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
             int_enum=shared.SimpleObjectIntEnum.SECOND,
-            int_opt_null=381188,
             num=1.1,
-            num_opt_null=3457.34,
             str_='test',
             str_opt='testOptional',
         ),
@@ -1388,21 +1411,18 @@ s = sdk.SDK(
 )
 
 req = {
-    "vero": [
+    "nonstop": [
         shared.SimpleObjectCamelCase(
-            any_val='a',
-            bigint_str_val=748174,
-            bigint_val=779313,
+            any_val='any example',
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=Decimal('3334.95'),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
             int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.SECOND,
+            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -1451,9 +1471,9 @@ s = sdk.SDK(
 )
 
 req = {
-    "animi": {
-        "inventore": shared.SimpleObject(
-            any='vice',
+    "Senior": {
+        "vice": shared.SimpleObject(
+            any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
             bool=True,
@@ -1466,11 +1486,9 @@ req = {
             float32=1.1,
             int=1,
             int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=313517,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
             num=1.1,
-            num_opt_null=4543.93,
             str_='test',
             str_opt='testOptional',
         ),
@@ -1515,21 +1533,18 @@ s = sdk.SDK(
 )
 
 req = {
-    "eos": {
-        "ut": shared.SimpleObjectCamelCase(
-            any_val='plum',
-            bigint_str_val=600810,
-            bigint_val=508080,
+    "Home": {
+        "plum": shared.SimpleObjectCamelCase(
+            any_val='any example',
             bool_opt_val=True,
             bool_val=True,
             date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
             date_val=dateutil.parser.parse('2020-01-01').date(),
-            decimal_val=Decimal('263.9'),
             enum_val=shared.EnumT.ONE,
             float32_val=2.2222222,
-            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.ONE_HUNDRED_AND_EIGHTY_ONE,
+            int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
             int32_val=1,
-            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.FIRST,
+            int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
             int_opt_null_val=999999,
             int_val=999999,
             num_opt_null_val=1.1,
@@ -1576,8 +1591,8 @@ s = sdk.SDK(
 )
 
 req = {
-    "quisquam": {
-        "molestiae": 'collaboration',
+    "turquoise": {
+        "collaboration": 'Officer',
     },
 }
 
@@ -1617,7 +1632,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "accusamus": 'Salad',
+    "equally": 'whereas',
 }
 
 res = s.request_bodies.request_body_post_application_json_map_of_primitive(req)
@@ -1658,7 +1673,7 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='hack',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -1671,11 +1686,9 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=279112,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=7372.56,
     str_='test',
     str_opt='testOptional',
 )
@@ -1717,7 +1730,7 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='Hampton',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -1730,11 +1743,9 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=708824,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=2273.77,
     str_='test',
     str_opt='testOptional',
 )
@@ -1776,19 +1787,16 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObjectCamelCase(
-    any_val='rich',
-    bigint_str_val=452401,
-    bigint_val=643104,
+    any_val='any example',
     bool_opt_val=True,
     bool_val=True,
     date_time_val=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
     date_val=dateutil.parser.parse('2020-01-01').date(),
-    decimal_val=Decimal('1327.04'),
     enum_val=shared.EnumT.ONE,
     float32_val=2.2222222,
     int32_enum_val=shared.SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE,
     int32_val=1,
-    int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.SECOND,
+    int_enum_val=shared.SimpleObjectCamelCaseIntEnumVal.THIRD,
     int_opt_null_val=999999,
     int_val=999999,
     num_opt_null_val=1.1,
@@ -1899,21 +1907,7 @@ req = shared.DefaultsAndConsts(
     const_num=7742.71,
     const_str='payment',
     const_str_null='green',
-    default_big_int=403777,
-    default_big_int_str=435082,
-    default_bool=False,
-    default_date=dateutil.parser.parse('2023-08-02').date(),
-    default_date_time=dateutil.parser.isoparse('2023-03-05T22:24:27.071Z'),
-    default_decimal=Decimal('5586.03'),
-    default_decimal_str=Decimal('5697.22'),
-    default_enum_int=shared.DefaultsAndConstsDefaultEnumInt.ONE,
-    default_enum_str=shared.DefaultsAndConstsDefaultEnumStr.TWO,
-    default_int=869081,
-    default_num=6676.46,
-    default_str='Cab Lane',
-    default_str_nullable='Southwest',
-    default_str_optional='cultivate',
-    normal_field='Southwest',
+    normal_field='Dong Dysprosium',
 )
 
 res = s.request_bodies.request_body_post_defaults_and_consts(req)
@@ -1992,60 +1986,8 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any=[],
-    arr=[
-        shared.SimpleObject(
-            any='and',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=769249,
-            num=1.1,
-            num_opt_null=482.42,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    ],
-    bool=True,
-    int=1,
-    map={
-        "odio": shared.SimpleObject(
-            any='Berkshire',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
-            int_opt_null=503757,
-            num=1.1,
-            num_opt_null=2109.14,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    },
-    num=1.1,
-    obj=shared.SimpleObject(
-        any='Ytterbium',
+    shared.SimpleObject(
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -2059,15 +2001,119 @@ req = shared.DeepObject(
         int=1,
         int32=1,
         int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-        int_enum=shared.SimpleObjectIntEnum.FIRST,
-        int_opt_null=691692,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         num=1.1,
-        num_opt_null=4716.19,
+        str_='test',
+        str_opt='testOptional',
+    ),
+    arr=[
+        shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    ],
+    bool=True,
+    int=1,
+    map={
+        "key": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        "key2": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    },
+    num=1.1,
+    obj=shared.SimpleObject(
+        any='any',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool=True,
+        bool_opt=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        enum=shared.EnumT.ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        num=1.1,
         str_='test',
         str_opt='testOptional',
     ),
     str_='test',
-    type='female',
 )
 
 res = s.request_bodies.request_body_post_form_deep(req)
@@ -2105,7 +2151,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "nisi": 'Sports',
+    "complexity": 'SUV',
 }
 
 res = s.request_bodies.request_body_post_form_map_primitive(req)
@@ -2145,7 +2191,7 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='Product',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -2159,10 +2205,8 @@ req = shared.SimpleObject(
     int=1,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=693294,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=2022.98,
     str_='test',
     str_opt='testOptional',
 )
@@ -2676,7 +2720,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "doloremque": 620034,
+    "Nepal": 124728,
 }
 
 res = s.request_bodies.request_body_post_json_data_types_map_big_int_str(req)
@@ -2714,7 +2758,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "quas": dateutil.parser.isoparse('2022-09-29T16:39:16.558Z'),
+    "quantify": dateutil.parser.isoparse('2022-02-12T21:23:09.538Z'),
 }
 
 res = s.request_bodies.request_body_post_json_data_types_map_date_time(req)
@@ -2752,7 +2796,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "exercitationem": Decimal('4182.45'),
+    "Inverse": Decimal('9134.24'),
 }
 
 res = s.request_bodies.request_body_post_json_data_types_map_decimal(req)
@@ -2864,7 +2908,7 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='Unbranded',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -2877,11 +2921,9 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=414559,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=462.04,
     str_='test',
     str_opt='testOptional',
 )
@@ -3275,7 +3317,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "omnis": 'virtual',
+    "Intersex": 'robust',
 }
 
 res = s.request_bodies.request_body_post_null_dictionary(req)
@@ -3459,60 +3501,8 @@ s = sdk.SDK(
 )
 
 req = shared.DeepObject(
-    any=[],
-    arr=[
-        shared.SimpleObject(
-            any='Chevrolet',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.SECOND,
-            int_opt_null=731372,
-            num=1.1,
-            num_opt_null=8739.03,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    ],
-    bool=True,
-    int=1,
-    map={
-        "praesentium": shared.SimpleObject(
-            any='Operative',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-            int_enum=shared.SimpleObjectIntEnum.FIRST,
-            int_opt_null=506057,
-            num=1.1,
-            num_opt_null=3545.79,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    },
-    num=1.1,
-    obj=shared.SimpleObject(
-        any='Folding',
+    shared.SimpleObject(
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -3525,16 +3515,120 @@ req = shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-        int_enum=shared.SimpleObjectIntEnum.THIRD,
-        int_opt_null=929355,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
         num=1.1,
-        num_opt_null=9893.01,
+        str_='test',
+        str_opt='testOptional',
+    ),
+    arr=[
+        shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    ],
+    bool=True,
+    int=1,
+    map={
+        "key": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        "key2": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    },
+    num=1.1,
+    obj=shared.SimpleObject(
+        any='any',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool=True,
+        bool_opt=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        enum=shared.EnumT.ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        num=1.1,
         str_='test',
         str_opt='testOptional',
     ),
     str_='test',
-    type='resect promptly Caldwell',
 )
 
 res = s.request_bodies.request_body_put_multipart_deep(req)
@@ -3656,7 +3750,7 @@ s = sdk.SDK(
 )
 
 req = shared.SimpleObject(
-    any='customized',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -3669,11 +3763,9 @@ req = shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=689661,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=7932.12,
     str_='test',
     str_opt='testOptional',
 )
@@ -3864,7 +3956,26 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = []
+req = shared.SimpleObject(
+    any='any',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    num=1.1,
+    str_='test',
+    str_opt='testOptional',
+)
 
 res = s.request_bodies.request_body_read_only_union(req)
 
@@ -3903,7 +4014,11 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = []
+req = shared.ReadWriteObjectInput(
+    num1=817251,
+    num2=891192,
+    num3=743101,
+)
 
 res = s.request_bodies.request_body_read_write_only_union(req)
 
@@ -4024,7 +4139,11 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = []
+req = shared.WriteOnlyObject(
+    bool=False,
+    num=3823.36,
+    string='Internal',
+)
 
 res = s.request_bodies.request_body_write_only_union(req)
 

@@ -17,21 +17,22 @@ Endpoints for testing error responses.
 
 ```typescript
 import { SDK } from "openapi";
-import { ConnectionErrorGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.errors.connectionErrorGet().then((res: ConnectionErrorGetResponse) => {
+  const res = await sdk.errors.connectionErrorGet();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -53,22 +54,24 @@ sdk.errors.connectionErrorGet().then((res: ConnectionErrorGetResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { StatusGetErrorRequest, StatusGetErrorResponse } from "openapi/dist/sdk/models/operations";
+import { StatusGetErrorRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const statusCode: number = 458364;
 
-sdk.errors.statusGetError(statusCode).then((res: StatusGetErrorResponse) => {
+  const res = await sdk.errors.statusGetError(statusCode);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -90,22 +93,24 @@ sdk.errors.statusGetError(statusCode).then((res: StatusGetErrorResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { StatusGetXSpeakeasyErrorsRequest, StatusGetXSpeakeasyErrorsResponse } from "openapi/dist/sdk/models/operations";
+import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const statusCode: number = 385913;
 
-sdk.errors.statusGetXSpeakeasyErrors(statusCode).then((res: StatusGetXSpeakeasyErrorsResponse) => {
+  const res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -45,9 +45,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx, shared.ObjWithComplexNumbersAdditionlProperties{
         AdditionalProperties: map[string]*big.Int{
-            "nihil": big.NewInt(109357),
+            "ASCII": big.NewInt(984700),
         },
-        NormalField: "Wagon Account cultivate",
+        NormalField: "drink commodi voluptatibus",
     })
     if err != nil {
         log.Fatal(err)
@@ -99,9 +99,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(ctx, shared.ObjWithDateAdditionlProperties{
         AdditionalProperties: map[string]types.Date{
-            "ab": types.MustDateFromString("2021-08-06"),
+            "Bedfordshire": types.MustDateFromString("2021-04-22"),
         },
-        NormalField: "moody",
+        NormalField: "possimus schemas capacitor",
     })
     if err != nil {
         log.Fatal(err)
@@ -152,9 +152,9 @@ func main() {
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(ctx, shared.ObjWithStringAdditionlProperties{
         AdditionalProperties: map[string]string{
-            "exercitationem": "Bronze",
+            "Ergonomic": "Carolina",
         },
-        NormalField: "Hybrid male",
+        NormalField: "male South Iraq",
     })
     if err != nil {
         log.Fatal(err)
@@ -238,7 +238,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -249,8 +248,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    xNumberHeader := 1751.8
-    xStringHeader := "Tigard"
+    var xNumberHeader float64 = 1751.8
+    var xStringHeader string = "Tigard"
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyEmptyWithHeaders(ctx, xNumberHeader, xStringHeader)
@@ -480,7 +479,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"math/big"
 	"openapi/pkg/types"
 )
 
@@ -495,11 +493,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.ResponseBodies.ResponseBodyZeroValueComplexTypePtrsPost(ctx, shared.ObjWithZeroValueComplexTypePtrs{
-        Bigint: big.NewInt(438531),
-        BigintStr: big.NewInt(484338),
         Date: types.MustDateFromString("2020-01-01"),
         DateTime: types.MustTimeFromString("2020-01-01T00:00:00Z"),
-        Decimal: types.MustNewDecimalFromString("8697.02"),
     })
     if err != nil {
         log.Fatal(err)

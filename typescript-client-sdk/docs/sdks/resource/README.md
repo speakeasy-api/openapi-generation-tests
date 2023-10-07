@@ -15,26 +15,27 @@
 
 ```typescript
 import { SDK } from "openapi";
-import { CreateFileResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.resource.createFile({
-  file: {
-    content: "`'$Z`(L/RH" as bytes <<<>>>,
-    file: "Rap National",
-  },
-}).then((res: CreateFileResponse) => {
+  const res = await sdk.resource.createFile({
+    file: {
+      content: "`'$Z`(L/RH" as bytes <<<>>>,
+      file: "Rap National",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -56,47 +57,44 @@ sdk.resource.createFile({
 
 ```typescript
 import { SDK } from "openapi";
-import { CreateResourceResponse } from "openapi/dist/sdk/models/operations";
 import { ExampleResourceEnumNumber, ExampleResourceEnumStr } from "openapi/dist/sdk/models/shared";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.resource.createResource({
-  arrayOfNumber: [
-    1867.47,
-  ],
-  arrayOfString: [
-    "Sodium",
-  ],
-  chocolates: [
-    {
-      description: "Cross-group didactic system engine",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  ],
-  createdAt: new Date("2022-04-19T19:55:28.761Z"),
-  enumNumber: ExampleResourceEnumNumber.One,
-  enumStr: ExampleResourceEnumStr.One,
-  id: "<ID>",
-  mapOfInteger: {
-    "reiciendis": 154578,
-  },
-  mapOfString: {
-    "quasi": "utilize",
-  },
-  name: "online",
-  updatedAt: new Date("2021-12-27T00:23:19.559Z"),
-  vehicle: "oh",
-}).then((res: CreateResourceResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.resource.createResource({
+    arrayOfNumber: [
+      1867.47,
+    ],
+    arrayOfString: [
+      "Sodium",
+    ],
+    chocolates: [
+      {
+        description: "Cross-group didactic system engine",
+      },
+    ],
+    id: "<ID>",
+    mapOfInteger: {
+      "Pula": 173199,
+    },
+    mapOfString: {
+      "an": "South",
+    },
+    name: "Cotton",
+    vehicle: "withdrawal",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -118,22 +116,24 @@ sdk.resource.createResource({
 
 ```typescript
 import { SDK } from "openapi";
-import { DeleteResourceRequest, DeleteResourceResponse } from "openapi/dist/sdk/models/operations";
+import { DeleteResourceRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const resourceId: string = "Reggae";
 
-sdk.resource.deleteResource(resourceId).then((res: DeleteResourceResponse) => {
+  const res = await sdk.resource.deleteResource(resourceId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -155,22 +155,24 @@ sdk.resource.deleteResource(resourceId).then((res: DeleteResourceResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { GetResourceRequest, GetResourceResponse } from "openapi/dist/sdk/models/operations";
+import { GetResourceRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const resourceId: string = "Home";
 
-sdk.resource.getResource(resourceId).then((res: GetResourceResponse) => {
+  const res = await sdk.resource.getResource(resourceId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -192,22 +194,24 @@ sdk.resource.getResource(resourceId).then((res: GetResourceResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { UpdateResourceRequest, UpdateResourceResponse } from "openapi/dist/sdk/models/operations";
+import { UpdateResourceRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const resourceId: string = "International";
 
-sdk.resource.updateResource(resourceId).then((res: UpdateResourceResponse) => {
+  const res = await sdk.resource.updateResource(resourceId);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

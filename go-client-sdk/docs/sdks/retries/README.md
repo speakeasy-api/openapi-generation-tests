@@ -21,7 +21,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -32,8 +31,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestID := "Cambridgeshire"
-    numRetries := 496130
+    var requestID string = "Cambridgeshire"
+    var numRetries *int64 = 496130
 
     ctx := context.Background()
     res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)
