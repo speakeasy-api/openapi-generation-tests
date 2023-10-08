@@ -86,7 +86,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -97,7 +96,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    cursor := 24812
+    var cursor int64 = 24812
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationCursorParams(ctx, cursor)
@@ -157,11 +156,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{
-        Limit: openapi.Int64(189971),
-        Offset: openapi.Int64(995974),
-        Page: openapi.Int64(329413),
-    })
+    res, err := s.Pagination.PaginationLimitOffsetOffsetBody(ctx, shared.LimitOffsetConfig{})
     if err != nil {
         log.Fatal(err)
     }
@@ -206,7 +201,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -217,8 +211,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    limit := 661976
-    offset := 600173
+    var limit *int64 = 661976
+    var offset *int64 = 600173
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetOffsetParams(ctx, limit, offset)
@@ -279,11 +273,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{
-        Limit: openapi.Int64(479052),
-        Offset: openapi.Int64(716379),
-        Page: openapi.Int64(911806),
-    })
+    res, err := s.Pagination.PaginationLimitOffsetPageBody(ctx, shared.LimitOffsetConfig{})
     if err != nil {
         log.Fatal(err)
     }
@@ -328,7 +318,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -339,7 +328,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    page := 1177
+    var page int64 = 1177
 
     ctx := context.Background()
     res, err := s.Pagination.PaginationLimitOffsetPageParams(ctx, page)

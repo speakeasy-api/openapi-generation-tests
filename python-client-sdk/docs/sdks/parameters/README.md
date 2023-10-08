@@ -48,10 +48,16 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_map(map_param={
-    "quas": 'Concrete',
+    "test": 'value',
+    "test2": 'value2',
 }, map_arr_param={
-    "necessitatibus": [
-        'of',
+    "test": [
+        'test',
+        'test2',
+    ],
+    "test2": [
+        'test3',
+        'test4',
     ],
 })
 
@@ -61,10 +67,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter              | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `map_param`            | dict[str, *str*]       | :heavy_check_mark:     | N/A                    |
-| `map_arr_param`        | dict[str, list[*str*]] | :heavy_minus_sign:     | N/A                    |
+| Parameter              | Type                   | Required               | Description            | Example                |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `map_param`            | dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
+| `map_arr_param`        | dict[str, list[*str*]] | :heavy_minus_sign:     | N/A                    | [object Object]        |
 
 
 ### Response
@@ -92,7 +98,7 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject(
-    any='Jazz',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -107,14 +113,13 @@ res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
     int_enum=shared.SimpleObjectIntEnum.SECOND,
-    int_opt_null=425315,
     num=1.1,
-    num_opt_null=1324.77,
     str_='test',
     str_opt='testOptional',
 ), obj_arr_param=operations.DeepObjectQueryParamsObjectObjArrParam(
     arr=[
         'test',
+        'test2',
     ],
 ))
 
@@ -189,7 +194,9 @@ s = sdk.SDK(
 
 res = s.parameters.form_query_params_array(arr_param=[
     'test',
+    'test2',
 ], arr_param_exploded=[
+    1,
     2,
 ])
 
@@ -228,9 +235,11 @@ s = sdk.SDK(
 
 
 res = s.parameters.form_query_params_map(map_param={
-    "rerum": 'provident',
+    "test": 'value',
+    "test2": 'value2',
 }, map_param_exploded={
-    "optio": 355695,
+    "test": 1,
+    "test2": 2,
 })
 
 if res.res is not None:
@@ -239,10 +248,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `map_param`          | dict[str, *str*]     | :heavy_minus_sign:   | N/A                  |
-| `map_param_exploded` | dict[str, *int*]     | :heavy_minus_sign:   | N/A                  |
+| Parameter            | Type                 | Required             | Description          | Example              |
+| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| `map_param`          | dict[str, *str*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
+| `map_param_exploded` | dict[str, *int*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
 
 
 ### Response
@@ -270,7 +279,7 @@ s = sdk.SDK(
 
 
 res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObject(
-    any='Web',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -284,14 +293,12 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
     int=1,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=87354,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=883.91,
     str_='test',
     str_opt='testOptional',
 ), obj_param=shared.SimpleObject(
-    any='Associate',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -304,11 +311,9 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=547098,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=5763.58,
     str_='test',
     str_opt='testOptional',
 ))
@@ -433,6 +438,7 @@ s = sdk.SDK(
 
 res = s.parameters.header_params_array(x_header_array=[
     'test1',
+    'test2',
 ])
 
 if res.res is not None:
@@ -469,9 +475,11 @@ s = sdk.SDK(
 
 
 res = s.parameters.header_params_map(x_header_map={
-    "ipsum": 'Kids',
+    "key1": 'value1',
+    "key2": 'value2',
 }, x_header_map_explode={
-    "omnis": 'sky',
+    "test1": 'val1',
+    "test2": 'val2',
 })
 
 if res.res is not None:
@@ -480,10 +488,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter              | Type                   | Required               | Description            |
-| ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `x_header_map`         | dict[str, *str*]       | :heavy_check_mark:     | N/A                    |
-| `x_header_map_explode` | dict[str, *str*]       | :heavy_check_mark:     | N/A                    |
+| Parameter              | Type                   | Required               | Description            | Example                |
+| ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
+| `x_header_map`         | dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
+| `x_header_map_explode` | dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
 
 
 ### Response
@@ -511,7 +519,7 @@ s = sdk.SDK(
 
 
 res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
-    any='tolerance',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -525,14 +533,12 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     int=1,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.FIRST,
-    int_opt_null=598385,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=543.44,
     str_='test',
     str_opt='testOptional',
 ), x_header_obj_explode=shared.SimpleObject(
-    any='Representative',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -545,11 +551,9 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.FIRST,
-    int_opt_null=533235,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=2526.18,
     str_='test',
     str_opt='testOptional',
 ))
@@ -629,60 +633,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
-    any=[],
-    arr=[
-        shared.SimpleObject(
-            any='Hybrid',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=980270,
-            num=1.1,
-            num_opt_null=2047.13,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    ],
-    bool=True,
-    int=1,
-    map={
-        "adipisci": shared.SimpleObject(
-            any='applications',
-            bigint=8821239038968084,
-            bigint_str=9223372036854775808,
-            bool=True,
-            bool_opt=True,
-            date_=dateutil.parser.parse('2020-01-01').date(),
-            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-            decimal=Decimal('3.141592653589793'),
-            decimal_str=Decimal('3.14159265358979344719667586'),
-            enum=shared.EnumT.ONE,
-            float32=1.1,
-            int=1,
-            int32=1,
-            int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-            int_enum=shared.SimpleObjectIntEnum.THIRD,
-            int_opt_null=903355,
-            num=1.1,
-            num_opt_null=4168.07,
-            str_='test',
-            str_opt='testOptional',
-        ),
-    },
-    num=1.1,
-    obj=shared.SimpleObject(
-        any='Passenger',
+    shared.SimpleObject(
+        any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
         bool=True,
@@ -695,18 +647,122 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
         int_enum=shared.SimpleObjectIntEnum.SECOND,
-        int_opt_null=717976,
         num=1.1,
-        num_opt_null=9665.2,
+        str_='test',
+        str_opt='testOptional',
+    ),
+    arr=[
+        shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    ],
+    bool=True,
+    int=1,
+    map={
+        "key": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+        "key2": shared.SimpleObject(
+            any='any',
+            bigint=8821239038968084,
+            bigint_str=9223372036854775808,
+            bool=True,
+            bool_opt=True,
+            date_=dateutil.parser.parse('2020-01-01').date(),
+            date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+            decimal=Decimal('3.141592653589793'),
+            decimal_str=Decimal('3.14159265358979344719667586'),
+            enum=shared.EnumT.ONE,
+            float32=1.1,
+            int=1,
+            int32=1,
+            int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+            int_enum=shared.SimpleObjectIntEnum.SECOND,
+            num=1.1,
+            str_='test',
+            str_opt='testOptional',
+        ),
+    },
+    num=1.1,
+    obj=shared.SimpleObject(
+        any='any',
+        bigint=8821239038968084,
+        bigint_str=9223372036854775808,
+        bool=True,
+        bool_opt=True,
+        date_=dateutil.parser.parse('2020-01-01').date(),
+        date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+        decimal=Decimal('3.141592653589793'),
+        decimal_str=Decimal('3.14159265358979344719667586'),
+        enum=shared.EnumT.ONE,
+        float32=1.1,
+        int=1,
+        int32=1,
+        int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+        int_enum=shared.SimpleObjectIntEnum.SECOND,
+        num=1.1,
         str_='test',
         str_opt='testOptional',
     ),
     str_='test',
-    type='Leu aside Autumn',
 ), simple_obj_param=shared.SimpleObject(
-    any='Ball',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -719,11 +775,9 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=281620,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=8856.77,
     str_='test',
     str_opt='testOptional',
 ))
@@ -839,7 +893,7 @@ s = sdk.SDK(
 
 
 res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
-    any='female',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -853,14 +907,12 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     int=1,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.FIRST,
-    int_opt_null=108812,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=4161.9,
     str_='test',
     str_opt='testOptional',
 ), form_param=shared.SimpleObject(
-    any='Chair',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -874,14 +926,12 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     int=1,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=387493,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=5641.93,
     str_='test',
     str_opt='testOptional',
 ), json_param=shared.SimpleObject(
-    any='weber',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -895,10 +945,8 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
     int=1,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.FIRST,
-    int_opt_null=82918,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=8839.4,
     str_='test',
     str_opt='testOptional',
 ))
@@ -941,7 +989,7 @@ s = sdk.SDK(
 
 
 res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
-    any='bluetooth',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -954,11 +1002,9 @@ res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
     int_enum=shared.SimpleObjectIntEnum.SECOND,
-    int_opt_null=121334,
     num=1.1,
-    num_opt_null=2775.09,
     str_='test',
     str_opt='testOptional',
 ))
@@ -999,13 +1045,16 @@ s = sdk.SDK(
 
 
 res = s.parameters.pipe_delimited_query_params_array(arr_param=[
+    'test',
     'test2',
 ], arr_param_exploded=[
     1,
+    2,
 ], map_param={
-    "vitae": 'gold',
+    "key1": 'val1',
+    "key2": 'val2',
 }, obj_param=shared.SimpleObject(
-    any='Corporate',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -1019,10 +1068,8 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     int=1,
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
-    int_enum=shared.SimpleObjectIntEnum.FIRST,
-    int_opt_null=790307,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=4843.4,
     str_='test',
     str_opt='testOptional',
 ))
@@ -1033,12 +1080,12 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `arr_param`                                                                                        | list[*str*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `arr_param_exploded`                                                                               | list[*int*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `map_param`                                                                                        | dict[str, *str*]                                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `obj_param`                                                                                        | [Optional[shared.SimpleObject]](../../models/shared/simpleobject.md)                               | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `arr_param`                                                                                        | list[*str*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `arr_param_exploded`                                                                               | list[*int*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `map_param`                                                                                        | dict[str, *str*]                                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `obj_param`                                                                                        | [Optional[shared.SimpleObject]](../../models/shared/simpleobject.md)                               | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
@@ -1065,6 +1112,7 @@ s = sdk.SDK(
 
 res = s.parameters.simple_path_parameter_arrays(arr_param=[
     'test',
+    'test2',
 ])
 
 if res.res is not None:
@@ -1101,9 +1149,11 @@ s = sdk.SDK(
 
 
 res = s.parameters.simple_path_parameter_maps(map_param={
-    "nobis": 'even',
+    "test": 'value',
+    "test2": 'value2',
 }, map_param_exploded={
-    "repudiandae": 157687,
+    "test": 1,
+    "test2": 2,
 })
 
 if res.res is not None:
@@ -1112,10 +1162,10 @@ if res.res is not None:
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `map_param`          | dict[str, *str*]     | :heavy_check_mark:   | N/A                  |
-| `map_param_exploded` | dict[str, *int*]     | :heavy_check_mark:   | N/A                  |
+| Parameter            | Type                 | Required             | Description          | Example              |
+| -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
+| `map_param`          | dict[str, *str*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
+| `map_param_exploded` | dict[str, *int*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
 
 
 ### Response
@@ -1143,28 +1193,7 @@ s = sdk.SDK(
 
 
 res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
-    any='Ville',
-    bigint=8821239038968084,
-    bigint_str=9223372036854775808,
-    bool=True,
-    bool_opt=True,
-    date_=dateutil.parser.parse('2020-01-01').date(),
-    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
-    decimal=Decimal('3.141592653589793'),
-    decimal_str=Decimal('3.14159265358979344719667586'),
-    enum=shared.EnumT.ONE,
-    float32=1.1,
-    int=1,
-    int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=586554,
-    num=1.1,
-    num_opt_null=2558,
-    str_='test',
-    str_opt='testOptional',
-), obj_param_exploded=shared.SimpleObject(
-    any='Research',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -1179,9 +1208,26 @@ res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
     int32=1,
     int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
     int_enum=shared.SimpleObjectIntEnum.SECOND,
-    int_opt_null=878658,
     num=1.1,
-    num_opt_null=6926.2,
+    str_='test',
+    str_opt='testOptional',
+), obj_param_exploded=shared.SimpleObject(
+    any='any',
+    bigint=8821239038968084,
+    bigint_str=9223372036854775808,
+    bool=True,
+    bool_opt=True,
+    date_=dateutil.parser.parse('2020-01-01').date(),
+    date_time=dateutil.parser.isoparse('2020-01-01T00:00:00.000000001Z'),
+    decimal=Decimal('3.141592653589793'),
+    decimal_str=Decimal('3.14159265358979344719667586'),
+    enum=shared.EnumT.ONE,
+    float32=1.1,
+    int=1,
+    int32=1,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
+    num=1.1,
     str_='test',
     str_opt='testOptional',
 ))

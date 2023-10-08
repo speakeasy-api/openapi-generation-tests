@@ -22,21 +22,23 @@ Endpoints for testing authentication.
 
 ```typescript
 import { SDK } from "openapi";
-import { ApiKeyAuthResponse, ApiKeyAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { ApiKeyAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: ApiKeyAuthSecurity = {
   apiKeyAuth: "Token YOUR_API_KEY",
 };
 
-sdk.auth.apiKeyAuth(operationSecurity).then((res: ApiKeyAuthResponse) => {
+  const res = await sdk.auth.apiKeyAuth(operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -58,21 +60,22 @@ sdk.auth.apiKeyAuth(operationSecurity).then((res: ApiKeyAuthResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { ApiKeyAuthGlobalResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.auth.apiKeyAuthGlobal().then((res: ApiKeyAuthGlobalResponse) => {
+  const res = await sdk.auth.apiKeyAuthGlobal();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -93,12 +96,13 @@ sdk.auth.apiKeyAuthGlobal().then((res: ApiKeyAuthGlobalResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { BasicAuthRequest, BasicAuthResponse, BasicAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { BasicAuthRequest, BasicAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const passwd: string = "minus";
 const user: string = "Architect";
 const operationSecurity: BasicAuthSecurity = {
@@ -106,11 +110,12 @@ const operationSecurity: BasicAuthSecurity = {
   username: "YOUR_USERNAME",
 };
 
-sdk.auth.basicAuth(operationSecurity, passwd, user).then((res: BasicAuthResponse) => {
+  const res = await sdk.auth.basicAuth(operationSecurity, passwd, user);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -134,21 +139,23 @@ sdk.auth.basicAuth(operationSecurity, passwd, user).then((res: BasicAuthResponse
 
 ```typescript
 import { SDK } from "openapi";
-import { BearerAuthResponse, BearerAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { BearerAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: BearerAuthSecurity = {
   bearerAuth: "YOUR_JWT",
 };
 
-sdk.auth.bearerAuth(operationSecurity).then((res: BearerAuthResponse) => {
+  const res = await sdk.auth.bearerAuth(operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -170,21 +177,22 @@ sdk.auth.bearerAuth(operationSecurity).then((res: BearerAuthResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalBearerAuthResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.auth.globalBearerAuth().then((res: GlobalBearerAuthResponse) => {
+  const res = await sdk.auth.globalBearerAuth();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -205,21 +213,23 @@ sdk.auth.globalBearerAuth().then((res: GlobalBearerAuthResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { Oauth2AuthResponse, Oauth2AuthSecurity } from "openapi/dist/sdk/models/operations";
+import { Oauth2AuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: Oauth2AuthSecurity = {
   oauth2: "Bearer YOUR_OAUTH2_TOKEN",
 };
 
-sdk.auth.oauth2Auth(operationSecurity).then((res: Oauth2AuthResponse) => {
+  const res = await sdk.auth.oauth2Auth(operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -241,21 +251,23 @@ sdk.auth.oauth2Auth(operationSecurity).then((res: Oauth2AuthResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { Oauth2OverrideRequest, Oauth2OverrideResponse, Oauth2OverrideSecurity } from "openapi/dist/sdk/models/operations";
+import { Oauth2OverrideRequest, Oauth2OverrideSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: Oauth2OverrideSecurity = {
   oauth2: "Bearer YOUR_OAUTH2_TOKEN",
 };
 
-sdk.auth.oauth2Override(operationSecurity).then((res: Oauth2OverrideResponse) => {
+  const res = await sdk.auth.oauth2Override(operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -277,21 +289,23 @@ sdk.auth.oauth2Override(operationSecurity).then((res: Oauth2OverrideResponse) =>
 
 ```typescript
 import { SDK } from "openapi";
-import { OpenIdConnectAuthResponse, OpenIdConnectAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { OpenIdConnectAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: OpenIdConnectAuthSecurity = {
   openIdConnect: "Bearer YOUR_OPENID_TOKEN",
 };
 
-sdk.auth.openIdConnectAuth(operationSecurity).then((res: OpenIdConnectAuthResponse) => {
+  const res = await sdk.auth.openIdConnectAuth(operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

@@ -75,7 +75,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/types"
 )
 
 func main() {
@@ -100,19 +99,21 @@ func main() {
                 Description: "Cross-group didactic system engine",
             },
         },
-        CreatedAt: types.MustTimeFromString("2022-04-19T19:55:28.761Z"),
-        EnumNumber: shared.ExampleResourceEnumNumberOne.ToPointer(),
-        EnumStr: shared.ExampleResourceEnumStrOne.ToPointer(),
         ID: "<ID>",
         MapOfInteger: map[string]int64{
-            "reiciendis": 154578,
+            "Pula": 173199,
         },
         MapOfString: map[string]string{
-            "quasi": "utilize",
+            "an": "South",
         },
-        Name: "online",
-        UpdatedAt: types.MustTimeFromString("2021-12-27T00:23:19.559Z"),
-        Vehicle: shared.ExampleVehicle{},
+        Name: "Cotton",
+        Vehicle: shared.CreateExampleVehicleExampleBoat(
+                shared.ExampleBoat{
+                    Length: 3287.82,
+                    Name: "San South Quality",
+                    Type: shared.ExampleBoatTypeBoat,
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -149,7 +150,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -160,7 +160,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "Reggae"
+    var resourceID string = "Reggae"
 
     ctx := context.Background()
     res, err := s.Resource.DeleteResource(ctx, resourceID)
@@ -199,7 +199,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -210,7 +209,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "Home"
+    var resourceID string = "Home"
 
     ctx := context.Background()
     res, err := s.Resource.GetResource(ctx, resourceID)
@@ -249,7 +248,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -260,7 +258,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    resourceID := "International"
+    var resourceID string = "International"
 
     ctx := context.Background()
     res, err := s.Resource.UpdateResource(ctx, resourceID)

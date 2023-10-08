@@ -36,38 +36,46 @@ Endpoints for testing parameters.
 
 ```typescript
 import { SDK } from "openapi";
-import { DeepObjectQueryParamsMapRequest, DeepObjectQueryParamsMapResponse } from "openapi/dist/sdk/models/operations";
+import { DeepObjectQueryParamsMapRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const mapParam: Record<string, string> = {
-  "quas": "Concrete",
+  "test": "value",
+  "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "necessitatibus": [
-    "of",
+  "test": [
+    "test",
+    "test2",
+  ],
+  "test2": [
+    "test3",
+    "test4",
   ],
 };
 
-sdk.parameters.deepObjectQueryParamsMap(mapParam, mapArrParam).then((res: DeepObjectQueryParamsMapResponse) => {
+  const res = await sdk.parameters.deepObjectQueryParamsMap(mapParam, mapArrParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `mapArrParam`                                                | Record<string, *string*[]>                                   | :heavy_minus_sign:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `mapArrParam`                                                | Record<string, *string*[]>                                   | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -81,23 +89,20 @@ sdk.parameters.deepObjectQueryParamsMap(mapParam, mapArrParam).then((res: DeepOb
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  DeepObjectQueryParamsObjectObjArrParam,
-  DeepObjectQueryParamsObjectRequest,
-  DeepObjectQueryParamsObjectResponse,
-} from "openapi/dist/sdk/models/operations";
+import { DeepObjectQueryParamsObjectObjArrParam, DeepObjectQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const objParam: SimpleObject = {
-  any: "Jazz",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -112,23 +117,23 @@ const objParam: SimpleObject = {
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 425315,
   num: 1.1,
-  numOptNull: 1324.77,
   str: "test",
   strOpt: "testOptional",
 };
 const objArrParam: DeepObjectQueryParamsObjectObjArrParam = {
   arr: [
     "test",
+    "test2",
   ],
 };
 
-sdk.parameters.deepObjectQueryParamsObject(objParam, objArrParam).then((res: DeepObjectQueryParamsObjectResponse) => {
+  const res = await sdk.parameters.deepObjectQueryParamsObject(objParam, objArrParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -151,22 +156,24 @@ sdk.parameters.deepObjectQueryParamsObject(objParam, objArrParam).then((res: Dee
 
 ```typescript
 import { SDK } from "openapi";
-import { DuplicateParamRequest, DuplicateParamResponse } from "openapi/dist/sdk/models/operations";
+import { DuplicateParamRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const duplicateParamRequest: string = "Parks";
 
-sdk.parameters.duplicateParam(duplicateParamRequest).then((res: DuplicateParamResponse) => {
+  const res = await sdk.parameters.duplicateParam(duplicateParamRequest);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -188,27 +195,31 @@ sdk.parameters.duplicateParam(duplicateParamRequest).then((res: DuplicateParamRe
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsArrayRequest, FormQueryParamsArrayResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsArrayRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const arrParam: string[] = [
   "test",
+  "test2",
 ];
 const arrParamExploded: number[] = [
+  1,
   2,
 ];
 
-sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded).then((res: FormQueryParamsArrayResponse) => {
+  const res = await sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -231,36 +242,40 @@ sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded).then((res: FormQ
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsMapRequest, FormQueryParamsMapResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsMapRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const mapParam: Record<string, string> = {
-  "rerum": "provident",
+  "test": "value",
+  "test2": "value2",
 };
 const mapParamExploded: Record<string, number> = {
-  "optio": 355695,
+  "test": 1,
+  "test2": 2,
 };
 
-sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded).then((res: FormQueryParamsMapResponse) => {
+  const res = await sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_minus_sign:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
+| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_minus_sign:                                           | N/A                                                          | [object Object]                                              |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -274,19 +289,20 @@ sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded).then((res: FormQue
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsObjectRequest, FormQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const objParamExploded: SimpleObject = {
-  any: "Web",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -300,15 +316,13 @@ const objParamExploded: SimpleObject = {
   int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 87354,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 883.91,
   str: "test",
   strOpt: "testOptional",
 };
 const objParam: SimpleObject = {
-  any: "Associate",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -321,20 +335,19 @@ const objParam: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 547098,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 5763.58,
   str: "test",
   strOpt: "testOptional",
 };
 
-sdk.parameters.formQueryParamsObject(objParamExploded, objParam).then((res: FormQueryParamsObjectResponse) => {
+  const res = await sdk.parameters.formQueryParamsObject(objParamExploded, objParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -357,25 +370,27 @@ sdk.parameters.formQueryParamsObject(objParamExploded, objParam).then((res: Form
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsPrimitiveRequest, FormQueryParamsPrimitiveResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsPrimitiveRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const boolParam: boolean = true;
 const intParam: number = 1;
 const numParam: number = 1.1;
 const strParam: string = "test";
 
-sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam).then((res: FormQueryParamsPrimitiveResponse) => {
+  const res = await sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -400,16 +415,17 @@ sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam)
 
 ```typescript
 import { SDK } from "openapi";
-import { FormQueryParamsRefParamObjectRequest, FormQueryParamsRefParamObjectResponse } from "openapi/dist/sdk/models/operations";
+import { FormQueryParamsRefParamObjectRequest } from "openapi/dist/sdk/models/operations";
 import { RefQueryParamObj, RefQueryParamObjExploded } from "openapi/dist/sdk/models/shared";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const refObjParam: RefQueryParamObj = {
   bool: true,
   int: 1,
@@ -423,11 +439,12 @@ const refObjParamExploded: RefQueryParamObjExploded = {
   str: "test",
 };
 
-sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded).then((res: FormQueryParamsRefParamObjectResponse) => {
+  const res = await sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -450,24 +467,27 @@ sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded).t
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsArrayRequest, HeaderParamsArrayResponse } from "openapi/dist/sdk/models/operations";
+import { HeaderParamsArrayRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const xHeaderArray: string[] = [
   "test1",
+  "test2",
 ];
 
-sdk.parameters.headerParamsArray(xHeaderArray).then((res: HeaderParamsArrayResponse) => {
+  const res = await sdk.parameters.headerParamsArray(xHeaderArray);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -489,36 +509,40 @@ sdk.parameters.headerParamsArray(xHeaderArray).then((res: HeaderParamsArrayRespo
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsMapRequest, HeaderParamsMapResponse } from "openapi/dist/sdk/models/operations";
+import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const xHeaderMap: Record<string, string> = {
-  "ipsum": "Kids",
+  "key1": "value1",
+  "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
-  "omnis": "sky",
+  "test1": "val1",
+  "test2": "val2",
 };
 
-sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode).then((res: HeaderParamsMapResponse) => {
+  const res = await sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `xHeaderMap`                                                 | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `xHeaderMapExplode`                                          | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `xHeaderMap`                                                 | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `xHeaderMapExplode`                                          | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -532,19 +556,20 @@ sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode).then((res: HeaderP
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsObjectRequest, HeaderParamsObjectResponse } from "openapi/dist/sdk/models/operations";
+import { HeaderParamsObjectRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const xHeaderObj: SimpleObject = {
-  any: "tolerance",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -558,15 +583,13 @@ const xHeaderObj: SimpleObject = {
   int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 598385,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 543.44,
   str: "test",
   strOpt: "testOptional",
 };
 const xHeaderObjExplode: SimpleObject = {
-  any: "Representative",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -579,20 +602,19 @@ const xHeaderObjExplode: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 533235,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 2526.18,
   str: "test",
   strOpt: "testOptional",
 };
 
-sdk.parameters.headerParamsObject(xHeaderObj, xHeaderObjExplode).then((res: HeaderParamsObjectResponse) => {
+  const res = await sdk.parameters.headerParamsObject(xHeaderObj, xHeaderObjExplode);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -615,25 +637,27 @@ sdk.parameters.headerParamsObject(xHeaderObj, xHeaderObjExplode).then((res: Head
 
 ```typescript
 import { SDK } from "openapi";
-import { HeaderParamsPrimitiveRequest, HeaderParamsPrimitiveResponse } from "openapi/dist/sdk/models/operations";
+import { HeaderParamsPrimitiveRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const xHeaderBoolean: boolean = true;
 const xHeaderInteger: number = 1;
 const xHeaderNumber: number = 1.1;
 const xHeaderString: string = "test";
 
-sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString).then((res: HeaderParamsPrimitiveResponse) => {
+  const res = await sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -658,22 +682,23 @@ sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumb
 
 ```typescript
 import { SDK } from "openapi";
-import { JsonQueryParamsObjectRequest, JsonQueryParamsObjectResponse } from "openapi/dist/sdk/models/operations";
+import { JsonQueryParamsObjectRequest } from "openapi/dist/sdk/models/operations";
 import { DeepObject, Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const deepObjParam: DeepObject = {
-  any: "Hybrid",
+  any: "anyOf[0]",
   arr: [
     {
-      any: "weber",
+      any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
       bool: true,
@@ -686,11 +711,29 @@ const deepObjParam: DeepObject = {
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 240276,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
       num: 1.1,
-      numOptNull: 3309.36,
+      str: "test",
+      strOpt: "testOptional",
+    },
+    {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
       str: "test",
       strOpt: "testOptional",
     },
@@ -698,8 +741,8 @@ const deepObjParam: DeepObject = {
   bool: true,
   int: 1,
   map: {
-    "repellendus": {
-      any: "until",
+    "key2": {
+      any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
       bool: true,
@@ -712,18 +755,36 @@ const deepObjParam: DeepObject = {
       float32: 1.1,
       int: 1,
       int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
       intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 852586,
       num: 1.1,
-      numOptNull: 6861.45,
+      str: "test",
+      strOpt: "testOptional",
+    },
+    "key": {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
       str: "test",
       strOpt: "testOptional",
     },
   },
   num: 1.1,
   obj: {
-    any: "synthesize",
+    any: "any",
     bigint: 8821239038968084,
     bigintStr: "9223372036854775808",
     bool: true,
@@ -736,19 +797,16 @@ const deepObjParam: DeepObject = {
     float32: 1.1,
     int: 1,
     int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 420462,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
     num: 1.1,
-    numOptNull: 5102.58,
     str: "test",
     strOpt: "testOptional",
   },
   str: "test",
-  type: "aside Autumn Ball",
 };
 const simpleObjParam: SimpleObject = {
-  any: "transmitter",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -762,19 +820,18 @@ const simpleObjParam: SimpleObject = {
   int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 626466,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 3108.18,
   str: "test",
   strOpt: "testOptional",
 };
 
-sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam).then((res: JsonQueryParamsObjectResponse) => {
+  const res = await sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -797,24 +854,26 @@ sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam).then((res: Js
 
 ```typescript
 import { SDK } from "openapi";
-import { MixedParametersCamelCaseRequest, MixedParametersCamelCaseResponse } from "openapi/dist/sdk/models/operations";
+import { MixedParametersCamelCaseRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const headerParam: string = "headerValue";
 const pathParam: string = "pathValue";
 const queryStringParam: string = "queryValue";
 
-sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam).then((res: MixedParametersCamelCaseResponse) => {
+  const res = await sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -838,24 +897,26 @@ sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam
 
 ```typescript
 import { SDK } from "openapi";
-import { MixedParametersPrimitivesRequest, MixedParametersPrimitivesResponse } from "openapi/dist/sdk/models/operations";
+import { MixedParametersPrimitivesRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const headerParam: string = "headerValue";
 const pathParam: string = "pathValue";
 const queryStringParam: string = "queryValue";
 
-sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringParam).then((res: MixedParametersPrimitivesResponse) => {
+  const res = await sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -879,19 +940,20 @@ sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringPara
 
 ```typescript
 import { SDK } from "openapi";
-import { MixedQueryParamsRequest, MixedQueryParamsResponse } from "openapi/dist/sdk/models/operations";
+import { MixedQueryParamsRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const deepObjectParam: SimpleObject = {
-  any: "female",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -905,15 +967,13 @@ const deepObjectParam: SimpleObject = {
   int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 108812,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 4161.9,
   str: "test",
   strOpt: "testOptional",
 };
 const formParam: SimpleObject = {
-  any: "Chair",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -927,15 +987,13 @@ const formParam: SimpleObject = {
   int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 387493,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 5641.93,
   str: "test",
   strOpt: "testOptional",
 };
 const jsonParam: SimpleObject = {
-  any: "weber",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -949,19 +1007,18 @@ const jsonParam: SimpleObject = {
   int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 82918,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 8839.4,
   str: "test",
   strOpt: "testOptional",
 };
 
-sdk.parameters.mixedQueryParams(deepObjectParam, formParam, jsonParam).then((res: MixedQueryParamsResponse) => {
+  const res = await sdk.parameters.mixedQueryParams(deepObjectParam, formParam, jsonParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -985,19 +1042,20 @@ sdk.parameters.mixedQueryParams(deepObjectParam, formParam, jsonParam).then((res
 
 ```typescript
 import { SDK } from "openapi";
-import { PathParameterJsonRequest, PathParameterJsonResponse } from "openapi/dist/sdk/models/operations";
+import { PathParameterJsonRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const jsonObj: SimpleObject = {
-  any: "bluetooth",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -1010,20 +1068,19 @@ const jsonObj: SimpleObject = {
   float32: 1.1,
   int: 1,
   int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 121334,
   num: 1.1,
-  numOptNull: 2775.09,
   str: "test",
   strOpt: "testOptional",
 };
 
-sdk.parameters.pathParameterJson(jsonObj).then((res: PathParameterJsonResponse) => {
+  const res = await sdk.parameters.pathParameterJson(jsonObj);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1045,28 +1102,32 @@ sdk.parameters.pathParameterJson(jsonObj).then((res: PathParameterJsonResponse) 
 
 ```typescript
 import { SDK } from "openapi";
-import { PipeDelimitedQueryParamsArrayRequest, PipeDelimitedQueryParamsArrayResponse } from "openapi/dist/sdk/models/operations";
+import { PipeDelimitedQueryParamsArrayRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const arrParam: string[] = [
+  "test",
   "test2",
 ];
 const arrParamExploded: number[] = [
   1,
+  2,
 ];
 const mapParam: Record<string, string> = {
-  "vitae": "gold",
+  "key1": "val1",
+  "key2": "val2",
 };
 const objParam: SimpleObject = {
-  any: "Corporate",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -1080,30 +1141,29 @@ const objParam: SimpleObject = {
   int: 1,
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.First,
-  intOptNull: 790307,
+  intEnum: SimpleObjectIntEnum.Second,
   num: 1.1,
-  numOptNull: 4843.4,
   str: "test",
   strOpt: "testOptional",
 };
 
-sdk.parameters.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapParam, objParam).then((res: PipeDelimitedQueryParamsArrayResponse) => {
+  const res = await sdk.parameters.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapParam, objParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `arrParam`                                                                                         | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `arrParamExploded`                                                                                 | *number*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `mapParam`                                                                                         | Record<string, *string*>                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `arrParam`                                                                                         | *string*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `arrParamExploded`                                                                                 | *number*[]                                                                                         | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `mapParam`                                                                                         | Record<string, *string*>                                                                           | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `objParam`                                                                                         | [shared.SimpleObject](../../models/shared/simpleobject.md)                                         | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
+| `config`                                                                                           | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                       | :heavy_minus_sign:                                                                                 | Available config options for making requests.                                                      |                                                                                                    |
 
 
 ### Response
@@ -1117,24 +1177,27 @@ sdk.parameters.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapPara
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterArraysRequest, SimplePathParameterArraysResponse } from "openapi/dist/sdk/models/operations";
+import { SimplePathParameterArraysRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const arrParam: string[] = [
   "test",
+  "test2",
 ];
 
-sdk.parameters.simplePathParameterArrays(arrParam).then((res: SimplePathParameterArraysResponse) => {
+  const res = await sdk.parameters.simplePathParameterArrays(arrParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1156,36 +1219,40 @@ sdk.parameters.simplePathParameterArrays(arrParam).then((res: SimplePathParamete
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterMapsRequest, SimplePathParameterMapsResponse } from "openapi/dist/sdk/models/operations";
+import { SimplePathParameterMapsRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const mapParam: Record<string, string> = {
-  "nobis": "even",
+  "test": "value",
+  "test2": "value2",
 };
 const mapParamExploded: Record<string, number> = {
-  "repudiandae": 157687,
+  "test": 1,
+  "test2": 2,
 };
 
-sdk.parameters.simplePathParameterMaps(mapParam, mapParamExploded).then((res: SimplePathParameterMapsResponse) => {
+  const res = await sdk.parameters.simplePathParameterMaps(mapParam, mapParamExploded);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
 
-| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
-| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_check_mark:                                           | N/A                                                          |
-| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  | Example                                                      |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `mapParam`                                                   | Record<string, *string*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `mapParamExploded`                                           | Record<string, *number*>                                     | :heavy_check_mark:                                           | N/A                                                          | [object Object]                                              |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |                                                              |
 
 
 ### Response
@@ -1199,41 +1266,20 @@ sdk.parameters.simplePathParameterMaps(mapParam, mapParamExploded).then((res: Si
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterObjectsRequest, SimplePathParameterObjectsResponse } from "openapi/dist/sdk/models/operations";
+import { SimplePathParameterObjectsRequest } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObject, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const objParam: SimpleObject = {
-  any: "Ville",
-  bigint: 8821239038968084,
-  bigintStr: "9223372036854775808",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-  decimal: 3.141592653589793,
-  decimalStr: "3.14159265358979344719667586",
-  enum: Enum.One,
-  float32: 1.1,
-  int: 1,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 586554,
-  num: 1.1,
-  numOptNull: 2558,
-  str: "test",
-  strOpt: "testOptional",
-};
-const objParamExploded: SimpleObject = {
-  any: "Research",
+  any: "any",
   bigint: 8821239038968084,
   bigintStr: "9223372036854775808",
   bool: true,
@@ -1248,18 +1294,37 @@ const objParamExploded: SimpleObject = {
   int32: 1,
   int32Enum: SimpleObjectInt32Enum.FiftyFive,
   intEnum: SimpleObjectIntEnum.Second,
-  intOptNull: 878658,
   num: 1.1,
-  numOptNull: 6926.2,
+  str: "test",
+  strOpt: "testOptional",
+};
+const objParamExploded: SimpleObject = {
+  any: "any",
+  bigint: 8821239038968084,
+  bigintStr: "9223372036854775808",
+  bool: true,
+  boolOpt: true,
+  date: new RFCDate("2020-01-01"),
+  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+  decimal: 3.141592653589793,
+  decimalStr: "3.14159265358979344719667586",
+  enum: Enum.One,
+  float32: 1.1,
+  int: 1,
+  int32: 1,
+  int32Enum: SimpleObjectInt32Enum.FiftyFive,
+  intEnum: SimpleObjectIntEnum.Second,
+  num: 1.1,
   str: "test",
   strOpt: "testOptional",
 };
 
-sdk.parameters.simplePathParameterObjects(objParam, objParamExploded).then((res: SimplePathParameterObjectsResponse) => {
+  const res = await sdk.parameters.simplePathParameterObjects(objParam, objParamExploded);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1282,25 +1347,27 @@ sdk.parameters.simplePathParameterObjects(objParam, objParamExploded).then((res:
 
 ```typescript
 import { SDK } from "openapi";
-import { SimplePathParameterPrimitivesRequest, SimplePathParameterPrimitivesResponse } from "openapi/dist/sdk/models/operations";
+import { SimplePathParameterPrimitivesRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const boolParam: boolean = true;
 const intParam: number = 1;
 const numParam: number = 1.1;
 const strParam: string = "test";
 
-sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam).then((res: SimplePathParameterPrimitivesResponse) => {
+  const res = await sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

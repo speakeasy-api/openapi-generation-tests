@@ -23,7 +23,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -34,7 +33,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    language := "hack"
+    var language string = "hack"
 
     ctx := context.Background()
     res, err := s.Documentation.GetDocumentationPerLanguage(ctx, language)

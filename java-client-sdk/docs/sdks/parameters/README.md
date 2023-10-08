@@ -46,18 +46,24 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeepObjectQueryParamsMapResponse res = sdk.parameters.deepObjectQueryParamsMap(new java.util.HashMap<String, String>() {{
-                put("quas", "Concrete");
-            }}, new java.util.HashMap<String, String[]>() {{
-                put("necessitatibus", new String[]{{
-                    add("of"),
+            DeepObjectQueryParamsMapResponse res = sdk.parameters.deepObjectQueryParamsMap(new java.util.HashMap<String, String>(){{
+                put("test", "value");
+                put("test2", "value2");
+            }}, new java.util.HashMap<String, String[]>(){{
+                put("test", new String[]{{
+                    add("test"),
+                    add("test2"),
+                }});
+                put("test2", new String[]{{
+                    add("test3"),
+                    add("test4"),
                 }});
             }});
 
@@ -73,10 +79,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter                   | Type                        | Required                    | Description                 |
-| --------------------------- | --------------------------- | --------------------------- | --------------------------- |
-| `mapParam`                  | Map<String, *String*>       | :heavy_check_mark:          | N/A                         |
-| `mapArrParam`               | Map<String, List<*String*>> | :heavy_minus_sign:          | N/A                         |
+| Parameter                   | Type                        | Required                    | Description                 | Example                     |
+| --------------------------- | --------------------------- | --------------------------- | --------------------------- | --------------------------- |
+| `mapParam`                  | Map<String, *String*>       | :heavy_check_mark:          | N/A                         | [object Object]             |
+| `mapArrParam`               | Map<String, List<*String*>> | :heavy_minus_sign:          | N/A                         | [object Object]             |
 
 
 ### Response
@@ -107,15 +113,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeepObjectQueryParamsObjectResponse res = sdk.parameters.deepObjectQueryParamsObject(new SimpleObject("Handmade", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                any = "Jazz";
+            DeepObjectQueryParamsObjectResponse res = sdk.parameters.deepObjectQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -130,13 +136,12 @@ public class Application {
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
                 intEnum = SimpleObjectIntEnum.Second;
-                intOptNull = 425315L;
                 num = 1.1d;
-                numOptNull = 1324.77d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new DeepObjectQueryParamsObjectObjArrParam() {{
+            }}, new DeepObjectQueryParamsObjectObjArrParam(){{
                 arr = new String[]{{
+                    add("test"),
                     add("test2"),
                 }};
             }});
@@ -180,7 +185,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -227,7 +232,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -236,7 +241,9 @@ public class Application {
 
             FormQueryParamsArrayResponse res = sdk.parameters.formQueryParamsArray(new String[]{{
                 add("test"),
+                add("test2"),
             }}, new Long[]{{
+                add(1L),
                 add(2L),
             }});
 
@@ -279,17 +286,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            FormQueryParamsMapResponse res = sdk.parameters.formQueryParamsMap(new java.util.HashMap<String, String>() {{
-                put("rerum", "provident");
-            }}, new java.util.HashMap<String, Long>() {{
-                put("optio", 355695L);
+            FormQueryParamsMapResponse res = sdk.parameters.formQueryParamsMap(new java.util.HashMap<String, String>(){{
+                put("test", "value");
+                put("test2", "value2");
+            }}, new java.util.HashMap<String, Long>(){{
+                put("test", 1L);
+                put("test2", 2L);
             }});
 
             if (res.res != null) {
@@ -304,10 +313,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter             | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `mapParam`            | Map<String, *String*> | :heavy_minus_sign:    | N/A                   |
-| `mapParamExploded`    | Map<String, *Long*>   | :heavy_minus_sign:    | N/A                   |
+| Parameter             | Type                  | Required              | Description           | Example               |
+| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
+| `mapParam`            | Map<String, *String*> | :heavy_minus_sign:    | N/A                   | [object Object]       |
+| `mapParamExploded`    | Map<String, *Long*>   | :heavy_minus_sign:    | N/A                   | [object Object]       |
 
 
 ### Response
@@ -337,15 +346,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            FormQueryParamsObjectResponse res = sdk.parameters.formQueryParamsObject(new SimpleObject("Associate", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                any = "Web";
+            FormQueryParamsObjectResponse res = sdk.parameters.formQueryParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -359,14 +368,12 @@ public class Application {
                 int_ = 1L;
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Third;
-                intOptNull = 87354L;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 883.91d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("Human", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.First, 1.1d, "test") {{
-                any = "quantify";
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -379,11 +386,9 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                intEnum = SimpleObjectIntEnum.Third;
-                intOptNull = 511250L;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 6249.87d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -427,7 +432,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -479,19 +484,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            FormQueryParamsRefParamObjectResponse res = sdk.parameters.formQueryParamsRefParamObject(new RefQueryParamObj(true, 1L, 1.1d, "test") {{
+            FormQueryParamsRefParamObjectResponse res = sdk.parameters.formQueryParamsRefParamObject(new RefQueryParamObj(true, 1L, 1.1d, "test"){{
                 bool = true;
                 int_ = 1L;
                 num = 1.1d;
                 str = "test";
-            }}, new RefQueryParamObjExploded(true, 1L, 1.1d, "test") {{
+            }}, new RefQueryParamObjExploded(true, 1L, 1.1d, "test"){{
                 bool = true;
                 int_ = 1L;
                 num = 1.1d;
@@ -537,7 +542,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -546,6 +551,7 @@ public class Application {
 
             HeaderParamsArrayResponse res = sdk.parameters.headerParamsArray(new String[]{{
                 add("test1"),
+                add("test2"),
             }});
 
             if (res.res != null) {
@@ -586,17 +592,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            HeaderParamsMapResponse res = sdk.parameters.headerParamsMap(new java.util.HashMap<String, String>() {{
-                put("ipsum", "Kids");
-            }}, new java.util.HashMap<String, String>() {{
-                put("omnis", "sky");
+            HeaderParamsMapResponse res = sdk.parameters.headerParamsMap(new java.util.HashMap<String, String>(){{
+                put("key1", "value1");
+                put("key2", "value2");
+            }}, new java.util.HashMap<String, String>(){{
+                put("test2", "val2");
+                put("test1", "val1");
             }});
 
             if (res.res != null) {
@@ -611,10 +619,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter             | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `xHeaderMap`          | Map<String, *String*> | :heavy_check_mark:    | N/A                   |
-| `xHeaderMapExplode`   | Map<String, *String*> | :heavy_check_mark:    | N/A                   |
+| Parameter             | Type                  | Required              | Description           | Example               |
+| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
+| `xHeaderMap`          | Map<String, *String*> | :heavy_check_mark:    | N/A                   | [object Object]       |
+| `xHeaderMapExplode`   | Map<String, *String*> | :heavy_check_mark:    | N/A                   | [object Object]       |
 
 
 ### Response
@@ -644,15 +652,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            HeaderParamsObjectResponse res = sdk.parameters.headerParamsObject(new SimpleObject("Representative", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "test") {{
-                any = "tolerance";
+            HeaderParamsObjectResponse res = sdk.parameters.headerParamsObject(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -666,14 +674,12 @@ public class Application {
                 int_ = 1L;
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.First;
-                intOptNull = 598385L;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 543.44d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("programming", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                any = "port";
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -686,11 +692,9 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                intEnum = SimpleObjectIntEnum.First;
-                intOptNull = 484677L;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 4815.2d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -734,7 +738,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -791,123 +795,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            JsonQueryParamsObjectResponse res = sdk.parameters.jsonQueryParamsObject(new DeepObject("male",                 new org.openapis.openapi.models.shared.SimpleObject[]{{
-                                add(new SimpleObject("yearly", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                                    any = "bypass";
-                                    bigint = 8821239038968084L;
-                                    bigintStr = "9223372036854775808";
-                                    bool = true;
-                                    boolOpt = true;
-                                    date = LocalDate.parse("2020-01-01");
-                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                                    decimal = 3.141592653589793d;
-                                    decimalStr = "3.14159265358979344719667586";
-                                    enum_ = Enum.ONE;
-                                    float32 = 1.1f;
-                                    int_ = 1L;
-                                    int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                                    intEnum = SimpleObjectIntEnum.Third;
-                                    intOptNull = 395681L;
-                                    num = 1.1d;
-                                    numOptNull = 6274.24d;
-                                    str = "test";
-                                    strOpt = "testOptional";
-                                }}),
-                            }}, true, 1L,                 new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                                put("sint", new SimpleObject("backing", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                                    any = "Soft";
-                                    bigint = 8821239038968084L;
-                                    bigintStr = "9223372036854775808";
-                                    bool = true;
-                                    boolOpt = true;
-                                    date = LocalDate.parse("2020-01-01");
-                                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                                    decimal = 3.141592653589793d;
-                                    decimalStr = "3.14159265358979344719667586";
-                                    enum_ = Enum.ONE;
-                                    float32 = 1.1f;
-                                    int_ = 1L;
-                                    int32 = 1;
-                                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                                    intEnum = SimpleObjectIntEnum.Second;
-                                    intOptNull = 826457L;
-                                    num = 1.1d;
-                                    numOptNull = 6625.44d;
-                                    str = "test";
-                                    strOpt = "testOptional";
-                                }});
-                            }}, 1.1d,                 new SimpleObject("redundant", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                                bigint = 8821239038968084L;
-                                bigintStr = "9223372036854775808";
-                                boolOpt = true;
-                                decimal = 3.141592653589793d;
-                                decimalStr = "3.14159265358979344719667586";
-                                intOptNull = 708150L;
-                                numOptNull = 1977.81d;
-                                strOpt = "testOptional";
-                            }};, "test") {{
-                any = "Hybrid";
-                arr = new org.openapis.openapi.models.shared.SimpleObject[]{{
-                    add(new SimpleObject("Toyota", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                        any = "weber";
-                        bigint = 8821239038968084L;
-                        bigintStr = "9223372036854775808";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                        decimal = 3.141592653589793d;
-                        decimalStr = "3.14159265358979344719667586";
-                        enum_ = Enum.ONE;
-                        float32 = 1.1f;
-                        int_ = 1L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                        intEnum = SimpleObjectIntEnum.First;
-                        intOptNull = 240276L;
-                        num = 1.1d;
-                        numOptNull = 3309.36d;
-                        str = "test";
-                        strOpt = "testOptional";
-                    }}),
-                }};
-                bool = true;
-                int_ = 1L;
-                map = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>() {{
-                    put("commodi", new SimpleObject("hoard", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                        any = "Passenger";
-                        bigint = 8821239038968084L;
-                        bigintStr = "9223372036854775808";
-                        bool = true;
-                        boolOpt = true;
-                        date = LocalDate.parse("2020-01-01");
-                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
-                        decimal = 3.141592653589793d;
-                        decimalStr = "3.14159265358979344719667586";
-                        enum_ = Enum.ONE;
-                        float32 = 1.1f;
-                        int_ = 1L;
-                        int32 = 1;
-                        int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                        intEnum = SimpleObjectIntEnum.Second;
-                        intOptNull = 717976L;
-                        num = 1.1d;
-                        numOptNull = 9665.2d;
-                        str = "test";
-                        strOpt = "testOptional";
-                    }});
-                }};
-                num = 1.1d;
-                obj = new SimpleObject("deposit", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                    any = "aside";
+            JsonQueryParamsObjectResponse res = sdk.parameters.jsonQueryParamsObject(new DeepObject("anyOf[0]", new org.openapis.openapi.models.shared.SimpleObject[]{{
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
                     bool = true;
@@ -922,16 +819,192 @@ public class Application {
                     int32 = 1;
                     int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
                     intEnum = SimpleObjectIntEnum.Second;
-                    intOptNull = 96496L;
                     num = 1.1d;
-                    numOptNull = 840.63d;
+                    str = "test";
+                    strOpt = "testOptional";
+                }}),
+                add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    any = "any";
+                    bigint = 8821239038968084L;
+                    bigintStr = "9223372036854775808";
+                    bool = true;
+                    boolOpt = true;
+                    date = LocalDate.parse("2020-01-01");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    decimal = 3.141592653589793d;
+                    decimalStr = "3.14159265358979344719667586";
+                    enum_ = Enum.ONE;
+                    float32 = 1.1f;
+                    int_ = 1L;
+                    int32 = 1;
+                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    intEnum = SimpleObjectIntEnum.Second;
+                    num = 1.1d;
+                    str = "test";
+                    strOpt = "testOptional";
+                }}),
+            }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
+                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    any = "any";
+                    bigint = 8821239038968084L;
+                    bigintStr = "9223372036854775808";
+                    bool = true;
+                    boolOpt = true;
+                    date = LocalDate.parse("2020-01-01");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    decimal = 3.141592653589793d;
+                    decimalStr = "3.14159265358979344719667586";
+                    enum_ = Enum.ONE;
+                    float32 = 1.1f;
+                    int_ = 1L;
+                    int32 = 1;
+                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    intEnum = SimpleObjectIntEnum.Second;
+                    num = 1.1d;
+                    str = "test";
+                    strOpt = "testOptional";
+                }});
+                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    any = "any";
+                    bigint = 8821239038968084L;
+                    bigintStr = "9223372036854775808";
+                    bool = true;
+                    boolOpt = true;
+                    date = LocalDate.parse("2020-01-01");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    decimal = 3.141592653589793d;
+                    decimalStr = "3.14159265358979344719667586";
+                    enum_ = Enum.ONE;
+                    float32 = 1.1f;
+                    int_ = 1L;
+                    int32 = 1;
+                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    intEnum = SimpleObjectIntEnum.Second;
+                    num = 1.1d;
+                    str = "test";
+                    strOpt = "testOptional";
+                }});
+            }}, 1.1d, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            bigint = 8821239038968084L;
+            bigintStr = "9223372036854775808";
+            boolOpt = true;
+            decimal = 3.141592653589793d;
+            decimalStr = "3.14159265358979344719667586";
+            intOptNull = 801553L;
+            numOptNull = 9688.05d;
+            strOpt = "testOptional";
+            }}, "test"){{
+                any = "anyOf[0]";
+                arr = new org.openapis.openapi.models.shared.SimpleObject[]{{
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                    add(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }}),
+                }};
+                bool = true;
+                int_ = 1L;
+                map = new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
+                    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                        any = "any";
+                        bigint = 8821239038968084L;
+                        bigintStr = "9223372036854775808";
+                        bool = true;
+                        boolOpt = true;
+                        date = LocalDate.parse("2020-01-01");
+                        dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                        decimal = 3.141592653589793d;
+                        decimalStr = "3.14159265358979344719667586";
+                        enum_ = Enum.ONE;
+                        float32 = 1.1f;
+                        int_ = 1L;
+                        int32 = 1;
+                        int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                        intEnum = SimpleObjectIntEnum.Second;
+                        num = 1.1d;
+                        str = "test";
+                        strOpt = "testOptional";
+                    }});
+                }};
+                num = 1.1d;
+                obj = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                    any = "any";
+                    bigint = 8821239038968084L;
+                    bigintStr = "9223372036854775808";
+                    bool = true;
+                    boolOpt = true;
+                    date = LocalDate.parse("2020-01-01");
+                    dateTime = OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z");
+                    decimal = 3.141592653589793d;
+                    decimalStr = "3.14159265358979344719667586";
+                    enum_ = Enum.ONE;
+                    float32 = 1.1f;
+                    int_ = 1L;
+                    int32 = 1;
+                    int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                    intEnum = SimpleObjectIntEnum.Second;
+                    num = 1.1d;
                     str = "test";
                     strOpt = "testOptional";
                 }};
                 str = "test";
-                type = "visionary Paradigm Malawi";
-            }}, new SimpleObject("Account", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.First, 1.1d, "test") {{
-                any = "now";
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -945,10 +1018,8 @@ public class Application {
                 int_ = 1L;
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.Third;
-                intOptNull = 702965L;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 6749.71d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -992,7 +1063,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -1041,7 +1112,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -1096,15 +1167,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            MixedQueryParamsResponse res = sdk.parameters.mixedQueryParams(new SimpleObject("Chair", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                any = "female";
+            MixedQueryParamsResponse res = sdk.parameters.mixedQueryParams(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -1118,14 +1189,12 @@ public class Application {
                 int_ = 1L;
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.First;
-                intOptNull = 108812L;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 4161.9d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("busily", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                any = "base";
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -1138,15 +1207,13 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                intEnum = SimpleObjectIntEnum.First;
-                intOptNull = 297570L;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 829.18d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("apropos", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                any = "Intelligent";
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -1159,11 +1226,9 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                intEnum = SimpleObjectIntEnum.First;
-                intOptNull = 183310L;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 9590.11d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -1214,15 +1279,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            PathParameterJsonResponse res = sdk.parameters.pathParameterJson(new SimpleObject("Pop", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                any = "bluetooth";
+            PathParameterJsonResponse res = sdk.parameters.pathParameterJson(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -1235,11 +1300,9 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
                 intEnum = SimpleObjectIntEnum.Second;
-                intOptNull = 121334L;
                 num = 1.1d;
-                numOptNull = 2775.09d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -1288,7 +1351,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -1296,13 +1359,16 @@ public class Application {
                 .build();
 
             PipeDelimitedQueryParamsArrayResponse res = sdk.parameters.pipeDelimitedQueryParamsArray(new String[]{{
+                add("test"),
                 add("test2"),
             }}, new Long[]{{
                 add(1L),
-            }}, new java.util.HashMap<String, String>() {{
-                put("vitae", "gold");
-            }}, new SimpleObject("synergistic", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.First, 1.1d, "test") {{
-                any = "Corporate";
+                add(2L),
+            }}, new java.util.HashMap<String, String>(){{
+                put("key1", "val1");
+                put("key2", "val2");
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -1316,10 +1382,8 @@ public class Application {
                 int_ = 1L;
                 int32 = 1;
                 int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
-                intEnum = SimpleObjectIntEnum.First;
-                intOptNull = 790307L;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 4843.4d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -1336,12 +1400,12 @@ public class Application {
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `arrParam`                                                                                         | List<*String*>                                                                                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `arrParamExploded`                                                                                 | List<*Long*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `mapParam`                                                                                         | Map<String, *String*>                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `objParam`                                                                                         | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md)             | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `arrParam`                                                                                         | List<*String*>                                                                                     | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `arrParamExploded`                                                                                 | List<*Long*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `mapParam`                                                                                         | Map<String, *String*>                                                                              | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `objParam`                                                                                         | [org.openapis.openapi.models.shared.SimpleObject](../../models/shared/SimpleObject.md)             | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
@@ -1365,7 +1429,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -1374,6 +1438,7 @@ public class Application {
 
             SimplePathParameterArraysResponse res = sdk.parameters.simplePathParameterArrays(new String[]{{
                 add("test"),
+                add("test2"),
             }});
 
             if (res.res != null) {
@@ -1414,17 +1479,19 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            SimplePathParameterMapsResponse res = sdk.parameters.simplePathParameterMaps(new java.util.HashMap<String, String>() {{
-                put("nobis", "even");
-            }}, new java.util.HashMap<String, Long>() {{
-                put("repudiandae", 157687L);
+            SimplePathParameterMapsResponse res = sdk.parameters.simplePathParameterMaps(new java.util.HashMap<String, String>(){{
+                put("test2", "value2");
+                put("test", "value");
+            }}, new java.util.HashMap<String, Long>(){{
+                put("test", 1L);
+                put("test2", 2L);
             }});
 
             if (res.res != null) {
@@ -1439,10 +1506,10 @@ public class Application {
 
 ### Parameters
 
-| Parameter             | Type                  | Required              | Description           |
-| --------------------- | --------------------- | --------------------- | --------------------- |
-| `mapParam`            | Map<String, *String*> | :heavy_check_mark:    | N/A                   |
-| `mapParamExploded`    | Map<String, *Long*>   | :heavy_check_mark:    | N/A                   |
+| Parameter             | Type                  | Required              | Description           | Example               |
+| --------------------- | --------------------- | --------------------- | --------------------- | --------------------- |
+| `mapParam`            | Map<String, *String*> | :heavy_check_mark:    | N/A                   | [object Object]       |
+| `mapParamExploded`    | Map<String, *Long*>   | :heavy_check_mark:    | N/A                   | [object Object]       |
 
 
 ### Response
@@ -1472,15 +1539,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            SimplePathParameterObjectsResponse res = sdk.parameters.simplePathParameterObjects(new SimpleObject("Research", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                any = "Ville";
+            SimplePathParameterObjectsResponse res = sdk.parameters.simplePathParameterObjects(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -1493,15 +1560,13 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                intEnum = SimpleObjectIntEnum.Third;
-                intOptNull = 586554L;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 2558d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, new SimpleObject("Pop", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
-                any = "repentant";
+            }}, new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -1514,11 +1579,9 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
-                intEnum = SimpleObjectIntEnum.Third;
-                intOptNull = 60882L;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 6063.03d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -1562,7 +1625,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)

@@ -17,22 +17,24 @@ Gets documentation for some language, I guess.
 
 ```typescript
 import { SDK } from "openapi";
-import { GetDocumentationPerLanguageRequest, GetDocumentationPerLanguageResponse } from "openapi/dist/sdk/models/operations";
+import { GetDocumentationPerLanguageRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const language: string = "hack";
 
-sdk.documentation.getDocumentationPerLanguage(language).then((res: GetDocumentationPerLanguageResponse) => {
+  const res = await sdk.documentation.getDocumentationPerLanguage(language);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

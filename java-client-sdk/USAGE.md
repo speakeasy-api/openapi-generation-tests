@@ -12,7 +12,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -62,9 +62,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "Gasoline Sleek", false, LocalDate.parse("2021-04-23"), OffsetDateTime.parse("2022-09-13T20:44:04.193Z"), 1952.32d, "Shoes Brockton", 1062.86d, UsageExamplePostEnumParameter.VALUE1, 0d, 2346.82f, 5954.85d, 215216L, 834441, "example 2") {{
-                requestBody = new UsageExamplePostRequestBody() {{
-                    fakerFormattedStrings = new FakerFormattedStrings() {{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "Gasoline Sleek", false, LocalDate.parse("2021-04-23"), OffsetDateTime.parse("2022-09-13T20:44:04.193Z"), 1952.32d, "Shoes Brockton", 1062.86d, UsageExamplePostEnumParameter.VALUE1, 0d, 2346.82f, 5954.85d, 215216L, 834441, "example 2"){{
+                requestBody = new UsageExamplePostRequestBody(){{
+                    fakerFormattedStrings = new FakerFormattedStrings(){{
                         addressFormat = "279 Cassandra Club";
                         directoryFormat = "/var/mail";
                         domainFormat = "dizzy-geology.net";
@@ -83,8 +83,8 @@ public class Application {
                         urlFormat = "http://sane-network.net";
                         uuidFormat = "364b6b4a-48ad-4bb3-b96c-2e388ca7107f";
                         zipcodeFormat = "87997-8268";
-                    }};;
-                    fakerStrings = new FakerStrings() {{
+                    }};
+                    fakerStrings = new FakerStrings(){{
                         city = "Carolinafort";
                         iban = "CY35007005052574022Q9F55000Q";
                         id = "<ID>";
@@ -138,26 +138,26 @@ public class Application {
                         url = "http://striped-cutlet.net";
                         username = "Jeanette82";
                         uuid = "004523e8-6559-4551-a938-6a9f8f4b14b9";
-                    }};;
-                    simpleObject = new SimpleObject("Pickup", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE, SimpleObjectIntEnum.Second, 1.1d, "test") {{
+                    }};
+                    simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
                         bigint = 8821239038968084L;
                         bigintStr = "9223372036854775808";
                         boolOpt = true;
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
-                        intOptNull = 513927L;
-                        numOptNull = 4837.7d;
+                        intOptNull = 843091L;
+                        numOptNull = 3767.71d;
                         strOpt = "testOptional";
-                    }};;
-                }};;
-                bigintParameterOptional = 460571L;
-                bigintStrParameterOptional = "South";
-                decimalParameterOptional = 2056.71d;
-                decimalStrParameterOptional = "provided blue Luxurious";
+                    }};
+                }};
+                bigintParameterOptional = 733506L;
+                bigintStrParameterOptional = "laudantium online Alabama";
+                decimalParameterOptional = 5072.07d;
+                decimalStrParameterOptional = "up";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 
-            UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME") {{
+            UsageExamplePostResponse res = sdk.generation.usageExamplePost(req, new UsageExamplePostSecurity("YOUR_PASSWORD", "YOUR_USERNAME"){{
                 password = "YOUR_PASSWORD";
                 username = "YOUR_USERNAME";
             }});

@@ -5,7 +5,7 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Any, Optional
+from typing import Optional, Union
 
 
 
@@ -17,12 +17,18 @@ class DeepObjectQueryParamsMapRequest:
 
 
 
+
+@dataclasses.dataclass
+class DeepObjectQueryParamsMapResArgs:
+    pass
+
+
 @dataclass_json(undefined=Undefined.EXCLUDE)
 
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapRes:
     r"""OK"""
-    args: dict[str, Any] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: dict[str, Union[str, list[str]]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
 

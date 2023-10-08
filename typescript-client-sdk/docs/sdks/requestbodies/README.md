@@ -95,24 +95,24 @@ Endpoints for testing request bodies.
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableObjectPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.nullableObjectPost({
-  optional: "Ergonomic",
-  required: 463086,
-}).then((res: NullableObjectPostResponse) => {
+  const res = await sdk.requestBodies.nullableObjectPost({
+    required: 302382,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -134,25 +134,26 @@ sdk.requestBodies.nullableObjectPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableRequiredEmptyObjectPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.nullableRequiredEmptyObjectPost({
-  nullableOptionalObj: {},
-  nullableRequiredObj: {},
-  requiredObj: {},
-}).then((res: NullableRequiredEmptyObjectPostResponse) => {
+  const res = await sdk.requestBodies.nullableRequiredEmptyObjectPost({
+    nullableOptionalObj: {},
+    nullableRequiredObj: {},
+    requiredObj: {},
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -174,31 +175,29 @@ sdk.requestBodies.nullableRequiredEmptyObjectPost({
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  NullableRequiredPropertyPostRequestBodyNullableRequiredEnum,
-  NullableRequiredPropertyPostResponse,
-} from "openapi/dist/sdk/models/operations";
+import { NullableRequiredPropertyPostRequestBodyNullableRequiredEnum } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.nullableRequiredPropertyPost({
-  nullableOptionalInt: 235517,
-  nullableRequiredArray: [
-    6917.41,
-  ],
-  nullableRequiredEnum: NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.First,
-  nullableRequiredInt: 282026,
-}).then((res: NullableRequiredPropertyPostResponse) => {
+  const res = await sdk.requestBodies.nullableRequiredPropertyPost({
+    nullableRequiredArray: [
+      2355.17,
+    ],
+    nullableRequiredEnum: NullableRequiredPropertyPostRequestBodyNullableRequiredEnum.Second,
+    nullableRequiredInt: 50266,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -220,30 +219,29 @@ sdk.requestBodies.nullableRequiredPropertyPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { NullableRequiredSharedObjectPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.nullableRequiredSharedObjectPost({
-  nullableOptionalObj: {
-    optional: "plus",
-    required: 831837,
-  },
-  nullableRequiredObj: {
-    optional: "Electronic Northwest Northeast",
-    required: 5767,
-  },
-}).then((res: NullableRequiredSharedObjectPostResponse) => {
+  const res = await sdk.requestBodies.nullableRequiredSharedObjectPost({
+    nullableOptionalObj: {
+      required: 86533,
+    },
+    nullableRequiredObj: {
+      required: 964394,
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -265,46 +263,45 @@ sdk.requestBodies.nullableRequiredSharedObjectPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonArray([
-  {
-    any: "yowza",
-    bigint: 8821239038968084,
-    bigintStr: "9223372036854775808",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-    decimal: 3.141592653589793,
-    decimalStr: "3.14159265358979344719667586",
-    enum: Enum.One,
-    float32: 1.1,
-    int: 1,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 729893,
-    num: 1.1,
-    numOptNull: 9069.2,
-    str: "test",
-    strOpt: "testOptional",
-  },
-]).then((res: RequestBodyPostApplicationJsonArrayResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArray([
+    {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
+      str: "test",
+      strOpt: "testOptional",
+    },
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -327,45 +324,43 @@ sdk.requestBodies.requestBodyPostApplicationJsonArray([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase([
-  {
-    anyVal: "Mercedes",
-    bigintStrVal: "Chief online",
-    bigintVal: 839695,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 4835.37,
-    enumVal: Enum.One,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
-]).then((res: RequestBodyPostApplicationJsonArrayCamelCaseResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase([
+    {
+      anyVal: "any example",
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      enumVal: Enum.One,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -388,46 +383,45 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayCamelCase([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayObjResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonArrayObj([
-  {
-    any: "compress",
-    bigint: 8821239038968084,
-    bigintStr: "9223372036854775808",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-    decimal: 3.141592653589793,
-    decimalStr: "3.14159265358979344719667586",
-    enum: Enum.One,
-    float32: 1.1,
-    int: 1,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 171819,
-    num: 1.1,
-    numOptNull: 8537.6,
-    str: "test",
-    strOpt: "testOptional",
-  },
-]).then((res: RequestBodyPostApplicationJsonArrayObjResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayObj([
+    {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
+      str: "test",
+      strOpt: "testOptional",
+    },
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -449,45 +443,43 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayObj([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayObjCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase([
-  {
-    anyVal: "haptic",
-    bigintStrVal: "Focused",
-    bigintVal: 518527,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 3073.55,
-    enumVal: Enum.One,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
-]).then((res: RequestBodyPostApplicationJsonArrayObjCamelCaseResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase([
+    {
+      anyVal: "any example",
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      enumVal: Enum.One,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -509,48 +501,47 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayObjCamelCase([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayOfArrayResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray([
-  [
-    {
-      any: "Non",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 920444,
-      num: 1.1,
-      numOptNull: 2040.72,
-      str: "test",
-      strOpt: "testOptional",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  ],
-]).then((res: RequestBodyPostApplicationJsonArrayOfArrayResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray([
+    [
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    ],
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -573,47 +564,45 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArray([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase([
-  [
-    {
-      anyVal: "seize",
-      bigintStrVal: "Tools New Dollar",
-      bigintVal: 979539,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2956.48,
-      enumVal: Enum.One,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  ],
-]).then((res: RequestBodyPostApplicationJsonArrayOfArrayCamelCaseResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase([
+    [
+      {
+        anyVal: "any example",
+        boolOptVal: true,
+        boolVal: true,
+        dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+        dateVal: new RFCDate("2020-01-01"),
+        enumVal: Enum.One,
+        float32Val: 2.2222222,
+        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32Val: 1,
+        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intOptNullVal: 999999,
+        intVal: 999999,
+        numOptNullVal: 1.1,
+        numVal: 1.1,
+        strOptVal: "optional example",
+        strVal: "example",
+      },
+    ],
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -636,25 +625,26 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayCamelCase([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive([
-  [
-    "yellow",
-  ],
-]).then((res: RequestBodyPostApplicationJsonArrayOfArrayOfPrimitiveResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive([
+    [
+      "yellow",
+    ],
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -677,48 +667,47 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayOfMapResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
-  {
-    "quasi": {
-      any: "Volvo",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.FiftyFive,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 779622,
-      num: 1.1,
-      numOptNull: 1652.31,
-      str: "test",
-      strOpt: "testOptional",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  },
-]).then((res: RequestBodyPostApplicationJsonArrayOfMapResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
+    {
+      "Southeast": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    },
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -741,47 +730,45 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
-  {
-    "occaecati": {
-      anyVal: "Implementation",
-      bigintStrVal: "benchmark olive",
-      bigintVal: 49157,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 8369.47,
-      enumVal: Enum.One,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  },
-]).then((res: RequestBodyPostApplicationJsonArrayOfMapCamelCaseResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
+    {
+      "culpa": {
+        anyVal: "any example",
+        boolOptVal: true,
+        boolVal: true,
+        dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+        dateVal: new RFCDate("2020-01-01"),
+        enumVal: Enum.One,
+        float32Val: 2.2222222,
+        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32Val: 1,
+        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intOptNullVal: 999999,
+        intVal: 999999,
+        numOptNullVal: 1.1,
+        numVal: 1.1,
+        strOptVal: "optional example",
+        strVal: "example",
+      },
+    },
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -804,23 +791,24 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonArrayOfPrimitiveResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive([
-  "bit",
-]).then((res: RequestBodyPostApplicationJsonArrayOfPrimitiveResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive([
+    "bit",
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -843,100 +831,134 @@ sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonDeepResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonDeep({
-  any: "medium",
-  arr: [
-    {
-      any: "deliverables",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 69866,
-      num: 1.1,
-      numOptNull: 9989.71,
-      str: "test",
-      strOpt: "testOptional",
-    },
-  ],
-  bool: true,
-  int: 1,
-  map: {
-    "asperiores": {
-      any: "Colon",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 653970,
-      num: 1.1,
-      numOptNull: 4828.24,
-      str: "test",
-      strOpt: "testOptional",
-    },
-  },
-  num: 1.1,
-  obj: {
-    any: "Maine",
-    bigint: 8821239038968084,
-    bigintStr: "9223372036854775808",
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonDeep({
+    any: "anyOf[0]",
+    arr: [
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    ],
     bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-    decimal: 3.141592653589793,
-    decimalStr: "3.14159265358979344719667586",
-    enum: Enum.One,
-    float32: 1.1,
     int: 1,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 887582,
+    map: {
+      "key": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+      "key2": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    },
     num: 1.1,
-    numOptNull: 1921.97,
+    obj: {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
+      str: "test",
+      strOpt: "testOptional",
+    },
     str: "test",
-    strOpt: "testOptional",
-  },
-  str: "test",
-  type: "calculate Seamless",
-}).then((res: RequestBodyPostApplicationJsonDeepResponse) => {
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -958,35 +980,74 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeep({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonDeepCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
-  anyVal: "Cambridgeshire",
-  arrVal: [
-    {
-      anyVal: "Table",
-      bigintStrVal: "South Northwest Mouse",
-      bigintVal: 484195,
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
+    anyVal: "Cambridgeshire",
+    arrVal: [
+      {
+        anyVal: "any example",
+        boolOptVal: true,
+        boolVal: true,
+        dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+        dateVal: new RFCDate("2020-01-01"),
+        enumVal: Enum.One,
+        float32Val: 2.2222222,
+        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32Val: 1,
+        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intOptNullVal: 999999,
+        intVal: 999999,
+        numOptNullVal: 1.1,
+        numVal: 1.1,
+        strOptVal: "optional example",
+        strVal: "example",
+      },
+    ],
+    boolVal: false,
+    intVal: 206440,
+    mapVal: {
+      "Palladium": {
+        anyVal: "any example",
+        boolOptVal: true,
+        boolVal: true,
+        dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+        dateVal: new RFCDate("2020-01-01"),
+        enumVal: Enum.One,
+        float32Val: 2.2222222,
+        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32Val: 1,
+        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intOptNullVal: 999999,
+        intVal: 999999,
+        numOptNullVal: 1.1,
+        numVal: 1.1,
+        strOptVal: "optional example",
+        strVal: "example",
+      },
+    },
+    numVal: 1379.45,
+    objVal: {
+      anyVal: "any example",
       boolOptVal: true,
       boolVal: true,
       dateTimeVal: new Date("2020-01-01T00:00:00Z"),
       dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 9223.07,
       enumVal: Enum.One,
       float32Val: 2.2222222,
       int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
       int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
       intOptNullVal: 999999,
       intVal: 999999,
       numOptNullVal: 1.1,
@@ -994,61 +1055,13 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
       strOptVal: "optional example",
       strVal: "example",
     },
-  ],
-  boolVal: false,
-  intVal: 327264,
-  mapVal: {
-    "aliquid": {
-      anyVal: "Qatar",
-      bigintStrVal: "deposit Account",
-      bigintVal: 308169,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 2835.01,
-      enumVal: Enum.One,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
-    },
-  },
-  numVal: 9642.91,
-  objVal: {
-    anyVal: "Directives",
-    bigintStrVal: "Chrysler ohm joule",
-    bigintVal: 254659,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 7531.85,
-    enumVal: Enum.One,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.FiftyFive,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
-  strVal: "Falls",
-  type: "Gloves Southwest",
-}).then((res: RequestBodyPostApplicationJsonDeepCamelCaseResponse) => {
+    strVal: "Music Djibouti solid",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1070,46 +1083,45 @@ sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonMap({
-  "nisi": {
-    any: "soap",
-    bigint: 8821239038968084,
-    bigintStr: "9223372036854775808",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-    decimal: 3.141592653589793,
-    decimalStr: "3.14159265358979344719667586",
-    enum: Enum.One,
-    float32: 1.1,
-    int: 1,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.FiftyFive,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 901357,
-    num: 1.1,
-    numOptNull: 8215.81,
-    str: "test",
-    strOpt: "testOptional",
-  },
-}).then((res: RequestBodyPostApplicationJsonMapResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMap({
+    "Bentley": {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
+      str: "test",
+      strOpt: "testOptional",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1132,45 +1144,43 @@ sdk.requestBodies.requestBodyPostApplicationJsonMap({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
-  "aliquid": {
-    anyVal: "Southwest",
-    bigintStrVal: "array Oak",
-    bigintVal: 877576,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 9955.63,
-    enumVal: Enum.One,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
-}).then((res: RequestBodyPostApplicationJsonMapCamelCaseResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
+    "archive": {
+      anyVal: "any example",
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      enumVal: Enum.One,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1193,46 +1203,45 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapObjResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonMapObj({
-  "hic": {
-    any: "redundant",
-    bigint: 8821239038968084,
-    bigintStr: "9223372036854775808",
-    bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-    decimal: 3.141592653589793,
-    decimalStr: "3.14159265358979344719667586",
-    enum: Enum.One,
-    float32: 1.1,
-    int: 1,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.SixtyNine,
-    intEnum: SimpleObjectIntEnum.First,
-    intOptNull: 744657,
-    num: 1.1,
-    numOptNull: 5700.86,
-    str: "test",
-    strOpt: "testOptional",
-  },
-}).then((res: RequestBodyPostApplicationJsonMapObjResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapObj({
+    "larder": {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
+      str: "test",
+      strOpt: "testOptional",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1254,45 +1263,43 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapObj({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapObjCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
-  "distinctio": {
-    anyVal: "optimal",
-    bigintStrVal: "Modern Borders Mexico",
-    bigintVal: 745602,
-    boolOptVal: true,
-    boolVal: true,
-    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-    dateVal: new RFCDate("2020-01-01"),
-    decimalVal: 549.07,
-    enumVal: Enum.One,
-    float32Val: 2.2222222,
-    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-    int32Val: 1,
-    intEnumVal: SimpleObjectCamelCaseIntEnumVal.First,
-    intOptNullVal: 999999,
-    intVal: 999999,
-    numOptNullVal: 1.1,
-    numVal: 1.1,
-    strOptVal: "optional example",
-    strVal: "example",
-  },
-}).then((res: RequestBodyPostApplicationJsonMapObjCamelCaseResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
+    "female": {
+      anyVal: "any example",
+      boolOptVal: true,
+      boolVal: true,
+      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+      dateVal: new RFCDate("2020-01-01"),
+      enumVal: Enum.One,
+      float32Val: 2.2222222,
+      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+      int32Val: 1,
+      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+      intOptNullVal: 999999,
+      intVal: 999999,
+      numOptNullVal: 1.1,
+      numVal: 1.1,
+      strOptVal: "optional example",
+      strVal: "example",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1314,48 +1321,47 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapOfArrayResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray({
-  "aliquid": [
-    {
-      any: "Division",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 381188,
-      num: 1.1,
-      numOptNull: 3457.34,
-      str: "test",
-      strOpt: "testOptional",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  ],
-}).then((res: RequestBodyPostApplicationJsonMapOfArrayResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray({
+    "Loan": [
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1378,47 +1384,45 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
-  "vero": [
-    {
-      anyVal: "a",
-      bigintStrVal: "Bicycle copy flustered",
-      bigintVal: 229246,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 4549.25,
-      enumVal: Enum.One,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.OneHundredAndEightyOne,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  ],
-}).then((res: RequestBodyPostApplicationJsonMapOfArrayCamelCaseResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
+    "nonstop": [
+      {
+        anyVal: "any example",
+        boolOptVal: true,
+        boolVal: true,
+        dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+        dateVal: new RFCDate("2020-01-01"),
+        enumVal: Enum.One,
+        float32Val: 2.2222222,
+        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32Val: 1,
+        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intOptNullVal: 999999,
+        intVal: 999999,
+        numOptNullVal: 1.1,
+        numVal: 1.1,
+        strOptVal: "optional example",
+        strVal: "example",
+      },
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1441,48 +1445,47 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapOfMapResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap({
-  "animi": {
-    "inventore": {
-      any: "vice",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 313517,
-      num: 1.1,
-      numOptNull: 4543.93,
-      str: "test",
-      strOpt: "testOptional",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  },
-}).then((res: RequestBodyPostApplicationJsonMapOfMapResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap({
+    "Senior": {
+      "vice": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1505,47 +1508,45 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
-  "eos": {
-    "ut": {
-      anyVal: "plum",
-      bigintStrVal: "up Southeast",
-      bigintVal: 807130,
-      boolOptVal: true,
-      boolVal: true,
-      dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-      dateVal: new RFCDate("2020-01-01"),
-      decimalVal: 60.43,
-      enumVal: Enum.One,
-      float32Val: 2.2222222,
-      int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-      int32Val: 1,
-      intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-      intOptNullVal: 999999,
-      intVal: 999999,
-      numOptNullVal: 1.1,
-      numVal: 1.1,
-      strOptVal: "optional example",
-      strVal: "example",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  },
-}).then((res: RequestBodyPostApplicationJsonMapOfMapCamelCaseResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
+    "Home": {
+      "plum": {
+        anyVal: "any example",
+        boolOptVal: true,
+        boolVal: true,
+        dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+        dateVal: new RFCDate("2020-01-01"),
+        enumVal: Enum.One,
+        float32Val: 2.2222222,
+        int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+        int32Val: 1,
+        intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+        intOptNullVal: 999999,
+        intVal: 999999,
+        numOptNullVal: 1.1,
+        numVal: 1.1,
+        strOptVal: "optional example",
+        strVal: "example",
+      },
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1568,25 +1569,26 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive({
-  "quisquam": {
-    "molestiae": "collaboration",
-  },
-}).then((res: RequestBodyPostApplicationJsonMapOfMapOfPrimitiveResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive({
+    "turquoise": {
+      "collaboration": "Officer",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1609,23 +1611,24 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMapOfPrimitiveResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive({
-  "accusamus": "Salad",
-}).then((res: RequestBodyPostApplicationJsonMapOfPrimitiveResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive({
+    "equally": "whereas",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1648,44 +1651,43 @@ sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonMultipleJsonFilteredResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered({
-  any: "hack",
-  bigint: 8821239038968084,
-  bigintStr: "9223372036854775808",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-  decimal: 3.141592653589793,
-  decimalStr: "3.14159265358979344719667586",
-  enum: Enum.One,
-  float32: 1.1,
-  int: 1,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 279112,
-  num: 1.1,
-  numOptNull: 7372.56,
-  str: "test",
-  strOpt: "testOptional",
-}).then((res: RequestBodyPostApplicationJsonMultipleJsonFilteredResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered({
+    any: "any",
+    bigint: 8821239038968084,
+    bigintStr: "9223372036854775808",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    decimal: 3.141592653589793,
+    decimalStr: "3.14159265358979344719667586",
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
+    num: 1.1,
+    str: "test",
+    strOpt: "testOptional",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1707,44 +1709,43 @@ sdk.requestBodies.requestBodyPostApplicationJsonMultipleJsonFiltered({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonSimpleResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonSimple({
-  any: "Hampton",
-  bigint: 8821239038968084,
-  bigintStr: "9223372036854775808",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-  decimal: 3.141592653589793,
-  decimalStr: "3.14159265358979344719667586",
-  enum: Enum.One,
-  float32: 1.1,
-  int: 1,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 708824,
-  num: 1.1,
-  numOptNull: 2273.77,
-  str: "test",
-  strOpt: "testOptional",
-}).then((res: RequestBodyPostApplicationJsonSimpleResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonSimple({
+    any: "any",
+    bigint: 8821239038968084,
+    bigintStr: "9223372036854775808",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    decimal: 3.141592653589793,
+    decimalStr: "3.14159265358979344719667586",
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
+    num: 1.1,
+    str: "test",
+    strOpt: "testOptional",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1766,43 +1767,41 @@ sdk.requestBodies.requestBodyPostApplicationJsonSimple({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostApplicationJsonSimpleCamelCaseResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectCamelCaseInt32EnumVal, SimpleObjectCamelCaseIntEnumVal } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase({
-  anyVal: "rich",
-  bigintStrVal: "Direct Pound",
-  bigintVal: 726659,
-  boolOptVal: true,
-  boolVal: true,
-  dateTimeVal: new Date("2020-01-01T00:00:00Z"),
-  dateVal: new RFCDate("2020-01-01"),
-  decimalVal: 6907.97,
-  enumVal: Enum.One,
-  float32Val: 2.2222222,
-  int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
-  int32Val: 1,
-  intEnumVal: SimpleObjectCamelCaseIntEnumVal.Second,
-  intOptNullVal: 999999,
-  intVal: 999999,
-  numOptNullVal: 1.1,
-  numVal: 1.1,
-  strOptVal: "optional example",
-  strVal: "example",
-}).then((res: RequestBodyPostApplicationJsonSimpleCamelCaseResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase({
+    anyVal: "any example",
+    boolOptVal: true,
+    boolVal: true,
+    dateTimeVal: new Date("2020-01-01T00:00:00Z"),
+    dateVal: new RFCDate("2020-01-01"),
+    enumVal: Enum.One,
+    float32Val: 2.2222222,
+    int32EnumVal: SimpleObjectCamelCaseInt32EnumVal.SixtyNine,
+    int32Val: 1,
+    intEnumVal: SimpleObjectCamelCaseIntEnumVal.Third,
+    intOptNullVal: 999999,
+    intVal: 999999,
+    numOptNullVal: 1.1,
+    numVal: 1.1,
+    strOptVal: "optional example",
+    strVal: "example",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1824,36 +1823,37 @@ sdk.requestBodies.requestBodyPostApplicationJsonSimpleCamelCase({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostComplexNumberTypesResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostComplexNumberTypes({
-  complexNumberTypes: {
-    bigint: 765757,
-    bigintStr: "Metal calculating Lamborghini",
-    decimal: 9373.95,
-    decimalStr: "Royce",
-  },
-  pathBigInt: 958218,
-  pathBigIntStr: "male ASCII",
-  pathDecimal: 1464.39,
-  pathDecimalStr: "Lancaster hertz young",
-  queryBigInt: 338976,
-  queryBigIntStr: "Northwest",
-  queryDecimal: 3970.19,
-  queryDecimalStr: "Toyota",
-}).then((res: RequestBodyPostComplexNumberTypesResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostComplexNumberTypes({
+    complexNumberTypes: {
+      bigint: 765757,
+      bigintStr: "Metal calculating Lamborghini",
+      decimal: 9373.95,
+      decimalStr: "Royce",
+    },
+    pathBigInt: 958218,
+    pathBigIntStr: "male ASCII",
+    pathDecimal: 1464.39,
+    pathDecimalStr: "Lancaster hertz young",
+    queryBigInt: 338976,
+    queryBigIntStr: "Northwest",
+    queryDecimal: 3970.19,
+    queryDecimalStr: "Toyota",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1875,7 +1875,6 @@ sdk.requestBodies.requestBodyPostComplexNumberTypes({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostDefaultsAndConstsResponse } from "openapi/dist/sdk/models/operations";
 import {
   DefaultsAndConstsConstEnumInt,
   DefaultsAndConstsConstEnumStr,
@@ -1884,48 +1883,36 @@ import {
 } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostDefaultsAndConsts({
-  constBigInt: 559205,
-  constBigIntStr: "Chief",
-  constBool: false,
-  constDate: new RFCDate("2021-05-03"),
-  constDateTime: new Date("2023-07-14T17:39:00.984Z"),
-  constDecimal: 2995.45,
-  constDecimalStr: "invoice Cotton",
-  constEnumInt: DefaultsAndConstsConstEnumInt.Two,
-  constEnumStr: DefaultsAndConstsConstEnumStr.One,
-  constInt: 788517,
-  constNum: 639.73,
-  constStr: "Dong Dysprosium",
-  constStrNull: "Kids quarrelsome",
-  defaultBigInt: 374051,
-  defaultBigIntStr: "incubate Lane Music",
-  defaultBool: false,
-  defaultDate: new RFCDate("2023-07-16"),
-  defaultDateTime: new Date("2021-06-28T10:07:28.276Z"),
-  defaultDecimal: 3014.85,
-  defaultDecimalStr: "South Hafnium amid",
-  defaultEnumInt: DefaultsAndConstsDefaultEnumInt.Three,
-  defaultEnumStr: DefaultsAndConstsDefaultEnumStr.One,
-  defaultInt: 77435,
-  defaultNum: 6102.85,
-  defaultStr: "Electric Diesel",
-  defaultStrNullable: "silver Central",
-  defaultStrOptional: "Gasoline Pines boo",
-  normalField: "free",
-}).then((res: RequestBodyPostDefaultsAndConstsResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostDefaultsAndConsts({
+    constBigInt: 559205,
+    constBigIntStr: "Chief",
+    constBool: false,
+    constDate: new RFCDate("2021-05-03"),
+    constDateTime: new Date("2023-07-14T17:39:00.984Z"),
+    constDecimal: 2995.45,
+    constDecimalStr: "invoice Cotton",
+    constEnumInt: DefaultsAndConstsConstEnumInt.Two,
+    constEnumStr: DefaultsAndConstsConstEnumStr.One,
+    constInt: 788517,
+    constNum: 639.73,
+    constStr: "Dong Dysprosium",
+    constStrNull: "Kids quarrelsome",
+    normalField: "Cab Lane",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1947,24 +1934,25 @@ sdk.requestBodies.requestBodyPostDefaultsAndConsts({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostEmptyObjectResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostEmptyObject({
-  empty: {},
-  emptyWithEmptyProperties: {},
-}).then((res: RequestBodyPostEmptyObjectResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostEmptyObject({
+    empty: {},
+    emptyWithEmptyProperties: {},
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -1986,100 +1974,134 @@ sdk.requestBodies.requestBodyPostEmptyObject({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostFormDeepResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostFormDeep({
-  any: "and",
-  arr: [
-    {
-      any: "South",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 486156,
-      num: 1.1,
-      numOptNull: 737.95,
-      str: "test",
-      strOpt: "testOptional",
-    },
-  ],
-  bool: true,
-  int: 1,
-  map: {
-    "nisi": {
-      any: "lazy",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.First,
-      intOptNull: 736071,
-      num: 1.1,
-      numOptNull: 5899.47,
-      str: "test",
-      strOpt: "testOptional",
-    },
-  },
-  num: 1.1,
-  obj: {
-    any: "Northeast",
-    bigint: 8821239038968084,
-    bigintStr: "9223372036854775808",
+  const res = await sdk.requestBodies.requestBodyPostFormDeep({
+    any: "anyOf[0]",
+    arr: [
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    ],
     bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-    decimal: 3.141592653589793,
-    decimalStr: "3.14159265358979344719667586",
-    enum: Enum.One,
-    float32: 1.1,
     int: 1,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Second,
-    intOptNull: 15330,
+    map: {
+      "key": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+      "key2": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    },
     num: 1.1,
-    numOptNull: 6190.57,
+    obj: {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
+      str: "test",
+      strOpt: "testOptional",
+    },
     str: "test",
-    strOpt: "testOptional",
-  },
-  str: "test",
-  type: "Hybrid female",
-}).then((res: RequestBodyPostFormDeepResponse) => {
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2101,23 +2123,24 @@ sdk.requestBodies.requestBodyPostFormDeep({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostFormMapPrimitiveResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostFormMapPrimitive({
-  "nisi": "Sports",
-}).then((res: RequestBodyPostFormMapPrimitiveResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostFormMapPrimitive({
+    "complexity": "SUV",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2139,44 +2162,43 @@ sdk.requestBodies.requestBodyPostFormMapPrimitive({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostFormSimpleResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostFormSimple({
-  any: "Product",
-  bigint: 8821239038968084,
-  bigintStr: "9223372036854775808",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-  decimal: 3.141592653589793,
-  decimalStr: "3.14159265358979344719667586",
-  enum: Enum.One,
-  float32: 1.1,
-  int: 1,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.FiftyFive,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 693294,
-  num: 1.1,
-  numOptNull: 2022.98,
-  str: "test",
-  strOpt: "testOptional",
-}).then((res: RequestBodyPostFormSimpleResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostFormSimple({
+    any: "any",
+    bigint: 8821239038968084,
+    bigintStr: "9223372036854775808",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    decimal: 3.141592653589793,
+    decimalStr: "3.14159265358979344719667586",
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
+    num: 1.1,
+    str: "test",
+    strOpt: "testOptional",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2198,23 +2220,24 @@ sdk.requestBodies.requestBodyPostFormSimple({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesArrayBigIntResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt([
-  564849,
-]).then((res: RequestBodyPostJsonDataTypesArrayBigIntResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt([
+    564849,
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2236,23 +2259,24 @@ sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesArrayDateResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate([
-  new RFCDate("2022-03-22"),
-]).then((res: RequestBodyPostJsonDataTypesArrayDateResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate([
+    new RFCDate("2022-03-22"),
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2274,23 +2298,24 @@ sdk.requestBodies.requestBodyPostJsonDataTypesArrayDate([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesArrayDecimalStrResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr([
-  "Group East incentivize",
-]).then((res: RequestBodyPostJsonDataTypesArrayDecimalStrResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr([
+    "Group East incentivize",
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2312,21 +2337,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesBigIntResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(687617).then((res: RequestBodyPostJsonDataTypesBigIntResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(687617);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2348,21 +2374,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(687617).then((res: RequestB
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesBigIntStrResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("pixel gray").then((res: RequestBodyPostJsonDataTypesBigIntStrResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("pixel gray");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2384,21 +2411,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("pixel gray").then((res:
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesBooleanResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(false).then((res: RequestBodyPostJsonDataTypesBooleanResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(false);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2420,21 +2448,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(false).then((res: RequestB
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesDateResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2022-03-04")).then((res: RequestBodyPostJsonDataTypesDateResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2022-03-04"));
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2456,21 +2485,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2022-03-04")).th
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesDateTimeResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2023-03-04T01:33:15.031Z")).then((res: RequestBodyPostJsonDataTypesDateTimeResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2023-03-04T01:33:15.031Z"));
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2492,21 +2522,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2023-03-04T01:3
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesDecimalResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(1107.81).then((res: RequestBodyPostJsonDataTypesDecimalResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(1107.81);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2528,21 +2559,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(1107.81).then((res: Reques
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesDecimalStrResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("gadzooks Luxurious").then((res: RequestBodyPostJsonDataTypesDecimalStrResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("gadzooks Luxurious");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2564,21 +2596,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("gadzooks Luxurious").t
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesFloat32Response } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(4464.34).then((res: RequestBodyPostJsonDataTypesFloat32Response) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(4464.34);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2600,21 +2633,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(4464.34).then((res: Reques
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesInt32Response } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesInt32(22155).then((res: RequestBodyPostJsonDataTypesInt32Response) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesInt32(22155);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2636,21 +2670,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesInt32(22155).then((res: RequestBod
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesIntegerResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesInteger(273673).then((res: RequestBodyPostJsonDataTypesIntegerResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesInteger(273673);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2672,23 +2707,24 @@ sdk.requestBodies.requestBodyPostJsonDataTypesInteger(273673).then((res: Request
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesMapBigIntStrResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr({
-  "doloremque": "York firewall",
-}).then((res: RequestBodyPostJsonDataTypesMapBigIntStrResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr({
+    "Nepal": "Creative",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2710,23 +2746,24 @@ sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesMapDateTimeResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime({
-  "quas": new Date("2022-09-29T16:39:16.558Z"),
-}).then((res: RequestBodyPostJsonDataTypesMapDateTimeResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime({
+    "quantify": new Date("2022-02-12T21:23:09.538Z"),
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2748,23 +2785,24 @@ sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesMapDecimalResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal({
-  "exercitationem": 4182.45,
-}).then((res: RequestBodyPostJsonDataTypesMapDecimalResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal({
+    "Inverse": 9134.24,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2786,21 +2824,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesNumberResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesNumber(2193.66).then((res: RequestBodyPostJsonDataTypesNumberResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesNumber(2193.66);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2822,21 +2861,22 @@ sdk.requestBodies.requestBodyPostJsonDataTypesNumber(2193.66).then((res: Request
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostJsonDataTypesStringResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostJsonDataTypesString("Gasoline").then((res: RequestBodyPostJsonDataTypesStringResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesString("Gasoline");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2858,44 +2898,43 @@ sdk.requestBodies.requestBodyPostJsonDataTypesString("Gasoline").then((res: Requ
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesComponentFilteredResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered({
-  any: "Unbranded",
-  bigint: 8821239038968084,
-  bigintStr: "9223372036854775808",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-  decimal: 3.141592653589793,
-  decimalStr: "3.14159265358979344719667586",
-  enum: Enum.One,
-  float32: 1.1,
-  int: 1,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 414559,
-  num: 1.1,
-  numOptNull: 462.04,
-  str: "test",
-  strOpt: "testOptional",
-}).then((res: RequestBodyPostMultipleContentTypesComponentFilteredResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered({
+    any: "any",
+    bigint: 8821239038968084,
+    bigintStr: "9223372036854775808",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    decimal: 3.141592653589793,
+    decimalStr: "3.14159265358979344719667586",
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
+    num: 1.1,
+    str: "test",
+    strOpt: "testOptional",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2917,25 +2956,26 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesComponentFiltered({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesInlineFilteredResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
-  bool: false,
-  num: 3558.41,
-  str: "South expiate aha",
-}).then((res: RequestBodyPostMultipleContentTypesInlineFilteredResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
+    bool: false,
+    num: 3558.41,
+    str: "South expiate aha",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -2960,16 +3000,16 @@ import { SDK } from "openapi";
 import {
   RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded,
   RequestBodyPostMultipleContentTypesSplitParamFormRequest,
-  RequestBodyPostMultipleContentTypesSplitParamFormResponse,
 } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
   bool3: false,
   num3: 8693.24,
@@ -2977,11 +3017,12 @@ const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwF
 };
 const paramStr: string = "Architect";
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamFormResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3007,16 +3048,16 @@ import { SDK } from "openapi";
 import {
   RequestBodyPostMultipleContentTypesSplitParamApplicationJSON,
   RequestBodyPostMultipleContentTypesSplitParamJsonRequest,
-  RequestBodyPostMultipleContentTypesSplitParamJsonResponse,
 } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
   bool: false,
   num: 9771.91,
@@ -3024,11 +3065,12 @@ const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON 
 };
 const paramStr: string = "Brand";
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamJsonResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3054,16 +3096,16 @@ import { SDK } from "openapi";
 import {
   RequestBodyPostMultipleContentTypesSplitParamMultipartFormData,
   RequestBodyPostMultipleContentTypesSplitParamMultipartRequest,
-  RequestBodyPostMultipleContentTypesSplitParamMultipartResponse,
 } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
   bool2: false,
   num2: 7000.76,
@@ -3071,11 +3113,12 @@ const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormDat
 };
 const paramStr: string = "Ergonomic";
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr).then((res: RequestBodyPostMultipleContentTypesSplitParamMultipartResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3098,25 +3141,26 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(request
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitFormResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
-  bool3: false,
-  num3: 7842.07,
-  str3: "Cab encryption SMTP",
-}).then((res: RequestBodyPostMultipleContentTypesSplitFormResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
+    bool3: false,
+    num3: 7842.07,
+    str3: "Cab encryption SMTP",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3138,25 +3182,26 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitJsonResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
-  bool: false,
-  num: 2445.56,
-  str: "hew frictionless Hybrid",
-}).then((res: RequestBodyPostMultipleContentTypesSplitJsonResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
+    bool: false,
+    num: 2445.56,
+    str: "hew frictionless Hybrid",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3178,25 +3223,26 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostMultipleContentTypesSplitMultipartResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
-  bool2: false,
-  num2: 2079.2,
-  str2: "cyan",
-}).then((res: RequestBodyPostMultipleContentTypesSplitMultipartResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
+    bool2: false,
+    num2: 2079.2,
+    str2: "cyan",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3218,21 +3264,22 @@ sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostNotNullableNotRequiredStringBodyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("Chicken").then((res: RequestBodyPostNotNullableNotRequiredStringBodyResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("Chicken");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3254,23 +3301,24 @@ sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("Chicken").the
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostNullArrayResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostNullArray([
-  "simple",
-]).then((res: RequestBodyPostNullArrayResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostNullArray([
+    "simple",
+  ]);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3292,23 +3340,24 @@ sdk.requestBodies.requestBodyPostNullArray([
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostNullDictionaryResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostNullDictionary({
-  "omnis": "virtual",
-}).then((res: RequestBodyPostNullDictionaryResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostNullDictionary({
+    "Intersex": "robust",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3330,21 +3379,22 @@ sdk.requestBodies.requestBodyPostNullDictionary({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostNullableNotRequiredStringBodyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("Michigan").then((res: RequestBodyPostNullableNotRequiredStringBodyResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("Michigan");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3366,21 +3416,22 @@ sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("Michigan").then(
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPostNullableRequiredStringBodyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPostNullableRequiredStringBody("Mouse").then((res: RequestBodyPostNullableRequiredStringBodyResponse) => {
+  const res = await sdk.requestBodies.requestBodyPostNullableRequiredStringBody("Mouse");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3402,21 +3453,22 @@ sdk.requestBodies.requestBodyPostNullableRequiredStringBody("Mouse").then((res: 
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutBytesResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPutBytes("9sS}}O%}aJ" as bytes <<<>>>).then((res: RequestBodyPutBytesResponse) => {
+  const res = await sdk.requestBodies.requestBodyPutBytes("9sS}}O%}aJ" as bytes <<<>>>);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3438,23 +3490,25 @@ sdk.requestBodies.requestBodyPutBytes("9sS}}O%}aJ" as bytes <<<>>>).then((res: R
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutBytesWithParamsRequest, RequestBodyPutBytesWithParamsResponse } from "openapi/dist/sdk/models/operations";
+import { RequestBodyPutBytesWithParamsRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const requestBody: Uint8Array = "o%jIWe4_P6" as bytes <<<>>>;
 const queryStringParam: string = "Huntington";
 
-sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam).then((res: RequestBodyPutBytesWithParamsResponse) => {
+  const res = await sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3477,100 +3531,134 @@ sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam).t
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutMultipartDeepResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPutMultipartDeep({
-  any: "Chevrolet",
-  arr: [
-    {
-      any: "noodles",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-      intEnum: SimpleObjectIntEnum.Third,
-      intOptNull: 509676,
-      num: 1.1,
-      numOptNull: 3459.56,
-      str: "test",
-      strOpt: "testOptional",
-    },
-  ],
-  bool: true,
-  int: 1,
-  map: {
-    "atque": {
-      any: "Paradigm",
-      bigint: 8821239038968084,
-      bigintStr: "9223372036854775808",
-      bool: true,
-      boolOpt: true,
-      date: new RFCDate("2020-01-01"),
-      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-      decimal: 3.141592653589793,
-      decimalStr: "3.14159265358979344719667586",
-      enum: Enum.One,
-      float32: 1.1,
-      int: 1,
-      int32: 1,
-      int32Enum: SimpleObjectInt32Enum.SixtyNine,
-      intEnum: SimpleObjectIntEnum.Second,
-      intOptNull: 779552,
-      num: 1.1,
-      numOptNull: 4828.21,
-      str: "test",
-      strOpt: "testOptional",
-    },
-  },
-  num: 1.1,
-  obj: {
-    any: "Health",
-    bigint: 8821239038968084,
-    bigintStr: "9223372036854775808",
+  const res = await sdk.requestBodies.requestBodyPutMultipartDeep({
+    any: "anyOf[0]",
+    arr: [
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+      {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    ],
     bool: true,
-    boolOpt: true,
-    date: new RFCDate("2020-01-01"),
-    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-    decimal: 3.141592653589793,
-    decimalStr: "3.14159265358979344719667586",
-    enum: Enum.One,
-    float32: 1.1,
     int: 1,
-    int32: 1,
-    int32Enum: SimpleObjectInt32Enum.OneHundredAndEightyOne,
-    intEnum: SimpleObjectIntEnum.Third,
-    intOptNull: 989301,
+    map: {
+      "key2": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+      "key": {
+        any: "any",
+        bigint: 8821239038968084,
+        bigintStr: "9223372036854775808",
+        bool: true,
+        boolOpt: true,
+        date: new RFCDate("2020-01-01"),
+        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+        decimal: 3.141592653589793,
+        decimalStr: "3.14159265358979344719667586",
+        enum: Enum.One,
+        float32: 1.1,
+        int: 1,
+        int32: 1,
+        int32Enum: SimpleObjectInt32Enum.FiftyFive,
+        intEnum: SimpleObjectIntEnum.Second,
+        num: 1.1,
+        str: "test",
+        strOpt: "testOptional",
+      },
+    },
     num: 1.1,
-    numOptNull: 9969,
+    obj: {
+      any: "any",
+      bigint: 8821239038968084,
+      bigintStr: "9223372036854775808",
+      bool: true,
+      boolOpt: true,
+      date: new RFCDate("2020-01-01"),
+      dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+      decimal: 3.141592653589793,
+      decimalStr: "3.14159265358979344719667586",
+      enum: Enum.One,
+      float32: 1.1,
+      int: 1,
+      int32: 1,
+      int32Enum: SimpleObjectInt32Enum.FiftyFive,
+      intEnum: SimpleObjectIntEnum.Second,
+      num: 1.1,
+      str: "test",
+      strOpt: "testOptional",
+    },
     str: "test",
-    strOpt: "testOptional",
-  },
-  str: "test",
-  type: "Technetium while Androgynous",
-}).then((res: RequestBodyPutMultipartDeepResponse) => {
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3592,26 +3680,27 @@ sdk.requestBodies.requestBodyPutMultipartDeep({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutMultipartDifferentFileNameResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPutMultipartDifferentFileName({
-  differentFileName: {
-    content: "Y}'H[5/Z[," as bytes <<<>>>,
-    differentFileName: "West Tunisian",
-  },
-}).then((res: RequestBodyPutMultipartDifferentFileNameResponse) => {
+  const res = await sdk.requestBodies.requestBodyPutMultipartDifferentFileName({
+    differentFileName: {
+      content: "Y}'H[5/Z[," as bytes <<<>>>,
+      differentFileName: "West Tunisian",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3633,26 +3722,27 @@ sdk.requestBodies.requestBodyPutMultipartDifferentFileName({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutMultipartFileResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPutMultipartFile({
-  file: {
-    content: "OJa,v`.FW-" as bytes <<<>>>,
-    file: "bandwidth Sedan",
-  },
-}).then((res: RequestBodyPutMultipartFileResponse) => {
+  const res = await sdk.requestBodies.requestBodyPutMultipartFile({
+    file: {
+      content: "OJa,v`.FW-" as bytes <<<>>>,
+      file: "bandwidth Sedan",
+    },
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3674,44 +3764,43 @@ sdk.requestBodies.requestBodyPutMultipartFile({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutMultipartSimpleResponse } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPutMultipartSimple({
-  any: "customized",
-  bigint: 8821239038968084,
-  bigintStr: "9223372036854775808",
-  bool: true,
-  boolOpt: true,
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-  decimal: 3.141592653589793,
-  decimalStr: "3.14159265358979344719667586",
-  enum: Enum.One,
-  float32: 1.1,
-  int: 1,
-  int32: 1,
-  int32Enum: SimpleObjectInt32Enum.SixtyNine,
-  intEnum: SimpleObjectIntEnum.Third,
-  intOptNull: 689661,
-  num: 1.1,
-  numOptNull: 7932.12,
-  str: "test",
-  strOpt: "testOptional",
-}).then((res: RequestBodyPutMultipartSimpleResponse) => {
+  const res = await sdk.requestBodies.requestBodyPutMultipartSimple({
+    any: "any",
+    bigint: 8821239038968084,
+    bigintStr: "9223372036854775808",
+    bool: true,
+    boolOpt: true,
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+    decimal: 3.141592653589793,
+    decimalStr: "3.14159265358979344719667586",
+    enum: Enum.One,
+    float32: 1.1,
+    int: 1,
+    int32: 1,
+    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+    intEnum: SimpleObjectIntEnum.Second,
+    num: 1.1,
+    str: "test",
+    strOpt: "testOptional",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3733,21 +3822,22 @@ sdk.requestBodies.requestBodyPutMultipartSimple({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutStringResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyPutString("meh").then((res: RequestBodyPutStringResponse) => {
+  const res = await sdk.requestBodies.requestBodyPutString("meh");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3769,23 +3859,25 @@ sdk.requestBodies.requestBodyPutString("meh").then((res: RequestBodyPutStringRes
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyPutStringWithParamsRequest, RequestBodyPutStringWithParamsResponse } from "openapi/dist/sdk/models/operations";
+import { RequestBodyPutStringWithParamsRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const requestBody: string = "SMTP";
 const queryStringParam: string = "Unbranded";
 
-sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam).then((res: RequestBodyPutStringWithParamsResponse) => {
+  const res = await sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3808,25 +3900,26 @@ sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam).
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyReadAndWriteResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyReadAndWrite({
-  num1: 797612,
-  num2: 89374,
-  num3: 459345,
-}).then((res: RequestBodyReadAndWriteResponse) => {
+  const res = await sdk.requestBodies.requestBodyReadAndWrite({
+    num1: 797612,
+    num2: 89374,
+    num3: 459345,
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3849,21 +3942,22 @@ sdk.requestBodies.requestBodyReadAndWrite({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyReadOnlyInputResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyReadOnlyInput({}).then((res: RequestBodyReadOnlyInputResponse) => {
+  const res = await sdk.requestBodies.requestBodyReadOnlyInput({});
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3886,21 +3980,22 @@ sdk.requestBodies.requestBodyReadOnlyInput({}).then((res: RequestBodyReadOnlyInp
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyReadOnlyUnionResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyReadOnlyUnion("Kids").then((res: RequestBodyReadOnlyUnionResponse) => {
+  const res = await sdk.requestBodies.requestBodyReadOnlyUnion("Kids");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3923,21 +4018,22 @@ sdk.requestBodies.requestBodyReadOnlyUnion("Kids").then((res: RequestBodyReadOnl
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyReadWriteOnlyUnionResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyReadWriteOnlyUnion("thoughtfully").then((res: RequestBodyReadWriteOnlyUnionResponse) => {
+  const res = await sdk.requestBodies.requestBodyReadWriteOnlyUnion("thoughtfully");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -3960,25 +4056,26 @@ sdk.requestBodies.requestBodyReadWriteOnlyUnion("thoughtfully").then((res: Reque
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyWriteOnlyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyWriteOnly({
-  bool: false,
-  num: 3888.42,
-  string: "Herminio",
-}).then((res: RequestBodyWriteOnlyResponse) => {
+  const res = await sdk.requestBodies.requestBodyWriteOnly({
+    bool: false,
+    num: 3888.42,
+    string: "Herminio",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -4001,25 +4098,26 @@ sdk.requestBodies.requestBodyWriteOnly({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyWriteOnlyOutputResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyWriteOnlyOutput({
-  bool: false,
-  num: 3867.69,
-  string: "quas",
-}).then((res: RequestBodyWriteOnlyOutputResponse) => {
+  const res = await sdk.requestBodies.requestBodyWriteOnlyOutput({
+    bool: false,
+    num: 3867.69,
+    string: "quas",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -4042,21 +4140,22 @@ sdk.requestBodies.requestBodyWriteOnlyOutput({
 
 ```typescript
 import { SDK } from "openapi";
-import { RequestBodyWriteOnlyUnionResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.requestBodies.requestBodyWriteOnlyUnion("Fitness").then((res: RequestBodyWriteOnlyUnionResponse) => {
+  const res = await sdk.requestBodies.requestBodyWriteOnlyUnion("Fitness");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
