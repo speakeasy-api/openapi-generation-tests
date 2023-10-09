@@ -16,22 +16,24 @@ Endpoints for testing telemetry.
 
 ```typescript
 import { SDK } from "openapi";
-import { TelemetrySpeakeasyUserAgentGetRequest, TelemetrySpeakeasyUserAgentGetResponse } from "openapi/dist/sdk/models/operations";
+import { TelemetrySpeakeasyUserAgentGetRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const userAgent: string = "Bentley";
 
-sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent).then((res: TelemetrySpeakeasyUserAgentGetResponse) => {
+  const res = await sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -53,21 +55,22 @@ sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent).then((res: TelemetrySpea
 
 ```typescript
 import { SDK } from "openapi";
-import { TelemetryUserAgentGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.telemetry.telemetryUserAgentGet().then((res: TelemetryUserAgentGetResponse) => {
+  const res = await sdk.telemetry.telemetryUserAgentGet();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

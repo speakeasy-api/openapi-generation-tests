@@ -130,8 +130,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    passwd := "minus"
-    user := "Architect"
+    var passwd string = "minus"
+    var user string = "Architect"
     operationSecurity := operations.BasicAuthSecurity{
             Password: "YOUR_PASSWORD",
             Username: "YOUR_USERNAME",

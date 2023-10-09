@@ -16,22 +16,24 @@ Endpoints for testing global parameters.
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalPathParameterGetRequest, GlobalPathParameterGetResponse } from "openapi/dist/sdk/models/operations";
+import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const globalPathParam: number = 719830;
 
-sdk.globals.globalPathParameterGet(globalPathParam).then((res: GlobalPathParameterGetResponse) => {
+  const res = await sdk.globals.globalPathParameterGet(globalPathParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -53,22 +55,24 @@ sdk.globals.globalPathParameterGet(globalPathParam).then((res: GlobalPathParamet
 
 ```typescript
 import { SDK } from "openapi";
-import { GlobalsQueryParameterGetRequest, GlobalsQueryParameterGetResponse } from "openapi/dist/sdk/models/operations";
+import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const globalQueryParam: string = "Tricycle";
 
-sdk.globals.globalsQueryParameterGet(globalQueryParam).then((res: GlobalsQueryParameterGetResponse) => {
+  const res = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

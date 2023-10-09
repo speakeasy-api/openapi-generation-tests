@@ -33,7 +33,7 @@ s = sdk.SDK(
 
 
 res = s.flattening.component_body_and_param_conflict(simple_object=shared.SimpleObject(
-    any='Minivan',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -46,14 +46,12 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=shared.SimpleObjectIntEnum.THIRD,
-    int_opt_null=780,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
+    int_enum=shared.SimpleObjectIntEnum.SECOND,
     num=1.1,
-    num_opt_null=5419.15,
     str_='test',
     str_opt='testOptional',
-), str_='Coupe')
+), str_='Minivan')
 
 if res.res is not None:
     # handle response
@@ -92,7 +90,7 @@ s = sdk.SDK(
 
 
 res = s.flattening.component_body_and_param_no_conflict(param_str='ick', simple_object=shared.SimpleObject(
-    any='kelvin',
+    any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
     bool=True,
@@ -105,11 +103,9 @@ res = s.flattening.component_body_and_param_no_conflict(param_str='ick', simple_
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=shared.SimpleObjectInt32Enum.SIXTY_NINE,
+    int32_enum=shared.SimpleObjectInt32Enum.FIFTY_FIVE,
     int_enum=shared.SimpleObjectIntEnum.SECOND,
-    int_opt_null=836157,
     num=1.1,
-    num_opt_null=2914.21,
     str_='test',
     str_opt='testOptional',
 ))

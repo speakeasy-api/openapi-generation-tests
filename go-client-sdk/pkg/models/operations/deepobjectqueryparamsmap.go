@@ -3,7 +3,9 @@
 package operations
 
 import (
+	"errors"
 	"net/http"
+	"openapi/pkg/utils"
 )
 
 type DeepObjectQueryParamsMapRequest struct {
@@ -25,15 +27,78 @@ func (o *DeepObjectQueryParamsMapRequest) GetMapArrParam() map[string][]string {
 	return o.MapArrParam
 }
 
-// DeepObjectQueryParamsMapRes - OK
-type DeepObjectQueryParamsMapRes struct {
-	Args map[string]interface{} `json:"args"`
-	URL  string                 `json:"url"`
+type DeepObjectQueryParamsMapResArgsType string
+
+const (
+	DeepObjectQueryParamsMapResArgsTypeStr        DeepObjectQueryParamsMapResArgsType = "str"
+	DeepObjectQueryParamsMapResArgsTypeArrayOfstr DeepObjectQueryParamsMapResArgsType = "arrayOfstr"
+)
+
+type DeepObjectQueryParamsMapResArgs struct {
+	Str        *string
+	ArrayOfstr []string
+
+	Type DeepObjectQueryParamsMapResArgsType
 }
 
-func (o *DeepObjectQueryParamsMapRes) GetArgs() map[string]interface{} {
+func CreateDeepObjectQueryParamsMapResArgsStr(str string) DeepObjectQueryParamsMapResArgs {
+	typ := DeepObjectQueryParamsMapResArgsTypeStr
+
+	return DeepObjectQueryParamsMapResArgs{
+		Str:  &str,
+		Type: typ,
+	}
+}
+
+func CreateDeepObjectQueryParamsMapResArgsArrayOfstr(arrayOfstr []string) DeepObjectQueryParamsMapResArgs {
+	typ := DeepObjectQueryParamsMapResArgsTypeArrayOfstr
+
+	return DeepObjectQueryParamsMapResArgs{
+		ArrayOfstr: arrayOfstr,
+		Type:       typ,
+	}
+}
+
+func (u *DeepObjectQueryParamsMapResArgs) UnmarshalJSON(data []byte) error {
+
+	str := new(string)
+	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
+		u.Str = str
+		u.Type = DeepObjectQueryParamsMapResArgsTypeStr
+		return nil
+	}
+
+	arrayOfstr := []string{}
+	if err := utils.UnmarshalJSON(data, &arrayOfstr, "", true, true); err == nil {
+		u.ArrayOfstr = arrayOfstr
+		u.Type = DeepObjectQueryParamsMapResArgsTypeArrayOfstr
+		return nil
+	}
+
+	return errors.New("could not unmarshal into supported union types")
+}
+
+func (u DeepObjectQueryParamsMapResArgs) MarshalJSON() ([]byte, error) {
+	if u.Str != nil {
+		return utils.MarshalJSON(u.Str, "", true)
+	}
+
+	if u.ArrayOfstr != nil {
+		return utils.MarshalJSON(u.ArrayOfstr, "", true)
+	}
+
+	return nil, errors.New("could not marshal union type: all fields are null")
+}
+
+// DeepObjectQueryParamsMapRes - OK
+type DeepObjectQueryParamsMapRes struct {
+	Args map[string]DeepObjectQueryParamsMapResArgs `json:"args"`
+	URL  string                                     `json:"url"`
+}
+
+func (o *DeepObjectQueryParamsMapRes) GetArgs() map[string]DeepObjectQueryParamsMapResArgs {
 	if o == nil {
-		return map[string]interface{}{}
+		return map[string]DeepObjectQueryParamsMapResArgs{}
 	}
 	return o.Args
 }

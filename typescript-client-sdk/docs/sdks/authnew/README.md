@@ -25,32 +25,33 @@ Endpoints for testing authentication.
 
 ```typescript
 import { SDK } from "openapi";
-import { ApiKeyAuthGlobalNewResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.authNew.apiKeyAuthGlobalNew({
-  basicAuth: {
-    password: "owsGgP4_AhRPMSJ",
-    username: "Devonte_Bins",
-  },
-  headerAuth: [
-    {
-      expectedValue: "Highway",
-      headerName: "deliver payment",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  ],
-}).then((res: ApiKeyAuthGlobalNewResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.authNew.apiKeyAuthGlobalNew({
+    basicAuth: {
+      password: "owsGgP4_AhRPMSJ",
+      username: "Devonte_Bins",
+    },
+    headerAuth: [
+      {
+        expectedValue: "Highway",
+        headerName: "deliver payment",
+      },
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -73,32 +74,33 @@ sdk.authNew.apiKeyAuthGlobalNew({
 
 ```typescript
 import { SDK } from "openapi";
-import { AuthGlobalResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
-
-sdk.authNew.authGlobal({
-  basicAuth: {
-    password: "xvJcf9GiJNr7T2x",
-    username: "Cory33",
-  },
-  headerAuth: [
-    {
-      expectedValue: "idolized",
-      headerName: "female Virginia primary",
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
     },
-  ],
-}).then((res: AuthGlobalResponse) => {
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.authNew.authGlobal({
+    basicAuth: {
+      password: "xvJcf9GiJNr7T2x",
+      username: "Cory33",
+    },
+    headerAuth: [
+      {
+        expectedValue: "idolized",
+        headerName: "female Virginia primary",
+      },
+    ],
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -121,33 +123,35 @@ sdk.authNew.authGlobal({
 
 ```typescript
 import { SDK } from "openapi";
-import { BasicAuthNewResponse, BasicAuthNewSecurity } from "openapi/dist/sdk/models/operations";
+import { BasicAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: BasicAuthNewSecurity = {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",
 };
 
-sdk.authNew.basicAuthNew({
-  basicAuth: {
-    password: "Z2OStPksFyrcGeu",
-    username: "Ashton.Steuber27",
-  },
-  headerAuth: [
-    {
-      expectedValue: "integrate",
-      headerName: "bandwidth uselessly",
+  const res = await sdk.authNew.basicAuthNew({
+    basicAuth: {
+      password: "Z2OStPksFyrcGeu",
+      username: "Ashton.Steuber27",
     },
-  ],
-}, operationSecurity).then((res: BasicAuthNewResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "integrate",
+        headerName: "bandwidth uselessly",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -171,32 +175,34 @@ sdk.authNew.basicAuthNew({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleMixedOptionsAuthResponse, MultipleMixedOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { MultipleMixedOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: MultipleMixedOptionsAuthSecurity = {
   apiKeyAuthNew: "Token <YOUR_API_KEY>",
 };
 
-sdk.authNew.multipleMixedOptionsAuth({
-  basicAuth: {
-    password: "Iq1JSzG1wqLDz4v",
-    username: "Ismael.Emmerich",
-  },
-  headerAuth: [
-    {
-      expectedValue: "thong Scandium worse",
-      headerName: "Durham Tesla",
+  const res = await sdk.authNew.multipleMixedOptionsAuth({
+    basicAuth: {
+      password: "Iq1JSzG1wqLDz4v",
+      username: "Ismael.Emmerich",
     },
-  ],
-}, operationSecurity).then((res: MultipleMixedOptionsAuthResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "thong Scandium worse",
+        headerName: "Durham Tesla",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -220,12 +226,13 @@ sdk.authNew.multipleMixedOptionsAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleMixedSchemeAuthResponse, MultipleMixedSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { MultipleMixedSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: MultipleMixedSchemeAuthSecurity = {
   apiKeyAuthNew: "Token <YOUR_API_KEY>",
   basicAuth: {
@@ -234,22 +241,23 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
   },
 };
 
-sdk.authNew.multipleMixedSchemeAuth({
-  basicAuth: {
-    password: "OcWVV5608IiaWJQ",
-    username: "Kameron42",
-  },
-  headerAuth: [
-    {
-      expectedValue: "services indigo",
-      headerName: "Wooden Jewelery",
+  const res = await sdk.authNew.multipleMixedSchemeAuth({
+    basicAuth: {
+      password: "OcWVV5608IiaWJQ",
+      username: "Kameron42",
     },
-  ],
-}, operationSecurity).then((res: MultipleMixedSchemeAuthResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "services indigo",
+        headerName: "Wooden Jewelery",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -273,15 +281,13 @@ sdk.authNew.multipleMixedSchemeAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  MultipleOptionsWithMixedSchemesAuthResponse,
-  MultipleOptionsWithMixedSchemesAuthSecurity,
-} from "openapi/dist/sdk/models/operations";
+import { MultipleOptionsWithMixedSchemesAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
   option1: {
     apiKeyAuthNew: "Token <YOUR_API_KEY>",
@@ -289,22 +295,23 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
   },
 };
 
-sdk.authNew.multipleOptionsWithMixedSchemesAuth({
-  basicAuth: {
-    password: "fpwNE90MyqKIrXk",
-    username: "Caroline_Walsh",
-  },
-  headerAuth: [
-    {
-      expectedValue: "Gourde",
-      headerName: "Van Granite East",
+  const res = await sdk.authNew.multipleOptionsWithMixedSchemesAuth({
+    basicAuth: {
+      password: "fpwNE90MyqKIrXk",
+      username: "Caroline_Walsh",
     },
-  ],
-}, operationSecurity).then((res: MultipleOptionsWithMixedSchemesAuthResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "Gourde",
+        headerName: "Van Granite East",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -328,15 +335,13 @@ sdk.authNew.multipleOptionsWithMixedSchemesAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  MultipleOptionsWithSimpleSchemesAuthResponse,
-  MultipleOptionsWithSimpleSchemesAuthSecurity,
-} from "openapi/dist/sdk/models/operations";
+import { MultipleOptionsWithSimpleSchemesAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
   option1: {
     apiKeyAuthNew: "Token <YOUR_API_KEY>",
@@ -344,22 +349,23 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
   },
 };
 
-sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
-  basicAuth: {
-    password: "pibxDTiJSijK04Y",
-    username: "Selena76",
-  },
-  headerAuth: [
-    {
-      expectedValue: "compressing",
-      headerName: "sievert Diesel",
+  const res = await sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
+    basicAuth: {
+      password: "pibxDTiJSijK04Y",
+      username: "Selena76",
     },
-  ],
-}, operationSecurity).then((res: MultipleOptionsWithSimpleSchemesAuthResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "compressing",
+        headerName: "sievert Diesel",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -383,32 +389,34 @@ sdk.authNew.multipleOptionsWithSimpleSchemesAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleSimpleOptionsAuthResponse, MultipleSimpleOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { MultipleSimpleOptionsAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
   apiKeyAuthNew: "Token <YOUR_API_KEY>",
 };
 
-sdk.authNew.multipleSimpleOptionsAuth({
-  basicAuth: {
-    password: "pzdKQgSGZSrUGNs",
-    username: "Eryn51",
-  },
-  headerAuth: [
-    {
-      expectedValue: "payment Usability sievert",
-      headerName: "yum Northwest metrics",
+  const res = await sdk.authNew.multipleSimpleOptionsAuth({
+    basicAuth: {
+      password: "pzdKQgSGZSrUGNs",
+      username: "Eryn51",
     },
-  ],
-}, operationSecurity).then((res: MultipleSimpleOptionsAuthResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "payment Usability sievert",
+        headerName: "yum Northwest metrics",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -432,33 +440,35 @@ sdk.authNew.multipleSimpleOptionsAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { MultipleSimpleSchemeAuthResponse, MultipleSimpleSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
+import { MultipleSimpleSchemeAuthSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
   apiKeyAuthNew: "Token <YOUR_API_KEY>",
   oauth2: "Bearer YOUR_OAUTH2_TOKEN",
 };
 
-sdk.authNew.multipleSimpleSchemeAuth({
-  basicAuth: {
-    password: "UrAsw466AAaYtr1",
-    username: "Kenya.Baumbach",
-  },
-  headerAuth: [
-    {
-      expectedValue: "microchip Southeast",
-      headerName: "Future Corners Electronic",
+  const res = await sdk.authNew.multipleSimpleSchemeAuth({
+    basicAuth: {
+      password: "UrAsw466AAaYtr1",
+      username: "Kenya.Baumbach",
     },
-  ],
-}, operationSecurity).then((res: MultipleSimpleSchemeAuthResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "microchip Southeast",
+        headerName: "Future Corners Electronic",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -482,32 +492,34 @@ sdk.authNew.multipleSimpleSchemeAuth({
 
 ```typescript
 import { SDK } from "openapi";
-import { Oauth2AuthNewResponse, Oauth2AuthNewSecurity } from "openapi/dist/sdk/models/operations";
+import { Oauth2AuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: Oauth2AuthNewSecurity = {
   oauth2: "Bearer YOUR_OAUTH2_TOKEN",
 };
 
-sdk.authNew.oauth2AuthNew({
-  basicAuth: {
-    password: "V02sHy2onRTMRgS",
-    username: "Polly.Aufderhar78",
-  },
-  headerAuth: [
-    {
-      expectedValue: "Sunrise",
-      headerName: "male",
+  const res = await sdk.authNew.oauth2AuthNew({
+    basicAuth: {
+      password: "V02sHy2onRTMRgS",
+      username: "Polly.Aufderhar78",
     },
-  ],
-}, operationSecurity).then((res: Oauth2AuthNewResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "Sunrise",
+        headerName: "male",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -531,32 +543,34 @@ sdk.authNew.oauth2AuthNew({
 
 ```typescript
 import { SDK } from "openapi";
-import { OpenIdConnectAuthNewResponse, OpenIdConnectAuthNewSecurity } from "openapi/dist/sdk/models/operations";
+import { OpenIdConnectAuthNewSecurity } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const operationSecurity: OpenIdConnectAuthNewSecurity = {
   openIdConnect: "Bearer YOUR_OPENID_TOKEN",
 };
 
-sdk.authNew.openIdConnectAuthNew({
-  basicAuth: {
-    password: "1_B3hNdr8HC3AeS",
-    username: "Floy_Heller",
-  },
-  headerAuth: [
-    {
-      expectedValue: "bypassing furthermore",
-      headerName: "bypass brilliant tesla",
+  const res = await sdk.authNew.openIdConnectAuthNew({
+    basicAuth: {
+      password: "1_B3hNdr8HC3AeS",
+      username: "Floy_Heller",
     },
-  ],
-}, operationSecurity).then((res: OpenIdConnectAuthNewResponse) => {
+    headerAuth: [
+      {
+        expectedValue: "bypassing furthermore",
+        headerName: "bypass brilliant tesla",
+      },
+    ],
+  }, operationSecurity);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

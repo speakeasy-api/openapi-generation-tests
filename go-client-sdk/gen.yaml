@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: d6c132f7bde6e79f0552a47119432f96
   docVersion: 0.1.0
-  speakeasyVersion: 1.95.0
-  generationVersion: 2.148.0
+  speakeasyVersion: 1.96.1
+  generationVersion: 2.150.0
 generation:
   sdkClassName: SDK
   singleTagPerOp: false
@@ -11,7 +11,7 @@ features:
   go:
     additionalProperties: 0.1.0
     constsAndDefaults: 0.1.1
-    core: 2.91.3
+    core: 2.91.4
     deprecations: 2.81.1
     docs: 0.2.1
     downloadStreams: 0.1.0
@@ -32,9 +32,11 @@ features:
     pagination: 2.81.1
     retries: 2.82.1
     serverIDs: 2.81.1
+    tests: 0.0.0
     unions: 2.83.1
 go:
-  version: 1.37.2
+  version: 1.37.3
   clientServerStatusCodesAsErrors: true
+  flattenGlobalSecurity: true
   maxMethodParams: 5
   packageName: openapi

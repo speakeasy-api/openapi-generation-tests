@@ -71,7 +71,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -82,7 +81,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    statusCode := 458364
+    var statusCode int64 = 458364
 
     ctx := context.Background()
     res, err := s.Errors.StatusGetError(ctx, statusCode)
@@ -121,7 +120,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -132,7 +130,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    statusCode := 385913
+    var statusCode int64 = 385913
 
     ctx := context.Background()
     res, err := s.Errors.StatusGetXSpeakeasyErrors(ctx, statusCode)
