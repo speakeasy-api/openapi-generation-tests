@@ -34,14 +34,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "Legacy"            
+            org.openapis.openapi.models.. req = "Legacy";            
 
             FlattenedTypedObjectPostResponse res = sdk.unions.flattenedTypedObjectPost(req);
 
@@ -82,14 +82,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "SAS"            
+            org.openapis.openapi.models.. req = "SAS";            
 
             MixedTypeOneOfPostResponse res = sdk.unions.mixedTypeOneOfPost(req);
 
@@ -133,14 +133,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject(                new TypedObject1(TypedObject1Type.OBJ1, "bah");, "back", "administration");            
+            org.openapis.openapi.models.shared.NullableOneOfRefInObject req = new NullableOneOfRefInObject(new TypedObject1(TypedObject1Type.OBJ1, "bah"), "back", "administration");            
 
             NullableOneOfRefInObjectPostResponse res = sdk.unions.nullableOneOfRefInObjectPost(req);
 
@@ -181,14 +181,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "deliquesce"            
+            org.openapis.openapi.models.. req = "deliquesce";            
 
             NullableOneOfSchemaPostResponse res = sdk.unions.nullableOneOfSchemaPost(req);
 
@@ -230,7 +230,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -280,7 +280,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -328,14 +328,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "Grocery"            
+            org.openapis.openapi.models.. req = "Grocery";            
 
             PrimitiveTypeOneOfPostResponse res = sdk.unions.primitiveTypeOneOfPost(req);
 
@@ -376,14 +376,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "spicy"            
+            org.openapis.openapi.models.. req = "spicy";            
 
             StronglyTypedOneOfPostResponse res = sdk.unions.stronglyTypedOneOfPost(req);
 
@@ -424,14 +424,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "Agender"            
+            org.openapis.openapi.models.. req = "Agender";            
 
             TypedObjectNullableOneOfPostResponse res = sdk.unions.typedObjectNullableOneOfPost(req);
 
@@ -472,14 +472,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "shrivel"            
+            org.openapis.openapi.models.. req = "shrivel";            
 
             TypedObjectOneOfPostResponse res = sdk.unions.typedObjectOneOfPost(req);
 
@@ -520,14 +520,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "Unbranded"            
+            org.openapis.openapi.models.. req = "Unbranded";            
 
             WeaklyTypedOneOfPostResponse res = sdk.unions.weaklyTypedOneOfPost(req);
 

@@ -33,16 +33,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("nihil", "stitch");
-            }}            
+            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+                put("ASCII", "Wagon Account cultivate");
+            }};            
 
             ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost(req);
 
@@ -83,16 +83,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new java.util.HashMap<String, LocalDate>() {{
-                put("ab", LocalDate.parse("2021-08-06"));
-            }}            
+            org.openapis.openapi.models.. req =             new java.util.HashMap<String, LocalDate>(){{
+                put("Bedfordshire", LocalDate.parse("2021-04-22"));
+            }};            
 
             ResponseBodyAdditionalPropertiesDatePostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesDatePost(req);
 
@@ -133,16 +133,16 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = new java.util.HashMap<String, String>() {{
-                put("exercitationem", "Bronze");
-            }}            
+            org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
+                put("Ergonomic", "Carolina");
+            }};            
 
             ResponseBodyAdditionalPropertiesPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesPost(req);
 
@@ -183,7 +183,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -224,7 +224,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -271,7 +271,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -317,7 +317,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -363,7 +363,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -403,7 +403,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -446,14 +446,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs() {{
+            org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs(){{
                 bigint = 438531L;
                 bigintStr = "concrete input";
                 date = LocalDate.parse("2020-01-01");

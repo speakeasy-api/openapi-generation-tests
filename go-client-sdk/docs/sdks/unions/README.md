@@ -43,7 +43,12 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.FlattenedTypedObject1{})
+    res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.CreateFlattenedTypedObject1TypedObject1(
+            shared.TypedObject1{
+                Type: shared.TypedObject1TypeObj1,
+                Value: "farad Rustic",
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -94,7 +99,9 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.MixedTypeOneOfPost(ctx, operations.MixedTypeOneOfPostRequestBody{})
+    res, err := s.Unions.MixedTypeOneOfPost(ctx, operations.CreateMixedTypeOneOfPostRequestBodyInteger(
+    618017,
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -147,8 +154,18 @@ func main() {
             Type: shared.TypedObject1TypeObj1,
             Value: "Global Alexandria administration",
         },
-        NullableOneOfTwo: &shared.NullableOneOfRefInObjectNullableOneOfTwo{},
-        OneOfOne: shared.NullableOneOfRefInObjectOneOfOne{},
+        NullableOneOfTwo: shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject1(
+                shared.TypedObject1{
+                    Type: shared.TypedObject1TypeObj1,
+                    Value: "nor",
+                },
+        ),
+        OneOfOne: shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(
+                shared.TypedObject1{
+                    Type: shared.TypedObject1TypeObj1,
+                    Value: "Berkshire after",
+                },
+        ),
     })
     if err != nil {
         log.Fatal(err)
@@ -198,7 +215,12 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.NullableOneOfSchemaPost(ctx, operations.NullableOneOfSchemaPostRequestBody{})
+    res, err := s.Unions.NullableOneOfSchemaPost(ctx, &operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject2(
+            shared.TypedObject2{
+                Type: shared.TypedObject2TypeObj2,
+                Value: "sob",
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -248,7 +270,9 @@ func main() {
     ctx := context.Background()
     res, err := s.Unions.NullableOneOfTypeInObjectPost(ctx, shared.NullableOneOfTypeInObject{
         NullableOneOfOne: false,
-        NullableOneOfTwo: &shared.NullableOneOfTypeInObjectNullableOneOfTwo{},
+        NullableOneOfTwo: shared.CreateNullableOneOfTypeInObjectNullableOneOfTwoInteger(
+        873677,
+        ),
         OneOfOne: false,
     })
     if err != nil {
@@ -298,7 +322,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.NullableTypedObjectPost(ctx, shared.TypedObject1{
+    res, err := s.Unions.NullableTypedObjectPost(ctx, &shared.TypedObject1{
         Type: shared.TypedObject1TypeObj1,
         Value: "Bike",
     })
@@ -350,7 +374,9 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.PrimitiveTypeOneOfPost(ctx, operations.PrimitiveTypeOneOfPostRequestBody{})
+    res, err := s.Unions.PrimitiveTypeOneOfPost(ctx, operations.CreatePrimitiveTypeOneOfPostRequestBodyStr(
+    "Account",
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -400,7 +426,140 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.StronglyTypedOneOfPost(ctx, shared.StronglyTypedOneOfObject{})
+    res, err := s.Unions.StronglyTypedOneOfPost(ctx, shared.CreateStronglyTypedOneOfObjectDeepObjectWithType(
+            shared.DeepObjectWithType{
+                Any: shared.CreateDeepObjectWithTypeAnySimpleObject(
+                        shared.SimpleObject{
+                            Any: "any",
+                            Bigint: big.NewInt(8821239038968084),
+                            BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                            Bool: true,
+                            BoolOpt: openapi.Bool(true),
+                            Date: types.MustDateFromString("2020-01-01"),
+                            DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                            Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                            DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                            Enum: shared.EnumOne,
+                            Float32: 1.1,
+                            Int: 1,
+                            Int32: 1,
+                            Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                            IntEnum: shared.SimpleObjectIntEnumSecond,
+                            Num: 1.1,
+                            Str: "test",
+                            StrOpt: openapi.String("testOptional"),
+                        },
+                ),
+                Arr: []shared.SimpleObject{
+                    shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                    shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                },
+                Bool: true,
+                Int: 1,
+                Map: map[string]shared.SimpleObject{
+                    "key": shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                    "key2": shared.SimpleObject{
+                        Any: "any",
+                        Bigint: big.NewInt(8821239038968084),
+                        BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                        Bool: true,
+                        BoolOpt: openapi.Bool(true),
+                        Date: types.MustDateFromString("2020-01-01"),
+                        DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                        Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                        DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                        Enum: shared.EnumOne,
+                        Float32: 1.1,
+                        Int: 1,
+                        Int32: 1,
+                        Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                        IntEnum: shared.SimpleObjectIntEnumSecond,
+                        Num: 1.1,
+                        Str: "test",
+                        StrOpt: openapi.String("testOptional"),
+                    },
+                },
+                Num: 1.1,
+                Obj: shared.SimpleObject{
+                    Any: "any",
+                    Bigint: big.NewInt(8821239038968084),
+                    BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                    Bool: true,
+                    BoolOpt: openapi.Bool(true),
+                    Date: types.MustDateFromString("2020-01-01"),
+                    DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                    Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                    DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                    Enum: shared.EnumOne,
+                    Float32: 1.1,
+                    Int: 1,
+                    Int32: 1,
+                    Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                    IntEnum: shared.SimpleObjectIntEnumSecond,
+                    Num: 1.1,
+                    Str: "test",
+                    StrOpt: openapi.String("testOptional"),
+                },
+                Str: "test",
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -448,7 +607,12 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.TypedObjectNullableOneOfPost(ctx, shared.TypedObjectNullableOneOf{})
+    res, err := s.Unions.TypedObjectNullableOneOfPost(ctx, &shared.CreateTypedObjectNullableOneOfTypedObject2(
+            shared.TypedObject2{
+                Type: shared.TypedObject2TypeObj2,
+                Value: "DRAM",
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -496,7 +660,12 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.TypedObjectOneOfPost(ctx, shared.TypedObjectOneOf{})
+    res, err := s.Unions.TypedObjectOneOfPost(ctx, shared.CreateTypedObjectOneOfTypedObject3(
+            shared.TypedObject3{
+                Type: shared.TypedObject3TypeObj3,
+                Value: "Buckinghamshire illo Automotive",
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }
@@ -546,7 +715,28 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Unions.WeaklyTypedOneOfPost(ctx, shared.WeaklyTypedOneOfObject{})
+    res, err := s.Unions.WeaklyTypedOneOfPost(ctx, shared.CreateWeaklyTypedOneOfObjectSimpleObject(
+            shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+    ))
     if err != nil {
         log.Fatal(err)
     }

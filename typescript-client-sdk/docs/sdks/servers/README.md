@@ -20,21 +20,22 @@ Endpoints for testing servers.
 
 ```typescript
 import { SDK } from "openapi";
-import { SelectGlobalServerResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.servers.selectGlobalServer().then((res: SelectGlobalServerResponse) => {
+  const res = await sdk.servers.selectGlobalServer();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -57,21 +58,22 @@ Select a server by ID.
 
 ```typescript
 import { SDK } from "openapi";
-import { SelectServerWithIDResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.servers.selectServerWithID().then((res: SelectServerWithIDResponse) => {
+  const res = await sdk.servers.selectServerWithID();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -93,21 +95,22 @@ sdk.servers.selectServerWithID().then((res: SelectServerWithIDResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { ServerWithProtocolTemplateResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.servers.serverWithProtocolTemplate().then((res: ServerWithProtocolTemplateResponse) => {
+  const res = await sdk.servers.serverWithProtocolTemplate();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -129,21 +132,22 @@ sdk.servers.serverWithProtocolTemplate().then((res: ServerWithProtocolTemplateRe
 
 ```typescript
 import { SDK } from "openapi";
-import { ServerWithTemplatesResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.servers.serverWithTemplates().then((res: ServerWithTemplatesResponse) => {
+  const res = await sdk.servers.serverWithTemplates();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -165,21 +169,22 @@ sdk.servers.serverWithTemplates().then((res: ServerWithTemplatesResponse) => {
 
 ```typescript
 import { SDK } from "openapi";
-import { ServerWithTemplatesGlobalResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.servers.serverWithTemplatesGlobal().then((res: ServerWithTemplatesGlobalResponse) => {
+  const res = await sdk.servers.serverWithTemplatesGlobal();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -200,21 +205,22 @@ sdk.servers.serverWithTemplatesGlobal().then((res: ServerWithTemplatesGlobalResp
 
 ```typescript
 import { SDK } from "openapi";
-import { ServersByIDWithTemplatesResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.servers.serversByIDWithTemplates().then((res: ServersByIDWithTemplatesResponse) => {
+  const res = await sdk.servers.serversByIDWithTemplates();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

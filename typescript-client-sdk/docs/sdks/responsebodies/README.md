@@ -24,23 +24,24 @@ Endpoints for testing response bodies.
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyAdditionalPropertiesComplexNumbersPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost({
-  "nihil": "stitch",
-}).then((res: ResponseBodyAdditionalPropertiesComplexNumbersPostResponse) => {
+  const res = await sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost({
+    "ASCII": "Wagon Account cultivate",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -62,23 +63,24 @@ sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyAdditionalPropertiesDatePostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyAdditionalPropertiesDatePost({
-  "ab": new RFCDate("2021-08-06"),
-}).then((res: ResponseBodyAdditionalPropertiesDatePostResponse) => {
+  const res = await sdk.responseBodies.responseBodyAdditionalPropertiesDatePost({
+    "Bedfordshire": new RFCDate("2021-04-22"),
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -100,23 +102,24 @@ sdk.responseBodies.responseBodyAdditionalPropertiesDatePost({
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyAdditionalPropertiesPostResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyAdditionalPropertiesPost({
-  "exercitationem": "Bronze",
-}).then((res: ResponseBodyAdditionalPropertiesPostResponse) => {
+  const res = await sdk.responseBodies.responseBodyAdditionalPropertiesPost({
+    "Ergonomic": "Carolina",
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -138,21 +141,22 @@ sdk.responseBodies.responseBodyAdditionalPropertiesPost({
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyBytesGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyBytesGet().then((res: ResponseBodyBytesGetResponse) => {
+  const res = await sdk.responseBodies.responseBodyBytesGet();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -173,23 +177,25 @@ sdk.responseBodies.responseBodyBytesGet().then((res: ResponseBodyBytesGetRespons
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyEmptyWithHeadersRequest, ResponseBodyEmptyWithHeadersResponse } from "openapi/dist/sdk/models/operations";
+import { ResponseBodyEmptyWithHeadersRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const xNumberHeader: number = 1751.8;
 const xStringHeader: string = "Tigard";
 
-sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader).then((res: ResponseBodyEmptyWithHeadersResponse) => {
+  const res = await sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader);
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -212,21 +218,22 @@ sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader).th
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyOptionalGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyOptionalGet().then((res: ResponseBodyOptionalGetResponse) => {
+  const res = await sdk.responseBodies.responseBodyOptionalGet();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -248,21 +255,22 @@ sdk.responseBodies.responseBodyOptionalGet().then((res: ResponseBodyOptionalGetR
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyReadOnlyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyReadOnly().then((res: ResponseBodyReadOnlyResponse) => {
+  const res = await sdk.responseBodies.responseBodyReadOnly();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -284,21 +292,22 @@ sdk.responseBodies.responseBodyReadOnly().then((res: ResponseBodyReadOnlyRespons
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyStringGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyStringGet().then((res: ResponseBodyStringGetResponse) => {
+  const res = await sdk.responseBodies.responseBodyStringGet();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -319,21 +328,22 @@ sdk.responseBodies.responseBodyStringGet().then((res: ResponseBodyStringGetRespo
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyXmlGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyXmlGet().then((res: ResponseBodyXmlGetResponse) => {
+  const res = await sdk.responseBodies.responseBodyXmlGet();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -354,28 +364,26 @@ sdk.responseBodies.responseBodyXmlGet().then((res: ResponseBodyXmlGetResponse) =
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyZeroValueComplexTypePtrsPostResponse } from "openapi/dist/sdk/models/operations";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost({
-  bigint: 438531,
-  bigintStr: "concrete input",
-  date: new RFCDate("2020-01-01"),
-  dateTime: new Date("2020-01-01T00:00:00Z"),
-  decimal: 6267.89,
-}).then((res: ResponseBodyZeroValueComplexTypePtrsPostResponse) => {
+  const res = await sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost({
+    date: new RFCDate("2020-01-01"),
+    dateTime: new Date("2020-01-01T00:00:00Z"),
+  });
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

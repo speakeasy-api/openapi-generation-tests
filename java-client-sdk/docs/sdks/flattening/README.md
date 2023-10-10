@@ -35,15 +35,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("Coupe", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.SIXTY_NINE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                any = "Minivan";
+            ComponentBodyAndParamConflictResponse res = sdk.flattening.componentBodyAndParamConflict(new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -56,14 +56,12 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.ONE_HUNDRED_AND_EIGHTY_ONE;
-                intEnum = SimpleObjectIntEnum.Third;
-                intOptNull = 780L;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
+                intEnum = SimpleObjectIntEnum.Second;
                 num = 1.1d;
-                numOptNull = 5419.15d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, "South");
+            }}, "Minivan");
 
             if (res.res != null) {
                 // handle response
@@ -110,15 +108,15 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("ick", new SimpleObject("United", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Third, 1.1d, "test") {{
-                any = "kelvin";
+            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("ick", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
                 bool = true;
@@ -131,11 +129,9 @@ public class Application {
                 float32 = 1.1f;
                 int_ = 1L;
                 int32 = 1;
-                int32Enum = SimpleObjectInt32Enum.SIXTY_NINE;
+                int32Enum = SimpleObjectInt32Enum.FIFTY_FIVE;
                 intEnum = SimpleObjectIntEnum.Second;
-                intOptNull = 836157L;
                 num = 1.1d;
-                numOptNull = 2914.21d;
                 str = "test";
                 strOpt = "testOptional";
             }});
@@ -179,7 +175,7 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
@@ -228,14 +224,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("until") {{
+            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("until"){{
                 str = "Progressive";
             }}, "array");
 
@@ -279,14 +275,14 @@ public class Application {
     public static void main(String[] args) {
         try {
             SDK sdk = SDK.builder()
-                .setSecurity(new Security() {{
+                .setSecurity(new Security(){{
                     apiKeyAuth = "Token YOUR_API_KEY";
                 }})
                 .setGlobalPathParam(100L)
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("Forward") {{
+            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("Forward"){{
                 bodyStr = "dynamic expedite";
             }}, "embrace");
 

@@ -19,21 +19,22 @@ Speakeasy Docs
 
 ```typescript
 import { SDK } from "openapi";
-import { PutAnythingIgnoredGenerationResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.sdk.putAnythingIgnoredGeneration("bus").then((res: PutAnythingIgnoredGenerationResponse) => {
+  const res = await sdk.sdk.putAnythingIgnoredGeneration("bus");
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters
@@ -55,21 +56,22 @@ sdk.sdk.putAnythingIgnoredGeneration("bus").then((res: PutAnythingIgnoredGenerat
 
 ```typescript
 import { SDK } from "openapi";
-import { ResponseBodyJsonGetResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.sdk.responseBodyJsonGet().then((res: ResponseBodyJsonGetResponse) => {
+  const res = await sdk.sdk.responseBodyJsonGet();
+
   if (res.statusCode == 200) {
     // handle response
   }
-});
+})();
 ```
 
 ### Parameters

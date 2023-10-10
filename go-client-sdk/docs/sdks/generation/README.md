@@ -190,10 +190,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{
-        DeprecatedField: openapi.String("Bike Avon"),
-        NewField: openapi.String("Rubber Santa"),
-    })
+    res, err := s.Generation.DeprecatedFieldInSchemaPost(ctx, shared.DeprecatedFieldInObject{})
     if err != nil {
         log.Fatal(err)
     }
@@ -278,7 +275,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -289,7 +285,7 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "Account"
+    var deprecatedParameter *string = "Account"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
@@ -332,7 +328,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -343,8 +338,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    deprecatedParameter := "Account"
-    newParameter := "actuating"
+    var deprecatedParameter *string = "Account"
+    var newParameter *string = "actuating"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
@@ -384,7 +379,6 @@ import(
 	"log"
 	"openapi"
 	"openapi/pkg/models/shared"
-	"openapi/pkg/models/operations"
 )
 
 func main() {
@@ -529,7 +523,6 @@ import(
 	"openapi"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/models/callbacks"
-	"net/http"
 )
 
 func main() {
@@ -588,11 +581,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    requestBody := operations.IgnoresPostApplicationJSON{
-        CallbackURL: openapi.String("http://diligent-activist.biz"),
-        TestProp: openapi.String("solid Branding Maserati"),
-    }
-    testParam := "Maserati"
+    requestBody := operations.IgnoresPostApplicationJSON{}
+    var testParam *string = "Bike"
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
@@ -643,8 +633,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    testEnumQueryParam := operations.NameOverrideGetEnumNameOverrideValue3
-    testQueryParam := "example"
+    var testEnumQueryParam operations.NameOverrideGetEnumNameOverride = operations.NameOverrideGetEnumNameOverrideValue3
+    var testQueryParam string = "example"
 
     ctx := context.Background()
     res, err := s.Generation.NameOverride(ctx, testEnumQueryParam, testQueryParam)
@@ -779,8 +769,6 @@ import(
 	"openapi"
 	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
-	"math/big"
-	"openapi/pkg/types"
 )
 
 func main() {
@@ -791,9 +779,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    bigint := big.NewInt(879275)
-    date := types.MustDateFromString("2023-11-18")
-    decimal := types.MustNewDecimalFromString("3346.96")
+    var bigint *big.Int = big.NewInt(879275)
+    var date *types.Date = types.MustDateFromString("2023-11-18")
+    var decimal *decimal.Big = types.MustNewDecimalFromString("3346.96")
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
         Num: 4778.06,
@@ -863,83 +851,10 @@ func main() {
     ctx := context.Background()
     res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
         RequestBody: &operations.UsageExamplePostRequestBody{
-            FakerFormattedStrings: &shared.FakerFormattedStrings{
-                AddressFormat: openapi.String("48525 Maude Fall"),
-                DirectoryFormat: openapi.String("/etc/defaults"),
-                DomainFormat: openapi.String("next-conflict.name"),
-                EmailFormat: openapi.String("Fermin_Koelpin@gmail.com"),
-                FilenameFormat: openapi.String("northeast.wav"),
-                FilepathFormat: openapi.String("/lib/pizza_integrated.hbs"),
-                ImageFormat: openapi.String("https://loremflickr.com/640/480"),
-                Ipv4Format: openapi.String("75.42.25.241"),
-                Ipv6Format: openapi.String("36a9:c057:a71b:b73a:c9ee:2348:d76c:3164"),
-                JSONFormat: openapi.String("{plane: 14910, fringe: null, lightning: \"Roentgenium UTF8\"}"),
-                MacFormat: openapi.String("13:58:66:7d:ac:95"),
-                PasswordFormat: openapi.String("b6eWzdveK0sHokC"),
-                PhoneFormat: openapi.String("832-504-6221 x221"),
-                TimezoneFormat: openapi.String("Asia/Krasnoyarsk"),
-                UnknownFormat: openapi.String("Principal at"),
-                URLFormat: openapi.String("http://understated-balcony.org"),
-                UUIDFormat: openapi.String("62de2e2d-47a9-4bf1-80f7-53b9b364b6b4"),
-                ZipcodeFormat: openapi.String("25687-7266"),
-            },
-            FakerStrings: &shared.FakerStrings{
-                City: openapi.String("Port Carli"),
-                Iban: openapi.String("TN8700576009897281100717"),
-                ID: openapi.String("<ID>"),
-                IPv4: openapi.String("141.21.132.133"),
-                IPv6: openapi.String("308b:b979:0237:4ea8:ee39:8480:0301:1d98"),
-                Account: openapi.String("81966519"),
-                Address: openapi.String("418 Maybelle Brooks"),
-                Amount: openapi.String("27.55"),
-                Avatar: openapi.String("https://loremflickr.com/640/480"),
-                Color: openapi.String("turquoise"),
-                Comment: openapi.String("The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality"),
-                Company: openapi.String("Murazik, Kozey and Hirthe"),
-                Country: openapi.String("Equatorial Guinea"),
-                CountryCode: openapi.String("LU"),
-                Currency: openapi.String("Congolese Franc"),
-                Datatype: openapi.String("bigint"),
-                Default: openapi.String("Dalasi"),
-                Description: openapi.String("Up-sized explicit frame"),
-                Directory: openapi.String("/home"),
-                DomainName: openapi.String("warmhearted-buying.biz"),
-                EmailAddr: openapi.String("Beulah.Franecki24@gmail.com"),
-                Extension: openapi.String("pdf"),
-                Filename: openapi.String("recovery.pdf"),
-                Filepath: openapi.String("/usr/share/powerfully.less"),
-                Filetype: openapi.String("application"),
-                FirstName: openapi.String("Geovany"),
-                FullName: openapi.String("Roy Gottlieb"),
-                Gender: openapi.String("Cis"),
-                Job: openapi.String("International Metrics Administrator"),
-                JSON: openapi.String("{trachoma: 6397, nick: null, android: \"Plastic Recumbent\"}"),
-                Key: openapi.String("<key>"),
-                LastName: openapi.String("Kshlerin"),
-                Latitude: openapi.String("65.3520"),
-                Locale: openapi.String("zh_CN"),
-                Longitude: openapi.String("16.8742"),
-                Mac: openapi.String("fd:b6:ff:35:99:05"),
-                Manufacturer: openapi.String("Mazda"),
-                Material: openapi.String("Frozen"),
-                MiddleName: openapi.String("Emerson"),
-                Model: openapi.String("Mustang"),
-                Password: openapi.String("71wIwgEZJMTCRYg"),
-                Phone: openapi.String("1-466-307-0476"),
-                Pin: openapi.String("0584"),
-                PostalCode: openapi.String("07886"),
-                Price: openapi.String("452.00"),
-                Product: openapi.String("Small Steel Salad"),
-                Sex: openapi.String("female"),
-                Street: openapi.String("Christy Dam"),
-                Timezone: openapi.String("America/Regina"),
-                Unit: openapi.String("sievert"),
-                URL: openapi.String("http://repentant-haunt.name"),
-                Username: openapi.String("Heather_Mills48"),
-                UUID: openapi.String("29e9f1c7-ed92-481f-955b-6ca1625b4c3a"),
-            },
+            FakerFormattedStrings: &shared.FakerFormattedStrings{},
+            FakerStrings: &shared.FakerStrings{},
             SimpleObject: &shared.SimpleObject{
-                Any: "wireless",
+                Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
                 Bool: true,
@@ -953,32 +868,26 @@ func main() {
                 Int: 1,
                 Int32: 1,
                 Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumThird,
-                IntOptNull: openapi.Int64(51222),
+                IntEnum: shared.SimpleObjectIntEnumSecond,
                 Num: 1.1,
-                NumOptNull: openapi.Float64(598.05),
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
             },
         },
-        BigintParameter: big.NewInt(284159),
-        BigintParameterOptional: big.NewInt(322202),
-        BigintStrParameter: big.NewInt(179570),
-        BigintStrParameterOptional: big.NewInt(189297),
+        BigintParameter: big.NewInt(168827),
+        BigintStrParameter: big.NewInt(446729),
         BoolParameter: false,
-        DateParameter: types.MustDateFromString("2023-10-09"),
-        DateTimeParameter: types.MustTimeFromString("2022-07-10T04:48:28.435Z"),
-        DecimalParameter: types.MustNewDecimalFromString("3812.93"),
-        DecimalParameterOptional: types.MustNewDecimalFromString("3439.97"),
-        DecimalStrParameter: types.MustNewDecimalFromString("3515.75"),
-        DecimalStrParameterOptional: types.MustNewDecimalFromString("5898.97"),
-        DoubleParameter: 3718.62,
-        EnumParameter: operations.UsageExamplePostEnumParameterValue2,
+        DateParameter: types.MustDateFromString("2023-06-11"),
+        DateTimeParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
+        DecimalParameter: types.MustNewDecimalFromString("2679.33"),
+        DecimalStrParameter: types.MustNewDecimalFromString("5223.72"),
+        DoubleParameter: 2911.37,
+        EnumParameter: operations.UsageExamplePostEnumParameterValue3,
         FalseyNumberParameter: 0,
-        Float32Parameter: 908.23,
-        FloatParameter: 8924.18,
-        Int64Parameter: 570514,
-        IntParameter: 221233,
+        Float32Parameter: 2286.22,
+        FloatParameter: 1029.75,
+        Int64Parameter: 566999,
+        IntParameter: 195232,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
         StrParameter: "example 2",
     }, operationSecurity)

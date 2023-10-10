@@ -35,7 +35,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "nihil": 109357,
+    "ASCII": 984700,
 }
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
@@ -73,7 +73,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "ab": dateutil.parser.parse('2021-08-06').date(),
+    "Bedfordshire": dateutil.parser.parse('2021-04-22').date(),
 }
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
@@ -111,7 +111,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "exercitationem": 'Bronze',
+    "Ergonomic": 'Carolina',
 }
 
 res = s.response_bodies.response_body_additional_properties_post(req)
@@ -344,11 +344,8 @@ s = sdk.SDK(
 )
 
 req = shared.ObjWithZeroValueComplexTypePtrs(
-    bigint=438531,
-    bigint_str=484338,
     date_=dateutil.parser.parse('2020-01-01').date(),
     date_time=dateutil.parser.isoparse('2020-01-01T00:00:00Z'),
-    decimal=Decimal('8697.02'),
 )
 
 res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)

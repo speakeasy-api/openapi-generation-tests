@@ -20,19 +20,20 @@ Endpoints for testing the pagination extension
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationCursorBodyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.pagination.paginationCursorBody({
-  cursor: 868337,
-}).then((res: PaginationCursorBodyResponse) => {
+  const res = await sdk.pagination.paginationCursorBody({
+    cursor: 868337,
+  });
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -40,7 +41,7 @@ sdk.pagination.paginationCursorBody({
       res = res.next();
     } while (res);
   }
-});
+})();
 ```
 
 ### Parameters
@@ -63,18 +64,20 @@ sdk.pagination.paginationCursorBody({
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationCursorParamsRequest, PaginationCursorParamsResponse } from "openapi/dist/sdk/models/operations";
+import { PaginationCursorParamsRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const cursor: number = 24812;
 
-sdk.pagination.paginationCursorParams(cursor).then((res: PaginationCursorParamsResponse) => {
+  const res = await sdk.pagination.paginationCursorParams(cursor);
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -82,7 +85,7 @@ sdk.pagination.paginationCursorParams(cursor).then((res: PaginationCursorParamsR
       res = res.next();
     } while (res);
   }
-});
+})();
 ```
 
 ### Parameters
@@ -105,21 +108,18 @@ sdk.pagination.paginationCursorParams(cursor).then((res: PaginationCursorParamsR
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationLimitOffsetOffsetBodyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.pagination.paginationLimitOffsetOffsetBody({
-  limit: 189971,
-  offset: 995974,
-  page: 329413,
-}).then((res: PaginationLimitOffsetOffsetBodyResponse) => {
+  const res = await sdk.pagination.paginationLimitOffsetOffsetBody({});
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -127,7 +127,7 @@ sdk.pagination.paginationLimitOffsetOffsetBody({
       res = res.next();
     } while (res);
   }
-});
+})();
 ```
 
 ### Parameters
@@ -150,22 +150,21 @@ sdk.pagination.paginationLimitOffsetOffsetBody({
 
 ```typescript
 import { SDK } from "openapi";
-import {
-  PaginationLimitOffsetOffsetParamsRequest,
-  PaginationLimitOffsetOffsetParamsResponse,
-} from "openapi/dist/sdk/models/operations";
+import { PaginationLimitOffsetOffsetParamsRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const limit: number = 661976;
 const offset: number = 600173;
 
-sdk.pagination.paginationLimitOffsetOffsetParams(limit, offset).then((res: PaginationLimitOffsetOffsetParamsResponse) => {
+  const res = await sdk.pagination.paginationLimitOffsetOffsetParams(limit, offset);
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -173,7 +172,7 @@ sdk.pagination.paginationLimitOffsetOffsetParams(limit, offset).then((res: Pagin
       res = res.next();
     } while (res);
   }
-});
+})();
 ```
 
 ### Parameters
@@ -197,21 +196,18 @@ sdk.pagination.paginationLimitOffsetOffsetParams(limit, offset).then((res: Pagin
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationLimitOffsetPageBodyResponse } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 
-sdk.pagination.paginationLimitOffsetPageBody({
-  limit: 479052,
-  offset: 716379,
-  page: 911806,
-}).then((res: PaginationLimitOffsetPageBodyResponse) => {
+  const res = await sdk.pagination.paginationLimitOffsetPageBody({});
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -219,7 +215,7 @@ sdk.pagination.paginationLimitOffsetPageBody({
       res = res.next();
     } while (res);
   }
-});
+})();
 ```
 
 ### Parameters
@@ -242,18 +238,20 @@ sdk.pagination.paginationLimitOffsetPageBody({
 
 ```typescript
 import { SDK } from "openapi";
-import { PaginationLimitOffsetPageParamsRequest, PaginationLimitOffsetPageParamsResponse } from "openapi/dist/sdk/models/operations";
+import { PaginationLimitOffsetPageParamsRequest } from "openapi/dist/sdk/models/operations";
 
-const sdk = new SDK({
-  security: {
-    apiKeyAuth: "Token YOUR_API_KEY",
-  },
-  globalPathParam: 100,
-  globalQueryParam: "some example global query param",
-});
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
 const page: number = 1177;
 
-sdk.pagination.paginationLimitOffsetPageParams(page).then((res: PaginationLimitOffsetPageParamsResponse) => {
+  const res = await sdk.pagination.paginationLimitOffsetPageParams(page);
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -261,7 +259,7 @@ sdk.pagination.paginationLimitOffsetPageParams(page).then((res: PaginationLimitO
       res = res.next();
     } while (res);
   }
-});
+})();
 ```
 
 ### Parameters
