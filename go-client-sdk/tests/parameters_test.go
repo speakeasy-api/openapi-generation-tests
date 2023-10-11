@@ -22,10 +22,12 @@ func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	mapParam := map[string]string{
 		"test":  "value",
 		"test2": "value2",
 	}
+
 	mapArrParam := map[string][]string{
 		"test": []string{
 			"test",
@@ -44,9 +46,6 @@ func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
 
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]operations.DeepObjectQueryParamsMapResArgs{
-		"mapParam[test2]": operations.CreateDeepObjectQueryParamsMapResArgsStr(
-			"value2",
-		),
 		"mapArrParam[test]": operations.CreateDeepObjectQueryParamsMapResArgsArrayOfstr(
 			[]string{
 				"test",
@@ -62,6 +61,9 @@ func TestParameters_DeepObjectQueryParamsMap(t *testing.T) {
 		"mapParam[test]": operations.CreateDeepObjectQueryParamsMapResArgsStr(
 			"value",
 		),
+		"mapParam[test2]": operations.CreateDeepObjectQueryParamsMapResArgsStr(
+			"value2",
+		),
 	}, res.Res.Args)
 	assert.Equal(t, "http://localhost:35123/anything/queryParams/deepObject/map?mapArrParam[test2]=test3&mapArrParam[test2]=test4&mapArrParam[test]=test&mapArrParam[test]=test2&mapParam[test2]=value2&mapParam[test]=value", res.Res.URL)
 }
@@ -74,6 +76,7 @@ func TestParameters_DeepObjectQueryParamsObject(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	objParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -94,6 +97,7 @@ func TestParameters_DeepObjectQueryParamsObject(t *testing.T) {
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
+
 	objArrParam := &operations.DeepObjectQueryParamsObjectObjArrParam{
 		Arr: []string{
 			"test",
@@ -140,10 +144,12 @@ func TestParameters_FormQueryParamsArray(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	arrParam := []string{
 		"test",
 		"test2",
 	}
+
 	arrParamExploded := []int64{
 		1,
 		2,
@@ -171,13 +177,15 @@ func TestParameters_FormQueryParamsMap(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	mapParam := map[string]string{
 		"test":  "value",
 		"test2": "value2",
 	}
+
 	mapParamExploded := map[string]int64{
-		"test2": 2,
 		"test":  1,
+		"test2": 2,
 	}
 
 	ctx := context.Background()
@@ -202,6 +210,7 @@ func TestParameters_FormQueryParamsObject(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	objParamExploded := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -222,6 +231,7 @@ func TestParameters_FormQueryParamsObject(t *testing.T) {
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
+
 	objParam := &shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -281,9 +291,13 @@ func TestParameters_FormQueryParamsPrimitive(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	var boolParam bool = true
+
 	var intParam int64 = 1
+
 	var numParam float64 = 1.1
+
 	var strParam string = "test"
 
 	ctx := context.Background()
@@ -307,12 +321,14 @@ func TestParameters_FormQueryParamsRefParamObject(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	refObjParam := &shared.RefQueryParamObj{
 		Bool: true,
 		Int:  1,
 		Num:  1.1,
 		Str:  "test",
 	}
+
 	refObjParamExploded := &shared.RefQueryParamObjExploded{
 		Bool: true,
 		Int:  1,
@@ -342,6 +358,7 @@ func TestParameters_HeaderParamsArray(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	xHeaderArray := []string{
 		"test1",
 		"test2",
@@ -364,10 +381,12 @@ func TestParameters_HeaderParamsMap(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	xHeaderMap := map[string]string{
-		"key2": "value2",
 		"key1": "value1",
+		"key2": "value2",
 	}
+
 	xHeaderMapExplode := map[string]string{
 		"test1": "val1",
 		"test2": "val2",
@@ -391,6 +410,7 @@ func TestParameters_HeaderParamsObject(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	xHeaderObj := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -411,6 +431,7 @@ func TestParameters_HeaderParamsObject(t *testing.T) {
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
+
 	xHeaderObjExplode := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -450,9 +471,13 @@ func TestParameters_HeaderParamsPrimitive(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	var xHeaderBoolean bool = true
+
 	var xHeaderInteger int64 = 1
+
 	var xHeaderNumber float64 = 1.1
+
 	var xHeaderString string = "test"
 
 	ctx := context.Background()
@@ -475,6 +500,7 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	deepObjParam := shared.DeepObject{
 		Any: shared.CreateDeepObjectAnySimpleObject(
 			shared.SimpleObject{
@@ -607,6 +633,7 @@ func TestParameters_JSONQueryParamsObject(t *testing.T) {
 		},
 		Str: "test",
 	}
+
 	simpleObjParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -647,8 +674,11 @@ func TestParameters_MixedParametersCamelCase(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	var headerParam string = "headerValue"
+
 	var pathParam string = "pathValue"
+
 	var queryStringParam string = "queryValue"
 
 	ctx := context.Background()
@@ -670,8 +700,11 @@ func TestParameters_MixedParametersPrimitives(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	var headerParam string = "headerValue"
+
 	var pathParam string = "pathValue"
+
 	var queryStringParam string = "queryValue"
 
 	ctx := context.Background()
@@ -693,6 +726,7 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	deepObjectParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -713,6 +747,7 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
+
 	formParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -733,6 +768,7 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
+
 	jsonParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -762,42 +798,42 @@ func TestParameters_MixedQueryParams(t *testing.T) {
 	assert.Equal(t, 200, res.StatusCode)
 	assert.Equal(t, map[string]string{
 		"deepObjectParam[int]":        "1",
-		"deepObjectParam[num]":        "1.1",
-		"deepObjectParam[decimal]":    "3.141592653589793",
-		"jsonParam":                   "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
 		"strOpt":                      "testOptional",
-		"bigint":                      "8821239038968084",
-		"deepObjectParam[float32]":    "1.1",
-		"deepObjectParam[int32]":      "1",
-		"deepObjectParam[strOpt]":     "testOptional",
-		"decimal":                     "3.141592653589793",
-		"date":                        "2020-01-01",
-		"deepObjectParam[any]":        "any",
-		"deepObjectParam[bigint]":     "8821239038968084",
-		"int":                         "1",
-		"str":                         "test",
-		"any":                         "any",
+		"boolOpt":                     "true",
 		"dateTime":                    "2020-01-01T00:00:00.000000001Z",
-		"int32Enum":                   "55",
-		"decimalStr":                  "3.14159265358979344719667586",
-		"deepObjectParam[bool]":       "true",
-		"enum":                        "one",
-		"int32":                       "1",
-		"intEnum":                     "2",
 		"deepObjectParam[bigintStr]":  "9223372036854775808",
-		"float32":                     "1.1",
+		"int32Enum":                   "55",
+		"jsonParam":                   "{\"any\":\"any\",\"bigint\":8821239038968084,\"bigintStr\":\"9223372036854775808\",\"bool\":true,\"boolOpt\":true,\"date\":\"2020-01-01\",\"dateTime\":\"2020-01-01T00:00:00.000000001Z\",\"decimal\":3.141592653589793,\"decimalStr\":\"3.14159265358979344719667586\",\"enum\":\"one\",\"float32\":1.1,\"int\":1,\"int32\":1,\"int32Enum\":55,\"intEnum\":2,\"num\":1.1,\"str\":\"test\",\"strOpt\":\"testOptional\"}",
+		"decimalStr":                  "3.14159265358979344719667586",
+		"bigintStr":                   "9223372036854775808",
+		"deepObjectParam[bool]":       "true",
+		"deepObjectParam[float32]":    "1.1",
+		"deepObjectParam[strOpt]":     "testOptional",
+		"deepObjectParam[str]":        "test",
+		"deepObjectParam[any]":        "any",
+		"deepObjectParam[boolOpt]":    "true",
 		"deepObjectParam[intEnum]":    "2",
 		"deepObjectParam[int32Enum]":  "55",
-		"num":                         "1.1",
-		"bigintStr":                   "9223372036854775808",
-		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.000000001Z",
-		"deepObjectParam[boolOpt]":    "true",
-		"deepObjectParam[date]":       "2020-01-01",
-		"deepObjectParam[enum]":       "one",
+		"deepObjectParam[num]":        "1.1",
+		"deepObjectParam[decimal]":    "3.141592653589793",
 		"deepObjectParam[decimalStr]": "3.14159265358979344719667586",
-		"deepObjectParam[str]":        "test",
+		"intEnum":                     "2",
+		"deepObjectParam[bigint]":     "8821239038968084",
+		"deepObjectParam[date]":       "2020-01-01",
+		"float32":                     "1.1",
+		"any":                         "any",
+		"date":                        "2020-01-01",
+		"deepObjectParam[dateTime]":   "2020-01-01T00:00:00.000000001Z",
+		"int":                         "1",
+		"num":                         "1.1",
+		"str":                         "test",
+		"bigint":                      "8821239038968084",
 		"bool":                        "true",
-		"boolOpt":                     "true",
+		"deepObjectParam[int32]":      "1",
+		"enum":                        "one",
+		"int32":                       "1",
+		"decimal":                     "3.141592653589793",
+		"deepObjectParam[enum]":       "one",
 	}, res.Res.Args)
 	assert.Equal(t, "http://localhost:35123/anything/queryParams/mixed?any=any&bigint=8821239038968084&bigintStr=9223372036854775808&bool=true&boolOpt=true&date=2020-01-01&dateTime=2020-01-01T00%3A00%3A00.000000001Z&decimal=3.141592653589793&decimalStr=3.14159265358979344719667586&deepObjectParam[any]=any&deepObjectParam[bigintStr]=9223372036854775808&deepObjectParam[bigint]=8821239038968084&deepObjectParam[boolOpt]=true&deepObjectParam[bool]=true&deepObjectParam[dateTime]=2020-01-01T00%3A00%3A00.000000001Z&deepObjectParam[date]=2020-01-01&deepObjectParam[decimalStr]=3.14159265358979344719667586&deepObjectParam[decimal]=3.141592653589793&deepObjectParam[enum]=one&deepObjectParam[float32]=1.1&deepObjectParam[int32Enum]=55&deepObjectParam[int32]=1&deepObjectParam[intEnum]=2&deepObjectParam[int]=1&deepObjectParam[num]=1.1&deepObjectParam[strOpt]=testOptional&deepObjectParam[str]=test&enum=one&float32=1.1&int=1&int32=1&int32Enum=55&intEnum=2&jsonParam={\"any\"%3A\"any\"%2C\"bigint\"%3A8821239038968084%2C\"bigintStr\"%3A\"9223372036854775808\"%2C\"bool\"%3Atrue%2C\"boolOpt\"%3Atrue%2C\"date\"%3A\"2020-01-01\"%2C\"dateTime\"%3A\"2020-01-01T00%3A00%3A00.000000001Z\"%2C\"decimal\"%3A3.141592653589793%2C\"decimalStr\"%3A\"3.14159265358979344719667586\"%2C\"enum\"%3A\"one\"%2C\"float32\"%3A1.1%2C\"int\"%3A1%2C\"int32\"%3A1%2C\"int32Enum\"%3A55%2C\"intEnum\"%3A2%2C\"num\"%3A1.1%2C\"str\"%3A\"test\"%2C\"strOpt\"%3A\"testOptional\"}&num=1.1&str=test&strOpt=testOptional", res.Res.URL)
 }
@@ -810,6 +846,7 @@ func TestParameters_PathParameterJSON(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	jsonObj := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -848,18 +885,22 @@ func TestParameters_PipeDelimitedQueryParamsArray(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	arrParam := []string{
 		"test",
 		"test2",
 	}
+
 	arrParamExploded := []int64{
 		1,
 		2,
 	}
+
 	mapParam := map[string]string{
-		"key1": "val1",
 		"key2": "val2",
+		"key1": "val1",
 	}
+
 	objParam := &shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -903,6 +944,7 @@ func TestParameters_SimplePathParameterArrays(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	arrParam := []string{
 		"test",
 		"test2",
@@ -925,10 +967,12 @@ func TestParameters_SimplePathParameterMaps(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	mapParam := map[string]string{
 		"test":  "value",
 		"test2": "value2",
 	}
+
 	mapParamExploded := map[string]int64{
 		"test":  1,
 		"test2": 2,
@@ -951,6 +995,7 @@ func TestParameters_SimplePathParameterObjects(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	objParam := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -971,6 +1016,7 @@ func TestParameters_SimplePathParameterObjects(t *testing.T) {
 		Str:        "test",
 		StrOpt:     openapi.String("testOptional"),
 	}
+
 	objParamExploded := shared.SimpleObject{
 		Any:        "any",
 		Bigint:     big.NewInt(8821239038968084),
@@ -1009,9 +1055,13 @@ func TestParameters_SimplePathParameterPrimitives(t *testing.T) {
 		openapi.WithGlobalPathParam(100),
 		openapi.WithGlobalQueryParam("some example global query param"),
 	)
+
 	var boolParam bool = true
+
 	var intParam int64 = 1
+
 	var numParam float64 = 1.1
+
 	var strParam string = "test"
 
 	ctx := context.Background()

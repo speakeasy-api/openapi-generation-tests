@@ -31,7 +31,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var requestID string = "Cambridgeshire"
+
     var numRetries *int64 = 496130
 
     ctx := context.Background()

@@ -160,6 +160,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var resourceID string = "Reggae"
 
     ctx := context.Background()
@@ -209,6 +211,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var resourceID string = "Home"
 
     ctx := context.Background()
@@ -258,6 +262,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var resourceID string = "International"
 
     ctx := context.Background()

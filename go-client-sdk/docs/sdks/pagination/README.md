@@ -96,6 +96,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var cursor int64 = 24812
 
     ctx := context.Background()
@@ -211,7 +213,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var limit *int64 = 661976
+
     var offset *int64 = 600173
 
     ctx := context.Background()
@@ -328,6 +333,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var page int64 = 1177
 
     ctx := context.Background()

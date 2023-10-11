@@ -248,7 +248,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var xNumberHeader float64 = 1751.8
+
     var xStringHeader string = "Tigard"
 
     ctx := context.Background()

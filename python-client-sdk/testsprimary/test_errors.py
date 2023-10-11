@@ -5,8 +5,8 @@ import requests
 from sdk import SDK
 from sdk.models import errors
 
-from .helpers import *
 from .common_helpers import *
+from .helpers import *
 
 
 def test_status_get_error_default_error_codes():
@@ -44,19 +44,19 @@ def test_status_get_x_speakeasy_errors():
     s = SDK()
     assert s is not None
 
-    with pytest.raises(errors.SDKError, match='API error occurred: Status 400\n{"message":"an error occurred","code":"400"}\n') as exc_info_400:
+    with pytest.raises(errors.SDKError, match='API error occurred: Status 400\n{"message":"an error occurred","code":"400","type":"internal"}\n') as exc_info_400:
         s.errors.status_get_x_speakeasy_errors(status_code=400)
 
     assert exc_info_400.value.status_code == 400
     assert exc_info_400.value.raw_response.status_code == 400
 
-    with pytest.raises(errors.SDKError, match='API error occurred: Status 401\n{"message":"an error occurred","code":"401"}\n') as exc_info_401:
+    with pytest.raises(errors.SDKError, match='API error occurred: Status 401\n{"message":"an error occurred","code":"401","type":"internal"}\n') as exc_info_401:
         s.errors.status_get_x_speakeasy_errors(status_code=401)
 
     assert exc_info_401.value.status_code == 401
     assert exc_info_401.value.raw_response.status_code == 401
 
-    with pytest.raises(errors.SDKError, match='API error occurred: Status 402\n{"message":"an error occurred","code":"402"}\n') as exc_info_402:
+    with pytest.raises(errors.SDKError, match='API error occurred: Status 402\n{"message":"an error occurred","code":"402","type":"internal"}\n') as exc_info_402:
         s.errors.status_get_x_speakeasy_errors(status_code=402)
 
     assert exc_info_402.value.status_code == 402
@@ -67,7 +67,7 @@ def test_status_get_x_speakeasy_errors():
 
     assert exc_info_500.value.code == "500"
 
-    with pytest.raises(errors.StatusGetXSpeakeasyErrors501ApplicationJSON, match='{"code": "501", "message": "an error occurred"}') as exc_info_501:
+    with pytest.raises(errors.StatusGetXSpeakeasyErrors501ApplicationJSON, match='{"code": "501", "message": "an error occurred", "type": "internal"}') as exc_info_501:
         s.errors.status_get_x_speakeasy_errors(status_code=501)
 
     assert exc_info_501.value.code == "501"

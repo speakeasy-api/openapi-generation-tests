@@ -35,9 +35,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    operationSecurity := operations.APIKeyAuthSecurity{
-            APIKeyAuth: "Token YOUR_API_KEY",
-        }
+
+
+    operationSecurity := "Token YOUR_API_KEY"
 
     ctx := context.Background()
     res, err := s.Auth.APIKeyAuth(ctx, operationSecurity)
@@ -130,8 +130,12 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var passwd string = "minus"
+
     var user string = "Architect"
+
     operationSecurity := operations.BasicAuthSecurity{
             Password: "YOUR_PASSWORD",
             Username: "YOUR_USERNAME",
@@ -183,9 +187,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    operationSecurity := operations.BearerAuthSecurity{
-            BearerAuth: "YOUR_JWT",
-        }
+
+
+    operationSecurity := "YOUR_JWT"
 
     ctx := context.Background()
     res, err := s.Auth.BearerAuth(ctx, operationSecurity)
@@ -278,9 +282,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    operationSecurity := operations.Oauth2AuthSecurity{
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        }
+
+
+    operationSecurity := "Bearer YOUR_OAUTH2_TOKEN"
 
     ctx := context.Background()
     res, err := s.Auth.Oauth2Auth(ctx, operationSecurity)
@@ -326,9 +330,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    operationSecurity := operations.Oauth2OverrideSecurity{
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        }
+
+
+    operationSecurity := "Bearer YOUR_OAUTH2_TOKEN"
 
     ctx := context.Background()
     res, err := s.Auth.Oauth2Override(ctx, operationSecurity)
@@ -374,9 +378,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    operationSecurity := operations.OpenIDConnectAuthSecurity{
-            OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
-        }
+
+
+    operationSecurity := "Bearer YOUR_OPENID_TOKEN"
 
     ctx := context.Background()
     res, err := s.Auth.OpenIDConnectAuth(ctx, operationSecurity)

@@ -7,10 +7,9 @@ import {
   SDKError,
   StatusGetXSpeakeasyErrors501ApplicationJSON,
 } from "../src/sdk/models/errors";
-import { AxiosError } from "axios";
-
 import { expect, test } from "@jest/globals";
 
+import { AxiosError } from "axios";
 import { SDK } from "../src/sdk";
 import { recordTest } from "./common_helpers";
 
@@ -65,7 +64,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
     expect(`${e}`).toBe(
-      'SDKError: API error occurred: Status 400\n{"message":"an error occurred","code":"400"}\n'
+      'SDKError: API error occurred: Status 400\n{"message":"an error occurred","code":"400","type":"internal"}\n'
     );
 
     const sdkErr = e as SDKError;
@@ -79,7 +78,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
     expect(`${e}`).toBe(
-      'SDKError: API error occurred: Status 401\n{"message":"an error occurred","code":"401"}\n'
+      'SDKError: API error occurred: Status 401\n{"message":"an error occurred","code":"401","type":"internal"}\n'
     );
 
     const sdkErr = e as SDKError;
@@ -93,7 +92,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(SDKError);
     expect(`${e}`).toBe(
-      'SDKError: API error occurred: Status 402\n{"message":"an error occurred","code":"402"}\n'
+      'SDKError: API error occurred: Status 402\n{"message":"an error occurred","code":"402","type":"internal"}\n'
     );
 
     const sdkErr = e as SDKError;
@@ -118,7 +117,7 @@ test("Test Status Get Error X-Speakeasy-Errors", async () => {
   } catch (e) {
     expect(e).toBeInstanceOf(StatusGetXSpeakeasyErrors501ApplicationJSON);
     expect(`${e}`).toBe(
-      'StatusGetXSpeakeasyErrors501ApplicationJSON: {"code":"501","message":"an error occurred"}'
+      'StatusGetXSpeakeasyErrors501ApplicationJSON: {"code":"501","message":"an error occurred","type":"internal"}'
     );
 
     const sdkErr = e as StatusGetXSpeakeasyErrors501ApplicationJSON;

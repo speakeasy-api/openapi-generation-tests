@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: d6c132f7bde6e79f0552a47119432f96
   docVersion: 0.1.0
-  speakeasyVersion: 1.96.2
-  generationVersion: 2.150.1
+  speakeasyVersion: 1.97.1
+  generationVersion: 2.152.1
 generation:
   sdkClassName: SDK
   singleTagPerOp: false
@@ -12,9 +12,9 @@ features:
     acceptHeaders: 2.81.1
     core: 2.90.4
     deprecations: 2.81.1
-    docs: 0.2.1
+    docs: 0.3.1
     enums: 2.81.1
-    errors: 2.81.3
+    errors: 2.81.4
     examples: 2.81.2
     flattening: 2.81.1
     globalSecurity: 2.82.0
@@ -31,7 +31,7 @@ features:
     retries: 2.82.1
     serverIDs: 2.81.1
 typescript:
-  version: 1.38.0
+  version: 1.39.0
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

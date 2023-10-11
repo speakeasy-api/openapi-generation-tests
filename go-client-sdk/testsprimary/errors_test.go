@@ -4,9 +4,8 @@ package tests
 
 import (
 	"context"
-	"testing"
-
 	"openapi/pkg/models/sdkerrors"
+	"testing"
 
 	sdk "openapi"
 
@@ -59,8 +58,9 @@ func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
 	s := sdk.New()
 
 	res, err := s.Errors.StatusGetXSpeakeasyErrors(context.Background(), 400)
+	assert.Nil(t, res)
 	assert.Error(t, err)
-	assert.Equal(t, "API error occurred: Status 400\n{\"message\":\"an error occurred\",\"code\":\"400\"}\n", err.Error())
+	assert.Equal(t, "API error occurred: Status 400\n{\"message\":\"an error occurred\",\"code\":\"400\",\"type\":\"internal\"}\n", err.Error())
 
 	var sdkErr *sdkerrors.SDKError
 	if assert.ErrorAs(t, err, &sdkErr) {
@@ -68,31 +68,28 @@ func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
 		assert.Equal(t, 400, sdkErr.RawResponse.StatusCode)
 	}
 
-	assert.Nil(t, res)
-
 	res, err = s.Errors.StatusGetXSpeakeasyErrors(context.Background(), 401)
+	assert.Nil(t, res)
 	assert.Error(t, err)
-	assert.Equal(t, "API error occurred: Status 401\n{\"message\":\"an error occurred\",\"code\":\"401\"}\n", err.Error())
+	assert.Equal(t, "API error occurred: Status 401\n{\"message\":\"an error occurred\",\"code\":\"401\",\"type\":\"internal\"}\n", err.Error())
 
 	if assert.ErrorAs(t, err, &sdkErr) {
 		assert.Equal(t, 401, sdkErr.StatusCode)
 		assert.Equal(t, 401, sdkErr.RawResponse.StatusCode)
 	}
 
-	assert.Nil(t, res)
-
 	res, err = s.Errors.StatusGetXSpeakeasyErrors(context.Background(), 402)
+	assert.Nil(t, res)
 	assert.Error(t, err)
-	assert.Equal(t, "API error occurred: Status 402\n{\"message\":\"an error occurred\",\"code\":\"402\"}\n", err.Error())
+	assert.Equal(t, "API error occurred: Status 402\n{\"message\":\"an error occurred\",\"code\":\"402\",\"type\":\"internal\"}\n", err.Error())
 
 	if assert.ErrorAs(t, err, &sdkErr) {
 		assert.Equal(t, 402, sdkErr.StatusCode)
 		assert.Equal(t, 402, sdkErr.RawResponse.StatusCode)
 	}
 
-	assert.Nil(t, res)
-
 	res, err = s.Errors.StatusGetXSpeakeasyErrors(context.Background(), 500)
+	assert.Nil(t, res)
 	assert.Error(t, err)
 	assert.Equal(t, "an error occurred", err.Error())
 
@@ -102,16 +99,15 @@ func TestStatusGetErrorXSpeakeasyErrors(t *testing.T) {
 	}
 
 	res, err = s.Errors.StatusGetXSpeakeasyErrors(context.Background(), 501)
+	assert.Nil(t, res)
 	assert.Error(t, err)
-	assert.Equal(t, `{"code":"501","message":"an error occurred"}`, err.Error())
+	assert.Equal(t, `{"code":"501","message":"an error occurred","type":"internal"}`, err.Error())
 
 	var e501 *sdkerrors.StatusGetXSpeakeasyErrors501ApplicationJSON
 	if assert.ErrorAs(t, err, &e501) {
 		assert.Equal(t, "501", *e501.Code)
 		assert.Equal(t, 501, e501.RawResponse.StatusCode)
 	}
-
-	assert.Nil(t, res)
 }
 
 func TestConnectionErrorGet(t *testing.T) {

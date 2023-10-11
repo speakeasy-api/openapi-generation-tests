@@ -32,6 +32,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var globalPathParam *int64 = 719830
 
     ctx := context.Background()
@@ -81,6 +83,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var globalQueryParam *string = "Tricycle"
 
     ctx := context.Background()

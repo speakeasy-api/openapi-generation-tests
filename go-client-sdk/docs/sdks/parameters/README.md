@@ -52,10 +52,13 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     mapParam := map[string]string{
-        "test2": "value2",
         "test": "value",
+        "test2": "value2",
     }
+
     mapArrParam := map[string][]string{
         "test2": []string{
             "test3",
@@ -118,6 +121,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     objParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -138,6 +143,7 @@ func main() {
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
+
     objArrParam := &operations.DeepObjectQueryParamsObjectObjArrParam{
         Arr: []string{
             "test",
@@ -193,6 +199,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var duplicateParamRequest string = "Parks"
 
     ctx := context.Background()
@@ -242,10 +250,13 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     arrParam := []string{
         "test",
         "test2",
     }
+
     arrParamExploded := []int64{
         1,
         2,
@@ -299,10 +310,13 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     mapParam := map[string]string{
         "test": "value",
         "test2": "value2",
     }
+
     mapParamExploded := map[string]int64{
         "test": 1,
         "test2": 2,
@@ -358,6 +372,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     objParamExploded := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -378,6 +394,7 @@ func main() {
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
+
     objParam := &shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -447,9 +464,14 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var boolParam bool = true
+
     var intParam int64 = 1
+
     var numParam float64 = 1.1
+
     var strParam string = "test"
 
     ctx := context.Background()
@@ -502,12 +524,15 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     refObjParam := &shared.RefQueryParamObj{
         Bool: true,
         Int: 1,
         Num: 1.1,
         Str: "test",
     }
+
     refObjParamExploded := &shared.RefQueryParamObjExploded{
         Bool: true,
         Int: 1,
@@ -563,6 +588,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     xHeaderArray := []string{
         "test1",
         "test2",
@@ -615,10 +642,13 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     xHeaderMap := map[string]string{
         "key2": "value2",
         "key1": "value1",
     }
+
     xHeaderMapExplode := map[string]string{
         "test1": "val1",
         "test2": "val2",
@@ -674,6 +704,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     xHeaderObj := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -694,6 +726,7 @@ func main() {
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
+
     xHeaderObjExplode := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -763,9 +796,14 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var xHeaderBoolean bool = true
+
     var xHeaderInteger int64 = 1
+
     var xHeaderNumber float64 = 1.1
+
     var xHeaderString string = "test"
 
     ctx := context.Background()
@@ -820,6 +858,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     deepObjParam := shared.DeepObject{
         Any: shared.CreateDeepObjectAnySimpleObject(
                 shared.SimpleObject{
@@ -952,6 +992,7 @@ func main() {
         },
         Str: "test",
     }
+
     simpleObjParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1021,8 +1062,12 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var headerParam string = "headerValue"
+
     var pathParam string = "pathValue"
+
     var queryStringParam string = "queryValue"
 
     ctx := context.Background()
@@ -1074,8 +1119,12 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var headerParam string = "headerValue"
+
     var pathParam string = "pathValue"
+
     var queryStringParam string = "queryValue"
 
     ctx := context.Background()
@@ -1129,6 +1178,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     deepObjectParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1149,6 +1200,7 @@ func main() {
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
+
     formParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1169,6 +1221,7 @@ func main() {
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
+
     jsonParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1241,6 +1294,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     jsonObj := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1311,18 +1366,23 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     arrParam := []string{
         "test",
         "test2",
     }
+
     arrParamExploded := []int64{
         1,
         2,
     }
+
     mapParam := map[string]string{
         "key1": "val1",
         "key2": "val2",
     }
+
     objParam := &shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1394,6 +1454,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     arrParam := []string{
         "test",
         "test2",
@@ -1446,13 +1508,16 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     mapParam := map[string]string{
         "test": "value",
         "test2": "value2",
     }
+
     mapParamExploded := map[string]int64{
-        "test": 1,
         "test2": 2,
+        "test": 1,
     }
 
     ctx := context.Background()
@@ -1505,6 +1570,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     objParam := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1525,6 +1592,7 @@ func main() {
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
+
     objParamExploded := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -1594,9 +1662,14 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var boolParam bool = true
+
     var intParam int64 = 1
+
     var numParam float64 = 1.1
+
     var strParam string = "test"
 
     ctx := context.Background()

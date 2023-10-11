@@ -159,6 +159,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.BasicAuthNewSecurity{
             Password: "YOUR_PASSWORD",
             Username: "YOUR_USERNAME",
@@ -222,6 +224,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.MultipleMixedOptionsAuthSecurity{
             APIKeyAuthNew: openapi.String("Token <YOUR_API_KEY>"),
         }
@@ -284,6 +288,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.MultipleMixedSchemeAuthSecurity{
             APIKeyAuthNew: "Token <YOUR_API_KEY>",
             BasicAuth: shared.SchemeBasicAuth{
@@ -350,6 +356,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.MultipleOptionsWithMixedSchemesAuthSecurity{
             Option1: &operations.MultipleOptionsWithMixedSchemesAuthSecurityOption1{
                 APIKeyAuthNew: "Token <YOUR_API_KEY>",
@@ -415,6 +423,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.MultipleOptionsWithSimpleSchemesAuthSecurity{
             Option1: &operations.MultipleOptionsWithSimpleSchemesAuthSecurityOption1{
                 APIKeyAuthNew: "Token <YOUR_API_KEY>",
@@ -480,6 +490,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.MultipleSimpleOptionsAuthSecurity{
             APIKeyAuthNew: openapi.String("Token <YOUR_API_KEY>"),
         }
@@ -542,6 +554,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.MultipleSimpleSchemeAuthSecurity{
             APIKeyAuthNew: "Token <YOUR_API_KEY>",
             Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
@@ -605,9 +619,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    operationSecurity := operations.Oauth2AuthNewSecurity{
-            Oauth2: "Bearer YOUR_OAUTH2_TOKEN",
-        }
+
+
+    operationSecurity := "Bearer YOUR_OAUTH2_TOKEN"
 
     ctx := context.Background()
     res, err := s.AuthNew.Oauth2AuthNew(ctx, shared.AuthServiceRequestBody{
@@ -667,9 +681,9 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
-    operationSecurity := operations.OpenIDConnectAuthNewSecurity{
-            OpenIDConnect: "Bearer YOUR_OPENID_TOKEN",
-        }
+
+
+    operationSecurity := "Bearer YOUR_OPENID_TOKEN"
 
     ctx := context.Background()
     res, err := s.AuthNew.OpenIDConnectAuthNew(ctx, shared.AuthServiceRequestBody{

@@ -13,7 +13,7 @@ go get github.com/speakeasy-api/openapi-generation-tests/go-client-sdk
 ```go
 package main
 
-import(
+import (
 	"context"
 	"log"
 	"openapi"
@@ -21,24 +21,25 @@ import(
 )
 
 func main() {
-    s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
-        openapi.WithGlobalPathParam(100),
-        openapi.WithGlobalQueryParam("some example global query param"),
-    )
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
 
-    ctx := context.Background()
-    res, err := s.Generation.GlobalNameOverridden(ctx)
-    if err != nil {
-        log.Fatal(err)
-    }
+	ctx := context.Background()
+	res, err := s.Generation.GlobalNameOverridden(ctx)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    if res.GetGlobalNameOverride200ApplicationJSONObject != nil {
-        // handle response
-    }
+	if res.GetGlobalNameOverride200ApplicationJSONObject != nil {
+		// handle response
+	}
 }
+
 ```
 
 
@@ -47,77 +48,79 @@ Do this second
 ```go
 package main
 
-import(
+import (
 	"context"
 	"log"
+	"math/big"
 	"openapi"
 	"openapi/pkg/models/operations"
 	"openapi/pkg/models/shared"
-	"math/big"
 	"openapi/pkg/types"
 )
 
 func main() {
-    s := openapi.New(
-        openapi.WithGlobalPathParam(100),
-        openapi.WithGlobalQueryParam("some example global query param"),
-    )
-    operationSecurity := operations.UsageExamplePostSecurity{
-            Password: "YOUR_PASSWORD",
-            Username: "YOUR_USERNAME",
-        }
+	s := openapi.New(
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
 
-    ctx := context.Background()
-    res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
-        RequestBody: &operations.UsageExamplePostRequestBody{
-            FakerFormattedStrings: &shared.FakerFormattedStrings{},
-            FakerStrings: &shared.FakerStrings{},
-            SimpleObject: &shared.SimpleObject{
-                Any: "any",
-                Bigint: big.NewInt(8821239038968084),
-                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
-                Bool: true,
-                BoolOpt: openapi.Bool(true),
-                Date: types.MustDateFromString("2020-01-01"),
-                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
-                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
-                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
-                Enum: shared.EnumOne,
-                Float32: 1.1,
-                Int: 1,
-                Int32: 1,
-                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
-                IntEnum: shared.SimpleObjectIntEnumSecond,
-                Num: 1.1,
-                Str: "test",
-                StrOpt: openapi.String("testOptional"),
-            },
-        },
-        BigintParameter: big.NewInt(168827),
-        BigintStrParameter: big.NewInt(446729),
-        BoolParameter: false,
-        DateParameter: types.MustDateFromString("2023-06-11"),
-        DateTimeParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
-        DecimalParameter: types.MustNewDecimalFromString("2679.33"),
-        DecimalStrParameter: types.MustNewDecimalFromString("5223.72"),
-        DoubleParameter: 2911.37,
-        EnumParameter: operations.UsageExamplePostEnumParameterValue3,
-        FalseyNumberParameter: 0,
-        Float32Parameter: 2286.22,
-        FloatParameter: 1029.75,
-        Int64Parameter: 566999,
-        IntParameter: 195232,
-        OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example 2",
-    }, operationSecurity)
-    if err != nil {
-        log.Fatal(err)
-    }
+	operationSecurity := operations.UsageExamplePostSecurity{
+		Password: "YOUR_PASSWORD",
+		Username: "YOUR_USERNAME",
+	}
 
-    if res.UsageExamplePost200ApplicationJSONObject != nil {
-        // handle response
-    }
+	ctx := context.Background()
+	res, err := s.Generation.UsageExamplePost(ctx, operations.UsageExamplePostRequest{
+		RequestBody: &operations.UsageExamplePostRequestBody{
+			FakerFormattedStrings: &shared.FakerFormattedStrings{},
+			FakerStrings:          &shared.FakerStrings{},
+			SimpleObject: &shared.SimpleObject{
+				Any:        "any",
+				Bigint:     big.NewInt(8821239038968084),
+				BigintStr:  types.MustNewBigIntFromString("9223372036854775808"),
+				Bool:       true,
+				BoolOpt:    openapi.Bool(true),
+				Date:       types.MustDateFromString("2020-01-01"),
+				DateTime:   types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+				Decimal:    types.MustNewDecimalFromString("3.141592653589793"),
+				DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+				Enum:       shared.EnumOne,
+				Float32:    1.1,
+				Int:        1,
+				Int32:      1,
+				Int32Enum:  shared.SimpleObjectInt32EnumFiftyFive,
+				IntEnum:    shared.SimpleObjectIntEnumSecond,
+				Num:        1.1,
+				Str:        "test",
+				StrOpt:     openapi.String("testOptional"),
+			},
+		},
+		BigintParameter:       big.NewInt(168827),
+		BigintStrParameter:    big.NewInt(446729),
+		BoolParameter:         false,
+		DateParameter:         types.MustDateFromString("2023-06-11"),
+		DateTimeParameter:     types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
+		DecimalParameter:      types.MustNewDecimalFromString("2679.33"),
+		DecimalStrParameter:   types.MustNewDecimalFromString("5223.72"),
+		DoubleParameter:       2911.37,
+		EnumParameter:         operations.UsageExamplePostEnumParameterValue3,
+		FalseyNumberParameter: 0,
+		Float32Parameter:      2286.22,
+		FloatParameter:        1029.75,
+		Int64Parameter:        566999,
+		IntParameter:          195232,
+		OptEnumParameter:      operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
+		StrParameter:          "example 2",
+	}, operationSecurity)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.UsageExamplePost200ApplicationJSONObject != nil {
+		// handle response
+	}
 }
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -412,47 +415,49 @@ return value of `Next` is `nil`, then there are no more pages to be fetched.
 Here's an example of one such pagination call:
 
 
+## Example
 
 ```go
 package main
 
-import(
+import (
 	"context"
 	"log"
 	"openapi"
-	"openapi/pkg/models/shared"
 	"openapi/pkg/models/operations"
+	"openapi/pkg/models/shared"
 )
 
 func main() {
-    s := openapi.New(
-        openapi.WithSecurity(shared.Security{
-            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
-        }),
-        openapi.WithGlobalPathParam(100),
-        openapi.WithGlobalQueryParam("some example global query param"),
-    )
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
 
-    ctx := context.Background()
-    res, err := s.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
-        Cursor: 868337,
-    })
-    if err != nil {
-        log.Fatal(err)
-    }
+	ctx := context.Background()
+	res, err := s.Pagination.PaginationCursorBody(ctx, operations.PaginationCursorBodyRequestBody{
+		Cursor: 868337,
+	})
+	if err != nil {
+		log.Fatal(err)
+	}
 
-    if res.Res != nil {
-         for {
-            // handle items
+	if res.Res != nil {
+		for {
+			// handle items
 
-            res = res.Next()
-            if res == nil {
-                break
-            }
-        }
+			res = res.Next()
+			if res == nil {
+				break
+			}
+		}
 
-    }
+	}
 }
+
 ```
 <!-- End Pagination -->
 
@@ -483,6 +488,65 @@ d5 := types.MustNewDateFromString("2019-01-01") // returns *types.Date and panic
 d6 := types.MustDateFromString("2019-01-01") // returns types.Date and panics on error
 ```
 <!-- End Go Types -->
+
+
+
+<!-- Start Global Parameters -->
+# Global Parameters
+
+Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `GlobalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+## Available Globals
+
+The following global parameters are available. The required parameters must be set when you initialize the SDK client.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| globalPathParam | int64 | ✔️ | The globalPathParam parameter. |
+| globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
+
+
+
+## Example
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+
+	var globalPathParam *int64 = 719830
+
+	ctx := context.Background()
+	res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Res != nil {
+		// handle response
+	}
+}
+
+```
+
+<!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

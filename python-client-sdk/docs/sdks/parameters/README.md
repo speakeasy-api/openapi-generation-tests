@@ -235,8 +235,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.form_query_params_map(map_param={
-    "test": 'value',
     "test2": 'value2',
+    "test": 'value',
 }, map_param_exploded={
     "test": 1,
     "test2": 2,
@@ -475,8 +475,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.header_params_map(x_header_map={
-    "key1": 'value1',
     "key2": 'value2',
+    "key1": 'value1',
 }, x_header_map_explode={
     "test1": 'val1',
     "test2": 'val2',
@@ -1152,8 +1152,8 @@ res = s.parameters.simple_path_parameter_maps(map_param={
     "test": 'value',
     "test2": 'value2',
 }, map_param_exploded={
-    "test2": 2,
     "test": 1,
+    "test2": 2,
 })
 
 if res.res is not None:

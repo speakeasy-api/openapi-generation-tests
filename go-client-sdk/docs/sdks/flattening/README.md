@@ -37,6 +37,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     simpleObject := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -57,6 +59,7 @@ func main() {
         Str: "test",
         StrOpt: openapi.String("testOptional"),
     }
+
     var str string = "Minivan"
 
     ctx := context.Background()
@@ -109,7 +112,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var paramStr string = "ick"
+
     simpleObject := shared.SimpleObject{
         Any: "any",
         Bigint: big.NewInt(8821239038968084),
@@ -179,7 +185,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var strPathParameter string = "kilogram"
+
     var strQueryParameter string = "Cloned"
 
     ctx := context.Background()
@@ -231,9 +240,12 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
         Str: "Progressive",
     }
+
     var str string = "until"
 
     ctx := context.Background()
@@ -285,9 +297,12 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
         BodyStr: "dynamic expedite",
     }
+
     var paramStr string = "Forward"
 
     ctx := context.Background()

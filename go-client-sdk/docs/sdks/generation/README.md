@@ -285,6 +285,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var deprecatedParameter *string = "Account"
 
     ctx := context.Background()
@@ -338,7 +340,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var deprecatedParameter *string = "Account"
+
     var newParameter *string = "actuating"
 
     ctx := context.Background()
@@ -389,6 +394,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     emptyObject := shared.EmptyObjectParam{}
 
     ctx := context.Background()
@@ -581,7 +588,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     requestBody := operations.IgnoresPostApplicationJSON{}
+
     var testParam *string = "Bike"
 
     ctx := context.Background()
@@ -633,7 +643,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var testEnumQueryParam operations.NameOverrideGetEnumNameOverride = operations.NameOverrideGetEnumNameOverrideValue3
+
     var testQueryParam string = "example"
 
     ctx := context.Background()
@@ -779,9 +792,14 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var bigint *big.Int = big.NewInt(879275)
+
     var date *types.Date = types.MustDateFromString("2023-11-18")
+
     var decimal *decimal.Big = types.MustNewDecimalFromString("3346.96")
+
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
         Num: 4778.06,
@@ -843,6 +861,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     operationSecurity := operations.UsageExamplePostSecurity{
             Password: "YOUR_PASSWORD",
             Username: "YOUR_USERNAME",

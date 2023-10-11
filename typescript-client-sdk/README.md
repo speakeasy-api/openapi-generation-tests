@@ -21,21 +21,22 @@ yarn add https://gitpkg.now.sh/speakeasy-api/openapi-generation-tests/typescript
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
 
-  const res = await sdk.generation.globalNameOverridden();
+    const res = await sdk.generation.globalNameOverridden();
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 
 
@@ -44,70 +45,74 @@ Do this second
 ```typescript
 import { SDK } from "openapi";
 import {
-  UsageExamplePostEnumParameter,
-  UsageExamplePostOptEnumParameter,
-  UsageExamplePostSecurity,
+    UsageExamplePostEnumParameter,
+    UsageExamplePostOptEnumParameter,
+    UsageExamplePostSecurity,
 } from "openapi/dist/sdk/models/operations";
 import { Enum, SimpleObjectInt32Enum, SimpleObjectIntEnum } from "openapi/dist/sdk/models/shared";
 import { RFCDate } from "openapi/dist/sdk/types";
 
-(async() => {
-  const sdk = new SDK({
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
-const operationSecurity: UsageExamplePostSecurity = {
-  password: "YOUR_PASSWORD",
-  username: "YOUR_USERNAME",
-};
+(async () => {
+    const sdk = new SDK({
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+    const operationSecurity: UsageExamplePostSecurity = {
+        password: "YOUR_PASSWORD",
+        username: "YOUR_USERNAME",
+    };
 
-  const res = await sdk.generation.usageExamplePost({
-    requestBody: {
-      fakerFormattedStrings: {},
-      fakerStrings: {},
-      simpleObject: {
-        any: "any",
-        bigint: 8821239038968084,
-        bigintStr: "9223372036854775808",
-        bool: true,
-        boolOpt: true,
-        date: new RFCDate("2020-01-01"),
-        dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
-        decimal: 3.141592653589793,
-        decimalStr: "3.14159265358979344719667586",
-        enum: Enum.One,
-        float32: 1.1,
-        int: 1,
-        int32: 1,
-        int32Enum: SimpleObjectInt32Enum.FiftyFive,
-        intEnum: SimpleObjectIntEnum.Second,
-        num: 1.1,
-        str: "test",
-        strOpt: "testOptional",
-      },
-    },
-    bigintParameter: 168827,
-    bigintStrParameter: "Gasoline Sleek",
-    boolParameter: false,
-    dateParameter: new RFCDate("2021-04-23"),
-    dateTimeParameter: new Date("2022-09-13T20:44:04.193Z"),
-    decimalParameter: 1952.32,
-    decimalStrParameter: "Shoes Brockton",
-    doubleParameter: 1062.86,
-    enumParameter: UsageExamplePostEnumParameter.Value1,
-    falseyNumberParameter: 0,
-    float32Parameter: 2346.82,
-    floatParameter: 5954.85,
-    int64Parameter: 215216,
-    intParameter: 834441,
-    optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
-    strParameter: "example 2",
-  }, operationSecurity);
+    const res = await sdk.generation.usageExamplePost(
+        {
+            requestBody: {
+                fakerFormattedStrings: {},
+                fakerStrings: {},
+                simpleObject: {
+                    any: "any",
+                    bigint: 8821239038968084,
+                    bigintStr: "9223372036854775808",
+                    bool: true,
+                    boolOpt: true,
+                    date: new RFCDate("2020-01-01"),
+                    dateTime: new Date("2020-01-01T00:00:00.000000001Z"),
+                    decimal: 3.141592653589793,
+                    decimalStr: "3.14159265358979344719667586",
+                    enum: Enum.One,
+                    float32: 1.1,
+                    int: 1,
+                    int32: 1,
+                    int32Enum: SimpleObjectInt32Enum.FiftyFive,
+                    intEnum: SimpleObjectIntEnum.Second,
+                    num: 1.1,
+                    str: "test",
+                    strOpt: "testOptional",
+                },
+            },
+            bigintParameter: 168827,
+            bigintStrParameter: "Gasoline Sleek",
+            boolParameter: false,
+            dateParameter: new RFCDate("2021-04-23"),
+            dateTimeParameter: new Date("2022-09-13T20:44:04.193Z"),
+            decimalParameter: 1952.32,
+            decimalStrParameter: "Shoes Brockton",
+            doubleParameter: 1062.86,
+            enumParameter: UsageExamplePostEnumParameter.Value1,
+            falseyNumberParameter: 0,
+            float32Parameter: 2346.82,
+            floatParameter: 5954.85,
+            int64Parameter: 215216,
+            intParameter: 834441,
+            optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
+            strParameter: "example 2",
+        },
+        operationSecurity
+    );
 
-  if (res.statusCode == 200) {
-    // handle response
-  }
+    if (res.statusCode == 200) {
+        // handle response
+    }
 })();
+
 ```
 <!-- End SDK Example Usage -->
 
@@ -402,33 +407,83 @@ return value of `next` is `null`, then there are no more pages to be fetched.
 Here's an example of one such pagination call:
 
 
+## Example
 
 ```typescript
 import { SDK } from "openapi";
 
-(async() => {
-  const sdk = new SDK({
-    security: {
-      apiKeyAuth: "Token YOUR_API_KEY",
-    },
-    globalPathParam: 100,
-    globalQueryParam: "some example global query param",
-  });
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
 
-  const res = await sdk.paginationCursorBody({
-    cursor: 868337,
-  });
+    const res = await sdk.pagination.paginationCursorBody({
+        cursor: 868337,
+    });
 
-  if (res.statusCode == 200) {
-    do {
-      // handle items
+    if (res.statusCode == 200) {
+        do {
+            // handle items
 
-      res = res.next();
-    } while (res);
-  }
+            res = res.next();
+        } while (res);
+    }
 })();
+
 ```
 <!-- End Pagination -->
+
+
+
+<!-- Start Global Parameters -->
+# Global Parameters
+
+Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `globalPathParameterGet`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+## Available Globals
+
+The following global parameters are available. The required parameters must be set when you initialize the SDK client.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| globalPathParam | number | ✔️ | The globalPathParam parameter. |
+| globalQueryParam | string | ✔️ | The globalQueryParam parameter. |
+
+
+
+## Example
+
+```typescript
+import { SDK } from "openapi";
+import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operations";
+
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+    const globalPathParam: number = 719830;
+
+    const res = await sdk.globals.globalPathParameterGet(globalPathParam);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+<!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

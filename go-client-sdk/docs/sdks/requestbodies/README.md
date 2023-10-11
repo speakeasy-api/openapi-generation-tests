@@ -3672,11 +3672,14 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
         Bool3: false,
         Num3: 8693.24,
         Str3: "Compatible",
     }
+
     var paramStr string = "Architect"
 
     ctx := context.Background()
@@ -3728,11 +3731,14 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
         Bool: false,
         Num: 9771.91,
         Str: "South networks",
     }
+
     var paramStr string = "Brand"
 
     ctx := context.Background()
@@ -3784,11 +3790,14 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
         Bool2: false,
         Num2: 7000.76,
         Str2: "Ball Southwest",
     }
+
     var paramStr string = "Ergonomic"
 
     ctx := context.Background()
@@ -4290,7 +4299,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var requestBody []byte = []byte("o%jIWe4_P6")
+
     var queryStringParam string = "Huntington"
 
     ctx := context.Background()
@@ -4747,7 +4759,10 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var requestBody string = "SMTP"
+
     var queryStringParam string = "Unbranded"
 
     ctx := context.Background()

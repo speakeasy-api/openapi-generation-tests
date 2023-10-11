@@ -384,9 +384,8 @@ Some of the endpoints in this SDK support pagination. To use pagination, you mak
 returned response object will have a `Next` method that can be called to pull down the next group of results. If the
 return value of `Next` is `None`, then there are no more pages to be fetched.
 
-Here's an example of one such pagination call:
 
-
+## Example
 
 ```python
 import sdk
@@ -404,7 +403,7 @@ req = operations.PaginationCursorBodyRequestBody(
     cursor=868337,
 )
 
-res = s.pagination_cursor_body(req)
+res = s.pagination.pagination_cursor_body(req)
 
 if res.res is not None:
     while True:
@@ -416,6 +415,50 @@ if res.res is not None:
 
 ```
 <!-- End Pagination -->
+
+
+
+<!-- Start Global Parameters -->
+# Global Parameters
+
+Certain parameters are configured globally. These parameters must be set on the SDK client instance itself during initialization. When configured as an option during SDK initialization, These global values will be used as defaults on the operations that use them. When such operations are called, there is a place in each to override the global value, if needed.
+
+For example, you can set `globalPathParam` to `100` at SDK initialization and then you do not have to pass the same value on calls to operations like `global_path_parameter_get`. But if you want to do so you may, which will locally override the global setting. See the example code below for a demonstration.
+
+
+## Available Globals
+
+The following global parameters are available. The required parameters must be set when you initialize the SDK client.
+
+| Name | Type | Required | Description |
+| ---- | ---- |:--------:| ----------- |
+| globalPathParam | int | ✔️ | The globalPathParam parameter. |
+| globalQueryParam | str | ✔️ | The globalQueryParam parameter. |
+
+
+
+## Example
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.globals.global_path_parameter_get(global_path_param=719830)
+
+if res.res is not None:
+    # handle response
+```
+
+<!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 

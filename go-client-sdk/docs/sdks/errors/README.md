@@ -81,6 +81,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var statusCode int64 = 458364
 
     ctx := context.Background()
@@ -130,6 +132,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var statusCode int64 = 385913
 
     ctx := context.Background()

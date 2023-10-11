@@ -32,6 +32,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var userAgent string = "Bentley"
 
     ctx := context.Background()

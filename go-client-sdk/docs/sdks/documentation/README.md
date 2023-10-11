@@ -33,6 +33,8 @@ func main() {
         openapi.WithGlobalPathParam(100),
         openapi.WithGlobalQueryParam("some example global query param"),
     )
+
+
     var language string = "hack"
 
     ctx := context.Background()
