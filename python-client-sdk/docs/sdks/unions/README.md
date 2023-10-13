@@ -44,6 +44,7 @@ res = s.unions.flattened_typed_object_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -82,6 +83,7 @@ res = s.unions.mixed_type_one_of_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -131,6 +133,7 @@ res = s.unions.nullable_one_of_ref_in_object_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -170,6 +173,7 @@ res = s.unions.nullable_one_of_schema_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -210,6 +214,7 @@ res = s.unions.nullable_one_of_type_in_object_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -249,6 +254,7 @@ res = s.unions.nullable_typed_object_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -285,6 +291,7 @@ res = s.unions.primitive_type_one_of_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -383,7 +390,7 @@ req = shared.DeepObjectWithType(
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -403,7 +410,7 @@ req = shared.DeepObjectWithType(
             str_='test',
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -452,6 +459,7 @@ res = s.unions.strongly_typed_one_of_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -491,6 +499,7 @@ res = s.unions.typed_object_nullable_one_of_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -530,6 +539,7 @@ res = s.unions.typed_object_one_of_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -587,6 +597,7 @@ res = s.unions.weakly_typed_one_of_post(req)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -7,5 +7,5 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `data`             | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `data`             | *str*              | :heavy_check_mark: | N/A                |
 | `json`             | list[*Decimal*]    | :heavy_check_mark: | N/A                |

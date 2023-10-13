@@ -520,12 +520,12 @@ import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const xHeaderMap: Record<string, string> = {
-  "key2": "value2",
   "key1": "value1",
+  "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
-  "test2": "val2",
   "test1": "val1",
+  "test2": "val2",
 };
 
   const res = await sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode);

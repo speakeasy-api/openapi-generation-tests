@@ -36,6 +36,7 @@ res = s.resource.create_file(req)
 
 if res.file_resource is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -98,6 +99,7 @@ res = s.resource.create_resource(req)
 
 if res.example_resource is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -133,6 +135,7 @@ res = s.resource.delete_resource(resource_id='Reggae')
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -168,6 +171,7 @@ res = s.resource.get_resource(resource_id='Home')
 
 if res.example_resource is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -203,6 +207,7 @@ res = s.resource.update_resource(resource_id='International')
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters

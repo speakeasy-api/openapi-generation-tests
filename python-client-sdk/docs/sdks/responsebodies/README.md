@@ -42,6 +42,7 @@ res = s.response_bodies.response_body_additional_properties_complex_numbers_post
 
 if res.response_body_additional_properties_complex_numbers_post_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -80,6 +81,7 @@ res = s.response_bodies.response_body_additional_properties_date_post(req)
 
 if res.response_body_additional_properties_date_post_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -118,6 +120,7 @@ res = s.response_bodies.response_body_additional_properties_post(req)
 
 if res.response_body_additional_properties_post_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -153,6 +156,7 @@ res = s.response_bodies.response_body_bytes_get()
 
 if res.bytes is not None:
     # handle response
+    pass
 ```
 
 
@@ -182,6 +186,7 @@ res = s.response_bodies.response_body_empty_with_headers(x_number_header=1751.8,
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -218,6 +223,7 @@ res = s.response_bodies.response_body_optional_get()
 
 if res.typed_object1 is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -253,6 +259,7 @@ res = s.response_bodies.response_body_read_only()
 
 if res.read_only_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -288,6 +295,7 @@ res = s.response_bodies.response_body_string_get()
 
 if res.html is not None:
     # handle response
+    pass
 ```
 
 
@@ -317,6 +325,7 @@ res = s.response_bodies.response_body_xml_get()
 
 if res.xml is not None:
     # handle response
+    pass
 ```
 
 
@@ -352,6 +361,7 @@ res = s.response_bodies.response_body_zero_value_complex_type_ptrs_post(req)
 
 if res.response_body_zero_value_complex_type_ptrs_post_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `retries`          | *Optional[int]*    | :heavy_check_mark: | N/A                |
+| `retries`          | *int*              | :heavy_check_mark: | N/A                |

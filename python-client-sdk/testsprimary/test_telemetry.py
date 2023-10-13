@@ -18,7 +18,7 @@ def test_telemetry_user_agent_get():
     assert res is not None
     assert res.status_code == 200
     assert res.res is not None
-    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 1.38.0 2.152.1 0.1.0 openapi'
+    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 1.38.1 2.154.1 0.1.0 openapi'
 
 
 def test_telemetry_speakeasy_user_agent_get():
@@ -34,4 +34,4 @@ def test_telemetry_speakeasy_user_agent_get():
     assert res.status_code == 200
     assert res.res is not None
     assert res.res.headers['User-Agent'] == user_agent
-    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 1.38.0 2.152.1 0.1.0 openapi'
+    assert res.res.headers['X-Speakeasy-User-Agent'] == 'speakeasy-sdk/python 1.38.1 2.154.1 0.1.0 openapi'

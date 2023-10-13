@@ -5,7 +5,7 @@ OK
 
 ## Fields
 
-| Field               | Type                | Required            | Description         |
-| ------------------- | ------------------- | ------------------- | ------------------- |
-| `data`              | *Optional[str]*     | :heavy_check_mark:  | N/A                 |
-| `json`              | *Optional[Decimal]* | :heavy_check_mark:  | N/A                 |
+| Field              | Type               | Required           | Description        |
+| ------------------ | ------------------ | ------------------ | ------------------ |
+| `data`             | *str*              | :heavy_check_mark: | N/A                |
+| `json`             | *Decimal*          | :heavy_check_mark: | N/A                |

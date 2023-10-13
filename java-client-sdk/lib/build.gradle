@@ -23,6 +23,8 @@ repositories {
 }
 
 java {
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11    
     withSourcesJar()
     withJavadocJar()
 }
@@ -42,7 +44,7 @@ publishing {
         maven(MavenPublication) {
             groupId = 'org.openapis'
             artifactId = 'openapi'
-            version = '1.36.0'
+            version = '1.37.0'
 
             from components.java
 
@@ -114,3 +116,4 @@ tasks.named('test') {
 testlogger  {
     showStandardStreams true
 }
+

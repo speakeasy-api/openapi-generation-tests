@@ -31,6 +31,7 @@ res = s.globals.global_path_parameter_get(global_path_param=719830)
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -66,6 +67,7 @@ res = s.globals.globals_query_parameter_get(global_query_param='Tricycle')
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

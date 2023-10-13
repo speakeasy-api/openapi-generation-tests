@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `user_agent`       | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `user_agent`       | *str*              | :heavy_check_mark: | N/A                |

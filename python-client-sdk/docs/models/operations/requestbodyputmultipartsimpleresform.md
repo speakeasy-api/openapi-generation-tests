@@ -5,17 +5,17 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `any`              | *Optional[str]*    | :heavy_check_mark: | N/A                |
-| `bool`             | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `any`              | *str*              | :heavy_check_mark: | N/A                |
+| `bool`             | *str*              | :heavy_check_mark: | N/A                |
 | `bool_opt`         | *Optional[str]*    | :heavy_minus_sign: | N/A                |
-| `date_`            | *Optional[str]*    | :heavy_check_mark: | N/A                |
-| `date_time`        | *Optional[str]*    | :heavy_check_mark: | N/A                |
-| `enum`             | *Optional[str]*    | :heavy_check_mark: | N/A                |
-| `float32`          | *Optional[str]*    | :heavy_check_mark: | N/A                |
-| `int`              | *Optional[str]*    | :heavy_check_mark: | N/A                |
-| `int32`            | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `date_`            | *str*              | :heavy_check_mark: | N/A                |
+| `date_time`        | *str*              | :heavy_check_mark: | N/A                |
+| `enum`             | *str*              | :heavy_check_mark: | N/A                |
+| `float32`          | *str*              | :heavy_check_mark: | N/A                |
+| `int`              | *str*              | :heavy_check_mark: | N/A                |
+| `int32`            | *str*              | :heavy_check_mark: | N/A                |
 | `int_opt_null`     | *Optional[str]*    | :heavy_minus_sign: | N/A                |
-| `num`              | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `num`              | *str*              | :heavy_check_mark: | N/A                |
 | `num_opt_null`     | *Optional[str]*    | :heavy_minus_sign: | N/A                |
-| `str_`             | *Optional[str]*    | :heavy_check_mark: | N/A                |
+| `str_`             | *str*              | :heavy_check_mark: | N/A                |
 | `str_opt`          | *Optional[str]*    | :heavy_minus_sign: | N/A                |

@@ -18,6 +18,7 @@ res = s.generation.global_name_overridden()
 
 if res.get_global_name_override_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -84,5 +85,6 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
 
 if res.usage_example_post_200_application_json_object is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->

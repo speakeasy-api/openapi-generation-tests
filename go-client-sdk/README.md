@@ -545,7 +545,6 @@ func main() {
 }
 
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

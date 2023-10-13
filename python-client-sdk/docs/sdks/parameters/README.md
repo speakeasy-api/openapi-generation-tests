@@ -48,8 +48,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_map(map_param={
-    "test": 'value',
     "test2": 'value2',
+    "test": 'value',
 }, map_arr_param={
     "test": [
         'test',
@@ -63,6 +63,7 @@ res = s.parameters.deep_object_query_params_map(map_param={
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -125,6 +126,7 @@ res = s.parameters.deep_object_query_params_object(obj_param=shared.SimpleObject
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -161,6 +163,7 @@ res = s.parameters.duplicate_param(duplicate_param_request='Parks')
 
 if res.duplicate_param_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -202,6 +205,7 @@ res = s.parameters.form_query_params_array(arr_param=[
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -235,8 +239,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.form_query_params_map(map_param={
-    "test2": 'value2',
     "test": 'value',
+    "test2": 'value2',
 }, map_param_exploded={
     "test": 1,
     "test2": 2,
@@ -244,6 +248,7 @@ res = s.parameters.form_query_params_map(map_param={
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -320,6 +325,7 @@ res = s.parameters.form_query_params_object(obj_param_exploded=shared.SimpleObje
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -356,6 +362,7 @@ res = s.parameters.form_query_params_primitive(bool_param=True, int_param=1, num
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -404,6 +411,7 @@ res = s.parameters.form_query_params_ref_param_object(ref_obj_param=shared.RefQu
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -443,6 +451,7 @@ res = s.parameters.header_params_array(x_header_array=[
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -475,8 +484,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.header_params_map(x_header_map={
-    "key2": 'value2',
     "key1": 'value1',
+    "key2": 'value2',
 }, x_header_map_explode={
     "test1": 'val1',
     "test2": 'val2',
@@ -484,6 +493,7 @@ res = s.parameters.header_params_map(x_header_map={
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -560,6 +570,7 @@ res = s.parameters.header_params_object(x_header_obj=shared.SimpleObject(
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -596,6 +607,7 @@ res = s.parameters.header_params_primitive(x_header_boolean=True, x_header_integ
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -784,6 +796,7 @@ res = s.parameters.json_query_params_object(deep_obj_param=shared.DeepObject(
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -820,6 +833,7 @@ res = s.parameters.mixed_parameters_camel_case(header_param='headerValue', path_
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -857,6 +871,7 @@ res = s.parameters.mixed_parameters_primitives(header_param='headerValue', path_
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -953,6 +968,7 @@ res = s.parameters.mixed_query_params(deep_object_param=shared.SimpleObject(
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -1011,6 +1027,7 @@ res = s.parameters.path_parameter_json(json_obj=shared.SimpleObject(
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -1076,6 +1093,7 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -1117,6 +1135,7 @@ res = s.parameters.simple_path_parameter_arrays(arr_param=[
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -1158,6 +1177,7 @@ res = s.parameters.simple_path_parameter_maps(map_param={
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -1234,6 +1254,7 @@ res = s.parameters.simple_path_parameter_objects(obj_param=shared.SimpleObject(
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -1270,6 +1291,7 @@ res = s.parameters.simple_path_parameter_primitives(bool_param=True, int_param=1
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

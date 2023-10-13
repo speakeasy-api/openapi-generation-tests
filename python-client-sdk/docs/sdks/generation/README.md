@@ -46,6 +46,7 @@ res = s.generation.anchor_types_get()
 
 if res.type_from_anchor is not None:
     # handle response
+    pass
 ```
 
 
@@ -75,6 +76,7 @@ res = s.generation.array_circular_reference_get()
 
 if res.array_circular_reference_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -104,6 +106,7 @@ res = s.generation.circular_reference_get()
 
 if res.valid_circular_reference_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -134,6 +137,7 @@ res = s.generation.deprecated_field_in_schema_post(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -169,6 +173,7 @@ res = s.generation.deprecated_object_in_schema_get()
 
 if res.deprecated_object_in_schema_get_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -200,6 +205,7 @@ res = s.generation.deprecated_operation_no_comments_get(deprecated_parameter='Ac
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -239,6 +245,7 @@ res = s.generation.deprecated_operation_with_comments_get(deprecated_parameter='
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -275,6 +282,7 @@ res = s.generation.empty_object_get(empty_object=shared.EmptyObjectParam())
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -310,6 +318,7 @@ res = s.generation.empty_response_object_with_comment_get()
 
 if res.body is not None:
     # handle response
+    pass
 ```
 
 
@@ -339,6 +348,7 @@ res = s.generation.global_name_overridden()
 
 if res.get_global_name_override_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -368,6 +378,7 @@ res = s.generation.ignored_generation_get()
 
 if res.ignored_generation_get_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -397,6 +408,7 @@ res = s.generation.ignores_post(request_body=operations.IgnoresPostApplicationJS
 
 if res.http_bin_simple_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -433,6 +445,7 @@ res = s.generation.name_override(test_enum_query_param=operations.NameOverrideGe
 
 if res.overridden_response is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -469,6 +482,7 @@ res = s.generation.object_circular_reference_get()
 
 if res.object_circular_reference_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -498,6 +512,7 @@ res = s.generation.one_of_circular_reference_get()
 
 if res.one_of_circular_reference_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -533,6 +548,7 @@ res = s.generation.typed_parameter_generation_get(bigint=879275, date_=dateutil.
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -620,6 +636,7 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
 
 if res.usage_example_post_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

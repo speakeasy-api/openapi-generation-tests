@@ -27,6 +27,7 @@ res = s.generation.global_name_overridden()
 
 if res.get_global_name_override_200_application_json_object is not None:
     # handle response
+    pass
 ```
 
 
@@ -93,6 +94,7 @@ res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
 
 if res.usage_example_post_200_application_json_object is not None:
     # handle response
+    pass
 ```
 <!-- End SDK Example Usage -->
 
@@ -456,8 +458,8 @@ res = s.globals.global_path_parameter_get(global_path_param=719830)
 
 if res.res is not None:
     # handle response
+    pass
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

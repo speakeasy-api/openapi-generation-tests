@@ -26,6 +26,7 @@ res = s.first.get()
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 

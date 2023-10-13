@@ -52,6 +52,7 @@ res = s.auth_new.api_key_auth_global_new(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -100,6 +101,7 @@ res = s.auth_new.auth_global(req)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -148,6 +150,7 @@ res = s.auth_new.basic_auth_new(req, operations.BasicAuthNewSecurity(
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -196,6 +199,7 @@ res = s.auth_new.multiple_mixed_options_auth(req, operations.MultipleMixedOption
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -248,6 +252,7 @@ res = s.auth_new.multiple_mixed_scheme_auth(req, operations.MultipleMixedSchemeA
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -299,6 +304,7 @@ res = s.auth_new.multiple_options_with_mixed_schemes_auth(req, operations.Multip
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -350,6 +356,7 @@ res = s.auth_new.multiple_options_with_simple_schemes_auth(req, operations.Multi
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -398,6 +405,7 @@ res = s.auth_new.multiple_simple_options_auth(req, operations.MultipleSimpleOpti
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -447,6 +455,7 @@ res = s.auth_new.multiple_simple_scheme_auth(req, operations.MultipleSimpleSchem
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -495,6 +504,7 @@ res = s.auth_new.oauth2_auth_new(req, operations.Oauth2AuthNewSecurity(
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -543,6 +553,7 @@ res = s.auth_new.open_id_connect_auth_new(req, operations.OpenIDConnectAuthNewSe
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters

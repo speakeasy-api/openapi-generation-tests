@@ -32,6 +32,7 @@ res = s.errors.connection_error_get()
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -67,6 +68,7 @@ res = s.errors.status_get_error(status_code=458364)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -102,6 +104,7 @@ res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters

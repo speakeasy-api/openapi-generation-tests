@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `cursor`           | *Optional[int]*    | :heavy_check_mark: | N/A                |
+| `cursor`           | *int*              | :heavy_check_mark: | N/A                |

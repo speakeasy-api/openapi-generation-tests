@@ -30,6 +30,7 @@ res = s.retries.retries_get(request_id='Cambridgeshire', num_retries=496130)
 
 if res.retries is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

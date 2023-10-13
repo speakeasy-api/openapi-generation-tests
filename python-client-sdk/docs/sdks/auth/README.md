@@ -36,6 +36,7 @@ res = s.auth.api_key_auth(operations.APIKeyAuthSecurity(
 
 if res.token is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -71,6 +72,7 @@ res = s.auth.api_key_auth_global()
 
 if res.token is not None:
     # handle response
+    pass
 ```
 
 
@@ -100,6 +102,7 @@ res = s.auth.basic_auth(operations.BasicAuthSecurity(
 
 if res.user is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -136,6 +139,7 @@ res = s.auth.bearer_auth(operations.BearerAuthSecurity(
 
 if res.token is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -171,6 +175,7 @@ res = s.auth.global_bearer_auth()
 
 if res.token is not None:
     # handle response
+    pass
 ```
 
 
@@ -199,6 +204,7 @@ res = s.auth.oauth2_auth(operations.Oauth2AuthSecurity(
 
 if res.token is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -233,6 +239,7 @@ res = s.auth.oauth2_override(operations.Oauth2OverrideSecurity(
 
 if res.token is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -267,6 +274,7 @@ res = s.auth.open_id_connect_auth(operations.OpenIDConnectAuthSecurity(
 
 if res.token is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

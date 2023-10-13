@@ -55,6 +55,7 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -112,6 +113,7 @@ res = s.flattening.component_body_and_param_no_conflict(param_str='ick', simple_
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -148,6 +150,7 @@ res = s.flattening.conflicting_params(str_path_parameter='kilogram', str_query_p
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -186,6 +189,7 @@ res = s.flattening.inline_body_and_param_conflict(request_body=operations.Inline
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -224,6 +228,7 @@ res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.Inl
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters

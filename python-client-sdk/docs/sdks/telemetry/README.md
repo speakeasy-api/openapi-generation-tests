@@ -31,6 +31,7 @@ res = s.telemetry.telemetry_speakeasy_user_agent_get(user_agent='Bentley')
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 ### Parameters
@@ -66,6 +67,7 @@ res = s.telemetry.telemetry_user_agent_get()
 
 if res.res is not None:
     # handle response
+    pass
 ```
 
 

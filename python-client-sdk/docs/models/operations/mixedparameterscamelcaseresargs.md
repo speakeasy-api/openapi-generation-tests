@@ -5,4 +5,4 @@
 
 | Field                | Type                 | Required             | Description          | Example              |
 | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `query_string_param` | *Optional[str]*      | :heavy_check_mark:   | N/A                  | queryValue           |
+| `query_string_param` | *str*                | :heavy_check_mark:   | N/A                  | queryValue           |

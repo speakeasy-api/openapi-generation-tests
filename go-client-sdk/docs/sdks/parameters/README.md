@@ -60,13 +60,13 @@ func main() {
     }
 
     mapArrParam := map[string][]string{
-        "test2": []string{
-            "test3",
-            "test4",
-        },
         "test": []string{
             "test",
             "test2",
+        },
+        "test2": []string{
+            "test3",
+            "test4",
         },
     }
 
@@ -1511,13 +1511,13 @@ func main() {
 
 
     mapParam := map[string]string{
-        "test": "value",
         "test2": "value2",
+        "test": "value",
     }
 
     mapParamExploded := map[string]int64{
-        "test2": 2,
         "test": 1,
+        "test2": 2,
     }
 
     ctx := context.Background()

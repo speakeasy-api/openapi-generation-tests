@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.36.0'
+implementation 'org.openapis.openapi:openapi:1.37.0'
 ```
 <!-- End SDK Installation -->
 
@@ -516,7 +516,6 @@ public class Application {
     }
 }
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

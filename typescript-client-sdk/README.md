@@ -482,7 +482,6 @@ import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operation
 })();
 
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

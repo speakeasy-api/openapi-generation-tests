@@ -5,4 +5,4 @@
 
 | Field                | Type                 | Required             | Description          |
 | -------------------- | -------------------- | -------------------- | -------------------- |
-| `global_query_param` | *Optional[str]*      | :heavy_check_mark:   | N/A                  |
+| `global_query_param` | *str*                | :heavy_check_mark:   | N/A                  |

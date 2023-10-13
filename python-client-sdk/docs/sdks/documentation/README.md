@@ -32,6 +32,7 @@ res = s.documentation.get_documentation_per_language(language='hack')
 
 if res.status_code == 200:
     # handle response
+    pass
 ```
 
 ### Parameters
