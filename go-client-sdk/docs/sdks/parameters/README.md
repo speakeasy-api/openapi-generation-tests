@@ -1511,8 +1511,8 @@ func main() {
 
 
     mapParam := map[string]string{
-        "test2": "value2",
         "test": "value",
+        "test2": "value2",
     }
 
     mapParamExploded := map[string]int64{
