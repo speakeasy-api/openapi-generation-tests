@@ -48,8 +48,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.deep_object_query_params_map(map_param={
-    "test2": 'value2',
     "test": 'value',
+    "test2": 'value2',
 }, map_arr_param={
     "test": [
         'test',
@@ -70,8 +70,8 @@ if res.res is not None:
 
 | Parameter              | Type                   | Required               | Description            | Example                |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `map_param`            | dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
-| `map_arr_param`        | dict[str, list[*str*]] | :heavy_minus_sign:     | N/A                    | [object Object]        |
+| `map_param`            | Dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
+| `map_arr_param`        | Dict[str, List[*str*]] | :heavy_minus_sign:     | N/A                    | [object Object]        |
 
 
 ### Response
@@ -212,8 +212,8 @@ if res.res is not None:
 
 | Parameter            | Type                 | Required             | Description          |
 | -------------------- | -------------------- | -------------------- | -------------------- |
-| `arr_param`          | list[*str*]          | :heavy_minus_sign:   | N/A                  |
-| `arr_param_exploded` | list[*int*]          | :heavy_minus_sign:   | N/A                  |
+| `arr_param`          | List[*str*]          | :heavy_minus_sign:   | N/A                  |
+| `arr_param_exploded` | List[*int*]          | :heavy_minus_sign:   | N/A                  |
 
 
 ### Response
@@ -255,8 +255,8 @@ if res.res is not None:
 
 | Parameter            | Type                 | Required             | Description          | Example              |
 | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `map_param`          | dict[str, *str*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
-| `map_param_exploded` | dict[str, *int*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
+| `map_param`          | Dict[str, *str*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
+| `map_param_exploded` | Dict[str, *int*]     | :heavy_minus_sign:   | N/A                  | [object Object]      |
 
 
 ### Response
@@ -458,7 +458,7 @@ if res.res is not None:
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `x_header_array`   | list[*str*]        | :heavy_check_mark: | N/A                |
+| `x_header_array`   | List[*str*]        | :heavy_check_mark: | N/A                |
 
 
 ### Response
@@ -500,8 +500,8 @@ if res.res is not None:
 
 | Parameter              | Type                   | Required               | Description            | Example                |
 | ---------------------- | ---------------------- | ---------------------- | ---------------------- | ---------------------- |
-| `x_header_map`         | dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
-| `x_header_map_explode` | dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
+| `x_header_map`         | Dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
+| `x_header_map_explode` | Dict[str, *str*]       | :heavy_check_mark:     | N/A                    | [object Object]        |
 
 
 ### Response
@@ -1100,9 +1100,9 @@ if res.res is not None:
 
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `arr_param`                                                                                        | list[*str*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `arr_param_exploded`                                                                               | list[*int*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
-| `map_param`                                                                                        | dict[str, *str*]                                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `arr_param`                                                                                        | List[*str*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `arr_param_exploded`                                                                               | List[*int*]                                                                                        | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `map_param`                                                                                        | Dict[str, *str*]                                                                                   | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
 | `obj_param`                                                                                        | [Optional[shared.SimpleObject]](../../models/shared/simpleobject.md)                               | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
@@ -1142,7 +1142,7 @@ if res.res is not None:
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `arr_param`        | list[*str*]        | :heavy_check_mark: | N/A                |
+| `arr_param`        | List[*str*]        | :heavy_check_mark: | N/A                |
 
 
 ### Response
@@ -1184,8 +1184,8 @@ if res.res is not None:
 
 | Parameter            | Type                 | Required             | Description          | Example              |
 | -------------------- | -------------------- | -------------------- | -------------------- | -------------------- |
-| `map_param`          | dict[str, *str*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
-| `map_param_exploded` | dict[str, *int*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
+| `map_param`          | Dict[str, *str*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
+| `map_param_exploded` | Dict[str, *int*]     | :heavy_check_mark:   | N/A                  | [object Object]      |
 
 
 ### Response

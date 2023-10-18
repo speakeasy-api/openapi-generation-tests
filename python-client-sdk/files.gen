@@ -288,6 +288,9 @@ src/sdk/models/shared/fileresource.py
 src/sdk/models/shared/exampleresource.py
 src/sdk/models/shared/exampleboat.py
 src/sdk/models/shared/examplecar.py
+src/sdk/models/shared/objwithcomplexnumbersadditionlproperties.py
+src/sdk/models/shared/objwithdateadditionlproperties.py
+src/sdk/models/shared/objwithstringadditionlproperties.py
 src/sdk/models/shared/typedobject1.py
 src/sdk/models/shared/objwithzerovaluecomplextypeptrs.py
 src/sdk/models/shared/nullableoneofrefinobject.py
@@ -839,6 +842,9 @@ docs/models/shared/exampleboattype.md
 docs/models/shared/exampleboat.md
 docs/models/shared/examplecartype.md
 docs/models/shared/examplecar.md
+docs/models/shared/objwithcomplexnumbersadditionlproperties.md
+docs/models/shared/objwithdateadditionlproperties.md
+docs/models/shared/objwithstringadditionlproperties.md
 docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
 docs/models/shared/objwithzerovaluecomplextypeptrs.md

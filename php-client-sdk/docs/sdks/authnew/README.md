@@ -35,7 +35,11 @@ use \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody;
 use \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyBasicAuth;
 use \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -86,7 +90,11 @@ use \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBody;
 use \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyBasicAuth;
 use \OpenAPI\OpenAPI\Models\Shared\AuthServiceRequestBodyHeaderAuth;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {

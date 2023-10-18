@@ -46,7 +46,7 @@ func main() {
     res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.CreateFlattenedTypedObject1TypedObject1(
             shared.TypedObject1{
                 Type: shared.TypedObject1TypeObj1,
-                Value: "farad Rustic",
+                Value: "Legacy",
             },
     ))
     if err != nil {
@@ -152,18 +152,18 @@ func main() {
     res, err := s.Unions.NullableOneOfRefInObjectPost(ctx, shared.NullableOneOfRefInObject{
         NullableOneOfOne: &shared.TypedObject1{
             Type: shared.TypedObject1TypeObj1,
-            Value: "Global Alexandria administration",
+            Value: "bah",
         },
-        NullableOneOfTwo: shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject1(
-                shared.TypedObject1{
-                    Type: shared.TypedObject1TypeObj1,
-                    Value: "nor",
+        NullableOneOfTwo: shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(
+                shared.TypedObject2{
+                    Type: shared.TypedObject2TypeObj2,
+                    Value: "Alexandria",
                 },
         ),
         OneOfOne: shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(
                 shared.TypedObject1{
                     Type: shared.TypedObject1TypeObj1,
-                    Value: "Berkshire after",
+                    Value: "administration",
                 },
         ),
     })
@@ -218,7 +218,7 @@ func main() {
     res, err := s.Unions.NullableOneOfSchemaPost(ctx, &operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject2(
             shared.TypedObject2{
                 Type: shared.TypedObject2TypeObj2,
-                Value: "sob",
+                Value: "Tasty",
             },
     ))
     if err != nil {
@@ -324,7 +324,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Unions.NullableTypedObjectPost(ctx, &shared.TypedObject1{
         Type: shared.TypedObject1TypeObj1,
-        Value: "Bike",
+        Value: "Bedfordshire",
     })
     if err != nil {
         log.Fatal(err)
@@ -610,7 +610,7 @@ func main() {
     res, err := s.Unions.TypedObjectNullableOneOfPost(ctx, &shared.CreateTypedObjectNullableOneOfTypedObject2(
             shared.TypedObject2{
                 Type: shared.TypedObject2TypeObj2,
-                Value: "DRAM",
+                Value: "East",
             },
     ))
     if err != nil {
@@ -663,7 +663,7 @@ func main() {
     res, err := s.Unions.TypedObjectOneOfPost(ctx, shared.CreateTypedObjectOneOfTypedObject3(
             shared.TypedObject3{
                 Type: shared.TypedObject3TypeObj3,
-                Value: "Buckinghamshire illo Automotive",
+                Value: "blue",
             },
     ))
     if err != nil {

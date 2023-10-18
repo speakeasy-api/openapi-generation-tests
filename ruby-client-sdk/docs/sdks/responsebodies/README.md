@@ -27,11 +27,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "nihil": "stitch",
+    "ASCII": "stitch",
   },
 )
     
@@ -64,11 +69,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "ab": Date.parse("2021-08-06"),
+    "Bedfordshire": Date.parse("2021-04-22"),
   },
 )
     
@@ -101,11 +111,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "exercitationem": "Bronze",
+    "Ergonomic": "Carolina",
   },
 )
     
@@ -138,6 +153,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.response_bodies.response_body_bytes_get()
@@ -163,12 +183,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::ResponseBodyEmptyWithHeadersRequest.new(
   query_params=Operations::ResponseBodyEmptyWithHeadersRequest.new(
     x_number_header=1751.8,
-    x_string_header="tensely",
+    x_string_header="Tigard",
   ),
 )
     
@@ -202,6 +227,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.response_bodies.response_body_optional_get()
@@ -233,6 +263,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.response_bodies.response_body_read_only()
@@ -264,6 +299,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.response_bodies.response_body_string_get()
@@ -289,6 +329,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.response_bodies.response_body_xml_get()
@@ -314,15 +359,20 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::ObjWithZeroValueComplexTypePtrs.new(
   request=Shared::ObjWithZeroValueComplexTypePtrs.new(
     bigint=438531,
-    bigint_str="concrete input",
+    bigint_str="optical",
     date=Date.parse("2020-01-01"),
     date_time=DateTime.iso8601('2020-01-01T00:00:00Z'),
-    decimal=6267.89,
+    decimal=1372.8,
   ),
 )
     

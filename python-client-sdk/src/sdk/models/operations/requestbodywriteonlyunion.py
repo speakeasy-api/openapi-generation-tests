@@ -12,7 +12,6 @@ REQUEST_BODY_WRITE_ONLY_UNION_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class RequestBodyWriteOnlyUnionResponse:
     content_type: str = dataclasses.field()

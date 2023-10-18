@@ -7,5 +7,5 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `form`             | dict[str, *Any*]   | :heavy_minus_sign: | N/A                |
-| `json`             | dict[str, *Any*]   | :heavy_minus_sign: | N/A                |
+| `form`             | Dict[str, *Any*]   | :heavy_minus_sign: | N/A                |
+| `json`             | Dict[str, *Any*]   | :heavy_minus_sign: | N/A                |

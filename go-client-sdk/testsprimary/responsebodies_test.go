@@ -144,7 +144,7 @@ func TestResponseBodyAdditionalPropertiesPost(t *testing.T) {
 
 	s := sdk.New()
 
-	req := shared.ObjWithStringAdditionlProperties{
+	req := shared.ObjWithStringAdditionalProperties{
 		NormalField: "normal",
 		AdditionalProperties: map[string]string{
 			"key1": "value1",
@@ -163,7 +163,7 @@ func TestResponseBodyAdditionalPropertiesComplexNumbersPost(t *testing.T) {
 
 	s := sdk.New()
 
-	req := shared.ObjWithComplexNumbersAdditionlProperties{
+	req := shared.ObjWithComplexNumbersAdditionalProperties{
 		NormalField: "normal",
 		AdditionalProperties: map[string]*big.Int{
 			"key1": big.NewInt(1),
@@ -201,7 +201,7 @@ func TestResponseBodyAdditionalPropertiesDatePost(t *testing.T) {
 
 	s := sdk.New()
 
-	req := shared.ObjWithDateAdditionlProperties{
+	req := shared.ObjWithDateAdditionalProperties{
 		NormalField: "normal",
 		AdditionalProperties: map[string]types.Date{
 			"key1": types.MustDateFromString("2020-01-01"),
@@ -213,4 +213,24 @@ func TestResponseBodyAdditionalPropertiesDatePost(t *testing.T) {
 	require.NotNil(t, res)
 	assert.Equal(t, http.StatusOK, res.StatusCode)
 	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesDatePost200ApplicationJSONObject.JSON)
+}
+
+func TestResponseBodyAdditionalPropertiesObjectPost(t *testing.T) {
+	recordTest("response-bodies-additional-properties-object")
+
+	s := sdk.New()
+
+	req := shared.ObjWithObjAdditionalProperties{
+		Datetime:             time.Date(2020, 1, 1, 0, 0, 0, 1, time.UTC),
+		AdditionalProperties: []int64{1, 2, 3},
+		AdditionalPropertiesT: map[string]shared.SimpleObject{
+			"key1": createSimpleObject(),
+		},
+	}
+
+	res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPost(context.Background(), req)
+	require.NoError(t, err)
+	require.NotNil(t, res)
+	assert.Equal(t, http.StatusOK, res.StatusCode)
+	assert.Equal(t, req, res.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject.JSON)
 }

@@ -10,12 +10,10 @@ STATUS_GET_X_SPEAKEASY_ERRORS_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class StatusGetXSpeakeasyErrorsRequest:
     status_code: int = dataclasses.field(metadata={'path_param': { 'field_name': 'statusCode', 'style': 'simple', 'explode': False }})
     
-
 
 
 

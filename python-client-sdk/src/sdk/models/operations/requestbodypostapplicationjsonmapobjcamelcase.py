@@ -7,7 +7,6 @@ from ..shared import mapobjvaluecamelcase as shared_mapobjvaluecamelcase
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONMapObjCamelCaseResponse:
     content_type: str = dataclasses.field()

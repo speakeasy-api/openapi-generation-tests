@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GlobalsQueryParameterGetRequest:
     global_query_param: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'globalQueryParam', 'style': 'form', 'explode': True }})
@@ -17,7 +16,6 @@ class GlobalsQueryParameterGetRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class GlobalsQueryParameterGetResArgs:
     global_query_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('globalQueryParam') }})
@@ -26,13 +24,11 @@ class GlobalsQueryParameterGetResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class GlobalsQueryParameterGetRes:
     r"""OK"""
     args: GlobalsQueryParameterGetResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     
-
 
 
 

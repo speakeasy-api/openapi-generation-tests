@@ -6,18 +6,16 @@ import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from decimal import Decimal
 from sdk import utils
-from typing import Optional
+from typing import Dict, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostJSONDataTypesMapDecimal200ApplicationJSON:
     r"""OK"""
     data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
-    json: dict[str, Decimal] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.map_encoder(False, utils.decimalencoder(False, False)), 'decoder': utils.map_decoder(utils.decimaldecoder) }})
+    json: Dict[str, Decimal] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.map_encoder(False, utils.decimalencoder(False, False)), 'decoder': utils.map_decoder(utils.decimaldecoder) }})
     
-
 
 
 

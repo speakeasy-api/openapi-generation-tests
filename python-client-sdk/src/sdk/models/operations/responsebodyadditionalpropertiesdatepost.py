@@ -3,20 +3,18 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import objwithdateadditionlproperties as shared_objwithdateadditionlproperties
 from dataclasses_json import Undefined, dataclass_json
-from datetime import date
 from sdk import utils
 from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON:
     r"""OK"""
-    json: dict[str, date] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.map_encoder(False, utils.dateisoformat(False)), 'decoder': utils.map_decoder(utils.datefromisoformat) }})
+    json: shared_objwithdateadditionlproperties.ObjWithDateAdditionlProperties = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

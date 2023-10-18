@@ -6,13 +6,11 @@ import requests as requests_http
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetDocumentationPerLanguageRequest:
     language: str = dataclasses.field(metadata={'query_param': { 'field_name': 'language', 'style': 'form', 'explode': True }})
     r"""The language parameter for this endpoint."""
     
-
 
 
 

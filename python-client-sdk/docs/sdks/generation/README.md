@@ -543,7 +543,7 @@ s = sdk.SDK(
 res = s.generation.typed_parameter_generation_get(bigint=879275, date_=dateutil.parser.parse('2023-11-18').date(), decimal=Decimal('3346.96'), obj=operations.TypedParameterGenerationGetObj(
     bool=False,
     num=4778.06,
-    str_='Progressive Riyal male',
+    str_='innocently',
 ))
 
 if res.status_code == 200:

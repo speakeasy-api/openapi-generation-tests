@@ -35,7 +35,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost({
-    "ASCII": "Wagon Account cultivate",
+    "ASCII": "stitch",
   });
 
   if (res.statusCode == 200) {

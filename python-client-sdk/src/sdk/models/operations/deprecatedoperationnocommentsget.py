@@ -6,13 +6,11 @@ import requests as requests_http
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class DeprecatedOperationNoCommentsGetRequest:
     deprecated_parameter: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'deprecatedParameter', 'style': 'form', 'explode': True }})
     r"""Deprecated field: This will be removed in a future release, please migrate away from it as soon as possible."""
     
-
 
 
 

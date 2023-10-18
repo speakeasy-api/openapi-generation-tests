@@ -6,12 +6,10 @@ import requests as requests_http
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class EmptyResponseObjectWithCommentGet200ApplicationOctetStream:
     r"""OK"""
     
-
 
 
 

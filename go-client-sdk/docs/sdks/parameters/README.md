@@ -645,8 +645,8 @@ func main() {
 
 
     xHeaderMap := map[string]string{
-        "key2": "value2",
         "key1": "value1",
+        "key2": "value2",
     }
 
     xHeaderMapExplode := map[string]string{
@@ -1379,8 +1379,8 @@ func main() {
     }
 
     mapParam := map[string]string{
-        "key1": "val1",
         "key2": "val2",
+        "key1": "val1",
     }
 
     objParam := &shared.SimpleObject{
