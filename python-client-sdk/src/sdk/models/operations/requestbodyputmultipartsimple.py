@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPutMultipartSimpleResForm:
     any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
@@ -31,13 +30,11 @@ class RequestBodyPutMultipartSimpleResForm:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPutMultipartSimpleRes:
     r"""OK"""
     form: RequestBodyPutMultipartSimpleResForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
     
-
 
 
 

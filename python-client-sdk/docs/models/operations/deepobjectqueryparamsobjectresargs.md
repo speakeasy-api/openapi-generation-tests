@@ -5,7 +5,7 @@
 
 | Field                          | Type                           | Required                       | Description                    | Example                        |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `obj_arr_param_arr`            | list[*str*]                    | :heavy_check_mark:             | N/A                            |                                |
+| `obj_arr_param_arr`            | List[*str*]                    | :heavy_check_mark:             | N/A                            |                                |
 | `obj_param_any`                | *str*                          | :heavy_check_mark:             | N/A                            | any                            |
 | `obj_param_bigint_str`         | *Optional[str]*                | :heavy_minus_sign:             | N/A                            | 9223372036854775808            |
 | `obj_param_bigint`             | *Optional[str]*                | :heavy_minus_sign:             | N/A                            | 8821239038968084               |

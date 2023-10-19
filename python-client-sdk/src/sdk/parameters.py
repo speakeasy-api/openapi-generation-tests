@@ -3,7 +3,7 @@
 from .sdkconfiguration import SDKConfiguration
 from sdk import utils
 from sdk.models import errors, operations, shared
-from typing import Optional
+from typing import Dict, List, Optional
 
 class Parameters:
     r"""Endpoints for testing parameters."""
@@ -13,7 +13,7 @@ class Parameters:
         self.sdk_configuration = sdk_config
         
     
-    def deep_object_query_params_map(self, map_param: dict[str, str], map_arr_param: Optional[dict[str, list[str]]] = None) -> operations.DeepObjectQueryParamsMapResponse:
+    def deep_object_query_params_map(self, map_param: Dict[str, str], map_arr_param: Optional[Dict[str, List[str]]] = None) -> operations.DeepObjectQueryParamsMapResponse:
         request = operations.DeepObjectQueryParamsMapRequest(
             map_param=map_param,
             map_arr_param=map_arr_param,
@@ -110,7 +110,7 @@ class Parameters:
         return res
 
     
-    def form_query_params_array(self, arr_param: Optional[list[str]] = None, arr_param_exploded: Optional[list[int]] = None) -> operations.FormQueryParamsArrayResponse:
+    def form_query_params_array(self, arr_param: Optional[List[str]] = None, arr_param_exploded: Optional[List[int]] = None) -> operations.FormQueryParamsArrayResponse:
         request = operations.FormQueryParamsArrayRequest(
             arr_param=arr_param,
             arr_param_exploded=arr_param_exploded,
@@ -143,7 +143,7 @@ class Parameters:
         return res
 
     
-    def form_query_params_map(self, map_param: Optional[dict[str, str]] = None, map_param_exploded: Optional[dict[str, int]] = None) -> operations.FormQueryParamsMapResponse:
+    def form_query_params_map(self, map_param: Optional[Dict[str, str]] = None, map_param_exploded: Optional[Dict[str, int]] = None) -> operations.FormQueryParamsMapResponse:
         request = operations.FormQueryParamsMapRequest(
             map_param=map_param,
             map_param_exploded=map_param_exploded,
@@ -277,7 +277,7 @@ class Parameters:
         return res
 
     
-    def header_params_array(self, x_header_array: list[str]) -> operations.HeaderParamsArrayResponse:
+    def header_params_array(self, x_header_array: List[str]) -> operations.HeaderParamsArrayResponse:
         request = operations.HeaderParamsArrayRequest(
             x_header_array=x_header_array,
         )
@@ -308,7 +308,7 @@ class Parameters:
         return res
 
     
-    def header_params_map(self, x_header_map: dict[str, str], x_header_map_explode: dict[str, str]) -> operations.HeaderParamsMapResponse:
+    def header_params_map(self, x_header_map: Dict[str, str], x_header_map_explode: Dict[str, str]) -> operations.HeaderParamsMapResponse:
         request = operations.HeaderParamsMapRequest(
             x_header_map=x_header_map,
             x_header_map_explode=x_header_map_explode,
@@ -572,7 +572,7 @@ class Parameters:
         return res
 
     
-    def pipe_delimited_query_params_array(self, arr_param: Optional[list[str]] = None, arr_param_exploded: Optional[list[int]] = None, map_param: Optional[dict[str, str]] = None, obj_param: Optional[shared.SimpleObject] = None) -> operations.PipeDelimitedQueryParamsArrayResponse:
+    def pipe_delimited_query_params_array(self, arr_param: Optional[List[str]] = None, arr_param_exploded: Optional[List[int]] = None, map_param: Optional[Dict[str, str]] = None, obj_param: Optional[shared.SimpleObject] = None) -> operations.PipeDelimitedQueryParamsArrayResponse:
         request = operations.PipeDelimitedQueryParamsArrayRequest(
             arr_param=arr_param,
             arr_param_exploded=arr_param_exploded,
@@ -607,7 +607,7 @@ class Parameters:
         return res
 
     
-    def simple_path_parameter_arrays(self, arr_param: list[str]) -> operations.SimplePathParameterArraysResponse:
+    def simple_path_parameter_arrays(self, arr_param: List[str]) -> operations.SimplePathParameterArraysResponse:
         request = operations.SimplePathParameterArraysRequest(
             arr_param=arr_param,
         )
@@ -638,7 +638,7 @@ class Parameters:
         return res
 
     
-    def simple_path_parameter_maps(self, map_param: dict[str, str], map_param_exploded: dict[str, int]) -> operations.SimplePathParameterMapsResponse:
+    def simple_path_parameter_maps(self, map_param: Dict[str, str], map_param_exploded: Dict[str, int]) -> operations.SimplePathParameterMapsResponse:
         request = operations.SimplePathParameterMapsRequest(
             map_param=map_param,
             map_param_exploded=map_param_exploded,

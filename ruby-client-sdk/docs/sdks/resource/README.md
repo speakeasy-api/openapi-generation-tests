@@ -18,13 +18,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::CreateFileRequestBody.new(
   request=Operations::CreateFileRequestBody.new(
     file=Operations::CreateFileRequestBodyFile.new(
       content="`'$Z`(L/RH".encode(),
-      file="Rap National",
+      file="Persevering",
     ),
   ),
 )
@@ -58,6 +63,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::ExampleResource.new(
@@ -78,14 +88,14 @@ req = Shared::ExampleResource.new(
     enum_str=Shared::ExampleResourceEnumStr::ONE,
     id="<ID>",
     map_of_integer=.new{
-      "reiciendis": 154578,
+      "an": 95150,
     },
     map_of_string=.new{
-      "quasi": "utilize",
+      "utilize": "Cotton",
     },
-    name="online",
-    updated_at=DateTime.iso8601('2021-12-27T00:23:19.559Z'),
-    vehicle="oh",
+    name="withdrawal",
+    updated_at=DateTime.iso8601('2023-10-12T05:56:55.771Z'),
+    vehicle="San",
   ),
 )
     
@@ -118,11 +128,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::DeleteResourceRequest.new(
   path_params=Operations::DeleteResourceRequest.new(
-    resource_id="Bicycle Home",
+    resource_id="Reggae",
   ),
 )
     
@@ -155,11 +170,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::GetResourceRequest.new(
   path_params=Operations::GetResourceRequest.new(
-    resource_id="Pop why",
+    resource_id="Home",
   ),
 )
     
@@ -192,11 +212,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::UpdateResourceRequest.new(
   path_params=Operations::UpdateResourceRequest.new(
-    resource_id="Executive Maserati",
+    resource_id="International",
   ),
 )
     

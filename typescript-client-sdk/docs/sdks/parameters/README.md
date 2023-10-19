@@ -257,8 +257,8 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapParamExploded: Record<string, number> = {
-  "test": 1,
   "test2": 2,
+  "test": 1,
 };
 
   const res = await sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded);
@@ -524,8 +524,8 @@ const xHeaderMap: Record<string, string> = {
   "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
-  "test1": "val1",
   "test2": "val2",
+  "test1": "val1",
 };
 
   const res = await sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode);

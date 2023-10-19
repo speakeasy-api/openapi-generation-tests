@@ -3,19 +3,18 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import objwithcomplexnumbersadditionlproperties as shared_objwithcomplexnumbersadditionlproperties
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ResponseBodyAdditionalPropertiesComplexNumbersPost200ApplicationJSON:
     r"""OK"""
-    json: dict[str, int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'encoder': utils.map_encoder(False, utils.bigintencoder(False)), 'decoder': utils.map_decoder(utils.bigintdecoder) }})
+    json: shared_objwithcomplexnumbersadditionlproperties.ObjWithComplexNumbersAdditionlProperties = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

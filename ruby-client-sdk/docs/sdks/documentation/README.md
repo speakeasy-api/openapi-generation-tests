@@ -20,11 +20,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::GetDocumentationPerLanguageRequest.new(
   query_params=Operations::GetDocumentationPerLanguageRequest.new(
-    language="California enim",
+    language="hack",
   ),
 )
     

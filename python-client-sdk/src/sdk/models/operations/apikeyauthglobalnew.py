@@ -10,7 +10,6 @@ API_KEY_AUTH_GLOBAL_NEW_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class APIKeyAuthGlobalNewResponse:
     content_type: str = dataclasses.field()

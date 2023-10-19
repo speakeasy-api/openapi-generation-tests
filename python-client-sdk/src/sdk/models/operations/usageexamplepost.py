@@ -14,7 +14,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class UsageExamplePostSecurity:
     password: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'password' }})
@@ -24,7 +23,6 @@ class UsageExamplePostSecurity:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class UsageExamplePostRequestBody:
     r"""A request body that contains fields with different formats for testing example generation"""
@@ -50,7 +48,6 @@ class UsageExamplePostOptEnumParameter(str, Enum):
     VALUE1 = 'value1'
     VALUE2 = 'value2'
     VALUE3 = 'value3'
-
 
 
 @dataclasses.dataclass
@@ -102,7 +99,6 @@ class UsageExamplePostRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class UsageExamplePost200ApplicationJSONJSON:
     faker_formatted_strings: Optional[shared_fakerformattedstrings.FakerFormattedStrings] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('fakerFormattedStrings'), 'exclude': lambda f: f is None }})
@@ -118,13 +114,11 @@ class UsageExamplePost200ApplicationJSONJSON:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class UsageExamplePost200ApplicationJSON:
     r"""A response body that contains the simpleObject sent in the request body"""
     json: UsageExamplePost200ApplicationJSONJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

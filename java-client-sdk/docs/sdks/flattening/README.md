@@ -231,9 +231,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("until"){{
-                str = "Progressive";
-            }}, "array");
+            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("Chief"){{
+                str = "Gastonia";
+            }}, "officially");
 
             if (res.res != null) {
                 // handle response
@@ -282,9 +282,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("Forward"){{
-                bodyStr = "dynamic expedite";
-            }}, "embrace");
+            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("encryption"){{
+                bodyStr = "withdrawal";
+            }}, "Forward");
 
             if (res.res != null) {
                 // handle response

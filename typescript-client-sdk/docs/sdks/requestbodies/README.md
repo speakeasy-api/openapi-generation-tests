@@ -1055,7 +1055,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       strOptVal: "optional example",
       strVal: "example",
     },
-    strVal: "Music Djibouti solid",
+    strVal: "Diesel",
   });
 
   if (res.statusCode == 200) {
@@ -1836,18 +1836,18 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostComplexNumberTypes({
     complexNumberTypes: {
       bigint: 765757,
-      bigintStr: "Metal calculating Lamborghini",
-      decimal: 9373.95,
-      decimalStr: "Royce",
+      bigintStr: "pfft",
+      decimal: 6831.11,
+      decimalStr: "calculating",
     },
-    pathBigInt: 958218,
-    pathBigIntStr: "male ASCII",
-    pathDecimal: 1464.39,
-    pathDecimalStr: "Lancaster hertz young",
-    queryBigInt: 338976,
-    queryBigIntStr: "Northwest",
-    queryDecimal: 3970.19,
-    queryDecimalStr: "Toyota",
+    pathBigInt: 822852,
+    pathBigIntStr: "reboot",
+    pathDecimal: 1789.06,
+    pathDecimalStr: "Royce",
+    queryBigInt: 958218,
+    queryBigIntStr: "orchestration",
+    queryDecimal: 8745.2,
+    queryDecimalStr: "ASCII",
   });
 
   if (res.statusCode == 200) {
@@ -1894,19 +1894,19 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
   const res = await sdk.requestBodies.requestBodyPostDefaultsAndConsts({
     constBigInt: 559205,
-    constBigIntStr: "Chief",
+    constBigIntStr: "Generic",
     constBool: false,
-    constDate: new RFCDate("2021-05-03"),
-    constDateTime: new Date("2023-07-14T17:39:00.984Z"),
-    constDecimal: 2995.45,
-    constDecimalStr: "invoice Cotton",
-    constEnumInt: DefaultsAndConstsConstEnumInt.Two,
-    constEnumStr: DefaultsAndConstsConstEnumStr.One,
-    constInt: 788517,
-    constNum: 639.73,
-    constStr: "Dong Dysprosium",
-    constStrNull: "Kids quarrelsome",
-    normalField: "Cab Lane",
+    constDate: new RFCDate("2023-10-01"),
+    constDateTime: new Date("2021-05-03T16:53:58.702Z"),
+    constDecimal: 8445.08,
+    constDecimalStr: "invoice",
+    constEnumInt: DefaultsAndConstsConstEnumInt.One,
+    constEnumStr: DefaultsAndConstsConstEnumStr.Two,
+    constInt: 611959,
+    constNum: 2168.9,
+    constStr: "green",
+    constStrNull: "Account",
+    normalField: "Dysprosium",
   });
 
   if (res.statusCode == 200) {
@@ -2033,7 +2033,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     int: 1,
     map: {
-      "key": {
+      "key2": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -2053,7 +2053,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         str: "test",
         strOpt: "testOptional",
       },
-      "key2": {
+      "key": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -2309,7 +2309,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr([
-    "Group East incentivize",
+    "Gasoline",
   ]);
 
   if (res.statusCode == 200) {
@@ -2384,7 +2384,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("pixel gray");
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("Global");
 
   if (res.statusCode == 200) {
     // handle response
@@ -2569,7 +2569,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("gadzooks Luxurious");
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("reboot");
 
   if (res.statusCode == 200) {
     // handle response
@@ -2718,7 +2718,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr({
-    "Nepal": "Creative",
+    "Nepal": "York",
   });
 
   if (res.statusCode == 200) {
@@ -2969,7 +2969,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
     bool: false,
     num: 3558.41,
-    str: "South expiate aha",
+    str: "Van",
   });
 
   if (res.statusCode == 200) {
@@ -3013,9 +3013,9 @@ import {
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
   bool3: false,
   num3: 8693.24,
-  str3: "Compatible",
+  str3: "Garden",
 };
-const paramStr: string = "Architect";
+const paramStr: string = "Northwest";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr);
 
@@ -3061,9 +3061,9 @@ import {
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
   bool: false,
   num: 9771.91,
-  str: "South networks",
+  str: "quasi",
 };
-const paramStr: string = "Brand";
+const paramStr: string = "empowering";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr);
 
@@ -3109,9 +3109,9 @@ import {
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
   bool2: false,
   num2: 7000.76,
-  str2: "Ball Southwest",
+  str2: "Coupe",
 };
-const paramStr: string = "Ergonomic";
+const paramStr: string = "East";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr);
 
@@ -3154,7 +3154,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
     bool3: false,
     num3: 7842.07,
-    str3: "Cab encryption SMTP",
+    str3: "encryption",
   });
 
   if (res.statusCode == 200) {
@@ -3195,7 +3195,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
     bool: false,
     num: 2445.56,
-    str: "hew frictionless Hybrid",
+    str: "Wagon",
   });
 
   if (res.statusCode == 200) {
@@ -3236,7 +3236,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
     bool2: false,
     num2: 2079.2,
-    str2: "cyan",
+    str2: "green",
   });
 
   if (res.statusCode == 200) {
@@ -3693,7 +3693,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPutMultipartDifferentFileName({
     differentFileName: {
       content: "Y}'H[5/Z[," as bytes <<<>>>,
-      differentFileName: "West Tunisian",
+      differentFileName: "Lek",
     },
   });
 
@@ -3735,7 +3735,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPutMultipartFile({
     file: {
       content: "OJa,v`.FW-" as bytes <<<>>>,
-      file: "bandwidth Sedan",
+      file: "veniam",
     },
   });
 
@@ -4069,7 +4069,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyWriteOnly({
     bool: false,
     num: 3888.42,
-    string: "Herminio",
+    string: "intuitive",
   });
 
   if (res.statusCode == 200) {
@@ -4111,7 +4111,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyWriteOnlyOutput({
     bool: false,
     num: 3867.69,
-    string: "quas",
+    string: "copy",
   });
 
   if (res.statusCode == 200) {

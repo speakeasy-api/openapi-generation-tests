@@ -121,10 +121,3 @@ def compare_hashes(hash1, hash2)
     assert_equal hash1[key], hash2[key]
   end
 end
-
-# sig { param(test_id: String).void }
-def record_test(test_id)
-  File.open("test-ruby-record.txt", "a") do |f|
-    f.write "#{test_id}\n"
-  end
-end

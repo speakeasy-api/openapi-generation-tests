@@ -22,10 +22,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Passenger Canadian",
+  request="bus",
 )
     
 res = s.sdk.put_anything_ignored_generation(req)
@@ -57,6 +62,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.sdk.response_body_json_get()

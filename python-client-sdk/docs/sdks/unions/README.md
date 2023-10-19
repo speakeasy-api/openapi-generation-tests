@@ -37,7 +37,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='farad Rustic',
+    value='Legacy',
 )
 
 res = s.unions.flattened_typed_object_post(req)
@@ -117,15 +117,15 @@ s = sdk.SDK(
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='Global Alexandria administration',
+        value='bah',
+    ),
+    shared.TypedObject2(
+        type=shared.TypedObject2Type.OBJ2,
+        value='Alexandria',
     ),
     shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='nor',
-    ),
-    shared.TypedObject1(
-        type=shared.TypedObject1Type.OBJ1,
-        value='Berkshire after',
+        value='administration',
     ),
 )
 
@@ -166,7 +166,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject2(
     type=shared.TypedObject2Type.OBJ2,
-    value='sob',
+    value='Tasty',
 )
 
 res = s.unions.nullable_one_of_schema_post(req)
@@ -247,7 +247,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='Bike',
+    value='Bedfordshire',
 )
 
 res = s.unions.nullable_typed_object_post(req)
@@ -390,7 +390,7 @@ req = shared.DeepObjectWithType(
     bool=True,
     int=1,
     map={
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -410,7 +410,7 @@ req = shared.DeepObjectWithType(
             str_='test',
             str_opt='testOptional',
         ),
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -492,7 +492,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject2(
     type=shared.TypedObject2Type.OBJ2,
-    value='DRAM',
+    value='East',
 )
 
 res = s.unions.typed_object_nullable_one_of_post(req)
@@ -532,7 +532,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject3(
     type=shared.TypedObject3Type.OBJ3,
-    value='Buckinghamshire illo Automotive',
+    value='blue',
 )
 
 res = s.unions.typed_object_one_of_post(req)

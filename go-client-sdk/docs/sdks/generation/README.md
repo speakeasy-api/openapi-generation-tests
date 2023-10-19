@@ -803,7 +803,7 @@ func main() {
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
         Num: 4778.06,
-        Str: "Progressive Riyal male",
+        Str: "innocently",
     }
 
     ctx := context.Background()

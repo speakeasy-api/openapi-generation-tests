@@ -9,7 +9,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class FormQueryParamsObjectRequest:
     obj_param_exploded: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'query_param': { 'field_name': 'objParamExploded', 'style': 'form', 'explode': True }})
@@ -21,7 +20,6 @@ class FormQueryParamsObjectRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsObjectResArgs:
     any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
@@ -50,14 +48,12 @@ class FormQueryParamsObjectResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsObjectRes:
     r"""OK"""
     args: FormQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

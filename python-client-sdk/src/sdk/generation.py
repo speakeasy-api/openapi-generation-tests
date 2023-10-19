@@ -5,7 +5,7 @@ from datetime import date
 from decimal import Decimal
 from sdk import utils
 from sdk.models import errors, operations, shared
-from typing import Optional
+from typing import List, Optional
 
 class Generation:
     r"""Endpoints for purely testing valid generation behavior."""
@@ -59,7 +59,7 @@ class Generation:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.ArrayCircularReferenceObject]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[shared.ArrayCircularReferenceObject]])
                 res.array_circular_reference_object = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)

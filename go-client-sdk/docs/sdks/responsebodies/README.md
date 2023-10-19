@@ -47,7 +47,7 @@ func main() {
         AdditionalProperties: map[string]*big.Int{
             "ASCII": big.NewInt(984700),
         },
-        NormalField: "drink commodi voluptatibus",
+        NormalField: "Wagon",
     })
     if err != nil {
         log.Fatal(err)
@@ -101,7 +101,7 @@ func main() {
         AdditionalProperties: map[string]types.Date{
             "Bedfordshire": types.MustDateFromString("2021-04-22"),
         },
-        NormalField: "possimus schemas capacitor",
+        NormalField: "moody",
     })
     if err != nil {
         log.Fatal(err)
@@ -154,7 +154,7 @@ func main() {
         AdditionalProperties: map[string]string{
             "Ergonomic": "Carolina",
         },
-        NormalField: "male South Iraq",
+        NormalField: "Mini",
     })
     if err != nil {
         log.Fatal(err)

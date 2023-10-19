@@ -41,7 +41,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("ASCII", "Wagon Account cultivate");
+                put("ASCII", "stitch");
             }};            
 
             ResponseBodyAdditionalPropertiesComplexNumbersPostResponse res = sdk.responseBodies.responseBodyAdditionalPropertiesComplexNumbersPost(req);
@@ -455,10 +455,10 @@ public class Application {
 
             org.openapis.openapi.models.shared.ObjWithZeroValueComplexTypePtrs req = new ObjWithZeroValueComplexTypePtrs(){{
                 bigint = 438531L;
-                bigintStr = "concrete input";
+                bigintStr = "optical";
                 date = LocalDate.parse("2020-01-01");
                 dateTime = OffsetDateTime.parse("2020-01-01T00:00:00Z");
-                decimal = 6267.89d;
+                decimal = 1372.8d;
             }};            
 
             ResponseBodyZeroValueComplexTypePtrsPostResponse res = sdk.responseBodies.responseBodyZeroValueComplexTypePtrsPost(req);

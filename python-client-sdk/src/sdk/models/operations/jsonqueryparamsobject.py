@@ -10,7 +10,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class JSONQueryParamsObjectRequest:
     deep_obj_param: shared_deepobject.DeepObject = dataclasses.field(metadata={'query_param': { 'field_name': 'deepObjParam', 'serialization': 'json' }})
@@ -21,7 +20,6 @@ class JSONQueryParamsObjectRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class JSONQueryParamsObjectResArgs:
     deep_obj_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deepObjParam') }})
@@ -31,14 +29,12 @@ class JSONQueryParamsObjectResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class JSONQueryParamsObjectRes:
     r"""OK"""
     args: JSONQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

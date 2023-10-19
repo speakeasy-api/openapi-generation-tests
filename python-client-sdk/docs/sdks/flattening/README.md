@@ -184,8 +184,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
-    str_='Progressive',
-), str_='until')
+    str_='Gastonia',
+), str_='Chief')
 
 if res.res is not None:
     # handle response
@@ -223,8 +223,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='dynamic expedite',
-), param_str='Forward')
+    body_str='withdrawal',
+), param_str='encryption')
 
 if res.res is not None:
     # handle response

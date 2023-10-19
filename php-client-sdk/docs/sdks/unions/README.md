@@ -32,7 +32,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -73,7 +77,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -117,16 +125,20 @@ use \OpenAPI\OpenAPI\Models\Shared\NullableOneOfRefInObject;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new NullableOneOfRefInObject();
     $request->nullableOneOfOne = new TypedObject1();
     $request->nullableOneOfOne->type = TypedObject1Type::Obj1;
-    $request->nullableOneOfOne->value = 'Global Alexandria administration';
-    $request->nullableOneOfTwo = 'Arbor';
-    $request->oneOfOne = 'PCI';
+    $request->nullableOneOfOne->value = 'bah';
+    $request->nullableOneOfTwo = 'back';
+    $request->oneOfOne = 'administration';
 
     $response = $sdk->unions->nullableOneOfRefInObjectPost($request);
 
@@ -163,7 +175,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -205,7 +221,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\NullableOneOfTypeInObject;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -251,13 +271,17 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new TypedObject1();
     $request->type = TypedObject1Type::Obj1;
-    $request->value = 'Bike';
+    $request->value = 'Bedfordshire';
 
     $response = $sdk->unions->nullableTypedObjectPost($request);
 
@@ -294,7 +318,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -335,7 +363,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -376,7 +408,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -417,7 +453,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -458,7 +498,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {

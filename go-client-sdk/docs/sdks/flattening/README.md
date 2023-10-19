@@ -243,10 +243,10 @@ func main() {
 
 
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
-        Str: "Progressive",
+        Str: "Gastonia",
     }
 
-    var str string = "until"
+    var str string = "Chief"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamConflict(ctx, requestBody, str)
@@ -300,10 +300,10 @@ func main() {
 
 
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
-        BodyStr: "dynamic expedite",
+        BodyStr: "withdrawal",
     }
 
-    var paramStr string = "Forward"
+    var paramStr string = "encryption"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, requestBody, paramStr)

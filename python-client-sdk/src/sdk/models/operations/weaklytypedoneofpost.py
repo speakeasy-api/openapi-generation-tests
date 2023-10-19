@@ -11,13 +11,11 @@ from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class WeaklyTypedOneOfPostRes:
     r"""OK"""
     json: Union[shared_simpleobject.SimpleObject, shared_deepobject.DeepObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

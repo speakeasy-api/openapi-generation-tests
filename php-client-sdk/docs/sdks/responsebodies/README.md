@@ -31,12 +31,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'nihil' => 'stitch',
+        'ASCII' => 'stitch',
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesComplexNumbersPost($request);
@@ -74,12 +78,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'ab' => DateTime::createFromFormat('Y-m-d', '2021-08-06'),
+        'Bedfordshire' => DateTime::createFromFormat('Y-m-d', '2021-04-22'),
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesDatePost($request);
@@ -117,12 +125,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'exercitationem' => 'Bronze',
+        'Ergonomic' => 'Carolina',
     ]
 
     $response = $sdk->responseBodies->responseBodyAdditionalPropertiesPost($request);
@@ -160,7 +172,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -194,7 +210,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\ResponseBodyEmptyWithHeadersRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -236,7 +256,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -275,7 +299,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -314,7 +342,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -347,7 +379,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -381,16 +417,20 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\ObjWithZeroValueComplexTypePtrs;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new ObjWithZeroValueComplexTypePtrs();
     $request->bigint = 438531;
-    $request->bigintStr = 'concrete input';
+    $request->bigintStr = 'optical';
     $request->date = DateTime::createFromFormat('Y-m-d', '2020-01-01');
     $request->dateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
-    $request->decimal = 6267.89;
+    $request->decimal = 1372.8;
 
     $response = $sdk->responseBodies->responseBodyZeroValueComplexTypePtrsPost($request);
 

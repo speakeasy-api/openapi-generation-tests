@@ -55,8 +55,8 @@ func main() {
 
 
     mapParam := map[string]string{
-        "test": "value",
         "test2": "value2",
+        "test": "value",
     }
 
     mapArrParam := map[string][]string{
@@ -645,8 +645,8 @@ func main() {
 
 
     xHeaderMap := map[string]string{
-        "key2": "value2",
         "key1": "value1",
+        "key2": "value2",
     }
 
     xHeaderMapExplode := map[string]string{

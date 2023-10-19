@@ -5,19 +5,17 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
-
+from typing import List, Optional
 
 
 @dataclasses.dataclass
 class HeaderParamsArrayRequest:
-    x_header_array: list[str] = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Array', 'style': 'simple', 'explode': False }})
+    x_header_array: List[str] = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Array', 'style': 'simple', 'explode': False }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsArrayResHeaders:
     x_header_array: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Array') }})
@@ -26,13 +24,11 @@ class HeaderParamsArrayResHeaders:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsArrayRes:
     r"""OK"""
     headers: HeaderParamsArrayResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
-
 
 
 

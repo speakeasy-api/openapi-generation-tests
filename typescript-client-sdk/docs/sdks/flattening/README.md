@@ -195,9 +195,9 @@ import { InlineBodyAndParamConflictRequest, InlineBodyAndParamConflictRequestBod
     globalQueryParam: "some example global query param",
   });
 const requestBody: InlineBodyAndParamConflictRequestBody = {
-  str: "Progressive",
+  str: "Gastonia",
 };
-const str: string = "until";
+const str: string = "Chief";
 
   const res = await sdk.flattening.inlineBodyAndParamConflict(requestBody, str);
 
@@ -238,9 +238,9 @@ import { InlineBodyAndParamNoConflictRequest, InlineBodyAndParamNoConflictReques
     globalQueryParam: "some example global query param",
   });
 const requestBody: InlineBodyAndParamNoConflictRequestBody = {
-  bodyStr: "dynamic expedite",
+  bodyStr: "withdrawal",
 };
-const paramStr: string = "Forward";
+const paramStr: string = "encryption";
 
   const res = await sdk.flattening.inlineBodyAndParamNoConflict(requestBody, paramStr);
 

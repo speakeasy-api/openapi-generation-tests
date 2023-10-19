@@ -2,8 +2,8 @@ configVersion: 1.0.0
 management:
   docChecksum: d6c132f7bde6e79f0552a47119432f96
   docVersion: 0.1.0
-  speakeasyVersion: 1.99.2
-  generationVersion: 2.155.1
+  speakeasyVersion: 1.101.0
+  generationVersion: 2.161.0
 generation:
   sdkClassName: SDK
   singleTagPerOp: false
@@ -16,8 +16,8 @@ features:
     docs: 0.3.3
     downloadStreams: 0.1.0
     enums: 2.81.1
-    errors: 2.81.5
-    examples: 2.81.2
+    errors: 2.81.6
+    examples: 2.81.3
     flattening: 2.81.1
     globalSecurity: 2.82.2
     globalServerURLs: 2.82.0
@@ -35,7 +35,7 @@ features:
     tests: 0.0.0
     unions: 2.83.1
 go:
-  version: 1.38.2
+  version: 1.38.3
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   maxMethodParams: 5
