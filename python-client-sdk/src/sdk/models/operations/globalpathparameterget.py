@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GlobalPathParameterGetRequest:
     global_path_param: Optional[int] = dataclasses.field(default=None, metadata={'path_param': { 'field_name': 'globalPathParam', 'style': 'simple', 'explode': False }})
@@ -17,13 +16,11 @@ class GlobalPathParameterGetRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class GlobalPathParameterGetRes:
     r"""OK"""
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

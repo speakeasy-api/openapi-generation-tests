@@ -7,7 +7,6 @@ from ..shared import arrobjvalue as shared_arrobjvalue
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONArrayObjResponse:
     content_type: str = dataclasses.field()

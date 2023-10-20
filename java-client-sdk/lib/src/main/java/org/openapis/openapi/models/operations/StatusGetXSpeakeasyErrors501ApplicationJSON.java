@@ -31,5 +31,14 @@ public class StatusGetXSpeakeasyErrors501ApplicationJSON {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    public org.openapis.openapi.models.shared.ErrorType type;
+
+    public StatusGetXSpeakeasyErrors501ApplicationJSON withType(org.openapis.openapi.models.shared.ErrorType type) {
+        this.type = type;
+        return this;
+    }
+    
     public StatusGetXSpeakeasyErrors501ApplicationJSON(){}
 }

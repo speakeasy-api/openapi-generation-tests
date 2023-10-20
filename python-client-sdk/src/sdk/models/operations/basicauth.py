@@ -8,13 +8,11 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class BasicAuthSecurity:
     password: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'password' }})
     username: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic', 'field_name': 'username' }})
     
-
 
 
 
@@ -27,14 +25,12 @@ class BasicAuthRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class BasicAuthUser:
     r"""Successful authentication."""
     authenticated: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('authenticated') }})
     user: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('user') }})
     
-
 
 
 

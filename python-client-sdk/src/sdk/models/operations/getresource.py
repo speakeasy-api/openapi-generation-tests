@@ -7,12 +7,10 @@ from ..shared import exampleresource as shared_exampleresource
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class GetResourceRequest:
     resource_id: str = dataclasses.field(metadata={'path_param': { 'field_name': 'resourceId', 'style': 'simple', 'explode': False }})
     
-
 
 
 

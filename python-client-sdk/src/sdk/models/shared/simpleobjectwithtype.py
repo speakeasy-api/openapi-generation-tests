@@ -25,7 +25,6 @@ class SimpleObjectWithTypeIntEnum(int, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SimpleObjectWithType:
     r"""A simple object that uses all our supported primitive types and enums and has optional properties.

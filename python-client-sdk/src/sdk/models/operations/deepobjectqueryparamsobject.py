@@ -6,15 +6,13 @@ import requests as requests_http
 from ..shared import simpleobject as shared_simpleobject
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
-
+from typing import List, Optional
 
 
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectObjArrParam:
-    arr: Optional[list[str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arr' }})
+    arr: Optional[List[str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arr' }})
     
-
 
 
 
@@ -28,10 +26,9 @@ class DeepObjectQueryParamsObjectRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectResArgs:
-    obj_arr_param_arr: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objArrParam[arr]') }})
+    obj_arr_param_arr: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objArrParam[arr]') }})
     obj_param_any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[any]') }})
     obj_param_bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[bool]') }})
     obj_param_bool_opt: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('objParam[boolOpt]') }})
@@ -55,14 +52,12 @@ class DeepObjectQueryParamsObjectResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DeepObjectQueryParamsObjectRes:
     r"""OK"""
     args: DeepObjectQueryParamsObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

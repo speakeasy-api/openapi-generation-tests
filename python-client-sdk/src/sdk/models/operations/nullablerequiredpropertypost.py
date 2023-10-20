@@ -6,7 +6,7 @@ import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from enum import Enum
 from sdk import utils
-from typing import Optional
+from typing import List, Optional
 
 class NullableRequiredPropertyPostRequestBodyNullableRequiredEnum(str, Enum):
     FIRST = 'first'
@@ -14,15 +14,13 @@ class NullableRequiredPropertyPostRequestBodyNullableRequiredEnum(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class NullableRequiredPropertyPostRequestBody:
-    nullable_required_array: Optional[list[float]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredArray') }})
+    nullable_required_array: Optional[List[float]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredArray') }})
     nullable_required_enum: Optional[NullableRequiredPropertyPostRequestBodyNullableRequiredEnum] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredEnum') }})
     nullable_required_int: Optional[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredInt') }})
     nullable_optional_int: Optional[int] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalInt') }})
     
-
 
 
 

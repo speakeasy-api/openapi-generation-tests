@@ -11,6 +11,7 @@ Endpoints for testing parameters.
 * [deep_object_query_params_object](#deep_object_query_params_object)
 * [duplicate_param](#duplicate_param)
 * [form_query_params_array](#form_query_params_array)
+* [form_query_params_camel_object](#form_query_params_camel_object)
 * [form_query_params_map](#form_query_params_map)
 * [form_query_params_object](#form_query_params_object)
 * [form_query_params_primitive](#form_query_params_primitive)
@@ -39,16 +40,21 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::DeepObjectQueryParamsMapRequest.new(
   query_params=Operations::DeepObjectQueryParamsMapRequest.new(
     map_param=.new{
-      "quas": "Concrete",
+      "compress": "of",
     },
     map_arr_param=.new{
-      "necessitatibus": .new[
-        "of",
+      "navigating": .new[
+        "Royce",
       ],
     },
   ),
@@ -64,10 +70,10 @@ end
 
 ### Parameters
 
-| Parameter                           | Type                                | Required                            | Description                         |
-| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
-| `map_param`                         | T::Hash[Symbol, *String*]           | :heavy_check_mark:                  | N/A                                 |
-| `map_arr_param`                     | T::Hash[Symbol, T::Array<*String*>] | :heavy_minus_sign:                  | N/A                                 |
+| Parameter                           | Type                                | Required                            | Description                         | Example                             |
+| ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- | ----------------------------------- |
+| `map_param`                         | T::Hash[Symbol, *String*]           | :heavy_check_mark:                  | N/A                                 | [object Object]                     |
+| `map_arr_param`                     | T::Hash[Symbol, T::Array<*String*>] | :heavy_minus_sign:                  | N/A                                 | [object Object]                     |
 
 
 ### Response
@@ -84,12 +90,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::DeepObjectQueryParamsObjectRequest.new(
   query_params=Operations::DeepObjectQueryParamsObjectRequest.new(
     obj_param=Shared::SimpleObject.new(
-      any="Jazz",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -102,11 +113,11 @@ req = Operations::DeepObjectQueryParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
       int_enum=Shared::SimpleObjectIntEnum::SECOND,
-      int_opt_null=425315,
+      int_opt_null=303001,
       num=1.1,
-      num_opt_null=1324.77,
+      num_opt_null=5571.55,
       str_="test",
       str_opt="testOptional",
     ),
@@ -128,10 +139,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                                          | Type                                                                                                                               | Required                                                                                                                           | Description                                                                                                                        |
-| ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------- |
-| `obj_param`                                                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                                                        | :heavy_check_mark:                                                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties.                                 |
-| `obj_arr_param`                                                                                                                    | [T.nilable(Operations::DeepObjectQueryParamsObjectObjArrParam)](../../models/operations/deepobjectqueryparamsobjectobjarrparam.md) | :heavy_minus_sign:                                                                                                                 | N/A                                                                                                                                |
+| Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
+| ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
+| `obj_param`                                                                                                             | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                                             | :heavy_check_mark:                                                                                                      | A simple object that uses all our supported primitive types and enums and has optional properties.                      |
+| `obj_arr_param`                                                                                                         | [Operations::DeepObjectQueryParamsObjectObjArrParam](../../models/operations/deepobjectqueryparamsobjectobjarrparam.md) | :heavy_minus_sign:                                                                                                      | N/A                                                                                                                     |
 
 
 ### Response
@@ -148,11 +159,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::DuplicateParamRequest.new(
   path_params=Operations::DuplicateParamRequest.new(
-    duplicate_param_request="arrogantly",
+    duplicate_param_request="Parks",
   ),
 )
     
@@ -185,6 +201,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::FormQueryParamsArrayRequest.new(
@@ -219,6 +240,56 @@ end
 **[T.nilable(Operations::FormQueryParamsArrayResponse)](../../models/operations/formqueryparamsarrayresponse.md)**
 
 
+## form_query_params_camel_object
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = Operations::FormQueryParamsCamelObjectRequest.new(
+  query_params=Operations::FormQueryParamsCamelObjectRequest.new(
+    obj_param_exploded=Operations::FormQueryParamsCamelObjectObjParamExploded.new(
+      item_count="10",
+      search_term="foo",
+    ),
+    obj_param=Operations::FormQueryParamsCamelObjectObjParam.new(
+      encoded_count="11",
+      encoded_term="bar",
+    ),
+  ),
+)
+    
+res = s.parameters.form_query_params_camel_object(req)
+
+if ! res.res.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                                                                       | Type                                                                                                                            | Required                                                                                                                        | Description                                                                                                                     |
+| ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
+| `obj_param_exploded`                                                                                                            | [Operations::FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                              | N/A                                                                                                                             |
+| `obj_param`                                                                                                                     | [Operations::FormQueryParamsCamelObjectObjParam](../../models/operations/formqueryparamscamelobjectobjparam.md)                 | :heavy_minus_sign:                                                                                                              | N/A                                                                                                                             |
+
+
+### Response
+
+**[T.nilable(Operations::FormQueryParamsCamelObjectResponse)](../../models/operations/formqueryparamscamelobjectresponse.md)**
+
+
 ## form_query_params_map
 
 ### Example Usage
@@ -228,15 +299,20 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::FormQueryParamsMapRequest.new(
   query_params=Operations::FormQueryParamsMapRequest.new(
     map_param=.new{
-      "rerum": "provident",
+      "male": "Reggae",
     },
     map_param_exploded=.new{
-      "optio": 355695,
+      "pink": 414710,
     },
   ),
 )
@@ -251,10 +327,10 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_minus_sign:         | N/A                        |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_minus_sign:         | N/A                        |
+| Parameter                  | Type                       | Required                   | Description                | Example                    |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_minus_sign:         | N/A                        | [object Object]            |
+| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_minus_sign:         | N/A                        | [object Object]            |
 
 
 ### Response
@@ -271,34 +347,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::FormQueryParamsObjectRequest.new(
   query_params=Operations::FormQueryParamsObjectRequest.new(
     obj_param_exploded=Shared::SimpleObject.new(
-      any="Web",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=87354,
-      num=1.1,
-      num_opt_null=883.91,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_param=Shared::SimpleObject.new(
-      any="Associate",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -312,10 +371,32 @@ req = Operations::FormQueryParamsObjectRequest.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=547098,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=645228,
       num=1.1,
-      num_opt_null=5763.58,
+      num_opt_null=7602.31,
+      str_="test",
+      str_opt="testOptional",
+    ),
+    obj_param=Shared::SimpleObject.new(
+      any="any",
+      bigint=8821239038968084,
+      bigint_str="9223372036854775808",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      decimal=3.141592653589793,
+      decimal_str="3.14159265358979344719667586",
+      enum=Shared::Enum::ONE,
+      float32=1.1,
+      int=1,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int_opt_null=973554,
+      num=1.1,
+      num_opt_null=873.54,
       str_="test",
       str_opt="testOptional",
     ),
@@ -335,7 +416,7 @@ end
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `obj_param_exploded`                                                                               | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `obj_param`                                                                                        | [T.nilable(Shared::SimpleObject)](../../models/shared/simpleobject.md)                             | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -352,6 +433,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::FormQueryParamsPrimitiveRequest.new(
@@ -395,6 +481,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::FormQueryParamsRefParamObjectRequest.new(
@@ -424,10 +515,10 @@ end
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `ref_obj_param`                                                                                | [T.nilable(Shared::RefQueryParamObj)](../../models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                             | N/A                                                                                            |
-| `ref_obj_param_exploded`                                                                       | [T.nilable(Shared::RefQueryParamObjExploded)](../../models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                             | N/A                                                                                            |
+| Parameter                                                                           | Type                                                                                | Required                                                                            | Description                                                                         |
+| ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| `ref_obj_param`                                                                     | [Shared::RefQueryParamObj](../../models/shared/refqueryparamobj.md)                 | :heavy_minus_sign:                                                                  | N/A                                                                                 |
+| `ref_obj_param_exploded`                                                            | [Shared::RefQueryParamObjExploded](../../models/shared/refqueryparamobjexploded.md) | :heavy_minus_sign:                                                                  | N/A                                                                                 |
 
 
 ### Response
@@ -444,6 +535,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::HeaderParamsArrayRequest.new(
@@ -483,15 +579,20 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::HeaderParamsMapRequest.new(
   headers=Operations::HeaderParamsMapRequest.new(
     x_header_map=.new{
-      "ipsum": "Kids",
+      "Ball": "Account",
     },
     x_header_map_explode=.new{
-      "omnis": "sky",
+      "Trans": "bypassing",
     },
   ),
 )
@@ -506,10 +607,10 @@ end
 
 ### Parameters
 
-| Parameter                 | Type                      | Required                  | Description               |
-| ------------------------- | ------------------------- | ------------------------- | ------------------------- |
-| `x_header_map`            | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       |
-| `x_header_map_explode`    | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       |
+| Parameter                 | Type                      | Required                  | Description               | Example                   |
+| ------------------------- | ------------------------- | ------------------------- | ------------------------- | ------------------------- |
+| `x_header_map`            | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
+| `x_header_map_explode`    | T::Hash[Symbol, *String*] | :heavy_check_mark:        | N/A                       | [object Object]           |
 
 
 ### Response
@@ -526,34 +627,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::HeaderParamsObjectRequest.new(
   headers=Operations::HeaderParamsObjectRequest.new(
     x_header_obj=Shared::SimpleObject.new(
-      any="tolerance",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
-      int_opt_null=598385,
-      num=1.1,
-      num_opt_null=543.44,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    x_header_obj_explode=Shared::SimpleObject.new(
-      any="Representative",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -567,10 +651,32 @@ req = Operations::HeaderParamsObjectRequest.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
-      int_opt_null=533235,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_opt_null=590416,
       num=1.1,
-      num_opt_null=2526.18,
+      num_opt_null=144.68,
+      str_="test",
+      str_opt="testOptional",
+    ),
+    x_header_obj_explode=Shared::SimpleObject.new(
+      any="any",
+      bigint=8821239038968084,
+      bigint_str="9223372036854775808",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      decimal=3.141592653589793,
+      decimal_str="3.14159265358979344719667586",
+      enum=Shared::Enum::ONE,
+      float32=1.1,
+      int=1,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=54344,
+      num=1.1,
+      num_opt_null=6940.18,
       str_="test",
       str_opt="testOptional",
     ),
@@ -607,6 +713,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::HeaderParamsPrimitiveRequest.new(
@@ -650,15 +761,20 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::JsonQueryParamsObjectRequest.new(
   query_params=Operations::JsonQueryParamsObjectRequest.new(
     deep_obj_param=Shared::DeepObject.new(
-      any="Hybrid",
+      any="anyOf[0]",
       arr=.new[
         Shared::SimpleObject.new(
-          any="weber",
+          any="any",
           bigint=8821239038968084,
           bigint_str="9223372036854775808",
           bool=true,
@@ -672,10 +788,10 @@ req = Operations::JsonQueryParamsObjectRequest.new(
           int=1,
           int32=1,
           int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-          int_enum=Shared::SimpleObjectIntEnum::FIRST,
-          int_opt_null=240276,
+          int_enum=Shared::SimpleObjectIntEnum::THIRD,
+          int_opt_null=740671,
           num=1.1,
-          num_opt_null=3309.36,
+          num_opt_null=8661.35,
           str_="test",
           str_opt="testOptional",
         ),
@@ -683,8 +799,8 @@ req = Operations::JsonQueryParamsObjectRequest.new(
       bool=true,
       int=1,
       map=.new{
-        "repellendus": Shared::SimpleObject.new(
-          any="until",
+        "damp": Shared::SimpleObject.new(
+          any="any",
           bigint=8821239038968084,
           bigint_str="9223372036854775808",
           bool=true,
@@ -697,18 +813,18 @@ req = Operations::JsonQueryParamsObjectRequest.new(
           float32=1.1,
           int=1,
           int32=1,
-          int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-          int_enum=Shared::SimpleObjectIntEnum::SECOND,
-          int_opt_null=852586,
+          int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+          int_enum=Shared::SimpleObjectIntEnum::FIRST,
+          int_opt_null=835122,
           num=1.1,
-          num_opt_null=6861.45,
+          num_opt_null=9111.59,
           str_="test",
           str_opt="testOptional",
         ),
       },
       num=1.1,
       obj=Shared::SimpleObject.new(
-        any="synthesize",
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -723,17 +839,17 @@ req = Operations::JsonQueryParamsObjectRequest.new(
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
         int_enum=Shared::SimpleObjectIntEnum::THIRD,
-        int_opt_null=420462,
+        int_opt_null=416807,
         num=1.1,
-        num_opt_null=5102.58,
+        num_opt_null=8525.86,
         str_="test",
         str_opt="testOptional",
       ),
       str_="test",
-      type="aside Autumn Ball",
+      type="Director",
     ),
     simple_obj_param=Shared::SimpleObject.new(
-      any="transmitter",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -746,11 +862,11 @@ req = Operations::JsonQueryParamsObjectRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=626466,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=717976,
       num=1.1,
-      num_opt_null=3108.18,
+      num_opt_null=9665.2,
       str_="test",
       str_opt="testOptional",
     ),
@@ -787,6 +903,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::MixedParametersCamelCaseRequest.new(
@@ -838,6 +959,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::MixedParametersPrimitivesRequest.new(
@@ -889,12 +1015,39 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::MixedQueryParamsRequest.new(
   query_params=Operations::MixedQueryParamsRequest.new(
     deep_object_param=Shared::SimpleObject.new(
-      any="female",
+      any="any",
+      bigint=8821239038968084,
+      bigint_str="9223372036854775808",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      decimal=3.141592653589793,
+      decimal_str="3.14159265358979344719667586",
+      enum=Shared::Enum::ONE,
+      float32=1.1,
+      int=1,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=89281,
+      num=1.1,
+      num_opt_null=2132.48,
+      str_="test",
+      str_opt="testOptional",
+    ),
+    form_param=Shared::SimpleObject.new(
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -908,15 +1061,15 @@ req = Operations::MixedQueryParamsRequest.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
-      int_opt_null=108812,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=218100,
       num=1.1,
-      num_opt_null=4161.9,
+      num_opt_null=75.58,
       str_="test",
       str_opt="testOptional",
     ),
-    form_param=Shared::SimpleObject.new(
-      any="Chair",
+    json_param=Shared::SimpleObject.new(
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -934,28 +1087,6 @@ req = Operations::MixedQueryParamsRequest.new(
       int_opt_null=387493,
       num=1.1,
       num_opt_null=5641.93,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    json_param=Shared::SimpleObject.new(
-      any="weber",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
-      int_opt_null=82918,
-      num=1.1,
-      num_opt_null=8839.4,
       str_="test",
       str_opt="testOptional",
     ),
@@ -993,12 +1124,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::PathParameterJsonRequest.new(
   path_params=Operations::PathParameterJsonRequest.new(
     json_obj=Shared::SimpleObject.new(
-      any="bluetooth",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -1013,9 +1149,9 @@ req = Operations::PathParameterJsonRequest.new(
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
       int_enum=Shared::SimpleObjectIntEnum::SECOND,
-      int_opt_null=121334,
+      int_opt_null=355762,
       num=1.1,
-      num_opt_null=2775.09,
+      num_opt_null=5955.49,
       str_="test",
       str_opt="testOptional",
     ),
@@ -1051,6 +1187,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::PipeDelimitedQueryParamsArrayRequest.new(
@@ -1062,10 +1203,10 @@ req = Operations::PipeDelimitedQueryParamsArrayRequest.new(
       1,
     ],
     map_param=.new{
-      "vitae": "gold",
+      "Northeast": "Gasoline",
     },
     obj_param=Shared::SimpleObject.new(
-      any="Corporate",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -1080,9 +1221,9 @@ req = Operations::PipeDelimitedQueryParamsArrayRequest.new(
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
       int_enum=Shared::SimpleObjectIntEnum::FIRST,
-      int_opt_null=790307,
+      int_opt_null=84957,
       num=1.1,
-      num_opt_null=4843.4,
+      num_opt_null=2833.78,
       str_="test",
       str_opt="testOptional",
     ),
@@ -1099,12 +1240,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `arr_param`                                                                                        | T::Array<*String*>                                                                                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `arr_param_exploded`                                                                               | T::Array<*Integer*>                                                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `map_param`                                                                                        | T::Hash[Symbol, *String*]                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `obj_param`                                                                                        | [T.nilable(Shared::SimpleObject)](../../models/shared/simpleobject.md)                             | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `arr_param`                                                                                        | T::Array<*String*>                                                                                 | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `arr_param_exploded`                                                                               | T::Array<*Integer*>                                                                                | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `map_param`                                                                                        | T::Hash[Symbol, *String*]                                                                          | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `obj_param`                                                                                        | [Shared::SimpleObject](../../models/shared/simpleobject.md)                                        | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
@@ -1121,6 +1262,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::SimplePathParameterArraysRequest.new(
@@ -1160,15 +1306,20 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::SimplePathParameterMapsRequest.new(
   path_params=Operations::SimplePathParameterMapsRequest.new(
     map_param=.new{
-      "nobis": "even",
+      "weber": "Sausages",
     },
     map_param_exploded=.new{
-      "repudiandae": 157687,
+      "Parks": 999743,
     },
   ),
 )
@@ -1183,10 +1334,10 @@ end
 
 ### Parameters
 
-| Parameter                  | Type                       | Required                   | Description                |
-| -------------------------- | -------------------------- | -------------------------- | -------------------------- |
-| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_check_mark:         | N/A                        |
-| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_check_mark:         | N/A                        |
+| Parameter                  | Type                       | Required                   | Description                | Example                    |
+| -------------------------- | -------------------------- | -------------------------- | -------------------------- | -------------------------- |
+| `map_param`                | T::Hash[Symbol, *String*]  | :heavy_check_mark:         | N/A                        | [object Object]            |
+| `map_param_exploded`       | T::Hash[Symbol, *Integer*] | :heavy_check_mark:         | N/A                        | [object Object]            |
 
 
 ### Response
@@ -1203,34 +1354,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::SimplePathParameterObjectsRequest.new(
   path_params=Operations::SimplePathParameterObjectsRequest.new(
     obj_param=Shared::SimpleObject.new(
-      any="Ville",
-      bigint=8821239038968084,
-      bigint_str="9223372036854775808",
-      bool=true,
-      bool_opt=true,
-      date=Date.parse("2020-01-01"),
-      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
-      decimal=3.141592653589793,
-      decimal_str="3.14159265358979344719667586",
-      enum=Shared::Enum::ONE,
-      float32=1.1,
-      int=1,
-      int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=586554,
-      num=1.1,
-      num_opt_null=2558,
-      str_="test",
-      str_opt="testOptional",
-    ),
-    obj_param_exploded=Shared::SimpleObject.new(
-      any="Research",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -1244,10 +1378,32 @@ req = Operations::SimplePathParameterObjectsRequest.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
-      int_opt_null=878658,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_opt_null=384918,
       num=1.1,
-      num_opt_null=6926.2,
+      num_opt_null=9559.93,
+      str_="test",
+      str_opt="testOptional",
+    ),
+    obj_param_exploded=Shared::SimpleObject.new(
+      any="any",
+      bigint=8821239038968084,
+      bigint_str="9223372036854775808",
+      bool=true,
+      bool_opt=true,
+      date=Date.parse("2020-01-01"),
+      date_time=DateTime.iso8601('2020-01-01T00:00:00.000000001Z'),
+      decimal=3.141592653589793,
+      decimal_str="3.14159265358979344719667586",
+      enum=Shared::Enum::ONE,
+      float32=1.1,
+      int=1,
+      int32=1,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=678638,
+      num=1.1,
+      num_opt_null=5865.54,
       str_="test",
       str_opt="testOptional",
     ),
@@ -1284,6 +1440,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::SimplePathParameterPrimitivesRequest.new(

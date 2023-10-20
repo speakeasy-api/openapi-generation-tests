@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `form`             | dict[str, *str*]   | :heavy_check_mark: | N/A                |
+| `form`             | Dict[str, *str*]   | :heavy_check_mark: | N/A                |

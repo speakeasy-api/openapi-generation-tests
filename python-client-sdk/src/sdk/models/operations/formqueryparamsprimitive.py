@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class FormQueryParamsPrimitiveRequest:
     bool_param: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'boolParam', 'style': 'form', 'explode': True }})
@@ -20,7 +19,6 @@ class FormQueryParamsPrimitiveRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsPrimitiveResArgs:
     bool_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('boolParam') }})
@@ -32,14 +30,12 @@ class FormQueryParamsPrimitiveResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsPrimitiveRes:
     r"""OK"""
     args: FormQueryParamsPrimitiveResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

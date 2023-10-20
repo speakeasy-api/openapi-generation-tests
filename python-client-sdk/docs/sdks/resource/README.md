@@ -28,7 +28,7 @@ s = sdk.SDK(
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
         content='`\'$Z`(L/RH'.encode(),
-        file='Rap National',
+        file='Persevering',
     ),
 )
 
@@ -87,10 +87,10 @@ req = shared.ExampleResource(
     map_of_string={
         "an": 'South',
     },
-    name='Cotton',
+    name='Detroit',
     shared.ExampleBoat(
-        length=3287.82,
-        name='San South Quality',
+        length=4555.26,
+        name='experiences',
         type=shared.ExampleBoatType.BOAT,
     ),
 )

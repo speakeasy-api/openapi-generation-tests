@@ -3,19 +3,18 @@
 from __future__ import annotations
 import dataclasses
 import requests as requests_http
+from ..shared import objwithstringadditionalproperties as shared_objwithstringadditionalproperties
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ResponseBodyAdditionalPropertiesPost200ApplicationJSON:
     r"""OK"""
-    json: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
+    json: shared_objwithstringadditionalproperties.ObjWithStringAdditionalProperties = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

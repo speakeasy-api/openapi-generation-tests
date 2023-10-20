@@ -28,7 +28,7 @@ import { SDK } from "openapi";
   const res = await sdk.resource.createFile({
     file: {
       content: "`'$Z`(L/RH" as bytes <<<>>>,
-      file: "Rap National",
+      file: "Persevering",
     },
   });
 
@@ -87,8 +87,8 @@ import { ExampleResourceEnumNumber, ExampleResourceEnumStr } from "openapi/dist/
     mapOfString: {
       "an": "South",
     },
-    name: "Cotton",
-    vehicle: "withdrawal",
+    name: "Detroit",
+    vehicle: "online",
   });
 
   if (res.statusCode == 200) {

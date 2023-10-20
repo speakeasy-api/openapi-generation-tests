@@ -5,12 +5,11 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Callable, Optional
+from typing import Callable, List, Optional
 
 PAGINATION_LIMIT_OFFSET_OFFSET_PARAMS_SERVERS = [
 	"http://localhost:35456",
 ]
-
 
 
 @dataclasses.dataclass
@@ -22,14 +21,12 @@ class PaginationLimitOffsetOffsetParamsRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class PaginationLimitOffsetOffsetParamsRes:
     r"""OK"""
     num_pages: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('numPages') }})
-    result_array: list[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resultArray') }})
+    result_array: List[int] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('resultArray') }})
     
-
 
 
 

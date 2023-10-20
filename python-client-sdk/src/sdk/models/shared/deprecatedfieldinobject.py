@@ -15,7 +15,6 @@ class DeprecatedFieldInObjectDeprecatedEnum(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DeprecatedFieldInObject:
     deprecated_enum: Optional[DeprecatedFieldInObjectDeprecatedEnum] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('deprecatedEnum'), 'exclude': lambda f: f is None }})

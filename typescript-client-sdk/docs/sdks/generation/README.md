@@ -10,6 +10,9 @@ Endpoints for purely testing valid generation behavior.
 * [anchorTypesGet](#anchortypesget)
 * [arrayCircularReferenceGet](#arraycircularreferenceget)
 * [circularReferenceGet](#circularreferenceget)
+* [dateParamWithDefault](#dateparamwithdefault)
+* [dateTimeParamWithDefault](#datetimeparamwithdefault)
+* [decimalParamWithDefault](#decimalparamwithdefault)
 * [deprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
 * [~~deprecatedOperationNoCommentsGet~~](#deprecatedoperationnocommentsget) - :warning: **Deprecated**
@@ -131,6 +134,124 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)>**
+
+
+## dateParamWithDefault
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { DateParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
+import { RFCDate } from "openapi/dist/sdk/types";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+const dateInput: RFCDate = new RFCDate("2021-11-30");
+
+  const res = await sdk.generation.dateParamWithDefault(dateInput);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `dateInput`                                                  | [RFCDate](../../types/rfcdate.md)                            | :heavy_check_mark:                                           | A date parameter with a default value                        |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md)>**
+
+
+## dateTimeParamWithDefault
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { DateTimeParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
+
+  const res = await sdk.generation.dateTimeParamWithDefault(dateTimeInput);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                                                     | Type                                                                                          | Required                                                                                      | Description                                                                                   |
+| --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| `dateTimeInput`                                                                               | [Date](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date) | :heavy_check_mark:                                                                            | A date time parameter with a default value                                                    |
+| `config`                                                                                      | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                  | :heavy_minus_sign:                                                                            | Available config options for making requests.                                                 |
+
+
+### Response
+
+**Promise<[operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md)>**
+
+
+## decimalParamWithDefault
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import { DecimalParamWithDefaultRequest } from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+const decimalInput: number = 4060.06;
+
+  const res = await sdk.generation.decimalParamWithDefault(decimalInput);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `decimalInput`                                               | *number*                                                     | :heavy_check_mark:                                           | A decimal parameter with a default value                     |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md)>**
 
 
 ## deprecatedFieldInSchemaPost
@@ -618,7 +739,7 @@ const decimal: number = 3346.96;
 const obj: TypedParameterGenerationGetObj = {
   bool: false,
   num: 4778.06,
-  str: "Progressive Riyal male",
+  str: "innocently",
 };
 
   const res = await sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj);
@@ -700,19 +821,20 @@ const operationSecurity: UsageExamplePostSecurity = {
       },
     },
     bigintParameter: 168827,
-    bigintStrParameter: "Gasoline Sleek",
+    bigintStrParameter: "invoice",
     boolParameter: false,
-    dateParameter: new RFCDate("2021-04-23"),
-    dateTimeParameter: new Date("2022-09-13T20:44:04.193Z"),
-    decimalParameter: 1952.32,
-    decimalStrParameter: "Shoes Brockton",
-    doubleParameter: 1062.86,
-    enumParameter: UsageExamplePostEnumParameter.Value1,
+    dateParameter: new RFCDate("2022-07-22"),
+    dateTimeDefaultParameter: new Date("2021-10-21T09:16:58.799Z"),
+    dateTimeParameter: new Date("2022-07-26T23:56:07.107Z"),
+    decimalParameter: 2911.37,
+    decimalStrParameter: "Manager",
+    doubleParameter: 1029.75,
+    enumParameter: UsageExamplePostEnumParameter.Value2,
     falseyNumberParameter: 0,
-    float32Parameter: 2346.82,
-    floatParameter: 5954.85,
-    int64Parameter: 215216,
-    intParameter: 834441,
+    float32Parameter: 1952.32,
+    floatParameter: 5696.63,
+    int64Parameter: 264295,
+    intParameter: 352778,
     optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
     strParameter: "example 2",
   }, operationSecurity);

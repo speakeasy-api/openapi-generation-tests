@@ -10,7 +10,6 @@ CONNECTION_ERROR_GET_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class ConnectionErrorGetResponse:
     content_type: str = dataclasses.field()

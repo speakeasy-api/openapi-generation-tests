@@ -11,6 +11,7 @@ Endpoints for testing parameters.
 * [deepObjectQueryParamsObject](#deepobjectqueryparamsobject)
 * [duplicateParam](#duplicateparam)
 * [formQueryParamsArray](#formqueryparamsarray)
+* [formQueryParamsCamelObject](#formqueryparamscamelobject)
 * [formQueryParamsMap](#formqueryparamsmap)
 * [formQueryParamsObject](#formqueryparamsobject)
 * [formQueryParamsPrimitive](#formqueryparamsprimitive)
@@ -268,6 +269,62 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.FormQueryParamsArrayResponse](../../models/operations/FormQueryParamsArrayResponse.md)**
+
+
+## formQueryParamsCamelObject
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            FormQueryParamsCamelObjectResponse res = sdk.parameters.formQueryParamsCamelObject(new FormQueryParamsCamelObjectObjParamExploded(){{
+                itemCount = "10";
+                searchTerm = "foo";
+            }}, new FormQueryParamsCamelObjectObjParam(){{
+                encodedCount = "11";
+                encodedTerm = "bar";
+            }});
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                  | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `objParamExploded`                                                                                                                                         | [org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/FormQueryParamsCamelObjectObjParamExploded.md) | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
+| `objParam`                                                                                                                                                 | [org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam](../../models/operations/FormQueryParamsCamelObjectObjParam.md)                 | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse](../../models/operations/FormQueryParamsCamelObjectResponse.md)**
 
 
 ## formQueryParamsMap
@@ -1490,8 +1547,8 @@ public class Application {
                 put("test", "value");
                 put("test2", "value2");
             }}, new java.util.HashMap<String, Long>(){{
-                put("test", 1L);
                 put("test2", 2L);
+                put("test", 1L);
             }});
 
             if (res.res != null) {

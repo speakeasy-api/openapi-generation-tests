@@ -7,7 +7,6 @@ from ..shared import fileresource as shared_fileresource
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateFileRequestBodyFile:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
@@ -16,12 +15,10 @@ class CreateFileRequestBodyFile:
 
 
 
-
 @dataclasses.dataclass
 class CreateFileRequestBody:
     file: Optional[CreateFileRequestBodyFile] = dataclasses.field(default=None, metadata={'multipart_form': { 'file': True }})
     
-
 
 
 

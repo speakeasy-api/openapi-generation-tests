@@ -89,19 +89,20 @@ import { RFCDate } from "openapi/dist/sdk/types";
                 },
             },
             bigintParameter: 168827,
-            bigintStrParameter: "Gasoline Sleek",
+            bigintStrParameter: "invoice",
             boolParameter: false,
-            dateParameter: new RFCDate("2021-04-23"),
-            dateTimeParameter: new Date("2022-09-13T20:44:04.193Z"),
-            decimalParameter: 1952.32,
-            decimalStrParameter: "Shoes Brockton",
-            doubleParameter: 1062.86,
-            enumParameter: UsageExamplePostEnumParameter.Value1,
+            dateParameter: new RFCDate("2022-07-22"),
+            dateTimeDefaultParameter: new Date("2021-10-21T09:16:58.799Z"),
+            dateTimeParameter: new Date("2022-07-26T23:56:07.107Z"),
+            decimalParameter: 2911.37,
+            decimalStrParameter: "Manager",
+            doubleParameter: 1029.75,
+            enumParameter: UsageExamplePostEnumParameter.Value2,
             falseyNumberParameter: 0,
-            float32Parameter: 2346.82,
-            floatParameter: 5954.85,
-            int64Parameter: 215216,
-            intParameter: 834441,
+            float32Parameter: 1952.32,
+            floatParameter: 5696.63,
+            int64Parameter: 264295,
+            intParameter: 352778,
             optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
             strParameter: "example 2",
         },
@@ -176,6 +177,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [arrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
+* [dateParamWithDefault](docs/sdks/generation/README.md#dateparamwithdefault)
+* [dateTimeParamWithDefault](docs/sdks/generation/README.md#datetimeparamwithdefault)
+* [decimalParamWithDefault](docs/sdks/generation/README.md#decimalparamwithdefault)
 * [deprecatedFieldInSchemaPost](docs/sdks/generation/README.md#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](docs/sdks/generation/README.md#deprecatedobjectinschemaget)
 * [~~deprecatedOperationNoCommentsGet~~](docs/sdks/generation/README.md#deprecatedoperationnocommentsget) - :warning: **Deprecated**
@@ -228,6 +232,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
 * [duplicateParam](docs/sdks/parameters/README.md#duplicateparam)
 * [formQueryParamsArray](docs/sdks/parameters/README.md#formqueryparamsarray)
+* [formQueryParamsCamelObject](docs/sdks/parameters/README.md#formqueryparamscamelobject)
 * [formQueryParamsMap](docs/sdks/parameters/README.md#formqueryparamsmap)
 * [formQueryParamsObject](docs/sdks/parameters/README.md#formqueryparamsobject)
 * [formQueryParamsPrimitive](docs/sdks/parameters/README.md#formqueryparamsprimitive)
@@ -343,6 +348,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
+* [responseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
 * [responseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
 * [responseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
 * [responseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
@@ -386,6 +392,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->
 
@@ -458,7 +466,7 @@ The following global parameters are available. The required parameters must be s
 
 
 
-## Example
+## Example #1
 
 ```typescript
 import { SDK } from "openapi";
@@ -475,6 +483,32 @@ import { GlobalPathParameterGetRequest } from "openapi/dist/sdk/models/operation
     const globalPathParam: number = 719830;
 
     const res = await sdk.globals.globalPathParameterGet(globalPathParam);
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+
+## Example #2
+
+```typescript
+import { SDK } from "openapi";
+import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operations";
+
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+    });
+    const globalQueryParam: string = "Tricycle";
+
+    const res = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
 
     if (res.statusCode == 200) {
         // handle response

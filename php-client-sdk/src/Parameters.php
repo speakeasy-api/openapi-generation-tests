@@ -190,6 +190,49 @@ class Parameters
     }
 	
     /**
+     * formQueryParamsCamelObject
+     * 
+     * @param \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParamExploded $objParamExploded
+     * @param ?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParam $objParam
+     * @return \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectResponse
+     */
+	public function formQueryParamsCamelObject(
+        \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParamExploded $objParamExploded,
+        ?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParam $objParam = null,
+    ): \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectRequest();
+        $request->objParamExploded = $objParamExploded;
+        $request->objParam = $objParam;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/queryParams/form/camelObj');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * formQueryParamsMap
      * 
      * @param ?array<string, string> $mapParam

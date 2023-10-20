@@ -68,6 +68,14 @@ class UsageExamplePostRequest
     public \DateTime $dateParameter;
     
     /**
+     * A date time parameter with a default value
+     * 
+     * @var \DateTime $dateTimeDefaultParameter
+     */
+	#[SpeakeasyMetadata('queryParam:style=form,explode=true,name=dateTimeDefaultParameter,dateTimeFormat=Y-m-d\TH:i:s.up')]
+    public \DateTime $dateTimeDefaultParameter;
+    
+    /**
      * A date time parameter
      * 
      * @var \DateTime $dateTimeParameter
@@ -188,6 +196,7 @@ class UsageExamplePostRequest
 		$this->bigintStrParameterOptional = null;
 		$this->boolParameter = false;
 		$this->dateParameter = new \DateTime();
+		$this->dateTimeDefaultParameter = new \DateTime();
 		$this->dateTimeParameter = new \DateTime();
 		$this->decimalParameter = 0;
 		$this->decimalParameterOptional = null;

@@ -1,0 +1,38 @@
+configVersion: 1.0.0
+management:
+  docChecksum: 3f790c65afe8341dde1d7807cdaa1c4d
+  docVersion: 0.1.0
+  speakeasyVersion: 1.102.0
+  generationVersion: 2.166.0
+generation:
+  repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
+  sdkClassName: SDK
+  singleTagPerOp: false
+features:
+  csharp:
+    core: 2.92.0
+    deprecations: 2.81.1
+    docs: 0.0.2
+    enums: 2.81.1
+    examples: 2.81.3
+    flattening: 2.81.1
+    globalSecurity: 2.81.1
+    globalServerURLs: 2.82.0
+    globals: 2.81.1
+    groups: 2.81.2
+    ignores: 2.81.1
+    includes: 2.81.1
+    inputOutputModels: 2.81.1
+    methodSecurity: 2.82.0
+    methodServerURLs: 2.82.0
+    nameOverrides: 2.81.1
+    pagination: 0.1.1
+    serverIDs: 2.81.1
+csharp:
+  version: 0.1.0
+  author: Speakeasy
+  dotnetVersion: net5.0
+  maxMethodParams: 5
+  packageName: openapi
+  published: true
+  repoSubDirectory: csharp-client-sdk

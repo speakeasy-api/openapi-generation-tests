@@ -18,12 +18,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RetriesGetRequest.new(
   query_params=Operations::RetriesGetRequest.new(
-    request_id="in",
-    num_retries=64545,
+    request_id="Cambridgeshire",
+    num_retries=496130,
   ),
 )
     
@@ -40,7 +45,7 @@ end
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `request_id`                   | *String*                       | :heavy_check_mark:             | N/A                            |
-| `num_retries`                  | *T.nilable(Integer)*           | :heavy_minus_sign:             | N/A                            |
+| `num_retries`                  | *Integer*                      | :heavy_minus_sign:             | N/A                            |
 | `server_url`                   | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 

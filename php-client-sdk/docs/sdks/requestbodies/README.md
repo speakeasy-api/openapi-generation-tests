@@ -103,13 +103,17 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\NullableObject;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new NullableObject();
-    $request->optional = 'Ergonomic';
-    $request->required = 463086;
+    $request->optional = 'architect';
+    $request->required = 76493;
 
     $response = $sdk->requestBodies->nullableObjectPost($request);
 
@@ -150,7 +154,11 @@ use \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBod
 use \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj;
 use \OpenAPI\OpenAPI\Models\Operations\NullableRequiredEmptyObjectPostRequestBodyRequiredObj;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -196,7 +204,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostRequestBody;
 use \OpenAPI\OpenAPI\Models\Operations\NullableRequiredPropertyPostRequestBodyNullableRequiredEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -245,17 +257,21 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\NullableRequiredSharedObjectPostRequestBody;
 use \OpenAPI\OpenAPI\Models\Shared\NullableObject;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new NullableRequiredSharedObjectPostRequestBody();
     $request->nullableOptionalObj = new NullableObject();
-    $request->nullableOptionalObj->optional = 'plus';
-    $request->nullableOptionalObj->required = 831837;
+    $request->nullableOptionalObj->optional = 'Southwest';
+    $request->nullableOptionalObj->required = 724312;
     $request->nullableRequiredObj = new NullableObject();
-    $request->nullableRequiredObj->optional = 'Electronic Northwest Northeast';
-    $request->nullableRequiredObj->required = 5767;
+    $request->nullableRequiredObj->optional = 'Volvo';
+    $request->nullableRequiredObj->required = 229886;
 
     $response = $sdk->requestBodies->nullableRequiredSharedObjectPost($request);
 
@@ -296,7 +312,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -344,7 +364,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -392,7 +416,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -439,7 +467,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -486,7 +518,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -536,7 +572,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -582,7 +622,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -632,13 +676,17 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
         [
-            'quasi' => new SimpleObject(),
+            'Southeast' => new SimpleObject(),
         ],
     ]
 
@@ -682,13 +730,17 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
         [
-            'occaecati' => new SimpleObjectCamelCase(),
+            'culpa' => new SimpleObjectCamelCase(),
         ],
     ]
 
@@ -728,7 +780,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -777,23 +833,27 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new DeepObject();
-    $request->any = 'medium';
+    $request->any = 'anyOf[0]';
     $request->arr = [
         new SimpleObject(),
     ];
     $request->bool = true;
     $request->int = 1;
     $request->map = [
-        'veniam' => new SimpleObject(),
+        'medium' => new SimpleObject(),
     ];
     $request->num = 1.1;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'Berkelium';
+    $request->obj->any = 'any';
     $request->obj->bigint = 8821239038968084;
     $request->obj->bigintStr = '9223372036854775808';
     $request->obj->bool = true;
@@ -807,14 +867,14 @@ try {
     $request->obj->int = 1;
     $request->obj->int32 = 1;
     $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->obj->intEnum = SimpleObjectIntEnum::First;
-    $request->obj->intOptNull = 998971;
+    $request->obj->intEnum = SimpleObjectIntEnum::Third;
+    $request->obj->intOptNull = 817678;
     $request->obj->num = 1.1;
-    $request->obj->numOptNull = 9915.06;
+    $request->obj->numOptNull = 2099.66;
     $request->obj->str = 'test';
     $request->obj->strOpt = 'testOptional';
     $request->str = 'test';
-    $request->type = 'gray Oganesson';
+    $request->type = 'Cambridgeshire';
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeep($request);
 
@@ -856,7 +916,11 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -868,21 +932,21 @@ try {
     $request->boolVal = false;
     $request->intVal = 206440;
     $request->mapVal = [
-        'vel' => new SimpleObjectCamelCase(),
+        'Palladium' => new SimpleObjectCamelCase(),
     ];
-    $request->numVal = 9420.92;
+    $request->numVal = 1379.45;
     $request->objVal = new SimpleObjectCamelCase();
-    $request->objVal->anyVal = 'South';
-    $request->objVal->bigintStrVal = 'Djibouti';
-    $request->objVal->bigintVal = 484195;
+    $request->objVal->anyVal = 'any example';
+    $request->objVal->bigintStrVal = 'Diesel';
+    $request->objVal->bigintVal = 105266;
     $request->objVal->boolOptVal = true;
     $request->objVal->boolVal = true;
     $request->objVal->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
     $request->objVal->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->objVal->decimalVal = 9223.07;
+    $request->objVal->decimalVal = 4268.81;
     $request->objVal->enumVal = Enum::One;
     $request->objVal->float32Val = 2.2222222;
-    $request->objVal->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::SixtyNine;
+    $request->objVal->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::FiftyFive;
     $request->objVal->int32Val = 1;
     $request->objVal->intEnumVal = SimpleObjectCamelCaseIntEnumVal::First;
     $request->objVal->intOptNullVal = 999999;
@@ -891,8 +955,8 @@ try {
     $request->objVal->numVal = 1.1;
     $request->objVal->strOptVal = 'optional example';
     $request->objVal->strVal = 'example';
-    $request->strVal = 'analyzer';
-    $request->type = 'heuristic Grocery Pizza';
+    $request->strVal = 'solid';
+    $request->type = 'Ghana';
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonDeepCamelCase($request);
 
@@ -933,12 +997,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'nisi' => new SimpleObject(),
+        'Bentley' => new SimpleObject(),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMap($request);
@@ -981,12 +1049,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'aliquid' => new SimpleObjectCamelCase(),
+        'archive' => new SimpleObjectCamelCase(),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapCamelCase($request);
@@ -1029,12 +1101,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'hic' => new SimpleObject(),
+        'larder' => new SimpleObject(),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObj($request);
@@ -1076,12 +1152,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'distinctio' => new SimpleObjectCamelCase(),
+        'female' => new SimpleObjectCamelCase(),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapObjCamelCase($request);
@@ -1123,12 +1203,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'aliquid' => [
+        'Loan' => [
             new SimpleObject(),
         ],
     ]
@@ -1173,12 +1257,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'vero' => [
+        'nonstop' => [
             new SimpleObjectCamelCase(),
         ],
     ]
@@ -1223,13 +1311,17 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'animi' => [
-            'inventore' => new SimpleObject(),
+        'Senior' => [
+            'vice' => new SimpleObject(),
         ],
     ]
 
@@ -1273,13 +1365,17 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'eos' => [
-            'ut' => new SimpleObjectCamelCase(),
+        'Home' => [
+            'plum' => new SimpleObjectCamelCase(),
         ],
     ]
 
@@ -1319,13 +1415,17 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'quisquam' => [
-            'molestiae' => 'collaboration',
+        'turquoise' => [
+            'collaboration' => 'Officer',
         ],
     ]
 
@@ -1365,12 +1465,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'accusamus' => 'Salad',
+        'equally' => 'whereas',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostApplicationJsonMapOfPrimitive($request);
@@ -1413,12 +1517,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new SimpleObject();
-    $request->any = 'hack';
+    $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
@@ -1431,11 +1539,11 @@ try {
     $request->float32 = 1.1;
     $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $request->intEnum = SimpleObjectIntEnum::Third;
-    $request->intOptNull = 279112;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::First;
+    $request->intOptNull = 680661;
     $request->num = 1.1;
-    $request->numOptNull = 7372.56;
+    $request->numOptNull = 8809.47;
     $request->str = 'test';
     $request->strOpt = 'testOptional';
 
@@ -1478,12 +1586,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new SimpleObject();
-    $request->any = 'Hampton';
+    $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
@@ -1496,11 +1608,11 @@ try {
     $request->float32 = 1.1;
     $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $request->intEnum = SimpleObjectIntEnum::Third;
-    $request->intOptNull = 708824;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $request->intEnum = SimpleObjectIntEnum::Second;
+    $request->intOptNull = 387512;
     $request->num = 1.1;
-    $request->numOptNull = 2273.77;
+    $request->numOptNull = 7875.71;
     $request->str = 'test';
     $request->strOpt = 'testOptional';
 
@@ -1543,22 +1655,26 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseInt32EnumVal;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectCamelCaseIntEnumVal;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new SimpleObjectCamelCase();
-    $request->anyVal = 'rich';
-    $request->bigintStrVal = 'Direct Pound';
-    $request->bigintVal = 726659;
+    $request->anyVal = 'any example';
+    $request->bigintStrVal = 'rich';
+    $request->bigintVal = 452401;
     $request->boolOptVal = true;
     $request->boolVal = true;
     $request->dateTimeVal = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2020-01-01T00:00:00Z');
     $request->dateVal = DateTime::createFromFormat('Y-m-d', '2020-01-01');
-    $request->decimalVal = 6907.97;
+    $request->decimalVal = 6431.04;
     $request->enumVal = Enum::One;
     $request->float32Val = 2.2222222;
-    $request->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::SixtyNine;
+    $request->int32EnumVal = SimpleObjectCamelCaseInt32EnumVal::FiftyFive;
     $request->int32Val = 1;
     $request->intEnumVal = SimpleObjectCamelCaseIntEnumVal::Second;
     $request->intOptNullVal = 999999;
@@ -1605,24 +1721,28 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostComplexNumberTypesRequest;
 use \OpenAPI\OpenAPI\Models\Shared\ComplexNumberTypes;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new RequestBodyPostComplexNumberTypesRequest();
     $request->complexNumberTypes = new ComplexNumberTypes();
     $request->complexNumberTypes->bigint = 765757;
-    $request->complexNumberTypes->bigintStr = 'Metal calculating Lamborghini';
-    $request->complexNumberTypes->decimal = 9373.95;
-    $request->complexNumberTypes->decimalStr = 'Royce';
-    $request->pathBigInt = 958218;
-    $request->pathBigIntStr = 'male ASCII';
-    $request->pathDecimal = 1464.39;
-    $request->pathDecimalStr = 'Lancaster hertz young';
-    $request->queryBigInt = 338976;
-    $request->queryBigIntStr = 'Northwest';
-    $request->queryDecimal = 3970.19;
-    $request->queryDecimalStr = 'Toyota';
+    $request->complexNumberTypes->bigintStr = 'pfft';
+    $request->complexNumberTypes->decimal = 6831.11;
+    $request->complexNumberTypes->decimalStr = 'calculating';
+    $request->pathBigInt = 822852;
+    $request->pathBigIntStr = 'reboot';
+    $request->pathDecimal = 1789.06;
+    $request->pathDecimalStr = 'Royce';
+    $request->queryBigInt = 958218;
+    $request->queryBigIntStr = 'orchestration';
+    $request->queryDecimal = 8745.2;
+    $request->queryDecimalStr = 'ASCII';
 
     $response = $sdk->requestBodies->requestBodyPostComplexNumberTypes($request);
 
@@ -1664,39 +1784,43 @@ use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsConstEnumStr;
 use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumInt;
 use \OpenAPI\OpenAPI\Models\Shared\DefaultsAndConstsDefaultEnumStr;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new DefaultsAndConsts();
     $request->constBigInt = 559205;
-    $request->constBigIntStr = 'Chief';
+    $request->constBigIntStr = 'Generic';
     $request->constBool = false;
-    $request->constDate = DateTime::createFromFormat('Y-m-d', '2021-05-03');
-    $request->constDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-07-14T17:39:00.984Z');
-    $request->constDecimal = 2995.45;
-    $request->constDecimalStr = 'invoice Cotton';
-    $request->constEnumInt = DefaultsAndConstsConstEnumInt::Two;
-    $request->constEnumStr = DefaultsAndConstsConstEnumStr::One;
-    $request->constInt = 788517;
-    $request->constNum = 639.73;
-    $request->constStr = 'Dong Dysprosium';
-    $request->constStrNull = 'Kids quarrelsome';
-    $request->defaultBigInt = 374051;
-    $request->defaultBigIntStr = 'incubate Lane Music';
+    $request->constDate = DateTime::createFromFormat('Y-m-d', '2023-10-01');
+    $request->constDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-05-03T16:53:58.702Z');
+    $request->constDecimal = 8445.08;
+    $request->constDecimalStr = 'invoice';
+    $request->constEnumInt = DefaultsAndConstsConstEnumInt::One;
+    $request->constEnumStr = DefaultsAndConstsConstEnumStr::Two;
+    $request->constInt = 611959;
+    $request->constNum = 2168.9;
+    $request->constStr = 'green';
+    $request->constStrNull = 'Account';
+    $request->defaultBigInt = 725054;
+    $request->defaultBigIntStr = 'quantify';
     $request->defaultBool = false;
-    $request->defaultDate = DateTime::createFromFormat('Y-m-d', '2023-07-16');
-    $request->defaultDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-06-28T10:07:28.276Z');
-    $request->defaultDecimal = 3014.85;
-    $request->defaultDecimalStr = 'South Hafnium amid';
-    $request->defaultEnumInt = DefaultsAndConstsDefaultEnumInt::Three;
-    $request->defaultEnumStr = DefaultsAndConstsDefaultEnumStr::One;
-    $request->defaultInt = 77435;
-    $request->defaultNum = 6102.85;
-    $request->defaultStr = 'Electric Diesel';
-    $request->defaultStrNullable = 'silver Central';
-    $request->defaultStrOptional = 'Gasoline Pines boo';
-    $request->normalField = 'free';
+    $request->defaultDate = DateTime::createFromFormat('Y-m-d', '2021-07-23');
+    $request->defaultDateTime = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-11-06T02:12:46.359Z');
+    $request->defaultDecimal = 8690.81;
+    $request->defaultDecimalStr = 'Configuration';
+    $request->defaultEnumInt = DefaultsAndConstsDefaultEnumInt::One;
+    $request->defaultEnumStr = DefaultsAndConstsDefaultEnumStr::Three;
+    $request->defaultInt = 900298;
+    $request->defaultNum = 4682.71;
+    $request->defaultStr = 'deserted';
+    $request->defaultStrNullable = 'Southwest';
+    $request->defaultStrOptional = 'orange';
+    $request->normalField = 'blah';
 
     $response = $sdk->requestBodies->requestBodyPostDefaultsAndConsts($request);
 
@@ -1736,7 +1860,11 @@ use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBody;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBodyEmpty;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -1784,23 +1912,27 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new DeepObject();
-    $request->any = 'and';
+    $request->any = 'anyOf[0]';
     $request->arr = [
         new SimpleObject(),
     ];
     $request->bool = true;
     $request->int = 1;
     $request->map = [
-        'aut' => new SimpleObject(),
+        'and' => new SimpleObject(),
     ];
     $request->num = 1.1;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'Forward';
+    $request->obj->any = 'any';
     $request->obj->bigint = 8821239038968084;
     $request->obj->bigintStr = '9223372036854775808';
     $request->obj->bool = true;
@@ -1813,15 +1945,15 @@ try {
     $request->obj->float32 = 1.1;
     $request->obj->int = 1;
     $request->obj->int32 = 1;
-    $request->obj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $request->obj->intEnum = SimpleObjectIntEnum::Third;
-    $request->obj->intOptNull = 480884;
+    $request->obj->intOptNull = 769249;
     $request->obj->num = 1.1;
-    $request->obj->numOptNull = 5037.57;
+    $request->obj->numOptNull = 482.42;
     $request->obj->str = 'test';
     $request->obj->strOpt = 'testOptional';
     $request->str = 'test';
-    $request->type = 'Ytterbium';
+    $request->type = 'primary';
 
     $response = $sdk->requestBodies->requestBodyPostFormDeep($request);
 
@@ -1858,12 +1990,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'nisi' => 'Sports',
+        'complexity' => 'SUV',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostFormMapPrimitive($request);
@@ -1905,12 +2041,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new SimpleObject();
-    $request->any = 'Product';
+    $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
@@ -1923,11 +2063,11 @@ try {
     $request->float32 = 1.1;
     $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $request->intEnum = SimpleObjectIntEnum::Third;
-    $request->intOptNull = 693294;
+    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->intEnum = SimpleObjectIntEnum::First;
+    $request->intOptNull = 5565;
     $request->num = 1.1;
-    $request->numOptNull = 2022.98;
+    $request->numOptNull = 8893.53;
     $request->str = 'test';
     $request->strOpt = 'testOptional';
 
@@ -1966,7 +2106,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2009,7 +2153,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2052,12 +2200,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'Group East incentivize',
+        'Gasoline',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesArrayDecimalStr($request);
@@ -2095,7 +2247,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2136,11 +2292,15 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
-'pixel gray'
+'Global'
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesBigIntStr($request);
 
@@ -2177,7 +2337,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2218,7 +2382,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2259,7 +2427,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2300,7 +2472,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2341,11 +2517,15 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
-'gadzooks Luxurious'
+'reboot'
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesDecimalStr($request);
 
@@ -2382,7 +2562,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2423,7 +2607,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2464,7 +2652,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2505,12 +2697,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'doloremque' => 'York firewall',
+        'Nepal' => 'York',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapBigIntStr($request);
@@ -2548,12 +2744,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'quas' => DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-09-29T16:39:16.558Z'),
+        'quantify' => DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-02-12T21:23:09.538Z'),
     ]
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDateTime($request);
@@ -2591,12 +2791,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'exercitationem' => 4182.45,
+        'Inverse' => 9134.24,
     ]
 
     $response = $sdk->requestBodies->requestBodyPostJsonDataTypesMapDecimal($request);
@@ -2634,7 +2838,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2675,7 +2883,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -2720,12 +2932,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new SimpleObject();
-    $request->any = 'Unbranded';
+    $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
@@ -2738,11 +2954,11 @@ try {
     $request->float32 = 1.1;
     $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $request->intEnum = SimpleObjectIntEnum::Third;
-    $request->intOptNull = 414559;
+    $request->intOptNull = 587803;
     $request->num = 1.1;
-    $request->numOptNull = 462.04;
+    $request->numOptNull = 9724.14;
     $request->str = 'test';
     $request->strOpt = 'testOptional';
 
@@ -2782,14 +2998,18 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON();
     $request->bool = false;
     $request->num = 3558.41;
-    $request->str = 'South expiate aha';
+    $request->str = 'Van';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesInlineFiltered($request);
 
@@ -2828,16 +3048,20 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamFormRequest;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded();
     $requestBody->bool3 = false;
     $requestBody->num3 = 8693.24;
-    $requestBody->str3 = 'Compatible';
+    $requestBody->str3 = 'Garden';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'Architect');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamForm($requestBody, 'Northwest');
 
     if ($response->res !== null) {
         // handle response
@@ -2875,16 +3099,20 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamJsonRequest;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamApplicationJSON;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON();
     $requestBody->bool = false;
     $requestBody->num = 9771.91;
-    $requestBody->str = 'South networks';
+    $requestBody->str = 'quasi';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'Brand');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamJson($requestBody, 'empowering');
 
     if ($response->res !== null) {
         // handle response
@@ -2922,16 +3150,20 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartRequest;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitParamMultipartFormData;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $requestBody = new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData();
     $requestBody->bool2 = false;
     $requestBody->num2 = 7000.76;
-    $requestBody->str2 = 'Ball Southwest';
+    $requestBody->str2 = 'Coupe';
 
-    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'Ergonomic');
+    $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitParamMultipart($requestBody, 'East');
 
     if ($response->res !== null) {
         // handle response
@@ -2968,14 +3200,18 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded();
     $request->bool3 = false;
     $request->num3 = 7842.07;
-    $request->str3 = 'Cab encryption SMTP';
+    $request->str3 = 'encryption';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitForm($request);
 
@@ -3013,14 +3249,18 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitApplicationJSON;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitApplicationJSON();
     $request->bool = false;
     $request->num = 2445.56;
-    $request->str = 'hew frictionless Hybrid';
+    $request->str = 'Wagon';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitJson($request);
 
@@ -3058,14 +3298,18 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostMultipleContentTypesSplitMultipartFormData;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new RequestBodyPostMultipleContentTypesSplitMultipartFormData();
     $request->bool2 = false;
     $request->num2 = 2079.2;
-    $request->str2 = 'cyan';
+    $request->str2 = 'green';
 
     $response = $sdk->requestBodies->requestBodyPostMultipleContentTypesSplitMultipart($request);
 
@@ -3102,7 +3346,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3143,7 +3391,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3186,12 +3438,16 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = [
-        'omnis' => 'virtual',
+        'Intersex' => 'robust',
     ]
 
     $response = $sdk->requestBodies->requestBodyPostNullDictionary($request);
@@ -3229,7 +3485,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3270,7 +3530,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3311,7 +3575,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3353,7 +3621,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutBytesWithParamsRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3400,23 +3672,27 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new DeepObject();
-    $request->any = 'Chevrolet';
+    $request->any = 'anyOf[0]';
     $request->arr = [
         new SimpleObject(),
     ];
     $request->bool = true;
     $request->int = 1;
     $request->map = [
-        'a' => new SimpleObject(),
+        'Chevrolet' => new SimpleObject(),
     ];
     $request->num = 1.1;
     $request->obj = new SimpleObject();
-    $request->obj->any = 'Reggae';
+    $request->obj->any = 'any';
     $request->obj->bigint = 8821239038968084;
     $request->obj->bigintStr = '9223372036854775808';
     $request->obj->bool = true;
@@ -3431,13 +3707,13 @@ try {
     $request->obj->int32 = 1;
     $request->obj->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
     $request->obj->intEnum = SimpleObjectIntEnum::Second;
-    $request->obj->intOptNull = 345956;
+    $request->obj->intOptNull = 731372;
     $request->obj->num = 1.1;
-    $request->obj->numOptNull = 5397.13;
+    $request->obj->numOptNull = 8739.03;
     $request->obj->str = 'test';
     $request->obj->strOpt = 'testOptional';
     $request->str = 'test';
-    $request->type = 'Robust digital';
+    $request->type = 'copying';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDeep($request);
 
@@ -3476,14 +3752,18 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBody;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new RequestBodyPutMultipartDifferentFileNameRequestBody();
     $request->differentFileName = new RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName();
     $request->differentFileName->content = 'Y}\'H[5/Z[,';
-    $request->differentFileName->differentFileName = 'West Tunisian';
+    $request->differentFileName->differentFileName = 'Lek';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartDifferentFileName($request);
 
@@ -3522,14 +3802,18 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileRequestBody;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartFileRequestBodyFile;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new RequestBodyPutMultipartFileRequestBody();
     $request->file = new RequestBodyPutMultipartFileRequestBodyFile();
     $request->file->content = 'OJa,v`.FW-';
-    $request->file->file = 'bandwidth Sedan';
+    $request->file->file = 'veniam';
 
     $response = $sdk->requestBodies->requestBodyPutMultipartFile($request);
 
@@ -3570,12 +3854,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new SimpleObject();
-    $request->any = 'customized';
+    $request->any = 'any';
     $request->bigint = 8821239038968084;
     $request->bigintStr = '9223372036854775808';
     $request->bool = true;
@@ -3588,11 +3876,11 @@ try {
     $request->float32 = 1.1;
     $request->int = 1;
     $request->int32 = 1;
-    $request->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $request->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $request->intEnum = SimpleObjectIntEnum::Third;
-    $request->intOptNull = 689661;
+    $request->intOptNull = 544005;
     $request->num = 1.1;
-    $request->numOptNull = 7932.12;
+    $request->numOptNull = 7648.28;
     $request->str = 'test';
     $request->strOpt = 'testOptional';
 
@@ -3631,7 +3919,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3673,7 +3965,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutStringWithParamsRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3716,7 +4012,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\ReadWriteObjectInput;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3762,7 +4062,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\ReadOnlyObjectInput;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3804,7 +4108,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3846,7 +4154,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -3889,14 +4201,18 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
     $request->num = 3888.42;
-    $request->string = 'Herminio';
+    $request->string = 'intuitive';
 
     $response = $sdk->requestBodies->requestBodyWriteOnly($request);
 
@@ -3935,14 +4251,18 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\WriteOnlyObject;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new WriteOnlyObject();
     $request->bool = false;
     $request->num = 3867.69;
-    $request->string = 'quas';
+    $request->string = 'copy';
 
     $response = $sdk->requestBodies->requestBodyWriteOnlyOutput($request);
 
@@ -3980,7 +4300,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {

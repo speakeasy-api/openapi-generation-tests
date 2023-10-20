@@ -1265,7 +1265,7 @@ func main() {
             StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
-        StrVal: "Diesel",
+        StrVal: "South",
     })
     if err != nil {
         log.Fatal(err)
@@ -2272,9 +2272,9 @@ func main() {
         ConstEnumStr: shared.DefaultsAndConstsConstEnumStrTwo,
         ConstInt: 450379,
         ConstNum: 7742.71,
-        ConstStr: "payment",
+        ConstStr: "Cotton",
         ConstStrNull: "green",
-        NormalField: "Dong Dysprosium",
+        NormalField: "Account",
     })
     if err != nil {
         log.Fatal(err)
@@ -2445,7 +2445,7 @@ func main() {
         Bool: true,
         Int: 1,
         Map: map[string]shared.SimpleObject{
-            "key2": shared.SimpleObject{
+            "key": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -2465,7 +2465,7 @@ func main() {
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
             },
-            "key": shared.SimpleObject{
+            "key2": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -3624,7 +3624,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(ctx, operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON{
         Bool: false,
         Num: 3558.41,
-        Str: "South expiate aha",
+        Str: "Van",
     })
     if err != nil {
         log.Fatal(err)
@@ -3677,10 +3677,10 @@ func main() {
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
         Bool3: false,
         Num3: 8693.24,
-        Str3: "Compatible",
+        Str3: "Garden",
     }
 
-    var paramStr string = "Architect"
+    var paramStr string = "Northwest"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamForm(ctx, requestBody, paramStr)
@@ -3736,10 +3736,10 @@ func main() {
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
         Bool: false,
         Num: 9771.91,
-        Str: "South networks",
+        Str: "quasi",
     }
 
-    var paramStr string = "Brand"
+    var paramStr string = "empowering"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJSON(ctx, requestBody, paramStr)
@@ -3795,10 +3795,10 @@ func main() {
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
         Bool2: false,
         Num2: 7000.76,
-        Str2: "Ball Southwest",
+        Str2: "Coupe",
     }
 
-    var paramStr string = "Ergonomic"
+    var paramStr string = "East"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx, requestBody, paramStr)
@@ -3854,7 +3854,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitForm(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded{
         Bool3: false,
         Num3: 7842.07,
-        Str3: "Cab encryption SMTP",
+        Str3: "encryption",
     })
     if err != nil {
         log.Fatal(err)
@@ -3907,7 +3907,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitJSON(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON{
         Bool: false,
         Num: 2445.56,
-        Str: "hew frictionless Hybrid",
+        Str: "Wagon",
     })
     if err != nil {
         log.Fatal(err)
@@ -3960,7 +3960,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipart(ctx, operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData{
         Bool2: false,
         Num2: 2079.2,
-        Str2: "cyan",
+        Str2: "green",
     })
     if err != nil {
         log.Fatal(err)
@@ -4540,7 +4540,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPutMultipartDifferentFileName(ctx, operations.RequestBodyPutMultipartDifferentFileNameRequestBody{
         DifferentFileName: &operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName{
             Content: []byte("Y}'H[5/Z[,"),
-            DifferentFileName: "West Tunisian",
+            DifferentFileName: "Lek",
         },
     })
     if err != nil {
@@ -4594,7 +4594,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
         File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
             Content: []byte("OJa,v`.FW-"),
-            File: "bandwidth Sedan",
+            File: "veniam",
         },
     })
     if err != nil {
@@ -5049,7 +5049,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyWriteOnly(ctx, shared.WriteOnlyObject{
         Bool: false,
         Num: 3888.42,
-        String: "Herminio",
+        String: "intuitive",
     })
     if err != nil {
         log.Fatal(err)
@@ -5102,7 +5102,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(ctx, shared.WriteOnlyObject{
         Bool: false,
         Num: 3867.69,
-        String: "quas",
+        String: "copy",
     })
     if err != nil {
         log.Fatal(err)
@@ -5158,7 +5158,7 @@ func main() {
             shared.WriteOnlyObject{
                 Bool: false,
                 Num: 3823.36,
-                String: "Internal",
+                String: "Oman",
             },
     ))
     if err != nil {

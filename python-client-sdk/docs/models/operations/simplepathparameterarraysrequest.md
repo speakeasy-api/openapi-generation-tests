@@ -5,4 +5,4 @@
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `arr_param`        | list[*str*]        | :heavy_check_mark: | N/A                |
+| `arr_param`        | List[*str*]        | :heavy_check_mark: | N/A                |
