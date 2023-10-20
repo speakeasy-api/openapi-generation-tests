@@ -22,11 +22,13 @@ jobs:
       openapi_docs: |
         - ./test.yaml
       languages: |-
+        - csharp
         - go
         - java
         - php
         - python
         - ruby
+        - swift
         - typescript
       force: ${{ github.event.inputs.force }}
       output_tests: true
