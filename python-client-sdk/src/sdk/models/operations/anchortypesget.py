@@ -10,7 +10,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class TypeFromAnchor:
     r"""A successful response that contains the simpleObject sent in the request body"""
@@ -19,7 +18,6 @@ class TypeFromAnchor:
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
     
-
 
 
 

@@ -89,6 +89,17 @@ public class UsageExamplePostRequest {
     }
     
     /**
+     * A date time parameter with a default value
+     */
+    @SpeakeasyMetadata("queryParam:style=form,explode=true,name=dateTimeDefaultParameter")
+    public OffsetDateTime dateTimeDefaultParameter;
+
+    public UsageExamplePostRequest withDateTimeDefaultParameter(OffsetDateTime dateTimeDefaultParameter) {
+        this.dateTimeDefaultParameter = dateTimeDefaultParameter;
+        return this;
+    }
+    
+    /**
      * A date time parameter
      */
     @SpeakeasyMetadata("queryParam:style=form,explode=true,name=dateTimeParameter")
@@ -242,11 +253,12 @@ public class UsageExamplePostRequest {
         return this;
     }
     
-    public UsageExamplePostRequest(@JsonProperty("bigintParameter") Long bigintParameter, @JsonProperty("bigintStrParameter") String bigintStrParameter, @JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("decimalParameter") Double decimalParameter, @JsonProperty("decimalStrParameter") String decimalStrParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameter enumParameter, @JsonProperty("falseyNumberParameter") Double falseyNumberParameter, @JsonProperty("float32Parameter") Float float32Parameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
+    public UsageExamplePostRequest(@JsonProperty("bigintParameter") Long bigintParameter, @JsonProperty("bigintStrParameter") String bigintStrParameter, @JsonProperty("boolParameter") Boolean boolParameter, @JsonProperty("dateParameter") LocalDate dateParameter, @JsonProperty("dateTimeDefaultParameter") OffsetDateTime dateTimeDefaultParameter, @JsonProperty("dateTimeParameter") OffsetDateTime dateTimeParameter, @JsonProperty("decimalParameter") Double decimalParameter, @JsonProperty("decimalStrParameter") String decimalStrParameter, @JsonProperty("doubleParameter") Double doubleParameter, @JsonProperty("enumParameter") UsageExamplePostEnumParameter enumParameter, @JsonProperty("falseyNumberParameter") Double falseyNumberParameter, @JsonProperty("float32Parameter") Float float32Parameter, @JsonProperty("floatParameter") Double floatParameter, @JsonProperty("int64Parameter") Long int64Parameter, @JsonProperty("intParameter") Integer intParameter, @JsonProperty("strParameter") String strParameter) {
         this.bigintParameter = bigintParameter;
         this.bigintStrParameter = bigintStrParameter;
         this.boolParameter = boolParameter;
         this.dateParameter = dateParameter;
+        this.dateTimeDefaultParameter = dateTimeDefaultParameter;
         this.dateTimeParameter = dateTimeParameter;
         this.decimalParameter = decimalParameter;
         this.decimalStrParameter = decimalStrParameter;

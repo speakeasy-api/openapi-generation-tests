@@ -19,6 +19,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::GlobalPathParameterGetRequest.new(
@@ -35,9 +40,9 @@ end
 
 ### Parameters
 
-| Parameter            | Type                 | Required             | Description          |
-| -------------------- | -------------------- | -------------------- | -------------------- |
-| `global_path_param`  | *T.nilable(Integer)* | :heavy_minus_sign:   | N/A                  |
+| Parameter           | Type                | Required            | Description         |
+| ------------------- | ------------------- | ------------------- | ------------------- |
+| `global_path_param` | *Integer*           | :heavy_minus_sign:  | N/A                 |
 
 
 ### Response
@@ -54,6 +59,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::GlobalsQueryParameterGetRequest.new(
@@ -72,7 +82,7 @@ end
 
 | Parameter            | Type                 | Required             | Description          |
 | -------------------- | -------------------- | -------------------- | -------------------- |
-| `global_query_param` | *T.nilable(String)*  | :heavy_minus_sign:   | N/A                  |
+| `global_query_param` | *String*             | :heavy_minus_sign:   | N/A                  |
 
 
 ### Response

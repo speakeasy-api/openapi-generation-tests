@@ -10,6 +10,9 @@ Endpoints for purely testing valid generation behavior.
 * [anchor_types_get](#anchor_types_get)
 * [array_circular_reference_get](#array_circular_reference_get)
 * [circular_reference_get](#circular_reference_get)
+* [date_param_with_default](#date_param_with_default)
+* [date_time_param_with_default](#date_time_param_with_default)
+* [decimal_param_with_default](#decimal_param_with_default)
 * [deprecated_field_in_schema_post](#deprecated_field_in_schema_post)
 * [deprecated_object_in_schema_get](#deprecated_object_in_schema_get)
 * [~~deprecated_operation_no_comments_get~~](#deprecated_operation_no_comments_get) - :warning: **Deprecated**
@@ -113,6 +116,117 @@ if res.valid_circular_reference_object is not None:
 ### Response
 
 **[operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md)**
+
+
+## date_param_with_default
+
+### Example Usage
+
+```python
+import sdk
+import dateutil.parser
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.date_param_with_default(date_input=dateutil.parser.parse('2021-11-30').date())
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `date_input`                                                                 | [datetime](https://docs.python.org/3/library/datetime.html#datetime-objects) | :heavy_check_mark:                                                           | A date parameter with a default value                                        |
+
+
+### Response
+
+**[operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md)**
+
+
+## date_time_param_with_default
+
+### Example Usage
+
+```python
+import sdk
+import dateutil.parser
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.date_time_param_with_default(date_time_input=dateutil.parser.isoparse('2023-02-09T21:53:21.077Z'))
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `date_time_input`                                                    | [date](https://docs.python.org/3/library/datetime.html#date-objects) | :heavy_check_mark:                                                   | A date time parameter with a default value                           |
+
+
+### Response
+
+**[operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md)**
+
+
+## decimal_param_with_default
+
+### Example Usage
+
+```python
+import sdk
+from decimal import Decimal
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.generation.decimal_param_with_default(decimal_input=Decimal('4060.06'))
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `decimal_input`                          | *Decimal*                                | :heavy_check_mark:                       | A decimal parameter with a default value |
+
+
+### Response
+
+**[operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md)**
 
 
 ## deprecated_field_in_schema_post
@@ -543,7 +657,7 @@ s = sdk.SDK(
 res = s.generation.typed_parameter_generation_get(bigint=879275, date_=dateutil.parser.parse('2023-11-18').date(), decimal=Decimal('3346.96'), obj=operations.TypedParameterGenerationGetObj(
     bool=False,
     num=4778.06,
-    str_='Progressive Riyal male',
+    str_='innocently',
 ))
 
 if res.status_code == 200:
@@ -615,18 +729,19 @@ req = operations.UsageExamplePostRequest(
     bigint_str_parameter=446729,
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2023-06-11').date(),
-    date_time_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
-    decimal_parameter=Decimal('2679.33'),
-    decimal_str_parameter=Decimal('5223.72'),
-    double_parameter=2911.37,
-    enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
+    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
+    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
+    decimal_parameter=Decimal('5223.72'),
+    decimal_str_parameter=Decimal('2911.37'),
+    double_parameter=6946.59,
+    enum_parameter=operations.UsageExamplePostEnumParameter.VALUE1,
     falsey_number_parameter=0,
-    float32_parameter=2286.22,
-    float_parameter=1029.75,
-    int64_parameter=566999,
-    int_parameter=195232,
+    float32_parameter=1029.75,
+    float_parameter=5669.99,
+    int64_parameter=195232,
+    int_parameter=569663,
     opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
-    str_parameter='example 2',
+    str_parameter='example 1',
 )
 
 res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(

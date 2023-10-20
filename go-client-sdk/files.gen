@@ -93,6 +93,9 @@ pkg/models/operations/inlinebodyandparamnoconflict.go
 pkg/models/operations/anchortypesget.go
 pkg/models/operations/arraycircularreferenceget.go
 pkg/models/operations/circularreferenceget.go
+pkg/models/operations/dateparamwithdefault.go
+pkg/models/operations/datetimeparamwithdefault.go
+pkg/models/operations/decimalparamwithdefault.go
 pkg/models/operations/deprecatedfieldinschemapost.go
 pkg/models/operations/deprecatedobjectinschemaget.go
 pkg/models/operations/deprecatedoperationnocommentsget.go
@@ -123,6 +126,7 @@ pkg/models/operations/deepobjectqueryparamsmap.go
 pkg/models/operations/deepobjectqueryparamsobject.go
 pkg/models/operations/duplicateparam.go
 pkg/models/operations/formqueryparamsarray.go
+pkg/models/operations/formqueryparamscamelobject.go
 pkg/models/operations/formqueryparamsmap.go
 pkg/models/operations/formqueryparamsobject.go
 pkg/models/operations/formqueryparamsprimitive.go
@@ -229,6 +233,7 @@ pkg/models/operations/getresource.go
 pkg/models/operations/updateresource.go
 pkg/models/operations/responsebodyadditionalpropertiescomplexnumberspost.go
 pkg/models/operations/responsebodyadditionalpropertiesdatepost.go
+pkg/models/operations/responsebodyadditionalpropertiesobjectpost.go
 pkg/models/operations/responsebodyadditionalpropertiespost.go
 pkg/models/operations/responsebodybytesget.go
 pkg/models/operations/responsebodyemptywithheaders.go
@@ -257,6 +262,8 @@ pkg/models/operations/primitivetypeoneofpost.go
 pkg/models/operations/stronglytypedoneofpost.go
 pkg/models/operations/typedobjectnullableoneofpost.go
 pkg/models/operations/typedobjectoneofpost.go
+pkg/models/operations/uniondatenull.go
+pkg/models/operations/uniondatetimenull.go
 pkg/models/operations/weaklytypedoneofpost.go
 pkg/models/operations/putanythingignoredgeneration.go
 pkg/models/operations/responsebodyjsonget.go
@@ -302,9 +309,10 @@ pkg/models/shared/exampleresource.go
 pkg/models/shared/examplevehicle.go
 pkg/models/shared/exampleboat.go
 pkg/models/shared/examplecar.go
-pkg/models/shared/objwithcomplexnumbersadditionlproperties.go
-pkg/models/shared/objwithdateadditionlproperties.go
-pkg/models/shared/objwithstringadditionlproperties.go
+pkg/models/shared/objwithcomplexnumbersadditionalproperties.go
+pkg/models/shared/objwithdateadditionalproperties.go
+pkg/models/shared/objwithobjadditionalproperties.go
+pkg/models/shared/objwithstringadditionalproperties.go
 pkg/models/shared/typedobject1.go
 pkg/models/shared/objwithzerovaluecomplextypeptrs.go
 pkg/models/shared/flattenedtypedobject1.go
@@ -323,6 +331,7 @@ pkg/models/shared/oneofgenerationstresstest.go
 pkg/models/shared/primitivetypeunion.go
 pkg/models/shared/unsupportedenums.go
 pkg/models/sdkerrors/error.go
+pkg/models/sdkerrors/errortype.go
 pkg/models/sdkerrors/statusgetxspeakeasyerrors.go
 pkg/models/callbacks/ignoredgenerationget.go
 USAGE.md
@@ -405,6 +414,13 @@ docs/models/operations/typefromanchor.md
 docs/models/operations/anchortypesgetresponse.md
 docs/models/operations/arraycircularreferencegetresponse.md
 docs/models/operations/circularreferencegetresponse.md
+docs/types/date.md
+docs/models/operations/dateparamwithdefaultrequest.md
+docs/models/operations/dateparamwithdefaultresponse.md
+docs/models/operations/datetimeparamwithdefaultrequest.md
+docs/models/operations/datetimeparamwithdefaultresponse.md
+docs/models/operations/decimalparamwithdefaultrequest.md
+docs/models/operations/decimalparamwithdefaultresponse.md
 docs/models/operations/deprecatedfieldinschemapostresponse.md
 docs/models/operations/deprecatedobjectinschemaget200applicationjson.md
 docs/models/operations/deprecatedobjectinschemagetresponse.md
@@ -430,7 +446,6 @@ docs/models/operations/nameoverridegetresponse.md
 docs/models/operations/objectcircularreferencegetresponse.md
 docs/models/operations/oneofcircularreferencegetresponse.md
 docs/models/operations/typedparametergenerationgetobj.md
-docs/types/date.md
 docs/models/operations/typedparametergenerationgetrequest.md
 docs/models/operations/typedparametergenerationgetresponse.md
 docs/models/operations/usageexamplepostsecurity.md
@@ -484,6 +499,12 @@ docs/models/operations/formqueryparamsarrayrequest.md
 docs/models/operations/formqueryparamsarrayresargs.md
 docs/models/operations/formqueryparamsarrayres.md
 docs/models/operations/formqueryparamsarrayresponse.md
+docs/models/operations/formqueryparamscamelobjectobjparam.md
+docs/models/operations/formqueryparamscamelobjectobjparamexploded.md
+docs/models/operations/formqueryparamscamelobjectrequest.md
+docs/models/operations/formqueryparamscamelobjectresargs.md
+docs/models/operations/formqueryparamscamelobjectres.md
+docs/models/operations/formqueryparamscamelobjectresponse.md
 docs/models/operations/formqueryparamsmaprequest.md
 docs/models/operations/formqueryparamsmapres.md
 docs/models/operations/formqueryparamsmapresponse.md
@@ -732,6 +753,8 @@ docs/models/operations/responsebodyadditionalpropertiescomplexnumberspost200appl
 docs/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md
 docs/models/operations/responsebodyadditionalpropertiesdatepost200applicationjson.md
 docs/models/operations/responsebodyadditionalpropertiesdatepostresponse.md
+docs/models/operations/responsebodyadditionalpropertiesobjectpost200applicationjson.md
+docs/models/operations/responsebodyadditionalpropertiesobjectpostresponse.md
 docs/models/operations/responsebodyadditionalpropertiespost200applicationjson.md
 docs/models/operations/responsebodyadditionalpropertiespostresponse.md
 docs/models/operations/responsebodybytesgetresponse.md
@@ -784,6 +807,10 @@ docs/models/operations/typedobjectnullableoneofpostres.md
 docs/models/operations/typedobjectnullableoneofpostresponse.md
 docs/models/operations/typedobjectoneofpostres.md
 docs/models/operations/typedobjectoneofpostresponse.md
+docs/models/operations/uniondatenullres.md
+docs/models/operations/uniondatenullresponse.md
+docs/models/operations/uniondatetimenullres.md
+docs/models/operations/uniondatetimenullresponse.md
 docs/models/operations/weaklytypedoneofpostres.md
 docs/models/operations/weaklytypedoneofpostresponse.md
 docs/models/operations/putanythingignoredgeneration200applicationjson.md
@@ -860,9 +887,10 @@ docs/models/shared/exampleboattype.md
 docs/models/shared/exampleboat.md
 docs/models/shared/examplecartype.md
 docs/models/shared/examplecar.md
-docs/models/shared/objwithcomplexnumbersadditionlproperties.md
-docs/models/shared/objwithdateadditionlproperties.md
-docs/models/shared/objwithstringadditionlproperties.md
+docs/models/shared/objwithcomplexnumbersadditionalproperties.md
+docs/models/shared/objwithdateadditionalproperties.md
+docs/models/shared/objwithobjadditionalproperties.md
+docs/models/shared/objwithstringadditionalproperties.md
 docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
 docs/models/shared/objwithzerovaluecomplextypeptrs.md
@@ -893,6 +921,7 @@ docs/models/shared/oneofgenerationstresstest.md
 docs/models/shared/primitivetypeunion.md
 docs/models/shared/unsupportedenums.md
 docs/models/errors/error.md
+docs/models/errors/errortype.md
 docs/models/errors/statusgetxspeakeasyerrors501applicationjson.md
 docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationresponse.md
 docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationrequestbody.md

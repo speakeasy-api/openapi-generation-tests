@@ -5,16 +5,14 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
+from typing import Dict, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictRequestBody:
     body_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bodyStr') }})
     
-
 
 
 
@@ -27,7 +25,6 @@ class InlineBodyAndParamNoConflictRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictResJSON:
     body_str: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bodyStr') }})
@@ -36,14 +33,12 @@ class InlineBodyAndParamNoConflictResJSON:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class InlineBodyAndParamNoConflictRes:
     r"""OK"""
-    args: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: Dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     json: InlineBodyAndParamNoConflictResJSON = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

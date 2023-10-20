@@ -37,7 +37,7 @@ func main() {
     res, err := s.Resource.CreateFile(ctx, operations.CreateFileRequestBody{
         File: &operations.CreateFileRequestBodyFile{
             Content: []byte("`'$Z`(L/RH"),
-            File: "Rap National",
+            File: "Persevering",
         },
     })
     if err != nil {
@@ -106,11 +106,11 @@ func main() {
         MapOfString: map[string]string{
             "an": "South",
         },
-        Name: "Cotton",
+        Name: "Detroit",
         Vehicle: shared.CreateExampleVehicleExampleBoat(
                 shared.ExampleBoat{
-                    Length: 3287.82,
-                    Name: "San South Quality",
+                    Length: 4555.26,
+                    Name: "experiences",
                     Type: shared.ExampleBoatTypeBoat,
                 },
         ),

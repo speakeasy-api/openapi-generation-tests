@@ -164,6 +164,42 @@ module OpenApiSDK
       res
     end
 
+    sig { params(obj_param_exploded: Operations::FormQueryParamsCamelObjectObjParamExploded, obj_param: T.nilable(Operations::FormQueryParamsCamelObjectObjParam)).returns(Utils::FieldAugmented) }
+    def form_query_params_camel_object(obj_param_exploded, obj_param = nil)
+
+      request = Operations::FormQueryParamsCamelObjectRequest.new(
+        
+        obj_param_exploded: obj_param_exploded,
+        obj_param: obj_param
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/queryParams/form/camelObj"
+      headers = {}
+      query_params = Utils.get_query_params(Operations::FormQueryParamsCamelObjectRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::FormQueryParamsCamelObjectResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::FormQueryParamsCamelObjectRes)
+          res.res = out
+        end
+      end
+      res
+    end
+
     sig { params(map_param: T.nilable(T::Hash[Symbol, String]), map_param_exploded: T.nilable(T::Hash[Symbol, Integer])).returns(Utils::FieldAugmented) }
     def form_query_params_map(map_param = nil, map_param_exploded = nil)
 

@@ -5,27 +5,24 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
-
+from typing import Dict, Optional
 
 
 @dataclasses.dataclass
 class FormQueryParamsMapRequest:
-    map_param: Optional[dict[str, str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'mapParam', 'style': 'form', 'explode': False }})
-    map_param_exploded: Optional[dict[str, int]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'mapParamExploded', 'style': 'form', 'explode': True }})
+    map_param: Optional[Dict[str, str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'mapParam', 'style': 'form', 'explode': False }})
+    map_param_exploded: Optional[Dict[str, int]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'mapParamExploded', 'style': 'form', 'explode': True }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsMapRes:
     r"""OK"""
-    args: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: Dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

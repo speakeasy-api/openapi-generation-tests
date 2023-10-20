@@ -203,6 +203,52 @@ public class Parameters {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse formQueryParamsCamelObject(org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded objParamExploded) throws Exception {
+        return this.formQueryParamsCamelObject(objParamExploded, null);
+    }
+
+    public org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse formQueryParamsCamelObject(org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded objParamExploded, org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam objParam) throws Exception {
+        org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest request = new org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest(objParamExploded);
+        request.objParam=objParam;
+        
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/queryParams/form/camelObj");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("GET");
+        req.setURL(url);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        java.util.List<NameValuePair> queryParams = org.openapis.openapi.utils.Utils.getQueryParams(org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest.class, request, this.sdkConfiguration.globals);
+        if (queryParams != null) {
+            for (NameValuePair queryParam : queryParams) {
+                req.addQueryParam(queryParam);
+            }
+        }
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse res = new org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.FormQueryParamsMapResponse formQueryParamsMap() throws Exception {
         return this.formQueryParamsMap(null, null);
     }

@@ -17,6 +17,8 @@ Endpoints for testing union types.
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
+* [unionDateNull](#uniondatenull)
+* [unionDateTimeNull](#uniondatetimenull)
 * [weaklyTypedOneOfPost](#weaklytypedoneofpost)
 
 ## flattenedTypedObjectPost
@@ -32,7 +34,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -73,7 +79,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -117,16 +127,20 @@ use \OpenAPI\OpenAPI\Models\Shared\NullableOneOfRefInObject;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new NullableOneOfRefInObject();
     $request->nullableOneOfOne = new TypedObject1();
     $request->nullableOneOfOne->type = TypedObject1Type::Obj1;
-    $request->nullableOneOfOne->value = 'Global Alexandria administration';
-    $request->nullableOneOfTwo = 'Arbor';
-    $request->oneOfOne = 'PCI';
+    $request->nullableOneOfOne->value = 'bah';
+    $request->nullableOneOfTwo = 'back';
+    $request->oneOfOne = 'administration';
 
     $response = $sdk->unions->nullableOneOfRefInObjectPost($request);
 
@@ -163,7 +177,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -205,7 +223,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\NullableOneOfTypeInObject;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -251,13 +273,17 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1;
 use \OpenAPI\OpenAPI\Models\Shared\TypedObject1Type;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new TypedObject1();
     $request->type = TypedObject1Type::Obj1;
-    $request->value = 'Bike';
+    $request->value = 'Bedfordshire';
 
     $response = $sdk->unions->nullableTypedObjectPost($request);
 
@@ -294,7 +320,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -335,7 +365,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -376,7 +410,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -417,7 +455,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -445,6 +487,96 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\TypedObjectOneOfPostResponse](../../models/operations/TypedObjectOneOfPostResponse.md)**
 
 
+## unionDateNull
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = SDK::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
+DateTime::createFromFormat('Y-m-d', '2022-11-25')
+
+    $response = $sdk->unions->unionDateNull($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [\DateTime](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\UnionDateNullResponse](../../models/operations/UnionDateNullResponse.md)**
+
+
+## unionDateTimeNull
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = SDK::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
+DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-04-12T19:39:53.907Z')
+
+    $response = $sdk->unions->unionDateTimeNull($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [\DateTime](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\UnionDateTimeNullResponse](../../models/operations/UnionDateTimeNullResponse.md)**
+
+
 ## weaklyTypedOneOfPost
 
 ### Example Usage
@@ -458,7 +590,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {

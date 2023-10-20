@@ -7,7 +7,6 @@ from ..shared import arrobjvaluecamelcase as shared_arrobjvaluecamelcase
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONArrayObjCamelCaseResponse:
     content_type: str = dataclasses.field()

@@ -32,7 +32,6 @@ class DefaultsAndConstsDefaultEnumStr(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DefaultsAndConsts:
     normal_field: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('normalField') }})

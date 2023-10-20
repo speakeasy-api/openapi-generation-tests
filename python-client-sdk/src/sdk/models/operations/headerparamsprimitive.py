@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class HeaderParamsPrimitiveRequest:
     x_header_boolean: bool = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Boolean', 'style': 'simple', 'explode': False }})
@@ -20,7 +19,6 @@ class HeaderParamsPrimitiveRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsPrimitiveResHeaders:
     x_header_boolean: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Boolean') }})
@@ -32,13 +30,11 @@ class HeaderParamsPrimitiveResHeaders:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsPrimitiveRes:
     r"""OK"""
     headers: HeaderParamsPrimitiveResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
-
 
 
 

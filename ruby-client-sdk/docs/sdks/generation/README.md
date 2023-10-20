@@ -10,6 +10,9 @@ Endpoints for purely testing valid generation behavior.
 * [anchor_types_get](#anchor_types_get)
 * [array_circular_reference_get](#array_circular_reference_get)
 * [circular_reference_get](#circular_reference_get)
+* [date_param_with_default](#date_param_with_default)
+* [date_time_param_with_default](#date_time_param_with_default)
+* [decimal_param_with_default](#decimal_param_with_default)
 * [deprecated_field_in_schema_post](#deprecated_field_in_schema_post)
 * [deprecated_object_in_schema_get](#deprecated_object_in_schema_get)
 * [~~deprecated_operation_no_comments_get~~](#deprecated_operation_no_comments_get) - :warning: **Deprecated**
@@ -34,6 +37,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.anchor_types_get()
@@ -59,6 +67,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.array_circular_reference_get()
@@ -84,6 +97,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.circular_reference_get()
@@ -100,6 +118,132 @@ end
 **[T.nilable(Operations::CircularReferenceGetResponse)](../../models/operations/circularreferencegetresponse.md)**
 
 
+## date_param_with_default
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = Operations::DateParamWithDefaultRequest.new(
+  query_params=Operations::DateParamWithDefaultRequest.new(
+    date_input=Date.parse("2021-11-30"),
+  ),
+)
+    
+res = s.generation.date_param_with_default(req)
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                                    | Type                                                                         | Required                                                                     | Description                                                                  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | ---------------------------------------------------------------------------- |
+| `date_input`                                                                 | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html) | :heavy_check_mark:                                                           | A date parameter with a default value                                        |
+
+
+### Response
+
+**[T.nilable(Operations::DateParamWithDefaultResponse)](../../models/operations/dateparamwithdefaultresponse.md)**
+
+
+## date_time_param_with_default
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = Operations::DateTimeParamWithDefaultRequest.new(
+  query_params=Operations::DateTimeParamWithDefaultRequest.new(
+    date_time_input=DateTime.iso8601('2023-02-09T21:53:21.077Z'),
+  ),
+)
+    
+res = s.generation.date_time_param_with_default(req)
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                                            | Type                                                                 | Required                                                             | Description                                                          |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------------------------------- |
+| `date_time_input`                                                    | [Date](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/Date.html) | :heavy_check_mark:                                                   | A date time parameter with a default value                           |
+
+
+### Response
+
+**[T.nilable(Operations::DateTimeParamWithDefaultResponse)](../../models/operations/datetimeparamwithdefaultresponse.md)**
+
+
+## decimal_param_with_default
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = Operations::DecimalParamWithDefaultRequest.new(
+  query_params=Operations::DecimalParamWithDefaultRequest.new(
+    decimal_input=4060.06,
+  ),
+)
+    
+res = s.generation.decimal_param_with_default(req)
+
+if res.status == 200
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                | Type                                     | Required                                 | Description                              |
+| ---------------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------------------------------- |
+| `decimal_input`                          | *Float*                                  | :heavy_check_mark:                       | A decimal parameter with a default value |
+
+
+### Response
+
+**[T.nilable(Operations::DecimalParamWithDefaultResponse)](../../models/operations/decimalparamwithdefaultresponse.md)**
+
+
 ## deprecated_field_in_schema_post
 
 ### Example Usage
@@ -109,12 +253,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::DeprecatedFieldInObject.new(
   request=Shared::DeprecatedFieldInObject.new(
-    deprecated_field="Bike Avon",
-    new_field="Rubber Santa",
+    deprecated_field="Savings",
+    new_field="Avon",
   ),
 )
     
@@ -147,6 +296,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.deprecated_object_in_schema_get()
@@ -174,11 +328,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::DeprecatedOperationNoCommentsGetRequest.new(
   query_params=Operations::DeprecatedOperationNoCommentsGetRequest.new(
-    deprecated_parameter="Trigender wherever",
+    deprecated_parameter="Account",
   ),
 )
     
@@ -194,7 +353,7 @@ end
 
 | Parameter                                                                                                               | Type                                                                                                                    | Required                                                                                                                | Description                                                                                                             |
 | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------- |
-| `deprecated_parameter`                                                                                                  | *T.nilable(String)*                                                                                                     | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
+| `deprecated_parameter`                                                                                                  | *String*                                                                                                                | :heavy_minus_sign:                                                                                                      | : warning: ** DEPRECATED **: This will be removed in a future release, please migrate away from it as soon as possible. |
 
 
 ### Response
@@ -215,12 +374,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::DeprecatedOperationWithCommentsGetRequest.new(
   query_params=Operations::DeprecatedOperationWithCommentsGetRequest.new(
-    deprecated_parameter="payment actuating",
-    new_parameter="Mexican Cab gavel",
+    deprecated_parameter="Account",
+    new_parameter="actuating",
   ),
 )
     
@@ -236,8 +400,8 @@ end
 
 | Parameter                                                                                                         | Type                                                                                                              | Required                                                                                                          | Description                                                                                                       |
 | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
-| `deprecated_parameter`                                                                                            | *T.nilable(String)*                                                                                               | :heavy_minus_sign:                                                                                                | : warning: ** DEPRECATED **: This parameter is deprecated. Use new_parameter instead.<br/><br/>This is a string parameter |
-| `new_parameter`                                                                                                   | *T.nilable(String)*                                                                                               | :heavy_minus_sign:                                                                                                | This is a string parameter                                                                                        |
+| `deprecated_parameter`                                                                                            | *String*                                                                                                          | :heavy_minus_sign:                                                                                                | : warning: ** DEPRECATED **: This parameter is deprecated. Use new_parameter instead.<br/><br/>This is a string parameter |
+| `new_parameter`                                                                                                   | *String*                                                                                                          | :heavy_minus_sign:                                                                                                | This is a string parameter                                                                                        |
 
 
 ### Response
@@ -254,6 +418,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::EmptyObjectGetRequest.new(
@@ -291,6 +460,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.empty_response_object_with_comment_get()
@@ -316,6 +490,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.global_name_overridden()
@@ -341,6 +520,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.ignored_generation_get()
@@ -366,19 +550,24 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::IgnoresPostRequest.new(
   query_params=Operations::IgnoresPostRequest.new(
     request_body=Operations::IgnoresPostApplicationJSON.new(
       callback_url="http://diligent-activist.biz",
-      test_prop="solid Branding Maserati",
+      test_prop="volt",
     ),
-    test_param="Transgender Direct libero",
+    test_param="ceiling",
   ),
   request_body=Operations::IgnoresPostApplicationJSON.new(
-    callback_url="http://tricky-speculation.org",
-    test_prop="Northeast Plastic",
+    callback_url="https://profuse-speaking.name",
+    test_prop="Maserati",
   ),
 )
     
@@ -395,7 +584,7 @@ end
 | Parameter                                                                                       | Type                                                                                            | Required                                                                                        | Description                                                                                     |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
 | `request_body`                                                                                  | [Operations::IgnoresPostApplicationJSON](../../models/operations/ignorespostapplicationjson.md) | :heavy_check_mark:                                                                              | N/A                                                                                             |
-| `test_param`                                                                                    | *T.nilable(String)*                                                                             | :heavy_minus_sign:                                                                              | N/A                                                                                             |
+| `test_param`                                                                                    | *String*                                                                                        | :heavy_minus_sign:                                                                              | N/A                                                                                             |
 
 
 ### Response
@@ -412,6 +601,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::NameOverrideGetRequest.new(
@@ -451,6 +645,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.object_circular_reference_get()
@@ -476,6 +675,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.generation.one_of_circular_reference_get()
@@ -501,6 +705,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::TypedParameterGenerationGetRequest.new(
@@ -511,7 +720,7 @@ req = Operations::TypedParameterGenerationGetRequest.new(
     obj=Operations::TypedParameterGenerationGetObj.new(
       bool=false,
       num=4778.06,
-      str_="Progressive Riyal male",
+      str_="innocently",
     ),
   ),
 )
@@ -526,12 +735,12 @@ end
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `bigint`                                                                                                           | *T.nilable(Integer)*                                                                                               | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
-| `date`                                                                                                             | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html)                                       | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
-| `decimal`                                                                                                          | *T.nilable(Float)*                                                                                                 | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
-| `obj`                                                                                                              | [T.nilable(Operations::TypedParameterGenerationGetObj)](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                                 | N/A                                                                                                                |
+| Parameter                                                                                               | Type                                                                                                    | Required                                                                                                | Description                                                                                             |
+| ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
+| `bigint`                                                                                                | *Integer*                                                                                               | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `date`                                                                                                  | [DateTime](https://ruby-doc.org/stdlib-2.6.1/libdoc/date/rdoc/DateTime.html)                            | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `decimal`                                                                                               | *Float*                                                                                                 | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
+| `obj`                                                                                                   | [Operations::TypedParameterGenerationGetObj](../../models/operations/typedparametergenerationgetobj.md) | :heavy_minus_sign:                                                                                      | N/A                                                                                                     |
 
 
 ### Response
@@ -572,73 +781,73 @@ req = Operations::UsageExamplePostRequest.new(
         image_format="https://loremflickr.com/640/480",
         ipv4_format="75.42.25.241",
         ipv6_format="36a9:c057:a71b:b73a:c9ee:2348:d76c:3164",
-        json_format="{plane: 14910, fringe: null, lightning: \"Roentgenium UTF8\"}",
-        mac_format="13:58:66:7d:ac:95",
-        password_format="b6eWzdveK0sHokC",
-        phone_format="832-504-6221 x221",
-        timezone_format="Asia/Krasnoyarsk",
-        unknown_format="Principal at",
-        url_format="http://understated-balcony.org",
-        uuid_format="62de2e2d-47a9-4bf1-80f7-53b9b364b6b4",
-        zipcode_format="25687-7266",
+        json_format="{plane: 14910, fringe: null, lightning: \"Roentgenium\"}",
+        mac_format="7e:13:58:66:7d:ac",
+        password_format="Cb6eWzdveK0sHok",
+        phone_format="(483) 340-4622 x122",
+        timezone_format="America/Bogota",
+        unknown_format="ohm",
+        url_format="https://wrong-waterfall.biz",
+        uuid_format="2e0f62de-2e2d-447a-9bf1-00f753b9b364",
+        zipcode_format="47362-5687",
       ),
       faker_strings=Shared::FakerStrings.new(
-        city="Port Carli",
-        iban="TN8700576009897281100717",
+        city="Dooleychester",
+        iban="MT77KUEY0057604ZUZ86M7077050756",
         id="<ID>",
-        i_pv4="141.21.132.133",
-        i_pv6="308b:b979:0237:4ea8:ee39:8480:0301:1d98",
-        account="81966519",
-        address="418 Maybelle Brooks",
-        amount="27.55",
+        i_pv4="4.40.62.119",
+        i_pv6="4ea8:ee39:8480:0301:1d98:d1ea:a92f:b62d",
+        account="47004386",
+        address="3251 Adriel Knoll",
+        amount="298.18",
         avatar="https://loremflickr.com/640/480",
-        color="turquoise",
-        comment="The slim & simple Maple Gaming Keyboard from Dev Byte comes with a sleek body and 7- Color RGB LED Back-lighting for smart functionality",
-        company="Murazik, Kozey and Hirthe",
-        country="Equatorial Guinea",
-        country_code="LU",
-        currency="Congolese Franc",
-        datatype="bigint",
-        default="Dalasi",
-        description="Up-sized explicit frame",
-        directory="/home",
-        domain_name="warmhearted-buying.biz",
-        email_addr="Beulah.Franecki24@gmail.com",
-        extension="pdf",
-        filename="recovery.pdf",
-        filepath="/usr/share/powerfully.less",
-        filetype="application",
-        first_name="Geovany",
-        full_name="Roy Gottlieb",
-        gender="Cis",
-        job="International Metrics Administrator",
-        json="{trachoma: 6397, nick: null, android: \"Plastic Recumbent\"}",
+        color="azure",
+        comment="The Apollotech B340 is an affordable wireless mouse with reliable connectivity, 12 months battery life and modern design",
+        company="Dickinson - Weissnat",
+        country="Brazil",
+        country_code="CO",
+        currency="Bulgarian Lev",
+        datatype="text",
+        default="Fresh",
+        description="Balanced dedicated ability",
+        directory="/net",
+        domain_name="weepy-recovery.com",
+        email_addr="Brett_Towne@hotmail.com",
+        extension="htm",
+        filename="indiana_ramp.png",
+        filepath="/var/log/rock.gslides",
+        filetype="audio",
+        first_name="Frederic",
+        full_name="Max Runte IV",
+        gender="Transexual woman",
+        job="Principal Infrastructure Representative",
+        json="{statement: 68965, garbage: null, typhoon: \"athwart\"}",
         key="<key>",
-        last_name="Kshlerin",
-        latitude="65.3520",
-        locale="zh_CN",
-        longitude="16.8742",
-        mac="fd:b6:ff:35:99:05",
-        manufacturer="Mazda",
-        material="Frozen",
-        middle_name="Emerson",
-        model="Mustang",
-        password="71wIwgEZJMTCRYg",
-        phone="1-466-307-0476",
-        pin="0584",
-        postal_code="07886",
-        price="452.00",
-        product="Small Steel Salad",
-        sex="female",
-        street="Christy Dam",
-        timezone="America/Regina",
-        unit="sievert",
-        url="http://repentant-haunt.name",
-        username="Heather_Mills48",
-        uuid="29e9f1c7-ed92-481f-955b-6ca1625b4c3a",
+        last_name="Hegmann",
+        latitude="15.1955",
+        locale="it",
+        longitude="-177.1763",
+        mac="5a:e5:03:a2:2a:e6",
+        manufacturer="Toyota",
+        material="Metal",
+        middle_name="Greer",
+        model="Camry",
+        password="JMTCRYg4iGgZYqI",
+        phone="(278) 964-0091 x311",
+        pin="0746",
+        postal_code="54698",
+        price="482.00",
+        product="Rustic Rubber Sausages",
+        sex="male",
+        street="Bergstrom Spring",
+        timezone="Europe/Helsinki",
+        unit="lux",
+        url="https://oily-carter.name",
+        username="Bart.Weimann35",
+        uuid="b6ca1625-b4c3-4a7a-ad00-4523e8655955",
       ),
       simple_object=Shared::SimpleObject.new(
-        any="wireless",
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -653,112 +862,113 @@ req = Operations::UsageExamplePostRequest.new(
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
         int_enum=Shared::SimpleObjectIntEnum::THIRD,
-        int_opt_null=51222,
+        int_opt_null=570514,
         num=1.1,
-        num_opt_null=598.05,
+        num_opt_null=2212.33,
         str_="test",
         str_opt="testOptional",
       ),
     ),
-    bigint_parameter=284159,
-    bigint_parameter_optional=322202,
-    bigint_str_parameter="Automotive",
-    bigint_str_parameter_optional="focus Country",
+    bigint_parameter=509152,
+    bigint_parameter_optional=424381,
+    bigint_str_parameter="Designer",
+    bigint_str_parameter_optional="South",
     bool_parameter=false,
-    date_parameter=Date.parse("2022-01-13"),
-    date_time_parameter=DateTime.iso8601('2021-04-10T10:50:46.754Z'),
-    decimal_parameter=8924.18,
-    decimal_parameter_optional=5705.14,
-    decimal_str_parameter="navigating",
-    decimal_str_parameter_optional="Rap matrix South",
-    double_parameter=7223.13,
-    enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE2,
+    date_parameter=Date.parse("2023-03-02"),
+    date_time_default_parameter=DateTime.iso8601('2022-09-15T23:11:22.583Z'),
+    date_time_parameter=DateTime.iso8601('2023-07-13T04:24:57.190Z'),
+    decimal_parameter=3767.71,
+    decimal_parameter_optional=7335.06,
+    decimal_str_parameter="painfully",
+    decimal_str_parameter_optional="indexing",
+    double_parameter=4605.71,
+    enum_parameter=Operations::UsageExamplePostEnumParameter::VALUE1,
     falsey_number_parameter=0,
-    float32_parameter=8430.91,
-    float_parameter=3767.71,
-    int64_parameter=733506,
-    int_parameter=892942,
+    float32_parameter=53.92,
+    float_parameter=5072.07,
+    int64_parameter=205671,
+    int_parameter=972672,
     opt_enum_parameter=Operations::UsageExamplePostOptEnumParameter::VALUE3,
-    str_parameter="example 2",
+    str_parameter="example 3",
   ),
   request_body=Operations::UsageExamplePostRequestBody.new(
     faker_formatted_strings=Shared::FakerFormattedStrings.new(
-      address_format="4410 DuBuque Walks",
-      directory_format="/var/log",
-      domain_format="miserable-kitsch.name",
-      email_format="Ashton_Gleichner14@hotmail.com",
-      filename_format="buckinghamshire.mpg4",
-      filepath_format="/usr/X11R6/southwest_finally.teicorpus",
+      address_format="4670 Samir Mall",
+      directory_format="/etc/namedb",
+      domain_format="brief-banyan.net",
+      email_format="Noel.Pfeffer@hotmail.com",
+      filename_format="finally_marquardt_rolls.mp3",
+      filepath_format="/bin/inside.siv",
       image_format="https://loremflickr.com/640/480",
-      ipv4_format="247.146.81.33",
-      ipv6_format="dd53:801f:82a1:3cb7:01a0:b6cb:79b0:29b4",
-      json_format="{dagger: 68925, marketplace: null, pumpkinseed: \"Fantastic Meitnerium\"}",
-      mac_format="ed:b8:8c:0d:08:47",
-      password_format="28gh0c6QQu__V50",
-      phone_format="274.405.8666 x7999",
-      timezone_format="America/Chicago",
-      unknown_format="Account Bicycle actuating",
-      url_format="https://canine-raffle.name",
-      uuid_format="74f79621-f541-4963-9730-a31fb6a19fc4",
-      zipcode_format="78209-3433",
+      ipv4_format="168.21.51.206",
+      ipv6_format="b701:a0b6:cb79:b029:b43b:8b35:beed:b88c",
+      json_format="{asphalt: 85353, ark: null, left: \"Cotton\"}",
+      mac_format="12:40:4b:c1:2b:13",
+      password_format="QQu__V50gdKSn_a",
+      phone_format="999.283.6457 x7593",
+      timezone_format="America/Chihuahua",
+      unknown_format="bypassing",
+      url_format="https://polished-housework.biz",
+      uuid_format="f79621f5-4196-43d7-b0a3-1fb6a19fc4ac",
+      zipcode_format="20934-3375",
     ),
     faker_strings=Shared::FakerStrings.new(
-      city="Littelland",
-      iban="EE100672303322089427",
+      city="East Ciaraboro",
+      iban="MR2623033220889400946035539",
       id="<ID>",
-      i_pv4="242.120.118.255",
-      i_pv6="a455:b9a8:6f75:4b2a:c5f6:c35a:0586:6747",
-      account="03994556",
-      address="7666 Johns Dale",
-      amount="568.13",
+      i_pv4="117.84.78.188",
+      i_pv6="2ac5:f6c3:5a05:8667:4715:fe78:9a8c:9baa",
+      account="41597407",
+      address="13535 Jett Divide",
+      amount="549.02",
       avatar="https://loremflickr.com/640/480",
-      color="lavender",
-      comment="Boston's most advanced compression wear technology increases muscle oxygenation, stabilizes active muscles",
-      company="Anderson - Robel",
-      country="Bosnia and Herzegovina",
-      country_code="CM",
-      currency="Lempira",
-      datatype="double",
-      default="compressing digital",
-      description="Optimized 6th generation application",
-      directory="/opt/include",
-      domain_name="uncommon-nitrogen.biz",
-      email_addr="Shania.OKeefe22@yahoo.com",
-      extension="jpg",
-      filename="sedan_hand_flawless.mp2",
-      filepath="/home/transmit_mazda_bedfordshire.scq",
+      color="green",
+      comment="Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      company="Tillman - Mertz",
+      country="El Salvador",
+      country_code="MS",
+      currency="CFA Franc BEAC",
+      datatype="bit",
+      default="Titanium",
+      description="Enhanced incremental middleware",
+      directory="/var/tmp",
+      domain_name="tight-thesis.com",
+      email_addr="Enoch87@hotmail.com",
+      extension="wav",
+      filename="green.gif",
+      filepath="/usr/obj/senior_enable_infrastructures.sil",
       filetype="audio",
-      first_name="Blanca",
-      full_name="Leo Cummerata",
-      gender="Agender",
-      job="Global Marketing Strategist",
-      json="{queen: 69085, agenda: null, halt: \"Rubidium enim\"}",
+      first_name="Cassandra",
+      full_name="Robin Adams",
+      gender="Two-spirit person",
+      job="International Quality Supervisor",
+      json="{halt: 73321, energy: null, miter: \"target\"}",
       key="<key>",
-      last_name="Kulas",
-      latitude="18.8968",
-      locale="nb_NO",
-      longitude="-139.9224",
-      mac="9c:60:66:dc:6d:bd",
-      manufacturer="Land Rover",
-      material="Soft",
-      middle_name="Angel",
-      model="Element",
-      password="tjAGJwExOUrFWeV",
-      phone="344-358-5896 x6762",
-      pin="0743",
-      postal_code="53183",
-      price="991.00",
-      product="Elegant Steel Mouse",
+      last_name="Moen",
+      latitude="34.3284",
+      locale="de_CH",
+      longitude="43.5885",
+      mac="c6:06:6d:c6:db:d9",
+      manufacturer="Porsche",
+      material="Steel",
+      middle_name="North",
+      model="Mercielago",
+      password="jAGJwExOUrFWeVR",
+      phone="542.685.8966",
+      pin="7620",
+      postal_code="43253-1839",
+      price="299.00",
+      product="Ergonomic Wooden Car",
       sex="female",
-      street="Arthur Mills",
-      timezone="Asia/Seoul",
-      unit="kelvin",
-      url="https://spirited-welcome.com",
-      username="Jeromy74",
-      uuid="53940f18-f41d-411d-bd28-2d0a90ccf88d",
+      street="Kasey Stream",
+      timezone="America/Lima",
+      unit="lumen",
+      url="https://witty-adaptation.info",
+      username="Nicolette.Graham24",
+      uuid="940f18f4-1d11-4d7d-a82d-0a90ccf88d3d",
     ),
     simple_object=Shared::SimpleObject.new(
-      any="Sports",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,

@@ -7,4 +7,4 @@ OK
 
 | Field              | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `json`             | dict[str, *Any*]   | :heavy_minus_sign: | N/A                |
+| `json`             | Dict[str, *Any*]   | :heavy_minus_sign: | N/A                |

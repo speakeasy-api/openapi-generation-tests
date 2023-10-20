@@ -7,7 +7,6 @@ from ..shared import mapobjvalue as shared_mapobjvalue
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONMapObjResponse:
     content_type: str = dataclasses.field()

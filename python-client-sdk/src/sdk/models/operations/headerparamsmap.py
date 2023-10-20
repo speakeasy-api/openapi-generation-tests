@@ -5,20 +5,18 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
-
+from typing import Dict, Optional
 
 
 @dataclasses.dataclass
 class HeaderParamsMapRequest:
-    x_header_map: dict[str, str] = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Map', 'style': 'simple', 'explode': False }})
-    x_header_map_explode: dict[str, str] = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Map-Explode', 'style': 'simple', 'explode': True }})
+    x_header_map: Dict[str, str] = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Map', 'style': 'simple', 'explode': False }})
+    x_header_map_explode: Dict[str, str] = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Map-Explode', 'style': 'simple', 'explode': True }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsMapResHeaders:
     x_header_map: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Map') }})
@@ -28,13 +26,11 @@ class HeaderParamsMapResHeaders:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsMapRes:
     r"""OK"""
     headers: HeaderParamsMapResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
-
 
 
 

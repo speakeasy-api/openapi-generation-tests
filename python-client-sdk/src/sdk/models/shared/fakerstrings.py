@@ -8,7 +8,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FakerStrings:
     r"""A set of strings with fieldnames that lead to relevant examples being generated for them"""

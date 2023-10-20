@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Any, Optional, Union
 
 
-
 @dataclasses.dataclass
 class OneOfGenerationStressTestOneOfFromArrayOfTypes:
     pass
@@ -17,14 +16,12 @@ class OneOfGenerationStressTestOneOfSameType2(str, Enum):
     LATEST = 'latest'
 
 
-
 @dataclasses.dataclass
 class OneOfGenerationStressTestOneOfSameType:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class OneOfGenerationStressTest:
     any: Any = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})

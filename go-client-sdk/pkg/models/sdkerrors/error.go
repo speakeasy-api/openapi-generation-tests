@@ -3,8 +3,9 @@
 package sdkerrors
 
 type Error struct {
-	Code    *string `json:"code,omitempty"`
-	Message *string `json:"message,omitempty"`
+	Code    *string    `json:"code,omitempty"`
+	Message *string    `json:"message,omitempty"`
+	Type    *ErrorType `json:"type,omitempty"`
 }
 
 var _ error = &Error{}

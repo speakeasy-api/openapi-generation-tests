@@ -9,6 +9,7 @@ Endpoints for testing response bodies.
 
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](#responsebodyadditionalpropertiesdatepost)
+* [ResponseBodyAdditionalPropertiesObjectPost](#responsebodyadditionalpropertiesobjectpost)
 * [ResponseBodyAdditionalPropertiesPost](#responsebodyadditionalpropertiespost)
 * [ResponseBodyBytesGet](#responsebodybytesget)
 * [ResponseBodyEmptyWithHeaders](#responsebodyemptywithheaders)
@@ -43,11 +44,11 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx, shared.ObjWithComplexNumbersAdditionlProperties{
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesComplexNumbersPost(ctx, shared.ObjWithComplexNumbersAdditionalProperties{
         AdditionalProperties: map[string]*big.Int{
             "ASCII": big.NewInt(984700),
         },
-        NormalField: "drink commodi voluptatibus",
+        NormalField: "Wagon",
     })
     if err != nil {
         log.Fatal(err)
@@ -61,10 +62,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
-| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| `ctx`                                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                                              | :heavy_check_mark:                                                                                                 | The context to use for the request.                                                                                |
-| `request`                                                                                                          | [shared.ObjWithComplexNumbersAdditionlProperties](../../models/shared/objwithcomplexnumbersadditionlproperties.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
+| Parameter                                                                                                            | Type                                                                                                                 | Required                                                                                                             | Description                                                                                                          |
+| -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                                | :heavy_check_mark:                                                                                                   | The context to use for the request.                                                                                  |
+| `request`                                                                                                            | [shared.ObjWithComplexNumbersAdditionalProperties](../../models/shared/objwithcomplexnumbersadditionalproperties.md) | :heavy_check_mark:                                                                                                   | The request object to use for the request.                                                                           |
 
 
 ### Response
@@ -97,11 +98,11 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(ctx, shared.ObjWithDateAdditionlProperties{
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesDatePost(ctx, shared.ObjWithDateAdditionalProperties{
         AdditionalProperties: map[string]types.Date{
             "Bedfordshire": types.MustDateFromString("2021-04-22"),
         },
-        NormalField: "possimus schemas capacitor",
+        NormalField: "moody",
     })
     if err != nil {
         log.Fatal(err)
@@ -115,15 +116,92 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
-| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
-| `request`                                                                                      | [shared.ObjWithDateAdditionlProperties](../../models/shared/objwithdateadditionlproperties.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+| Parameter                                                                                        | Type                                                                                             | Required                                                                                         | Description                                                                                      |
+| ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                            | [context.Context](https://pkg.go.dev/context#Context)                                            | :heavy_check_mark:                                                                               | The context to use for the request.                                                              |
+| `request`                                                                                        | [shared.ObjWithDateAdditionalProperties](../../models/shared/objwithdateadditionalproperties.md) | :heavy_check_mark:                                                                               | The request object to use for the request.                                                       |
 
 
 ### Response
 
 **[*operations.ResponseBodyAdditionalPropertiesDatePostResponse](../../models/operations/responsebodyadditionalpropertiesdatepostresponse.md), error**
+
+
+## ResponseBodyAdditionalPropertiesObjectPost
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"math/big"
+	"openapi/pkg/types"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesObjectPost(ctx, shared.ObjWithObjAdditionalProperties{
+        AdditionalProperties: []int64{
+            617205,
+        },
+        AdditionalPropertiesT: map[string]shared.SimpleObject{
+            "Account": shared.SimpleObject{
+                Any: "any",
+                Bigint: big.NewInt(8821239038968084),
+                BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
+                Bool: true,
+                BoolOpt: openapi.Bool(true),
+                Date: types.MustDateFromString("2020-01-01"),
+                DateTime: types.MustTimeFromString("2020-01-01T00:00:00.000000001Z"),
+                Decimal: types.MustNewDecimalFromString("3.141592653589793"),
+                DecimalStr: types.MustNewDecimalFromString("3.14159265358979344719667586"),
+                Enum: shared.EnumOne,
+                Float32: 1.1,
+                Int: 1,
+                Int32: 1,
+                Int32Enum: shared.SimpleObjectInt32EnumFiftyFive,
+                IntEnum: shared.SimpleObjectIntEnumSecond,
+                Num: 1.1,
+                Str: "test",
+                StrOpt: openapi.String("testOptional"),
+            },
+        },
+        Datetime: types.MustTimeFromString("2021-07-29T05:49:15.433Z"),
+    })
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSONObject != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                          | :heavy_check_mark:                                                                             | The context to use for the request.                                                            |
+| `request`                                                                                      | [shared.ObjWithObjAdditionalProperties](../../models/shared/objwithobjadditionalproperties.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
+
+
+### Response
+
+**[*operations.ResponseBodyAdditionalPropertiesObjectPostResponse](../../models/operations/responsebodyadditionalpropertiesobjectpostresponse.md), error**
 
 
 ## ResponseBodyAdditionalPropertiesPost
@@ -150,11 +228,11 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(ctx, shared.ObjWithStringAdditionlProperties{
+    res, err := s.ResponseBodies.ResponseBodyAdditionalPropertiesPost(ctx, shared.ObjWithStringAdditionalProperties{
         AdditionalProperties: map[string]string{
             "Ergonomic": "Carolina",
         },
-        NormalField: "male South Iraq",
+        NormalField: "Mini",
     })
     if err != nil {
         log.Fatal(err)
@@ -168,10 +246,10 @@ func main() {
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `ctx`                                                                                              | [context.Context](https://pkg.go.dev/context#Context)                                              | :heavy_check_mark:                                                                                 | The context to use for the request.                                                                |
-| `request`                                                                                          | [shared.ObjWithStringAdditionlProperties](../../models/shared/objwithstringadditionlproperties.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [shared.ObjWithStringAdditionalProperties](../../models/shared/objwithstringadditionalproperties.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
 
 
 ### Response

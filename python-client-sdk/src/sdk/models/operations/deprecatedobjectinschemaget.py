@@ -10,14 +10,12 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DeprecatedObjectInSchemaGet200ApplicationJSON:
     r"""A successful response that contains a deprecatedObject sent in the request body"""
     json: Optional[shared_deprecatedobject.DeprecatedObject] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json'), 'exclude': lambda f: f is None }})
     r"""Deprecated field: This object is deprecated."""
     
-
 
 
 

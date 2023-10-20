@@ -17,6 +17,8 @@ Endpoints for testing union types.
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
+* [unionDateNull](#uniondatenull)
+* [unionDateTimeNull](#uniondatetimenull)
 * [weaklyTypedOneOfPost](#weaklytypedoneofpost)
 
 ## flattenedTypedObjectPost
@@ -113,10 +115,10 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
   const res = await sdk.unions.nullableOneOfRefInObjectPost({
     nullableOneOfOne: {
       type: TypedObject1Type.Obj1,
-      value: "Global Alexandria administration",
+      value: "bah",
     },
-    nullableOneOfTwo: "Arbor",
-    oneOfOne: "PCI",
+    nullableOneOfTwo: "back",
+    oneOfOne: "administration",
   });
 
   if (res.statusCode == 200) {
@@ -235,7 +237,7 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
   const res = await sdk.unions.nullableTypedObjectPost({
     type: TypedObject1Type.Obj1,
-    value: "Bike",
+    value: "Bedfordshire",
   });
 
   if (res.statusCode == 200) {
@@ -403,6 +405,80 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)>**
+
+
+## unionDateNull
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.unions.unionDateNull(new RFCDate("2022-11-25"));
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [RFCDate](../../models//.md)                                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)>**
+
+
+## unionDateTimeNull
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.unions.unionDateTimeNull(new Date("2022-04-12T19:39:53.907Z"));
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Date](../../models//.md)                                    | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md)>**
 
 
 ## weaklyTypedOneOfPost

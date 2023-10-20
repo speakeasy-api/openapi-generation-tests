@@ -17,6 +17,8 @@ Endpoints for testing union types.
 * [StronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [TypedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](#typedobjectoneofpost)
+* [UnionDateNull](#uniondatenull)
+* [UnionDateTimeNull](#uniondatetimenull)
 * [WeaklyTypedOneOfPost](#weaklytypedoneofpost)
 
 ## FlattenedTypedObjectPost
@@ -46,7 +48,7 @@ func main() {
     res, err := s.Unions.FlattenedTypedObjectPost(ctx, shared.CreateFlattenedTypedObject1TypedObject1(
             shared.TypedObject1{
                 Type: shared.TypedObject1TypeObj1,
-                Value: "farad Rustic",
+                Value: "Legacy",
             },
     ))
     if err != nil {
@@ -152,18 +154,18 @@ func main() {
     res, err := s.Unions.NullableOneOfRefInObjectPost(ctx, shared.NullableOneOfRefInObject{
         NullableOneOfOne: &shared.TypedObject1{
             Type: shared.TypedObject1TypeObj1,
-            Value: "Global Alexandria administration",
+            Value: "bah",
         },
-        NullableOneOfTwo: shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject1(
-                shared.TypedObject1{
-                    Type: shared.TypedObject1TypeObj1,
-                    Value: "nor",
+        NullableOneOfTwo: shared.CreateNullableOneOfRefInObjectNullableOneOfTwoTypedObject2(
+                shared.TypedObject2{
+                    Type: shared.TypedObject2TypeObj2,
+                    Value: "Alexandria",
                 },
         ),
         OneOfOne: shared.CreateNullableOneOfRefInObjectOneOfOneTypedObject1(
                 shared.TypedObject1{
                     Type: shared.TypedObject1TypeObj1,
-                    Value: "Berkshire after",
+                    Value: "administration",
                 },
         ),
     })
@@ -218,7 +220,7 @@ func main() {
     res, err := s.Unions.NullableOneOfSchemaPost(ctx, &operations.CreateNullableOneOfSchemaPostRequestBodyTypedObject2(
             shared.TypedObject2{
                 Type: shared.TypedObject2TypeObj2,
-                Value: "sob",
+                Value: "Tasty",
             },
     ))
     if err != nil {
@@ -324,7 +326,7 @@ func main() {
     ctx := context.Background()
     res, err := s.Unions.NullableTypedObjectPost(ctx, &shared.TypedObject1{
         Type: shared.TypedObject1TypeObj1,
-        Value: "Bike",
+        Value: "Bedfordshire",
     })
     if err != nil {
         log.Fatal(err)
@@ -610,7 +612,7 @@ func main() {
     res, err := s.Unions.TypedObjectNullableOneOfPost(ctx, &shared.CreateTypedObjectNullableOneOfTypedObject2(
             shared.TypedObject2{
                 Type: shared.TypedObject2TypeObj2,
-                Value: "DRAM",
+                Value: "East",
             },
     ))
     if err != nil {
@@ -663,7 +665,7 @@ func main() {
     res, err := s.Unions.TypedObjectOneOfPost(ctx, shared.CreateTypedObjectOneOfTypedObject3(
             shared.TypedObject3{
                 Type: shared.TypedObject3TypeObj3,
-                Value: "Buckinghamshire illo Automotive",
+                Value: "blue",
             },
     ))
     if err != nil {
@@ -687,6 +689,102 @@ func main() {
 ### Response
 
 **[*operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md), error**
+
+
+## UnionDateNull
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Unions.UnionDateNull(ctx, &types.MustDateFromString("2022-11-25"))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [types.Date](../../models//.md)                       | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md), error**
+
+
+## UnionDateTimeNull
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Unions.UnionDateTimeNull(ctx, &types.MustTimeFromString("2022-04-12T19:39:53.907Z"))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `request`                                             | [time.Time](../../models//.md)                        | :heavy_check_mark:                                    | The request object to use for the request.            |
+
+
+### Response
+
+**[*operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md), error**
 
 
 ## WeaklyTypedOneOfPost

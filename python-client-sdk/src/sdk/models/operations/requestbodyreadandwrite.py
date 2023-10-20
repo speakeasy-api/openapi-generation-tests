@@ -11,7 +11,6 @@ REQUEST_BODY_READ_AND_WRITE_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class RequestBodyReadAndWriteResponse:
     content_type: str = dataclasses.field()

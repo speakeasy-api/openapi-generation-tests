@@ -10,7 +10,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class FormQueryParamsRefParamObjectRequest:
     ref_obj_param: Optional[shared_refqueryparamobj.RefQueryParamObj] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'refObjParam', 'style': 'form', 'explode': False }})
@@ -20,7 +19,6 @@ class FormQueryParamsRefParamObjectRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsRefParamObjectResArgs:
     bool: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
@@ -33,14 +31,12 @@ class FormQueryParamsRefParamObjectResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsRefParamObjectRes:
     r"""OK"""
     args: FormQueryParamsRefParamObjectResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

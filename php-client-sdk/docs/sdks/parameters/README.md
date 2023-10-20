@@ -11,6 +11,7 @@ Endpoints for testing parameters.
 * [deepObjectQueryParamsObject](#deepobjectqueryparamsobject)
 * [duplicateParam](#duplicateparam)
 * [formQueryParamsArray](#formqueryparamsarray)
+* [formQueryParamsCamelObject](#formqueryparamscamelobject)
 * [formQueryParamsMap](#formqueryparamsmap)
 * [formQueryParamsObject](#formqueryparamsobject)
 * [formQueryParamsPrimitive](#formqueryparamsprimitive)
@@ -44,17 +45,21 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsMapRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
     $response = $sdk->parameters->deepObjectQueryParamsMap([
-    'quas' => 'Concrete',
+    'compress' => 'of',
 ], [
-    'necessitatibus' => [
-        'of',
+    'navigating' => [
+        'Royce',
     ],
 ]);
 
@@ -68,10 +73,10 @@ try {
 
 ### Parameters
 
-| Parameter                      | Type                           | Required                       | Description                    |
-| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `mapParam`                     | array<string, *string*>        | :heavy_check_mark:             | N/A                            |
-| `mapArrParam`                  | array<string, array<*string*>> | :heavy_minus_sign:             | N/A                            |
+| Parameter                      | Type                           | Required                       | Description                    | Example                        |
+| ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
+| `mapParam`                     | array<string, *string*>        | :heavy_check_mark:             | N/A                            | [object Object]                |
+| `mapArrParam`                  | array<string, array<*string*>> | :heavy_minus_sign:             | N/A                            | [object Object]                |
 
 
 ### Response
@@ -98,12 +103,16 @@ use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 use \OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $objParam = new SimpleObject();
-    $objParam->any = 'Jazz';
+    $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
     $objParam->bool = true;
@@ -116,11 +125,11 @@ try {
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $objParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $objParam->intEnum = SimpleObjectIntEnum::Second;
-    $objParam->intOptNull = 425315;
+    $objParam->intOptNull = 303001;
     $objParam->num = 1.1;
-    $objParam->numOptNull = 1324.77;
+    $objParam->numOptNull = 5571.55;
     $objParam->str = 'test';
     $objParam->strOpt = 'testOptional';
 
@@ -141,10 +150,10 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                                                       | Type                                                                                                                                            | Required                                                                                                                                        | Description                                                                                                                                     |
-| ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
-| `objParam`                                                                                                                                      | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                                                              | :heavy_check_mark:                                                                                                                              | A simple object that uses all our supported primitive types and enums and has optional properties.                                              |
-| `objArrParam`                                                                                                                                   | [?\OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam](../../models/operations/DeepObjectQueryParamsObjectObjArrParam.md) | :heavy_minus_sign:                                                                                                                              | N/A                                                                                                                                             |
+| Parameter                                                                                                                                      | Type                                                                                                                                           | Required                                                                                                                                       | Description                                                                                                                                    |
+| ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| `objParam`                                                                                                                                     | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                                                             | :heavy_check_mark:                                                                                                                             | A simple object that uses all our supported primitive types and enums and has optional properties.                                             |
+| `objArrParam`                                                                                                                                  | [\OpenAPI\OpenAPI\Models\Operations\DeepObjectQueryParamsObjectObjArrParam](../../models/operations/DeepObjectQueryParamsObjectObjArrParam.md) | :heavy_minus_sign:                                                                                                                             | N/A                                                                                                                                            |
 
 
 ### Response
@@ -166,7 +175,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\DuplicateParamRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -208,7 +221,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -241,6 +258,61 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsArrayResponse](../../models/operations/FormQueryParamsArrayResponse.md)**
 
 
+## formQueryParamsCamelObject
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectRequest;
+use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParamExploded;
+use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParam;
+
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = SDK::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
+    $objParamExploded = new FormQueryParamsCamelObjectObjParamExploded();
+    $objParamExploded->itemCount = '10';
+    $objParamExploded->searchTerm = 'foo';
+
+    $objParam = new FormQueryParamsCamelObjectObjParam();
+    $objParam->encodedCount = '11';
+    $objParam->encodedTerm = 'bar';
+
+    $response = $sdk->parameters->formQueryParamsCamelObject($objParamExploded, $objParam);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                              | Type                                                                                                                                                   | Required                                                                                                                                               | Description                                                                                                                                            |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `objParamExploded`                                                                                                                                     | [\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParamExploded](../../models/operations/FormQueryParamsCamelObjectObjParamExploded.md) | :heavy_check_mark:                                                                                                                                     | N/A                                                                                                                                                    |
+| `objParam`                                                                                                                                             | [\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectObjParam](../../models/operations/FormQueryParamsCamelObjectObjParam.md)                 | :heavy_minus_sign:                                                                                                                                     | N/A                                                                                                                                                    |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\FormQueryParamsCamelObjectResponse](../../models/operations/FormQueryParamsCamelObjectResponse.md)**
+
+
 ## formQueryParamsMap
 
 ### Example Usage
@@ -255,16 +327,20 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsMapRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
     $response = $sdk->parameters->formQueryParamsMap([
-    'rerum' => 'provident',
+    'male' => 'Reggae',
 ], [
-    'optio' => 355695,
+    'pink' => 414710,
 ]);
 
     if ($response->res !== null) {
@@ -277,10 +353,10 @@ try {
 
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `mapParam`              | array<string, *string*> | :heavy_minus_sign:      | N/A                     |
-| `mapParamExploded`      | array<string, *int*>    | :heavy_minus_sign:      | N/A                     |
+| Parameter               | Type                    | Required                | Description             | Example                 |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `mapParam`              | array<string, *string*> | :heavy_minus_sign:      | N/A                     | [object Object]         |
+| `mapParamExploded`      | array<string, *int*>    | :heavy_minus_sign:      | N/A                     | [object Object]         |
 
 
 ### Response
@@ -306,12 +382,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $objParamExploded = new SimpleObject();
-    $objParamExploded->any = 'Web';
+    $objParamExploded->any = 'any';
     $objParamExploded->bigint = 8821239038968084;
     $objParamExploded->bigintStr = '9223372036854775808';
     $objParamExploded->bool = true;
@@ -324,16 +404,16 @@ try {
     $objParamExploded->float32 = 1.1;
     $objParamExploded->int = 1;
     $objParamExploded->int32 = 1;
-    $objParamExploded->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $objParamExploded->intEnum = SimpleObjectIntEnum::Third;
-    $objParamExploded->intOptNull = 87354;
+    $objParamExploded->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $objParamExploded->intEnum = SimpleObjectIntEnum::Second;
+    $objParamExploded->intOptNull = 645228;
     $objParamExploded->num = 1.1;
-    $objParamExploded->numOptNull = 883.91;
+    $objParamExploded->numOptNull = 7602.31;
     $objParamExploded->str = 'test';
     $objParamExploded->strOpt = 'testOptional';
 
     $objParam = new SimpleObject();
-    $objParam->any = 'Associate';
+    $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
     $objParam->bool = true;
@@ -346,11 +426,11 @@ try {
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $objParam->intEnum = SimpleObjectIntEnum::Third;
-    $objParam->intOptNull = 547098;
+    $objParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $objParam->intEnum = SimpleObjectIntEnum::First;
+    $objParam->intOptNull = 973554;
     $objParam->num = 1.1;
-    $objParam->numOptNull = 5763.58;
+    $objParam->numOptNull = 873.54;
     $objParam->str = 'test';
     $objParam->strOpt = 'testOptional';
 
@@ -369,7 +449,7 @@ try {
 | Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
 | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | `objParamExploded`                                                                                 | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                 | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
-| `objParam`                                                                                         | [?\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                 | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
 
 
 ### Response
@@ -391,7 +471,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsPrimitiveRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -438,7 +522,11 @@ use \OpenAPI\OpenAPI\Models\Operations\FormQueryParamsRefParamObjectRequest;
 use \OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj;
 use \OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -466,10 +554,10 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                                   | Type                                                                                                        | Required                                                                                                    | Description                                                                                                 |
-| ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------- |
-| `refObjParam`                                                                                               | [?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj](../../models/shared/RefQueryParamObj.md)                 | :heavy_minus_sign:                                                                                          | N/A                                                                                                         |
-| `refObjParamExploded`                                                                                       | [?\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded](../../models/shared/RefQueryParamObjExploded.md) | :heavy_minus_sign:                                                                                          | N/A                                                                                                         |
+| Parameter                                                                                                  | Type                                                                                                       | Required                                                                                                   | Description                                                                                                |
+| ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| `refObjParam`                                                                                              | [\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObj](../../models/shared/RefQueryParamObj.md)                 | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
+| `refObjParamExploded`                                                                                      | [\OpenAPI\OpenAPI\Models\Shared\RefQueryParamObjExploded](../../models/shared/RefQueryParamObjExploded.md) | :heavy_minus_sign:                                                                                         | N/A                                                                                                        |
 
 
 ### Response
@@ -491,7 +579,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\HeaderParamsArrayRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -535,16 +627,20 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\HeaderParamsMapRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
     $response = $sdk->parameters->headerParamsMap([
-    'ipsum' => 'Kids',
+    'Ball' => 'Account',
 ], [
-    'omnis' => 'sky',
+    'Trans' => 'bypassing',
 ]);
 
     if ($response->res !== null) {
@@ -557,10 +653,10 @@ try {
 
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `xHeaderMap`            | array<string, *string*> | :heavy_check_mark:      | N/A                     |
-| `xHeaderMapExplode`     | array<string, *string*> | :heavy_check_mark:      | N/A                     |
+| Parameter               | Type                    | Required                | Description             | Example                 |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `xHeaderMap`            | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
+| `xHeaderMapExplode`     | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
 
 
 ### Response
@@ -586,12 +682,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $xHeaderObj = new SimpleObject();
-    $xHeaderObj->any = 'tolerance';
+    $xHeaderObj->any = 'any';
     $xHeaderObj->bigint = 8821239038968084;
     $xHeaderObj->bigintStr = '9223372036854775808';
     $xHeaderObj->bool = true;
@@ -604,16 +704,16 @@ try {
     $xHeaderObj->float32 = 1.1;
     $xHeaderObj->int = 1;
     $xHeaderObj->int32 = 1;
-    $xHeaderObj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $xHeaderObj->intEnum = SimpleObjectIntEnum::First;
-    $xHeaderObj->intOptNull = 598385;
+    $xHeaderObj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $xHeaderObj->intEnum = SimpleObjectIntEnum::Third;
+    $xHeaderObj->intOptNull = 590416;
     $xHeaderObj->num = 1.1;
-    $xHeaderObj->numOptNull = 543.44;
+    $xHeaderObj->numOptNull = 144.68;
     $xHeaderObj->str = 'test';
     $xHeaderObj->strOpt = 'testOptional';
 
     $xHeaderObjExplode = new SimpleObject();
-    $xHeaderObjExplode->any = 'Representative';
+    $xHeaderObjExplode->any = 'any';
     $xHeaderObjExplode->bigint = 8821239038968084;
     $xHeaderObjExplode->bigintStr = '9223372036854775808';
     $xHeaderObjExplode->bool = true;
@@ -626,11 +726,11 @@ try {
     $xHeaderObjExplode->float32 = 1.1;
     $xHeaderObjExplode->int = 1;
     $xHeaderObjExplode->int32 = 1;
-    $xHeaderObjExplode->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $xHeaderObjExplode->intEnum = SimpleObjectIntEnum::First;
-    $xHeaderObjExplode->intOptNull = 533235;
+    $xHeaderObjExplode->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $xHeaderObjExplode->intEnum = SimpleObjectIntEnum::Second;
+    $xHeaderObjExplode->intOptNull = 54344;
     $xHeaderObjExplode->num = 1.1;
-    $xHeaderObjExplode->numOptNull = 2526.18;
+    $xHeaderObjExplode->numOptNull = 6940.18;
     $xHeaderObjExplode->str = 'test';
     $xHeaderObjExplode->strOpt = 'testOptional';
 
@@ -671,7 +771,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\HeaderParamsPrimitiveRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -721,23 +825,27 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $deepObjParam = new DeepObject();
-    $deepObjParam->any = 'Hybrid';
+    $deepObjParam->any = 'anyOf[0]';
     $deepObjParam->arr = [
         new SimpleObject(),
     ];
     $deepObjParam->bool = true;
     $deepObjParam->int = 1;
     $deepObjParam->map = [
-        'cum' => new SimpleObject(),
+        'Hybrid' => new SimpleObject(),
     ];
     $deepObjParam->num = 1.1;
     $deepObjParam->obj = new SimpleObject();
-    $deepObjParam->obj->any = 'woozy';
+    $deepObjParam->obj->any = 'any';
     $deepObjParam->obj->bigint = 8821239038968084;
     $deepObjParam->obj->bigintStr = '9223372036854775808';
     $deepObjParam->obj->bool = true;
@@ -750,18 +858,18 @@ try {
     $deepObjParam->obj->float32 = 1.1;
     $deepObjParam->obj->int = 1;
     $deepObjParam->obj->int32 = 1;
-    $deepObjParam->obj->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $deepObjParam->obj->intEnum = SimpleObjectIntEnum::First;
-    $deepObjParam->obj->intOptNull = 330936;
+    $deepObjParam->obj->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $deepObjParam->obj->intEnum = SimpleObjectIntEnum::Third;
+    $deepObjParam->obj->intOptNull = 980270;
     $deepObjParam->obj->num = 1.1;
-    $deepObjParam->obj->numOptNull = 8351.22;
+    $deepObjParam->obj->numOptNull = 2047.13;
     $deepObjParam->obj->str = 'test';
     $deepObjParam->obj->strOpt = 'testOptional';
     $deepObjParam->str = 'test';
-    $deepObjParam->type = 'Bohrium Account synthesize';
+    $deepObjParam->type = 'Concrete';
 
     $simpleObjParam = new SimpleObject();
-    $simpleObjParam->any = 'without';
+    $simpleObjParam->any = 'any';
     $simpleObjParam->bigint = 8821239038968084;
     $simpleObjParam->bigintStr = '9223372036854775808';
     $simpleObjParam->bool = true;
@@ -774,11 +882,11 @@ try {
     $simpleObjParam->float32 = 1.1;
     $simpleObjParam->int = 1;
     $simpleObjParam->int32 = 1;
-    $simpleObjParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
-    $simpleObjParam->intEnum = SimpleObjectIntEnum::Second;
-    $simpleObjParam->intOptNull = 686268;
+    $simpleObjParam->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $simpleObjParam->intEnum = SimpleObjectIntEnum::Third;
+    $simpleObjParam->intOptNull = 723719;
     $simpleObjParam->num = 1.1;
-    $simpleObjParam->numOptNull = 9620.9;
+    $simpleObjParam->numOptNull = 9033.55;
     $simpleObjParam->str = 'test';
     $simpleObjParam->strOpt = 'testOptional';
 
@@ -819,7 +927,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\MixedParametersCamelCaseRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -863,7 +975,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\MixedParametersPrimitivesRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -911,12 +1027,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $deepObjectParam = new SimpleObject();
-    $deepObjectParam->any = 'female';
+    $deepObjectParam->any = 'any';
     $deepObjectParam->bigint = 8821239038968084;
     $deepObjectParam->bigintStr = '9223372036854775808';
     $deepObjectParam->bool = true;
@@ -929,16 +1049,16 @@ try {
     $deepObjectParam->float32 = 1.1;
     $deepObjectParam->int = 1;
     $deepObjectParam->int32 = 1;
-    $deepObjectParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $deepObjectParam->intEnum = SimpleObjectIntEnum::First;
-    $deepObjectParam->intOptNull = 108812;
+    $deepObjectParam->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
+    $deepObjectParam->intEnum = SimpleObjectIntEnum::Second;
+    $deepObjectParam->intOptNull = 89281;
     $deepObjectParam->num = 1.1;
-    $deepObjectParam->numOptNull = 4161.9;
+    $deepObjectParam->numOptNull = 2132.48;
     $deepObjectParam->str = 'test';
     $deepObjectParam->strOpt = 'testOptional';
 
     $formParam = new SimpleObject();
-    $formParam->any = 'Chair';
+    $formParam->any = 'any';
     $formParam->bigint = 8821239038968084;
     $formParam->bigintStr = '9223372036854775808';
     $formParam->bool = true;
@@ -952,15 +1072,15 @@ try {
     $formParam->int = 1;
     $formParam->int32 = 1;
     $formParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $formParam->intEnum = SimpleObjectIntEnum::Third;
-    $formParam->intOptNull = 387493;
+    $formParam->intEnum = SimpleObjectIntEnum::Second;
+    $formParam->intOptNull = 218100;
     $formParam->num = 1.1;
-    $formParam->numOptNull = 5641.93;
+    $formParam->numOptNull = 75.58;
     $formParam->str = 'test';
     $formParam->strOpt = 'testOptional';
 
     $jsonParam = new SimpleObject();
-    $jsonParam->any = 'weber';
+    $jsonParam->any = 'any';
     $jsonParam->bigint = 8821239038968084;
     $jsonParam->bigintStr = '9223372036854775808';
     $jsonParam->bool = true;
@@ -974,10 +1094,10 @@ try {
     $jsonParam->int = 1;
     $jsonParam->int32 = 1;
     $jsonParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
-    $jsonParam->intEnum = SimpleObjectIntEnum::First;
-    $jsonParam->intOptNull = 82918;
+    $jsonParam->intEnum = SimpleObjectIntEnum::Third;
+    $jsonParam->intOptNull = 387493;
     $jsonParam->num = 1.1;
-    $jsonParam->numOptNull = 8839.4;
+    $jsonParam->numOptNull = 5641.93;
     $jsonParam->str = 'test';
     $jsonParam->strOpt = 'testOptional';
 
@@ -1023,12 +1143,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $jsonObj = new SimpleObject();
-    $jsonObj->any = 'bluetooth';
+    $jsonObj->any = 'any';
     $jsonObj->bigint = 8821239038968084;
     $jsonObj->bigintStr = '9223372036854775808';
     $jsonObj->bool = true;
@@ -1043,9 +1167,9 @@ try {
     $jsonObj->int32 = 1;
     $jsonObj->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $jsonObj->intEnum = SimpleObjectIntEnum::Second;
-    $jsonObj->intOptNull = 121334;
+    $jsonObj->intOptNull = 355762;
     $jsonObj->num = 1.1;
-    $jsonObj->numOptNull = 2775.09;
+    $jsonObj->numOptNull = 5955.49;
     $jsonObj->str = 'test';
     $jsonObj->strOpt = 'testOptional';
 
@@ -1089,12 +1213,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $objParam = new SimpleObject();
-    $objParam->any = 'FTM';
+    $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
     $objParam->bool = true;
@@ -1107,20 +1235,20 @@ try {
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $objParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
     $objParam->intEnum = SimpleObjectIntEnum::First;
-    $objParam->intOptNull = 813509;
+    $objParam->intOptNull = 110513;
     $objParam->num = 1.1;
-    $objParam->numOptNull = 6704.97;
+    $objParam->numOptNull = 1666.19;
     $objParam->str = 'test';
     $objParam->strOpt = 'testOptional';
 
     $response = $sdk->parameters->pipeDelimitedQueryParamsArray([
-    'test',
+    'test2',
 ], [
-    1,
+    2,
 ], [
-    'veritatis' => 'sticky',
+    'blue' => 'South',
 ], $objParam);
 
     if ($response->res !== null) {
@@ -1133,12 +1261,12 @@ try {
 
 ### Parameters
 
-| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
-| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
-| `arrParam`                                                                                         | array<*string*>                                                                                    | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `arrParamExploded`                                                                                 | array<*int*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `mapParam`                                                                                         | array<string, *string*>                                                                            | :heavy_minus_sign:                                                                                 | N/A                                                                                                |
-| `objParam`                                                                                         | [?\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        | Example                                                                                            |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `arrParam`                                                                                         | array<*string*>                                                                                    | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `arrParamExploded`                                                                                 | array<*int*>                                                                                       | :heavy_minus_sign:                                                                                 | N/A                                                                                                |                                                                                                    |
+| `mapParam`                                                                                         | array<string, *string*>                                                                            | :heavy_minus_sign:                                                                                 | N/A                                                                                                | [object Object]                                                                                    |
+| `objParam`                                                                                         | [\OpenAPI\OpenAPI\Models\Shared\SimpleObject](../../models/shared/SimpleObject.md)                 | :heavy_minus_sign:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |                                                                                                    |
 
 
 ### Response
@@ -1160,7 +1288,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterArraysRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -1204,16 +1336,20 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterMapsRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
     $response = $sdk->parameters->simplePathParameterMaps([
-    'nobis' => 'even',
+    'weber' => 'Sausages',
 ], [
-    'repudiandae' => 157687,
+    'Parks' => 999743,
 ]);
 
     if ($response->res !== null) {
@@ -1226,10 +1362,10 @@ try {
 
 ### Parameters
 
-| Parameter               | Type                    | Required                | Description             |
-| ----------------------- | ----------------------- | ----------------------- | ----------------------- |
-| `mapParam`              | array<string, *string*> | :heavy_check_mark:      | N/A                     |
-| `mapParamExploded`      | array<string, *int*>    | :heavy_check_mark:      | N/A                     |
+| Parameter               | Type                    | Required                | Description             | Example                 |
+| ----------------------- | ----------------------- | ----------------------- | ----------------------- | ----------------------- |
+| `mapParam`              | array<string, *string*> | :heavy_check_mark:      | N/A                     | [object Object]         |
+| `mapParamExploded`      | array<string, *int*>    | :heavy_check_mark:      | N/A                     | [object Object]         |
 
 
 ### Response
@@ -1255,12 +1391,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $objParam = new SimpleObject();
-    $objParam->any = 'Ville';
+    $objParam->any = 'any';
     $objParam->bigint = 8821239038968084;
     $objParam->bigintStr = '9223372036854775808';
     $objParam->bool = true;
@@ -1273,16 +1413,16 @@ try {
     $objParam->float32 = 1.1;
     $objParam->int = 1;
     $objParam->int32 = 1;
-    $objParam->int32Enum = SimpleObjectInt32Enum::SixtyNine;
+    $objParam->int32Enum = SimpleObjectInt32Enum::FiftyFive;
     $objParam->intEnum = SimpleObjectIntEnum::Third;
-    $objParam->intOptNull = 586554;
+    $objParam->intOptNull = 384918;
     $objParam->num = 1.1;
-    $objParam->numOptNull = 2558;
+    $objParam->numOptNull = 9559.93;
     $objParam->str = 'test';
     $objParam->strOpt = 'testOptional';
 
     $objParamExploded = new SimpleObject();
-    $objParamExploded->any = 'Research';
+    $objParamExploded->any = 'any';
     $objParamExploded->bigint = 8821239038968084;
     $objParamExploded->bigintStr = '9223372036854775808';
     $objParamExploded->bool = true;
@@ -1295,11 +1435,11 @@ try {
     $objParamExploded->float32 = 1.1;
     $objParamExploded->int = 1;
     $objParamExploded->int32 = 1;
-    $objParamExploded->int32Enum = SimpleObjectInt32Enum::FiftyFive;
+    $objParamExploded->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
     $objParamExploded->intEnum = SimpleObjectIntEnum::Second;
-    $objParamExploded->intOptNull = 878658;
+    $objParamExploded->intOptNull = 678638;
     $objParamExploded->num = 1.1;
-    $objParamExploded->numOptNull = 6926.2;
+    $objParamExploded->numOptNull = 5865.54;
     $objParamExploded->str = 'test';
     $objParamExploded->strOpt = 'testOptional';
 
@@ -1340,7 +1480,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\SimplePathParameterPrimitivesRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {

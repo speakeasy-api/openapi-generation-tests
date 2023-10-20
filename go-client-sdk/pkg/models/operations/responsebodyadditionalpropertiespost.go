@@ -9,12 +9,12 @@ import (
 
 // ResponseBodyAdditionalPropertiesPost200ApplicationJSON - OK
 type ResponseBodyAdditionalPropertiesPost200ApplicationJSON struct {
-	JSON shared.ObjWithStringAdditionlProperties `json:"json"`
+	JSON shared.ObjWithStringAdditionalProperties `json:"json"`
 }
 
-func (o *ResponseBodyAdditionalPropertiesPost200ApplicationJSON) GetJSON() shared.ObjWithStringAdditionlProperties {
+func (o *ResponseBodyAdditionalPropertiesPost200ApplicationJSON) GetJSON() shared.ObjWithStringAdditionalProperties {
 	if o == nil {
-		return shared.ObjWithStringAdditionlProperties{}
+		return shared.ObjWithStringAdditionalProperties{}
 	}
 	return o.JSON
 }

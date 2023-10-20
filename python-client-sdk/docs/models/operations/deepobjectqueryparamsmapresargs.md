@@ -12,6 +12,6 @@ deepObjectQueryParamsMapResArgs: str = /* values here */
 ### 
 
 ```python
-deepObjectQueryParamsMapResArgs: list[str] = /* values here */
+deepObjectQueryParamsMapResArgs: List[str] = /* values here */
 ```
 

@@ -113,7 +113,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.NullableObject req = new NullableObject(302382L){{
-                optional = "Berkshire";
+                optional = "Ergonomic";
             }};            
 
             NullableObjectPostResponse res = sdk.requestBodies.nullableObjectPost(req);
@@ -273,10 +273,10 @@ public class Application {
                 .build();
 
             NullableRequiredSharedObjectPostRequestBody req = new NullableRequiredSharedObjectPostRequestBody(new NullableObject(86533L){{
-optional = "Einsteinium at North";
+optional = "plus";
 }}){{
-                nullableOptionalObj = new NullableObject(692851L){{
-                    optional = "Rock";
+                nullableOptionalObj = new NullableObject(831837L){{
+                    optional = "at";
                 }};
             }};            
 
@@ -1135,7 +1135,7 @@ intOptNull = 949502L;
 numOptNull = 5521.28d;
 strOpt = "testOptional";
 }}, "test"){{
-                type = "Berkelium";
+                type = "deliverables";
             }};            
 
             RequestBodyPostApplicationJsonDeepResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeep(req);
@@ -1230,15 +1230,15 @@ public class Application {
         strVal = "example";
     }});
 }}, 1379.45d, new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
-bigintStrVal = "Music Djibouti solid";
-bigintVal = 40353L;
+bigintStrVal = "Diesel";
+bigintVal = 105266L;
 boolOptVal = true;
-decimalVal = 3272.64d;
+decimalVal = 4268.81d;
 intOptNullVal = 999999L;
 numOptNullVal = 1.1d;
 strOptVal = "optional example";
-}}, "analyzer"){{
-                type = "heuristic Grocery Pizza";
+}}, "Mouse"){{
+                type = "solid";
             }};            
 
             RequestBodyPostApplicationJsonDeepCamelCaseResponse res = sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase(req);
@@ -2130,10 +2130,10 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.SimpleObjectCamelCase req = new SimpleObjectCamelCase("any example", true, OffsetDateTime.parse("2020-01-01T00:00:00Z"), LocalDate.parse("2020-01-01"), Enum.ONE, 2.2222222f, SimpleObjectCamelCaseInt32EnumVal.SIXTY_NINE, 1, SimpleObjectCamelCaseIntEnumVal.Third, 999999L, 1.1d, "example"){{
-                bigintStrVal = "inhere";
-                bigintVal = 643104L;
+                bigintStrVal = "rich";
+                bigintVal = 452401L;
                 boolOptVal = true;
-                decimalVal = 1327.04d;
+                decimalVal = 6431.04d;
                 intOptNullVal = 999999L;
                 numOptNullVal = 1.1d;
                 strOptVal = "optional example";
@@ -2187,7 +2187,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostComplexNumberTypesRequest req = new RequestBodyPostComplexNumberTypesRequest(new ComplexNumberTypes(765757L, "Metal calculating Lamborghini", 9373.95d, "Royce"), 958218L, "male ASCII", 1464.39d, "Lancaster hertz young", 338976L, "Northwest", 3970.19d, "Toyota");            
+            RequestBodyPostComplexNumberTypesRequest req = new RequestBodyPostComplexNumberTypesRequest(new ComplexNumberTypes(765757L, "pfft", 6831.11d, "calculating"), 822852L, "reboot", 1789.06d, "Royce", 958218L, "orchestration", 8745.2d, "ASCII");            
 
             RequestBodyPostComplexNumberTypesResponse res = sdk.requestBodies.requestBodyPostComplexNumberTypes(req);
 
@@ -2242,21 +2242,21 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.shared.DefaultsAndConsts req = new DefaultsAndConsts(559205L, "Chief", false, LocalDate.parse("2021-05-03"), OffsetDateTime.parse("2023-07-14T17:39:00.984Z"), 2995.45d, "invoice Cotton", DefaultsAndConstsConstEnumInt.TWO, DefaultsAndConstsConstEnumStr.ONE, 788517L, 639.73d, "Account", "Dysprosium", "qui"){{
-                defaultBigInt = 615609L;
-                defaultBigIntStr = "Configuration Lane Music";
+            org.openapis.openapi.models.shared.DefaultsAndConsts req = new DefaultsAndConsts(559205L, "Generic", false, LocalDate.parse("2023-10-01"), OffsetDateTime.parse("2021-05-03T16:53:58.702Z"), 8445.08d, "invoice", DefaultsAndConstsConstEnumInt.ONE, DefaultsAndConstsConstEnumStr.TWO, 611959L, 2168.9d, "green", "Account", "Dysprosium"){{
+                defaultBigInt = 569722L;
+                defaultBigIntStr = "Kids";
                 defaultBool = false;
-                defaultDate = LocalDate.parse("2023-07-16");
-                defaultDateTime = OffsetDateTime.parse("2021-06-28T10:07:28.276Z");
-                defaultDecimal = 3014.85d;
-                defaultDecimalStr = "South Hafnium amid";
-                defaultEnumInt = DefaultsAndConstsDefaultEnumInt.THREE;
-                defaultEnumStr = DefaultsAndConstsDefaultEnumStr.ONE;
-                defaultInt = 77435L;
-                defaultNum = 6102.85d;
-                defaultStr = "Electric Diesel";
-                defaultStrNullable = "silver Central";
-                defaultStrOptional = "Gasoline Pines boo";
+                defaultDate = LocalDate.parse("2023-08-10");
+                defaultDateTime = OffsetDateTime.parse("2023-01-02T01:43:39.588Z");
+                defaultDecimal = 3740.51d;
+                defaultDecimalStr = "Cab";
+                defaultEnumInt = DefaultsAndConstsDefaultEnumInt.ONE;
+                defaultEnumStr = DefaultsAndConstsDefaultEnumStr.THREE;
+                defaultInt = 900298L;
+                defaultNum = 4682.71d;
+                defaultStr = "deserted";
+                defaultStrNullable = "Southwest";
+                defaultStrOptional = "orange";
             }};            
 
             RequestBodyPostDefaultsAndConstsResponse res = sdk.requestBodies.requestBodyPostDefaultsAndConsts(req);
@@ -2408,7 +2408,7 @@ public class Application {
         strOpt = "testOptional";
     }}),
 }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -2428,7 +2428,7 @@ public class Application {
         str = "test";
         strOpt = "testOptional";
     }});
-    put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+    put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
         any = "any";
         bigint = 8821239038968084L;
         bigintStr = "9223372036854775808";
@@ -2458,7 +2458,7 @@ intOptNull = 919389L;
 numOptNull = 467.92d;
 strOpt = "testOptional";
 }}, "test"){{
-                type = "Forward";
+                type = "South";
             }};            
 
             RequestBodyPostFormDeepResponse res = sdk.requestBodies.requestBodyPostFormDeep(req);
@@ -2721,7 +2721,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new String[]{{
-                add("Group East incentivize"),
+                add("Gasoline"),
             }};            
 
             RequestBodyPostJsonDataTypesArrayDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr(req);
@@ -2818,7 +2818,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "pixel gray";            
+            org.openapis.openapi.models.. req = "Global";            
 
             RequestBodyPostJsonDataTypesBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr(req);
 
@@ -3058,7 +3058,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            org.openapis.openapi.models.. req = "gadzooks Luxurious";            
+            org.openapis.openapi.models.. req = "reboot";            
 
             RequestBodyPostJsonDataTypesDecimalStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr(req);
 
@@ -3251,7 +3251,7 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.. req =             new java.util.HashMap<String, String>(){{
-                put("Nepal", "Creative");
+                put("Nepal", "York");
             }};            
 
             RequestBodyPostJsonDataTypesMapBigIntStrResponse res = sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr(req);
@@ -3610,11 +3610,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(false, 6851.58d, "AI"){{
+            RequestBodyPostMultipleContentTypesSplitParamFormResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(new RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(false, 989.27d, "Architect"){{
                 bool3 = false;
                 num3 = 8693.24d;
-                str3 = "Compatible";
-            }}, "strategic");
+                str3 = "Garden";
+            }}, "Bedfordshire");
 
             if (res.res != null) {
                 // handle response
@@ -3663,11 +3663,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(false, 6750.87d, "Taka"){{
+            RequestBodyPostMultipleContentTypesSplitParamJsonResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(new RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(false, 3749.72d, "networks"){{
                 bool = false;
                 num = 9771.91d;
-                str = "South networks";
-            }}, "Gardens");
+                str = "quasi";
+            }}, "Brand");
 
             if (res.res != null) {
                 // handle response
@@ -3716,11 +3716,11 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(false, 2347.27d, "East"){{
+            RequestBodyPostMultipleContentTypesSplitParamMultipartResponse res = sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(new RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(false, 825.14d, "Health"){{
                 bool2 = false;
                 num2 = 7000.76d;
-                str2 = "Ball Southwest";
-            }}, "JSON");
+                str2 = "Coupe";
+            }}, "GB");
 
             if (res.res != null) {
                 // handle response
@@ -4353,7 +4353,7 @@ intOptNull = 827095L;
 numOptNull = 2043.79d;
 strOpt = "testOptional";
 }}, "test"){{
-                type = "Reggae lustrous Operative";
+                type = "noodles";
             }};            
 
             RequestBodyPutMultipartDeepResponse res = sdk.requestBodies.requestBodyPutMultipartDeep(req);

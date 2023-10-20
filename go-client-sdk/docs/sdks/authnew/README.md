@@ -50,8 +50,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "Highway",
-                HeaderName: "deliver payment",
+                ExpectedValue: "Delaware",
+                HeaderName: "katal",
             },
         },
     })
@@ -110,8 +110,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "idolized",
-                HeaderName: "female Virginia primary",
+                ExpectedValue: "Cambridgeshire",
+                HeaderName: "Account",
             },
         },
     })
@@ -174,8 +174,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "integrate",
-                HeaderName: "bandwidth uselessly",
+                ExpectedValue: "Lights",
+                HeaderName: "Southwest",
             },
         },
     }, operationSecurity)
@@ -238,8 +238,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "thong Scandium worse",
-                HeaderName: "Durham Tesla",
+                ExpectedValue: "Tricycle",
+                HeaderName: "what",
             },
         },
     }, operationSecurity)
@@ -306,8 +306,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "services indigo",
-                HeaderName: "Wooden Jewelery",
+                ExpectedValue: "ad",
+                HeaderName: "ha",
             },
         },
     }, operationSecurity)
@@ -373,8 +373,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "Gourde",
-                HeaderName: "Van Granite East",
+                ExpectedValue: "Berkshire",
+                HeaderName: "networks",
             },
         },
     }, operationSecurity)
@@ -440,8 +440,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "compressing",
-                HeaderName: "sievert Diesel",
+                ExpectedValue: "Motorway",
+                HeaderName: "farad",
             },
         },
     }, operationSecurity)
@@ -504,8 +504,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "payment Usability sievert",
-                HeaderName: "yum Northwest metrics",
+                ExpectedValue: "Technician",
+                HeaderName: "strip",
             },
         },
     }, operationSecurity)
@@ -569,8 +569,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "microchip Southeast",
-                HeaderName: "Future Corners Electronic",
+                ExpectedValue: "relationships",
+                HeaderName: "Movies",
             },
         },
     }, operationSecurity)
@@ -631,8 +631,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "Sunrise",
-                HeaderName: "male",
+                ExpectedValue: "Arbor",
+                HeaderName: "Towels",
             },
         },
     }, operationSecurity)
@@ -693,8 +693,8 @@ func main() {
         },
         HeaderAuth: []shared.AuthServiceRequestBodyHeaderAuth{
             shared.AuthServiceRequestBodyHeaderAuth{
-                ExpectedValue: "bypassing furthermore",
-                HeaderName: "bypass brilliant tesla",
+                ExpectedValue: "M2F",
+                HeaderName: "Cambridgeshire",
             },
         },
     }, operationSecurity)

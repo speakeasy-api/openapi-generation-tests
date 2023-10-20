@@ -10,12 +10,10 @@ OPEN_ID_CONNECT_AUTH_NEW_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class OpenIDConnectAuthNewSecurity:
     open_id_connect: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'openIdConnect', 'field_name': 'Authorization' }})
     
-
 
 
 

@@ -7,12 +7,10 @@ from ..shared import emptyobjectparam as shared_emptyobjectparam
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class EmptyObjectGetRequest:
     empty_object: shared_emptyobjectparam.EmptyObjectParam = dataclasses.field(metadata={'path_param': { 'field_name': 'emptyObject', 'style': 'simple', 'explode': False }})
     
-
 
 
 
