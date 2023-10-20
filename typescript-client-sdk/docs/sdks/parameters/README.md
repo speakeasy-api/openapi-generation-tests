@@ -51,13 +51,13 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "test": [
-    "test",
-    "test2",
-  ],
   "test2": [
     "test3",
     "test4",
+  ],
+  "test": [
+    "test",
+    "test2",
   ],
 };
 

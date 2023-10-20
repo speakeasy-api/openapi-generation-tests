@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RequestBodyPutStringWithParamsRequest:
     query_string_param: str = dataclasses.field(metadata={'query_param': { 'field_name': 'queryStringParam', 'style': 'form', 'explode': True }})
@@ -18,7 +17,6 @@ class RequestBodyPutStringWithParamsRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPutStringWithParamsResArgs:
     query_string_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('queryStringParam') }})
@@ -27,14 +25,12 @@ class RequestBodyPutStringWithParamsResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPutStringWithParamsRes:
     r"""OK"""
     args: RequestBodyPutStringWithParamsResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     data: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('data') }})
     
-
 
 
 

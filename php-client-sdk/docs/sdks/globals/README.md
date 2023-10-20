@@ -24,7 +24,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\GlobalPathParameterGetRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -44,7 +48,7 @@ try {
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `globalPathParam`  | *?int*             | :heavy_minus_sign: | N/A                |
+| `globalPathParam`  | *int*              | :heavy_minus_sign: | N/A                |
 
 
 ### Response
@@ -66,7 +70,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\GlobalsQueryParameterGetRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -86,7 +94,7 @@ try {
 
 | Parameter          | Type               | Required           | Description        |
 | ------------------ | ------------------ | ------------------ | ------------------ |
-| `globalQueryParam` | *?string*          | :heavy_minus_sign: | N/A                |
+| `globalQueryParam` | *string*           | :heavy_minus_sign: | N/A                |
 
 
 ### Response

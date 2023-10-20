@@ -6,7 +6,6 @@ import requests as requests_http
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ResponseBodyXMLGetResponse:
     content_type: str = dataclasses.field()

@@ -24,14 +24,18 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBody;
 use \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBodyFile;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new CreateFileRequestBody();
     $request->file = new CreateFileRequestBodyFile();
     $request->file->content = '`\'$Z`(L/RH';
-    $request->file->file = 'Rap National';
+    $request->file->file = 'Persevering';
 
     $response = $sdk->resource->createFile($request);
 
@@ -72,7 +76,11 @@ use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceChocolates;
 use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumNumber;
 use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumStr;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -91,14 +99,14 @@ try {
     $request->enumStr = ExampleResourceEnumStr::Three;
     $request->id = '<ID>';
     $request->mapOfInteger = [
-        'eum' => 125983,
+        'Pula' => 173199,
     ];
     $request->mapOfString = [
-        'dolores' => 'an',
+        'an' => 'South',
     ];
-    $request->name = 'utilize';
-    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-09-27T19:55:47.964Z');
-    $request->vehicle = 'online';
+    $request->name = 'Detroit';
+    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-06-22T17:48:04.355Z');
+    $request->vehicle = 'withdrawal';
 
     $response = $sdk->resource->createResource($request);
 
@@ -136,7 +144,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\DeleteResourceRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -178,7 +190,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\GetResourceRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -220,7 +236,11 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {

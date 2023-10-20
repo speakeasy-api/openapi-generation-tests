@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class BearerAuthSecurity:
     bearer_auth: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'bearer', 'field_name': 'Authorization' }})
@@ -17,14 +16,12 @@ class BearerAuthSecurity:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class BearerAuthToken:
     r"""Successful authentication."""
     authenticated: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('authenticated') }})
     token: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token') }})
     
-
 
 
 

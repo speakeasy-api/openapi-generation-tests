@@ -11,7 +11,6 @@ REQUEST_BODY_WRITE_ONLY_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class RequestBodyWriteOnlyResponse:
     content_type: str = dataclasses.field()

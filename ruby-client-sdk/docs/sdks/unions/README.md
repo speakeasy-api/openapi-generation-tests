@@ -28,6 +28,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -63,6 +68,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -98,16 +108,21 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::NullableOneOfRefInObject.new(
   request=Shared::NullableOneOfRefInObject.new(
     nullable_one_of_one=Shared::TypedObject1.new(
       type=Shared::TypedObject1Type::OBJ1,
-      value="Global Alexandria administration",
+      value="bah",
     ),
-    nullable_one_of_two="Arbor",
-    one_of_one="PCI",
+    nullable_one_of_two="back",
+    one_of_one="administration",
   ),
 )
     
@@ -140,6 +155,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -175,6 +195,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::NullableOneOfTypeInObject.new(
@@ -214,12 +239,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::TypedObject1.new(
   request=Shared::TypedObject1.new(
     type=Shared::TypedObject1Type::OBJ1,
-    value="Bike",
+    value="Bedfordshire",
   ),
 )
     
@@ -252,6 +282,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -287,6 +322,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -322,6 +362,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -357,6 +402,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -392,6 +442,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(

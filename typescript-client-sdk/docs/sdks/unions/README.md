@@ -113,10 +113,10 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
   const res = await sdk.unions.nullableOneOfRefInObjectPost({
     nullableOneOfOne: {
       type: TypedObject1Type.Obj1,
-      value: "Global Alexandria administration",
+      value: "bah",
     },
-    nullableOneOfTwo: "Arbor",
-    oneOfOne: "PCI",
+    nullableOneOfTwo: "back",
+    oneOfOne: "administration",
   });
 
   if (res.statusCode == 200) {
@@ -235,7 +235,7 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
   const res = await sdk.unions.nullableTypedObjectPost({
     type: TypedObject1Type.Obj1,
-    value: "Bike",
+    value: "Bedfordshire",
   });
 
   if (res.statusCode == 200) {

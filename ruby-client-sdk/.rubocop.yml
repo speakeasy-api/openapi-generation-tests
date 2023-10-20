@@ -28,6 +28,8 @@ Lint/EmptyConditionalBody:
   Enabled: false
 Lint/MissingSuper:
   Enabled: false
+Style/CaseLikeIf:
+  Enabled: false
 #To eventually re-enable:
 Layout/EmptyLines:
   Enabled: false

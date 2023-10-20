@@ -14,7 +14,6 @@ class ExampleBoatType(str, Enum):
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ExampleBoat:
     length: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('length') }})

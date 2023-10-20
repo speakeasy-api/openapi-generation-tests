@@ -28,6 +28,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::AuthServiceRequestBody.new(
@@ -38,8 +43,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="Highway",
-        header_name="deliver payment",
+        expected_value="Delaware",
+        header_name="katal",
       ),
     ],
   ),
@@ -75,6 +80,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::AuthServiceRequestBody.new(
@@ -85,8 +95,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="idolized",
-        header_name="female Virginia primary",
+        expected_value="Cambridgeshire",
+        header_name="Account",
       ),
     ],
   ),
@@ -136,8 +146,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="integrate",
-        header_name="bandwidth uselessly",
+        expected_value="Lights",
+        header_name="Southwest",
       ),
     ],
   ),
@@ -187,8 +197,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="thong Scandium worse",
-        header_name="Durham Tesla",
+        expected_value="Tricycle",
+        header_name="what",
       ),
     ],
   ),
@@ -242,8 +252,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="services indigo",
-        header_name="Wooden Jewelery",
+        expected_value="ad",
+        header_name="ha",
       ),
     ],
   ),
@@ -296,8 +306,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="Gourde",
-        header_name="Van Granite East",
+        expected_value="Berkshire",
+        header_name="networks",
       ),
     ],
   ),
@@ -350,8 +360,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="compressing",
-        header_name="sievert Diesel",
+        expected_value="Motorway",
+        header_name="farad",
       ),
     ],
   ),
@@ -401,8 +411,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="payment Usability sievert",
-        header_name="yum Northwest metrics",
+        expected_value="Technician",
+        header_name="strip",
       ),
     ],
   ),
@@ -453,8 +463,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="microchip Southeast",
-        header_name="Future Corners Electronic",
+        expected_value="relationships",
+        header_name="Movies",
       ),
     ],
   ),
@@ -504,8 +514,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="Sunrise",
-        header_name="male",
+        expected_value="Arbor",
+        header_name="Towels",
       ),
     ],
   ),
@@ -555,8 +565,8 @@ req = Shared::AuthServiceRequestBody.new(
     ),
     header_auth=.new[
       Shared::AuthServiceRequestBodyHeaderAuth.new(
-        expected_value="bypassing furthermore",
-        header_name="bypass brilliant tesla",
+        expected_value="M2F",
+        header_name="Cambridgeshire",
       ),
     ],
   ),

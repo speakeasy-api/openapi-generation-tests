@@ -11,13 +11,11 @@ MULTIPLE_OPTIONS_WITH_MIXED_SCHEMES_AUTH_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class MultipleOptionsWithMixedSchemesAuthSecurityOption1:
     api_key_auth_new: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' }})
     oauth2: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'oauth2', 'field_name': 'Authorization' }})
     
-
 
 
 
@@ -29,13 +27,11 @@ class MultipleOptionsWithMixedSchemesAuthSecurityOption2:
 
 
 
-
 @dataclasses.dataclass
 class MultipleOptionsWithMixedSchemesAuthSecurity:
     option1: Optional[MultipleOptionsWithMixedSchemesAuthSecurityOption1] = dataclasses.field(default=None, metadata={'security': { 'option': True }})
     option2: Optional[MultipleOptionsWithMixedSchemesAuthSecurityOption2] = dataclasses.field(default=None, metadata={'security': { 'option': True }})
     
-
 
 
 

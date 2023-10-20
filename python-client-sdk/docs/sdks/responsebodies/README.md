@@ -34,9 +34,12 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = {
-    "ASCII": 984700,
-}
+req = shared.ObjWithComplexNumbersAdditionlProperties(
+    additional_properties={
+        "ASCII": 984700,
+    },
+    normal_field='Wagon',
+)
 
 res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
 
@@ -47,9 +50,9 @@ if res.response_body_additional_properties_complex_numbers_post_200_application_
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, int]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                                          | Type                                                                                                               | Required                                                                                                           | Description                                                                                                        |
+| ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
+| `request`                                                                                                          | [shared.ObjWithComplexNumbersAdditionlProperties](../../models/shared/objwithcomplexnumbersadditionlproperties.md) | :heavy_check_mark:                                                                                                 | The request object to use for the request.                                                                         |
 
 
 ### Response
@@ -63,6 +66,7 @@ if res.response_body_additional_properties_complex_numbers_post_200_application_
 
 ```python
 import sdk
+import dateutil.parser
 from sdk.models import shared
 
 s = sdk.SDK(
@@ -73,9 +77,12 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = {
-    "Bedfordshire": dateutil.parser.parse('2021-04-22').date(),
-}
+req = shared.ObjWithDateAdditionlProperties(
+    additional_properties={
+        "Bedfordshire": dateutil.parser.parse('2021-04-22').date(),
+    },
+    normal_field='moody',
+)
 
 res = s.response_bodies.response_body_additional_properties_date_post(req)
 
@@ -86,9 +93,9 @@ if res.response_body_additional_properties_date_post_200_application_json_object
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, date]](../../models//.md)       | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                      | Type                                                                                           | Required                                                                                       | Description                                                                                    |
+| ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------- |
+| `request`                                                                                      | [shared.ObjWithDateAdditionlProperties](../../models/shared/objwithdateadditionlproperties.md) | :heavy_check_mark:                                                                             | The request object to use for the request.                                                     |
 
 
 ### Response
@@ -112,9 +119,12 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = {
-    "Ergonomic": 'Carolina',
-}
+req = shared.ObjWithStringAdditionlProperties(
+    additional_properties={
+        "Ergonomic": 'Carolina',
+    },
+    normal_field='Mini',
+)
 
 res = s.response_bodies.response_body_additional_properties_post(req)
 
@@ -125,9 +135,9 @@ if res.response_body_additional_properties_post_200_application_json_object is n
 
 ### Parameters
 
-| Parameter                                  | Type                                       | Required                                   | Description                                |
-| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| Parameter                                                                                          | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `request`                                                                                          | [shared.ObjWithStringAdditionlProperties](../../models/shared/objwithstringadditionlproperties.md) | :heavy_check_mark:                                                                                 | The request object to use for the request.                                                         |
 
 
 ### Response

@@ -8,17 +8,14 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj:
     pass
 
 
-
 @dataclasses.dataclass
 class NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj:
     pass
-
 
 
 @dataclasses.dataclass
@@ -27,14 +24,12 @@ class NullableRequiredEmptyObjectPostRequestBodyRequiredObj:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class NullableRequiredEmptyObjectPostRequestBody:
     nullable_required_obj: Optional[NullableRequiredEmptyObjectPostRequestBodyNullableRequiredObj] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableRequiredObj') }})
     required_obj: NullableRequiredEmptyObjectPostRequestBodyRequiredObj = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('RequiredObj') }})
     nullable_optional_obj: Optional[NullableRequiredEmptyObjectPostRequestBodyNullableOptionalObj] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOptionalObj') }})
     
-
 
 
 

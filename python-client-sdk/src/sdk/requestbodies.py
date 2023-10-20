@@ -5,7 +5,7 @@ from datetime import date, datetime
 from decimal import Decimal
 from sdk import utils
 from sdk.models import errors, operations, shared
-from typing import Optional, Union
+from typing import Dict, List, Optional, Union
 
 class RequestBodies:
     r"""Endpoints for testing request bodies."""
@@ -140,7 +140,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array(self, request: list[shared.SimpleObject], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayResponse:
+    def request_body_post_application_json_array(self, request: List[shared.SimpleObject], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_SERVERS[0], {
         })
         if server_url is not None:
@@ -165,7 +165,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.SimpleObject]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[shared.SimpleObject]])
                 res.simple_objects = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -175,7 +175,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_camel_case(self, request: list[shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse:
+    def request_body_post_application_json_array_camel_case(self, request: List[shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_CAMEL_CASE_SERVERS[0], {
         })
         if server_url is not None:
@@ -200,7 +200,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[shared.SimpleObjectCamelCase]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[shared.SimpleObjectCamelCase]])
                 res.simple_object_camel_cases = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -210,7 +210,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_obj(self, request: list[shared.SimpleObject]) -> operations.RequestBodyPostApplicationJSONArrayObjResponse:
+    def request_body_post_application_json_array_obj(self, request: List[shared.SimpleObject]) -> operations.RequestBodyPostApplicationJSONArrayObjResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/application/json/array/objResponse'
@@ -242,7 +242,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_obj_camel_case(self, request: list[shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse:
+    def request_body_post_application_json_array_obj_camel_case(self, request: List[shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONArrayObjCamelCaseResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/application/json/array/objResponseCamelCase'
@@ -274,7 +274,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_of_array(self, request: list[list[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayResponse:
+    def request_body_post_application_json_array_of_array(self, request: List[List[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_SERVERS[0], {
         })
         if server_url is not None:
@@ -299,7 +299,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[list[shared.SimpleObject]]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[List[shared.SimpleObject]]])
                 res.arrs = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -309,7 +309,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_of_array_camel_case(self, request: list[list[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse:
+    def request_body_post_application_json_array_of_array_camel_case(self, request: List[List[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
         })
         if server_url is not None:
@@ -334,7 +334,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[list[shared.SimpleObjectCamelCase]]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[List[shared.SimpleObjectCamelCase]]])
                 res.arrs = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -344,7 +344,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_of_array_of_primitive(self, request: list[list[str]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse:
+    def request_body_post_application_json_array_of_array_of_primitive(self, request: List[List[str]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_ARRAY_OF_PRIMITIVE_SERVERS[0], {
         })
         if server_url is not None:
@@ -369,7 +369,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[list[str]]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[List[str]]])
                 res.arrs = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -379,7 +379,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_of_map(self, request: list[dict[str, shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfMapResponse:
+    def request_body_post_application_json_array_of_map(self, request: List[Dict[str, shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_SERVERS[0], {
         })
         if server_url is not None:
@@ -404,7 +404,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[dict[str, shared.SimpleObject]]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[Dict[str, shared.SimpleObject]]])
                 res.maps = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -414,7 +414,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_of_map_camel_case(self, request: list[dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse:
+    def request_body_post_application_json_array_of_map_camel_case(self, request: List[Dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfMapCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_MAP_CAMEL_CASE_SERVERS[0], {
         })
         if server_url is not None:
@@ -439,7 +439,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[dict[str, shared.SimpleObjectCamelCase]]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[Dict[str, shared.SimpleObjectCamelCase]]])
                 res.maps = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -449,7 +449,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_array_of_primitive(self, request: list[str], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse:
+    def request_body_post_application_json_array_of_primitive(self, request: List[str], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONArrayOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_ARRAY_OF_PRIMITIVE_SERVERS[0], {
         })
         if server_url is not None:
@@ -474,7 +474,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[list[str]])
+                out = utils.unmarshal_json(http_res.text, Optional[List[str]])
                 res.strings = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -548,7 +548,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map(self, request: dict[str, shared.SimpleObject], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapResponse:
+    def request_body_post_application_json_map(self, request: Dict[str, shared.SimpleObject], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_SERVERS[0], {
         })
         if server_url is not None:
@@ -573,7 +573,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.SimpleObject]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, shared.SimpleObject]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -583,7 +583,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_camel_case(self, request: dict[str, shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapCamelCaseResponse:
+    def request_body_post_application_json_map_camel_case(self, request: Dict[str, shared.SimpleObjectCamelCase], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_CAMEL_CASE_SERVERS[0], {
         })
         if server_url is not None:
@@ -608,7 +608,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, shared.SimpleObjectCamelCase]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, shared.SimpleObjectCamelCase]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -618,7 +618,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_obj(self, request: dict[str, shared.SimpleObject]) -> operations.RequestBodyPostApplicationJSONMapObjResponse:
+    def request_body_post_application_json_map_obj(self, request: Dict[str, shared.SimpleObject]) -> operations.RequestBodyPostApplicationJSONMapObjResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/application/json/map/objResponse'
@@ -650,7 +650,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_obj_camel_case(self, request: dict[str, shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse:
+    def request_body_post_application_json_map_obj_camel_case(self, request: Dict[str, shared.SimpleObjectCamelCase]) -> operations.RequestBodyPostApplicationJSONMapObjCamelCaseResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/application/json/map/objResponseCamelCase'
@@ -682,7 +682,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_of_array(self, request: dict[str, list[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayResponse:
+    def request_body_post_application_json_map_of_array(self, request: Dict[str, List[shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_SERVERS[0], {
         })
         if server_url is not None:
@@ -707,7 +707,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, list[shared.SimpleObject]]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, List[shared.SimpleObject]]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -717,7 +717,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_of_array_camel_case(self, request: dict[str, list[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse:
+    def request_body_post_application_json_map_of_array_camel_case(self, request: Dict[str, List[shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfArrayCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_ARRAY_CAMEL_CASE_SERVERS[0], {
         })
         if server_url is not None:
@@ -742,7 +742,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, list[shared.SimpleObjectCamelCase]]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, List[shared.SimpleObjectCamelCase]]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -752,7 +752,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_of_map(self, request: dict[str, dict[str, shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapResponse:
+    def request_body_post_application_json_map_of_map(self, request: Dict[str, Dict[str, shared.SimpleObject]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_SERVERS[0], {
         })
         if server_url is not None:
@@ -777,7 +777,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, dict[str, shared.SimpleObject]]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, Dict[str, shared.SimpleObject]]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -787,7 +787,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_of_map_camel_case(self, request: dict[str, dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse:
+    def request_body_post_application_json_map_of_map_camel_case(self, request: Dict[str, Dict[str, shared.SimpleObjectCamelCase]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapCamelCaseResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_CAMEL_CASE_SERVERS[0], {
         })
         if server_url is not None:
@@ -812,7 +812,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, dict[str, shared.SimpleObjectCamelCase]]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, Dict[str, shared.SimpleObjectCamelCase]]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -822,7 +822,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_of_map_of_primitive(self, request: dict[str, dict[str, str]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse:
+    def request_body_post_application_json_map_of_map_of_primitive(self, request: Dict[str, Dict[str, str]], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfMapOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_MAP_OF_PRIMITIVE_SERVERS[0], {
         })
         if server_url is not None:
@@ -847,7 +847,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, dict[str, str]]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, Dict[str, str]]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -857,7 +857,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_application_json_map_of_primitive(self, request: dict[str, str], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse:
+    def request_body_post_application_json_map_of_primitive(self, request: Dict[str, str], server_url: Optional[str] = None) -> operations.RequestBodyPostApplicationJSONMapOfPrimitiveResponse:
         base_url = utils.template_url(operations.REQUEST_BODY_POST_APPLICATION_JSON_MAP_OF_PRIMITIVE_SERVERS[0], {
         })
         if server_url is not None:
@@ -882,7 +882,7 @@ class RequestBodies:
         
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
-                out = utils.unmarshal_json(http_res.text, Optional[dict[str, str]])
+                out = utils.unmarshal_json(http_res.text, Optional[Dict[str, str]])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
@@ -1117,7 +1117,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_form_map_primitive(self, request: dict[str, str]) -> operations.RequestBodyPostFormMapPrimitiveResponse:
+    def request_body_post_form_map_primitive(self, request: Dict[str, str]) -> operations.RequestBodyPostFormMapPrimitiveResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/form/map/primitive'
@@ -1181,7 +1181,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_json_data_types_array_big_int(self, request: list[int]) -> operations.RequestBodyPostJSONDataTypesArrayBigIntResponse:
+    def request_body_post_json_data_types_array_big_int(self, request: List[int]) -> operations.RequestBodyPostJSONDataTypesArrayBigIntResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/array/bigInt'
@@ -1213,7 +1213,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_json_data_types_array_date(self, request: list[date]) -> operations.RequestBodyPostJSONDataTypesArrayDateResponse:
+    def request_body_post_json_data_types_array_date(self, request: List[date]) -> operations.RequestBodyPostJSONDataTypesArrayDateResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/array/date'
@@ -1245,7 +1245,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_json_data_types_array_decimal_str(self, request: list[Decimal]) -> operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse:
+    def request_body_post_json_data_types_array_decimal_str(self, request: List[Decimal]) -> operations.RequestBodyPostJSONDataTypesArrayDecimalStrResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/array/decimalStr'
@@ -1597,7 +1597,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_json_data_types_map_big_int_str(self, request: dict[str, int]) -> operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse:
+    def request_body_post_json_data_types_map_big_int_str(self, request: Dict[str, int]) -> operations.RequestBodyPostJSONDataTypesMapBigIntStrResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/map/bigIntStr'
@@ -1629,7 +1629,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_json_data_types_map_date_time(self, request: dict[str, datetime]) -> operations.RequestBodyPostJSONDataTypesMapDateTimeResponse:
+    def request_body_post_json_data_types_map_date_time(self, request: Dict[str, datetime]) -> operations.RequestBodyPostJSONDataTypesMapDateTimeResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/map/dateTime'
@@ -1661,7 +1661,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_json_data_types_map_decimal(self, request: dict[str, Decimal]) -> operations.RequestBodyPostJSONDataTypesMapDecimalResponse:
+    def request_body_post_json_data_types_map_decimal(self, request: Dict[str, Decimal]) -> operations.RequestBodyPostJSONDataTypesMapDecimalResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/jsonDataTypes/map/decimal'
@@ -2061,7 +2061,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_null_array(self, request: list[str]) -> operations.RequestBodyPostNullArrayResponse:
+    def request_body_post_null_array(self, request: List[str]) -> operations.RequestBodyPostNullArrayResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/null-array'
@@ -2093,7 +2093,7 @@ class RequestBodies:
         return res
 
     
-    def request_body_post_null_dictionary(self, request: dict[str, str]) -> operations.RequestBodyPostNullDictionaryResponse:
+    def request_body_post_null_dictionary(self, request: Dict[str, str]) -> operations.RequestBodyPostNullDictionaryResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
         url = base_url + '/anything/requestBodies/post/null-dictionary'

@@ -17,7 +17,6 @@ SELECT_SERVER_WITH_ID_SERVERS = {
 }
 
 
-
 @dataclasses.dataclass
 class SelectServerWithIDResponse:
     content_type: str = dataclasses.field()

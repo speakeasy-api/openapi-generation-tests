@@ -7,7 +7,6 @@ from ..shared import validcircularreferenceobject as shared_validcircularreferen
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CircularReferenceGetResponse:
     content_type: str = dataclasses.field()

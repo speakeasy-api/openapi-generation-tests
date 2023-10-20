@@ -618,7 +618,7 @@ const decimal: number = 3346.96;
 const obj: TypedParameterGenerationGetObj = {
   bool: false,
   num: 4778.06,
-  str: "Progressive Riyal male",
+  str: "innocently",
 };
 
   const res = await sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj);
@@ -700,19 +700,19 @@ const operationSecurity: UsageExamplePostSecurity = {
       },
     },
     bigintParameter: 168827,
-    bigintStrParameter: "Gasoline Sleek",
+    bigintStrParameter: "invoice",
     boolParameter: false,
-    dateParameter: new RFCDate("2021-04-23"),
-    dateTimeParameter: new Date("2022-09-13T20:44:04.193Z"),
-    decimalParameter: 1952.32,
-    decimalStrParameter: "Shoes Brockton",
-    doubleParameter: 1062.86,
+    dateParameter: new RFCDate("2022-07-22"),
+    dateTimeParameter: new Date("2021-10-21T09:16:58.799Z"),
+    decimalParameter: 5223.72,
+    decimalStrParameter: "Electronic",
+    doubleParameter: 5669.99,
     enumParameter: UsageExamplePostEnumParameter.Value1,
     falseyNumberParameter: 0,
-    float32Parameter: 2346.82,
-    floatParameter: 5954.85,
-    int64Parameter: 215216,
-    intParameter: 834441,
+    float32Parameter: 5696.63,
+    floatParameter: 2642.95,
+    int64Parameter: 352778,
+    intParameter: 460053,
     optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
     strParameter: "example 2",
   }, operationSecurity);
