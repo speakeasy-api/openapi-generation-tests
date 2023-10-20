@@ -891,6 +891,14 @@ components:
         message:
           type: string
           x-speakeasy-error-message: true
+        type:
+          $ref: "#/components/schemas/errorType"
+    errorType:
+      type: string
+      enum:
+        - "not_found"
+        - "invalid"
+        - "internal"
     complexNumberTypes:
       type: object
       properties:
@@ -1172,7 +1180,7 @@ components:
         - defaultBigIntStr
         - defaultDecimal
         - defaultDecimalStr
-    objWithStringAdditionlProperties:
+    objWithStringAdditionalProperties:
       type: object
       properties:
         normalField:
@@ -1181,7 +1189,7 @@ components:
         type: string
       required:
         - normalField
-    objWithComplexNumbersAdditionlProperties:
+    objWithComplexNumbersAdditionalProperties:
       type: object
       properties:
         normalField:
@@ -1213,7 +1221,7 @@ components:
         decimal:
           type: number
           format: decimal
-    objWithDateAdditionlProperties:
+    objWithDateAdditionalProperties:
       type: object
       properties:
         normalField:
@@ -1223,6 +1231,21 @@ components:
         format: date
       required:
         - normalField
+    objWithObjAdditionalProperties:
+      type: object
+      required:
+        - datetime
+        - AdditionalProperties
+      properties:
+        datetime:
+          type: string
+          format: date-time
+        AdditionalProperties:
+          type: array
+          items:
+            type: integer
+      additionalProperties:
+        $ref: "components.yaml#/components/schemas/simpleObject"
   responses:
     tokenAuthResponse:
       description: Successful authentication.

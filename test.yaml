@@ -1026,6 +1026,65 @@ paths:
                 required:
                   - url
                   - args
+  /anything/queryParams/form/camelObj:
+    get:
+      x-speakeasy-test: true
+      operationId: formQueryParamsCamelObject
+      tags:
+        - parameters
+      parameters:
+        - name: obj_param_exploded
+          in: query
+          explode: true
+          schema:
+            type: object
+            properties:
+              search_term:
+                type: string
+                example: foo
+              item_count:
+                type: string
+                example: "10"
+          required: true
+        - name: obj_param
+          in: query
+          explode: false
+          schema:
+            type: object
+            properties:
+              encoded_term:
+                type: string
+                example: bar
+              encoded_count:
+                type: string
+                example: "11"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  url:
+                    type: string
+                    example: http://localhost:35123/anything/queryParams/form/camelObj?item_count=10&obj_param=encoded_count%2C11%2Cencoded_term%2Cbar&search_term=foo
+                  args:
+                    type: object
+                    properties:
+                      search_term:
+                        type: string
+                        example: "foo"
+                      item_count:
+                        type: string
+                        example: "10"
+                    required:
+                      - search_term
+                      - item_count
+                required:
+                  - url
+                  - args
   /anything/queryParams/form/refParamObject:
     get:
       x-speakeasy-test: true
@@ -4189,7 +4248,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "components.yaml#/components/schemas/objWithStringAdditionlProperties"
+              $ref: "components.yaml#/components/schemas/objWithStringAdditionalProperties"
         required: true
       responses:
         "200":
@@ -4200,7 +4259,7 @@ paths:
                 type: object
                 properties:
                   json:
-                    $ref: "components.yaml#/components/schemas/objWithStringAdditionlProperties"
+                    $ref: "components.yaml#/components/schemas/objWithStringAdditionalProperties"
                 required:
                   - json
   /anything/responseBodies/additionalPropertiesComplexNumbers:
@@ -4212,7 +4271,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "components.yaml#/components/schemas/objWithComplexNumbersAdditionlProperties"
+              $ref: "components.yaml#/components/schemas/objWithComplexNumbersAdditionalProperties"
         required: true
       responses:
         "200":
@@ -4223,7 +4282,7 @@ paths:
                 type: object
                 properties:
                   json:
-                    $ref: "components.yaml#/components/schemas/objWithComplexNumbersAdditionlProperties"
+                    $ref: "components.yaml#/components/schemas/objWithComplexNumbersAdditionalProperties"
                 required:
                   - json
   /anything/responseBodies/zeroValueComplexTypePtrs:
@@ -4258,7 +4317,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "components.yaml#/components/schemas/objWithDateAdditionlProperties"
+              $ref: "components.yaml#/components/schemas/objWithDateAdditionalProperties"
         required: true
       responses:
         "200":
@@ -4269,7 +4328,30 @@ paths:
                 type: object
                 properties:
                   json:
-                    $ref: "components.yaml#/components/schemas/objWithDateAdditionlProperties"
+                    $ref: "components.yaml#/components/schemas/objWithDateAdditionalProperties"
+                required:
+                  - json
+  /anything/responseBodies/additionalPropertiesObject:
+    post:
+      operationId: responseBodyAdditionalPropertiesObjectPost
+      tags:
+        - responseBodies
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "components.yaml#/components/schemas/objWithObjAdditionalProperties"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  json:
+                    $ref: "components.yaml#/components/schemas/objWithObjAdditionalProperties"
                 required:
                   - json
   /anything/{emptyObject}:
@@ -4583,6 +4665,14 @@ paths:
             type: string
             format: date-time
             description: A date time type
+        - name: dateTimeDefaultParameter
+          in: query
+          required: true
+          description: A date time parameter with a default value
+          schema:
+            type: string
+            format: date-time
+            description: A date time type
         - name: enumParameter
           in: query
           required: true
@@ -4646,6 +4736,61 @@ paths:
                         $ref: "components.yaml#/components/schemas/fakerFormattedStrings"
                 required:
                   - json
+  /anything/dateParamWithDefault:
+    get:
+      tags:
+        - generation
+      operationId: dateParamWithDefault
+      parameters:
+        - name: dateInput
+          in: query
+          required: true
+          description: A date parameter with a default value
+          schema:
+            type: string
+            format: date
+            description: A date type
+            default: "2023-10-13"
+      responses:
+        "204":
+          description: OK
+  /anything/dateTimeParamWithDefault:
+    get:
+      tags:
+        - generation
+      operationId: dateTimeParamWithDefault
+      parameters:
+        - name: dateTimeInput
+          in: query
+          required: true
+          description: A date time parameter with a default value
+          schema:
+            type: string
+            format: date-time
+            description: A date time type
+            default: "2023-10-13T12:42:42.999+00:00"
+      responses:
+        "204":
+          description: OK
+  /anything/decimalParamWithDefault:
+    get:
+      tags:
+        - generation
+      operationId: decimalParamWithDefault
+      parameters:
+        - name: decimalInput
+          in: query
+          required: true
+          description: A decimal parameter with a default value
+          schema:
+            type: number
+            format: decimal
+            description: A decimal type
+            default: "903275809834567386763"
+      responses:
+        "204":
+          description: OK
+
   /anything/anchorTypes:
     get:
       operationId: anchorTypesGet
@@ -4961,6 +5106,9 @@ paths:
           description: OK
   /anything/globals/queryParameter:
     get:
+      x-speakeasy-usage-example:
+        tags:
+          - global-parameters
       operationId: globalsQueryParameterGet
       tags:
         - globals
@@ -4990,6 +5138,9 @@ paths:
                   - args
   /anything/globals/pathParameter/{globalPathParam}:
     get:
+      x-speakeasy-usage-example:
+        tags:
+          - global-parameters
       operationId: globalPathParameterGet
       tags:
         - globals
@@ -5296,6 +5447,130 @@ paths:
                       - $ref: "components.yaml#/components/schemas/simpleObject"
                 required:
                   - json
+  /anything/unionDateNull:
+    post:
+      operationId: unionDateNull
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: string
+                  format: date
+                - type: "null"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: string
+                        format: date
+                      - type: "null"
+                required:
+                  - json
+  /anything/unionDateTimeNull:
+    post:
+      operationId: unionDateTimeNull
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: string
+                  format: date-time
+                - type: "null"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: string
+                        format: date-time
+                      - type: "null"
+                required:
+                  - json
+  # /anything/unionDateTimeBigInt:
+  #   post:
+  #     operationId: unionDateTimeBigInt
+  #     tags:
+  #       - unions
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             oneOf:
+  #               - type: string
+  #                 format: date-time
+  #               - type: integer
+  #                 format: bigint
+  #       required: true
+  #     responses:
+  #       "200":
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               title: res
+  #               type: object
+  #               properties:
+  #                 json:
+  #                   oneOf:
+  #                     - type: string
+  #                       format: date-time
+  #                     - type: integer
+  #                       format: bigint
+  #               required:
+  #                 - json
+  # /anything/unionBigIntDecimal:
+  #   post:
+  #     operationId: unionBigIntDecimal
+  #     tags:
+  #       - unions
+  #     requestBody:
+  #       content:
+  #         application/json:
+  #           schema:
+  #             oneOf:
+  #               - type: string
+  #                 format: bigint
+  #               - type: number
+  #                 format: decimal
+  #       required: true
+  #     responses:
+  #       "200":
+  #         description: OK
+  #         content:
+  #           application/json:
+  #             schema:
+  #               title: res
+  #               type: object
+  #               properties:
+  #                 json:
+  #                   oneOf:
+  #                     - type: string
+  #                       format: bigint
+  #                     - type: number
+  #                       format: decimal
+  #               required:
+  #                 - json
   /status/{statusCode}:
     get:
       operationId: statusGetError
@@ -5360,6 +5635,8 @@ paths:
                     type: string
                   message:
                     type: string
+                  type:
+                    $ref: "components.yaml#/components/schemas/errorType"
   /anything/connectionError:
     get:
       operationId: connectionErrorGet
