@@ -120,3 +120,112 @@ def test_response_body_default_accept_header():
     assert res.status_code == 200
     assert "application/json" in res.content_type
     assert type(res.typed_object1) == shared.TypedObject1
+
+
+def test_response_body_additional_properties():
+    record_test('response-bodies-additional-properties')
+
+    s = SDK()
+    assert s is not None
+
+    dic = {'normal_field': "string"}
+    req = shared.ObjWithStringAdditionalProperties.from_dict(dic)
+    assert req.additional_properties == None
+    res = s.response_bodies.response_body_additional_properties_post(req)
+    assert res is not None
+    assert res.status_code == 200
+    assert res.response_body_additional_properties_post_200_application_json_object.json == req
+
+    dic = {
+        'normal_field': "string",
+        'additional_properties': {
+            'extra1': "value1",
+            'extra2': 2,
+            'extra3': None
+        }
+    }
+    req = shared.ObjWithStringAdditionalProperties.from_dict(dic)
+    assert req.additional_properties == {'extra1': "value1", 'extra2': 2, 'extra3': None}
+    res = s.response_bodies.response_body_additional_properties_post(req)
+    assert res is not None
+    assert res.status_code == 200
+    assert res.response_body_additional_properties_post_200_application_json_object.json == req
+
+
+def test_response_body_additional_properties_date():
+    record_test('response-bodies-additional-properties-date')
+
+    s = SDK()
+    assert s is not None
+
+    dic = {
+        'normal_field': "string",
+        'additional_properties': {}
+    }
+    req = shared.ObjWithDateAdditionalProperties.from_dict(dic)
+    assert req.additional_properties == {}
+    res = s.response_bodies.response_body_additional_properties_date_post(req)
+    assert res.response_body_additional_properties_date_post_200_application_json_object.json == req
+
+    today = date.today()
+    dic = {
+        'normal_field': "string",
+        'additional_properties': {
+            'today': today.isoformat()
+        }
+    }
+    req = shared.ObjWithDateAdditionalProperties.from_dict(dic)
+    assert req.additional_properties ==  {'today': today}
+    assert type(req.additional_properties['today']) == date
+    res = s.response_bodies.response_body_additional_properties_date_post(req)
+    assert res is not None
+    assert res.status_code == 200
+    assert res.response_body_additional_properties_date_post_200_application_json_object.json == req
+
+
+def test_response_body_additional_properties_complex_numbers():
+    record_test('response-bodies-additional-properties-complex-numbers')
+
+    s = SDK()
+    assert s is not None
+
+    dic = {
+        'normal_field': "string",
+        'additional_properties': {
+            'bigint': "123456789012345678901234567890"
+        }
+    }
+    req = shared.ObjWithComplexNumbersAdditionalProperties.from_dict(dic)
+    assert req.additional_properties['bigint'] == 123456789012345678901234567890
+    assert type(req.additional_properties['bigint']) == int
+    res = s.response_bodies.response_body_additional_properties_complex_numbers_post(req)
+    assert res is not None
+    assert res.status_code == 200
+    assert res.response_body_additional_properties_complex_numbers_post_200_application_json_object.json == req
+
+
+def test_response_body_additional_properties_object():
+    record_test('response-bodies-additional-properties-object')
+
+    s = SDK()
+    assert s is not None
+
+    obj = create_simple_object()
+    req = shared.ObjWithObjAdditionalProperties(
+        datetime_=datetime.now(),
+        additional_properties=[1, 2, 3],
+        additional_properties_t={
+            'obj1': obj
+            }
+    )
+
+    res = s.response_bodies.response_body_additional_properties_object_post(req)
+    assert res is not None
+    assert res.status_code == 200
+    json = res.response_body_additional_properties_object_post_200_application_json_object.json
+    assert json == req
+    assert type(json.datetime_) == datetime
+    obj1 = json.additional_properties_t['obj1']
+    assert type(obj1) == shared.SimpleObject
+    compare_simple_object(obj1, obj)
+

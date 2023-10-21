@@ -432,6 +432,88 @@ class Unions
     }
 	
     /**
+     * unionDateNull
+     * 
+     * @param \DateTime $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\UnionDateNullResponse
+     */
+	public function unionDateNull(
+        \DateTime $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\UnionDateNullResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/unionDateNull');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\UnionDateNullResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\UnionDateNullRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * unionDateTimeNull
+     * 
+     * @param \DateTime $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\UnionDateTimeNullResponse
+     */
+	public function unionDateTimeNull(
+        \DateTime $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\UnionDateTimeNullResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/unionDateTimeNull');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\UnionDateTimeNullResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\UnionDateTimeNullRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * weaklyTypedOneOfPost
      * 
      * @param mixed $request

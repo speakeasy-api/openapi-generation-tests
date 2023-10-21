@@ -17,6 +17,8 @@ Endpoints for testing union types.
 * [strongly_typed_one_of_post](#strongly_typed_one_of_post)
 * [typed_object_nullable_one_of_post](#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](#typed_object_one_of_post)
+* [union_date_null](#union_date_null)
+* [union_date_time_null](#union_date_time_null)
 * [weakly_typed_one_of_post](#weakly_typed_one_of_post)
 
 ## flattened_typed_object_post
@@ -28,10 +30,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Legacy",
+  request="string",
 )
     
 res = s.unions.flattened_typed_object_post(req)
@@ -63,10 +70,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="SAS",
+  request="string",
 )
     
 res = s.unions.mixed_type_one_of_post(req)
@@ -98,16 +110,21 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::NullableOneOfRefInObject.new(
   request=Shared::NullableOneOfRefInObject.new(
     nullable_one_of_one=Shared::TypedObject1.new(
       type=Shared::TypedObject1Type::OBJ1,
-      value="Global Alexandria administration",
+      value="string",
     ),
-    nullable_one_of_two="Arbor",
-    one_of_one="PCI",
+    nullable_one_of_two="string",
+    one_of_one="string",
   ),
 )
     
@@ -140,10 +157,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="deliquesce",
+  request="string",
 )
     
 res = s.unions.nullable_one_of_schema_post(req)
@@ -175,12 +197,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::NullableOneOfTypeInObject.new(
   request=Shared::NullableOneOfTypeInObject.new(
     nullable_one_of_one=false,
-    nullable_one_of_two="Smart",
+    nullable_one_of_two="string",
     one_of_one=false,
   ),
 )
@@ -214,12 +241,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::TypedObject1.new(
   request=Shared::TypedObject1.new(
     type=Shared::TypedObject1Type::OBJ1,
-    value="Bike",
+    value="string",
   ),
 )
     
@@ -252,10 +284,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Grocery",
+  request="string",
 )
     
 res = s.unions.primitive_type_one_of_post(req)
@@ -287,10 +324,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="spicy",
+  request="string",
 )
     
 res = s.unions.strongly_typed_one_of_post(req)
@@ -322,10 +364,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Agender",
+  request="string",
 )
     
 res = s.unions.typed_object_nullable_one_of_post(req)
@@ -357,10 +404,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="shrivel",
+  request="string",
 )
     
 res = s.unions.typed_object_one_of_post(req)
@@ -383,6 +435,86 @@ end
 **[T.nilable(Operations::TypedObjectOneOfPostResponse)](../../models/operations/typedobjectoneofpostresponse.md)**
 
 
+## union_date_null
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = ::.new(
+  request=Date.parse("2022-11-25"),
+)
+    
+res = s.unions.union_date_null(req)
+
+if ! res.res.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Date](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::UnionDateNullResponse)](../../models/operations/uniondatenullresponse.md)**
+
+
+## union_date_time_null
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = ::.new(
+  request=DateTime.iso8601('2022-04-12T19:39:53.907Z'),
+)
+    
+res = s.unions.union_date_time_null(req)
+
+if ! res.res.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [DateTime](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::UnionDateTimeNullResponse)](../../models/operations/uniondatetimenullresponse.md)**
+
+
 ## weakly_typed_one_of_post
 
 ### Example Usage
@@ -392,10 +524,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Unbranded",
+  request="string",
 )
     
 res = s.unions.weakly_typed_one_of_post(req)

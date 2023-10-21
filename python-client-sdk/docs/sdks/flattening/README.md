@@ -51,7 +51,7 @@ res = s.flattening.component_body_and_param_conflict(simple_object=shared.Simple
     num=1.1,
     str_='test',
     str_opt='testOptional',
-), str_='Minivan')
+), str_='string')
 
 if res.res is not None:
     # handle response
@@ -90,7 +90,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.component_body_and_param_no_conflict(param_str='ick', simple_object=shared.SimpleObject(
+res = s.flattening.component_body_and_param_no_conflict(param_str='string', simple_object=shared.SimpleObject(
     any='any',
     bigint=8821239038968084,
     bigint_str=9223372036854775808,
@@ -146,7 +146,7 @@ s = sdk.SDK(
 )
 
 
-res = s.flattening.conflicting_params(str_path_parameter='kilogram', str_query_parameter='Cloned')
+res = s.flattening.conflicting_params(str_path_parameter='string', str_query_parameter='string')
 
 if res.res is not None:
     # handle response
@@ -184,8 +184,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_conflict(request_body=operations.InlineBodyAndParamConflictRequestBody(
-    str_='Progressive',
-), str_='until')
+    str_='string',
+), str_='string')
 
 if res.res is not None:
     # handle response
@@ -223,8 +223,8 @@ s = sdk.SDK(
 
 
 res = s.flattening.inline_body_and_param_no_conflict(request_body=operations.InlineBodyAndParamNoConflictRequestBody(
-    body_str='dynamic expedite',
-), param_str='Forward')
+    body_str='string',
+), param_str='string')
 
 if res.res is not None:
     # handle response

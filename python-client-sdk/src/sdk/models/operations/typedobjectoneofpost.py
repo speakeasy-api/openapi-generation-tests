@@ -12,13 +12,11 @@ from typing import Optional, Union
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class TypedObjectOneOfPostRes:
     r"""OK"""
     json: Union[shared_typedobject1.TypedObject1, shared_typedobject2.TypedObject2, shared_typedobject3.TypedObject3] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

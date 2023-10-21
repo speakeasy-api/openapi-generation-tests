@@ -13,6 +13,7 @@ type StatusGetXSpeakeasyErrors501ApplicationJSON struct {
 	RawResponse *http.Response `json:"-"`
 	Code        *string        `json:"code,omitempty"`
 	Message     *string        `json:"message,omitempty"`
+	Type        *ErrorType     `json:"type,omitempty"`
 }
 
 var _ error = &StatusGetXSpeakeasyErrors501ApplicationJSON{}

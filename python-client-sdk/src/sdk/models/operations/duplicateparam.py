@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class DuplicateParamRequest:
     duplicate_param_request: str = dataclasses.field(metadata={'path_param': { 'field_name': 'duplicateParamRequest', 'style': 'simple', 'explode': False }})
@@ -17,13 +16,11 @@ class DuplicateParamRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DuplicateParamDuplicateParamResponse:
     r"""OK"""
     url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url'), 'exclude': lambda f: f is None }})
     
-
 
 
 

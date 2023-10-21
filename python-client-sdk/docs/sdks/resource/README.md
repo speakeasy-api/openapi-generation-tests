@@ -28,7 +28,7 @@ s = sdk.SDK(
 req = operations.CreateFileRequestBody(
     file=operations.CreateFileRequestBodyFile(
         content='`\'$Z`(L/RH'.encode(),
-        file='Rap National',
+        file='string',
     ),
 )
 
@@ -73,25 +73,27 @@ req = shared.ExampleResource(
         1867.47,
     ],
     array_of_string=[
-        'Sodium',
+        'string',
     ],
     chocolates=[
         shared.ExampleResourceChocolates(
-            description='Cross-group didactic system engine',
+            description='Re-engineered asynchronous array',
         ),
     ],
     id='<ID>',
     map_of_integer={
-        "Pula": 173199,
+        "key": 271791,
     },
     map_of_string={
-        "an": 'South',
+        "key": 'string',
     },
-    name='Cotton',
-    shared.ExampleBoat(
-        length=3287.82,
-        name='San South Quality',
-        type=shared.ExampleBoatType.BOAT,
+    name='string',
+    shared.ExampleCar(
+        make='string',
+        model='PT Cruiser',
+        name='string',
+        type=shared.ExampleCarType.CAR,
+        year=1259.83,
     ),
 )
 
@@ -131,7 +133,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.delete_resource(resource_id='Reggae')
+res = s.resource.delete_resource(resource_id='string')
 
 if res.status_code == 200:
     # handle response
@@ -167,7 +169,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.get_resource(resource_id='Home')
+res = s.resource.get_resource(resource_id='string')
 
 if res.example_resource is not None:
     # handle response
@@ -203,7 +205,7 @@ s = sdk.SDK(
 )
 
 
-res = s.resource.update_resource(resource_id='International')
+res = s.resource.update_resource(resource_id='string')
 
 if res.status_code == 200:
     # handle response

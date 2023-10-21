@@ -9,13 +9,11 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostJSONDataTypesBoolean200ApplicationJSON:
     r"""OK"""
     json: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

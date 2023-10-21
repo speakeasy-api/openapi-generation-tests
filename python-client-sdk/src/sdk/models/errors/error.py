@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 import dataclasses
+from ..errors import errortype as errors_errortype
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
 from typing import Optional
@@ -13,6 +14,7 @@ from typing import Optional
 class Error(Exception):
     code: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('code'), 'exclude': lambda f: f is None }})
     message: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('message'), 'exclude': lambda f: f is None }})
+    type: Optional[errors_errortype.ErrorType] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('type'), 'exclude': lambda f: f is None }})
     
 
     def __str__(self) -> str:

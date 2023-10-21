@@ -95,22 +95,23 @@ func main() {
 				StrOpt:     openapi.String("testOptional"),
 			},
 		},
-		BigintParameter:       big.NewInt(168827),
-		BigintStrParameter:    big.NewInt(446729),
-		BoolParameter:         false,
-		DateParameter:         types.MustDateFromString("2023-06-11"),
-		DateTimeParameter:     types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
-		DecimalParameter:      types.MustNewDecimalFromString("2679.33"),
-		DecimalStrParameter:   types.MustNewDecimalFromString("5223.72"),
-		DoubleParameter:       2911.37,
-		EnumParameter:         operations.UsageExamplePostEnumParameterValue3,
-		FalseyNumberParameter: 0,
-		Float32Parameter:      2286.22,
-		FloatParameter:        1029.75,
-		Int64Parameter:        566999,
-		IntParameter:          195232,
-		OptEnumParameter:      operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-		StrParameter:          "example 2",
+		BigintParameter:          big.NewInt(168827),
+		BigintStrParameter:       big.NewInt(446729),
+		BoolParameter:            false,
+		DateParameter:            types.MustDateFromString("2023-06-11"),
+		DateTimeDefaultParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
+		DateTimeParameter:        types.MustTimeFromString("2021-10-21T09:16:58.799Z"),
+		DecimalParameter:         types.MustNewDecimalFromString("5223.72"),
+		DecimalStrParameter:      types.MustNewDecimalFromString("2911.37"),
+		DoubleParameter:          6946.59,
+		EnumParameter:            operations.UsageExamplePostEnumParameterValue1,
+		FalseyNumberParameter:    0,
+		Float32Parameter:         1029.75,
+		FloatParameter:           5669.99,
+		Int64Parameter:           195232,
+		IntParameter:             569663,
+		OptEnumParameter:         operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
+		StrParameter:             "example 1",
 	}, operationSecurity)
 	if err != nil {
 		log.Fatal(err)
@@ -184,6 +185,9 @@ func main() {
 * [AnchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [ArrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
 * [CircularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
+* [DateParamWithDefault](docs/sdks/generation/README.md#dateparamwithdefault)
+* [DateTimeParamWithDefault](docs/sdks/generation/README.md#datetimeparamwithdefault)
+* [DecimalParamWithDefault](docs/sdks/generation/README.md#decimalparamwithdefault)
 * [DeprecatedFieldInSchemaPost](docs/sdks/generation/README.md#deprecatedfieldinschemapost)
 * [DeprecatedObjectInSchemaGet](docs/sdks/generation/README.md#deprecatedobjectinschemaget)
 * [~~DeprecatedOperationNoCommentsGet~~](docs/sdks/generation/README.md#deprecatedoperationnocommentsget) - :warning: **Deprecated**
@@ -236,6 +240,7 @@ func main() {
 * [DeepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
 * [DuplicateParam](docs/sdks/parameters/README.md#duplicateparam)
 * [FormQueryParamsArray](docs/sdks/parameters/README.md#formqueryparamsarray)
+* [FormQueryParamsCamelObject](docs/sdks/parameters/README.md#formqueryparamscamelobject)
 * [FormQueryParamsMap](docs/sdks/parameters/README.md#formqueryparamsmap)
 * [FormQueryParamsObject](docs/sdks/parameters/README.md#formqueryparamsobject)
 * [FormQueryParamsPrimitive](docs/sdks/parameters/README.md#formqueryparamsprimitive)
@@ -351,6 +356,7 @@ func main() {
 
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
+* [ResponseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
 * [ResponseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
 * [ResponseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
 * [ResponseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
@@ -394,6 +400,8 @@ func main() {
 * [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
 * [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [UnionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [UnionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->
 
@@ -510,7 +518,7 @@ The following global parameters are available. The required parameters must be s
 
 
 
-## Example
+## Example #1
 
 ```go
 package main
@@ -535,6 +543,43 @@ func main() {
 
 	ctx := context.Background()
 	res, err := s.Globals.GlobalPathParameterGet(ctx, globalPathParam)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	if res.Res != nil {
+		// handle response
+	}
+}
+
+```
+
+
+## Example #2
+
+```go
+package main
+
+import (
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+	s := openapi.New(
+		openapi.WithSecurity(shared.Security{
+			APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+		}),
+		openapi.WithGlobalPathParam(100),
+		openapi.WithGlobalQueryParam("some example global query param"),
+	)
+
+	var globalQueryParam *string = "string"
+
+	ctx := context.Background()
+	res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)
 	if err != nil {
 		log.Fatal(err)
 	}

@@ -85,6 +85,9 @@ src/sdk/models/operations/inlinebodyandparamnoconflict.py
 src/sdk/models/operations/anchortypesget.py
 src/sdk/models/operations/arraycircularreferenceget.py
 src/sdk/models/operations/circularreferenceget.py
+src/sdk/models/operations/dateparamwithdefault.py
+src/sdk/models/operations/datetimeparamwithdefault.py
+src/sdk/models/operations/decimalparamwithdefault.py
 src/sdk/models/operations/deprecatedfieldinschemapost.py
 src/sdk/models/operations/deprecatedobjectinschemaget.py
 src/sdk/models/operations/deprecatedoperationnocommentsget.py
@@ -115,6 +118,7 @@ src/sdk/models/operations/deepobjectqueryparamsmap.py
 src/sdk/models/operations/deepobjectqueryparamsobject.py
 src/sdk/models/operations/duplicateparam.py
 src/sdk/models/operations/formqueryparamsarray.py
+src/sdk/models/operations/formqueryparamscamelobject.py
 src/sdk/models/operations/formqueryparamsmap.py
 src/sdk/models/operations/formqueryparamsobject.py
 src/sdk/models/operations/formqueryparamsprimitive.py
@@ -221,6 +225,7 @@ src/sdk/models/operations/getresource.py
 src/sdk/models/operations/updateresource.py
 src/sdk/models/operations/responsebodyadditionalpropertiescomplexnumberspost.py
 src/sdk/models/operations/responsebodyadditionalpropertiesdatepost.py
+src/sdk/models/operations/responsebodyadditionalpropertiesobjectpost.py
 src/sdk/models/operations/responsebodyadditionalpropertiespost.py
 src/sdk/models/operations/responsebodybytesget.py
 src/sdk/models/operations/responsebodyemptywithheaders.py
@@ -249,6 +254,8 @@ src/sdk/models/operations/primitivetypeoneofpost.py
 src/sdk/models/operations/stronglytypedoneofpost.py
 src/sdk/models/operations/typedobjectnullableoneofpost.py
 src/sdk/models/operations/typedobjectoneofpost.py
+src/sdk/models/operations/uniondatenull.py
+src/sdk/models/operations/uniondatetimenull.py
 src/sdk/models/operations/weaklytypedoneofpost.py
 src/sdk/models/operations/put_anything_ignoredgeneration.py
 src/sdk/models/operations/responsebodyjsonget.py
@@ -288,6 +295,10 @@ src/sdk/models/shared/fileresource.py
 src/sdk/models/shared/exampleresource.py
 src/sdk/models/shared/exampleboat.py
 src/sdk/models/shared/examplecar.py
+src/sdk/models/shared/objwithcomplexnumbersadditionalproperties.py
+src/sdk/models/shared/objwithdateadditionalproperties.py
+src/sdk/models/shared/objwithobjadditionalproperties.py
+src/sdk/models/shared/objwithstringadditionalproperties.py
 src/sdk/models/shared/typedobject1.py
 src/sdk/models/shared/objwithzerovaluecomplextypeptrs.py
 src/sdk/models/shared/nullableoneofrefinobject.py
@@ -301,6 +312,7 @@ src/sdk/models/shared/oneofgenerationstresstest.py
 src/sdk/models/shared/unsupportedenums.py
 src/sdk/models/shared/__init__.py
 src/sdk/models/errors/error.py
+src/sdk/models/errors/errortype.py
 src/sdk/models/errors/statusgetxspeakeasyerrors.py
 src/sdk/models/errors/__init__.py
 src/sdk/models/callbacks/ignoredgenerationget.py
@@ -385,6 +397,12 @@ docs/models/operations/typefromanchor.md
 docs/models/operations/anchortypesgetresponse.md
 docs/models/operations/arraycircularreferencegetresponse.md
 docs/models/operations/circularreferencegetresponse.md
+docs/models/operations/dateparamwithdefaultrequest.md
+docs/models/operations/dateparamwithdefaultresponse.md
+docs/models/operations/datetimeparamwithdefaultrequest.md
+docs/models/operations/datetimeparamwithdefaultresponse.md
+docs/models/operations/decimalparamwithdefaultrequest.md
+docs/models/operations/decimalparamwithdefaultresponse.md
 docs/models/operations/deprecatedfieldinschemapostresponse.md
 docs/models/operations/deprecatedobjectinschemaget200applicationjson.md
 docs/models/operations/deprecatedobjectinschemagetresponse.md
@@ -463,6 +481,12 @@ docs/models/operations/formqueryparamsarrayrequest.md
 docs/models/operations/formqueryparamsarrayresargs.md
 docs/models/operations/formqueryparamsarrayres.md
 docs/models/operations/formqueryparamsarrayresponse.md
+docs/models/operations/formqueryparamscamelobjectobjparam.md
+docs/models/operations/formqueryparamscamelobjectobjparamexploded.md
+docs/models/operations/formqueryparamscamelobjectrequest.md
+docs/models/operations/formqueryparamscamelobjectresargs.md
+docs/models/operations/formqueryparamscamelobjectres.md
+docs/models/operations/formqueryparamscamelobjectresponse.md
 docs/models/operations/formqueryparamsmaprequest.md
 docs/models/operations/formqueryparamsmapres.md
 docs/models/operations/formqueryparamsmapresponse.md
@@ -711,6 +735,8 @@ docs/models/operations/responsebodyadditionalpropertiescomplexnumberspost200appl
 docs/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md
 docs/models/operations/responsebodyadditionalpropertiesdatepost200applicationjson.md
 docs/models/operations/responsebodyadditionalpropertiesdatepostresponse.md
+docs/models/operations/responsebodyadditionalpropertiesobjectpost200applicationjson.md
+docs/models/operations/responsebodyadditionalpropertiesobjectpostresponse.md
 docs/models/operations/responsebodyadditionalpropertiespost200applicationjson.md
 docs/models/operations/responsebodyadditionalpropertiespostresponse.md
 docs/models/operations/responsebodybytesgetresponse.md
@@ -763,6 +789,10 @@ docs/models/operations/typedobjectnullableoneofpostres.md
 docs/models/operations/typedobjectnullableoneofpostresponse.md
 docs/models/operations/typedobjectoneofpostres.md
 docs/models/operations/typedobjectoneofpostresponse.md
+docs/models/operations/uniondatenullres.md
+docs/models/operations/uniondatenullresponse.md
+docs/models/operations/uniondatetimenullres.md
+docs/models/operations/uniondatetimenullresponse.md
 docs/models/operations/weaklytypedoneofpostres.md
 docs/models/operations/weaklytypedoneofpostresponse.md
 docs/models/operations/putanythingignoredgeneration200applicationjson.md
@@ -839,6 +869,10 @@ docs/models/shared/exampleboattype.md
 docs/models/shared/exampleboat.md
 docs/models/shared/examplecartype.md
 docs/models/shared/examplecar.md
+docs/models/shared/objwithcomplexnumbersadditionalproperties.md
+docs/models/shared/objwithdateadditionalproperties.md
+docs/models/shared/objwithobjadditionalproperties.md
+docs/models/shared/objwithstringadditionalproperties.md
 docs/models/shared/typedobject1type.md
 docs/models/shared/typedobject1.md
 docs/models/shared/objwithzerovaluecomplextypeptrs.md
@@ -869,6 +903,7 @@ docs/models/shared/oneofgenerationstresstest.md
 docs/models/shared/primitivetypeunion.md
 docs/models/shared/unsupportedenums.md
 docs/models/errors/error.md
+docs/models/errors/errortype.md
 docs/models/errors/statusgetxspeakeasyerrors501applicationjson.md
 docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationresponse.md
 docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationrequestbody.md

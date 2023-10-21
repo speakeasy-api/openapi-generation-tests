@@ -103,8 +103,8 @@ import { BasicAuthRequest, BasicAuthSecurity } from "openapi/dist/sdk/models/ope
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const passwd: string = "minus";
-const user: string = "Architect";
+const passwd: string = "string";
+const user: string = "string";
 const operationSecurity: BasicAuthSecurity = {
   password: "YOUR_PASSWORD",
   username: "YOUR_USERNAME",

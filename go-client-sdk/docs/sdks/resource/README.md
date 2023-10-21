@@ -37,7 +37,7 @@ func main() {
     res, err := s.Resource.CreateFile(ctx, operations.CreateFileRequestBody{
         File: &operations.CreateFileRequestBodyFile{
             Content: []byte("`'$Z`(L/RH"),
-            File: "Rap National",
+            File: "string",
         },
     })
     if err != nil {
@@ -92,26 +92,28 @@ func main() {
             1867.47,
         },
         ArrayOfString: []string{
-            "Sodium",
+            "string",
         },
         Chocolates: []shared.ExampleResourceChocolates{
             shared.ExampleResourceChocolates{
-                Description: "Cross-group didactic system engine",
+                Description: "Re-engineered asynchronous array",
             },
         },
         ID: "<ID>",
         MapOfInteger: map[string]int64{
-            "Pula": 173199,
+            "key": 271791,
         },
         MapOfString: map[string]string{
-            "an": "South",
+            "key": "string",
         },
-        Name: "Cotton",
-        Vehicle: shared.CreateExampleVehicleExampleBoat(
-                shared.ExampleBoat{
-                    Length: 3287.82,
-                    Name: "San South Quality",
-                    Type: shared.ExampleBoatTypeBoat,
+        Name: "string",
+        Vehicle: shared.CreateExampleVehicleExampleCar(
+                shared.ExampleCar{
+                    Make: "string",
+                    Model: "PT Cruiser",
+                    Name: "string",
+                    Type: shared.ExampleCarTypeCar,
+                    Year: 1259.83,
                 },
         ),
     })
@@ -162,7 +164,7 @@ func main() {
     )
 
 
-    var resourceID string = "Reggae"
+    var resourceID string = "string"
 
     ctx := context.Background()
     res, err := s.Resource.DeleteResource(ctx, resourceID)
@@ -213,7 +215,7 @@ func main() {
     )
 
 
-    var resourceID string = "Home"
+    var resourceID string = "string"
 
     ctx := context.Background()
     res, err := s.Resource.GetResource(ctx, resourceID)
@@ -264,7 +266,7 @@ func main() {
     )
 
 
-    var resourceID string = "International"
+    var resourceID string = "string"
 
     ctx := context.Background()
     res, err := s.Resource.UpdateResource(ctx, resourceID)

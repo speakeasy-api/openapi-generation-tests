@@ -23,6 +23,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::PaginationCursorBodyRequestBody.new(
@@ -61,6 +66,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::PaginationCursorParamsRequest.new(
@@ -99,6 +109,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::LimitOffsetConfig.new(
@@ -139,6 +154,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::PaginationLimitOffsetOffsetParamsRequest.new(
@@ -160,8 +180,8 @@ end
 
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
-| `limit`                        | *T.nilable(Integer)*           | :heavy_minus_sign:             | N/A                            |
-| `offset`                       | *T.nilable(Integer)*           | :heavy_minus_sign:             | N/A                            |
+| `limit`                        | *Integer*                      | :heavy_minus_sign:             | N/A                            |
+| `offset`                       | *Integer*                      | :heavy_minus_sign:             | N/A                            |
 | `server_url`                   | *String*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 
@@ -179,6 +199,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::LimitOffsetConfig.new(
@@ -219,6 +244,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::PaginationLimitOffsetPageParamsRequest.new(

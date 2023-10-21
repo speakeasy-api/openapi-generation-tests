@@ -34,7 +34,7 @@ public class Application {
                 .build();
 
             CreateFileRequestBody req = new CreateFileRequestBody(){{
-                file = new CreateFileRequestBodyFile("`'$Z`(L/RH".getBytes(), "Persevering");
+                file = new CreateFileRequestBodyFile("`'$Z`(L/RH".getBytes(), "string");
             }};            
 
             CreateFileResponse res = sdk.resource.createFile(req);
@@ -89,26 +89,26 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.ExampleResource req = new ExampleResource(new org.openapis.openapi.models.shared.ExampleResourceChocolates[]{{
-    add(new ExampleResourceChocolates("Northwest"){{
+    add(new ExampleResourceChocolates("string"){{
         description = "Digitized optimal archive";
     }}),
-}}, "woot", "Florida", "an"){{
+}}, "string", "string", "string"){{
                 arrayOfNumber = new Double[]{{
-                    add(951.5d),
+                    add(1124.19d),
                 }};
                 arrayOfString = new String[]{{
-                    add("utilize"),
+                    add("string"),
                 }};
-                createdAt = OffsetDateTime.parse("2021-09-27T19:55:47.964Z");
-                enumNumber = ExampleResourceEnumNumber.TWO;
+                createdAt = OffsetDateTime.parse("2021-10-25T14:40:21.269Z");
+                enumNumber = ExampleResourceEnumNumber.THREE;
                 enumStr = ExampleResourceEnumStr.TWO;
                 mapOfInteger = new java.util.HashMap<String, Long>(){{
-                    put("experiences", 29672L);
+                    put("key", 125983L);
                 }};
                 mapOfString = new java.util.HashMap<String, String>(){{
-                    put("purple", "South");
+                    put("key", "string");
                 }};
-                updatedAt = OffsetDateTime.parse("2022-12-02T03:05:49.626Z");
+                updatedAt = OffsetDateTime.parse("2021-07-09T15:40:32.497Z");
             }};            
 
             CreateResourceResponse res = sdk.resource.createResource(req);
@@ -158,7 +158,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DeleteResourceResponse res = sdk.resource.deleteResource("Reggae");
+            DeleteResourceResponse res = sdk.resource.deleteResource("string");
 
             if (res.statusCode == 200) {
                 // handle response
@@ -205,7 +205,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetResourceResponse res = sdk.resource.getResource("Home");
+            GetResourceResponse res = sdk.resource.getResource("string");
 
             if (res.exampleResource != null) {
                 // handle response
@@ -252,7 +252,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UpdateResourceResponse res = sdk.resource.updateResource("International");
+            UpdateResourceResponse res = sdk.resource.updateResource("string");
 
             if (res.statusCode == 200) {
                 // handle response

@@ -28,5 +28,14 @@ public class Error {
         return this;
     }
     
+    @JsonInclude(Include.NON_ABSENT)
+    @JsonProperty("type")
+    public ErrorType type;
+
+    public Error withType(ErrorType type) {
+        this.type = type;
+        return this;
+    }
+    
     public Error(){}
 }

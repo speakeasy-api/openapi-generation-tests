@@ -95,6 +95,45 @@ module OpenApiSDK
       res
     end
 
+    sig { params(request: T::Hash[Symbol, Shared::SimpleObject]).returns(Utils::FieldAugmented) }
+    def response_body_additional_properties_object_post(request)
+
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/responseBodies/additionalPropertiesObject"
+      headers = {}
+      req_content_type, data, form = Utils.serialize_request_body(request, :request, :json)
+      headers['content-type'] = req_content_type
+      raise StandardError, 'request body is required' if data.nil? && form.nil?
+      headers['Accept'] = 'application/json'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.post(url) do |req|
+        req.headers = headers
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+        if form
+          req.body = Utils.encode_form(form)
+        elsif Utils.match_content_type(req_content_type, 'application/x-www-form-urlencoded')
+          req.body = URI.encode_www_form(data)
+        else
+          req.body = data
+        end
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::ResponseBodyAdditionalPropertiesObjectPostResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 200
+        if Utils.match_content_type(content_type, 'application/json')
+          out = Utils.unmarshal_complex(r.env.response_body, Operations::ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON)
+          res.response_body_additional_properties_object_post_200_application_json_object = out
+        end
+      end
+      res
+    end
+
     sig { params(request: T::Hash[Symbol, String]).returns(Utils::FieldAugmented) }
     def response_body_additional_properties_post(request)
 

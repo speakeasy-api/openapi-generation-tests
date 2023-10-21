@@ -11,6 +11,7 @@ Endpoints for testing parameters.
 * [deepObjectQueryParamsObject](#deepobjectqueryparamsobject)
 * [duplicateParam](#duplicateparam)
 * [formQueryParamsArray](#formqueryparamsarray)
+* [formQueryParamsCamelObject](#formqueryparamscamelobject)
 * [formQueryParamsMap](#formqueryparamsmap)
 * [formQueryParamsObject](#formqueryparamsobject)
 * [formQueryParamsPrimitive](#formqueryparamsprimitive)
@@ -51,13 +52,13 @@ const mapParam: Record<string, string> = {
   "test2": "value2",
 };
 const mapArrParam: Record<string, string[]> = {
-  "test": [
-    "test",
-    "test2",
-  ],
   "test2": [
     "test3",
     "test4",
+  ],
+  "test": [
+    "test",
+    "test2",
   ],
 };
 
@@ -166,7 +167,7 @@ import { DuplicateParamRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const duplicateParamRequest: string = "Parks";
+const duplicateParamRequest: string = "string";
 
   const res = await sdk.parameters.duplicateParam(duplicateParamRequest);
 
@@ -234,6 +235,57 @@ const arrParamExploded: number[] = [
 ### Response
 
 **Promise<[operations.FormQueryParamsArrayResponse](../../models/operations/formqueryparamsarrayresponse.md)>**
+
+
+## formQueryParamsCamelObject
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+import {
+  FormQueryParamsCamelObjectObjParam,
+  FormQueryParamsCamelObjectObjParamExploded,
+  FormQueryParamsCamelObjectRequest,
+} from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+const objParamExploded: FormQueryParamsCamelObjectObjParamExploded = {
+  itemCount: "10",
+  searchTerm: "foo",
+};
+const objParam: FormQueryParamsCamelObjectObjParam = {
+  encodedCount: "11",
+  encodedTerm: "bar",
+};
+
+  const res = await sdk.parameters.formQueryParamsCamelObject(objParamExploded, objParam);
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `objParamExploded`                                                                                                             | [operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
+| `objParam`                                                                                                                     | [operations.FormQueryParamsCamelObjectObjParam](../../models/operations/formqueryparamscamelobjectobjparam.md)                 | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+| `config`                                                                                                                       | [AxiosRequestConfig](https://axios-http.com/docs/req_config)                                                                   | :heavy_minus_sign:                                                                                                             | Available config options for making requests.                                                                                  |
+
+
+### Response
+
+**Promise<[operations.FormQueryParamsCamelObjectResponse](../../models/operations/formqueryparamscamelobjectresponse.md)>**
 
 
 ## formQueryParamsMap
@@ -741,7 +793,7 @@ const deepObjParam: DeepObject = {
   bool: true,
   int: 1,
   map: {
-    "key": {
+    "key2": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -761,7 +813,7 @@ const deepObjParam: DeepObject = {
       str: "test",
       strOpt: "testOptional",
     },
-    "key2": {
+    "key": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",

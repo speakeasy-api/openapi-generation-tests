@@ -12,7 +12,6 @@ REQUEST_BODY_READ_ONLY_UNION_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class RequestBodyReadOnlyUnionResponse:
     content_type: str = dataclasses.field()

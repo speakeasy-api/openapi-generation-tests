@@ -12,7 +12,6 @@ SERVER_WITH_PROTOCOL_TEMPLATE_SERVERS = {
 }
 
 
-
 @dataclasses.dataclass
 class ServerWithProtocolTemplateResponse:
     content_type: str = dataclasses.field()

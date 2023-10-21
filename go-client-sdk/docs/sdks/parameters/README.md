@@ -11,6 +11,7 @@ Endpoints for testing parameters.
 * [DeepObjectQueryParamsObject](#deepobjectqueryparamsobject)
 * [DuplicateParam](#duplicateparam)
 * [FormQueryParamsArray](#formqueryparamsarray)
+* [FormQueryParamsCamelObject](#formqueryparamscamelobject)
 * [FormQueryParamsMap](#formqueryparamsmap)
 * [FormQueryParamsObject](#formqueryparamsobject)
 * [FormQueryParamsPrimitive](#formqueryparamsprimitive)
@@ -201,7 +202,7 @@ func main() {
     )
 
 
-    var duplicateParamRequest string = "Parks"
+    var duplicateParamRequest string = "string"
 
     ctx := context.Background()
     res, err := s.Parameters.DuplicateParam(ctx, duplicateParamRequest)
@@ -288,6 +289,67 @@ func main() {
 **[*operations.FormQueryParamsArrayResponse](../../models/operations/formqueryparamsarrayresponse.md), error**
 
 
+## FormQueryParamsCamelObject
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+
+    objParamExploded := operations.FormQueryParamsCamelObjectObjParamExploded{
+        ItemCount: openapi.String("10"),
+        SearchTerm: openapi.String("foo"),
+    }
+
+    objParam := &operations.FormQueryParamsCamelObjectObjParam{
+        EncodedCount: openapi.String("11"),
+        EncodedTerm: openapi.String("bar"),
+    }
+
+    ctx := context.Background()
+    res, err := s.Parameters.FormQueryParamsCamelObject(ctx, objParamExploded, objParam)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                      | Type                                                                                                                           | Required                                                                                                                       | Description                                                                                                                    |
+| ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                                          | [context.Context](https://pkg.go.dev/context#Context)                                                                          | :heavy_check_mark:                                                                                                             | The context to use for the request.                                                                                            |
+| `objParamExploded`                                                                                                             | [operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                             | N/A                                                                                                                            |
+| `objParam`                                                                                                                     | [*operations.FormQueryParamsCamelObjectObjParam](../../models/operations/formqueryparamscamelobjectobjparam.md)                | :heavy_minus_sign:                                                                                                             | N/A                                                                                                                            |
+
+
+### Response
+
+**[*operations.FormQueryParamsCamelObjectResponse](../../models/operations/formqueryparamscamelobjectresponse.md), error**
+
+
 ## FormQueryParamsMap
 
 ### Example Usage
@@ -313,8 +375,8 @@ func main() {
 
 
     mapParam := map[string]string{
-        "test": "value",
         "test2": "value2",
+        "test": "value",
     }
 
     mapParamExploded := map[string]int64{
@@ -645,8 +707,8 @@ func main() {
 
 
     xHeaderMap := map[string]string{
-        "key2": "value2",
         "key1": "value1",
+        "key2": "value2",
     }
 
     xHeaderMapExplode := map[string]string{

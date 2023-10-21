@@ -6,7 +6,6 @@ import requests as requests_http
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class DeprecatedOperationWithCommentsGetRequest:
     deprecated_parameter: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'deprecatedParameter', 'style': 'form', 'explode': True }})
@@ -17,7 +16,6 @@ class DeprecatedOperationWithCommentsGetRequest:
     new_parameter: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'newParameter', 'style': 'form', 'explode': True }})
     r"""This is a string parameter"""
     
-
 
 
 

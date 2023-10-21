@@ -35,7 +35,7 @@ func main() {
     )
 
 
-    var language string = "hack"
+    var language string = "string"
 
     ctx := context.Background()
     res, err := s.Documentation.GetDocumentationPerLanguage(ctx, language)

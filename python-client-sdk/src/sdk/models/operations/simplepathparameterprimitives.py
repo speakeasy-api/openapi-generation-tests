@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class SimplePathParameterPrimitivesRequest:
     bool_param: bool = dataclasses.field(metadata={'path_param': { 'field_name': 'boolParam', 'style': 'simple', 'explode': False }})
@@ -20,13 +19,11 @@ class SimplePathParameterPrimitivesRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SimplePathParameterPrimitivesRes:
     r"""OK"""
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

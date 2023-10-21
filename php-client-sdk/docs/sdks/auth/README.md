@@ -72,7 +72,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -117,7 +121,7 @@ try {
     $requestSecurity->password = 'YOUR_PASSWORD';
     $requestSecurity->username = 'YOUR_USERNAME';
 
-    $response = $sdk->auth->basicAuth($requestSecurity, 'minus', 'Architect');
+    $response = $sdk->auth->basicAuth($requestSecurity, 'string', 'string');
 
     if ($response->user !== null) {
         // handle response
@@ -197,7 +201,11 @@ require_once 'vendor/autoload.php';
 use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {

@@ -33,9 +33,9 @@ func main() {
     )
 
 
-    var requestID string = "Cambridgeshire"
+    var requestID string = "string"
 
-    var numRetries *int64 = 496130
+    var numRetries *int64 = 75342
 
     ctx := context.Background()
     res, err := s.Retries.RetriesGet(ctx, requestID, numRetries)

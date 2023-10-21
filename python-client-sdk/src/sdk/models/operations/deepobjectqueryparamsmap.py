@@ -5,16 +5,14 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional, Union
-
+from typing import Dict, List, Optional, Union
 
 
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapRequest:
-    map_param: dict[str, str] = dataclasses.field(metadata={'query_param': { 'field_name': 'mapParam', 'style': 'deepObject', 'explode': True }})
-    map_arr_param: Optional[dict[str, list[str]]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'mapArrParam', 'style': 'deepObject', 'explode': True }})
+    map_param: Dict[str, str] = dataclasses.field(metadata={'query_param': { 'field_name': 'mapParam', 'style': 'deepObject', 'explode': True }})
+    map_arr_param: Optional[Dict[str, List[str]]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'mapArrParam', 'style': 'deepObject', 'explode': True }})
     
-
 
 
 
@@ -24,14 +22,12 @@ class DeepObjectQueryParamsMapResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class DeepObjectQueryParamsMapRes:
     r"""OK"""
-    args: dict[str, Union[str, list[str]]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
+    args: Dict[str, Union[str, List[str]]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

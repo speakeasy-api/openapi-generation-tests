@@ -65,7 +65,7 @@ import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operati
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const globalQueryParam: string = "Tricycle";
+const globalQueryParam: string = "string";
 
   const res = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
 

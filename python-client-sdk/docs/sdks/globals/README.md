@@ -63,7 +63,7 @@ s = sdk.SDK(
 )
 
 
-res = s.globals.globals_query_parameter_get(global_query_param='Tricycle')
+res = s.globals.globals_query_parameter_get(global_query_param='string')
 
 if res.res is not None:
     # handle response
