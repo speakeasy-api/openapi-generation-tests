@@ -5,37 +5,33 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
-
+from typing import List, Optional
 
 
 @dataclasses.dataclass
 class FormQueryParamsArrayRequest:
-    arr_param: Optional[list[str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arrParam', 'style': 'form', 'explode': False }})
-    arr_param_exploded: Optional[list[int]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arrParamExploded', 'style': 'form', 'explode': True }})
+    arr_param: Optional[List[str]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arrParam', 'style': 'form', 'explode': False }})
+    arr_param_exploded: Optional[List[int]] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'arrParamExploded', 'style': 'form', 'explode': True }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsArrayResArgs:
     arr_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrParam') }})
-    arr_param_exploded: list[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrParamExploded') }})
+    arr_param_exploded: List[str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('arrParamExploded') }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class FormQueryParamsArrayRes:
     r"""OK"""
     args: FormQueryParamsArrayResArgs = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('args') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

@@ -1,0 +1,9 @@
+# FormQueryParamsCamelObjectRequest
+
+
+## Fields
+
+| Field                                                                                                               | Type                                                                                                                | Required                                                                                                            | Description                                                                                                         |
+| ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| `obj_param_exploded`                                                                                                | [FormQueryParamsCamelObjectObjParamExploded](../../models/operations/formqueryparamscamelobjectobjparamexploded.md) | :heavy_check_mark:                                                                                                  | N/A                                                                                                                 |
+| `obj_param`                                                                                                         | [Optional[FormQueryParamsCamelObjectObjParam]](../../models/operations/formqueryparamscamelobjectobjparam.md)       | :heavy_minus_sign:                                                                                                  | N/A                                                                                                                 |

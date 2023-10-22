@@ -26,7 +26,7 @@ import { TelemetrySpeakeasyUserAgentGetRequest } from "openapi/dist/sdk/models/o
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const userAgent: string = "Bentley";
+const userAgent: string = "string";
 
   const res = await sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent);
 

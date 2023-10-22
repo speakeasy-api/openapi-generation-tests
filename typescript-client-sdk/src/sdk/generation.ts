@@ -240,6 +240,198 @@ export class Generation {
         return res;
     }
 
+    async dateParamWithDefault(
+        dateInput: RFCDate,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DateParamWithDefaultResponse> {
+        const req = new operations.DateParamWithDefaultRequest({
+            dateInput: dateInput,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/dateParamWithDefault";
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        headers["Accept"] = "*/*";
+
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DateParamWithDefaultResponse =
+            new operations.DateParamWithDefaultResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async dateTimeParamWithDefault(
+        dateTimeInput: Date,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DateTimeParamWithDefaultResponse> {
+        const req = new operations.DateTimeParamWithDefaultRequest({
+            dateTimeInput: dateTimeInput,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/dateTimeParamWithDefault";
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        headers["Accept"] = "*/*";
+
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DateTimeParamWithDefaultResponse =
+            new operations.DateTimeParamWithDefaultResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
+    async decimalParamWithDefault(
+        decimalInput: number,
+        config?: AxiosRequestConfig
+    ): Promise<operations.DecimalParamWithDefaultResponse> {
+        const req = new operations.DecimalParamWithDefaultRequest({
+            decimalInput: decimalInput,
+        });
+        const baseURL: string = utils.templateUrl(
+            this.sdkConfiguration.serverURL,
+            this.sdkConfiguration.serverDefaults
+        );
+        const url: string = baseURL.replace(/\/$/, "") + "/anything/decimalParamWithDefault";
+        const client: AxiosInstance = this.sdkConfiguration.defaultClient;
+        let globalSecurity = this.sdkConfiguration.security;
+        if (typeof globalSecurity === "function") {
+            globalSecurity = await globalSecurity();
+        }
+        if (!(globalSecurity instanceof utils.SpeakeasyBase)) {
+            globalSecurity = new shared.Security(globalSecurity);
+        }
+        const properties = utils.parseSecurityProperties(globalSecurity);
+        const headers: RawAxiosRequestHeaders = { ...config?.headers, ...properties.headers };
+        const queryParams: string = utils.serializeQueryParams(req, this.sdkConfiguration.globals);
+        headers["Accept"] = "*/*";
+
+        headers["x-speakeasy-user-agent"] = this.sdkConfiguration.userAgent;
+
+        const httpRes: AxiosResponse = await client.request({
+            validateStatus: () => true,
+            url: url + queryParams,
+            method: "get",
+            headers: headers,
+            responseType: "arraybuffer",
+            ...config,
+        });
+
+        const contentType: string = httpRes?.headers?.["content-type"] ?? "";
+
+        if (httpRes?.status == null) {
+            throw new Error(`status code not found in response: ${httpRes}`);
+        }
+
+        const res: operations.DecimalParamWithDefaultResponse =
+            new operations.DecimalParamWithDefaultResponse({
+                statusCode: httpRes.status,
+                contentType: contentType,
+                rawResponse: httpRes,
+            });
+        switch (true) {
+            case httpRes?.status == 204:
+                break;
+            case (httpRes?.status >= 400 && httpRes?.status < 500) ||
+                (httpRes?.status >= 500 && httpRes?.status < 600):
+                throw new errors.SDKError(
+                    "API error occurred",
+                    httpRes.status,
+                    httpRes?.data,
+                    httpRes
+                );
+        }
+
+        return res;
+    }
+
     async deprecatedFieldInSchemaPost(
         req: shared.DeprecatedFieldInObject,
         config?: AxiosRequestConfig

@@ -10,11 +10,9 @@ from sdk import utils
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class NullableOneOfSchemaPostRequestBody:
     pass
-
 
 
 @dataclasses.dataclass
@@ -23,13 +21,11 @@ class NullableOneOfSchemaPostResJSON:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class NullableOneOfSchemaPostRes:
     r"""OK"""
     json: Optional[Union[shared_typedobject1.TypedObject1, shared_typedobject2.TypedObject2]] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

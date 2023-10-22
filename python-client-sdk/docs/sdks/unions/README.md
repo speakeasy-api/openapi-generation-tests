@@ -17,6 +17,8 @@ Endpoints for testing union types.
 * [strongly_typed_one_of_post](#strongly_typed_one_of_post)
 * [typed_object_nullable_one_of_post](#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](#typed_object_one_of_post)
+* [union_date_null](#union_date_null)
+* [union_date_time_null](#union_date_time_null)
 * [weakly_typed_one_of_post](#weakly_typed_one_of_post)
 
 ## flattened_typed_object_post
@@ -37,7 +39,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='farad Rustic',
+    value='string',
 )
 
 res = s.unions.flattened_typed_object_post(req)
@@ -117,15 +119,15 @@ s = sdk.SDK(
 req = shared.NullableOneOfRefInObject(
     nullable_one_of_one=shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='Global Alexandria administration',
+        value='string',
+    ),
+    shared.TypedObject2(
+        type=shared.TypedObject2Type.OBJ2,
+        value='string',
     ),
     shared.TypedObject1(
         type=shared.TypedObject1Type.OBJ1,
-        value='nor',
-    ),
-    shared.TypedObject1(
-        type=shared.TypedObject1Type.OBJ1,
-        value='Berkshire after',
+        value='string',
     ),
 )
 
@@ -166,7 +168,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject2(
     type=shared.TypedObject2Type.OBJ2,
-    value='sob',
+    value='string',
 )
 
 res = s.unions.nullable_one_of_schema_post(req)
@@ -247,7 +249,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject1(
     type=shared.TypedObject1Type.OBJ1,
-    value='Bike',
+    value='string',
 )
 
 res = s.unions.nullable_typed_object_post(req)
@@ -285,7 +287,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'Account'
+req = 'string'
 
 res = s.unions.primitive_type_one_of_post(req)
 
@@ -390,7 +392,7 @@ req = shared.DeepObjectWithType(
     bool=True,
     int=1,
     map={
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -410,7 +412,7 @@ req = shared.DeepObjectWithType(
             str_='test',
             str_opt='testOptional',
         ),
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -492,7 +494,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject2(
     type=shared.TypedObject2Type.OBJ2,
-    value='DRAM',
+    value='string',
 )
 
 res = s.unions.typed_object_nullable_one_of_post(req)
@@ -532,7 +534,7 @@ s = sdk.SDK(
 
 req = shared.TypedObject3(
     type=shared.TypedObject3Type.OBJ3,
-    value='Buckinghamshire illo Automotive',
+    value='string',
 )
 
 res = s.unions.typed_object_one_of_post(req)
@@ -552,6 +554,80 @@ if res.res is not None:
 ### Response
 
 **[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)**
+
+
+## union_date_null
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = dateutil.parser.parse('2022-11-25').date()
+
+res = s.unions.union_date_null(req)
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [date](../../models//.md)                  | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)**
+
+
+## union_date_time_null
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = dateutil.parser.isoparse('2022-04-12T19:39:53.907Z')
+
+res = s.unions.union_date_time_null(req)
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [datetime](../../models//.md)              | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md)**
 
 
 ## weakly_typed_one_of_post

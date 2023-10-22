@@ -80,7 +80,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("Tricycle");
+            GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("string");
 
             if (res.res != null) {
                 // handle response

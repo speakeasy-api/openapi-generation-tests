@@ -45,11 +45,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("Southwest", "which");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("indexing", "protocol"){{
-                        expectedValue = "hertz overriding";
-                        headerName = "deliverables card";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -105,11 +105,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("inasmuch", "meanwhile");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("Bespoke", "Automotive"){{
-                        expectedValue = "Lithium Frozen HDD";
-                        headerName = "Internal";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -163,11 +163,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("Androgynous", "utilize");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("humiliating", "phooey"){{
-                        expectedValue = "Northwest";
-                        headerName = "loose orange";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -226,11 +226,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("Berkshire", "Crew");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("within", "Frieda"){{
-                        expectedValue = "Sol Southwest Markets";
-                        headerName = "Tuna";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -288,11 +288,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("wireless", "molestias");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("Bicycle", "Rand"){{
-                        expectedValue = "Bike woman";
-                        headerName = "Michigan";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -356,11 +356,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("Fluorine", "Spain");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("gee", "Associate"){{
-                        expectedValue = "Bronze VGA Wagon";
-                        headerName = "Man Stage";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -422,11 +422,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("besides", "Dakota");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("Cisgender", "Blues"){{
-                        expectedValue = "innovative Agent background";
-                        headerName = "matrix Tandem";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -486,11 +486,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("Wagon", "Handcrafted");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("payment", "Usability"){{
-                        expectedValue = "interface woman index";
-                        headerName = "giving quantifying";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -547,11 +547,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("extensible", "astrologer");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("Convertible", "aperiam"){{
-                        expectedValue = "Borders Synergized";
-                        headerName = "Bike Fantastic Blues";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -609,11 +609,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("mesh", "Plaza");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("Gasoline", "connect"){{
-                        expectedValue = "Home";
-                        headerName = "Afghanistan reinvent Mazda";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            
@@ -670,11 +670,11 @@ public class Application {
                 .build();
 
             org.openapis.openapi.models.shared.AuthServiceRequestBody req = new AuthServiceRequestBody(){{
-                basicAuth = new AuthServiceRequestBodyBasicAuth("lavender", "National");
+                basicAuth = new AuthServiceRequestBodyBasicAuth("string", "string");
                 headerAuth = new org.openapis.openapi.models.shared.AuthServiceRequestBodyHeaderAuth[]{{
-                    add(new AuthServiceRequestBodyHeaderAuth("Frozen", "Kansas"){{
-                        expectedValue = "coulomb";
-                        headerName = "male";
+                    add(new AuthServiceRequestBodyHeaderAuth("string", "string"){{
+                        expectedValue = "string";
+                        headerName = "string";
                     }}),
                 }};
             }};            

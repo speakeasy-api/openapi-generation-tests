@@ -5,6 +5,7 @@
 
 require 'sorbet-runtime'
 require 'faraday'
+require_relative '../shared/errortype'
 
 module OpenApiSDK
   module Shared
@@ -17,11 +18,14 @@ module OpenApiSDK
 
       field :message, T.nilable(String), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('message') } }
 
+      field :type, T.nilable(Shared::ErrorType), { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('type'), 'decoder': Utils.enum_from_string(Shared::ErrorType, true) } }
 
-      sig { params(code: T.nilable(String), message: T.nilable(String)).void }
-      def initialize(code: nil, message: nil)
+
+      sig { params(code: T.nilable(String), message: T.nilable(String), type: T.nilable(Shared::ErrorType)).void }
+      def initialize(code: nil, message: nil, type: nil)
         @code = code
         @message = message
+        @type = type
       end
     end
   end

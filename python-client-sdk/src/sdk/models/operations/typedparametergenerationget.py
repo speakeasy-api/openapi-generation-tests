@@ -8,14 +8,12 @@ from decimal import Decimal
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class TypedParameterGenerationGetObj:
     bool: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'bool' }})
     num: float = dataclasses.field(metadata={'query_param': { 'field_name': 'num' }})
     str_: str = dataclasses.field(metadata={'query_param': { 'field_name': 'str' }})
     
-
 
 
 
@@ -26,7 +24,6 @@ class TypedParameterGenerationGetRequest:
     decimal: Optional[Decimal] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'decimal', 'style': 'form', 'explode': True }})
     obj: Optional[TypedParameterGenerationGetObj] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'obj', 'style': 'form', 'explode': True }})
     
-
 
 
 

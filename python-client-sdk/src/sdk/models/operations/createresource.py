@@ -7,7 +7,6 @@ from ..shared import exampleresource as shared_exampleresource
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class CreateResourceResponse:
     content_type: str = dataclasses.field()

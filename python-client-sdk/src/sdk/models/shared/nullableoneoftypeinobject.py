@@ -7,14 +7,12 @@ from sdk import utils
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class NullableOneOfTypeInObjectNullableOneOfTwo:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class NullableOneOfTypeInObject:
     nullable_one_of_one: Optional[bool] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('NullableOneOfOne') }})

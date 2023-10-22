@@ -60,7 +60,7 @@ func main() {
         StrOpt: openapi.String("testOptional"),
     }
 
-    var str string = "Minivan"
+    var str string = "string"
 
     ctx := context.Background()
     res, err := s.Flattening.ComponentBodyAndParamConflict(ctx, simpleObject, str)
@@ -114,7 +114,7 @@ func main() {
     )
 
 
-    var paramStr string = "ick"
+    var paramStr string = "string"
 
     simpleObject := shared.SimpleObject{
         Any: "any",
@@ -187,9 +187,9 @@ func main() {
     )
 
 
-    var strPathParameter string = "kilogram"
+    var strPathParameter string = "string"
 
-    var strQueryParameter string = "Cloned"
+    var strQueryParameter string = "string"
 
     ctx := context.Background()
     res, err := s.Flattening.ConflictingParams(ctx, strPathParameter, strQueryParameter)
@@ -243,10 +243,10 @@ func main() {
 
 
     requestBody := operations.InlineBodyAndParamConflictRequestBody{
-        Str: "Progressive",
+        Str: "string",
     }
 
-    var str string = "until"
+    var str string = "string"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamConflict(ctx, requestBody, str)
@@ -300,10 +300,10 @@ func main() {
 
 
     requestBody := operations.InlineBodyAndParamNoConflictRequestBody{
-        BodyStr: "dynamic expedite",
+        BodyStr: "string",
     }
 
-    var paramStr string = "Forward"
+    var paramStr string = "string"
 
     ctx := context.Background()
     res, err := s.Flattening.InlineBodyAndParamNoConflict(ctx, requestBody, paramStr)

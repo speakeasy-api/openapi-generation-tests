@@ -10,13 +10,11 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class NullableTypedObjectPostRes:
     r"""OK"""
     json: Optional[shared_typedobject1.TypedObject1] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

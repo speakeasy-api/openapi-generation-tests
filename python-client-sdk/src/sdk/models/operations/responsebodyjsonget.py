@@ -7,7 +7,6 @@ from ..shared import httpbinsimplejsonobject as shared_httpbinsimplejsonobject
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class ResponseBodyJSONGetResponse:
     content_type: str = dataclasses.field()

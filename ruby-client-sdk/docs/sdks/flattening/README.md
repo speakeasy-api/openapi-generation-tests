@@ -22,12 +22,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::ComponentBodyAndParamConflictRequest.new(
   query_params=Operations::ComponentBodyAndParamConflictRequest.new(
     simple_object=Shared::SimpleObject.new(
-      any="Minivan",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -41,17 +46,17 @@ req = Operations::ComponentBodyAndParamConflictRequest.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=780,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=843322,
       num=1.1,
-      num_opt_null=5419.15,
+      num_opt_null=7126.06,
       str_="test",
       str_opt="testOptional",
     ),
-    str_="Cotton Supervisor kelvin",
+    str_="string",
   ),
   simple_object=Shared::SimpleObject.new(
-    any="compress",
+    any="any",
     bigint=8821239038968084,
     bigint_str="9223372036854775808",
     bool=true,
@@ -64,11 +69,11 @@ req = Operations::ComponentBodyAndParamConflictRequest.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
-    int_opt_null=421356,
+    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int_opt_null=845828,
     num=1.1,
-    num_opt_null=1013.25,
+    num_opt_null=2573.18,
     str_="test",
     str_opt="testOptional",
   ),
@@ -104,13 +109,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::ComponentBodyAndParamNoConflictRequest.new(
   query_params=Operations::ComponentBodyAndParamNoConflictRequest.new(
-    param_str="router salmon vertical",
+    param_str="string",
     simple_object=Shared::SimpleObject.new(
-      any="yowza",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -123,17 +133,17 @@ req = Operations::ComponentBodyAndParamNoConflictRequest.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
       int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=982038,
+      int_opt_null=758827,
       num=1.1,
-      num_opt_null=7026.35,
+      num_opt_null=1702.8,
       str_="test",
       str_opt="testOptional",
     ),
   ),
   simple_object=Shared::SimpleObject.new(
-    any="Coordinator",
+    any="any",
     bigint=8821239038968084,
     bigint_str="9223372036854775808",
     bool=true,
@@ -146,11 +156,11 @@ req = Operations::ComponentBodyAndParamNoConflictRequest.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
     int_enum=Shared::SimpleObjectIntEnum::SECOND,
-    int_opt_null=399304,
+    int_opt_null=836157,
     num=1.1,
-    num_opt_null=1383,
+    num_opt_null=2914.21,
     str_="test",
     str_opt="testOptional",
   ),
@@ -186,16 +196,21 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::ConflictingParamsRequest.new(
   path_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="Fantastic Southwest hunch",
-    str_query_parameter="strategic till",
+    str_path_parameter="string",
+    str_query_parameter="string",
   ),
   query_params=Operations::ConflictingParamsRequest.new(
-    str_path_parameter="Olathe Legacy",
-    str_query_parameter="Buckinghamshire",
+    str_path_parameter="string",
+    str_query_parameter="string",
   ),
 )
     
@@ -229,17 +244,22 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::InlineBodyAndParamConflictRequest.new(
   query_params=Operations::InlineBodyAndParamConflictRequest.new(
     request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
-      str_="Progressive",
+      str_="string",
     ),
-    str_="female Southwest back",
+    str_="string",
   ),
   request_body=Operations::InlineBodyAndParamConflictRequestBody.new(
-    str_="Rustic",
+    str_="string",
   ),
 )
     
@@ -273,17 +293,22 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::InlineBodyAndParamNoConflictRequest.new(
   query_params=Operations::InlineBodyAndParamNoConflictRequest.new(
     request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
-      body_str="dynamic expedite",
+      body_str="string",
     ),
-    param_str="monitoring Bicycle Fall",
+    param_str="string",
   ),
   request_body=Operations::InlineBodyAndParamNoConflictRequestBody.new(
-    body_str="instead through",
+    body_str="string",
   ),
 )
     

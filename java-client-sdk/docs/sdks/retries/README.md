@@ -32,7 +32,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            RetriesGetResponse res = sdk.retries.retriesGet("Cambridgeshire", 496130L);
+            RetriesGetResponse res = sdk.retries.retriesGet("string", 75342L);
 
             if (res.retries != null) {
                 // handle response

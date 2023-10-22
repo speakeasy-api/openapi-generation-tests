@@ -308,7 +308,7 @@ if res.simple_objects is not None:
 
 | Parameter                                      | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `request`                                      | [list[shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
+| `request`                                      | [List[shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
 | `server_url`                                   | *Optional[str]*                                | :heavy_minus_sign:                             | An optional server URL to use.                 |
 
 
@@ -367,7 +367,7 @@ if res.simple_object_camel_cases is not None:
 
 | Parameter                                               | Type                                                    | Required                                                | Description                                             |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `request`                                               | [list[shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
+| `request`                                               | [List[shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
 | `server_url`                                            | *Optional[str]*                                         | :heavy_minus_sign:                                      | An optional server URL to use.                          |
 
 
@@ -428,7 +428,7 @@ if res.arr_obj_value is not None:
 
 | Parameter                                      | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `request`                                      | [list[shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
+| `request`                                      | [List[shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
 
 
 ### Response
@@ -486,7 +486,7 @@ if res.arr_obj_value_camel_case is not None:
 
 | Parameter                                               | Type                                                    | Required                                                | Description                                             |
 | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- | ------------------------------------------------------- |
-| `request`                                               | [list[shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
+| `request`                                               | [List[shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                      | The request object to use for the request.              |
 
 
 ### Response
@@ -548,7 +548,7 @@ if res.arrs is not None:
 
 | Parameter                                            | Type                                                 | Required                                             | Description                                          |
 | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- | ---------------------------------------------------- |
-| `request`                                            | [list[list[shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                   | The request object to use for the request.           |
+| `request`                                            | [List[List[shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                   | The request object to use for the request.           |
 | `server_url`                                         | *Optional[str]*                                      | :heavy_minus_sign:                                   | An optional server URL to use.                       |
 
 
@@ -609,7 +609,7 @@ if res.arrs is not None:
 
 | Parameter                                                     | Type                                                          | Required                                                      | Description                                                   |
 | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- | ------------------------------------------------------------- |
-| `request`                                                     | [list[list[shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
+| `request`                                                     | [List[List[shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                            | The request object to use for the request.                    |
 | `server_url`                                                  | *Optional[str]*                                               | :heavy_minus_sign:                                            | An optional server URL to use.                                |
 
 
@@ -636,7 +636,7 @@ s = sdk.SDK(
 
 req = [
     [
-        'yellow',
+        'string',
     ],
 ]
 
@@ -651,7 +651,7 @@ if res.arrs is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [list[list[str]]](../../models//.md)       | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[List[str]]](../../models//.md)       | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -680,7 +680,7 @@ s = sdk.SDK(
 
 req = [
     {
-        "Southeast": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -714,7 +714,7 @@ if res.maps is not None:
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [list[dict[str, shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | [List[Dict[str, shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 | `server_url`                                              | *Optional[str]*                                           | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 
@@ -743,7 +743,7 @@ s = sdk.SDK(
 
 req = [
     {
-        "culpa": shared.SimpleObjectCamelCase(
+        "key": shared.SimpleObjectCamelCase(
             any_val='any example',
             bool_opt_val=True,
             bool_val=True,
@@ -775,7 +775,7 @@ if res.maps is not None:
 
 | Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `request`                                                          | [list[dict[str, shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
+| `request`                                                          | [List[Dict[str, shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
 | `server_url`                                                       | *Optional[str]*                                                    | :heavy_minus_sign:                                                 | An optional server URL to use.                                     |
 
 
@@ -801,7 +801,7 @@ s = sdk.SDK(
 )
 
 req = [
-    'bit',
+    'string',
 ]
 
 res = s.request_bodies.request_body_post_application_json_array_of_primitive(req)
@@ -815,7 +815,7 @@ if res.strings is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [list[str]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[str]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -1052,7 +1052,7 @@ req = shared.DeepObjectCamelCase(
     bool_val=False,
     int_val=962909,
     map_val={
-        "Table": shared.SimpleObjectCamelCase(
+        "key": shared.SimpleObjectCamelCase(
             any_val='any example',
             bool_opt_val=True,
             bool_val=True,
@@ -1071,7 +1071,7 @@ req = shared.DeepObjectCamelCase(
             str_val='example',
         ),
     },
-    num_val=9420.92,
+    num_val=2064.4,
     obj_val=shared.SimpleObjectCamelCase(
         any_val='any example',
         bool_opt_val=True,
@@ -1090,7 +1090,7 @@ req = shared.DeepObjectCamelCase(
         str_opt_val='optional example',
         str_val='example',
     ),
-    str_val='Diesel',
+    str_val='string',
 )
 
 res = s.request_bodies.request_body_post_application_json_deep_camel_case(req)
@@ -1131,7 +1131,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "Bentley": shared.SimpleObject(
+    "key": shared.SimpleObject(
         any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
@@ -1164,7 +1164,7 @@ if res.res is not None:
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [dict[str, shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [Dict[str, shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 | `server_url`                                        | *Optional[str]*                                     | :heavy_minus_sign:                                  | An optional server URL to use.                      |
 
 
@@ -1192,7 +1192,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "archive": shared.SimpleObjectCamelCase(
+    "key": shared.SimpleObjectCamelCase(
         any_val='any example',
         bool_opt_val=True,
         bool_val=True,
@@ -1223,7 +1223,7 @@ if res.res is not None:
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [dict[str, shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [Dict[str, shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
 | `server_url`                                                 | *Optional[str]*                                              | :heavy_minus_sign:                                           | An optional server URL to use.                               |
 
 
@@ -1251,7 +1251,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "larder": shared.SimpleObject(
+    "key": shared.SimpleObject(
         any='any',
         bigint=8821239038968084,
         bigint_str=9223372036854775808,
@@ -1284,7 +1284,7 @@ if res.map_obj_value is not None:
 
 | Parameter                                           | Type                                                | Required                                            | Description                                         |
 | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- | --------------------------------------------------- |
-| `request`                                           | [dict[str, shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
+| `request`                                           | [Dict[str, shared.SimpleObject]](../../models//.md) | :heavy_check_mark:                                  | The request object to use for the request.          |
 
 
 ### Response
@@ -1311,7 +1311,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "female": shared.SimpleObjectCamelCase(
+    "key": shared.SimpleObjectCamelCase(
         any_val='any example',
         bool_opt_val=True,
         bool_val=True,
@@ -1342,7 +1342,7 @@ if res.map_obj_value_camel_case is not None:
 
 | Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `request`                                                    | [dict[str, shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `request`                                                    | [Dict[str, shared.SimpleObjectCamelCase]](../../models//.md) | :heavy_check_mark:                                           | The request object to use for the request.                   |
 
 
 ### Response
@@ -1369,7 +1369,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "Loan": [
+    "key": [
         shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
@@ -1404,7 +1404,7 @@ if res.res is not None:
 
 | Parameter                                                 | Type                                                      | Required                                                  | Description                                               |
 | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- | --------------------------------------------------------- |
-| `request`                                                 | [dict[str, list[shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
+| `request`                                                 | [Dict[str, List[shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                        | The request object to use for the request.                |
 | `server_url`                                              | *Optional[str]*                                           | :heavy_minus_sign:                                        | An optional server URL to use.                            |
 
 
@@ -1432,7 +1432,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "nonstop": [
+    "key": [
         shared.SimpleObjectCamelCase(
             any_val='any example',
             bool_opt_val=True,
@@ -1465,7 +1465,7 @@ if res.res is not None:
 
 | Parameter                                                          | Type                                                               | Required                                                           | Description                                                        |
 | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ | ------------------------------------------------------------------ |
-| `request`                                                          | [dict[str, list[shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
+| `request`                                                          | [Dict[str, List[shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                 | The request object to use for the request.                         |
 | `server_url`                                                       | *Optional[str]*                                                    | :heavy_minus_sign:                                                 | An optional server URL to use.                                     |
 
 
@@ -1493,8 +1493,8 @@ s = sdk.SDK(
 )
 
 req = {
-    "Senior": {
-        "vice": shared.SimpleObject(
+    "key": {
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -1528,7 +1528,7 @@ if res.res is not None:
 
 | Parameter                                                      | Type                                                           | Required                                                       | Description                                                    |
 | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- | -------------------------------------------------------------- |
-| `request`                                                      | [dict[str, dict[str, shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
+| `request`                                                      | [Dict[str, Dict[str, shared.SimpleObject]]](../../models//.md) | :heavy_check_mark:                                             | The request object to use for the request.                     |
 | `server_url`                                                   | *Optional[str]*                                                | :heavy_minus_sign:                                             | An optional server URL to use.                                 |
 
 
@@ -1556,8 +1556,8 @@ s = sdk.SDK(
 )
 
 req = {
-    "Home": {
-        "plum": shared.SimpleObjectCamelCase(
+    "key": {
+        "key": shared.SimpleObjectCamelCase(
             any_val='any example',
             bool_opt_val=True,
             bool_val=True,
@@ -1589,7 +1589,7 @@ if res.res is not None:
 
 | Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
 | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| `request`                                                               | [dict[str, dict[str, shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
+| `request`                                                               | [Dict[str, Dict[str, shared.SimpleObjectCamelCase]]](../../models//.md) | :heavy_check_mark:                                                      | The request object to use for the request.                              |
 | `server_url`                                                            | *Optional[str]*                                                         | :heavy_minus_sign:                                                      | An optional server URL to use.                                          |
 
 
@@ -1615,8 +1615,8 @@ s = sdk.SDK(
 )
 
 req = {
-    "turquoise": {
-        "collaboration": 'Officer',
+    "key": {
+        "key": 'string',
     },
 }
 
@@ -1631,7 +1631,7 @@ if res.res is not None:
 
 | Parameter                                      | Type                                           | Required                                       | Description                                    |
 | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- | ---------------------------------------------- |
-| `request`                                      | [dict[str, dict[str, str]]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
+| `request`                                      | [Dict[str, Dict[str, str]]](../../models//.md) | :heavy_check_mark:                             | The request object to use for the request.     |
 | `server_url`                                   | *Optional[str]*                                | :heavy_minus_sign:                             | An optional server URL to use.                 |
 
 
@@ -1657,7 +1657,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "equally": 'whereas',
+    "key": 'string',
 }
 
 res = s.request_bodies.request_body_post_application_json_map_of_primitive(req)
@@ -1671,7 +1671,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 | `server_url`                               | *Optional[str]*                            | :heavy_minus_sign:                         | An optional server URL to use.             |
 
 
@@ -1935,9 +1935,9 @@ req = shared.DefaultsAndConsts(
     const_enum_str=shared.DefaultsAndConstsConstEnumStr.TWO,
     const_int=450379,
     const_num=7742.71,
-    const_str='payment',
-    const_str_null='green',
-    normal_field='Dong Dysprosium',
+    const_str='string',
+    const_str_null='string',
+    normal_field='string',
 )
 
 res = s.request_bodies.request_body_post_defaults_and_consts(req)
@@ -2184,7 +2184,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "complexity": 'SUV',
+    "key": 'string',
 }
 
 res = s.request_bodies.request_body_post_form_map_primitive(req)
@@ -2198,7 +2198,7 @@ if res.res is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2295,7 +2295,7 @@ if res.request_body_post_json_data_types_array_big_int_200_application_json_obje
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [list[int]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[int]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2334,7 +2334,7 @@ if res.request_body_post_json_data_types_array_date_200_application_json_object 
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [list[date]](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[date]](../../models//.md)            | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2373,7 +2373,7 @@ if res.request_body_post_json_data_types_array_decimal_str_200_application_json_
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [list[Decimal]](../../models//.md)         | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[Decimal]](../../models//.md)         | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2768,7 +2768,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "Nepal": 124728,
+    "key": 42384,
 }
 
 res = s.request_bodies.request_body_post_json_data_types_map_big_int_str(req)
@@ -2782,7 +2782,7 @@ if res.request_body_post_json_data_types_map_big_int_str_200_application_json_ob
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, int]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, int]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2807,7 +2807,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "quantify": dateutil.parser.isoparse('2022-02-12T21:23:09.538Z'),
+    "key": dateutil.parser.isoparse('2022-09-03T18:52:14.477Z'),
 }
 
 res = s.request_bodies.request_body_post_json_data_types_map_date_time(req)
@@ -2821,7 +2821,7 @@ if res.request_body_post_json_data_types_map_date_time_200_application_json_obje
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, datetime]](../../models//.md)   | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, datetime]](../../models//.md)   | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2846,7 +2846,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "Inverse": Decimal('9134.24'),
+    "key": Decimal('3472.82'),
 }
 
 res = s.request_bodies.request_body_post_json_data_types_map_decimal(req)
@@ -2860,7 +2860,7 @@ if res.request_body_post_json_data_types_map_decimal_200_application_json_object
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, Decimal]](../../models//.md)    | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, Decimal]](../../models//.md)    | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -2921,7 +2921,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'Gasoline'
+req = 'string'
 
 res = s.request_bodies.request_body_post_json_data_types_string(req)
 
@@ -3019,7 +3019,7 @@ s = sdk.SDK(
 req = operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON(
     bool=False,
     num=3558.41,
-    str_='South expiate aha',
+    str_='string',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_inline_filtered(req)
@@ -3061,8 +3061,8 @@ s = sdk.SDK(
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_form(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded(
     bool3=False,
     num3=8693.24,
-    str3='Compatible',
-), param_str='Architect')
+    str3='string',
+), param_str='string')
 
 if res.res is not None:
     # handle response
@@ -3102,8 +3102,8 @@ s = sdk.SDK(
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_json(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON(
     bool=False,
     num=9771.91,
-    str_='South networks',
-), param_str='Brand')
+    str_='string',
+), param_str='string')
 
 if res.res is not None:
     # handle response
@@ -3143,8 +3143,8 @@ s = sdk.SDK(
 res = s.request_bodies.request_body_post_multiple_content_types_split_param_multipart(request_body=operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData(
     bool2=False,
     num2=7000.76,
-    str2='Ball Southwest',
-), param_str='Ergonomic')
+    str2='string',
+), param_str='string')
 
 if res.res is not None:
     # handle response
@@ -3183,7 +3183,7 @@ s = sdk.SDK(
 req = operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded(
     bool3=False,
     num3=7842.07,
-    str3='Cab encryption SMTP',
+    str3='string',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_form(req)
@@ -3224,7 +3224,7 @@ s = sdk.SDK(
 req = operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON(
     bool=False,
     num=2445.56,
-    str_='hew frictionless Hybrid',
+    str_='string',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_json(req)
@@ -3265,7 +3265,7 @@ s = sdk.SDK(
 req = operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData(
     bool2=False,
     num2=2079.2,
-    str2='cyan',
+    str2='string',
 )
 
 res = s.request_bodies.request_body_post_multiple_content_types_split_multipart(req)
@@ -3303,7 +3303,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'Chicken'
+req = 'string'
 
 res = s.request_bodies.request_body_post_not_nullable_not_required_string_body(req)
 
@@ -3341,7 +3341,7 @@ s = sdk.SDK(
 )
 
 req = [
-    'simple',
+    'string',
 ]
 
 res = s.request_bodies.request_body_post_null_array(req)
@@ -3355,7 +3355,7 @@ if res.request_body_post_null_array_200_application_json_object is not None:
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [list[str]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [List[str]](../../models//.md)             | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3380,7 +3380,7 @@ s = sdk.SDK(
 )
 
 req = {
-    "Intersex": 'robust',
+    "key": 'string',
 }
 
 res = s.request_bodies.request_body_post_null_dictionary(req)
@@ -3394,7 +3394,7 @@ if res.request_body_post_null_dictionary_200_application_json_object is not None
 
 | Parameter                                  | Type                                       | Required                                   | Description                                |
 | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
-| `request`                                  | [dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
+| `request`                                  | [Dict[str, str]](../../models//.md)        | :heavy_check_mark:                         | The request object to use for the request. |
 
 
 ### Response
@@ -3418,7 +3418,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'Michigan'
+req = 'string'
 
 res = s.request_bodies.request_body_post_nullable_not_required_string_body(req)
 
@@ -3455,7 +3455,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'Mouse'
+req = 'string'
 
 res = s.request_bodies.request_body_post_nullable_required_string_body(req)
 
@@ -3530,7 +3530,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_bytes_with_params(request_body='o%jIWe4_P6'.encode(), query_string_param='Huntington')
+res = s.request_bodies.request_body_put_bytes_with_params(request_body='o%jIWe4_P6'.encode(), query_string_param='string')
 
 if res.res is not None:
     # handle response
@@ -3634,7 +3634,7 @@ req = shared.DeepObject(
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -3654,7 +3654,7 @@ req = shared.DeepObject(
             str_='test',
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -3737,7 +3737,7 @@ s = sdk.SDK(
 req = operations.RequestBodyPutMultipartDifferentFileNameRequestBody(
     different_file_name=operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName(
         content='Y}\'H[5/Z[,'.encode(),
-        different_file_name='West Tunisian',
+        different_file_name='string',
     ),
 )
 
@@ -3779,7 +3779,7 @@ s = sdk.SDK(
 req = operations.RequestBodyPutMultipartFileRequestBody(
     file=operations.RequestBodyPutMultipartFileRequestBodyFile(
         content='OJa,v`.FW-'.encode(),
-        file='bandwidth Sedan',
+        file='string',
     ),
 )
 
@@ -3876,7 +3876,7 @@ s = sdk.SDK(
     global_query_param='some example global query param',
 )
 
-req = 'meh'
+req = 'string'
 
 res = s.request_bodies.request_body_put_string(req)
 
@@ -3914,7 +3914,7 @@ s = sdk.SDK(
 )
 
 
-res = s.request_bodies.request_body_put_string_with_params(request_body='SMTP', query_string_param='Unbranded')
+res = s.request_bodies.request_body_put_string_with_params(request_body='string', query_string_param='string')
 
 if res.res is not None:
     # handle response
@@ -4136,7 +4136,7 @@ s = sdk.SDK(
 req = shared.WriteOnlyObject(
     bool=False,
     num=3888.42,
-    string='Herminio',
+    string='string',
 )
 
 res = s.request_bodies.request_body_write_only(req)
@@ -4178,7 +4178,7 @@ s = sdk.SDK(
 req = shared.WriteOnlyObject(
     bool=False,
     num=3867.69,
-    string='quas',
+    string='string',
 )
 
 res = s.request_bodies.request_body_write_only_output(req)
@@ -4222,7 +4222,7 @@ s = sdk.SDK(
 req = shared.WriteOnlyObject(
     bool=False,
     num=3823.36,
-    string='Internal',
+    string='string',
 )
 
 res = s.request_bodies.request_body_write_only_union(req)

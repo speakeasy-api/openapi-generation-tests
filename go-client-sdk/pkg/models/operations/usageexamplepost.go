@@ -141,6 +141,8 @@ type UsageExamplePostRequest struct {
 	BoolParameter bool `queryParam:"style=form,explode=true,name=boolParameter"`
 	// A date parameter
 	DateParameter types.Date `queryParam:"style=form,explode=true,name=dateParameter"`
+	// A date time parameter with a default value
+	DateTimeDefaultParameter time.Time `queryParam:"style=form,explode=true,name=dateTimeDefaultParameter"`
 	// A date time parameter
 	DateTimeParameter time.Time `queryParam:"style=form,explode=true,name=dateTimeParameter"`
 	// A decimal parameter
@@ -229,6 +231,13 @@ func (o *UsageExamplePostRequest) GetDateParameter() types.Date {
 		return types.Date{}
 	}
 	return o.DateParameter
+}
+
+func (o *UsageExamplePostRequest) GetDateTimeDefaultParameter() time.Time {
+	if o == nil {
+		return time.Time{}
+	}
+	return o.DateTimeDefaultParameter
 }
 
 func (o *UsageExamplePostRequest) GetDateTimeParameter() time.Time {

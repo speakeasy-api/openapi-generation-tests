@@ -85,7 +85,7 @@ func main() {
     )
 
 
-    var globalQueryParam *string = "Tricycle"
+    var globalQueryParam *string = "string"
 
     ctx := context.Background()
     res, err := s.Globals.GlobalsQueryParameterGet(ctx, globalQueryParam)

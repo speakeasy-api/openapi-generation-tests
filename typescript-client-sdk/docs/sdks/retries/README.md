@@ -25,8 +25,8 @@ import { RetriesGetRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestId: string = "Cambridgeshire";
-const numRetries: number = 496130;
+const requestId: string = "string";
+const numRetries: number = 75342;
 
   const res = await sdk.retries.retriesGet(requestId, numRetries);
 

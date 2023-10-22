@@ -10,7 +10,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RequestBodyPostComplexNumberTypesRequest:
     complex_number_types: shared_complexnumbertypes.ComplexNumberTypes = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
@@ -27,14 +26,12 @@ class RequestBodyPostComplexNumberTypesRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostComplexNumberTypes200ApplicationJSON:
     r"""OK"""
     json: shared_complexnumbertypes.ComplexNumberTypes = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

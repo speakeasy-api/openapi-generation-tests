@@ -132,9 +132,9 @@ func main() {
     )
 
 
-    var passwd string = "minus"
+    var passwd string = "string"
 
-    var user string = "Architect"
+    var user string = "string"
 
     operationSecurity := operations.BasicAuthSecurity{
             Password: "YOUR_PASSWORD",

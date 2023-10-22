@@ -16,7 +16,6 @@ class NameOverrideGetEnumNameOverride(str, Enum):
     VALUE3 = 'value3'
 
 
-
 @dataclasses.dataclass
 class NameOverrideGetRequest:
     test_enum_query_param: NameOverrideGetEnumNameOverride = dataclasses.field(metadata={'query_param': { 'field_name': 'enumNameOverride', 'style': 'form', 'explode': True }})
@@ -27,7 +26,6 @@ class NameOverrideGetRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class OverriddenResponse:
     r"""A successful response that contains the simpleObject sent in the request body"""
@@ -36,7 +34,6 @@ class OverriddenResponse:
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
     
-
 
 
 

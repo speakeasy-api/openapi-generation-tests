@@ -124,6 +124,114 @@ class Generation
     }
 	
     /**
+     * dateParamWithDefault
+     * 
+     * @param \DateTime $dateInput
+     * @return \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse
+     */
+	public function dateParamWithDefault(
+        \DateTime $dateInput,
+    ): \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultRequest();
+        $request->dateInput = $dateInput;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/dateParamWithDefault');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DateParamWithDefaultResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 204) {
+        }
+
+        return $response;
+    }
+	
+    /**
+     * dateTimeParamWithDefault
+     * 
+     * @param \DateTime $dateTimeInput
+     * @return \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse
+     */
+	public function dateTimeParamWithDefault(
+        \DateTime $dateTimeInput,
+    ): \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultRequest();
+        $request->dateTimeInput = $dateTimeInput;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/dateTimeParamWithDefault');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DateTimeParamWithDefaultResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 204) {
+        }
+
+        return $response;
+    }
+	
+    /**
+     * decimalParamWithDefault
+     * 
+     * @param float $decimalInput
+     * @return \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse
+     */
+	public function decimalParamWithDefault(
+        float $decimalInput,
+    ): \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse
+    {
+        $request = new \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultRequest();
+        $request->decimalInput = $decimalInput;
+        
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/decimalParamWithDefault');
+        
+        $options = ['http_errors' => false];
+        $options = array_merge_recursive($options, Utils\Utils::getQueryParams(\OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultRequest::class, $request, $this->sdkConfiguration->globals));
+        $options['headers']['Accept'] = '*/*';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('GET', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\DecimalParamWithDefaultResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 204) {
+        }
+
+        return $response;
+    }
+	
+    /**
      * deprecatedFieldInSchemaPost
      * 
      * @param \OpenAPI\OpenAPI\Models\Shared\DeprecatedFieldInObject $request

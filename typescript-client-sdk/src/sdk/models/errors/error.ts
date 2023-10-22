@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyMetadata } from "../../../internal/utils";
+import { ErrorType } from "./errortype";
 import { Expose } from "class-transformer";
 
 export class ErrorT extends Error {
@@ -13,6 +14,10 @@ export class ErrorT extends Error {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type?: ErrorType;
 
     constructor(err?: ErrorT) {
         super();
