@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.37.0'
+implementation 'org.openapis.openapi:openapi:1.38.0'
 ```
 <!-- End SDK Installation -->
 
@@ -73,82 +73,82 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "Gasoline Sleek", false, LocalDate.parse("2021-04-23"), OffsetDateTime.parse("2022-09-13T20:44:04.193Z"), 1952.32d, "Shoes Brockton", 1062.86d, UsageExamplePostEnumParameter.VALUE1, 0d, 2346.82f, 5954.85d, 215216L, 834441, "example 2"){{
+            UsageExamplePostRequest req = new UsageExamplePostRequest(168827L, "string", false, LocalDate.parse("2022-05-05"), OffsetDateTime.parse("2023-06-11T00:39:45.412Z"), OffsetDateTime.parse("2022-07-22T13:16:48.221Z"), 2679.33d, "string", 5223.72d, UsageExamplePostEnumParameter.VALUE1, 0d, 6946.59f, 2286.22d, 102975L, 566999, "example 1"){{
                 requestBody = new UsageExamplePostRequestBody(){{
                     fakerFormattedStrings = new FakerFormattedStrings(){{
-                        addressFormat = "279 Cassandra Club";
-                        directoryFormat = "/var/mail";
-                        domainFormat = "dizzy-geology.net";
-                        emailFormat = "Pierre49@yahoo.com";
-                        filenameFormat = "deposit_male_dram.mpg4";
-                        filepathFormat = "/srv/deeply_gloves_program.st";
+                        addressFormat = "2344 Aufderhar Corner";
+                        directoryFormat = "/etc/defaults";
+                        domainFormat = "fatal-cutting.name";
+                        emailFormat = "Roberta.Kemmer77@gmail.com";
+                        filenameFormat = "strategic_southwest_shirt.mp4v";
+                        filepathFormat = "/usr/local/bin/target.z4";
                         imageFormat = "https://loremflickr.com/640/480";
-                        ipv4Format = "101.207.63.27";
-                        ipv6Format = "64a2:58be:7e13:5866:7dac:95a0:1523:5912";
-                        jsonFormat = "{rate: 57509, underwire: null, cent: \"male Iodine\"}";
-                        macFormat = "02:f2:2d:15:6d:c5";
-                        passwordFormat = "9nF4NLa49gS71tG";
-                        phoneFormat = "1-891-918-2466";
-                        timezoneFormat = "Asia/Jakarta";
-                        unknownFormat = "Northeast Uzbekistan HDD";
-                        urlFormat = "http://sane-network.net";
-                        uuidFormat = "364b6b4a-48ad-4bb3-b96c-2e388ca7107f";
-                        zipcodeFormat = "87997-8268";
+                        ipv4Format = "116.31.181.178";
+                        ipv6Format = "73ac:9ee2:348d:76c3:164a:258b:e7e1:3586";
+                        jsonFormat = "{key: 42822, key1: null, key2: \"string\"}";
+                        macFormat = "7d:ac:95:a0:15:23";
+                        passwordFormat = "eWzdveK0sHokC9n";
+                        phoneFormat = "1-340-562-2122 x175";
+                        timezoneFormat = "Asia/Yekaterinburg";
+                        unknownFormat = "string";
+                        urlFormat = "https://wilted-cytoplasm.biz";
+                        uuidFormat = "e0f62de2-e2d4-47a9-bf10-0f753b9b364b";
+                        zipcodeFormat = "73625";
                     }};
                     fakerStrings = new FakerStrings(){{
-                        city = "Carolinafort";
-                        iban = "CY35007005052574022Q9F55000Q";
+                        city = "Schuppecester";
+                        iban = "NO0300631256004";
                         id = "<ID>";
-                        iPv4 = "128.213.29.233";
-                        iPv6 = "aa92:fb62:d7b0:075d:a754:8270:74e6:53f1";
-                        account = "10128020";
-                        address = "97181 Metz Trafficway";
-                        amount = "896.58";
+                        iPv4 = "251.251.208.201";
+                        iPv6 = "ffbd:3ad7:2b20:8b2c:8188:308b:b979:0237";
+                        account = "29659826";
+                        address = "2500 Ambrose Circles";
+                        amount = "89.73";
                         avatar = "https://loremflickr.com/640/480";
-                        color = "grey";
+                        color = "fuchsia";
                         comment = "Carbonite web goalkeeper gloves are ergonomically designed to give easy fit";
-                        company = "Gottlieb Inc";
-                        country = "Nicaragua";
-                        countryCode = "BO";
-                        currency = "Seychelles Rupee";
-                        datatype = "point";
-                        default_ = "as Rock";
-                        description = "Extended encompassing framework";
-                        directory = "/Users";
-                        domainName = "lumpy-sand.name";
-                        emailAddr = "Jayde_Stracke94@gmail.com";
+                        company = "Sipes - Buckridge";
+                        country = "Turkey";
+                        countryCode = "NF";
+                        currency = "Pakistan Rupee";
+                        datatype = "real";
+                        default_ = "string";
+                        description = "Customizable zero administration open system";
+                        directory = "/opt/sbin";
+                        domainName = "deep-stallion.info";
+                        emailAddr = "Alejandrin.Barrows@hotmail.com";
                         extension = "m1v";
-                        filename = "oof_plastic.gif";
-                        filepath = "/srv/yum.mrcx";
-                        filetype = "audio";
-                        firstName = "Lula";
-                        fullName = "Bonnie Nitzsche";
-                        gender = "Transmasculine";
-                        job = "Legacy Markets Orchestrator";
-                        json = "{housing: 65187, wine: null, planter: \"Lafayette array\"}";
+                        filename = "panel_deposit.png";
+                        filepath = "/media/executive_automotive_northeast.distz";
+                        filetype = "video";
+                        firstName = "Dejuan";
+                        fullName = "Mrs. Jose Franey";
+                        gender = "Trans female";
+                        job = "Direct Accountability Liaison";
+                        json = "{key: 88901, key1: null, key2: \"string\"}";
                         key = "<key>";
-                        lastName = "Leannon";
-                        latitude = "-38.3898";
-                        locale = "ko";
-                        longitude = "179.7448";
-                        mac = "99:b2:4a:a3:1c:16";
-                        manufacturer = "Nissan";
-                        material = "Rubber";
-                        middleName = "Austin";
-                        model = "Model Y";
-                        password = "qIlrvZKw0C22gKb";
-                        phone = "1-646-984-1595 x907";
-                        pin = "4985";
-                        postalCode = "51983";
-                        price = "356.00";
-                        product = "Handcrafted Plastic Cheese";
+                        lastName = "Metz";
+                        latitude = "68.2232";
+                        locale = "uk";
+                        longitude = "-42.1384";
+                        mac = "a2:42:a1:bf:6e:19";
+                        manufacturer = "Aston Martin";
+                        material = "Concrete";
+                        middleName = "Finley";
+                        model = "Escalade";
+                        password = "_QiNrTzqbDz8AXY";
+                        phone = "469-402-6116";
+                        pin = "9497";
+                        postalCode = "64696";
+                        price = "25.00";
+                        product = "Recycled Granite Pants";
                         sex = "male";
-                        street = "Humberto Court";
-                        timezone = "Europe/Ljubljana";
-                        unit = "gray";
-                        url = "http://striped-cutlet.net";
-                        username = "Jeanette82";
-                        uuid = "004523e8-6559-4551-a938-6a9f8f4b14b9";
+                        street = "Lura Wells";
+                        timezone = "Africa/Nairobi";
+                        unit = "degree Celsius";
+                        url = "https://crooked-dulcimer.name";
+                        username = "Mable76";
+                        uuid = "16b919d6-51cd-4e97-81e2-5221b7b6969f";
                     }};
                     simpleObject = new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
                         bigint = 8821239038968084L;
@@ -156,15 +156,15 @@ public class Application {
                         boolOpt = true;
                         decimal = 3.141592653589793d;
                         decimalStr = "3.14159265358979344719667586";
-                        intOptNull = 843091L;
-                        numOptNull = 3767.71d;
+                        intOptNull = 809796L;
+                        numOptNull = 4812.91d;
                         strOpt = "testOptional";
                     }};
                 }};
-                bigintParameterOptional = 733506L;
-                bigintStrParameterOptional = "laudantium online Alabama";
-                decimalParameterOptional = 5072.07d;
-                decimalStrParameterOptional = "up";
+                bigintParameterOptional = 165468L;
+                bigintStrParameterOptional = "string";
+                decimalParameterOptional = 5944.32d;
+                decimalStrParameterOptional = "string";
                 optEnumParameter = UsageExamplePostOptEnumParameter.VALUE3;
             }};            
 
@@ -244,6 +244,9 @@ public class Application {
 * [anchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [arrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
 * [circularReferenceGet](docs/sdks/generation/README.md#circularreferenceget)
+* [dateParamWithDefault](docs/sdks/generation/README.md#dateparamwithdefault)
+* [dateTimeParamWithDefault](docs/sdks/generation/README.md#datetimeparamwithdefault)
+* [decimalParamWithDefault](docs/sdks/generation/README.md#decimalparamwithdefault)
 * [deprecatedFieldInSchemaPost](docs/sdks/generation/README.md#deprecatedfieldinschemapost)
 * [deprecatedObjectInSchemaGet](docs/sdks/generation/README.md#deprecatedobjectinschemaget)
 * [~~deprecatedOperationNoCommentsGet~~](docs/sdks/generation/README.md#deprecatedoperationnocommentsget) - :warning: **Deprecated**
@@ -296,6 +299,7 @@ public class Application {
 * [deepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
 * [duplicateParam](docs/sdks/parameters/README.md#duplicateparam)
 * [formQueryParamsArray](docs/sdks/parameters/README.md#formqueryparamsarray)
+* [formQueryParamsCamelObject](docs/sdks/parameters/README.md#formqueryparamscamelobject)
 * [formQueryParamsMap](docs/sdks/parameters/README.md#formqueryparamsmap)
 * [formQueryParamsObject](docs/sdks/parameters/README.md#formqueryparamsobject)
 * [formQueryParamsPrimitive](docs/sdks/parameters/README.md#formqueryparamsprimitive)
@@ -411,6 +415,7 @@ public class Application {
 
 * [responseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [responseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
+* [responseBodyAdditionalPropertiesObjectPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesobjectpost)
 * [responseBodyAdditionalPropertiesPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiespost)
 * [responseBodyBytesGet](docs/sdks/responsebodies/README.md#responsebodybytesget)
 * [responseBodyEmptyWithHeaders](docs/sdks/responsebodies/README.md#responsebodyemptywithheaders)
@@ -454,6 +459,8 @@ public class Application {
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->
 
@@ -484,7 +491,7 @@ The following global parameters are available. The required parameters must be s
 
 
 
-## Example
+## Example #1
 
 ```java
 package hello.world;
@@ -506,6 +513,40 @@ public class Application {
                 .build();
 
             GlobalPathParameterGetResponse res = sdk.globals.globalPathParameterGet(719830L);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+
+## Example #2
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.GlobalsQueryParameterGetRequest;
+import org.openapis.openapi.models.operations.GlobalsQueryParameterGetResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            GlobalsQueryParameterGetResponse res = sdk.globals.globalsQueryParameterGet("string");
 
             if (res.res != null) {
                 // handle response

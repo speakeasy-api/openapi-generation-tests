@@ -12,7 +12,6 @@ SERVERS_BY_ID_WITH_TEMPLATES_SERVERS = {
 }
 
 
-
 @dataclasses.dataclass
 class ServersByIDWithTemplatesResponse:
     content_type: str = dataclasses.field()

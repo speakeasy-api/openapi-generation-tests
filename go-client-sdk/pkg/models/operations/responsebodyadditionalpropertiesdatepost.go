@@ -9,12 +9,12 @@ import (
 
 // ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON - OK
 type ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON struct {
-	JSON shared.ObjWithDateAdditionlProperties `json:"json"`
+	JSON shared.ObjWithDateAdditionalProperties `json:"json"`
 }
 
-func (o *ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON) GetJSON() shared.ObjWithDateAdditionlProperties {
+func (o *ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON) GetJSON() shared.ObjWithDateAdditionalProperties {
 	if o == nil {
-		return shared.ObjWithDateAdditionlProperties{}
+		return shared.ObjWithDateAdditionalProperties{}
 	}
 	return o.JSON
 }

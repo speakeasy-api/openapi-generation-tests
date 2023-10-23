@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class IgnoredGenerationGetSingledIgnoredCallbackOperationResponse:
     content_type: str = dataclasses.field()
@@ -22,12 +21,10 @@ class IgnoredGenerationGetSingledIgnoredCallbackOperationResponse:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class IgnoredGenerationGetSingledIgnoredCallbackOperationRequestBody:
     some_prop: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('someProp'), 'exclude': lambda f: f is None }})
     
-
 
 
 
@@ -44,7 +41,6 @@ class IgnoredGenerationGetNotIgnoredCallbackResponse:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class IgnoredGenerationGetNotIgnoredCallbackRequestBody:
     some_prop: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('someProp'), 'exclude': lambda f: f is None }})

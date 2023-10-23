@@ -93,6 +93,9 @@ src/sdk/models/operations/inlinebodyandparamnoconflict.ts
 src/sdk/models/operations/anchortypesget.ts
 src/sdk/models/operations/arraycircularreferenceget.ts
 src/sdk/models/operations/circularreferenceget.ts
+src/sdk/models/operations/dateparamwithdefault.ts
+src/sdk/models/operations/datetimeparamwithdefault.ts
+src/sdk/models/operations/decimalparamwithdefault.ts
 src/sdk/models/operations/deprecatedfieldinschemapost.ts
 src/sdk/models/operations/deprecatedobjectinschemaget.ts
 src/sdk/models/operations/deprecatedoperationnocommentsget.ts
@@ -123,6 +126,7 @@ src/sdk/models/operations/deepobjectqueryparamsmap.ts
 src/sdk/models/operations/deepobjectqueryparamsobject.ts
 src/sdk/models/operations/duplicateparam.ts
 src/sdk/models/operations/formqueryparamsarray.ts
+src/sdk/models/operations/formqueryparamscamelobject.ts
 src/sdk/models/operations/formqueryparamsmap.ts
 src/sdk/models/operations/formqueryparamsobject.ts
 src/sdk/models/operations/formqueryparamsprimitive.ts
@@ -229,6 +233,7 @@ src/sdk/models/operations/getresource.ts
 src/sdk/models/operations/updateresource.ts
 src/sdk/models/operations/responsebodyadditionalpropertiescomplexnumberspost.ts
 src/sdk/models/operations/responsebodyadditionalpropertiesdatepost.ts
+src/sdk/models/operations/responsebodyadditionalpropertiesobjectpost.ts
 src/sdk/models/operations/responsebodyadditionalpropertiespost.ts
 src/sdk/models/operations/responsebodybytesget.ts
 src/sdk/models/operations/responsebodyemptywithheaders.ts
@@ -257,6 +262,8 @@ src/sdk/models/operations/primitivetypeoneofpost.ts
 src/sdk/models/operations/stronglytypedoneofpost.ts
 src/sdk/models/operations/typedobjectnullableoneofpost.ts
 src/sdk/models/operations/typedobjectoneofpost.ts
+src/sdk/models/operations/uniondatenull.ts
+src/sdk/models/operations/uniondatetimenull.ts
 src/sdk/models/operations/weaklytypedoneofpost.ts
 src/sdk/models/operations/putanythingignoredgeneration.ts
 src/sdk/models/operations/responsebodyjsonget.ts
@@ -303,6 +310,7 @@ src/sdk/models/shared/oneofgenerationstresstest.ts
 src/sdk/models/shared/unsupportedenums.ts
 src/sdk/models/shared/index.ts
 src/sdk/models/errors/error.ts
+src/sdk/models/errors/errortype.ts
 src/sdk/models/errors/statusgetxspeakeasyerrors.ts
 src/sdk/models/errors/index.ts
 src/sdk/models/callbacks/ignoredgenerationget.ts
@@ -387,6 +395,13 @@ docs/models/operations/typefromanchor.md
 docs/models/operations/anchortypesgetresponse.md
 docs/models/operations/arraycircularreferencegetresponse.md
 docs/models/operations/circularreferencegetresponse.md
+docs/types/rfcdate.md
+docs/models/operations/dateparamwithdefaultrequest.md
+docs/models/operations/dateparamwithdefaultresponse.md
+docs/models/operations/datetimeparamwithdefaultrequest.md
+docs/models/operations/datetimeparamwithdefaultresponse.md
+docs/models/operations/decimalparamwithdefaultrequest.md
+docs/models/operations/decimalparamwithdefaultresponse.md
 docs/models/operations/deprecatedfieldinschemapostresponse.md
 docs/models/operations/deprecatedobjectinschemaget200applicationjson.md
 docs/models/operations/deprecatedobjectinschemagetresponse.md
@@ -412,7 +427,6 @@ docs/models/operations/nameoverridegetresponse.md
 docs/models/operations/objectcircularreferencegetresponse.md
 docs/models/operations/oneofcircularreferencegetresponse.md
 docs/models/operations/typedparametergenerationgetobj.md
-docs/types/rfcdate.md
 docs/models/operations/typedparametergenerationgetrequest.md
 docs/models/operations/typedparametergenerationgetresponse.md
 docs/models/operations/usageexamplepostsecurity.md
@@ -465,6 +479,12 @@ docs/models/operations/formqueryparamsarrayrequest.md
 docs/models/operations/formqueryparamsarrayresargs.md
 docs/models/operations/formqueryparamsarrayres.md
 docs/models/operations/formqueryparamsarrayresponse.md
+docs/models/operations/formqueryparamscamelobjectobjparamexploded.md
+docs/models/operations/formqueryparamscamelobjectobjparam.md
+docs/models/operations/formqueryparamscamelobjectrequest.md
+docs/models/operations/formqueryparamscamelobjectresargs.md
+docs/models/operations/formqueryparamscamelobjectres.md
+docs/models/operations/formqueryparamscamelobjectresponse.md
 docs/models/operations/formqueryparamsmaprequest.md
 docs/models/operations/formqueryparamsmapres.md
 docs/models/operations/formqueryparamsmapresponse.md
@@ -713,6 +733,8 @@ docs/models/operations/responsebodyadditionalpropertiescomplexnumberspost200appl
 docs/models/operations/responsebodyadditionalpropertiescomplexnumberspostresponse.md
 docs/models/operations/responsebodyadditionalpropertiesdatepost200applicationjson.md
 docs/models/operations/responsebodyadditionalpropertiesdatepostresponse.md
+docs/models/operations/responsebodyadditionalpropertiesobjectpost200applicationjson.md
+docs/models/operations/responsebodyadditionalpropertiesobjectpostresponse.md
 docs/models/operations/responsebodyadditionalpropertiespost200applicationjson.md
 docs/models/operations/responsebodyadditionalpropertiespostresponse.md
 docs/models/operations/responsebodybytesgetresponse.md
@@ -759,6 +781,10 @@ docs/models/operations/typedobjectnullableoneofpostres.md
 docs/models/operations/typedobjectnullableoneofpostresponse.md
 docs/models/operations/typedobjectoneofpostres.md
 docs/models/operations/typedobjectoneofpostresponse.md
+docs/models/operations/uniondatenullres.md
+docs/models/operations/uniondatenullresponse.md
+docs/models/operations/uniondatetimenullres.md
+docs/models/operations/uniondatetimenullresponse.md
 docs/models/operations/weaklytypedoneofpostres.md
 docs/models/operations/weaklytypedoneofpostresponse.md
 docs/models/operations/putanythingignoredgeneration200applicationjson.md
@@ -830,6 +856,7 @@ docs/models/shared/alloftoallof.md
 docs/models/shared/oneofgenerationstresstest.md
 docs/models/shared/unsupportedenums.md
 docs/models/errors/errort.md
+docs/models/errors/errortype.md
 docs/models/errors/statusgetxspeakeasyerrors501applicationjson.md
 docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationresponse.md
 docs/models/callbacks/ignoredgenerationgetsingledignoredcallbackoperationrequestbody.md

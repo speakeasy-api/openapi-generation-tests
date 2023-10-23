@@ -8,12 +8,10 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class Oauth2OverrideSecurity:
     oauth2: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'oauth2', 'field_name': 'Authorization' }})
     
-
 
 
 
@@ -23,14 +21,12 @@ class Oauth2OverrideRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class Oauth2OverrideToken:
     r"""Successful authentication."""
     authenticated: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('authenticated') }})
     token: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('token') }})
     
-
 
 
 

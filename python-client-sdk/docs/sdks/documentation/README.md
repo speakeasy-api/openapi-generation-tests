@@ -28,7 +28,7 @@ s = sdk.SDK(
 )
 
 
-res = s.documentation.get_documentation_per_language(language='hack')
+res = s.documentation.get_documentation_per_language(language='string')
 
 if res.status_code == 200:
     # handle response

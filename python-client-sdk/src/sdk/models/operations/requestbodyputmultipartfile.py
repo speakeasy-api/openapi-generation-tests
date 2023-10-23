@@ -5,8 +5,7 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
-
+from typing import Dict, Optional
 
 
 @dataclasses.dataclass
@@ -14,7 +13,6 @@ class RequestBodyPutMultipartFileRequestBodyFile:
     content: bytes = dataclasses.field(metadata={'multipart_form': { 'content': True }})
     file: str = dataclasses.field(metadata={'multipart_form': { 'field_name': 'file' }})
     
-
 
 
 
@@ -26,13 +24,11 @@ class RequestBodyPutMultipartFileRequestBody:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPutMultipartFileRes:
     r"""OK"""
-    files: dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('files') }})
+    files: Dict[str, str] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('files') }})
     
-
 
 
 

@@ -11,6 +11,7 @@ Endpoints for testing parameters.
 * [deepObjectQueryParamsObject](#deepobjectqueryparamsobject)
 * [duplicateParam](#duplicateparam)
 * [formQueryParamsArray](#formqueryparamsarray)
+* [formQueryParamsCamelObject](#formqueryparamscamelobject)
 * [formQueryParamsMap](#formqueryparamsmap)
 * [formQueryParamsObject](#formqueryparamsobject)
 * [formQueryParamsPrimitive](#formqueryparamsprimitive)
@@ -192,7 +193,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            DuplicateParamResponse res = sdk.parameters.duplicateParam("Parks");
+            DuplicateParamResponse res = sdk.parameters.duplicateParam("string");
 
             if (res.duplicateParamResponse != null) {
                 // handle response
@@ -268,6 +269,62 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.FormQueryParamsArrayResponse](../../models/operations/FormQueryParamsArrayResponse.md)**
+
+
+## formQueryParamsCamelObject
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectRequest;
+import org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            FormQueryParamsCamelObjectResponse res = sdk.parameters.formQueryParamsCamelObject(new FormQueryParamsCamelObjectObjParamExploded(){{
+                itemCount = "10";
+                searchTerm = "foo";
+            }}, new FormQueryParamsCamelObjectObjParam(){{
+                encodedCount = "11";
+                encodedTerm = "bar";
+            }});
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                                                                                  | Type                                                                                                                                                       | Required                                                                                                                                                   | Description                                                                                                                                                |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `objParamExploded`                                                                                                                                         | [org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParamExploded](../../models/operations/FormQueryParamsCamelObjectObjParamExploded.md) | :heavy_check_mark:                                                                                                                                         | N/A                                                                                                                                                        |
+| `objParam`                                                                                                                                                 | [org.openapis.openapi.models.operations.FormQueryParamsCamelObjectObjParam](../../models/operations/FormQueryParamsCamelObjectObjParam.md)                 | :heavy_minus_sign:                                                                                                                                         | N/A                                                                                                                                                        |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.FormQueryParamsCamelObjectResponse](../../models/operations/FormQueryParamsCamelObjectResponse.md)**
 
 
 ## formQueryParamsMap
@@ -844,7 +901,7 @@ public class Application {
                     strOpt = "testOptional";
                 }}),
             }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -864,7 +921,7 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }});
-                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -1487,8 +1544,8 @@ public class Application {
                 .build();
 
             SimplePathParameterMapsResponse res = sdk.parameters.simplePathParameterMaps(new java.util.HashMap<String, String>(){{
-                put("test", "value");
                 put("test2", "value2");
+                put("test", "value");
             }}, new java.util.HashMap<String, Long>(){{
                 put("test", 1L);
                 put("test2", 2L);

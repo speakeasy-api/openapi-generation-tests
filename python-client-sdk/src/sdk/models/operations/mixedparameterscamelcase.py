@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class MixedParametersCamelCaseRequest:
     header_param: str = dataclasses.field(metadata={'header': { 'field_name': 'header_param', 'style': 'simple', 'explode': False }})
@@ -19,7 +18,6 @@ class MixedParametersCamelCaseRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class MixedParametersCamelCaseResArgs:
     query_string_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('query_string_param') }})
@@ -28,7 +26,6 @@ class MixedParametersCamelCaseResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class MixedParametersCamelCaseResHeaders:
     header_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Header-Param') }})
@@ -37,7 +34,6 @@ class MixedParametersCamelCaseResHeaders:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class MixedParametersCamelCaseRes:
     r"""OK"""
@@ -45,7 +41,6 @@ class MixedParametersCamelCaseRes:
     headers: MixedParametersCamelCaseResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

@@ -31,12 +31,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'Minivan';
+    $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
@@ -50,14 +54,14 @@ try {
     $simpleObject->int = 1;
     $simpleObject->int32 = 1;
     $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $simpleObject->intEnum = SimpleObjectIntEnum::Third;
-    $simpleObject->intOptNull = 780;
+    $simpleObject->intEnum = SimpleObjectIntEnum::Second;
+    $simpleObject->intOptNull = 843322;
     $simpleObject->num = 1.1;
-    $simpleObject->numOptNull = 5419.15;
+    $simpleObject->numOptNull = 7126.06;
     $simpleObject->str = 'test';
     $simpleObject->strOpt = 'testOptional';
 
-    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'Coupe');
+    $response = $sdk->flattening->componentBodyAndParamConflict($simpleObject, 'string');
 
     if ($response->res !== null) {
         // handle response
@@ -98,12 +102,16 @@ use \OpenAPI\OpenAPI\Models\Shared\Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectInt32Enum;
 use \OpenAPI\OpenAPI\Models\Shared\SimpleObjectIntEnum;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $simpleObject = new SimpleObject();
-    $simpleObject->any = 'ick';
+    $simpleObject->any = 'any';
     $simpleObject->bigint = 8821239038968084;
     $simpleObject->bigintStr = '9223372036854775808';
     $simpleObject->bool = true;
@@ -117,14 +125,14 @@ try {
     $simpleObject->int = 1;
     $simpleObject->int32 = 1;
     $simpleObject->int32Enum = SimpleObjectInt32Enum::OneHundredAndEightyOne;
-    $simpleObject->intEnum = SimpleObjectIntEnum::First;
-    $simpleObject->intOptNull = 575433;
+    $simpleObject->intEnum = SimpleObjectIntEnum::Third;
+    $simpleObject->intOptNull = 758827;
     $simpleObject->num = 1.1;
-    $simpleObject->numOptNull = 3895.81;
+    $simpleObject->numOptNull = 1702.8;
     $simpleObject->str = 'test';
     $simpleObject->strOpt = 'testOptional';
 
-    $response = $sdk->flattening->componentBodyAndParamNoConflict('Ferrari', $simpleObject);
+    $response = $sdk->flattening->componentBodyAndParamNoConflict('string', $simpleObject);
 
     if ($response->res !== null) {
         // handle response
@@ -161,13 +169,17 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\ConflictingParamsRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
-    $response = $sdk->flattening->conflictingParams('kilogram', 'Cloned');
+    $response = $sdk->flattening->conflictingParams('string', 'string');
 
     if ($response->res !== null) {
         // handle response
@@ -205,14 +217,18 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequest;
 use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamConflictRequestBody;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $requestBody = new InlineBodyAndParamConflictRequestBody();
-    $requestBody->str = 'Progressive';
+    $requestBody->str = 'string';
 
-    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'until');
+    $response = $sdk->flattening->inlineBodyAndParamConflict($requestBody, 'string');
 
     if ($response->res !== null) {
         // handle response
@@ -250,14 +266,18 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequest;
 use \OpenAPI\OpenAPI\Models\Operations\InlineBodyAndParamNoConflictRequestBody;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $requestBody = new InlineBodyAndParamNoConflictRequestBody();
-    $requestBody->bodyStr = 'dynamic expedite';
+    $requestBody->bodyStr = 'string';
 
-    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'Forward');
+    $response = $sdk->flattening->inlineBodyAndParamNoConflict($requestBody, 'string');
 
     if ($response->res !== null) {
         // handle response

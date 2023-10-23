@@ -9,7 +9,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostFormSimpleResForm:
     any: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('any') }})
@@ -31,13 +30,11 @@ class RequestBodyPostFormSimpleResForm:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostFormSimpleRes:
     r"""OK"""
     form: RequestBodyPostFormSimpleResForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
     
-
 
 
 

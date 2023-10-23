@@ -71,7 +71,7 @@ func (u DeepObjectAny) MarshalJSON() ([]byte, error) {
 }
 
 type DeepObject struct {
-	Any  DeepObjectAny           `json:"any" form:"name=any" multipartForm:"name=any"`
+	Any  DeepObjectAny           `json:"any" form:"name=any,json" multipartForm:"name=any,json"`
 	Arr  []SimpleObject          `json:"arr" form:"name=arr,json" multipartForm:"name=arr,json"`
 	Bool bool                    `json:"bool" form:"name=bool" multipartForm:"name=bool"`
 	Int  int64                   `json:"int" form:"name=int" multipartForm:"name=int"`

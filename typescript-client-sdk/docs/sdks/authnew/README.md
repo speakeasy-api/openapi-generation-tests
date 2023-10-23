@@ -42,8 +42,8 @@ import { SDK } from "openapi";
     },
     headerAuth: [
       {
-        expectedValue: "Highway",
-        headerName: "deliver payment",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   });
@@ -91,8 +91,8 @@ import { SDK } from "openapi";
     },
     headerAuth: [
       {
-        expectedValue: "idolized",
-        headerName: "female Virginia primary",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   });
@@ -142,8 +142,8 @@ const operationSecurity: BasicAuthNewSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "integrate",
-        headerName: "bandwidth uselessly",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -193,8 +193,8 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "thong Scandium worse",
-        headerName: "Durham Tesla",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -248,8 +248,8 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "services indigo",
-        headerName: "Wooden Jewelery",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -302,8 +302,8 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "Gourde",
-        headerName: "Van Granite East",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -356,8 +356,8 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "compressing",
-        headerName: "sievert Diesel",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -407,8 +407,8 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "payment Usability sievert",
-        headerName: "yum Northwest metrics",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -459,8 +459,8 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "microchip Southeast",
-        headerName: "Future Corners Electronic",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -510,8 +510,8 @@ const operationSecurity: Oauth2AuthNewSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "Sunrise",
-        headerName: "male",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);
@@ -561,8 +561,8 @@ const operationSecurity: OpenIdConnectAuthNewSecurity = {
     },
     headerAuth: [
       {
-        expectedValue: "bypassing furthermore",
-        headerName: "bypass brilliant tesla",
+        expectedValue: "string",
+        headerName: "string",
       },
     ],
   }, operationSecurity);

@@ -61,7 +61,7 @@ public class Application {
                 num = 1.1d;
                 str = "test";
                 strOpt = "testOptional";
-            }}, "Minivan");
+            }}, "string");
 
             if (res.res != null) {
                 // handle response
@@ -115,7 +115,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("ick", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+            ComponentBodyAndParamNoConflictResponse res = sdk.flattening.componentBodyAndParamNoConflict("string", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
                 any = "any";
                 bigint = 8821239038968084L;
                 bigintStr = "9223372036854775808";
@@ -182,7 +182,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            ConflictingParamsResponse res = sdk.flattening.conflictingParams("kilogram", "Cloned");
+            ConflictingParamsResponse res = sdk.flattening.conflictingParams("string", "string");
 
             if (res.res != null) {
                 // handle response
@@ -231,9 +231,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("until"){{
-                str = "Progressive";
-            }}, "array");
+            InlineBodyAndParamConflictResponse res = sdk.flattening.inlineBodyAndParamConflict(new InlineBodyAndParamConflictRequestBody("string"){{
+                str = "string";
+            }}, "string");
 
             if (res.res != null) {
                 // handle response
@@ -282,9 +282,9 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("Forward"){{
-                bodyStr = "dynamic expedite";
-            }}, "embrace");
+            InlineBodyAndParamNoConflictResponse res = sdk.flattening.inlineBodyAndParamNoConflict(new InlineBodyAndParamNoConflictRequestBody("string"){{
+                bodyStr = "string";
+            }}, "string");
 
             if (res.res != null) {
                 // handle response

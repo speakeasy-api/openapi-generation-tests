@@ -104,6 +104,99 @@ module OpenApiSDK
       res
     end
 
+    sig { params(date_input: Date).returns(Utils::FieldAugmented) }
+    def date_param_with_default(date_input)
+
+      request = Operations::DateParamWithDefaultRequest.new(
+        
+        date_input: date_input
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/dateParamWithDefault"
+      headers = {}
+      query_params = Utils.get_query_params(Operations::DateParamWithDefaultRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::DateParamWithDefaultResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 204
+      end
+      res
+    end
+
+    sig { params(date_time_input: DateTime).returns(Utils::FieldAugmented) }
+    def date_time_param_with_default(date_time_input)
+
+      request = Operations::DateTimeParamWithDefaultRequest.new(
+        
+        date_time_input: date_time_input
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/dateTimeParamWithDefault"
+      headers = {}
+      query_params = Utils.get_query_params(Operations::DateTimeParamWithDefaultRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::DateTimeParamWithDefaultResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 204
+      end
+      res
+    end
+
+    sig { params(decimal_input: Float).returns(Utils::FieldAugmented) }
+    def decimal_param_with_default(decimal_input)
+
+      request = Operations::DecimalParamWithDefaultRequest.new(
+        
+        decimal_input: decimal_input
+      )
+      url, params = @sdk_configuration.get_server_details
+      base_url = Utils.template_url(url, params)
+      url = "#{base_url}/anything/decimalParamWithDefault"
+      headers = {}
+      query_params = Utils.get_query_params(Operations::DecimalParamWithDefaultRequest, request, @sdk_configuration.globals)
+      headers['Accept'] = '*/*'
+      headers['x-speakeasy-user-agent'] = @sdk_configuration.user_agent
+
+      r = @sdk_configuration.client.get(url) do |req|
+        req.headers = headers
+        req.params = query_params
+        Utils.configure_request_security(req, @sdk_configuration.security) if !@sdk_configuration.nil? && !@sdk_configuration.security.nil?
+      end
+
+      content_type = r.headers.fetch('Content-Type', 'application/octet-stream')
+
+      res = Operations::DecimalParamWithDefaultResponse.new(
+        status_code: r.status, content_type: content_type, raw_response: r
+      )
+      if r.status == 204
+      end
+      res
+    end
+
     sig { params(request: Shared::DeprecatedFieldInObject).returns(Utils::FieldAugmented) }
     def deprecated_field_in_schema_post(request)
 

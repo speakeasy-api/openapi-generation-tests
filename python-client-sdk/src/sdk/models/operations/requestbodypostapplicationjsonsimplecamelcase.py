@@ -10,7 +10,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostApplicationJSONSimpleCamelCaseRes:
     r"""OK"""
@@ -19,7 +18,6 @@ class RequestBodyPostApplicationJSONSimpleCamelCaseRes:
     https://docs.speakeasyapi.dev - A link to the external docs.
     """
     
-
 
 
 

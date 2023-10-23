@@ -10,13 +10,11 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class NullableOneOfRefInObjectPostRes:
     r"""OK"""
     json: shared_nullableoneofrefinobject.NullableOneOfRefInObject = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 
