@@ -9,7 +9,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class HeaderParamsObjectRequest:
     x_header_obj: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'header': { 'field_name': 'X-Header-Obj', 'style': 'simple', 'explode': False }})
@@ -21,7 +20,6 @@ class HeaderParamsObjectRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsObjectResHeaders:
     x_header_obj: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('X-Header-Obj') }})
@@ -31,13 +29,11 @@ class HeaderParamsObjectResHeaders:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class HeaderParamsObjectRes:
     r"""OK"""
     headers: HeaderParamsObjectResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
-
 
 
 

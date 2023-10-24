@@ -11,7 +11,6 @@ REQUEST_BODY_READ_ONLY_INPUT_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class RequestBodyReadOnlyInputResponse:
     content_type: str = dataclasses.field()

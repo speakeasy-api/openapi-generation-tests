@@ -10,6 +10,9 @@ Endpoints for purely testing valid generation behavior.
 * [AnchorTypesGet](#anchortypesget)
 * [ArrayCircularReferenceGet](#arraycircularreferenceget)
 * [CircularReferenceGet](#circularreferenceget)
+* [DateParamWithDefault](#dateparamwithdefault)
+* [DateTimeParamWithDefault](#datetimeparamwithdefault)
+* [DecimalParamWithDefault](#decimalparamwithdefault)
 * [DeprecatedFieldInSchemaPost](#deprecatedfieldinschemapost)
 * [DeprecatedObjectInSchemaGet](#deprecatedobjectinschemaget)
 * [~~DeprecatedOperationNoCommentsGet~~](#deprecatedoperationnocommentsget) - :warning: **Deprecated**
@@ -166,6 +169,159 @@ func main() {
 **[*operations.CircularReferenceGetResponse](../../models/operations/circularreferencegetresponse.md), error**
 
 
+## DateParamWithDefault
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+
+    var dateInput types.Date = types.MustDateFromString("2021-11-30")
+
+    ctx := context.Background()
+    res, err := s.Generation.DateParamWithDefault(ctx, dateInput)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `dateInput`                                           | [types.Date](../../types/date.md)                     | :heavy_check_mark:                                    | A date parameter with a default value                 |
+
+
+### Response
+
+**[*operations.DateParamWithDefaultResponse](../../models/operations/dateparamwithdefaultresponse.md), error**
+
+
+## DateTimeParamWithDefault
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+
+    var dateTimeInput time.Time = types.MustTimeFromString("2023-02-09T21:53:21.077Z")
+
+    ctx := context.Background()
+    res, err := s.Generation.DateTimeParamWithDefault(ctx, dateTimeInput)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                             | Type                                                  | Required                                              | Description                                           |
+| ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- | ----------------------------------------------------- |
+| `ctx`                                                 | [context.Context](https://pkg.go.dev/context#Context) | :heavy_check_mark:                                    | The context to use for the request.                   |
+| `dateTimeInput`                                       | [time.Time](https://pkg.go.dev/time#Time)             | :heavy_check_mark:                                    | A date time parameter with a default value            |
+
+
+### Response
+
+**[*operations.DateTimeParamWithDefaultResponse](../../models/operations/datetimeparamwithdefaultresponse.md), error**
+
+
+## DecimalParamWithDefault
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+
+    var decimalInput *decimal.Big = types.MustNewDecimalFromString("4060.06")
+
+    ctx := context.Background()
+    res, err := s.Generation.DecimalParamWithDefault(ctx, decimalInput)
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.StatusCode == http.StatusOK {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                               | Type                                                                    | Required                                                                | Description                                                             |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| `ctx`                                                                   | [context.Context](https://pkg.go.dev/context#Context)                   | :heavy_check_mark:                                                      | The context to use for the request.                                     |
+| `decimalInput`                                                          | [*decimal.Big](https://pkg.go.dev/github.com/ericlagergren/decimal#Big) | :heavy_check_mark:                                                      | A decimal parameter with a default value                                |
+
+
+### Response
+
+**[*operations.DecimalParamWithDefaultResponse](../../models/operations/decimalparamwithdefaultresponse.md), error**
+
+
 ## DeprecatedFieldInSchemaPost
 
 ### Example Usage
@@ -287,7 +443,7 @@ func main() {
     )
 
 
-    var deprecatedParameter *string = "Account"
+    var deprecatedParameter *string = "string"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationNoCommentsGet(ctx, deprecatedParameter)
@@ -342,9 +498,9 @@ func main() {
     )
 
 
-    var deprecatedParameter *string = "Account"
+    var deprecatedParameter *string = "string"
 
-    var newParameter *string = "actuating"
+    var newParameter *string = "string"
 
     ctx := context.Background()
     res, err := s.Generation.DeprecatedOperationWithCommentsGet(ctx, deprecatedParameter, newParameter)
@@ -592,7 +748,7 @@ func main() {
 
     requestBody := operations.IgnoresPostApplicationJSON{}
 
-    var testParam *string = "Bike"
+    var testParam *string = "string"
 
     ctx := context.Background()
     res, err := s.Generation.IgnoresPost(ctx, requestBody, testParam)
@@ -803,7 +959,7 @@ func main() {
     obj := &operations.TypedParameterGenerationGetObj{
         Bool: false,
         Num: 4778.06,
-        Str: "Progressive Riyal male",
+        Str: "string",
     }
 
     ctx := context.Background()
@@ -898,18 +1054,19 @@ func main() {
         BigintStrParameter: big.NewInt(446729),
         BoolParameter: false,
         DateParameter: types.MustDateFromString("2023-06-11"),
-        DateTimeParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
-        DecimalParameter: types.MustNewDecimalFromString("2679.33"),
-        DecimalStrParameter: types.MustNewDecimalFromString("5223.72"),
-        DoubleParameter: 2911.37,
-        EnumParameter: operations.UsageExamplePostEnumParameterValue3,
+        DateTimeDefaultParameter: types.MustTimeFromString("2022-07-22T13:16:48.221Z"),
+        DateTimeParameter: types.MustTimeFromString("2021-10-21T09:16:58.799Z"),
+        DecimalParameter: types.MustNewDecimalFromString("5223.72"),
+        DecimalStrParameter: types.MustNewDecimalFromString("2911.37"),
+        DoubleParameter: 6946.59,
+        EnumParameter: operations.UsageExamplePostEnumParameterValue1,
         FalseyNumberParameter: 0,
-        Float32Parameter: 2286.22,
-        FloatParameter: 1029.75,
-        Int64Parameter: 566999,
-        IntParameter: 195232,
+        Float32Parameter: 1029.75,
+        FloatParameter: 5669.99,
+        Int64Parameter: 195232,
+        IntParameter: 569663,
         OptEnumParameter: operations.UsageExamplePostOptEnumParameterValue3.ToPointer(),
-        StrParameter: "example 2",
+        StrParameter: "example 1",
     }, operationSecurity)
     if err != nil {
         log.Fatal(err)

@@ -23,13 +23,17 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\RetriesGetRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
-    $response = $sdk->retries->retriesGet('Cambridgeshire', 496130);
+    $response = $sdk->retries->retriesGet('string', 75342);
 
     if ($response->retries !== null) {
         // handle response
@@ -44,7 +48,7 @@ try {
 | Parameter                      | Type                           | Required                       | Description                    |
 | ------------------------------ | ------------------------------ | ------------------------------ | ------------------------------ |
 | `requestId`                    | *string*                       | :heavy_check_mark:             | N/A                            |
-| `numRetries`                   | *?int*                         | :heavy_minus_sign:             | N/A                            |
+| `numRetries`                   | *int*                          | :heavy_minus_sign:             | N/A                            |
 | `$serverURL`                   | *string*                       | :heavy_minus_sign:             | An optional server URL to use. |
 
 

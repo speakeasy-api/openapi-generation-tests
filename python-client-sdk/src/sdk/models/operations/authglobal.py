@@ -10,7 +10,6 @@ AUTH_GLOBAL_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class AuthGlobalResponse:
     content_type: str = dataclasses.field()

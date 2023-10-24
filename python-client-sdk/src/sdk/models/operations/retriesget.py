@@ -12,7 +12,6 @@ RETRIES_GET_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class RetriesGetRequest:
     request_id: str = dataclasses.field(metadata={'query_param': { 'field_name': 'request-id', 'style': 'form', 'explode': True }})
@@ -22,13 +21,11 @@ class RetriesGetRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RetriesGetRetries:
     r"""OK"""
     retries: int = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('retries') }})
     
-
 
 
 

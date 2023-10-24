@@ -27,9 +27,15 @@ class StatusGetXSpeakeasyErrors501ApplicationJSON
     #[\JMS\Serializer\Annotation\SkipWhenEmpty]
     public ?string $message = null;
     
+	#[\JMS\Serializer\Annotation\SerializedName('type')]
+    #[\JMS\Serializer\Annotation\Type('enum<OpenAPI\OpenAPI\Models\Shared\ErrorType>')]
+    #[\JMS\Serializer\Annotation\SkipWhenEmpty]
+    public ?\OpenAPI\OpenAPI\Models\Shared\ErrorType $type = null;
+    
 	public function __construct()
 	{
 		$this->code = null;
 		$this->message = null;
+		$this->type = null;
 	}
 }

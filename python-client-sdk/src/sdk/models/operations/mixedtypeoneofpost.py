@@ -9,11 +9,9 @@ from sdk import utils
 from typing import Optional, Union
 
 
-
 @dataclasses.dataclass
 class MixedTypeOneOfPostRequestBody:
     pass
-
 
 
 @dataclasses.dataclass
@@ -22,13 +20,11 @@ class MixedTypeOneOfPostResJSON:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class MixedTypeOneOfPostRes:
     r"""OK"""
     json: Union[str, int, shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('json') }})
     
-
 
 
 

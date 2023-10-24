@@ -8,7 +8,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class MixedParametersPrimitivesRequest:
     header_param: str = dataclasses.field(metadata={'header': { 'field_name': 'headerParam', 'style': 'simple', 'explode': False }})
@@ -19,7 +18,6 @@ class MixedParametersPrimitivesRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class MixedParametersPrimitivesResArgs:
     query_string_param: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('queryStringParam') }})
@@ -28,7 +26,6 @@ class MixedParametersPrimitivesResArgs:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class MixedParametersPrimitivesResHeaders:
     headerparam: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Headerparam') }})
@@ -37,7 +34,6 @@ class MixedParametersPrimitivesResHeaders:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class MixedParametersPrimitivesRes:
     r"""OK"""
@@ -45,7 +41,6 @@ class MixedParametersPrimitivesRes:
     headers: MixedParametersPrimitivesResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

@@ -10,7 +10,6 @@ from typing import Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class IgnoresPostApplicationJSON:
     callback_url: Optional[str] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('callbackUrl'), 'exclude': lambda f: f is None }})
@@ -19,13 +18,11 @@ class IgnoresPostApplicationJSON:
 
 
 
-
 @dataclasses.dataclass
 class IgnoresPostRequest:
     request_body: IgnoresPostApplicationJSON = dataclasses.field(metadata={'request': { 'media_type': 'application/json' }})
     test_param: Optional[str] = dataclasses.field(default=None, metadata={'query_param': { 'field_name': 'testParam', 'style': 'form', 'explode': True }})
     
-
 
 
 

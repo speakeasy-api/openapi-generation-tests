@@ -25,13 +25,17 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\GetDocumentationPerLanguageRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
-    $response = $sdk->documentation->getDocumentationPerLanguage('hack');
+    $response = $sdk->documentation->getDocumentationPerLanguage('string');
 
     if ($response->statusCode === 200) {
         // handle response

@@ -18,13 +18,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::CreateFileRequestBody.new(
   request=Operations::CreateFileRequestBody.new(
     file=Operations::CreateFileRequestBodyFile.new(
       content="`'$Z`(L/RH".encode(),
-      file="Rap National",
+      file="string",
     ),
   ),
 )
@@ -58,6 +63,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::ExampleResource.new(
@@ -66,26 +76,26 @@ req = Shared::ExampleResource.new(
       1867.47,
     ],
     array_of_string=.new[
-      "Sodium",
+      "string",
     ],
     chocolates=.new[
       Shared::ExampleResourceChocolates.new(
-        description="Cross-group didactic system engine",
+        description="Re-engineered asynchronous array",
       ),
     ],
-    created_at=DateTime.iso8601('2022-04-19T19:55:28.761Z'),
-    enum_number=Shared::ExampleResourceEnumNumber::ONE,
-    enum_str=Shared::ExampleResourceEnumStr::ONE,
+    created_at=DateTime.iso8601('2021-10-25T14:40:21.269Z'),
+    enum_number=Shared::ExampleResourceEnumNumber::THREE,
+    enum_str=Shared::ExampleResourceEnumStr::TWO,
     id="<ID>",
     map_of_integer=.new{
-      "reiciendis": 154578,
+      "Florida": 967142,
     },
     map_of_string=.new{
-      "quasi": "utilize",
+      "Elmo": "string",
     },
-    name="online",
-    updated_at=DateTime.iso8601('2021-12-27T00:23:19.559Z'),
-    vehicle="oh",
+    name="string",
+    updated_at=DateTime.iso8601('2022-06-22T17:48:04.355Z'),
+    vehicle="string",
   ),
 )
     
@@ -118,11 +128,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::DeleteResourceRequest.new(
   path_params=Operations::DeleteResourceRequest.new(
-    resource_id="Bicycle Home",
+    resource_id="string",
   ),
 )
     
@@ -155,11 +170,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::GetResourceRequest.new(
   path_params=Operations::GetResourceRequest.new(
-    resource_id="Pop why",
+    resource_id="string",
   ),
 )
     
@@ -192,11 +212,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::UpdateResourceRequest.new(
   path_params=Operations::UpdateResourceRequest.new(
-    resource_id="Executive Maserati",
+    resource_id="string",
   ),
 )
     

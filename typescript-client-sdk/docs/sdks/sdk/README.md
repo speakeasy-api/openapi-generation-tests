@@ -29,7 +29,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.sdk.putAnythingIgnoredGeneration("bus");
+  const res = await sdk.sdk.putAnythingIgnoredGeneration("string");
 
   if (res.statusCode == 200) {
     // handle response

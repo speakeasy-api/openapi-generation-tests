@@ -8,14 +8,12 @@ from sdk import utils
 from typing import Union
 
 
-
 @dataclasses.dataclass
 class OneOfCircularReferenceObjectChild:
     pass
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class OneOfCircularReferenceObject:
     child: Union[OneOfCircularReferenceObject, shared_simpleobject.SimpleObject] = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('child') }})

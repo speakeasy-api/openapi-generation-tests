@@ -98,12 +98,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::NullableObject.new(
   request=Shared::NullableObject.new(
-    optional="Ergonomic",
-    required=463086,
+    optional="string",
+    required=302382,
   ),
 )
     
@@ -136,6 +141,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::NullableRequiredEmptyObjectPostRequestBody.new(
@@ -175,6 +185,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::NullableRequiredPropertyPostRequestBody.new(
@@ -217,17 +232,22 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::NullableRequiredSharedObjectPostRequestBody.new(
   request=Operations::NullableRequiredSharedObjectPostRequestBody.new(
     nullable_optional_obj=Shared::NullableObject.new(
-      optional="plus",
-      required=831837,
+      optional="string",
+      required=86533,
     ),
     nullable_required_obj=Shared::NullableObject.new(
-      optional="Electronic Northwest Northeast",
-      required=5767,
+      optional="string",
+      required=964394,
     ),
   ),
 )
@@ -261,12 +281,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     Shared::SimpleObject.new(
-      any="yowza",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -280,10 +305,10 @@ req = ::.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=729893,
+      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int_opt_null=690448,
       num=1.1,
-      num_opt_null=9069.2,
+      num_opt_null=7926.4,
       str_="test",
       str_opt="testOptional",
     ),
@@ -320,24 +345,29 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     Shared::SimpleObjectCamelCase.new(
-      any_val="Mercedes",
-      bigint_str_val="Chief online",
-      bigint_val=839695,
+      any_val="any example",
+      bigint_str_val="string",
+      bigint_val=828317,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=4835.37,
+      decimal_val=6846.04,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -378,12 +408,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     Shared::SimpleObject.new(
-      any="compress",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -397,10 +432,10 @@ req = ::.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=171819,
+      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int_opt_null=441726,
       num=1.1,
-      num_opt_null=8537.6,
+      num_opt_null=9818.33,
       str_="test",
       str_opt="testOptional",
     ),
@@ -436,24 +471,29 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     Shared::SimpleObjectCamelCase.new(
-      any_val="haptic",
-      bigint_str_val="Focused",
-      bigint_val=518527,
+      any_val="any example",
+      bigint_str_val="string",
+      bigint_val=484838,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=3073.55,
+      decimal_val=5504.23,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
       int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -493,13 +533,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     .new[
       Shared::SimpleObject.new(
-        any="Non",
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -513,10 +558,10 @@ req = ::.new(
         int=1,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
-        int_opt_null=920444,
+        int_enum=Shared::SimpleObjectIntEnum::THIRD,
+        int_opt_null=74811,
         num=1.1,
-        num_opt_null=2040.72,
+        num_opt_null=5257.68,
         str_="test",
         str_opt="testOptional",
       ),
@@ -554,25 +599,30 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     .new[
       Shared::SimpleObjectCamelCase.new(
-        any_val="seize",
-        bigint_str_val="Tools New Dollar",
-        bigint_val=979539,
+        any_val="any example",
+        bigint_str_val="string",
+        bigint_val=286989,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=2956.48,
+        decimal_val=4024.25,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -614,12 +664,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     .new[
-      "yellow",
+      "string",
     ],
   ],
 )
@@ -654,13 +709,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     .new{
-      "quasi": Shared::SimpleObject.new(
-        any="Volvo",
+      "Southeast": Shared::SimpleObject.new(
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -673,11 +733,11 @@ req = ::.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-        int_enum=Shared::SimpleObjectIntEnum::SECOND,
-        int_opt_null=779622,
+        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int_opt_null=633957,
         num=1.1,
-        num_opt_null=1652.31,
+        num_opt_null=7796.22,
         str_="test",
         str_opt="testOptional",
       ),
@@ -715,25 +775,30 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
     .new{
-      "occaecati": Shared::SimpleObjectCamelCase.new(
-        any_val="Implementation",
-        bigint_str_val="benchmark olive",
-        bigint_val=49157,
+      "culpa": Shared::SimpleObjectCamelCase.new(
+        any_val="any example",
+        bigint_str_val="string",
+        bigint_val=209858,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=8369.47,
+        decimal_val=3788.16,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -775,11 +840,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
-    "bit",
+    "string",
   ],
 )
     
@@ -813,14 +883,19 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
-    any="medium",
+    any="anyOf[0]",
     arr=.new[
       Shared::SimpleObject.new(
-        any="deliverables",
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -834,10 +909,10 @@ req = Shared::DeepObject.new(
         int=1,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
-        int_opt_null=69866,
+        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int_opt_null=331525,
         num=1.1,
-        num_opt_null=9989.71,
+        num_opt_null=7388.48,
         str_="test",
         str_opt="testOptional",
       ),
@@ -845,8 +920,8 @@ req = Shared::DeepObject.new(
     bool=true,
     int=1,
     map=.new{
-      "asperiores": Shared::SimpleObject.new(
-        any="Colon",
+      "Diesel": Shared::SimpleObject.new(
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -859,18 +934,18 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
+        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
         int_enum=Shared::SimpleObjectIntEnum::THIRD,
-        int_opt_null=653970,
+        int_opt_null=991506,
         num=1.1,
-        num_opt_null=4828.24,
+        num_opt_null=4260.62,
         str_="test",
         str_opt="testOptional",
       ),
     },
     num=1.1,
     obj=Shared::SimpleObject.new(
-      any="Maine",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -884,15 +959,15 @@ req = Shared::DeepObject.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
-      int_opt_null=887582,
+      int_enum=Shared::SimpleObjectIntEnum::THIRD,
+      int_opt_null=724689,
       num=1.1,
-      num_opt_null=1921.97,
+      num_opt_null=9926.81,
       str_="test",
       str_opt="testOptional",
     ),
     str_="test",
-    type="calculate Seamless",
+    type="string",
   ),
 )
     
@@ -925,49 +1000,29 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::DeepObjectCamelCase.new(
   request=Shared::DeepObjectCamelCase.new(
-    any_val="Cambridgeshire",
+    any_val="string",
     arr_val=.new[
       Shared::SimpleObjectCamelCase.new(
-        any_val="Table",
-        bigint_str_val="South Northwest Mouse",
-        bigint_val=484195,
+        any_val="any example",
+        bigint_str_val="string",
+        bigint_val=66469,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=9223.07,
+        decimal_val=9629.09,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
-        int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
-        int_opt_null_val=999999,
-        int_val=999999,
-        num_opt_null_val=1.1,
-        num_val=1.1,
-        str_opt_val="optional example",
-        str_val="example",
-      ),
-    ],
-    bool_val=false,
-    int_val=327264,
-    map_val=.new{
-      "aliquid": Shared::SimpleObjectCamelCase.new(
-        any_val="Qatar",
-        bigint_str_val="deposit Account",
-        bigint_val=308169,
-        bool_opt_val=true,
-        bool_val=true,
-        date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
-        date_val=Date.parse("2020-01-01"),
-        decimal_val=2835.01,
-        enum_val=Shared::Enum::ONE,
-        float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
         int32_val=1,
         int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
         int_opt_null_val=999999,
@@ -977,22 +1032,47 @@ req = Shared::DeepObjectCamelCase.new(
         str_opt_val="optional example",
         str_val="example",
       ),
+    ],
+    bool_val=false,
+    int_val=942092,
+    map_val=.new{
+      "South": Shared::SimpleObjectCamelCase.new(
+        any_val="any example",
+        bigint_str_val="string",
+        bigint_val=105266,
+        bool_opt_val=true,
+        bool_val=true,
+        date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
+        date_val=Date.parse("2020-01-01"),
+        decimal_val=4268.81,
+        enum_val=Shared::Enum::ONE,
+        float32_val=2.2222222,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
+        int32_val=1,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+        int_opt_null_val=999999,
+        int_val=999999,
+        num_opt_null_val=1.1,
+        num_val=1.1,
+        str_opt_val="optional example",
+        str_val="example",
+      ),
     },
-    num_val=9642.91,
+    num_val=4841.95,
     obj_val=Shared::SimpleObjectCamelCase.new(
-      any_val="Directives",
-      bigint_str_val="Chrysler ohm joule",
-      bigint_val=254659,
+      any_val="any example",
+      bigint_str_val="string",
+      bigint_val=922307,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=7531.85,
+      decimal_val=3547.55,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
       int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1000,8 +1080,8 @@ req = Shared::DeepObjectCamelCase.new(
       str_opt_val="optional example",
       str_val="example",
     ),
-    str_val="Falls",
-    type="Gloves Southwest",
+    str_val="string",
+    type="string",
   ),
 )
     
@@ -1034,12 +1114,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "nisi": Shared::SimpleObject.new(
-      any="soap",
+    "Bentley": Shared::SimpleObject.new(
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -1052,11 +1137,11 @@ req = ::.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
       int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=901357,
+      int_opt_null=821581,
       num=1.1,
-      num_opt_null=8215.81,
+      num_opt_null=7650.52,
       str_="test",
       str_opt="testOptional",
     ),
@@ -1093,24 +1178,29 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "aliquid": Shared::SimpleObjectCamelCase.new(
-      any_val="Southwest",
-      bigint_str_val="array Oak",
-      bigint_val=877576,
+    "archive": Shared::SimpleObjectCamelCase.new(
+      any_val="any example",
+      bigint_str_val="string",
+      bigint_val=990497,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=9955.63,
+      decimal_val=3388.78,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
       int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1151,12 +1241,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "hic": Shared::SimpleObject.new(
-      any="redundant",
+    "larder": Shared::SimpleObject.new(
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -1170,10 +1265,10 @@ req = ::.new(
       int=1,
       int32=1,
       int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-      int_enum=Shared::SimpleObjectIntEnum::FIRST,
-      int_opt_null=744657,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=108451,
       num=1.1,
-      num_opt_null=5700.86,
+      num_opt_null=7446.57,
       str_="test",
       str_opt="testOptional",
     ),
@@ -1209,24 +1304,29 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "distinctio": Shared::SimpleObjectCamelCase.new(
-      any_val="optimal",
-      bigint_str_val="Modern Borders Mexico",
-      bigint_val=745602,
+    "female": Shared::SimpleObjectCamelCase.new(
+      any_val="any example",
+      bigint_str_val="string",
+      bigint_val=738975,
       bool_opt_val=true,
       bool_val=true,
       date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
       date_val=Date.parse("2020-01-01"),
-      decimal_val=549.07,
+      decimal_val=9878.97,
       enum_val=Shared::Enum::ONE,
       float32_val=2.2222222,
-      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
+      int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
       int32_val=1,
-      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::FIRST,
+      int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
       int_opt_null_val=999999,
       int_val=999999,
       num_opt_null_val=1.1,
@@ -1266,13 +1366,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "aliquid": .new[
+    "Loan": .new[
       Shared::SimpleObject.new(
-        any="Division",
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -1327,25 +1432,30 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "vero": .new[
+    "nonstop": .new[
       Shared::SimpleObjectCamelCase.new(
-        any_val="a",
-        bigint_str_val="Bicycle copy flustered",
-        bigint_val=229246,
+        any_val="any example",
+        bigint_str_val="string",
+        bigint_val=954170,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=4549.25,
+        decimal_val=7481.74,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
         int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::ONE_HUNDRED_AND_EIGHTY_ONE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1387,13 +1497,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "animi": .new{
-      "inventore": Shared::SimpleObject.new(
-        any="vice",
+    "Senior": .new{
+      "vice": Shared::SimpleObject.new(
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -1448,25 +1563,30 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "eos": .new{
-      "ut": Shared::SimpleObjectCamelCase.new(
-        any_val="plum",
-        bigint_str_val="up Southeast",
-        bigint_val=807130,
+    "Home": .new{
+      "plum": Shared::SimpleObjectCamelCase.new(
+        any_val="any example",
+        bigint_str_val="string",
+        bigint_val=600810,
         bool_opt_val=true,
         bool_val=true,
         date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
         date_val=Date.parse("2020-01-01"),
-        decimal_val=60.43,
+        decimal_val=5080.8,
         enum_val=Shared::Enum::ONE,
         float32_val=2.2222222,
-        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
+        int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::FIFTY_FIVE,
         int32_val=1,
-        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::SECOND,
+        int_enum_val=Shared::SimpleObjectCamelCaseIntEnumVal::THIRD,
         int_opt_null_val=999999,
         int_val=999999,
         num_opt_null_val=1.1,
@@ -1508,12 +1628,17 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "quisquam": .new{
-      "molestiae": "collaboration",
+    "turquoise": .new{
+      "collaboration": "string",
     },
   },
 )
@@ -1548,11 +1673,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "accusamus": "Salad",
+    "equally": "string",
   },
 )
     
@@ -1586,11 +1716,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="hack",
+    any="any",
     bigint=8821239038968084,
     bigint_str="9223372036854775808",
     bool=true,
@@ -1603,11 +1738,11 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
-    int_opt_null=279112,
+    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+    int_enum=Shared::SimpleObjectIntEnum::FIRST,
+    int_opt_null=680661,
     num=1.1,
-    num_opt_null=7372.56,
+    num_opt_null=8809.47,
     str_="test",
     str_opt="testOptional",
   ),
@@ -1642,11 +1777,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="Hampton",
+    any="any",
     bigint=8821239038968084,
     bigint_str="9223372036854775808",
     bool=true,
@@ -1659,11 +1799,11 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
-    int_opt_null=708824,
+    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+    int_enum=Shared::SimpleObjectIntEnum::SECOND,
+    int_opt_null=387512,
     num=1.1,
-    num_opt_null=2273.77,
+    num_opt_null=7875.71,
     str_="test",
     str_opt="testOptional",
   ),
@@ -1698,18 +1838,23 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::SimpleObjectCamelCase.new(
   request=Shared::SimpleObjectCamelCase.new(
-    any_val="rich",
-    bigint_str_val="Direct Pound",
-    bigint_val=726659,
+    any_val="any example",
+    bigint_str_val="string",
+    bigint_val=281697,
     bool_opt_val=true,
     bool_val=true,
     date_time_val=DateTime.iso8601('2020-01-01T00:00:00Z'),
     date_val=Date.parse("2020-01-01"),
-    decimal_val=6907.97,
+    decimal_val=9976.38,
     enum_val=Shared::Enum::ONE,
     float32_val=2.2222222,
     int32_enum_val=Shared::SimpleObjectCamelCaseInt32EnumVal::SIXTY_NINE,
@@ -1753,46 +1898,51 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostComplexNumberTypesRequest.new(
   path_params=Operations::RequestBodyPostComplexNumberTypesRequest.new(
     complex_number_types=Shared::ComplexNumberTypes.new(
       bigint=765757,
-      bigint_str="Metal calculating Lamborghini",
-      decimal=9373.95,
-      decimal_str="Royce",
+      bigint_str="string",
+      decimal=9344.87,
+      decimal_str="string",
     ),
-    path_big_int=958218,
-    path_big_int_str="male ASCII",
-    path_decimal=1464.39,
-    path_decimal_str="Lancaster hertz young",
-    query_big_int=338976,
-    query_big_int_str="Northwest",
-    query_decimal=3970.19,
-    query_decimal_str="Toyota",
+    path_big_int=250514,
+    path_big_int_str="string",
+    path_decimal=6831.11,
+    path_decimal_str="string",
+    query_big_int=500580,
+    query_big_int_str="string",
+    query_decimal=7419.03,
+    query_decimal_str="string",
   ),
   query_params=Operations::RequestBodyPostComplexNumberTypesRequest.new(
     complex_number_types=Shared::ComplexNumberTypes.new(
-      bigint=434341,
-      bigint_str="azure Qatar",
-      decimal=9904.31,
-      decimal_str="Trigender exercitationem Industrial",
+      bigint=822852,
+      bigint_str="string",
+      decimal=5491.78,
+      decimal_str="string",
     ),
-    path_big_int=776805,
-    path_big_int_str="challenge",
-    path_decimal=1174.43,
-    path_decimal_str="Dubnium Operations 24/7",
-    query_big_int=34192,
-    query_big_int_str="Shoes robust relationships",
-    query_decimal=9367.71,
-    query_decimal_str="Utah Falls afterwards",
+    path_big_int=937395,
+    path_big_int_str="string",
+    path_decimal=1789.06,
+    path_decimal_str="string",
+    query_big_int=826068,
+    query_big_int_str="string",
+    query_decimal=8253.58,
+    query_decimal_str="string",
   ),
   complex_number_types=Shared::ComplexNumberTypes.new(
-    bigint=29799,
-    bigint_str="Mountain",
-    decimal=6351.45,
-    decimal_str="Diesel orange",
+    bigint=773157,
+    bigint_str="string",
+    decimal=9582.18,
+    decimal_str="string",
   ),
 )
     
@@ -1825,38 +1975,43 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::DefaultsAndConsts.new(
   request=Shared::DefaultsAndConsts.new(
     const_big_int=559205,
-    const_big_int_str="Chief",
+    const_big_int_str="string",
     const_bool=false,
-    const_date=Date.parse("2021-05-03"),
-    const_date_time=DateTime.iso8601('2023-07-14T17:39:00.984Z'),
-    const_decimal=2995.45,
-    const_decimal_str="invoice Cotton",
-    const_enum_int=Shared::DefaultsAndConstsConstEnumInt::TWO,
-    const_enum_str=Shared::DefaultsAndConstsConstEnumStr::ONE,
-    const_int=788517,
-    const_num=639.73,
-    const_str="Dong Dysprosium",
-    const_str_null="Kids quarrelsome",
-    default_big_int=374051,
-    default_big_int_str="incubate Lane Music",
+    const_date=Date.parse("2021-09-13"),
+    const_date_time=DateTime.iso8601('2022-12-15T04:16:08.794Z'),
+    const_decimal=9160.69,
+    const_decimal_str="string",
+    const_enum_int=Shared::DefaultsAndConstsConstEnumInt::ONE,
+    const_enum_str=Shared::DefaultsAndConstsConstEnumStr::THREE,
+    const_int=299545,
+    const_num=4612.63,
+    const_str="string",
+    const_str_null="string",
+    default_big_int=450379,
+    default_big_int_str="string",
     default_bool=false,
-    default_date=Date.parse("2023-07-16"),
-    default_date_time=DateTime.iso8601('2021-06-28T10:07:28.276Z'),
-    default_decimal=3014.85,
-    default_decimal_str="South Hafnium amid",
-    default_enum_int=Shared::DefaultsAndConstsDefaultEnumInt::THREE,
+    default_date=Date.parse("2023-04-28"),
+    default_date_time=DateTime.iso8601('2021-10-01T11:08:55.738Z'),
+    default_decimal=4585.94,
+    default_decimal_str="string",
+    default_enum_int=Shared::DefaultsAndConstsDefaultEnumInt::TWO,
     default_enum_str=Shared::DefaultsAndConstsDefaultEnumStr::ONE,
-    default_int=77435,
-    default_num=6102.85,
-    default_str="Electric Diesel",
-    default_str_nullable="silver Central",
-    default_str_optional="Gasoline Pines boo",
-    normal_field="free",
+    default_int=788517,
+    default_num=639.73,
+    default_str="string",
+    default_str_nullable="string",
+    default_str_optional="string",
+    normal_field="string",
   ),
 )
     
@@ -1889,6 +2044,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostEmptyObjectRequestBody.new(
@@ -1927,14 +2087,19 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
-    any="and",
+    any="anyOf[0]",
     arr=.new[
       Shared::SimpleObject.new(
-        any="South",
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -1949,9 +2114,9 @@ req = Shared::DeepObject.new(
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
         int_enum=Shared::SimpleObjectIntEnum::FIRST,
-        int_opt_null=486156,
+        int_opt_null=14993,
         num=1.1,
-        num_opt_null=737.95,
+        num_opt_null=6785.62,
         str_="test",
         str_opt="testOptional",
       ),
@@ -1959,8 +2124,8 @@ req = Shared::DeepObject.new(
     bool=true,
     int=1,
     map=.new{
-      "nisi": Shared::SimpleObject.new(
-        any="lazy",
+      "Road": Shared::SimpleObject.new(
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -1973,18 +2138,18 @@ req = Shared::DeepObject.new(
         float32=1.1,
         int=1,
         int32=1,
-        int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
-        int_enum=Shared::SimpleObjectIntEnum::FIRST,
-        int_opt_null=736071,
+        int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+        int_enum=Shared::SimpleObjectIntEnum::SECOND,
+        int_opt_null=863312,
         num=1.1,
-        num_opt_null=5899.47,
+        num_opt_null=4808.84,
         str_="test",
         str_opt="testOptional",
       ),
     },
     num=1.1,
     obj=Shared::SimpleObject.new(
-      any="Northeast",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -1997,16 +2162,16 @@ req = Shared::DeepObject.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::SECOND,
-      int_opt_null=15330,
+      int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+      int_enum=Shared::SimpleObjectIntEnum::FIRST,
+      int_opt_null=736071,
       num=1.1,
-      num_opt_null=6190.57,
+      num_opt_null=5899.47,
       str_="test",
       str_opt="testOptional",
     ),
     str_="test",
-    type="Hybrid female",
+    type="string",
   ),
 )
     
@@ -2039,11 +2204,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "nisi": "Sports",
+    "complexity": "string",
   },
 )
     
@@ -2076,11 +2246,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="Product",
+    any="any",
     bigint=8821239038968084,
     bigint_str="9223372036854775808",
     bool=true,
@@ -2093,11 +2268,11 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
-    int_enum=Shared::SimpleObjectIntEnum::THIRD,
-    int_opt_null=693294,
+    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+    int_enum=Shared::SimpleObjectIntEnum::FIRST,
+    int_opt_null=5565,
     num=1.1,
-    num_opt_null=2022.98,
+    num_opt_null=8893.53,
     str_="test",
     str_opt="testOptional",
   ),
@@ -2132,6 +2307,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2169,6 +2349,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2206,11 +2391,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
-    "Group East incentivize",
+    "string",
   ],
 )
     
@@ -2243,6 +2433,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2278,10 +2473,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="pixel gray",
+  request="string",
 )
     
 res = s.request_bodies.request_body_post_json_data_types_big_int_str(req)
@@ -2313,6 +2513,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2348,6 +2553,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2383,6 +2593,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2418,6 +2633,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2453,10 +2673,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="gadzooks Luxurious",
+  request="string",
 )
     
 res = s.request_bodies.request_body_post_json_data_types_decimal_str(req)
@@ -2488,6 +2713,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2523,6 +2753,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2558,6 +2793,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2593,11 +2833,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "doloremque": "York firewall",
+    "Nepal": "string",
   },
 )
     
@@ -2630,11 +2875,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "quas": DateTime.iso8601('2022-09-29T16:39:16.558Z'),
+    "quantify": DateTime.iso8601('2022-02-12T21:23:09.538Z'),
   },
 )
     
@@ -2667,11 +2917,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "exercitationem": 4182.45,
+    "Inverse": 9134.24,
   },
 )
     
@@ -2704,6 +2959,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -2739,10 +2999,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Agent bypassing leverage",
+  request="string",
 )
     
 res = s.request_bodies.request_body_post_json_data_types_string(req)
@@ -2774,11 +3039,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="Unbranded",
+    any="any",
     bigint=8821239038968084,
     bigint_str="9223372036854775808",
     bool=true,
@@ -2791,11 +3061,11 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
     int_enum=Shared::SimpleObjectIntEnum::THIRD,
-    int_opt_null=414559,
+    int_opt_null=587803,
     num=1.1,
-    num_opt_null=462.04,
+    num_opt_null=9724.14,
     str_="test",
     str_opt="testOptional",
   ),
@@ -2830,13 +3100,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
   request=Operations::RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON.new(
     bool=false,
     num=3558.41,
-    str_="South expiate aha",
+    str_="string",
   ),
 )
     
@@ -2869,6 +3144,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
@@ -2876,14 +3156,14 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamFormRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
       bool3=false,
       num3=8693.24,
-      str3="Compatible",
+      str3="string",
     ),
-    param_str="AI strategic invoice",
+    param_str="string",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded.new(
     bool3=false,
-    num3=8063.58,
-    str3="beneath",
+    num3=1802.67,
+    str3="string",
   ),
 )
     
@@ -2917,6 +3197,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
@@ -2924,14 +3209,14 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamJsonRequest.new(
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
       bool=false,
       num=9771.91,
-      str_="South networks",
+      str_="string",
     ),
-    param_str="Taka Gardens quantify",
+    param_str="string",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamApplicationJSON.new(
     bool=false,
-    num=5098.37,
-    str_="Electric Coupe",
+    num=5784.1,
+    str_="string",
   ),
 )
     
@@ -2965,6 +3250,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.new(
@@ -2972,14 +3262,14 @@ req = Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartRequest.
     request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
       bool2=false,
       num2=7000.76,
-      str2="Ball Southwest",
+      str2="string",
     ),
-    param_str="East",
+    param_str="string",
   ),
   request_body=Operations::RequestBodyPostMultipleContentTypesSplitParamMultipartFormData.new(
     bool2=false,
-    num2=4672.9,
-    str2="facilitate Massachusetts",
+    num2=6115.78,
+    str2="string",
   ),
 )
     
@@ -3013,13 +3303,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded.new(
     bool3=false,
     num3=7842.07,
-    str3="Cab encryption SMTP",
+    str3="string",
   ),
 )
     
@@ -3052,13 +3347,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitApplicationJSON.new(
     bool=false,
     num=2445.56,
-    str_="hew frictionless Hybrid",
+    str_="string",
   ),
 )
     
@@ -3091,13 +3391,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
   request=Operations::RequestBodyPostMultipleContentTypesSplitMultipartFormData.new(
     bool2=false,
     num2=2079.2,
-    str2="cyan",
+    str2="string",
   ),
 )
     
@@ -3130,10 +3435,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Strategist",
+  request="string",
 )
     
 res = s.request_bodies.request_body_post_not_nullable_not_required_string_body(req)
@@ -3165,11 +3475,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new[
-    "simple",
+    "string",
   ],
 )
     
@@ -3202,11 +3517,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
   request=.new{
-    "omnis": "virtual",
+    "Intersex": "string",
   },
 )
     
@@ -3239,10 +3559,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Gibraltar",
+  request="string",
 )
     
 res = s.request_bodies.request_body_post_nullable_not_required_string_body(req)
@@ -3274,10 +3599,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Bacon",
+  request="string",
 )
     
 res = s.request_bodies.request_body_post_nullable_required_string_body(req)
@@ -3309,6 +3639,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
@@ -3344,14 +3679,19 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPutBytesWithParamsRequest.new(
   query_params=Operations::RequestBodyPutBytesWithParamsRequest.new(
     request_body="o%jIWe4_P6".encode(),
-    query_string_param="Loan",
+    query_string_param="string",
   ),
-  request_body="J30)!E4iK3".encode(),
+  request_body="$GrQJ30)!E".encode(),
 )
     
 res = s.request_bodies.request_body_put_bytes_with_params(req)
@@ -3384,14 +3724,19 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::DeepObject.new(
   request=Shared::DeepObject.new(
-    any="Chevrolet",
+    any="anyOf[0]",
     arr=.new[
       Shared::SimpleObject.new(
-        any="noodles",
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -3405,10 +3750,10 @@ req = Shared::DeepObject.new(
         int=1,
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-        int_enum=Shared::SimpleObjectIntEnum::THIRD,
-        int_opt_null=509676,
+        int_enum=Shared::SimpleObjectIntEnum::FIRST,
+        int_opt_null=951052,
         num=1.1,
-        num_opt_null=3459.56,
+        num_opt_null=5976.82,
         str_="test",
         str_opt="testOptional",
       ),
@@ -3416,8 +3761,8 @@ req = Shared::DeepObject.new(
     bool=true,
     int=1,
     map=.new{
-      "atque": Shared::SimpleObject.new(
-        any="Paradigm",
+      "Rutherfordium": Shared::SimpleObject.new(
+        any="any",
         bigint=8821239038968084,
         bigint_str="9223372036854775808",
         bool=true,
@@ -3432,16 +3777,16 @@ req = Shared::DeepObject.new(
         int32=1,
         int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
         int_enum=Shared::SimpleObjectIntEnum::SECOND,
-        int_opt_null=779552,
+        int_opt_null=539713,
         num=1.1,
-        num_opt_null=4828.21,
+        num_opt_null=6305.02,
         str_="test",
         str_opt="testOptional",
       ),
     },
     num=1.1,
     obj=Shared::SimpleObject.new(
-      any="Health",
+      any="any",
       bigint=8821239038968084,
       bigint_str="9223372036854775808",
       bool=true,
@@ -3454,16 +3799,16 @@ req = Shared::DeepObject.new(
       float32=1.1,
       int=1,
       int32=1,
-      int32_enum=Shared::SimpleObjectInt32Enum::ONE_HUNDRED_AND_EIGHTY_ONE,
-      int_enum=Shared::SimpleObjectIntEnum::THIRD,
-      int_opt_null=989301,
+      int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
+      int_enum=Shared::SimpleObjectIntEnum::SECOND,
+      int_opt_null=354579,
       num=1.1,
-      num_opt_null=9969,
+      num_opt_null=7795.52,
       str_="test",
       str_opt="testOptional",
     ),
     str_="test",
-    type="Technetium while Androgynous",
+    type="string",
   ),
 )
     
@@ -3496,13 +3841,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPutMultipartDifferentFileNameRequestBody.new(
   request=Operations::RequestBodyPutMultipartDifferentFileNameRequestBody.new(
     different_file_name=Operations::RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName.new(
       content="Y}'H[5/Z[,".encode(),
-      different_file_name="West Tunisian",
+      different_file_name="string",
     ),
   ),
 )
@@ -3536,13 +3886,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPutMultipartFileRequestBody.new(
   request=Operations::RequestBodyPutMultipartFileRequestBody.new(
     file=Operations::RequestBodyPutMultipartFileRequestBodyFile.new(
       content="OJa,v`.FW-".encode(),
-      file="bandwidth Sedan",
+      file="string",
     ),
   ),
 )
@@ -3576,11 +3931,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::SimpleObject.new(
   request=Shared::SimpleObject.new(
-    any="customized",
+    any="any",
     bigint=8821239038968084,
     bigint_str="9223372036854775808",
     bool=true,
@@ -3593,11 +3953,11 @@ req = Shared::SimpleObject.new(
     float32=1.1,
     int=1,
     int32=1,
-    int32_enum=Shared::SimpleObjectInt32Enum::SIXTY_NINE,
+    int32_enum=Shared::SimpleObjectInt32Enum::FIFTY_FIVE,
     int_enum=Shared::SimpleObjectIntEnum::THIRD,
-    int_opt_null=689661,
+    int_opt_null=544005,
     num=1.1,
-    num_opt_null=7932.12,
+    num_opt_null=7648.28,
     str_="test",
     str_opt="testOptional",
   ),
@@ -3632,10 +3992,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="redundant facilis before",
+  request="string",
 )
     
 res = s.request_bodies.request_body_put_string(req)
@@ -3667,14 +4032,19 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::RequestBodyPutStringWithParamsRequest.new(
   query_params=Operations::RequestBodyPutStringWithParamsRequest.new(
-    request_body="female phew",
-    query_string_param="female",
+    request_body="string",
+    query_string_param="string",
   ),
-  request_body="Luxurious Generic",
+  request_body="string",
 )
     
 res = s.request_bodies.request_body_put_string_with_params(req)
@@ -3707,6 +4077,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::ReadWriteObjectInput.new(
@@ -3747,6 +4122,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::ReadOnlyObjectInput.new(
@@ -3783,10 +4163,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Kids",
+  request="string",
 )
     
 res = s.request_bodies.request_body_read_only_union(req)
@@ -3819,10 +4204,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="thoughtfully",
+  request="string",
 )
     
 res = s.request_bodies.request_body_read_write_only_union(req)
@@ -3855,13 +4245,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::WriteOnlyObject.new(
   request=Shared::WriteOnlyObject.new(
     bool=false,
     num=3888.42,
-    string="Herminio",
+    string="string",
   ),
 )
     
@@ -3895,13 +4290,18 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Shared::WriteOnlyObject.new(
   request=Shared::WriteOnlyObject.new(
     bool=false,
     num=3867.69,
-    string="quas",
+    string="string",
   ),
 )
     
@@ -3935,10 +4335,15 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = ::.new(
-  request="Fitness",
+  request="string",
 )
     
 res = s.request_bodies.request_body_write_only_union(req)

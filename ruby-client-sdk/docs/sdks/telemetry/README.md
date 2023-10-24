@@ -19,11 +19,16 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
    
 req = Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
   headers=Operations::TelemetrySpeakeasyUserAgentGetRequest.new(
-    user_agent="Avon Bicycle boliviano",
+    user_agent="string",
   ),
 )
     
@@ -56,6 +61,11 @@ require_relative openapi
 
 
 s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
 
     
 res = s.telemetry.telemetry_user_agent_get()

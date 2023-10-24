@@ -34,7 +34,7 @@ public class Application {
                 .setGlobalQueryParam("some example global query param")
                 .build();
 
-            GetDocumentationPerLanguageResponse res = sdk.documentation.getDocumentationPerLanguage("hack");
+            GetDocumentationPerLanguageResponse res = sdk.documentation.getDocumentationPerLanguage("string");
 
             if (res.statusCode == 200) {
                 // handle response

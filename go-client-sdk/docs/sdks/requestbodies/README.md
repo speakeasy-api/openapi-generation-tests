@@ -754,7 +754,7 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfArrayOfPrimitive(ctx, [][]string{
         []string{
-            "yellow",
+            "string",
         },
     })
     if err != nil {
@@ -809,7 +809,7 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMap(ctx, []map[string]shared.SimpleObject{
         map[string]shared.SimpleObject{
-            "Southeast": shared.SimpleObject{
+            "key": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -882,7 +882,7 @@ func main() {
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfMapCamelCase(ctx, []map[string]shared.SimpleObjectCamelCase{
         map[string]shared.SimpleObjectCamelCase{
-            "culpa": shared.SimpleObjectCamelCase{
+            "key": shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
                 BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
@@ -951,7 +951,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONArrayOfPrimitive(ctx, []string{
-        "bit",
+        "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -1227,7 +1227,7 @@ func main() {
         BoolVal: false,
         IntVal: 962909,
         MapVal: map[string]shared.SimpleObjectCamelCase{
-            "Table": shared.SimpleObjectCamelCase{
+            "key": shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
                 BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
@@ -1246,7 +1246,7 @@ func main() {
                 StrVal: "example",
             },
         },
-        NumVal: 9420.92,
+        NumVal: 2064.4,
         ObjVal: shared.SimpleObjectCamelCase{
             AnyVal: "any example",
             BoolOptVal: openapi.Bool(true),
@@ -1265,7 +1265,7 @@ func main() {
             StrOptVal: openapi.String("optional example"),
             StrVal: "example",
         },
-        StrVal: "Diesel",
+        StrVal: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -1317,7 +1317,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMap(ctx, map[string]shared.SimpleObject{
-        "Bentley": shared.SimpleObject{
+        "key": shared.SimpleObject{
             Any: "any",
             Bigint: big.NewInt(8821239038968084),
             BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -1388,7 +1388,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
-        "archive": shared.SimpleObjectCamelCase{
+        "key": shared.SimpleObjectCamelCase{
             AnyVal: "any example",
             BoolOptVal: openapi.Bool(true),
             BoolVal: true,
@@ -1458,7 +1458,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObj(ctx, map[string]shared.SimpleObject{
-        "larder": shared.SimpleObject{
+        "key": shared.SimpleObject{
             Any: "any",
             Bigint: big.NewInt(8821239038968084),
             BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -1528,7 +1528,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapObjCamelCase(ctx, map[string]shared.SimpleObjectCamelCase{
-        "female": shared.SimpleObjectCamelCase{
+        "key": shared.SimpleObjectCamelCase{
             AnyVal: "any example",
             BoolOptVal: openapi.Bool(true),
             BoolVal: true,
@@ -1597,7 +1597,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArray(ctx, map[string][]shared.SimpleObject{
-        "Loan": []shared.SimpleObject{
+        "key": []shared.SimpleObject{
             shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
@@ -1670,7 +1670,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfArrayCamelCase(ctx, map[string][]shared.SimpleObjectCamelCase{
-        "nonstop": []shared.SimpleObjectCamelCase{
+        "key": []shared.SimpleObjectCamelCase{
             shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
                 BoolOptVal: openapi.Bool(true),
@@ -1742,8 +1742,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMap(ctx, map[string]map[string]shared.SimpleObject{
-        "Senior": map[string]shared.SimpleObject{
-            "vice": shared.SimpleObject{
+        "key": map[string]shared.SimpleObject{
+            "key": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -1815,8 +1815,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMapCamelCase(ctx, map[string]map[string]shared.SimpleObjectCamelCase{
-        "Home": map[string]shared.SimpleObjectCamelCase{
-            "plum": shared.SimpleObjectCamelCase{
+        "key": map[string]shared.SimpleObjectCamelCase{
+            "key": shared.SimpleObjectCamelCase{
                 AnyVal: "any example",
                 BoolOptVal: openapi.Bool(true),
                 BoolVal: true,
@@ -1885,8 +1885,8 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfMapOfPrimitive(ctx, map[string]map[string]string{
-        "turquoise": map[string]string{
-            "collaboration": "Officer",
+        "key": map[string]string{
+            "key": "string",
         },
     })
     if err != nil {
@@ -1938,7 +1938,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostApplicationJSONMapOfPrimitive(ctx, map[string]string{
-        "equally": "whereas",
+        "key": "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -2272,9 +2272,9 @@ func main() {
         ConstEnumStr: shared.DefaultsAndConstsConstEnumStrTwo,
         ConstInt: 450379,
         ConstNum: 7742.71,
-        ConstStr: "payment",
-        ConstStrNull: "green",
-        NormalField: "Dong Dysprosium",
+        ConstStr: "string",
+        ConstStrNull: "string",
+        NormalField: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -2557,7 +2557,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostFormMapPrimitive(ctx, map[string]string{
-        "complexity": "SUV",
+        "key": "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -3306,7 +3306,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapBigIntStr(ctx, map[string]*big.Int{
-        "Nepal": big.NewInt(124728),
+        "key": big.NewInt(42384),
     })
     if err != nil {
         log.Fatal(err)
@@ -3356,7 +3356,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapDateTime(ctx, map[string]time.Time{
-        "quantify": types.MustTimeFromString("2022-02-12T21:23:09.538Z"),
+        "key": types.MustTimeFromString("2022-09-03T18:52:14.477Z"),
     })
     if err != nil {
         log.Fatal(err)
@@ -3406,7 +3406,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostJSONDataTypesMapDecimal(ctx, map[string]*decimal.Big{
-        "Inverse": types.MustNewDecimalFromString("9134.24"),
+        "key": types.MustNewDecimalFromString("3472.82"),
     })
     if err != nil {
         log.Fatal(err)
@@ -3503,7 +3503,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesString(ctx, "Gasoline")
+    res, err := s.RequestBodies.RequestBodyPostJSONDataTypesString(ctx, "string")
     if err != nil {
         log.Fatal(err)
     }
@@ -3624,7 +3624,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesInlineFiltered(ctx, operations.RequestBodyPostMultipleContentTypesInlineFilteredApplicationJSON{
         Bool: false,
         Num: 3558.41,
-        Str: "South expiate aha",
+        Str: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -3677,10 +3677,10 @@ func main() {
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded{
         Bool3: false,
         Num3: 8693.24,
-        Str3: "Compatible",
+        Str3: "string",
     }
 
-    var paramStr string = "Architect"
+    var paramStr string = "string"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamForm(ctx, requestBody, paramStr)
@@ -3736,10 +3736,10 @@ func main() {
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamApplicationJSON{
         Bool: false,
         Num: 9771.91,
-        Str: "South networks",
+        Str: "string",
     }
 
-    var paramStr string = "Brand"
+    var paramStr string = "string"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamJSON(ctx, requestBody, paramStr)
@@ -3795,10 +3795,10 @@ func main() {
     requestBody := operations.RequestBodyPostMultipleContentTypesSplitParamMultipartFormData{
         Bool2: false,
         Num2: 7000.76,
-        Str2: "Ball Southwest",
+        Str2: "string",
     }
 
-    var paramStr string = "Ergonomic"
+    var paramStr string = "string"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitParamMultipart(ctx, requestBody, paramStr)
@@ -3854,7 +3854,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitForm(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationXWwwFormUrlencoded{
         Bool3: false,
         Num3: 7842.07,
-        Str3: "Cab encryption SMTP",
+        Str3: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -3907,7 +3907,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitJSON(ctx, operations.RequestBodyPostMultipleContentTypesSplitApplicationJSON{
         Bool: false,
         Num: 2445.56,
-        Str: "hew frictionless Hybrid",
+        Str: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -3960,7 +3960,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPostMultipleContentTypesSplitMultipart(ctx, operations.RequestBodyPostMultipleContentTypesSplitMultipartFormData{
         Bool2: false,
         Num2: 2079.2,
-        Str2: "cyan",
+        Str2: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -4009,7 +4009,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBody(ctx, &"Chicken")
+    res, err := s.RequestBodies.RequestBodyPostNotNullableNotRequiredStringBody(ctx, &"string")
     if err != nil {
         log.Fatal(err)
     }
@@ -4058,7 +4058,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullArray(ctx, []string{
-        "simple",
+        "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -4108,7 +4108,7 @@ func main() {
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPostNullDictionary(ctx, map[string]string{
-        "Intersex": "robust",
+        "key": "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -4157,7 +4157,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostNullableNotRequiredStringBody(ctx, &"Michigan")
+    res, err := s.RequestBodies.RequestBodyPostNullableNotRequiredStringBody(ctx, &"string")
     if err != nil {
         log.Fatal(err)
     }
@@ -4205,7 +4205,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPostNullableRequiredStringBody(ctx, &"Mouse")
+    res, err := s.RequestBodies.RequestBodyPostNullableRequiredStringBody(ctx, &"string")
     if err != nil {
         log.Fatal(err)
     }
@@ -4303,7 +4303,7 @@ func main() {
 
     var requestBody []byte = []byte("o%jIWe4_P6")
 
-    var queryStringParam string = "Huntington"
+    var queryStringParam string = "string"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutBytesWithParams(ctx, requestBody, queryStringParam)
@@ -4540,7 +4540,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPutMultipartDifferentFileName(ctx, operations.RequestBodyPutMultipartDifferentFileNameRequestBody{
         DifferentFileName: &operations.RequestBodyPutMultipartDifferentFileNameRequestBodyDifferentFileName{
             Content: []byte("Y}'H[5/Z[,"),
-            DifferentFileName: "West Tunisian",
+            DifferentFileName: "string",
         },
     })
     if err != nil {
@@ -4594,7 +4594,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyPutMultipartFile(ctx, operations.RequestBodyPutMultipartFileRequestBody{
         File: &operations.RequestBodyPutMultipartFileRequestBodyFile{
             Content: []byte("OJa,v`.FW-"),
-            File: "bandwidth Sedan",
+            File: "string",
         },
     })
     if err != nil {
@@ -4713,7 +4713,7 @@ func main() {
     )
 
     ctx := context.Background()
-    res, err := s.RequestBodies.RequestBodyPutString(ctx, "meh")
+    res, err := s.RequestBodies.RequestBodyPutString(ctx, "string")
     if err != nil {
         log.Fatal(err)
     }
@@ -4761,9 +4761,9 @@ func main() {
     )
 
 
-    var requestBody string = "SMTP"
+    var requestBody string = "string"
 
-    var queryStringParam string = "Unbranded"
+    var queryStringParam string = "string"
 
     ctx := context.Background()
     res, err := s.RequestBodies.RequestBodyPutStringWithParams(ctx, requestBody, queryStringParam)
@@ -5049,7 +5049,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyWriteOnly(ctx, shared.WriteOnlyObject{
         Bool: false,
         Num: 3888.42,
-        String: "Herminio",
+        String: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -5102,7 +5102,7 @@ func main() {
     res, err := s.RequestBodies.RequestBodyWriteOnlyOutput(ctx, shared.WriteOnlyObject{
         Bool: false,
         Num: 3867.69,
-        String: "quas",
+        String: "string",
     })
     if err != nil {
         log.Fatal(err)
@@ -5158,7 +5158,7 @@ func main() {
             shared.WriteOnlyObject{
                 Bool: false,
                 Num: 3823.36,
-                String: "Internal",
+                String: "string",
             },
     ))
     if err != nil {

@@ -1,0 +1,9 @@
+# JsonQueryParamsObjectRequest
+
+
+## Fields
+
+| Field                                                                                              | Type                                                                                               | Required                                                                                           | Description                                                                                        |
+| -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| `DeepObjParam`                                                                                     | [DeepObject](../../models/shared/DeepObject.md)                                                    | :heavy_check_mark:                                                                                 | N/A                                                                                                |
+| `SimpleObjParam`                                                                                   | [SimpleObject](../../models/shared/SimpleObject.md)                                                | :heavy_check_mark:                                                                                 | A simple object that uses all our supported primitive types and enums and has optional properties. |

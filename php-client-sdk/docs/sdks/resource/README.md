@@ -24,14 +24,18 @@ use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBody;
 use \OpenAPI\OpenAPI\Models\Operations\CreateFileRequestBodyFile;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
     $request = new CreateFileRequestBody();
     $request->file = new CreateFileRequestBodyFile();
     $request->file->content = '`\'$Z`(L/RH';
-    $request->file->file = 'Rap National';
+    $request->file->file = 'string';
 
     $response = $sdk->resource->createFile($request);
 
@@ -72,7 +76,11 @@ use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceChocolates;
 use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumNumber;
 use \OpenAPI\OpenAPI\Models\Shared\ExampleResourceEnumStr;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
@@ -81,24 +89,24 @@ try {
         1867.47,
     ];
     $request->arrayOfString = [
-        'Sodium',
+        'string',
     ];
     $request->chocolates = [
         new ExampleResourceChocolates(),
     ];
-    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-05-04T02:22:42.206Z');
+    $request->createdAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2023-03-21T05:07:13.653Z');
     $request->enumNumber = ExampleResourceEnumNumber::One;
-    $request->enumStr = ExampleResourceEnumStr::Three;
+    $request->enumStr = ExampleResourceEnumStr::One;
     $request->id = '<ID>';
     $request->mapOfInteger = [
-        'eum' => 125983,
+        'Unbranded' => 967142,
     ];
     $request->mapOfString = [
-        'dolores' => 'an',
+        'Elmo' => 'string',
     ];
-    $request->name = 'utilize';
-    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2021-09-27T19:55:47.964Z');
-    $request->vehicle = 'online';
+    $request->name = 'string';
+    $request->updatedAt = DateTime::createFromFormat('Y-m-d\TH:i:s+', '2022-06-22T17:48:04.355Z');
+    $request->vehicle = 'string';
 
     $response = $sdk->resource->createResource($request);
 
@@ -136,13 +144,17 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\DeleteResourceRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
-    $response = $sdk->resource->deleteResource('Reggae');
+    $response = $sdk->resource->deleteResource('string');
 
     if ($response->statusCode === 200) {
         // handle response
@@ -178,13 +190,17 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\GetResourceRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
-    $response = $sdk->resource->getResource('Home');
+    $response = $sdk->resource->getResource('string');
 
     if ($response->exampleResource !== null) {
         // handle response
@@ -220,13 +236,17 @@ use \OpenAPI\OpenAPI\SDK;
 use \OpenAPI\OpenAPI\Models\Shared\Security;
 use \OpenAPI\OpenAPI\Models\Operations\UpdateResourceRequest;
 
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
 $sdk = SDK::builder()
+    ->setSecurity($security)
     ->build();
 
 try {
 
 
-    $response = $sdk->resource->updateResource('International');
+    $response = $sdk->resource->updateResource('string');
 
     if ($response->statusCode === 200) {
         // handle response

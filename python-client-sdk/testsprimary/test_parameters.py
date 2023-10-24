@@ -184,6 +184,33 @@ def test_form_query_params_object():
     assert res.res.args.obj_param == 'any,any,bool,true,date,2020-01-01,dateTime,2020-01-01T00:00:00.000001Z,enum,one,float32,1.1,int,1,int32,1,int32Enum,55,intEnum,2,num,1.1,str,test,boolOpt,true,strOpt,testOptional'
 
 
+def test_form_query_params_camel_object():
+    record_test('parameters-form-query-params-camel-object')
+
+    s = SDK()
+    assert s is not None
+
+    obj_param_exploded = FormQueryParamsCamelObjectObjParamExploded(
+      search_term='foo',
+      item_count='10'
+    )
+    obj_param = FormQueryParamsCamelObjectObjParam(
+      encoded_term='bar',
+      encoded_count='11'
+    )
+
+    res = s.parameters.form_query_params_camel_object(
+        obj_param=obj_param,
+        obj_param_exploded=obj_param_exploded,
+    )
+
+    assert res is not None
+    assert res.status_code == 200
+    assert res.res is not None
+    assert res.res.url == 'http://localhost:35123/anything/queryParams/form/camelObj?item_count=10&search_term=foo&obj_param=encoded_count%2C11%2Cencoded_term%2Cbar'
+    assert res.res.args.search_term == 'foo'
+    assert res.res.args.item_count == '10'
+
 def test_form_query_params_ref_param_object():
     record_test('parameters-form-query-params-ref-param-object')
 

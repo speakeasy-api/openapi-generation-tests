@@ -73,18 +73,19 @@ req = operations.UsageExamplePostRequest(
     bigint_str_parameter=446729,
     bool_parameter=False,
     date_parameter=dateutil.parser.parse('2023-06-11').date(),
-    date_time_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
-    decimal_parameter=Decimal('2679.33'),
-    decimal_str_parameter=Decimal('5223.72'),
-    double_parameter=2911.37,
-    enum_parameter=operations.UsageExamplePostEnumParameter.VALUE3,
+    date_time_default_parameter=dateutil.parser.isoparse('2022-07-22T13:16:48.221Z'),
+    date_time_parameter=dateutil.parser.isoparse('2021-10-21T09:16:58.799Z'),
+    decimal_parameter=Decimal('5223.72'),
+    decimal_str_parameter=Decimal('2911.37'),
+    double_parameter=6946.59,
+    enum_parameter=operations.UsageExamplePostEnumParameter.VALUE1,
     falsey_number_parameter=0,
-    float32_parameter=2286.22,
-    float_parameter=1029.75,
-    int64_parameter=566999,
-    int_parameter=195232,
+    float32_parameter=1029.75,
+    float_parameter=5669.99,
+    int64_parameter=195232,
+    int_parameter=569663,
     opt_enum_parameter=operations.UsageExamplePostOptEnumParameter.VALUE3,
-    str_parameter='example 2',
+    str_parameter='example 1',
 )
 
 res = s.generation.usage_example_post(req, operations.UsageExamplePostSecurity(
@@ -158,6 +159,9 @@ if res.usage_example_post_200_application_json_object is not None:
 * [anchor_types_get](docs/sdks/generation/README.md#anchor_types_get)
 * [array_circular_reference_get](docs/sdks/generation/README.md#array_circular_reference_get)
 * [circular_reference_get](docs/sdks/generation/README.md#circular_reference_get)
+* [date_param_with_default](docs/sdks/generation/README.md#date_param_with_default)
+* [date_time_param_with_default](docs/sdks/generation/README.md#date_time_param_with_default)
+* [decimal_param_with_default](docs/sdks/generation/README.md#decimal_param_with_default)
 * [deprecated_field_in_schema_post](docs/sdks/generation/README.md#deprecated_field_in_schema_post)
 * [deprecated_object_in_schema_get](docs/sdks/generation/README.md#deprecated_object_in_schema_get)
 * [~~deprecated_operation_no_comments_get~~](docs/sdks/generation/README.md#deprecated_operation_no_comments_get) - :warning: **Deprecated**
@@ -210,6 +214,7 @@ if res.usage_example_post_200_application_json_object is not None:
 * [deep_object_query_params_object](docs/sdks/parameters/README.md#deep_object_query_params_object)
 * [duplicate_param](docs/sdks/parameters/README.md#duplicate_param)
 * [form_query_params_array](docs/sdks/parameters/README.md#form_query_params_array)
+* [form_query_params_camel_object](docs/sdks/parameters/README.md#form_query_params_camel_object)
 * [form_query_params_map](docs/sdks/parameters/README.md#form_query_params_map)
 * [form_query_params_object](docs/sdks/parameters/README.md#form_query_params_object)
 * [form_query_params_primitive](docs/sdks/parameters/README.md#form_query_params_primitive)
@@ -325,6 +330,7 @@ if res.usage_example_post_200_application_json_object is not None:
 
 * [response_body_additional_properties_complex_numbers_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_complex_numbers_post)
 * [response_body_additional_properties_date_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_date_post)
+* [response_body_additional_properties_object_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_object_post)
 * [response_body_additional_properties_post](docs/sdks/responsebodies/README.md#response_body_additional_properties_post)
 * [response_body_bytes_get](docs/sdks/responsebodies/README.md#response_body_bytes_get)
 * [response_body_empty_with_headers](docs/sdks/responsebodies/README.md#response_body_empty_with_headers)
@@ -368,6 +374,8 @@ if res.usage_example_post_200_application_json_object is not None:
 * [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
 * [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
+* [union_date_null](docs/sdks/unions/README.md#union_date_null)
+* [union_date_time_null](docs/sdks/unions/README.md#union_date_time_null)
 * [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
 <!-- End SDK Available Operations -->
 
@@ -439,7 +447,7 @@ The following global parameters are available. The required parameters must be s
 
 
 
-## Example
+## Example #1
 
 ```python
 import sdk
@@ -455,6 +463,29 @@ s = sdk.SDK(
 
 
 res = s.globals.global_path_parameter_get(global_path_param=719830)
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+
+## Example #2
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = s.globals.globals_query_parameter_get(global_query_param='string')
 
 if res.res is not None:
     # handle response

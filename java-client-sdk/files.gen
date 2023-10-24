@@ -153,6 +153,12 @@ lib/src/main/java/org/openapis/openapi/models/operations/TypeFromAnchor.java
 lib/src/main/java/org/openapis/openapi/models/operations/AnchorTypesGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ArrayCircularReferenceGetResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/CircularReferenceGetResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/DateParamWithDefaultRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/DateParamWithDefaultResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/DateTimeParamWithDefaultRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/DateTimeParamWithDefaultResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/DecimalParamWithDefaultRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/DecimalParamWithDefaultResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeprecatedFieldInSchemaPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeprecatedObjectInSchemaGet200ApplicationJSON.java
 lib/src/main/java/org/openapis/openapi/models/operations/DeprecatedObjectInSchemaGetResponse.java
@@ -230,6 +236,12 @@ lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsArrayReq
 lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsArrayResArgs.java
 lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsArrayRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsArrayResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsCamelObjectObjParam.java
+lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsCamelObjectObjParamExploded.java
+lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsCamelObjectRequest.java
+lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsCamelObjectResArgs.java
+lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsCamelObjectRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsCamelObjectResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsMapRequest.java
 lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsMapRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/FormQueryParamsMapResponse.java
@@ -478,6 +490,8 @@ lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalP
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON.java
+lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesObjectPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesPost200ApplicationJSON.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyAdditionalPropertiesPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/ResponseBodyBytesGetResponse.java
@@ -524,6 +538,10 @@ lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectNullableOneO
 lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectNullableOneOfPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectOneOfPostRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectOneOfPostResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionDateNullRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionDateNullResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionDateTimeNullRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionDateTimeNullResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/WeaklyTypedOneOfPostRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/WeaklyTypedOneOfPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/PutAnythingIgnoredGeneration200ApplicationJSON.java
@@ -534,6 +552,7 @@ lib/src/main/java/org/openapis/openapi/models/shared/AuthServiceRequestBodyHeade
 lib/src/main/java/org/openapis/openapi/models/shared/AuthServiceRequestBody.java
 lib/src/main/java/org/openapis/openapi/models/shared/SchemeBasicAuth.java
 lib/src/main/java/org/openapis/openapi/models/shared/Security.java
+lib/src/main/java/org/openapis/openapi/models/shared/ErrorType.java
 lib/src/main/java/org/openapis/openapi/models/shared/Error.java
 lib/src/main/java/org/openapis/openapi/models/shared/SimpleObjectInt32Enum.java
 lib/src/main/java/org/openapis/openapi/models/shared/SimpleObjectIntEnum.java
@@ -680,6 +699,12 @@ docs/models/operations/TypeFromAnchor.md
 docs/models/operations/AnchorTypesGetResponse.md
 docs/models/operations/ArrayCircularReferenceGetResponse.md
 docs/models/operations/CircularReferenceGetResponse.md
+docs/models/operations/DateParamWithDefaultRequest.md
+docs/models/operations/DateParamWithDefaultResponse.md
+docs/models/operations/DateTimeParamWithDefaultRequest.md
+docs/models/operations/DateTimeParamWithDefaultResponse.md
+docs/models/operations/DecimalParamWithDefaultRequest.md
+docs/models/operations/DecimalParamWithDefaultResponse.md
 docs/models/operations/DeprecatedFieldInSchemaPostResponse.md
 docs/models/operations/DeprecatedObjectInSchemaGet200ApplicationJSON.md
 docs/models/operations/DeprecatedObjectInSchemaGetResponse.md
@@ -757,6 +782,12 @@ docs/models/operations/FormQueryParamsArrayRequest.md
 docs/models/operations/FormQueryParamsArrayResArgs.md
 docs/models/operations/FormQueryParamsArrayRes.md
 docs/models/operations/FormQueryParamsArrayResponse.md
+docs/models/operations/FormQueryParamsCamelObjectObjParam.md
+docs/models/operations/FormQueryParamsCamelObjectObjParamExploded.md
+docs/models/operations/FormQueryParamsCamelObjectRequest.md
+docs/models/operations/FormQueryParamsCamelObjectResArgs.md
+docs/models/operations/FormQueryParamsCamelObjectRes.md
+docs/models/operations/FormQueryParamsCamelObjectResponse.md
 docs/models/operations/FormQueryParamsMapRequest.md
 docs/models/operations/FormQueryParamsMapRes.md
 docs/models/operations/FormQueryParamsMapResponse.md
@@ -1005,6 +1036,8 @@ docs/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPost200Appl
 docs/models/operations/ResponseBodyAdditionalPropertiesComplexNumbersPostResponse.md
 docs/models/operations/ResponseBodyAdditionalPropertiesDatePost200ApplicationJSON.md
 docs/models/operations/ResponseBodyAdditionalPropertiesDatePostResponse.md
+docs/models/operations/ResponseBodyAdditionalPropertiesObjectPost200ApplicationJSON.md
+docs/models/operations/ResponseBodyAdditionalPropertiesObjectPostResponse.md
 docs/models/operations/ResponseBodyAdditionalPropertiesPost200ApplicationJSON.md
 docs/models/operations/ResponseBodyAdditionalPropertiesPostResponse.md
 docs/models/operations/ResponseBodyBytesGetResponse.md
@@ -1051,6 +1084,10 @@ docs/models/operations/TypedObjectNullableOneOfPostRes.md
 docs/models/operations/TypedObjectNullableOneOfPostResponse.md
 docs/models/operations/TypedObjectOneOfPostRes.md
 docs/models/operations/TypedObjectOneOfPostResponse.md
+docs/models/operations/UnionDateNullRes.md
+docs/models/operations/UnionDateNullResponse.md
+docs/models/operations/UnionDateTimeNullRes.md
+docs/models/operations/UnionDateTimeNullResponse.md
 docs/models/operations/WeaklyTypedOneOfPostRes.md
 docs/models/operations/WeaklyTypedOneOfPostResponse.md
 docs/models/operations/PutAnythingIgnoredGeneration200ApplicationJSON.md
@@ -1061,6 +1098,7 @@ docs/models/shared/AuthServiceRequestBodyHeaderAuth.md
 docs/models/shared/AuthServiceRequestBody.md
 docs/models/shared/SchemeBasicAuth.md
 docs/models/shared/Security.md
+docs/models/shared/ErrorType.md
 docs/models/shared/Error.md
 docs/models/shared/SimpleObjectInt32Enum.md
 docs/models/shared/SimpleObjectIntEnum.md

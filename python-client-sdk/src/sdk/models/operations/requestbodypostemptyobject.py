@@ -8,11 +8,9 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class RequestBodyPostEmptyObjectRequestBodyEmpty:
     pass
-
 
 
 @dataclasses.dataclass
@@ -21,7 +19,6 @@ class RequestBodyPostEmptyObjectRequestBodyEmptyWithEmptyProperties:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostEmptyObjectRequestBody:
     empty: Optional[RequestBodyPostEmptyObjectRequestBodyEmpty] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('empty'), 'exclude': lambda f: f is None }})
@@ -30,11 +27,9 @@ class RequestBodyPostEmptyObjectRequestBody:
 
 
 
-
 @dataclasses.dataclass
 class RequestBodyPostEmptyObject200ApplicationJSONEmpty:
     pass
-
 
 
 @dataclasses.dataclass
@@ -43,14 +38,12 @@ class RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class RequestBodyPostEmptyObject200ApplicationJSON:
     r"""OK"""
     empty: Optional[RequestBodyPostEmptyObject200ApplicationJSONEmpty] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('empty'), 'exclude': lambda f: f is None }})
     empty_resp_with_empty_properies: Optional[RequestBodyPostEmptyObject200ApplicationJSONEmptyRespWithEmptyProperies] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('emptyRespWithEmptyProperies'), 'exclude': lambda f: f is None }})
     
-
 
 
 

@@ -34,7 +34,7 @@ func main() {
     )
 
 
-    var userAgent string = "Bentley"
+    var userAgent string = "string"
 
     ctx := context.Background()
     res, err := s.Telemetry.TelemetrySpeakeasyUserAgentGet(ctx, userAgent)
