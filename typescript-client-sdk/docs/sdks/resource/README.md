@@ -28,7 +28,7 @@ import { SDK } from "openapi";
   const res = await sdk.resource.createFile({
     file: {
       content: "`'$Z`(L/RH" as bytes <<<>>>,
-      file: "Rap National",
+      file: "string",
     },
   });
 
@@ -73,22 +73,22 @@ import { ExampleResourceEnumNumber, ExampleResourceEnumStr } from "openapi/dist/
       1867.47,
     ],
     arrayOfString: [
-      "Sodium",
+      "string",
     ],
     chocolates: [
       {
-        description: "Cross-group didactic system engine",
+        description: "Re-engineered asynchronous array",
       },
     ],
     id: "<ID>",
     mapOfInteger: {
-      "Pula": 173199,
+      "key": 271791,
     },
     mapOfString: {
-      "an": "South",
+      "key": "string",
     },
-    name: "Cotton",
-    vehicle: "withdrawal",
+    name: "string",
+    vehicle: "string",
   });
 
   if (res.statusCode == 200) {
@@ -126,7 +126,7 @@ import { DeleteResourceRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const resourceId: string = "Reggae";
+const resourceId: string = "string";
 
   const res = await sdk.resource.deleteResource(resourceId);
 
@@ -165,7 +165,7 @@ import { GetResourceRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const resourceId: string = "Home";
+const resourceId: string = "string";
 
   const res = await sdk.resource.getResource(resourceId);
 
@@ -204,7 +204,7 @@ import { UpdateResourceRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const resourceId: string = "International";
+const resourceId: string = "string";
 
   const res = await sdk.resource.updateResource(resourceId);
 

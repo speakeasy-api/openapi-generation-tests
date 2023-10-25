@@ -5,26 +5,23 @@ import dataclasses
 import requests as requests_http
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
-
+from typing import Dict, Optional
 
 
 @dataclasses.dataclass
 class SimplePathParameterMapsRequest:
-    map_param: dict[str, str] = dataclasses.field(metadata={'path_param': { 'field_name': 'mapParam', 'style': 'simple', 'explode': False }})
-    map_param_exploded: dict[str, int] = dataclasses.field(metadata={'path_param': { 'field_name': 'mapParamExploded', 'style': 'simple', 'explode': True }})
+    map_param: Dict[str, str] = dataclasses.field(metadata={'path_param': { 'field_name': 'mapParam', 'style': 'simple', 'explode': False }})
+    map_param_exploded: Dict[str, int] = dataclasses.field(metadata={'path_param': { 'field_name': 'mapParamExploded', 'style': 'simple', 'explode': True }})
     
 
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SimplePathParameterMapsRes:
     r"""OK"""
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

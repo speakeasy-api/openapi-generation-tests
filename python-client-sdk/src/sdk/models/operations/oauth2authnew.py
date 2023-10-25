@@ -10,12 +10,10 @@ OAUTH2_AUTH_NEW_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class Oauth2AuthNewSecurity:
     oauth2: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'oauth2', 'field_name': 'Authorization' }})
     
-
 
 
 

@@ -27,7 +27,7 @@ import { GetDocumentationPerLanguageRequest } from "openapi/dist/sdk/models/oper
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const language: string = "hack";
+const language: string = "string";
 
   const res = await sdk.documentation.getDocumentationPerLanguage(language);
 

@@ -1,7 +1,6 @@
 AllCops:
   Exclude:
     - Rakefile
-    - test/*.rb
   TargetRubyVersion: "3.0"
 Metrics:
   Enabled: false
@@ -27,6 +26,8 @@ Layout/LineLength:
 Lint/EmptyConditionalBody:
   Enabled: false
 Lint/MissingSuper:
+  Enabled: false
+Style/CaseLikeIf:
   Enabled: false
 #To eventually re-enable:
 Layout/EmptyLines:
@@ -60,4 +61,6 @@ Style/TrailingCommaInHashLiteral:
 Style/TrailingCommaInArrayLiteral:
   Enabled: false
 Layout/EmptyLinesAroundClassBody:
+  Enabled: false
+Style/WordArray:
   Enabled: false

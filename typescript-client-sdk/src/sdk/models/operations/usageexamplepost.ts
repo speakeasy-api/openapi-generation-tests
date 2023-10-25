@@ -109,6 +109,14 @@ export class UsageExamplePostRequest extends SpeakeasyBase {
     dateParameter: RFCDate;
 
     /**
+     * A date time parameter with a default value
+     */
+    @SpeakeasyMetadata({
+        data: "queryParam, style=form;explode=true;name=dateTimeDefaultParameter",
+    })
+    dateTimeDefaultParameter: Date;
+
+    /**
      * A date time parameter
      */
     @SpeakeasyMetadata({ data: "queryParam, style=form;explode=true;name=dateTimeParameter" })

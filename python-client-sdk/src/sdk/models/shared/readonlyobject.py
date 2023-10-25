@@ -7,14 +7,12 @@ from sdk import utils
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class ReadOnlyObject:
     bool: bool = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('bool') }})
     num: float = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('num') }})
     string: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('string') }})
     
-
 
 
 

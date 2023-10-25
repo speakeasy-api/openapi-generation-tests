@@ -11,7 +11,6 @@ RESPONSE_BODY_OPTIONAL_GET_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class ResponseBodyOptionalGetResponse:
     content_type: str = dataclasses.field()

@@ -9,7 +9,6 @@ from sdk import utils
 from typing import Optional
 
 
-
 @dataclasses.dataclass
 class SimplePathParameterObjectsRequest:
     obj_param: shared_simpleobject.SimpleObject = dataclasses.field(metadata={'path_param': { 'field_name': 'objParam', 'style': 'simple', 'explode': False }})
@@ -21,13 +20,11 @@ class SimplePathParameterObjectsRequest:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class SimplePathParameterObjectsRes:
     r"""OK"""
     url: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('url') }})
     
-
 
 
 

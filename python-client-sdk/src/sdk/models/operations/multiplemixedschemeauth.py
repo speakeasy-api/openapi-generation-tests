@@ -11,13 +11,11 @@ MULTIPLE_MIXED_SCHEME_AUTH_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class MultipleMixedSchemeAuthSecurity:
     api_key_auth_new: str = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'apiKey', 'sub_type': 'header', 'field_name': 'x-api-key' }})
     basic_auth: shared_security.SchemeBasicAuth = dataclasses.field(metadata={'security': { 'scheme': True, 'type': 'http', 'sub_type': 'basic' }})
     
-
 
 
 

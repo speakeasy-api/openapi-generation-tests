@@ -17,6 +17,8 @@ Endpoints for testing union types.
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
+* [unionDateNull](#uniondatenull)
+* [unionDateTimeNull](#uniondatetimenull)
 * [weaklyTypedOneOfPost](#weaklytypedoneofpost)
 
 ## flattenedTypedObjectPost
@@ -35,7 +37,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.flattenedTypedObjectPost("Legacy");
+  const res = await sdk.unions.flattenedTypedObjectPost("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -72,7 +74,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.mixedTypeOneOfPost("SAS");
+  const res = await sdk.unions.mixedTypeOneOfPost("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -113,10 +115,10 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
   const res = await sdk.unions.nullableOneOfRefInObjectPost({
     nullableOneOfOne: {
       type: TypedObject1Type.Obj1,
-      value: "Global Alexandria administration",
+      value: "string",
     },
-    nullableOneOfTwo: "Arbor",
-    oneOfOne: "PCI",
+    nullableOneOfTwo: "string",
+    oneOfOne: "string",
   });
 
   if (res.statusCode == 200) {
@@ -154,7 +156,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.nullableOneOfSchemaPost("deliquesce");
+  const res = await sdk.unions.nullableOneOfSchemaPost("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -193,7 +195,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.nullableOneOfTypeInObjectPost({
     nullableOneOfOne: false,
-    nullableOneOfTwo: "Smart",
+    nullableOneOfTwo: "string",
     oneOfOne: false,
   });
 
@@ -235,7 +237,7 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
 
   const res = await sdk.unions.nullableTypedObjectPost({
     type: TypedObject1Type.Obj1,
-    value: "Bike",
+    value: "string",
   });
 
   if (res.statusCode == 200) {
@@ -273,7 +275,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.primitiveTypeOneOfPost("Grocery");
+  const res = await sdk.unions.primitiveTypeOneOfPost("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -310,7 +312,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.stronglyTypedOneOfPost("spicy");
+  const res = await sdk.unions.stronglyTypedOneOfPost("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -347,7 +349,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.typedObjectNullableOneOfPost("Agender");
+  const res = await sdk.unions.typedObjectNullableOneOfPost("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -384,7 +386,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.typedObjectOneOfPost("shrivel");
+  const res = await sdk.unions.typedObjectOneOfPost("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -405,6 +407,80 @@ import { SDK } from "openapi";
 **Promise<[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)>**
 
 
+## unionDateNull
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.unions.unionDateNull(new RFCDate("2022-11-25"));
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [RFCDate](../../models//.md)                                 | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)>**
+
+
+## unionDateTimeNull
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.unions.unionDateTimeNull(new Date("2022-04-12T19:39:53.907Z"));
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [Date](../../models//.md)                                    | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.UnionDateTimeNullResponse](../../models/operations/uniondatetimenullresponse.md)>**
+
+
 ## weaklyTypedOneOfPost
 
 ### Example Usage
@@ -421,7 +497,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.unions.weaklyTypedOneOfPost("Unbranded");
+  const res = await sdk.unions.weaklyTypedOneOfPost("string");
 
   if (res.statusCode == 200) {
     // handle response

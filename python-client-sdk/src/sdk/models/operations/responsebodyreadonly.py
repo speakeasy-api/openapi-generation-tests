@@ -11,7 +11,6 @@ RESPONSE_BODY_READ_ONLY_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class ResponseBodyReadOnlyResponse:
     content_type: str = dataclasses.field()

@@ -637,7 +637,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfArrayOfPrimitive([
     [
-      "yellow",
+      "string",
     ],
   ]);
 
@@ -681,7 +681,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMap([
     {
-      "Southeast": {
+      "key": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -744,7 +744,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfMapCamelCase([
     {
-      "culpa": {
+      "key": {
         anyVal: "any example",
         boolOptVal: true,
         boolVal: true,
@@ -802,7 +802,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive([
-    "bit",
+    "string",
   ]);
 
   if (res.statusCode == 200) {
@@ -993,7 +993,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonDeepCamelCase({
-    anyVal: "Cambridgeshire",
+    anyVal: "string",
     arrVal: [
       {
         anyVal: "any example",
@@ -1015,9 +1015,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
       },
     ],
     boolVal: false,
-    intVal: 206440,
+    intVal: 66469,
     mapVal: {
-      "Palladium": {
+      "key": {
         anyVal: "any example",
         boolOptVal: true,
         boolVal: true,
@@ -1036,7 +1036,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         strVal: "example",
       },
     },
-    numVal: 1379.45,
+    numVal: 9629.09,
     objVal: {
       anyVal: "any example",
       boolOptVal: true,
@@ -1055,7 +1055,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       strOptVal: "optional example",
       strVal: "example",
     },
-    strVal: "Music Djibouti solid",
+    strVal: "string",
   });
 
   if (res.statusCode == 200) {
@@ -1096,7 +1096,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMap({
-    "Bentley": {
+    "key": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -1157,7 +1157,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapCamelCase({
-    "archive": {
+    "key": {
       anyVal: "any example",
       boolOptVal: true,
       boolVal: true,
@@ -1216,7 +1216,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapObj({
-    "larder": {
+    "key": {
       any: "any",
       bigint: 8821239038968084,
       bigintStr: "9223372036854775808",
@@ -1276,7 +1276,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapObjCamelCase({
-    "female": {
+    "key": {
       anyVal: "any example",
       boolOptVal: true,
       boolVal: true,
@@ -1334,7 +1334,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfArray({
-    "Loan": [
+    "key": [
       {
         any: "any",
         bigint: 8821239038968084,
@@ -1397,7 +1397,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfArrayCamelCase({
-    "nonstop": [
+    "key": [
       {
         anyVal: "any example",
         boolOptVal: true,
@@ -1458,8 +1458,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfMap({
-    "Senior": {
-      "vice": {
+    "key": {
+      "key": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -1521,8 +1521,8 @@ import { RFCDate } from "openapi/dist/sdk/types";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapCamelCase({
-    "Home": {
-      "plum": {
+    "key": {
+      "key": {
         anyVal: "any example",
         boolOptVal: true,
         boolVal: true,
@@ -1580,8 +1580,8 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfMapOfPrimitive({
-    "turquoise": {
-      "collaboration": "Officer",
+    "key": {
+      "key": "string",
     },
   });
 
@@ -1622,7 +1622,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive({
-    "equally": "whereas",
+    "key": "string",
   });
 
   if (res.statusCode == 200) {
@@ -1836,18 +1836,18 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostComplexNumberTypes({
     complexNumberTypes: {
       bigint: 765757,
-      bigintStr: "Metal calculating Lamborghini",
-      decimal: 9373.95,
-      decimalStr: "Royce",
+      bigintStr: "string",
+      decimal: 9344.87,
+      decimalStr: "string",
     },
-    pathBigInt: 958218,
-    pathBigIntStr: "male ASCII",
-    pathDecimal: 1464.39,
-    pathDecimalStr: "Lancaster hertz young",
-    queryBigInt: 338976,
-    queryBigIntStr: "Northwest",
-    queryDecimal: 3970.19,
-    queryDecimalStr: "Toyota",
+    pathBigInt: 250514,
+    pathBigIntStr: "string",
+    pathDecimal: 6831.11,
+    pathDecimalStr: "string",
+    queryBigInt: 500580,
+    queryBigIntStr: "string",
+    queryDecimal: 7419.03,
+    queryDecimalStr: "string",
   });
 
   if (res.statusCode == 200) {
@@ -1894,19 +1894,19 @@ import { RFCDate } from "openapi/dist/sdk/types";
 
   const res = await sdk.requestBodies.requestBodyPostDefaultsAndConsts({
     constBigInt: 559205,
-    constBigIntStr: "Chief",
+    constBigIntStr: "string",
     constBool: false,
-    constDate: new RFCDate("2021-05-03"),
-    constDateTime: new Date("2023-07-14T17:39:00.984Z"),
-    constDecimal: 2995.45,
-    constDecimalStr: "invoice Cotton",
-    constEnumInt: DefaultsAndConstsConstEnumInt.Two,
-    constEnumStr: DefaultsAndConstsConstEnumStr.One,
-    constInt: 788517,
-    constNum: 639.73,
-    constStr: "Dong Dysprosium",
-    constStrNull: "Kids quarrelsome",
-    normalField: "Cab Lane",
+    constDate: new RFCDate("2021-09-13"),
+    constDateTime: new Date("2022-12-15T04:16:08.794Z"),
+    constDecimal: 9160.69,
+    constDecimalStr: "string",
+    constEnumInt: DefaultsAndConstsConstEnumInt.One,
+    constEnumStr: DefaultsAndConstsConstEnumStr.Three,
+    constInt: 299545,
+    constNum: 4612.63,
+    constStr: "string",
+    constStrNull: "string",
+    normalField: "string",
   });
 
   if (res.statusCode == 200) {
@@ -2134,7 +2134,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostFormMapPrimitive({
-    "complexity": "SUV",
+    "key": "string",
   });
 
   if (res.statusCode == 200) {
@@ -2309,7 +2309,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesArrayDecimalStr([
-    "Group East incentivize",
+    "string",
   ]);
 
   if (res.statusCode == 200) {
@@ -2384,7 +2384,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("pixel gray");
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -2569,7 +2569,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("gadzooks Luxurious");
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -2718,7 +2718,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapBigIntStr({
-    "Nepal": "Creative",
+    "key": "string",
   });
 
   if (res.statusCode == 200) {
@@ -2757,7 +2757,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime({
-    "quantify": new Date("2022-02-12T21:23:09.538Z"),
+    "key": new Date("2022-09-03T18:52:14.477Z"),
   });
 
   if (res.statusCode == 200) {
@@ -2796,7 +2796,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapDecimal({
-    "Inverse": 9134.24,
+    "key": 3472.82,
   });
 
   if (res.statusCode == 200) {
@@ -2871,7 +2871,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesString("Gasoline");
+  const res = await sdk.requestBodies.requestBodyPostJsonDataTypesString("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -2969,7 +2969,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesInlineFiltered({
     bool: false,
     num: 3558.41,
-    str: "South expiate aha",
+    str: "string",
   });
 
   if (res.statusCode == 200) {
@@ -3013,9 +3013,9 @@ import {
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwFormUrlencoded = {
   bool3: false,
   num3: 8693.24,
-  str3: "Compatible",
+  str3: "string",
 };
-const paramStr: string = "Architect";
+const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr);
 
@@ -3061,9 +3061,9 @@ import {
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationJSON = {
   bool: false,
   num: 9771.91,
-  str: "South networks",
+  str: "string",
 };
-const paramStr: string = "Brand";
+const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr);
 
@@ -3109,9 +3109,9 @@ import {
 const requestBody: RequestBodyPostMultipleContentTypesSplitParamMultipartFormData = {
   bool2: false,
   num2: 7000.76,
-  str2: "Ball Southwest",
+  str2: "string",
 };
-const paramStr: string = "Ergonomic";
+const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr);
 
@@ -3154,7 +3154,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitForm({
     bool3: false,
     num3: 7842.07,
-    str3: "Cab encryption SMTP",
+    str3: "string",
   });
 
   if (res.statusCode == 200) {
@@ -3195,7 +3195,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitJson({
     bool: false,
     num: 2445.56,
-    str: "hew frictionless Hybrid",
+    str: "string",
   });
 
   if (res.statusCode == 200) {
@@ -3236,7 +3236,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitMultipart({
     bool2: false,
     num2: 2079.2,
-    str2: "cyan",
+    str2: "string",
   });
 
   if (res.statusCode == 200) {
@@ -3274,7 +3274,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("Chicken");
+  const res = await sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -3312,7 +3312,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostNullArray([
-    "simple",
+    "string",
   ]);
 
   if (res.statusCode == 200) {
@@ -3351,7 +3351,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostNullDictionary({
-    "Intersex": "robust",
+    "key": "string",
   });
 
   if (res.statusCode == 200) {
@@ -3389,7 +3389,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("Michigan");
+  const res = await sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -3426,7 +3426,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPostNullableRequiredStringBody("Mouse");
+  const res = await sdk.requestBodies.requestBodyPostNullableRequiredStringBody("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -3501,7 +3501,7 @@ import { RequestBodyPutBytesWithParamsRequest } from "openapi/dist/sdk/models/op
     globalQueryParam: "some example global query param",
   });
 const requestBody: Uint8Array = "o%jIWe4_P6" as bytes <<<>>>;
-const queryStringParam: string = "Huntington";
+const queryStringParam: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam);
 
@@ -3693,7 +3693,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPutMultipartDifferentFileName({
     differentFileName: {
       content: "Y}'H[5/Z[," as bytes <<<>>>,
-      differentFileName: "West Tunisian",
+      differentFileName: "string",
     },
   });
 
@@ -3735,7 +3735,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPutMultipartFile({
     file: {
       content: "OJa,v`.FW-" as bytes <<<>>>,
-      file: "bandwidth Sedan",
+      file: "string",
     },
   });
 
@@ -3832,7 +3832,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyPutString("meh");
+  const res = await sdk.requestBodies.requestBodyPutString("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -3869,8 +3869,8 @@ import { RequestBodyPutStringWithParamsRequest } from "openapi/dist/sdk/models/o
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const requestBody: string = "SMTP";
-const queryStringParam: string = "Unbranded";
+const requestBody: string = "string";
+const queryStringParam: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam);
 
@@ -3990,7 +3990,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyReadOnlyUnion("Kids");
+  const res = await sdk.requestBodies.requestBodyReadOnlyUnion("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -4028,7 +4028,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyReadWriteOnlyUnion("thoughtfully");
+  const res = await sdk.requestBodies.requestBodyReadWriteOnlyUnion("string");
 
   if (res.statusCode == 200) {
     // handle response
@@ -4069,7 +4069,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyWriteOnly({
     bool: false,
     num: 3888.42,
-    string: "Herminio",
+    string: "string",
   });
 
   if (res.statusCode == 200) {
@@ -4111,7 +4111,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyWriteOnlyOutput({
     bool: false,
     num: 3867.69,
-    string: "quas",
+    string: "string",
   });
 
   if (res.statusCode == 200) {
@@ -4150,7 +4150,7 @@ import { SDK } from "openapi";
     globalQueryParam: "some example global query param",
   });
 
-  const res = await sdk.requestBodies.requestBodyWriteOnlyUnion("Fitness");
+  const res = await sdk.requestBodies.requestBodyWriteOnlyUnion("string");
 
   if (res.statusCode == 200) {
     // handle response

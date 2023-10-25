@@ -4,11 +4,10 @@ from __future__ import annotations
 import dataclasses
 from dataclasses_json import Undefined, dataclass_json
 from sdk import utils
-from typing import Optional
+from typing import List, Optional
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AuthServiceRequestBodyBasicAuth:
     password: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('password') }})
@@ -18,7 +17,6 @@ class AuthServiceRequestBodyBasicAuth:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AuthServiceRequestBodyHeaderAuth:
     expected_value: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('expectedValue') }})
@@ -28,10 +26,9 @@ class AuthServiceRequestBodyHeaderAuth:
 
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
-
 @dataclasses.dataclass
 class AuthServiceRequestBody:
     basic_auth: Optional[AuthServiceRequestBodyBasicAuth] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('basicAuth'), 'exclude': lambda f: f is None }})
-    header_auth: Optional[list[AuthServiceRequestBodyHeaderAuth]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headerAuth'), 'exclude': lambda f: f is None }})
+    header_auth: Optional[List[AuthServiceRequestBodyHeaderAuth]] = dataclasses.field(default=None, metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headerAuth'), 'exclude': lambda f: f is None }})
     
 

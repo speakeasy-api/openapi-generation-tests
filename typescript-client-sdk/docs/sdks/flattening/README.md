@@ -51,7 +51,7 @@ const simpleObject: SimpleObject = {
   str: "test",
   strOpt: "testOptional",
 };
-const str: string = "Minivan";
+const str: string = "string";
 
   const res = await sdk.flattening.componentBodyAndParamConflict(simpleObject, str);
 
@@ -93,7 +93,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const paramStr: string = "ick";
+const paramStr: string = "string";
 const simpleObject: SimpleObject = {
   any: "any",
   bigint: 8821239038968084,
@@ -153,8 +153,8 @@ import { ConflictingParamsRequest } from "openapi/dist/sdk/models/operations";
     globalPathParam: 100,
     globalQueryParam: "some example global query param",
   });
-const strPathParameter: string = "kilogram";
-const strQueryParameter: string = "Cloned";
+const strPathParameter: string = "string";
+const strQueryParameter: string = "string";
 
   const res = await sdk.flattening.conflictingParams(strPathParameter, strQueryParameter);
 
@@ -195,9 +195,9 @@ import { InlineBodyAndParamConflictRequest, InlineBodyAndParamConflictRequestBod
     globalQueryParam: "some example global query param",
   });
 const requestBody: InlineBodyAndParamConflictRequestBody = {
-  str: "Progressive",
+  str: "string",
 };
-const str: string = "until";
+const str: string = "string";
 
   const res = await sdk.flattening.inlineBodyAndParamConflict(requestBody, str);
 
@@ -238,9 +238,9 @@ import { InlineBodyAndParamNoConflictRequest, InlineBodyAndParamNoConflictReques
     globalQueryParam: "some example global query param",
   });
 const requestBody: InlineBodyAndParamNoConflictRequestBody = {
-  bodyStr: "dynamic expedite",
+  bodyStr: "string",
 };
-const paramStr: string = "Forward";
+const paramStr: string = "string";
 
   const res = await sdk.flattening.inlineBodyAndParamNoConflict(requestBody, paramStr);
 

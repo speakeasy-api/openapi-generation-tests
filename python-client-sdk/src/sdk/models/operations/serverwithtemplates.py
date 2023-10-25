@@ -10,7 +10,6 @@ SERVER_WITH_TEMPLATES_SERVERS = [
 ]
 
 
-
 @dataclasses.dataclass
 class ServerWithTemplatesResponse:
     content_type: str = dataclasses.field()

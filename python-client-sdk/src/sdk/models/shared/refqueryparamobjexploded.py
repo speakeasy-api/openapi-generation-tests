@@ -4,7 +4,6 @@ from __future__ import annotations
 import dataclasses
 
 
-
 @dataclasses.dataclass
 class RefQueryParamObjExploded:
     bool: bool = dataclasses.field(metadata={'query_param': { 'field_name': 'bool' }})

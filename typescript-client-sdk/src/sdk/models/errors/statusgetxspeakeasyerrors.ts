@@ -3,6 +3,7 @@
  */
 
 import { SpeakeasyMetadata } from "../../../internal/utils";
+import { ErrorType } from "./errortype";
 import { AxiosResponse } from "axios";
 import { classToPlain, Exclude, Expose } from "class-transformer";
 
@@ -24,6 +25,10 @@ export class StatusGetXSpeakeasyErrors501ApplicationJSON extends Error {
     @SpeakeasyMetadata()
     @Expose({ name: "message" })
     message: string;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "type" })
+    type?: ErrorType;
 
     constructor(err?: StatusGetXSpeakeasyErrors501ApplicationJSON) {
         super();
