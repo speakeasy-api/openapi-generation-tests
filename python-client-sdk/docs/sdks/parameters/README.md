@@ -283,8 +283,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.form_query_params_map(map_param={
-    "test2": 'value2',
     "test": 'value',
+    "test2": 'value2',
 }, map_param_exploded={
     "test": 1,
     "test2": 2,
@@ -531,8 +531,8 @@ res = s.parameters.header_params_map(x_header_map={
     "key1": 'value1',
     "key2": 'value2',
 }, x_header_map_explode={
-    "test2": 'val2',
     "test1": 'val1',
+    "test2": 'val2',
 })
 
 if res.res is not None:
@@ -1112,8 +1112,8 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     1,
     2,
 ], map_param={
-    "key1": 'val1',
     "key2": 'val2',
+    "key1": 'val1',
 }, obj_param=shared.SimpleObject(
     any='any',
     bigint=8821239038968084,
@@ -1212,8 +1212,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.simple_path_parameter_maps(map_param={
-    "test": 'value',
     "test2": 'value2',
+    "test": 'value',
 }, map_param_exploded={
     "test": 1,
     "test2": 2,

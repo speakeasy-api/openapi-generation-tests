@@ -39,6 +39,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.flattenedTypedObjectPost("string");
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -75,6 +76,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.unions.mixedTypeOneOfPost("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -121,6 +123,7 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
     oneOfOne: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -157,6 +160,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.unions.nullableOneOfSchemaPost("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -199,6 +203,7 @@ import { SDK } from "openapi";
     oneOfOne: false,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -240,6 +245,7 @@ import { TypedObject1Type } from "openapi/dist/sdk/models/shared";
     value: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -276,6 +282,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.unions.primitiveTypeOneOfPost("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -314,6 +321,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.stronglyTypedOneOfPost("string");
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -350,6 +358,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.unions.typedObjectNullableOneOfPost("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -388,6 +397,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.typedObjectOneOfPost("string");
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -424,6 +434,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.unions.unionDateNull(new RFCDate("2022-11-25"));
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -462,6 +473,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.unions.unionDateTimeNull(new Date("2022-04-12T19:39:53.907Z"));
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -498,6 +510,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.unions.weaklyTypedOneOfPost("string");
+
 
   if (res.statusCode == 200) {
     // handle response

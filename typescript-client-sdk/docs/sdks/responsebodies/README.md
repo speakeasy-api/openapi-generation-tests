@@ -39,6 +39,7 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -77,6 +78,7 @@ import { SDK } from "openapi";
   const res = await sdk.responseBodies.responseBodyAdditionalPropertiesDatePost({
     "key": new RFCDate("2021-03-16"),
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -138,6 +140,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -177,6 +180,7 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -213,6 +217,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.responseBodies.responseBodyBytesGet();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -253,6 +258,7 @@ const xStringHeader: string = "string";
 
   const res = await sdk.responseBodies.responseBodyEmptyWithHeaders(xNumberHeader, xStringHeader);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -291,6 +297,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.responseBodies.responseBodyOptionalGet();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -327,6 +334,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.responseBodies.responseBodyReadOnly();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -365,6 +373,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.responseBodies.responseBodyStringGet();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -400,6 +409,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.responseBodies.responseBodyXmlGet();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -440,6 +450,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     date: new RFCDate("2020-01-01"),
     dateTime: new Date("2020-01-01T00:00:00Z"),
   });
+
 
   if (res.statusCode == 200) {
     // handle response

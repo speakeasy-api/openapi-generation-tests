@@ -64,6 +64,7 @@ const mapArrParam: Record<string, string[]> = {
 
   const res = await sdk.parameters.deepObjectQueryParamsMap(mapParam, mapArrParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -131,6 +132,7 @@ const objArrParam: DeepObjectQueryParamsObjectObjArrParam = {
 
   const res = await sdk.parameters.deepObjectQueryParamsObject(objParam, objArrParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -170,6 +172,7 @@ import { DuplicateParamRequest } from "openapi/dist/sdk/models/operations";
 const duplicateParamRequest: string = "string";
 
   const res = await sdk.parameters.duplicateParam(duplicateParamRequest);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -216,6 +219,7 @@ const arrParamExploded: number[] = [
 ];
 
   const res = await sdk.parameters.formQueryParamsArray(arrParam, arrParamExploded);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -268,6 +272,7 @@ const objParam: FormQueryParamsCamelObjectObjParam = {
 
   const res = await sdk.parameters.formQueryParamsCamelObject(objParamExploded, objParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -314,6 +319,7 @@ const mapParamExploded: Record<string, number> = {
 };
 
   const res = await sdk.parameters.formQueryParamsMap(mapParam, mapParamExploded);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -396,6 +402,7 @@ const objParam: SimpleObject = {
 
   const res = await sdk.parameters.formQueryParamsObject(objParamExploded, objParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -438,6 +445,7 @@ const numParam: number = 1.1;
 const strParam: string = "test";
 
   const res = await sdk.parameters.formQueryParamsPrimitive(boolParam, intParam, numParam, strParam);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -493,6 +501,7 @@ const refObjParamExploded: RefQueryParamObjExploded = {
 
   const res = await sdk.parameters.formQueryParamsRefParamObject(refObjParam, refObjParamExploded);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -536,6 +545,7 @@ const xHeaderArray: string[] = [
 
   const res = await sdk.parameters.headerParamsArray(xHeaderArray);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -572,8 +582,8 @@ import { HeaderParamsMapRequest } from "openapi/dist/sdk/models/operations";
     globalQueryParam: "some example global query param",
   });
 const xHeaderMap: Record<string, string> = {
-  "key2": "value2",
   "key1": "value1",
+  "key2": "value2",
 };
 const xHeaderMapExplode: Record<string, string> = {
   "test1": "val1",
@@ -581,6 +591,7 @@ const xHeaderMapExplode: Record<string, string> = {
 };
 
   const res = await sdk.parameters.headerParamsMap(xHeaderMap, xHeaderMapExplode);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -663,6 +674,7 @@ const xHeaderObjExplode: SimpleObject = {
 
   const res = await sdk.parameters.headerParamsObject(xHeaderObj, xHeaderObjExplode);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -705,6 +717,7 @@ const xHeaderNumber: number = 1.1;
 const xHeaderString: string = "test";
 
   const res = await sdk.parameters.headerParamsPrimitive(xHeaderBoolean, xHeaderInteger, xHeaderNumber, xHeaderString);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -880,6 +893,7 @@ const simpleObjParam: SimpleObject = {
 
   const res = await sdk.parameters.jsonQueryParamsObject(deepObjParam, simpleObjParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -921,6 +935,7 @@ const pathParam: string = "pathValue";
 const queryStringParam: string = "queryValue";
 
   const res = await sdk.parameters.mixedParametersCamelCase(headerParam, pathParam, queryStringParam);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -964,6 +979,7 @@ const pathParam: string = "pathValue";
 const queryStringParam: string = "queryValue";
 
   const res = await sdk.parameters.mixedParametersPrimitives(headerParam, pathParam, queryStringParam);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1067,6 +1083,7 @@ const jsonParam: SimpleObject = {
 
   const res = await sdk.parameters.mixedQueryParams(deepObjectParam, formParam, jsonParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1128,6 +1145,7 @@ const jsonObj: SimpleObject = {
 };
 
   const res = await sdk.parameters.pathParameterJson(jsonObj);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1201,6 +1219,7 @@ const objParam: SimpleObject = {
 
   const res = await sdk.parameters.pipeDelimitedQueryParamsArray(arrParam, arrParamExploded, mapParam, objParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1246,6 +1265,7 @@ const arrParam: string[] = [
 
   const res = await sdk.parameters.simplePathParameterArrays(arrParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1282,8 +1302,8 @@ import { SimplePathParameterMapsRequest } from "openapi/dist/sdk/models/operatio
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test": "value",
   "test2": "value2",
+  "test": "value",
 };
 const mapParamExploded: Record<string, number> = {
   "test": 1,
@@ -1291,6 +1311,7 @@ const mapParamExploded: Record<string, number> = {
 };
 
   const res = await sdk.parameters.simplePathParameterMaps(mapParam, mapParamExploded);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1373,6 +1394,7 @@ const objParamExploded: SimpleObject = {
 
   const res = await sdk.parameters.simplePathParameterObjects(objParam, objParamExploded);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1415,6 +1437,7 @@ const numParam: number = 1.1;
 const strParam: string = "test";
 
   const res = await sdk.parameters.simplePathParameterPrimitives(boolParam, intParam, numParam, strParam);
+
 
   if (res.statusCode == 200) {
     // handle response

@@ -32,6 +32,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.selectGlobalServer();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -70,6 +71,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.selectServerWithID();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -106,6 +108,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.servers.serverWithProtocolTemplate();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -144,6 +147,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.serverWithTemplates();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -181,6 +185,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.servers.serverWithTemplatesGlobal();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -216,6 +221,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.servers.serversByIDWithTemplates();
+
 
   if (res.statusCode == 200) {
     // handle response

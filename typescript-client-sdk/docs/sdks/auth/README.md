@@ -35,6 +35,7 @@ const operationSecurity: ApiKeyAuthSecurity = {
 
   const res = await sdk.auth.apiKeyAuth(operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -71,6 +72,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.auth.apiKeyAuthGlobal();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -112,6 +114,7 @@ const operationSecurity: BasicAuthSecurity = {
 
   const res = await sdk.auth.basicAuth(operationSecurity, passwd, user);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -152,6 +155,7 @@ const operationSecurity: BearerAuthSecurity = {
 
   const res = await sdk.auth.bearerAuth(operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -189,6 +193,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.auth.globalBearerAuth();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -225,6 +230,7 @@ const operationSecurity: Oauth2AuthSecurity = {
 };
 
   const res = await sdk.auth.oauth2Auth(operationSecurity);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -264,6 +270,7 @@ const operationSecurity: Oauth2OverrideSecurity = {
 
   const res = await sdk.auth.oauth2Override(operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -301,6 +308,7 @@ const operationSecurity: OpenIdConnectAuthSecurity = {
 };
 
   const res = await sdk.auth.openIdConnectAuth(operationSecurity);
+
 
   if (res.statusCode == 200) {
     // handle response

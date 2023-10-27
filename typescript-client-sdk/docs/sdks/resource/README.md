@@ -32,6 +32,7 @@ import { SDK } from "openapi";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -91,6 +92,7 @@ import { ExampleResourceEnumNumber, ExampleResourceEnumStr } from "openapi/dist/
     vehicle: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -129,6 +131,7 @@ import { DeleteResourceRequest } from "openapi/dist/sdk/models/operations";
 const resourceId: string = "string";
 
   const res = await sdk.resource.deleteResource(resourceId);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -169,6 +172,7 @@ const resourceId: string = "string";
 
   const res = await sdk.resource.getResource(resourceId);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -207,6 +211,7 @@ import { UpdateResourceRequest } from "openapi/dist/sdk/models/operations";
 const resourceId: string = "string";
 
   const res = await sdk.resource.updateResource(resourceId);
+
 
   if (res.statusCode == 200) {
     // handle response

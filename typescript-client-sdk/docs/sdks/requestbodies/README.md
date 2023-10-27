@@ -109,6 +109,7 @@ import { SDK } from "openapi";
     required: 302382,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -149,6 +150,7 @@ import { SDK } from "openapi";
     nullableRequiredObj: {},
     requiredObj: {},
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -194,6 +196,7 @@ import { NullableRequiredPropertyPostRequestBodyNullableRequiredEnum } from "ope
     nullableRequiredInt: 50266,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -237,6 +240,7 @@ import { SDK } from "openapi";
       required: 964394,
     },
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -298,6 +302,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -356,6 +361,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       strVal: "example",
     },
   ]);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -418,6 +424,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -475,6 +482,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       strVal: "example",
     },
   ]);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -538,6 +546,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     ],
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -599,6 +608,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     ],
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -640,6 +650,7 @@ import { SDK } from "openapi";
       "string",
     ],
   ]);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -704,6 +715,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -765,6 +777,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -804,6 +817,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonArrayOfPrimitive([
     "string",
   ]);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -955,6 +969,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     str: "test",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1058,6 +1073,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strVal: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1118,6 +1134,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1176,6 +1193,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       strVal: "example",
     },
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1238,6 +1256,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1295,6 +1314,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       strVal: "example",
     },
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1358,6 +1378,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     ],
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1418,6 +1439,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
       },
     ],
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1482,6 +1504,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1543,6 +1566,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1585,6 +1609,7 @@ import { SDK } from "openapi";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1624,6 +1649,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostApplicationJsonMapOfPrimitive({
     "key": "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1684,6 +1710,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1742,6 +1769,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1798,6 +1826,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strVal: "example",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1849,6 +1878,7 @@ import { SDK } from "openapi";
     queryDecimal: 7419.03,
     queryDecimalStr: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -1909,6 +1939,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     normalField: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -1948,6 +1979,7 @@ import { SDK } from "openapi";
     empty: {},
     emptyWithEmptyProperties: {},
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2098,6 +2130,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     str: "test",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2136,6 +2169,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostFormMapPrimitive({
     "key": "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2195,6 +2229,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2233,6 +2268,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesArrayBigInt([
     564849,
   ]);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2273,6 +2309,7 @@ import { SDK } from "openapi";
     new RFCDate("2022-03-22"),
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2312,6 +2349,7 @@ import { SDK } from "openapi";
     "string",
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2348,6 +2386,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigInt(687617);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2386,6 +2425,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBigIntStr("string");
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2422,6 +2462,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesBoolean(false);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2460,6 +2501,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDate(new RFCDate("2022-03-04"));
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2496,6 +2538,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDateTime(new Date("2023-03-04T01:33:15.031Z"));
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2534,6 +2577,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimal(1107.81);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2570,6 +2614,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesDecimalStr("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2608,6 +2653,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesFloat32(4464.34);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2645,6 +2691,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesInt32(22155);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2681,6 +2728,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesInteger(273673);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2721,6 +2769,7 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2759,6 +2808,7 @@ import { SDK } from "openapi";
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesMapDateTime({
     "key": new Date("2022-09-03T18:52:14.477Z"),
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2799,6 +2849,7 @@ import { SDK } from "openapi";
     "key": 3472.82,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2836,6 +2887,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesNumber(2193.66);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2872,6 +2924,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostJsonDataTypesString("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -2931,6 +2984,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -2971,6 +3025,7 @@ import { SDK } from "openapi";
     num: 3558.41,
     str: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3018,6 +3073,7 @@ const requestBody: RequestBodyPostMultipleContentTypesSplitParamApplicationXWwwF
 const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamForm(requestBody, paramStr);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3067,6 +3123,7 @@ const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamJson(requestBody, paramStr);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3115,6 +3172,7 @@ const paramStr: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPostMultipleContentTypesSplitParamMultipart(requestBody, paramStr);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3157,6 +3215,7 @@ import { SDK } from "openapi";
     str3: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3197,6 +3256,7 @@ import { SDK } from "openapi";
     num: 2445.56,
     str: "string",
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3239,6 +3299,7 @@ import { SDK } from "openapi";
     str2: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3275,6 +3336,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostNotNullableNotRequiredStringBody("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3315,6 +3377,7 @@ import { SDK } from "openapi";
     "string",
   ]);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3354,6 +3417,7 @@ import { SDK } from "openapi";
     "key": "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3390,6 +3454,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPostNullableNotRequiredStringBody("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3428,6 +3493,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyPostNullableRequiredStringBody("string");
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3464,6 +3530,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPutBytes("9sS}}O%}aJ" as bytes <<<>>>);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3504,6 +3571,7 @@ const requestBody: Uint8Array = "o%jIWe4_P6" as bytes <<<>>>;
 const queryStringParam: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPutBytesWithParams(requestBody, queryStringParam);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3590,7 +3658,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     bool: true,
     int: 1,
     map: {
-      "key": {
+      "key2": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -3610,7 +3678,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
         str: "test",
         strOpt: "testOptional",
       },
-      "key2": {
+      "key": {
         any: "any",
         bigint: 8821239038968084,
         bigintStr: "9223372036854775808",
@@ -3655,6 +3723,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     str: "test",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3697,6 +3766,7 @@ import { SDK } from "openapi";
     },
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3738,6 +3808,7 @@ import { SDK } from "openapi";
       file: "string",
     },
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3797,6 +3868,7 @@ import { RFCDate } from "openapi/dist/sdk/types";
     strOpt: "testOptional",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3833,6 +3905,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyPutString("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3873,6 +3946,7 @@ const requestBody: string = "string";
 const queryStringParam: string = "string";
 
   const res = await sdk.requestBodies.requestBodyPutStringWithParams(requestBody, queryStringParam);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3916,6 +3990,7 @@ import { SDK } from "openapi";
     num3: 459345,
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -3953,6 +4028,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyReadOnlyInput({});
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -3992,6 +4068,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.requestBodies.requestBodyReadOnlyUnion("string");
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4029,6 +4106,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyReadWriteOnlyUnion("string");
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -4072,6 +4150,7 @@ import { SDK } from "openapi";
     string: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4114,6 +4193,7 @@ import { SDK } from "openapi";
     string: "string",
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -4151,6 +4231,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.requestBodies.requestBodyWriteOnlyUnion("string");
+
 
   if (res.statusCode == 200) {
     // handle response

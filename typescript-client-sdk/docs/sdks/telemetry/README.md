@@ -30,6 +30,7 @@ const userAgent: string = "string";
 
   const res = await sdk.telemetry.telemetrySpeakeasyUserAgentGet(userAgent);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -66,6 +67,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.telemetry.telemetryUserAgentGet();
+
 
   if (res.statusCode == 200) {
     // handle response

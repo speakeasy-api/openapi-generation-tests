@@ -23,6 +23,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.nest.first.get();
 
+
   if (res.statusCode == 200) {
     // handle response
   }

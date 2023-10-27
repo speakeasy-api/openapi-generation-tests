@@ -30,6 +30,7 @@ const globalPathParam: number = 719830;
 
   const res = await sdk.globals.globalPathParameterGet(globalPathParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,6 +69,7 @@ import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operati
 const globalQueryParam: string = "string";
 
   const res = await sdk.globals.globalsQueryParameterGet(globalQueryParam);
+
 
   if (res.statusCode == 200) {
     // handle response

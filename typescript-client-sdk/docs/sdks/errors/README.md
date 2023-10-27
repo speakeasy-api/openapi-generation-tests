@@ -29,6 +29,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.errors.connectionErrorGet();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -68,6 +69,7 @@ const statusCode: number = 458364;
 
   const res = await sdk.errors.statusGetError(statusCode);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -106,6 +108,7 @@ import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operat
 const statusCode: number = 385913;
 
   const res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
+
 
   if (res.statusCode == 200) {
     // handle response

@@ -23,6 +23,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.nested.second.get();
 
+
   if (res.statusCode == 200) {
     // handle response
   }

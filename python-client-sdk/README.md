@@ -493,6 +493,185 @@ if res.res is not None:
 ```
 <!-- End Global Parameters -->
 
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or raise an error.  If Error objects are specified in your OpenAPI Spec, the SDK will raise the appropriate Error type.
+
+
+## Example
+
+```python
+import sdk
+from sdk.models import operations, shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+
+res = None
+try:
+    res = s.errors.status_get_x_speakeasy_errors(status_code=385913)
+
+
+except (error) as e:
+    print(e) # handle exception
+except (statusGetXSpeakeasyErrors_501ApplicationJSON_object) as e:
+    print(e) # handle exception
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `server_idx: int` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
+
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `hostname: str`
+
+ * `port: str`
+
+ * `protocol: str`
+
+ * `something: ServerSomething`
+
+For example:
+
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+    server_idx=4
+)
+
+req = 'string'
+
+res = s.sdk.put_anything_ignored_generation(req)
+
+if res.put_anything_ignored_generation_200_application_json_object is not None:
+    # handle response
+    pass
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `server_url: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+    server_url="http://localhost:35123"
+)
+
+req = 'string'
+
+res = s.sdk.put_anything_ignored_generation(req)
+
+if res.put_anything_ignored_generation_200_application_json_object is not None:
+    # handle response
+    pass
+```
+
+## Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = shared.AuthServiceRequestBody(
+    basic_auth=shared.AuthServiceRequestBodyBasicAuth(
+        password='owsGgP4_AhRPMSJ',
+        username='Devonte_Bins',
+    ),
+    header_auth=[
+        shared.AuthServiceRequestBodyHeaderAuth(
+            expected_value='string',
+            header_name='string',
+        ),
+    ],
+)
+
+res = s.auth_new.api_key_auth_global_new(req, server_url="http://localhost:35456")
+
+if res.status_code == 200:
+    # handle response
+    pass
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Python SDK makes API calls using the (requests)[https://pypi.org/project/requests/] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `requests.Session` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```python
+import sdk
+import requests
+
+http_client = requests.Session()
+http_client.headers.update({'x-custom-header': 'someValue'})
+s = sdk.SDK(client: http_client)
+```
+
+
+<!-- End Custom HTTP Client -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 

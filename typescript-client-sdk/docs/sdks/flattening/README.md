@@ -55,6 +55,7 @@ const str: string = "string";
 
   const res = await sdk.flattening.componentBodyAndParamConflict(simpleObject, str);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -117,6 +118,7 @@ const simpleObject: SimpleObject = {
 
   const res = await sdk.flattening.componentBodyAndParamNoConflict(paramStr, simpleObject);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -157,6 +159,7 @@ const strPathParameter: string = "string";
 const strQueryParameter: string = "string";
 
   const res = await sdk.flattening.conflictingParams(strPathParameter, strQueryParameter);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -201,6 +204,7 @@ const str: string = "string";
 
   const res = await sdk.flattening.inlineBodyAndParamConflict(requestBody, str);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -243,6 +247,7 @@ const requestBody: InlineBodyAndParamNoConflictRequestBody = {
 const paramStr: string = "string";
 
   const res = await sdk.flattening.inlineBodyAndParamNoConflict(requestBody, paramStr);
+
 
   if (res.statusCode == 200) {
     // handle response

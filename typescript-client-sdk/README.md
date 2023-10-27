@@ -518,6 +518,194 @@ import { GlobalsQueryParameterGetRequest } from "openapi/dist/sdk/models/operati
 ```
 <!-- End Global Parameters -->
 
+
+
+<!-- Start Error Handling -->
+# Error Handling
+
+Handling errors in your SDK should largely match your expectations.  All operations return a response object or throw an error.  If Error objects are specified in your OpenAPI Spec, the SDK will throw the appropriate Error type.
+
+
+## Example
+
+```typescript
+import { SDK } from "openapi";
+import { StatusGetXSpeakeasyErrorsRequest } from "openapi/dist/sdk/models/operations";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+const statusCode: number = 385913;
+
+  
+  let res;
+  try {
+    res = await sdk.errors.statusGetXSpeakeasyErrors(statusCode);
+  } catch (e) { 
+    } else if (e instanceof error) {
+      console.error(e) // handle exception 
+    
+    } else if (e instanceof statusGetXSpeakeasyErrors_501ApplicationJSON_object) {
+      console.error(e) // handle exception 
+    }
+  }
+
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+<!-- End Error Handling -->
+
+
+
+<!-- Start Server Selection -->
+# Server Selection
+
+## Select Server by Index
+
+You can override the default server globally by passing a server index to the `serverIdx: number` optional parameter when initializing the SDK client instance. The selected server will then be used as the default on the operations that use it. This table lists the indexes associated with the available servers:
+
+| # | Server | Variables |
+| - | ------ | --------- |
+| 0 | `http://localhost:35123` | None |
+| 1 | `http://broken` | None |
+| 2 | `http://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`) |
+| 3 | `http://localhost:35123/anything/{something}` | `something` (default is `something`) |
+| 4 | `{protocol}://{hostname}:{port}` | `hostname` (default is `localhost`), `port` (default is `35123`), `protocol` (default is `http`) |
+
+
+Some of the server options above contain variables. If you want to set the values of those variables, the following options are provided for doing so:
+ * `hostname: string`
+
+ * `port: string`
+
+ * `protocol: string`
+
+ * `something: ServerSomething`
+
+For example:
+
+
+```typescript
+import { SDK } from "openapi";
+
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+        serverIdx: 4,
+    });
+
+    const res = await sdk.sdk.putAnythingIgnoredGeneration("string");
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+
+## Override Server URL Per-Client
+
+The default server can also be overridden globally by passing a URL to the `serverURL: str` optional parameter when initializing the SDK client instance. For example:
+
+
+```typescript
+import { SDK } from "openapi";
+
+(async () => {
+    const sdk = new SDK({
+        security: {
+            apiKeyAuth: "Token YOUR_API_KEY",
+        },
+        globalPathParam: 100,
+        globalQueryParam: "some example global query param",
+        serverURL: "http://localhost:35123",
+    });
+
+    const res = await sdk.sdk.putAnythingIgnoredGeneration("string");
+
+    if (res.statusCode == 200) {
+        // handle response
+    }
+})();
+
+```
+
+## Override Server URL Per-Operation
+
+The server URL can also be overridden on a per-operation basis, provided a server list was specified for the operation. For example:
+
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.authNew.apiKeyAuthGlobalNew({
+    basicAuth: {
+      password: "owsGgP4_AhRPMSJ",
+      username: "Devonte_Bins",
+    },
+    headerAuth: [
+      {
+        expectedValue: "string",
+        headerName: "string",
+      },
+    ],
+  }, serverURL: "http://localhost:35456");
+
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+<!-- End Server Selection -->
+
+
+
+<!-- Start Custom HTTP Client -->
+# Custom HTTP Client
+
+The Typescript SDK makes API calls using the (axios)[https://axios-http.com/docs/intro] HTTP library.  In order to provide a convenient way to configure timeouts, cookies, proxies, custom headers, and other low-level configuration, you can initialize the SDK client with a custom `AxiosInstance` object.
+
+
+For example, you could specify a header for every request that your sdk makes as follows:
+
+```typescript
+from openapi import SDK;
+import axios;
+
+const httpClient = axios.create({
+    headers: {'x-custom-header': 'someValue'}
+})
+
+
+const sdk = new SDK({defaultClient: httpClient});
+```
+
+
+<!-- End Custom HTTP Client -->
+
 <!-- Placeholder for Future Speakeasy SDK Sections -->
 
 

@@ -31,6 +31,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.sdk.putAnythingIgnoredGeneration("string");
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -67,6 +68,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.sdk.responseBodyJsonGet();
+
 
   if (res.statusCode == 200) {
     // handle response

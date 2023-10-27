@@ -30,6 +30,7 @@ const numRetries: number = 75342;
 
   const res = await sdk.retries.retriesGet(requestId, numRetries);
 
+
   if (res.statusCode == 200) {
     // handle response
   }

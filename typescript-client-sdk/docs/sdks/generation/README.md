@@ -46,6 +46,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.anchorTypesGet();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -82,6 +83,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.arrayCircularReferenceGet();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -117,6 +119,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.generation.circularReferenceGet();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -157,6 +160,7 @@ const dateInput: RFCDate = new RFCDate("2021-11-30");
 
   const res = await sdk.generation.dateParamWithDefault(dateInput);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -195,6 +199,7 @@ import { DateTimeParamWithDefaultRequest } from "openapi/dist/sdk/models/operati
 const dateTimeInput: Date = new Date("2023-02-09T21:53:21.077Z");
 
   const res = await sdk.generation.dateTimeParamWithDefault(dateTimeInput);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -235,6 +240,7 @@ const decimalInput: number = 4060.06;
 
   const res = await sdk.generation.decimalParamWithDefault(decimalInput);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -273,6 +279,7 @@ import { DeprecatedFieldInObjectDeprecatedEnum } from "openapi/dist/sdk/models/s
 
   const res = await sdk.generation.deprecatedFieldInSchemaPost({});
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -309,6 +316,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.generation.deprecatedObjectInSchemaGet();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -349,6 +357,7 @@ import { DeprecatedOperationNoCommentsGetRequest } from "openapi/dist/sdk/models
 const deprecatedParameter: string = "string";
 
   const res = await sdk.generation.deprecatedOperationNoCommentsGet(deprecatedParameter);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -394,6 +403,7 @@ const newParameter: string = "string";
 
   const res = await sdk.generation.deprecatedOperationWithCommentsGet(deprecatedParameter, newParameter);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -435,6 +445,7 @@ const emptyObject: EmptyObjectParam = {};
 
   const res = await sdk.generation.emptyObjectGet(emptyObject);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -472,6 +483,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.emptyResponseObjectWithCommentGet();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -508,6 +520,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.globalNameOverridden();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -543,6 +556,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.generation.ignoredGenerationGet();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -582,6 +596,7 @@ const requestBody: IgnoresPostApplicationJSON = {};
 const testParam: string = "string";
 
   const res = await sdk.generation.ignoresPost(requestBody, testParam);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -624,6 +639,7 @@ const testQueryParam: string = "example";
 
   const res = await sdk.generation.nameOverride(testEnumQueryParam, testQueryParam);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -662,6 +678,7 @@ import { SDK } from "openapi";
 
   const res = await sdk.generation.objectCircularReferenceGet();
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -697,6 +714,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.generation.oneOfCircularReferenceGet();
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -743,6 +761,7 @@ const obj: TypedParameterGenerationGetObj = {
 };
 
   const res = await sdk.generation.typedParameterGenerationGet(bigint, date, decimal, obj);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -838,6 +857,7 @@ const operationSecurity: UsageExamplePostSecurity = {
     optEnumParameter: UsageExamplePostOptEnumParameter.Value3,
     strParameter: "example 1",
   }, operationSecurity);
+
 
   if (res.statusCode == 200) {
     // handle response

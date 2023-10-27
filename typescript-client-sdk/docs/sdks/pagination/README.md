@@ -34,6 +34,7 @@ import { SDK } from "openapi";
     cursor: 868337,
   });
 
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -78,6 +79,7 @@ const cursor: number = 24812;
 
   const res = await sdk.pagination.paginationCursorParams(cursor);
 
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -119,6 +121,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.pagination.paginationLimitOffsetOffsetBody({});
+
 
   if (res.statusCode == 200) {
     do {
@@ -165,6 +168,7 @@ const offset: number = 600173;
 
   const res = await sdk.pagination.paginationLimitOffsetOffsetParams(limit, offset);
 
+
   if (res.statusCode == 200) {
     do {
       // handle items
@@ -207,6 +211,7 @@ import { SDK } from "openapi";
   });
 
   const res = await sdk.pagination.paginationLimitOffsetPageBody({});
+
 
   if (res.statusCode == 200) {
     do {
@@ -251,6 +256,7 @@ import { PaginationLimitOffsetPageParamsRequest } from "openapi/dist/sdk/models/
 const page: number = 1177;
 
   const res = await sdk.pagination.paginationLimitOffsetPageParams(page);
+
 
   if (res.statusCode == 200) {
     do {

@@ -48,6 +48,7 @@ import { SDK } from "openapi";
     ],
   });
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -96,6 +97,7 @@ import { SDK } from "openapi";
       },
     ],
   });
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -148,6 +150,7 @@ const operationSecurity: BasicAuthNewSecurity = {
     ],
   }, operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -198,6 +201,7 @@ const operationSecurity: MultipleMixedOptionsAuthSecurity = {
       },
     ],
   }, operationSecurity);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -254,6 +258,7 @@ const operationSecurity: MultipleMixedSchemeAuthSecurity = {
     ],
   }, operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -307,6 +312,7 @@ const operationSecurity: MultipleOptionsWithMixedSchemesAuthSecurity = {
       },
     ],
   }, operationSecurity);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -362,6 +368,7 @@ const operationSecurity: MultipleOptionsWithSimpleSchemesAuthSecurity = {
     ],
   }, operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -412,6 +419,7 @@ const operationSecurity: MultipleSimpleOptionsAuthSecurity = {
       },
     ],
   }, operationSecurity);
+
 
   if (res.statusCode == 200) {
     // handle response
@@ -465,6 +473,7 @@ const operationSecurity: MultipleSimpleSchemeAuthSecurity = {
     ],
   }, operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -516,6 +525,7 @@ const operationSecurity: Oauth2AuthNewSecurity = {
     ],
   }, operationSecurity);
 
+
   if (res.statusCode == 200) {
     // handle response
   }
@@ -566,6 +576,7 @@ const operationSecurity: OpenIdConnectAuthNewSecurity = {
       },
     ],
   }, operationSecurity);
+
 
   if (res.statusCode == 200) {
     // handle response
