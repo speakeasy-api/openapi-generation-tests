@@ -668,8 +668,6 @@ http_client = requests.Session()
 http_client.headers.update({'x-custom-header': 'someValue'})
 s = sdk.SDK(client: http_client)
 ```
-
-
 <!-- End Custom HTTP Client -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

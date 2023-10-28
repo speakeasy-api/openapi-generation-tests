@@ -528,8 +528,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.header_params_map(x_header_map={
-    "key1": 'value1',
     "key2": 'value2',
+    "key1": 'value1',
 }, x_header_map_explode={
     "test1": 'val1',
     "test2": 'val2',
@@ -1112,8 +1112,8 @@ res = s.parameters.pipe_delimited_query_params_array(arr_param=[
     1,
     2,
 ], map_param={
-    "key2": 'val2',
     "key1": 'val1',
+    "key2": 'val2',
 }, obj_param=shared.SimpleObject(
     any='any',
     bigint=8821239038968084,
