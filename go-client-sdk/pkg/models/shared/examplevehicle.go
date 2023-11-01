@@ -41,16 +41,16 @@ func CreateExampleVehicleExampleCar(exampleCar ExampleCar) ExampleVehicle {
 
 func (u *ExampleVehicle) UnmarshalJSON(data []byte) error {
 
-	exampleBoat := new(ExampleBoat)
+	exampleBoat := ExampleBoat{}
 	if err := utils.UnmarshalJSON(data, &exampleBoat, "", true, true); err == nil {
-		u.ExampleBoat = exampleBoat
+		u.ExampleBoat = &exampleBoat
 		u.Type = ExampleVehicleTypeExampleBoat
 		return nil
 	}
 
-	exampleCar := new(ExampleCar)
+	exampleCar := ExampleCar{}
 	if err := utils.UnmarshalJSON(data, &exampleCar, "", true, true); err == nil {
-		u.ExampleCar = exampleCar
+		u.ExampleCar = &exampleCar
 		u.Type = ExampleVehicleTypeExampleCar
 		return nil
 	}

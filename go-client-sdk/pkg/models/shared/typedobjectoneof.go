@@ -52,23 +52,23 @@ func CreateTypedObjectOneOfTypedObject3(typedObject3 TypedObject3) TypedObjectOn
 
 func (u *TypedObjectOneOf) UnmarshalJSON(data []byte) error {
 
-	typedObject1 := new(TypedObject1)
+	typedObject1 := TypedObject1{}
 	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
-		u.TypedObject1 = typedObject1
+		u.TypedObject1 = &typedObject1
 		u.Type = TypedObjectOneOfTypeTypedObject1
 		return nil
 	}
 
-	typedObject2 := new(TypedObject2)
+	typedObject2 := TypedObject2{}
 	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
-		u.TypedObject2 = typedObject2
+		u.TypedObject2 = &typedObject2
 		u.Type = TypedObjectOneOfTypeTypedObject2
 		return nil
 	}
 
-	typedObject3 := new(TypedObject3)
+	typedObject3 := TypedObject3{}
 	if err := utils.UnmarshalJSON(data, &typedObject3, "", true, true); err == nil {
-		u.TypedObject3 = typedObject3
+		u.TypedObject3 = &typedObject3
 		u.Type = TypedObjectOneOfTypeTypedObject3
 		return nil
 	}

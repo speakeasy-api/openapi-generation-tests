@@ -30,9 +30,9 @@ func CreateFlattenedTypedObject1TypedObject1(typedObject1 TypedObject1) Flattene
 
 func (u *FlattenedTypedObject1) UnmarshalJSON(data []byte) error {
 
-	typedObject1 := new(TypedObject1)
+	typedObject1 := TypedObject1{}
 	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
-		u.TypedObject1 = typedObject1
+		u.TypedObject1 = &typedObject1
 		u.Type = FlattenedTypedObject1TypeTypedObject1
 		return nil
 	}

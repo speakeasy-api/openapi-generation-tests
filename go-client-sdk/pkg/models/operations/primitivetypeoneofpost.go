@@ -64,30 +64,30 @@ func CreatePrimitiveTypeOneOfPostRequestBodyBoolean(boolean bool) PrimitiveTypeO
 
 func (u *PrimitiveTypeOneOfPostRequestBody) UnmarshalJSON(data []byte) error {
 
-	str := new(string)
+	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = str
+		u.Str = &str
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeStr
 		return nil
 	}
 
-	integer := new(int64)
+	integer := int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
-		u.Integer = integer
+		u.Integer = &integer
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeInteger
 		return nil
 	}
 
-	number := new(float64)
+	number := float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
-		u.Number = number
+		u.Number = &number
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeNumber
 		return nil
 	}
 
-	boolean := new(bool)
+	boolean := false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
-		u.Boolean = boolean
+		u.Boolean = &boolean
 		u.Type = PrimitiveTypeOneOfPostRequestBodyTypeBoolean
 		return nil
 	}
@@ -171,30 +171,30 @@ func CreatePrimitiveTypeOneOfPostResJSONBoolean(boolean bool) PrimitiveTypeOneOf
 
 func (u *PrimitiveTypeOneOfPostResJSON) UnmarshalJSON(data []byte) error {
 
-	str := new(string)
+	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = str
+		u.Str = &str
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeStr
 		return nil
 	}
 
-	integer := new(int64)
+	integer := int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
-		u.Integer = integer
+		u.Integer = &integer
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeInteger
 		return nil
 	}
 
-	number := new(float64)
+	number := float64(0)
 	if err := utils.UnmarshalJSON(data, &number, "", true, true); err == nil {
-		u.Number = number
+		u.Number = &number
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeNumber
 		return nil
 	}
 
-	boolean := new(bool)
+	boolean := false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
-		u.Boolean = boolean
+		u.Boolean = &boolean
 		u.Type = PrimitiveTypeOneOfPostResJSONTypeBoolean
 		return nil
 	}

@@ -41,16 +41,16 @@ func CreateWeaklyTypedOneOfReadOnlyObjectReadOnlyObject(readOnlyObject ReadOnlyO
 
 func (u *WeaklyTypedOneOfReadOnlyObject) UnmarshalJSON(data []byte) error {
 
-	readOnlyObject := new(ReadOnlyObject)
+	readOnlyObject := ReadOnlyObject{}
 	if err := utils.UnmarshalJSON(data, &readOnlyObject, "", true, true); err == nil {
-		u.ReadOnlyObject = readOnlyObject
+		u.ReadOnlyObject = &readOnlyObject
 		u.Type = WeaklyTypedOneOfReadOnlyObjectTypeReadOnlyObject
 		return nil
 	}
 
-	simpleObject := new(SimpleObject)
+	simpleObject := SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
+		u.SimpleObject = &simpleObject
 		u.Type = WeaklyTypedOneOfReadOnlyObjectTypeSimpleObject
 		return nil
 	}

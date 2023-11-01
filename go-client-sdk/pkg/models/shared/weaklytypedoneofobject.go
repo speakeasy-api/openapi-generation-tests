@@ -41,16 +41,16 @@ func CreateWeaklyTypedOneOfObjectDeepObject(deepObject DeepObject) WeaklyTypedOn
 
 func (u *WeaklyTypedOneOfObject) UnmarshalJSON(data []byte) error {
 
-	deepObject := new(DeepObject)
+	deepObject := DeepObject{}
 	if err := utils.UnmarshalJSON(data, &deepObject, "", true, true); err == nil {
-		u.DeepObject = deepObject
+		u.DeepObject = &deepObject
 		u.Type = WeaklyTypedOneOfObjectTypeDeepObject
 		return nil
 	}
 
-	simpleObject := new(SimpleObject)
+	simpleObject := SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
+		u.SimpleObject = &simpleObject
 		u.Type = WeaklyTypedOneOfObjectTypeSimpleObject
 		return nil
 	}

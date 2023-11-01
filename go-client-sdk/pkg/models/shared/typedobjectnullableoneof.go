@@ -41,16 +41,16 @@ func CreateTypedObjectNullableOneOfTypedObject2(typedObject2 TypedObject2) Typed
 
 func (u *TypedObjectNullableOneOf) UnmarshalJSON(data []byte) error {
 
-	typedObject1 := new(TypedObject1)
+	typedObject1 := TypedObject1{}
 	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
-		u.TypedObject1 = typedObject1
+		u.TypedObject1 = &typedObject1
 		u.Type = TypedObjectNullableOneOfTypeTypedObject1
 		return nil
 	}
 
-	typedObject2 := new(TypedObject2)
+	typedObject2 := TypedObject2{}
 	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
-		u.TypedObject2 = typedObject2
+		u.TypedObject2 = &typedObject2
 		u.Type = TypedObjectNullableOneOfTypeTypedObject2
 		return nil
 	}

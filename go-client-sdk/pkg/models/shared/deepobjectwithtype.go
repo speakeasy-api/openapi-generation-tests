@@ -41,16 +41,16 @@ func CreateDeepObjectWithTypeAnyStr(str string) DeepObjectWithTypeAny {
 
 func (u *DeepObjectWithTypeAny) UnmarshalJSON(data []byte) error {
 
-	simpleObject := new(SimpleObject)
+	simpleObject := SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
+		u.SimpleObject = &simpleObject
 		u.Type = DeepObjectWithTypeAnyTypeSimpleObject
 		return nil
 	}
 
-	str := new(string)
+	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = str
+		u.Str = &str
 		u.Type = DeepObjectWithTypeAnyTypeStr
 		return nil
 	}

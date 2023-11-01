@@ -43,16 +43,16 @@ func CreateNullableOneOfSchemaPostRequestBodyTypedObject2(typedObject2 shared.Ty
 
 func (u *NullableOneOfSchemaPostRequestBody) UnmarshalJSON(data []byte) error {
 
-	typedObject1 := new(shared.TypedObject1)
+	typedObject1 := shared.TypedObject1{}
 	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
-		u.TypedObject1 = typedObject1
+		u.TypedObject1 = &typedObject1
 		u.Type = NullableOneOfSchemaPostRequestBodyTypeTypedObject1
 		return nil
 	}
 
-	typedObject2 := new(shared.TypedObject2)
+	typedObject2 := shared.TypedObject2{}
 	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
-		u.TypedObject2 = typedObject2
+		u.TypedObject2 = &typedObject2
 		u.Type = NullableOneOfSchemaPostRequestBodyTypeTypedObject2
 		return nil
 	}
@@ -106,16 +106,16 @@ func CreateNullableOneOfSchemaPostResJSONTypedObject2(typedObject2 shared.TypedO
 
 func (u *NullableOneOfSchemaPostResJSON) UnmarshalJSON(data []byte) error {
 
-	typedObject1 := new(shared.TypedObject1)
+	typedObject1 := shared.TypedObject1{}
 	if err := utils.UnmarshalJSON(data, &typedObject1, "", true, true); err == nil {
-		u.TypedObject1 = typedObject1
+		u.TypedObject1 = &typedObject1
 		u.Type = NullableOneOfSchemaPostResJSONTypeTypedObject1
 		return nil
 	}
 
-	typedObject2 := new(shared.TypedObject2)
+	typedObject2 := shared.TypedObject2{}
 	if err := utils.UnmarshalJSON(data, &typedObject2, "", true, true); err == nil {
-		u.TypedObject2 = typedObject2
+		u.TypedObject2 = &typedObject2
 		u.Type = NullableOneOfSchemaPostResJSONTypeTypedObject2
 		return nil
 	}

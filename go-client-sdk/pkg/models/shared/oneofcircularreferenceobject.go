@@ -41,16 +41,16 @@ func CreateOneOfCircularReferenceObjectChildSimpleObject(simpleObject SimpleObje
 
 func (u *OneOfCircularReferenceObjectChild) UnmarshalJSON(data []byte) error {
 
-	oneOfCircularReferenceObject := new(OneOfCircularReferenceObject)
+	oneOfCircularReferenceObject := OneOfCircularReferenceObject{}
 	if err := utils.UnmarshalJSON(data, &oneOfCircularReferenceObject, "", true, true); err == nil {
-		u.OneOfCircularReferenceObject = oneOfCircularReferenceObject
+		u.OneOfCircularReferenceObject = &oneOfCircularReferenceObject
 		u.Type = OneOfCircularReferenceObjectChildTypeOneOfCircularReferenceObject
 		return nil
 	}
 
-	simpleObject := new(SimpleObject)
+	simpleObject := SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
+		u.SimpleObject = &simpleObject
 		u.Type = OneOfCircularReferenceObjectChildTypeSimpleObject
 		return nil
 	}

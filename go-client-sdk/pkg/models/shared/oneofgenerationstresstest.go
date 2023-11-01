@@ -43,16 +43,16 @@ func CreateOneOfGenerationStressTestOneOfFromArrayOfTypesInteger(integer int64) 
 
 func (u *OneOfGenerationStressTestOneOfFromArrayOfTypes) UnmarshalJSON(data []byte) error {
 
-	str := new(string)
+	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = str
+		u.Str = &str
 		u.Type = OneOfGenerationStressTestOneOfFromArrayOfTypesTypeStr
 		return nil
 	}
 
-	integer := new(int64)
+	integer := int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
-		u.Integer = integer
+		u.Integer = &integer
 		u.Type = OneOfGenerationStressTestOneOfFromArrayOfTypesTypeInteger
 		return nil
 	}
@@ -130,16 +130,16 @@ func CreateOneOfGenerationStressTestOneOfSameTypeOneOfGenerationStressTestOneOfS
 
 func (u *OneOfGenerationStressTestOneOfSameType) UnmarshalJSON(data []byte) error {
 
-	str := new(string)
+	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = str
+		u.Str = &str
 		u.Type = OneOfGenerationStressTestOneOfSameTypeTypeStr
 		return nil
 	}
 
-	oneOfGenerationStressTestOneOfSameType2 := new(OneOfGenerationStressTestOneOfSameType2)
+	oneOfGenerationStressTestOneOfSameType2 := OneOfGenerationStressTestOneOfSameType2("")
 	if err := utils.UnmarshalJSON(data, &oneOfGenerationStressTestOneOfSameType2, "", true, true); err == nil {
-		u.OneOfGenerationStressTestOneOfSameType2 = oneOfGenerationStressTestOneOfSameType2
+		u.OneOfGenerationStressTestOneOfSameType2 = &oneOfGenerationStressTestOneOfSameType2
 		u.Type = OneOfGenerationStressTestOneOfSameTypeTypeOneOfGenerationStressTestOneOfSameType2
 		return nil
 	}

@@ -41,16 +41,16 @@ func CreateWeaklyTypedOneOfReadWriteObjectOutputReadWriteObjectOutput(readWriteO
 
 func (u *WeaklyTypedOneOfReadWriteObjectOutput) UnmarshalJSON(data []byte) error {
 
-	readWriteObjectOutput := new(ReadWriteObjectOutput)
+	readWriteObjectOutput := ReadWriteObjectOutput{}
 	if err := utils.UnmarshalJSON(data, &readWriteObjectOutput, "", true, true); err == nil {
-		u.ReadWriteObjectOutput = readWriteObjectOutput
+		u.ReadWriteObjectOutput = &readWriteObjectOutput
 		u.Type = WeaklyTypedOneOfReadWriteObjectOutputTypeReadWriteObjectOutput
 		return nil
 	}
 
-	simpleObject := new(SimpleObject)
+	simpleObject := SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
+		u.SimpleObject = &simpleObject
 		u.Type = WeaklyTypedOneOfReadWriteObjectOutputTypeSimpleObject
 		return nil
 	}

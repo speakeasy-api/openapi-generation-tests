@@ -41,16 +41,16 @@ func CreateNullableOneOfTypeInObjectNullableOneOfTwoInteger(integer int64) Nulla
 
 func (u *NullableOneOfTypeInObjectNullableOneOfTwo) UnmarshalJSON(data []byte) error {
 
-	boolean := new(bool)
+	boolean := false
 	if err := utils.UnmarshalJSON(data, &boolean, "", true, true); err == nil {
-		u.Boolean = boolean
+		u.Boolean = &boolean
 		u.Type = NullableOneOfTypeInObjectNullableOneOfTwoTypeBoolean
 		return nil
 	}
 
-	integer := new(int64)
+	integer := int64(0)
 	if err := utils.UnmarshalJSON(data, &integer, "", true, true); err == nil {
-		u.Integer = integer
+		u.Integer = &integer
 		u.Type = NullableOneOfTypeInObjectNullableOneOfTwoTypeInteger
 		return nil
 	}

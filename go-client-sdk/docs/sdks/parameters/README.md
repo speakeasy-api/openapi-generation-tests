@@ -380,8 +380,8 @@ func main() {
     }
 
     mapParamExploded := map[string]int64{
-        "test2": 2,
         "test": 1,
+        "test2": 2,
     }
 
     ctx := context.Background()
@@ -990,7 +990,7 @@ func main() {
         Bool: true,
         Int: 1,
         Map: map[string]shared.SimpleObject{
-            "key2": shared.SimpleObject{
+            "key": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -1010,7 +1010,7 @@ func main() {
                 Str: "test",
                 StrOpt: openapi.String("testOptional"),
             },
-            "key": shared.SimpleObject{
+            "key2": shared.SimpleObject{
                 Any: "any",
                 Bigint: big.NewInt(8821239038968084),
                 BigintStr: types.MustNewBigIntFromString("9223372036854775808"),
@@ -1441,8 +1441,8 @@ func main() {
     }
 
     mapParam := map[string]string{
-        "key1": "val1",
         "key2": "val2",
+        "key1": "val1",
     }
 
     objParam := &shared.SimpleObject{

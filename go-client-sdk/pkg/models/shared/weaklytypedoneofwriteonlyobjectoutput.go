@@ -41,16 +41,16 @@ func CreateWeaklyTypedOneOfWriteOnlyObjectOutputWriteOnlyObjectOutput(writeOnlyO
 
 func (u *WeaklyTypedOneOfWriteOnlyObjectOutput) UnmarshalJSON(data []byte) error {
 
-	writeOnlyObjectOutput := new(WriteOnlyObjectOutput)
+	writeOnlyObjectOutput := WriteOnlyObjectOutput{}
 	if err := utils.UnmarshalJSON(data, &writeOnlyObjectOutput, "", true, true); err == nil {
-		u.WriteOnlyObjectOutput = writeOnlyObjectOutput
+		u.WriteOnlyObjectOutput = &writeOnlyObjectOutput
 		u.Type = WeaklyTypedOneOfWriteOnlyObjectOutputTypeWriteOnlyObjectOutput
 		return nil
 	}
 
-	simpleObject := new(SimpleObject)
+	simpleObject := SimpleObject{}
 	if err := utils.UnmarshalJSON(data, &simpleObject, "", true, true); err == nil {
-		u.SimpleObject = simpleObject
+		u.SimpleObject = &simpleObject
 		u.Type = WeaklyTypedOneOfWriteOnlyObjectOutputTypeSimpleObject
 		return nil
 	}

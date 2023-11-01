@@ -41,16 +41,16 @@ func CreateDeepObjectCamelCaseAnyValStr(str string) DeepObjectCamelCaseAnyVal {
 
 func (u *DeepObjectCamelCaseAnyVal) UnmarshalJSON(data []byte) error {
 
-	simpleObjectCamelCase := new(SimpleObjectCamelCase)
+	simpleObjectCamelCase := SimpleObjectCamelCase{}
 	if err := utils.UnmarshalJSON(data, &simpleObjectCamelCase, "", true, true); err == nil {
-		u.SimpleObjectCamelCase = simpleObjectCamelCase
+		u.SimpleObjectCamelCase = &simpleObjectCamelCase
 		u.Type = DeepObjectCamelCaseAnyValTypeSimpleObjectCamelCase
 		return nil
 	}
 
-	str := new(string)
+	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = str
+		u.Str = &str
 		u.Type = DeepObjectCamelCaseAnyValTypeStr
 		return nil
 	}

@@ -61,9 +61,9 @@ func CreateDeepObjectQueryParamsMapResArgsArrayOfstr(arrayOfstr []string) DeepOb
 
 func (u *DeepObjectQueryParamsMapResArgs) UnmarshalJSON(data []byte) error {
 
-	str := new(string)
+	str := ""
 	if err := utils.UnmarshalJSON(data, &str, "", true, true); err == nil {
-		u.Str = str
+		u.Str = &str
 		u.Type = DeepObjectQueryParamsMapResArgsTypeStr
 		return nil
 	}
