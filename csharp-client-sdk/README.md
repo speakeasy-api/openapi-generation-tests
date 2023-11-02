@@ -15,9 +15,9 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
 <!-- Start SDK Installation -->
-# SDK Installation
+## SDK Installation
 
-## Nuget
+### Nuget
 
 ```bash
 dotnet add package openapi
@@ -26,8 +26,6 @@ dotnet add package openapi
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```csharp
 using SDK;
 using SDK.Models.Shared;
@@ -46,7 +44,7 @@ var res = await sdk.Generation.GlobalNameOverriddenAsync();
 ```
 
 
-# Second
+## Second
 Do this second
 ```csharp
 using SDK;
@@ -112,14 +110,14 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 <!-- End SDK Example Usage -->
 
 <!-- Start SDK Available Operations -->
-# Available Resources and Operations
+## Available Resources and Operations
 
-## [SDK](docs/sdks/sdk/README.md)
+### [SDK](docs/sdks/sdk/README.md)
 
 * [PutAnythingIgnoredGeneration](docs/sdks/sdk/README.md#putanythingignoredgeneration)
 * [ResponseBodyJsonGet](docs/sdks/sdk/README.md#responsebodyjsonget)
 
-## [Auth](docs/sdks/auth/README.md)
+### [Auth](docs/sdks/auth/README.md)
 
 * [ApiKeyAuth](docs/sdks/auth/README.md#apikeyauth)
 * [ApiKeyAuthGlobal](docs/sdks/auth/README.md#apikeyauthglobal)
@@ -130,7 +128,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [Oauth2Override](docs/sdks/auth/README.md#oauth2override)
 * [OpenIdConnectAuth](docs/sdks/auth/README.md#openidconnectauth)
 
-## [AuthNew](docs/sdks/authnew/README.md)
+### [AuthNew](docs/sdks/authnew/README.md)
 
 * [ApiKeyAuthGlobalNew](docs/sdks/authnew/README.md#apikeyauthglobalnew)
 * [AuthGlobal](docs/sdks/authnew/README.md#authglobal)
@@ -144,21 +142,21 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [Oauth2AuthNew](docs/sdks/authnew/README.md#oauth2authnew)
 * [OpenIdConnectAuthNew](docs/sdks/authnew/README.md#openidconnectauthnew)
 
-## [Documentation](docs/sdks/documentation/README.md)
+### [Documentation](docs/sdks/documentation/README.md)
 
 * [GetDocumentationPerLanguage](docs/sdks/documentation/README.md#getdocumentationperlanguage) - Gets documentation for some language, I guess.
 
-## [Errors](docs/sdks/errors/README.md)
+### [Errors](docs/sdks/errors/README.md)
 
 * [ConnectionErrorGet](docs/sdks/errors/README.md#connectionerrorget)
 * [StatusGetError](docs/sdks/errors/README.md#statusgeterror)
 * [StatusGetXSpeakeasyErrors](docs/sdks/errors/README.md#statusgetxspeakeasyerrors)
 
-## [First](docs/sdks/first/README.md)
+### [First](docs/sdks/first/README.md)
 
 * [Get](docs/sdks/first/README.md#get)
 
-## [Flattening](docs/sdks/flattening/README.md)
+### [Flattening](docs/sdks/flattening/README.md)
 
 * [ComponentBodyAndParamConflict](docs/sdks/flattening/README.md#componentbodyandparamconflict)
 * [ComponentBodyAndParamNoConflict](docs/sdks/flattening/README.md#componentbodyandparamnoconflict)
@@ -166,7 +164,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [InlineBodyAndParamConflict](docs/sdks/flattening/README.md#inlinebodyandparamconflict)
 * [InlineBodyAndParamNoConflict](docs/sdks/flattening/README.md#inlinebodyandparamnoconflict)
 
-## [Generation](docs/sdks/generation/README.md)
+### [Generation](docs/sdks/generation/README.md)
 
 * [AnchorTypesGet](docs/sdks/generation/README.md#anchortypesget)
 * [ArrayCircularReferenceGet](docs/sdks/generation/README.md#arraycircularreferenceget)
@@ -189,29 +187,29 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [TypedParameterGenerationGet](docs/sdks/generation/README.md#typedparametergenerationget)
 * [UsageExamplePost](docs/sdks/generation/README.md#usageexamplepost) - An operation used for testing usage examples
 
-## [Globals](docs/sdks/globals/README.md)
+### [Globals](docs/sdks/globals/README.md)
 
 * [GlobalPathParameterGet](docs/sdks/globals/README.md#globalpathparameterget)
 * [GlobalsQueryParameterGet](docs/sdks/globals/README.md#globalsqueryparameterget)
 
 
-## [Nest.First](docs/sdks/nestfirst/README.md)
+### [Nest.First](docs/sdks/nestfirst/README.md)
 
 * [Get](docs/sdks/nestfirst/README.md#get)
 
-## [Nested](docs/sdks/nested/README.md)
+### [Nested](docs/sdks/nested/README.md)
 
 * [Get](docs/sdks/nested/README.md#get)
 
-## [Nested.First](docs/sdks/nestedfirst/README.md)
+### [Nested.First](docs/sdks/nestedfirst/README.md)
 
 * [Get](docs/sdks/nestedfirst/README.md#get)
 
-## [Nested.Second](docs/sdks/nestedsecond/README.md)
+### [Nested.Second](docs/sdks/nestedsecond/README.md)
 
 * [Get](docs/sdks/nestedsecond/README.md#get)
 
-## [Pagination](docs/sdks/pagination/README.md)
+### [Pagination](docs/sdks/pagination/README.md)
 
 * [PaginationCursorBody](docs/sdks/pagination/README.md#paginationcursorbody)
 * [PaginationCursorParams](docs/sdks/pagination/README.md#paginationcursorparams)
@@ -220,7 +218,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [PaginationLimitOffsetPageBody](docs/sdks/pagination/README.md#paginationlimitoffsetpagebody)
 * [PaginationLimitOffsetPageParams](docs/sdks/pagination/README.md#paginationlimitoffsetpageparams)
 
-## [Parameters](docs/sdks/parameters/README.md)
+### [Parameters](docs/sdks/parameters/README.md)
 
 * [DeepObjectQueryParamsMap](docs/sdks/parameters/README.md#deepobjectqueryparamsmap)
 * [DeepObjectQueryParamsObject](docs/sdks/parameters/README.md#deepobjectqueryparamsobject)
@@ -246,7 +244,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [SimplePathParameterObjects](docs/sdks/parameters/README.md#simplepathparameterobjects)
 * [SimplePathParameterPrimitives](docs/sdks/parameters/README.md#simplepathparameterprimitives)
 
-## [RequestBodies](docs/sdks/requestbodies/README.md)
+### [RequestBodies](docs/sdks/requestbodies/README.md)
 
 * [NullableObjectPost](docs/sdks/requestbodies/README.md#nullableobjectpost)
 * [NullableRequiredEmptyObjectPost](docs/sdks/requestbodies/README.md#nullablerequiredemptyobjectpost)
@@ -330,7 +328,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [RequestBodyWriteOnlyOutput](docs/sdks/requestbodies/README.md#requestbodywriteonlyoutput)
 * [RequestBodyWriteOnlyUnion](docs/sdks/requestbodies/README.md#requestbodywriteonlyunion)
 
-## [Resource](docs/sdks/resource/README.md)
+### [Resource](docs/sdks/resource/README.md)
 
 * [CreateFile](docs/sdks/resource/README.md#createfile)
 * [CreateResource](docs/sdks/resource/README.md#createresource)
@@ -338,7 +336,7 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [GetResource](docs/sdks/resource/README.md#getresource)
 * [UpdateResource](docs/sdks/resource/README.md#updateresource)
 
-## [ResponseBodies](docs/sdks/responsebodies/README.md)
+### [ResponseBodies](docs/sdks/responsebodies/README.md)
 
 * [ResponseBodyAdditionalPropertiesComplexNumbersPost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiescomplexnumberspost)
 * [ResponseBodyAdditionalPropertiesDatePost](docs/sdks/responsebodies/README.md#responsebodyadditionalpropertiesdatepost)
@@ -352,15 +350,15 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [ResponseBodyXmlGet](docs/sdks/responsebodies/README.md#responsebodyxmlget)
 * [ResponseBodyZeroValueComplexTypePtrsPost](docs/sdks/responsebodies/README.md#responsebodyzerovaluecomplextypeptrspost)
 
-## [Retries](docs/sdks/retries/README.md)
+### [Retries](docs/sdks/retries/README.md)
 
 * [RetriesGet](docs/sdks/retries/README.md#retriesget)
 
-## [Second](docs/sdks/second/README.md)
+### [Second](docs/sdks/second/README.md)
 
 * [Get](docs/sdks/second/README.md#get)
 
-## [Servers](docs/sdks/servers/README.md)
+### [Servers](docs/sdks/servers/README.md)
 
 * [SelectGlobalServer](docs/sdks/servers/README.md#selectglobalserver)
 * [SelectServerWithID](docs/sdks/servers/README.md#selectserverwithid) - Select a server by ID.
@@ -369,12 +367,12 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [ServerWithTemplatesGlobal](docs/sdks/servers/README.md#serverwithtemplatesglobal)
 * [ServersByIDWithTemplates](docs/sdks/servers/README.md#serversbyidwithtemplates)
 
-## [Telemetry](docs/sdks/telemetry/README.md)
+### [Telemetry](docs/sdks/telemetry/README.md)
 
 * [TelemetrySpeakeasyUserAgentGet](docs/sdks/telemetry/README.md#telemetryspeakeasyuseragentget)
 * [TelemetryUserAgentGet](docs/sdks/telemetry/README.md#telemetryuseragentget)
 
-## [Unions](docs/sdks/unions/README.md)
+### [Unions](docs/sdks/unions/README.md)
 
 * [FlattenedTypedObjectPost](docs/sdks/unions/README.md#flattenedtypedobjectpost)
 * [MixedTypeOneOfPost](docs/sdks/unions/README.md#mixedtypeoneofpost)
@@ -392,8 +390,6 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -456,7 +452,6 @@ var res = await sdk.Globals.GlobalsQueryParameterGetAsync("string");
 
 // handle response
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

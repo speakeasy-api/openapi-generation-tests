@@ -55,8 +55,8 @@ public class Application {
                 .build();
 
             DeepObjectQueryParamsMapResponse res = sdk.parameters.deepObjectQueryParamsMap(new java.util.HashMap<String, String>(){{
-                put("test", "value");
                 put("test2", "value2");
+                put("test", "value");
             }}, new java.util.HashMap<String, String[]>(){{
                 put("test", new String[]{{
                     add("test"),
@@ -660,8 +660,8 @@ public class Application {
                 put("key1", "value1");
                 put("key2", "value2");
             }}, new java.util.HashMap<String, String>(){{
-                put("test1", "val1");
                 put("test2", "val2");
+                put("test1", "val1");
             }});
 
             if (res.res != null) {
@@ -901,7 +901,7 @@ public class Application {
                     strOpt = "testOptional";
                 }}),
             }}, true, 1L, new java.util.HashMap<String, org.openapis.openapi.models.shared.SimpleObject>(){{
-                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -921,7 +921,7 @@ public class Application {
                     str = "test";
                     strOpt = "testOptional";
                 }});
-                put("key2", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
+                put("key", new SimpleObject("any", true, LocalDate.parse("2020-01-01"), OffsetDateTime.parse("2020-01-01T00:00:00.000000001Z"), Enum.ONE, 1.1f, 1L, 1, SimpleObjectInt32Enum.FIFTY_FIVE, SimpleObjectIntEnum.Second, 1.1d, "test"){{
                     any = "any";
                     bigint = 8821239038968084L;
                     bigintStr = "9223372036854775808";
@@ -1544,8 +1544,8 @@ public class Application {
                 .build();
 
             SimplePathParameterMapsResponse res = sdk.parameters.simplePathParameterMaps(new java.util.HashMap<String, String>(){{
-                put("test", "value");
                 put("test2", "value2");
+                put("test", "value");
             }}, new java.util.HashMap<String, Long>(){{
                 put("test", 1L);
                 put("test2", 2L);

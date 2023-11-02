@@ -702,8 +702,6 @@ const httpClient = axios.create({
 
 const sdk = new SDK({defaultClient: httpClient});
 ```
-
-
 <!-- End Custom HTTP Client -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

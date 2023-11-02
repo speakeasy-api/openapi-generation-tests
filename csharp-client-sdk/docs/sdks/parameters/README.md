@@ -508,8 +508,8 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, string>() {
-    { "key1", "value1" },
     { "key2", "value2" },
+    { "key1", "value1" },
 }, new Dictionary<string, string>() {
     { "test1", "val1" },
     { "test2", "val2" },

@@ -896,6 +896,7 @@ docs/models/shared/typedobject3type.md
 docs/models/shared/typedobject3.md
 docs/models/shared/weaklytypedoneofobject.md
 docs/models/shared/alloftoallof.md
+docs/models/shared/numericunion.md
 docs/models/shared/oneofgenerationstresstestoneoffromarrayoftypes.md
 docs/models/shared/oneofgenerationstresstestoneofsametype2.md
 docs/models/shared/oneofgenerationstresstestoneofsametype.md

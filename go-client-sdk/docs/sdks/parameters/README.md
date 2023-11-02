@@ -380,8 +380,8 @@ func main() {
     }
 
     mapParamExploded := map[string]int64{
-        "test": 1,
         "test2": 2,
+        "test": 1,
     }
 
     ctx := context.Background()
@@ -1441,8 +1441,8 @@ func main() {
     }
 
     mapParam := map[string]string{
-        "key2": "val2",
         "key1": "val1",
+        "key2": "val2",
     }
 
     objParam := &shared.SimpleObject{

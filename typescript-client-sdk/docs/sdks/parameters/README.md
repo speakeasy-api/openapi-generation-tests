@@ -1302,8 +1302,8 @@ import { SimplePathParameterMapsRequest } from "openapi/dist/sdk/models/operatio
     globalQueryParam: "some example global query param",
   });
 const mapParam: Record<string, string> = {
-  "test2": "value2",
   "test": "value",
+  "test2": "value2",
 };
 const mapParamExploded: Record<string, number> = {
   "test": 1,

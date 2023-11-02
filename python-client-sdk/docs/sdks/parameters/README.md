@@ -528,8 +528,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.header_params_map(x_header_map={
-    "key2": 'value2',
     "key1": 'value1',
+    "key2": 'value2',
 }, x_header_map_explode={
     "test1": 'val1',
     "test2": 'val2',
@@ -1212,8 +1212,8 @@ s = sdk.SDK(
 
 
 res = s.parameters.simple_path_parameter_maps(map_param={
-    "test2": 'value2',
     "test": 'value',
+    "test2": 'value2',
 }, map_param_exploded={
     "test": 1,
     "test2": 2,

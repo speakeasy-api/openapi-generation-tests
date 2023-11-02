@@ -1,8 +1,8 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 3f790c65afe8341dde1d7807cdaa1c4d
+  docChecksum: 2d5cff0b57f6738e0a08cfe2de4e248d
   docVersion: 0.1.0
-  speakeasyVersion: 1.109.2
+  speakeasyVersion: 1.111.0
   generationVersion: 2.173.0
 generation:
   repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
@@ -36,7 +36,7 @@ features:
     tests: 0.0.0
     unions: 2.84.1
 go:
-  version: 1.39.2
+  version: 1.39.3
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: true
   installationURL: https://github.com/speakeasy-api/openapi-generation-tests/go-client-sdk

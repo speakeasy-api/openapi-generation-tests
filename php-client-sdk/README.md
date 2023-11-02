@@ -581,7 +581,6 @@ try {
 }
 
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

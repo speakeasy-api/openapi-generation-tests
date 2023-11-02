@@ -634,7 +634,6 @@ if ! res.res.nil?
 end
 
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->

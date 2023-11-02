@@ -1,9 +1,9 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 3f790c65afe8341dde1d7807cdaa1c4d
+  docChecksum: 2d5cff0b57f6738e0a08cfe2de4e248d
   docVersion: 0.1.0
-  speakeasyVersion: 1.108.1
-  generationVersion: 2.172.4
+  speakeasyVersion: 1.111.0
+  generationVersion: 2.173.0
 generation:
   repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
   sdkClassName: SDK
@@ -32,7 +32,7 @@ features:
     retries: 2.82.1
     serverIDs: 2.81.2
 typescript:
-  version: 1.40.1
+  version: 1.40.2
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

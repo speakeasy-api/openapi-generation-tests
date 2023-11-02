@@ -20,24 +20,21 @@ It has been generated successfully based on your OpenAPI spec. However, it is no
 - [ ] 🎁 Publish your SDK to package managers by [configuring automatic publishing](https://www.speakeasyapi.dev/docs/productionize-sdks/publish-sdks)
 - [ ] ✨ When ready to productionize, delete this section from the README
 <!-- Start SDK Installation -->
-# Installation
+## Installation
 
-## Swift Package Manager
+### Swift Package Manager
 
 You can add `OpenAPI` to your project directly in Xcode `(File > Add Packages...)` or by adding it to your project's Package.swift file:
 
 ```bash
 dependencies: [
-    .package(url: "", .upToNextMajor(from: "0.1.0"))
+    .package(url: "", .upToNextMajor(from: "0.1.1"))
 ]
 ```
-
 <!-- End SDK Installation -->
 
 ## SDK Example Usage
 <!-- Start SDK Example Usage -->
-
-
 ```swift
 import Foundation
 import OpenAPI
@@ -58,7 +55,7 @@ case .empty:
 ```
 
 
-# Second
+## Second
 Do this second
 ```swift
 import Foundation
@@ -206,12 +203,9 @@ case .empty:
 
 <!-- Start SDK Available Operations -->
 
-
 <!-- End SDK Available Operations -->
 
 <!-- Start Dev Containers -->
-
-
 
 <!-- End Dev Containers -->
 
@@ -280,7 +274,6 @@ case .empty:
 }
 
 ```
-
 <!-- End Global Parameters -->
 
 <!-- Placeholder for Future Speakeasy SDK Sections -->
