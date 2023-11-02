@@ -6205,6 +6205,15 @@ components:
         - type: number
           format: float
         - type: boolean
+    numericUnion:
+      x-speakeasy-include: true
+      oneOf:
+        - type: integer
+        - type: number
+        - type: integer
+          format: bigint
+        - type: string
+          format: decimal
     nullableTypes:
       type: object
       properties:
