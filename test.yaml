@@ -5507,70 +5507,70 @@ paths:
                       - type: "null"
                 required:
                   - json
-  # /anything/unionDateTimeBigInt:
-  #   post:
-  #     operationId: unionDateTimeBigInt
-  #     tags:
-  #       - unions
-  #     requestBody:
-  #       content:
-  #         application/json:
-  #           schema:
-  #             oneOf:
-  #               - type: string
-  #                 format: date-time
-  #               - type: integer
-  #                 format: bigint
-  #       required: true
-  #     responses:
-  #       "200":
-  #         description: OK
-  #         content:
-  #           application/json:
-  #             schema:
-  #               title: res
-  #               type: object
-  #               properties:
-  #                 json:
-  #                   oneOf:
-  #                     - type: string
-  #                       format: date-time
-  #                     - type: integer
-  #                       format: bigint
-  #               required:
-  #                 - json
-  # /anything/unionBigIntDecimal:
-  #   post:
-  #     operationId: unionBigIntDecimal
-  #     tags:
-  #       - unions
-  #     requestBody:
-  #       content:
-  #         application/json:
-  #           schema:
-  #             oneOf:
-  #               - type: string
-  #                 format: bigint
-  #               - type: number
-  #                 format: decimal
-  #       required: true
-  #     responses:
-  #       "200":
-  #         description: OK
-  #         content:
-  #           application/json:
-  #             schema:
-  #               title: res
-  #               type: object
-  #               properties:
-  #                 json:
-  #                   oneOf:
-  #                     - type: string
-  #                       format: bigint
-  #                     - type: number
-  #                       format: decimal
-  #               required:
-  #                 - json
+  /anything/unionDateTimeBigInt:
+    post:
+      operationId: unionDateTimeBigInt
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: string
+                  format: date-time
+                - type: integer
+                  format: bigint
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: string
+                        format: date-time
+                      - type: integer
+                        format: bigint
+                required:
+                  - json
+  /anything/unionBigIntDecimal:
+    post:
+      operationId: unionBigIntDecimal
+      tags:
+        - unions
+      requestBody:
+        content:
+          application/json:
+            schema:
+              oneOf:
+                - type: string
+                  format: bigint
+                - type: number
+                  format: decimal
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                title: res
+                type: object
+                properties:
+                  json:
+                    oneOf:
+                      - type: string
+                        format: bigint
+                      - type: number
+                        format: decimal
+                required:
+                  - json
   /status/{statusCode}:
     get:
       operationId: statusGetError
