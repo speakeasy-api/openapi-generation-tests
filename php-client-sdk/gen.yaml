@@ -1,13 +1,13 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 3f790c65afe8341dde1d7807cdaa1c4d
+  docChecksum: 2d5cff0b57f6738e0a08cfe2de4e248d
   docVersion: 0.1.0
-  speakeasyVersion: 1.107.0
-  generationVersion: 2.171.0
+  speakeasyVersion: 1.112.1
+  generationVersion: 2.173.0
 generation:
-  repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
+  comments: {}
   sdkClassName: SDK
-  singleTagPerOp: false
+  repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
 features:
   php:
     core: 2.89.0
@@ -28,7 +28,7 @@ features:
     nameOverrides: 2.81.1
     serverIDs: 2.81.1
 php:
-  version: 1.36.0
+  version: 1.36.1
   maxMethodParams: 5
   namespace: OpenAPI\OpenAPI
   packageName: openapi/openapi

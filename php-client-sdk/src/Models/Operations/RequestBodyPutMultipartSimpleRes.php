@@ -21,8 +21,13 @@ class RequestBodyPutMultipartSimpleRes
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResForm')]
     public RequestBodyPutMultipartSimpleResForm $form;
     
+	#[\JMS\Serializer\Annotation\SerializedName('headers')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResHeaders')]
+    public RequestBodyPutMultipartSimpleResHeaders $headers;
+    
 	public function __construct()
 	{
 		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResForm();
+		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPutMultipartSimpleResHeaders();
 	}
 }

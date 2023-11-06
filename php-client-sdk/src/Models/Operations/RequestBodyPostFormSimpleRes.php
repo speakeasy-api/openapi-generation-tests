@@ -21,8 +21,13 @@ class RequestBodyPostFormSimpleRes
     #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResForm')]
     public RequestBodyPostFormSimpleResForm $form;
     
+	#[\JMS\Serializer\Annotation\SerializedName('headers')]
+    #[\JMS\Serializer\Annotation\Type('OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResHeaders')]
+    public RequestBodyPostFormSimpleResHeaders $headers;
+    
 	public function __construct()
 	{
 		$this->form = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResForm();
+		$this->headers = new \OpenAPI\OpenAPI\Models\Operations\RequestBodyPostFormSimpleResHeaders();
 	}
 }

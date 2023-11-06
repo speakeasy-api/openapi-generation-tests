@@ -353,6 +353,7 @@ src/Models/Operations/RequestBodyPostFormDeepResponse.php
 src/Models/Operations/RequestBodyPostFormMapPrimitiveRes.php
 src/Models/Operations/RequestBodyPostFormMapPrimitiveResponse.php
 src/Models/Operations/RequestBodyPostFormSimpleResForm.php
+src/Models/Operations/RequestBodyPostFormSimpleResHeaders.php
 src/Models/Operations/RequestBodyPostFormSimpleRes.php
 src/Models/Operations/RequestBodyPostFormSimpleResponse.php
 src/Models/Operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.php
@@ -445,6 +446,7 @@ src/Models/Operations/RequestBodyPutMultipartFileRequestBody.php
 src/Models/Operations/RequestBodyPutMultipartFileRes.php
 src/Models/Operations/RequestBodyPutMultipartFileResponse.php
 src/Models/Operations/RequestBodyPutMultipartSimpleResForm.php
+src/Models/Operations/RequestBodyPutMultipartSimpleResHeaders.php
 src/Models/Operations/RequestBodyPutMultipartSimpleRes.php
 src/Models/Operations/RequestBodyPutMultipartSimpleResponse.php
 src/Models/Operations/RequestBodyPutStringRes.php
@@ -899,6 +901,7 @@ docs/models/operations/RequestBodyPostFormDeepResponse.md
 docs/models/operations/RequestBodyPostFormMapPrimitiveRes.md
 docs/models/operations/RequestBodyPostFormMapPrimitiveResponse.md
 docs/models/operations/RequestBodyPostFormSimpleResForm.md
+docs/models/operations/RequestBodyPostFormSimpleResHeaders.md
 docs/models/operations/RequestBodyPostFormSimpleRes.md
 docs/models/operations/RequestBodyPostFormSimpleResponse.md
 docs/models/operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.md
@@ -991,6 +994,7 @@ docs/models/operations/RequestBodyPutMultipartFileRequestBody.md
 docs/models/operations/RequestBodyPutMultipartFileRes.md
 docs/models/operations/RequestBodyPutMultipartFileResponse.md
 docs/models/operations/RequestBodyPutMultipartSimpleResForm.md
+docs/models/operations/RequestBodyPutMultipartSimpleResHeaders.md
 docs/models/operations/RequestBodyPutMultipartSimpleRes.md
 docs/models/operations/RequestBodyPutMultipartSimpleResponse.md
 docs/models/operations/RequestBodyPutStringRes.md

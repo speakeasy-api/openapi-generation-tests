@@ -5,9 +5,9 @@ management:
   speakeasyVersion: 1.111.0
   generationVersion: 2.173.0
 generation:
-  repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
+  comments: {}
   sdkClassName: SDK
-  singleTagPerOp: false
+  repoURL: https://github.com/speakeasy-api/openapi-generation-tests.git
 features:
   python:
     additionalProperties: 0.1.0
