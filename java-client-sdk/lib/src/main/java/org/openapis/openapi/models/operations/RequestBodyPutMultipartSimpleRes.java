@@ -19,7 +19,16 @@ public class RequestBodyPutMultipartSimpleRes {
         return this;
     }
     
-    public RequestBodyPutMultipartSimpleRes(@JsonProperty("form") RequestBodyPutMultipartSimpleResForm form) {
+    @JsonProperty("headers")
+    public RequestBodyPutMultipartSimpleResHeaders headers;
+
+    public RequestBodyPutMultipartSimpleRes withHeaders(RequestBodyPutMultipartSimpleResHeaders headers) {
+        this.headers = headers;
+        return this;
+    }
+    
+    public RequestBodyPutMultipartSimpleRes(@JsonProperty("form") RequestBodyPutMultipartSimpleResForm form, @JsonProperty("headers") RequestBodyPutMultipartSimpleResHeaders headers) {
         this.form = form;
+        this.headers = headers;
   }
 }

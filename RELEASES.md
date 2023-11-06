@@ -960,3 +960,20 @@ Based on:
 - Speakeasy CLI 1.112.1 (2.173.0) https://github.com/speakeasy-api/speakeasy
 ### Generated
 - [php v1.36.1] php-client-sdk
+
+## 2023-11-06 10:14:09
+### Changes
+Based on:
+- OpenAPI Doc 0.1.0 
+- Speakeasy CLI 1.112.1 (2.173.0) https://github.com/speakeasy-api/speakeasy
+### Generated
+- [swift v0.1.2] swift-client-sdk
+- [typescript v1.40.3] typescript-client-sdk
+- [csharp v0.1.2] csharp-client-sdk
+- [go v1.39.4] go-client-sdk
+- [java v1.38.2] java-client-sdk
+- [php v1.36.2] php-client-sdk
+- [python v2.0.4] python-client-sdk
+- [ruby v1.36.2] ruby-client-sdk
+### Releases
+- [Go v1.39.4] https://github.com/speakeasy-api/openapi-generation-tests/releases/tag/go-client-sdk/v1.39.4 - go-client-sdk

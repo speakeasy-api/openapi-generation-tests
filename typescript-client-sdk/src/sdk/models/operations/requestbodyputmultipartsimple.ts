@@ -64,6 +64,12 @@ export class RequestBodyPutMultipartSimpleResForm extends SpeakeasyBase {
     strOpt?: string;
 }
 
+export class RequestBodyPutMultipartSimpleResHeaders extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    @Expose({ name: "Content-Type" })
+    contentType: string;
+}
+
 /**
  * OK
  */
@@ -72,6 +78,11 @@ export class RequestBodyPutMultipartSimpleRes extends SpeakeasyBase {
     @Expose({ name: "form" })
     @Type(() => RequestBodyPutMultipartSimpleResForm)
     form: RequestBodyPutMultipartSimpleResForm;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "headers" })
+    @Type(() => RequestBodyPutMultipartSimpleResHeaders)
+    headers: RequestBodyPutMultipartSimpleResHeaders;
 }
 
 export class RequestBodyPutMultipartSimpleResponse extends SpeakeasyBase {

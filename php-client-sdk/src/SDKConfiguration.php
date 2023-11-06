@@ -36,9 +36,9 @@ class SDKConfiguration
 	];
 	public string $language = 'php';
 	public string $openapiDocVersion = '0.1.0';
-	public string $sdkVersion = '1.36.1';
+	public string $sdkVersion = '1.36.2';
 	public string $genVersion = '2.173.0';
-	public string $userAgent = 'speakeasy-sdk/php 1.36.1 2.173.0 0.1.0 openapi/openapi';
+	public string $userAgent = 'speakeasy-sdk/php 1.36.2 2.173.0 0.1.0 openapi/openapi';
 	/** @var array<string, array<string, array<string, mixed>>> */
 	public ?array $globals = [
     	'parameters' => []

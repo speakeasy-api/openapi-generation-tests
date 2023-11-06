@@ -2,6 +2,7 @@
 
 from .sdkconfiguration import SDKConfiguration
 from datetime import date, datetime
+from decimal import Decimal
 from sdk import utils
 from sdk.models import errors, operations, shared
 from typing import Optional, Union
@@ -334,6 +335,38 @@ class Unions:
         return res
 
     
+    def union_big_int_decimal(self, request: Union[int, Decimal]) -> operations.UnionBigIntDecimalResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/unionBigIntDecimal'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({int: utils.bigintencoder(True), Decimal: utils.decimalencoder(True, False)}))
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.UnionBigIntDecimalResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UnionBigIntDecimalRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
     def union_date_null(self, request: date) -> operations.UnionDateNullResponse:
         base_url = utils.template_url(*self.sdk_configuration.get_server_details())
         
@@ -357,6 +390,38 @@ class Unions:
         if http_res.status_code == 200:
             if utils.match_content_type(content_type, 'application/json'):
                 out = utils.unmarshal_json(http_res.text, Optional[operations.UnionDateNullRes])
+                res.res = out
+            else:
+                raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)
+        elif http_res.status_code >= 400 and http_res.status_code < 500 or http_res.status_code >= 500 and http_res.status_code < 600:
+            raise errors.SDKError('API error occurred', http_res.status_code, http_res.text, http_res)
+
+        return res
+
+    
+    def union_date_time_big_int(self, request: Union[datetime, int]) -> operations.UnionDateTimeBigIntResponse:
+        base_url = utils.template_url(*self.sdk_configuration.get_server_details())
+        
+        url = base_url + '/anything/unionDateTimeBigInt'
+        headers = {}
+        req_content_type, data, form = utils.serialize_request_body(request, "request", False, False, 'json', utils.union_encoder({datetime: utils.datetimeisoformat(True)}))
+        if req_content_type not in ('multipart/form-data', 'multipart/mixed'):
+            headers['content-type'] = req_content_type
+        if data is None and form is None:
+            raise Exception('request body is required')
+        headers['Accept'] = 'application/json'
+        headers['x-speakeasy-user-agent'] = self.sdk_configuration.user_agent
+        
+        client = self.sdk_configuration.security_client
+        
+        http_res = client.request('POST', url, data=data, files=form, headers=headers)
+        content_type = http_res.headers.get('Content-Type')
+
+        res = operations.UnionDateTimeBigIntResponse(status_code=http_res.status_code, content_type=content_type, raw_response=http_res)
+        
+        if http_res.status_code == 200:
+            if utils.match_content_type(content_type, 'application/json'):
+                out = utils.unmarshal_json(http_res.text, Optional[operations.UnionDateTimeBigIntRes])
                 res.res = out
             else:
                 raise errors.SDKError(f'unknown content-type received: {content_type}', http_res.status_code, http_res.text, http_res)

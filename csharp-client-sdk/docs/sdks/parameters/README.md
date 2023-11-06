@@ -52,13 +52,13 @@ var res = await sdk.Parameters.DeepObjectQueryParamsMapAsync(new Dictionary<stri
     { "test", "value" },
     { "test2", "value2" },
 }, new Dictionary<string, List<string>>() {
-    { "test", new List<string>() {
-        "test",
-        "test2",
-    } },
     { "test2", new List<string>() {
         "test3",
         "test4",
+    } },
+    { "test", new List<string>() {
+        "test",
+        "test2",
     } },
 });
 
@@ -508,11 +508,11 @@ var sdk = new SDKSDK(
 );
 
 var res = await sdk.Parameters.HeaderParamsMapAsync(new Dictionary<string, string>() {
-    { "key2", "value2" },
     { "key1", "value1" },
+    { "key2", "value2" },
 }, new Dictionary<string, string>() {
-    { "test1", "val1" },
     { "test2", "val2" },
+    { "test1", "val1" },
 });
 
 // handle response

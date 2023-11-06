@@ -61,6 +61,20 @@ module OpenApiSDK
       end
     end
 
+
+    class RequestBodyPutMultipartSimpleResHeaders < OpenApiSDK::Utils::FieldAugmented
+      extend T::Sig
+
+
+      field :content_type, String, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('Content-Type') } }
+
+
+      sig { params(content_type: String).void }
+      def initialize(content_type: nil)
+        @content_type = content_type
+      end
+    end
+
     # OK
     class RequestBodyPutMultipartSimpleRes < OpenApiSDK::Utils::FieldAugmented
       extend T::Sig
@@ -68,10 +82,13 @@ module OpenApiSDK
 
       field :form, Operations::RequestBodyPutMultipartSimpleResForm, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('form') } }
 
+      field :headers, Operations::RequestBodyPutMultipartSimpleResHeaders, { 'format_json': { 'letter_case': OpenApiSDK::Utils.field_name('headers') } }
 
-      sig { params(form: Operations::RequestBodyPutMultipartSimpleResForm).void }
-      def initialize(form: nil)
+
+      sig { params(form: Operations::RequestBodyPutMultipartSimpleResForm, headers: Operations::RequestBodyPutMultipartSimpleResHeaders).void }
+      def initialize(form: nil, headers: nil)
         @form = form
+        @headers = headers
       end
     end
 

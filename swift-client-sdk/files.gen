@@ -447,6 +447,7 @@ Sources/OpenAPI/models/operations/RequestBodyPostFormMapPrimitiveRes.swift
 Sources/OpenAPI/models/operations/RequestBodyPostFormMapPrimitiveResponse.swift
 Sources/OpenAPI/models/operations/RequestBodyPostFormSimpleRes.swift
 Sources/OpenAPI/models/operations/RequestBodyPostFormSimpleResForm.swift
+Sources/OpenAPI/models/operations/RequestBodyPostFormSimpleResHeaders.swift
 Sources/OpenAPI/models/operations/RequestBodyPostFormSimpleResponse.swift
 Sources/OpenAPI/models/operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.swift
 Sources/OpenAPI/models/operations/RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON.swift
@@ -551,6 +552,7 @@ Sources/OpenAPI/models/operations/RequestBodyPutMultipartFileRes.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartFileResponse.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartSimpleRes.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartSimpleResForm.swift
+Sources/OpenAPI/models/operations/RequestBodyPutMultipartSimpleResHeaders.swift
 Sources/OpenAPI/models/operations/RequestBodyPutMultipartSimpleResponse.swift
 Sources/OpenAPI/models/operations/RequestBodyPutStringRes.swift
 Sources/OpenAPI/models/operations/RequestBodyPutStringResponse.swift
@@ -636,8 +638,20 @@ Sources/OpenAPI/internal/models/TypedParameterGenerationGetObj+Serialization.swi
 Sources/OpenAPI/models/operations/TypedParameterGenerationGetRequest.swift
 Sources/OpenAPI/internal/models/TypedParameterGenerationGetRequest+Serialization.swift
 Sources/OpenAPI/models/operations/TypedParameterGenerationGetResponse.swift
+Sources/OpenAPI/models/operations/UnionBigIntDecimalRequestBody.swift
+Sources/OpenAPI/internal/models/UnionBigIntDecimalRequestBody+Serialization.swift
+Sources/OpenAPI/models/operations/UnionBigIntDecimalRes.swift
+Sources/OpenAPI/models/operations/UnionBigIntDecimalResJson.swift
+Sources/OpenAPI/internal/models/UnionBigIntDecimalResJson+Serialization.swift
+Sources/OpenAPI/models/operations/UnionBigIntDecimalResponse.swift
 Sources/OpenAPI/models/operations/UnionDateNullRes.swift
 Sources/OpenAPI/models/operations/UnionDateNullResponse.swift
+Sources/OpenAPI/models/operations/UnionDateTimeBigIntRequestBody.swift
+Sources/OpenAPI/internal/models/UnionDateTimeBigIntRequestBody+Serialization.swift
+Sources/OpenAPI/models/operations/UnionDateTimeBigIntRes.swift
+Sources/OpenAPI/models/operations/UnionDateTimeBigIntResJson.swift
+Sources/OpenAPI/internal/models/UnionDateTimeBigIntResJson+Serialization.swift
+Sources/OpenAPI/models/operations/UnionDateTimeBigIntResponse.swift
 Sources/OpenAPI/models/operations/UnionDateTimeNullRes.swift
 Sources/OpenAPI/models/operations/UnionDateTimeNullResponse.swift
 Sources/OpenAPI/models/operations/UpdateResourceRequest.swift

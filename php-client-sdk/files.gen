@@ -524,8 +524,12 @@ src/Models/Operations/TypedObjectNullableOneOfPostRes.php
 src/Models/Operations/TypedObjectNullableOneOfPostResponse.php
 src/Models/Operations/TypedObjectOneOfPostRes.php
 src/Models/Operations/TypedObjectOneOfPostResponse.php
+src/Models/Operations/UnionBigIntDecimalRes.php
+src/Models/Operations/UnionBigIntDecimalResponse.php
 src/Models/Operations/UnionDateNullRes.php
 src/Models/Operations/UnionDateNullResponse.php
+src/Models/Operations/UnionDateTimeBigIntRes.php
+src/Models/Operations/UnionDateTimeBigIntResponse.php
 src/Models/Operations/UnionDateTimeNullRes.php
 src/Models/Operations/UnionDateTimeNullResponse.php
 src/Models/Operations/WeaklyTypedOneOfPostRes.php
@@ -1072,8 +1076,12 @@ docs/models/operations/TypedObjectNullableOneOfPostRes.md
 docs/models/operations/TypedObjectNullableOneOfPostResponse.md
 docs/models/operations/TypedObjectOneOfPostRes.md
 docs/models/operations/TypedObjectOneOfPostResponse.md
+docs/models/operations/UnionBigIntDecimalRes.md
+docs/models/operations/UnionBigIntDecimalResponse.md
 docs/models/operations/UnionDateNullRes.md
 docs/models/operations/UnionDateNullResponse.md
+docs/models/operations/UnionDateTimeBigIntRes.md
+docs/models/operations/UnionDateTimeBigIntResponse.md
 docs/models/operations/UnionDateTimeNullRes.md
 docs/models/operations/UnionDateTimeNullResponse.md
 docs/models/operations/WeaklyTypedOneOfPostRes.md

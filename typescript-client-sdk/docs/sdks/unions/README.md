@@ -17,7 +17,9 @@ Endpoints for testing union types.
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
+* [unionBigIntDecimal](#unionbigintdecimal)
 * [unionDateNull](#uniondatenull)
+* [unionDateTimeBigInt](#uniondatetimebigint)
 * [unionDateTimeNull](#uniondatetimenull)
 * [weaklyTypedOneOfPost](#weaklytypedoneofpost)
 
@@ -417,6 +419,44 @@ import { SDK } from "openapi";
 **Promise<[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)>**
 
 
+## unionBigIntDecimal
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.unions.unionBigIntDecimal("string");
+
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.UnionBigIntDecimalResponse](../../models/operations/unionbigintdecimalresponse.md)>**
+
+
 ## unionDateNull
 
 ### Example Usage
@@ -453,6 +493,44 @@ import { SDK } from "openapi";
 ### Response
 
 **Promise<[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)>**
+
+
+## unionDateTimeBigInt
+
+### Example Usage
+
+```typescript
+import { SDK } from "openapi";
+
+(async() => {
+  const sdk = new SDK({
+    security: {
+      apiKeyAuth: "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param",
+  });
+
+  const res = await sdk.unions.unionDateTimeBigInt("string");
+
+
+  if (res.statusCode == 200) {
+    // handle response
+  }
+})();
+```
+
+### Parameters
+
+| Parameter                                                    | Type                                                         | Required                                                     | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `request`                                                    | [any](../../models//.md)                                     | :heavy_check_mark:                                           | The request object to use for the request.                   |
+| `config`                                                     | [AxiosRequestConfig](https://axios-http.com/docs/req_config) | :heavy_minus_sign:                                           | Available config options for making requests.                |
+
+
+### Response
+
+**Promise<[operations.UnionDateTimeBigIntResponse](../../models/operations/uniondatetimebigintresponse.md)>**
 
 
 ## unionDateTimeNull

@@ -17,7 +17,9 @@ Endpoints for testing union types.
 * [StronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [TypedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](#typedobjectoneofpost)
+* [UnionBigIntDecimal](#unionbigintdecimal)
 * [UnionDateNull](#uniondatenull)
+* [UnionDateTimeBigInt](#uniondatetimebigint)
 * [UnionDateTimeNull](#uniondatetimenull)
 * [WeaklyTypedOneOfPost](#weaklytypedoneofpost)
 
@@ -365,6 +367,39 @@ var res = await sdk.Unions.TypedObjectOneOfPostAsync("string");
 **[TypedObjectOneOfPostResponse](../../models/operations/TypedObjectOneOfPostResponse.md)**
 
 
+## UnionBigIntDecimal
+
+### Example Usage
+
+```csharp
+using SDK;
+using SDK.Models.Shared;
+
+var sdk = new SDKSDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param"
+);
+
+var res = await sdk.Unions.UnionBigIntDecimalAsync("string");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | *object*                                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[UnionBigIntDecimalResponse](../../models/operations/UnionBigIntDecimalResponse.md)**
+
+
 ## UnionDateNull
 
 ### Example Usage
@@ -396,6 +431,39 @@ var res = await sdk.Unions.UnionDateNullAsync(LocalDate.FromDateTime(DateTime.Pa
 ### Response
 
 **[UnionDateNullResponse](../../models/operations/UnionDateNullResponse.md)**
+
+
+## UnionDateTimeBigInt
+
+### Example Usage
+
+```csharp
+using SDK;
+using SDK.Models.Shared;
+
+var sdk = new SDKSDK(
+    security: new Security() {
+        ApiKeyAuth = "Token YOUR_API_KEY",
+    },
+    globalPathParam: 100,
+    globalQueryParam: "some example global query param"
+);
+
+var res = await sdk.Unions.UnionDateTimeBigIntAsync("string");
+
+// handle response
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | *object*                                   | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[UnionDateTimeBigIntResponse](../../models/operations/UnionDateTimeBigIntResponse.md)**
 
 
 ## UnionDateTimeNull

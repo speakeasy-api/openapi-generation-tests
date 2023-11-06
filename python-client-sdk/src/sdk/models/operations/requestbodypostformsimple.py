@@ -31,9 +31,18 @@ class RequestBodyPostFormSimpleResForm:
 
 @dataclass_json(undefined=Undefined.EXCLUDE)
 @dataclasses.dataclass
+class RequestBodyPostFormSimpleResHeaders:
+    content_type: str = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('Content-Type') }})
+    
+
+
+
+@dataclass_json(undefined=Undefined.EXCLUDE)
+@dataclasses.dataclass
 class RequestBodyPostFormSimpleRes:
     r"""OK"""
     form: RequestBodyPostFormSimpleResForm = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('form') }})
+    headers: RequestBodyPostFormSimpleResHeaders = dataclasses.field(metadata={'dataclasses_json': { 'letter_case': utils.get_field_name('headers') }})
     
 
 

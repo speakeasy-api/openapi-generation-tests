@@ -100,12 +100,30 @@ class _UnionsAPI: UnionsAPI {
         )
     }
     
+    public func unionBigIntDecimal(request: Operations.UnionBigIntDecimalRequestBody) async throws -> Response<Operations.UnionBigIntDecimalResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureUnionBigIntDecimalRequest(with: configuration, request: request)
+            },
+            handleResponse: handleUnionBigIntDecimalResponse
+        )
+    }
+    
     public func unionDateNull(request: Date) async throws -> Response<Operations.UnionDateNullResponse> {
         return try await client.makeRequest(
             configureRequest: { configuration in
                 try configureUnionDateNullRequest(with: configuration, request: request)
             },
             handleResponse: handleUnionDateNullResponse
+        )
+    }
+    
+    public func unionDateTimeBigInt(request: Operations.UnionDateTimeBigIntRequestBody) async throws -> Response<Operations.UnionDateTimeBigIntResponse> {
+        return try await client.makeRequest(
+            configureRequest: { configuration in
+                try configureUnionDateTimeBigIntRequest(with: configuration, request: request)
+            },
+            handleResponse: handleUnionDateTimeBigIntResponse
         )
     }
     
@@ -241,8 +259,30 @@ private func configureTypedObjectOneOfPostRequest(with configuration: URLRequest
     configuration.telemetryHeader = .speakeasyUserAgent
 }
 
+private func configureUnionBigIntDecimalRequest(with configuration: URLRequestConfiguration, request: Operations.UnionBigIntDecimalRequestBody) throws {
+    configuration.path = "/anything/unionBigIntDecimal"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
 private func configureUnionDateNullRequest(with configuration: URLRequestConfiguration, request: Date) throws {
     configuration.path = "/anything/unionDateNull"
+    configuration.method = .post
+    configuration.contentType = "application/json"
+    configuration.body = try jsonEncoder().encode(request)
+    if configuration.body == nil {
+        throw SerializationError.missingRequiredRequestBody
+    }
+    configuration.telemetryHeader = .speakeasyUserAgent
+}
+
+private func configureUnionDateTimeBigIntRequest(with configuration: URLRequestConfiguration, request: Operations.UnionDateTimeBigIntRequestBody) throws {
+    configuration.path = "/anything/unionDateTimeBigInt"
     configuration.method = .post
     configuration.contentType = "application/json"
     configuration.body = try jsonEncoder().encode(request)
@@ -436,6 +476,22 @@ private func handleTypedObjectOneOfPostResponse(response: Client.APIResponse) th
     return .empty
 }
 
+private func handleUnionBigIntDecimalResponse(response: Client.APIResponse) throws -> Operations.UnionBigIntDecimalResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.UnionBigIntDecimalRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
 private func handleUnionDateNullResponse(response: Client.APIResponse) throws -> Operations.UnionDateNullResponse {
     let httpResponse = response.httpResponse
     
@@ -443,6 +499,22 @@ private func handleUnionDateNullResponse(response: Client.APIResponse) throws ->
         if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
             do {
                 return .res(try JSONDecoder().decode(Operations.UnionDateNullRes.self, from: data))
+            } catch {
+                throw ResponseHandlerError.failedToDecodeJSON(error)
+            }
+        }
+    }
+
+    return .empty
+}
+
+private func handleUnionDateTimeBigIntResponse(response: Client.APIResponse) throws -> Operations.UnionDateTimeBigIntResponse {
+    let httpResponse = response.httpResponse
+    
+    if httpResponse.statusCode == 200 { 
+        if httpResponse.contentType.matchContentType(pattern: "application/json"), let data = response.data {
+            do {
+                return .res(try JSONDecoder().decode(Operations.UnionDateTimeBigIntRes.self, from: data))
             } catch {
                 throw ResponseHandlerError.failedToDecodeJSON(error)
             }

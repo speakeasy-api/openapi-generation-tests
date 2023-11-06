@@ -3634,7 +3634,7 @@ req = shared.DeepObject(
     bool=True,
     int=1,
     map={
-        "key": shared.SimpleObject(
+        "key2": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,
@@ -3654,7 +3654,7 @@ req = shared.DeepObject(
             str_='test',
             str_opt='testOptional',
         ),
-        "key2": shared.SimpleObject(
+        "key": shared.SimpleObject(
             any='any',
             bigint=8821239038968084,
             bigint_str=9223372036854775808,

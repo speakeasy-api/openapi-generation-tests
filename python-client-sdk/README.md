@@ -374,7 +374,9 @@ if res.usage_example_post_200_application_json_object is not None:
 * [strongly_typed_one_of_post](docs/sdks/unions/README.md#strongly_typed_one_of_post)
 * [typed_object_nullable_one_of_post](docs/sdks/unions/README.md#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](docs/sdks/unions/README.md#typed_object_one_of_post)
+* [union_big_int_decimal](docs/sdks/unions/README.md#union_big_int_decimal)
 * [union_date_null](docs/sdks/unions/README.md#union_date_null)
+* [union_date_time_big_int](docs/sdks/unions/README.md#union_date_time_big_int)
 * [union_date_time_null](docs/sdks/unions/README.md#union_date_time_null)
 * [weakly_typed_one_of_post](docs/sdks/unions/README.md#weakly_typed_one_of_post)
 <!-- End SDK Available Operations -->

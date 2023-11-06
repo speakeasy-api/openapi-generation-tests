@@ -1,8 +1,8 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 2d5cff0b57f6738e0a08cfe2de4e248d
+  docChecksum: 0c1717dc8f9e83b99bad896fa719645c
   docVersion: 0.1.0
-  speakeasyVersion: 1.111.0
+  speakeasyVersion: 1.112.1
   generationVersion: 2.173.0
 generation:
   comments: {}
@@ -28,7 +28,7 @@ features:
     nameOverrides: 2.81.1
     serverIDs: 2.81.1
 java:
-  version: 1.38.1
+  version: 1.38.2
   artifactID: openapi
   companyEmail: info@mycompany.com
   companyName: My Company

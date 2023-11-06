@@ -17,7 +17,9 @@ Endpoints for testing union types.
 * [strongly_typed_one_of_post](#strongly_typed_one_of_post)
 * [typed_object_nullable_one_of_post](#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](#typed_object_one_of_post)
+* [union_big_int_decimal](#union_big_int_decimal)
 * [union_date_null](#union_date_null)
+* [union_date_time_big_int](#union_date_time_big_int)
 * [union_date_time_null](#union_date_time_null)
 * [weakly_typed_one_of_post](#weakly_typed_one_of_post)
 
@@ -435,6 +437,46 @@ end
 **[T.nilable(Operations::TypedObjectOneOfPostResponse)](../../models/operations/typedobjectoneofpostresponse.md)**
 
 
+## union_big_int_decimal
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = ::.new(
+  request="string",
+)
+    
+res = s.unions.union_big_int_decimal(req)
+
+if ! res.res.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::UnionBigIntDecimalResponse)](../../models/operations/unionbigintdecimalresponse.md)**
+
+
 ## union_date_null
 
 ### Example Usage
@@ -473,6 +515,46 @@ end
 ### Response
 
 **[T.nilable(Operations::UnionDateNullResponse)](../../models/operations/uniondatenullresponse.md)**
+
+
+## union_date_time_big_int
+
+### Example Usage
+
+```ruby
+require_relative openapi
+
+
+s = OpenApiSDK::SDK.new
+s.config_security(
+  security=Shared::Security.new(
+    api_key_auth=.foo"Token YOUR_API_KEY",
+  )
+)
+
+   
+req = ::.new(
+  request="string",
+)
+    
+res = s.unions.union_date_time_big_int(req)
+
+if ! res.res.nil?
+  # handle response
+end
+
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[T.nilable(Operations::UnionDateTimeBigIntResponse)](../../models/operations/uniondatetimebigintresponse.md)**
 
 
 ## union_date_time_null

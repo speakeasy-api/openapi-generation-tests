@@ -392,7 +392,9 @@ import { RFCDate } from "openapi/dist/sdk/types";
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
 * [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [unionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
 * [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->

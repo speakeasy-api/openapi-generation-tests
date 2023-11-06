@@ -121,9 +121,21 @@ func (o *RequestBodyPostFormSimpleResForm) GetStrOpt() *string {
 	return o.StrOpt
 }
 
+type RequestBodyPostFormSimpleResHeaders struct {
+	ContentType string `json:"Content-Type"`
+}
+
+func (o *RequestBodyPostFormSimpleResHeaders) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
 // RequestBodyPostFormSimpleRes - OK
 type RequestBodyPostFormSimpleRes struct {
-	Form RequestBodyPostFormSimpleResForm `json:"form"`
+	Form    RequestBodyPostFormSimpleResForm    `json:"form"`
+	Headers RequestBodyPostFormSimpleResHeaders `json:"headers"`
 }
 
 func (o *RequestBodyPostFormSimpleRes) GetForm() RequestBodyPostFormSimpleResForm {
@@ -131,6 +143,13 @@ func (o *RequestBodyPostFormSimpleRes) GetForm() RequestBodyPostFormSimpleResFor
 		return RequestBodyPostFormSimpleResForm{}
 	}
 	return o.Form
+}
+
+func (o *RequestBodyPostFormSimpleRes) GetHeaders() RequestBodyPostFormSimpleResHeaders {
+	if o == nil {
+		return RequestBodyPostFormSimpleResHeaders{}
+	}
+	return o.Headers
 }
 
 type RequestBodyPostFormSimpleResponse struct {

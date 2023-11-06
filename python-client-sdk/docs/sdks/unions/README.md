@@ -17,7 +17,9 @@ Endpoints for testing union types.
 * [strongly_typed_one_of_post](#strongly_typed_one_of_post)
 * [typed_object_nullable_one_of_post](#typed_object_nullable_one_of_post)
 * [typed_object_one_of_post](#typed_object_one_of_post)
+* [union_big_int_decimal](#union_big_int_decimal)
 * [union_date_null](#union_date_null)
+* [union_date_time_big_int](#union_date_time_big_int)
 * [union_date_time_null](#union_date_time_null)
 * [weakly_typed_one_of_post](#weakly_typed_one_of_post)
 
@@ -556,6 +558,43 @@ if res.res is not None:
 **[operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md)**
 
 
+## union_big_int_decimal
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = Decimal('9001.32')
+
+res = s.unions.union_big_int_decimal(req)
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                       | Type                                                                            | Required                                                                        | Description                                                                     |
+| ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
+| `request`                                                                       | [Union[int, Decimal]](../../models/operations/unionbigintdecimalrequestbody.md) | :heavy_check_mark:                                                              | The request object to use for the request.                                      |
+
+
+### Response
+
+**[operations.UnionBigIntDecimalResponse](../../models/operations/unionbigintdecimalresponse.md)**
+
+
 ## union_date_null
 
 ### Example Usage
@@ -591,6 +630,43 @@ if res.res is not None:
 ### Response
 
 **[operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md)**
+
+
+## union_date_time_big_int
+
+### Example Usage
+
+```python
+import sdk
+from sdk.models import shared
+
+s = sdk.SDK(
+    security=shared.Security(
+        api_key_auth="Token YOUR_API_KEY",
+    ),
+    global_path_param=100,
+    global_query_param='some example global query param',
+)
+
+req = dateutil.parser.isoparse('2021-06-19T18:26:42.874Z')
+
+res = s.unions.union_date_time_big_int(req)
+
+if res.res is not None:
+    # handle response
+    pass
+```
+
+### Parameters
+
+| Parameter                                                                         | Type                                                                              | Required                                                                          | Description                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| `request`                                                                         | [Union[datetime, int]](../../models/operations/uniondatetimebigintrequestbody.md) | :heavy_check_mark:                                                                | The request object to use for the request.                                        |
+
+
+### Response
+
+**[operations.UnionDateTimeBigIntResponse](../../models/operations/uniondatetimebigintresponse.md)**
 
 
 ## union_date_time_null

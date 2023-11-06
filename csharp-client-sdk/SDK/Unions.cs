@@ -35,7 +35,9 @@ namespace SDK
         Task<StronglyTypedOneOfPostResponse> StronglyTypedOneOfPostAsync(object request);
         Task<TypedObjectNullableOneOfPostResponse> TypedObjectNullableOneOfPostAsync(object request);
         Task<TypedObjectOneOfPostResponse> TypedObjectOneOfPostAsync(object request);
+        Task<UnionBigIntDecimalResponse> UnionBigIntDecimalAsync(object request);
         Task<UnionDateNullResponse> UnionDateNullAsync(LocalDate request);
+        Task<UnionDateTimeBigIntResponse> UnionDateTimeBigIntAsync(object request);
         Task<UnionDateTimeNullResponse> UnionDateTimeNullAsync(DateTime request);
         Task<WeaklyTypedOneOfPostResponse> WeaklyTypedOneOfPostAsync(object request);
     }
@@ -47,10 +49,10 @@ namespace SDK
     {
         public SDKConfig Config { get; private set; }
         private const string _language = "csharp";
-        private const string _sdkVersion = "0.1.1";
+        private const string _sdkVersion = "0.1.2";
         private const string _sdkGenVersion = "2.173.0";
         private const string _openapiDocVersion = "0.1.0";
-        private const string _userAgent = "speakeasy-sdk/csharp 0.1.1 2.173.0 0.1.0 openapi";
+        private const string _userAgent = "speakeasy-sdk/csharp 0.1.2 2.173.0 0.1.0 openapi";
         private string _serverUrl = "";
         private ISpeakeasyHttpClient _defaultClient;
         private ISpeakeasyHttpClient _securityClient;
@@ -554,6 +556,55 @@ namespace SDK
         }
         
 
+        public async Task<UnionBigIntDecimalResponse> UnionBigIntDecimalAsync(object request)
+        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = baseUrl + "/anything/unionBigIntDecimal";
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
+            
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
+            if (serializedBody == null) 
+            {
+                throw new ArgumentNullException("request body is required");
+            }
+            else
+            {
+                httpRequest.Content = serializedBody;
+            }
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new UnionBigIntDecimalResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Res = JsonConvert.DeserializeObject<UnionBigIntDecimalRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+                
+                return response;
+            }
+            return response;
+        }
+        
+
         public async Task<UnionDateNullResponse> UnionDateNullAsync(LocalDate request)
         {
             string baseUrl = _serverUrl;
@@ -595,6 +646,55 @@ namespace SDK
                 if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
                 {
                     response.Res = JsonConvert.DeserializeObject<UnionDateNullRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
+                }
+                
+                return response;
+            }
+            return response;
+        }
+        
+
+        public async Task<UnionDateTimeBigIntResponse> UnionDateTimeBigIntAsync(object request)
+        {
+            string baseUrl = _serverUrl;
+            if (baseUrl.EndsWith("/"))
+            {
+                baseUrl = baseUrl.Substring(0, baseUrl.Length - 1);
+            }
+            var urlString = baseUrl + "/anything/unionDateTimeBigInt";
+            
+
+            var httpRequest = new HttpRequestMessage(HttpMethod.Post, urlString);
+            httpRequest.Headers.Add("x-speakeasy-user-agent", _userAgent);
+            
+            var serializedBody = RequestBodySerializer.Serialize(request, "Request", "json");
+            if (serializedBody == null) 
+            {
+                throw new ArgumentNullException("request body is required");
+            }
+            else
+            {
+                httpRequest.Content = serializedBody;
+            }
+            
+            var client = _securityClient;
+            
+            var httpResponse = await client.SendAsync(httpRequest);
+
+            var contentType = httpResponse.Content.Headers.ContentType?.MediaType;
+            
+            var response = new UnionDateTimeBigIntResponse
+            {
+                StatusCode = (int)httpResponse.StatusCode,
+                ContentType = contentType,
+                RawResponse = httpResponse
+            };
+            
+            if((response.StatusCode == 200))
+            {
+                if(Utilities.IsContentTypeMatch("application/json",response.ContentType))
+                {
+                    response.Res = JsonConvert.DeserializeObject<UnionDateTimeBigIntRes>(await httpResponse.Content.ReadAsStringAsync(), new JsonSerializerSettings(){ NullValueHandling = NullValueHandling.Ignore, Converters = new JsonConverter[] { new FlexibleObjectDeserializer(), new EnumSerializer() }});
                 }
                 
                 return response;

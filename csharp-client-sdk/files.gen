@@ -352,6 +352,7 @@ SDK/Models/Operations/RequestBodyPostFormDeepResponse.cs
 SDK/Models/Operations/RequestBodyPostFormMapPrimitiveRes.cs
 SDK/Models/Operations/RequestBodyPostFormMapPrimitiveResponse.cs
 SDK/Models/Operations/RequestBodyPostFormSimpleResForm.cs
+SDK/Models/Operations/RequestBodyPostFormSimpleResHeaders.cs
 SDK/Models/Operations/RequestBodyPostFormSimpleRes.cs
 SDK/Models/Operations/RequestBodyPostFormSimpleResponse.cs
 SDK/Models/Operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.cs
@@ -444,6 +445,7 @@ SDK/Models/Operations/RequestBodyPutMultipartFileRequestBody.cs
 SDK/Models/Operations/RequestBodyPutMultipartFileRes.cs
 SDK/Models/Operations/RequestBodyPutMultipartFileResponse.cs
 SDK/Models/Operations/RequestBodyPutMultipartSimpleResForm.cs
+SDK/Models/Operations/RequestBodyPutMultipartSimpleResHeaders.cs
 SDK/Models/Operations/RequestBodyPutMultipartSimpleRes.cs
 SDK/Models/Operations/RequestBodyPutMultipartSimpleResponse.cs
 SDK/Models/Operations/RequestBodyPutStringRes.cs
@@ -521,8 +523,12 @@ SDK/Models/Operations/TypedObjectNullableOneOfPostRes.cs
 SDK/Models/Operations/TypedObjectNullableOneOfPostResponse.cs
 SDK/Models/Operations/TypedObjectOneOfPostRes.cs
 SDK/Models/Operations/TypedObjectOneOfPostResponse.cs
+SDK/Models/Operations/UnionBigIntDecimalRes.cs
+SDK/Models/Operations/UnionBigIntDecimalResponse.cs
 SDK/Models/Operations/UnionDateNullRes.cs
 SDK/Models/Operations/UnionDateNullResponse.cs
+SDK/Models/Operations/UnionDateTimeBigIntRes.cs
+SDK/Models/Operations/UnionDateTimeBigIntResponse.cs
 SDK/Models/Operations/UnionDateTimeNullRes.cs
 SDK/Models/Operations/UnionDateTimeNullResponse.cs
 SDK/Models/Operations/WeaklyTypedOneOfPostRes.cs
@@ -898,6 +904,7 @@ docs/models/operations/RequestBodyPostFormDeepResponse.md
 docs/models/operations/RequestBodyPostFormMapPrimitiveRes.md
 docs/models/operations/RequestBodyPostFormMapPrimitiveResponse.md
 docs/models/operations/RequestBodyPostFormSimpleResForm.md
+docs/models/operations/RequestBodyPostFormSimpleResHeaders.md
 docs/models/operations/RequestBodyPostFormSimpleRes.md
 docs/models/operations/RequestBodyPostFormSimpleResponse.md
 docs/models/operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.md
@@ -990,6 +997,7 @@ docs/models/operations/RequestBodyPutMultipartFileRequestBody.md
 docs/models/operations/RequestBodyPutMultipartFileRes.md
 docs/models/operations/RequestBodyPutMultipartFileResponse.md
 docs/models/operations/RequestBodyPutMultipartSimpleResForm.md
+docs/models/operations/RequestBodyPutMultipartSimpleResHeaders.md
 docs/models/operations/RequestBodyPutMultipartSimpleRes.md
 docs/models/operations/RequestBodyPutMultipartSimpleResponse.md
 docs/models/operations/RequestBodyPutStringRes.md
@@ -1067,8 +1075,12 @@ docs/models/operations/TypedObjectNullableOneOfPostRes.md
 docs/models/operations/TypedObjectNullableOneOfPostResponse.md
 docs/models/operations/TypedObjectOneOfPostRes.md
 docs/models/operations/TypedObjectOneOfPostResponse.md
+docs/models/operations/UnionBigIntDecimalRes.md
+docs/models/operations/UnionBigIntDecimalResponse.md
 docs/models/operations/UnionDateNullRes.md
 docs/models/operations/UnionDateNullResponse.md
+docs/models/operations/UnionDateTimeBigIntRes.md
+docs/models/operations/UnionDateTimeBigIntResponse.md
 docs/models/operations/UnionDateTimeNullRes.md
 docs/models/operations/UnionDateTimeNullResponse.md
 docs/models/operations/WeaklyTypedOneOfPostRes.md

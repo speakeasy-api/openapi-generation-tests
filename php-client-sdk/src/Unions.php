@@ -432,6 +432,47 @@ class Unions
     }
 	
     /**
+     * unionBigIntDecimal
+     * 
+     * @param mixed $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\UnionBigIntDecimalResponse
+     */
+	public function unionBigIntDecimal(
+        mixed $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\UnionBigIntDecimalResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/unionBigIntDecimal');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\UnionBigIntDecimalResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\UnionBigIntDecimalRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
      * unionDateNull
      * 
      * @param \DateTime $request
@@ -466,6 +507,47 @@ class Unions
             if (Utils\Utils::matchContentType($contentType, 'application/json')) {
                 $serializer = Utils\JSON::createSerializer();
                 $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\UnionDateNullRes', 'json');
+            }
+        }
+
+        return $response;
+    }
+	
+    /**
+     * unionDateTimeBigInt
+     * 
+     * @param mixed $request
+     * @return \OpenAPI\OpenAPI\Models\Operations\UnionDateTimeBigIntResponse
+     */
+	public function unionDateTimeBigInt(
+        mixed $request,
+    ): \OpenAPI\OpenAPI\Models\Operations\UnionDateTimeBigIntResponse
+    {
+        $baseUrl = Utils\Utils::templateUrl($this->sdkConfiguration->getServerUrl(), $this->sdkConfiguration->getServerDefaults());
+        $url = Utils\Utils::generateUrl($baseUrl, '/anything/unionDateTimeBigInt');
+        
+        $options = ['http_errors' => false];
+        $body = Utils\Utils::serializeRequestBody($request, "request", "json");
+        if ($body === null) {
+            throw new \Exception('Request body is required');
+        }
+        $options = array_merge_recursive($options, $body);
+        $options['headers']['Accept'] = 'application/json';
+        $options['headers']['x-speakeasy-user-agent'] = $this->sdkConfiguration->userAgent;
+        
+        $httpResponse = $this->sdkConfiguration->securityClient->request('POST', $url, $options);
+        
+        $contentType = $httpResponse->getHeader('Content-Type')[0] ?? '';
+
+        $response = new \OpenAPI\OpenAPI\Models\Operations\UnionDateTimeBigIntResponse();
+        $response->statusCode = $httpResponse->getStatusCode();
+        $response->contentType = $contentType;
+        $response->rawResponse = $httpResponse;
+        
+        if ($httpResponse->getStatusCode() === 200) {
+            if (Utils\Utils::matchContentType($contentType, 'application/json')) {
+                $serializer = Utils\JSON::createSerializer();
+                $response->res = $serializer->deserialize((string)$httpResponse->getBody(), 'OpenAPI\OpenAPI\Models\Operations\UnionDateTimeBigIntRes', 'json');
             }
         }
 

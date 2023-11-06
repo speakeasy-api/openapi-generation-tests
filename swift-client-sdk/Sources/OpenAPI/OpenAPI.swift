@@ -2651,7 +2651,9 @@ public protocol TelemetryAPI {
 /// - ``stronglyTypedOneOfPost(request:)``
 /// - ``typedObjectNullableOneOfPost(request:)``
 /// - ``typedObjectOneOfPost(request:)``
+/// - ``unionBigIntDecimal(request:)``
 /// - ``unionDateNull(request:)``
+/// - ``unionDateTimeBigInt(request:)``
 /// - ``unionDateTimeNull(request:)``
 /// - ``weaklyTypedOneOfPost(request:)``
 ///
@@ -2676,7 +2678,11 @@ public protocol UnionsAPI {
 
     func typedObjectOneOfPost(request: Shared.TypedObjectOneOf) async throws -> Response<Operations.TypedObjectOneOfPostResponse>
 
+    func unionBigIntDecimal(request: Operations.UnionBigIntDecimalRequestBody) async throws -> Response<Operations.UnionBigIntDecimalResponse>
+
     func unionDateNull(request: Date) async throws -> Response<Operations.UnionDateNullResponse>
+
+    func unionDateTimeBigInt(request: Operations.UnionDateTimeBigIntRequestBody) async throws -> Response<Operations.UnionDateTimeBigIntResponse>
 
     func unionDateTimeNull(request: Date) async throws -> Response<Operations.UnionDateTimeNullResponse>
 

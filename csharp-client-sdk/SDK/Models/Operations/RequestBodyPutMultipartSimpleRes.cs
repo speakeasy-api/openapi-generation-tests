@@ -20,5 +20,8 @@ namespace SDK.Models.Operations
 
         [JsonProperty("form")]
         public RequestBodyPutMultipartSimpleResForm Form { get; set; } = default!;
+
+        [JsonProperty("headers")]
+        public RequestBodyPutMultipartSimpleResHeaders Headers { get; set; } = default!;
     }
 }

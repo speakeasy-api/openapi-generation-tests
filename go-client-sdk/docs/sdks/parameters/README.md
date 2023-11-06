@@ -56,8 +56,8 @@ func main() {
 
 
     mapParam := map[string]string{
-        "test": "value",
         "test2": "value2",
+        "test": "value",
     }
 
     mapArrParam := map[string][]string{
@@ -380,8 +380,8 @@ func main() {
     }
 
     mapParamExploded := map[string]int64{
-        "test2": 2,
         "test": 1,
+        "test2": 2,
     }
 
     ctx := context.Background()

@@ -20,5 +20,8 @@ namespace SDK.Models.Operations
 
         [JsonProperty("form")]
         public RequestBodyPostFormSimpleResForm Form { get; set; } = default!;
+
+        [JsonProperty("headers")]
+        public RequestBodyPostFormSimpleResHeaders Headers { get; set; } = default!;
     }
 }

@@ -121,9 +121,21 @@ func (o *RequestBodyPutMultipartSimpleResForm) GetStrOpt() *string {
 	return o.StrOpt
 }
 
+type RequestBodyPutMultipartSimpleResHeaders struct {
+	ContentType string `json:"Content-Type"`
+}
+
+func (o *RequestBodyPutMultipartSimpleResHeaders) GetContentType() string {
+	if o == nil {
+		return ""
+	}
+	return o.ContentType
+}
+
 // RequestBodyPutMultipartSimpleRes - OK
 type RequestBodyPutMultipartSimpleRes struct {
-	Form RequestBodyPutMultipartSimpleResForm `json:"form"`
+	Form    RequestBodyPutMultipartSimpleResForm    `json:"form"`
+	Headers RequestBodyPutMultipartSimpleResHeaders `json:"headers"`
 }
 
 func (o *RequestBodyPutMultipartSimpleRes) GetForm() RequestBodyPutMultipartSimpleResForm {
@@ -131,6 +143,13 @@ func (o *RequestBodyPutMultipartSimpleRes) GetForm() RequestBodyPutMultipartSimp
 		return RequestBodyPutMultipartSimpleResForm{}
 	}
 	return o.Form
+}
+
+func (o *RequestBodyPutMultipartSimpleRes) GetHeaders() RequestBodyPutMultipartSimpleResHeaders {
+	if o == nil {
+		return RequestBodyPutMultipartSimpleResHeaders{}
+	}
+	return o.Headers
 }
 
 type RequestBodyPutMultipartSimpleResponse struct {

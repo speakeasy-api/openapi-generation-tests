@@ -405,6 +405,44 @@ public class Unions {
         return res;
     }
 
+    public org.openapis.openapi.models.operations.UnionBigIntDecimalResponse unionBigIntDecimal(Object request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/unionBigIntDecimal");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.UnionBigIntDecimalResponse res = new org.openapis.openapi.models.operations.UnionBigIntDecimalResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.UnionBigIntDecimalRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.UnionBigIntDecimalRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
     public org.openapis.openapi.models.operations.UnionDateNullResponse unionDateNull(LocalDate request) throws Exception {
         String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
         String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/unionDateNull");
@@ -436,6 +474,44 @@ public class Unions {
             if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
                 ObjectMapper mapper = JSON.getMapper();
                 org.openapis.openapi.models.operations.UnionDateNullRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.UnionDateNullRes.class);
+                res.res = out;
+            }
+        }
+
+        return res;
+    }
+
+    public org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse unionDateTimeBigInt(Object request) throws Exception {
+        String baseUrl = org.openapis.openapi.utils.Utils.templateUrl(this.sdkConfiguration.serverUrl, this.sdkConfiguration.getServerVariableDefaults());
+        String url = org.openapis.openapi.utils.Utils.generateURL(baseUrl, "/anything/unionDateTimeBigInt");
+        
+        HTTPRequest req = new HTTPRequest();
+        req.setMethod("POST");
+        req.setURL(url);
+        SerializedBody serializedRequestBody = org.openapis.openapi.utils.Utils.serializeRequestBody(request, "request", "json");
+        if (serializedRequestBody == null) {
+            throw new Exception("Request body is required");
+        }
+        req.setBody(serializedRequestBody);
+
+        req.addHeader("Accept", "application/json");
+        req.addHeader("x-speakeasy-user-agent", this.sdkConfiguration.userAgent);
+        
+        HTTPClient client = this.sdkConfiguration.securityClient;
+        
+        HttpResponse<byte[]> httpRes = client.send(req);
+
+        String contentType = httpRes.headers().firstValue("Content-Type").orElse("application/octet-stream");
+
+        org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse res = new org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse(contentType, httpRes.statusCode()) {{
+            res = null;
+        }};
+        res.rawResponse = httpRes;
+        
+        if (httpRes.statusCode() == 200) {
+            if (org.openapis.openapi.utils.Utils.matchContentType(contentType, "application/json")) {
+                ObjectMapper mapper = JSON.getMapper();
+                org.openapis.openapi.models.operations.UnionDateTimeBigIntRes out = mapper.readValue(new String(httpRes.body(), StandardCharsets.UTF_8), org.openapis.openapi.models.operations.UnionDateTimeBigIntRes.class);
                 res.res = out;
             }
         }

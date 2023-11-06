@@ -384,7 +384,9 @@ var res = await sdk.Generation.UsageExamplePostAsync(new UsageExamplePostSecurit
 * [StronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
 * [TypedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [UnionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
 * [UnionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [UnionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
 * [UnionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [WeaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->

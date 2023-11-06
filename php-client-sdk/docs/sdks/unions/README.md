@@ -17,7 +17,9 @@ Endpoints for testing union types.
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
+* [unionBigIntDecimal](#unionbigintdecimal)
 * [unionDateNull](#uniondatenull)
+* [unionDateTimeBigInt](#uniondatetimebigint)
 * [unionDateTimeNull](#uniondatetimenull)
 * [weaklyTypedOneOfPost](#weaklytypedoneofpost)
 
@@ -487,6 +489,51 @@ try {
 **[?\OpenAPI\OpenAPI\Models\Operations\TypedObjectOneOfPostResponse](../../models/operations/TypedObjectOneOfPostResponse.md)**
 
 
+## unionBigIntDecimal
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = SDK::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
+'string'
+
+    $response = $sdk->unions->unionBigIntDecimal($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [mixed](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\UnionBigIntDecimalResponse](../../models/operations/UnionBigIntDecimalResponse.md)**
+
+
 ## unionDateNull
 
 ### Example Usage
@@ -530,6 +577,51 @@ DateTime::createFromFormat('Y-m-d', '2022-11-25')
 ### Response
 
 **[?\OpenAPI\OpenAPI\Models\Operations\UnionDateNullResponse](../../models/operations/UnionDateNullResponse.md)**
+
+
+## unionDateTimeBigInt
+
+### Example Usage
+
+```php
+<?php
+
+declare(strict_types=1);
+require_once 'vendor/autoload.php';
+
+use \OpenAPI\OpenAPI\SDK;
+use \OpenAPI\OpenAPI\Models\Shared\Security;
+
+$security = new Security();
+$security->apiKeyAuth = 'Token YOUR_API_KEY';
+
+$sdk = SDK::builder()
+    ->setSecurity($security)
+    ->build();
+
+try {
+'string'
+
+    $response = $sdk->unions->unionDateTimeBigInt($request);
+
+    if ($response->res !== null) {
+        // handle response
+    }
+} catch (Exception $e) {
+    // handle exception
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `$request`                                 | [mixed](../../models//.md)                 | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[?\OpenAPI\OpenAPI\Models\Operations\UnionDateTimeBigIntResponse](../../models/operations/UnionDateTimeBigIntResponse.md)**
 
 
 ## unionDateTimeNull

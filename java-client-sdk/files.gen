@@ -369,6 +369,7 @@ lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostFormDeep
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostFormMapPrimitiveRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostFormMapPrimitiveResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostFormSimpleResForm.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostFormSimpleResHeaders.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostFormSimpleRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostFormSimpleResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.java
@@ -461,6 +462,7 @@ lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipart
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartFileResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartSimpleResForm.java
+lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartSimpleResHeaders.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartSimpleRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutMultipartSimpleResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/RequestBodyPutStringRes.java
@@ -538,8 +540,12 @@ lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectNullableOneO
 lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectNullableOneOfPostResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectOneOfPostRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/TypedObjectOneOfPostResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionBigIntDecimalRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionBigIntDecimalResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/UnionDateNullRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/UnionDateNullResponse.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionDateTimeBigIntRes.java
+lib/src/main/java/org/openapis/openapi/models/operations/UnionDateTimeBigIntResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/UnionDateTimeNullRes.java
 lib/src/main/java/org/openapis/openapi/models/operations/UnionDateTimeNullResponse.java
 lib/src/main/java/org/openapis/openapi/models/operations/WeaklyTypedOneOfPostRes.java
@@ -915,6 +921,7 @@ docs/models/operations/RequestBodyPostFormDeepResponse.md
 docs/models/operations/RequestBodyPostFormMapPrimitiveRes.md
 docs/models/operations/RequestBodyPostFormMapPrimitiveResponse.md
 docs/models/operations/RequestBodyPostFormSimpleResForm.md
+docs/models/operations/RequestBodyPostFormSimpleResHeaders.md
 docs/models/operations/RequestBodyPostFormSimpleRes.md
 docs/models/operations/RequestBodyPostFormSimpleResponse.md
 docs/models/operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON.md
@@ -1007,6 +1014,7 @@ docs/models/operations/RequestBodyPutMultipartFileRequestBody.md
 docs/models/operations/RequestBodyPutMultipartFileRes.md
 docs/models/operations/RequestBodyPutMultipartFileResponse.md
 docs/models/operations/RequestBodyPutMultipartSimpleResForm.md
+docs/models/operations/RequestBodyPutMultipartSimpleResHeaders.md
 docs/models/operations/RequestBodyPutMultipartSimpleRes.md
 docs/models/operations/RequestBodyPutMultipartSimpleResponse.md
 docs/models/operations/RequestBodyPutStringRes.md
@@ -1084,8 +1092,12 @@ docs/models/operations/TypedObjectNullableOneOfPostRes.md
 docs/models/operations/TypedObjectNullableOneOfPostResponse.md
 docs/models/operations/TypedObjectOneOfPostRes.md
 docs/models/operations/TypedObjectOneOfPostResponse.md
+docs/models/operations/UnionBigIntDecimalRes.md
+docs/models/operations/UnionBigIntDecimalResponse.md
 docs/models/operations/UnionDateNullRes.md
 docs/models/operations/UnionDateNullResponse.md
+docs/models/operations/UnionDateTimeBigIntRes.md
+docs/models/operations/UnionDateTimeBigIntResponse.md
 docs/models/operations/UnionDateTimeNullRes.md
 docs/models/operations/UnionDateTimeNullResponse.md
 docs/models/operations/WeaklyTypedOneOfPostRes.md

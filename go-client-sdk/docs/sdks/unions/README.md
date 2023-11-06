@@ -17,7 +17,9 @@ Endpoints for testing union types.
 * [StronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [TypedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [TypedObjectOneOfPost](#typedobjectoneofpost)
+* [UnionBigIntDecimal](#unionbigintdecimal)
 * [UnionDateNull](#uniondatenull)
+* [UnionDateTimeBigInt](#uniondatetimebigint)
 * [UnionDateTimeNull](#uniondatetimenull)
 * [WeaklyTypedOneOfPost](#weaklytypedoneofpost)
 
@@ -691,6 +693,59 @@ func main() {
 **[*operations.TypedObjectOneOfPostResponse](../../models/operations/typedobjectoneofpostresponse.md), error**
 
 
+## UnionBigIntDecimal
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
+	"math/big"
+	"openapi/pkg/types"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Unions.UnionBigIntDecimal(ctx, operations.CreateUnionBigIntDecimalRequestBodyDecimal(
+    types.MustNewDecimalFromString("9001.32"),
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                            | Type                                                                                                 | Required                                                                                             | Description                                                                                          |
+| ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `ctx`                                                                                                | [context.Context](https://pkg.go.dev/context#Context)                                                | :heavy_check_mark:                                                                                   | The context to use for the request.                                                                  |
+| `request`                                                                                            | [operations.UnionBigIntDecimalRequestBody](../../models/operations/unionbigintdecimalrequestbody.md) | :heavy_check_mark:                                                                                   | The request object to use for the request.                                                           |
+
+
+### Response
+
+**[*operations.UnionBigIntDecimalResponse](../../models/operations/unionbigintdecimalresponse.md), error**
+
+
 ## UnionDateNull
 
 ### Example Usage
@@ -737,6 +792,59 @@ func main() {
 ### Response
 
 **[*operations.UnionDateNullResponse](../../models/operations/uniondatenullresponse.md), error**
+
+
+## UnionDateTimeBigInt
+
+### Example Usage
+
+```go
+package main
+
+import(
+	"context"
+	"log"
+	"openapi"
+	"openapi/pkg/models/shared"
+	"openapi/pkg/models/operations"
+	"openapi/pkg/types"
+	"math/big"
+)
+
+func main() {
+    s := openapi.New(
+        openapi.WithSecurity(shared.Security{
+            APIKeyAuth: openapi.String("Token YOUR_API_KEY"),
+        }),
+        openapi.WithGlobalPathParam(100),
+        openapi.WithGlobalQueryParam("some example global query param"),
+    )
+
+    ctx := context.Background()
+    res, err := s.Unions.UnionDateTimeBigInt(ctx, operations.CreateUnionDateTimeBigIntRequestBodyDateTime(
+    types.MustTimeFromString("2021-06-19T18:26:42.874Z"),
+    ))
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    if res.Res != nil {
+        // handle response
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                                                                              | Type                                                                                                   | Required                                                                                               | Description                                                                                            |
+| ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------ |
+| `ctx`                                                                                                  | [context.Context](https://pkg.go.dev/context#Context)                                                  | :heavy_check_mark:                                                                                     | The context to use for the request.                                                                    |
+| `request`                                                                                              | [operations.UnionDateTimeBigIntRequestBody](../../models/operations/uniondatetimebigintrequestbody.md) | :heavy_check_mark:                                                                                     | The request object to use for the request.                                                             |
+
+
+### Response
+
+**[*operations.UnionDateTimeBigIntResponse](../../models/operations/uniondatetimebigintresponse.md), error**
 
 
 ## UnionDateTimeNull

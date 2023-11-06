@@ -6,12 +6,14 @@ extension Operations {
     /// OK
     public struct RequestBodyPostFormSimpleRes {
         public let form: Operations.RequestBodyPostFormSimpleResForm
+        public let headers: Operations.RequestBodyPostFormSimpleResHeaders
 
         /// Creates an object with the specified parameters
         ///
         ///
-        public init(form: Operations.RequestBodyPostFormSimpleResForm) {
+        public init(form: Operations.RequestBodyPostFormSimpleResForm, headers: Operations.RequestBodyPostFormSimpleResHeaders) {
             self.form = form
+            self.headers = headers
         }
     }
 }
@@ -19,6 +21,7 @@ extension Operations {
 extension Operations.RequestBodyPostFormSimpleRes: Codable {
     enum CodingKeys: String, CodingKey {
         case form
+        case headers
     }
 }
 

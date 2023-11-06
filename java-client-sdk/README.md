@@ -6,7 +6,7 @@
 ### Gradle
 
 ```groovy
-implementation 'org.openapis.openapi:openapi:1.38.1'
+implementation 'org.openapis.openapi:openapi:1.38.2'
 ```
 <!-- End SDK Installation -->
 
@@ -459,7 +459,9 @@ public class Application {
 * [stronglyTypedOneOfPost](docs/sdks/unions/README.md#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](docs/sdks/unions/README.md#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](docs/sdks/unions/README.md#typedobjectoneofpost)
+* [unionBigIntDecimal](docs/sdks/unions/README.md#unionbigintdecimal)
 * [unionDateNull](docs/sdks/unions/README.md#uniondatenull)
+* [unionDateTimeBigInt](docs/sdks/unions/README.md#uniondatetimebigint)
 * [unionDateTimeNull](docs/sdks/unions/README.md#uniondatetimenull)
 * [weaklyTypedOneOfPost](docs/sdks/unions/README.md#weaklytypedoneofpost)
 <!-- End SDK Available Operations -->

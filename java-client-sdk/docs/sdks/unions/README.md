@@ -17,7 +17,9 @@ Endpoints for testing union types.
 * [stronglyTypedOneOfPost](#stronglytypedoneofpost)
 * [typedObjectNullableOneOfPost](#typedobjectnullableoneofpost)
 * [typedObjectOneOfPost](#typedobjectoneofpost)
+* [unionBigIntDecimal](#unionbigintdecimal)
 * [unionDateNull](#uniondatenull)
+* [unionDateTimeBigInt](#uniondatetimebigint)
 * [unionDateTimeNull](#uniondatetimenull)
 * [weaklyTypedOneOfPost](#weaklytypedoneofpost)
 
@@ -507,6 +509,54 @@ public class Application {
 **[org.openapis.openapi.models.operations.TypedObjectOneOfPostResponse](../../models/operations/TypedObjectOneOfPostResponse.md)**
 
 
+## unionBigIntDecimal
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.UnionBigIntDecimalResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.. req = "string";            
+
+            UnionBigIntDecimalResponse res = sdk.unions.unionBigIntDecimal(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.UnionBigIntDecimalResponse](../../models/operations/UnionBigIntDecimalResponse.md)**
+
+
 ## unionDateNull
 
 ### Example Usage
@@ -553,6 +603,54 @@ public class Application {
 ### Response
 
 **[org.openapis.openapi.models.operations.UnionDateNullResponse](../../models/operations/UnionDateNullResponse.md)**
+
+
+## unionDateTimeBigInt
+
+### Example Usage
+
+```java
+package hello.world;
+
+import org.openapis.openapi.SDK;
+import org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse;
+import org.openapis.openapi.models.shared.Security;
+
+public class Application {
+    public static void main(String[] args) {
+        try {
+            SDK sdk = SDK.builder()
+                .setSecurity(new Security(){{
+                    apiKeyAuth = "Token YOUR_API_KEY";
+                }})
+                .setGlobalPathParam(100L)
+                .setGlobalQueryParam("some example global query param")
+                .build();
+
+            org.openapis.openapi.models.. req = "string";            
+
+            UnionDateTimeBigIntResponse res = sdk.unions.unionDateTimeBigInt(req);
+
+            if (res.res != null) {
+                // handle response
+            }
+        } catch (Exception e) {
+            // handle exception
+        }
+    }
+}
+```
+
+### Parameters
+
+| Parameter                                  | Type                                       | Required                                   | Description                                |
+| ------------------------------------------ | ------------------------------------------ | ------------------------------------------ | ------------------------------------------ |
+| `request`                                  | [Object](../../models//.md)                | :heavy_check_mark:                         | The request object to use for the request. |
+
+
+### Response
+
+**[org.openapis.openapi.models.operations.UnionDateTimeBigIntResponse](../../models/operations/UnionDateTimeBigIntResponse.md)**
 
 
 ## unionDateTimeNull

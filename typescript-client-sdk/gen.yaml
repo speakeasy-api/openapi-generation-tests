@@ -1,8 +1,8 @@
 configVersion: 1.0.0
 management:
-  docChecksum: 2d5cff0b57f6738e0a08cfe2de4e248d
+  docChecksum: 0c1717dc8f9e83b99bad896fa719645c
   docVersion: 0.1.0
-  speakeasyVersion: 1.111.0
+  speakeasyVersion: 1.112.1
   generationVersion: 2.173.0
 generation:
   comments: {}
@@ -32,7 +32,7 @@ features:
     retries: 2.82.1
     serverIDs: 2.81.2
 typescript:
-  version: 1.40.2
+  version: 1.40.3
   author: Speakeasy
   clientServerStatusCodesAsErrors: true
   flattenGlobalSecurity: false

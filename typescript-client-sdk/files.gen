@@ -262,7 +262,9 @@ src/sdk/models/operations/primitivetypeoneofpost.ts
 src/sdk/models/operations/stronglytypedoneofpost.ts
 src/sdk/models/operations/typedobjectnullableoneofpost.ts
 src/sdk/models/operations/typedobjectoneofpost.ts
+src/sdk/models/operations/unionbigintdecimal.ts
 src/sdk/models/operations/uniondatenull.ts
+src/sdk/models/operations/uniondatetimebigint.ts
 src/sdk/models/operations/uniondatetimenull.ts
 src/sdk/models/operations/weaklytypedoneofpost.ts
 src/sdk/models/operations/putanythingignoredgeneration.ts
@@ -612,6 +614,7 @@ docs/models/operations/requestbodypostformdeepresponse.md
 docs/models/operations/requestbodypostformmapprimitiveres.md
 docs/models/operations/requestbodypostformmapprimitiveresponse.md
 docs/models/operations/requestbodypostformsimpleresform.md
+docs/models/operations/requestbodypostformsimpleresheaders.md
 docs/models/operations/requestbodypostformsimpleres.md
 docs/models/operations/requestbodypostformsimpleresponse.md
 docs/models/operations/requestbodypostjsondatatypesarraybigint200applicationjson.md
@@ -704,6 +707,7 @@ docs/models/operations/requestbodyputmultipartfilerequestbody.md
 docs/models/operations/requestbodyputmultipartfileres.md
 docs/models/operations/requestbodyputmultipartfileresponse.md
 docs/models/operations/requestbodyputmultipartsimpleresform.md
+docs/models/operations/requestbodyputmultipartsimpleresheaders.md
 docs/models/operations/requestbodyputmultipartsimpleres.md
 docs/models/operations/requestbodyputmultipartsimpleresponse.md
 docs/models/operations/requestbodyputstringres.md
@@ -781,8 +785,12 @@ docs/models/operations/typedobjectnullableoneofpostres.md
 docs/models/operations/typedobjectnullableoneofpostresponse.md
 docs/models/operations/typedobjectoneofpostres.md
 docs/models/operations/typedobjectoneofpostresponse.md
+docs/models/operations/unionbigintdecimalres.md
+docs/models/operations/unionbigintdecimalresponse.md
 docs/models/operations/uniondatenullres.md
 docs/models/operations/uniondatenullresponse.md
+docs/models/operations/uniondatetimebigintres.md
+docs/models/operations/uniondatetimebigintresponse.md
 docs/models/operations/uniondatetimenullres.md
 docs/models/operations/uniondatetimenullresponse.md
 docs/models/operations/weaklytypedoneofpostres.md

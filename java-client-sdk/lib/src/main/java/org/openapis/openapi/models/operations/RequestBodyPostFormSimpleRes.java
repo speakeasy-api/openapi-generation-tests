@@ -19,7 +19,16 @@ public class RequestBodyPostFormSimpleRes {
         return this;
     }
     
-    public RequestBodyPostFormSimpleRes(@JsonProperty("form") RequestBodyPostFormSimpleResForm form) {
+    @JsonProperty("headers")
+    public RequestBodyPostFormSimpleResHeaders headers;
+
+    public RequestBodyPostFormSimpleRes withHeaders(RequestBodyPostFormSimpleResHeaders headers) {
+        this.headers = headers;
+        return this;
+    }
+    
+    public RequestBodyPostFormSimpleRes(@JsonProperty("form") RequestBodyPostFormSimpleResForm form, @JsonProperty("headers") RequestBodyPostFormSimpleResHeaders headers) {
         this.form = form;
+        this.headers = headers;
   }
 }

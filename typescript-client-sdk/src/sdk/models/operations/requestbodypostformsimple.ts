@@ -64,6 +64,12 @@ export class RequestBodyPostFormSimpleResForm extends SpeakeasyBase {
     strOpt?: string;
 }
 
+export class RequestBodyPostFormSimpleResHeaders extends SpeakeasyBase {
+    @SpeakeasyMetadata()
+    @Expose({ name: "Content-Type" })
+    contentType: string;
+}
+
 /**
  * OK
  */
@@ -72,6 +78,11 @@ export class RequestBodyPostFormSimpleRes extends SpeakeasyBase {
     @Expose({ name: "form" })
     @Type(() => RequestBodyPostFormSimpleResForm)
     form: RequestBodyPostFormSimpleResForm;
+
+    @SpeakeasyMetadata()
+    @Expose({ name: "headers" })
+    @Type(() => RequestBodyPostFormSimpleResHeaders)
+    headers: RequestBodyPostFormSimpleResHeaders;
 }
 
 export class RequestBodyPostFormSimpleResponse extends SpeakeasyBase {

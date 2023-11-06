@@ -510,7 +510,9 @@ case .empty:
 - ``Operations/TypedObjectNullableOneOfPostResponse``
 - ``Operations/TypedObjectOneOfPostResponse``
 - ``Operations/TypedParameterGenerationGetResponse``
+- ``Operations/UnionBigIntDecimalResponse``
 - ``Operations/UnionDateNullResponse``
+- ``Operations/UnionDateTimeBigIntResponse``
 - ``Operations/UnionDateTimeNullResponse``
 - ``Operations/UpdateResourceResponse``
 - ``Operations/UsageExamplePostResponse``
@@ -634,6 +636,7 @@ case .empty:
 - ``Operations/RequestBodyPostFormMapPrimitiveRes``
 - ``Operations/RequestBodyPostFormSimpleRes``
 - ``Operations/RequestBodyPostFormSimpleResForm``
+- ``Operations/RequestBodyPostFormSimpleResHeaders``
 - ``Operations/RequestBodyPostJSONDataTypesArrayBigInt200ApplicationJSON``
 - ``Operations/RequestBodyPostJSONDataTypesArrayDate200ApplicationJSON``
 - ``Operations/RequestBodyPostJSONDataTypesArrayDecimalStr200ApplicationJSON``
@@ -685,6 +688,7 @@ case .empty:
 - ``Operations/RequestBodyPutMultipartFileRes``
 - ``Operations/RequestBodyPutMultipartSimpleRes``
 - ``Operations/RequestBodyPutMultipartSimpleResForm``
+- ``Operations/RequestBodyPutMultipartSimpleResHeaders``
 - ``Operations/RequestBodyPutStringRes``
 - ``Operations/RequestBodyPutStringWithParamsRes``
 - ``Operations/RequestBodyPutStringWithParamsResArgs``
@@ -706,7 +710,13 @@ case .empty:
 - ``Operations/TypedObjectOneOfPostRes``
 - ``Operations/TypedParameterGenerationGetObj``
 - ``Operations/TypeFromAnchor``
+- ``Operations/UnionBigIntDecimalRequestBody``
+- ``Operations/UnionBigIntDecimalRes``
+- ``Operations/UnionBigIntDecimalResJson``
 - ``Operations/UnionDateNullRes``
+- ``Operations/UnionDateTimeBigIntRequestBody``
+- ``Operations/UnionDateTimeBigIntRes``
+- ``Operations/UnionDateTimeBigIntResJson``
 - ``Operations/UnionDateTimeNullRes``
 - ``Operations/UsageExamplePost200ApplicationJSON``
 - ``Operations/UsageExamplePost200ApplicationJSONJSON``
