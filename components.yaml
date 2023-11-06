@@ -1270,6 +1270,14 @@ components:
             title: res
             type: object
             properties:
+              headers:
+                type: object
+                properties:
+                  Content-Type:
+                    title: contentType
+                    type: string
+                required:
+                  - Content-Type
               form:
                 type: object
                 properties:
@@ -1314,6 +1322,7 @@ components:
                   - any
             required:
               - form
+              - headers
     deepObjectFormResponse:
       description: OK
       content:
